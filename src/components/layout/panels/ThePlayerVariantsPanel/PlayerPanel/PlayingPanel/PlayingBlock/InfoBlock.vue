@@ -36,7 +36,7 @@ export default {
     isRenderAlbum () {
       return (
         this.isWithAlbum &&
-          !!this.albumData
+          !!this.albumTitle
       )
     },
     isWithAlbum () {
@@ -47,6 +47,9 @@ export default {
     },
     isFromSource () {
       return !!this.playerPlaying.from_source
+    },
+    albumTitle () {
+      return this.albumData?.title
     },
     albumData () {
       return this.playerPlaying.album
