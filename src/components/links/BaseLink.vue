@@ -16,18 +16,13 @@
 </template>
 
 <script>
-import {
-  ipcRenderer
-} from 'electron'
-import {
-  mapState
-} from 'vuex'
-import {
-  generateKey
-} from '@/helpers/utils'
+import newTabMixin from '@/mixins/newTabMixin'
 
 export default {
   name: 'BaseLink',
+  mixins: [
+    newTabMixin
+  ],
   props: {
     text: {
       type: String,
@@ -40,18 +35,15 @@ export default {
     'activeChange'
   ],
   computed: {
-    ...mapState(
-      'layout',
-      [
-        'isSwitchToNewTab'
-      ]
-    ),
     component () {
       if (this.link) {
         return 'RouterLink'
       } else {
         return 'a'
       }
+    },
+    path () {
+      return this.link.path
     }
   },
   methods: {
@@ -73,32 +65,17 @@ export default {
       )
     },
     handleCtrlClick () {
-      this.openNewTab()
+      this.openPathInNewTab()
     },
     handleAuxClick () {
-      this.openNewTab()
+      this.openPathInNewTab()
     },
-    openNewTab () {
-      const tab = this.getTabData()
-
-      ipcRenderer.send(
-        'add-tab',
-        tab
+    openPathInNewTab () {
+      this.openNewTab(
+        {
+          path: this.path
+        }
       )
-
-      if (this.isSwitchToNewTab) {
-        ipcRenderer.send(
-          'set-active-tab',
-          tab.uuid
-        )
-      }
-    },
-    getTabData () {
-      return {
-        uuid: generateKey(),
-        path: this.link.path,
-        isLoading: true
-      }
     }
   }
 }

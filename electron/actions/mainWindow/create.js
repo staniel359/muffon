@@ -142,11 +142,15 @@ function create () {
     null
   )
 
-  // mainWindow.webContents.openDevTools(
-  //   {
-  //     mode: 'detach'
-  //   }
-  // )
+  // const devToolsData = {
+  //   mode: 'detach'
+  // }
+
+  // mainWindow
+  //   .webContents
+  //   .openDevTools(
+  //     devToolsData
+  //   )
 
   mainWindow.once(
     'ready-to-show',

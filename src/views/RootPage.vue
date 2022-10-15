@@ -11,6 +11,8 @@
 
   <TheExitObserver />
 
+  <TheExternalUrlsObserver />
+
   <TheElectronStoreSaver />
 
   <TheBrowserTabs
@@ -38,6 +40,8 @@ import ThePlayingObserver
   from '@/components/layout/observers/ThePlayingObserver.vue'
 import TheExitObserver
   from '@/components/layout/observers/TheExitObserver.vue'
+import TheExternalUrlsObserver
+  from '@/components/layout/observers/TheExternalUrlsObserver.vue'
 import TheElectronStoreSaver
   from '@/components/layout/savers/TheElectronStoreSaver.vue'
 import TheBrowserTabs from '@/components/layout/TheBrowserTabs.vue'
@@ -52,6 +56,7 @@ export default {
     TheMediaKeysObserver,
     ThePlayingObserver,
     TheExitObserver,
+    TheExternalUrlsObserver,
     TheElectronStoreSaver,
     TheBrowserTabs,
     TheAuthentication

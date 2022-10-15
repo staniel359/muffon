@@ -4,7 +4,22 @@ function handleAllWindowsClosed (
   event.preventDefault()
 }
 
-function handleNewWindow () {
+function handleNewWindow (
+  {
+    url
+  }
+) {
+  const data = {
+    url
+  }
+
+  mainWindow
+    .webContents
+    .send(
+      'open-external-url',
+      data
+    )
+
   return {
     action: 'deny'
   }
