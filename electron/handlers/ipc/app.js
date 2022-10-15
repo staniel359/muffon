@@ -7,8 +7,8 @@ const clearCache = require(
 const setLanguage = require(
   '../../actions/app/setLanguage'
 )
-const updateTheme = require(
-  '../../actions/app/updateTheme'
+const checkTheme = require(
+  '../../actions/app/checkTheme'
 )
 const callLogout = require(
   '../../actions/app/callLogout'
@@ -40,7 +40,7 @@ function handleSetLanguage (
 }
 
 function handleCheckNativeTheme () {
-  updateTheme()
+  return checkTheme()
 }
 
 function handleLogout () {

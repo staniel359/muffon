@@ -29,7 +29,7 @@ ipcMain.on(
   handleSetLanguage
 )
 
-ipcMain.on(
+ipcMain.handle(
   'check-native-theme',
   handleCheckNativeTheme
 )

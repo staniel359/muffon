@@ -39,10 +39,21 @@ export default {
       value
     ) {
       if (value) {
-        ipcRenderer.send(
+        ipcRenderer.invoke(
           'check-native-theme'
+        ).then(
+          this.handleCheckNativeTheme
         )
       }
+    },
+    handleCheckNativeTheme (
+      {
+        isDarkMode
+      }
+    ) {
+      this.updateIsDarkMode(
+        isDarkMode
+      )
     },
     handleUpdateNativeTheme (
       _,
@@ -50,9 +61,16 @@ export default {
         isDarkMode
       }
     ) {
+      this.updateIsDarkMode(
+        isDarkMode
+      )
+    },
+    updateIsDarkMode (
+      value
+    ) {
       updateGlobalStore(
         {
-          'layout.isDarkMode': isDarkMode
+          'layout.isDarkMode': value
         }
       )
     }
