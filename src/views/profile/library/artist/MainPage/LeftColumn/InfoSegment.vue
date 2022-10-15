@@ -11,15 +11,15 @@
       />
     </div>
 
-    <BaseLinkContainer
-      :link="artistMainLink"
+    <BaseArtistLinkContainer
+      :artist-data="artistData"
     >
       <BaseHeader
         class="link"
         tag="h3"
         :text="artistName"
       />
-    </BaseLinkContainer>
+    </BaseArtistLinkContainer>
   </BaseSegmentContainer>
 </template>
 
@@ -27,19 +27,16 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
-import BaseLinkContainer
-  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseArtistLinkContainer
+  from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import {
-  main as formatArtistMainLink
-} from '@/helpers/formatters/links/artist'
 
 export default {
   name: 'InfoSegment',
   components: {
     BaseSegmentContainer,
     BaseArtistImage,
-    BaseLinkContainer,
+    BaseArtistLinkContainer,
     BaseHeader
   },
   props: {
@@ -54,13 +51,6 @@ export default {
     },
     artistName () {
       return this.artistData.name
-    },
-    artistMainLink () {
-      return formatArtistMainLink(
-        {
-          artistName: this.artistName
-        }
-      )
     }
   }
 }
