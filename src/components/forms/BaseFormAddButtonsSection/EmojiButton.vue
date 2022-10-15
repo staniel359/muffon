@@ -5,20 +5,21 @@
     icon="smile outline"
   />
 
-  <BaseEmojiPopup
-    @select="handleSelect"
-  />
+  <div class="main-popup-container">
+    <BaseEmojiPopup
+      ref="popup"
+      @select="handleSelect"
+    />
+  </div>
 </template>
 
 <script>
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseEmojiPopup from '@/components/popups/BaseEmojiPopup.vue'
 import {
-  setPopup
-} from '@/helpers/actions/plugins/semantic'
-import {
   emojiPopupOptions
 } from '@/helpers/data/plugins/semantic'
+import popupMixin from '@/mixins/popupMixin'
 
 export default {
   name: 'EmojiButton',
@@ -26,19 +27,23 @@ export default {
     BaseButton,
     BaseEmojiPopup
   },
+  mixins: [
+    popupMixin
+  ],
   inject: [
     'addEmoji'
   ],
   computed: {
+    element () {
+      return this.$refs.button.$el
+    },
     popupOptions () {
-      return emojiPopupOptions()
+      return emojiPopupOptions(
+        {
+          html: this.popup
+        }
+      )
     }
-  },
-  mounted () {
-    setPopup(
-      this.$refs.button.$el,
-      this.popupOptions
-    )
   },
   methods: {
     handleSelect (

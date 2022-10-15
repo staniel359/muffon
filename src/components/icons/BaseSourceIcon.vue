@@ -14,26 +14,30 @@
       @mouseleave="handleMouseLeave"
     />
 
-    <BaseSourcePopup
-      :source="source"
-    />
+    <div class="main-popup-container">
+      <BaseSourcePopup
+        ref="popup"
+        :source="source"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import BaseSourcePopup from '@/components/popups/BaseSourcePopup.vue'
 import {
-  setPopup
-} from '@/helpers/actions/plugins/semantic'
-import {
   sourcePopupOptions
 } from '@/helpers/data/plugins/semantic'
+import popupMixin from '@/mixins/popupMixin'
 
 export default {
   name: 'BaseSourceIcon',
   components: {
     BaseSourcePopup
   },
+  mixins: [
+    popupMixin
+  ],
   props: {
     source: {
       type: String,
@@ -47,15 +51,16 @@ export default {
     }
   },
   computed: {
+    element () {
+      return this.$refs.icon
+    },
     popupOptions () {
-      return sourcePopupOptions()
+      return sourcePopupOptions(
+        {
+          html: this.popup
+        }
+      )
     }
-  },
-  mounted () {
-    setPopup(
-      this.$refs.icon,
-      this.popupOptions
-    )
   },
   methods: {
     handleMouseEnter () {

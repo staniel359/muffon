@@ -1,7 +1,5 @@
 <template>
-  <BasePopupContainer
-    class="volume-popup"
-  >
+  <div class="volume-popup">
     <div class="volume-header-container">
       <BaseHeader
         tag="h4"
@@ -16,14 +14,13 @@
       @move="handleMove"
       @mouse-up="handleMouseUp"
     />
-  </BasePopupContainer>
+  </div>
 </template>
 
 <script>
 import {
   mapState
 } from 'vuex'
-import BasePopupContainer from '@/components/containers/BasePopupContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
@@ -36,7 +33,6 @@ import {
 export default {
   name: 'BaseVolumePopup',
   components: {
-    BasePopupContainer,
     BaseHeader,
     BaseSeeker
   },
@@ -118,7 +114,7 @@ export default {
 <style lang="sass" scoped>
 .volume-popup
   @extend .text-align-center
-  width: 60px
+  width: 25px
 
 .volume-header-container
   margin-bottom: 0.25em

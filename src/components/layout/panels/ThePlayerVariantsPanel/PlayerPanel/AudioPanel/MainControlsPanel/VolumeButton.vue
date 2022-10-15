@@ -6,7 +6,11 @@
     @click="handleClick"
   />
 
-  <BaseVolumePopup />
+  <div class="main-popup-container">
+    <BaseVolumePopup
+      ref="popup"
+    />
+  </div>
 </template>
 
 <script>
@@ -17,11 +21,9 @@ import {
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseVolumePopup from '@/components/popups/BaseVolumePopup.vue'
 import {
-  setPopup
-} from '@/helpers/actions/plugins/semantic'
-import {
-  mainPopupOptions
+  volumePopupOptions
 } from '@/helpers/data/plugins/semantic'
+import popupMixin from '@/mixins/popupMixin'
 
 export default {
   name: 'VolumeButton',
@@ -29,6 +31,9 @@ export default {
     BaseButton,
     BaseVolumePopup
   },
+  mixins: [
+    popupMixin
+  ],
   computed: {
     ...mapState(
       'audio',
@@ -38,8 +43,15 @@ export default {
         audioElement: 'element'
       }
     ),
+    element () {
+      return this.$refs.button.$el
+    },
     popupOptions () {
-      return mainPopupOptions()
+      return volumePopupOptions(
+        {
+          html: this.popup
+        }
+      )
     },
     icon () {
       return `volume ${this.volumeIcon}`
@@ -61,12 +73,6 @@ export default {
     isVolumeLow () {
       return this.audioVolume <= 0.5
     }
-  },
-  mounted () {
-    setPopup(
-      this.$refs.button.$el,
-      this.popupOptions
-    )
   },
   methods: {
     ...mapActions(

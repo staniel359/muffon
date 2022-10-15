@@ -400,13 +400,32 @@ p
     border: $borderInverted !important
 
 .main-popup
-  @extend .no-border, .white-space-no-wrap
+  @extend .no-border
+  max-width: unset !important
   &.inverted
     border: $borderInverted !important
 
+.main-popup-container
+  @extend .d-none
+
+.main-artist-popup
+  width: 420px
+
+.main-annotation-popup
+  width: 350px
+
+.main-emoji-popup
+  @extend .no-padding
+  border-radius: 10px !important
+
+.main-emoji-picker
+  em-emoji-picker
+    max-height: 300px
+    --font-family: inherit
+
 .main-header
   @extend .no-margin
-  line-height: 1.2em !important
+  line-height: normal !important
 
 .main-artist-name
   margin-bottom: 0.4em !important
@@ -889,20 +908,5 @@ p
   @extend .no-margin
   margin-left: 0.25em !important
 
-.main-artist-popup,
-.main-annotation-popup
-  max-width: unset !important
-  width: 420px
-  &.inverted
-    border: $borderInverted !important
-
 .main-country-select-section
   @extend .d-flex, .align-items-center
-
-.main-emoji-popup
-  @extend .no-padding
-
-.main-emoji-picker
-  em-emoji-picker
-    max-height: 300px
-    --font-family: inherit

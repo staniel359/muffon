@@ -1,19 +1,16 @@
 <template>
-  <BasePopupContainer
-    class="main-emoji-popup"
-  >
+  <div>
     <BaseEmojiPicker
       :key="key"
       @select="handleSelect"
     />
-  </BasePopupContainer>
+  </div>
 </template>
 
 <script>
 import {
   mapState
 } from 'vuex'
-import BasePopupContainer from '@/components/containers/BasePopupContainer.vue'
 import BaseEmojiPicker from '@/components/BaseEmojiPicker.vue'
 import {
   generateKey
@@ -22,7 +19,6 @@ import {
 export default {
   name: 'BaseEmojiPopup',
   components: {
-    BasePopupContainer,
     BaseEmojiPicker
   },
   emits: [

@@ -136,21 +136,62 @@ export function mainScrobblePercentSeekerOptions (
   }
 }
 
-export function mainPopupOptions () {
+export function volumePopupOptions (
+  {
+    html
+  }
+) {
+  const className = 'ui popup main-popup'
+
+  const {
+    isDarkMode
+  } = store.state.layout
+
+  const variation = isDarkMode
+    ? 'basic inverted'
+    : 'basic'
+
   return {
     position: 'top center',
     transition: 'fade up',
-    variation: 'basic',
     closable: false,
-    hoverable: true
+    hoverable: true,
+    className: {
+      popup: className
+    },
+    delay: {
+      show: 0,
+      hide: 150
+    },
+    html,
+    variation
   }
 }
 
-export function sourcePopupOptions () {
+export function sourcePopupOptions (
+  {
+    html
+  }
+) {
+  const className = 'ui popup main-popup'
+
+  const {
+    isDarkMode
+  } = store.state.layout
+
+  const variation = isDarkMode
+    ? 'basic inverted'
+    : 'basic'
+
   return {
+    delay: 0,
     position: 'top center',
     transition: 'fade up',
-    variation: 'basic small'
+    className: {
+      popup: className
+    },
+    html,
+    variation
   }
 }
 
@@ -161,6 +202,9 @@ export function artistPopupOptions (
     onHide
   }
 ) {
+  const className =
+    'ui popup main-popup main-artist-popup'
+
   const {
     isDarkMode
   } = store.state.layout
@@ -172,28 +216,19 @@ export function artistPopupOptions (
   return {
     position: 'top center',
     transition: 'fade up',
-    variation,
     hoverable: true,
     lastResort: true,
     className: {
-      popup: 'ui popup main-artist-popup'
+      popup: className
     },
     delay: {
       show: 750,
       hide: 150
     },
     html,
+    variation,
     onShow,
     onHide
-  }
-}
-
-export function emojiPopupOptions () {
-  return {
-    position: 'right center',
-    transition: 'fade up',
-    variation: 'basic',
-    hoverable: true
   }
 }
 
@@ -203,6 +238,9 @@ export function annotationPopupOptions (
     onShow
   }
 ) {
+  const className =
+    'ui popup main-popup main-annotation-popup'
+
   const {
     isDarkMode
   } = store.state.layout
@@ -218,13 +256,45 @@ export function annotationPopupOptions (
     hoverable: true,
     lastResort: true,
     className: {
-      popup: 'ui popup main-annotation-popup'
+      popup: className
     },
     delay: {
       show: 500
     },
     html,
     onShow
+  }
+}
+
+export function emojiPopupOptions (
+  {
+    html
+  }
+) {
+  const className =
+    'ui popup main-popup main-emoji-popup'
+
+  const {
+    isDarkMode
+  } = store.state.layout
+
+  const variation = isDarkMode
+    ? 'basic inverted'
+    : 'basic'
+
+  return {
+    position: 'right center',
+    transition: 'fade up',
+    hoverable: true,
+    className: {
+      popup: className
+    },
+    delay: {
+      show: 0,
+      hide: 150
+    },
+    html,
+    variation
   }
 }
 

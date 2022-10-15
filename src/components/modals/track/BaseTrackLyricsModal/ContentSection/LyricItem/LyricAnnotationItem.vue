@@ -14,7 +14,7 @@
     />
   </span>
 
-  <span class="popup-container">
+  <span class="main-popup-container">
     <BaseAnnotationPopup
       ref="popup"
       :is-called="isCalled"
@@ -163,7 +163,4 @@ export default {
     color: $colorWhite
     &.inverted
       background: $colorBase
-
-.popup-container
-  @extend .d-inline-block
 </style>

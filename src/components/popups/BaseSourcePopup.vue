@@ -1,20 +1,14 @@
 <template>
-  <BasePopupContainer>
-    <span
-      v-html="popupText"
-    />
-  </BasePopupContainer>
+  <span
+    v-html="popupText"
+  />
 </template>
 
 <script>
-import BasePopupContainer from '@/components/containers/BasePopupContainer.vue'
 import audioSources from '@/helpers/data/audio/sources'
 
 export default {
   name: 'BaseSourcePopup',
-  components: {
-    BasePopupContainer
-  },
   props: {
     source: {
       type: String,

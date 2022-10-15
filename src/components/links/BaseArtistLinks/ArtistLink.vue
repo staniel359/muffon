@@ -9,15 +9,19 @@
     @click="handleLinkClick"
   />
 
-  <BaseArtistPopup
+  <div
     v-if="isWithPopup"
-    ref="popup"
-    :is-called="isCalled"
-    :is-visible="isVisible"
-    :artist-name="artistName"
-    @artist-data-change="handleArtistDataChange"
-    @link-click="handlePopupLinkClick"
-  />
+    class="main-popup-container"
+  >
+    <BaseArtistPopup
+      ref="popup"
+      :is-called="isCalled"
+      :is-visible="isVisible"
+      :artist-name="artistName"
+      @artist-data-change="handleArtistDataChange"
+      @link-click="handlePopupLinkClick"
+    />
+  </div>
 </template>
 
 <script>
