@@ -79,19 +79,14 @@ export default {
     }
   },
   watch: {
-    url: {
-      immediate: true,
-      handler: 'handleUrlChange'
-    }
+    url: 'handleUrlChange'
+  },
+  mounted () {
+    this.initialize()
   },
   methods: {
-    async handleUrlChange () {
-      await this.$nextTick()
-
-      setSearch(
-        this.$refs.search,
-        this.searchOptions
-      )
+    handleUrlChange () {
+      this.initialize()
     },
     handleSelect (
       value
@@ -99,6 +94,12 @@ export default {
       this.$emit(
         'select',
         value
+      )
+    },
+    initialize () {
+      setSearch(
+        this.$refs.search,
+        this.searchOptions
       )
     },
     focus () {
