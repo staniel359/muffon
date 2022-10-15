@@ -11,9 +11,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
 import BaseMessage from '@/components/messages/BaseMessage.vue'
 import errorsData from '@/helpers/data/errors'
 
@@ -34,7 +31,6 @@ export default {
   ],
   data () {
     return {
-      errorData: {},
       refreshButtonData: {
         class: 'circular basic',
         icon: 'sync alternate'
@@ -42,12 +38,30 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      'profile',
-      {
-        profileLanguage: 'language'
+    errorData () {
+      if (this.isServerError) {
+        return this.responseErrorData
+      } else {
+        return this.clientErrorData
       }
-    ),
+    },
+    isServerError () {
+      return this.error.isAxiosError
+    },
+    responseErrorData () {
+      return {
+        ...Object.values(
+          errorsData
+        ).find(
+          this.isMatchedError
+        )
+      }
+    },
+    clientErrorData () {
+      return {
+        ...errorsData.client
+      }
+    },
     icons () {
       return this.errorData.icons
     },
@@ -80,52 +94,15 @@ export default {
     isErrorRefreshable () {
       return this.errorData.isRefreshable
     },
-    responseErrorData () {
-      return {
-        ...Object.values(
-          errorsData
-        ).find(
-          this.isMatchedError
-        )
-      }
-    },
     errorCode () {
       return this.error.response?.status || 0
-    },
-    isServerError () {
-      return this.error.isAxiosError
-    }
-  },
-  watch: {
-    profileLanguage: {
-      immediate: true,
-      handler: 'handleProfileLanguageChange'
     }
   },
   methods: {
-    handleProfileLanguageChange () {
-      this.setErrorData()
-    },
     handleButtonClick () {
       this.$emit(
         'refresh'
       )
-    },
-    setErrorData () {
-      if (this.isServerError) {
-        this.setResponseErrorData()
-      } else {
-        this.setClientErrorData()
-      }
-    },
-    setResponseErrorData () {
-      this.errorData =
-        this.responseErrorData
-    },
-    setClientErrorData () {
-      this.errorData = {
-        ...errorsData.client
-      }
     },
     isMatchedError (
       error
