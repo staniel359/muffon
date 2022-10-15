@@ -24,9 +24,18 @@ export function mainModalOptions (
 }
 
 export function mainLoaderOptions () {
+  const {
+    isDarkMode
+  } = store.state.layout
+
+  const variation = (
+    !isDarkMode && 'inverted'
+  )
+
   return {
     closable: false,
-    duration: 0
+    duration: 0,
+    variation
   }
 }
 

@@ -3,7 +3,9 @@
     ref="loader"
     class="ui page dimmer"
   >
-    <div class="ui loader" />
+    <div
+      class="ui large loader"
+    />
   </div>
 </template>
 
@@ -17,9 +19,6 @@ import {
 import {
   mainLoaderOptions
 } from '@/helpers/data/plugins/semantic'
-import {
-  toggleClass
-} from '@/helpers/actions/plugins/jquery'
 
 export default {
   name: 'TheLoaderDimmer',
@@ -29,30 +28,25 @@ export default {
       [
         'isDarkMode'
       ]
-    )
-  },
-  watch: {
-    isDarkMode: {
-      immediate: true,
-      handler: 'handleIsDarkModeChange'
+    ),
+    loaderOptions () {
+      return mainLoaderOptions()
     }
   },
+  watch: {
+    isDarkMode: 'handleIsDarkModeChange'
+  },
   mounted () {
-    setLoaderDimmer(
-      this.$refs.loader,
-      mainLoaderOptions()
-    )
+    this.initialize()
   },
   methods: {
-    async handleIsDarkModeChange (
-      value
-    ) {
-      await this.$nextTick()
-
-      toggleClass(
+    handleIsDarkModeChange () {
+      this.initialize()
+    },
+    initialize () {
+      setLoaderDimmer(
         this.$refs.loader,
-        'inverted',
-        !value
+        this.loaderOptions
       )
     }
   }
