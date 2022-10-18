@@ -57,6 +57,9 @@ import BaseDeleteOption
   from '@/components/dropdowns/options/BaseDeleteOption.vue'
 import BaseCommunityDeleteModal
   from '@/components/modals/community/BaseCommunityDeleteModal.vue'
+import {
+  community as formatCommunityShareData
+} from '@/helpers/formatters/share'
 
 export default {
   name: 'BaseCommunityOptionsDropdown',
@@ -71,7 +74,6 @@ export default {
   },
   props: {
     communityData: Object,
-    shareData: Object,
     isWithJoinOption: Boolean,
     isWithShareOption: Boolean,
     isWithEditOption: Boolean,
@@ -96,6 +98,11 @@ export default {
           this.isWithShareOption ||
           this.isWithEditOption ||
           this.isWithDeleteOption
+      )
+    },
+    shareData () {
+      return formatCommunityShareData(
+        this.communityData
       )
     }
   },

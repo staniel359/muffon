@@ -14,7 +14,7 @@
 
     <BaseVideoOptionsDropdown
       class="video-options"
-      :share-data="shareData"
+      :video-data="videoData"
       is-with-share-option
     />
   </div>
@@ -28,9 +28,6 @@ import BaseVideoOptionsDropdown
 import {
   main as formatVideoChannelMainLink
 } from '@/helpers/formatters/links/videoChannel'
-import {
-  video as formatVideoShareData
-} from '@/helpers/formatters/share'
 
 export default {
   name: 'TitleOptionsSection',
@@ -64,11 +61,6 @@ export default {
     },
     channelTitle () {
       return this.channelData.title
-    },
-    shareData () {
-      return formatVideoShareData(
-        this.videoData
-      )
     }
   }
 }

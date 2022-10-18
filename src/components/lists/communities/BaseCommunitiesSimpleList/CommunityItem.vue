@@ -33,7 +33,6 @@
 
     <BaseCommunityOptionsDropdown
       :community-data="communityData"
-      :share-data="shareData"
       :is-with-join-option="isWithJoinOption"
       :is-with-share-option="isWithShareOption"
     />
@@ -61,9 +60,6 @@ import {
 import {
   number as formatNumber
 } from '@/helpers/formatters'
-import {
-  community as formatCommunityShareData
-} from '@/helpers/formatters/share'
 
 export default {
   name: 'CommunityItem',
@@ -145,11 +141,6 @@ export default {
     },
     uuid () {
       return this.communityData.uuid
-    },
-    shareData () {
-      return formatCommunityShareData(
-        this.communityData
-      )
     }
   },
   methods: {

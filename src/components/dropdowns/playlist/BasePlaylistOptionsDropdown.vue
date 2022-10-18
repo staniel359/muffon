@@ -53,6 +53,9 @@ import BaseDeleteOption
   from '@/components/dropdowns/options/BaseDeleteOption.vue'
 import BasePlaylistDeleteModal
   from '@/components/modals/playlist/BasePlaylistDeleteModal.vue'
+import {
+  playlist as formatPlaylistShareData
+} from '@/helpers/formatters/share'
 
 export default {
   name: 'BasePlaylistOptionsDropdown',
@@ -66,7 +69,6 @@ export default {
   },
   props: {
     playlistData: Object,
-    shareData: Object,
     isWithShareOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
@@ -93,6 +95,11 @@ export default {
         this.isWithShareOption ||
           this.isWithEditOption ||
           this.isWithDeleteOption
+      )
+    },
+    shareData () {
+      return formatPlaylistShareData(
+        this.playlistData
       )
     }
   },

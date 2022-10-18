@@ -6,7 +6,7 @@
       @click="handleLinkClick"
     >
       <BaseVideoOptionsDropdown
-        :share-data="shareData"
+        :video-data="videoData"
         :is-with-share-option="isWithShareOption"
       />
 
@@ -47,9 +47,6 @@ import BaseHeader from '@/components/BaseHeader.vue'
 import {
   main as formatVideoMainLink
 } from '@/helpers/formatters/links/video'
-import {
-  video as formatVideoShareData
-} from '@/helpers/formatters/share'
 import {
   date as formatDate
 } from '@/helpers/formatters'
@@ -97,11 +94,6 @@ export default {
     },
     publishDate () {
       return this.videoData.publish_date
-    },
-    shareData () {
-      return formatVideoShareData(
-        this.videoData
-      )
     }
   },
   methods: {

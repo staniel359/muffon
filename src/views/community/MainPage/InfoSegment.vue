@@ -37,7 +37,6 @@
         <BaseCommunityOptionsDropdown
           class="community-options"
           :community-data="communityData"
-          :share-data="shareData"
           :is-with-edit-option="isCommunityCreator"
           :is-with-delete-option="isCommunityCreator"
           is-with-join-option
@@ -59,9 +58,6 @@ import BaseTimestampSection
   from '@/components/sections/BaseTimestampSection.vue'
 import BaseCommunityOptionsDropdown
   from '@/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
-import {
-  community as formatCommunityShareData
-} from '@/helpers/formatters/share'
 
 export default {
   name: 'InfoSegment',
@@ -89,11 +85,6 @@ export default {
     },
     description () {
       return this.communityData.description
-    },
-    shareData () {
-      return formatCommunityShareData(
-        this.communityData
-      )
     },
     created () {
       return this.communityData.created

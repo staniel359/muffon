@@ -10,15 +10,15 @@
       ref="dropdown"
       :class="[
         'compact basic circular icon',
-        'top right floating scrolling',
-        'dropdown main-options-dropdown-button'
+        'floating scrolling dropdown',
+        'main-options-dropdown-button'
       ]"
     >
       <BaseIcon
         icon="ellipsis vertical"
       />
 
-      <div class="menu">
+      <div class="left menu">
         <slot />
       </div>
     </BaseButtonContainer>

@@ -17,6 +17,9 @@ import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import BaseShareOption
   from '@/components/dropdowns/options/BaseShareOption.vue'
+import {
+  video as formatVideoShareData
+} from '@/helpers/formatters/share'
 
 export default {
   name: 'BaseVideoOptionsDropdown',
@@ -25,7 +28,7 @@ export default {
     BaseShareOption
   },
   props: {
-    shareData: Object,
+    videoData: Object,
     isWithShareOption: Boolean
   },
   computed: {
@@ -44,6 +47,11 @@ export default {
     isWithProfileOptions () {
       return (
         this.isWithShareOption
+      )
+    },
+    shareData () {
+      return formatVideoShareData(
+        this.videoData
       )
     }
   }

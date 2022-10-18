@@ -59,7 +59,6 @@
 
       <BasePlaylistOptionsDropdown
         :playlist-data="playlistData"
-        :share-data="shareData"
         :is-with-share-option="isWithShareOption"
         :is-with-edit-option="isWithEditOption && isSelf"
         :is-with-delete-option="isWithDeleteOption && isSelf"
@@ -95,9 +94,6 @@ import {
 import {
   isCurrentProfile
 } from '@/helpers/utils'
-import {
-  playlist as formatPlaylistShareData
-} from '@/helpers/formatters/share'
 
 export default {
   name: 'PlaylistItem',
@@ -219,11 +215,6 @@ export default {
     },
     profileNickname () {
       return this.profileData.nickname
-    },
-    shareData () {
-      return formatPlaylistShareData(
-        this.playlistData
-      )
     },
     isPrivate () {
       return this.playlistData.private

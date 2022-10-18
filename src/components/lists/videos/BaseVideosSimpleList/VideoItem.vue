@@ -36,7 +36,7 @@
     </div>
 
     <BaseVideoOptionsDropdown
-      :share-data="shareData"
+      :video-data="videoData"
       :is-with-share-option="isWithShareOption"
     />
 
@@ -62,9 +62,6 @@ import {
 import {
   main as formatVideoChannelMainLink
 } from '@/helpers/formatters/links/videoChannel'
-import {
-  video as formatVideoShareData
-} from '@/helpers/formatters/share'
 import {
   date as formatDate
 } from '@/helpers/formatters'
@@ -137,11 +134,6 @@ export default {
     },
     channelTitle () {
       return this.channelData.title
-    },
-    shareData () {
-      return formatVideoShareData(
-        this.videoData
-      )
     },
     uuid () {
       return this.videoData.uuid
