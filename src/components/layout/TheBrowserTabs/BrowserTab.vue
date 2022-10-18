@@ -124,6 +124,9 @@ export default {
   @extend .d-flex, .align-items-center
   padding: 0.5em
   margin-right: 0.5em !important
+  &:hover
+    .browser-tab-name
+      max-width: unset
 
 .browser-tab-icon
   @extend .no-margin
