@@ -11,22 +11,28 @@
       <VideosSegment
         :channel-id="channelId"
       />
+
+      <PlaylistsSegment
+        :channel-id="channelId"
+      />
     </template>
   </BaseVideoChannelPageContainer>
 </template>
 
 <script>
 import BaseVideoChannelPageContainer
-  from '@/components/containers/pages/video/BaseVideoChannelPageContainer.vue'
+  from '@/components/containers/pages/videoChannel/BaseVideoChannelPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import VideosSegment from './MainPage/VideosSegment.vue'
+import PlaylistsSegment from './MainPage/PlaylistsSegment.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseVideoChannelPageContainer,
     InfoSegment,
-    VideosSegment
+    VideosSegment,
+    PlaylistsSegment
   },
   props: {
     channelId: String

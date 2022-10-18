@@ -1,40 +1,39 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatVideoMainLink,
-  related as formatVideoRelatedLink
-} from '@/helpers/formatters/links/video'
+  main as formatVideoPlaylistMainLink
+} from '@/helpers/formatters/links/videoPlaylist'
 
 export default function (
   {
     channelTitle,
-    videoTitle,
-    videoId,
+    playlistTitle,
+    playlistId,
     scope
   }
 ) {
-  function formatVideoPageTitle () {
+  function formatVideoPlaylistPageTitle () {
     if (scope) {
       return i18n.global.t(
         `navigation.model.${scope}`,
         {
-          modelName: videoTitle
+          modelName: playlistTitle
         }
       )
     } else {
-      return videoTitle
+      return playlistTitle
     }
   }
 
   const videoChannelPageTitle =
     i18n.global.t(
-      'navigation.model.videos',
+      'navigation.model.playlists',
       {
         modelName: channelTitle
       }
     )
 
   const title = [
-    formatVideoPageTitle(),
+    formatVideoPlaylistPageTitle(),
     videoChannelPageTitle
   ].join(
     ' | '
@@ -42,16 +41,10 @@ export default function (
 
   function formatPath () {
     switch (scope) {
-      case 'related':
-        return formatVideoRelatedLink(
-          {
-            videoId
-          }
-        ).path
       default:
-        return formatVideoMainLink(
+        return formatVideoPlaylistMainLink(
           {
-            videoId
+            playlistId
           }
         ).path
     }

@@ -1,6 +1,6 @@
 <template>
-  <BaseVideoChannelPaginatedPageContainer
-    :channel-id="channelId"
+  <BaseVideoPlaylistPaginatedPageContainer
+    :playlist-id="playlistId"
     :scope="scope"
     :limit="limit"
   >
@@ -10,23 +10,23 @@
         is-with-share-option
       />
     </template>
-  </BaseVideoChannelPaginatedPageContainer>
+  </BaseVideoPlaylistPaginatedPageContainer>
 </template>
 
 <script>
-import BaseVideoChannelPaginatedPageContainer
-  from '@/components/containers/pages/videoChannel/BaseVideoChannelPaginatedPageContainer.vue'
+import BaseVideoPlaylistPaginatedPageContainer
+  from '@/components/containers/pages/videoPlaylist/BaseVideoPlaylistPaginatedPageContainer.vue'
 import BaseVideosTableList
   from '@/components/lists/videos/BaseVideosTableList.vue'
 
 export default {
   name: 'VideosPage',
   components: {
-    BaseVideoChannelPaginatedPageContainer,
+    BaseVideoPlaylistPaginatedPageContainer,
     BaseVideosTableList
   },
   props: {
-    channelId: String
+    playlistId: String
   },
   data () {
     return {

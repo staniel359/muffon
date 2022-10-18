@@ -1,13 +1,13 @@
 <template>
   <BaseVideoChannelPaginatedPageContainer
+    ref="page"
     :channel-id="channelId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
-      <BaseVideosTableList
-        :videos="slotProps[scope]"
-        is-with-share-option
+      <BaseVideoPlaylistsSimpleList
+        :playlists="slotProps[scope]"
       />
     </template>
   </BaseVideoChannelPaginatedPageContainer>
@@ -16,22 +16,22 @@
 <script>
 import BaseVideoChannelPaginatedPageContainer
   from '@/components/containers/pages/videoChannel/BaseVideoChannelPaginatedPageContainer.vue'
-import BaseVideosTableList
-  from '@/components/lists/videos/BaseVideosTableList.vue'
+import BaseVideoPlaylistsSimpleList
+  from '@/components/lists/videoPlaylists/BaseVideoPlaylistsSimpleList.vue'
 
 export default {
-  name: 'VideosPage',
+  name: 'PlaylistsPage',
   components: {
     BaseVideoChannelPaginatedPageContainer,
-    BaseVideosTableList
+    BaseVideoPlaylistsSimpleList
   },
   props: {
     channelId: String
   },
   data () {
     return {
-      limit: 40,
-      scope: 'videos'
+      limit: 50,
+      scope: 'playlists'
     }
   }
 }

@@ -2,7 +2,7 @@
   <BaseSimpleCardContainer>
     <BaseLinkContainer
       class="card-link"
-      :link="videoMainLink"
+      :link="link"
       @click="handleLinkClick"
     >
       <BaseVideoOptionsDropdown
@@ -26,11 +26,10 @@
     </BaseLinkContainer>
 
     <div class="center aligned content">
-      <div class="description">
-        <small
-          v-text="publishDateFormatted"
-        />
-      </div>
+      <BasePublishDateSection
+        class="description"
+        :model-data="videoData"
+      />
     </div>
   </BaseSimpleCardContainer>
 </template>
@@ -44,12 +43,11 @@ import BaseVideoOptionsDropdown
   from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import BasePublishDateSection
+  from '@/components/sections/BasePublishDateSection.vue'
 import {
   main as formatVideoMainLink
 } from '@/helpers/formatters/links/video'
-import {
-  date as formatDate
-} from '@/helpers/formatters'
 
 export default {
   name: 'VideoItem',
@@ -58,7 +56,8 @@ export default {
     BaseLinkContainer,
     BaseVideoOptionsDropdown,
     BaseImage,
-    BaseHeader
+    BaseHeader,
+    BasePublishDateSection
   },
   props: {
     videoData: {
@@ -74,7 +73,7 @@ export default {
     imageData () {
       return this.videoData.image
     },
-    videoMainLink () {
+    link () {
       return formatVideoMainLink(
         {
           videoId: this.videoId
@@ -86,14 +85,6 @@ export default {
     },
     videoTitle () {
       return this.videoData.title
-    },
-    publishDateFormatted () {
-      return formatDate(
-        this.publishDate
-      )
-    },
-    publishDate () {
-      return this.videoData.publish_date
     }
   },
   methods: {

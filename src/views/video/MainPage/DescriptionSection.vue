@@ -1,5 +1,7 @@
 <template>
-  <template v-if="description">
+  <template
+    v-if="description"
+  >
     <BaseDivider />
 
     <BaseDescriptionSection

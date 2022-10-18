@@ -55,11 +55,17 @@ const VideoChannelMainPage = () => import(
 const VideoChannelVideosPage = () => import(
   '@/views/videoChannel/VideosPage.vue'
 )
+const VideoChannelPlaylistsPage = () => import(
+  '@/views/videoChannel/PlaylistsPage.vue'
+)
 const VideoMainPage = () => import(
   '@/views/video/MainPage.vue'
 )
 const VideoRelatedPage = () => import(
   '@/views/video/RelatedPage.vue'
+)
+const VideoPlaylistMainPage = () => import(
+  '@/views/videoPlaylist/MainPage.vue'
 )
 const ProfilesPage = () => import(
   '@/views/ProfilesPage.vue'
@@ -341,6 +347,13 @@ export default [
     props: true
   },
   {
+    path: '/video/channels/:channelId/playlists',
+    exact: true,
+    name: 'VideoChannelPlaylistsPage',
+    component: VideoChannelPlaylistsPage,
+    props: true
+  },
+  {
     path: '/video/videos/:videoId',
     exact: true,
     name: 'VideoMainPage',
@@ -352,6 +365,13 @@ export default [
     exact: true,
     name: 'VideoRelatedPage',
     component: VideoRelatedPage,
+    props: true
+  },
+  {
+    path: '/video/videoPlaylists/:playlistId',
+    exact: true,
+    name: 'VideoPlaylistMainPage',
+    component: VideoPlaylistMainPage,
     props: true
   },
   {

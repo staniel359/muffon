@@ -8,9 +8,8 @@
     is-pagination-simple
   >
     <template #default="slotProps">
-      <BaseVideosTableList
-        :videos="slotProps[scope]"
-        is-with-share-option
+      <BaseVideoPlaylistsSimpleList
+        :playlists="slotProps[scope]"
       />
     </template>
   </BaseVideoChannelPaginatedSegmentContainer>
@@ -19,17 +18,17 @@
 <script>
 import BaseVideoChannelPaginatedSegmentContainer
   from '@/components/containers/segments/videoChannel/BaseVideoChannelPaginatedSegmentContainer.vue'
-import BaseVideosTableList
-  from '@/components/lists/videos/BaseVideosTableList.vue'
+import BaseVideoPlaylistsSimpleList
+  from '@/components/lists/videoPlaylists/BaseVideoPlaylistsSimpleList.vue'
 import {
-  videos as formatVideoChannelVideosLink
+  playlists as formatVideoChannelPlaylistsLink
 } from '@/helpers/formatters/links/videoChannel'
 
 export default {
-  name: 'VideosSegment',
+  name: 'PlaylistsSegment',
   components: {
     BaseVideoChannelPaginatedSegmentContainer,
-    BaseVideosTableList
+    BaseVideoPlaylistsSimpleList
   },
   props: {
     channelId: {
@@ -39,14 +38,14 @@ export default {
   },
   data () {
     return {
-      limit: 8,
-      clientPageLimit: 4,
-      scope: 'videos'
+      limit: 10,
+      clientPageLimit: 5,
+      scope: 'playlists'
     }
   },
   computed: {
     headerLink () {
-      return formatVideoChannelVideosLink(
+      return formatVideoChannelPlaylistsLink(
         {
           channelId: this.channelId
         }

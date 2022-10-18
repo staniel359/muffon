@@ -1,13 +1,13 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
-    :link="videoMainLink"
+    :link="link"
     @click="handleLinkClick"
   >
     <BaseImage
       class="rounded bordered video-image"
       model="video"
-      :image="imageData?.small"
+      :image="imageData?.extrasmall"
     />
 
     <div class="content">
@@ -19,20 +19,17 @@
         :text="videoTitle"
       />
 
-      <BaseLink
+      <BaseVideoChannelLinkSection
         v-if="isWithChannelTitle"
-        :link="videoChannelMainLink"
-        :text="channelTitle"
-        @click="handleLinkClick"
-        @mouseenter="handleChannelLinkMouseEnter"
-        @mouseleave="handleChannelLinkMouseLeave"
+        :model-data="videoData"
+        @link-click="handleLinkClick"
+        @active-change="handleChannelLinkActiveChange"
       />
 
-      <div class="description">
-        <small
-          v-text="publishDateFormatted"
-        />
-      </div>
+      <BasePublishDateSection
+        class="description"
+        :model-data="videoData"
+      />
     </div>
 
     <BaseVideoOptionsDropdown
@@ -52,19 +49,16 @@ import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseLink from '@/components/links/BaseLink.vue'
+import BaseVideoChannelLinkSection
+  from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
+import BasePublishDateSection
+  from '@/components/sections/BasePublishDateSection.vue'
 import BaseVideoOptionsDropdown
   from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   main as formatVideoMainLink
 } from '@/helpers/formatters/links/video'
-import {
-  main as formatVideoChannelMainLink
-} from '@/helpers/formatters/links/videoChannel'
-import {
-  date as formatDate
-} from '@/helpers/formatters'
 
 export default {
   name: 'VideoItem',
@@ -72,7 +66,8 @@ export default {
     BaseLinkContainer,
     BaseImage,
     BaseHeader,
-    BaseLink,
+    BaseVideoChannelLinkSection,
+    BasePublishDateSection,
     BaseVideoOptionsDropdown,
     BaseClearButton
   },
@@ -95,7 +90,7 @@ export default {
     }
   },
   computed: {
-    videoMainLink () {
+    link () {
       return formatVideoMainLink(
         {
           videoId: this.videoId
@@ -110,30 +105,6 @@ export default {
     },
     videoTitle () {
       return this.videoData.title
-    },
-    publishDateFormatted () {
-      return formatDate(
-        this.publishDate
-      )
-    },
-    publishDate () {
-      return this.videoData.publish_date
-    },
-    channelData () {
-      return this.videoData.channel
-    },
-    videoChannelMainLink () {
-      return formatVideoChannelMainLink(
-        {
-          channelId: this.channelId
-        }
-      )
-    },
-    channelId () {
-      return this.channelData.source.id
-    },
-    channelTitle () {
-      return this.channelData.title
     },
     uuid () {
       return this.videoData.uuid
@@ -153,11 +124,10 @@ export default {
         }
       )
     },
-    handleChannelLinkMouseEnter () {
-      this.isMainLinkActive = false
-    },
-    handleChannelLinkMouseLeave () {
-      this.isMainLinkActive = true
+    handleChannelLinkActiveChange (
+      value
+    ) {
+      this.isMainLinkActive = !value
     }
   }
 }

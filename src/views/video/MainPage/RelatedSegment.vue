@@ -1,63 +1,39 @@
 <template>
-  <div
-    :class="[
-      'related-segment',
-      'main-basic-segments-container'
-    ]"
-  >
-    <BaseVideoSegmentContainer
+  <div class="main-basic-segments-container related-segment">
+    <BaseVideoPaginatedSegmentContainer
       ref="segment"
       :video-id="videoId"
       :scope="scope"
       :limit="limit"
+      :client-page-limit="clientPageLimit"
       :header-link="headerLink"
+      is-pagination-simple
     >
-      <template #default="pageSlotProps">
-        <BasePaginatedSegmentContainer
-          :response-data="pageSlotProps.videoData"
-          :is-loading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          :scope="scope"
-          :limit="limit"
-          :client-page-limit="clientPageLimit"
-          :is-change-transparency="false"
-          is-pagination-simple
-          @focus="handleFocus"
-        >
-          <template #default="slotProps">
-            <BaseVideosTableList
-              :videos="slotProps[scope]"
-              is-with-share-option
-            />
-          </template>
-        </BasePaginatedSegmentContainer>
+      <template #default="slotProps">
+        <BaseVideosTableList
+          :videos="slotProps[scope]"
+          is-with-share-option
+        />
       </template>
-    </BaseVideoSegmentContainer>
+    </BaseVideoPaginatedSegmentContainer>
   </div>
 </template>
 
 <script>
-import BaseVideoSegmentContainer
-  from '@/components/containers/segments/video/BaseVideoSegmentContainer.vue'
-import BasePaginatedSegmentContainer
-  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import BaseVideoPaginatedSegmentContainer
+  from '@/components/containers/segments/video/BaseVideoPaginatedSegmentContainer.vue'
 import BaseVideosTableList
   from '@/components/lists/videos/BaseVideosTableList.vue'
 import {
   related as formatVideoRelatedLink
 } from '@/helpers/formatters/links/video'
-import paginatedSegmentMixin from '@/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'RelatedSegment',
   components: {
-    BaseVideoSegmentContainer,
-    BasePaginatedSegmentContainer,
+    BaseVideoPaginatedSegmentContainer,
     BaseVideosTableList
   },
-  mixins: [
-    paginatedSegmentMixin
-  ],
   props: {
     videoData: {
       type: Object,

@@ -6,9 +6,8 @@
         :text="videoTitle"
       />
 
-      <BaseLink
-        :link="videoChannelVideosLink"
-        :text="channelTitle"
+      <BaseVideoChannelLinkSection
+        :model-data="videoData"
       />
     </div>
 
@@ -22,18 +21,16 @@
 
 <script>
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseLink from '@/components/links/BaseLink.vue'
+import BaseVideoChannelLinkSection
+  from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
 import BaseVideoOptionsDropdown
   from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
-import {
-  main as formatVideoChannelMainLink
-} from '@/helpers/formatters/links/videoChannel'
 
 export default {
   name: 'TitleOptionsSection',
   components: {
     BaseHeader,
-    BaseLink,
+    BaseVideoChannelLinkSection,
     BaseVideoOptionsDropdown
   },
   props: {
@@ -45,22 +42,6 @@ export default {
   computed: {
     videoTitle () {
       return this.videoData.title
-    },
-    videoChannelVideosLink () {
-      return formatVideoChannelMainLink(
-        {
-          channelId: this.channelId
-        }
-      )
-    },
-    channelId () {
-      return this.channelData.source.id
-    },
-    channelData () {
-      return this.videoData.channel
-    },
-    channelTitle () {
-      return this.channelData.title
     }
   }
 }

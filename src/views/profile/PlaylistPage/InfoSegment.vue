@@ -1,8 +1,8 @@
 <template>
   <BaseSegmentContainer>
     <BaseListContainer>
-      <div class="item main-simple-list-item">
-        <div class="playlist-image-container">
+      <div class="item main-simple-list-item main-info-item">
+        <div class="image-container">
           <BaseZoomableImage
             model="playlist"
             size="small"
@@ -130,13 +130,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.playlist-image-container
-  width: 60px
-  height: 60px
-
-.content
-  margin-left: 0.75em
-
 .title-container
   @extend .d-flex, .align-items-center
 

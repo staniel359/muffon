@@ -319,6 +319,7 @@
       "artists": "{count} выканаўцаў | {count} выканаўца | {count} выканаўцы",
       "albums": "{count} альбомаў | {count} альбом | {count} альбомы",
       "tracks": "{count} кампазіцый | {count} кампазіцыя | {count} кампазіцыі",
+      "videos": "{count} відэа",
       "files": "{count} файлаў | {count} файл | {count} файлы",
       "followers": "{count} падпісчыкаў | {count} падпісчык | {count} падпісчыкі",
       "following": "{count} падпісак | {count} падпіска | {count} падпіскі",

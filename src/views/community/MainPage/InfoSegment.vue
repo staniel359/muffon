@@ -6,8 +6,8 @@
     ]"
   >
     <BaseListContainer>
-      <div class="item main-simple-list-item">
-        <div class="community-image-container">
+      <div class="item main-simple-list-item main-info-item">
+        <div class="image-container">
           <BaseZoomableImage
             model="community"
             size="small"
@@ -96,13 +96,6 @@ export default {
 <style lang="sass" scoped>
 .community-info-segment
   margin-bottom: 1.5em
-
-.community-image-container
-  width: 75px
-  height: 75px
-
-.content
-  margin-left: 0.75em
 
 .community-options
   @extend .visibility-visible

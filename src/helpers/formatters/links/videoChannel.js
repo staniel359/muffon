@@ -25,3 +25,17 @@ export function videos (
     path: `video/channels/${channelId}/videos`
   }
 }
+
+export function playlists (
+  {
+    channelId
+  }
+) {
+  return {
+    name: 'VideoChannelPlaylistsPage',
+    params: {
+      channelId
+    },
+    path: `video/channels/${channelId}/playlists`
+  }
+}
