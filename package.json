@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@emoji-mart/data": "^1.0.6",
-    "axios": "^1.1.2",
+    "axios": "^1.1.3",
     "camel-case": "^4.1.2",
     "core-js": "^3.25.5",
     "crypto-js": "^4.1.1",
@@ -42,16 +42,16 @@
     "i18n": "^0.15.1",
     "i18n-iso-countries": "^7.5.0",
     "jquery": "^3.6.1",
-    "moment-timezone": "^0.5.37",
+    "moment-timezone": "^0.5.38",
     "music-metadata": "^8.1.0",
     "raw-loader": "^4.0.2",
     "slick-carousel": "^1.8.1",
     "snake-case": "^3.0.4",
     "uuid": "^9.0.0",
-    "vue": "^3.2.40",
+    "vue": "^3.2.41",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.5",
-    "vuex": "^4.0.2"
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
@@ -61,7 +61,7 @@
     "@vue/cli-plugin-router": "~5.0.8",
     "@vue/cli-plugin-vuex": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
-    "@vue/compiler-sfc": "^3.2.40",
+    "@vue/compiler-sfc": "^3.2.41",
     "@vue/eslint-config-standard": "^8.0.1",
     "electron": "^21.1.1",
     "electron-builder": "^23.6.0",
