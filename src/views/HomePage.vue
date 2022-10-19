@@ -1,10 +1,5 @@
 <template>
-  <div
-    :class="[
-      'home-page-container',
-      'main-page-segment-container'
-    ]"
-  >
+  <div class="home-page-container main-page-segment-container">
     <BaseLogoTitleSection />
 
     <BaseHeader

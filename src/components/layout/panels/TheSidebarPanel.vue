@@ -1,13 +1,9 @@
 <template>
   <div
-    :class="[
-      'ui vertical menu',
-      'left overlay visible sidebar',
-      'the-sidebar-panel',
-      {
-        inverted: isDarkMode
-      }
-    ]"
+    class="ui vertical menu left overlay visible sidebar the-sidebar-panel"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <div class="sidebar-panel-content">
       <ProfileItem

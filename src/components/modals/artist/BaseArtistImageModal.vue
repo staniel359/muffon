@@ -4,25 +4,20 @@
     @show="handleShow"
   >
     <div
-      :class="[
-        'ui container',
-        'main-container',
-        'main-image-modal-content'
-      ]"
+      :key="key"
+      class="ui container main-container main-image-modal-content"
     >
-      <div :key="key">
-        <MainSlider
-          ref="mainSlider"
-          :images="imagesCollection"
-          :sync-slider="thumbsSlider"
-        />
+      <MainSlider
+        ref="mainSlider"
+        :images="imagesCollection"
+        :sync-slider="thumbsSlider"
+      />
 
-        <ThumbsSlider
-          ref="thumbsSlider"
-          :images="imagesCollection"
-          :sync-slider="mainSlider"
-        />
-      </div>
+      <ThumbsSlider
+        ref="thumbsSlider"
+        :images="imagesCollection"
+        :sync-slider="mainSlider"
+      />
     </div>
   </BaseImageModalContainer>
 </template>

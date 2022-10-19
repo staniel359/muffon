@@ -1,13 +1,10 @@
 <template>
   <div
     ref="checkbox"
-    :class="[
-      'ui toggle checkbox',
-      'main-toggle-checkbox',
-      {
-        inverted: isDarkMode
-      }
-    ]"
+    class="ui toggle checkbox main-toggle-checkbox"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <input type="checkbox">
   </div>

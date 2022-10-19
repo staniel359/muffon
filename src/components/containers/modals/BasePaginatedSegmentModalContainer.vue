@@ -6,13 +6,10 @@
   >
     <BasePaginatedSegmentContainer
       ref="segment"
-      :class="[
-        'basic scrolling content',
-        {
-          'main-modal-content-full-height':
-            responseData
-        }
-      ]"
+      class="basic scrolling content"
+      :class="{
+        'full-height': responseData
+      }"
       :response-data="responseData"
       :is-loading="isLoading"
       :error="error"

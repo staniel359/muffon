@@ -12,10 +12,7 @@
 
       <span
         v-if="trackExtraTitle"
-        :class="[
-          'sub header description',
-          'main-extra-title'
-        ]"
+        class="sub header description main-extra-title"
         v-text="trackExtraTitle"
       />
     </BaseHeaderContainer>

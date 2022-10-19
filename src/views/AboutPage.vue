@@ -1,9 +1,6 @@
 <template>
   <BaseSegmentContainer
-    :class="[
-      'about-page-segment',
-      'main-segment-container'
-    ]"
+    class="about-page-segment main-segment-container"
     :is-change-transparency="false"
   >
     <div class="left-column">

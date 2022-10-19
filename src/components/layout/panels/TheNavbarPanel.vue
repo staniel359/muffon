@@ -1,12 +1,9 @@
 <template>
   <div
-    :class="[
-      'ui top fixed borderless menu',
-      'the-navbar-panel',
-      {
-        inverted: isDarkMode
-      }
-    ]"
+    class="ui top fixed borderless menu the-navbar-panel"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <div class="ui container main-container">
       <NavbarSearchButton />

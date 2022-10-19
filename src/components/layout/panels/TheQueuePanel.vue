@@ -1,17 +1,9 @@
 <template>
   <div
     ref="queuePanel"
-    :class="[
-      'ui right overlay sidebar',
-      'the-queue-panel'
-    ]"
+    class="ui right overlay sidebar the-queue-panel"
   >
-    <div
-      :class="[
-        'ui raised segments',
-        'main-segment-container'
-      ]"
-    >
+    <div class="ui raised segments main-segment-container">
       <HeaderSection />
 
       <TracksSection />

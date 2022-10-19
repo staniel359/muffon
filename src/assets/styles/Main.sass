@@ -276,17 +276,16 @@ p
   & > .content
     @extend .no-margin
     max-height: $mainModalHeight !important
+    &.full-height
+      @extend .d-flex, .flex-column
+      height: $mainModalHeight
+      .main-tab
+        @extend .absolute, .overflow-y-auto
   &.inverted
     @extend .background-black
     border: $borderInverted
     & > .header, & > .content
       @extend .background-black
-
-.main-modal-content-full-height
-  @extend .d-flex, .flex-column
-  height: $mainModalHeight
-  .main-tab
-    @extend .absolute, .overflow-y-auto
 
 .main-image-modal
   @extend .no-margin, .no-shadow, .no-border, .no-border-radius, .width-fit-content

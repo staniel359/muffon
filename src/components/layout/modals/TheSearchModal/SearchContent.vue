@@ -1,5 +1,5 @@
 <template>
-  <div class="content main-modal-content-full-height">
+  <div class="content full-height">
     <div class="search-inputs-container">
       <SearchInput
         ref="input"

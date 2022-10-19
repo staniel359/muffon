@@ -1,12 +1,9 @@
 <template>
   <div
-    :class="[
-      'ui raised horizontal card',
-      'main-horizontal-card',
-      {
-        inverted: isDarkMode
-      }
-    ]"
+    class="ui raised horizontal card main-horizontal-card"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <div class="content">
       <slot />

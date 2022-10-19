@@ -1,13 +1,10 @@
 <template>
   <BaseButton
-    :class="[
-      'basic circular compact',
-      'main-compatibility-common-button',
-      {
-        disabled: isDisabled
-      }
-    ]"
+    class="basic circular compact main-compatibility-common-button"
     icon="music"
+    :class="{
+      disabled: isDisabled
+    }"
     :text="tracksText"
     @click="handleClick"
   />

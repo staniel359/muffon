@@ -1,12 +1,9 @@
 <template>
   <div
-    :class="[
-      'ui top fixed menu',
-      'the-browser-tabs',
-      {
-        inverted: isDarkMode
-      }
-    ]"
+    class="ui top fixed menu the-browser-tabs"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <BrowserTab
       v-for="tabData in tabs"

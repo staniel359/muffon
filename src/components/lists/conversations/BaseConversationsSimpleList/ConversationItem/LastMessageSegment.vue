@@ -1,9 +1,6 @@
 <template>
   <BaseSegmentContainer
-    :class="[
-      'main-simple-list-item',
-      'main-message-item'
-    ]"
+    class="main-simple-list-item main-message-item"
   >
     <BaseImage
       class="small circular bordered"

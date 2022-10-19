@@ -4,7 +4,7 @@
     size="small"
     is-settings-modal
   >
-    <div class="content main-modal-content-full-height">
+    <div class="content full-height">
       <BaseTabsContainer
         :tabs="tabsFormatted"
       >

@@ -1,9 +1,6 @@
 <template>
   <BaseSegmentContainer
-    :class="[
-      'raised community-info-segment',
-      'main-segment-container'
-    ]"
+    class="raised community-info-segment main-segment-container"
   >
     <BaseListContainer>
       <div class="item main-simple-list-item main-info-item">

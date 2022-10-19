@@ -1,14 +1,11 @@
 <template>
   <div
     ref="segment"
-    :class="[
-      'ui segments',
-      'main-segment-container',
-      {
-        basic: isBasic,
-        raised: !isBasic
-      }
-    ]"
+    class="ui segments main-segment-container"
+    :class="{
+      basic: isBasic,
+      raised: !isBasic
+    }"
   >
     <HeaderSegment
       :scope="scope"

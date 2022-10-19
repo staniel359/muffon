@@ -6,17 +6,9 @@
       'main-basic-segments-container'
     ]"
   >
-    <div
-      :class="[
-        'ui basic segments',
-        'search-segment-container'
-      ]"
-    >
+    <div class="ui basic segments search-segment-container">
       <BasePaginatedSegmentContainer
-        :class="[
-          'search-segment',
-          'main-paginated-segment-container'
-        ]"
+        class="search-segment main-paginated-segment-container"
         :response-data="searchData"
         :is-loading="isLoading"
         :error="error"
