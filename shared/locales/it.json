@@ -319,6 +319,7 @@
       "artists": "{count} artista | {count} artisti",
       "albums": "{count} album | {count} album",
       "tracks": "{count} brano | {count} brani",
+      "videos": "{count} video | {count} video",
       "files": "{count} file | {count} file",
       "followers": "{count} follower | {count} follower",
       "following": "{count} following",
