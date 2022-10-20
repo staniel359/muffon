@@ -42,14 +42,15 @@ export default {
     queuePanelOptions () {
       return mainSidebarOptions(
         {
-          onVisible: this.handleVisible,
+          onShow: this.handleShow,
           onHide: this.handleHide
         }
       )
     }
   },
   watch: {
-    queueTracksCount: 'handleQueueTracksCountChange'
+    queueTracksCount:
+      'handleQueueTracksCountChange'
   },
   mounted () {
     setQueuePanel(
@@ -64,7 +65,7 @@ export default {
         'setIsQueuePanelVisible'
       ]
     ),
-    handleVisible () {
+    handleShow () {
       this.setIsQueuePanelVisible(
         true
       )

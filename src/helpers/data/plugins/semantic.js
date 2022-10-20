@@ -59,6 +59,7 @@ export function mainHistoryInputOptions (
 
 export function mainSidebarOptions (
   {
+    onShow,
     onVisible,
     onHide
   } = {}
@@ -66,6 +67,7 @@ export function mainSidebarOptions (
   return {
     closable: false,
     dimPage: false,
+    onShow,
     onVisible,
     onHide
   }
