@@ -6,10 +6,11 @@ export default function (
     postId,
     text,
     images,
-    videos,
     artists,
     albums,
     tracks,
+    videos,
+    videoPlaylists,
     playlists,
     communities
   }
@@ -25,10 +26,12 @@ export default function (
   const params = {
     text,
     images,
-    videos,
     artists,
     albums,
     tracks,
+    videos,
+    video_playlists:
+      videoPlaylists,
     playlists,
     communities
   }

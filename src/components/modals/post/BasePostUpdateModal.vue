@@ -8,10 +8,11 @@
         class="main-post-form"
         :post-data="postData"
         :images="images"
-        :videos="videos"
         :artists="artists"
         :albums="albums"
         :tracks="tracks"
+        :videos="videos"
+        :video-playlists="videoPlaylists"
         :playlists="playlists"
         :communities="communities"
         @success="handleSuccess"
@@ -24,10 +25,11 @@
 
         <BaseSendableFormContentSection
           :images="images"
-          :videos="videos"
           :artists="artists"
           :albums="albums"
           :tracks="tracks"
+          :videos="videos"
+          :video-playlists="videoPlaylists"
           :playlists="playlists"
           :communities="communities"
           @link-click="handleLinkClick"
@@ -105,6 +107,7 @@ export default {
   data () {
     return {
       videos: [],
+      videoPlaylists: [],
       playlists: [],
       communities: []
     }
@@ -123,6 +126,14 @@ export default {
     },
     postVideos () {
       return this.postData.attachments?.videos || []
+    },
+    postVideoPlaylistsFormatted () {
+      return formatCollection(
+        this.postVideoPlaylists
+      )
+    },
+    postVideoPlaylists () {
+      return this.postData.attachments?.video_playlists || []
     },
     postArtistsFormatted () {
       return formatCollection(
@@ -173,14 +184,16 @@ export default {
       this.processImage
     )
 
-    this.videos =
-      this.postVideosFormatted
     this.artists =
       this.postArtistsFormatted
     this.albums =
       this.postAlbumsFormatted
     this.tracks =
       this.postTracksFormatted
+    this.videos =
+      this.postVideosFormatted
+    this.videoPlaylists =
+      this.postVideoPlaylistsFormatted
     this.playlists =
       this.postPlaylistsFormatted
     this.communities =

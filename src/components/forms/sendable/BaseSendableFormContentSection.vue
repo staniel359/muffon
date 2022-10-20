@@ -9,13 +9,6 @@
       :images="images"
     />
 
-    <VideosSection
-      v-if="videos.length"
-      class="main-content-section"
-      :videos="videos"
-      @link-click="handleLinkClick"
-    />
-
     <ArtistsSection
       v-if="artists.length"
       class="main-content-section"
@@ -34,6 +27,20 @@
       v-if="tracks.length"
       class="main-content-section"
       :tracks="tracks"
+      @link-click="handleLinkClick"
+    />
+
+    <VideosSection
+      v-if="videos.length"
+      class="main-content-section"
+      :videos="videos"
+      @link-click="handleLinkClick"
+    />
+
+    <VideoPlaylistsSection
+      v-if="videoPlaylists.length"
+      class="main-content-section"
+      :video-playlists="videoPlaylists"
       @link-click="handleLinkClick"
     />
 
@@ -56,14 +63,16 @@
 <script>
 import BaseImagesTableList
   from '@/components/lists/images/BaseImagesTableList.vue'
-import VideosSection
-  from './BaseSendableFormContentSection/VideosSection.vue'
 import ArtistsSection
   from './BaseSendableFormContentSection/ArtistsSection.vue'
 import AlbumsSection
   from './BaseSendableFormContentSection/AlbumsSection.vue'
 import TracksSection
   from './BaseSendableFormContentSection/TracksSection.vue'
+import VideosSection
+  from './BaseSendableFormContentSection/VideosSection.vue'
+import VideoPlaylistsSection
+  from './BaseSendableFormContentSection/VideoPlaylistsSection.vue'
 import PlaylistsSection
   from './BaseSendableFormContentSection/PlaylistsSection.vue'
 import CommunitiesSection
@@ -73,21 +82,16 @@ export default {
   name: 'BaseSendableFormContentSection',
   components: {
     BaseImagesTableList,
-    VideosSection,
     ArtistsSection,
     AlbumsSection,
     TracksSection,
+    VideosSection,
+    VideoPlaylistsSection,
     PlaylistsSection,
     CommunitiesSection
   },
   props: {
     images: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
-    videos: {
       type: Array,
       default () {
         return []
@@ -106,6 +110,18 @@ export default {
       }
     },
     tracks: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    videos: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    videoPlaylists: {
       type: Array,
       default () {
         return []
@@ -131,10 +147,11 @@ export default {
     isRender () {
       return (
         this.images.length ||
-          this.videos.length ||
           this.artists.length ||
           this.albums.length ||
           this.tracks.length ||
+          this.videos.length ||
+          this.videoPlaylists.length ||
           this.playlists.length ||
           this.communities.length
       )

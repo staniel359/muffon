@@ -12,12 +12,6 @@
       :images="images"
     />
 
-    <BaseVideosEmbeddedList
-      v-if="videos?.length"
-      class="main-content-section"
-      :videos="videos"
-    />
-
     <BaseArtistsSimpleList
       v-if="artists?.length"
       class="main-content-section"
@@ -53,6 +47,20 @@
       is-with-queue-option
     />
 
+    <BaseVideosEmbeddedList
+      v-if="videos?.length"
+      class="main-content-section"
+      :videos="videos"
+    />
+
+    <BaseVideoPlaylistsSimpleList
+      v-if="videoPlaylists?.length"
+      class="main-content-section"
+      :playlists="videoPlaylists"
+      is-with-channel-title
+      is-with-share-option
+    />
+
     <BasePlaylistsSimpleList
       v-if="playlists?.length"
       class="main-content-section"
@@ -72,14 +80,16 @@
 
 <script>
 import BaseImagesSimpleList from '@/components/lists/images/BaseImagesSimpleList.vue'
-import BaseVideosEmbeddedList
-  from '@/components/lists/videos/BaseVideosEmbeddedList.vue'
 import BaseArtistsSimpleList
   from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList
   from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseVideosEmbeddedList
+  from '@/components/lists/videos/BaseVideosEmbeddedList.vue'
+import BaseVideoPlaylistsSimpleList
+  from '@/components/lists/videoPlaylists/BaseVideoPlaylistsSimpleList.vue'
 import BasePlaylistsSimpleList
   from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import BaseCommunitiesSimpleList
@@ -89,10 +99,11 @@ export default {
   name: 'BaseSendableContentSection',
   components: {
     BaseImagesSimpleList,
-    BaseVideosEmbeddedList,
     BaseArtistsSimpleList,
     BaseAlbumsSimpleList,
     BaseTracksSimpleList,
+    BaseVideosEmbeddedList,
+    BaseVideoPlaylistsSimpleList,
     BasePlaylistsSimpleList,
     BaseCommunitiesSimpleList
   },
@@ -109,9 +120,6 @@ export default {
     images () {
       return this.modelData.attachments?.images
     },
-    videos () {
-      return this.modelData.attachments?.videos
-    },
     artists () {
       return this.modelData.attachments?.artists
     },
@@ -120,6 +128,12 @@ export default {
     },
     tracks () {
       return this.modelData.attachments?.tracks
+    },
+    videos () {
+      return this.modelData.attachments?.videos
+    },
+    videoPlaylists () {
+      return this.modelData.attachments?.video_playlists
     },
     playlists () {
       return this.modelData.attachments?.playlists

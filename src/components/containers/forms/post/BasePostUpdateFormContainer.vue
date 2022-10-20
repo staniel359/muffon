@@ -36,12 +36,6 @@ export default {
         return []
       }
     },
-    videos: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
     artists: {
       type: Array,
       default () {
@@ -55,6 +49,18 @@ export default {
       }
     },
     tracks: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    videos: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    videoPlaylists: {
       type: Array,
       default () {
         return []
@@ -121,10 +127,11 @@ export default {
       const isContentData = (
         fields.content ||
           this.images.length ||
-          this.videos.length ||
           this.artists.length ||
           this.albums.length ||
           this.tracks.length ||
+          this.videos.length ||
+          this.videoPlaylists.length ||
           this.playlists.length ||
           this.communities.length
       )
@@ -185,10 +192,11 @@ export default {
         byCommunity: !!fields.community,
         text,
         images: this.imagesFormatted,
-        videos: this.videos,
         artists: this.artists,
         albums: this.albums,
         tracks: this.tracks,
+        videos: this.videos,
+        videoPlaylists: this.videoPlaylists,
         playlists: this.playlists,
         communities: this.communities
       }

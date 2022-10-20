@@ -1,5 +1,7 @@
 <template>
-  <BaseListContainer class="selection">
+  <BaseListContainer
+    class="selection"
+  >
     <VideoItem
       v-for="videoData in videosCollection"
       :key="videoData.uuid"

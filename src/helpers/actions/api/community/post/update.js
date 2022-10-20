@@ -7,10 +7,11 @@ export default function (
     text,
     byCommunity,
     images,
-    videos,
     artists,
     albums,
     tracks,
+    videos,
+    videoPlaylists,
     playlists,
     communities
   }
@@ -24,10 +25,12 @@ export default function (
     text,
     by_community: byCommunity,
     images,
-    videos,
     artists,
     albums,
     tracks,
+    videos,
+    video_playlists:
+      videoPlaylists,
     playlists,
     communities
   }

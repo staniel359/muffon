@@ -10,6 +10,7 @@
     <template #default="slotProps">
       <BaseVideoPlaylistsSimpleList
         :playlists="slotProps[scope]"
+        is-with-share-option
       />
     </template>
   </BaseVideoChannelPaginatedSegmentContainer>

@@ -89,6 +89,33 @@ export function video (
   }
 }
 
+export function videoPlaylist (
+  playlistData
+) {
+  const {
+    source,
+    title,
+    channel,
+    description,
+    image
+  } = playlistData
+
+  const imageData = image && {
+    extrasmall: image.extrasmall
+  }
+
+  return {
+    model: 'video_playlist',
+    source,
+    title,
+    channel,
+    description,
+    image: imageData,
+    videos_count:
+      playlistData.videos_count
+  }
+}
+
 export function playlist (
   playlistData
 ) {

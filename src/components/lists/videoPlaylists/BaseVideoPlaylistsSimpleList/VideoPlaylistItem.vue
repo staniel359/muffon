@@ -2,6 +2,7 @@
   <BaseLinkContainer
     class="item main-simple-list-item"
     :link="link"
+    @click="handleLinkClick"
   >
     <BaseImage
       class="rounded bordered"
@@ -11,9 +12,18 @@
 
     <div class="content">
       <BaseHeader
-        class="link"
         tag="h4"
+        :class="{
+          link: isMainLinkActive
+        }"
         :text="playlistTitle"
+      />
+
+      <BaseVideoChannelLinkSection
+        v-if="isWithChannelTitle"
+        :model-data="playlistData"
+        @link-click="handleLinkClick"
+        @active-change="handleChannelLinkActiveChange"
       />
 
       <div
@@ -36,6 +46,16 @@
         :model-data="playlistData"
       />
     </div>
+
+    <BaseVideoPlaylistOptionsDropdown
+      :playlist-data="playlistData"
+      :is-with-share-option="isWithShareOption"
+    />
+
+    <BaseClearButton
+      v-if="isWithClearButton"
+      @click="handleClearButtonClick"
+    />
   </BaseLinkContainer>
 </template>
 
@@ -44,10 +64,15 @@ import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import BaseVideoChannelLinkSection
+  from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
 import BaseVideoPlaylistVideosCountSection
   from '@/components/sections/videoPlaylist/BaseVideoPlaylistVideosCountSection.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
+import BaseVideoPlaylistOptionsDropdown
+  from '@/components/dropdowns/videoPlaylist/BaseVideoPlaylistOptionsDropdown.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   main as formatVideoPlaylistMainLink
 } from '@/helpers/formatters/links/videoPlaylist'
@@ -58,13 +83,28 @@ export default {
     BaseLinkContainer,
     BaseImage,
     BaseHeader,
+    BaseVideoChannelLinkSection,
     BaseVideoPlaylistVideosCountSection,
-    BasePublishDateSection
+    BasePublishDateSection,
+    BaseVideoPlaylistOptionsDropdown,
+    BaseClearButton
   },
   props: {
     playlistData: {
       type: Object,
       required: true
+    },
+    isWithChannelTitle: Boolean,
+    isWithShareOption: Boolean,
+    isWithClearButton: Boolean
+  },
+  emits: [
+    'linkClick',
+    'clearButtonClick'
+  ],
+  data () {
+    return {
+      isMainLinkActive: true
     }
   },
   computed: {
@@ -86,6 +126,29 @@ export default {
     },
     description () {
       return this.playlistData.description
+    },
+    uuid () {
+      return this.playlistData.uuid
+    }
+  },
+  methods: {
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
+      )
+    },
+    handleClearButtonClick () {
+      this.$emit(
+        'clearButtonClick',
+        {
+          uuid: this.uuid
+        }
+      )
+    },
+    handleChannelLinkActiveChange (
+      value
+    ) {
+      this.isMainLinkActive = !value
     }
   }
 }
