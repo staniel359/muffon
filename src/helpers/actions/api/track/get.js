@@ -67,6 +67,7 @@ export default function (
   )(
     {
       url,
+      isWithSelfToken: true,
       isWithSelfId,
       isWithSelfLanguage,
       page,

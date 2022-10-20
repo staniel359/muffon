@@ -36,6 +36,7 @@ export default function (
     {
       url,
       page,
+      isWithSelfToken: true,
       onSuccess: handleSuccess
     }
   )

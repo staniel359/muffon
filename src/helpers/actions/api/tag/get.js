@@ -34,6 +34,7 @@ export default function (
     {
       url,
       isWithSelfId: true,
+      isWithSelfToken: true,
       isWithSelfLanguage,
       page,
       limit,

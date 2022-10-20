@@ -19,6 +19,7 @@ export default function () {
   )(
     {
       url,
+      isWithSelfToken: true,
       onSuccess: handleSuccess
     }
   )

@@ -62,6 +62,12 @@ export default {
         'isDarkMode'
       ]
     ),
+    ...mapState(
+      'profile',
+      {
+        profileToken: 'token'
+      }
+    ),
     searchText () {
       return this.$t(
         'inputs.search'
@@ -71,11 +77,14 @@ export default {
       return mainSearchOptions(
         {
           onResponse: this.formatResponse,
-          url: this.url,
+          url: this.urlFormatted,
           fields: this.fields,
           onSelect: this.handleSelect
         }
       )
+    },
+    urlFormatted () {
+      return `${this.url}&token=${this.profileToken}`
     }
   },
   watch: {

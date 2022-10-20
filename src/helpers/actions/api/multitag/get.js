@@ -28,6 +28,7 @@ export default function (
       url,
       params,
       isWithSelfId: true,
+      isWithSelfToken: true,
       page,
       limit,
       onSuccess: handleSuccess

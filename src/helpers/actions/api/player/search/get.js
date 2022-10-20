@@ -118,6 +118,7 @@ export default function getPlayerSearch (
       url,
       params,
       limit,
+      isWithSelfToken: true,
       onSuccess: handleSuccess,
       onError: handleError
     }

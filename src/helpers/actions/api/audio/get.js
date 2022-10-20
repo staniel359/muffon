@@ -55,6 +55,7 @@ export default function (
   return getRequest(
     {
       url,
+      isWithSelfToken: true,
       onSuccess: handleSuccess
     }
   )

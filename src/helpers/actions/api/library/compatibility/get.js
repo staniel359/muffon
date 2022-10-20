@@ -35,6 +35,7 @@ export default function (
       params,
       page,
       limit,
+      isWithSelfToken: true,
       onSuccess: handleSuccess
     }
   )
