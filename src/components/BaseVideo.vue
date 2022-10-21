@@ -4,7 +4,6 @@
     :class="{
       inverted: isDarkMode
     }"
-    @click="handleClick"
   >
     <div
       ref="video"
@@ -18,8 +17,7 @@ import {
   mapState
 } from 'vuex'
 import {
-  setVideo,
-  resetVideo
+  setVideo
 } from '@/helpers/actions/plugins/semantic'
 import {
   mainVideoOptions
@@ -33,14 +31,6 @@ export default {
       required: true
     },
     isWithAutoplay: Boolean
-  },
-  emits: [
-    'click'
-  ],
-  data () {
-    return {
-      isPlaying: false
-    }
   },
   computed: {
     ...mapState(
@@ -59,20 +49,14 @@ export default {
       return mainVideoOptions(
         {
           videoId: this.videoId,
-          placeholder: this.placeholder
+          isAutoplay: this.isAutoplay
         }
       )
     },
     videoId () {
       return this.videoData.source.id
     },
-    placeholder () {
-      return this.imageData.small
-    },
-    imageData () {
-      return this.videoData.image
-    },
-    isPlayVideo () {
+    isAutoplay () {
       return (
         this.isWithAutoplay &&
           this.isVideoAutoplay
@@ -80,48 +64,20 @@ export default {
     }
   },
   watch: {
-    isVideoAutoplay:
-      'handleIsVideoAutoplayChange'
+    isAutoplay: 'handleIsAutoplayChange'
   },
   mounted () {
-    setVideo(
-      this.$refs.video,
-      this.videoOptions
-    )
-
-    if (this.isPlayVideo) {
-      this.playVideo()
-    }
+    this.initialize()
   },
   methods: {
-    handleIsVideoAutoplayChange (
-      value
-    ) {
-      if (
-        this.isWithAutoplay &&
-          !this.isPlaying
-      ) {
-        resetVideo(
-          this.$refs.video
-        )
-
-        if (value) {
-          this.playVideo()
-        }
-      }
+    handleIsAutoplayChange () {
+      this.initialize()
     },
-    handleClick () {
-      this.isPlaying = true
-
-      this.$emit(
-        'click'
+    initialize () {
+      setVideo(
+        this.$refs.video,
+        this.videoOptions
       )
-    },
-    playVideo () {
-      this.$refs
-        .video
-        .firstChild
-        .click()
     }
   }
 }

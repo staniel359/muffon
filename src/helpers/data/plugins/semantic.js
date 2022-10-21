@@ -360,7 +360,7 @@ export function mainCheckboxOptions (
 export function mainVideoOptions (
   {
     videoId,
-    placeholder
+    isAutoplay
   }
 ) {
   const url =
@@ -371,12 +371,12 @@ export function mainVideoOptions (
   } = store.state.profile
 
   return {
-    url,
-    placeholder,
+    autoplay: isAutoplay,
     parameters: {
       fs: 0,
       hl: language
-    }
+    },
+    url
   }
 }
 

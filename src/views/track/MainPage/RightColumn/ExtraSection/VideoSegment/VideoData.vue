@@ -4,7 +4,6 @@
       class="video-section"
       :video-data="selectedVideoData"
       is-with-autoplay
-      @click="handleClick"
     />
 
     <div class="video-more-container">
@@ -40,9 +39,6 @@ export default {
       required: true
     }
   },
-  emits: [
-    'click'
-  ],
   computed: {
     videoId () {
       return this.selectedVideoData.source.id
@@ -57,13 +53,6 @@ export default {
     moreText () {
       return this.$t(
         'more'
-      )
-    }
-  },
-  methods: {
-    handleClick () {
-      this.$emit(
-        'click'
       )
     }
   }

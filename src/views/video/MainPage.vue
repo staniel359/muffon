@@ -20,13 +20,15 @@
 
         <BaseDivider />
 
-        <CountersDateSection
-          :video-data="slotProps.videoData"
-        />
+        <div>
+          <CountersDateSection
+            :video-data="slotProps.videoData"
+          />
 
-        <TagsSection
-          :video-data="slotProps.videoData"
-        />
+          <TagsSection
+            :video-data="slotProps.videoData"
+          />
+        </div>
 
         <DescriptionSection
           :video-data="slotProps.videoData"

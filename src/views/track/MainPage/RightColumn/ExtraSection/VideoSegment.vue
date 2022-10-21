@@ -24,7 +24,6 @@
         v-if="selectedVideoData"
         :key="key"
         :selected-video-data="selectedVideoData"
-        @click="handleVideoClick"
       />
     </BaseAccordionContainer>
   </div>
@@ -97,9 +96,6 @@ export default {
 
         this.focus()
       }
-    },
-    handleVideoClick () {
-      this.focus()
     },
     setSelectedVideoData (
       value

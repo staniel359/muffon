@@ -293,16 +293,6 @@ export function setVideo (
   )
 }
 
-export function resetVideo (
-  element
-) {
-  $(
-    element
-  ).embed(
-    'reset'
-  )
-}
-
 // Form
 
 export function setForm (
