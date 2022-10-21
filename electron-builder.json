@@ -38,6 +38,7 @@
     "output": "build_electron"
   },
   "files": [
+    "./.env",
     "./electron.js",
     "./electron/**/*",
     "./shared/**/*",

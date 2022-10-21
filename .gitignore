@@ -10,3 +10,4 @@
 /semantic/gulpfile.js
 todo
 yarn-error.log
+.env

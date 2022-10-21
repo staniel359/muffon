@@ -1,3 +1,9 @@
+const setupDotenv = require(
+  './electron/actions/dotenv/setup'
+)
+
+setupDotenv()
+
 const {
   isDevelopment
 } = require(

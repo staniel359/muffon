@@ -2,10 +2,7 @@ import ElectronStore from 'electron-store'
 import schema from '@/helpers/data/plugins/electronStore/schema'
 
 const encryptionKey =
-  window
-    .process
-    .env
-    .MUFFON_ELECTRON_STORE_ENCRYPTION_KEY
+  process.env.VUE_APP_ELECTRON_STORE_KEY
 
 export default new ElectronStore(
   {

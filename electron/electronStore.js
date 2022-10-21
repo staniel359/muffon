@@ -2,11 +2,8 @@ const ElectronStore = require(
   'electron-store'
 )
 
-process.env.MUFFON_ELECTRON_STORE_ENCRYPTION_KEY =
-  'secretKey'
-
 const encryptionKey =
-  process.env.MUFFON_ELECTRON_STORE_ENCRYPTION_KEY
+  process.env.VUE_APP_ELECTRON_STORE_KEY
 
 const electronStore =
   new ElectronStore(

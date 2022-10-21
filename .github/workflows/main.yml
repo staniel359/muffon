@@ -41,6 +41,13 @@ jobs:
       - name: Lint
         run: yarn lint
 
+      - name: Create .env file
+        run: |
+          touch .env
+          echo VUE_APP_ELECTRON_STORE_KEY=${{ secrets.ELECTRON_STORE_KEY }} >> .env
+          echo VUE_APP_ANONYMOUS_TOKEN=${{ secrets.ANONYMOUS_TOKEN }} >> .env
+          cat .env
+
       - name: Release
         env:
           ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron

@@ -11,10 +11,7 @@ function setDevelopmentUserDataPath () {
   const developmentUserDataPath =
     path.join(
       __dirname,
-      '..',
-      '..',
-      '..',
-      'electron_data'
+      '../../../electron_data'
     )
 
   app.setPath(

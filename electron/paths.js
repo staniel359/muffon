@@ -10,8 +10,7 @@ const path = require(
 const productionPath =
   path.join(
     __dirname,
-    '..',
-    'index.html'
+    '../index.html'
   )
 
 const userDataPath =

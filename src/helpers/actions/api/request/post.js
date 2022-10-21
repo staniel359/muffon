@@ -29,13 +29,18 @@ export default function (
     language
   } = store.state.profile
 
+  const anonymousToken =
+    process.env.VUE_APP_ANONYMOUS_TOKEN
+
   const paramsData = {
     ...params,
     ...(isWithSelfId && {
       profile_id: profileId
     }),
     ...(isWithSelfToken && {
-      token
+      token: (
+        token || anonymousToken
+      )
     }),
     ...(isWithSelfLanguage && {
       language

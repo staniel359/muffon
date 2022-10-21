@@ -35,6 +35,7 @@
     "core-js": "^3.25.5",
     "crypto-js": "^4.1.1",
     "deepmerge": "^4.2.2",
+    "dotenv": "^16.0.3",
     "electron-dl": "^3.4.0",
     "electron-store": "^8.1.0",
     "emoji-mart": "^5.2.2",
