@@ -1,5 +1,7 @@
 <template>
-  <BaseListContainer class="selection">
+  <BaseListContainer
+    class="selection"
+  >
     <AlbumItem
       v-for="albumData in albumsCollection"
       :key="albumData.uuid"

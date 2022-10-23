@@ -7,6 +7,7 @@
 
     <BaseSourceIcon
       v-if="isRenderSource"
+      class="source-icon"
       :source="source"
     />
   </div>
@@ -50,4 +51,7 @@ export default {
 <style lang="sass" scoped>
 .header-source-section
   @extend .d-flex
+
+.source-icon
+  margin-left: 0.5em !important
 </style>

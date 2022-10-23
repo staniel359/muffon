@@ -1,5 +1,7 @@
 <template>
-  <BaseListContainer class="selection">
+  <BaseListContainer
+    class="selection"
+  >
     <PlaylistItem
       v-for="playlistData in playlistsCollection"
       :key="playlistData.uuid"

@@ -1,5 +1,7 @@
 <template>
-  <BaseListContainer class="selection">
+  <BaseListContainer
+    class="selection"
+  >
     <TrackItem
       v-for="(trackData, index) in tracksCollection"
       :key="trackData.uuid"

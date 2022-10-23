@@ -22,7 +22,7 @@
             />
 
             <span
-              v-text="playsCountFomatted"
+              v-text="playsCountFormatted"
             />
           </small>
         </div>
@@ -62,7 +62,7 @@ export default {
     nickname () {
       return this.userData.nickname
     },
-    playsCountFomatted () {
+    playsCountFormatted () {
       return formatNumber(
         this.playsCount
       )

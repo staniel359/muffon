@@ -1,5 +1,7 @@
 <template>
-  <BaseListContainer class="selection">
+  <BaseListContainer
+    class="selection"
+  >
     <ArtistItem
       v-for="artistData in artistsCollection"
       :key="artistData.uuid"

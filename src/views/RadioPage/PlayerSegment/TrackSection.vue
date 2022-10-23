@@ -1,5 +1,7 @@
 <template>
-  <BaseListContainer class="selection">
+  <BaseListContainer
+    class="selection"
+  >
     <TrackItem
       ref="track"
       :track-data="firstTrackData"

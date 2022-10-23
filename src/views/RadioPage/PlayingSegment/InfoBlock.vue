@@ -38,7 +38,4 @@ export default {
   z-index: 1,
   padding: 1em 2em
   bottom: 0
-
-::v-deep(.playing-header)
-  @extend .text-color-white
 </style>

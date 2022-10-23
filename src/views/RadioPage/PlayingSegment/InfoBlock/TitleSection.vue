@@ -1,7 +1,7 @@
 <template>
   <BaseHeaderContainer
-    class="playing-header"
     tag="h3"
+    is-inverted
   >
     <BaseTrackLinkContainer
       class="main-link"
@@ -12,12 +12,12 @@
 
     <span
       v-if="trackExtraTitle"
-      :class="[
-        'sub header description',
-        'main-extra-title playing-header'
-      ]"
-      v-text="trackExtraTitle"
-    />
+      class="sub header main-extra-title-inline"
+    >
+      <strong
+        v-text="trackExtraTitle"
+      />
+    </span>
   </BaseHeaderContainer>
 </template>
 
@@ -50,7 +50,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.playing-header
-  line-height: 1.3em !important
-</style>
+<style lang="sass" scoped></style>

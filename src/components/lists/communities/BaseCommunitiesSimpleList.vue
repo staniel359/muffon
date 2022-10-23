@@ -1,5 +1,7 @@
 <template>
-  <BaseListContainer class="selection">
+  <BaseListContainer
+    class="selection"
+  >
     <CommunityItem
       v-for="communityData in communitiesCollection"
       :key="communityData.uuid"

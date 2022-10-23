@@ -16,24 +16,24 @@
       :index="index"
     />
 
-    <div
+    <template
       v-if="isRenderImage"
-      class="track-image-container"
     >
       <BaseImage
         v-if="isWithImage"
-        class="rounded bordered"
+        class="rounded bordered small"
         model="track"
         :image="imageData?.extrasmall"
       />
       <BaseArtistImage
         v-else-if="isWithArtistImage"
+        class="small"
         size="extrasmall"
         :artist-name="artistName"
         :image-data="artistImageData"
         @load-end="handleArtistImageLoadEnd"
       />
-    </div>
+    </template>
 
     <div class="content">
       <div class="track-main-info-block">
@@ -87,11 +87,14 @@
       :duration="duration"
     />
 
-    <BaseIcon
+    <div
       v-if="isRenderSavedIcon"
       class="track-saved-icon"
-      icon="save"
-    />
+    >
+      <BaseIcon
+        icon="save"
+      />
+    </div>
 
     <BaseSourceIcon
       v-if="isRenderSource"
@@ -454,30 +457,22 @@ export default {
 .track-play-button
   @extend .no-padding
   min-width: unset !important
-  margin: 0 0.5em !important
-
-.track-image-container
-  margin-left: 0.5em
-  & > .image
-    width: 30px
-    height: 30px
+  margin: 0 1em 0 0.5em !important
 
 .content
   @extend .d-flex, .align-items-center
-  margin-left: 0.5em
 
 .track-main-info-block
   @extend .flex-full
 
-.main-simple-self-buttons-container
-  margin-left: 0.5em
-
 .track-saved-icon
-  margin-left: 0.5em !important
+  margin-left: 0.75em
+  .icon
+    @extend .no-margin
 
 .track-source-icon
-  margin-left: 0.5em !important
+  margin-left: 0.75em
 
 .track-duration
-  margin-left: 0.5em
+  margin-left: 0.75em
 </style>

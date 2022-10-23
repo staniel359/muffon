@@ -3,7 +3,7 @@
     :is="tag"
     class="ui header main-header"
     :class="{
-      inverted: isDarkMode
+      inverted: isInverted || isDarkMode
     }"
   >
     <BaseIcon
@@ -31,7 +31,8 @@ export default {
       type: String,
       required: true
     },
-    icon: String
+    icon: String,
+    isInverted: Boolean
   },
   computed: {
     ...mapState(

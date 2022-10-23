@@ -2,13 +2,13 @@
   <BaseImage
     v-if="isWithAlbum"
     model="track"
-    class="rounded bordered playing-image"
+    class="rounded bordered medium"
     :image="imageData?.[size]"
   />
   <BaseArtistImage
     v-else
     :key="key"
-    class="playing-image"
+    class="medium"
     :artist-name="artistName"
     :size="size"
   />
@@ -88,9 +88,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.playing-image
-  width: 40px
-  height: 40px
-  margin-right: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

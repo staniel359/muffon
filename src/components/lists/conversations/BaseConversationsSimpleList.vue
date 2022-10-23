@@ -1,5 +1,7 @@
 <template>
-  <BaseListContainer class="selection">
+  <BaseListContainer
+    class="selection"
+  >
     <ConversationItem
       v-for="conversationData in conversations"
       :key="conversationData.uuid"

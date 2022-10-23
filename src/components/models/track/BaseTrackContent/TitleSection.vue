@@ -14,7 +14,7 @@
 
     <span
       v-if="trackExtraTitle"
-      class="sub header description main-extra-title"
+      class="sub header description main-extra-title-inline"
       v-text="trackExtraTitle"
     />
   </BaseHeaderContainer>

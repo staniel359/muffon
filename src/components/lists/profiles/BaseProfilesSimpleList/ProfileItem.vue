@@ -36,25 +36,34 @@
         />
       </div>
 
-      <div
+      <template
         v-if="!isPrivate"
-        class="description"
       >
-        <small>
-          <BaseProfileGenderAge
-            :profile-data="profileData"
-          />
+        <div class="description">
+          <small>
+            <BaseProfileGenderAge
+              :profile-data="profileData"
+            />
+          </small>
+        </div>
 
-          <BaseProfileCityCountry
-            :profile-data="profileData"
-          />
+        <div class="description">
+          <small>
+            <BaseProfileCityCountry
+              :profile-data="profileData"
+            />
+          </small>
+        </div>
 
-          <BaseProfileFollowCounters
-            class="follow-counters"
-            :profile-data="profileData"
-          />
-        </small>
-      </div>
+        <div class="description">
+          <small>
+            <BaseProfileFollowCounters
+              class="follow-counters"
+              :profile-data="profileData"
+            />
+          </small>
+        </div>
+      </template>
     </div>
 
     <BaseProfileFollowingMessage
@@ -220,20 +229,20 @@ export default {
   @extend .d-flex, .align-items-center
 
 .online-label
-  margin-left: 0.5em !important
+  margin-left: 0.75em !important
 
 .role-label
-  margin-left: 0.5em
+  margin-left: 0.75em
+
+.description
+  margin-top: 0.15em
 
 .follow-counters
   @extend .d-flex
   ::v-deep(.following)
-    margin-left: 0.5em
+    margin-left: 0.75em
 
 .following-message
   @extend .align-self-center
-  margin-left: 0.5em
-
-.follow-button
-  margin-left: 0.5em !important
+  margin-left: 0.75em
 </style>

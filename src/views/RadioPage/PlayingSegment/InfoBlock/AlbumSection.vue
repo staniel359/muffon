@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="albumTitle"
-    class="playing-header"
+    class="album-section"
   >
     <small>
       <BaseAlbumLinkContainer
@@ -45,6 +45,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.playing-header
+.album-section
   line-height: 1em
 </style>

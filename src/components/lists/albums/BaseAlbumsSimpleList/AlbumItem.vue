@@ -40,7 +40,7 @@
 
         <BaseAlbumListenersCount
           v-if="isWithListenersCount"
-          class="description"
+          class="description listeners-count"
           :album-title="albumTitle"
           :artist-name="artistName"
           :listeners-count="listenersCount"
@@ -336,4 +336,7 @@ export default {
 <style lang="sass" scoped>
 .album-source-icon
   margin-left: 0.5em !important
+
+.listeners-count
+  margin-top: 0.15em
 </style>

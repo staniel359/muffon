@@ -2,18 +2,18 @@
   <div
     v-if="gender || age"
   >
-    <div
+    <span
       v-if="gender"
       class="ui tiny empty circular label gender-block"
       :class="genderLabelColor"
     />
 
-    <div
+    <span
       v-if="gender && age"
       class="gender-age-separator"
     />
 
-    <div
+    <span
       v-if="age"
       class="age-block"
       v-text="age"

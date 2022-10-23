@@ -1,12 +1,18 @@
 <template>
-  <div v-if="city || country">
+  <div
+    v-if="city || country"
+    class="main-profile-city-country"
+  >
     <i
       v-if="country"
-      class="flag"
+      class="small flag"
       :class="country"
     />
 
-    {{ cityWithCountryFormatted }}
+    <span
+      class="main-header"
+      v-text="cityWithCountryFormatted"
+    />
   </div>
 </template>
 

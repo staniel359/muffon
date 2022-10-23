@@ -36,7 +36,7 @@
 
         <BaseArtistListenersCount
           v-if="isWithListenersCount"
-          class="description"
+          class="description listeners-count"
           :artist-name="artistName"
           :listeners-count="listenersCount"
           @load-end="handleListenersCountLoadEnd"
@@ -302,4 +302,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.listeners-count
+  margin-top: 0.15em
+</style>

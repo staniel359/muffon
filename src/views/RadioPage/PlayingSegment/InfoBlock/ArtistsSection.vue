@@ -1,7 +1,8 @@
 <template>
   <BaseHeaderContainer
-    class="playing-header"
+    class="artists-section"
     tag="h4"
+    is-inverted
   >
     <BaseArtistLinks
       :artists="artists"
@@ -35,7 +36,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.playing-header
+.artists-section
   @extend .text-medium-light
   line-height: 1.3em !important
 </style>

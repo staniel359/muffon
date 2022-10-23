@@ -1,6 +1,7 @@
 <template>
   <BaseSegmentContainer
     v-if="isPlayingFromRadio"
+    is-inverted
   >
     <div class="playing-segment">
       <InfoBlock

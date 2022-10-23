@@ -4,7 +4,7 @@
     class="ui segment main-segment"
     :class="{
       loading: isLoading,
-      inverted: isDarkMode
+      inverted: isInverted || isDarkMode
     }"
     :style="isChangeTransparency && {
       background: backgroundStyle
@@ -43,7 +43,8 @@ export default {
     },
     responseData: Object,
     isLoading: Boolean,
-    error: Error
+    error: Error,
+    isInverted: Boolean
   },
   emits: [
     'init',

@@ -38,7 +38,7 @@ export default {
 <style lang="sass" scoped>
 .track-panel
   @extend .d-flex, .align-items-center
-  width: 220px
+  width: 230px
 
 .track-container
   @extend .w-100
