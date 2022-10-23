@@ -4,6 +4,7 @@
       v-for="communityData in communitiesCollection"
       :key="communityData.uuid"
       :community-data="communityData"
+      :is-with-created="isWithCreated"
       :is-with-join-option="isWithJoinOption"
       :is-with-share-option="isWithShareOption"
       :is-with-clear-button="isWithClearButton"
@@ -34,6 +35,7 @@ export default {
         return []
       }
     },
+    isWithCreated: Boolean,
     isWithJoinOption: Boolean,
     isWithShareOption: Boolean,
     isWithClearButton: Boolean

@@ -6,6 +6,7 @@
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
+        is-with-created
         is-bookmark
         is-with-library-option
         is-with-favorite-option

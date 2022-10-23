@@ -20,6 +20,9 @@ const encrypt = require(
 const getPath = require(
   './getPath'
 )
+const moment = require(
+  'moment-timezone'
+)
 
 let trackData
 
@@ -35,6 +38,9 @@ function formatTrackData () {
   delete trackData.audio.link
 
   trackData.uuid = fileName
+
+  trackData.created =
+    moment.utc().toDate()
 
   const filePath =
     getPath(

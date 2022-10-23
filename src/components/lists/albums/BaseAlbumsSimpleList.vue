@@ -21,6 +21,7 @@
       :is-bookmark="isBookmark"
       :is-favorite="isFavorite"
       :profile-id="profileId"
+      :is-with-created="isWithCreated"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -74,7 +75,8 @@ export default {
     isWithClearButton: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
-    profileId: String
+    profileId: String,
+    isWithCreated: Boolean
   },
   emits: [
     'linkClick',

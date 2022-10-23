@@ -17,6 +17,7 @@
       :is-recommendation="isRecommendation"
       :is-favorite="isFavorite"
       :is-bookmark="isBookmark"
+      :is-with-created="isWithCreated"
     />
   </div>
 </template>
@@ -54,7 +55,8 @@ export default {
     isWithDeleteOption: Boolean,
     isRecommendation: Boolean,
     isFavorite: Boolean,
-    isBookmark: Boolean
+    isBookmark: Boolean,
+    isWithCreated: Boolean
   },
   computed: {
     artistsCollection () {

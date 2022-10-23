@@ -1,19 +1,35 @@
 <template>
   <div
     v-if="created"
-    class="created-block"
+    class="main-created-section"
   >
-    <div class="created">
+    <div
+      v-if="isSmall"
+      class="created"
+    >
       <small
         v-text="createdDateFormatted"
       />
     </div>
+    <div
+      v-else
+      class="main-header"
+      v-text="createdDateFormatted"
+    />
 
-    <div class="created">
+    <div
+      v-if="isSmall"
+      class="created"
+    >
       <small
         v-text="createdTimeFormatted"
       />
     </div>
+    <div
+      v-else
+      class="main-header"
+      v-text="createdTimeFormatted"
+    />
   </div>
 </template>
 
@@ -24,11 +40,15 @@ import {
 } from '@/helpers/formatters'
 
 export default {
-  name: 'CreatedBlock',
+  name: 'BaseCreatedSection',
   props: {
-    trackData: {
+    modelData: {
       type: Object,
       required: true
+    },
+    isSmall: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -38,7 +58,7 @@ export default {
       )
     },
     created () {
-      return this.trackData.created
+      return this.modelData.created
     },
     createdTimeFormatted () {
       return formatTime(
@@ -49,11 +69,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.created-block
-  margin-left: 0.5em !important
-  text-align: right
-
-.created
-  line-height: 0.9em
-</style>
+<style lang="sass" scoped></style>

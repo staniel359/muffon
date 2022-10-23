@@ -15,6 +15,7 @@
         :is-with-delete-option="isSelf"
         is-link-to-library
         is-with-library
+        is-with-created
         is-with-favorite-option
         is-with-bookmark-option
         is-with-listened-option

@@ -1,5 +1,6 @@
 <template>
   <BaseSegmentContainer
+    v-if="created"
     class="main-profile-page-info"
   >
     <div
@@ -7,7 +8,11 @@
     />
 
     <strong
-      v-text="createdFormatted"
+      v-text="createdDateFormatted"
+    />
+
+    <strong
+      v-text="createdTimeFormatted"
     />
   </BaseSegmentContainer>
 </template>
@@ -16,16 +21,17 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import {
-  date as formatDate
+  date as formatDate,
+  time as formatTime
 } from '@/helpers/formatters'
 
 export default {
-  name: 'SinceSegment',
+  name: 'BaseLibraryCreatedSegment',
   components: {
     BaseSegmentContainer
   },
   props: {
-    trackData: {
+    modelData: {
       type: Object,
       required: true
     }
@@ -36,13 +42,18 @@ export default {
         'library.since'
       )
     },
-    createdFormatted () {
+    createdDateFormatted () {
       return formatDate(
         this.created
       )
     },
     created () {
-      return this.trackData.created
+      return this.modelData.created
+    },
+    createdTimeFormatted () {
+      return formatTime(
+        this.created
+      )
     }
   }
 }

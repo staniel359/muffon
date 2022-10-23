@@ -38,11 +38,6 @@
           @link-click="handleLinkClick"
         />
 
-        <BaseAlbumReleaseDateSection
-          class="description"
-          :album-data="albumData"
-        />
-
         <BaseAlbumListenersCount
           v-if="isWithListenersCount"
           class="description"
@@ -76,6 +71,17 @@
         :is-with-library-icon="isWithLibraryIcon"
         :is-with-favorite-icon="isWithFavoriteIcon"
         :is-with-bookmark-icon="isWithBookmarkIcon"
+      />
+
+      <BaseAlbumReleaseDateSection
+        class="description"
+        :album-data="albumData"
+      />
+
+      <BaseCreatedSection
+        v-if="isWithCreated"
+        class="description right"
+        :model-data="albumData"
       />
 
       <BaseAlbumOptionsDropdown
@@ -141,6 +147,7 @@ import BaseAlbumListenersCount
 import LibraryCountersSection from './AlbumItem/LibraryCountersSection.vue'
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseAlbumOptionsDropdown
   from '@/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
@@ -165,6 +172,7 @@ export default {
     LibraryCountersSection,
     BaseSourceIcon,
     BaseSelfIcons,
+    BaseCreatedSection,
     BaseAlbumOptionsDropdown,
     BaseClearButton,
     BaseBookmarkDeleteModal,
@@ -200,7 +208,8 @@ export default {
     isBookmark: Boolean,
     isFavorite: Boolean,
     isWithSource: Boolean,
-    profileId: String
+    profileId: String,
+    isWithCreated: Boolean
   },
   emits: [
     'linkClick',

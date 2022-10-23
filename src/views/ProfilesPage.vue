@@ -14,6 +14,7 @@
         <template #default="slotProps">
           <BaseProfilesSimpleList
             :profiles="slotProps[scope]"
+            is-with-created
           />
         </template>
       </BasePaginatedPageContainer>

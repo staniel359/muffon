@@ -8,6 +8,7 @@
         :albums="slotProps[scope]"
         is-with-artist-name
         is-with-source
+        is-with-created
         is-bookmark
         is-with-library-option
         is-with-favorite-option

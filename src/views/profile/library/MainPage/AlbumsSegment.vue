@@ -15,6 +15,7 @@
         is-with-artist-name
         is-with-library
         is-link-to-library
+        is-with-created
         is-with-favorite-option
         is-with-bookmark-option
         is-with-listened-option

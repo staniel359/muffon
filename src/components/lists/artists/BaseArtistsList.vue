@@ -9,6 +9,7 @@
     :is-with-library="isWithLibrary"
     :is-link-to-library="isLinkToLibrary"
     :profile-id="profileId"
+    :is-with-created="isWithCreated"
     :is-with-library-option="isWithLibraryOption"
     :is-with-listened-option="isWithListenedOption"
     :is-with-bookmark-option="isWithBookmarkOption"
@@ -42,6 +43,7 @@ export default {
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
+    isWithCreated: Boolean,
     isWithLibraryOption: Boolean,
     isWithListenedOption: Boolean,
     isWithBookmarkOption: Boolean,

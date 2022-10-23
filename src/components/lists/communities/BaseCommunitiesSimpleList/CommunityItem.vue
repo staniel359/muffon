@@ -31,6 +31,12 @@
       is-small
     />
 
+    <BaseCreatedSection
+      v-if="isWithCreated"
+      class="description right"
+      :model-data="communityData"
+    />
+
     <BaseCommunityOptionsDropdown
       :community-data="communityData"
       :is-with-join-option="isWithJoinOption"
@@ -51,6 +57,7 @@ import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseCommunityJoinedMessage
   from '@/components/models/community/BaseCommunityJoinedMessage.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseCommunityOptionsDropdown
   from '@/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
@@ -68,6 +75,7 @@ export default {
     BaseImage,
     BaseHeader,
     BaseCommunityJoinedMessage,
+    BaseCreatedSection,
     BaseCommunityOptionsDropdown,
     BaseClearButton
   },
@@ -87,6 +95,7 @@ export default {
       type: Object,
       required: true
     },
+    isWithCreated: Boolean,
     isWithJoinOption: Boolean,
     isWithShareOption: Boolean,
     isWithClearButton: Boolean

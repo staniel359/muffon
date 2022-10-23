@@ -57,6 +57,12 @@
         </div>
       </div>
 
+      <BaseCreatedSection
+        v-if="isWithCreated"
+        class="description right"
+        :model-data="playlistData"
+      />
+
       <BasePlaylistOptionsDropdown
         :playlist-data="playlistData"
         :is-with-share-option="isWithShareOption"
@@ -81,6 +87,7 @@ import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import BaseLink from '@/components/links/BaseLink.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BasePlaylistOptionsDropdown
   from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
@@ -104,6 +111,7 @@ export default {
     BaseHeader,
     BasePrivateIcon,
     BaseLink,
+    BaseCreatedSection,
     BasePlaylistOptionsDropdown,
     BaseClearButton
   },
@@ -123,6 +131,7 @@ export default {
       required: true
     },
     isWithProfileNickname: Boolean,
+    isWithCreated: Boolean,
     isWithShareOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,

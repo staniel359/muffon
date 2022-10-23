@@ -64,6 +64,12 @@
       is-small
     />
 
+    <BaseCreatedSection
+      v-if="isWithCreated"
+      class="description right"
+      :model-data="profileData"
+    />
+
     <BaseProfileOptionsDropdown
       v-if="!isSelf"
       :profile-data="profileData"
@@ -90,6 +96,7 @@ import BaseProfileFollowCounters
   from '@/components/models/profile/BaseProfileFollowCounters.vue'
 import BaseProfileFollowingMessage
   from '@/components/models/profile/BaseProfileFollowingMessage.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseProfileOptionsDropdown
   from '@/components/dropdowns/profile/BaseProfileOptionsDropdown.vue'
 import {
@@ -112,6 +119,7 @@ export default {
     BaseProfileCityCountry,
     BaseProfileFollowCounters,
     BaseProfileFollowingMessage,
+    BaseCreatedSection,
     BaseProfileOptionsDropdown
   },
   provide () {
@@ -129,7 +137,8 @@ export default {
     profileData: {
       type: Object,
       required: true
-    }
+    },
+    isWithCreated: Boolean
   },
   emits: [
     'linkClick'

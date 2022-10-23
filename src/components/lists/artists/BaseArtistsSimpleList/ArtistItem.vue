@@ -63,6 +63,12 @@
         :is-with-bookmark-icon="isWithBookmarkIcon"
       />
 
+      <BaseCreatedSection
+        v-if="isWithCreated"
+        class="description right"
+        :model-data="artistData"
+      />
+
       <BaseArtistOptionsDropdown
         :artist-data="artistData"
         :library-id="libraryId"
@@ -123,6 +129,7 @@ import BaseArtistListenersCount
   from '@/components/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseArtistOptionsDropdown
   from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
@@ -144,6 +151,7 @@ export default {
     BaseArtistListenersCount,
     LibraryCountersSection,
     BaseSelfIcons,
+    BaseCreatedSection,
     BaseArtistOptionsDropdown,
     BaseClearButton,
     BaseBookmarkDeleteModal,
@@ -180,7 +188,8 @@ export default {
     isImageSmall: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
-    isPaginated: Boolean
+    isPaginated: Boolean,
+    isWithCreated: Boolean
   },
   emits: [
     'linkClick',

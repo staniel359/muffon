@@ -7,6 +7,7 @@
       v-for="profileData in profilesCollection"
       :key="profileData.uuid"
       :profile-data="profileData"
+      :is-with-created="isWithCreated"
       @link-click="handleLinkClick"
     />
   </BaseListContainer>
@@ -36,7 +37,8 @@ export default {
         return []
       }
     },
-    isMinimal: Boolean
+    isMinimal: Boolean,
+    isWithCreated: Boolean
   },
   emits: [
     'linkClick'

@@ -19,6 +19,7 @@
         is-with-artist-name
         is-with-album-title
         is-with-source
+        is-with-created
         is-playlist-track
         is-with-library-option
         is-with-favorite-option

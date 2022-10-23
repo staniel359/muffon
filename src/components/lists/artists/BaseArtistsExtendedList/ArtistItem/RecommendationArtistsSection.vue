@@ -132,5 +132,5 @@ export default {
   margin: 0.5em 0
 
 .more-container
-  text-align: right
+  @extend .text-align-right
 </style>

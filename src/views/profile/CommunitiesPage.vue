@@ -35,6 +35,7 @@
           <template #default="slotProps">
             <BaseCommunitiesSimpleList
               :communities="slotProps[scope]"
+              is-with-created
               is-with-join-option
               is-with-share-option
             />

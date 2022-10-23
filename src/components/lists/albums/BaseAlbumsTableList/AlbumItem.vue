@@ -64,6 +64,12 @@
           :album-data="albumData"
         />
 
+        <BaseCreatedSection
+          v-if="isWithCreated"
+          class="description"
+          :model-data="albumData"
+        />
+
         <BaseAlbumListenersCount
           v-if="isWithListenersCount"
           class="description"
@@ -118,6 +124,7 @@ import BaseAlbumArtistsSection
   from '@/components/models/album/BaseAlbumArtistsSection.vue'
 import BaseAlbumReleaseDateSection
   from '@/components/models/album/BaseAlbumReleaseDateSection.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseAlbumListenersCount
   from '@/components/models/album/BaseAlbumListenersCount.vue'
 import TracksSection from './AlbumItem/TracksSection.vue'
@@ -137,6 +144,7 @@ export default {
     BaseHeader,
     BaseAlbumArtistsSection,
     BaseAlbumReleaseDateSection,
+    BaseCreatedSection,
     BaseAlbumListenersCount,
     TracksSection,
     BaseSelfIcons,
@@ -169,7 +177,8 @@ export default {
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
     isFavorite: Boolean,
-    isBookmark: Boolean
+    isBookmark: Boolean,
+    isWithCreated: Boolean
   },
   emits: [
     'linkClick'

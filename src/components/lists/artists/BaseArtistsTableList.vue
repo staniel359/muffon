@@ -22,6 +22,7 @@
         :is-with-delete-option="isWithDeleteOption"
         :is-favorite="isFavorite"
         :is-bookmark="isBookmark"
+        :is-with-created="isWithCreated"
       />
     </div>
   </div>
@@ -67,7 +68,8 @@ export default {
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
     isFavorite: Boolean,
-    isBookmark: Boolean
+    isBookmark: Boolean,
+    isWithCreated: Boolean
   },
   computed: {
     tableClass () {

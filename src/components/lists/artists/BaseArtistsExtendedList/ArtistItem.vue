@@ -30,6 +30,13 @@
                 @load-end="handleImageLoadEnd"
               />
 
+              <BaseCreatedSection
+                v-if="isWithCreated"
+                class="description centered created-section"
+                :model-data="artistData"
+                :is-small="false"
+              />
+
               <LibraryCountersSection
                 v-if="isWithLibrary"
                 :artist-data="artistData"
@@ -127,6 +134,7 @@ import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseArtistOptionsDropdown
@@ -153,6 +161,7 @@ export default {
     BaseSegmentContainer,
     BaseDeletedSection,
     BaseArtistImage,
+    BaseCreatedSection,
     LibraryCountersSection,
     BaseSelfIcons,
     BaseArtistOptionsDropdown,
@@ -193,7 +202,8 @@ export default {
     isWithDeleteOption: Boolean,
     isRecommendation: Boolean,
     isFavorite: Boolean,
-    isBookmark: Boolean
+    isBookmark: Boolean,
+    isWithCreated: Boolean
   },
   computed: {
     modelData () {
@@ -301,4 +311,7 @@ export default {
 
 .artist-info
   @extend .flex-full
+
+.created-section
+  margin-top: 0.75em
 </style>

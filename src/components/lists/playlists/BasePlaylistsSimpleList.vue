@@ -5,6 +5,7 @@
       :key="playlistData.uuid"
       :playlist-data="playlistData"
       :is-with-profile-nickname="isWithProfileNickname"
+      :is-with-created="isWithCreated"
       :is-with-share-option="isWithShareOption"
       :is-with-edit-option="isWithEditOption"
       :is-with-delete-option="isWithDeleteOption"
@@ -37,6 +38,7 @@ export default {
       }
     },
     isWithProfileNickname: Boolean,
+    isWithCreated: Boolean,
     isWithShareOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,

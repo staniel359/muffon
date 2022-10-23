@@ -15,6 +15,7 @@
         is-with-duration
         is-with-source
         is-saved-track
+        is-with-created
         is-with-playlist-option
         is-with-share-option
         is-with-queue-option

@@ -18,8 +18,8 @@
       :profile-id="profileId"
     />
 
-    <SinceSegment
-      :album-data="albumData"
+    <BaseLibraryCreatedSegment
+      :model-data="albumData"
     />
   </div>
 </template>
@@ -30,14 +30,15 @@ import {
 } from 'vuex'
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import SelfSegment from './LeftColumn/SelfSegment.vue'
-import SinceSegment from './LeftColumn/SinceSegment.vue'
+import BaseLibraryCreatedSegment
+  from '@/components/segments/library/BaseLibraryCreatedSegment.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
     InfoSegment,
     SelfSegment,
-    SinceSegment
+    BaseLibraryCreatedSegment
   },
   props: {
     albumData: Object,

@@ -49,6 +49,12 @@
       </BaseArtistLinkContainer>
 
       <div class="center aligned content">
+        <BaseCreatedSection
+          v-if="isWithCreated"
+          class="description"
+          :model-data="artistData"
+        />
+
         <BaseArtistListenersCount
           v-if="isWithListenersCount"
           class="description"
@@ -98,6 +104,7 @@ import BaseArtistOptionsDropdown
   from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseArtistListenersCount
   from '@/components/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
@@ -115,6 +122,7 @@ export default {
     BaseArtistOptionsDropdown,
     BaseArtistImage,
     BaseHeader,
+    BaseCreatedSection,
     BaseArtistListenersCount,
     LibraryCountersSection,
     BaseSelfIcons,
@@ -145,7 +153,8 @@ export default {
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
     isFavorite: Boolean,
-    isBookmark: Boolean
+    isBookmark: Boolean,
+    isWithCreated: Boolean
   },
   computed: {
     modelData () {

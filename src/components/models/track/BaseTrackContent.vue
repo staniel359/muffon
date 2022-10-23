@@ -99,9 +99,10 @@
       :source="source"
     />
 
-    <CreatedBlock
+    <BaseCreatedSection
       v-if="isWithCreated"
-      :track-data="trackData"
+      class="description right"
+      :model-data="trackData"
     />
 
     <BaseTrackOptionsDropdown
@@ -183,7 +184,7 @@ import BaseDurationSection from '@/components/sections/BaseDurationSection.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import CreatedBlock from './BaseTrackContent/CreatedBlock.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseTrackOptionsDropdown
   from '@/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
@@ -215,7 +216,7 @@ export default {
     BaseIcon,
     BaseSourceIcon,
     BaseSelfIcons,
-    CreatedBlock,
+    BaseCreatedSection,
     BaseTrackOptionsDropdown,
     BaseClearButton,
     BaseBookmarkDeleteModal,
