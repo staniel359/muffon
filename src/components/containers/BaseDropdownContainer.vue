@@ -10,8 +10,11 @@
   >
     <BaseIcon
       v-if="isOnlyIcon"
-      class="colored main-dropdown-icon"
-      :icon="value"
+      class="main-dropdown-icon"
+      :class="{
+        colored: isColored
+      }"
+      :icon="icon"
     />
     <div
       v-else
@@ -90,14 +93,17 @@ export default {
     menuDirection: String,
     isFormField: Boolean,
     inputType: String,
-    inputName: String
+    inputName: String,
+    isColored: Boolean,
+    options: Object
   },
   emits: [
     'select'
   ],
   data () {
     return {
-      value: null
+      value: null,
+      icon: null
     }
   },
   computed: {
@@ -110,6 +116,7 @@ export default {
     dropdownOptions () {
       return mainDropdownOptions(
         {
+          isOnlyIcon: this.isOnlyIcon,
           onChange: this.handleSelect
         }
       )
@@ -141,11 +148,15 @@ export default {
       )
 
       this.value = value
+
+      this.setIcon()
     },
     handleSelect (
       value
     ) {
       this.value = value
+
+      this.setIcon()
 
       this.$emit(
         'select',
@@ -155,6 +166,24 @@ export default {
     reset () {
       resetDropdown(
         this.$refs.dropdown
+      )
+    },
+    setIcon () {
+      if (this.isOnlyIcon) {
+        this.icon = this.getIcon()
+      }
+    },
+    getIcon () {
+      return this.options.find(
+        this.isMatchedOption
+      ).icon
+    },
+    isMatchedOption (
+      optionData
+    ) {
+      return (
+        optionData.id ===
+          this.value
       )
     }
   }

@@ -6,6 +6,7 @@
     :selected="source"
     :is-selection="false"
     is-only-icon
+    is-colored
     @select="handleSelect"
   />
 </template>

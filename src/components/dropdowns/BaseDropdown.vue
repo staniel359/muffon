@@ -1,10 +1,12 @@
 <template>
   <BaseDropdownContainer
+    :options="options"
     :selected="selected"
     :is-selection="isSelection"
     :is-only-icon="isOnlyIcon"
     :menu-direction="menuDirection"
     :header="header"
+    :is-colored="isColored"
     @select="handleSelect"
   >
     <div
@@ -50,7 +52,8 @@ export default {
     selected: String,
     isOnlyIcon: Boolean,
     menuDirection: String,
-    header: String
+    header: String,
+    isColored: Boolean
   },
   emits: [
     'select'

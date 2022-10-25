@@ -311,6 +311,7 @@ export function emojiPopupOptions (
 
 export function mainDropdownOptions (
   {
+    isOnlyIcon,
     onChange
   } = {}
 ) {
@@ -318,12 +319,20 @@ export function mainDropdownOptions (
     visibleContext
   } = store.state.layout
 
+  const transition = (
+    isOnlyIcon ? 'fade up' : 'auto'
+  )
+
   return {
     on: 'hover',
-    delay: 0,
     context: (
       visibleContext || 'body'
     ),
+    delay: {
+      show: 0,
+      hide: 150
+    },
+    transition,
     onChange
   }
 }
