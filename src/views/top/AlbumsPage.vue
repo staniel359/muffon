@@ -2,7 +2,7 @@
   <BaseTopPaginatedPageContainer
     :scope="scope"
     :limit="limit"
-    :view-index="viewIndex"
+    :view-id="viewId"
     is-with-top-segment
     is-with-country-select
     is-with-view-change
@@ -10,7 +10,7 @@
     <template #default="slotProps">
       <BaseAlbumsList
         :albums="slotProps[scope]"
-        :view-index="viewIndex"
+        :view-id="viewId"
         is-with-artist-name
         is-with-listeners-count
         is-with-library-option

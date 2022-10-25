@@ -4,7 +4,7 @@
     :library-artist-id="libraryArtistId"
     :scope="scope"
     :limit="limit"
-    :view-index="viewIndex"
+    :view-id="viewId"
     is-with-top-segment
     is-with-view-change
   >
@@ -14,7 +14,7 @@
         :profile-id="profileId"
         :artist-name="slotProps.artistName"
         :top-tracks-count="slotProps.topTracksCount"
-        :view-index="viewIndex"
+        :view-id="viewId"
         :is-with-library-option="!isSelf"
         :is-with-delete-option="isSelf"
         is-with-library

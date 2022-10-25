@@ -640,6 +640,11 @@
     "decline": "No, thanks",
     "accept": "Yeah, sure"
   },
+  "lists": {
+    "simple": "Simple list",
+    "table": "Table",
+    "extended": "Detailed list"
+  },
   "error": "Error",
   "more": "More...",
   "loading": "Loading..."

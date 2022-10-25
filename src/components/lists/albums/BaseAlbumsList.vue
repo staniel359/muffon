@@ -31,8 +31,8 @@ export default {
     BaseAlbumsTableList
   },
   props: {
-    viewIndex: {
-      type: Number,
+    viewId: {
+      type: String,
       required: true
     },
     albums: Array,
@@ -54,16 +54,16 @@ export default {
   data () {
     return {
       itemsInRow: 4,
-      listComponents: [
-        'BaseAlbumsSimpleList',
-        'BaseAlbumsTableList'
-      ]
+      listComponentsData: {
+        simple: 'BaseAlbumsSimpleList',
+        table: 'BaseAlbumsTableList'
+      }
     }
   },
   computed: {
     listComponent () {
-      return this.listComponents[
-        this.viewIndex
+      return this.listComponentsData[
+        this.viewId
       ]
     }
   }

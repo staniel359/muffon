@@ -4,14 +4,14 @@
     :scope="scope"
     :limit="limit"
     :response-page-limit="responsePageLimit"
-    :view-index="viewIndex"
+    :view-id="viewId"
     is-with-top-segment
     is-with-view-change
   >
     <template #default="slotProps">
       <BaseArtistsList
         :artists="slotProps[scope]"
-        :view-index="viewIndex"
+        :view-id="viewId"
         is-with-listeners-count
         is-with-library-option
         is-with-favorite-option

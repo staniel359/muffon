@@ -15,7 +15,7 @@
         :limit="limit"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
-        :view-index="viewIndex"
+        :view-id="viewId"
       >
         <template #default="slotProps">
           <slot
@@ -52,7 +52,7 @@ export default {
     limit: Number,
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
-    viewIndex: Number
+    viewId: String
   }
 }
 </script>

@@ -32,8 +32,8 @@ export default {
     BaseArtistsExtendedList
   },
   props: {
-    viewIndex: {
-      type: Number,
+    viewId: {
+      type: String,
       required: true
     },
     artists: Array,
@@ -54,17 +54,17 @@ export default {
   data () {
     return {
       itemsInRow: 5,
-      listComponents: [
-        'BaseArtistsSimpleList',
-        'BaseArtistsTableList',
-        'BaseArtistsExtendedList'
-      ]
+      listComponentsData: {
+        simple: 'BaseArtistsSimpleList',
+        table: 'BaseArtistsTableList',
+        extended: 'BaseArtistsExtendedList'
+      }
     }
   },
   computed: {
     listComponent () {
-      return this.listComponents[
-        this.viewIndex
+      return this.listComponentsData[
+        this.viewId
       ]
     }
   }

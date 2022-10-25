@@ -14,11 +14,11 @@
         name="top"
       />
 
-      <BaseViewChangeButtons
+      <BaseViewChangeDropdown
         v-if="isWithViewChange"
         :scope="scope"
-        :view-index="viewIndex"
-        @view-button-click="handleViewButtonClick"
+        :view-id="viewId"
+        @select="handleViewSelect"
       />
     </BaseSegmentContainer>
 
@@ -51,8 +51,8 @@ import {
 } from 'vuex'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseViewChangeButtons
-  from '@/components/buttons/BaseViewChangeButtons.vue'
+import BaseViewChangeDropdown
+  from '@/components/dropdowns/BaseViewChangeDropdown.vue'
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 
@@ -60,11 +60,11 @@ export default {
   name: 'BasePaginatedPageContainer',
   components: {
     BaseSegmentContainer,
-    BaseViewChangeButtons,
+    BaseViewChangeDropdown,
     BasePaginatedSegmentContainer
   },
   inject: {
-    setViewIndex: {
+    setViewId: {
       default: () => false
     },
     getData: {
@@ -85,7 +85,7 @@ export default {
     isPaginationSimple: Boolean,
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
-    viewIndex: Number
+    viewId: String
   },
   data () {
     return {
@@ -105,7 +105,7 @@ export default {
       immediate: true,
       handler: 'handleResponseDataChange'
     },
-    viewIndex: 'handleViewIndexChange',
+    viewId: 'handleViewIdChange',
     isWithInfiniteScroll:
       'handleIsWithInfiniteScrollChange'
   },
@@ -115,14 +115,14 @@ export default {
     ) {
       this.responseDataComputed = value
     },
-    handleViewButtonClick (
+    handleViewSelect (
       value
     ) {
-      this.setViewIndex(
+      this.setViewId(
         value
       )
     },
-    handleViewIndexChange () {
+    handleViewIdChange () {
       this.refresh()
     },
     handleIsWithInfiniteScrollChange () {

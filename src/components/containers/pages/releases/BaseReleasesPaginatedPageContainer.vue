@@ -14,7 +14,7 @@
         :response-page-limit="responsePageLimit"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
-        :view-index="viewIndex"
+        :view-id="viewId"
       >
         <template #default="slotProps">
           <slot
@@ -51,7 +51,7 @@ export default {
     responsePageLimit: Number,
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
-    viewIndex: Number
+    viewId: String
   }
 }
 </script>

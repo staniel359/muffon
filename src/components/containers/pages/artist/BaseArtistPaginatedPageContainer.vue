@@ -15,7 +15,7 @@
         :artist-name="pageSlotProps.artistName"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
-        :view-index="viewIndex"
+        :view-id="viewId"
         :scope="scope"
         :limit="limit"
         :response-page-limit="pageSlotProps.responsePageLimit"
@@ -60,7 +60,7 @@ export default {
     limit: Number,
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
-    viewIndex: Number
+    viewId: String
   },
   methods: {
     handleRequestArtistDataChange () {

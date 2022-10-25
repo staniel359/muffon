@@ -4,7 +4,7 @@
     :artist-name="artistName"
     :scope="scope"
     :limit="limit"
-    :view-index="viewIndex"
+    :view-id="viewId"
     is-with-top-segment
     is-with-view-change
   >
@@ -18,7 +18,7 @@
       <BaseAlbumsList
         :albums="slotProps[scope]"
         :artist-name="slotProps.artistName"
-        :view-index="viewIndex"
+        :view-id="viewId"
         is-with-listeners-count
         is-with-library-option
         is-with-favorite-option

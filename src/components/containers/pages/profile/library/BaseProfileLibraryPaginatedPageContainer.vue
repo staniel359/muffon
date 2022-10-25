@@ -16,7 +16,7 @@
         :limit="limit"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
-        :view-index="viewIndex"
+        :view-id="viewId"
       >
         <template #top>
           <BaseProfileLibrarySearchInput
@@ -66,7 +66,7 @@ export default {
     isWithTopSegment: Boolean,
     isWithSearch: Boolean,
     isWithViewChange: Boolean,
-    viewIndex: Number
+    viewId: String
   },
   data () {
     return {

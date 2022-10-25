@@ -2,14 +2,14 @@
   <BaseTopPaginatedPageContainer
     :scope="scope"
     :limit="limit"
-    :view-index="viewIndex"
+    :view-id="viewId"
     is-with-top-segment
     is-with-country-select
     is-with-view-change
   >
     <template #default="slotProps">
       <BaseArtistsList
-        :view-index="viewIndex"
+        :view-id="viewId"
         :artists="slotProps[scope]"
         is-with-listeners-count
         is-with-library-option

@@ -1,31 +1,31 @@
 export default {
   provide () {
     return {
-      setViewIndex: this.setViewIndex
+      setViewId: this.setViewId
     }
   },
   data () {
     return {
-      viewIndex: 1,
-      viewLimits: [
-        50,
-        20,
-        10
-      ]
+      viewId: 'table',
+      viewLimitsData: {
+        simple: 50,
+        table: 20,
+        extended: 10
+      }
     }
   },
   computed: {
     limit () {
-      return this.viewLimits[
-        this.viewIndex
+      return this.viewLimitsData[
+        this.viewId
       ]
     }
   },
   methods: {
-    setViewIndex (
+    setViewId (
       value
     ) {
-      this.viewIndex = value
+      this.viewId = value
     }
   }
 }

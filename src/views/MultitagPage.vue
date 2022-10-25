@@ -6,7 +6,7 @@
     :error="error"
     :scope="scope"
     :limit="limit"
-    :view-index="viewIndex"
+    :view-id="viewId"
     :is-with-view-change="isWithViewChange"
     is-with-top-segment
   >
@@ -20,7 +20,7 @@
     <template #default="slotProps">
       <BaseArtistsList
         :artists="slotProps[scope]"
-        :view-index="viewIndex"
+        :view-id="viewId"
         is-with-listeners-count
         is-with-library-option
         is-with-favorite-option

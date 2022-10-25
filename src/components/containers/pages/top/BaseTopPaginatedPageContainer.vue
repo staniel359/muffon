@@ -15,7 +15,7 @@
         :limit="limit"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
-        :view-index="viewIndex"
+        :view-id="viewId"
       >
         <template
           v-if="isWithCountrySelect"
@@ -61,7 +61,7 @@ export default {
     isWithTopSegment: Boolean,
     isWithCountrySelect: Boolean,
     isWithViewChange: Boolean,
-    viewIndex: Number
+    viewId: String
   },
   data () {
     return {
