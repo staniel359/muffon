@@ -19,12 +19,11 @@
         :view-id="viewId"
       >
         <template #top>
-          <BaseProfileLibrarySearchInput
+          <SearchSection
             v-if="isWithSearch"
             :query="query"
-            :is-with-clear-button="isWithClearButton"
-            @clear-button-click="handleClearButtonClick"
             @submit="handleSearchSubmit"
+            @clear="handleSearchClear"
           />
         </template>
 
@@ -45,8 +44,8 @@ import BaseProfileLibraryPageContainer
   from './BaseProfileLibraryPageContainer.vue'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
-import BaseProfileLibrarySearchInput
-  from '@/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
+import SearchSection
+  from './BaseProfileLibraryPaginatedPageContainer/SearchSection.vue'
 import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
@@ -54,7 +53,7 @@ export default {
   components: {
     BaseProfileLibraryPageContainer,
     BasePaginatedPageContainer,
-    BaseProfileLibrarySearchInput
+    SearchSection
   },
   mixins: [
     paginatedPageMixin
@@ -73,11 +72,6 @@ export default {
       query: ''
     }
   },
-  computed: {
-    isWithClearButton () {
-      return !!this.query.length
-    }
-  },
   watch: {
     query: 'handleQueryChange'
   },
@@ -87,7 +81,7 @@ export default {
     ) {
       this.query = value
     },
-    handleClearButtonClick () {
+    handleSearchClear () {
       this.query = ''
     },
     handleQueryChange () {

@@ -33,6 +33,9 @@ export default {
     'clearButtonClick',
     'submit'
   ],
+  mounted () {
+    this.focus()
+  },
   methods: {
     handleSubmit (
       value
@@ -66,4 +69,5 @@ export default {
 <style lang="sass" scoped>
 .search-container
   @extend .d-flex, .align-items-center
+  margin-left: 0.75em
 </style>
