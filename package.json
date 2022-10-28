@@ -32,11 +32,11 @@
     "@emoji-mart/data": "^1.0.6",
     "axios": "^1.1.3",
     "camel-case": "^4.1.2",
-    "core-js": "^3.25.5",
+    "core-js": "^3.26.0",
     "crypto-js": "^4.1.1",
     "deepmerge": "^4.2.2",
     "dotenv": "^16.0.3",
-    "electron-dl": "^3.4.0",
+    "electron-dl": "^3.4.1",
     "electron-store": "^8.1.0",
     "emoji-mart": "^5.2.2",
     "fomantic-ui": "^2.9.0",
@@ -51,7 +51,7 @@
     "uuid": "^9.0.0",
     "vue": "^3.2.41",
     "vue-i18n": "^9.2.2",
-    "vue-router": "^4.1.5",
+    "vue-router": "^4.1.6",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
