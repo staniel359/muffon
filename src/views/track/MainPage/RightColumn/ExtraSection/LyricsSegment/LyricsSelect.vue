@@ -12,9 +12,12 @@
       :is-loading="isLoading"
       :is-error="isError"
       :is-disabled="!isAnyTracks"
+      @select="handleSelect"
     >
-      <TracksList
-        :tracks="tracks"
+      <TrackItem
+        v-for="trackData in tracksCollection"
+        :key="trackData.uuid"
+        :track-data="trackData"
       />
     </BaseDropdownContainer>
   </div>
@@ -23,16 +26,22 @@
 <script>
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseDropdownContainer
-  from '@/components/containers/BaseDropdownContainer.vue'
-import TracksList from './LyricsSelect/TracksList.vue'
+  from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
+import TrackItem from './LyricsSelect/TrackItem.vue'
+import {
+  collection as formatCollection
+} from '@/helpers/formatters'
 
 export default {
   name: 'LyricsSelect',
   components: {
     BaseSourceIcon,
     BaseDropdownContainer,
-    TracksList
+    TrackItem
   },
+  inject: [
+    'setSelectedTrackData'
+  ],
   props: {
     tracks: {
       type: Array,
@@ -62,6 +71,33 @@ export default {
     },
     isAnyTracks () {
       return !!this.tracks.length
+    },
+    tracksCollection () {
+      return formatCollection(
+        this.tracks
+      )
+    }
+  },
+  methods: {
+    handleSelect (
+      value
+    ) {
+      function isMatchedTrack (
+        trackData
+      ) {
+        return (
+          trackData.uuid === value
+        )
+      }
+
+      const trackData =
+        this.tracksCollection.find(
+          isMatchedTrack
+        )
+
+      this.setSelectedTrackData(
+        trackData
+      )
     }
   }
 }

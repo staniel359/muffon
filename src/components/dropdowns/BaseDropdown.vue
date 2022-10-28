@@ -17,8 +17,12 @@
     >
       <BaseIcon
         v-if="optionData.icon"
-        class="colored main-dropdown-icon"
+        class="main-dropdown-icon"
+        :class="{
+          colored: isColored
+        }"
         :icon="optionData.icon"
+        :is-flag="isFlagIcon"
       />
 
       {{ optionData.name }}
@@ -28,7 +32,7 @@
 
 <script>
 import BaseDropdownContainer
-  from '@/components/containers/BaseDropdownContainer.vue'
+  from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   collection as formatCollection
@@ -53,7 +57,8 @@ export default {
     isOnlyIcon: Boolean,
     menuDirection: String,
     header: String,
-    isColored: Boolean
+    isColored: Boolean,
+    isFlagIcon: Boolean
   },
   emits: [
     'select'

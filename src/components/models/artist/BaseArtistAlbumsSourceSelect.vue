@@ -28,9 +28,9 @@
 </template>
 
 <script>
-import SourceSelect from './BaseAlbumsSourceSelect/SourceSelect.vue'
-import ArtistSelect from './BaseAlbumsSourceSelect/ArtistSelect.vue'
-import TypeSelect from './BaseAlbumsSourceSelect/TypeSelect.vue'
+import SourceSelect from './BaseArtistAlbumsSourceSelect/SourceSelect.vue'
+import ArtistSelect from './BaseArtistAlbumsSourceSelect/ArtistSelect.vue'
+import TypeSelect from './BaseArtistAlbumsSourceSelect/TypeSelect.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   generateKey

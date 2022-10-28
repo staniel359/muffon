@@ -14,7 +14,7 @@
         name="top"
       />
 
-      <BaseViewChangeDropdown
+      <BaseViewSelect
         v-if="isWithViewChange"
         :scope="scope"
         :view-id="viewId"
@@ -51,8 +51,7 @@ import {
 } from 'vuex'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseViewChangeDropdown
-  from '@/components/dropdowns/BaseViewChangeDropdown.vue'
+import BaseViewSelect from '@/components/selects/BaseViewSelect.vue'
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 
@@ -60,7 +59,7 @@ export default {
   name: 'BasePaginatedPageContainer',
   components: {
     BaseSegmentContainer,
-    BaseViewChangeDropdown,
+    BaseViewSelect,
     BasePaginatedSegmentContainer
   },
   inject: {

@@ -12,7 +12,7 @@
 
 <script>
 import BaseDropdownContainer
-  from '@/components/containers/BaseDropdownContainer.vue'
+  from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
 import SourcesList from './SourceSelect/SourcesList.vue'
 
 export default {

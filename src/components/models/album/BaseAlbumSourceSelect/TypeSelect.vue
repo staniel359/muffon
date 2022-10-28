@@ -2,33 +2,53 @@
   <BaseDropdownContainer
     class="main-source-select-type-select"
     :header="headerText"
+    @select="handleSelect"
   >
-    <TypesList
+    <TypeItem
+      v-for="(type, index) in types"
+      :key="index"
+      :type-id="type"
       :albums-data="albumsData"
-      :types="types"
     />
   </BaseDropdownContainer>
 </template>
 
 <script>
 import BaseDropdownContainer
-  from '@/components/containers/BaseDropdownContainer.vue'
-import TypesList from './TypeSelect/TypesList.vue'
+  from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
+import TypeItem from './TypeSelect/TypeItem.vue'
 
 export default {
   name: 'TypeSelect',
   components: {
     BaseDropdownContainer,
-    TypesList
+    TypeItem
   },
+  inject: [
+    'setSelectedTypeId'
+  ],
   props: {
-    albumsData: Object,
-    types: Array
+    types: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    albumsData: Object
   },
   computed: {
     headerText () {
       return this.$t(
         'select.type'
+      )
+    }
+  },
+  methods: {
+    handleSelect (
+      value
+    ) {
+      this.setSelectedTypeId(
+        value
       )
     }
   }

@@ -53,7 +53,8 @@ export default {
   },
   provide () {
     return {
-      setSelectedVideoData: this.setSelectedVideoData
+      setSelectedVideoData:
+        this.setSelectedVideoData
     }
   },
   props: {
@@ -100,7 +101,9 @@ export default {
     setSelectedVideoData (
       value
     ) {
-      this.selectedVideoData = value
+      this.selectedVideoData = {
+        ...value
+      }
     },
     focus () {
       focusOnSegment(

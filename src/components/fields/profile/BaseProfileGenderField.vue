@@ -1,31 +1,23 @@
 <template>
   <div class="field">
-    <BaseDropdownContainer
+    <BaseDropdown
       input-type="hidden"
       input-name="gender"
       :header="genderText"
+      :options="optionsFormatted"
       :selected="value"
       is-form-field
-    >
-      <div
-        v-for="(option, index) in options"
-        :key="index"
-        class="item"
-        :data-value="option"
-        v-text="formatOptionText(option)"
-      />
-    </BaseDropdownContainer>
+    />
   </div>
 </template>
 
 <script>
-import BaseDropdownContainer
-  from '@/components/containers/BaseDropdownContainer.vue'
+import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 
 export default {
   name: 'BaseProfileGenderField',
   components: {
-    BaseDropdownContainer
+    BaseDropdown
   },
   props: {
     value: String
@@ -44,15 +36,23 @@ export default {
       return this.$t(
         'forms.fields.gender'
       )
+    },
+    optionsFormatted () {
+      return this.options.map(
+        this.formatOption
+      )
     }
   },
   methods: {
-    formatOptionText (
+    formatOption (
       option
     ) {
-      return this.$t(
-        `forms.fields.genders.${option}`
-      )
+      return {
+        id: option,
+        name: this.$t(
+          `forms.fields.genders.${option}`
+        )
+      }
     }
   }
 }

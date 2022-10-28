@@ -1,6 +1,6 @@
 <template>
   <div class="field">
-    <BaseCountriesDropdown
+    <BaseCountrySelect
       :selected="value"
       is-form-field
     />
@@ -8,13 +8,12 @@
 </template>
 
 <script>
-import BaseCountriesDropdown
-  from '@/components/dropdowns/BaseCountriesDropdown.vue'
+import BaseCountrySelect from '@/components/selects/BaseCountrySelect.vue'
 
 export default {
   name: 'BaseProfileCountryField',
   components: {
-    BaseCountriesDropdown
+    BaseCountrySelect
   },
   props: {
     value: String

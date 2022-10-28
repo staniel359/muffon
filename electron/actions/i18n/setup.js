@@ -19,11 +19,11 @@ const defaultLocale =
 
 function importLocaleFile (
   {
-    code
+    id
   }
 ) {
   return require(
-    `../../../shared/locales/${code}.json`
+    `../../../shared/locales/${id}.json`
   )
 }
 

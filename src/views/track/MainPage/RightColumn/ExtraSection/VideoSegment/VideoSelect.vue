@@ -13,9 +13,12 @@
       :is-loading="isLoading"
       :is-error="isError"
       :is-disabled="!isAnyVideos"
+      @select="handleSelect"
     >
-      <VideosList
-        :videos="videos"
+      <VideoItem
+        v-for="videoData in videosCollection"
+        :key="videoData.uuid"
+        :video-data="videoData"
       />
     </BaseDropdownContainer>
   </div>
@@ -24,16 +27,22 @@
 <script>
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseDropdownContainer
-  from '@/components/containers/BaseDropdownContainer.vue'
-import VideosList from './VideoSelect/VideosList.vue'
+  from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
+import VideoItem from './VideoSelect/VideoItem.vue'
+import {
+  collection as formatCollection
+} from '@/helpers/formatters'
 
 export default {
   name: 'VideoSelect',
   components: {
     BaseSourceIcon,
     BaseDropdownContainer,
-    VideosList
+    VideoItem
   },
+  inject: [
+    'setSelectedVideoData'
+  ],
   props: {
     videos: {
       type: Array,
@@ -63,6 +72,33 @@ export default {
     },
     isAnyVideos () {
       return !!this.videos.length
+    },
+    videosCollection () {
+      return formatCollection(
+        this.videos
+      )
+    }
+  },
+  methods: {
+    handleSelect (
+      value
+    ) {
+      function isMatchedVideo (
+        videoData
+      ) {
+        return (
+          videoData.uuid === value
+        )
+      }
+
+      const videoData =
+        this.videosCollection.find(
+          isMatchedVideo
+        )
+
+      this.setSelectedVideoData(
+        videoData
+      )
     }
   }
 }

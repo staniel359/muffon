@@ -4,12 +4,13 @@
     :class="{
       disabled: isDisabled
     }"
+    :data-value="value"
   >
     <BaseIcon
       v-if="icon"
       class="main-dropdown-icon"
       :class="{
-        colored: isIconColored
+        colored: isColored
       }"
       :icon="icon"
       :is-loading="isLoading"
@@ -61,7 +62,7 @@ export default {
     isWithImage: Boolean,
     isDisabled: Boolean,
     icon: String,
-    isIconColored: Boolean,
+    isColored: Boolean,
     isLoading: Boolean,
     isError: Boolean,
     image: String,
@@ -69,7 +70,8 @@ export default {
     header: String,
     subheader: String,
     content: String,
-    extra: String
+    extra: String,
+    value: String
   }
 }
 </script>

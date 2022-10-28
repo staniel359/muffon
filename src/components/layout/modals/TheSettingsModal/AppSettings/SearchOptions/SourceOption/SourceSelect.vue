@@ -2,8 +2,9 @@
   <BaseDropdownContainer
     class="main-source-select source-select"
     :selected="searchSource"
+    @select="handleSelect"
   >
-    <SourcesList />
+    <BaseSourcesList />
   </BaseDropdownContainer>
 </template>
 
@@ -12,14 +13,17 @@ import {
   mapState
 } from 'vuex'
 import BaseDropdownContainer
-  from '@/components/containers/BaseDropdownContainer.vue'
-import SourcesList from './SourceSelect/SourcesList.vue'
+  from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
+import BaseSourcesList from '@/components/lists/sources/BaseSourcesList.vue'
+import {
+  updateGlobal as updateGlobalStore
+} from '@/helpers/actions/store'
 
 export default {
   name: 'SourceSelect',
   components: {
     BaseDropdownContainer,
-    SourcesList
+    BaseSourcesList
   },
   computed: {
     ...mapState(
@@ -28,6 +32,17 @@ export default {
         searchSource: 'source'
       }
     )
+  },
+  methods: {
+    handleSelect (
+      value
+    ) {
+      updateGlobalStore(
+        {
+          'search.source': value
+        }
+      )
+    }
   }
 }
 </script>

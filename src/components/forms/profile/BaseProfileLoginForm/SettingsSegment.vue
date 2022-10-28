@@ -2,7 +2,7 @@
   <BaseSegmentContainer
     class="settings-segment"
   >
-    <BaseLanguageDropdown />
+    <BaseLanguageSelect />
 
     <DarkModeBlock />
   </BaseSegmentContainer>
@@ -11,15 +11,14 @@
 <script>
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseLanguageDropdown
-  from '@/components/dropdowns/BaseLanguageDropdown.vue'
+import BaseLanguageSelect from '@/components/selects/BaseLanguageSelect.vue'
 import DarkModeBlock from './SettingsSegment/DarkModeBlock.vue'
 
 export default {
   name: 'SettingsSegment',
   components: {
     BaseSegmentContainer,
-    BaseLanguageDropdown,
+    BaseLanguageSelect,
     DarkModeBlock
   }
 }

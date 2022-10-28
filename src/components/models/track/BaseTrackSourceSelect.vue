@@ -111,7 +111,9 @@ export default {
     setSelectedTrackData (
       value
     ) {
-      this.selectedTrackData = value
+      this.selectedTrackData = {
+        ...value
+      }
     },
     resetSelect () {
       this.$refs

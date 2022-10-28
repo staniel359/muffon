@@ -6,7 +6,7 @@
     :is-loading="isLoading"
     :is-error="isError"
     :is-disabled="isDisabled"
-    is-icon-colored
+    is-colored
     @click="handleClick"
   />
 </template>

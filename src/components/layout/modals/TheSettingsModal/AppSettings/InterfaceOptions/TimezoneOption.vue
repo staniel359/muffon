@@ -6,20 +6,19 @@
       :text="timezoneText"
     />
 
-    <BaseTimezoneDropdown />
+    <BaseTimezoneSelect />
   </div>
 </template>
 
 <script>
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseTimezoneDropdown
-  from '@/components/dropdowns/BaseTimezoneDropdown.vue'
+import BaseTimezoneSelect from '@/components/selects/BaseTimezoneSelect.vue'
 
 export default {
   name: 'TimezoneOption',
   components: {
     BaseHeader,
-    BaseTimezoneDropdown
+    BaseTimezoneSelect
   },
   computed: {
     timezoneText () {

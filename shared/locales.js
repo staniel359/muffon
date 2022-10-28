@@ -1,19 +1,19 @@
 const locales = [
   {
-    code: 'be',
-    text: 'Беларуская'
+    id: 'be',
+    name: 'Беларуская'
   },
   {
-    code: 'en',
-    text: 'English'
+    id: 'en',
+    name: 'English'
   },
   {
-    code: 'it',
-    text: 'Italiano'
+    id: 'it',
+    name: 'Italiano'
   },
   {
-    code: 'ru',
-    text: 'Русский'
+    id: 'ru',
+    name: 'Русский'
   }
 ]
 
@@ -24,18 +24,18 @@ function formatLocales (
 ) {
   function formatLocale (
     {
-      code
+      id
     }
   ) {
     const locale =
       importLocaleFile(
         {
-          code
+          id
         }
       )
 
     return [
-      code,
+      id,
       locale
     ]
   }

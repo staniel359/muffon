@@ -1,13 +1,4 @@
 import audioSources from '@/helpers/data/audio/sources'
-import {
-  collection as formatCollection
-} from '@/helpers/formatters'
-
-export function streamableCollection () {
-  return formatCollection(
-    streamable()
-  )
-}
 
 export function streamable () {
   return audioSources.filter(
@@ -21,9 +12,9 @@ function isSourceStreamable (
   return sourceData.isStreamable
 }
 
-function otherCollection () {
-  return formatCollection(
-    other()
+export function otherWithAlbums () {
+  return other().filter(
+    isSourceWithAlbums
   )
 }
 
@@ -39,20 +30,14 @@ function isSourceNotStreamable (
   return !sourceData.isStreamable
 }
 
-export function otherWithAlbumsCollection () {
-  return otherCollection().filter(
-    isSourceWithAlbums
-  )
-}
-
 function isSourceWithAlbums (
   sourceData
 ) {
   return sourceData.isWithAlbums
 }
 
-export function otherWithTracksCollection () {
-  return otherCollection().filter(
+export function otherWithTracks () {
+  return other().filter(
     isSourceWithTracks
   )
 }
@@ -63,7 +48,7 @@ function isSourceWithTracks (
   return sourceData.isWithTracks
 }
 
-export function allWithAlbumsCollection () {
+export function allWithAlbums () {
   return audioSources.filter(
     isSourceWithAlbums
   )

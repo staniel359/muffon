@@ -2,10 +2,9 @@
   <BaseDropdownContainer
     class="main-source-select"
     :selected="playerSource"
+    @select="handleSelect"
   >
-    <BasePlayerSourcesList
-      @select="handleSelect"
-    />
+    <BaseStreamableSourcesList />
   </BaseDropdownContainer>
 </template>
 
@@ -14,9 +13,9 @@ import {
   mapState
 } from 'vuex'
 import BaseDropdownContainer
-  from '@/components/containers/BaseDropdownContainer.vue'
-import BasePlayerSourcesList
-  from '@/components/lists/player/BasePlayerSourcesList.vue'
+  from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
+import BaseStreamableSourcesList
+  from '@/components/lists/sources/BaseStreamableSourcesList.vue'
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
@@ -25,7 +24,7 @@ export default {
   name: 'SourceSelect',
   components: {
     BaseDropdownContainer,
-    BasePlayerSourcesList
+    BaseStreamableSourcesList
   },
   computed: {
     ...mapState(

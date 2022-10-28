@@ -1,6 +1,5 @@
 <template>
   <i
-    class="icon"
     :class="iconConditional"
     @click="handleClick"
   >
@@ -17,19 +16,22 @@ export default {
   props: {
     isLoading: Boolean,
     isError: Boolean,
-    icon: String
+    icon: String,
+    isFlag: Boolean
   },
   emits: [
     'click'
   ],
   computed: {
     iconConditional () {
-      if (this.isLoading) {
-        return null
+      if (this.isFlag) {
+        return `${this.icon} flag`
+      } else if (this.isLoading) {
+        return 'icon'
       } else if (this.isError) {
-        return 'close'
+        return 'close icon'
       } else {
-        return this.icon
+        return `${this.icon} icon`
       }
     }
   },

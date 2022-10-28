@@ -65,7 +65,8 @@ export default {
   },
   provide () {
     return {
-      setSelectedTrackData: this.setSelectedTrackData
+      setSelectedTrackData:
+        this.setSelectedTrackData
     }
   },
   props: {
@@ -115,7 +116,9 @@ export default {
     setSelectedTrackData (
       value
     ) {
-      this.selectedTrackData = value
+      this.selectedTrackData = {
+        ...value
+      }
     },
     focus () {
       focusOnSegment(

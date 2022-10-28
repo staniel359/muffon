@@ -5,8 +5,8 @@
   />
 
   <SourceItem
-    v-for="sourceData in streamableSourcesCollection"
-    :key="sourceData.uuid"
+    v-for="sourceData in streamableSources"
+    :key="sourceData.id"
     :source-data="sourceData"
     :query="query"
     is-with-max-bitrate
@@ -20,8 +20,8 @@
   />
 
   <SourceItem
-    v-for="sourceData in otherSourcesWithAlbumsCollection"
-    :key="sourceData.uuid"
+    v-for="sourceData in otherSourcesWithAlbums"
+    :key="sourceData.id"
     :query="query"
     :source-data="sourceData"
   />
@@ -30,8 +30,8 @@
 <script>
 import SourceItem from './SourcesList/SourceItem.vue'
 import {
-  streamableCollection as getStreamableSourcesCollection,
-  otherWithAlbumsCollection as getOtherSourcesWithAlbumsCollection
+  streamable as getStreamableSources,
+  otherWithAlbums as getOtherSourcesWithAlbums
 } from '@/helpers/formatters/sources'
 
 export default {
@@ -48,16 +48,16 @@ export default {
         'sources.streamable'
       )
     },
-    streamableSourcesCollection () {
-      return getStreamableSourcesCollection()
+    streamableSources () {
+      return getStreamableSources()
     },
     otherText () {
       return this.$t(
         'sources.other'
       )
     },
-    otherSourcesWithAlbumsCollection () {
-      return getOtherSourcesWithAlbumsCollection()
+    otherSourcesWithAlbums () {
+      return getOtherSourcesWithAlbums()
     }
   }
 }

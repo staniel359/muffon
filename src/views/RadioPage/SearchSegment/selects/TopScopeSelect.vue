@@ -1,5 +1,5 @@
 <template>
-  <BaseScopesDropdown
+  <BaseScopeSelect
     header="..."
     :scopes="scopes"
     @select="handleSelect"
@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import BaseScopesDropdown from '@/components/dropdowns/BaseScopesDropdown.vue'
+import BaseScopeSelect from '@/components/selects/BaseScopeSelect.vue'
 
 export default {
   name: 'TopScopeSelect',
   components: {
-    BaseScopesDropdown
+    BaseScopeSelect
   },
   emits: [
     'select'

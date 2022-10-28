@@ -1,5 +1,5 @@
 <template>
-  <BaseScopesDropdown
+  <BaseScopeSelect
     class="scope-select-container"
     :scopes="scopes"
     :selected="scope"
@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import BaseScopesDropdown from '@/components/dropdowns/BaseScopesDropdown.vue'
+import BaseScopeSelect from '@/components/selects/BaseScopeSelect.vue'
 
 export default {
   name: 'SearchScopeSelect',
   components: {
-    BaseScopesDropdown
+    BaseScopeSelect
   },
   props: {
     scope: {

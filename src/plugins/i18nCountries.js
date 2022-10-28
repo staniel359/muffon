@@ -5,12 +5,12 @@ import {
 
 function addLocale (
   {
-    code
+    id
   }
 ) {
   const locale =
     require(
-      `i18n-iso-countries/langs/${code}.json`
+      `i18n-iso-countries/langs/${id}.json`
     )
 
   countries.registerLocale(

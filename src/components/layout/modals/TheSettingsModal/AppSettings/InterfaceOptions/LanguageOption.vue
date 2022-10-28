@@ -6,20 +6,19 @@
       :text="languageText"
     />
 
-    <BaseLanguageDropdown />
+    <BaseLanguageSelect />
   </div>
 </template>
 
 <script>
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseLanguageDropdown
-  from '@/components/dropdowns/BaseLanguageDropdown.vue'
+import BaseLanguageSelect from '@/components/selects/BaseLanguageSelect.vue'
 
 export default {
   name: 'LanguageOption',
   components: {
     BaseHeader,
-    BaseLanguageDropdown
+    BaseLanguageSelect
   },
   computed: {
     languageText () {

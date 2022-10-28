@@ -1,6 +1,6 @@
 <template>
   <div class="main-country-select-section">
-    <BaseCountriesDropdown
+    <BaseCountrySelect
       :key="key"
       class="country-select"
       :selected="country"
@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import BaseCountriesDropdown
-  from '@/components/dropdowns/BaseCountriesDropdown.vue'
+import BaseCountrySelect from '@/components/selects/BaseCountrySelect.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   generateKey
@@ -25,7 +24,7 @@ import {
 export default {
   name: 'BaseCountrySelectSection',
   components: {
-    BaseCountriesDropdown,
+    BaseCountrySelect,
     BaseClearButton
   },
   props: {
