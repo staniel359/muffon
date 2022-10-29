@@ -343,7 +343,6 @@
     "source": "Seleziona fonte:",
     "type": "Seleziona tipo:",
     "album": "Seleziona album:",
-    "albumVarious": "Seleziona album V/A:",
     "group": "Seleziona gruppo album:",
     "artist": "Seleziona artista:",
     "track": "Seleziona brano:",
@@ -356,7 +355,6 @@
     "other": "Altro",
     "albumTypes": {
       "album": "Album",
-      "albumVarious": "Album V/A",
       "group": "Gruppo album",
       "track": "Brano"
     },
@@ -641,6 +639,11 @@
     },
     "decline": "No, grazie",
     "accept": "Sí, certamente!"
+  },
+  "lists": {
+    "simple": "Lista semplice",
+    "table": "Tabella",
+    "extended": "Lista dettagliata"
   },
   "error": "Errore",
   "more": "Altro...",
