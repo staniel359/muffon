@@ -56,7 +56,7 @@ export default {
       return this.trackData.player_id
     },
     duration () {
-      return this.trackData.duration_seconds
+      return this.trackData.duration
     },
     isAudioPresent () {
       return !!this.trackData.audio?.present

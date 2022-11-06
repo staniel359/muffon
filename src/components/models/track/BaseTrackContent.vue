@@ -348,7 +348,10 @@ export default {
       )
     },
     duration () {
-      return this.trackData.duration_seconds
+      return (
+        this.trackData.duration_seconds ||
+          this.trackData.duration
+      )
     },
     isRenderSource () {
       return (

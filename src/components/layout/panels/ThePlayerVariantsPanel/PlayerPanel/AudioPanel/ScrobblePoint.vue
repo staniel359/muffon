@@ -96,7 +96,7 @@ export default {
       return this.playerPlaying.album?.title
     },
     duration () {
-      return this.playerPlaying.duration_seconds
+      return this.playerPlaying.duration
     },
     isToSaveScrobble () {
       return (
