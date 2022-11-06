@@ -62,7 +62,7 @@ export default {
       )
     },
     audioDuration () {
-      return this.playerPlaying.duration_seconds
+      return this.playerPlaying.duration
     },
     audioLocal () {
       return this.playerPlaying.audio.local
