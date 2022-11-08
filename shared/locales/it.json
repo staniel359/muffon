@@ -319,6 +319,7 @@
       "artists": "{count} artista | {count} artisti",
       "albums": "{count} album | {count} album",
       "tracks": "{count} brano | {count} brani",
+      "videos": "{count} video | {count} video",
       "files": "{count} file | {count} file",
       "followers": "{count} follower | {count} follower",
       "following": "{count} following",
@@ -391,6 +392,8 @@
         "queue": "Coda",
         "video": "Video",
         "recommendations": "Suggerimenti",
+        "top": "Top",
+        "lyrics": "Testi",
         "data": "Dati"
       },
       "profile": {
@@ -403,7 +406,8 @@
           "language": "Lingua",
           "timezone": "Fuso orario",
           "infiniteScroll": "Scroll infinito",
-          "artistPopup": "Mostra informazioni sull’artista al passaggio del mouse"
+          "artistPopup": "Mostra informazioni sull’artista al passaggio del mouse",
+          "cachePages": "Salva le pagine nella cache"
         },
         "theme": {
           "dark": "Modalità scura",
@@ -438,6 +442,12 @@
         "recommendations": {
           "hideLibraryArtists": "Nascondi artisti della libreria",
           "tracksCount": "con conteggio brani"
+        },
+        "top": {
+          "country": "Paese predefinito"
+        },
+        "lyrics": {
+          "annotations": "Mostra annotazioni"
         },
         "data": {
           "cache": {
@@ -571,6 +581,7 @@
     "header": {
       "artists": "Nessun artista",
       "albums": "Nessun album",
+      "groups": "Nessun gruppo album",
       "tracks": "Nessun brano",
       "similar": "Nessun simile",
       "tags": "Nessun tag",
@@ -628,6 +639,11 @@
     },
     "decline": "No, grazie",
     "accept": "Sí, certamente!"
+  },
+  "lists": {
+    "simple": "Lista semplice",
+    "table": "Tabella",
+    "extended": "Lista dettagliata"
   },
   "error": "Errore",
   "more": "Altro...",
