@@ -53,3 +53,9 @@ export function allWithAlbums () {
     isSourceWithAlbums
   )
 }
+
+export function allWithTracks () {
+  return audioSources.filter(
+    isSourceWithTracks
+  )
+}

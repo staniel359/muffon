@@ -6,6 +6,7 @@
     :selected="source"
     :is-selection="false"
     is-only-icon
+    is-colored
     @select="handleSelect"
   />
 </template>
@@ -13,7 +14,7 @@
 <script>
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import {
-  streamable as getStreamableSources
+  allWithTracks as getSourcesWithTracks
 } from '@/helpers/formatters/sources'
 
 export default {
@@ -29,7 +30,7 @@ export default {
   ],
   computed: {
     sources () {
-      return getStreamableSources()
+      return getSourcesWithTracks()
     }
   },
   methods: {
