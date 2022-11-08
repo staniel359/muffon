@@ -6,7 +6,8 @@ export default function (
     albumTitle,
     artistName,
     tracks,
-    imageUrl
+    imageUrl,
+    sourceData
   }
 ) {
   this.libraryId = null
@@ -21,7 +22,8 @@ export default function (
     title: albumTitle,
     artist: artistName,
     tracks,
-    image: imageUrl
+    image: imageUrl,
+    source: sourceData
   }
 
   const handleSuccess = (

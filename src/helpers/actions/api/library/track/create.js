@@ -8,7 +8,10 @@ export default function (
     albumTitle,
     image,
     imageUrl,
-    created
+    created,
+    sourceData,
+    audioData,
+    albumSourceData
   }
 ) {
   this.libraryId = null
@@ -26,7 +29,11 @@ export default function (
     image: (
       image || imageUrl
     ),
-    created
+    created,
+    source: sourceData,
+    audio: audioData,
+    album_source:
+      albumSourceData
   }
 
   const handleSuccess = (

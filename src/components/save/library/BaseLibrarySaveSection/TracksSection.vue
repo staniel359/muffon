@@ -138,14 +138,26 @@ export default {
       )
     },
     formatTrack (
-      track
+      trackData
     ) {
       return {
-        trackTitle: track.title,
-        artistName: track.artist.name,
-        albumTitle: track.album?.title,
-        image: track.image?.large,
-        created: track.created
+        trackTitle: trackData.title,
+        artistName:
+          trackData.artist.name,
+        albumTitle:
+          trackData.album?.title,
+        image:
+          trackData.image?.large,
+        created: trackData.created,
+        sourceData: trackData.source,
+        audioData: (
+          trackData.audio && {
+            present:
+              trackData.audio.present
+          }
+        ),
+        albumSourceData:
+          trackData.album?.source
       }
     },
     setProgressTotalCount () {

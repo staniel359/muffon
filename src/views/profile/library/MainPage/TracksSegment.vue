@@ -14,6 +14,7 @@
         is-with-image
         is-with-artist-name
         is-with-album-title
+        is-with-source
         is-with-created
         is-link-to-library
         is-with-playlist-option

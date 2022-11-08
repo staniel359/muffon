@@ -3,6 +3,7 @@
     :is="component"
     ref="input"
     class="search-input"
+    :source="source"
     :[scope]="collection"
     @select="handleSelect"
   />
@@ -29,6 +30,7 @@ export default {
       type: String,
       required: true
     },
+    source: String,
     collection: Array,
     isSave: Boolean
   },
