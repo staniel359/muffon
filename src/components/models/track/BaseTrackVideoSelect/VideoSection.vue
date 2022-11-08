@@ -28,7 +28,7 @@ import {
 } from '@/helpers/formatters/links/video'
 
 export default {
-  name: 'VideoData',
+  name: 'VideoSection',
   components: {
     BaseVideo,
     BaseLinkContainer

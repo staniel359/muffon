@@ -37,8 +37,10 @@
         <BasePlaylistOptionsDropdown
           class="playlist-options"
           :playlist-data="playlistData"
+          :is-with-add-option="isSelf"
           :is-with-edit-option="isSelf"
           :is-with-delete-option="isSelf"
+          :is-scrolling="false"
           is-with-share-option
           is-delete-with-redirect
         />

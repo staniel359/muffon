@@ -1,21 +1,16 @@
 <template>
-  <div
-    class="item"
+  <BaseOption
+    icon="share"
+    :text="shareText"
     @click="handleClick"
-  >
-    <BaseIcon
-      icon="share"
-    />
-
-    {{ shareText }}
-  </div>
+  />
 </template>
 
 <script>
 import {
   AES
 } from 'crypto-js'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseOption from './BaseOption.vue'
 import {
   setToast
 } from '@/helpers/actions/plugins/semantic'
@@ -23,7 +18,7 @@ import {
 export default {
   name: 'BaseShareOption',
   components: {
-    BaseIcon
+    BaseOption
   },
   props: {
     shareData: {

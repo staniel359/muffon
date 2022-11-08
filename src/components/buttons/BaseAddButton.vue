@@ -1,18 +1,29 @@
 <template>
-  <BaseOption
-    icon="file audio"
+  <BaseButton
+    class="basic circular"
+    icon="plus"
+    :class="{
+      active: isActive
+    }"
     :text="addText"
     @click="handleClick"
   />
 </template>
 
 <script>
-import BaseOption from './BaseOption.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
-  name: 'BasePlaylistOption',
+  name: 'BaseAddButton',
   components: {
-    BaseOption
+    BaseButton
+  },
+  props: {
+    model: {
+      type: String,
+      required: true
+    },
+    isActive: Boolean
   },
   emits: [
     'click'
@@ -20,7 +31,7 @@ export default {
   computed: {
     addText () {
       return this.$t(
-        'actions.addTo.playlist'
+        `actions.addModel.${this.model}`
       )
     }
   },

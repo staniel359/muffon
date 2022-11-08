@@ -114,6 +114,9 @@ p
     padding: 0.5em !important
 
 .ui.dropdown
+  &.button
+    .menu
+      min-width: max-content !important
   &.pointing.upward
     &.inverted
       & > .menu:after
@@ -863,8 +866,8 @@ p
 .main-options-dropdown-container
   .item
     &:hover
-      .icon
-        &:not(.trash, .close)
+      & > .icon
+        &:not(.trash, .close, .dropdown)
           @extend .text-color-base
 
 .main-video

@@ -1,23 +1,18 @@
 <template>
-  <div
-    class="item"
+  <BaseOption
+    icon="edit"
+    :text="editText"
     @click="handleClick"
-  >
-    <BaseIcon
-      icon="edit"
-    />
-
-    {{ editText }}
-  </div>
+  />
 </template>
 
 <script>
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseOption from './BaseOption.vue'
 
 export default {
   name: 'BaseEditOption',
   components: {
-    BaseIcon
+    BaseOption
   },
   emits: [
     'click'

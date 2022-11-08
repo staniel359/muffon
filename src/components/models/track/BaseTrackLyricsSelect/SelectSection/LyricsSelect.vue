@@ -2,23 +2,22 @@
   <div class="main-track-dropdown-container">
     <div class="main-track-dropdown-logo-container">
       <BaseSourceIcon
-        source="youtube"
-        size="large"
+        source="genius"
       />
     </div>
 
     <BaseDropdownContainer
-      class="main-source-select"
+      class="lyrics-select"
       :header="headerText"
       :is-loading="isLoading"
       :is-error="isError"
-      :is-disabled="!isAnyVideos"
+      :is-disabled="!isAnyTracks"
       @select="handleSelect"
     >
-      <VideoItem
-        v-for="videoData in videosCollection"
-        :key="videoData.uuid"
-        :video-data="videoData"
+      <TrackItem
+        v-for="trackData in tracksCollection"
+        :key="trackData.uuid"
+        :track-data="trackData"
       />
     </BaseDropdownContainer>
   </div>
@@ -28,23 +27,23 @@
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseDropdownContainer
   from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
-import VideoItem from './VideoSelect/VideoItem.vue'
+import TrackItem from './LyricsSelect/TrackItem.vue'
 import {
   collection as formatCollection
 } from '@/helpers/formatters'
 
 export default {
-  name: 'VideoSelect',
+  name: 'LyricsSelect',
   components: {
     BaseSourceIcon,
     BaseDropdownContainer,
-    VideoItem
+    TrackItem
   },
   inject: [
-    'setSelectedVideoData'
+    'setSelectedTrackData'
   ],
   props: {
-    videos: {
+    tracks: {
       type: Array,
       default () {
         return []
@@ -64,18 +63,18 @@ export default {
         return 'error'
       } else if (this.isLoading) {
         return 'loading'
-      } else if (!this.isAnyVideos) {
-        return 'noCollection.header.videos'
+      } else if (!this.isAnyTracks) {
+        return 'noCollection.header.lyrics'
       } else {
-        return 'select.video'
+        return 'select.lyrics'
       }
     },
-    isAnyVideos () {
-      return !!this.videos.length
+    isAnyTracks () {
+      return !!this.tracks.length
     },
-    videosCollection () {
+    tracksCollection () {
       return formatCollection(
-        this.videos
+        this.tracks
       )
     }
   },
@@ -83,21 +82,21 @@ export default {
     handleSelect (
       value
     ) {
-      function isMatchedVideo (
-        videoData
+      function isMatchedTrack (
+        trackData
       ) {
         return (
-          videoData.uuid === value
+          trackData.uuid === value
         )
       }
 
-      const videoData =
-        this.videosCollection.find(
-          isMatchedVideo
+      const trackData =
+        this.tracksCollection.find(
+          isMatchedTrack
         )
 
-      this.setSelectedVideoData(
-        videoData
+      this.setSelectedTrackData(
+        trackData
       )
     }
   }
@@ -105,8 +104,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-source-select
-  @extend .no-margin
-  ::v-deep(.image)
-    width: 40px
+.lyrics-select
+  width: 225px
 </style>

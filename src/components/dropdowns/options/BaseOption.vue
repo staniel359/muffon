@@ -12,17 +12,40 @@
       :is-error="isError"
     />
 
-    {{ text }}
+    <span
+      v-text="text"
+    />
+
+    <BaseIcon
+      v-if="options"
+      class="dropdown-icon"
+      icon="dropdown"
+    />
+
+    <OptionsMenu
+      v-if="options"
+      :options="options"
+    />
   </div>
 </template>
 
 <script>
+import {
+  defineAsyncComponent
+} from 'vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
+
+const OptionsMenu = defineAsyncComponent(
+  () => import(
+    './BaseOption/OptionsMenu.vue'
+  )
+)
 
 export default {
   name: 'BaseOption',
   components: {
-    BaseIcon
+    BaseIcon,
+    OptionsMenu
   },
   props: {
     text: {
@@ -31,7 +54,8 @@ export default {
     },
     icon: String,
     isLoading: Boolean,
-    isError: Boolean
+    isError: Boolean,
+    options: Array
   },
   emits: [
     'click'
@@ -46,4 +70,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.dropdown-icon
+  margin-right: 1em !important
+</style>

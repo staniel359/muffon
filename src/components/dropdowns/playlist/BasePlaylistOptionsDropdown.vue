@@ -1,7 +1,13 @@
 <template>
   <BaseOptionsDropdownContainer
     v-if="isRender"
+    :is-scrolling="isScrolling"
   >
+    <AddOption
+      v-if="isWithAddOption"
+      :playlist-id="playlistId"
+    />
+
     <BaseShareOption
       v-if="isWithShareOption"
       :share-data="shareData"
@@ -39,6 +45,9 @@
 
 <script>
 import {
+  defineAsyncComponent
+} from 'vue'
+import {
   mapGetters
 } from 'vuex'
 import BaseOptionsDropdownContainer
@@ -57,10 +66,17 @@ import {
   playlist as formatPlaylistShareData
 } from '@/helpers/formatters/share'
 
+const AddOption = defineAsyncComponent(
+  () => import(
+    './BasePlaylistOptionsDropdown/AddOption.vue'
+  )
+)
+
 export default {
   name: 'BasePlaylistOptionsDropdown',
   components: {
     BaseOptionsDropdownContainer,
+    AddOption,
     BaseShareOption,
     BaseEditOption,
     BasePlaylistUpdateModal,
@@ -68,7 +84,12 @@ export default {
     BasePlaylistDeleteModal
   },
   props: {
+    isScrolling: {
+      type: Boolean,
+      default: true
+    },
     playlistData: Object,
+    isWithAddOption: Boolean,
     isWithShareOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
@@ -92,7 +113,8 @@ export default {
     },
     isWithProfileOptions () {
       return (
-        this.isWithShareOption ||
+        this.isWithAddOption ||
+          this.isWithShareOption ||
           this.isWithEditOption ||
           this.isWithDeleteOption
       )
@@ -101,6 +123,9 @@ export default {
       return formatPlaylistShareData(
         this.playlistData
       )
+    },
+    playlistId () {
+      return this.playlistData.id.toString()
     }
   },
   methods: {

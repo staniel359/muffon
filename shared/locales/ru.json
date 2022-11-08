@@ -133,16 +133,20 @@
     "back": "Назад",
     "sendCode": "Отправить код",
     "share": "Поделиться",
+    "search": "Искать",
+    "filter": "Отфильтровать",
     "from": {
       "search": "Из поиска",
       "folder": "Из папки",
       "account": "Из учётной записи",
       "library": "Из библиотеки"
     },
-    "find": {
-      "sources": "Найти в источниках",
-      "videos": "Найти видео",
-      "lyrics": "Найти текст"
+    "searchIn": {
+      "sources": "Искать в источниках"
+    },
+    "searchFor": {
+      "video": "Искать видео",
+      "lyrics": "Искать текст"
     },
     "import": {
       "lastfm": "Загрузить данные Last.FM"
@@ -154,9 +158,6 @@
       "playlist": "Добавить список",
       "community": "Добавить сообщество",
       "post": "Добавить публикацию"
-    },
-    "addCollection": {
-      "tracks": "Добавить композиции"
     },
     "addTo": {
       "library": "Добавить в библиотеку",
@@ -533,9 +534,6 @@
   "compatibility": {
     "header": "Ваш уровень совместимости с {profileNickname}",
     "common": "Из общего у вас:"
-  },
-  "recommendations": {
-    "filter": "Фильтр"
   },
   "recommendation": {
     "similar": "В похожих у {counter}:"

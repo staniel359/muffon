@@ -1,26 +1,33 @@
 <template>
-  <BaseOption
-    icon="file audio"
-    :text="addText"
+  <BaseButton
+    class="basic circular"
+    icon="filter"
+    :class="{
+      active: isActive
+    }"
+    :text="filterText"
     @click="handleClick"
   />
 </template>
 
 <script>
-import BaseOption from './BaseOption.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
-  name: 'BasePlaylistOption',
+  name: 'BaseFilterButton',
   components: {
-    BaseOption
+    BaseButton
+  },
+  props: {
+    isActive: Boolean
   },
   emits: [
     'click'
   ],
   computed: {
-    addText () {
+    filterText () {
       return this.$t(
-        'actions.addTo.playlist'
+        'actions.filter'
       )
     }
   },

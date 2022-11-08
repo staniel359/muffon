@@ -19,11 +19,23 @@
         :view-id="viewId"
       >
         <template #top>
-          <SearchSection
+          <BaseSearchButton
             v-if="isWithSearch"
+            :is-active="isShowSearch"
+            @click="handleSearchButtonClick"
+          />
+        </template>
+
+        <template #topExtra>
+          <BaseProfileLibrarySearchInput
+            v-if="isWithSearch"
+            v-show="isShowSearch"
+            class="search-section"
+            :is-show="isShowSearch"
             :query="query"
+            :is-with-clear-button="isWithClearButton"
             @submit="handleSearchSubmit"
-            @clear="handleSearchClear"
+            @clear-button-click="handleSearchClearButtonClick"
           />
         </template>
 
@@ -44,8 +56,9 @@ import BaseProfileLibraryPageContainer
   from './BaseProfileLibraryPageContainer.vue'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
-import SearchSection
-  from './BaseProfileLibraryPaginatedPageContainer/SearchSection.vue'
+import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
+import BaseProfileLibrarySearchInput
+  from '@/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
 import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
@@ -53,7 +66,8 @@ export default {
   components: {
     BaseProfileLibraryPageContainer,
     BasePaginatedPageContainer,
-    SearchSection
+    BaseSearchButton,
+    BaseProfileLibrarySearchInput
   },
   mixins: [
     paginatedPageMixin
@@ -69,19 +83,29 @@ export default {
   },
   data () {
     return {
+      isShowSearch: false,
       query: ''
+    }
+  },
+  computed: {
+    isWithClearButton () {
+      return !!this.query.length
     }
   },
   watch: {
     query: 'handleQueryChange'
   },
   methods: {
+    handleSearchButtonClick () {
+      this.isShowSearch =
+        !this.isShowSearch
+    },
     handleSearchSubmit (
       value
     ) {
       this.query = value
     },
-    handleSearchClear () {
+    handleSearchClearButtonClick () {
       this.query = ''
     },
     handleQueryChange () {
@@ -91,4 +115,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.search-section
+  margin-top: 1em
+</style>

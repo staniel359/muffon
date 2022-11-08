@@ -1,23 +1,18 @@
 <template>
-  <div
-    class="item"
+  <BaseOption
+    icon="red trash alternate outline"
+    :text="deleteText"
     @click="handleClick"
-  >
-    <BaseIcon
-      icon="red trash alternate outline"
-    />
-
-    {{ deleteText }}
-  </div>
+  />
 </template>
 
 <script>
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseOption from './BaseOption.vue'
 
 export default {
   name: 'BaseDeleteOption',
   components: {
-    BaseIcon
+    BaseOption
   },
   emits: [
     'click'

@@ -1,6 +1,6 @@
 <template>
   <BaseDropdownContainer
-    class="main-source-select-item-select artist-select"
+    class="main-source-select-item-select"
     :header="headerText"
     @select="handleSelect"
   >
@@ -74,7 +74,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.artist-select
-  width: 175px
-</style>
+<style lang="sass" scoped></style>

@@ -1,22 +1,24 @@
 <template>
-  <div class="main-source-select-container">
-    <div class="main-source-select-content">
-      <SourceSelect
-        ref="select"
-        :query="query"
-      />
+  <div>
+    <div class="main-source-select-container">
+      <div class="main-source-select-content">
+        <SourceSelect
+          ref="select"
+          :query="query"
+        />
 
-      <TrackSelect
+        <TrackSelect
+          v-if="selectedSourceData"
+          :key="trackSelectKey"
+          :tracks="selectedSourceTracks"
+        />
+      </div>
+
+      <BaseClearButton
         v-if="selectedSourceData"
-        :key="trackSelectKey"
-        :tracks="selectedSourceTracks"
+        @click="handleClearButtonClick"
       />
     </div>
-
-    <BaseClearButton
-      v-if="selectedSourceData"
-      @click="handleClearButtonClick"
-    />
   </div>
 </template>
 

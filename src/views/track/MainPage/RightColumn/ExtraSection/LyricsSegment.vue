@@ -1,55 +1,25 @@
 <template>
   <div ref="segment">
-    <BaseAccordionContainer
-      :title="findText"
-      @open="handleOpen"
-      @close="handleClose"
-    >
-      <BaseTrackSearchContainer
-        v-if="isOpen"
-        source="genius"
-        :scope="scope"
-        :query="query"
-      >
-        <template #default="slotProps">
-          <LyricsSelect
-            :is-loading="slotProps.isLoading"
-            :is-error="slotProps.isError"
-            :tracks="slotProps[scope]"
-          />
-        </template>
-      </BaseTrackSearchContainer>
+    <BaseSearchButton
+      model="lyrics"
+      :is-active="isShowLyricsSelect"
+      @click="handleSearchButtonClick"
+    />
 
-      <BaseTrackLyricsContainer
-        v-if="selectedTrackData"
-        :key="key"
-        class="lyrics-data-segment"
-        :selected-track-data="selectedTrackData"
-        @focus="handleFocus"
-      >
-        <template #default="slotProps">
-          <LyricsData
-            :lyrics="slotProps.lyrics"
-            :track-id="slotProps.trackId"
-          />
-        </template>
-      </BaseTrackLyricsContainer>
-    </BaseAccordionContainer>
+    <BaseTrackLyricsSelect
+      v-if="isLyricsSelectCalled"
+      v-show="isShowLyricsSelect"
+      class="lyrics-select"
+      :query="query"
+      @focus="handleFocus"
+    />
   </div>
 </template>
 
 <script>
-import BaseAccordionContainer
-  from '@/components/containers/BaseAccordionContainer.vue'
-import BaseTrackSearchContainer
-  from '@/components/containers/track/BaseTrackSearchContainer.vue'
-import LyricsSelect from './LyricsSegment/LyricsSelect.vue'
-import BaseTrackLyricsContainer
-  from '@/components/containers/track/BaseTrackLyricsContainer.vue'
-import LyricsData from './LyricsSegment/LyricsData.vue'
-import {
-  generateKey
-} from '@/helpers/utils'
+import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
+import BaseTrackLyricsSelect
+  from '@/components/models/track/BaseTrackLyricsSelect.vue'
 import {
   focusOnSegment
 } from '@/helpers/actions/layout'
@@ -57,68 +27,38 @@ import {
 export default {
   name: 'LyricsSegment',
   components: {
-    BaseAccordionContainer,
-    BaseTrackSearchContainer,
-    LyricsSelect,
-    BaseTrackLyricsContainer,
-    LyricsData
-  },
-  provide () {
-    return {
-      setSelectedTrackData:
-        this.setSelectedTrackData
-    }
+    BaseSearchButton,
+    BaseTrackLyricsSelect
   },
   props: {
     query: String
   },
   data () {
     return {
-      selectedTrackData: null,
-      key: null,
-      isOpen: false,
-      scope: 'tracks'
-    }
-  },
-  computed: {
-    findText () {
-      return this.$t(
-        'actions.find.lyrics'
-      )
+      isLyricsSelectCalled: false,
+      isShowLyricsSelect: false
     }
   },
   watch: {
-    selectedTrackData:
-      'handleSelectedTrackDataChange'
+    isShowLyricsSelect:
+      'handleIsShowLyricsSelectChange'
   },
   methods: {
-    handleOpen () {
-      this.isOpen = true
-
-      this.focus()
-    },
-    handleClose () {
-      this.isOpen = false
-      this.selectedTrackData = null
-    },
-    handleSelectedTrackDataChange (
+    handleIsShowLyricsSelectChange (
       value
     ) {
       if (value) {
-        this.key = generateKey()
-
         this.focus()
       }
     },
+    handleSearchButtonClick () {
+      this.isLyricsSelectCalled = true
+
+      this.isShowLyricsSelect =
+        !this.isShowLyricsSelect
+    },
     handleFocus () {
       this.focus()
-    },
-    setSelectedTrackData (
-      value
-    ) {
-      this.selectedTrackData = {
-        ...value
-      }
     },
     focus () {
       focusOnSegment(
@@ -130,6 +70,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.lyrics-data-segment
-  @extend .no-padding
+.lyrics-select
+  margin-top: 1em
 </style>

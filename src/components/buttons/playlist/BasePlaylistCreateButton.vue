@@ -1,8 +1,6 @@
 <template>
-  <BaseButton
-    class="basic circular"
-    icon="plus"
-    :text="createText"
+  <BaseAddButton
+    model="playlist"
     @click="handleButtonClick"
   />
 
@@ -14,14 +12,14 @@
 </template>
 
 <script>
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseAddButton from '@/components/buttons/BaseAddButton.vue'
 import BasePlaylistCreateModal
   from '@/components/modals/playlist/BasePlaylistCreateModal.vue'
 
 export default {
   name: 'BasePlaylistCreateButton',
   components: {
-    BaseButton,
+    BaseAddButton,
     BasePlaylistCreateModal
   },
   props: {
@@ -30,13 +28,6 @@ export default {
   emits: [
     'success'
   ],
-  computed: {
-    createText () {
-      return this.$t(
-        'actions.addModel.playlist'
-      )
-    }
-  },
   methods: {
     handleButtonClick () {
       this.showModal()

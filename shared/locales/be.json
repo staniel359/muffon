@@ -133,16 +133,20 @@
     "back": "Назад",
     "sendCode": "Адправіць код",
     "share": "Падзяліцца",
+    "search": "Шукаць",
+    "filter": "Адфільтраваць",
     "from": {
       "search": "З пошуку",
       "folder": "З тэчкі",
       "account": "З уліковага запісу",
       "library": "З бібліятэкі"
     },
-    "find": {
-      "sources": "Знайсці ў крыніцах",
-      "videos": "Знайсці відэа",
-      "lyrics": "Знайсці тэкст"
+    "searchIn": {
+      "sources": "Шукаць у крыніцах"
+    },
+    "searchFor": {
+      "video": "Шукаць відэа",
+      "lyrics": "Шукаць тэкст"
     },
     "import": {
       "lastfm": "Загрузіць дадзеныя Last.FM"
@@ -154,9 +158,6 @@
       "playlist": "Дадаць спіс",
       "community": "Дадаць суполку",
       "post": "Дадаць публікацыю"
-    },
-    "addCollection": {
-      "tracks": "Дадаць кампазіцыі"
     },
     "addTo": {
       "library": "Дадаць у бібліятэку",
@@ -533,9 +534,6 @@
   "compatibility": {
     "header": "Ваш узровень сумяшчальнасці з {profileNickname}",
     "common": "З агульнага ў вас:"
-  },
-  "recommendations": {
-    "filter": "Фільтр"
   },
   "recommendation": {
     "similar": "У падобных у {counter}:"

@@ -15,7 +15,18 @@
         is-with-top-segment
       >
         <template #top>
-          <FilterSection />
+          <BaseFilterButton
+            :is-active="isShowFilter"
+            @click="handleFilterButtonClick"
+          />
+        </template>
+
+        <template #topExtra>
+          <FilterSection
+            v-show="isShowFilter"
+            class="filter-section"
+            :is-show="isShowFilter"
+          />
         </template>
 
         <template #default="slotProps">
@@ -40,6 +51,7 @@ import BaseRecommendationsPageContainer
   from '@/components/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import BaseFilterButton from '@/components/buttons/BaseFilterButton.vue'
 import FilterSection from './RecommendationsPage/FilterSection.vue'
 import BaseArtistsExtendedList
   from '@/components/lists/artists/BaseArtistsExtendedList.vue'
@@ -50,6 +62,7 @@ export default {
   components: {
     BaseRecommendationsPageContainer,
     BasePaginatedPageContainer,
+    BaseFilterButton,
     FilterSection,
     BaseArtistsExtendedList
   },
@@ -58,6 +71,7 @@ export default {
   ],
   data () {
     return {
+      isShowFilter: false,
       limit: 10,
       scope: 'recommendations'
     }
@@ -65,9 +79,16 @@ export default {
   methods: {
     handleReset () {
       this.reset()
+    },
+    handleFilterButtonClick () {
+      this.isShowFilter =
+        !this.isShowFilter
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.filter-section
+  margin-top: 1em
+</style>

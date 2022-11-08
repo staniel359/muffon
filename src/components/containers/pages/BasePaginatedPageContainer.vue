@@ -8,18 +8,27 @@
   >
     <BaseSegmentContainer
       v-if="isWithTopSegment"
-      class="top-segment"
     >
-      <slot
-        name="top"
-      />
+      <div class="top-section">
+        <div>
+          <slot
+            name="top"
+          />
+        </div>
 
-      <BaseViewSelect
-        v-if="isWithViewChange"
-        :scope="scope"
-        :view-id="viewId"
-        @select="handleViewSelect"
-      />
+        <BaseViewSelect
+          v-if="isWithViewChange"
+          :scope="scope"
+          :view-id="viewId"
+          @select="handleViewSelect"
+        />
+      </div>
+
+      <div>
+        <slot
+          name="topExtra"
+        />
+      </div>
     </BaseSegmentContainer>
 
     <BasePaginatedSegmentContainer
@@ -154,8 +163,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.top-segment
+.top-section
   @extend .d-flex, .align-items-center, .justify-content-space-between
-  ::v-deep(.main-accordion)
-    @extend .flex-full
 </style>

@@ -12,7 +12,16 @@
         ]"
       >
         <BaseSegmentContainer>
-          <SourceSelect
+          <BaseSearchButton
+            scope="sources"
+            :is-active="isShowSourceSelect"
+            @click="handleSearchButtonClick"
+          />
+
+          <BaseAlbumSourceSelect
+            v-if="isSourceSelectCalled"
+            v-show="isShowSourceSelect"
+            class="source-select"
             :album-data="pageSlotProps.albumData"
           />
         </BaseSegmentContainer>
@@ -45,7 +54,9 @@ import BaseAlbumPageContainer
   from '@/components/containers/pages/album/BaseAlbumPageContainer.vue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import SourceSelect from './MainPage/SourceSelect.vue'
+import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
+import BaseAlbumSourceSelect
+  from '@/components/models/album/BaseAlbumSourceSelect.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 
@@ -54,7 +65,8 @@ export default {
   components: {
     BaseAlbumPageContainer,
     BaseSegmentContainer,
-    SourceSelect,
+    BaseSearchButton,
+    BaseAlbumSourceSelect,
     LeftColumn,
     RightColumn
   },
@@ -64,7 +76,9 @@ export default {
   },
   data () {
     return {
-      scrollable: null
+      scrollable: null,
+      isSourceSelectCalled: false,
+      isShowSourceSelect: false
     }
   },
   computed: {
@@ -103,6 +117,12 @@ export default {
       this.$refs
         .page
         .getData()
+    },
+    handleSearchButtonClick () {
+      this.isSourceSelectCalled = true
+
+      this.isShowSourceSelect =
+        !this.isShowSourceSelect
     }
   }
 }
@@ -111,4 +131,7 @@ export default {
 <style lang="sass" scoped>
 .album-segment
   @extend .flex-full, .d-flex
+
+.source-select
+  margin-top: 1em
 </style>

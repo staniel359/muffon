@@ -2,19 +2,21 @@
   <BaseSegmentContainer
     v-if="currentProfileId"
   >
-    <BaseAccordionContainer
-      :title="addPostText"
-      @open="handleOpen"
-    >
-      <FormSection
-        :key="key"
-        :post-type="postType"
-        :profile-id="profileId"
-        :community-id="communityId"
-        :is-with-as-community-option="isWithAsCommunityOption"
-        @success="handleSuccess"
-      />
-    </BaseAccordionContainer>
+    <BaseAddButton
+      model="post"
+      :is-active="isShowForm"
+      @click="handleAddButtonClick"
+    />
+
+    <FormSection
+      v-if="isShowForm"
+      class="form-section"
+      :post-type="postType"
+      :profile-id="profileId"
+      :community-id="communityId"
+      :is-with-as-community-option="isWithAsCommunityOption"
+      @success="handleSuccess"
+    />
   </BaseSegmentContainer>
 </template>
 
@@ -24,18 +26,14 @@ import {
 } from 'vuex'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseAccordionContainer
-  from '@/components/containers/BaseAccordionContainer.vue'
+import BaseAddButton from '@/components/buttons/BaseAddButton.vue'
 import FormSection from './BasePostsFormSegment/FormSection.vue'
-import {
-  generateKey
-} from '@/helpers/utils'
 
 export default {
   name: 'BasePostsFormSegment',
   components: {
     BaseSegmentContainer,
-    BaseAccordionContainer,
+    BaseAddButton,
     FormSection
   },
   props: {
@@ -49,7 +47,7 @@ export default {
   ],
   data () {
     return {
-      key: null
+      isShowForm: false
     }
   },
   computed: {
@@ -58,16 +56,11 @@ export default {
       {
         currentProfileId: 'id'
       }
-    ),
-    addPostText () {
-      return this.$t(
-        'actions.addModel.post'
-      )
-    }
+    )
   },
   methods: {
-    handleOpen () {
-      this.key = generateKey()
+    handleAddButtonClick () {
+      this.isShowForm = !this.isShowForm
     },
     handleSuccess () {
       this.$emit(
@@ -78,4 +71,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.form-section
+  margin-top: 1em
+</style>
