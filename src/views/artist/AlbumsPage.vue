@@ -8,9 +8,22 @@
     is-with-top-segment
     is-with-view-change
   >
-    <template #top="topSlotProps">
-      <BaseArtistSourceSelect
-        :artist-name="topSlotProps.artistName"
+    <template #top>
+      <BaseSearchButton
+        scope="sources"
+        :is-active="isShowSourceSelect"
+        @click="handleSearchButtonClick"
+      />
+    </template>
+
+    <template
+      #topExtra="topExtraSlotProps"
+    >
+      <BaseArtistAlbumsSourceSelect
+        v-if="isSourceSelectCalled"
+        v-show="isShowSourceSelect"
+        class="source-select"
+        :artist-name="topExtraSlotProps.artistName"
       />
     </template>
 
@@ -34,8 +47,9 @@
 <script>
 import BaseArtistPaginatedPageContainer
   from '@/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
-import BaseArtistSourceSelect
-  from '@/components/models/artist/BaseArtistSourceSelect.vue'
+import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
+import BaseArtistAlbumsSourceSelect
+  from '@/components/models/artist/BaseArtistAlbumsSourceSelect.vue'
 import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
 
@@ -43,7 +57,8 @@ export default {
   name: 'AlbumsPage',
   components: {
     BaseArtistPaginatedPageContainer,
-    BaseArtistSourceSelect,
+    BaseSearchButton,
+    BaseArtistAlbumsSourceSelect,
     BaseAlbumsList
   },
   mixins: [
@@ -54,10 +69,23 @@ export default {
   },
   data () {
     return {
+      isSourceSelectCalled: false,
+      isShowSourceSelect: false,
       scope: 'albums'
+    }
+  },
+  methods: {
+    handleSearchButtonClick () {
+      this.isSourceSelectCalled = true
+
+      this.isShowSourceSelect =
+        !this.isShowSourceSelect
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.source-select
+  margin-top: 1em
+</style>

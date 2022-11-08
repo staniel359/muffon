@@ -1,32 +1,34 @@
 <template>
-  <div class="main-source-select-container">
-    <div class="main-source-select-content">
-      <SourceSelect
-        ref="select"
-        :query="query"
+  <div>
+    <div class="main-source-select-container">
+      <div class="main-source-select-content">
+        <SourceSelect
+          ref="select"
+          :query="query"
+        />
+
+        <template v-if="selectedSourceData">
+          <TypeSelect
+            v-if="isSelectedSourceWithMultipleTypes"
+            :key="typeSelectKey"
+            :albums-data="selectedSourceAlbumsData"
+            :types="selectedSourceTypes"
+          />
+
+          <AlbumSelect
+            v-if="selectedTypeId"
+            :key="albumSelectKey"
+            :albums="selectedTypeAlbums"
+            :type-id="selectedTypeId"
+          />
+        </template>
+      </div>
+
+      <BaseClearButton
+        v-if="selectedSourceData"
+        @click="handleClearButtonClick"
       />
-
-      <template v-if="selectedSourceData">
-        <TypeSelect
-          v-if="isSelectedSourceWithMultipleTypes"
-          :key="typeSelectKey"
-          :albums-data="selectedSourceAlbumsData"
-          :types="selectedSourceTypes"
-        />
-
-        <AlbumSelect
-          v-if="selectedTypeId"
-          :key="albumSelectKey"
-          :albums="selectedTypeAlbums"
-          :type-id="selectedTypeId"
-        />
-      </template>
     </div>
-
-    <BaseClearButton
-      v-if="selectedSourceData"
-      @click="handleClearButtonClick"
-    />
   </div>
 </template>
 

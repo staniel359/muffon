@@ -1,18 +1,13 @@
 <template>
-  <div
-    class="item"
+  <BaseOption
+    icon="red close"
+    :text="clearText"
     @click="handleClick"
-  >
-    <BaseIcon
-      icon="red close"
-    />
-
-    {{ clearText }}
-  </div>
+  />
 </template>
 
 <script>
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseOption from '@/components/dropdowns/options/BaseOption.vue'
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
@@ -20,7 +15,7 @@ import {
 export default {
   name: 'ClearOption',
   components: {
-    BaseIcon
+    BaseOption
   },
   computed: {
     clearText () {

@@ -1,8 +1,6 @@
 <template>
-  <BaseButton
-    class="basic circular"
-    icon="plus"
-    :text="createText"
+  <BaseAddButton
+    model="community"
     @click="handleButtonClick"
   />
 
@@ -12,22 +10,15 @@
 </template>
 
 <script>
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseAddButton from '@/components/buttons/BaseAddButton.vue'
 import BaseCommunityCreateModal
   from '@/components/modals/community/BaseCommunityCreateModal.vue'
 
 export default {
   name: 'BaseCommunityCreateButton',
   components: {
-    BaseButton,
+    BaseAddButton,
     BaseCommunityCreateModal
-  },
-  computed: {
-    createText () {
-      return this.$t(
-        'actions.addModel.community'
-      )
-    }
   },
   methods: {
     handleButtonClick () {

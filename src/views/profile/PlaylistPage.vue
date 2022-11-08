@@ -16,11 +16,6 @@
           :profile-id="profileId"
         />
 
-        <ImportSegment
-          v-if="isSelf"
-          :playlist-id="playlistId"
-        />
-
         <TracksSegment
           :profile-id="profileId"
           :playlist-id="playlistId"
@@ -35,33 +30,18 @@
 import BaseProfilePlaylistPageContainer
   from '@/components/containers/pages/profile/playlist/BaseProfilePlaylistPageContainer.vue'
 import InfoSegment from './PlaylistPage/InfoSegment.vue'
-import ImportSegment from './PlaylistPage/ImportSegment.vue'
 import TracksSegment from './PlaylistPage/TracksSegment.vue'
-import {
-  isCurrentProfile
-} from '@/helpers/utils'
 
 export default {
   name: 'PlaylistPage',
   components: {
     BaseProfilePlaylistPageContainer,
     InfoSegment,
-    ImportSegment,
     TracksSegment
   },
   props: {
-    profileId: {
-      type: String,
-      required: true
-    },
+    profileId: String,
     playlistId: String
-  },
-  computed: {
-    isSelf () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    }
   }
 }
 </script>

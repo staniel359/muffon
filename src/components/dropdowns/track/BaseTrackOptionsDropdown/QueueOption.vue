@@ -1,21 +1,16 @@
 <template>
-  <div
-    class="item"
+  <BaseOption
+    icon="list ul"
+    :text="queueText"
     @click="handleClick"
-  >
-    <BaseIcon
-      icon="list ul"
-    />
-
-    {{ queueText }}
-  </div>
+  />
 </template>
 
 <script>
 import {
   mapState
 } from 'vuex'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseOption from '@/components/dropdowns/options/BaseOption.vue'
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
@@ -29,7 +24,7 @@ import {
 export default {
   name: 'QueueOption',
   components: {
-    BaseIcon
+    BaseOption
   },
   props: {
     trackData: {

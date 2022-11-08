@@ -1,17 +1,19 @@
 <template>
-  <div class="search-container">
-    <BaseHistoryInput
-      ref="input"
-      class="main-search-input"
-      scope="librarySearch"
-      :query="query"
-      @submit="handleSubmit"
-    />
+  <div>
+    <div class="search-container">
+      <BaseHistoryInput
+        ref="input"
+        class="main-search-input"
+        scope="librarySearch"
+        :query="query"
+        @submit="handleSubmit"
+      />
 
-    <BaseClearButton
-      v-if="isWithClearButton"
-      @click="handleClearButtonClick"
-    />
+      <BaseClearButton
+        v-if="isWithClearButton"
+        @click="handleClearButtonClick"
+      />
+    </div>
   </div>
 </template>
 
@@ -26,6 +28,7 @@ export default {
     BaseClearButton
   },
   props: {
+    isShow: Boolean,
     query: String,
     isWithClearButton: Boolean
   },
@@ -33,10 +36,19 @@ export default {
     'clearButtonClick',
     'submit'
   ],
-  mounted () {
-    this.focus()
+  watch: {
+    isShow: 'handleIsShowChange'
   },
   methods: {
+    async handleIsShowChange (
+      value
+    ) {
+      await this.$nextTick()
+
+      if (value) {
+        this.focus()
+      }
+    },
     handleSubmit (
       value
     ) {
@@ -69,5 +81,4 @@ export default {
 <style lang="sass" scoped>
 .search-container
   @extend .d-flex, .align-items-center
-  margin-left: 0.75em
 </style>

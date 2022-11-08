@@ -1,26 +1,33 @@
 <template>
-  <BaseOption
-    icon="envelope"
-    :text="messageText"
+  <BaseButton
+    class="basic circular"
+    icon="filter"
+    :class="{
+      active: isActive
+    }"
+    :text="filterText"
     @click="handleClick"
   />
 </template>
 
 <script>
-import BaseOption from '@/components/dropdowns/options/BaseOption.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
-  name: 'MessageOption',
+  name: 'BaseFilterButton',
   components: {
-    BaseOption
+    BaseButton
+  },
+  props: {
+    isActive: Boolean
   },
   emits: [
     'click'
   ],
   computed: {
-    messageText () {
+    filterText () {
       return this.$t(
-        'message.send'
+        'actions.filter'
       )
     }
   },

@@ -23,6 +23,12 @@
         <template #top>
           <slot
             name="top"
+          />
+        </template>
+
+        <template #topExtra>
+          <slot
+            name="topExtra"
             :artist-name="pageSlotProps.artistName"
           />
         </template>

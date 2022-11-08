@@ -1,9 +1,6 @@
 <template>
-  <BaseAccordionContainer
-    :title="filterText"
-    @open="handleOpen"
-  >
-    <div class="filter-section">
+  <div>
+    <div class="filter-top-section">
       <ScopeSelect
         :selected="scope"
       />
@@ -16,14 +13,13 @@
     </div>
 
     <CollectionList
+      v-if="collection.length"
       :collection="collection"
     />
-  </BaseAccordionContainer>
+  </div>
 </template>
 
 <script>
-import BaseAccordionContainer
-  from '@/components/containers/BaseAccordionContainer.vue'
 import ScopeSelect from './FilterSection/ScopeSelect.vue'
 import SearchBlock from './FilterSection/SearchBlock.vue'
 import CollectionList from './FilterSection/CollectionList.vue'
@@ -35,7 +31,6 @@ import {
 export default {
   name: 'FilterSection',
   components: {
-    BaseAccordionContainer,
     ScopeSelect,
     SearchBlock,
     CollectionList
@@ -53,6 +48,9 @@ export default {
     'setFilterScope',
     'setFilterValue'
   ],
+  props: {
+    isShow: Boolean
+  },
   data () {
     return {
       scope: 'artists',
@@ -60,11 +58,6 @@ export default {
     }
   },
   computed: {
-    filterText () {
-      return this.$t(
-        'recommendations.filter'
-      )
-    },
     collectionFormatted () {
       return this.collection.map(
         this.formatCollectionItem
@@ -76,12 +69,10 @@ export default {
       immediate: true,
       handler: 'handleScopeChange'
     },
+    isShow: 'handleIsShowChange',
     collection: 'handleCollectionChange'
   },
   methods: {
-    handleOpen () {
-      this.focusInput()
-    },
     async handleScopeChange (
       value
     ) {
@@ -94,6 +85,15 @@ export default {
       await this.$nextTick()
 
       this.focusInput()
+    },
+    async handleIsShowChange (
+      value
+    ) {
+      await this.$nextTick()
+
+      if (value) {
+        this.focusInput()
+      }
     },
     handleCollectionChange (
       value,
@@ -134,6 +134,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.filter-section
+.filter-top-section
   @extend .d-flex, .align-items-center
 </style>

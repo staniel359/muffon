@@ -12,7 +12,16 @@
         ]"
       >
         <BaseSegmentContainer>
-          <SourceSelect
+          <BaseSearchButton
+            scope="sources"
+            :is-active="isShowSourceSelect"
+            @click="handleSearchButtonClick"
+          />
+
+          <BaseTrackSourceSelect
+            v-if="isSourceSelectCalled"
+            v-show="isShowSourceSelect"
+            class="source-select"
             :track-data="slotProps.trackData"
           />
         </BaseSegmentContainer>
@@ -45,7 +54,9 @@ import BaseTrackPageContainer
   from '@/components/containers/pages/track/BaseTrackPageContainer.vue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import SourceSelect from './MainPage/SourceSelect.vue'
+import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
+import BaseTrackSourceSelect
+  from '@/components/models/track/BaseTrackSourceSelect.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 
@@ -54,7 +65,8 @@ export default {
   components: {
     BaseTrackPageContainer,
     BaseSegmentContainer,
-    SourceSelect,
+    BaseSearchButton,
+    BaseTrackSourceSelect,
     LeftColumn,
     RightColumn
   },
@@ -64,7 +76,9 @@ export default {
   },
   data () {
     return {
-      scrollable: null
+      scrollable: null,
+      isSourceSelectCalled: false,
+      isShowSourceSelect: false
     }
   },
   computed: {
@@ -99,6 +113,12 @@ export default {
       element
     ) {
       this.scrollable = element
+    },
+    handleSearchButtonClick () {
+      this.isSourceSelectCalled = true
+
+      this.isShowSourceSelect =
+        !this.isShowSourceSelect
     }
   }
 }
@@ -107,4 +127,7 @@ export default {
 <style lang="sass" scoped>
 .track-segment
   @extend .flex-full, .d-flex
+
+.source-select
+  margin-top: 1em
 </style>

@@ -1,44 +1,26 @@
 <template>
   <div ref="segment">
-    <BaseAccordionContainer
-      :title="findText"
-      @open="handleOpen"
-      @close="handleClose"
-    >
-      <BaseTrackSearchContainer
-        v-if="isOpen"
-        source="youtube"
-        :scope="scope"
-        :query="query"
-      >
-        <template #default="slotProps">
-          <VideoSelect
-            :is-loading="slotProps.isLoading"
-            :is-error="slotProps.isError"
-            :videos="slotProps[scope]"
-          />
-        </template>
-      </BaseTrackSearchContainer>
+    <BaseSearchButton
+      model="video"
+      :is-active="isShowVideoSelect"
+      @click="handleSearchButtonClick"
+    />
 
-      <VideoData
-        v-if="selectedVideoData"
-        :key="key"
-        :selected-video-data="selectedVideoData"
-      />
-    </BaseAccordionContainer>
+    <BaseTrackVideoSelect
+      v-if="isVideoSelectCalled"
+      v-show="isShowVideoSelect"
+      class="video-select"
+      :query="query"
+      :is-show="isShowVideoSelect"
+      @focus="handleFocus"
+    />
   </div>
 </template>
 
 <script>
-import BaseAccordionContainer
-  from '@/components/containers/BaseAccordionContainer.vue'
-import BaseTrackSearchContainer
-  from '@/components/containers/track/BaseTrackSearchContainer.vue'
-import VideoSelect from './VideoSegment/VideoSelect.vue'
-import VideoData from './VideoSegment/VideoData.vue'
-import {
-  generateKey
-} from '@/helpers/utils'
+import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
+import BaseTrackVideoSelect
+  from '@/components/models/track/BaseTrackVideoSelect.vue'
 import {
   focusOnSegment
 } from '@/helpers/actions/layout'
@@ -46,64 +28,38 @@ import {
 export default {
   name: 'VideoSegment',
   components: {
-    BaseAccordionContainer,
-    BaseTrackSearchContainer,
-    VideoSelect,
-    VideoData
-  },
-  provide () {
-    return {
-      setSelectedVideoData:
-        this.setSelectedVideoData
-    }
+    BaseSearchButton,
+    BaseTrackVideoSelect
   },
   props: {
     query: String
   },
   data () {
     return {
-      key: null,
-      selectedVideoData: null,
-      isOpen: false,
-      scope: 'videos'
-    }
-  },
-  computed: {
-    findText () {
-      return this.$t(
-        'actions.find.videos'
-      )
+      isVideoSelectCalled: false,
+      isShowVideoSelect: false
     }
   },
   watch: {
-    selectedVideoData:
-      'handleSelectedVideoDataChange'
+    isShowVideoSelect:
+      'handleIsShowVideoSelectChange'
   },
   methods: {
-    handleOpen () {
-      this.isOpen = true
-
-      this.focus()
-    },
-    handleClose () {
-      this.isOpen = false
-      this.selectedVideoData = null
-    },
-    handleSelectedVideoDataChange (
+    handleIsShowVideoSelectChange (
       value
     ) {
       if (value) {
-        this.key = generateKey()
-
         this.focus()
       }
     },
-    setSelectedVideoData (
-      value
-    ) {
-      this.selectedVideoData = {
-        ...value
-      }
+    handleSearchButtonClick () {
+      this.isVideoSelectCalled = true
+
+      this.isShowVideoSelect =
+        !this.isShowVideoSelect
+    },
+    handleFocus () {
+      this.focus()
     },
     focus () {
       focusOnSegment(
@@ -114,4 +70,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.video-select
+  margin-top: 1em
+</style>

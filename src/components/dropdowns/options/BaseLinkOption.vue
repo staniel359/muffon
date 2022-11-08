@@ -8,7 +8,9 @@
       :icon="icon"
     />
 
-    {{ text }}
+    <span
+      v-text="text"
+    />
   </BaseLinkContainer>
 </template>
 

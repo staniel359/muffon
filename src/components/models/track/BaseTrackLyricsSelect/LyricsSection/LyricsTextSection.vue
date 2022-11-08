@@ -25,7 +25,7 @@ import BaseTrackLyricsModal
   from '@/components/modals/track/BaseTrackLyricsModal.vue'
 
 export default {
-  name: 'LyricsData',
+  name: 'LyricsTextSection',
   components: {
     BaseTrackLyricsModal
   },
