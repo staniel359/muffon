@@ -10,7 +10,7 @@
     <p
       v-if="annotationData"
       class="main-text-container"
-      v-text="annotationData.text"
+      v-html="annotationTextFormatted"
     />
   </BaseSegmentContainer>
 </template>
@@ -47,6 +47,15 @@ export default {
       return {
         annotationId: this.annotationId
       }
+    },
+    annotationTextFormatted () {
+      return this.annotationText.replaceAll(
+        '<a href',
+        '<a class="main-link active" target="_blank" href'
+      )
+    },
+    annotationText () {
+      return this.annotationData.text
     }
   },
   watch: {
