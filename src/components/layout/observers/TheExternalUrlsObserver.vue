@@ -6,7 +6,8 @@
 
 <script>
 import {
-  ipcRenderer
+  ipcRenderer,
+  shell
 } from 'electron'
 import {
   main as formatVideoMainLink
@@ -84,6 +85,10 @@ export default {
           {
             path
           }
+        )
+      } else {
+        shell.openExternal(
+          url
         )
       }
     },

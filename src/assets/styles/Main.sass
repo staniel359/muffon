@@ -307,7 +307,8 @@ p
 
 .main-link
   @extend .text-color-unset, .cursor-pointer
-  &:hover
+  &:hover,
+  &.active
     @extend .text-color-base
 
 .main-link-container
@@ -417,7 +418,13 @@ p
   width: 420px
 
 .main-annotation-popup
-  width: 370px
+  @extend .overflow-y-auto
+  width: 375px
+  max-height: 250px
+  img
+    width: unset !important
+    height: unset !important
+    max-width: 100%
 
 .main-emoji-popup
   @extend .no-padding
