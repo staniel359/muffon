@@ -22,6 +22,7 @@ export default [
     name: 'VK',
     isStreamable: true,
     isWithAlbums: true,
+    isWithTracks: true,
     maxBitrate: 320,
     albumTypes: [
       'album'
@@ -38,6 +39,7 @@ export default [
     name: 'Odnoklassniki',
     isStreamable: true,
     isWithAlbums: true,
+    isWithTracks: true,
     maxBitrate: 320,
     albumTypes: [
       'album'
@@ -54,6 +56,7 @@ export default [
     name: 'Yandex Music',
     isStreamable: true,
     isWithAlbums: true,
+    isWithTracks: true,
     maxBitrate: 192,
     albumTypes: [
       'album'
@@ -70,6 +73,7 @@ export default [
     name: 'Bandcamp',
     isStreamable: true,
     isWithAlbums: true,
+    isWithTracks: true,
     maxBitrate: 128,
     albumTypes: [
       'album',
@@ -87,6 +91,7 @@ export default [
     name: 'Deezer',
     isStreamable: true,
     isWithAlbums: true,
+    isWithTracks: true,
     maxBitrate: 128,
     albumTypes: [
       'album'
@@ -107,6 +112,7 @@ export default [
     name: 'SoundCloud',
     isStreamable: true,
     isWithAlbums: true,
+    isWithTracks: true,
     maxBitrate: 128,
     albumTypes: [
       'album'
