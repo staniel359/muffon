@@ -17,6 +17,10 @@ export default {
     BaseSearchInput
   },
   props: {
+    source: {
+      type: String,
+      required: true
+    },
     albums: {
       type: Array,
       default () {
@@ -30,7 +34,7 @@ export default {
   computed: {
     url () {
       return (
-        'lastfm/search/albums' +
+        `${this.source}/search/albums` +
         '?query={query}&limit=5'
       )
     },

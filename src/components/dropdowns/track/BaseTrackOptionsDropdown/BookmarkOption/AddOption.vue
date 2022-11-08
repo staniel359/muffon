@@ -42,8 +42,10 @@ export default {
         albumTitle: this.albumTitle,
         imageUrl: this.imageUrl,
         sourceData: this.sourceData,
-        audioData: this.audioDataFormatted,
-        albumSourceData: this.albumSourceData
+        audioData:
+          this.audioDataFormatted,
+        albumSourceData:
+          this.albumSourceData
       }
     },
     artistName () {

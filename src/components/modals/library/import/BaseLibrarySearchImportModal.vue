@@ -9,7 +9,13 @@
           ref="input"
           :scope="scope"
           :collection="collection"
+          :source="source"
           :is-save="isSave"
+        />
+
+        <SourceSelect
+          :source="source"
+          @select="handleSourceSelect"
         />
 
         <BaseClearButton
@@ -43,8 +49,9 @@ import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import SearchInput
   from './BaseLibrarySearchImportModal/SearchInput.vue'
-import ScopeSelect from './BaseLibrarySearchImportModal/ScopeSelect.vue'
+import SourceSelect from './BaseLibrarySearchImportModal/SourceSelect.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import ScopeSelect from './BaseLibrarySearchImportModal/ScopeSelect.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import BaseImportSection from '@/components/import/BaseImportSection.vue'
 import BaseLibrarySaveSection
@@ -56,8 +63,9 @@ export default {
   components: {
     BaseModalContainer,
     SearchInput,
-    ScopeSelect,
+    SourceSelect,
     BaseClearButton,
+    ScopeSelect,
     BaseDivider,
     BaseImportSection,
     BaseLibrarySaveSection
@@ -76,6 +84,7 @@ export default {
   },
   data () {
     return {
+      source: 'lastfm',
       scope: 'artists',
       status: 'import',
       collection: []
@@ -105,6 +114,13 @@ export default {
       this.reset()
 
       await this.$nextTick()
+
+      this.focusInput()
+    },
+    handleSourceSelect (
+      value
+    ) {
+      this.source = value
 
       this.focusInput()
     },

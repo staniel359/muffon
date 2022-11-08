@@ -17,6 +17,10 @@ export default {
     BaseSearchInput
   },
   props: {
+    source: {
+      type: String,
+      required: true
+    },
     tracks: {
       type: Array,
       default () {
@@ -30,7 +34,7 @@ export default {
   computed: {
     url () {
       return (
-        'lastfm/search/tracks' +
+        `${this.source}/search/tracks` +
         '?query={query}&limit=5'
       )
     },

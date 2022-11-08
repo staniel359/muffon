@@ -12,6 +12,7 @@
         :artist-name="slotProps.artistName"
         :is-with-library-option="!isSelf"
         :is-with-delete-option="isSelf"
+        is-with-source
         is-with-created
         is-link-to-library
         is-with-playlist-option

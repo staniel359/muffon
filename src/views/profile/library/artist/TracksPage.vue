@@ -14,6 +14,7 @@
         :is-with-delete-option="isSelf"
         is-with-image
         is-with-album-title
+        is-with-source
         is-with-created
         is-link-to-library
         is-with-playlist-option
