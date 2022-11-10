@@ -109,7 +109,7 @@ function handleUnmaximizeChange () {
 }
 
 function create () {
-  const mainWindowWidth = 800
+  const mainWindowWidth = 900
   const mainWindowHeight = 600
 
   const options = {
