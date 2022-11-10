@@ -37,7 +37,6 @@ export default {
       return {
         artistName: this.artistName,
         albumTitle: this.albumTitle,
-        tracks: this.tracks,
         imageUrl: this.imageUrl,
         sourceData: this.sourceData
       }
@@ -47,9 +46,6 @@ export default {
     },
     albumTitle () {
       return this.albumData.title
-    },
-    tracks () {
-      return this.albumData.tracks
     },
     imageUrl () {
       return this.albumData.image?.large
