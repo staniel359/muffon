@@ -5,7 +5,6 @@ export default function (
   {
     albumTitle,
     artistName,
-    tracks,
     imageUrl,
     sourceData
   }
@@ -21,7 +20,6 @@ export default function (
   const params = {
     title: albumTitle,
     artist: artistName,
-    tracks,
     image: imageUrl,
     source: sourceData
   }
