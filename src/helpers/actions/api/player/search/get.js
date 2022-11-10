@@ -35,6 +35,45 @@ export default function getPlayerSearch (
     query
   }
 
+  function searchInFallbackSource (
+    nextFallbackSourceIndex
+  ) {
+    return getPlayerSearch(
+      {
+        query,
+        limit,
+        fallbackSourceIndex:
+          nextFallbackSourceIndex
+      }
+    )
+  }
+
+  function searchInNextFallbackSource () {
+    const nextFallbackSourceIndex =
+      fallbackSourceIndex + 1
+
+    const nextFallbackSource =
+      fallbackSources[
+        nextFallbackSourceIndex
+      ]
+
+    if (nextFallbackSource) {
+      return searchInFallbackSource(
+        nextFallbackSourceIndex
+      )
+    }
+  }
+
+  function searchInFallbackSources () {
+    if (fallbackSourceIndex >= 0) {
+      return searchInNextFallbackSource()
+    } else {
+      return searchInFallbackSource(
+        0
+      )
+    }
+  }
+
   async function handleSuccess (
     response
   ) {
@@ -52,64 +91,14 @@ export default function getPlayerSearch (
         'player.variants': variants
       }
     )
-  }
 
-  function searchInFallbackSource (
-    nextFallbackSourceIndex
-  ) {
-    return getPlayerSearch(
-      {
-        query,
-        limit,
-        fallbackSourceIndex:
-          nextFallbackSourceIndex
-      }
+    const isSearchInFallbackSources = (
+      !tracks.length &&
+        fallbackSources.length
     )
-  }
 
-  function searchInNextFallbackSource (
-    error
-  ) {
-    const nextFallbackSourceIndex =
-      fallbackSourceIndex + 1
-
-    const nextFallbackSource =
-      fallbackSources[
-        nextFallbackSourceIndex
-      ]
-
-    if (nextFallbackSource) {
-      return searchInFallbackSource(
-        nextFallbackSourceIndex
-      )
-    } else {
-      throw error
-    }
-  }
-
-  function searchInFallbackSources (
-    error
-  ) {
-    if (fallbackSourceIndex >= 0) {
-      return searchInNextFallbackSource(
-        error
-      )
-    } else {
-      return searchInFallbackSource(
-        0
-      )
-    }
-  }
-
-  function handleError (
-    error
-  ) {
-    if (fallbackSources.length) {
-      return searchInFallbackSources(
-        error
-      )
-    } else {
-      throw error
+    if (isSearchInFallbackSources) {
+      return searchInFallbackSources()
     }
   }
 
@@ -119,8 +108,7 @@ export default function getPlayerSearch (
       params,
       limit,
       isWithSelfToken: true,
-      onSuccess: handleSuccess,
-      onError: handleError
+      onSuccess: handleSuccess
     }
   )
 }
