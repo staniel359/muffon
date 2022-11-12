@@ -75,7 +75,9 @@ export default {
       }
     }
   },
-  mounted () {
+  async mounted () {
+    await this.$nextTick()
+
     setDropdown(
       this.$refs.dropdown.$el,
       this.dropdownOptions
