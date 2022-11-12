@@ -4,7 +4,9 @@
     :scope="scope"
     :request-album-data="requestAlbumData"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseModalTagsList
         :tags="slotProps[scope]"
         @tag-click="handleTagClick"

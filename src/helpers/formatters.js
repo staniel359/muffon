@@ -1,6 +1,7 @@
 import store from '@/plugins/store'
 import {
-  generateKey
+  generateKey,
+  sortByCreated
 } from '@/helpers/utils'
 import moment from 'moment-timezone'
 
@@ -163,27 +164,10 @@ export function playsToTracks (
     ).values()
   ]
 
-  function sortTracks (
-    first,
-    second
-  ) {
-    const firstCreated =
-      moment(
-        first.created
-      ).toDate()
-
-    const secondCreated =
-      moment(
-        second.created
-      ).toDate()
-
-    return (
-      secondCreated -
-        firstCreated
-    )
-  }
-
-  return tracks.sort(
-    sortTracks
+  return sortByCreated(
+    {
+      collection: tracks,
+      order: 'createdDesc'
+    }
   )
 }

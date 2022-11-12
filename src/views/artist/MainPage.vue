@@ -4,7 +4,9 @@
     class="page-container"
     :artist-name="artistName"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <LeftColumn
         :artist-data="slotProps.artistData"
         :scrollable="scrollable"

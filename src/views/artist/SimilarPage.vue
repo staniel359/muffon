@@ -7,7 +7,9 @@
     is-with-top-segment
     is-with-view-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseArtistsList
         :artists="slotProps[scope]"
         :view-id="viewId"

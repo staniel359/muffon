@@ -1,50 +1,44 @@
 <template>
-  <BaseProfilesPageContainer
-    ref="page"
+  <BaseProfilesPaginatedPageContainer
+    model="profile"
+    :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="pageSlotProps">
-      <BasePaginatedPageContainer
-        :response-data="pageSlotProps.profilesData"
-        :is-loading="pageSlotProps.isLoading"
-        :error="pageSlotProps.error"
-        :scope="scope"
-        :limit="limit"
-      >
-        <template #default="slotProps">
-          <BaseProfilesSimpleList
-            :profiles="slotProps[scope]"
-            is-with-created
-          />
-        </template>
-      </BasePaginatedPageContainer>
+    <template
+      #default="slotProps"
+    >
+      <BaseProfilesSimpleList
+        :profiles="slotProps[scope]"
+        is-with-created
+      />
     </template>
-  </BaseProfilesPageContainer>
+  </BaseProfilesPaginatedPageContainer>
 </template>
 
 <script>
-import BaseProfilesPageContainer
-  from '@/components/containers/pages/profiles/BaseProfilesPageContainer.vue'
-import BasePaginatedPageContainer
-  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import BaseProfilesPaginatedPageContainer
+  from '@/components/containers/pages/profiles/BaseProfilesPaginatedPageContainer.vue'
 import BaseProfilesSimpleList
   from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
-import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'ProfilesPage',
   components: {
-    BaseProfilesPageContainer,
-    BasePaginatedPageContainer,
+    BaseProfilesPaginatedPageContainer,
     BaseProfilesSimpleList
   },
   mixins: [
-    paginatedPageMixin
+    orderChangeMixin
   ],
   data () {
     return {
       limit: 50,
-      scope: 'profiles'
+      scope: 'profiles',
+      order: 'createdDesc'
     }
   }
 }

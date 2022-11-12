@@ -3,7 +3,9 @@
     :source="source"
     :query="query"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <SourceItemContent
         :source-data="sourceData"
         :is-loading="slotProps.isLoading"

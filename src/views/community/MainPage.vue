@@ -3,7 +3,9 @@
     ref="page"
     :community-id="communityId"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <InfoSegment
         :community-data="slotProps.communityData"
         :is-community-creator="slotProps.isCommunityCreator"

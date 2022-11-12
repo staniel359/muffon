@@ -5,7 +5,9 @@
     :limit="limit"
     :header-link="headerLink"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseCommunitiesSimpleList
         :communities="slotProps[scope]"
         is-with-join-option

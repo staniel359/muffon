@@ -9,7 +9,9 @@
     :limit="limit"
     @focus="handleFocus"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         :playlist-title="playlistTitle"
@@ -62,7 +64,8 @@ export default {
       type: String,
       required: true
     },
-    playlistTitle: String
+    playlistTitle: String,
+    order: String
   },
   data () {
     return {
@@ -82,7 +85,8 @@ export default {
         profileId: this.profileId,
         playlistId: this.playlistId,
         scope: this.scope,
-        limit: this.limit
+        limit: this.limit,
+        order: this.order
       }
     },
     isSelf () {

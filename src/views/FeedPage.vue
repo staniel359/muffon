@@ -1,66 +1,62 @@
 <template>
-  <BaseFeedPageContainer
+  <BaseFeedPaginatedPageContainer
     ref="page"
+    model="post"
+    :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="pageSlotProps">
-      <BasePaginatedPageContainer
-        ref="pagination"
-        :response-data="pageSlotProps.feedData"
-        :is-loading="pageSlotProps.isLoading"
-        :error="pageSlotProps.error"
-        :scope="scope"
-        :limit="limit"
-        is-with-top-segment
-      >
-        <template #top>
-          <div />
-
-          <GlobalToggle
-            @change="handleGlobalChange"
-          />
-        </template>
-
-        <template #default="slotProps">
-          <BasePostsSimpleList
-            :posts="slotProps[scope]"
-          />
-        </template>
-      </BasePaginatedPageContainer>
+    <template #top>
+      <GlobalToggle
+        @change="handleGlobalChange"
+      />
     </template>
-  </BaseFeedPageContainer>
+
+    <template
+      #default="slotProps"
+    >
+      <BasePostsSimpleList
+        :posts="slotProps[scope]"
+      />
+    </template>
+  </BaseFeedPaginatedPageContainer>
 </template>
 
 <script>
-import BaseFeedPageContainer
-  from '@/components/containers/pages/feed/BaseFeedPageContainer.vue'
-import BasePaginatedPageContainer
-  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import BaseFeedPaginatedPageContainer
+  from '@/components/containers/pages/feed/BaseFeedPaginatedPageContainer.vue'
 import GlobalToggle from './FeedPage/GlobalToggle.vue'
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
-import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'FeedPage',
   components: {
-    BaseFeedPageContainer,
-    BasePaginatedPageContainer,
+    BaseFeedPaginatedPageContainer,
     GlobalToggle,
     BasePostsSimpleList
   },
   mixins: [
-    paginatedPageMixin
+    orderChangeMixin
   ],
   data () {
     return {
       limit: 50,
-      scope: 'feed'
+      scope: 'feed',
+      order: 'createdDesc'
     }
   },
   methods: {
     handleGlobalChange () {
       this.reset()
+    },
+    reset () {
+      this.$refs
+        .page
+        .reset()
     }
   }
 }

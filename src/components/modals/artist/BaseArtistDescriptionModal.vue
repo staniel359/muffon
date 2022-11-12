@@ -4,7 +4,9 @@
     :artist-name="artistName"
     :scope="scope"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseDescriptionSection
         :description="slotProps[scope]"
         is-modal

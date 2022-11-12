@@ -3,7 +3,9 @@
     ref="page"
     :channel-id="channelId"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <InfoSegment
         :channel-data="pageSlotProps.channelData"
       />

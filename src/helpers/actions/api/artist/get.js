@@ -1,5 +1,8 @@
 import getRequest from '@/helpers/actions/api/request/get'
 import formatArtistRequestUrl from '@/helpers/formatters/request/artist/url'
+import {
+  snakeCase
+} from 'snake-case'
 
 export default function (
   {
@@ -25,7 +28,9 @@ export default function (
 
   const params = {
     ...(albumType && {
-      album_type: albumType
+      album_type: snakeCase(
+        albumType
+      )
     }),
     ...(update && {
       update

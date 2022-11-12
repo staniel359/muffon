@@ -4,7 +4,9 @@
     :limit="limit"
     :header-link="headerLink"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         is-with-image

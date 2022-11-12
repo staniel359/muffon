@@ -4,7 +4,9 @@
     :scope="scope"
     :limit="limit"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <ImagesList
         :images="slotProps[scope]"
         @image-click="handleImageClick"

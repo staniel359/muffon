@@ -5,7 +5,9 @@
     :limit="limit"
     :header-link="headerLink"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BasePlaylistsSimpleList
         :playlists="slotProps[scope]"
         is-with-share-option

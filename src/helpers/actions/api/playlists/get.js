@@ -3,7 +3,8 @@ import getRequest from '@/helpers/actions/api/request/get'
 export default function (
   {
     page,
-    limit
+    limit,
+    order
   }
 ) {
   const url = '/playlists'
@@ -20,9 +21,10 @@ export default function (
   )(
     {
       url,
+      isWithSelfToken: true,
       page,
       limit,
-      isWithSelfToken: true,
+      order,
       onSuccess: handleSuccess
     }
   )

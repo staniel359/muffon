@@ -4,7 +4,9 @@
     :images="images"
     :options="sliderOptions"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <div class="image-container">
         <BaseImage
           class="rounded"

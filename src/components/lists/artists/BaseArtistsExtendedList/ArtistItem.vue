@@ -4,7 +4,9 @@
     :is-get-data="!responseData"
     :request-artist-data="artistData"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseSegmentContainer
         class="raised main-segment-container artist-segment"
         :class="{

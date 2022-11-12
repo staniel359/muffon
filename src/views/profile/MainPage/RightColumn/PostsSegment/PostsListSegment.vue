@@ -8,7 +8,9 @@
     :limit="limit"
     @focus="handleFocus"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BasePostsSimpleList
         :posts="slotProps[scope]"
         :profile-id="profileId"

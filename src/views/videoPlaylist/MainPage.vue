@@ -3,7 +3,9 @@
     ref="page"
     :playlist-id="playlistId"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <div
         :class="[
           'ui raised segments',

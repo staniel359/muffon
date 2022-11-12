@@ -8,7 +8,9 @@
     :is-from-radio="isFromRadio"
     is-with-active-class
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseTrackContent
         :track-data="trackData"
         :is-loading="slotProps.isLoading"

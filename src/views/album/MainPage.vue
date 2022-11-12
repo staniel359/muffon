@@ -3,7 +3,9 @@
     ref="page"
     :source-params="sourceParams"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <div
         :class="[
           'ui raised segments',

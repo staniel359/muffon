@@ -5,7 +5,9 @@
     :country="country"
     :limit="limit"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <BasePaginatedPageContainer
         ref="pagination"
         :response-data="pageSlotProps.topData"
@@ -27,7 +29,9 @@
           />
         </template>
 
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
           />

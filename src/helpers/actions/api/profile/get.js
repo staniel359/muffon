@@ -7,7 +7,8 @@ export default function (
     scope = '',
     playlistsModelData,
     page,
-    limit
+    limit,
+    order
   }
 ) {
   const url = `/profiles/${profileId}/${scope}`
@@ -45,6 +46,7 @@ export default function (
       isWithSelfToken: true,
       page,
       limit,
+      order,
       onSuccess: handleSuccess
     }
   )

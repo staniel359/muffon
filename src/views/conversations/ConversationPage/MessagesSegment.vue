@@ -9,7 +9,9 @@
     :limit="limit"
     @focus="handleFocus"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseMessagesSimpleList
         :messages="slotProps[scope]"
       />

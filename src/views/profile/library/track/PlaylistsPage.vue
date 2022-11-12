@@ -1,11 +1,17 @@
 <template>
   <BaseProfileLibraryTrackPaginatedPageContainer
+    model="playlist"
     :profile-id="profileId"
     :library-track-id="libraryTrackId"
     :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BasePlaylistsSimpleList
         :playlists="slotProps[scope]"
         is-with-created
@@ -21,6 +27,7 @@ import BaseProfileLibraryTrackPaginatedPageContainer
   from '@/components/containers/pages/profile/library/track/BaseProfileLibraryTrackPaginatedPageContainer.vue'
 import BasePlaylistsSimpleList
   from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'PlaylistsPage',
@@ -28,6 +35,9 @@ export default {
     BaseProfileLibraryTrackPaginatedPageContainer,
     BasePlaylistsSimpleList
   },
+  mixins: [
+    orderChangeMixin
+  ],
   props: {
     profileId: String,
     libraryTrackId: String
@@ -35,7 +45,8 @@ export default {
   data () {
     return {
       limit: 50,
-      scope: 'playlists'
+      scope: 'playlists',
+      order: 'createdDesc'
     }
   }
 }

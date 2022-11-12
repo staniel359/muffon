@@ -2,7 +2,9 @@
   <BaseConversationPageContainer
     :conversation-id="conversationId"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <div
         :class="[
           'ui raised segments',

@@ -4,7 +4,9 @@
     :images="images"
     :options="sliderOptions"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <div class="image-container main-image-container">
         <BaseImage
           :image="slotProps.image"

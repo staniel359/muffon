@@ -1,10 +1,16 @@
 <template>
   <BaseProfileFavoritesPaginatedPageContainer
+    model="favoriteArtist"
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
         :profile-id="profileId"
@@ -29,6 +35,7 @@ import BaseArtistsSimpleList
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'ArtistsPage',
@@ -36,6 +43,9 @@ export default {
     BaseProfileFavoritesPaginatedPageContainer,
     BaseArtistsSimpleList
   },
+  mixins: [
+    orderChangeMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -45,7 +55,8 @@ export default {
   data () {
     return {
       limit: 50,
-      scope: 'artists'
+      scope: 'artists',
+      order: 'createdDesc'
     }
   },
   computed: {

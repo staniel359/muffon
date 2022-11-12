@@ -8,7 +8,9 @@
     is-with-pagination
     @focus="handleFocus"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
         is-with-clear-button

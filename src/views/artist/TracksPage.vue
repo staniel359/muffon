@@ -4,7 +4,9 @@
     :scope="scope"
     :limit="limit"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         :artist-name="slotProps.artistName"

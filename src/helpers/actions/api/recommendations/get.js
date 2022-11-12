@@ -5,6 +5,7 @@ export default function (
   {
     page,
     limit,
+    order,
     filterScope,
     filterValue,
     isHideLibraryArtists,
@@ -54,6 +55,7 @@ export default function (
       isWithSelfToken: true,
       page,
       limit,
+      order,
       onSuccess: handleSuccess
     }
   )

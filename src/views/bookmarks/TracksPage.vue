@@ -1,9 +1,15 @@
 <template>
   <BaseBookmarksPaginatedPageContainer
+    model="bookmarkTrack"
     :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         is-with-image
@@ -29,6 +35,7 @@ import BaseBookmarksPaginatedPageContainer
   from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'TracksPage',
@@ -36,10 +43,14 @@ export default {
     BaseBookmarksPaginatedPageContainer,
     BaseTracksSimpleList
   },
+  mixins: [
+    orderChangeMixin
+  ],
   data () {
     return {
       limit: 50,
-      scope: 'tracks'
+      scope: 'tracks',
+      order: 'createdDesc'
     }
   }
 }

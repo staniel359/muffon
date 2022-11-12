@@ -27,7 +27,9 @@
       />
     </template>
 
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseAlbumsList
         :albums="slotProps[scope]"
         :artist-name="slotProps.artistName"

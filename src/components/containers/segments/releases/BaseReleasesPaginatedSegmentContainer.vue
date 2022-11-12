@@ -5,7 +5,9 @@
     :limit="limit"
     :header-link="headerLink"
   >
-    <template #default="segmentSlotProps">
+    <template
+      #default="segmentSlotProps"
+    >
       <BasePaginatedSegmentContainer
         :response-data="segmentSlotProps.releasesData"
         :is-loading="segmentSlotProps.isLoading"
@@ -15,7 +17,9 @@
         :response-page-limit="responsePageLimit"
         @focus="handleFocus"
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[listScope]="slotProps[listScope]"
           />

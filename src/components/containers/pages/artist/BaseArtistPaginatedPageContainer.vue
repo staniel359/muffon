@@ -6,7 +6,9 @@
     :limit="limit"
     @request-artist-data-change="handleRequestArtistDataChange"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <BasePaginatedPageContainer
         ref="pagination"
         :response-data="pageSlotProps.artistData"
@@ -33,7 +35,9 @@
           />
         </template>
 
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
             :artist-name="pageSlotProps.artistName"

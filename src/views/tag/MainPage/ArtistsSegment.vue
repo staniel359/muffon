@@ -6,7 +6,9 @@
     :tag-name="tagName"
     :header-link="headerLink"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseArtistsTableList
         :artists="slotProps[scope]"
         :items-in-row="itemsInRow"

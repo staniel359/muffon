@@ -6,7 +6,9 @@
     :limit="limit"
     :header-link="headerLink"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseArtistsTableList
         :artists="slotProps[scope]"
         :profile-id="profileId"

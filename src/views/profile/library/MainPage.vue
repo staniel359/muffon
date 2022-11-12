@@ -2,7 +2,9 @@
   <BaseProfileLibraryPageContainer
     :profile-id="profileId"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <div class="ui raised segments main-segment-container">
         <StatisticsSegment
           :library-data="slotProps.libraryData"

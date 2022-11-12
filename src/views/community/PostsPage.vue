@@ -1,47 +1,39 @@
 <template>
-  <BaseCommunityPageContainer
-    ref="page"
+  <BaseCommunityPaginatedPageContainer
+    model="post"
     :community-id="communityId"
     :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="pageSlotProps">
-      <BasePaginatedPageContainer
-        :response-data="pageSlotProps.communityData"
-        :is-loading="pageSlotProps.isLoading"
-        :error="pageSlotProps.error"
-        :scope="scope"
-        :limit="limit"
-      >
-        <template #default="slotProps">
-          <BasePostsSimpleList
-            :posts="slotProps[scope]"
-            :is-community-creator="pageSlotProps.isCommunityCreator"
-          />
-        </template>
-      </BasePaginatedPageContainer>
+    <template
+      #default="slotProps"
+    >
+      <BasePostsSimpleList
+        :posts="slotProps[scope]"
+        :is-community-creator="slotProps.isCommunityCreator"
+      />
     </template>
-  </BaseCommunityPageContainer>
+  </BaseCommunityPaginatedPageContainer>
 </template>
 
 <script>
-import BaseCommunityPageContainer
-  from '@/components/containers/pages/community/BaseCommunityPageContainer.vue'
-import BasePaginatedPageContainer
-  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import BaseCommunityPaginatedPageContainer
+  from '@/components/containers/pages/community/BaseCommunityPaginatedPageContainer.vue'
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
-import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'PostsPage',
   components: {
-    BaseCommunityPageContainer,
-    BasePaginatedPageContainer,
+    BaseCommunityPaginatedPageContainer,
     BasePostsSimpleList
   },
   mixins: [
-    paginatedPageMixin
+    orderChangeMixin
   ],
   props: {
     communityId: String
@@ -49,7 +41,8 @@ export default {
   data () {
     return {
       limit: 20,
-      scope: 'posts'
+      scope: 'posts',
+      order: 'createdDesc'
     }
   }
 }

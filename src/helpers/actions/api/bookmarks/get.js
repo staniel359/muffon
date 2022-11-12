@@ -5,7 +5,8 @@ export default function (
   {
     scope = '',
     page,
-    limit
+    limit,
+    order
   }
 ) {
   const profileId =
@@ -28,6 +29,7 @@ export default function (
       url,
       page,
       limit,
+      order,
       isWithSelfToken: true,
       onSuccess: handleSuccess
     }

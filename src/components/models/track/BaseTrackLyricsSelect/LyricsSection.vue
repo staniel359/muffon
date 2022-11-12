@@ -4,7 +4,9 @@
     :selected-track-data="selectedTrackData"
     @focus="handleFocus"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <LyricsTextSection
         :lyrics="slotProps.lyrics"
         :track-id="slotProps.trackId"

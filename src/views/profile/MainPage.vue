@@ -2,7 +2,9 @@
   <BaseProfilePageContainer
     :profile-id="profileId"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <div class="main-profile-page-columns-container">
         <LeftColumn
           :profile-data="slotProps.profileData"

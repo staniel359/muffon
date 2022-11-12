@@ -5,7 +5,9 @@
     :limit="limit"
     :header-link="headerLink"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseAlbumsSimpleList
         :albums="slotProps[scope]"
         :profile-id="profileId"

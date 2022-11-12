@@ -1,10 +1,16 @@
 <template>
   <BaseProfileFavoritesPaginatedPageContainer
+    model="favoriteAlbum"
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseAlbumsSimpleList
         :albums="slotProps[scope]"
         :profile-id="profileId"
@@ -30,6 +36,7 @@ import BaseAlbumsSimpleList
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'AlbumsPage',
@@ -37,6 +44,9 @@ export default {
     BaseProfileFavoritesPaginatedPageContainer,
     BaseAlbumsSimpleList
   },
+  mixins: [
+    orderChangeMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -46,7 +56,8 @@ export default {
   data () {
     return {
       limit: 50,
-      scope: 'albums'
+      scope: 'albums',
+      order: 'createdDesc'
     }
   },
   computed: {

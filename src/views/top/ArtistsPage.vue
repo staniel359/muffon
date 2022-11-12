@@ -7,7 +7,9 @@
     is-with-country-select
     is-with-view-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseArtistsList
         :view-id="viewId"
         :artists="slotProps[scope]"

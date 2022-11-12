@@ -7,7 +7,9 @@
     is-with-top-segment
     is-with-view-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseAlbumsList
         :albums="slotProps[listScope]"
         :view-id="viewId"

@@ -43,7 +43,8 @@ export default {
       required: true
     },
     scope: String,
-    limit: Number
+    limit: Number,
+    order: String
   },
   data () {
     return {
@@ -86,7 +87,8 @@ export default {
         profileId: this.profileId,
         libraryTagId: this.libraryTagId,
         scope: this.scope,
-        limit: this.limit
+        limit: this.limit,
+        order: this.order
       }
     },
     topTracksCount () {

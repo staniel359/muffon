@@ -4,7 +4,8 @@ import getRequest from '@/helpers/actions/api/request/get'
 export default function (
   {
     page,
-    limit
+    limit,
+    order
   }
 ) {
   const profileId =
@@ -28,6 +29,7 @@ export default function (
       isWithSelfToken: true,
       page,
       limit,
+      order,
       onSuccess: handleSuccess
     }
   )

@@ -3,7 +3,9 @@
     :track-data="firstTrackData"
     :queue-tracks="tracksCollection"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseButtonContainer
         class="basic main-button track-play-button"
       >

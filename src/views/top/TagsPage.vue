@@ -5,7 +5,9 @@
     is-with-top-segment
     is-with-country-select
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseTagsSimpleList
         :tags="slotProps[scope]"
       />

@@ -13,7 +13,9 @@
       :error="error"
       @focus="handleFocus"
     >
-      <template #default="slotProps">
+      <template
+        #default="slotProps"
+      >
         <slot
           :[scope]="slotProps[scope]"
         />

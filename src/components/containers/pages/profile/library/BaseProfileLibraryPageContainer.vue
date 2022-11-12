@@ -41,6 +41,7 @@ export default {
     },
     scope: String,
     limit: Number,
+    order: String,
     query: String
   },
   data () {
@@ -75,7 +76,8 @@ export default {
       return {
         profileId: this.profileId,
         scope: this.scope,
-        limit: this.limit
+        limit: this.limit,
+        order: this.order
       }
     },
     libraryData () {

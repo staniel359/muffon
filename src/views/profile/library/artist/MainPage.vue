@@ -3,7 +3,9 @@
     :profile-id="profileId"
     :library-artist-id="libraryArtistId"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <div class="main-profile-page-columns-container">
         <LeftColumn
           :artist-data="slotProps.artistData"

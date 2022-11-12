@@ -4,7 +4,9 @@
     :profile-id="profileId"
     :scope="scope"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseAlbumsSimpleList
         :albums="slotProps[scope]"
         :profile-id="profileId"

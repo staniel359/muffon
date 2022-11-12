@@ -10,12 +10,10 @@
     @call="handleCall"
   >
     <template #top>
-      <div>
-        <BasePlaylistCreateButton
-          :key="key"
-          @success="handlePlaylistCreate"
-        />
-      </div>
+      <BasePlaylistCreateButton
+        :key="key"
+        @success="handlePlaylistCreate"
+      />
 
       <BaseDivider />
     </template>

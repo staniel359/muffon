@@ -4,7 +4,9 @@
     :video-id="videoId"
     :scope="scope"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseModalTagsList
         :tags="slotProps[scope]"
         @tag-click="handleTagClick"

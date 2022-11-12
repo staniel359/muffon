@@ -4,7 +4,9 @@
     :scope="scope"
     :limit="limit"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseVideosTableList
         :videos="slotProps[scope]"
         is-with-share-option

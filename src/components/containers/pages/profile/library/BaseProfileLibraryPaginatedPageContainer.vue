@@ -4,9 +4,12 @@
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
+    :order="order"
     :query="query"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <BasePaginatedPageContainer
         ref="pagination"
         :response-data="pageSlotProps.libraryData"
@@ -14,7 +17,10 @@
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
+        :order="order"
+        :model="model"
         :is-with-top-segment="isWithTopSegment"
+        :is-with-order-change="isWithOrderChange"
         :is-with-view-change="isWithViewChange"
         :view-id="viewId"
       >
@@ -39,7 +45,9 @@
           />
         </template>
 
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
             :top-tracks-count="pageSlotProps.topTracksCount"
@@ -76,8 +84,11 @@ export default {
     profileId: String,
     scope: String,
     limit: Number,
+    order: String,
+    model: String,
     isWithTopSegment: Boolean,
     isWithSearch: Boolean,
+    isWithOrderChange: Boolean,
     isWithViewChange: Boolean,
     viewId: String
   },

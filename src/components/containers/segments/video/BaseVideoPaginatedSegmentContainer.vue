@@ -6,7 +6,9 @@
     :limit="limit"
     :header-link="headerLink"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <BasePaginatedSegmentContainer
         :response-data="pageSlotProps.videoData"
         :is-loading="pageSlotProps.isLoading"
@@ -18,7 +20,9 @@
         :is-pagination-simple="isPaginationSimple"
         @focus="handleFocus"
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
           />

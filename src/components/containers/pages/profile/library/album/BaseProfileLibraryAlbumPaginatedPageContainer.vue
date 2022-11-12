@@ -5,16 +5,25 @@
     :library-album-id="libraryAlbumId"
     :scope="scope"
     :limit="limit"
+    :order="order"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <BasePaginatedPageContainer
         :response-data="pageSlotProps.albumData"
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
+        :order="order"
+        :model="model"
+        :is-with-top-segment="isWithTopSegment"
+        :is-with-order-change="isWithOrderChange"
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
             :artist-name="pageSlotProps.artistName"
@@ -45,7 +54,11 @@ export default {
     profileId: String,
     libraryAlbumId: String,
     scope: String,
-    limit: Number
+    limit: Number,
+    order: String,
+    model: String,
+    isWithTopSegment: Boolean,
+    isWithOrderChange: Boolean
   }
 }
 </script>

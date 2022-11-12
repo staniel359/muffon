@@ -1,9 +1,15 @@
 <template>
   <BaseBookmarksPaginatedPageContainer
+    model="bookmarkArtist"
     :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
         is-with-created
@@ -23,6 +29,7 @@ import BaseBookmarksPaginatedPageContainer
   from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
 import BaseArtistsSimpleList
   from '@/components/lists/artists/BaseArtistsSimpleList.vue'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'ArtistsPage',
@@ -30,10 +37,14 @@ export default {
     BaseBookmarksPaginatedPageContainer,
     BaseArtistsSimpleList
   },
+  mixins: [
+    orderChangeMixin
+  ],
   data () {
     return {
       limit: 50,
-      scope: 'artists'
+      scope: 'artists',
+      order: 'createdDesc'
     }
   }
 }

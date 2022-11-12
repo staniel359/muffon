@@ -9,7 +9,9 @@
       :header-link="headerLink"
       is-pagination-simple
     >
-      <template #default="slotProps">
+      <template
+        #default="slotProps"
+      >
         <BaseVideosTableList
           :videos="slotProps[scope]"
           is-with-share-option

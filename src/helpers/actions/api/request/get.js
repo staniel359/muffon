@@ -1,5 +1,8 @@
 import axios from 'axios'
 import store from '@/plugins/store'
+import {
+  snakeCase
+} from 'snake-case'
 
 export default function (
   {
@@ -10,6 +13,7 @@ export default function (
     isWithSelfLanguage,
     page,
     limit,
+    order,
     onComplete,
     onSuccess,
     onError
@@ -49,6 +53,11 @@ export default function (
     }),
     ...(limit && {
       limit
+    }),
+    ...(order && {
+      order: snakeCase(
+        order
+      )
     })
   }
 

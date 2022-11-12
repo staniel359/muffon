@@ -40,7 +40,7 @@
         class="detail"
       >
         <BaseIcon
-          icon="microphone"
+          icon="microphone alternate"
         />
 
         <span

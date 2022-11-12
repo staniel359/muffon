@@ -6,7 +6,9 @@
     :limit="limit"
     :header-link="headerLink"
   >
-    <template #default="segmentSlotProps">
+    <template
+      #default="segmentSlotProps"
+    >
       <BasePaginatedSegmentContainer
         :response-data="segmentSlotProps.channelData"
         :is-loading="segmentSlotProps.isLoading"
@@ -17,7 +19,9 @@
         :is-pagination-simple="isPaginationSimple"
         @focus="handleFocus"
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
           />

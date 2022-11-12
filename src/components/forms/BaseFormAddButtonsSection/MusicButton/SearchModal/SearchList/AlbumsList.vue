@@ -9,7 +9,9 @@
     is-with-pagination
     @focus="handleFocus"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseAlbumsSimpleList
         :albums="slotProps[scope]"
         is-with-artist-name

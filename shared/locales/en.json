@@ -362,7 +362,7 @@
     "albumsTypes": {
       "album": "Albums",
       "single": "Singles",
-      "single_ep": "Singles / EPs",
+      "singleEp": "Singles / EPs",
       "compilation": "Compilations",
       "video": "Videos",
       "misc": "Miscellaneous",
@@ -642,6 +642,24 @@
     "simple": "Simple list",
     "table": "Table",
     "extended": "Detailed list"
+  },
+  "orders": {
+    "createdDesc": "Newest",
+    "createdAsc": "Oldest",
+    "updatedDesc": "Most recently updated",
+    "updatedAsc": "Least recently updated",
+    "artistsCountDesc": "Most artists",
+    "artistsCountAsc": "Least artists",
+    "albumsCountDesc": "Most albums",
+    "albumsCountAsc": "Least albums",
+    "tracksCountDesc": "Most tracks",
+    "tracksCountAsc": "Least tracks",
+    "followersCountDesc": "Most followers",
+    "followersCountAsc": "Least followers",
+    "joinedDesc": "Most recently joined",
+    "joinedAsc": "Least recently joined",
+    "membersCountDesc": "Most members",
+    "membersCountAsc": "Least members"
   },
   "error": "Error",
   "more": "More...",

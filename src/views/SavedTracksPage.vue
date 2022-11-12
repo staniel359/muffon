@@ -1,11 +1,19 @@
 <template>
   <BasePaginatedPageContainer
+    ref="page"
+    model="savedTrack"
     :response-data="tracksData"
     :scope="scope"
     :limit="limit"
+    :order="order"
     :response-page-limit="totalCount"
+    :is-get-data="false"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         :is-with-self-icons="false"
@@ -32,10 +40,14 @@ import BasePaginatedPageContainer
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import navigationMixin from '@/mixins/navigationMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 import {
   savedTracks as formatSavedTracksPageNavigation
 } from '@/helpers/formatters/navigation'
 import formatSavedTracksPageTab from '@/helpers/formatters/tabs/savedTracks'
+import {
+  sortByCreated
+} from '@/helpers/utils'
 
 export default {
   name: 'SavedTracksPage',
@@ -44,12 +56,14 @@ export default {
     BaseTracksSimpleList
   },
   mixins: [
-    navigationMixin
+    navigationMixin,
+    orderChangeMixin
   ],
   data () {
     return {
       limit: 50,
-      scope: 'tracks'
+      scope: 'tracks',
+      order: 'createdDesc'
     }
   },
   computed: {
@@ -63,8 +77,16 @@ export default {
       return {
         page: 1,
         total_pages: 1,
-        tracks: this.tracks
+        tracks: this.tracksCreatedSorted
       }
+    },
+    tracksCreatedSorted () {
+      return sortByCreated(
+        {
+          collection: this.tracks,
+          order: this.order
+        }
+      )
     },
     tracks () {
       return electronStore.get(
@@ -75,10 +97,23 @@ export default {
       return this.tracks.length
     }
   },
+  watch: {
+    order: 'handleOrderChange'
+  },
   mounted () {
     this.setNavigation()
 
     this.isRefreshNavigation = true
+  },
+  methods: {
+    handleOrderChange () {
+      this.reset()
+    },
+    reset () {
+      this.$refs
+        .page
+        .reset()
+    }
   }
 }
 </script>

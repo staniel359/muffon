@@ -8,7 +8,7 @@
   >
     <div class="ui input left icon">
       <BaseIcon
-        icon="calendar"
+        icon="calendar outline"
         :class="{
           inverted: isDarkMode
         }"

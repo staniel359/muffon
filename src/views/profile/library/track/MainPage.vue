@@ -3,7 +3,9 @@
     :profile-id="profileId"
     :library-track-id="libraryTrackId"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <div class="main-profile-page-columns-container">
         <LeftColumn
           :track-data="slotProps.trackData"

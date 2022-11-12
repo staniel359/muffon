@@ -13,7 +13,9 @@
         class="item main-simple-list-item"
         :variant-data="variantData"
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <BaseTrackContent
             :track-data="variantData"
             :is-loading="slotProps.isLoading"

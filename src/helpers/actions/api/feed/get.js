@@ -5,6 +5,7 @@ export default function (
   {
     page,
     limit,
+    order,
     isGlobal
   }
 ) {
@@ -35,6 +36,7 @@ export default function (
       isWithSelfToken: true,
       page,
       limit,
+      order,
       onSuccess: handleSuccess
     }
   )

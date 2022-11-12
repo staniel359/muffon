@@ -5,7 +5,9 @@
     :country="country"
     :header-link="headerLink"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseAlbumsTableList
         :albums="slotProps[scope]"
         :items-in-row="itemsInRow"

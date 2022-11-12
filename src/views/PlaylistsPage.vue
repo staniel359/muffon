@@ -1,54 +1,48 @@
 <template>
-  <BasePlaylistsPageContainer
-    ref="page"
+  <BasePlaylistsPaginatedPageContainer
+    model="playlist"
+    :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="pageSlotProps">
-      <BasePaginatedPageContainer
-        :response-data="pageSlotProps.playlistsData"
-        :is-loading="pageSlotProps.isLoading"
-        :error="pageSlotProps.error"
-        :scope="scope"
-        :limit="limit"
-      >
-        <template #default="slotProps">
-          <BasePlaylistsSimpleList
-            :playlists="slotProps[scope]"
-            is-with-profile-nickname
-            is-with-created
-            is-with-share-option
-            is-with-edit-option
-            is-with-delete-option
-          />
-        </template>
-      </BasePaginatedPageContainer>
+    <template
+      #default="slotProps"
+    >
+      <BasePlaylistsSimpleList
+        :playlists="slotProps[scope]"
+        is-with-profile-nickname
+        is-with-created
+        is-with-share-option
+        is-with-edit-option
+        is-with-delete-option
+      />
     </template>
-  </BasePlaylistsPageContainer>
+  </BasePlaylistsPaginatedPageContainer>
 </template>
 
 <script>
-import BasePlaylistsPageContainer
-  from '@/components/containers/pages/playlists/BasePlaylistsPageContainer.vue'
-import BasePaginatedPageContainer
-  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import BasePlaylistsPaginatedPageContainer
+  from '@/components/containers/pages/playlists/BasePlaylistsPaginatedPageContainer.vue'
 import BasePlaylistsSimpleList
   from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
-import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'PlaylistsPage',
   components: {
-    BasePlaylistsPageContainer,
-    BasePaginatedPageContainer,
+    BasePlaylistsPaginatedPageContainer,
     BasePlaylistsSimpleList
   },
   mixins: [
-    paginatedPageMixin
+    orderChangeMixin
   ],
   data () {
     return {
       limit: 50,
-      scope: 'playlists'
+      scope: 'playlists',
+      order: 'createdDesc'
     }
   }
 }

@@ -2,7 +2,9 @@
   <BaseVideoPageContainer
     :video-id="videoId"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseSegmentContainer
         :class="[
           'raised main-segment-container',

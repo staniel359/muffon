@@ -5,19 +5,27 @@
     :library-track-id="libraryTrackId"
     :scope="scope"
     :limit="limit"
+    :order="order"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <BasePaginatedPageContainer
         :response-data="pageSlotProps.trackData"
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
+        :order="order"
+        :model="model"
         :is-with-top-segment="isWithTopSegment"
+        :is-with-order-change="isWithOrderChange"
         :is-with-view-change="isWithViewChange"
         :view-id="viewId"
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
             :top-tracks-count="pageSlotProps.topTracksCount"
@@ -49,7 +57,10 @@ export default {
     libraryTrackId: String,
     scope: String,
     limit: Number,
+    order: String,
+    model: String,
     isWithTopSegment: Boolean,
+    isWithOrderChange: Boolean,
     isWithViewChange: Boolean,
     viewId: String
   }

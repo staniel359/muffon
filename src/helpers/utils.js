@@ -3,6 +3,7 @@ import {
   AES,
   enc
 } from 'crypto-js'
+import moment from 'moment-timezone'
 
 export { v4 as generateKey } from 'uuid'
 
@@ -116,5 +117,54 @@ export function decryptTextWithLinks (
   return text.replace(
     /(?<=\[link\])(.+?)(?=\[\/link\])/g,
     decryptMatchedString
+  )
+}
+
+export function sortByCreated (
+  {
+    collection,
+    order = 'createdDesc'
+  }
+) {
+  function sortItems (
+    first,
+    second
+  ) {
+    function formatCreated (
+      item
+    ) {
+      return moment(
+        item.created || 0
+      ).toDate()
+    }
+
+    const firstCreated =
+      formatCreated(
+        first
+      )
+
+    const secondCreated =
+      formatCreated(
+        second
+      )
+
+    switch (order) {
+      case 'createdDesc':
+        return (
+          secondCreated -
+            firstCreated
+        )
+      case 'createdAsc':
+        return (
+          firstCreated -
+            secondCreated
+        )
+    }
+  }
+
+  return [
+    ...collection
+  ].sort(
+    sortItems
   )
 }

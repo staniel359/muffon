@@ -1,14 +1,16 @@
 <template>
-  <BaseAddButton
-    model="playlist"
-    @click="handleButtonClick"
-  />
+  <div>
+    <BaseAddButton
+      model="playlist"
+      @click="handleButtonClick"
+    />
 
-  <BasePlaylistCreateModal
-    ref="modal"
-    :is-with-redirect="isWithRedirect"
-    @success="handleSuccess"
-  />
+    <BasePlaylistCreateModal
+      ref="modal"
+      :is-with-redirect="isWithRedirect"
+      @success="handleSuccess"
+    />
+  </div>
 </template>
 
 <script>

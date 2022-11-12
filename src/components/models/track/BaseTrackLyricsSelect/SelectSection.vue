@@ -4,7 +4,9 @@
     :scope="scope"
     :query="query"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <LyricsSelect
         :is-loading="slotProps.isLoading"
         :is-error="slotProps.isError"

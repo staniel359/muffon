@@ -6,7 +6,9 @@
     :limit="limit"
     :header-link="headerLink"
   >
-    <template #default="segmentSlotProps">
+    <template
+      #default="segmentSlotProps"
+    >
       <BasePaginatedSegmentContainer
         :response-data="segmentSlotProps.artistData"
         :is-loading="segmentSlotProps.isLoading"
@@ -15,7 +17,9 @@
         :limit="limit"
         @focus="handleFocus"
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
             :artist-name="segmentSlotProps.artistName"

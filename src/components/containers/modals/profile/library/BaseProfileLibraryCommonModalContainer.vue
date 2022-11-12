@@ -8,7 +8,9 @@
     :limit="limit"
     @call="handleCall"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <slot
         :[scope]="slotProps[scope]"
       />

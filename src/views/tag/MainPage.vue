@@ -2,7 +2,9 @@
   <BaseTagPageContainer
     :tag-name="tagName"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <InfoSegment
         :tag-data="slotProps.tagData"
       />

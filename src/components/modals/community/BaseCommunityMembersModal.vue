@@ -8,7 +8,9 @@
     :limit="limit"
     @call="handleCall"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseProfilesSimpleList
         :profiles="slotProps[scope]"
         @link-click="handleLinkClick"

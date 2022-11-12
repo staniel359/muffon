@@ -5,7 +5,9 @@
     :scope="scope"
     :limit="limit"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <BasePaginatedPageContainer
         :response-data="pageSlotProps.playlistData"
         :is-loading="pageSlotProps.isLoading"
@@ -14,7 +16,9 @@
         :limit="limit"
         is-pagination-simple
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
           />
@@ -26,7 +30,7 @@
 
 <script>
 import BaseVideoPlaylistPageContainer
-  from '@/components/containers/pages/videoPlaylist/BaseVideoPlaylistPageContainer.vue'
+  from './BaseVideoPlaylistPageContainer.vue'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import paginatedPageMixin from '@/mixins/paginatedPageMixin'

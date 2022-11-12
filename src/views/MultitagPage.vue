@@ -17,7 +17,9 @@
       />
     </template>
 
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseArtistsList
         :artists="slotProps[scope]"
         :view-id="viewId"

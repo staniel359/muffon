@@ -4,7 +4,9 @@
     :tag-name="tagName"
     :scope="scope"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseDescriptionSection
         :description="slotProps[scope]"
         is-modal

@@ -18,7 +18,9 @@
         :is-pagination-simple="isVideos"
         @focus="handleFocus"
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <Component
             :is="component"
             :[listScope]="slotProps[searchScope]"

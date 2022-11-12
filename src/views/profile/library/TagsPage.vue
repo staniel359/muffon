@@ -6,7 +6,9 @@
     is-with-top-segment
     is-with-search
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseTagsSimpleList
         :tags="slotProps[scope]"
         :profile-id="profileId"

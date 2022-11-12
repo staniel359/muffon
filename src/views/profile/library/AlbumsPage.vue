@@ -1,14 +1,19 @@
 <template>
   <BaseProfileLibraryPaginatedPageContainer
+    model="libraryAlbum"
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
+    :order="order"
     :view-id="viewId"
     is-with-top-segment
     is-with-search
+    is-with-order-change
     is-with-view-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseAlbumsList
         :albums="slotProps[scope]"
         :profile-id="profileId"
@@ -37,6 +42,7 @@ import {
   isCurrentProfile
 } from '@/helpers/utils'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'AlbumsPage',
@@ -45,7 +51,8 @@ export default {
     BaseAlbumsList
   },
   mixins: [
-    viewChangeMixin
+    viewChangeMixin,
+    orderChangeMixin
   ],
   props: {
     profileId: {
@@ -55,7 +62,8 @@ export default {
   },
   data () {
     return {
-      scope: 'albums'
+      scope: 'albums',
+      order: 'libraryTracksCountDesc'
     }
   },
   computed: {

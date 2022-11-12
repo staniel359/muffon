@@ -1,15 +1,20 @@
 <template>
   <BaseProfileLibraryTagPaginatedPageContainer
+    model="libraryArtist"
     :profile-id="profileId"
     :library-tag-id="libraryTagId"
     :scope="scope"
     :limit="limit"
+    :order="order"
     :view-id="viewId"
     is-with-top-segment
-    is-with-view-change
     is-with-search
+    is-with-view-change
+    is-with-order-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseArtistsList
         :artists="slotProps[scope]"
         :profile-id="profileId"
@@ -38,6 +43,7 @@ import {
   isCurrentProfile
 } from '@/helpers/utils'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'ArtistsPage',
@@ -46,7 +52,8 @@ export default {
     BaseArtistsList
   },
   mixins: [
-    viewChangeMixin
+    viewChangeMixin,
+    orderChangeMixin
   ],
   props: {
     profileId: String,
@@ -54,7 +61,8 @@ export default {
   },
   data () {
     return {
-      scope: 'artists'
+      scope: 'artists',
+      order: 'libraryTracksCountDesc'
     }
   },
   computed: {

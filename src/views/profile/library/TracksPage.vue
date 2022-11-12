@@ -1,12 +1,17 @@
 <template>
   <BaseProfileLibraryPaginatedPageContainer
+    model="libraryTrack"
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
+    :order="order"
     is-with-top-segment
     is-with-search
+    is-with-order-change
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         :profile-id="profileId"
@@ -37,6 +42,7 @@ import BaseTracksSimpleList
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'TracksPage',
@@ -44,6 +50,9 @@ export default {
     BaseProfileLibraryPaginatedPageContainer,
     BaseTracksSimpleList
   },
+  mixins: [
+    orderChangeMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -53,7 +62,8 @@ export default {
   data () {
     return {
       limit: 50,
-      scope: 'tracks'
+      scope: 'tracks',
+      order: 'createdDesc'
     }
   },
   computed: {

@@ -31,7 +31,8 @@ export default {
     navigationMixin
   ],
   props: {
-    limit: Number
+    limit: Number,
+    order: String
   },
   data () {
     return {
@@ -49,7 +50,8 @@ export default {
     },
     playlistsArgs () {
       return {
-        limit: this.limit
+        limit: this.limit,
+        order: this.order
       }
     }
   },

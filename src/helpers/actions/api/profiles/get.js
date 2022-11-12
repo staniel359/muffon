@@ -4,7 +4,8 @@ import getRequest from '@/helpers/actions/api/request/get'
 export default function (
   {
     page,
-    limit
+    limit,
+    order
   }
 ) {
   const url = '/profiles'
@@ -29,9 +30,10 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       page,
       limit,
-      isWithSelfToken: true,
+      order,
       onSuccess: handleSuccess
     }
   )

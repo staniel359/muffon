@@ -7,7 +7,9 @@
     :client-page-limit="clientPageLimit"
     is-pagination-simple
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseVideosTableList
         :videos="slotProps[scope]"
         is-with-share-option

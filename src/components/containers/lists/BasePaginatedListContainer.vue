@@ -8,7 +8,9 @@
         :error="errorComputed"
         @refresh="handleRefresh"
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
           />

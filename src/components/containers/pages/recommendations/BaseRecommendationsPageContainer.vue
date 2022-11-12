@@ -41,7 +41,8 @@ export default {
     }
   },
   props: {
-    limit: Number
+    limit: Number,
+    order: String
   },
   emits: [
     'reset'
@@ -74,6 +75,7 @@ export default {
     recommendationsArgs () {
       return {
         limit: this.limit,
+        order: this.order,
         filterScope: this.filterScope,
         filterValue: this.filterValue,
         isHideLibraryArtists:

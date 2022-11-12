@@ -1,47 +1,39 @@
 <template>
-  <BaseProfilePageContainer
-    ref="page"
+  <BaseProfilePaginatedPageContainer
+    model="post"
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="pageSlotProps">
-      <BasePaginatedPageContainer
-        :response-data="pageSlotProps.profileData"
-        :is-loading="pageSlotProps.isLoading"
-        :error="pageSlotProps.error"
-        :scope="scope"
-        :limit="limit"
-      >
-        <template #default="slotProps">
-          <BasePostsSimpleList
-            :posts="slotProps[scope]"
-            :profile-id="profileId"
-          />
-        </template>
-      </BasePaginatedPageContainer>
+    <template
+      #default="slotProps"
+    >
+      <BasePostsSimpleList
+        :posts="slotProps[scope]"
+        :profile-id="profileId"
+      />
     </template>
-  </BaseProfilePageContainer>
+  </BaseProfilePaginatedPageContainer>
 </template>
 
 <script>
-import BaseProfilePageContainer
-  from '@/components/containers/pages/profile/BaseProfilePageContainer.vue'
-import BasePaginatedPageContainer
-  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import BaseProfilePaginatedPageContainer
+  from '@/components/containers/pages/profile/BaseProfilePaginatedPageContainer.vue'
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
-import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'PostsPage',
   components: {
-    BaseProfilePageContainer,
-    BasePaginatedPageContainer,
+    BaseProfilePaginatedPageContainer,
     BasePostsSimpleList
   },
   mixins: [
-    paginatedPageMixin
+    orderChangeMixin
   ],
   props: {
     profileId: String
@@ -49,7 +41,8 @@ export default {
   data () {
     return {
       limit: 20,
-      scope: 'posts'
+      scope: 'posts',
+      order: 'createdDesc'
     }
   }
 }

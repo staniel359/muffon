@@ -10,7 +10,9 @@
     is-pagination-simple
     @focus="handleFocus"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseVideosSimpleList
         :videos="slotProps[scope]"
         is-with-share-option

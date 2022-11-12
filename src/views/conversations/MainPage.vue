@@ -1,49 +1,43 @@
 <template>
-  <BaseConversationsPageContainer
-    ref="page"
+  <BaseConversationsPaginatedPageContainer
+    model="conversation"
+    :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="pageSlotProps">
-      <BasePaginatedPageContainer
-        :response-data="pageSlotProps.conversationsData"
-        :is-loading="pageSlotProps.isLoading"
-        :error="pageSlotProps.error"
-        :scope="scope"
-        :limit="limit"
-      >
-        <template #default="slotProps">
-          <BaseConversationsSimpleList
-            :conversations="slotProps[scope]"
-          />
-        </template>
-      </BasePaginatedPageContainer>
+    <template
+      #default="slotProps"
+    >
+      <BaseConversationsSimpleList
+        :conversations="slotProps[scope]"
+      />
     </template>
-  </BaseConversationsPageContainer>
+  </BaseConversationsPaginatedPageContainer>
 </template>
 
 <script>
-import BaseConversationsPageContainer
-  from '@/components/containers/pages/conversations/BaseConversationsPageContainer.vue'
-import BasePaginatedPageContainer
-  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import BaseConversationsPaginatedPageContainer
+  from '@/components/containers/pages/conversations/BaseConversationsPaginatedPageContainer.vue'
 import BaseConversationsSimpleList
   from '@/components/lists/conversations/BaseConversationsSimpleList.vue'
-import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'MainPage',
   components: {
-    BaseConversationsPageContainer,
-    BasePaginatedPageContainer,
+    BaseConversationsPaginatedPageContainer,
     BaseConversationsSimpleList
   },
   mixins: [
-    paginatedPageMixin
+    orderChangeMixin
   ],
   data () {
     return {
       limit: 10,
-      scope: 'conversations'
+      scope: 'conversations',
+      order: 'updatedDesc'
     }
   }
 }

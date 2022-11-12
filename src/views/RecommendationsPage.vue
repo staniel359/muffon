@@ -1,85 +1,73 @@
 <template>
-  <BaseRecommendationsPageContainer
-    ref="page"
+  <BaseRecommendationsPaginatedPageContainer
+    model="recommendation"
+    :scope="scope"
     :limit="limit"
-    @reset="handleReset"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="pageSlotProps">
-      <BasePaginatedPageContainer
-        ref="pagination"
-        :response-data="pageSlotProps.recommendationsData"
-        :is-loading="pageSlotProps.isLoading"
-        :error="pageSlotProps.error"
-        :scope="scope"
-        :limit="limit"
-        is-with-top-segment
-      >
-        <template #top>
-          <BaseFilterButton
-            :is-active="isShowFilter"
-            @click="handleFilterButtonClick"
-          />
-        </template>
-
-        <template #topExtra>
-          <FilterSection
-            v-show="isShowFilter"
-            class="filter-section"
-            :is-show="isShowFilter"
-          />
-        </template>
-
-        <template #default="slotProps">
-          <BaseArtistsExtendedList
-            :artists="slotProps[scope]"
-            is-with-library-option
-            is-with-favorite-option
-            is-with-bookmark-option
-            is-with-listened-option
-            is-with-share-option
-            is-with-delete-option
-            is-recommendation
-          />
-        </template>
-      </BasePaginatedPageContainer>
+    <template #top>
+      <BaseFilterButton
+        :is-active="isShowFilter"
+        @click="handleFilterButtonClick"
+      />
     </template>
-  </BaseRecommendationsPageContainer>
+
+    <template #topExtra>
+      <FilterSection
+        v-show="isShowFilter"
+        class="filter-section"
+        :is-show="isShowFilter"
+      />
+    </template>
+
+    <template
+      #default="slotProps"
+    >
+      <BaseArtistsExtendedList
+        :artists="slotProps[scope]"
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
+        is-with-share-option
+        is-with-delete-option
+        is-recommendation
+      />
+    </template>
+  </BaseRecommendationsPaginatedPageContainer>
 </template>
 
 <script>
-import BaseRecommendationsPageContainer
-  from '@/components/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
-import BasePaginatedPageContainer
-  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import BaseRecommendationsPaginatedPageContainer
+  from '@/components/containers/pages/recommendations/BaseRecommendationsPaginatedPageContainer.vue'
 import BaseFilterButton from '@/components/buttons/BaseFilterButton.vue'
 import FilterSection from './RecommendationsPage/FilterSection.vue'
 import BaseArtistsExtendedList
   from '@/components/lists/artists/BaseArtistsExtendedList.vue'
-import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'RecommendationsPage',
   components: {
-    BaseRecommendationsPageContainer,
-    BasePaginatedPageContainer,
+    BaseRecommendationsPaginatedPageContainer,
     BaseFilterButton,
     FilterSection,
     BaseArtistsExtendedList
   },
   mixins: [
-    paginatedPageMixin
+    orderChangeMixin
   ],
   data () {
     return {
       isShowFilter: false,
       limit: 10,
-      scope: 'recommendations'
+      scope: 'recommendations',
+      order: 'libraryArtistsCountDesc'
     }
   },
   methods: {
-    handleReset () {
-      this.reset()
-    },
     handleFilterButtonClick () {
       this.isShowFilter =
         !this.isShowFilter

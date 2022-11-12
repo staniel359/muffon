@@ -3,16 +3,25 @@
     ref="page"
     :scope="scope"
     :limit="limit"
+    :order="order"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <BasePaginatedPageContainer
         :response-data="pageSlotProps.bookmarksData"
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
+        :order="order"
+        :model="model"
+        :is-with-top-segment="isWithTopSegment"
+        :is-with-order-change="isWithOrderChange"
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
           />
@@ -39,7 +48,11 @@ export default {
   ],
   props: {
     scope: String,
-    limit: Number
+    limit: Number,
+    order: String,
+    model: String,
+    isWithTopSegment: Boolean,
+    isWithOrderChange: Boolean
   }
 }
 </script>

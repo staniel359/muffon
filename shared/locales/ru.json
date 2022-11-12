@@ -362,7 +362,7 @@
     "albumsTypes": {
       "album": "Альбомы",
       "single": "Синглы",
-      "single_ep": "Синглы / EP",
+      "singleEp": "Синглы / EP",
       "compilation": "Сборники",
       "video": "Видео",
       "misc": "Разное",
@@ -642,6 +642,24 @@
     "simple": "Простой список",
     "table": "Таблица",
     "extended": "Подробный список"
+  },
+  "orders": {
+    "createdDesc": "Более новые",
+    "createdAsc": "Более старые",
+    "updatedDesc": "Недавно обновлённые",
+    "updatedAsc": "Давно обновлённые",
+    "artistsCountDesc": "Больше исполнителей",
+    "artistsCountAsc": "Меньше исполнителей",
+    "albumsCountDesc": "Больше альбомов",
+    "albumsCountAsc": "Меньше альбомов",
+    "tracksCountDesc": "Больше композиций",
+    "tracksCountAsc": "Меньше композиций",
+    "followersCountDesc": "Больше подписчиков",
+    "followersCountAsc": "Меньше подписчиков",
+    "joinedDesc": "Недавно вступили",
+    "joinedAsc": "Давно вступили",
+    "membersCountDesc": "Больше участников",
+    "membersCountAsc": "Меньше участников"
   },
   "error": "Ошибка",
   "more": "Ещё...",

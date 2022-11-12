@@ -1,77 +1,60 @@
 <template>
-  <BaseProfilePageContainer
-    ref="page"
+  <BaseProfilePaginatedPageContainer
+    model="profileCommunity"
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="pageSlotProps">
-      <div
-        :class="[
-          'ui raised segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
+    <template #top>
+      <BaseLinkContainer
+        :link="communitiesLink"
       >
-        <BaseSegmentContainer
-          class="top-segment"
-        >
-          <BaseLink
-            :link="communitiesLink"
-            :text="communitiesLinkText"
-          />
-        </BaseSegmentContainer>
-
-        <BasePaginatedSegmentContainer
-          ref="pagination"
-          class="main-paginated-page-segment-container"
-          :response-data="pageSlotProps.profileData"
-          :is-loading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          :scope="scope"
-          :limit="limit"
-          @focus="handleFocus"
-        >
-          <template #default="slotProps">
-            <BaseCommunitiesSimpleList
-              :communities="slotProps[scope]"
-              is-with-created
-              is-with-join-option
-              is-with-share-option
-            />
-          </template>
-        </BasePaginatedSegmentContainer>
-      </div>
+        <BaseButton
+          class="basic circular"
+          :text="communitiesLinkText"
+        />
+      </BaseLinkContainer>
     </template>
-  </BaseProfilePageContainer>
+
+    <template
+      #default="slotProps"
+    >
+      <BaseCommunitiesSimpleList
+        :communities="slotProps[scope]"
+        is-with-created
+        is-with-join-option
+        is-with-share-option
+      />
+    </template>
+  </BaseProfilePaginatedPageContainer>
 </template>
 
 <script>
-import BaseProfilePageContainer
-  from '@/components/containers/pages/profile/BaseProfilePageContainer.vue'
-import BaseSegmentContainer
-  from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseLink from '@/components/links/BaseLink.vue'
-import BasePaginatedSegmentContainer
-  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import BaseProfilePaginatedPageContainer
+  from '@/components/containers/pages/profile/BaseProfilePaginatedPageContainer.vue'
+import BaseLinkContainer
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseCommunitiesSimpleList
   from '@/components/lists/communities/BaseCommunitiesSimpleList.vue'
 import {
   communities as formatCommunitiesLink
 } from '@/helpers/formatters/links'
-import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'CommunitiesPage',
   components: {
-    BaseProfilePageContainer,
-    BaseSegmentContainer,
-    BaseLink,
-    BasePaginatedSegmentContainer,
+    BaseProfilePaginatedPageContainer,
+    BaseLinkContainer,
+    BaseButton,
     BaseCommunitiesSimpleList
   },
   mixins: [
-    paginatedPageMixin
+    orderChangeMixin
   ],
   props: {
     profileId: String
@@ -79,7 +62,8 @@ export default {
   data () {
     return {
       limit: 50,
-      scope: 'communities'
+      scope: 'communities',
+      order: 'joinedDesc'
     }
   },
   computed: {
@@ -95,7 +79,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.top-segment
-  @extend .d-flex, .justify-content-flex-end
-</style>
+<style lang="sass" scoped></style>

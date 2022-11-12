@@ -4,7 +4,9 @@
     :scope="scope"
     :limit="limit"
   >
-    <template #default="pageSlotProps">
+    <template
+      #default="pageSlotProps"
+    >
       <BasePaginatedPageContainer
         :response-data="pageSlotProps.trackData"
         :is-loading="pageSlotProps.isLoading"
@@ -12,7 +14,9 @@
         :scope="scope"
         :limit="limit"
       >
-        <template #default="slotProps">
+        <template
+          #default="slotProps"
+        >
           <slot
             :[scope]="slotProps[scope]"
           />

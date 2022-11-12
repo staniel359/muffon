@@ -3,7 +3,9 @@
     :profile-id="profileId"
     :library-tag-id="libraryTagId"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <div class="main-profile-page-columns-container">
         <div
           :class="[

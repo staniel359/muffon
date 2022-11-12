@@ -10,18 +10,29 @@
       v-if="isWithTopSegment"
     >
       <div class="top-section">
-        <div>
+        <div class="top-left-section">
           <slot
             name="top"
           />
         </div>
 
-        <BaseViewSelect
-          v-if="isWithViewChange"
-          :scope="scope"
-          :view-id="viewId"
-          @select="handleViewSelect"
-        />
+        <div class="top-right-section">
+          <BaseOrderSelect
+            v-if="isWithOrderChange"
+            class="select-block"
+            :order="order"
+            :model="model"
+            @select="handleOrderSelect"
+          />
+
+          <BaseViewSelect
+            v-if="isWithViewChange"
+            class="select-block"
+            :scope="scope"
+            :view-id="viewId"
+            @select="handleViewSelect"
+          />
+        </div>
       </div>
 
       <div>
@@ -45,7 +56,9 @@
       :is-with-infinite-scroll="isWithInfiniteScroll"
       @focus="handleFocus"
     >
-      <template #default="slotProps">
+      <template
+        #default="slotProps"
+      >
         <slot
           :[scope]="slotProps[scope]"
         />
@@ -60,6 +73,7 @@ import {
 } from 'vuex'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseOrderSelect from '@/components/selects/BaseOrderSelect.vue'
 import BaseViewSelect from '@/components/selects/BaseViewSelect.vue'
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
@@ -68,10 +82,14 @@ export default {
   name: 'BasePaginatedPageContainer',
   components: {
     BaseSegmentContainer,
+    BaseOrderSelect,
     BaseViewSelect,
     BasePaginatedSegmentContainer
   },
   inject: {
+    setOrder: {
+      default: () => false
+    },
     setViewId: {
       default: () => false
     },
@@ -84,14 +102,21 @@ export default {
       type: String,
       required: true
     },
+    isGetData: {
+      type: Boolean,
+      default: true
+    },
     responseData: Object,
     isLoading: Boolean,
     error: Error,
     limit: Number,
+    order: String,
+    model: String,
     clientPageLimit: Number,
     responsePageLimit: Number,
     isPaginationSimple: Boolean,
     isWithTopSegment: Boolean,
+    isWithOrderChange: Boolean,
     isWithViewChange: Boolean,
     viewId: String
   },
@@ -113,6 +138,7 @@ export default {
       immediate: true,
       handler: 'handleResponseDataChange'
     },
+    order: 'handleOrderChange',
     viewId: 'handleViewIdChange',
     isWithInfiniteScroll:
       'handleIsWithInfiniteScrollChange'
@@ -123,12 +149,24 @@ export default {
     ) {
       this.responseDataComputed = value
     },
+    handleOrderSelect (
+      value
+    ) {
+      this.setOrder(
+        value
+      )
+    },
     handleViewSelect (
       value
     ) {
       this.setViewId(
         value
       )
+    },
+    handleOrderChange () {
+      if (this.isGetData) {
+        this.refresh()
+      }
     },
     handleViewIdChange () {
       this.refresh()
@@ -165,4 +203,15 @@ export default {
 <style lang="sass" scoped>
 .top-section
   @extend .d-flex, .align-items-center, .justify-content-space-between
+
+.top-left-section
+  @extend .d-flex, .align-items-center
+
+.top-right-section
+  @extend .d-flex, .align-items-center
+  margin-left: 1em
+
+.select-block
+  &:not(:first-child)
+    margin-left: 0.75em
 </style>

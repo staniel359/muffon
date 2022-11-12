@@ -6,7 +6,9 @@
     :response-page-limit="responsePageLimit"
     :header-link="headerLink"
   >
-    <template #default="slotProps">
+    <template
+      #default="slotProps"
+    >
       <BaseAlbumsTableList
         :albums="slotProps[scope]"
         :items-in-row="itemsInRow"

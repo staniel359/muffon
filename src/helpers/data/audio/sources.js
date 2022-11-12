@@ -159,7 +159,7 @@ export default [
     ],
     albumsTypes: [
       'album',
-      'single_ep',
+      'singleEp',
       'compilation',
       'video',
       'misc'

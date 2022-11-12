@@ -36,7 +36,8 @@ export default {
     }
   },
   props: {
-    limit: Number
+    limit: Number,
+    order: String
   },
   data () {
     return {
@@ -56,6 +57,7 @@ export default {
     feedArgs () {
       return {
         limit: this.limit,
+        order: this.order,
         isGlobal: this.isGlobal
       }
     }

@@ -1,78 +1,58 @@
 <template>
-  <BaseCommunitiesPageContainer
-    ref="page"
+  <BaseCommunitiesPaginatedPageContainer
+    model="community"
+    :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="pageSlotProps">
-      <div
-        :class="[
-          'ui raised segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
-      >
-        <BaseSegmentContainer
-          v-if="profileId"
-        >
-          <BaseCommunityCreateButton />
-        </BaseSegmentContainer>
-
-        <BasePaginatedSegmentContainer
-          ref="pagination"
-          class="main-paginated-page-segment-container"
-          :response-data="pageSlotProps.communitiesData"
-          :is-loading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          :scope="scope"
-          :limit="limit"
-          @focus="handleFocus"
-        >
-          <template #default="slotProps">
-            <BaseCommunitiesSimpleList
-              :communities="slotProps[scope]"
-              is-with-created
-              is-with-join-option
-              is-with-share-option
-            />
-          </template>
-        </BasePaginatedSegmentContainer>
-      </div>
+    <template #top>
+      <BaseCommunityCreateButton
+        v-if="profileId"
+      />
     </template>
-  </BaseCommunitiesPageContainer>
+
+    <template
+      #default="slotProps"
+    >
+      <BaseCommunitiesSimpleList
+        :communities="slotProps[scope]"
+        is-with-created
+        is-with-join-option
+        is-with-share-option
+      />
+    </template>
+  </BaseCommunitiesPaginatedPageContainer>
 </template>
 
 <script>
 import {
   mapGetters
 } from 'vuex'
-import BaseCommunitiesPageContainer
-  from '@/components/containers/pages/communities/BaseCommunitiesPageContainer.vue'
-import BaseSegmentContainer
-  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseCommunitiesPaginatedPageContainer
+  from '@/components/containers/pages/communities/BaseCommunitiesPaginatedPageContainer.vue'
 import BaseCommunityCreateButton
   from '@/components/buttons/community/BaseCommunityCreateButton.vue'
-import BasePaginatedSegmentContainer
-  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseCommunitiesSimpleList
   from '@/components/lists/communities/BaseCommunitiesSimpleList.vue'
-import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'CommunitiesPage',
   components: {
-    BaseCommunitiesPageContainer,
-    BaseSegmentContainer,
+    BaseCommunitiesPaginatedPageContainer,
     BaseCommunityCreateButton,
-    BasePaginatedSegmentContainer,
     BaseCommunitiesSimpleList
   },
   mixins: [
-    paginatedPageMixin
+    orderChangeMixin
   ],
   data () {
     return {
       limit: 50,
-      scope: 'communities'
+      scope: 'communities',
+      order: 'membersCountDesc'
     }
   },
   computed: {

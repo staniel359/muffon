@@ -1,69 +1,52 @@
 <template>
-  <BaseProfilePageContainer
-    ref="page"
+  <BaseProfilePaginatedPageContainer
+    model="playlist"
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
+    :order="order"
+    is-with-top-segment
+    is-with-order-change
   >
-    <template #default="pageSlotProps">
-      <div
-        :class="[
-          'ui raised segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
+    <template #top>
+      <BaseLinkContainer
+        :link="playlistsLink"
       >
-        <BaseSegmentContainer
-          class="top-segment"
-        >
-          <div>
-            <BasePlaylistCreateButton
-              v-if="isSelf"
-              is-with-redirect
-            />
-          </div>
+        <BaseButton
+          class="basic circular"
+          :text="playlistsLinkText"
+        />
+      </BaseLinkContainer>
 
-          <BaseLink
-            :link="playlistsLink"
-            :text="playlistsLinkText"
-          />
-        </BaseSegmentContainer>
-
-        <BasePaginatedSegmentContainer
-          ref="pagination"
-          class="main-paginated-page-segment-container"
-          :response-data="pageSlotProps.profileData"
-          :is-loading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          :scope="scope"
-          :limit="limit"
-          @focus="handleFocus"
-        >
-          <template #default="slotProps">
-            <BasePlaylistsSimpleList
-              :playlists="slotProps[scope]"
-              is-with-created
-              is-with-share-option
-              is-with-edit-option
-              is-with-delete-option
-            />
-          </template>
-        </BasePaginatedSegmentContainer>
-      </div>
+      <BasePlaylistCreateButton
+        v-if="isSelf"
+        class="create-button"
+        is-with-redirect
+      />
     </template>
-  </BaseProfilePageContainer>
+
+    <template
+      #default="slotProps"
+    >
+      <BasePlaylistsSimpleList
+        :playlists="slotProps[scope]"
+        is-with-created
+        is-with-share-option
+        is-with-edit-option
+        is-with-delete-option
+      />
+    </template>
+  </BaseProfilePaginatedPageContainer>
 </template>
 
 <script>
-import BaseProfilePageContainer
-  from '@/components/containers/pages/profile/BaseProfilePageContainer.vue'
-import BaseSegmentContainer
-  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseProfilePaginatedPageContainer
+  from '@/components/containers/pages/profile/BaseProfilePaginatedPageContainer.vue'
 import BasePlaylistCreateButton
   from '@/components/buttons/playlist/BasePlaylistCreateButton.vue'
-import BaseLink from '@/components/links/BaseLink.vue'
-import BasePaginatedSegmentContainer
-  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import BaseLinkContainer
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import BasePlaylistsSimpleList
   from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import {
@@ -72,20 +55,19 @@ import {
 import {
   playlists as formatPlaylistsLink
 } from '@/helpers/formatters/links'
-import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
   name: 'PlaylistsPage',
   components: {
-    BaseProfilePageContainer,
-    BaseSegmentContainer,
+    BaseProfilePaginatedPageContainer,
     BasePlaylistCreateButton,
-    BaseLink,
-    BasePaginatedSegmentContainer,
+    BaseLinkContainer,
+    BaseButton,
     BasePlaylistsSimpleList
   },
   mixins: [
-    paginatedPageMixin
+    orderChangeMixin
   ],
   props: {
     profileId: {
@@ -96,7 +78,8 @@ export default {
   data () {
     return {
       limit: 50,
-      scope: 'playlists'
+      scope: 'playlists',
+      order: 'createdDesc'
     }
   },
   computed: {
@@ -118,6 +101,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.top-segment
-  @extend .d-flex, .align-items-center, .justify-content-space-between
+.create-button
+  margin-left: 0.75em !important
 </style>

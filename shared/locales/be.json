@@ -362,7 +362,7 @@
     "albumsTypes": {
       "album": "Альбомы",
       "single": "Сінглы",
-      "single_ep": "Сінглы / EP",
+      "singleEp": "Сінглы / EP",
       "compilation": "Складанкі",
       "video": "Відэа",
       "misc": "Рознае",
@@ -642,6 +642,24 @@
     "simple": "Просты спіс",
     "table": "Табліца",
     "extended": "Падрабязны спіс"
+  },
+  "orders": {
+    "createdDesc": "Больш новыя",
+    "createdAsc": "Больш старыя",
+    "updatedDesc": "Нядаўна абноўленыя",
+    "updatedAsc": "Даўно абноўленыя",
+    "artistsCountDesc": "Больш выканаўцаў",
+    "artistsCountAsc": "Менш выканаўцаў",
+    "albumsCountDesc": "Больш альбомаў",
+    "albumsCountAsc": "Менш альбомаў",
+    "tracksCountDesc": "Больш кампазіцый",
+    "tracksCountAsc": "Менш кампазіцый",
+    "followersCountDesc": "Больш падпісчыкаў",
+    "followersCountAsc": "Менш падпісчыкаў",
+    "joinedDesc": "Нядаўна ўступілі",
+    "joinedAsc": "Даўно ўступілі",
+    "membersCountDesc": "Больш удзельнікаў",
+    "membersCountAsc": "Менш удзельнікаў"
   },
   "error": "Памылка",
   "more": "Яшчэ...",
