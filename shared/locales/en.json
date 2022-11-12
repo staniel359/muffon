@@ -322,6 +322,7 @@
       "tracks": "{count} track | {count} tracks",
       "videos": "{count} video | {count} videos",
       "files": "{count} file | {count} files",
+      "plays": "{count} play | {count} plays",
       "followers": "{count} follower | {count} followers",
       "following": "{count} following",
       "members": "{count} member | {count} members"

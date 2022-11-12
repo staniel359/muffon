@@ -315,13 +315,14 @@
     },
     "copied": "Спасылка скапіравана ў буфер абмену"
   },
-  "counters" : {
+  "counters": {
     "nominative": {
       "artists": "{count} выканаўцаў | {count} выканаўца | {count} выканаўцы",
       "albums": "{count} альбомаў | {count} альбом | {count} альбомы",
       "tracks": "{count} кампазіцый | {count} кампазіцыя | {count} кампазіцыі",
       "videos": "{count} відэа",
       "files": "{count} файлаў | {count} файл | {count} файлы",
+      "plays": "{count} прайграванняў | {count} прайграванне | {count} прайграванні",
       "followers": "{count} падпісчыкаў | {count} падпісчык | {count} падпісчыкі",
       "following": "{count} падпісак | {count} падпіска | {count} падпіскі",
       "members": "{count} удзельнікаў | {count} удзельнік | {count} удзельнікі"

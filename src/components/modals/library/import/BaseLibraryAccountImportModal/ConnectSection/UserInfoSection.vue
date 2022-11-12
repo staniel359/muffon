@@ -16,15 +16,9 @@
         />
 
         <div class="description">
-          <small>
-            <BaseIcon
-              icon="play"
-            />
-
-            <span
-              v-text="playsCountFormatted"
-            />
-          </small>
+          <small
+            v-text="playsTextFormatted"
+          />
         </div>
       </div>
     </div>
@@ -36,7 +30,6 @@ import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   number as formatNumber
 } from '@/helpers/formatters'
@@ -46,8 +39,7 @@ export default {
   components: {
     BaseListContainer,
     BaseImage,
-    BaseHeader,
-    BaseIcon
+    BaseHeader
   },
   props: {
     userData: {
@@ -62,13 +54,22 @@ export default {
     nickname () {
       return this.userData.nickname
     },
-    playsCountFormatted () {
-      return formatNumber(
-        this.playsCount
+    playsTextFormatted () {
+      return this.$tc(
+        'counters.nominative.plays',
+        this.playsCount,
+        {
+          count: this.playsCountFormatted
+        }
       )
     },
     playsCount () {
       return this.userData.plays_count
+    },
+    playsCountFormatted () {
+      return formatNumber(
+        this.playsCount
+      )
     }
   }
 }

@@ -22,6 +22,9 @@
     <BaseMessage
       v-if="!userData"
       class="history-visible-message"
+      :icons="[
+        'info circle'
+      ]"
       :content="historyVisibleText"
     />
 

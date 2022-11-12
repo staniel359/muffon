@@ -1,7 +1,5 @@
 <template>
-  <i
-    class="icons icon-group"
-  >
+  <i class="icons icon-group">
     <BaseIcon
       v-for="(icon, index) in icons"
       :key="index"
