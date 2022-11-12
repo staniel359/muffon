@@ -15,6 +15,7 @@
       <BaseAlbumsSimpleList
         :albums="slotProps[scope]"
         is-with-artist-name
+        is-with-source
         is-with-clear-button
         @link-click="handleLinkClick"
         @clear-button-click="handleClearButtonClick"

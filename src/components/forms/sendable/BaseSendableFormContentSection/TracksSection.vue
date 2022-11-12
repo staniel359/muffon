@@ -4,6 +4,7 @@
     is-with-image
     is-with-artist-name
     is-with-album-title
+    is-with-source
     is-with-clear-button
     @link-click="handleLinkClick"
     @clear-button-click="handleClearButtonClick"

@@ -2,6 +2,7 @@
   <Component
     :is="component"
     ref="input"
+    :source="source"
     :[scope]="collection"
   />
 </template>
@@ -23,6 +24,7 @@ export default {
       type: String,
       required: true
     },
+    source: String,
     collection: Array
   },
   data () {

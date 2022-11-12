@@ -13,11 +13,6 @@
           :is-save="isSave"
         />
 
-        <SourceSelect
-          :source="source"
-          @select="handleSourceSelect"
-        />
-
         <BaseClearButton
           v-if="collection.length"
           @click="handleClearButtonClick"
@@ -25,6 +20,11 @@
 
         <ScopeSelect
           :selected="scope"
+        />
+
+        <SourceSelect
+          :source="source"
+          @select="handleSourceSelect"
         />
       </div>
 
@@ -49,9 +49,9 @@ import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import SearchInput
   from './BaseLibrarySearchImportModal/SearchInput.vue'
-import SourceSelect from './BaseLibrarySearchImportModal/SourceSelect.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import ScopeSelect from './BaseLibrarySearchImportModal/ScopeSelect.vue'
+import SourceSelect from './BaseLibrarySearchImportModal/SourceSelect.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import BaseImportSection from '@/components/import/BaseImportSection.vue'
 import BaseLibrarySaveSection
@@ -63,9 +63,9 @@ export default {
   components: {
     BaseModalContainer,
     SearchInput,
-    SourceSelect,
     BaseClearButton,
     ScopeSelect,
+    SourceSelect,
     BaseDivider,
     BaseImportSection,
     BaseLibrarySaveSection

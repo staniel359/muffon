@@ -9,12 +9,18 @@
         <SearchInput
           ref="input"
           :scope="scope"
+          :source="source"
           :collection="this[scope]"
         />
 
-        <SearchScopeSelect
+        <ScopeSelect
           :scope="scope"
           @select="handleScopeSelect"
+        />
+
+        <SourceSelect
+          :source="source"
+          @select="handleSourceSelect"
         />
       </div>
 
@@ -32,7 +38,8 @@
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import SearchInput from './SearchModal/SearchInput.vue'
-import SearchScopeSelect from './SearchModal/SearchScopeSelect.vue'
+import ScopeSelect from './SearchModal/ScopeSelect.vue'
+import SourceSelect from './SearchModal/SourceSelect.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import SearchList from './SearchModal/SearchList.vue'
 
@@ -41,7 +48,8 @@ export default {
   components: {
     BaseModalContainer,
     SearchInput,
-    SearchScopeSelect,
+    ScopeSelect,
+    SourceSelect,
     BaseDivider,
     SearchList
   },
@@ -57,6 +65,7 @@ export default {
   },
   data () {
     return {
+      source: 'lastfm',
       scope: 'artists'
     }
   },
@@ -74,6 +83,13 @@ export default {
       this.focusInput()
 
       this.clearInput()
+    },
+    handleSourceSelect (
+      value
+    ) {
+      this.source = value
+
+      this.focusInput()
     },
     show () {
       this.$refs

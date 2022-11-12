@@ -56,12 +56,6 @@
         />
       </div>
 
-      <BaseSourceIcon
-        v-if="isRenderSource"
-        class="album-source-icon"
-        :source="source"
-      />
-
       <BaseSelfIcons
         v-if="isWithSelfIcons"
         :library-id="libraryId"
@@ -74,7 +68,7 @@
       />
 
       <BaseAlbumReleaseDateSection
-        class="description"
+        class="description release-date-section"
         :album-data="albumData"
       />
 
@@ -82,6 +76,12 @@
         v-if="isWithCreated"
         class="description right"
         :model-data="albumData"
+      />
+
+      <BaseSourceIcon
+        v-if="isRenderSource"
+        class="album-source-icon"
+        :source="source"
       />
 
       <BaseAlbumOptionsDropdown
@@ -339,4 +339,7 @@ export default {
 
 .listeners-count
   margin-top: 0.15em
+
+.release-date-section
+  margin-left: 0.5em
 </style>

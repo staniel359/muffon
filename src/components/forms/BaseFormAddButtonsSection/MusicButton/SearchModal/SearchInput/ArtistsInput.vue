@@ -29,6 +29,10 @@ export default {
     'resetCollection'
   ],
   props: {
+    source: {
+      type: String,
+      required: true
+    },
     artists: {
       type: Array,
       default () {
@@ -39,7 +43,7 @@ export default {
   computed: {
     url () {
       return (
-        'lastfm/search/artists' +
+        `${this.source}/search/artists` +
         '?query={query}&limit=5'
       )
     },

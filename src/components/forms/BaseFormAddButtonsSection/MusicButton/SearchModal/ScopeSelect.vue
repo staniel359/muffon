@@ -11,7 +11,7 @@
 import BaseScopeSelect from '@/components/selects/BaseScopeSelect.vue'
 
 export default {
-  name: 'SearchScopeSelect',
+  name: 'ScopeSelect',
   components: {
     BaseScopeSelect
   },
