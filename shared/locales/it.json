@@ -37,7 +37,6 @@
     "posts": "Post",
     "conversations": "Conversazioni",
     "library": "Libreria",
-    "recommendations": "Suggerimenti",
     "savedTracks": "Brani salvati",
     "playlists": "Playlist",
     "favorites": "Preferiti",
@@ -121,6 +120,7 @@
     "add": "Aggiungi",
     "create": "Crea",
     "edit": "Modifica",
+    "filter": "Filtra",
     "save": "Salva",
     "cancel": "Annulla",
     "delete": "Cancella",
@@ -129,20 +129,23 @@
     "post": "Posta",
     "send": "Invia",
     "next": "Successivo",
+    "search": "Cerca",
     "upload": "Carica",
     "back": "Precedente",
     "sendCode": "Invia codice",
     "share": "Condividi",
+    "searchFor": {
+      "lyrics": "Cerca testo",
+      "video": "Cerca video"
+    },
+    "searchIn": {
+        "sources": "Cerca dalle fonti"
+    },
     "from": {
       "search": "Da ricerca",
       "folder": "Da cartella",
       "account": "Da account",
       "library": "Da libreria"
-    },
-    "find": {
-      "sources": "Cerca nelle fonti",
-      "videos": "Cerca video",
-      "lyrics": "Cerca testi"
     },
     "import": {
       "lastfm": "Importa dati da Last.FM"
@@ -154,9 +157,6 @@
       "playlist": "Aggiungi playlist",
       "community": "Aggiungi community",
       "post": "Aggiungi post"
-    },
-    "addCollection": {
-      "tracks": "Aggiungi brani"
     },
     "addTo": {
       "library": "Aggiungi alla libreria",
