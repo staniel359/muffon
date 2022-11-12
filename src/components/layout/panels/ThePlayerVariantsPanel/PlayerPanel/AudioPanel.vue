@@ -1,23 +1,17 @@
 <template>
   <div class="audio-panel">
-    <AudioElement />
-
-    <div class="audio-top-section">
+    <div class="top-section">
       <TimerPanel />
 
       <MainControlsPanel />
 
-      <ExtraControlsPanel
-        v-if="playerPlaying"
-        :key="key"
-      />
+      <ExtraControlsPanel />
     </div>
 
-    <div class="audio-bottom-section">
+    <div class="bottom-section">
       <ScrobblePoint />
 
       <SeekerPanel
-        :key="key"
         @audio-end="handleAudioEnd"
       />
     </div>
@@ -29,43 +23,27 @@ import {
   mapGetters,
   mapState
 } from 'vuex'
-import AudioElement from './AudioPanel/AudioElement.vue'
 import TimerPanel from './AudioPanel/TimerPanel.vue'
 import MainControlsPanel from './AudioPanel/MainControlsPanel.vue'
 import ExtraControlsPanel from './AudioPanel/ExtraControlsPanel.vue'
 import ScrobblePoint from './AudioPanel/ScrobblePoint.vue'
 import SeekerPanel from './AudioPanel/SeekerPanel.vue'
 import getQueueTrack from '@/helpers/actions/queue/track/get'
-import {
-  generateKey
-} from '@/helpers/utils'
 
 export default {
   name: 'AudioPanel',
   components: {
-    AudioElement,
     TimerPanel,
     MainControlsPanel,
     ExtraControlsPanel,
     ScrobblePoint,
     SeekerPanel
   },
-  data () {
-    return {
-      key: null
-    }
-  },
   computed: {
     ...mapState(
       'audio',
       {
         audioElement: 'element'
-      }
-    ),
-    ...mapState(
-      'player',
-      {
-        playerPlaying: 'playing'
       }
     ),
     ...mapState(
@@ -93,8 +71,7 @@ export default {
     }
   },
   watch: {
-    isQueueAutoplay: 'handleIsQueueAutoplayChange',
-    playerPlaying: 'handlePlayerPlayingChange'
+    isQueueAutoplay: 'handleIsQueueAutoplayChange'
   },
   methods: {
     getQueueTrack,
@@ -111,9 +88,6 @@ export default {
         this.getQueueNextTrack()
       }
     },
-    handlePlayerPlayingChange () {
-      this.key = generateKey()
-    },
     getQueueNextTrack () {
       this.getQueueTrack(
         this.queueTrackArgs
@@ -128,10 +102,10 @@ export default {
   @extend .flex-full, .d-flex, .flex-column, .align-items-center, .justify-content-center
   margin-left: 1em
 
-.audio-top-section
+.top-section
   @extend .d-flex, .align-items-center, .w-100
 
-.audio-bottom-section
+.bottom-section
   @extend .w-100, .relative
   margin-top: 0.5em
 </style>

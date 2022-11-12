@@ -3,17 +3,12 @@
     <BaseListContainer
       class="track-container"
     >
-      <PlayingBlock
-        v-if="playerPlaying"
-      />
+      <PlayingBlock />
     </BaseListContainer>
   </div>
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
 import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 import PlayingBlock from './PlayingPanel/PlayingBlock.vue'
@@ -23,14 +18,6 @@ export default {
   components: {
     BaseListContainer,
     PlayingBlock
-  },
-  computed: {
-    ...mapState(
-      'player',
-      {
-        playerPlaying: 'playing'
-      }
-    )
   }
 }
 </script>

@@ -4,11 +4,19 @@
     class="ui bottom overlay segment sidebar the-player-panel"
   >
     <div class="ui container main-container player-content-container">
-      <PlayingPanel />
+      <AudioElement />
 
-      <AudioPanel />
+      <template
+        v-if="playerPlaying"
+      >
+        <PlayingPanel />
 
-      <CloseButton />
+        <AudioPanel
+          :key="key"
+        />
+
+        <CloseButton />
+      </template>
     </div>
   </div>
 </template>
@@ -17,6 +25,7 @@
 import {
   mapState
 } from 'vuex'
+import AudioElement from './PlayerPanel/AudioElement.vue'
 import PlayingPanel from './PlayerPanel/PlayingPanel.vue'
 import AudioPanel from './PlayerPanel/AudioPanel.vue'
 import CloseButton from './PlayerPanel/CloseButton.vue'
@@ -34,10 +43,14 @@ import {
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'PlayerPanel',
   components: {
+    AudioElement,
     PlayingPanel,
     AudioPanel,
     CloseButton
@@ -45,6 +58,11 @@ export default {
   emits: [
     'visibilityChange'
   ],
+  data () {
+    return {
+      key: null
+    }
+  },
   computed: {
     ...mapState(
       'layout',
@@ -91,6 +109,8 @@ export default {
 
       if (value) {
         showPlayerPanel()
+
+        this.key = generateKey()
       } else {
         this.clearPlayer()
 
