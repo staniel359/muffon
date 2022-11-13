@@ -5,12 +5,9 @@
     icon="smile outline"
   />
 
-  <div class="main-popup-container">
-    <BaseEmojiPopup
-      ref="popup"
-      @select="handleSelect"
-    />
-  </div>
+  <BaseEmojiPopup
+    @select="handleSelect"
+  />
 </template>
 
 <script>
@@ -38,11 +35,7 @@ export default {
       return this.$refs.button.$el
     },
     popupOptions () {
-      return emojiPopupOptions(
-        {
-          html: this.popup
-        }
-      )
+      return emojiPopupOptions()
     }
   },
   methods: {

@@ -277,35 +277,16 @@ export function annotationPopupOptions (
   }
 }
 
-export function emojiPopupOptions (
-  {
-    html
-  }
-) {
-  const className =
-    'ui popup main-popup main-emoji-popup'
-
-  const {
-    isDarkMode
-  } = store.state.layout
-
-  const variation = isDarkMode
-    ? 'basic inverted'
-    : 'basic'
-
+export function emojiPopupOptions () {
   return {
     position: 'right center',
     transition: 'fade up',
+    variation: 'basic',
     hoverable: true,
-    className: {
-      popup: className
-    },
     delay: {
       show: 0,
       hide: 150
-    },
-    html,
-    variation
+    }
   }
 }
 

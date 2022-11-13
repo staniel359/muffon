@@ -1,5 +1,10 @@
 <template>
-  <div>
+  <div
+    class="ui popup main-popup main-emoji-popup"
+    :class="{
+      inverted: isDarkMode
+    }"
+  >
     <BaseEmojiPicker
       :key="key"
       @select="handleSelect"
