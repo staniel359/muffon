@@ -35,8 +35,11 @@ export default {
       type: Object,
       required: true
     },
-    size: String,
-    isWithMore: Boolean
+    isWithMore: {
+      type: Boolean,
+      default: true
+    },
+    size: String
   },
   emits: [
     'linkClick'
