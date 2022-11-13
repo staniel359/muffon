@@ -53,6 +53,11 @@ export default {
           'table',
           'extended'
         ],
+        similar: [
+          'simple',
+          'table',
+          'extended'
+        ],
         albums: [
           'simple',
           'table'
