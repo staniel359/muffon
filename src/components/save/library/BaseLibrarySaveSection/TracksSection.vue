@@ -40,6 +40,7 @@ export default {
   },
   data () {
     return {
+      isMounted: false,
       isProgress: true,
       isComplete: false,
       successTracks: [],
@@ -64,7 +65,12 @@ export default {
     tracks: 'handleTracksChange'
   },
   mounted () {
+    this.isMounted = true
+
     this.processTracks()
+  },
+  unmounted () {
+    this.isMounted = false
   },
   methods: {
     createLibraryTrack,
@@ -92,9 +98,11 @@ export default {
       for (
         const track of this.tracks
       ) {
-        await this.saveTrack(
-          track
-        )
+        if (this.isMounted) {
+          await this.saveTrack(
+            track
+          )
+        }
       }
     },
     async saveTrack (

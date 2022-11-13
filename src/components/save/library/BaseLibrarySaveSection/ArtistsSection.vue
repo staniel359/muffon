@@ -40,6 +40,7 @@ export default {
   },
   data () {
     return {
+      isMounted: false,
       isProgress: true,
       isComplete: false,
       successArtists: [],
@@ -64,7 +65,12 @@ export default {
     artists: 'handleArtistsChange'
   },
   mounted () {
+    this.isMounted = true
+
     this.processArtists()
+  },
+  unmounted () {
+    this.isMounted = false
   },
   methods: {
     createLibraryArtist,
@@ -92,9 +98,11 @@ export default {
       for (
         const artist of this.artists
       ) {
-        await this.saveArtist(
-          artist
-        )
+        if (this.isMounted) {
+          await this.saveArtist(
+            artist
+          )
+        }
       }
     },
     async saveArtist (

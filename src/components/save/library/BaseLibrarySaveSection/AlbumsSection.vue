@@ -40,6 +40,7 @@ export default {
   },
   data () {
     return {
+      isMounted: false,
       isProgress: true,
       isComplete: false,
       successAlbums: [],
@@ -64,7 +65,12 @@ export default {
     albums: 'handleAlbumsChange'
   },
   mounted () {
+    this.isMounted = true
+
     this.processAlbums()
+  },
+  unmounted () {
+    this.isMounted = false
   },
   methods: {
     createLibraryAlbum,
@@ -92,9 +98,11 @@ export default {
       for (
         const album of this.albums
       ) {
-        await this.saveAlbum(
-          album
-        )
+        if (this.isMounted) {
+          await this.saveAlbum(
+            album
+          )
+        }
       }
     },
     async saveAlbum (
