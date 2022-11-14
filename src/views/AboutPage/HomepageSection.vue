@@ -1,6 +1,6 @@
 <template>
   <strong
-    class="main-link"
+    class="main-link link-section"
     @click="handleClick"
     v-text="homepageText"
   />

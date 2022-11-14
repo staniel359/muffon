@@ -16,9 +16,13 @@
 
       <BaseDivider />
 
-      <HomepageSection />
+      <div>
+        <HomepageSection />
 
-      <DonateSection />
+        <DonateSection />
+
+        <ContactSection />
+      </div>
     </div>
   </BaseSegmentContainer>
 </template>
@@ -33,6 +37,7 @@ import CopyrightLicenseSection from './AboutPage/CopyrightLicenseSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import HomepageSection from './AboutPage/HomepageSection.vue'
 import DonateSection from './AboutPage/DonateSection.vue'
+import ContactSection from './AboutPage/ContactSection.vue'
 
 export default {
   name: 'AboutPage',
@@ -44,7 +49,8 @@ export default {
     CopyrightLicenseSection,
     BaseDivider,
     HomepageSection,
-    DonateSection
+    DonateSection,
+    ContactSection
   }
 }
 </script>
@@ -60,4 +66,8 @@ export default {
 
 .right-column
   @extend .flex-full
+
+.link-section
+  @extend .d-inline-block
+  margin-right: 1em
 </style>

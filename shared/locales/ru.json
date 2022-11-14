@@ -620,7 +620,8 @@
   },
   "about": {
     "license": "Лицензия {license}",
-    "homepage": "Домашняя страница"
+    "homepage": "Домашняя страница",
+    "contact": "Связаться"
   },
   "listeners": "{count} слушателей | {count} слушатель | {count} слушателя",
   "private": {

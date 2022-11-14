@@ -24,14 +24,13 @@ function handleClose (
 
 function create () {
   const aboutWindowWidth = 450
-  const aboutWindowHeight = 230
+  const aboutWindowHeight = 250
 
   const options = {
     width: aboutWindowWidth,
     height: aboutWindowHeight,
     icon: windowIcon,
     show: false,
-    alwaysOnTop: true,
     resizable: false,
     maximizable: false,
     fullscreenable: false,

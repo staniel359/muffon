@@ -2,7 +2,7 @@
   <strong
     class="main-link link-section"
     @click="handleClick"
-    v-text="donateText"
+    v-text="contactText"
   />
 </template>
 
@@ -10,23 +10,28 @@
 import {
   shell
 } from 'electron'
-import {
-  donate as donateLink
-} from '@/helpers/data/links'
 
 export default {
-  name: 'DonateSection',
+  name: 'ContactSection',
   computed: {
-    donateText () {
+    contactText () {
       return this.$t(
-        'donate.header'
+        'about.contact'
+      )
+    },
+    contactLink () {
+      return this.info.author.url
+    },
+    info () {
+      return require(
+        '@/../package.json'
       )
     }
   },
   methods: {
     handleClick () {
       shell.openExternal(
-        donateLink
+        this.contactLink
       )
     }
   }
