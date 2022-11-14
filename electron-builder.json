@@ -25,7 +25,7 @@
       "deb"
     ]
   },
-  "artifactName": "${productName} ${version}.${ext}",
+  "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
   "compression": "store",
   "nsis": {
     "allowToChangeInstallationDirectory": true,
