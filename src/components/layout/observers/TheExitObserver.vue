@@ -45,28 +45,22 @@ export default {
   },
   methods: {
     async handleExit () {
-      if (this.profileId) {
-        this.setOffline()
-
-        await this.$nextTick()
-      }
-
       if (!this.isRememberProfile) {
         this.clearProfileData()
-
-        await this.$nextTick()
       }
 
       if (this.isCloseTabsOnExit) {
         this.clearTabs()
+      }
 
-        await this.$nextTick()
+      if (this.profileId) {
+        await this.setOffline()
       }
 
       this.exit()
     },
     setOffline () {
-      updateOnline(
+      return updateOnline(
         {
           isOnline: false
         }
