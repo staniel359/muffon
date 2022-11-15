@@ -39,6 +39,7 @@ import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
 import {
+  isObjectChanged,
   generateKey
 } from '@/helpers/utils'
 
@@ -79,8 +80,19 @@ export default {
       'handleQueueTracksComputedChange'
   },
   methods: {
-    handleQueueTracksComputedChange () {
-      this.key = generateKey()
+    handleQueueTracksComputedChange (
+      value,
+      oldValue
+    ) {
+      const isChanged =
+        isObjectChanged(
+          value,
+          oldValue
+        )
+
+      if (isChanged) {
+        this.key = generateKey()
+      }
     },
     handleDeleteOptionClick (
       {
