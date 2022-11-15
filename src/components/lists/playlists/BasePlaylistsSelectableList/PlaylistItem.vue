@@ -95,7 +95,7 @@ export default {
       return !!this.playlistData.isDeleted
     }
   },
-  mounted () {
+  beforeMount () {
     this.playlistTrackIds = (
       this.playlistData.playlist_track_ids || []
     )
