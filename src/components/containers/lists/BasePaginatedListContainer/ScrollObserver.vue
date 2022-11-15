@@ -23,7 +23,8 @@ export default {
   },
   props: {
     isLoading: Boolean,
-    error: Error
+    error: Error,
+    isLastPage: Boolean
   },
   emits: [
     'bottomScroll',
@@ -36,6 +37,12 @@ export default {
         onTopVisible:
           this.handleTopVisible
       }
+    },
+    isDisabled () {
+      return (
+        this.isLoading ||
+          this.isLastPage
+      )
     }
   },
   mounted () {
@@ -46,7 +53,7 @@ export default {
   },
   methods: {
     handleTopVisible () {
-      if (!this.isLoading) {
+      if (!this.isDisabled) {
         this.$emit(
           'bottomScroll'
         )

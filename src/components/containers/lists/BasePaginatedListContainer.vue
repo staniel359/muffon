@@ -23,15 +23,17 @@
       v-if="isWithInfiniteScroll"
     >
       <ScrollObserver
-        v-if="isRenderScrollObserver"
+        v-if="isResponsePageCollection"
         :key="key"
         :is-loading="isLoading"
         :error="error"
+        :is-last-page="isLastPage"
         @bottom-scroll="handleBottomScroll"
         @refresh="handleRefresh"
       />
+
       <ListEndLabel
-        v-else
+        v-if="isLastPage"
       />
     </template>
     <PaginationSection
@@ -401,12 +403,6 @@ export default {
       } else {
         return this.error
       }
-    },
-    isRenderScrollObserver () {
-      return (
-        this.isResponsePageCollection &&
-          !this.isLastPage
-      )
     },
     clientCollection () {
       return deepmerge(
