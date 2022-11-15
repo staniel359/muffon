@@ -18,6 +18,7 @@
       is-with-favorite-option
       is-with-bookmark-option
       is-with-listened-option
+      is-with-queue-option
       is-with-share-option
     />
   </div>

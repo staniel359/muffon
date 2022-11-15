@@ -42,6 +42,11 @@
       :album-data="albumData"
     />
 
+    <QueueOption
+      v-if="isWithQueueOption"
+      :album-data="albumData"
+    />
+
     <BaseShareOption
       v-if="isWithShareOption"
       :share-data="shareData"
@@ -68,6 +73,7 @@ import BasePlaylistsModal
 import FavoriteOption from './BaseAlbumOptionsDropdown/FavoriteOption.vue'
 import BookmarkOption from './BaseAlbumOptionsDropdown/BookmarkOption.vue'
 import ListenedOption from './BaseAlbumOptionsDropdown/ListenedOption.vue'
+import QueueOption from './BaseAlbumOptionsDropdown/QueueOption.vue'
 import BaseShareOption
   from '@/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
@@ -89,6 +95,7 @@ export default {
     FavoriteOption,
     BookmarkOption,
     ListenedOption,
+    QueueOption,
     BaseShareOption,
     BaseDeleteOption
   },
@@ -106,6 +113,7 @@ export default {
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
+    isWithQueueOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean
   },
@@ -133,6 +141,7 @@ export default {
           this.isWithFavoriteOption ||
           this.isWithBookmarkOption ||
           this.isWithListenedOption ||
+          this.isWithQueueOption ||
           this.isWithShareOption ||
           this.isWithDeleteOption
       )

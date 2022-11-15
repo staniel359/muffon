@@ -296,7 +296,8 @@
     "scrobbled": "Track {trackFullTitle} was scrobbled",
     "added": {
       "queue": {
-        "track": "Track {trackFullTitle} was added to queue"
+        "track": "Track {trackFullTitle} was added to queue",
+        "tracks": "{counter} was added to queue | {counter} were added to queue"
       },
       "savedTracks": {
         "track": "Track {trackFullTitle} was added to saved tracks"

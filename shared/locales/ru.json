@@ -296,7 +296,8 @@
     "scrobbled": "Композиция {trackFullTitle} была заскробблена",
     "added": {
       "queue": {
-        "track": "Композиция {trackFullTitle} была добавлена в очередь"
+        "track": "Композиция {trackFullTitle} была добавлена в очередь",
+        "tracks": "{counter} было добавлено в очередь | {counter} была добавлена в очередь | {counter} было добавлено в очередь"
       },
       "savedTracks": {
         "track": "Композиция {trackFullTitle} была добавлена в сохранённые композиции"

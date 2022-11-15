@@ -1,6 +1,6 @@
 <template>
   <BaseOption
-    icon="red close"
+    icon="red trash alternate outline"
     :text="clearText"
     @click="handleClick"
   />
