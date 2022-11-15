@@ -15,7 +15,7 @@
       />
       <BaseNoCollectionMessage
         v-else
-        :scope="scope"
+        :scope="scopeFormatted"
       />
     </template>
   </div>
@@ -40,6 +40,7 @@ export default {
       }
     },
     scope: String,
+    textScope: String,
     error: Error
   },
   emits: [
@@ -55,6 +56,11 @@ export default {
     clientPageCollectionFiltered () {
       return this.clientPageCollection?.filter(
         this.isItemPresent
+      )
+    },
+    scopeFormatted () {
+      return (
+        this.textScope || this.scope
       )
     }
   },

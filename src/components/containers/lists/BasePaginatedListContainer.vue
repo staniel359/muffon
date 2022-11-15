@@ -5,6 +5,7 @@
         v-show="isRenderContent"
         :client-page-collection="clientPageCollection"
         :scope="scope"
+        :text-scope="textScope"
         :error="errorComputed"
         @refresh="handleRefresh"
       >
@@ -96,6 +97,7 @@ export default {
       type: Number,
       required: true
     },
+    textScope: String,
     responsePageLimit: Number,
     clientPageLimit: Number,
     isLoading: Boolean,

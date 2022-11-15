@@ -3,6 +3,7 @@
     ref="modal"
     :request-track-data="requestTrackData"
     :scope="scope"
+    :text-scope="textScope"
     :limit="limit"
     is-paginated
   >
@@ -39,6 +40,7 @@ export default {
   data () {
     return {
       scope: 'profiles',
+      textScope: 'listeners',
       limit: 50
     }
   }

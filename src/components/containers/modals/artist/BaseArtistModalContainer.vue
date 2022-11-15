@@ -6,6 +6,7 @@
     :is-loading="isLoading"
     :error="error"
     :scope="scope"
+    :text-scope="textScope"
     :limit="limit"
     @call="handleCall"
   >
@@ -41,6 +42,7 @@ export default {
       type: String,
       required: true
     },
+    textScope: String,
     limit: Number,
     isPaginated: Boolean
   },

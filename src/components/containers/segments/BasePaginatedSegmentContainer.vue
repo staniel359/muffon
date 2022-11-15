@@ -16,6 +16,7 @@
       ref="pagination"
       :response-data="responseData"
       :scope="scope"
+      :text-scope="textScope"
       :limit="limit"
       :client-page-limit="clientPageLimit"
       :response-page-limit="responsePageLimit"
@@ -62,6 +63,7 @@ export default {
       type: Boolean,
       default: true
     },
+    textScope: String,
     responseData: Object,
     isLoading: Boolean,
     error: Error,

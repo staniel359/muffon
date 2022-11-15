@@ -14,6 +14,7 @@
       :is-loading="isLoading"
       :error="error"
       :scope="scope"
+      :text-scope="textScope"
       :limit="limit"
       @focus="handleFocus"
     >
@@ -51,6 +52,7 @@ export default {
     isLoading: Boolean,
     error: Error,
     scope: String,
+    textScope: String,
     limit: Number,
     isMultiple: Boolean
   },
