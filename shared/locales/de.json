@@ -63,9 +63,9 @@
         "playlists": "{modelName} Playlisten",
         "favorites": "{modelName} Favoriten",
         "favoritesModels": {
-          "artists": "{modelName} lieblingskünstler",
-          "albums": "{modelName} lieblingsalben",
-          "tracks": "{modelName} lieblingstitel"
+          "artists": "{modelName} Lieblingskünstler",
+          "albums": "{modelName} Lieblingsalben",
+          "tracks": "{modelName} Lieblingstitel"
         },
         "communities": "{modelName} Communities"
       },
@@ -178,8 +178,8 @@
       }
     },
     "links": {
-      "playlists": "Alle playlisten",
-      "communities": "Alle communities"
+      "playlists": "Alle Playlisten",
+      "communities": "Alle Communities"
     },
     "inputs": {
       "search": "Suchen",
@@ -195,7 +195,7 @@
           },
           "recommendation": "Vorschlag löschen",
           "playlist": "Playlist löschen",
-          "playlistTrack": "Titel von playlist löschen",
+          "playlistTrack": "Titel von Playlist löschen",
           "savedTrack": "Titel von gespeicherten Titeln löschen",
           "favorite": {
             "artist": "Künstler aus Favoriten löschen",
@@ -258,7 +258,7 @@
           "termsAndConditions": "Geschäftsbedingungen"
         },
         "remember": "Eingeloggt bleiben",
-        "asCommunity": "Als community"
+        "asCommunity": "Als Community"
       },
       "extra": "Zusätzliche infos",
       "errors": {
@@ -318,9 +318,9 @@
     },
     "counters": {
       "nominative": {
-        "artists": "{count} Künstler | {count} Künstler",
+        "artists": "{count} Künstler",
         "albums": "{count} Album | {count} Alben",
-        "tracks": "{count} Titel | {count} Titel",
+        "tracks": "{count} Titel",
         "videos": "{count} Video | {count} Videos",
         "files": "{count} Datei | {count} Dateien",
         "plays": "{count} Wiedergabe | {count} Wiedergaben",
@@ -329,16 +329,16 @@
         "members": "{count} Mitglied | {count} Mitglieder"
       },
       "genitive": {
-        "artists": "{count} Künstler | {count} Künstler",
+        "artists": "{count} Künstler",
         "albums": "{count} Album | {count} Alben",
-        "tracks": "{count} Titel | {count} Titel",
+        "tracks": "{count} Titel",
         "files": "{count} Datei | {count} Dateien",
         "plays": "{count} Wiedergabe | {count} Wiedergaben"
       },
       "accusative": {
-        "artists": "{count} Künstler | {count} Künstler",
+        "artists": "{count} Künstler",
         "albums": "{count} Album | {count} Alben",
-        "tracks": "{count} Titel | {count} Titel",
+        "tracks": "{count} Titel",
         "files": "{count} Datei | {count} Dateien"
       }
     },
