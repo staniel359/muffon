@@ -169,12 +169,12 @@
         "savedTracks": "Zu gespeicherte Titel hinzufügen"
       },
       "show": {
-        "library": "in Bibliothek anzeigen"
+        "library": "In Bibliothek anzeigen"
       },
       "deleteFrom": {
-        "favorites": "von Favoriten entfernen",
+        "favorites": "Von Favoriten entfernen",
         "bookmarks": "Lesezeichen entfernen",
-        "listened": "von Angehörten entfernen"
+        "listened": "Von Angehörten entfernen"
       }
     },
     "links": {
@@ -238,7 +238,7 @@
         "email": "Email",
         "password": "Passwort",
         "passwordConfirmation": "Passwort bestätigen",
-        "passwordResetCode": "Passwort zurücksetzungscode",
+        "passwordResetCode": "Passwortzurücksetzungscode",
         "nickname": "Nickname",
         "title": "Titel",
         "description": "Beschreibung",
@@ -262,24 +262,24 @@
       },
       "extra": "Zusätzliche infos",
       "errors": {
-        "notFound": "Email oder passwort ist falsch",
+        "notFound": "Email oder Passwort ist falsch",
         "empty": {
           "email": "Email ist leer",
           "password": "Passwort ist leer",
           "passwordConfirmation": "Passwort bestätigen ist leer",
-          "passwordResetCode": "Passworr zurücksetzungscode ist leer",
+          "passwordResetCode": "Passwortzurücksetzungscode ist leer",
           "nickname": "Nickname ist leer",
           "title": "Titel ist leer",
           "legal": "Du musst der Datenschutzrichtlinie und den Geschäftsbedingungen zustimmen!"
         },
         "invalid": {
           "email": "Email ist ungültig",
-          "passwordResetCode": "Password zurücksetzungscode ist ungültig"
+          "passwordResetCode": "Passwortzurücksetzungscode ist ungültig"
         },
         "taken": {
-          "email": "diese Email wurde bereits verwendet",
-          "nickname": "dieser Nickname wurde bereits verwendet",
-          "title": "dieser Titel wurde bereits verwendet"
+          "email": "Diese Email wurde bereits verwendet",
+          "nickname": "Dieser Nickname wurde bereits verwendet",
+          "title": "Dieser Titel wurde bereits verwendet"
         },
         "tooShort": {
           "password": "Passwort ist zu kurz"
@@ -408,19 +408,19 @@
           "interface": {
             "language": "Sprache",
             "timezone": "Zeitzone",
-            "infiniteScroll": "Unendlicher scroll",
+            "infiniteScroll": "Unendlicher Scroll",
             "artistPopup": "Künstlerdetails beim hovern anzeigen",
             "cachePages": "Seiten zwischenspeichern"
           },
           "theme": {
-            "dark": "Dunkler modus",
+            "dark": "Dunkler Modus",
             "system": "System Thema",
             "background": "Hintergrund",
             "transparency": "Transparenz"
           },
           "window": {
-            "maximize": "Beim start maximieren",
-            "exit": "Beenden beim schließen"
+            "maximize": "Beim Start maximieren",
+            "exit": "Beenden beim Schließen"
           },
           "tabs": {
             "newTabSwitch": "Zu einem neuen Tab wechseln",
@@ -430,21 +430,21 @@
             "source": "Quelle"
           },
           "player": {
-            "audioSource": "Audio Quelle",
+            "audioSource": "Audioquelle",
             "fallbackSources": "Alternative Quellen",
             "bitrate": "Audiobitrate anzeigen",
             "album": "Album anzeigen"
           },
           "queue": {
             "autoplay": "Autoplay",
-            "clear": "Leeren, wenn player geschlossen wird"
+            "clear": "Leeren, wenn Player geschlossen wird"
           },
           "video": {
             "autoplay": "Autoplay"
           },
           "recommendations": {
             "hideLibraryArtists": "Bibliothekskünstler ausblenden",
-            "tracksCount": "mit Titeln zählen"
+            "tracksCount": "Mit Titeln zählen"
           },
           "top": {
             "country": "Standardmäßiges Land"
@@ -550,7 +550,7 @@
         "content": "Möglicherweise möchten Sie die Daten vor dem Speichern in der Bibliothek überprüfen"
       },
       "error": {
-        "files": "{counter} Konnte nicht importiert werden. Bitte stellen Sie sicher, dass für diese Dateien Metadaten definiert sind:"
+        "files": "{counter} konnte nicht importiert werden. Bitte stellen Sie sicher, dass für diese Dateien Metadaten definiert sind:"
       }
     },
     "save": {
@@ -567,19 +567,19 @@
           "tracks": "{counter} wurde zur Playlist hinzugefügt | {counter} wurden zur Playlist hinzugefügt"
         }
       },
-      "error": "{counter} Konnte nicht hinzugefügt werden:"
+      "error": "{counter} konnte nicht hinzugefügt werden:"
     },
     "delete": {
       "active": "Lösche {count} von {counter}..."
     },
     "accounts": {
       "connect": "Account verbinden",
-      "wait": "Dein browser wird sich nun öffnen. Bestätigen Sie dort die Verbindung und klicken Sie erneut auf diese Schaltfläche.",
+      "wait": "Ihr Browser wird sich nun öffnen. Bestätigen Sie dort die Verbindung und klicken Sie erneut auf diese Schaltfläche.",
       "disconnect": "Account trennen"
     },
     "noCollection": {
       "header": {
-        "artists": "Keine artists",
+        "artists": "Keine Künstler",
         "albums": "Keine Alben",
         "groups": "Keine Albumsgruppen",
         "tracks": "Keine Titel",
@@ -618,26 +618,26 @@
       "since": "Nutzt muffon seit"
     },
     "feed": {
-      "global": "Globaler feed"
+      "global": "Globaler Feed"
     },
     "about": {
       "license": "{license} Lizenz",
       "homepage": "Startseite",
       "contact": "Kontakt"
     },
-    "listeners": "{count} zuhörer",
+    "listeners": "{count} Zuhörer",
     "private": {
       "playlist": "Privat",
       "profile": "Privat"
     },
     "donate": {
-      "header": "Donate",
+      "header": "Spenden",
       "content": {
         "nonProfit": "muffon ist ein gemeinnütziges Projekt, das weder Werbung noch kostenpflichtige Funktionen oder Inhalte hat.",
         "funds": "Aber natürlich kann es ohne Gelder, die für seine Entwicklung und Infrastruktur benötigt werden, nicht existieren.",
         "timeEffort": "Es wurde viel Zeit und Mühe in die Erstellung dieses Projekts gesteckt, und es wäre gut, wenn sich alle Investitionen auszahlen würden.",
         "help": "Deshalb bitte ich um Ihre Hilfe bei der Unterstützung von muffon.",
-        "would": "Möchten sie Spenden?"
+        "would": "Möchten Sie Spenden?"
       },
       "decline": "Nein, danke",
       "accept": "Ja, bitte"
