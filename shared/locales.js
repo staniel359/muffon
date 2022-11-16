@@ -8,6 +8,10 @@ const locales = [
     name: 'English'
   },
   {
+    id: 'de',
+    name: 'Deutsch'
+  },
+  {
     id: 'it',
     name: 'Italiano'
   },
