@@ -142,11 +142,11 @@
         "library": "Von der Bibliothek"
       },
       "searchIn": {
-        "sources": "in Quellen suchen"
+        "sources": "In Quellen suchen"
       },
       "searchFor": {
-        "video": "nach Videos suchen",
-        "lyrics": "nach Lyrics suchen"
+        "video": "Nach Videos suchen",
+        "lyrics": "Nach Lyrics suchen"
       },
       "import": {
         "lastfm": "Last.FM Daten importieren"
@@ -625,7 +625,7 @@
       "homepage": "Startseite",
       "contact": "Kontakt"
     },
-    "listeners": "{count} zuhörer | {count} zuhörer",
+    "listeners": "{count} zuhörer",
     "private": {
       "playlist": "Privat",
       "profile": "Privat"
