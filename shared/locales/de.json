@@ -142,7 +142,7 @@
         "library": "Von der Bibliothek"
       },
       "searchIn": {
-        "sources": "In Quellen suchen"
+        "sources": "in Quellen suchen"
       },
       "searchFor": {
         "video": "nach Videos suchen",
@@ -669,4 +669,3 @@
     "more": "Mehr",
     "loading": "Lädt..."
   }
-  
