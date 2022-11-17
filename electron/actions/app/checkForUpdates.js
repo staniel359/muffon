@@ -80,6 +80,13 @@ function handleSuccess (
   }
 }
 
+function handleError () {
+  setTimeout(
+    checkForUpdates,
+    2000
+  )
+}
+
 function checkForUpdates () {
   const releasesUrl =
     'https://api.github.com/repos/staniel359/muffon/releases/latest'
@@ -88,6 +95,8 @@ function checkForUpdates () {
     releasesUrl
   ).then(
     handleSuccess
+  ).catch(
+    handleError
   )
 }
 
