@@ -18,7 +18,8 @@ const {
   '../../urls'
 )
 const {
-  isDevelopment
+  isDevelopment,
+  isMac
 } = require(
   '../../utils'
 )
@@ -70,11 +71,22 @@ function create (
     height
   ] = mainWindow.getContentSize()
 
+  const isFullScreen =
+    mainWindow.isFullScreen()
+
+  const titleBarHeight = (
+    isMac && !isFullScreen
+  ) ? 28 : 0
+
   const tabsPanelHeight = 45
+
+  const topOffset = (
+    titleBarHeight + tabsPanelHeight
+  )
 
   const boundsOptions = {
     x: 0,
-    y: tabsPanelHeight,
+    y: topOffset,
     width,
     height: (
       height - tabsPanelHeight
