@@ -20,7 +20,7 @@ export default function (
     response
   ) => {
     this.searchData =
-      response.data.search
+      response.data?.search || {}
   }
 
   return getRequest.bind(
