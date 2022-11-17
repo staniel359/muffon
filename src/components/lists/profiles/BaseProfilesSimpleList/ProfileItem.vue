@@ -23,7 +23,6 @@
         />
 
         <BaseProfileOnlineLabel
-          v-if="!isPrivate"
           class="online-label"
           :profile-data="profileData"
         />
@@ -36,34 +35,30 @@
         />
       </div>
 
-      <template
-        v-if="!isPrivate"
-      >
-        <div class="description">
-          <small>
-            <BaseProfileGenderAge
-              :profile-data="profileData"
-            />
-          </small>
-        </div>
+      <div class="description">
+        <small>
+          <BaseProfileGenderAge
+            :profile-data="profileData"
+          />
+        </small>
+      </div>
 
-        <div class="description">
-          <small>
-            <BaseProfileCityCountry
-              :profile-data="profileData"
-            />
-          </small>
-        </div>
+      <div class="description">
+        <small>
+          <BaseProfileCityCountry
+            :profile-data="profileData"
+          />
+        </small>
+      </div>
 
-        <div class="description">
-          <small>
-            <BaseProfileFollowCounters
-              class="follow-counters"
-              :profile-data="profileData"
-            />
-          </small>
-        </div>
-      </template>
+      <div class="description">
+        <small>
+          <BaseProfileFollowCounters
+            class="follow-counters"
+            :profile-data="profileData"
+          />
+        </small>
+      </div>
     </div>
 
     <BaseProfileFollowingMessage

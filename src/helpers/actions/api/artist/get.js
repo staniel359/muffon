@@ -42,7 +42,8 @@ export default function (
       '',
       'tracks',
       'albums',
-      'similar'
+      'similar',
+      'profiles'
     ],
     language: [
       '',

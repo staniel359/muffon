@@ -28,7 +28,8 @@ export default function (
   const scopes = {
     id: [
       '',
-      'similar'
+      'similar',
+      'profiles'
     ],
     language: [
       '',

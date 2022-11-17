@@ -44,7 +44,8 @@ export default function (
 
   const scopes = {
     id: [
-      ''
+      '',
+      'profiles'
     ],
     language: [
       '',

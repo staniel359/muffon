@@ -21,6 +21,7 @@ export default function (
   )(
     {
       url,
+      isWithSelfId: true,
       isWithSelfToken: true,
       page,
       limit,
