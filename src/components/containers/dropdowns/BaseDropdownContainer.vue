@@ -116,7 +116,7 @@ export default {
     dropdownOptions () {
       return mainDropdownOptions(
         {
-          isOnlyIcon: this.isOnlyIcon,
+          isSelection: this.isSelection,
           onChange: this.handleSelect
         }
       )

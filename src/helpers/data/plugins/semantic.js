@@ -292,7 +292,7 @@ export function emojiPopupOptions () {
 
 export function mainDropdownOptions (
   {
-    isOnlyIcon,
+    isSelection,
     onChange
   } = {}
 ) {
@@ -301,7 +301,7 @@ export function mainDropdownOptions (
   } = store.state.layout
 
   const transition = (
-    isOnlyIcon ? 'fade up' : 'auto'
+    isSelection ? 'auto' : 'fade up'
   )
 
   return {
