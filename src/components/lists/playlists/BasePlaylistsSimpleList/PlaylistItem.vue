@@ -13,7 +13,7 @@
     />
     <template v-else>
       <BaseImage
-        class="rounded bordered"
+        class="rounded rounded-small bordered"
         model="playlist"
         :image="imageData?.extrasmall"
       />

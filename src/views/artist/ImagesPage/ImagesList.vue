@@ -1,23 +1,18 @@
 <template>
   <div class="ui four column grid">
-    <div
+    <ImageItem
       v-for="(imageData, index) in imagesCollection"
       :key="imageData.uuid"
       class="column"
-    >
-      <div class="main-image-container">
-        <BaseImage
-          class="rounded bordered artist-image"
-          :image="imageData.small"
-          @click="handleImageClick(index)"
-        />
-      </div>
-    </div>
+      :image-data="imageData"
+      :index="index"
+      @click="handleImageClick"
+    />
   </div>
 </template>
 
 <script>
-import BaseImage from '@/components/images/BaseImage.vue'
+import ImageItem from './ImagesList/ImageItem.vue'
 import {
   collection as formatCollection
 } from '@/helpers/formatters'
@@ -25,7 +20,7 @@ import {
 export default {
   name: 'ImagesList',
   components: {
-    BaseImage
+    ImageItem
   },
   props: {
     images: {
@@ -58,7 +53,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.artist-image
-  @extend .cursor-zoom-in
-</style>
+<style lang="sass" scoped></style>

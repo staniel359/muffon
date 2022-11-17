@@ -5,7 +5,7 @@
     @click="handleLinkClick"
   >
     <BaseImage
-      class="rounded bordered"
+      class="rounded rounded-small bordered"
       model="community"
       :image="imageData?.small"
     />

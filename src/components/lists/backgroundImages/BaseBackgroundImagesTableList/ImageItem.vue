@@ -6,7 +6,7 @@
     }"
   >
     <BaseImage
-      class="rounded bordered"
+      class="rounded rounded-small bordered"
       :image="image"
       @click="handleClick"
     />
@@ -108,7 +108,7 @@ export default {
 .main-image-item
   &.active
     border: $borderBaseLight
-    border-radius: 5px
+    border-radius: 0.5em
   .image
     @extend .cursor-pointer
 </style>

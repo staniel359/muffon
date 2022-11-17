@@ -4,7 +4,6 @@
   >
     <div class="main-image-modal-content">
       <BaseImage
-        class="rounded"
         :image="image"
       />
     </div>

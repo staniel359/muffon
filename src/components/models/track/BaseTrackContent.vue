@@ -21,7 +21,7 @@
     >
       <BaseImage
         v-if="isWithImage"
-        class="rounded bordered small"
+        class="rounded rounded-small bordered small"
         model="track"
         :image="imageData?.extrasmall"
       />

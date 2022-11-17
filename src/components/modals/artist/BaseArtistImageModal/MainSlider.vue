@@ -9,7 +9,6 @@
     >
       <div class="image-container">
         <BaseImage
-          class="rounded"
           :image="slotProps.image"
           is-lazy
         />

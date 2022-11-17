@@ -26,7 +26,7 @@
         size="extrasmall"
         :class="{
           circular: isImageCircular,
-          rounded: !isImageCircular
+          'rounded rounded-small': !isImageCircular
         }"
         :model="model"
         :image="image"

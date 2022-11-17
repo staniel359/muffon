@@ -137,7 +137,6 @@ export default {
 .video-image
   width: 112px
   height: 63px
-  margin-right: 0.5em !important
 
 .content
   @extend .no-padding

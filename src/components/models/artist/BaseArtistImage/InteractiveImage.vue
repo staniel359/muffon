@@ -6,6 +6,7 @@
 
     <BaseImage
       v-bind="$attrs"
+      class="main-zoomable-image"
       :image="imageData.medium"
       @click="handleClick"
     />
@@ -54,7 +55,6 @@ export default {
 
 <style lang="sass" scoped>
 .image-container
-  @extend .cursor-zoom-in
   .more-link-button
     @extend .d-none
   &:hover

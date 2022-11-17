@@ -125,6 +125,13 @@ p
   &.selection
     &.active, .menu
       border-color: $colorBaseLight !important
+  .item
+    &:first-child
+      border-top-left-radius: inherit
+      border-top-right-radius: inherit
+    &:last-child
+      border-bottom-left-radius: inherit
+      border-bottom-right-radius: inherit
 
 .ui.segments
   & > .main-segment
@@ -175,6 +182,8 @@ p
   &.scrolling
     & > .results
       max-height: 200px
+  .prompt
+    border-radius: 1em
 
 .ui.label
   &.circular
@@ -220,7 +229,12 @@ p
       &.main-tabs
         .item
           padding: 0.8em 1.5em
-          border-radius: 10em !important
+
+.ui.image
+  &.rounded
+    border-radius: 1em
+    &.rounded-small
+      border-radius: 0.5em
 
 .main-input
   &:focus
@@ -249,7 +263,6 @@ p
     z-index: 1
     &:before
       @extend .background-white-transparent
-      border-radius: inherit !important
     &.inverted
       &:before
         @extend .background-black-transparent
@@ -428,12 +441,12 @@ p
 
 .main-emoji-popup
   @extend .no-padding
-  border-radius: 10px !important
 
 .main-emoji-picker
   em-emoji-picker
     max-height: 300px
     --font-family: inherit
+    --border-radius: 1em
 
 .main-header
   @extend .no-margin
@@ -552,6 +565,8 @@ p
     border: $borderInverted !important
   & > .item
     &:last-child
+      border-top-right-radius: inherit
+      border-bottom-right-radius: inherit
       &:before
         width: 0
     & > .direction-icon
@@ -881,7 +896,7 @@ p
 
 .main-video
   @extend .overflow-hidden
-  border-radius: 0.5em
+  border-radius: 1em
   border: $border
   &.inverted
     border: $borderInverted
