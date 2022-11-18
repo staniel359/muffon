@@ -1,5 +1,6 @@
 const {
   BrowserWindow,
+  Menu,
   screen
 } = require(
   'electron'
@@ -138,7 +139,7 @@ function create () {
     mainWindowHeight
   )
 
-  mainWindow.setMenu(
+  Menu.setApplicationMenu(
     null
   )
 
