@@ -10,8 +10,11 @@
     :is-with-view-change="isWithViewChange"
     is-with-top-segment
   >
-    <template #top>
-      <FilterBlock
+    <template #topExtra>
+      <FilterSection
+        :class="{
+          'filter-section': isWithViewChange
+        }"
         :scope="scope"
         :tags="tags"
       />
@@ -37,7 +40,7 @@
 <script>
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
-import FilterBlock from './MultitagPage/FilterBlock.vue'
+import FilterSection from './MultitagPage/FilterSection.vue'
 import BaseArtistsList from '@/components/lists/artists/BaseArtistsList.vue'
 import navigationMixin from '@/mixins/navigationMixin'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
@@ -52,7 +55,7 @@ export default {
   name: 'MultitagPage',
   components: {
     BasePaginatedPageContainer,
-    FilterBlock,
+    FilterSection,
     BaseArtistsList
   },
   mixins: [
@@ -154,4 +157,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.filter-section
+  margin-top: 1em
+</style>
