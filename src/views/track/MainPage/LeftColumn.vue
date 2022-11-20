@@ -71,5 +71,5 @@ export default {
 
 <style lang="sass" scoped>
 .track-page-left-column
-  width: 150px
+  width: 140px
 </style>
