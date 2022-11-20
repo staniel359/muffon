@@ -12,7 +12,7 @@
 
       <div class="main-image-container">
         <BaseImage
-          class="rounded bordered"
+          class="rounded-medium bordered"
           model="video"
           :image="imageData?.small"
         />

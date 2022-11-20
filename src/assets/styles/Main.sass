@@ -183,7 +183,7 @@ p
     & > .results
       max-height: 200px
   .prompt
-    border-radius: 1em
+    border-radius: $borderRadius
 
 .ui.label
   &.circular
@@ -232,9 +232,11 @@ p
 
 .ui.image
   &.rounded
-    border-radius: 1em
-    &.rounded-small
-      border-radius: 0.5em
+    border-radius: $borderRadius
+  &.rounded-medium
+    border-radius: $borderRadiusMedium
+  &.rounded-small
+    border-radius: $borderRadiusSmall
 
 .main-input
   &:focus
@@ -446,7 +448,7 @@ p
   em-emoji-picker
     max-height: 300px
     --font-family: inherit
-    --border-radius: 1em
+    --border-radius: $borderRadius
 
 .main-header
   @extend .no-margin
@@ -896,7 +898,7 @@ p
 
 .main-video
   @extend .overflow-hidden
-  border-radius: 1em
+  border-radius: $borderRadius
   border: $border
   &.inverted
     border: $borderInverted

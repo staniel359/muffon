@@ -5,7 +5,7 @@
     @click="handleLinkClick"
   >
     <BaseImage
-      class="rounded bordered video-image"
+      class="rounded-medium bordered video-image"
       model="video"
       :image="imageData?.extrasmall"
     />
