@@ -304,8 +304,8 @@ export default {
   margin-right: 1em
 
 .artist-image
-  width: 140px
-  height: 140px
+  width: 130px
+  height: 130px
 
 .main-self-icons
   @extend .text-align-center
