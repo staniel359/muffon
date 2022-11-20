@@ -49,5 +49,5 @@ export default {
 .playing-segment
   @extend .relative, .overflow-hidden
   border: $borderInverted
-  border-radius: 1em
+  border-radius: $borderRadius
 </style>

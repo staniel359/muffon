@@ -1,7 +1,7 @@
 <template>
   <div class="column main-image-item">
     <BaseImage
-      class="rounded rounded-small bordered"
+      class="rounded-medium bordered"
       :image="imageUrl"
     />
 

@@ -2,7 +2,7 @@
   <BaseImage
     v-if="isWithAlbum"
     model="track"
-    class="rounded rounded-small bordered medium"
+    class="rounded-small bordered medium"
     :image="imageData?.[size]"
   />
   <BaseArtistImage

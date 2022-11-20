@@ -71,5 +71,6 @@ export default {
 
 <style lang="sass" scoped>
 .artist-page-left-column
+  @extend .no-margin
   width: 200px
 </style>
