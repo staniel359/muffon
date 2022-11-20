@@ -54,7 +54,7 @@ export default {
     return {
       colorCodes: {
         light: '255 255 255',
-        dark: '27 28 29'
+        dark: '32 33 34'
       }
     }
   },
