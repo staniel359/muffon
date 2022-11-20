@@ -11,7 +11,15 @@
       class="main-small-container"
     >
       <small
-        v-text="wasOnlineFormatted"
+        v-text="wasOnlineDateFormatted"
+      />
+    </strong>
+
+    <strong
+      class="main-small-container"
+    >
+      <small
+        v-text="wasOnlineTimeFormatted"
       />
     </strong>
   </div>
@@ -38,14 +46,6 @@ export default {
     wasOnlineText () {
       return this.$t(
         'profile.wasOnline'
-      )
-    },
-    wasOnlineFormatted () {
-      return [
-        this.wasOnlineDateFormatted,
-        this.wasOnlineTimeFormatted
-      ].join(
-        ' '
       )
     },
     wasOnlineDateFormatted () {
