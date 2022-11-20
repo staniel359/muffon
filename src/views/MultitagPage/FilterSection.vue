@@ -18,12 +18,12 @@
 </template>
 
 <script>
-import SearchSection from './FilterBlock/SearchSection.vue'
-import ScopeSelect from './FilterBlock/ScopeSelect.vue'
-import TagsSection from './FilterBlock/TagsSection.vue'
+import SearchSection from './FilterSection/SearchSection.vue'
+import ScopeSelect from './FilterSection/ScopeSelect.vue'
+import TagsSection from './FilterSection/TagsSection.vue'
 
 export default {
-  name: 'FilterBlock',
+  name: 'FilterSection',
   components: {
     SearchSection,
     ScopeSelect,
