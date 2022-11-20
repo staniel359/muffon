@@ -1,7 +1,6 @@
 <template>
   <BaseSegmentContainer
     v-if="created"
-    class="main-profile-page-info"
   >
     <div
       v-text="sinceText"
@@ -26,7 +25,7 @@ import {
 } from '@/helpers/formatters'
 
 export default {
-  name: 'BaseLibraryCreatedSegment',
+  name: 'BaseSinceSegment',
   components: {
     BaseSegmentContainer
   },
@@ -34,21 +33,25 @@ export default {
     modelData: {
       type: Object,
       required: true
+    },
+    model: {
+      type: String,
+      required: true
     }
   },
   computed: {
+    created () {
+      return this.modelData.created
+    },
     sinceText () {
       return this.$t(
-        'library.since'
+        `${this.model}.since`
       )
     },
     createdDateFormatted () {
       return formatDate(
         this.created
       )
-    },
-    created () {
-      return this.modelData.created
     },
     createdTimeFormatted () {
       return formatTime(
