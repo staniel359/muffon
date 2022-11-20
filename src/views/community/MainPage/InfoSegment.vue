@@ -27,7 +27,6 @@
           <BaseTimestampSection
             class="description"
             :created="created"
-            is-only-date
           />
         </div>
 
