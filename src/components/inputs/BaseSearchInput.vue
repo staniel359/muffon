@@ -84,7 +84,16 @@ export default {
       )
     },
     urlFormatted () {
-      return `${this.url}&token=${this.profileToken}`
+      return `${this.url}&token=${this.token}`
+    },
+    token () {
+      return (
+        this.profileToken ||
+          this.anonymousToken
+      )
+    },
+    anonymousToken () {
+      return process.env.VUE_APP_ANONYMOUS_TOKEN
     }
   },
   watch: {
