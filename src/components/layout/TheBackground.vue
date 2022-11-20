@@ -58,5 +58,5 @@ export default {
 .the-background
   @extend .fixed, .w-100, .h-100
   &.dark
-    filter: brightness(0.5)
+    filter: brightness(0.45)
 </style>
