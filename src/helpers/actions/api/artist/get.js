@@ -81,7 +81,7 @@ export default function (
 
     if (scope === 'tracks') {
       this.topTrackCount ||=
-        artist.tracks[0].listeners_count
+        artist.tracks[0]?.listeners_count
     }
   }
 
