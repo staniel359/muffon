@@ -27,7 +27,7 @@
             :is-with-artist-image="isLastfmSource"
             :is-with-image="!isLastfmSource"
             :is-with-listeners-count="isWithListenersCount"
-            :is-with-source="isTracks"
+            :is-with-source="isWithSource"
             is-with-artist-name
             is-with-album-title
             is-with-duration
@@ -232,8 +232,17 @@ export default {
     isWithListenersCount () {
       return !!this.scopeData.isWithListenersCount
     },
+    isWithSource () {
+      return (
+        this.isTracks ||
+          this.isAlbums
+      )
+    },
     isTracks () {
       return this.scope === 'tracks'
+    },
+    isAlbums () {
+      return this.scope === 'albums'
     },
     isLastfmSource () {
       return this.source === 'lastfm'
