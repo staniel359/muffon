@@ -18,11 +18,18 @@ export default function (
     )
   }
 
+  function handleError (
+    error
+  ) {
+    return error
+  }
+
   return patchRequest(
     {
       url,
       params,
-      isWithSelfToken: true
+      isWithSelfToken: true,
+      onError: handleError
     }
   )
 }
