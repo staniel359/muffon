@@ -295,7 +295,8 @@
     "scrobbled": "Brano {trackFullTitle} segnato con scrobble",
     "added": {
       "queue": {
-        "track": "Brano {trackFullTitle} aggiunto alla coda"
+        "track": "Brano {trackFullTitle} aggiunto alla coda",
+        "tracks": "{counter} aggiunto alla coda | {counter} aggiunte alla code"
       },
       "savedTracks": {
         "track": "Brano {trackFullTitle} aggiunto ai brani salvati"
@@ -324,6 +325,7 @@
       "followers": "{count} follower | {count} follower",
       "following": "{count} following",
       "members": "{count} membro | {count} membri"
+      "plays": "{count} riproduzione | {count} riproduzioni",
     },
     "genitive": {
       "artists": "{count} artista | {count} artisti",
@@ -357,6 +359,7 @@
       "album": "Album",
       "group": "Gruppo album",
       "track": "Brano"
+      "singleEp": "Singolo / EP",
     },
     "albumsTypes": {
       "album": "Album",
@@ -598,6 +601,7 @@
       "videos": "Nessun video",
       "related": "Nessun correlato",
       "lyrics": "Nessun testo"
+      "listeners": "Nessun ascoltatore"
     },
     "content": "Sembra che qui non ci sia alcunché"
   },
@@ -644,6 +648,24 @@
     "simple": "Lista semplice",
     "table": "Tabella",
     "extended": "Lista dettagliata"
+  },
+  "orders": {
+    "createdDesc": "Più nuovo",
+    "createdAsc": "Più vecchio",
+    "updatedDesc": "Aggiornato di recente",
+    "updatedAsc": "Aggiornato molto tempo fa",
+    "artistsCountDesc": "Più artisti",
+    "artistsCountAsc": "Meno artisti",
+    "albumsCountDesc": "Più album",
+    "albumsCountAsc": "Meno album",
+    "tracksCountDesc": "Più brani",
+    "tracksCountAsc": "Meno brani",
+    "followersCountDesc": "Più follower",
+    "followersCountAsc": "Meno follower",
+    "joinedDesc": "Aggiunti di recente",
+    "joinedAsc": "Aggiunti molto tempo fa",
+    "membersCountDesc": "Più persone",
+    "membersCountAsc": "Meno persone"
   },
   "error": "Errore",
   "more": "Altro...",
