@@ -17,6 +17,7 @@
         is-with-image
         is-with-artist-name
         is-with-album-title
+        is-with-source
         is-favorite
         is-with-library-option
         is-with-bookmark-option

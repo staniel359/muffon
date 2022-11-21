@@ -6,7 +6,10 @@ export default function (
     trackTitle,
     artistName,
     albumTitle,
-    imageUrl
+    imageUrl,
+    sourceData,
+    audioData,
+    albumSourceData
   }
 ) {
   this.favoriteId = null
@@ -21,7 +24,10 @@ export default function (
     title: trackTitle,
     artist: artistName,
     album: albumTitle,
-    image: imageUrl
+    image: imageUrl,
+    source: sourceData,
+    audio: audioData,
+    album_source: albumSourceData
   }
 
   const handleSuccess = (

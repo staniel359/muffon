@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div
+    v-if="releaseDate"
+  >
     <small
-      v-if="releaseDate"
       v-text="releaseDateFormatted"
     />
   </div>

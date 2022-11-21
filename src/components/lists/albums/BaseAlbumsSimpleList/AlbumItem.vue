@@ -67,6 +67,12 @@
         :is-with-bookmark-icon="isWithBookmarkIcon"
       />
 
+      <BaseSourceIcon
+        v-if="isRenderSource"
+        class="album-source-icon"
+        :source="source"
+      />
+
       <BaseAlbumReleaseDateSection
         class="description release-date-section"
         :album-data="albumData"
@@ -76,12 +82,6 @@
         v-if="isWithCreated"
         class="description right"
         :model-data="albumData"
-      />
-
-      <BaseSourceIcon
-        v-if="isRenderSource"
-        class="album-source-icon"
-        :source="source"
       />
 
       <BaseAlbumOptionsDropdown
@@ -335,11 +335,11 @@ export default {
 
 <style lang="sass" scoped>
 .album-source-icon
-  margin-left: 0.5em !important
+  margin-left: 0.75em
 
 .listeners-count
   margin-top: 0.15em
 
 .release-date-section
-  margin-left: 0.5em
+  margin-left: 0.75em
 </style>

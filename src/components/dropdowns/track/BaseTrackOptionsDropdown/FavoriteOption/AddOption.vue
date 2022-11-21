@@ -40,7 +40,12 @@ export default {
         artistName: this.artistName,
         trackTitle: this.trackTitle,
         albumTitle: this.albumTitle,
-        imageUrl: this.imageUrl
+        imageUrl: this.imageUrl,
+        sourceData: this.sourceData,
+        audioData:
+          this.audioDataFormatted,
+        albumSourceData:
+          this.albumSourceData
       }
     },
     artistName () {
@@ -50,10 +55,27 @@ export default {
       return this.trackData.title
     },
     albumTitle () {
-      return this.trackData.album?.title
+      return this.albumData?.title
+    },
+    albumData () {
+      return this.trackData.album
     },
     imageUrl () {
       return this.trackData.image?.large
+    },
+    sourceData () {
+      return this.trackData.source
+    },
+    audioDataFormatted () {
+      return this.audioData && {
+        present: this.audioData.present
+      }
+    },
+    audioData () {
+      return this.trackData.audio
+    },
+    albumSourceData () {
+      return this.albumData?.source
     }
   },
   watch: {

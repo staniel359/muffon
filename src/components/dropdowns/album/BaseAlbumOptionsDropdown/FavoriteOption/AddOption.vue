@@ -39,7 +39,8 @@ export default {
       return {
         artistName: this.artistName,
         albumTitle: this.albumTitle,
-        imageUrl: this.imageUrl
+        imageUrl: this.imageUrl,
+        sourceData: this.sourceData
       }
     },
     artistName () {
@@ -50,6 +51,9 @@ export default {
     },
     imageUrl () {
       return this.albumData.image?.large
+    },
+    sourceData () {
+      return this.albumData.source
     }
   },
   watch: {
