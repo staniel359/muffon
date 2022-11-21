@@ -17,6 +17,7 @@
         :is-with-delete-option="isSelf"
         is-with-image
         is-with-artist-name
+        is-with-created
         is-with-library
         is-link-to-library
         is-with-favorite-option

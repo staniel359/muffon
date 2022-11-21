@@ -15,6 +15,7 @@
         :is-with-favorite-option="!isSelf"
         :is-with-delete-option="isSelf"
         is-with-image
+        is-with-created
         is-favorite
         is-with-library-option
         is-with-bookmark-option
