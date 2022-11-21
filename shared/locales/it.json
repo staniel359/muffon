@@ -121,6 +121,7 @@
     "add": "Aggiungi",
     "create": "Crea",
     "edit": "Modifica",
+    "filter": "Filtra",
     "save": "Salva",
     "cancel": "Annulla",
     "delete": "Cancella",
@@ -129,20 +130,23 @@
     "post": "Posta",
     "send": "Invia",
     "next": "Successivo",
+    "search": "Cerca",
     "upload": "Carica",
     "back": "Precedente",
     "sendCode": "Invia codice",
     "share": "Condividi",
+    "searchFor": {
+      "lyrics": "Cerca testo",
+      "video": "Cerca video"
+    },
+    "searchIn": {
+      "sources": "Cerca dalle fonti"
+    },
     "from": {
       "search": "Da ricerca",
       "folder": "Da cartella",
       "account": "Da account",
       "library": "Da libreria"
-    },
-    "find": {
-      "sources": "Cerca nelle fonti",
-      "videos": "Cerca video",
-      "lyrics": "Cerca testi"
     },
     "import": {
       "lastfm": "Importa dati da Last.FM"
@@ -154,9 +158,6 @@
       "playlist": "Aggiungi playlist",
       "community": "Aggiungi community",
       "post": "Aggiungi post"
-    },
-    "addCollection": {
-      "tracks": "Aggiungi brani"
     },
     "addTo": {
       "library": "Aggiungi alla libreria",
@@ -295,7 +296,8 @@
     "scrobbled": "Brano {trackFullTitle} segnato con scrobble",
     "added": {
       "queue": {
-        "track": "Brano {trackFullTitle} aggiunto alla coda"
+        "track": "Brano {trackFullTitle} aggiunto alla coda",
+        "tracks": "{counter} aggiunto alla coda | {counter} aggiunte alla code"
       },
       "savedTracks": {
         "track": "Brano {trackFullTitle} aggiunto ai brani salvati"
@@ -317,26 +319,27 @@
   "counters": {
     "nominative": {
       "artists": "{count} artista | {count} artisti",
-      "albums": "{count} album | {count} album",
+      "albums": "{count} album",
       "tracks": "{count} brano | {count} brani",
-      "videos": "{count} video | {count} video",
-      "files": "{count} file | {count} file",
-      "followers": "{count} follower | {count} follower",
+      "videos": "{count} video",
+      "files": "{count} file",
+      "plays": "{count} riproduzione | {count} riproduzioni",
+      "followers": "{count} follower",
       "following": "{count} following",
       "members": "{count} membro | {count} membri"
     },
     "genitive": {
       "artists": "{count} artista | {count} artisti",
-      "albums": "{count} album | {count} album",
+      "albums": "{count} album",
       "tracks": "{count} brano | {count} brani",
-      "files": "{count} file | {count} file",
+      "files": "{count} file",
       "plays": "{count} ascolto | {count} ascolti"
     },
     "accusative": {
       "artists": "{count} artista | {count} artisti",
       "albums": "{count} album | {count} albumi",
       "tracks": "{count} brano | {count} brani",
-      "files": "{count} file | {count} file"
+      "files": "{count} file"
     }
   },
   "select": {
@@ -361,7 +364,7 @@
     "albumsTypes": {
       "album": "Album",
       "single": "Singoli",
-      "single_ep": "Singoli / EP",
+      "singleEp": "Singoli / EP",
       "compilation": "Compilation",
       "video": "Video",
       "misc": "Miscellanei",
@@ -534,9 +537,6 @@
     "header": "La tua compatiblità con {profileNickname}",
     "common": "Avete in comune:"
   },
-  "recommendations": {
-    "filter": "Filtra"
-  },
   "recommendation": {
     "similar": "Simile a {counter}:"
   },
@@ -597,7 +597,8 @@
       "members": "Nessun membro",
       "videos": "Nessun video",
       "related": "Nessun correlato",
-      "lyrics": "Nessun testo"
+      "lyrics": "Nessun testo",
+      "listeners": "Nessun ascoltatore"
     },
     "content": "Sembra che qui non ci sia alcunché"
   },
@@ -621,7 +622,8 @@
   },
   "about": {
     "license": "Licenza {license}",
-    "homepage": "Pagina principale"
+    "homepage": "Pagina principale",
+    "contact": "Contatta"
   },
   "listeners": "{count} ascoltatore | {count} ascoltatori",
   "private": {
@@ -644,6 +646,24 @@
     "simple": "Lista semplice",
     "table": "Tabella",
     "extended": "Lista dettagliata"
+  },
+  "orders": {
+    "createdDesc": "Più nuovo",
+    "createdAsc": "Più vecchio",
+    "updatedDesc": "Aggiornato di recente",
+    "updatedAsc": "Aggiornato molto tempo fa",
+    "artistsCountDesc": "Più artisti",
+    "artistsCountAsc": "Meno artisti",
+    "albumsCountDesc": "Più album",
+    "albumsCountAsc": "Meno album",
+    "tracksCountDesc": "Più brani",
+    "tracksCountAsc": "Meno brani",
+    "followersCountDesc": "Più follower",
+    "followersCountAsc": "Meno follower",
+    "joinedDesc": "Aggiunti di recente",
+    "joinedAsc": "Aggiunti molto tempo fa",
+    "membersCountDesc": "Più persone",
+    "membersCountAsc": "Meno persone"
   },
   "error": "Errore",
   "more": "Altro...",
