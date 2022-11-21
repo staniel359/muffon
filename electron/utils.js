@@ -1,3 +1,7 @@
+const fs = require(
+  'fs'
+)
+
 const appName = 'muffon'
 
 const isDevelopment =
@@ -9,9 +13,25 @@ const isMac =
 const isLinux =
   process.platform === 'linux'
 
+function createFolderIfNotExists (
+  path
+) {
+  const isFolderExist =
+    fs.existsSync(
+      path
+    )
+
+  if (!isFolderExist){
+    fs.mkdirSync(
+      path
+    )
+  }
+}
+
 module.exports = {
   appName,
   isDevelopment,
   isMac,
-  isLinux
+  isLinux,
+  createFolderIfNotExists
 }

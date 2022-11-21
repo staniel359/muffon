@@ -6,6 +6,11 @@ const {
 const path = require(
   'path'
 )
+const {
+  createFolderIfNotExists
+} = require(
+  './utils'
+)
 
 const productionPath =
   path.join(
@@ -24,11 +29,19 @@ const audioFolderPath =
     'audio'
   )
 
+createFolderIfNotExists(
+  audioFolderPath
+)
+
 const backgroundImagesFolderPath =
   path.join(
     userDataPath,
     'background_images'
   )
+
+createFolderIfNotExists(
+  backgroundImagesFolderPath
+)
 
 module.exports = {
   productionPath,
