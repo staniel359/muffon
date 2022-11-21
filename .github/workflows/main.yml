@@ -7,24 +7,24 @@ jobs:
 
     steps:
       - name: Set up checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Yarn cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-node-modules-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-node-modules-cache-
 
       - name: Set up Electron cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/.cache/electron
           key: ${{ runner.os }}-electron-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-electron-cache-
 
       - name: Set up Electron Builder cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/.cache/electron-builder
           key: ${{ runner.os }}-electron-builder-cache-${{ hashFiles('**/yarn.lock') }}
