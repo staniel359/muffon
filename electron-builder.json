@@ -33,6 +33,9 @@
     "oneClick": false,
     "perMachine": true
   },
+  "portable": {
+    "artifactName": "${productName}-${version}-${os}-${arch}-portable.${ext}",
+  },
   "directories": {
     "buildResources": "build",
     "output": "build_electron"
