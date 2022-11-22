@@ -147,35 +147,17 @@ export function mainScrobblePercentSeekerOptions (
   }
 }
 
-export function volumePopupOptions (
-  {
-    html
-  }
-) {
-  const className = 'ui popup main-popup'
-
-  const {
-    isDarkMode
-  } = store.state.layout
-
-  const variation = isDarkMode
-    ? 'basic inverted'
-    : 'basic'
-
+export function volumePopupOptions () {
   return {
     position: 'top center',
     transition: 'fade up',
+    variation: 'basic',
     closable: false,
     hoverable: true,
-    className: {
-      popup: className
-    },
     delay: {
       show: 0,
       hide: 150
-    },
-    html,
-    variation
+    }
   }
 }
 

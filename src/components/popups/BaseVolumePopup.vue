@@ -1,5 +1,10 @@
 <template>
-  <div class="volume-popup">
+  <div
+    class="ui popup main-popup main-volume-popup"
+    :class="{
+      inverted: isDarkMode
+    }"
+  >
     <div class="volume-header-container">
       <BaseHeader
         tag="h4"
@@ -43,6 +48,12 @@ export default {
         audioVolume: 'volume',
         audioElement: 'element'
       }
+    ),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
     ),
     volumeText () {
       return Math.floor(
@@ -112,15 +123,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.volume-popup
-  @extend .text-align-center
-  width: 25px
-
 .volume-header-container
-  margin-bottom: 0.25em
+  margin-bottom: 0.35em
 
 .volume-seeker
   @extend .w-100, .d-flex, .justify-content-center
-  height: 110px !important
+  height: 120px !important
   padding: 5px 0 !important
 </style>
