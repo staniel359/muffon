@@ -661,18 +661,20 @@ p
     .image
       width: 25px
       height: 25px
-  &.router-link-active
-    background: $colorGrey !important
-    font-weight: 700 !important
-    &.inverted
-      background: $colorGreyInverted !important
   &:before
     background: none !important
-  &:hover,
-  &.router-link-active
-    .icon-container
+  &:hover
+    .icon
+      color: $colorBlack !important
+    &.inverted
       .icon
-        color: $colorBase !important
+        color: $colorWhite !important
+  &.router-link-active
+    background: $colorBase !important
+    font-weight: 700 !important
+    color: $colorWhite !important
+    .icon
+      color: $colorWhite !important
   .icon-container
     @extend .d-flex, .align-items-center, .justify-content-center
     width: 40px
