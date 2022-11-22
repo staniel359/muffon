@@ -211,7 +211,7 @@ export default {
     },
     imageClass () {
       if (this.isByCommunity) {
-        return 'rounded-small'
+        return 'rounded-medium'
       } else {
         return 'circular'
       }

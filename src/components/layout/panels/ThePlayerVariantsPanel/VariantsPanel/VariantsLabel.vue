@@ -54,6 +54,8 @@ export default {
   left: 30px !important
   height: 30px
   border-bottom: 0 !important
+  border-top-left-radius: $borderRadiusMedium !important
+  border-top-right-radius: $borderRadiusMedium !important
   &.inverted
     border: $borderInverted !important
     border-bottom: 0 !important
