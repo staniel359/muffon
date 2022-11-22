@@ -16,7 +16,11 @@ export default {
   },
   computed: {
     onlineLabelColor () {
-      return this.isOnline ? 'green' : 'red'
+      if (this.isOnline) {
+        return 'green'
+      } else {
+        return null
+      }
     },
     isOnline () {
       return this.profileData.online
