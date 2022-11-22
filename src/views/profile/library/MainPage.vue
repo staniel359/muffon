@@ -11,6 +11,7 @@
         />
 
         <ExtraSegment
+          v-if="isSelf"
           :profile-id="profileId"
         />
       </div>
@@ -43,6 +44,9 @@ import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
 import TagsSegment from './MainPage/TagsSegment.vue'
+import {
+  isCurrentProfile
+} from '@/helpers/utils'
 
 export default {
   name: 'MainPage',
@@ -56,7 +60,17 @@ export default {
     TagsSegment
   },
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    isSelf () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    }
   }
 }
 </script>
