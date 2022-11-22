@@ -1,7 +1,6 @@
 <template>
   <div
     v-if="city || country"
-    class="main-profile-city-country"
   >
     <i
       v-if="country"
