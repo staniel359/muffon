@@ -53,9 +53,17 @@ export default {
       return this.profileData.city
     },
     countryName () {
+      return this.countryNames?.at(
+        -1
+      )
+    },
+    countryNames () {
       return countries.getName(
         this.country,
-        this.profileLanguage
+        this.profileLanguage,
+        {
+          select: 'all'
+        }
       )
     }
   }
