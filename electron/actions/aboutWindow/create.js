@@ -24,7 +24,7 @@ function handleClose (
 
 function create () {
   const aboutWindowWidth = 450
-  const aboutWindowHeight = 250
+  const aboutWindowHeight = 230
 
   const options = {
     width: aboutWindowWidth,
