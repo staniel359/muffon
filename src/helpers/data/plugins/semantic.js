@@ -282,6 +282,12 @@ export function mainDropdownOptions (
     visibleContext
   } = store.state.layout
 
+  const message = {
+    noResults: i18n.global.t(
+      'errors.notFound.header'
+    )
+  }
+
   const transition = (
     isSelection ? 'auto' : 'fade up'
   )
@@ -295,6 +301,7 @@ export function mainDropdownOptions (
       show: 0,
       hide: 150
     },
+    message,
     transition,
     onChange
   }
