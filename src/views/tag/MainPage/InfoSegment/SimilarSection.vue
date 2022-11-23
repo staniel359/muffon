@@ -1,16 +1,23 @@
 <template>
   <div class="ui labels">
     <BaseLabel
+      v-if="isLoading"
       class="basic circular large"
-      :is-loading="isLoading"
-      :text="similarText"
+      is-loading
     />
+    <template
+      v-else-if="similar?.length"
+    >
+      <BaseLabel
+        class="basic circular large"
+        :text="similarTextFormatted"
+      />
 
-    <BaseTagsSimpleList
-      v-if="similar?.length"
-      class="similar-list"
-      :tags="similar"
-    />
+      <BaseTagsSimpleList
+        class="similar-list"
+        :tags="similar"
+      />
+    </template>
   </div>
 </template>
 
@@ -42,10 +49,13 @@ export default {
     similar () {
       return this.tagData?.similar
     },
+    similarTextFormatted () {
+      return `${this.similarText}:`
+    },
     similarText () {
       return this.$t(
         'navigation.similar'
-      ) + ':'
+      )
     },
     tagArgs () {
       return {
