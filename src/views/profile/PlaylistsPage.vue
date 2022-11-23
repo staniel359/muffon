@@ -9,6 +9,12 @@
     is-with-order-change
   >
     <template #top>
+      <BasePlaylistCreateButton
+        v-if="isSelf"
+        class="create-button"
+        is-with-redirect
+      />
+
       <BaseLinkContainer
         :link="playlistsLink"
       >
@@ -17,12 +23,6 @@
           :text="playlistsLinkText"
         />
       </BaseLinkContainer>
-
-      <BasePlaylistCreateButton
-        v-if="isSelf"
-        class="create-button"
-        is-with-redirect
-      />
     </template>
 
     <template
@@ -102,5 +102,5 @@ export default {
 
 <style lang="sass" scoped>
 .create-button
-  margin-left: 0.75em !important
+  margin-right: 0.75em !important
 </style>
