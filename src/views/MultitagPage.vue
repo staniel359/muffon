@@ -23,9 +23,11 @@
     <template
       #default="slotProps"
     >
-      <BaseArtistsList
-        :artists="slotProps[scope]"
+      <Component
+        :is="listComponent"
+        :[scope]="slotProps[scope]"
         :view-id="viewId"
+        is-with-artist-name
         is-with-listeners-count
         is-with-library-option
         is-with-favorite-option
@@ -42,6 +44,7 @@ import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import FilterSection from './MultitagPage/FilterSection.vue'
 import BaseArtistsList from '@/components/lists/artists/BaseArtistsList.vue'
+import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
 import navigationMixin from '@/mixins/navigationMixin'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
 import collectionMixin from '@/mixins/collectionMixin'
@@ -56,7 +59,8 @@ export default {
   components: {
     BasePaginatedPageContainer,
     FilterSection,
-    BaseArtistsList
+    BaseArtistsList,
+    BaseAlbumsList
   },
   mixins: [
     navigationMixin,
@@ -76,7 +80,11 @@ export default {
       error: null,
       isLoading: false,
       scope: 'artists',
-      tags: []
+      tags: [],
+      listComponentsData: {
+        artists: 'BaseArtistsList',
+        albums: 'BaseAlbumsList'
+      }
     }
   },
   computed: {
@@ -100,10 +108,16 @@ export default {
     },
     isWithViewChange () {
       return !!this.multitagData
+    },
+    listComponent () {
+      return this.listComponentsData[
+        this.scope
+      ]
     }
   },
   watch: {
-    tags: 'handleTagsChange'
+    tags: 'handleTagsChange',
+    scope: 'handleScopeChange'
   },
   mounted () {
     this.setNavigation()
@@ -121,6 +135,15 @@ export default {
         this.getData()
       } else {
         this.multitagData = null
+      }
+    },
+    handleScopeChange () {
+      if (this.tags.length) {
+        this.resetViewId()
+
+        this.resetPage()
+
+        this.getData()
       }
     },
     getData (

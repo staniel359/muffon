@@ -27,7 +27,8 @@ export default {
   data () {
     return {
       scopes: [
-        'artists'
+        'artists',
+        'albums'
       ]
     }
   },

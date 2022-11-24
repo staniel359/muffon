@@ -6,6 +6,7 @@ export default {
   },
   data () {
     return {
+      defaultViewId: 'table',
       viewId: 'table',
       viewLimitsData: {
         simple: 50,
@@ -26,6 +27,10 @@ export default {
       value
     ) {
       this.viewId = value
+    },
+    resetViewId () {
+      this.viewId =
+        this.defaultViewId
     }
   }
 }

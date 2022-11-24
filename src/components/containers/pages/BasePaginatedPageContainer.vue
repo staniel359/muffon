@@ -27,6 +27,7 @@
 
           <BaseViewSelect
             v-if="isWithViewChange"
+            :key="key"
             class="select-block"
             :scope="scope"
             :view-id="viewId"
@@ -77,6 +78,9 @@ import BaseOrderSelect from '@/components/selects/BaseOrderSelect.vue'
 import BaseViewSelect from '@/components/selects/BaseViewSelect.vue'
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePaginatedPageContainer',
@@ -122,6 +126,7 @@ export default {
   },
   data () {
     return {
+      key: null,
       responseDataComputed: null
     }
   },
@@ -141,7 +146,8 @@ export default {
     order: 'handleOrderChange',
     viewId: 'handleViewIdChange',
     isWithInfiniteScroll:
-      'handleIsWithInfiniteScrollChange'
+      'handleIsWithInfiniteScrollChange',
+    scope: 'handleScopeChange'
   },
   methods: {
     handleResponseDataChange (
@@ -173,6 +179,9 @@ export default {
     },
     handleIsWithInfiniteScrollChange () {
       this.refresh()
+    },
+    handleScopeChange () {
+      this.key = generateKey()
     },
     handleFocus () {
       this.focus()
