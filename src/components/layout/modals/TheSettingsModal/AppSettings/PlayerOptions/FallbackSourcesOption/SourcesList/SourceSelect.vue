@@ -94,7 +94,7 @@ export default {
 <style lang="sass" scoped>
 .source-select-container
   @extend .d-flex, .align-items-center
-  margin-bottom: 0.5em
+  margin-bottom: 0.75em
 
 ::v-deep(.menu)
   max-height: 200px !important
