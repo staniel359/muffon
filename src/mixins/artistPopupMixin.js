@@ -65,19 +65,24 @@ export default {
     }
   },
   watch: {
-    isSetPopup: {
-      immediate: true,
-      handler: 'handleIsSetPopupChange'
-    },
+    isSetPopup: 'handleIsSetPopupChange',
     isLinkActive: 'handleIsLinkActiveChange',
     isDarkMode: 'handleIsDarkModeChange'
   },
+  mounted () {
+    if (this.isSetPopup) {
+      this.initialize()
+    }
+  },
+  activated () {
+    if (this.isSetPopup) {
+      this.initialize()
+    }
+  },
   methods: {
-    async handleIsSetPopupChange (
+    handleIsSetPopupChange (
       value
     ) {
-      await this.$nextTick()
-
       this.toggleSetup(
         value
       )
