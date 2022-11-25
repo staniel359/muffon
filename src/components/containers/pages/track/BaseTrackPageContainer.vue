@@ -21,7 +21,6 @@ import formatTrackPageNavigation from '@/helpers/formatters/navigation/track'
 import formatTrackPageTab from '@/helpers/formatters/tabs/track'
 import formatRequestTrackData from '@/helpers/formatters/request/track/data'
 import getTrack from '@/helpers/actions/api/track/get'
-import getBandcampId from '@/helpers/actions/api/bandcampId/get'
 
 export default {
   name: 'BaseTrackPageContainer',
@@ -100,7 +99,6 @@ export default {
   },
   methods: {
     getTrack,
-    getBandcampId,
     handleRequestTrackDataChange () {
       this.getData()
     },
@@ -122,50 +120,6 @@ export default {
       )
     },
     setRequestTrackData (
-      value
-    ) {
-      const isBandcampSource = (
-        value.source?.name ===
-          'bandcamp'
-      )
-
-      const isBandcampTrackIdPresent = (
-        value.source?.id &&
-          value.source?.artist_id
-      )
-
-      const isGetBandcampId = (
-        isBandcampSource &&
-          !isBandcampTrackIdPresent
-      )
-
-      if (isGetBandcampId) {
-        this.getBandcampTrackData(
-          value
-        )
-      } else {
-        this.setFormattedRequestTrackData(
-          value
-        )
-      }
-    },
-    getBandcampTrackData (
-      value
-    ) {
-      const bandcampIdArgs = {
-        model: 'track',
-        slug: value.source.slug,
-        artistSlug:
-          value.source.artist_slug
-      }
-
-      this.getBandcampId(
-        bandcampIdArgs
-      ).then(
-        this.setFormattedRequestTrackData
-      )
-    },
-    setFormattedRequestTrackData (
       value
     ) {
       this.requestTrackData =

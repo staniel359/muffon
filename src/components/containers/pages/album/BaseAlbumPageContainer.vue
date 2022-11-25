@@ -21,7 +21,6 @@ import formatAlbumPageNavigation from '@/helpers/formatters/navigation/album'
 import formatAlbumPageTab from '@/helpers/formatters/tabs/album'
 import formatRequestAlbumData from '@/helpers/formatters/request/album/data'
 import getAlbum from '@/helpers/actions/api/album/get'
-import getBandcampId from '@/helpers/actions/api/bandcampId/get'
 
 export default {
   name: 'BaseAlbumPageContainer',
@@ -100,7 +99,6 @@ export default {
   },
   methods: {
     getAlbum,
-    getBandcampId,
     handleRequestAlbumDataChange () {
       this.getData()
     },
@@ -115,50 +113,6 @@ export default {
       )
     },
     setRequestAlbumData (
-      value
-    ) {
-      const isBandcampSource = (
-        value.source?.name ===
-          'bandcamp'
-      )
-
-      const isBandcampAlbumIdPresent = (
-        value.source?.id &&
-          value.source?.artist_id
-      )
-
-      const isGetBandcampId = (
-        isBandcampSource &&
-          !isBandcampAlbumIdPresent
-      )
-
-      if (isGetBandcampId) {
-        this.getBandcampAlbumData(
-          value
-        )
-      } else {
-        this.setFormattedRequestAlbumData(
-          value
-        )
-      }
-    },
-    getBandcampAlbumData (
-      value
-    ) {
-      const bandcampIdArgs = {
-        model: value.source.model,
-        slug: value.source.slug,
-        artistSlug:
-          value.source.artist_slug
-      }
-
-      this.getBandcampId(
-        bandcampIdArgs
-      ).then(
-        this.setFormattedRequestAlbumData
-      )
-    },
-    setFormattedRequestAlbumData (
       value
     ) {
       this.requestAlbumData =

@@ -20,17 +20,13 @@ export function main (
   const {
     source,
     trackId,
-    artistId,
-    slug,
-    artistSlug
+    artistId
   } = sourceParams
 
   const query = {
     source,
     track_id: trackId,
-    artist_id: artistId,
-    slug,
-    artist_slug: artistSlug
+    artist_id: artistId
   }
 
   const queryFormatted =

@@ -1,5 +1,4 @@
 import store from '@/plugins/store'
-import getBandcampId from '@/helpers/actions/api/bandcampId/get'
 import getAudio from '@/helpers/actions/api/audio/get'
 import {
   updateGlobal as updateGlobalStore
@@ -31,33 +30,8 @@ export default async function (
 
   trackData.from_radio = isFromRadio
 
-  function getTrackData () {
-    const isBandcampVariant = (
-      trackData.source.name ===
-        'bandcamp'
-    )
-
-    if (isBandcampVariant) {
-      const sourceData = trackData.source
-
-      const bandcampIdArgs = {
-        model: 'track',
-        slug: sourceData.slug,
-        artistSlug:
-          sourceData.artist_slug
-      }
-
-      return getBandcampId(
-        bandcampIdArgs
-      )
-    } else {
-      return trackData
-    }
-  }
-
   const audioArgs = {
-    trackData:
-      await getTrackData()
+    trackData
   }
 
   function handleSuccess () {

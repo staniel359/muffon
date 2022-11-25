@@ -100,8 +100,6 @@ export default {
         name: query.source,
         id: query.album_id,
         artist_id: query.artist_id,
-        slug: query.slug,
-        artist_slug: query.artist_slug,
         album_type: query.album_type,
         model: query.model,
         owner_id: query.owner_id,

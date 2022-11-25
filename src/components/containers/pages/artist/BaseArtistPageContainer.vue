@@ -23,7 +23,6 @@ import formatArtistPageNavigation from '@/helpers/formatters/navigation/artist'
 import formatArtistPageTab from '@/helpers/formatters/tabs/artist'
 import formatRequestArtistData from '@/helpers/formatters/request/artist/data'
 import getArtist from '@/helpers/actions/api/artist/get'
-import getBandcampId from '@/helpers/actions/api/bandcampId/get'
 
 export default {
   name: 'BaseArtistPageContainer',
@@ -118,7 +117,6 @@ export default {
   },
   methods: {
     getArtist,
-    getBandcampId,
     handleRequestArtistDataChange () {
       this.$emit(
         'requestArtistDataChange'
@@ -143,41 +141,6 @@ export default {
       )
     },
     setRequestArtistData (
-      value
-    ) {
-      const isBandcampSource = (
-        value.source.name ===
-          'bandcamp'
-      )
-
-      if (isBandcampSource) {
-        this.getBandcampArtistData(
-          value
-        )
-      } else {
-        this.setFormattedRequestArtistData(
-          value
-        )
-      }
-    },
-    getBandcampArtistData (
-      value
-    ) {
-      const artistSlug =
-        value.source.slug
-
-      const bandcampIdArgs = {
-        model: 'artist',
-        artistSlug
-      }
-
-      this.getBandcampId(
-        bandcampIdArgs
-      ).then(
-        this.setFormattedRequestArtistData
-      )
-    },
-    setFormattedRequestArtistData (
       value
     ) {
       this.requestArtistData =

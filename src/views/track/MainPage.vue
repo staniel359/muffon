@@ -99,9 +99,7 @@ export default {
       return {
         name: query.source,
         id: query.track_id,
-        artist_id: query.artist_id,
-        slug: query.slug,
-        artist_slug: query.artist_slug
+        artist_id: query.artist_id
       }
     }
   },

@@ -31,29 +31,12 @@ export default function (
           accessKey:
             albumData.source.access_key
         }
-      case 'odnoklassniki':
-        return {
-          albumId: albumData.source.id
-        }
-      case 'yandexmusic':
-        return {
-          albumId: albumData.source.id
-        }
-      case 'deezer':
-        return {
-          albumId: albumData.source.id
-        }
       case 'bandcamp':
         return {
           albumId: albumData.source.id,
-          artistId: albumData.source.artist_id,
-          slug: albumData.source.slug,
-          artistSlug: albumData.source.artist_slug,
+          artistId:
+            albumData.source.artist_id,
           model: albumData.source.model
-        }
-      case 'soundcloud':
-        return {
-          albumId: albumData.source.id
         }
       case 'discogs':
         return {
@@ -63,16 +46,10 @@ export default function (
               albumData.source.album_type
           )
         }
-      case 'spotify':
-        return {
-          albumId: albumData.source.id
-        }
-      case 'genius':
-        return {
-          albumId: albumData.source.id
-        }
       default:
-        return {}
+        return {
+          albumId: albumData.source.id
+        }
     }
   }
 

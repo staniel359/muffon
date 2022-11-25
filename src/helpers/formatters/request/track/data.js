@@ -23,47 +23,16 @@ export default function (
               trackData.trackTitle
           )
         }
-      case 'vk':
-        return {
-          trackId: trackData.source.id
-        }
-      case 'odnoklassniki':
-        return {
-          trackId: trackData.source.id
-        }
-      case 'yandexmusic':
-        return {
-          trackId: trackData.source.id
-        }
-      case 'deezer':
-        return {
-          trackId: trackData.source.id
-        }
       case 'bandcamp':
         return {
           trackId: trackData.source.id,
-          artistId: trackData.source.artist_id,
-          slug: trackData.source.slug,
-          artistSlug: trackData.source.artist_slug
-        }
-      case 'soundcloud':
-        return {
-          trackId: trackData.source.id
-        }
-      case 'discogs':
-        return {
-          trackId: trackData.source.id
-        }
-      case 'spotify':
-        return {
-          trackId: trackData.source.id
-        }
-      case 'genius':
-        return {
-          trackId: trackData.source.id
+          artistId:
+            trackData.source.artist_id
         }
       default:
-        return {}
+        return {
+          trackId: trackData.source.id
+        }
     }
   }
 

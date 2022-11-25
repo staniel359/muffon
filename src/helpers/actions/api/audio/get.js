@@ -14,8 +14,8 @@ export default function (
   const url = formatTrackRequestUrl(
     {
       source: sourceData.name,
-      artistId: sourceData.artist_id,
-      trackId: sourceData.id
+      trackId: sourceData.id,
+      artistId: sourceData.artist_id
     }
   )
 

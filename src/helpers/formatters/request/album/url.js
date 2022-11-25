@@ -29,8 +29,7 @@ export default function (
         )
       case 'bandcamp':
         return (
-          `artists/${artistId}` +
-          `/${albumScope}/${albumId}/${scope}`
+          `artists/${artistId}/${albumScope}/${albumId}/${scope}`
         )
       default:
         return `${albumScope}/${albumId}/${scope}`

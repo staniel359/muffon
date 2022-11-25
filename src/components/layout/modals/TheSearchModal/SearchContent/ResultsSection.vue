@@ -142,8 +142,6 @@ export default {
     },
     artistsResponsePageLimit () {
       switch (this.source) {
-        case 'bandcamp':
-          return 10
         case 'yandexmusic':
           return 10
         default:
@@ -161,8 +159,6 @@ export default {
     },
     albumsResponsePageLimit () {
       switch (this.source) {
-        case 'bandcamp':
-          return 10
         case 'yandexmusic':
           return 10
         default:
@@ -188,8 +184,6 @@ export default {
     },
     tracksResponsePageLimit () {
       switch (this.source) {
-        case 'bandcamp':
-          return 10
         case 'yandexmusic':
           return 20
         case 'genius':

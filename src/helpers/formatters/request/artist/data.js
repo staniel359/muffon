@@ -14,44 +14,10 @@ export default function (
         return {
           artistName: artistData.name
         }
-      case 'vk':
-        return {
-          artistId: artistData.source.id
-        }
-      case 'odnoklassniki':
-        return {
-          artistId: artistData.source.id
-        }
-      case 'yandexmusic':
-        return {
-          artistId: artistData.source.id
-        }
-      case 'deezer':
-        return {
-          artistId: artistData.source.id
-        }
-      case 'bandcamp':
-        return {
-          artistId: artistData.source.id
-        }
-      case 'soundcloud':
-        return {
-          artistId: artistData.source.id
-        }
-      case 'discogs':
-        return {
-          artistId: artistData.source.id
-        }
-      case 'spotify':
-        return {
-          artistId: artistData.source.id
-        }
-      case 'genius':
-        return {
-          artistId: artistData.source.id
-        }
       default:
-        return {}
+        return {
+          artistId: artistData.source.id
+        }
     }
   }
 
