@@ -1,7 +1,7 @@
 <template>
   <BaseSearchInput
     ref="input"
-    class="search-input"
+    class="search-input tracks-input"
     :url="url"
     :fields="fields"
     :format-response="formatResponse"
@@ -40,6 +40,12 @@ export default {
       }
     }
   },
+  data () {
+    return {
+      defaultImage:
+        'https://lastfm.freetls.fastly.net/i/u/300x300/4128a6eb29f94943c9d206c08e625904.png'
+    }
+  },
   computed: {
     url () {
       return (
@@ -52,7 +58,7 @@ export default {
         results: 'tracks',
         title: 'title',
         description: 'artistName',
-        image: null
+        image: 'imageExtrasmall'
       }
     }
   },
@@ -121,7 +127,11 @@ export default {
       return {
         ...trackData,
         artistName:
-          trackData.artist.name
+          trackData.artist.name,
+        imageExtrasmall: (
+          trackData.image?.extrasmall ||
+            this.defaultImage
+        )
       }
     },
     focus () {
