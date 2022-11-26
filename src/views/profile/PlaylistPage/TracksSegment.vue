@@ -16,6 +16,7 @@
         :tracks="slotProps[scope]"
         :playlist-title="playlistTitle"
         :playlist-id="playlistId"
+        :profile-id="profileId"
         :is-with-delete-option="isSelf"
         is-with-image
         is-with-artist-name
