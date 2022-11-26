@@ -298,7 +298,7 @@ export default {
 .artist-segment
   @extend .d-flex
   &.inverted
-    border: $borderInverted !important
+    @extend .border-inverted
 
 .artist-left-column
   margin-right: 1em

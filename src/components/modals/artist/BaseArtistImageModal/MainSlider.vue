@@ -53,8 +53,8 @@ export default {
   height: calc(#{$imageModalHeight} - #{$imageModalThumbHeight} - 1.5em)
   margin-bottom: 1.5em
   .image
+    @extend .border-inverted
     max-height: 100%
-    border: $borderInverted
 
 ::v-deep(.slick-prev)
   left: 20px

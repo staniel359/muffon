@@ -102,16 +102,18 @@ p
 
 .ui.card.main-simple-card,
 .ui.card.main-horizontal-card
-  & > .content .star.icon
-    opacity: 1
-    cursor: unset
-    transition: unset
-    &:hover
-      color: $colorBase
+  & > .content
+    .star.icon
+      opacity: 1
+      cursor: unset
+      transition: unset
+      &:hover
+        color: $colorBase
 
-.ui.selection.list
-  & > .item
-    padding: 0.5em !important
+.ui.list
+  &.selection
+    & > .item
+      padding: 0.5em !important
 
 .ui.dropdown
   &.button
@@ -123,8 +125,9 @@ p
         box-shadow: 1px 1px 0 0 #ffffff26
         margin: -0.3em 0 0
   &.selection
-    &.active, .menu
-      border-color: $colorBaseLight !important
+    &.active,
+    .menu
+      @extend .border-color-base-light
   .item
     &:first-child
       border-top-left-radius: inherit
@@ -149,16 +152,16 @@ p
   .ui.input
     input
       @extend .main-input
-  & >.results
-    & > .result
+  .results
+    .result
       @extend .d-flex, .align-items-center
-      & > .image
-        float: none
-        width: 40px
-        height: 40px
+      .image
+        @extend .border, .image-medium
         margin-right: 0.75em
-      & > .content
+      .content
         @extend .no-margin, .flex-full
+      &:only-child
+        border-radius: inherit
   &.inverted
     .ui.input
       input
@@ -166,24 +169,26 @@ p
       .icon
         @extend .text-color-white
     .results
-      @extend .background-black
-      border: $borderInverted
+      @extend .background-black, .border-inverted
       .result
         border-bottom: $borderInverted
+        .image
+          @extend .border-inverted
         .title
           @extend .text-color-white
+        .description
+          @extend .text-color-white-inverted
         &:hover
-          background: #ffffff14
-        &.active
           @extend .background-grey-inverted
       .message
-        .header, .description
+        .header,
+        .description
           @extend .text-color-white
   &.scrolling
-    & > .results
+    .results
       max-height: 200px
   .prompt
-    border-radius: $borderRadius
+    @extend .border-radius
 
 .ui.label
   &.circular
@@ -192,7 +197,7 @@ p
 
 .ui.toast
   &.inverted
-    border: $borderInverted
+    @extend .border-inverted
 
 .ui.form
   input[type=text],
@@ -211,7 +216,7 @@ p
     z-index: -1
   &.inverted
     table
-      border: $borderInverted
+      @extend .border-inverted
       .disabled
         color: #e1e1e14d !important
     &:before
@@ -221,7 +226,7 @@ p
 .ui.input
   &.inverted
     & > input
-      border: $borderInverted
+      @extend .border-inverted
 
 .ui.menu
   &.secondary
@@ -232,15 +237,15 @@ p
 
 .ui.image
   &.rounded
-    border-radius: $borderRadius
+    @extend .border-radius
   &.rounded-medium
-    border-radius: $borderRadiusMedium
+    @extend .border-radius-medium
   &.rounded-small
-    border-radius: $borderRadiusSmall
+    @extend .border-radius-small
 
 .main-input
   &:focus
-    border-color: $colorBaseLight !important
+    @extend .border-color-base-light
 
 .main-input-inverted
   @extend .background-black, .text-color-white
@@ -300,9 +305,9 @@ p
       .main-tab
         @extend .absolute, .overflow-y-auto
   &.inverted
-    @extend .background-black
-    border: $borderInverted
-    & > .header, & > .content
+    @extend .background-black, .border-inverted
+    & > .header,
+    & > .content
       @extend .background-black
 
 .main-image-modal
@@ -317,7 +322,8 @@ p
 .main-image-container
   @extend .relative
   padding-bottom: 100%
-  & > .image, & > .image-content
+  & > .image,
+  & > .image-content
     @extend .absolute, .w-100, .h-100
 
 .main-link
@@ -382,15 +388,12 @@ p
 .main-simple-list-item
   @extend .d-flex, .align-items-center, .word-break-break-word
   & > .image
-    width: 50px
-    height: 50px
+    @extend .image-large
     margin-right: 0.75em !important
     &.medium
-      width: 40px
-      height: 40px
+      @extend .image-medium
     &.small
-      width: 30px
-      height: 30px
+      @extend .image-small
   .content
     @extend .flex-full, .no-padding
     .text
@@ -415,16 +418,15 @@ p
     @extend .align-items-start
 
 .main-message
-  @extend .no-shadow, .no-margin
-  border: $border
+  @extend .no-shadow, .no-margin, .border
   &.inverted
-    border: $borderInverted !important
+    @extend .border-inverted
 
 .main-popup
   @extend .no-border
   max-width: unset !important
   &.inverted
-    border: $borderInverted !important
+    @extend .border-inverted
 
 .main-popup-container
   @extend .d-none
@@ -446,8 +448,8 @@ p
 
 .main-emoji-picker
   em-emoji-picker
+    @extend .border-radius
     max-height: 300px
-    border-radius: $borderRadius !important
     --font-family: inherit
 
 .main-header
@@ -477,11 +479,9 @@ p
   & > .icon
     margin-right: 0.75em !important
   & > .image-container
-    margin-right: 0.5em
+    margin-right: 0.75em
     .image
-      @extend .object-fit-cover
-      width: 30px
-      height: 30px
+      @extend .object-fit-cover, .image-small
   & > .content
     @extend .flex-full, .word-break-break-word
     white-space: normal
@@ -564,7 +564,7 @@ p
 .main-pagination
   @extend .no-margin, .align-self-center, .background-transparent
   &.inverted
-    border: $borderInverted !important
+    @extend .border-inverted
   & > .item
     &:last-child
       border-top-right-radius: inherit
@@ -602,7 +602,7 @@ p
     &.basic
       &.inverted
         &:hover
-          color: $colorWhiteInverted !important
+          @extend .text-color-white-inverted
   &.clickable
     @extend .cursor-pointer
     &:not(.primary)
@@ -620,7 +620,7 @@ p
   @extend .object-fit-cover
   &.inverted
     &.bordered
-      border: $borderInverted !important
+      @extend .border-inverted
 
 .main-source-select-container
   @extend .d-flex, .align-items-center
@@ -676,9 +676,7 @@ p
     .icon
       color: $colorWhite !important
   .icon-container
-    @extend .d-flex, .align-items-center, .justify-content-center
-    width: 40px
-    height: 40px
+    @extend .d-flex, .align-items-center, .justify-content-center, .image-medium
     flex-shrink: 0
     .icon
       @extend .no-margin
@@ -838,7 +836,7 @@ p
 
 .main-message-item
   &.inverted
-    border: $borderInverted !important
+    @extend .border-inverted
 
 .main-paginated-segment-container
   @extend .d-flex
@@ -892,8 +890,7 @@ p
   @extend .word-break-break-word
 
 .main-video
-  @extend .overflow-hidden
-  border-radius: $borderRadius
+  @extend .overflow-hidden, .border-radius
   outline: $border
   &.inverted
     outline: $borderInverted

@@ -89,5 +89,5 @@ export default {
 .variants-list
   @extend .no-margin, .h-100, .overflow-y-auto, .pointer-events-auto
   &.inverted
-    border-color: $colorGreyInverted !important
+    @extend .border-color-grey-inverted
 </style>

@@ -109,5 +109,5 @@ export default {
   width: 225px
   @extend .no-margin
   ::v-deep(.image)
-    width: 40px
+    width: 40px !important
 </style>

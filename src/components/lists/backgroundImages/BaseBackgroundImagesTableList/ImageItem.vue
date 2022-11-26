@@ -107,8 +107,8 @@ export default {
 <style lang="sass" scoped>
 .main-image-item
   &.active
+    @extend .border-radius-medium
     border: $borderBaseLight
-    border-radius: $borderRadiusMedium
   .image
     @extend .cursor-pointer
 </style>

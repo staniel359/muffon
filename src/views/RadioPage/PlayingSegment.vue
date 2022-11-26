@@ -47,7 +47,5 @@ export default {
 
 <style lang="sass" scoped>
 .playing-segment
-  @extend .relative, .overflow-hidden
-  border: $borderInverted
-  border-radius: $borderRadius
+  @extend .relative, .overflow-hidden, .border-inverted, .border-radius
 </style>

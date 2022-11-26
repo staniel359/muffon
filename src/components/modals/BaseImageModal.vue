@@ -37,6 +37,6 @@ export default {
 <style lang="sass" scoped>
 .main-image-modal-content
   .image
+    @extend .border-inverted
     max-height: $imageModalHeight
-    border: $borderInverted
 </style>

@@ -57,6 +57,6 @@ export default {
   border-top-left-radius: $borderRadiusMedium !important
   border-top-right-radius: $borderRadiusMedium !important
   &.inverted
-    border: $borderInverted !important
+    @extend .border-inverted
     border-bottom: 0 !important
 </style>
