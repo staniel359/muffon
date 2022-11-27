@@ -25,14 +25,15 @@
           :favorite-id="favoriteId"
           :bookmark-id="bookmarkId"
           :listened-id="listenedId"
+          :is-link-to-library="isLinkToLibrary"
           :is-with-library-option="isWithLibraryOption"
           :is-with-favorite-option="isWithFavoriteOption"
           :is-with-bookmark-option="isWithBookmarkOption"
           :is-with-listened-option="isWithListenedOption"
           :is-with-share-option="isWithShareOption"
-          :is-with-delete-option="isWithDeleteOption"
+          :is-with-delete-option="isWithDeleteOption && isSelf"
           @link-click="handleLinkClick"
-          @delete-option-click="handleDeleteOptionClick"
+          @deleted="handleDeleted"
         />
 
         <div class="main-image-container">
@@ -96,16 +97,6 @@
           :is-with-bookmark-icon="isWithBookmarkIcon"
         />
       </div>
-
-      <BaseLibraryDeleteModal
-        v-if="isLinkToLibrary && isSelf"
-        ref="deleteModal"
-        model="album"
-        :profile-id="profileId"
-        :model-id="libraryAlbumId"
-        :model-name="albumFullTitle"
-        @success="handleDeleted"
-      />
     </template>
   </BaseSimpleCardContainer>
 </template>
@@ -129,8 +120,6 @@ import BaseAlbumListenersCount
   from '@/components/models/album/BaseAlbumListenersCount.vue'
 import TracksSection from './AlbumItem/TracksSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseLibraryDeleteModal
-  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -147,8 +136,7 @@ export default {
     BaseCreatedSection,
     BaseAlbumListenersCount,
     TracksSection,
-    BaseSelfIcons,
-    BaseLibraryDeleteModal
+    BaseSelfIcons
   },
   mixins: [
     selfMixin
@@ -222,17 +210,6 @@ export default {
     },
     isDeleted () {
       return !!this.albumData.isDeleted
-    },
-    libraryAlbumId () {
-      return this.albumData.library.id.toString()
-    },
-    albumFullTitle () {
-      return [
-        this.artistName,
-        this.albumTitle
-      ].join(
-        ' - '
-      )
     }
   },
   methods: {

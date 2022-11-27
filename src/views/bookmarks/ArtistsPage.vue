@@ -12,6 +12,7 @@
     >
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
+        :profile-id="profileId"
         is-with-created
         is-bookmark
         is-with-library-option
@@ -25,6 +26,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseBookmarksPaginatedPageContainer
   from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
 import BaseArtistsSimpleList
@@ -46,6 +50,14 @@ export default {
       scope: 'artists',
       order: 'createdDesc'
     }
+  },
+  computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    )
   }
 }
 </script>

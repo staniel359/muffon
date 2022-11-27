@@ -35,7 +35,6 @@
       :is-bookmark="isBookmark"
       :is-favorite="isFavorite"
       :is-playlist-track="isPlaylistTrack"
-      :is-saved-track="isSavedTrack"
       :playlist-id="playlistId"
       :playlist-title="playlistTitle"
       :is-clearable="isClearable"
@@ -103,7 +102,6 @@ export default {
     isBookmark: Boolean,
     isFavorite: Boolean,
     isPlaylistTrack: Boolean,
-    isSavedTrack: Boolean,
     playlistId: String,
     playlistTitle: String,
     isClearable: Boolean

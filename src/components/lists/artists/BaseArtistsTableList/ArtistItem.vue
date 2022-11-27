@@ -17,13 +17,14 @@
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
+        :is-link-to-library="isLinkToLibrary"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-listened-option="isWithListenedOption"
         :is-with-share-option="isWithShareOption"
-        :is-with-delete-option="isWithDeleteOption"
-        @delete-option-click="handleDeleteOptionClick"
+        :is-with-delete-option="isWithDeleteOption && isSelf"
+        @deleted="handleDeleted"
       />
 
       <BaseArtistLinkContainer
@@ -80,16 +81,6 @@
           :is-with-bookmark-icon="isWithBookmarkIcon"
         />
       </div>
-
-      <BaseLibraryDeleteModal
-        v-if="isLinkToLibrary && isSelf"
-        ref="deleteModal"
-        model="artist"
-        :profile-id="profileId"
-        :model-id="libraryArtistId"
-        :model-name="artistName"
-        @success="handleDeleted"
-      />
     </template>
   </BaseSimpleCardContainer>
 </template>
@@ -109,8 +100,6 @@ import BaseArtistListenersCount
   from '@/components/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseLibraryDeleteModal
-  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -125,8 +114,7 @@ export default {
     BaseCreatedSection,
     BaseArtistListenersCount,
     LibraryCountersSection,
-    BaseSelfIcons,
-    BaseLibraryDeleteModal
+    BaseSelfIcons
   },
   mixins: [
     selfMixin
@@ -181,9 +169,6 @@ export default {
     },
     isDeleted () {
       return !!this.artistData.isDeleted
-    },
-    libraryArtistId () {
-      return this.artistData.library.id.toString()
     }
   },
   methods: {
@@ -199,16 +184,8 @@ export default {
       this.paginationItem
         .listeners_count = value
     },
-    handleDeleteOptionClick () {
-      this.showDeleteModal()
-    },
     handleDeleted () {
       this.paginationItem.isDeleted = true
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }

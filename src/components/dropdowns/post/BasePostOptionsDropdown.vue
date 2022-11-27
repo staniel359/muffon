@@ -2,15 +2,35 @@
   <BaseOptionsDropdownContainer
     v-if="isRender"
   >
-    <BaseEditOption
+    <template
       v-if="isWithEditOption"
-      @click="handleEditOptionClick"
-    />
+    >
+      <BaseEditOption
+        @click="handleEditOptionClick"
+      />
 
-    <BaseDeleteOption
+      <BasePostUpdateModal
+        ref="updateModal"
+        :key="key"
+        :post-data="postData"
+        :is-with-as-community-option="isCommunityCreator"
+        @success="handleUpdated"
+      />
+    </template>
+
+    <template
       v-if="isWithDeleteOption"
-      @click="handleDeleteOptionClick"
-    />
+    >
+      <BaseDeleteOption
+        @click="handleDeleteOptionClick"
+      />
+
+      <BasePostDeleteModal
+        ref="deleteModal"
+        :post-data="postData"
+        @success="handleDeleted"
+      />
+    </template>
   </BaseOptionsDropdownContainer>
 </template>
 
@@ -22,24 +42,40 @@ import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import BaseEditOption
   from '@/components/dropdowns/options/BaseEditOption.vue'
+import BasePostUpdateModal
+  from '@/components/modals/post/BasePostUpdateModal.vue'
 import BaseDeleteOption
   from '@/components/dropdowns/options/BaseDeleteOption.vue'
+import BasePostDeleteModal
+  from '@/components/modals/post/BasePostDeleteModal.vue'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePostOptionsDropdown',
   components: {
     BaseOptionsDropdownContainer,
     BaseEditOption,
-    BaseDeleteOption
+    BasePostUpdateModal,
+    BaseDeleteOption,
+    BasePostDeleteModal
   },
   props: {
+    postData: Object,
     isWithEditOption: Boolean,
-    isWithDeleteOption: Boolean
+    isWithDeleteOption: Boolean,
+    isCommunityCreator: Boolean
   },
   emits: [
-    'editOptionClick',
-    'deleteOptionClick'
+    'updated',
+    'deleted'
   ],
+  data () {
+    return {
+      key: null
+    }
+  },
   computed: {
     ...mapGetters(
       'profile',
@@ -62,14 +98,44 @@ export default {
   },
   methods: {
     handleEditOptionClick () {
-      this.$emit(
-        'editOptionClick'
-      )
+      this.showUpdateModal()
     },
     handleDeleteOptionClick () {
+      this.showDeleteModal()
+    },
+    handleUpdated (
+      value
+    ) {
+      this.hideUpdateModal()
+
       this.$emit(
-        'deleteOptionClick'
+        'updated',
+        value
       )
+    },
+    handleDeleted () {
+      this.$emit(
+        'deleted'
+      )
+    },
+    async showUpdateModal () {
+      this.key = generateKey()
+
+      await this.$nextTick()
+
+      this.$refs
+        .updateModal
+        .show()
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
+    },
+    hideUpdateModal () {
+      this.$refs
+        .updateModal
+        .hide()
     }
   }
 }

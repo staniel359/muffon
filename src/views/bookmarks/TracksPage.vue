@@ -12,6 +12,7 @@
     >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
+        :profile-id="profileId"
         is-with-image
         is-with-artist-name
         is-with-album-title
@@ -31,6 +32,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseBookmarksPaginatedPageContainer
   from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
 import BaseTracksSimpleList
@@ -52,6 +56,14 @@ export default {
       scope: 'tracks',
       order: 'createdDesc'
     }
+  },
+  computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    )
   }
 }
 </script>

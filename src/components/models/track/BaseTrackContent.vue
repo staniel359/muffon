@@ -114,6 +114,12 @@
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
       :listened-id="listenedId"
+      :is-link-to-library="isLinkToLibrary"
+      :is-bookmark="isBookmark"
+      :is-favorite="isFavorite"
+      :is-playlist-track="isPlaylistTrack"
+      :playlist-id="playlistId"
+      :playlist-title="playlistTitle"
       :is-with-library-option="isWithLibraryOption"
       :is-with-favorite-option="isWithFavoriteOption"
       :is-with-bookmark-option="isWithBookmarkOption"
@@ -121,52 +127,16 @@
       :is-with-queue-option="isWithQueueOption"
       :is-with-playlist-option="isWithPlaylistOption"
       :is-with-share-option="isWithShareOption"
-      :is-with-delete-option="isWithDeleteOption"
+      :is-with-delete-option="isWithDeleteOption && isSelf"
+      :is-clearable="isClearable"
       @link-click="handleLinkClick"
       @delete-option-click="handleDeleteOptionClick"
+      @deleted="handleDeleted"
     />
 
     <BaseClearButton
       v-if="isWithClearButton"
       @click="handleClearButtonClick"
-    />
-
-    <BaseBookmarkDeleteModal
-      v-if="isBookmark"
-      ref="deleteModal"
-      model="track"
-      :model-data="trackData"
-      @success="handleDeleted"
-    />
-    <BaseFavoriteDeleteModal
-      v-else-if="isFavorite && isSelf"
-      ref="deleteModal"
-      model="track"
-      :model-data="trackData"
-      @success="handleDeleted"
-    />
-    <BasePlaylistTrackDeleteModal
-      v-else-if="isPlaylistTrack && isSelf"
-      ref="deleteModal"
-      :playlist-track-data="trackData"
-      :playlist-id="playlistId"
-      :playlist-title="playlistTitle"
-      @success="handleDeleted"
-    />
-    <BaseSavedTrackDeleteModal
-      v-else-if="isSavedTrack"
-      ref="deleteModal"
-      :track-data="trackData"
-      @success="handleDeleted"
-    />
-    <BaseLibraryDeleteModal
-      v-else-if="isLinkToLibrary && isSelf"
-      ref="deleteModal"
-      model="track"
-      :profile-id="profileId"
-      :model-id="libraryTrackId"
-      :model-name="trackFullTitle"
-      @success="handleDeleted"
     />
   </template>
 </template>
@@ -191,16 +161,6 @@ import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseTrackOptionsDropdown
   from '@/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import BaseBookmarkDeleteModal
-  from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
-import BaseFavoriteDeleteModal
-  from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
-import BasePlaylistTrackDeleteModal
-  from '@/components/modals/playlist/track/BasePlaylistTrackDeleteModal.vue'
-import BaseSavedTrackDeleteModal
-  from '@/components/modals/saved_tracks/BaseSavedTrackDeleteModal.vue'
-import BaseLibraryDeleteModal
-  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -221,12 +181,7 @@ export default {
     BaseSelfIcons,
     BaseCreatedSection,
     BaseTrackOptionsDropdown,
-    BaseClearButton,
-    BaseBookmarkDeleteModal,
-    BaseFavoriteDeleteModal,
-    BasePlaylistTrackDeleteModal,
-    BaseSavedTrackDeleteModal,
-    BaseLibraryDeleteModal
+    BaseClearButton
   },
   mixins: [
     selfMixin
@@ -275,7 +230,6 @@ export default {
     isBookmark: Boolean,
     isFavorite: Boolean,
     isPlaylistTrack: Boolean,
-    isSavedTrack: Boolean,
     playlistId: String,
     playlistTitle: String,
     isDeleted: Boolean,
@@ -368,19 +322,8 @@ export default {
     source () {
       return this.trackData.source?.name
     },
-    libraryTrackId () {
-      return this.trackData.library.id.toString()
-    },
     uuid () {
       return this.trackData.uuid
-    },
-    trackFullTitle () {
-      return [
-        this.artistName,
-        this.trackTitle
-      ].join(
-        ' - '
-      )
     },
     artistImageData () {
       return this.artistData.image
@@ -416,16 +359,12 @@ export default {
       )
     },
     handleDeleteOptionClick () {
-      if (this.isClearable) {
-        this.$emit(
-          'deleteOptionClick',
-          {
-            uuid: this.uuid
-          }
-        )
-      } else {
-        this.showDeleteModal()
-      }
+      this.$emit(
+        'deleteOptionClick',
+        {
+          uuid: this.uuid
+        }
+      )
     },
     handleClearButtonClick () {
       this.$emit(
@@ -446,11 +385,6 @@ export default {
       if (this.paginationItem) {
         this.paginationItem.artist.image = value
       }
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }

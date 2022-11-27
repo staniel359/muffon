@@ -47,24 +47,12 @@
 
       <BasePostOptionsDropdown
         v-if="isWithOptions"
+        :post-data="postData"
         :is-with-edit-option="isWithEditOption"
+        :is-community-creator="isCommunityCreator"
         is-with-delete-option
-        @edit-option-click="handleEditOptionClick"
-        @delete-option-click="handleDeleteOptionClick"
-      />
-
-      <BasePostUpdateModal
-        ref="updateModal"
-        :key="key"
-        :post-data="postData"
-        :is-with-as-community-option="isCommunityCreator"
-        @success="handleUpdated"
-      />
-
-      <BasePostDeleteModal
-        ref="deleteModal"
-        :post-data="postData"
-        @success="handleDeleted"
+        @updated="handleUpdated"
+        @deleted="handleDeleted"
       />
     </template>
   </div>
@@ -72,8 +60,7 @@
 
 <script>
 import {
-  mapGetters,
-  mapState
+  mapGetters
 } from 'vuex'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
@@ -88,16 +75,9 @@ import BaseSendableContentSection
   from '@/components/models/sendable/BaseSendableContentSection.vue'
 import BasePostOptionsDropdown
   from '@/components/dropdowns/post/BasePostOptionsDropdown.vue'
-import BasePostUpdateModal
-  from '@/components/modals/post/BasePostUpdateModal.vue'
-import BasePostDeleteModal
-  from '@/components/modals/post/BasePostDeleteModal.vue'
 import {
   setToast
 } from '@/helpers/actions/plugins/semantic'
-import {
-  generateKey
-} from '@/helpers/utils'
 
 export default {
   name: 'PostItem',
@@ -109,9 +89,7 @@ export default {
     BasePrivateIcon,
     BaseTimestampSection,
     BaseSendableContentSection,
-    BasePostOptionsDropdown,
-    BasePostUpdateModal,
-    BasePostDeleteModal
+    BasePostOptionsDropdown
   },
   inject: {
     findPaginationItem: {
@@ -129,22 +107,11 @@ export default {
     profileId: String,
     isCommunityCreator: Boolean
   },
-  data () {
-    return {
-      key: null
-    }
-  },
   computed: {
     ...mapGetters(
       'profile',
       {
         currentProfileId: 'id'
-      }
-    ),
-    ...mapState(
-      'profile',
-      {
-        profileInfo: 'info'
       }
     ),
     imageData () {
@@ -228,17 +195,9 @@ export default {
     }
   },
   methods: {
-    handleEditOptionClick () {
-      this.showUpdateModal()
-    },
-    handleDeleteOptionClick () {
-      this.showDeleteModal()
-    },
     handleUpdated (
       value
     ) {
-      this.hideUpdateModal()
-
       this.updatePaginationItem(
         {
           uuid: this.uuid,
@@ -258,25 +217,6 @@ export default {
           icon: 'green check'
         }
       )
-    },
-    async showUpdateModal () {
-      this.key = generateKey()
-
-      await this.$nextTick()
-
-      this.$refs
-        .updateModal
-        .show()
-    },
-    hideUpdateModal () {
-      this.$refs
-        .updateModal
-        .hide()
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }

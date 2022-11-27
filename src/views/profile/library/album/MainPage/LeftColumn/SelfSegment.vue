@@ -19,21 +19,12 @@
         :listened-id="listenedId"
         :is-with-library-option="!isSelf"
         :is-with-delete-option="isSelf"
+        is-link-to-library
         is-with-favorite-option
         is-with-bookmark-option
         is-with-listened-option
         is-with-share-option
-        @delete-option-click="handleDeleteOptionClick"
-      />
-
-      <BaseLibraryDeleteModal
-        v-if="isSelf"
-        ref="deleteModal"
-        model="album"
-        :profile-id="profileId"
-        :model-id="libraryAlbumId"
-        :model-name="albumFullTitle"
-        is-with-redirect
+        is-delete-with-redirect
       />
     </div>
   </BaseSegmentContainer>
@@ -45,8 +36,6 @@ import BaseSegmentContainer
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseAlbumOptionsDropdown
   from '@/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
-import BaseLibraryDeleteModal
-  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -57,8 +46,7 @@ export default {
   components: {
     BaseSegmentContainer,
     BaseSelfIcons,
-    BaseAlbumOptionsDropdown,
-    BaseLibraryDeleteModal
+    BaseAlbumOptionsDropdown
   },
   mixins: [
     selfMixin
@@ -81,33 +69,6 @@ export default {
       return isCurrentProfile(
         this.profileId
       )
-    },
-    libraryAlbumId () {
-      return this.albumData.library.id.toString()
-    },
-    albumFullTitle () {
-      return [
-        this.artistName,
-        this.albumTitle
-      ].join(
-        ' - '
-      )
-    },
-    albumTitle () {
-      return this.albumData.title
-    },
-    artistName () {
-      return this.albumData.artist.name
-    }
-  },
-  methods: {
-    handleDeleteOptionClick () {
-      this.showDeleteModal()
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }

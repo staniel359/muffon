@@ -16,13 +16,13 @@
     >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
+        :profile-id="profileId"
         :is-with-self-icons="false"
         is-with-image
         is-with-artist-name
         is-with-album-title
         is-with-duration
         is-with-source
-        is-saved-track
         is-with-created
         is-with-playlist-option
         is-with-share-option
@@ -34,6 +34,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import electronStore from '@/plugins/electronStore'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
@@ -67,6 +70,12 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     navigationSections () {
       return formatSavedTracksPageNavigation()
     },

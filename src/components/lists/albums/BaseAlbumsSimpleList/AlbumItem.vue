@@ -90,43 +90,22 @@
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
+        :is-link-to-library="isLinkToLibrary"
+        :is-bookmark="isBookmark"
+        :is-favorite="isFavorite"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-listened-option="isWithListenedOption"
         :is-with-share-option="isWithShareOption"
-        :is-with-delete-option="isWithDeleteOption"
+        :is-with-delete-option="isWithDeleteOption && isSelf"
         @link-click="handleLinkClick"
-        @delete-option-click="handleDeleteOptionClick"
+        @deleted="handleDeleted"
       />
 
       <BaseClearButton
         v-if="isWithClearButton"
         @click="handleClearButtonClick"
-      />
-
-      <BaseBookmarkDeleteModal
-        v-if="isBookmark"
-        ref="deleteModal"
-        model="album"
-        :model-data="albumData"
-        @success="handleDeleted"
-      />
-      <BaseFavoriteDeleteModal
-        v-else-if="isFavorite && isSelf"
-        ref="deleteModal"
-        model="album"
-        :model-data="albumData"
-        @success="handleDeleted"
-      />
-      <BaseLibraryDeleteModal
-        v-else-if="isLinkToLibrary && isSelf"
-        ref="deleteModal"
-        model="album"
-        :profile-id="profileId"
-        :model-id="libraryAlbumId"
-        :model-name="albumFullTitle"
-        @success="handleDeleted"
       />
     </template>
   </BaseAlbumLinkContainer>
@@ -151,12 +130,6 @@ import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseAlbumOptionsDropdown
   from '@/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import BaseBookmarkDeleteModal
-  from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
-import BaseFavoriteDeleteModal
-  from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
-import BaseLibraryDeleteModal
-  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -174,10 +147,7 @@ export default {
     BaseSelfIcons,
     BaseCreatedSection,
     BaseAlbumOptionsDropdown,
-    BaseClearButton,
-    BaseBookmarkDeleteModal,
-    BaseFavoriteDeleteModal,
-    BaseLibraryDeleteModal
+    BaseClearButton
   },
   mixins: [
     selfMixin
@@ -272,17 +242,6 @@ export default {
     },
     sourceData () {
       return this.albumData.source
-    },
-    libraryAlbumId () {
-      return this.albumData.library.id.toString()
-    },
-    albumFullTitle () {
-      return [
-        this.artistName,
-        this.albumTitle
-      ].join(
-        ' - '
-      )
     }
   },
   methods: {
@@ -290,9 +249,6 @@ export default {
       this.$emit(
         'linkClick'
       )
-    },
-    handleDeleteOptionClick () {
-      this.showDeleteModal()
     },
     handleClearButtonClick () {
       this.$emit(
@@ -303,8 +259,7 @@ export default {
       )
     },
     handleDeleted () {
-      this.paginationItem
-        .isDeleted = true
+      this.paginationItem.isDeleted = true
     },
     handleListenersCountLoadEnd (
       value
@@ -323,11 +278,6 @@ export default {
       value
     ) {
       this.isCounterLinkActive = value
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }

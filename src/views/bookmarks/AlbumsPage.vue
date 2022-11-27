@@ -12,6 +12,7 @@
     >
       <BaseAlbumsSimpleList
         :albums="slotProps[scope]"
+        :profile-id="profileId"
         is-with-artist-name
         is-with-source
         is-with-created
@@ -27,6 +28,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseBookmarksPaginatedPageContainer
   from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
 import BaseAlbumsSimpleList
@@ -48,6 +52,14 @@ export default {
       scope: 'albums',
       order: 'createdDesc'
     }
+  },
+  computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    )
   }
 }
 </script>

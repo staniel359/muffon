@@ -9,6 +9,7 @@
     >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
+        :profile-id="profileId"
         is-with-image
         is-with-artist-name
         is-with-album-title
@@ -28,6 +29,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseBookmarksPaginatedSegmentContainer
   from '@/components/containers/segments/bookmarks/BaseBookmarksPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
@@ -49,6 +53,12 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     headerLink () {
       return formatBookmarkTracksLink()
     }

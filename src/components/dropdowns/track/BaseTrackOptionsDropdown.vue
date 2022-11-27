@@ -57,10 +57,52 @@
       :share-data="shareData"
     />
 
-    <BaseDeleteOption
+    <template
       v-if="isWithDeleteOption"
-      @click="handleDeleteOptionClick"
-    />
+    >
+      <BaseDeleteOption
+        @click="handleDeleteOptionClick"
+      />
+
+      <BaseLibraryDeleteModal
+        v-if="isLinkToLibrary"
+        ref="deleteModal"
+        model="track"
+        :profile-id="profileId"
+        :model-id="libraryTrackId"
+        :model-name="trackFullTitle"
+        :is-with-redirect="isDeleteWithRedirect"
+        @success="handleDeleted"
+      />
+      <BaseBookmarkDeleteModal
+        v-else-if="isBookmark"
+        ref="deleteModal"
+        model="track"
+        :model-data="trackData"
+        @success="handleDeleted"
+      />
+      <BaseFavoriteDeleteModal
+        v-else-if="isFavorite"
+        ref="deleteModal"
+        model="track"
+        :model-data="trackData"
+        @success="handleDeleted"
+      />
+      <BasePlaylistTrackDeleteModal
+        v-else-if="isPlaylistTrack"
+        ref="deleteModal"
+        :playlist-track-data="trackData"
+        :playlist-id="playlistId"
+        :playlist-title="playlistTitle"
+        @success="handleDeleted"
+      />
+      <BaseSavedTrackDeleteModal
+        v-else-if="isSavedTrack"
+        ref="deleteModal"
+        :track-data="trackData"
+        @success="handleDeleted"
+      />
+    </template>
   </BaseOptionsDropdownContainer>
 </template>
 
@@ -84,6 +126,16 @@ import BaseShareOption
   from '@/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
   from '@/components/dropdowns/options/BaseDeleteOption.vue'
+import BaseLibraryDeleteModal
+  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
+import BaseBookmarkDeleteModal
+  from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
+import BaseFavoriteDeleteModal
+  from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+import BasePlaylistTrackDeleteModal
+  from '@/components/modals/playlist/track/BasePlaylistTrackDeleteModal.vue'
+import BaseSavedTrackDeleteModal
+  from '@/components/modals/saved_tracks/BaseSavedTrackDeleteModal.vue'
 import {
   track as formatTrackShareData
 } from '@/helpers/formatters/share'
@@ -101,7 +153,12 @@ export default {
     SaveOption,
     BaseShareOption,
     BaseDeleteOption,
-    BasePlaylistsModal
+    BasePlaylistsModal,
+    BaseLibraryDeleteModal,
+    BaseBookmarkDeleteModal,
+    BaseFavoriteDeleteModal,
+    BasePlaylistTrackDeleteModal,
+    BaseSavedTrackDeleteModal
   },
   props: {
     trackData: {
@@ -112,6 +169,12 @@ export default {
     favoriteId: String,
     bookmarkId: String,
     listenedId: String,
+    isLinkToLibrary: Boolean,
+    isBookmark: Boolean,
+    isFavorite: Boolean,
+    isPlaylistTrack: Boolean,
+    playlistId: String,
+    playlistTitle: String,
     isWithLibraryOption: Boolean,
     isWithPlaylistOption: Boolean,
     isWithFavoriteOption: Boolean,
@@ -120,11 +183,14 @@ export default {
     isWithQueueOption: Boolean,
     isWithSaveOption: Boolean,
     isWithShareOption: Boolean,
-    isWithDeleteOption: Boolean
+    isWithDeleteOption: Boolean,
+    isDeleteWithRedirect: Boolean,
+    isClearable: Boolean
   },
   emits: [
     'linkClick',
-    'deleteOptionClick'
+    'deleteOptionClick',
+    'deleted'
   ],
   computed: {
     ...mapGetters(
@@ -200,6 +266,23 @@ export default {
       return [
         this.trackData
       ]
+    },
+    libraryTrackId () {
+      return this.trackData.library.id.toString()
+    },
+    trackFullTitle () {
+      return [
+        this.artistName,
+        this.trackTitle
+      ].join(
+        ' - '
+      )
+    },
+    trackTitle () {
+      return this.trackData.title
+    },
+    artistName () {
+      return this.trackData.artist.name
     }
   },
   methods: {
@@ -212,13 +295,27 @@ export default {
       this.showPlaylistsModal()
     },
     handleDeleteOptionClick () {
+      if (this.isClearable) {
+        this.$emit(
+          'deleteOptionClick'
+        )
+      } else {
+        this.showDeleteModal()
+      }
+    },
+    handleDeleted () {
       this.$emit(
-        'deleteOptionClick'
+        'deleted'
       )
     },
     showPlaylistsModal () {
       this.$refs
         .playlistsModal
+        .show()
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
         .show()
     }
   }

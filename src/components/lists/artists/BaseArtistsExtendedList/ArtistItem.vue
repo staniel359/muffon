@@ -63,13 +63,15 @@
                   :favorite-id="favoriteId"
                   :bookmark-id="bookmarkId"
                   :listened-id="listenedId"
+                  :is-link-to-library="isLinkToLibrary"
+                  :is-recommendation="isRecommendation"
                   :is-with-library-option="isWithLibraryOption"
                   :is-with-favorite-option="isWithFavoriteOption"
                   :is-with-bookmark-option="isWithBookmarkOption"
                   :is-with-listened-option="isWithListenedOption"
                   :is-with-share-option="isWithShareOption"
-                  :is-with-delete-option="isWithDeleteOption"
-                  @delete-option-click="handleDeleteOptionClick"
+                  :is-with-delete-option="isWithDeleteOption && isSelf"
+                  @deleted="handleDeleted"
                 />
               </div>
             </div>
@@ -105,22 +107,6 @@
                 v-if="isRecommendation"
                 :recommendation-data="artistData"
               />
-
-              <BaseRecommendationDeleteModal
-                v-if="isRecommendation"
-                ref="deleteModal"
-                :recommendation-data="artistData"
-                @success="handleDeleted"
-              />
-              <BaseLibraryDeleteModal
-                v-else-if="isLinkToLibrary && isSelf"
-                ref="deleteModal"
-                model="artist"
-                :profile-id="profileId"
-                :model-id="libraryArtistId"
-                :model-name="artistName"
-                @success="handleDeleted"
-              />
             </div>
           </template>
         </template>
@@ -150,10 +136,6 @@ import BaseArtistDescription
   from '@/components/models/artist/BaseArtistDescription.vue'
 import RecommendationArtistsSection
   from './ArtistItem/RecommendationArtistsSection.vue'
-import BaseRecommendationDeleteModal
-  from '@/components/modals/recommendation/BaseRecommendationDeleteModal.vue'
-import BaseLibraryDeleteModal
-  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -172,9 +154,7 @@ export default {
     BaseArtistTags,
     BaseDivider,
     BaseArtistDescription,
-    RecommendationArtistsSection,
-    BaseRecommendationDeleteModal,
-    BaseLibraryDeleteModal
+    RecommendationArtistsSection
   },
   mixins: [
     selfMixin
@@ -253,9 +233,6 @@ export default {
     },
     description () {
       return this.responseData.description
-    },
-    libraryArtistId () {
-      return this.artistData.library.id.toString()
     }
   },
   watch: {
@@ -272,9 +249,6 @@ export default {
     ) {
       this.paginationItem.image = value
     },
-    handleDeleteOptionClick () {
-      this.showDeleteModal()
-    },
     handleResponseDataChange (
       value
     ) {
@@ -284,11 +258,6 @@ export default {
     },
     handleDeleted () {
       this.paginationItem.isDeleted = true
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }

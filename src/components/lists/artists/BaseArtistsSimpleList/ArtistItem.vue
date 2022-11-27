@@ -75,45 +75,24 @@
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
+        :is-link-to-library="isLinkToLibrary"
+        :is-bookmark="isBookmark"
+        :is-favorite="isFavorite"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-listened-option="isWithListenedOption"
         :is-with-share-option="isWithShareOption"
-        :is-with-delete-option="isWithDeleteOption"
+        :is-with-delete-option="isWithDeleteOption && isSelf"
         @active-change="handleOptionsActiveChange"
         @link-click="handleLinkClick"
-        @delete-option-click="handleDeleteOptionClick"
+        @deleted="handleDeleted"
       />
 
       <BaseClearButton
         v-if="isWithClearButton"
         @click="handleClearButtonClick"
         @active-change="handleClearButtonActiveChange"
-      />
-
-      <BaseBookmarkDeleteModal
-        v-if="isBookmark"
-        ref="deleteModal"
-        model="artist"
-        :model-data="artistData"
-        @success="handleDeleted"
-      />
-      <BaseFavoriteDeleteModal
-        v-else-if="isFavorite && isSelf"
-        ref="deleteModal"
-        model="artist"
-        :model-data="artistData"
-        @success="handleDeleted"
-      />
-      <BaseLibraryDeleteModal
-        v-else-if="isLinkToLibrary && isSelf"
-        ref="deleteModal"
-        model="artist"
-        :profile-id="profileId"
-        :model-id="libraryArtistId"
-        :model-name="artistName"
-        @success="handleDeleted"
       />
     </template>
   </BaseArtistLinkContainer>
@@ -133,12 +112,6 @@ import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseArtistOptionsDropdown
   from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import BaseBookmarkDeleteModal
-  from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
-import BaseFavoriteDeleteModal
-  from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
-import BaseLibraryDeleteModal
-  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -153,10 +126,7 @@ export default {
     BaseSelfIcons,
     BaseCreatedSection,
     BaseArtistOptionsDropdown,
-    BaseClearButton,
-    BaseBookmarkDeleteModal,
-    BaseFavoriteDeleteModal,
-    BaseLibraryDeleteModal
+    BaseClearButton
   },
   mixins: [
     selfMixin
@@ -231,9 +201,6 @@ export default {
     uuid () {
       return this.artistData.uuid
     },
-    libraryArtistId () {
-      return this.artistData.library.id.toString()
-    },
     isLinkActive () {
       return !(
         this.isCounterLinkActive ||
@@ -267,9 +234,6 @@ export default {
     ) {
       this.isCounterLinkActive = value
     },
-    handleDeleteOptionClick () {
-      this.showDeleteModal()
-    },
     handleClearButtonClick () {
       this.$emit(
         'clearButtonClick',
@@ -292,11 +256,6 @@ export default {
       value
     ) {
       this.isClearButtonActive = value
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }

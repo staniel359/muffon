@@ -33,10 +33,44 @@
       :share-data="shareData"
     />
 
-    <BaseDeleteOption
+    <template
       v-if="isWithDeleteOption"
-      @click="handleDeleteOptionClick"
-    />
+    >
+      <BaseDeleteOption
+        @click="handleDeleteOptionClick"
+      />
+
+      <BaseLibraryDeleteModal
+        v-if="isLinkToLibrary"
+        ref="deleteModal"
+        model="artist"
+        :profile-id="profileId"
+        :model-id="libraryArtistId"
+        :model-name="artistName"
+        :is-with-redirect="isDeleteWithRedirect"
+        @success="handleDeleted"
+      />
+      <BaseBookmarkDeleteModal
+        v-else-if="isBookmark"
+        ref="deleteModal"
+        model="artist"
+        :model-data="artistData"
+        @success="handleDeleted"
+      />
+      <BaseFavoriteDeleteModal
+        v-else-if="isFavorite"
+        ref="deleteModal"
+        model="artist"
+        :model-data="artistData"
+        @success="handleDeleted"
+      />
+      <BaseRecommendationDeleteModal
+        v-else-if="isRecommendation"
+        ref="deleteModal"
+        :recommendation-data="artistData"
+        @success="handleDeleted"
+      />
+    </template>
   </BaseOptionsDropdownContainer>
 </template>
 
@@ -54,6 +88,14 @@ import BaseShareOption
   from '@/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
   from '@/components/dropdowns/options/BaseDeleteOption.vue'
+import BaseLibraryDeleteModal
+  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
+import BaseBookmarkDeleteModal
+  from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
+import BaseFavoriteDeleteModal
+  from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+import BaseRecommendationDeleteModal
+  from '@/components/modals/recommendation/BaseRecommendationDeleteModal.vue'
 import {
   artist as formatArtistShareData
 } from '@/helpers/formatters/share'
@@ -67,7 +109,11 @@ export default {
     BookmarkOption,
     ListenedOption,
     BaseShareOption,
-    BaseDeleteOption
+    BaseDeleteOption,
+    BaseLibraryDeleteModal,
+    BaseBookmarkDeleteModal,
+    BaseFavoriteDeleteModal,
+    BaseRecommendationDeleteModal
   },
   props: {
     artistData: {
@@ -78,17 +124,22 @@ export default {
     favoriteId: String,
     bookmarkId: String,
     listenedId: String,
+    isLinkToLibrary: Boolean,
+    isBookmark: Boolean,
+    isFavorite: Boolean,
+    isRecommendation: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
     isWithShareOption: Boolean,
-    isWithDeleteOption: Boolean
+    isWithDeleteOption: Boolean,
+    isDeleteWithRedirect: Boolean
   },
   emits: [
     'activeChange',
     'linkClick',
-    'deleteOptionClick'
+    'deleted'
   ],
   computed: {
     ...mapGetters(
@@ -117,6 +168,12 @@ export default {
       return formatArtistShareData(
         this.artistData
       )
+    },
+    libraryArtistId () {
+      return this.artistData.library.id.toString()
+    },
+    artistName () {
+      return this.artistData.name
     }
   },
   methods: {
@@ -126,9 +183,7 @@ export default {
       )
     },
     handleDeleteOptionClick () {
-      this.$emit(
-        'deleteOptionClick'
-      )
+      this.showDeleteModal()
     },
     handleActiveChange (
       value
@@ -137,6 +192,16 @@ export default {
         'activeChange',
         value
       )
+    },
+    handleDeleted () {
+      this.$emit(
+        'deleted'
+      )
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

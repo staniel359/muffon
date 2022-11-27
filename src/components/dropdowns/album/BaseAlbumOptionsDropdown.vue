@@ -52,10 +52,38 @@
       :share-data="shareData"
     />
 
-    <BaseDeleteOption
+    <template
       v-if="isWithDeleteOption"
-      @click="handleDeleteOptionClick"
-    />
+    >
+      <BaseDeleteOption
+        @click="handleDeleteOptionClick"
+      />
+
+      <BaseLibraryDeleteModal
+        v-if="isLinkToLibrary"
+        ref="deleteModal"
+        model="album"
+        :profile-id="profileId"
+        :model-id="libraryAlbumId"
+        :model-name="albumFullTitle"
+        :is-with-redirect="isDeleteWithRedirect"
+        @success="handleDeleted"
+      />
+      <BaseBookmarkDeleteModal
+        v-else-if="isBookmark"
+        ref="deleteModal"
+        model="album"
+        :model-data="albumData"
+        @success="handleDeleted"
+      />
+      <BaseFavoriteDeleteModal
+        v-else-if="isFavorite"
+        ref="deleteModal"
+        model="album"
+        :model-data="albumData"
+        @success="handleDeleted"
+      />
+    </template>
   </BaseOptionsDropdownContainer>
 </template>
 
@@ -78,6 +106,12 @@ import BaseShareOption
   from '@/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
   from '@/components/dropdowns/options/BaseDeleteOption.vue'
+import BaseLibraryDeleteModal
+  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
+import BaseBookmarkDeleteModal
+  from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
+import BaseFavoriteDeleteModal
+  from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
 import {
   album as formatAlbumShareData
 } from '@/helpers/formatters/share'
@@ -97,7 +131,10 @@ export default {
     ListenedOption,
     QueueOption,
     BaseShareOption,
-    BaseDeleteOption
+    BaseDeleteOption,
+    BaseLibraryDeleteModal,
+    BaseBookmarkDeleteModal,
+    BaseFavoriteDeleteModal
   },
   props: {
     albumData: {
@@ -108,6 +145,9 @@ export default {
     favoriteId: String,
     bookmarkId: String,
     listenedId: String,
+    isLinkToLibrary: Boolean,
+    isBookmark: Boolean,
+    isFavorite: Boolean,
     isWithLibraryOption: Boolean,
     isWithPlaylistOption: Boolean,
     isWithFavoriteOption: Boolean,
@@ -115,11 +155,12 @@ export default {
     isWithListenedOption: Boolean,
     isWithQueueOption: Boolean,
     isWithShareOption: Boolean,
-    isWithDeleteOption: Boolean
+    isWithDeleteOption: Boolean,
+    isDeleteWithRedirect: Boolean
   },
   emits: [
     'linkClick',
-    'deleteOptionClick'
+    'deleted'
   ],
   computed: {
     ...mapGetters(
@@ -167,6 +208,20 @@ export default {
     },
     imageData () {
       return this.albumData.image
+    },
+    libraryAlbumId () {
+      return this.albumData.library.id.toString()
+    },
+    albumFullTitle () {
+      return [
+        this.artistName,
+        this.albumTitle
+      ].join(
+        ' - '
+      )
+    },
+    artistName () {
+      return this.albumData.artist.name
     }
   },
   methods: {
@@ -179,13 +234,21 @@ export default {
       this.showPlaylistsModal()
     },
     handleDeleteOptionClick () {
+      this.showDeleteModal()
+    },
+    handleDeleted () {
       this.$emit(
-        'deleteOptionClick'
+        'deleted'
       )
     },
     showPlaylistsModal () {
       this.$refs
         .playlistsModal
+        .show()
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
         .show()
     },
     formatTrack (

@@ -27,6 +27,7 @@
     >
       <BaseArtistsExtendedList
         :artists="slotProps[scope]"
+        :profile-id="profileId"
         is-with-library-option
         is-with-favorite-option
         is-with-bookmark-option
@@ -40,6 +41,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseRecommendationsPaginatedPageContainer
   from '@/components/containers/pages/recommendations/BaseRecommendationsPaginatedPageContainer.vue'
 import BaseFilterButton from '@/components/buttons/BaseFilterButton.vue'
@@ -66,6 +70,14 @@ export default {
       scope: 'recommendations',
       order: 'libraryArtistsCountDesc'
     }
+  },
+  computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    )
   },
   methods: {
     handleFilterButtonClick () {

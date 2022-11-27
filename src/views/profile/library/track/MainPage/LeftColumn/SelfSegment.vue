@@ -19,23 +19,14 @@
         :listened-id="listenedId"
         :is-with-library-option="!isSelf"
         :is-with-delete-option="isSelf"
+        is-link-to-library
         is-with-playlist-option
         is-with-favorite-option
         is-with-bookmark-option
         is-with-listened-option
         is-with-queue-option
         is-with-share-option
-        @delete-option-click="handleDeleteOptionClick"
-      />
-
-      <BaseLibraryDeleteModal
-        v-if="isSelf"
-        ref="deleteModal"
-        model="track"
-        :profile-id="profileId"
-        :model-id="libraryTrackId"
-        :model-name="trackFullTitle"
-        is-with-redirect
+        is-delete-with-redirect
       />
     </div>
   </BaseSegmentContainer>
@@ -47,8 +38,6 @@ import BaseSegmentContainer
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseTrackOptionsDropdown
   from '@/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
-import BaseLibraryDeleteModal
-  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -59,8 +48,7 @@ export default {
   components: {
     BaseSegmentContainer,
     BaseSelfIcons,
-    BaseTrackOptionsDropdown,
-    BaseLibraryDeleteModal
+    BaseTrackOptionsDropdown
   },
   mixins: [
     selfMixin
@@ -83,33 +71,6 @@ export default {
       return isCurrentProfile(
         this.profileId
       )
-    },
-    libraryTrackId () {
-      return this.trackData.library.id.toString()
-    },
-    trackFullTitle () {
-      return [
-        this.artistName,
-        this.trackTitle
-      ].join(
-        ' - '
-      )
-    },
-    trackTitle () {
-      return this.trackData.title
-    },
-    artistName () {
-      return this.trackData.artist.name
-    }
-  },
-  methods: {
-    handleDeleteOptionClick () {
-      this.showDeleteModal()
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }

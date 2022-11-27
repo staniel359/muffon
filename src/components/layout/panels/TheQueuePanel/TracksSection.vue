@@ -10,6 +10,7 @@
       :key="key"
       class="queue-tracks"
       :tracks="queueTracksComputed"
+      :profile-id="profileId"
       :is-with-self-icons="false"
       is-with-index
       is-with-image
@@ -55,6 +56,12 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     ...mapGetters(
       'queue',
       {
