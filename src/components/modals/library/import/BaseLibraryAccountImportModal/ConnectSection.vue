@@ -28,7 +28,9 @@
       :content="historyVisibleText"
     />
 
-    <template v-if="userData">
+    <template
+      v-if="userData"
+    >
       <BaseDivider />
 
       <UserInfoSection

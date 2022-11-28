@@ -66,11 +66,12 @@ import {
   playlist as formatPlaylistShareData
 } from '@/helpers/formatters/share'
 
-const AddOption = defineAsyncComponent(
-  () => import(
-    './BasePlaylistOptionsDropdown/AddOption.vue'
+const AddOption =
+  defineAsyncComponent(
+    () => import(
+      './BasePlaylistOptionsDropdown/AddOption.vue'
+    )
   )
-)
 
 export default {
   name: 'BasePlaylistOptionsDropdown',

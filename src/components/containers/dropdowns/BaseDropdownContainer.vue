@@ -24,7 +24,9 @@
         default: isFormField && !value
       }"
     >
-      <template v-if="header">
+      <template
+        v-if="header"
+      >
         <div
           v-if="isFormField"
           v-text="header"

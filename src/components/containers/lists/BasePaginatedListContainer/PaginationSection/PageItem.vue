@@ -1,5 +1,7 @@
 <template>
-  <template v-if="isRenderPage">
+  <template
+    v-if="isRenderPage"
+  >
     <EmptyPageItem
       v-if="isPageEmpty"
       :is-disabled="isDisabled"

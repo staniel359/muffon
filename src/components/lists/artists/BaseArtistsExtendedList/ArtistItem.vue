@@ -16,12 +16,16 @@
         :error="slotProps.error"
         @refresh="handleRefresh"
       >
-        <template v-if="responseData">
+        <template
+          v-if="responseData"
+        >
           <BaseDeletedSection
             v-if="isDeleted"
             model="recommendation"
           />
-          <template v-else>
+          <template
+            v-else
+          >
             <div class="artist-left-column">
               <BaseArtistImage
                 class="artist-image"
@@ -95,7 +99,9 @@
                 />
               </div>
 
-              <template v-if="description">
+              <template
+                v-if="description"
+              >
                 <BaseDivider />
 
                 <BaseArtistDescription

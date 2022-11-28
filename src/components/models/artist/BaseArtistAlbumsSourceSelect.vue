@@ -7,7 +7,9 @@
           :query="artistName"
         />
 
-        <template v-if="selectedSourceData">
+        <template
+          v-if="selectedSourceData"
+        >
           <ArtistSelect
             :key="artistSelectKey"
             :artists="selectedSourceArtists"

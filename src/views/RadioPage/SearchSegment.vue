@@ -6,7 +6,9 @@
         @select="handleScopeSelect"
       />
 
-      <template v-if="scope">
+      <template
+        v-if="scope"
+      >
         <Component
           :is="searchComponent"
           v-if="!isTopScope"

@@ -35,11 +35,12 @@ import {
 } from 'vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 
-const OptionsMenu = defineAsyncComponent(
-  () => import(
-    './BaseOption/OptionsMenu.vue'
+const OptionsMenu =
+  defineAsyncComponent(
+    () => import(
+      './BaseOption/OptionsMenu.vue'
+    )
   )
-)
 
 export default {
   name: 'BaseOption',

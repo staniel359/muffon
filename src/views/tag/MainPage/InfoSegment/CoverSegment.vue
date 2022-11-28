@@ -3,7 +3,9 @@
     class="cover-segment-container"
     :is-loading="isLoading"
   >
-    <template v-if="images">
+    <template
+      v-if="images"
+    >
       <BaseImage
         v-for="imageData in imagesCollection"
         :key="imageData.uuid"

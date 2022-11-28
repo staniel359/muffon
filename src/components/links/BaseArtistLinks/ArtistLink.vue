@@ -1,5 +1,7 @@
 <template>
-  <span v-if="index">, </span>
+  <span
+    v-if="index"
+  >, </span>
 
   <BaseLink
     ref="link"

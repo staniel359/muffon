@@ -7,7 +7,9 @@
           :query="query"
         />
 
-        <template v-if="selectedSourceData">
+        <template
+          v-if="selectedSourceData"
+        >
           <TypeSelect
             v-if="isSelectedSourceWithMultipleTypes"
             :key="typeSelectKey"
