@@ -1,7 +1,24 @@
-<img src="https://i.ibb.co/kJmJ1FZ/preview.png" alt="preview" width="350">
+<p align="center">
+  <img src="https://i.ibb.co/kJmJ1FZ/preview.png" alt="preview" width="350">
+</p>
 
-[![main](https://github.com/staniel359/muffon/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/staniel359/muffon/actions/workflows/main.yml)
-[![Discord](https://img.shields.io/discord/1023883455504850974?logo=discord&label=Discord&logoColor=white)](https://discord.gg/kpWsA5NBmJ)
+<p align="center">
+  <a href="https://github.com/staniel359/muffon/actions/workflows/main.yml">
+    <img src="https://github.com/staniel359/muffon/actions/workflows/main.yml/badge.svg?branch=main" alt="main">
+  </a>
+
+  <a href="https://discord.gg/kpWsA5NBmJ">
+    <img src="https://img.shields.io/discord/1023883455504850974?logo=discord&label=Discord&logoColor=white" alt="Discord">
+  </a>
+
+  <br />
+
+  <img src="https://img.shields.io/github/downloads/staniel359/muffon/latest/total?label=Downloads | Latest&logo=github&color=b589d6">
+
+  <img src="https://img.shields.io/github/downloads/staniel359/muffon/total?label=Downloads | Total&logo=github&color=b589d6">
+</p>
+
+#
 
 <img src="https://i.ibb.co/PMBN8XS/light.png" alt="screenshot">
 
@@ -25,34 +42,34 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ### Features
 
-- absolutely free
-- no ads
-- no login (login required for certain features)
-- listening (artists / albums / tracks) (also offline)
-- queue (with track / album adding)
-- music library (and compatibility with others)
-- music services integration (Last.FM)
-- recommendations (based on your library)
-- search (through all of the sources above)
-- radio (tags / artists / top)
-- scrobbling (Last.FM)
-- videos (with related / channels / playlists) (YouTube)
-- lyrics (with annotations) (Genius)
-- tags (with top artists / albums / tracks)
-- top (artists / albums / tracks / tags) (with country select)
-- new / upcoming releases
-- multitag search
-- playlists (with album / queue adding)
-- favorites (artists / albums / tracks)
-- bookmarks (artists / albums / tracks)
-- listened (artists / albums / tracks)
-- posting
-- following
-- messaging
-- feed (also global)
-- communities
-- sharing (artists / albums / tracks / videos / playlists / communities)
-- theming (dark mode / background change / transparency change)
+- **absolutely free**
+- **no ads**
+- **no login** (login required for certain features)
+- **listening** (artists / albums / tracks) (also offline)
+- **queue** (with track / album adding)
+- **music library** (and compatibility with others)
+- **music services integration** (Last.FM)
+- **recommendations** (based on your library)
+- **search** (through all of the sources above)
+- **radio** (tags / artists / top)
+- **scrobbling** (Last.FM)
+- **videos** (with related / channels / playlists) (YouTube)
+- **lyrics** (with annotations) (Genius)
+- **tags** (with top artists / albums / tracks)
+- **top** (artists / albums / tracks / tags) (with country select)
+- **new / upcoming releases**
+- **multitag search**
+- **playlists** (with album / queue adding)
+- **favorites** (artists / albums / tracks)
+- **bookmarks** (artists / albums / tracks)
+- **listened** (artists / albums / tracks)
+- **posting**
+- **following**
+- **messaging**
+- **feed** (also global)
+- **communities**
+- **sharing** (artists / albums / tracks / videos / playlists / communities)
+- **theming** (dark mode / background change / transparency change)
 
 ### Upcoming features
 
@@ -66,8 +83,11 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - browsing history
 - posts' likes / comments
 - taggings
+- Discord Rich Presence
 - Internet radio stations (?)
 - audio equalizer (?)
+- artist events (Last.FM) (?)
+- MusicBrainz source (?)
 - ??? (your suggestions)
 
 ### Languages
@@ -99,8 +119,8 @@ If you're using Windows 10 and during the installation you see this window:
 
 ![Windows SmartScreen](https://i.ibb.co/ZL9Q5p9/img-59127adff18fb.png)
 
-1. Click 'More info'
-2. Click 'Run anyway'
+1. Click **"More info"**
+2. Click **"Run anyway"**
 
 ## Support
 
@@ -114,8 +134,8 @@ If you're using Windows 10 and during the installation you see this window:
 
 ## Contribute
 
-- Translators wanted for localization
-- Python + Ruby developers wanted for [Spotify library](https://github.com/kokarare1212/librespot-python) reverse engineering
+- **Translators** wanted for localization
+- **Python + Ruby developers** wanted for [Spotify library](https://github.com/kokarare1212/librespot-python) reverse engineering
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/staniel359)
 
