@@ -22,20 +22,27 @@
 import BaseTabsContainer
   from '@/components/containers/tabs/BaseTabsContainer.vue'
 import LastfmOptions from './ServicesSettings/LastfmOptions.vue'
+import DiscordOptions from './ServicesSettings/DiscordOptions.vue'
 
 export default {
   name: 'ServicesSettings',
   components: {
     BaseTabsContainer,
-    LastfmOptions
+    LastfmOptions,
+    DiscordOptions
   },
   data () {
     return {
       tabs: [
         {
           name: 'Last.FM',
-          scope: 'info',
+          scope: 'lastfm',
           component: 'LastfmOptions'
+        },
+        {
+          name: 'Discord',
+          scope: 'discord',
+          component: 'DiscordOptions'
         }
       ]
     }

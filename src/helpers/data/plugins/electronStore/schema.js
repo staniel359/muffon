@@ -111,6 +111,10 @@ export default {
     type: 'boolean',
     default: false
   },
+  'player.isWithDiscordRichPresence': {
+    type: 'boolean',
+    default: false
+  },
   'player.isWithScrobbleNotifications': {
     type: 'boolean',
     default: false

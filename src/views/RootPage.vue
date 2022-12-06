@@ -9,6 +9,10 @@
 
   <ThePlayingObserver />
 
+  <TheDiscordObserver
+    v-if="isPlayerWithDiscordRichPresence"
+  />
+
   <TheExitObserver />
 
   <TheExternalUrlsObserver />
@@ -38,6 +42,8 @@ import TheMediaKeysObserver
   from '@/components/layout/observers/TheMediaKeysObserver.vue'
 import ThePlayingObserver
   from '@/components/layout/observers/ThePlayingObserver.vue'
+import TheDiscordObserver
+  from '@/components/layout/observers/TheDiscordObserver.vue'
 import TheExitObserver
   from '@/components/layout/observers/TheExitObserver.vue'
 import TheExternalUrlsObserver
@@ -55,6 +61,7 @@ export default {
     TheBackgroundObserver,
     TheMediaKeysObserver,
     ThePlayingObserver,
+    TheDiscordObserver,
     TheExitObserver,
     TheExternalUrlsObserver,
     TheElectronStoreSaver,
@@ -66,6 +73,13 @@ export default {
       'profile',
       {
         profileId: 'id'
+      }
+    ),
+    ...mapState(
+      'player',
+      {
+        isPlayerWithDiscordRichPresence:
+          'isWithDiscordRichPresence'
       }
     ),
     ...mapState(

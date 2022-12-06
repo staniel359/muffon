@@ -35,6 +35,7 @@
     "core-js": "^3.26.1",
     "crypto-js": "^4.1.1",
     "deepmerge": "^4.2.2",
+    "discord-rpc": "^4.0.1",
     "dotenv": "^16.0.3",
     "electron-dl": "^3.5.0",
     "electron-store": "^8.1.0",

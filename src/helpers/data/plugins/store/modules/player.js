@@ -6,6 +6,7 @@ export default {
     currentVariantId: null,
     source: null,
     isWithBitrate: false,
+    isWithDiscordRichPresence: false,
     isWithScrobbling: false,
     isWithScrobbleNotifications: false,
     scrobblePercent: 50,
@@ -86,6 +87,12 @@ export default {
       value
     ) {
       state.fallbackSources = value
+    },
+    SET_IS_WITH_DISCORD_RICH_PRESENCE (
+      state,
+      value
+    ) {
+      state.isWithDiscordRichPresence = value
     }
   },
   actions: {
@@ -207,6 +214,17 @@ export default {
     ) {
       commit(
         'SET_FALLBACK_SOURCES',
+        value
+      )
+    },
+    setIsWithDiscordRichPresence (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_WITH_DISCORD_RICH_PRESENCE',
         value
       )
     }

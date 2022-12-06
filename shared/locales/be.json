@@ -475,6 +475,12 @@
           "scrobbling": "Скроблінг",
           "scrobbleNotifications": "Апавяшченні аб скроблах",
           "scrobblePercent": "Скробліць пасля"
+        },
+        "discord": {
+          "richPresence": {
+            "header": "Уключыць Rich Presence",
+            "client": "Перад уключэннем пераканайцеся, што Ваш настольны кліент Discord запушчаны"
+          }
         }
       }
     }

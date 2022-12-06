@@ -41,6 +41,8 @@ export default {
     'player/setIsWithAlbum',
   'player.isWithBitrate':
     'player/setIsWithBitrate',
+  'player.isWithDiscordRichPresence':
+    'player/setIsWithDiscordRichPresence',
   'player.isWithScrobbling':
     'player/setIsWithScrobbling',
   'player.isWithScrobbleNotifications':
