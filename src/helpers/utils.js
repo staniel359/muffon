@@ -95,6 +95,9 @@ export function isStringChanged (
   )
 }
 
+export const shareEncryptionKey =
+  process.env.VUE_APP_SHARE_ENCRYPTION_KEY
+
 export function decryptTextWithLinks (
   text
 ) {
@@ -105,7 +108,7 @@ export function decryptTextWithLinks (
     try {
       return AES.decrypt(
         matchedString,
-        'secret'
+        shareEncryptionKey
       ).toString(
         enc.Utf8
       )

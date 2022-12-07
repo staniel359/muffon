@@ -14,6 +14,9 @@ import BaseOption from './BaseOption.vue'
 import {
   setToast
 } from '@/helpers/actions/plugins/semantic'
+import {
+  shareEncryptionKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseShareOption',
@@ -44,7 +47,7 @@ export default {
     shareDataStringEncrypted () {
       return AES.encrypt(
         this.shareDataString,
-        'secret'
+        shareEncryptionKey
       ).toString()
     },
     shareDataString () {
