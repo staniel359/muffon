@@ -42,8 +42,7 @@ export default {
     },
     icon: String,
     text: String,
-    isReverse: Boolean,
-    isPlain: Boolean
+    isReverse: Boolean
   },
   emits: [
     'click'
@@ -56,22 +55,14 @@ export default {
       ]
     ),
     buttonColorClass () {
-      if (this.isPlain) {
-        if (this.isDarkMode) {
-          return 'black'
-        } else {
-          return 'white'
-        }
-      } else {
-        if (this.isDarkMode) {
-          if (this.isInvertable) {
-            return 'inverted'
-          } else {
-            return null
-          }
+      if (this.isDarkMode) {
+        if (this.isInvertable) {
+          return 'inverted'
         } else {
           return null
         }
+      } else {
+        return null
       }
     },
     buttonIconClass () {

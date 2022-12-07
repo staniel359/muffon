@@ -15,9 +15,8 @@
       :scrollable="scrollable"
     >
       <BaseButton
-        class="circular compact"
+        class="basic circular compact inverted"
         icon="arrow up"
-        is-plain
         @click="handleClick"
       />
     </BaseTransitionContainer>
