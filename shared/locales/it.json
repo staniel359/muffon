@@ -475,6 +475,12 @@
           "scrobbling": "Scrobbling",
           "scrobbleNotifications": "Notifiche di scrobble",
           "scrobblePercent": "Fai scroblle dopo"
+        },
+        "discord": {
+          "richPresence": {
+            "header": "Abilita Rich Presence",
+            "client": "Prima di abilitare questa opzione assicutati che Discord sia in esecuzione."
+          }
         }
       }
     }
