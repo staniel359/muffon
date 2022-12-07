@@ -7,8 +7,8 @@
     <img src="https://github.com/staniel359/muffon/actions/workflows/main.yml/badge.svg?branch=main" alt="main">
   </a>
 
-  <a href="https://discord.gg/kpWsA5NBmJ">
-    <img src="https://img.shields.io/discord/1023883455504850974?logo=discord&label=Discord&logoColor=white" alt="Discord">
+  <a href="https://deepscan.io/dashboard#view=project&tid=19778&pid=23240&bid=698383">
+    <img src="https://deepscan.io/api/teams/19778/projects/23240/branches/698383/badge/grade.svg" alt="DeepScan">
   </a>
 
   <br />
@@ -16,6 +16,12 @@
   <img src="https://img.shields.io/github/downloads/staniel359/muffon/latest/total?label=Downloads | Latest&logo=github&color=b589d6">
 
   <img src="https://img.shields.io/github/downloads/staniel359/muffon/total?label=Downloads | Total&logo=github&color=b589d6">
+
+  <br />
+
+  <a href="https://discord.gg/kpWsA5NBmJ">
+    <img src="https://img.shields.io/discord/1023883455504850974?logo=discord&label=Discord&logoColor=white" alt="Discord">
+  </a>
 </p>
 
 #
