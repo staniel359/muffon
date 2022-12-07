@@ -30,7 +30,7 @@
 
 ## Description
 
-**muffon** is a music streaming browser for desktop.
+[**muffon**](https://www.howtopronounce.com/muffon) is a music streaming browser for desktop.
 
 It retrieves audio, video and metadata from various Internet sources, such as:
 
