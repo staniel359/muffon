@@ -47,8 +47,12 @@ export function collection (
 export function number (
   value
 ) {
+  const {
+    language
+  } = store.state.profile
+
   return value.toLocaleString(
-    'eu'
+    language
   )
 }
 
