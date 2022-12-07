@@ -3,6 +3,7 @@
     ref="page"
     :scope="scope"
     :limit="limit"
+    :source-params="sourceParams"
   >
     <template
       #default="pageSlotProps"
@@ -43,7 +44,8 @@ export default {
   ],
   props: {
     scope: String,
-    limit: Number
+    limit: Number,
+    sourceParams: Object
   }
 }
 </script>

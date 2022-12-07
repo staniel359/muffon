@@ -59,11 +59,11 @@ export default {
     }
   },
   methods: {
-    async handleClick () {
+    handleClick () {
       this.isSuccess = false
       this.isLoading = true
 
-      await this.clearHistory()
+      this.clearHistory()
 
       this.isSuccess = true
       this.isLoading = false
@@ -72,6 +72,7 @@ export default {
       electronStore.delete(
         'history.search'
       )
+
       electronStore.delete(
         'history.librarySearch'
       )
