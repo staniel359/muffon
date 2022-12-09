@@ -45,7 +45,9 @@ jobs:
         run: |
           touch .env
           echo VUE_APP_ELECTRON_STORE_KEY=${{ secrets.ELECTRON_STORE_KEY }} >> .env
+          echo VUE_APP_SHARE_ENCRYPTION_KEY=${{ secrets.SHARE_ENCRYPTION_KEY }} >> .env
           echo VUE_APP_ANONYMOUS_TOKEN=${{ secrets.ANONYMOUS_TOKEN }} >> .env
+          echo VUE_APP_DISCORD_CLIENT_ID=${{ secrets.DISCORD_CLIENT_ID }} >> .env
           cat .env
 
       - name: Release
