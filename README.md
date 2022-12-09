@@ -4,23 +4,13 @@
 
 <p align="center">
   <a href="https://github.com/staniel359/muffon/actions/workflows/main.yml">
-    <img src="https://github.com/staniel359/muffon/actions/workflows/main.yml/badge.svg?branch=main" alt="main">
+    <img src="https://img.shields.io/github/workflow/status/staniel359/muffon/main">
   </a>
 
-  <a href="https://deepscan.io/dashboard#view=project&tid=19778&pid=23240&bid=698383">
-    <img src="https://deepscan.io/api/teams/19778/projects/23240/branches/698383/badge/grade.svg" alt="DeepScan">
-  </a>
-
-  <br />
-
-  <img src="https://img.shields.io/github/downloads/staniel359/muffon/latest/total?label=Downloads | Latest&logo=github&color=b589d6">
-
-  <img src="https://img.shields.io/github/downloads/staniel359/muffon/total?label=Downloads | Total&logo=github&color=b589d6">
-
-  <br />
+  <img src="https://img.shields.io/github/downloads/staniel359/muffon/total">
 
   <a href="https://discord.gg/kpWsA5NBmJ">
-    <img src="https://img.shields.io/discord/1023883455504850974?logo=discord&label=Discord&logoColor=white" alt="Discord">
+    <img src="https://img.shields.io/discord/1023883455504850974?logo=discord&label=Discord&logoColor=white">
   </a>
 </p>
 
@@ -59,12 +49,13 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **search** (through all of the sources above)
 - **radio** (tags / artists / top)
 - **scrobbling** (Last.FM)
+- **Rich Presence** (Discord)
 - **videos** (with related / channels / playlists) (YouTube)
 - **lyrics** (with annotations) (Genius)
 - **tags** (with top artists / albums / tracks)
 - **top** (artists / albums / tracks / tags) (with country select)
 - **new / upcoming releases**
-- **multitag search**
+- **multitag search** (artists / albums)
 - **playlists** (with album / queue adding)
 - **favorites** (artists / albums / tracks)
 - **bookmarks** (artists / albums / tracks)
@@ -89,7 +80,6 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - browsing history
 - posts' likes / comments
 - taggings
-- Discord Rich Presence
 - Internet radio stations (?)
 - audio equalizer (?)
 - artist events (Last.FM) (?)
@@ -117,7 +107,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Download
 
-[Latest (v1.0.0)](https://github.com/staniel359/muffon/releases/tag/v1.0.0)
+[Latest (v1.1.0)](https://github.com/staniel359/muffon/releases/tag/v1.1.0)
 
 ## Troubleshooting
 
