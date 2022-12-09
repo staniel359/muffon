@@ -57,7 +57,7 @@ export default {
       return {
         results: 'tracks',
         title: 'title',
-        description: 'artistName',
+        description: 'artistNameWithAlbumTitle',
         image: 'imageExtrasmall'
       }
     }
@@ -124,14 +124,39 @@ export default {
     formatTrack (
       trackData
     ) {
+      const artistName =
+        trackData.artist.name
+
+      const albumTitle =
+        trackData.album?.title
+
+      const albumTitleFormatted = (
+        albumTitle &&
+          `<div class="main-small-container">
+            <small>
+              ${albumTitle}
+            </small>
+          </div>`
+      )
+
+      const artistNameWithAlbumTitle = [
+        artistName,
+        albumTitleFormatted
+      ].filter(
+        e => e
+      ).join(
+        '<br />'
+      )
+
+      const imageExtrasmall = (
+        trackData.image?.extrasmall ||
+          this.defaultImage
+      )
+
       return {
         ...trackData,
-        artistName:
-          trackData.artist.name,
-        imageExtrasmall: (
-          trackData.image?.extrasmall ||
-            this.defaultImage
-        )
+        artistNameWithAlbumTitle,
+        imageExtrasmall
       }
     },
     focus () {
