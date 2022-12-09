@@ -33,7 +33,7 @@ export default {
       return this.sourceData.name
     },
     bitrateText () {
-      return `~ ${this.maxBitrate}`
+      return `≤ ${this.maxBitrate}`
     },
     maxBitrate () {
       return this.sourceData.maxBitrate

@@ -374,7 +374,7 @@
   "player": {
     "variants": "Variants ({count})",
     "audio": {
-      "bitrate": "~ {value} kbit/s"
+      "bitrate": "{value} kbit/s"
     }
   },
   "settings": {

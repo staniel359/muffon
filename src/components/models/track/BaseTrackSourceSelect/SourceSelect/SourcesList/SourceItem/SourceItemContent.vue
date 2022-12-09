@@ -51,7 +51,7 @@ export default {
     },
     extraText () {
       if (this.isWithMaxBitrate) {
-        return `~ ${this.maxBitrate}`
+        return `≤ ${this.maxBitrate}`
       } else {
         return null
       }
