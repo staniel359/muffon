@@ -1,8 +1,8 @@
 <template>
   <a
-    class="item"
+    class="item main-menu-item"
     :class="{
-      active: isActive
+      'primary active': isActive
     }"
     @click="handleClick"
     v-text="tabName"

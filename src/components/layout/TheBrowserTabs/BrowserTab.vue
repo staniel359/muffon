@@ -137,7 +137,7 @@ export default {
   max-width: 150px
   margin-left: 0.75em
   &.active
-    font-weight: 700
+    @extend .text-bold
 
 .browser-tab-close-button
   margin-left: 0.75em !important

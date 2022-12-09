@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="ui secondary menu main-tabs"
-    :class="{
-      inverted: isDarkMode
-    }"
+  <BaseMenuContainer
+    class="secondary main-tabs"
   >
     <TabItem
       v-for="(tabData, index) in tabs"
@@ -13,18 +10,17 @@
       :active-tab-index="activeTabIndex"
       @click="handleTabClick"
     />
-  </div>
+  </BaseMenuContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
+import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import TabItem from './BaseTabs/TabItem.vue'
 
 export default {
   name: 'BaseTabs',
   components: {
+    BaseMenuContainer,
     TabItem
   },
   props: {
@@ -39,14 +35,6 @@ export default {
   emits: [
     'tabClick'
   ],
-  computed: {
-    ...mapState(
-      'layout',
-      [
-        'isDarkMode'
-      ]
-    )
-  },
   methods: {
     handleTabClick (
       index

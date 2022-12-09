@@ -1,8 +1,9 @@
 <template>
   <BaseLinkContainer
-    class="item main-sidebar-item top-item"
+    class="item main-sidebar-item main-menu-item top-item"
     :class="{
-      inverted: isDarkMode
+      inverted: isDarkMode,
+      'primary active': isMatchedPath
     }"
     :link="profileMainLink"
   >
@@ -70,6 +71,21 @@ export default {
           profileId: this.profileId
         }
       )
+    },
+    isMatchedPath () {
+      return (
+        this.currentPath ===
+          this.pathFormatted
+      )
+    },
+    currentPath () {
+      return this.$route.path
+    },
+    pathFormatted () {
+      return `/${this.path}`
+    },
+    path () {
+      return this.profileMainLink.path
     }
   }
 }

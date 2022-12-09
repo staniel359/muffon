@@ -1,9 +1,9 @@
 <template>
   <a
-    class="item"
+    class="item main-menu-item"
     :class="{
       disabled: isDisabled,
-      active: isPageActive
+      'primary active': isPageActive
     }"
     @click="handleClick"
     v-text="page"

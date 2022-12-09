@@ -1,10 +1,10 @@
 <template>
   <Component
     :is="component"
-    class="item main-sidebar-item"
+    class="item main-sidebar-item main-menu-item"
     :class="{
       inverted: isDarkMode,
-      'router-link-active': isMatchedPath
+      'primary active': isMatchedPath
     }"
     :link="link"
     @click="handleClick"

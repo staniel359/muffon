@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="ui vertical menu left overlay visible sidebar the-sidebar-panel"
-    :class="{
-      inverted: isDarkMode
-    }"
+  <BaseMenuContainer
+    class="vertical left overlay visible sidebar the-sidebar-panel"
   >
     <div class="sidebar-panel-content">
       <ProfileItem
@@ -83,7 +80,7 @@
         />
       </div>
     </div>
-  </div>
+  </BaseMenuContainer>
 </template>
 
 <script>
@@ -91,6 +88,7 @@ import {
   mapGetters,
   mapState
 } from 'vuex'
+import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
 import RootItem from './TheSidebarPanel/RootItem.vue'
 import FeedItem from './TheSidebarPanel/FeedItem.vue'
@@ -113,6 +111,7 @@ import LoginItem from './TheSidebarPanel/LoginItem.vue'
 export default {
   name: 'TheSidebarPanel',
   components: {
+    BaseMenuContainer,
     ProfileItem,
     RootItem,
     FeedItem,
@@ -138,12 +137,6 @@ export default {
       {
         profileId: 'id'
       }
-    ),
-    ...mapState(
-      'layout',
-      [
-        'isDarkMode'
-      ]
     ),
     ...mapState(
       'sidebar',

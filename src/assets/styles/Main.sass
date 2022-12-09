@@ -145,8 +145,8 @@ p
 .ui.list
   &.inverted
     & > .item
-      & >.content
-        color: $colorWhite
+      & > .content
+        @extend .text-color-white
 
 .ui.search
   .ui.input
@@ -669,17 +669,12 @@ p
   &:before
     background: none !important
   &:hover
-    .icon
-      color: $colorBlack !important
-    &.inverted
+    &:not(.active.primary)
       .icon
-        color: $colorWhite !important
-  &.router-link-active
-    background: $colorBase !important
-    font-weight: 700 !important
-    color: $colorWhite !important
-    .icon
-      color: $colorWhite !important
+        color: $colorBlack !important
+      &.inverted
+        .icon
+          @extend .text-color-white
   .icon-container
     @extend .d-flex, .align-items-center, .justify-content-center, .image-medium
     flex-shrink: 0
@@ -960,3 +955,11 @@ p
 .main-volume-popup
   @extend .text-align-center
   min-width: 60px !important
+
+.main-menu-item
+  &.active
+    @extend .text-bold
+    &.primary
+      @extend .background-base, .text-color-white
+      .icon
+        @extend .text-color-white

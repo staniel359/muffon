@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="ui top fixed borderless menu the-navbar-panel"
-    :class="{
-      inverted: isDarkMode
-    }"
+  <BaseMenuContainer
+    class="top fixed borderless the-navbar-panel"
   >
     <div class="ui container main-container">
       <NavbarSearchButton />
@@ -22,13 +19,11 @@
 
       <NavbarQueueButton />
     </div>
-  </div>
+  </BaseMenuContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
+import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import NavbarHistoryButton from './TheNavbarPanel/NavbarHistoryButton.vue'
 import NavbarSearchButton from './TheNavbarPanel/NavbarSearchButton.vue'
 import NavbarNavigation from './TheNavbarPanel/NavbarNavigation.vue'
@@ -38,19 +33,12 @@ import NavbarQueueButton from './TheNavbarPanel/NavbarQueueButton.vue'
 export default {
   name: 'TheNavbarPanel',
   components: {
+    BaseMenuContainer,
     NavbarHistoryButton,
     NavbarSearchButton,
     NavbarNavigation,
     NavbarRefreshButton,
     NavbarQueueButton
-  },
-  computed: {
-    ...mapState(
-      'layout',
-      [
-        'isDarkMode'
-      ]
-    )
   }
 }
 </script>

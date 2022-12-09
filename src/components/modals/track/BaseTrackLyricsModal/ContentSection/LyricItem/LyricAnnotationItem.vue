@@ -159,8 +159,8 @@ export default {
   &.inverted
     background: $colorGreyInverted
   &:hover
+    @extend .text-color-white
     background: $colorBaseLight
-    color: $colorWhite
     &.inverted
       background: $colorBase
 </style>

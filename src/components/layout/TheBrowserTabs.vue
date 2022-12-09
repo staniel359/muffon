@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="ui top fixed menu the-browser-tabs"
-    :class="{
-      inverted: isDarkMode
-    }"
+  <BaseMenuContainer
+    class="top fixed the-browser-tabs"
   >
     <BrowserTab
       v-for="tabData in tabs"
@@ -17,17 +14,15 @@
       icon="plus"
       @click="handleAddTabButtonClick"
     />
-  </div>
+  </BaseMenuContainer>
 </template>
 
 <script>
 import {
-  mapState
-} from 'vuex'
-import {
   ipcRenderer
 } from 'electron'
 import electronStore from '@/plugins/electronStore'
+import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import BrowserTab from './TheBrowserTabs/BrowserTab.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
@@ -37,6 +32,7 @@ import {
 export default {
   name: 'TheBrowserTabs',
   components: {
+    BaseMenuContainer,
     BaseButton,
     BrowserTab
   },
@@ -47,12 +43,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      'layout',
-      [
-        'isDarkMode'
-      ]
-    ),
     electronStoreTabs () {
       return electronStore.get(
         'layout.tabs'
