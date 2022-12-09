@@ -1,5 +1,9 @@
 <template>
-  <div class="main-image-container">
+  <div
+    :class="{
+      'main-image-container': isSquareFit
+    }"
+  >
     <BaseImage
       :class="imageClass"
       :model="model"
@@ -26,14 +30,15 @@ export default {
     BaseImageModal
   },
   props: {
-    model: {
-      type: String,
-      required: true
-    },
     size: {
       type: String,
       required: true
     },
+    isSquareFit: {
+      type: Boolean,
+      default: true
+    },
+    model: String,
     imageData: Object,
     isCircular: Boolean
   },

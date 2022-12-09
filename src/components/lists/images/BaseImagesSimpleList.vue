@@ -1,16 +1,18 @@
 <template>
   <div>
-    <BaseImage
+    <BaseZoomableImage
       v-for="imageData in imagesCollection"
       :key="imageData.uuid"
-      class="rounded bordered image-item"
-      :image="imageData.original"
+      class="image-item"
+      size="original"
+      :image-data="imageData"
+      :is-square-fit="false"
     />
   </div>
 </template>
 
 <script>
-import BaseImage from '@/components/images/BaseImage.vue'
+import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import {
   collection as formatCollection
 } from '@/helpers/formatters'
@@ -18,7 +20,7 @@ import {
 export default {
   name: 'BaseImagesSimpleList',
   components: {
-    BaseImage
+    BaseZoomableImage
   },
   props: {
     images: {
@@ -38,6 +40,7 @@ export default {
 
 <style lang="sass" scoped>
 .image-item
+  max-width: 420px
   &:not(:first-child)
     margin-top: 0.75em
 </style>
