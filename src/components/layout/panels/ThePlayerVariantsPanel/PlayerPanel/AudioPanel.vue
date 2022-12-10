@@ -71,7 +71,8 @@ export default {
     }
   },
   watch: {
-    isQueueAutoplay: 'handleIsQueueAutoplayChange'
+    isQueueAutoplay:
+      'handleIsQueueAutoplayChange'
   },
   methods: {
     getQueueTrack,

@@ -36,7 +36,8 @@ export default {
     return {
       progressBar: null,
       seekingAudioStatus: null,
-      isSeeking: false
+      isSeeking: false,
+      audioCurrentTime: 0
     }
   },
   computed: {
@@ -45,7 +46,6 @@ export default {
       {
         audioStatus: 'status',
         audioProgress: 'progress',
-        audioCurrentTime: 'currentTime',
         audioDuration: 'duration',
         isAudioPlayable: 'isPlayable',
         audioElement: 'element'
@@ -65,7 +65,9 @@ export default {
       )
     },
     isAudioEnded () {
-      return this.audioTimePercent === 100
+      return (
+        this.audioTimePercent === 100
+      )
     },
     seekerMainTrack () {
       return this.$refs
@@ -73,6 +75,12 @@ export default {
         .$el
         .firstChild
         .firstChild
+    },
+    isEndAudio () {
+      return (
+        this.isAudioEnded &&
+          !this.isSeeking
+      )
     }
   },
   watch: {
@@ -86,13 +94,25 @@ export default {
     },
     isAudioEnded: {
       immediate: true,
-      handler: 'handleAudioEnd'
+      handler: 'handleIsAudioEndedChange'
     }
   },
   mounted () {
+    this.audioElement.ontimeupdate =
+      this.handleAudioTimeUpdate
+
     this.setProgressBar()
   },
   methods: {
+    handleAudioTimeUpdate (
+      event
+    ) {
+      const {
+        currentTime
+      } = event.target
+
+      this.audioCurrentTime = currentTime
+    },
     handleMouseDown (
       event
     ) {
@@ -163,10 +183,8 @@ export default {
         )
       }
     },
-    handleAudioEnd (
-      value
-    ) {
-      if (value && !this.isSeeking) {
+    handleIsAudioEndedChange () {
+      if (this.isEndAudio) {
         this.endAudio()
       }
     },
