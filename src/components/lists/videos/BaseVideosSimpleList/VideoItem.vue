@@ -135,8 +135,8 @@ export default {
 
 <style lang="sass" scoped>
 .video-image
-  width: 112px
-  height: 63px
+  width: 110px !important
+  height: calc(110px / 16 * 9) !important
 
 .content
   @extend .no-padding
