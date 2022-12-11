@@ -12,6 +12,7 @@
         :key="variantData.uuid"
         class="item main-simple-list-item"
         :variant-data="variantData"
+        :is-from-radio="isFromRadio"
       >
         <template
           #default="slotProps"
@@ -60,6 +61,7 @@ export default {
     ...mapState(
       'player',
       {
+        playerPlaying: 'playing',
         playerVariants: 'variants'
       }
     ),
@@ -67,6 +69,9 @@ export default {
       return formatCollection(
         this.playerVariants
       )
+    },
+    isFromRadio () {
+      return this.playerPlaying?.from_radio
     }
   },
   watch: {

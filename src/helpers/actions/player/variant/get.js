@@ -2,14 +2,16 @@ import getPlayerVariantAudio from '@/helpers/actions/player/variant/audio/get'
 
 export default function (
   {
-    variantId
+    variantId,
+    isFromRadio
   }
 ) {
   this.error = null
   this.isLoading = true
 
   const playerVariantAudioArgs = {
-    variantId
+    variantId,
+    isFromRadio
   }
 
   const handleError = (

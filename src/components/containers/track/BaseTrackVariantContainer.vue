@@ -26,7 +26,8 @@ export default {
     variantData: {
       type: Object,
       required: true
-    }
+    },
+    isFromRadio: Boolean
   },
   data () {
     return {
@@ -64,7 +65,8 @@ export default {
     },
     playerVariantArgs () {
       return {
-        variantId: this.variantId
+        variantId: this.variantId,
+        isFromRadio: this.isFromRadio
       }
     }
   },
