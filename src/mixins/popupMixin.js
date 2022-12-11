@@ -23,6 +23,9 @@ export default {
   mounted () {
     this.initialize()
   },
+  activated () {
+    this.initialize()
+  },
   methods: {
     handleIsDarkModeChange () {
       this.initialize()
