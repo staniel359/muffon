@@ -310,7 +310,9 @@ p
       .main-tab
         @extend .absolute, .overflow-y-auto
   &.inverted
-    @extend .background-black, .border-inverted
+    @extend .background-black
+    &:not(.main-image-modal)
+      @extend .border-inverted
     & > .header,
     & > .content
       @extend .background-black
