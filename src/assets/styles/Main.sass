@@ -394,7 +394,8 @@ p
 
 .main-simple-list-item
   @extend .d-flex, .align-items-center, .word-break-break-word
-  & > .image
+  & > .image,
+  & > .image-container
     @extend .image-large
     margin-right: 0.75em !important
     &.medium
@@ -423,6 +424,13 @@ p
   &.main-post-item,
   &.main-message-item
     @extend .align-items-start
+  &.main-info-item
+    & > .image,
+    & > .image-container
+      @extend .image-big
+    .description,
+    .extra
+      margin-top: 0.25em
 
 .main-message
   @extend .no-shadow, .no-margin, .border
@@ -934,16 +942,6 @@ p
 
 .main-country-select-section
   @extend .d-flex, .align-items-center
-
-.main-info-item
-  .image-container
-    width: 70px
-    height: 70px
-  .content
-    margin-left: 0.75em
-  .description,
-  .extra
-    margin-top: 0.25em
 
 .main-created-section
   &.right

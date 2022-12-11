@@ -4,11 +4,18 @@
     :link="profileMainLink"
     @click="handleLinkClick"
   >
-    <BaseImage
-      class="circular bordered"
-      model="profile"
-      :image="imageData?.extrasmall"
-    />
+    <div class="image-container">
+      <BaseProfileOnlineLabel
+        class="online-label"
+        :profile-data="profileData"
+      />
+
+      <BaseImage
+        class="circular bordered"
+        model="profile"
+        :image="imageData?.extrasmall"
+      />
+    </div>
 
     <div class="content">
       <div class="nickname-label-container">
@@ -22,11 +29,6 @@
           v-if="isPrivate"
         />
 
-        <BaseProfileOnlineLabel
-          class="online-label"
-          :profile-data="profileData"
-        />
-
         <BaseLabel
           v-if="isStaff"
           class="primary circular small role-label"
@@ -36,16 +38,14 @@
       </div>
 
       <div class="description">
-        <small>
+        <small class="extra-data-section">
           <BaseProfileGenderAge
+            class="extra-data-item"
             :profile-data="profileData"
           />
-        </small>
-      </div>
 
-      <div class="description">
-        <small>
           <BaseProfileCityCountry
+            class="extra-data-item city-country-item"
             :profile-data="profileData"
           />
         </small>
@@ -220,11 +220,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.nickname-label-container
-  @extend .d-flex, .align-items-center
+.image-container
+  @extend .relative
 
 .online-label
-  margin-left: 0.75em !important
+  @extend .absolute
+  top: 0.25em
+  right: 0.25em
+  z-index: 1
+
+.nickname-label-container
+  @extend .d-flex, .align-items-center
 
 .role-label
   margin-left: 0.75em
@@ -240,4 +246,14 @@ export default {
 .following-message
   @extend .align-self-center
   margin-left: 0.75em
+
+.extra-data-section
+  @extend .d-flex, .align-items-center
+
+.extra-data-item
+  &:not(:first-child)
+    margin-left: 0.5em
+
+.city-country-item
+  @extend .d-flex, .align-items-center
 </style>

@@ -4,18 +4,13 @@
   >
     <span
       v-if="gender"
-      class="ui tiny empty circular label gender-block"
+      class="ui mini empty circular label gender-age-item"
       :class="genderLabelColor"
     />
 
     <span
-      v-if="gender && age"
-      class="gender-age-separator"
-    />
-
-    <span
       v-if="age"
-      class="age-block"
+      class="gender-age-item"
       v-text="age"
     />
   </div>
@@ -69,13 +64,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.gender-block
-  @extend .no-margin, .d-inline-block
-
-.gender-age-separator
-  @extend .d-inline-block
-  width: 0.4em
-
-.age-block
-  @extend .d-inline-block
+.gender-age-item
+  &:not(:first-child)
+    margin-left: 0.3em
 </style>

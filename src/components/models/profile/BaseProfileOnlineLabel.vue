@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui tiny empty circular label main-profile-online-label"
+    class="ui mini empty circular label main-profile-online-label"
     :class="onlineLabelColor"
   />
 </template>
