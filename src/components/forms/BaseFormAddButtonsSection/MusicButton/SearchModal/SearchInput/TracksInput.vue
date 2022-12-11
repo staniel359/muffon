@@ -17,6 +17,10 @@
 <script>
 import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import {
+  fields as trackFields,
+  format as formatTrack
+} from '@/helpers/formatters/search/track'
 
 export default {
   name: 'TracksInput',
@@ -40,12 +44,6 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      defaultImage:
-        'https://lastfm.freetls.fastly.net/i/u/300x300/4128a6eb29f94943c9d206c08e625904.png'
-    }
-  },
   computed: {
     url () {
       return (
@@ -54,12 +52,7 @@ export default {
       )
     },
     fields () {
-      return {
-        results: 'tracks',
-        title: 'title',
-        description: 'artistNameWithAlbumTitle',
-        image: 'imageExtrasmall'
-      }
+      return trackFields
     }
   },
   methods: {
@@ -118,46 +111,8 @@ export default {
       } = response.search
 
       return tracks.map(
-        this.formatTrack
+        formatTrack
       )
-    },
-    formatTrack (
-      trackData
-    ) {
-      const artistName =
-        trackData.artist.name
-
-      const albumTitle =
-        trackData.album?.title
-
-      const albumTitleFormatted = (
-        albumTitle &&
-          `<div class="main-small-container">
-            <small>
-              ${albumTitle}
-            </small>
-          </div>`
-      )
-
-      const artistNameWithAlbumTitle = [
-        artistName,
-        albumTitleFormatted
-      ].filter(
-        e => e
-      ).join(
-        '<br />'
-      )
-
-      const imageExtrasmall = (
-        trackData.image?.extrasmall ||
-          this.defaultImage
-      )
-
-      return {
-        ...trackData,
-        artistNameWithAlbumTitle,
-        imageExtrasmall
-      }
     },
     focus () {
       this.$refs

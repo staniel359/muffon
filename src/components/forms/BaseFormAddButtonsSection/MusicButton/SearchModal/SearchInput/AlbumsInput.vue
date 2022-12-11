@@ -17,6 +17,10 @@
 <script>
 import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import {
+  fields as albumFields,
+  format as formatAlbum
+} from '@/helpers/formatters/search/album'
 
 export default {
   name: 'AlbumsInput',
@@ -48,12 +52,7 @@ export default {
       )
     },
     fields () {
-      return {
-        results: 'albums',
-        title: 'title',
-        description: 'artistName',
-        image: 'imageExtrasmall'
-      }
+      return albumFields
     }
   },
   methods: {
@@ -112,19 +111,8 @@ export default {
       } = response.search
 
       return albums.map(
-        this.formatAlbum
+        formatAlbum
       )
-    },
-    formatAlbum (
-      albumData
-    ) {
-      return {
-        ...albumData,
-        artistName:
-          albumData.artist.name,
-        imageExtrasmall:
-          albumData.image?.extrasmall
-      }
     },
     focus () {
       this.$refs

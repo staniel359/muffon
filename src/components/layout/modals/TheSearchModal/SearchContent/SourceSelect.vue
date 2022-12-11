@@ -14,43 +14,21 @@
 <script>
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import audioSources from '@/helpers/data/audio/sources'
+import sourceSelectMixin from '@/mixins/sourceSelectMixin'
 
 export default {
   name: 'SourceSelect',
   components: {
     BaseDropdown
   },
-  props: {
-    source: {
-      type: String,
-      required: true
-    },
-    scope: {
-      type: String,
-      required: true
-    }
-  },
-  emits: [
-    'select'
+  mixins: [
+    sourceSelectMixin
   ],
   computed: {
-    isSourceHasScope () {
-      return this.sourceScopes.includes(
-        this.scope
-      )
-    },
-    sourceScopes () {
-      return this.sourceData.searchScopes
-    },
-    sourceData () {
-      return this.sources.find(
-        this.isMatchedSource
-      )
-    },
     sources () {
       return audioSources
     },
-    firstSourceWithScope () {
+    firstSource () {
       return this.sourcesWithScope[0].id
     },
     sourcesWithScope () {
@@ -63,36 +41,6 @@ export default {
     scope: 'handleScopeChange'
   },
   methods: {
-    handleScopeChange () {
-      if (!this.isSourceHasScope) {
-        this.select(
-          this.firstSourceWithScope
-        )
-      }
-    },
-    handleSelect (
-      value
-    ) {
-      this.select(
-        value
-      )
-    },
-    select (
-      value
-    ) {
-      this.$emit(
-        'select',
-        value
-      )
-    },
-    isMatchedSource (
-      sourceData
-    ) {
-      return (
-        sourceData.id ===
-          this.source
-      )
-    },
     isSourceWithScope (
       sourceData
     ) {

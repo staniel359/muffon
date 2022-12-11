@@ -1,7 +1,7 @@
 <template>
   <BaseSearchInput
     ref="input"
-    class="search-input"
+    class="search-input artists-input"
     :url="url"
     :fields="fields"
     :format-response="formatResponse"
@@ -17,6 +17,10 @@
 <script>
 import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import {
+  fields as artistFields,
+  format as formatArtist
+} from '@/helpers/formatters/search/artist'
 
 export default {
   name: 'ArtistsInput',
@@ -48,11 +52,7 @@ export default {
       )
     },
     fields () {
-      return {
-        results: 'artists',
-        title: 'name',
-        image: null
-      }
+      return artistFields
     }
   },
   methods: {
@@ -96,7 +96,13 @@ export default {
     formatResponse (
       response
     ) {
-      return response.search.artists
+      const {
+        artists
+      } = response.search
+
+      return artists.map(
+        formatArtist
+      )
     },
     focus () {
       this.$refs

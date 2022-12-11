@@ -1,6 +1,7 @@
 <template>
   <BaseSearchInput
     ref="input"
+    class="tracks-input"
     :url="url"
     :fields="fields"
     :format-response="formatResponse"
@@ -10,6 +11,10 @@
 
 <script>
 import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
+import {
+  fields as trackFields,
+  format as formatTrack
+} from '@/helpers/formatters/search/track'
 
 export default {
   name: 'TracksInput',
@@ -39,12 +44,7 @@ export default {
       )
     },
     fields () {
-      return {
-        results: 'tracks',
-        title: 'title',
-        description: 'artistName',
-        image: null
-      }
+      return trackFields
     }
   },
   methods: {
@@ -66,17 +66,8 @@ export default {
       } = response.search
 
       return tracks.map(
-        this.formatTrack
+        formatTrack
       )
-    },
-    formatTrack (
-      trackData
-    ) {
-      return {
-        ...trackData,
-        artistName:
-          trackData.artist.name
-      }
     },
     focus () {
       this.$refs

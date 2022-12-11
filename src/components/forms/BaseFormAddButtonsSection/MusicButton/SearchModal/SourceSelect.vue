@@ -14,34 +14,39 @@
 <script>
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import {
+  allWithArtists as getSourcesWithArtists,
+  allWithAlbums as getSourcesWithAlbums,
   allWithTracks as getSourcesWithTracks
 } from '@/helpers/formatters/sources'
+import sourceSelectMixin from '@/mixins/sourceSelectMixin'
 
 export default {
   name: 'SourceSelect',
   components: {
     BaseDropdown
   },
-  props: {
-    source: String
-  },
-  emits: [
-    'select'
+  mixins: [
+    sourceSelectMixin
   ],
   computed: {
     sources () {
-      return getSourcesWithTracks()
+      switch (this.scope) {
+        case 'artists':
+          return getSourcesWithArtists()
+        case 'albums':
+          return getSourcesWithAlbums()
+        case 'tracks':
+          return getSourcesWithTracks()
+        default:
+          return []
+      }
+    },
+    firstSource () {
+      return this.sources[0].id
     }
   },
-  methods: {
-    handleSelect (
-      value
-    ) {
-      this.$emit(
-        'select',
-        value
-      )
-    }
+  watch: {
+    scope: 'handleScopeChange'
   }
 }
 </script>

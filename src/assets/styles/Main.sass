@@ -158,8 +158,13 @@ p
       .image
         @extend .border, .image-medium
         margin-right: 0.75em
+        img
+          @extend .image-medium
       .content
         @extend .no-margin, .flex-full
+        .description
+          .artist-name
+            @extend .text-color-black
       &:only-child
         border-radius: inherit
   &.inverted
@@ -177,8 +182,12 @@ p
         .title
           @extend .text-color-white
         .description
-          @extend .text-color-white-inverted
-        &:hover
+          .artist-name
+            @extend .text-color-white
+          .album-title
+            @extend .text-color-white-inverted
+        &:hover,
+        &.active
           @extend .background-grey-inverted
       .message
         .header,
@@ -189,11 +198,20 @@ p
       max-height: 200px
   .prompt
     @extend .border-radius
+  &.artists-input
+    .results
+      .result
+        .image
+          border-radius: 50%
+          img
+            @extend .object-fit-cover
   &.tracks-input
     .results
       .result
         .image
           @extend .image-small
+          img
+            @extend .image-small, .object-fit-cover
 
 .ui.label
   &.circular
@@ -681,7 +699,7 @@ p
   &:hover
     &:not(.active.primary)
       .icon
-        color: $colorBlack !important
+        @extend .text-color-black
       &.inverted
         .icon
           @extend .text-color-white

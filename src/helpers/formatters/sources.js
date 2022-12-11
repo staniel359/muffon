@@ -48,6 +48,18 @@ function isSourceWithTracks (
   return sourceData.isWithTracks
 }
 
+export function allWithArtists () {
+  return audioSources.filter(
+    isSourceWithArtists
+  )
+}
+
+function isSourceWithArtists (
+  sourceData
+) {
+  return sourceData.isWithArtists
+}
+
 export function allWithAlbums () {
   return audioSources.filter(
     isSourceWithAlbums

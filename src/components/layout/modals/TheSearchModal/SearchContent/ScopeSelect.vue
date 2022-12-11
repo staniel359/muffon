@@ -10,24 +10,15 @@
 <script>
 import BaseScopeSelect from '@/components/selects/BaseScopeSelect.vue'
 import audioSources from '@/helpers/data/audio/sources'
+import sourceSelectMixin from '@/mixins/sourceSelectMixin'
 
 export default {
   name: 'ScopeSelect',
   components: {
     BaseScopeSelect
   },
-  props: {
-    scope: {
-      type: String,
-      required: true
-    },
-    source: {
-      type: String,
-      required: true
-    }
-  },
-  emits: [
-    'select'
+  mixins: [
+    sourceSelectMixin
   ],
   data () {
     return {
@@ -42,21 +33,11 @@ export default {
     }
   },
   computed: {
+    sources () {
+      return audioSources
+    },
     firstScope () {
       return this.sourceScopes[0]
-    },
-    sourceScopes () {
-      return this.sourceData.searchScopes
-    },
-    sourceData () {
-      return audioSources.find(
-        this.isMatchedSource
-      )
-    },
-    isSourceHasScope () {
-      return this.sourceScopes.includes(
-        this.scope
-      )
     }
   },
   watch: {
@@ -72,29 +53,6 @@ export default {
           this.firstScope
         )
       }
-    },
-    handleSelect (
-      value
-    ) {
-      this.select(
-        value
-      )
-    },
-    select (
-      value
-    ) {
-      this.$emit(
-        'select',
-        value
-      )
-    },
-    isMatchedSource (
-      sourceData
-    ) {
-      return (
-        sourceData.id ===
-          this.source
-      )
     }
   }
 }

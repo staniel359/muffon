@@ -19,6 +19,7 @@
         />
 
         <SourceSelect
+          :scope="scope"
           :source="source"
           @select="handleSourceSelect"
         />
@@ -84,10 +85,12 @@ export default {
 
       this.clearInput()
     },
-    handleSourceSelect (
+    async handleSourceSelect (
       value
     ) {
       this.source = value
+
+      await this.$nextTick()
 
       this.focusInput()
     },
