@@ -6,6 +6,8 @@ import {
 export async function setPlaying (
   value
 ) {
+  setLocalAudioPauseStatus()
+
   await disableGlobalAudioAutoplay()
 
   await setPlayerPlaying(
@@ -13,6 +15,13 @@ export async function setPlaying (
   )
 
   enableLocalAudioAutoplay()
+}
+
+function setLocalAudioPauseStatus () {
+  store.dispatch(
+    'audio/setStatus',
+    'pause'
+  )
 }
 
 function disableGlobalAudioAutoplay () {

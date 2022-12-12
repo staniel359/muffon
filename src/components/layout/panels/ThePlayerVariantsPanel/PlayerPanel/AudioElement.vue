@@ -204,10 +204,6 @@ export default {
       )
     },
     loadAudio () {
-      this.setAudioStatus(
-        'pause'
-      )
-
       this.$refs
         .audio
         .src = this.audioLink
