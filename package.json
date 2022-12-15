@@ -29,7 +29,7 @@
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "@emoji-mart/data": "^1.0.8",
+    "@emoji-mart/data": "^1.1.0",
     "axios": "^1.2.1",
     "camel-case": "^4.1.2",
     "core-js": "^3.26.1",
@@ -39,10 +39,10 @@
     "dotenv": "^16.0.3",
     "electron-dl": "^3.5.0",
     "electron-store": "^8.1.0",
-    "emoji-mart": "^5.3.3",
+    "emoji-mart": "^5.4.0",
     "fomantic-ui": "^2.9.0",
     "i18n-iso-countries": "^7.5.0",
-    "jquery": "^3.6.1",
+    "jquery": "^3.6.2",
     "moment-timezone": "^0.5.40",
     "music-metadata": "^8.1.0",
     "raw-loader": "^4.0.2",
