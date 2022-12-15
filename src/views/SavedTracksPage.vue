@@ -37,7 +37,7 @@
 import {
   mapGetters
 } from 'vuex'
-import electronStore from '@/plugins/electronStore'
+import electronStore from '#/plugins/electronStore'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import BaseTracksSimpleList

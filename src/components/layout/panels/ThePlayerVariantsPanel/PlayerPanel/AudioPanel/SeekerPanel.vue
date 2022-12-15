@@ -16,7 +16,7 @@ import {
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   mainSeekerOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import {
   clone as cloneElement,
   addClass as addElementClass,

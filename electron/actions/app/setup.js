@@ -1,6 +1,3 @@
-const setupI18n = require(
-  '../i18n/setup'
-)
 const ElectronStore = require(
   'electron-store'
 )
@@ -18,8 +15,6 @@ const createSessionHeadersHandler = require(
 )
 
 function setup () {
-  setupI18n()
-
   ElectronStore.initRenderer()
 
   createMainWindow()

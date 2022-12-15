@@ -20,7 +20,7 @@ import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
 import {
   mainSidebarOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import {
   setQueuePanel,
   hideQueuePanel

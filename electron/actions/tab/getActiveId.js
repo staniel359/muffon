@@ -1,5 +1,5 @@
 const electronStore = require(
-  '../../electronStore'
+  '../../../shared/plugins/electronStore'
 )
 
 function getActiveId () {

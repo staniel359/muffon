@@ -21,7 +21,7 @@ import {
 } from '@/helpers/actions/plugins/semantic'
 import {
   mainVideoOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 
 export default {
   name: 'BaseVideo',

@@ -9,7 +9,7 @@ const axios = require(
   'axios'
 )
 const i18n = require(
-  'i18n'
+  '../../../shared/plugins/i18n'
 )
 
 let latestRelease
@@ -31,17 +31,24 @@ function handleNotificationButtonClick (
 }
 
 function showNotification () {
-  const message = i18n.__(
-    'electron.update.message'
-  )
+  const message =
+    i18n.global.t(
+      'electron.update.message'
+    )
 
-  const buttons = [
-    i18n.__(
+  const downloadText =
+    i18n.global.t(
       'electron.update.buttons.download'
-    ),
-    i18n.__(
+    )
+
+  const closeText =
+    i18n.global.t(
       'electron.update.buttons.close'
     )
+
+  const buttons = [
+    downloadText,
+    closeText
   ]
 
   const options = {

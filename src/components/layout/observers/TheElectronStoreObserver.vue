@@ -11,7 +11,7 @@ import {
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '@/plugins/electronStore'
+import electronStore from '#/plugins/electronStore'
 import {
   updateLocal as updateLocalStore
 } from '@/helpers/actions/store'

@@ -21,7 +21,7 @@
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '@/plugins/electronStore'
+import electronStore from '#/plugins/electronStore'
 import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import BrowserTab from './TheBrowserTabs/BrowserTab.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'

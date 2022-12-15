@@ -8,7 +8,7 @@
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '@/plugins/electronStore'
+import electronStore from '#/plugins/electronStore'
 
 export default {
   name: 'TheElectronStoreSaver',

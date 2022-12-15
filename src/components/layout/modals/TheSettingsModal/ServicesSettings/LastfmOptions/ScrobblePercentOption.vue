@@ -28,7 +28,7 @@ import BaseHeader from '@/components/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   mainScrobblePercentSeekerOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'

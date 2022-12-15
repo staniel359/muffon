@@ -14,7 +14,7 @@ import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   playlistFormOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import updatePlaylist from '@/helpers/actions/api/playlist/update'
 import {
   setToast

@@ -20,7 +20,7 @@ import {
 } from '@/helpers/actions/store'
 import {
   locales
-} from '@/../shared/locales'
+} from '#/plugins/i18n/locales'
 
 export default {
   name: 'BaseLanguageSelect',

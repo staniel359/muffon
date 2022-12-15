@@ -8,7 +8,7 @@ import '@/assets/styles/Sources.sass'
 import App from './App.vue'
 import router from '@/plugins/router'
 import store from '@/plugins/store'
-import i18n from '@/plugins/i18n'
+import i18n from '#/plugins/i18n'
 import setupAxios from '@/plugins/axios'
 import setupI18nCountries from '@/plugins/i18nCountries'
 

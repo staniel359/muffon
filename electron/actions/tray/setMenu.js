@@ -17,7 +17,7 @@ const callExit = require(
   '../app/callExit'
 )
 const i18n = require(
-  'i18n'
+  '../../../shared/plugins/i18n'
 )
 const {
   isMac
@@ -48,26 +48,35 @@ function setMenu () {
     callExit()
   }
 
+  const toggleText =
+    i18n.global.t(
+      `electron.${toggleKey}`
+    )
+
+  const aboutText =
+    i18n.global.t(
+      'electron.about'
+    )
+
+  const exitText =
+    i18n.global.t(
+      'electron.exit'
+    )
+
   const menuItems = [
     {
       type: 'normal',
-      label: i18n.__(
-        `electron.${toggleKey}`
-      ),
+      label: toggleText,
       click: handleToggleActionClick
     },
     {
       type: 'normal',
-      label: i18n.__(
-        'electron.about'
-      ),
+      label: aboutText,
       click: handleAboutActionClick
     },
     {
       type: 'normal',
-      label: i18n.__(
-        'electron.exit'
-      ),
+      label: exitText,
       click: handleExitActionClick
     }
   ]

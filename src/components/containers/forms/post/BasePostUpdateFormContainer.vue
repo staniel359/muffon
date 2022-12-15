@@ -13,7 +13,7 @@ import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   postFormOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import updateProfilePost from '@/helpers/actions/api/profile/post/update'
 import updateCommunityPost from '@/helpers/actions/api/community/post/update'
 import {

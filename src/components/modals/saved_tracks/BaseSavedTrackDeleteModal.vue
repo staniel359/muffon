@@ -11,7 +11,7 @@
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '@/plugins/electronStore'
+import electronStore from '#/plugins/electronStore'
 import BaseDeleteModal from '@/components/modals/BaseDeleteModal.vue'
 
 export default {

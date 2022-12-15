@@ -15,7 +15,7 @@ import {
 } from 'vuex'
 import {
   mainModalOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import {
   setModal,
   showModal,

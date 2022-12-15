@@ -1,4 +1,4 @@
-export default function (
+function beRu (
   choice,
   choicesLength
 ) {
@@ -46,3 +46,5 @@ export default function (
 
   return 0
 }
+
+module.exports = beRu

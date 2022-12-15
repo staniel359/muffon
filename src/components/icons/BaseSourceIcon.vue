@@ -27,7 +27,7 @@
 import BaseSourcePopup from '@/components/popups/BaseSourcePopup.vue'
 import {
   sourcePopupOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import popupMixin from '@/mixins/popupMixin'
 
 export default {

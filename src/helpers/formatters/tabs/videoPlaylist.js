@@ -1,4 +1,4 @@
-import i18n from '@/plugins/i18n'
+import i18n from '#/plugins/i18n'
 import {
   main as formatVideoPlaylistMainLink
 } from '@/helpers/formatters/links/videoPlaylist'

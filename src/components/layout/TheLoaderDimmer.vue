@@ -18,7 +18,7 @@ import {
 } from '@/helpers/actions/layout'
 import {
   mainLoaderOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 
 export default {
   name: 'TheLoaderDimmer',

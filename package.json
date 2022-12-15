@@ -41,7 +41,6 @@
     "electron-store": "^8.1.0",
     "emoji-mart": "^5.3.3",
     "fomantic-ui": "^2.9.0",
-    "i18n": "^0.15.1",
     "i18n-iso-countries": "^7.5.0",
     "jquery": "^3.6.1",
     "moment-timezone": "^0.5.40",
@@ -57,7 +56,6 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
-    "@intlify/vue-i18n-loader": "^4.2.0",
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-plugin-router": "~5.0.8",
@@ -73,8 +71,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-vue": "^9.8.0",
     "sass": "^1.56.2",
-    "sass-loader": "^13.2.0",
-    "vue-cli-plugin-i18n": "^2.3.1"
+    "sass-loader": "^13.2.0"
   },
   "os": [
     "win32",

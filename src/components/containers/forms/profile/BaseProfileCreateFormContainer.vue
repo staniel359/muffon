@@ -17,7 +17,7 @@ import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   profileCreateFormOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import {
   stringToDate as formatStringToDate
 } from '@/helpers/formatters'

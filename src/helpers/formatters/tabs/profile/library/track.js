@@ -1,4 +1,4 @@
-import i18n from '@/plugins/i18n'
+import i18n from '#/plugins/i18n'
 import {
   main as formatProfileLibraryTrackMainLink
 } from '@/helpers/formatters/links/profile/library/track'

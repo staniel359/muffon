@@ -23,7 +23,7 @@ import BaseImageModalSliderContainer
   from '@/components/containers/BaseImageModalSliderContainer.vue'
 import {
   artistImagesModalMainSliderOptions
-} from '@/helpers/data/plugins/slick'
+} from '@/helpers/formatters/slick'
 
 export default {
   name: 'MainSlider',

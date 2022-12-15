@@ -14,7 +14,7 @@ import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   communityFormOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import createCommunity from '@/helpers/actions/api/community/create'
 import {
   main as formatCommunityMainLink

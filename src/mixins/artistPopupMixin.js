@@ -10,7 +10,7 @@ import {
 } from '@/helpers/actions/plugins/semantic'
 import {
   artistPopupOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 
 export default {
   components: {

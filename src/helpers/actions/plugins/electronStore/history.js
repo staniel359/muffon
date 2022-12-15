@@ -1,4 +1,4 @@
-import electronStore from '@/plugins/electronStore'
+import electronStore from '#/plugins/electronStore'
 import {
   getDistinctArray
 } from '@/helpers/utils'

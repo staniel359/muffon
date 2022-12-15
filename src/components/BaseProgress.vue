@@ -30,7 +30,7 @@ import {
 } from '@/helpers/actions/plugins/semantic'
 import {
   mainProgressOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import {
   number as formatNumber
 } from '@/helpers/formatters'

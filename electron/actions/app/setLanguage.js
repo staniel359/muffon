@@ -1,5 +1,5 @@
 const i18n = require(
-  'i18n'
+  '../../../shared/plugins/i18n'
 )
 const setTrayMenu = require(
   '../tray/setMenu'
@@ -11,9 +11,7 @@ const setAboutWindowTitle = require(
 function setLanguage (
   value
 ) {
-  i18n.setLocale(
-    value
-  )
+  i18n.global.locale = value
 
   setTrayMenu()
 

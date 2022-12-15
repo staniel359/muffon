@@ -14,7 +14,7 @@
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import termsAndConditionsText
-  from '@/helpers/data/legal/termsAndConditions.txt'
+  from '@/helpers/data/text/legal/termsAndConditions.txt'
 
 export default {
   name: 'TermsAndConditionsModal',

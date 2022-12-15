@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import electronStore from '@/plugins/electronStore'
+import electronStore from '#/plugins/electronStore'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 

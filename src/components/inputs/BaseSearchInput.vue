@@ -31,7 +31,7 @@ import {
 } from '@/helpers/actions/plugins/semantic'
 import {
   mainSearchOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 
 export default {
   name: 'BaseSearchInput',

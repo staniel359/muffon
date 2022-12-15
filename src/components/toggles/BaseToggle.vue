@@ -16,7 +16,7 @@ import {
 } from 'vuex'
 import {
   mainCheckboxOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import {
   setCheckbox,
   checkCheckbox

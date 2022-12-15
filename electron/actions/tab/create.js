@@ -4,7 +4,7 @@ const {
   'electron'
 )
 const electronStore = require(
-  '../../electronStore'
+  '../../../shared/plugins/electronStore'
 )
 const getActiveId = require(
   './getActiveId'

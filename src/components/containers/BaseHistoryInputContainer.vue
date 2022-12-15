@@ -16,7 +16,7 @@ import {
 } from 'vuex'
 import {
   mainHistoryInputOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import {
   setSearch,
   setSearchSource

@@ -15,7 +15,7 @@ import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseEmojiPopup from '@/components/popups/BaseEmojiPopup.vue'
 import {
   emojiPopupOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import popupMixin from '@/mixins/popupMixin'
 
 export default {

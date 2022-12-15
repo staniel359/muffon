@@ -36,7 +36,7 @@ import {
 } from '@/helpers/actions/layout'
 import {
   mainSidebarOptions
-} from '@/helpers/data/plugins/semantic'
+} from '@/helpers/formatters/semantic'
 import {
   toggleClass
 } from '@/helpers/actions/plugins/jquery'

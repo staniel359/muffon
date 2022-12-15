@@ -1,6 +1,9 @@
 const webpack = require(
   'webpack'
 )
+const path = require(
+  'path'
+)
 
 module.exports = {
   configureWebpack: {
@@ -20,6 +23,14 @@ module.exports = {
         }
       )
     ],
+    resolve: {
+      alias: {
+        '#': path.join(
+          __dirname,
+          './shared'
+        )
+      }
+    },
     target: 'electron-renderer'
   },
   css: {
@@ -33,10 +44,5 @@ module.exports = {
     port: 3000
   },
   outputDir: 'build',
-  pluginOptions: {
-    i18n: {
-      enableLegacy: true
-    }
-  },
   publicPath: './'
 }

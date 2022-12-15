@@ -1,10 +1,10 @@
 const i18n = require(
-  'i18n'
+  '../../../shared/plugins/i18n'
 )
 
 function setTitle () {
   const title =
-    i18n.__(
+    i18n.global.t(
       'electron.about'
     )
 

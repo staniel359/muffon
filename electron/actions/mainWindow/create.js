@@ -22,7 +22,7 @@ const {
   '../../urls'
 )
 const electronStore = require(
-  '../../electronStore'
+  '../../../shared/plugins/electronStore'
 )
 const show = require(
   './show'

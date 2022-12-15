@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import electronStore from '@/plugins/electronStore'
+import electronStore from '#/plugins/electronStore'
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import ContentSection from './TheDonateModal/ContentSection.vue'

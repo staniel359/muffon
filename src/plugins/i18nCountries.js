@@ -1,7 +1,7 @@
 import countries from 'i18n-iso-countries'
 import {
   locales
-} from '@/../shared/locales'
+} from '#/plugins/i18n/locales'
 
 function addLocale (
   {
