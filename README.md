@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/staniel359/muffon/actions/workflows/main.yml">
-    <img src="https://img.shields.io/github/workflow/status/staniel359/muffon/main">
+    <img src="https://img.shields.io/github/actions/workflow/status/staniel359/muffon/main.yml?branch=main">
   </a>
 
   <img src="https://img.shields.io/github/downloads/staniel359/muffon/total">
