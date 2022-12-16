@@ -26,7 +26,9 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+import profileStore from '@/stores/profile'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
@@ -48,13 +50,13 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]
     ),
     ...mapState(
-      'profile',
+      profileStore,
       {
         profileInfo: 'info'
       }

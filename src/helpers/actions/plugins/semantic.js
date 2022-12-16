@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import layoutStore from '@/stores/layout'
 
 // Dimmer
 
@@ -424,7 +424,7 @@ export function setToast (
   const {
     visibleContext,
     isDarkMode
-  } = store.state.layout
+  } = layoutStore()
 
   const className = isDarkMode
     ? 'inverted'

@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import layoutStore from '@/stores/layout'
 import {
   setDimmer,
   toggleDimmer,
@@ -12,13 +12,12 @@ export function setLoaderDimmer (
   element,
   options
 ) {
-  store.dispatch(
-    'layout/setLoaderDimmer',
+  layoutStore().setLoaderDimmer(
     element
   )
 
   setDimmer(
-    store.state.layout.loaderDimmer,
+    layoutStore().loaderDimmer,
     options
   )
 }
@@ -27,7 +26,7 @@ export function toggleLoaderDimmer (
   bool
 ) {
   toggleDimmer(
-    store.state.layout.loaderDimmer,
+    layoutStore().loaderDimmer,
     bool
   )
 }
@@ -36,26 +35,25 @@ export function setPlayerPanel (
   element,
   options
 ) {
-  store.dispatch(
-    'layout/setPlayerPanel',
+  layoutStore().setPlayerPanel(
     element
   )
 
   setSidebar(
-    store.state.layout.playerPanel,
+    layoutStore().playerPanel,
     options
   )
 }
 
 export function showPlayerPanel () {
   showSidebar(
-    store.state.layout.playerPanel
+    layoutStore().playerPanel
   )
 }
 
 export function hidePlayerPanel () {
   hideSidebar(
-    store.state.layout.playerPanel
+    layoutStore().playerPanel
   )
 }
 
@@ -63,26 +61,25 @@ export function setQueuePanel (
   element,
   options
 ) {
-  store.dispatch(
-    'layout/setQueuePanel',
+  layoutStore().setQueuePanel(
     element
   )
 
   setSidebar(
-    store.state.layout.queuePanel,
+    layoutStore().queuePanel,
     options
   )
 }
 
 export function toggleQueuePanel () {
   toggleSidebar(
-    store.state.layout.queuePanel
+    layoutStore().queuePanel
   )
 }
 
 export function hideQueuePanel () {
   hideSidebar(
-    store.state.layout.queuePanel
+    layoutStore().queuePanel
   )
 }
 

@@ -11,8 +11,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
 import {
   fields as trackFields,
@@ -38,8 +39,8 @@ export default {
     isSave: Boolean
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

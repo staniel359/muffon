@@ -30,8 +30,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import ImageNameSegment from './LeftColumn/ImageNameSegment.vue'
 import SelfSegment from './LeftColumn/SelfSegment.vue'
 import RecommendedSegment from './LeftColumn/RecommendedSegment.vue'
@@ -53,8 +54,8 @@ export default {
     scrollable: HTMLDivElement
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

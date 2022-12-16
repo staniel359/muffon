@@ -6,7 +6,8 @@
 import {
   mapState,
   mapActions
-} from 'vuex'
+} from 'pinia'
+import audioStore from '@/stores/audio'
 
 export default {
   name: 'BaseAudioVisualiser',
@@ -21,7 +22,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'audio',
+      audioStore,
       {
         audioElement: 'element',
         audioContext: 'context',
@@ -72,7 +73,7 @@ export default {
   },
   methods: {
     ...mapActions(
-      'audio',
+      audioStore,
       {
         setAudioContext: 'setContext',
         setAudioSource: 'setSource'

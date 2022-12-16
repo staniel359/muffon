@@ -11,7 +11,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BitrateBlock from './ExtraControlsPanel/BitrateBlock.vue'
 import OptionsBlock from './ExtraControlsPanel/OptionsBlock.vue'
 
@@ -23,7 +24,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         isPlayerWithBitrate: 'isWithBitrate'
       }

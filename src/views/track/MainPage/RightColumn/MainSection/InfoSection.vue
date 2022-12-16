@@ -31,7 +31,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import TitleSection from './InfoSection/TitleSection.vue'
 import ArtistsSection from './InfoSection/ArtistsSection.vue'
 import AlbumSection from './InfoSection/AlbumSection.vue'
@@ -53,7 +54,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

@@ -14,9 +14,11 @@
 
 <script>
 import {
-  mapGetters,
   mapState
-} from 'vuex'
+} from 'pinia'
+import audioStore from '@/stores/audio'
+import playerStore from '@/stores/player'
+import profileStore from '@/stores/profile'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import createScrobblerPlay
   from '@/helpers/actions/api/lastfm/scrobbler/play/create'
@@ -38,27 +40,27 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
-      {
-        profileId: 'id'
-      }
-    ),
     ...mapState(
-      'audio',
+      audioStore,
       {
         audioDuration: 'duration',
         audioElement: 'element'
       }
     ),
     ...mapState(
-      'player',
+      playerStore,
       {
         isPlayerWithScrobbleNotifications:
           'isWithScrobbleNotifications',
         isPlayerWithScrobbling: 'isWithScrobbling',
         playerPlaying: 'playing',
         playerScrobblePercent: 'scrobblePercent'
+      }
+    ),
+    ...mapState(
+      profileStore,
+      {
+        profileId: 'id'
       }
     ),
     isRender () {

@@ -16,7 +16,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import videoStore from '@/stores/video'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
@@ -28,7 +29,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'video',
+      videoStore,
       {
         isVideoAutoplay: 'isAutoplay'
       }

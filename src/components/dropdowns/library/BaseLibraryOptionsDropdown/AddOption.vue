@@ -22,7 +22,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseOption from '@/components/dropdowns/options/BaseOption.vue'
 import BaseLibrarySearchImportModal
   from '@/components/modals/library/import/BaseLibrarySearchImportModal.vue'
@@ -41,7 +42,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'profile',
+      profileStore,
       {
         profileInfo: 'info'
       }

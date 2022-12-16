@@ -15,9 +15,10 @@
 
 <script>
 import {
-  mapState,
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import audioStore from '@/stores/audio'
+import playerStore from '@/stores/player'
 import getPlayerVariant from '@/helpers/actions/player/variant/get'
 
 export default {
@@ -37,21 +38,16 @@ export default {
   },
   computed: {
     ...mapState(
-      'audio',
+      audioStore,
       {
-        audioElement: 'element'
+        audioElement: 'element',
+        audioAction: 'action'
       }
     ),
     ...mapState(
-      'player',
+      playerStore,
       {
         playerCurrentVariantId: 'currentVariantId'
-      }
-    ),
-    ...mapGetters(
-      'audio',
-      {
-        audioAction: 'action'
       }
     ),
     isCurrent () {

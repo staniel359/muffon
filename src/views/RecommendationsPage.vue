@@ -42,8 +42,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseRecommendationsPaginatedPageContainer
   from '@/components/containers/pages/recommendations/BaseRecommendationsPaginatedPageContainer.vue'
 import BaseFilterButton from '@/components/buttons/BaseFilterButton.vue'
@@ -72,8 +73,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

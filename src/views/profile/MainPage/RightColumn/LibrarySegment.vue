@@ -22,8 +22,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseProfileSegmentContainer
   from '@/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
 import CompatibilitySegment from './LibrarySegment/CompatibilitySegment.vue'
@@ -52,8 +53,8 @@ export default {
     profileNickname: String
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         currentProfileId: 'id'
       }

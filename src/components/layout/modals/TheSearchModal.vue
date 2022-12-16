@@ -13,7 +13,8 @@
 <script>
 import {
   mapActions
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import SearchContent from './TheSearchModal/SearchContent.vue'
@@ -36,7 +37,7 @@ export default {
   },
   methods: {
     ...mapActions(
-      'layout',
+      layoutStore,
       [
         'setSearchModal'
       ]

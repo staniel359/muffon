@@ -12,7 +12,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import {
   setLoaderDimmer
 } from '@/helpers/actions/layout'
@@ -24,7 +25,7 @@ export default {
   name: 'TheLoaderDimmer',
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

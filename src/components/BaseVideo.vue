@@ -15,7 +15,9 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+import videoStore from '@/stores/video'
 import {
   setVideo
 } from '@/helpers/actions/plugins/semantic'
@@ -34,13 +36,13 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]
     ),
     ...mapState(
-      'video',
+      videoStore,
       {
         isVideoAutoplay: 'isAutoplay'
       }

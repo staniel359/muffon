@@ -18,8 +18,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 
 export default {
@@ -35,8 +36,8 @@ export default {
     isSmall: Boolean
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

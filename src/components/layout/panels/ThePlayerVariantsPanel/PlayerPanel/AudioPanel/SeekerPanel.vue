@@ -12,7 +12,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import audioStore from '@/stores/audio'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   mainSeekerOptions
@@ -42,7 +43,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'audio',
+      audioStore,
       {
         audioStatus: 'status',
         audioProgress: 'progress',

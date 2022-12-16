@@ -20,8 +20,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import queueStore from '@/stores/queue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import ShuffleButton from './HeaderSection/ShuffleButton.vue'
@@ -39,8 +40,8 @@ export default {
     BaseQueueOptionsDropdown
   },
   computed: {
-    ...mapGetters(
-      'queue',
+    ...mapState(
+      queueStore,
       {
         queueTracksCount: 'tracksCount'
       }

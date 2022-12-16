@@ -6,11 +6,12 @@
 
 <script>
 import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
+import {
   ipcRenderer
 } from 'electron'
-import {
-  mapGetters
-} from 'vuex'
 import updateOnline from '@/helpers/actions/api/online/update'
 import {
   updateGlobal as updateGlobalStore
@@ -19,8 +20,8 @@ import {
 export default {
   name: 'TheSessionObserver',
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

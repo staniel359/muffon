@@ -16,7 +16,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
@@ -28,7 +29,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isCachePages'
       ]

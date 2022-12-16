@@ -11,8 +11,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import AddOption from './BaseLibraryOptionsDropdown/AddOption.vue'
@@ -27,8 +28,8 @@ export default {
     isWithAddOption: Boolean
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

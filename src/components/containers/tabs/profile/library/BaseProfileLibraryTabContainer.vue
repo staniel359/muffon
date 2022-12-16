@@ -27,7 +27,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BasePaginatedListContainer
   from '@/components/containers/lists/BasePaginatedListContainer.vue'
 import getProfileLibrary from '@/helpers/actions/api/profile/library/get'
@@ -70,7 +71,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

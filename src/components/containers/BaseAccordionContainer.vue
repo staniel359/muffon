@@ -30,7 +30,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   setAccordion
@@ -57,7 +58,7 @@ export default {
   ],
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

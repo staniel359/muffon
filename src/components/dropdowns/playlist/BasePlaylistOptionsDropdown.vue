@@ -48,8 +48,9 @@ import {
   defineAsyncComponent
 } from 'vue'
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import BaseShareOption
@@ -100,8 +101,8 @@ export default {
     'deleted'
   ],
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

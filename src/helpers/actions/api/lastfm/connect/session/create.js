@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import profileStore from '@/stores/profile'
 import postRequest from '@/helpers/actions/api/request/post'
 
 export default function (
@@ -15,8 +15,7 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    const profileInfo =
-      store.state.profile.info
+    const profileInfo = profileStore().info
 
     const profileLastFmData =
       response.data.profile

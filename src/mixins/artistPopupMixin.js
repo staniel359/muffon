@@ -1,6 +1,7 @@
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseArtistPopup from '@/components/popups/BaseArtistPopup.vue'
 import {
   setPopup,
@@ -31,7 +32,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode',
         'isWithArtistPopup'

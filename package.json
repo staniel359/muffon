@@ -45,21 +45,20 @@
     "jquery": "^3.6.2",
     "moment-timezone": "^0.5.40",
     "music-metadata": "^8.1.0",
+    "pinia": "^2.0.28",
     "raw-loader": "^4.0.2",
     "slick-carousel": "^1.8.1",
     "snake-case": "^3.0.4",
     "uuid": "^9.0.0",
     "vue": "^3.2.45",
     "vue-i18n": "^9.2.2",
-    "vue-router": "^4.1.6",
-    "vuex": "^4.1.0"
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-plugin-router": "~5.0.8",
-    "@vue/cli-plugin-vuex": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
     "@vue/compiler-sfc": "^3.2.45",
     "@vue/eslint-config-standard": "^8.0.1",

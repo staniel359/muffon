@@ -89,8 +89,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import LibraryOption from './BaseAlbumOptionsDropdown/LibraryOption.vue'
@@ -163,8 +164,8 @@ export default {
     'deleted'
   ],
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

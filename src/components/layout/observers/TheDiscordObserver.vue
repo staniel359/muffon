@@ -5,7 +5,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import {
   client as discordClient,
   login as loginDiscordClient
@@ -24,7 +25,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }

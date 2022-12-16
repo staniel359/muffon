@@ -28,8 +28,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import HeaderSection from './LeftColumn/HeaderSection.vue'
 import SelfSection from './LeftColumn/SelfSection.vue'
@@ -55,8 +56,8 @@ export default {
     scrollable: HTMLDivElement
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

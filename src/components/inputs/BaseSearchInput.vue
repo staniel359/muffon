@@ -24,7 +24,9 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+import profileStore from '@/stores/profile'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   setSearch
@@ -57,13 +59,13 @@ export default {
   ],
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]
     ),
     ...mapState(
-      'profile',
+      profileStore,
       {
         profileToken: 'token'
       }

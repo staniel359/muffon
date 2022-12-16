@@ -8,7 +8,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import audioStore from '@/stores/audio'
 import {
   seconds as formatSeconds
 } from '@/helpers/formatters'
@@ -17,7 +18,7 @@ export default {
   name: 'TimerPanel',
   computed: {
     ...mapState(
-      'audio',
+      audioStore,
       {
         audioCurrentTime: 'currentTime',
         audioDuration: 'duration'

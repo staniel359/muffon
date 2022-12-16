@@ -20,8 +20,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseTabsContainer
   from '@/components/containers/tabs/BaseTabsContainer.vue'
 import InterfaceOptions from './AppSettings/InterfaceOptions.vue'
@@ -152,8 +153,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

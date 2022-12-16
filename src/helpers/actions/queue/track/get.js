@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import queueStore from '@/stores/queue'
 import getPlayerTrackAudio from '@/helpers/actions/player/track/audio/get'
 import {
   updateGlobal as updateGlobalStore
@@ -13,8 +13,8 @@ export default function getQueueTrack (
   }
 ) {
   const followingTrackData =
-    store.getters[
-      `queue/${position}Track`
+    queueStore()[
+      `${position}Track`
     ]
 
   function setFollowingTrackPlaying () {
@@ -38,13 +38,11 @@ export default function getQueueTrack (
   ) {
     switch (position) {
       case 'prev':
-        return store.dispatch(
-          'queue/setIsGettingPrev',
+        return queueStore().setIsGettingPrev(
           value
         )
       case 'next':
-        return store.dispatch(
-          'queue/setIsGettingNext',
+        return queueStore().setIsGettingNext(
           value
         )
       default:

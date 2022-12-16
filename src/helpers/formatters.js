@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import profileStore from '@/stores/profile'
 import {
   generateKey,
   sortByCreated
@@ -49,7 +49,7 @@ export function number (
 ) {
   const {
     language
-  } = store.state.profile
+  } = profileStore()
 
   return value.toLocaleString(
     language
@@ -94,7 +94,7 @@ export function date (
   const {
     timezone,
     language
-  } = store.state.profile
+  } = profileStore()
 
   return moment.utc(
     value
@@ -112,7 +112,7 @@ export function time (
 ) {
   const {
     timezone
-  } = store.state.profile
+  } = profileStore()
 
   return moment.utc(
     value

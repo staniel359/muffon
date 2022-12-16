@@ -12,7 +12,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import queueStore from '@/stores/queue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
   updateGlobal as updateGlobalStore
@@ -28,7 +29,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'queue',
+      queueStore,
       {
         isQueueShuffle: 'isShuffle',
         queueTracks: 'tracks'

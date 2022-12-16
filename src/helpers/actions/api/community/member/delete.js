@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import profileStore from '@/stores/profile'
 import deleteRequest from '@/helpers/actions/api/request/delete'
 
 export default function (
@@ -6,8 +6,7 @@ export default function (
     communityId
   }
 ) {
-  const profileId =
-    store.getters['profile/id']
+  const profileId = profileStore().id
 
   const url =
     `/communities/${communityId}/members/${profileId}`

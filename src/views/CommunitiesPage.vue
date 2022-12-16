@@ -28,8 +28,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseCommunitiesPaginatedPageContainer
   from '@/components/containers/pages/communities/BaseCommunitiesPaginatedPageContainer.vue'
 import BaseCommunityCreateButton
@@ -56,8 +57,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

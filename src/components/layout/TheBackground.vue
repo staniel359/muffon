@@ -13,7 +13,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import {
   getLink as getFileLink
 } from '@/helpers/actions/file'
@@ -29,7 +30,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'backgroundImagePath',
         'isDarkMode'

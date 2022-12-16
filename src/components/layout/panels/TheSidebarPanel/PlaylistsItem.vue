@@ -8,8 +8,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
   playlists as formatProfilePlaylistsLink
@@ -27,8 +28,8 @@ export default {
     profileId: String
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         currentProfileId: 'id'
       }

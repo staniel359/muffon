@@ -1,10 +1,12 @@
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState,
   mapActions
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+import profileStore from '@/stores/profile'
+import {
+  ipcRenderer
+} from 'electron'
 
 export default {
   data () {
@@ -14,13 +16,13 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'tabId'
       ]
     ),
     ...mapState(
-      'profile',
+      profileStore,
       {
         profileLanguage: 'language'
       }
@@ -37,7 +39,7 @@ export default {
   },
   methods: {
     ...mapActions(
-      'layout',
+      layoutStore,
       [
         'setNavigationSections'
       ]

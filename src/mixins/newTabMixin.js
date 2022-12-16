@@ -1,9 +1,10 @@
 import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+import {
   ipcRenderer
 } from 'electron'
-import {
-  mapState
-} from 'vuex'
 import {
   generateKey
 } from '@/helpers/utils'
@@ -11,7 +12,7 @@ import {
 export default {
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isSwitchToNewTab'
       ]

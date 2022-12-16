@@ -16,7 +16,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import topStore from '@/stores/top'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseCountrySelectSection
   from '@/components/sections/BaseCountrySelectSection.vue'
@@ -32,7 +33,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'top',
+      topStore,
       {
         topCountry: 'country'
       }

@@ -19,8 +19,10 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
+import queueStore from '@/stores/queue'
 import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import BasePlaylistOption
@@ -38,14 +40,14 @@ export default {
     ClearOption
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }
     ),
-    ...mapGetters(
-      'queue',
+    ...mapState(
+      queueStore,
       {
         queueTracksComputed: 'tracksComputed'
       }

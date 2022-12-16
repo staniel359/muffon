@@ -12,7 +12,7 @@
 
     <BaseToggle
       store-key="sidebar.isWithBookmarksItem"
-      :is-checked="isWithBookmarksItem"
+      :is-checked="isSidebarWithBookmarksItem"
     />
   </div>
 </template>
@@ -20,7 +20,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import sidebarStore from '@/stores/sidebar'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
@@ -34,10 +35,11 @@ export default {
   },
   computed: {
     ...mapState(
-      'sidebar',
-      [
-        'isWithBookmarksItem'
-      ]
+      sidebarStore,
+      {
+        isSidebarWithBookmarksItem:
+          'isWithBookmarksItem'
+      }
     ),
     bookmarksText () {
       return this.$t(

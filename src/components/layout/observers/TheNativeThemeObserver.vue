@@ -7,7 +7,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import {
   ipcRenderer
 } from 'electron'
@@ -19,7 +20,7 @@ export default {
   name: 'TheNativeThemeObserver',
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isWithSystemTheme'
       ]

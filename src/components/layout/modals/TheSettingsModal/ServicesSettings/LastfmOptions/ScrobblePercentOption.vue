@@ -23,7 +23,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
@@ -45,7 +46,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerScrobblePercent: 'scrobblePercent'
       }

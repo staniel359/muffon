@@ -35,8 +35,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import electronStore from '#/plugins/electronStore'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
@@ -70,8 +71,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

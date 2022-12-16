@@ -13,9 +13,11 @@
 
 <script>
 import {
-  mapGetters,
+  mapState,
   mapActions
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+import queueStore from '@/stores/queue'
 import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
 import {
@@ -33,8 +35,8 @@ export default {
     TracksSection
   },
   computed: {
-    ...mapGetters(
-      'queue',
+    ...mapState(
+      queueStore,
       {
         queueTracksCount: 'tracksCount'
       }
@@ -60,7 +62,7 @@ export default {
   },
   methods: {
     ...mapActions(
-      'layout',
+      layoutStore,
       [
         'setIsQueuePanelVisible'
       ]

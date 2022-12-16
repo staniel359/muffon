@@ -11,7 +11,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
   streamable as getStreamableSources
@@ -32,7 +33,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerFallbackSources: 'fallbackSources'
       }

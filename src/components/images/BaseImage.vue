@@ -12,7 +12,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import {
   images as defaultImages
 } from '@/helpers/data/defaultImages'
@@ -29,7 +30,7 @@ export default {
   ],
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

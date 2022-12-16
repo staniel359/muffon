@@ -36,7 +36,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import searchStore from '@/stores/search'
 import SearchInput from './SearchContent/SearchInput.vue'
 import ScopeSelect from './SearchContent/ScopeSelect.vue'
 import SourceSelect from './SearchContent/SourceSelect.vue'
@@ -62,7 +63,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'search',
+      searchStore,
       {
         searchSource: 'source'
       }

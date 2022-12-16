@@ -60,8 +60,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseCommunityTitle
@@ -108,8 +109,8 @@ export default {
     isCommunityCreator: Boolean
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         currentProfileId: 'id'
       }

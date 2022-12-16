@@ -43,7 +43,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import IconsBlock from './BaseMessage/IconsBlock.vue'
 import ContentBlock from './BaseMessage/ContentBlock.vue'
 import ListBlock from './BaseMessage/ListBlock.vue'
@@ -72,7 +73,7 @@ export default {
   ],
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

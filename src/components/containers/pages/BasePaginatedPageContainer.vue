@@ -71,7 +71,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseOrderSelect from '@/components/selects/BaseOrderSelect.vue'
@@ -132,7 +133,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isWithInfiniteScroll'
       ]

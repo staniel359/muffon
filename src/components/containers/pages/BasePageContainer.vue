@@ -17,7 +17,8 @@ import {
 import {
   mapState,
   mapActions
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import {
   toggleLoaderDimmer
@@ -39,7 +40,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'tabId'
       ]
@@ -77,7 +78,7 @@ export default {
   },
   methods: {
     ...mapActions(
-      'layout',
+      layoutStore,
       [
         'setNavigationSections'
       ]

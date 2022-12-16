@@ -20,7 +20,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import recommendationsStore from '@/stores/recommendations'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseNumberInput from '@/components/inputs/BaseNumberInput.vue'
 import {
@@ -35,7 +36,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'recommendations',
+      recommendationsStore,
       {
         isRecommendationsHideLibraryArtists:
           'isHideLibraryArtists',

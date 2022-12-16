@@ -15,7 +15,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import recommendationsStore from '@/stores/recommendations'
 import BasePageContainer
   from '@/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '@/mixins/navigationMixin'
@@ -58,7 +59,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'recommendations',
+      recommendationsStore,
       {
         isRecommendationsHideLibraryArtists:
           'isHideLibraryArtists',

@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import profileStore from '@/stores/profile'
 import {
   AES,
   enc
@@ -46,16 +46,21 @@ export function shuffleArray (
 export function isCurrentProfile (
   value
 ) {
-  const profileId =
-    store.getters['profile/id']
-
-  return (
+  const valueFormatted =
     parseInt(
       value
-    ) ===
-      parseInt(
-        profileId
-      )
+    )
+
+  const profileId = profileStore().id
+
+  const profileIdFormatted =
+    parseInt(
+      profileId
+    )
+
+  return (
+    valueFormatted ===
+      profileIdFormatted
   )
 }
 

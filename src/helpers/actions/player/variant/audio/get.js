@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import playerStore from '@/stores/player'
 import getAudio from '@/helpers/actions/api/audio/get'
 import {
   updateGlobal as updateGlobalStore
@@ -12,7 +12,7 @@ export default async function (
 ) {
   const {
     variants
-  } = store.state.player
+  } = playerStore()
 
   function isMatchedVariant (
     variantData

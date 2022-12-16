@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import playerStore from '@/stores/player'
 import getPlayerSearch from '@/helpers/actions/api/player/search/get'
 import getPlayerVariantAudio from '@/helpers/actions/player/variant/audio/get'
 import {
@@ -26,9 +26,7 @@ export default function (
   }
 
   function getFirstVariantId () {
-    return store
-      .state
-      .player
+    return playerStore()
       .variants[0]
       .uuid
   }

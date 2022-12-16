@@ -15,8 +15,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BasePageContainer
   from '@/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '@/mixins/navigationMixin'
@@ -57,8 +58,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

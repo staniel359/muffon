@@ -19,7 +19,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import NavigationSection from './NavbarNavigation/NavigationSection.vue'
 import {
   collection as formatCollection
@@ -32,7 +33,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'navigationSections',
         'isDarkMode'

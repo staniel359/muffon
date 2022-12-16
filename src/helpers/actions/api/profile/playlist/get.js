@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import profileStore from '@/stores/profile'
 import getRequest from '@/helpers/actions/api/request/get'
 
 export default function (
@@ -14,8 +14,7 @@ export default function (
   const url =
     `/profiles/${profileId}/playlists/${playlistId}/${scope}`
 
-  const otherProfileId =
-    store.getters['profile/id']
+  const otherProfileId = profileStore().id
 
   const params = {
     other_profile_id: otherProfileId

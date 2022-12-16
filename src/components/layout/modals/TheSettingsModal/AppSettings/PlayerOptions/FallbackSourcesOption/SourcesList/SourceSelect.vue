@@ -17,7 +17,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseDropdownContainer
   from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
 import BaseStreamableSourcesList
@@ -46,7 +47,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerFallbackSources: 'fallbackSources'
       }

@@ -13,9 +13,9 @@
 
 <script>
 import {
-  mapState,
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import queueStore from '@/stores/queue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import getQueueTrack from '@/helpers/actions/queue/track/get'
 
@@ -36,15 +36,10 @@ export default {
   },
   computed: {
     ...mapState(
-      'queue',
+      queueStore,
       {
         isQueueGettingPrev: 'isGettingPrev',
-        isQueueGettingNext: 'isGettingNext'
-      }
-    ),
-    ...mapGetters(
-      'queue',
-      {
+        isQueueGettingNext: 'isGettingNext',
         queueTracksCount: 'tracksCount',
         isQueueStart: 'isStart',
         isQueueEnd: 'isEnd'

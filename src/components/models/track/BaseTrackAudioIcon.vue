@@ -8,8 +8,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import audioStore from '@/stores/audio'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 
 export default {
@@ -23,8 +24,8 @@ export default {
     isCurrent: Boolean
   },
   computed: {
-    ...mapGetters(
-      'audio',
+    ...mapState(
+      audioStore,
       {
         audioAction: 'action'
       }

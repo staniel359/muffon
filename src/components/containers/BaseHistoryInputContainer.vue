@@ -13,7 +13,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import {
   mainHistoryInputOptions
 } from '@/helpers/formatters/semantic'
@@ -41,7 +42,7 @@ export default {
   ],
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

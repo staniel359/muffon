@@ -27,7 +27,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   setCalendar
@@ -49,7 +50,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import profileStore from '@/stores/profile'
 import deleteRequest from '@/helpers/actions/api/request/delete'
 
 export default function (
@@ -8,8 +8,7 @@ export default function (
     isSelectable
   }
 ) {
-  const profileId =
-    store.getters['profile/id']
+  const profileId = profileStore().id
 
   const url =
     `/profiles/${profileId}/playlists` +

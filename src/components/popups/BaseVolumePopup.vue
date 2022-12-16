@@ -25,7 +25,9 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import audioStore from '@/stores/audio'
+import layoutStore from '@/stores/layout'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
@@ -43,14 +45,14 @@ export default {
   },
   computed: {
     ...mapState(
-      'audio',
+      audioStore,
       {
         audioVolume: 'volume',
         audioElement: 'element'
       }
     ),
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

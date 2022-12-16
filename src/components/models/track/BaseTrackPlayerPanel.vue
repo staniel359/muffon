@@ -28,7 +28,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import PlayButtonSection from './BaseTrackPlayerPanel/PlayButtonSection.vue'
 import VisualizerSection from './BaseTrackPlayerPanel/VisualizerSection.vue'
 import BaseDurationSection from '@/components/sections/BaseDurationSection.vue'
@@ -47,7 +48,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

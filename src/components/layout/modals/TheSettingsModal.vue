@@ -25,8 +25,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import BaseTabsContainer
@@ -69,8 +70,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

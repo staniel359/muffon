@@ -24,7 +24,9 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+import playerStore from '@/stores/player'
 import AudioElement from './PlayerPanel/AudioElement.vue'
 import PlayingPanel from './PlayerPanel/PlayingPanel.vue'
 import AudioPanel from './PlayerPanel/AudioPanel.vue'
@@ -65,13 +67,13 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]
     ),
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }

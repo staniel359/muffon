@@ -20,7 +20,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import {
   setForm
@@ -46,7 +47,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

@@ -7,7 +7,7 @@ import '@/assets/styles/Main.sass'
 import '@/assets/styles/Sources.sass'
 import App from './App.vue'
 import router from '@/plugins/router'
-import store from '@/plugins/store'
+import pinia from '@/plugins/pinia'
 import i18n from '#/plugins/i18n'
 import setupAxios from '@/plugins/axios'
 import setupI18nCountries from '@/plugins/i18nCountries'
@@ -17,7 +17,7 @@ createApp(
 ).use(
   router
 ).use(
-  store
+  pinia
 ).use(
   i18n
 ).mount(

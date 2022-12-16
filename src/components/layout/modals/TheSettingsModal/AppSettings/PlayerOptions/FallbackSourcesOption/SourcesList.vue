@@ -10,7 +10,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import SourceSelect from './SourcesList/SourceSelect.vue'
 import {
   collection as formatCollection
@@ -23,7 +24,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerFallbackSources: 'fallbackSources'
       }

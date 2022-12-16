@@ -42,8 +42,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import JoinOption from './BaseCommunityOptionsDropdown/JoinOption.vue'
@@ -80,8 +81,8 @@ export default {
     isWithDeleteOption: Boolean
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

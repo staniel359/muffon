@@ -34,8 +34,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import ExtraInfoSegment from './LeftColumn/ExtraInfoSegment.vue'
 import FollowSegment from './LeftColumn/FollowSegment.vue'
@@ -61,8 +62,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         currentProfileId: 'id'
       }

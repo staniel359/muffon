@@ -18,11 +18,13 @@
 </template>
 
 <script>
-import fs from 'fs'
 import {
   mapState,
   mapActions
-} from 'vuex'
+} from 'pinia'
+import audioStore from '@/stores/audio'
+import playerStore from '@/stores/player'
+import fs from 'fs'
 import {
   decrypt as decryptFile
 } from '@/helpers/actions/file'
@@ -31,13 +33,13 @@ export default {
   name: 'AudioElement',
   computed: {
     ...mapState(
-      'audio',
+      audioStore,
       {
         isAudioAutoplay: 'isAutoplay'
       }
     ),
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }
@@ -99,7 +101,7 @@ export default {
   },
   methods: {
     ...mapActions(
-      'audio',
+      audioStore,
       {
         setAudioElement: 'setElement',
         setAudioDuration: 'setDuration',

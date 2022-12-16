@@ -10,7 +10,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseAudioVisualiser from '@/components/BaseAudioVisualiser.vue'
 
 export default {
@@ -26,7 +27,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerCurrentTrackId: 'currentTrackId'
       }

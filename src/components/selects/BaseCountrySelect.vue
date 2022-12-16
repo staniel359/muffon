@@ -16,7 +16,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import countries from 'i18n-iso-countries'
 
@@ -34,7 +35,7 @@ export default {
   ],
   computed: {
     ...mapState(
-      'profile',
+      profileStore,
       {
         profileLanguage: 'language'
       }

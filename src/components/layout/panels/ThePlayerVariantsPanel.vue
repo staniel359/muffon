@@ -10,8 +10,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import playerStore from '@/stores/player'
 import VariantsPanel from './ThePlayerVariantsPanel/VariantsPanel.vue'
 import PlayerPanel from './ThePlayerVariantsPanel/PlayerPanel.vue'
 
@@ -27,8 +28,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'player',
+    ...mapState(
+      playerStore,
       {
         playerVariantsCount: 'variantsCount'
       }

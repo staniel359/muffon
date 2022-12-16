@@ -25,7 +25,9 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
+import profileStore from '@/stores/profile'
 import ConnectOption from './LastfmOptions/ConnectOption.vue'
 import ScrobbleOption from './LastfmOptions/ScrobbleOption.vue'
 import ScrobbleNotificationsOption
@@ -42,13 +44,13 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         isPlayerWithScrobbling: 'isWithScrobbling'
       }
     ),
     ...mapState(
-      'profile',
+      profileStore,
       {
         profileInfo: 'info'
       }

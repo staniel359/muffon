@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import audioStore from '@/stores/audio'
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
@@ -18,8 +18,7 @@ export async function setPlaying (
 }
 
 function setLocalAudioPauseStatus () {
-  store.dispatch(
-    'audio/setStatus',
+  audioStore().setStatus(
     'pause'
   )
 }
@@ -46,8 +45,7 @@ function setPlayerPlaying (
 }
 
 function enableLocalAudioAutoplay () {
-  store.dispatch(
-    'audio/setIsAutoplay',
+  audioStore().setIsAutoplay(
     true
   )
 }

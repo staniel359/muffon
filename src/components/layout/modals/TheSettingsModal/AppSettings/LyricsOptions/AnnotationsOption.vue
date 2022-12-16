@@ -16,7 +16,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import lyricsStore from '@/stores/lyrics'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
@@ -28,7 +29,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'lyrics',
+      lyricsStore,
       {
         isLyricsWithAnnotations: 'isWithAnnotations'
       }

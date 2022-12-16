@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import profileStore from '@/stores/profile'
 import patchRequest from '@/helpers/actions/api/request/patch'
 import {
   handleError as handleFormError
@@ -20,8 +20,7 @@ export default function (
 ) {
   this.profileData = null
 
-  const profileId =
-    store.getters['profile/id']
+  const profileId = profileStore().id
 
   const url = `/profiles/${profileId}`
 

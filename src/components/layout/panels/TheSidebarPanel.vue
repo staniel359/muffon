@@ -30,11 +30,11 @@
         />
 
         <SavedTracksItem
-          v-if="isWithSavedTracksItem"
+          v-if="isSidebarWithSavedTracksItem"
         />
 
         <PlaylistsItem
-          v-if="isWithPlaylistsItem"
+          v-if="isSidebarWithPlaylistsItem"
           :profile-id="profileId"
         />
 
@@ -48,23 +48,23 @@
         />
 
         <TopItem
-          v-if="isWithTopItem"
+          v-if="isSidebarWithTopItem"
         />
 
         <ReleasesItem
-          v-if="isWithReleasesItem"
+          v-if="isSidebarWithReleasesItem"
         />
 
         <RadioItem
-          v-if="isWithRadioItem"
+          v-if="isSidebarWithRadioItem"
         />
 
         <MultitagItem
-          v-if="isWithMultitagItem"
+          v-if="isSidebarWithMultitagItem"
         />
 
         <CommunitiesItem
-          v-if="isWithCommunitiesItem"
+          v-if="isSidebarWithCommunitiesItem"
           :profile-id="profileId"
         />
       </div>
@@ -85,9 +85,10 @@
 
 <script>
 import {
-  mapGetters,
   mapState
-} from 'vuex'
+} from 'pinia'
+import profileStore from '@/stores/profile'
+import sidebarStore from '@/stores/sidebar'
 import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
 import RootItem from './TheSidebarPanel/RootItem.vue'
@@ -132,64 +133,77 @@ export default {
     LoginItem
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }
     ),
     ...mapState(
-      'sidebar',
-      [
-        'isWithFeedItem',
-        'isWithConversationsItem',
-        'isWithLibraryItem',
-        'isWithRecommendationsItem',
-        'isWithSavedTracksItem',
-        'isWithPlaylistsItem',
-        'isWithFavoritesItem',
-        'isWithBookmarksItem',
-        'isWithTopItem',
-        'isWithReleasesItem',
-        'isWithRadioItem',
-        'isWithMultitagItem',
-        'isWithCommunitiesItem'
-      ]
+      sidebarStore,
+      {
+        isSidebarWithFeedItem:
+          'isWithFeedItem',
+        isSidebarWithConversationsItem:
+          'isWithConversationsItem',
+        isSidebarWithLibraryItem:
+          'isWithLibraryItem',
+        isSidebarWithRecommendationsItem:
+          'isWithRecommendationsItem',
+        isSidebarWithSavedTracksItem:
+          'isWithSavedTracksItem',
+        isSidebarWithPlaylistsItem:
+          'isWithPlaylistsItem',
+        isSidebarWithFavoritesItem:
+          'isWithFavoritesItem',
+        isSidebarWithBookmarksItem:
+          'isWithBookmarksItem',
+        isSidebarWithTopItem:
+          'isWithTopItem',
+        isSidebarWithReleasesItem:
+          'isWithReleasesItem',
+        isSidebarWithRadioItem:
+          'isWithRadioItem',
+        isSidebarWithMultitagItem:
+          'isWithMultitagItem',
+        isSidebarWithCommunitiesItem:
+          'isWithCommunitiesItem'
+      }
     ),
     isRenderFeedItem () {
       return (
         this.profileId &&
-          this.isWithFeedItem
+          this.isSidebarWithFeedItem
       )
     },
     isRenderConversationsItem () {
       return (
         this.profileId &&
-          this.isWithConversationsItem
+          this.isSidebarWithConversationsItem
       )
     },
     isRenderLibraryItem () {
       return (
         this.profileId &&
-          this.isWithLibraryItem
+          this.isSidebarWithLibraryItem
       )
     },
     isRenderRecommendationsItem () {
       return (
         this.profileId &&
-          this.isWithRecommendationsItem
+          this.isSidebarWithRecommendationsItem
       )
     },
     isRenderFavoritesItem () {
       return (
         this.profileId &&
-          this.isWithFavoritesItem
+          this.isSidebarWithFavoritesItem
       )
     },
     isRenderBookmarksItem () {
       return (
         this.profileId &&
-          this.isWithBookmarksItem
+          this.isSidebarWithBookmarksItem
       )
     }
   }

@@ -1,4 +1,5 @@
-import store from '@/plugins/store'
+import layoutStore from '@/stores/layout'
+import profileStore from '@/stores/profile'
 import i18n from '#/plugins/i18n'
 import moment from 'moment-timezone'
 import axios from 'axios'
@@ -26,7 +27,7 @@ export function mainModalOptions (
 export function mainLoaderOptions () {
   const {
     isDarkMode
-  } = store.state.layout
+  } = layoutStore()
 
   const variation = (
     !isDarkMode && 'inverted'
@@ -170,7 +171,7 @@ export function sourcePopupOptions (
 
   const {
     isDarkMode
-  } = store.state.layout
+  } = layoutStore()
 
   const variation = isDarkMode
     ? 'basic inverted'
@@ -200,7 +201,7 @@ export function artistPopupOptions (
 
   const {
     isDarkMode
-  } = store.state.layout
+  } = layoutStore()
 
   const variation = isDarkMode
     ? 'basic inverted'
@@ -236,7 +237,7 @@ export function annotationPopupOptions (
 
   const {
     isDarkMode
-  } = store.state.layout
+  } = layoutStore()
 
   const variation = isDarkMode
     ? 'basic inverted'
@@ -280,7 +281,7 @@ export function mainDropdownOptions (
 ) {
   const {
     visibleContext
-  } = store.state.layout
+  } = layoutStore()
 
   const message = {
     noResults: i18n.global.t(
@@ -310,7 +311,7 @@ export function mainDropdownOptions (
 export function optionsDropdownOptions () {
   const {
     visibleContext
-  } = store.state.layout
+  } = layoutStore()
 
   return {
     action: 'nothing',
@@ -347,7 +348,7 @@ export function mainVideoOptions (
 
   const {
     language
-  } = store.state.profile
+  } = profileStore()
 
   return {
     autoplay: isAutoplay,
@@ -713,7 +714,7 @@ export function birthdateCalendarOptions (
 ) {
   const {
     language
-  } = store.state.profile
+  } = profileStore()
 
   moment.locale(
     language

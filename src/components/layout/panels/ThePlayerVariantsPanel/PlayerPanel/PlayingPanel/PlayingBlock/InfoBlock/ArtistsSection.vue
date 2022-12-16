@@ -9,7 +9,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseTickerContainer
   from '@/components/containers/BaseTickerContainer.vue'
 import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
@@ -22,7 +23,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }

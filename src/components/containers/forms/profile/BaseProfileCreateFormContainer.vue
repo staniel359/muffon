@@ -12,7 +12,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
@@ -53,7 +54,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'profile',
+      profileStore,
       {
         profileToken: 'token'
       }

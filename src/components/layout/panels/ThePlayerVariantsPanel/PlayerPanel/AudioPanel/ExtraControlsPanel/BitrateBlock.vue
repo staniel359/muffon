@@ -20,10 +20,11 @@
 </template>
 
 <script>
-import fs from 'fs'
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
+import fs from 'fs'
 import axios from 'axios'
 import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
@@ -41,7 +42,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }

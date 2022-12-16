@@ -9,11 +9,12 @@
 
 <script>
 import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
+import {
   ipcRenderer
 } from 'electron'
-import {
-  mapState
-} from 'vuex'
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import {
   updateGlobal as updateGlobalStore
@@ -29,7 +30,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'profile',
+      profileStore,
       {
         profileLanguage: 'language'
       }

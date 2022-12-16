@@ -7,7 +7,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import {
   ipcRenderer
 } from 'electron'
@@ -16,7 +17,7 @@ export default {
   name: 'ThePlayerObserver',
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }

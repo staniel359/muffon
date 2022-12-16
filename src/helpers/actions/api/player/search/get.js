@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import playerStore from '@/stores/player'
 import getRequest from '@/helpers/actions/api/request/get'
 import {
   collection as formatCollection
@@ -17,7 +17,7 @@ export default function getPlayerSearch (
   const {
     source,
     fallbackSources
-  } = store.state.player
+  } = playerStore()
 
   function getSource () {
     if (fallbackSourceIndex >= 0) {

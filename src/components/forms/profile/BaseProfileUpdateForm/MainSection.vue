@@ -15,7 +15,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseProfileEmailField
   from '@/components/fields/profile/BaseProfileEmailField.vue'
 import BaseProfilePasswordField
@@ -35,7 +36,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'profile',
+      profileStore,
       {
         profileInfo: 'info'
       }

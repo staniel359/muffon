@@ -21,7 +21,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import TracksCounter from './LibraryCountersSection/TracksCounter.vue'
 import AlbumsCounter from './LibraryCountersSection/AlbumsCounter.vue'
 
@@ -47,7 +48,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

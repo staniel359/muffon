@@ -7,7 +7,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import queueStore from '@/stores/queue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   updateGlobal as updateGlobalStore
@@ -20,7 +21,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'queue',
+      queueStore,
       {
         isClearQueueOnPlayerClose:
           'isClearOnPlayerClose'

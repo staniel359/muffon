@@ -13,7 +13,8 @@
 import {
   mapState,
   mapActions
-} from 'vuex'
+} from 'pinia'
+import audioStore from '@/stores/audio'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
@@ -23,7 +24,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'audio',
+      audioStore,
       {
         isAudioLoop: 'isLoop',
         audioElement: 'element'
@@ -32,7 +33,7 @@ export default {
   },
   methods: {
     ...mapActions(
-      'audio',
+      audioStore,
       {
         setIsAudioLoop: 'setIsLoop'
       }

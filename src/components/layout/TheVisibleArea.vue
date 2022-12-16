@@ -10,7 +10,8 @@
 <script>
 import {
   mapActions
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 
 export default {
   name: 'TheVisibleArea',
@@ -21,7 +22,7 @@ export default {
   },
   methods: {
     ...mapActions(
-      'layout',
+      layoutStore,
       [
         'setVisibleContext'
       ]

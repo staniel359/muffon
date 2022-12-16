@@ -8,7 +8,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 
 export default {
@@ -18,7 +19,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }

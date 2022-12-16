@@ -42,8 +42,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import FeedOption from './SidebarOptions/FeedOption.vue'
 import ConversationsOption from './SidebarOptions/ConversationsOption.vue'
 import LibraryOption from './SidebarOptions/LibraryOption.vue'
@@ -76,8 +77,8 @@ export default {
     CommunitiesOption
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

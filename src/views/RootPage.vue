@@ -29,9 +29,10 @@
 
 <script>
 import {
-  mapGetters,
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
+import profileStore from '@/stores/profile'
 import TheSessionObserver
   from '@/components/layout/observers/TheSessionObserver.vue'
 import TheNativeThemeObserver
@@ -69,23 +70,18 @@ export default {
     TheAuthentication
   },
   computed: {
-    ...mapGetters(
-      'profile',
-      {
-        profileId: 'id'
-      }
-    ),
     ...mapState(
-      'player',
+      playerStore,
       {
         isPlayerWithDiscordRichPresence:
           'isWithDiscordRichPresence'
       }
     ),
     ...mapState(
-      'profile',
+      profileStore,
       {
-        isProfileAnonymous: 'isAnonymous'
+        isProfileAnonymous: 'isAnonymous',
+        profileId: 'id'
       }
     ),
     isRenderBrowserTabs () {

@@ -13,7 +13,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import TitleSection from './InfoBlock/TitleSection.vue'
 import ArtistsSection from './InfoBlock/ArtistsSection.vue'
 import AlbumSection from './InfoBlock/AlbumSection.vue'
@@ -27,7 +28,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing',
         isPlayerWithAlbum: 'isWithAlbum'

@@ -19,7 +19,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseTrackOptionsDropdown
   from '@/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
 import selfMixin from '@/mixins/selfMixin'
@@ -34,7 +35,7 @@ export default {
   ],
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }

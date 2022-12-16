@@ -22,7 +22,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseTickerContainer
   from '@/components/containers/BaseTickerContainer.vue'
 import BaseHeaderContainer
@@ -39,7 +40,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }

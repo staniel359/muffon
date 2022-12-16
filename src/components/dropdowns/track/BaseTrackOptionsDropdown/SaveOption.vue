@@ -15,7 +15,8 @@ import {
 import electronStore from '#/plugins/electronStore'
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseOption from '@/components/dropdowns/options/BaseOption.vue'
 import {
   setToast
@@ -41,7 +42,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'tabId'
       ]

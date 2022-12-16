@@ -17,7 +17,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import {
@@ -39,7 +40,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing',
         isPlayerWithAlbum: 'isWithAlbum'

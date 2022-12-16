@@ -33,7 +33,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import TagItem from './BaseTagsSimpleList/TagItem.vue'
 import BaseLabel from '@/components/labels/BaseLabel.vue'
@@ -67,7 +68,7 @@ export default {
   ],
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

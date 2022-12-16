@@ -27,7 +27,9 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+import lyricsStore from '@/stores/lyrics'
 import BaseAnnotationPopup from '@/components/popups/BaseAnnotationPopup.vue'
 import {
   setPopup,
@@ -56,13 +58,13 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]
     ),
     ...mapState(
-      'lyrics',
+      lyricsStore,
       {
         isLyricsWithAnnotations:
           'isWithAnnotations'

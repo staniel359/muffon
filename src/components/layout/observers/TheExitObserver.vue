@@ -6,33 +6,29 @@
 
 <script>
 import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+import profileStore from '@/stores/profile'
+import {
   ipcRenderer
 } from 'electron'
 import electronStore from '#/plugins/electronStore'
-import {
-  mapState,
-  mapGetters
-} from 'vuex'
 import updateOnline from '@/helpers/actions/api/online/update'
 
 export default {
   name: 'TheExitObserver',
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isCloseTabsOnExit'
       ]
     ),
     ...mapState(
-      'profile',
+      profileStore,
       {
-        isRememberProfile: 'isRemember'
-      }
-    ),
-    ...mapGetters(
-      'profile',
-      {
+        isRememberProfile: 'isRemember',
         profileId: 'id'
       }
     )

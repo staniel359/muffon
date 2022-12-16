@@ -1,4 +1,4 @@
-import store from '@/plugins/store'
+import profileStore from '@/stores/profile'
 import postRequest from '@/helpers/actions/api/request/post'
 
 export default function (
@@ -11,8 +11,7 @@ export default function (
 ) {
   this.libraryId = null
 
-  const profileId =
-    store.getters['profile/id']
+  const profileId = profileStore().id
 
   const url =
     `/profiles/${profileId}/library/albums`

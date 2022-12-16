@@ -8,8 +8,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseLibraryOption
   from '@/components/dropdowns/options/library/BaseLibraryOption.vue'
 import {
@@ -31,8 +32,8 @@ export default {
     'click'
   ],
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

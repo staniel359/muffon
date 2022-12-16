@@ -1,5 +1,5 @@
+import profileStore from '@/stores/profile'
 import axios from 'axios'
-import store from '@/plugins/store'
 
 export default function (
   {
@@ -19,12 +19,11 @@ export default function (
     this.isLoading = true
   }
 
-  const profileId =
-    store.getters['profile/id']
+  const profileId = profileStore().id
 
   const {
     token
-  } = store.state.profile
+  } = profileStore()
 
   const anonymousToken =
     process.env.VUE_APP_ANONYMOUS_TOKEN

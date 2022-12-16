@@ -13,7 +13,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import ImageBlock from './PlayingBlock/ImageBlock.vue'
 import InfoBlock from './PlayingBlock/InfoBlock.vue'
 import SourceIconBlock from './PlayingBlock/SourceIconBlock.vue'
@@ -35,7 +36,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }

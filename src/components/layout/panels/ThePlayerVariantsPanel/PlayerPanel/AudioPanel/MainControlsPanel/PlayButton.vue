@@ -11,9 +11,9 @@
 
 <script>
 import {
-  mapState,
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import audioStore from '@/stores/audio'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
@@ -23,15 +23,10 @@ export default {
   },
   computed: {
     ...mapState(
-      'audio',
+      audioStore,
       {
         isAudioPlayable: 'isPlayable',
-        audioElement: 'element'
-      }
-    ),
-    ...mapGetters(
-      'audio',
-      {
+        audioElement: 'element',
         audioAction: 'action'
       }
     )

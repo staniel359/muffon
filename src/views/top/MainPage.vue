@@ -32,7 +32,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import topStore from '@/stores/top'
 import BaseTopPageContainer
   from '@/components/containers/pages/top/BaseTopPageContainer.vue'
 import TopSegment from './MainPage/TopSegment.vue'
@@ -62,7 +63,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'top',
+      topStore,
       {
         topCountry: 'country'
       }

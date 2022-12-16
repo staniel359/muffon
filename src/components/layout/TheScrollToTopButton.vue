@@ -26,7 +26,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseTransitionContainer
   from '@/components/containers/BaseTransitionContainer.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
@@ -44,7 +45,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }

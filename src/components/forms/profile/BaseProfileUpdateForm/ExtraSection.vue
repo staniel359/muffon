@@ -36,7 +36,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseImageField from '@/components/fields/BaseImageField.vue'
 import BaseProfileGenderField
   from '@/components/fields/profile/BaseProfileGenderField.vue'
@@ -63,7 +64,7 @@ export default {
   ],
   computed: {
     ...mapState(
-      'profile',
+      profileStore,
       {
         profileInfo: 'info'
       }

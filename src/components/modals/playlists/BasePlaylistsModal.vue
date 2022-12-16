@@ -31,8 +31,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BasePaginatedSegmentModalContainer
   from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BasePlaylistCreateButton
@@ -73,8 +74,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

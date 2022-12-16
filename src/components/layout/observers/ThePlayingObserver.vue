@@ -6,9 +6,10 @@
 
 <script>
 import {
-  mapGetters,
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
+import profileStore from '@/stores/profile'
 import {
   ipcRenderer
 } from 'electron'
@@ -17,22 +18,17 @@ import updatePlaying from '@/helpers/actions/api/playing/update'
 export default {
   name: 'ThePlayingObserver',
   computed: {
-    ...mapGetters(
-      'profile',
-      {
-        profileId: 'id'
-      }
-    ),
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }
     ),
     ...mapState(
-      'profile',
+      profileStore,
       {
-        isShowProfilePlaying: 'isShowPlaying'
+        isShowProfilePlaying: 'isShowPlaying',
+        profileId: 'id'
       }
     ),
     playing () {

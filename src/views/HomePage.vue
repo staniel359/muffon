@@ -13,7 +13,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseLogoTitleSection
   from '@/components/sections/BaseLogoTitleSection.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
@@ -34,7 +35,7 @@ export default {
   ],
   computed: {
     ...mapState(
-      'profile',
+      profileStore,
       {
         profileInfo: 'info'
       }

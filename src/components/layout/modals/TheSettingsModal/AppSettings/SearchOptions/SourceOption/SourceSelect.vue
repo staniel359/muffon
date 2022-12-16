@@ -11,7 +11,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import searchStore from '@/stores/search'
 import BaseDropdownContainer
   from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
 import BaseSourcesList from '@/components/lists/sources/BaseSourcesList.vue'
@@ -27,7 +28,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'search',
+      searchStore,
       {
         searchSource: 'source'
       }

@@ -11,7 +11,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
@@ -21,7 +22,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode',
         'isWithSystemTheme'

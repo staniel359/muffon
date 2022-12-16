@@ -1,6 +1,7 @@
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import {
   setPopup
 } from '@/helpers/actions/plugins/semantic'
@@ -8,7 +9,7 @@ import {
 export default {
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isDarkMode'
       ]

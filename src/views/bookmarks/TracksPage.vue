@@ -33,8 +33,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseBookmarksPaginatedPageContainer
   from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
 import BaseTracksSimpleList
@@ -58,8 +59,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

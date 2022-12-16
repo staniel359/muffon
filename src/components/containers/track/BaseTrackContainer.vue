@@ -16,9 +16,10 @@
 
 <script>
 import {
-  mapState,
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import audioStore from '@/stores/audio'
+import playerStore from '@/stores/player'
 import getPlayerTrack from '@/helpers/actions/player/track/get'
 import {
   updateGlobal as updateGlobalStore
@@ -55,21 +56,16 @@ export default {
   },
   computed: {
     ...mapState(
-      'player',
+      audioStore,
       {
-        playerCurrentTrackId: 'currentTrackId'
+        audioElement: 'element',
+        audioAction: 'action'
       }
     ),
     ...mapState(
-      'audio',
+      playerStore,
       {
-        audioElement: 'element'
-      }
-    ),
-    ...mapGetters(
-      'audio',
-      {
-        audioAction: 'action'
+        playerCurrentTrackId: 'currentTrackId'
       }
     ),
     isActive () {

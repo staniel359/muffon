@@ -14,7 +14,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
   toggleQueuePanel
@@ -27,7 +28,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'isQueuePanelVisible'
       ]

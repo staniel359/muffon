@@ -29,9 +29,11 @@
 
 <script>
 import {
-  mapGetters,
   mapState
-} from 'vuex'
+} from 'pinia'
+import playerStore from '@/stores/player'
+import profileStore from '@/stores/profile'
+import queueStore from '@/stores/queue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseTracksSimpleList
@@ -56,29 +58,24 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
-      {
-        profileId: 'id'
-      }
-    ),
-    ...mapGetters(
-      'queue',
-      {
-        queueTracksComputed: 'tracksComputed'
-      }
-    ),
     ...mapState(
-      'player',
+      playerStore,
       {
         playerPlaying: 'playing'
       }
     ),
     ...mapState(
-      'queue',
+      profileStore,
+      {
+        profileId: 'id'
+      }
+    ),
+    ...mapState(
+      queueStore,
       {
         queueTracks: 'tracks',
-        queueTracksShuffled: 'tracksShuffled'
+        queueTracksShuffled: 'tracksShuffled',
+        queueTracksComputed: 'tracksComputed'
       }
     )
   },

@@ -9,8 +9,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseLabel from '@/components/labels/BaseLabel.vue'
 
 export default {
@@ -22,8 +23,8 @@ export default {
     isPanelVisible: Boolean
   },
   computed: {
-    ...mapGetters(
-      'player',
+    ...mapState(
+      playerStore,
       {
         playerVariantsCount: 'variantsCount'
       }

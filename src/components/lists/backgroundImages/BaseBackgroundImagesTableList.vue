@@ -11,7 +11,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import ImageItem from './BaseBackgroundImagesTableList/ImageItem.vue'
 
 export default {
@@ -28,7 +29,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'layout',
+      layoutStore,
       [
         'backgroundImages'
       ]

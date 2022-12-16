@@ -1,9 +1,9 @@
-import store from '@/plugins/store'
+import profileStore from '@/stores/profile'
 import getRequest from '@/helpers/actions/api/request/get'
 
 export default function () {
   const lastfmNickname =
-    store.state.profile.info.lastfm_nickname
+    profileStore().info.lastfm_nickname
 
   const url =
     `/lastfm/users/${lastfmNickname}`

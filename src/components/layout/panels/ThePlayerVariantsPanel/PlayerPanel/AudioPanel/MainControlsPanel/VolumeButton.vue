@@ -13,7 +13,8 @@
 import {
   mapState,
   mapActions
-} from 'vuex'
+} from 'pinia'
+import audioStore from '@/stores/audio'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseVolumePopup from '@/components/popups/BaseVolumePopup.vue'
 import {
@@ -32,7 +33,7 @@ export default {
   ],
   computed: {
     ...mapState(
-      'audio',
+      audioStore,
       {
         isAudioMuted: 'isMuted',
         audioVolume: 'volume',
@@ -68,7 +69,7 @@ export default {
   },
   methods: {
     ...mapActions(
-      'audio',
+      audioStore,
       {
         setIsAudioMuted: 'setIsMuted'
       }

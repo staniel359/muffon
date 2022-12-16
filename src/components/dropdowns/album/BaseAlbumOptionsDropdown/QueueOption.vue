@@ -9,7 +9,8 @@
 <script>
 import {
   mapState
-} from 'vuex'
+} from 'pinia'
+import queueStore from '@/stores/queue'
 import BaseOption from '@/components/dropdowns/options/BaseOption.vue'
 import {
   updateGlobal as updateGlobalStore
@@ -38,7 +39,7 @@ export default {
   },
   computed: {
     ...mapState(
-      'queue',
+      queueStore,
       {
         queueTracks: 'tracks',
         queueTracksShuffled: 'tracksShuffled'

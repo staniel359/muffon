@@ -29,8 +29,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BasePaginatedListContainer
   from '@/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseTracksSimpleList
@@ -65,8 +66,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

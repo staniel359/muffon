@@ -21,8 +21,9 @@
 
 <script>
 import {
-  mapGetters
-} from 'vuex'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseTransitionContainer
   from '@/components/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
@@ -48,8 +49,8 @@ export default {
     scrollable: HTMLDivElement
   },
   computed: {
-    ...mapGetters(
-      'profile',
+    ...mapState(
+      profileStore,
       {
         profileId: 'id'
       }

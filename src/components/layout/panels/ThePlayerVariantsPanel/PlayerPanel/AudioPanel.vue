@@ -20,9 +20,10 @@
 
 <script>
 import {
-  mapGetters,
   mapState
-} from 'vuex'
+} from 'pinia'
+import audioStore from '@/stores/audio'
+import queueStore from '@/stores/queue'
 import TimerPanel from './AudioPanel/TimerPanel.vue'
 import MainControlsPanel from './AudioPanel/MainControlsPanel.vue'
 import ExtraControlsPanel from './AudioPanel/ExtraControlsPanel.vue'
@@ -41,20 +42,15 @@ export default {
   },
   computed: {
     ...mapState(
-      'audio',
+      audioStore,
       {
         audioElement: 'element'
       }
     ),
     ...mapState(
-      'queue',
+      queueStore,
       {
-        isQueueAutoplay: 'isAutoplay'
-      }
-    ),
-    ...mapGetters(
-      'queue',
-      {
+        isQueueAutoplay: 'isAutoplay',
         isQueueEnd: 'isEnd'
       }
     ),
