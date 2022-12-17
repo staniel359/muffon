@@ -3,6 +3,8 @@
 
   <TheStoreObserver />
 
+  <TheMediaKeysObserver />
+
   <ThePlayerObserver />
 
   <TheBackground />
@@ -37,6 +39,8 @@ import TheElectronStoreObserver
   from '@/components/layout/observers/TheElectronStoreObserver.vue'
 import TheStoreObserver
   from '@/components/layout/observers/TheStoreObserver.vue'
+import TheMediaKeysObserver
+  from '@/components/layout/observers/TheMediaKeysObserver.vue'
 import ThePlayerObserver
   from '@/components/layout/observers/ThePlayerObserver.vue'
 import TheBackground from '@/components/layout/TheBackground.vue'
@@ -57,6 +61,7 @@ export default {
   components: {
     TheElectronStoreObserver,
     TheStoreObserver,
+    TheMediaKeysObserver,
     ThePlayerObserver,
     TheBackground,
     TheNavbarPanel,
