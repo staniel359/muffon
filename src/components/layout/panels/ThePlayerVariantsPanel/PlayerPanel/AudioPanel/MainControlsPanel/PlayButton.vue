@@ -4,7 +4,7 @@
     :class="{
       disabled: !isAudioPlayable
     }"
-    :icon="audioAction"
+    :icon="audioActionIcon"
     @click="handleClick"
   />
 </template>
@@ -21,6 +21,14 @@ export default {
   components: {
     BaseButton
   },
+  data () {
+    return {
+      audioActionIcons: {
+        play: 'audioPlay',
+        pause: 'audioPause'
+      }
+    }
+  },
   computed: {
     ...mapState(
       audioStore,
@@ -29,7 +37,12 @@ export default {
         audioElement: 'element',
         audioAction: 'action'
       }
-    )
+    ),
+    audioActionIcon () {
+      return this.audioActionIcons[
+        this.audioAction
+      ]
+    }
   },
   methods: {
     handleClick () {

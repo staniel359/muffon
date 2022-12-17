@@ -1,7 +1,7 @@
 <template>
   <div class="option">
     <BaseIcon
-      icon="arrow alternate circle up"
+      icon="top"
     />
 
     <BaseHeader

@@ -58,7 +58,7 @@ export default function (
   }
 
   return {
-    icon: 'film',
+    icon: 'video',
     title,
     path: formatPath()
   }

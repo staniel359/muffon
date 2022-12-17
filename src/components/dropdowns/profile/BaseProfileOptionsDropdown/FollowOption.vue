@@ -42,9 +42,9 @@ export default {
   computed: {
     icon () {
       if (this.isFollowing) {
-        return 'minus'
+        return 'profileUnfollow'
       } else {
-        return 'plus'
+        return 'profileFollow'
       }
     },
     followText () {

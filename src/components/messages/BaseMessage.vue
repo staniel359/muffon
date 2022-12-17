@@ -3,11 +3,15 @@
     class="ui message main-message"
     :class="{
       inverted: isDarkMode,
-      icon: icons
+      icon: icon || icons
     }"
   >
+    <IconBlock
+      v-if="icon"
+      :icon="icon"
+    />
     <IconsBlock
-      v-if="icons"
+      v-else-if="icons"
       :icons="icons"
     />
 
@@ -32,10 +36,10 @@
     </div>
 
     <BaseButton
-      v-if="buttonData"
-      :class="buttonData.class"
-      :icon="buttonData.icon"
-      @click="handleButtonClick"
+      v-if="isWithRefreshButton"
+      class="circular basic"
+      icon="refresh"
+      @click="handleRefreshButtonClick"
     />
   </div>
 </template>
@@ -45,6 +49,7 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+import IconBlock from './BaseMessage/IconBlock.vue'
 import IconsBlock from './BaseMessage/IconsBlock.vue'
 import ContentBlock from './BaseMessage/ContentBlock.vue'
 import ListBlock from './BaseMessage/ListBlock.vue'
@@ -53,22 +58,24 @@ import BaseButton from '@/components/buttons/BaseButton.vue'
 export default {
   name: 'BaseMessage',
   components: {
+    IconBlock,
     IconsBlock,
     ContentBlock,
     ListBlock,
     BaseButton
   },
   props: {
+    icon: String,
     icons: Array,
     header: String,
     content: String,
     isContentLink: Boolean,
     link: Object,
     listItems: Array,
-    buttonData: Object
+    isWithRefreshButton: Boolean
   },
   emits: [
-    'buttonClick',
+    'refreshButtonClick',
     'linkClick'
   ],
   computed: {
@@ -80,9 +87,9 @@ export default {
     )
   },
   methods: {
-    handleButtonClick () {
+    handleRefreshButtonClick () {
       this.$emit(
-        'buttonClick'
+        'refreshButtonClick'
       )
     },
     handleLinkClick () {
@@ -94,4 +101,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.icons
+  font-size: 2.25em !important
+  margin-right: 0.5em !important
+</style>

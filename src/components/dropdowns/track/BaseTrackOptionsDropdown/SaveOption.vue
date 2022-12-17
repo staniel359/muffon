@@ -1,6 +1,6 @@
 <template>
   <BaseOption
-    icon="save"
+    icon="savedTrack"
     :text="saveText"
     :is-loading="isLoading"
     :is-error="isError"
@@ -18,15 +18,16 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import BaseOption from '@/components/dropdowns/options/BaseOption.vue'
-import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'SaveOption',
   components: {
     BaseOption
   },
+  mixins: [
+    notificationMixin
+  ],
   props: {
     trackData: {
       type: Object,
@@ -57,7 +58,7 @@ export default {
         this.trackData
       )
     },
-    addedMessage () {
+    notificationSuccessMessage () {
       return this.$t(
         'notifications.added.savedTracks.track',
         {
@@ -131,7 +132,7 @@ export default {
 
         this.setSavedTracks()
 
-        this.notify()
+        this.notifySuccess()
       }
     },
     setSavedTracks () {
@@ -148,14 +149,6 @@ export default {
       electronStore.set(
         {
           'profile.savedTracks': newTracks
-        }
-      )
-    },
-    notify () {
-      setToast(
-        {
-          message: this.addedMessage,
-          icon: 'green check'
         }
       )
     }

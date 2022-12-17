@@ -17,29 +17,33 @@ export default {
       mediaActionsHandlers: [
         {
           action: 'previoustrack',
-          handler: this.handlePressPrev
+          handler:
+            this.handlePressPrevious
         },
         {
           action: 'nexttrack',
-          handler: this.handlePressNext
+          handler:
+            this.handlePressNext
         },
         {
           action: 'stop',
-          handler: this.handlePressStop
+          handler:
+            this.handlePressStop
         }
       ]
     }
   },
   mounted () {
-    this.mediaActionsHandlers.forEach(
-      this.setMediaActionHandler
-    )
+    this.mediaActionsHandlers
+      .forEach(
+        this.setMediaActionHandler
+      )
   },
   methods: {
-    handlePressPrev () {
+    handlePressPrevious () {
       getQueueTrack(
         {
-          position: 'prev'
+          position: 'previous'
         }
       )
     },

@@ -34,7 +34,7 @@ export default function (
   }
 
   return {
-    icon: 'record vinyl',
+    icon: 'release',
     title: formatTitle(),
     path: formatPath()
   }

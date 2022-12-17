@@ -13,7 +13,7 @@ export default function () {
   } = formatProfilesLink()
 
   return {
-    icon: 'user',
+    icon: 'profile',
     title,
     path
   }

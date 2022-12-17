@@ -2,9 +2,7 @@
   <div class="main-library-modal-message-container">
     <BaseMessage
       class="success"
-      :icons="[
-        'check'
-      ]"
+      icon="success"
       :header="successHeaderText"
       :content="successContentText"
     />

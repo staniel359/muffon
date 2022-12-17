@@ -7,7 +7,7 @@ const data = {
     return {
       currentTrackId: null,
       isAutoplay: true,
-      isGettingPrev: false,
+      isGettingPrevious: false,
       isGettingNext: false,
       isShuffle: false,
       tracks: [],
@@ -57,7 +57,7 @@ const data = {
           this.tracksCount - 1
       )
     },
-    prevTrack () {
+    previousTrack () {
       return this.tracksComputed[
         this.currentTrackIndex - 1
       ]
@@ -89,10 +89,10 @@ const data = {
     ) {
       this.currentTrackId = value
     },
-    setIsGettingPrev (
+    setIsGettingPrevious (
       value
     ) {
-      this.isGettingPrev = value
+      this.isGettingPrevious = value
     },
     setIsGettingNext (
       value

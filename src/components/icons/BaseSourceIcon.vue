@@ -1,17 +1,14 @@
 <template>
   <div>
-    <i
+    <BaseIcon
       ref="icon"
-      class="icon source-icon"
-      :class="[
-        source,
+      class="source-icon"
+      :class="{
         size,
-        {
-          colored: isActive
-        }
-      ]"
-      @mouseenter="handleMouseEnter"
-      @mouseleave="handleMouseLeave"
+        colored: isActive
+      }"
+      :icon="source"
+      @active-change="handleActiveChange"
     />
 
     <div class="main-popup-container">
@@ -24,6 +21,7 @@
 </template>
 
 <script>
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseSourcePopup from '@/components/popups/BaseSourcePopup.vue'
 import {
   sourcePopupOptions
@@ -33,6 +31,7 @@ import popupMixin from '@/mixins/popupMixin'
 export default {
   name: 'BaseSourceIcon',
   components: {
+    BaseIcon,
     BaseSourcePopup
   },
   mixins: [
@@ -52,7 +51,7 @@ export default {
   },
   computed: {
     element () {
-      return this.$refs.icon
+      return this.$refs.icon.$el
     },
     popupOptions () {
       return sourcePopupOptions(
@@ -63,11 +62,10 @@ export default {
     }
   },
   methods: {
-    handleMouseEnter () {
-      this.isActive = true
-    },
-    handleMouseLeave () {
-      this.isActive = false
+    handleActiveChange (
+      value
+    ) {
+      this.isActive = value
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="option">
     <BaseIcon
-      icon="users"
+      icon="community"
     />
 
     <BaseHeader

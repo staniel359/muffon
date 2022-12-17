@@ -17,7 +17,7 @@
     >
       <small>
         <BaseIcon
-          icon="record vinyl"
+          icon="album"
         />
 
         <span

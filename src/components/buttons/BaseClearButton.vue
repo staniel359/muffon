@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     class="basic mini compact circular main-clear-button"
-    icon="close"
+    icon="clear"
     :class="{
       red: isRed
     }"

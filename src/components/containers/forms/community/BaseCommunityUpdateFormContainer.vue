@@ -16,15 +16,16 @@ import {
   communityFormOptions
 } from '@/helpers/formatters/semantic'
 import updateCommunity from '@/helpers/actions/api/community/update'
-import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'BaseCommunityUpdateFormContainer',
   components: {
     BaseFormContainer
   },
+  mixins: [
+    notificationMixin
+  ],
   inject: [
     'setCommunityData'
   ],
@@ -57,7 +58,7 @@ export default {
         }
       )
     },
-    updatedMessage () {
+    notificationSuccessMessage () {
       return this.$t(
         'notifications.updated.community',
         {
@@ -105,7 +106,7 @@ export default {
           'success'
         )
 
-        this.notify()
+        this.notifySuccess()
       }
     },
     formatUpdateArgs (
@@ -124,14 +125,6 @@ export default {
         description,
         image
       }
-    },
-    notify () {
-      setToast(
-        {
-          message: this.updatedMessage,
-          icon: 'green check'
-        }
-      )
     }
   }
 }

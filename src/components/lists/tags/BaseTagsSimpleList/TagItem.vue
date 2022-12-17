@@ -6,6 +6,7 @@
     :counter="tagCount"
     :link="link"
     :is-invertable="false"
+    :is-with-artists-count="isWithArtistsCount"
   />
 </template>
 
@@ -33,7 +34,8 @@ export default {
       default: 'large'
     },
     isLinkToLibrary: Boolean,
-    profileId: String
+    profileId: String,
+    isWithArtistsCount: Boolean
   },
   computed: {
     link () {

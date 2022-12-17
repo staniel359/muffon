@@ -1,6 +1,6 @@
 <template>
   <BaseOption
-    icon="check"
+    icon="listened"
     :text="actionText"
     :is-loading="isLoading"
     :is-error="isError"

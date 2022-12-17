@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="headphones"
+    icon="library"
     :text="profileLibraryText"
     :link="profileLibraryMainLink"
   />

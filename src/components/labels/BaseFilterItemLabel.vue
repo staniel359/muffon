@@ -1,7 +1,7 @@
 <template>
   <BaseLabel
     class="primary circular large"
-    icon="close"
+    icon="clear"
     :text="name"
     :is-invertable="false"
     is-reverse

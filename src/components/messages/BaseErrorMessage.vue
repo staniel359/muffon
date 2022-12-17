@@ -1,11 +1,12 @@
 <template>
   <div class="main-error-message">
     <BaseMessage
+      :icon="icon"
       :icons="icons"
       :header="header"
       :content="content"
-      :button-data="buttonData"
-      @button-click="handleButtonClick"
+      :is-with-refresh-button="isRenderRefreshButton"
+      @refresh-button-click="handleRefreshButtonClick"
     />
   </div>
 </template>
@@ -29,14 +30,6 @@ export default {
   emits: [
     'refresh'
   ],
-  data () {
-    return {
-      refreshButtonData: {
-        class: 'circular basic',
-        icon: 'sync alternate'
-      }
-    }
-  },
   computed: {
     errorData () {
       if (this.isServerError) {
@@ -62,6 +55,9 @@ export default {
         ...errorsData.client
       }
     },
+    icon () {
+      return this.errorData.icon
+    },
     icons () {
       return this.errorData.icons
     },
@@ -78,13 +74,6 @@ export default {
         `errors.${this.errorId}.content`
       )
     },
-    buttonData () {
-      if (this.isRenderRefreshButton) {
-        return this.refreshButtonData
-      } else {
-        return null
-      }
-    },
     isRenderRefreshButton () {
       return (
         this.isErrorRefreshable &&
@@ -99,7 +88,7 @@ export default {
     }
   },
   methods: {
-    handleButtonClick () {
+    handleRefreshButtonClick () {
       this.$emit(
         'refresh'
       )

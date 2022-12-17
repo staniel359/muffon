@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="record vinyl"
+    icon="release"
     :text="releasesText"
     :link="releasesLink"
   />

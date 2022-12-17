@@ -25,8 +25,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.icons
-  font-size: 2.5em !important
-  margin-right: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

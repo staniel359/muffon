@@ -6,8 +6,8 @@
     }"
   >
     <BaseIcon
-      class="direction-icon"
-      icon="small ellipsis horizontal"
+      class="small direction-icon"
+      icon="dotsHorizontal"
     />
   </div>
 </template>

@@ -13,7 +13,7 @@
     <div class="description">
       <small>
         <BaseIcon
-          icon="user"
+          icon="listener"
         />
 
         <span

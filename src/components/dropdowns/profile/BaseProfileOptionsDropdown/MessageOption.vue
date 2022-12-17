@@ -1,6 +1,6 @@
 <template>
   <BaseOption
-    icon="envelope"
+    icon="message"
     :text="messageText"
     @click="handleClick"
   />

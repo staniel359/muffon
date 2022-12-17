@@ -2,9 +2,7 @@
   <BaseSegmentContainer>
     <BaseMessage
       class="success code-sent-message"
-      :icons="[
-        'check'
-      ]"
+      icon="success"
       :header="codeSentText"
     />
 

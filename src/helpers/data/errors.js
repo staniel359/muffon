@@ -5,32 +5,26 @@ export default {
   badRequest: {
     id: 'badRequest',
     code: 400,
-    icons: [
-      'ban'
-    ],
+    icon: 'errorBadRequest',
     isRefreshable: false
   },
   forbidden: {
     id: 'forbidden',
     code: 403,
-    icons: [
-      'close'
-    ],
+    icon: 'errorForbidden',
     isRefreshable: false
   },
   notFound: {
     id: 'notFound',
     code: 404,
-    icons: [
-      'search'
-    ],
+    icon: 'errorNotFound',
     isRefreshable: false
   },
   internalServer: {
     id: 'internalServer',
     code: 500,
     icons: [
-      'server',
+      'errorInternalServer',
       redCloseCornerIcon
     ],
     isRefreshable: false
@@ -39,7 +33,7 @@ export default {
     id: 'badGateway',
     code: 502,
     icons: [
-      'server',
+      'errorBadGateway',
       redCloseCornerIcon
     ],
     isRefreshable: true
@@ -48,7 +42,7 @@ export default {
     id: 'gatewayTimeout',
     code: 504,
     icons: [
-      'hourglass end',
+      'errorGatewayTimeout',
       redCloseCornerIcon
     ],
     isRefreshable: true
@@ -57,7 +51,7 @@ export default {
     id: 'connection',
     code: 0,
     icons: [
-      'wifi',
+      'errorConnection',
       redCloseCornerIcon
     ],
     isRefreshable: true
@@ -65,7 +59,7 @@ export default {
   client: {
     id: 'client',
     icons: [
-      'window maximize outline',
+      'errorClient',
       redCloseCornerIcon
     ],
     isRefreshable: false

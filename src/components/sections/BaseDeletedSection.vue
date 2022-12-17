@@ -3,7 +3,7 @@
     <div>
       <BaseIcon
         class="deleted-icon"
-        icon="trash alternate outline"
+        icon="delete"
       />
 
       <span

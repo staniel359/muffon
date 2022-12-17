@@ -69,7 +69,7 @@ export default function (
   }
 
   return {
-    icon: 'microphone alternate',
+    icon: 'artist',
     title,
     path: formatPath()
   }

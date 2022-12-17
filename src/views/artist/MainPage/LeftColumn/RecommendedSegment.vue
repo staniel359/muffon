@@ -4,7 +4,7 @@
       class="recommended-block"
     >
       <BaseIcon
-        icon="volume up"
+        icon="recommendation"
       />
 
       <div class="content">
@@ -20,7 +20,7 @@
 
         <BaseButton
           class="basic circular compact fluid"
-          icon="microphone alternate"
+          icon="artist"
           :text="artistsText"
           @click="handleArtistsButtonClick"
         />

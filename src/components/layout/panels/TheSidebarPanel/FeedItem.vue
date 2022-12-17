@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="newspaper"
+    icon="feed"
     :text="feedText"
     :link="feedLink"
   />

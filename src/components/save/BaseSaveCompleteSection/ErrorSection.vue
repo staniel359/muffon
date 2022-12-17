@@ -16,8 +16,6 @@
   </div>
 
   <RetryButton
-    class="fluid retry-button"
-    icon="redo alternate"
     @click="handleRetryButtonClick"
   />
 </template>

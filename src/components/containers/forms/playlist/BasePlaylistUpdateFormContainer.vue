@@ -16,15 +16,16 @@ import {
   playlistFormOptions
 } from '@/helpers/formatters/semantic'
 import updatePlaylist from '@/helpers/actions/api/playlist/update'
-import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'BasePlaylistUpdateFormContainer',
   components: {
     BaseFormContainer
   },
+  mixins: [
+    notificationMixin
+  ],
   inject: [
     'setPlaylistData'
   ],
@@ -56,7 +57,7 @@ export default {
         }
       )
     },
-    updatedMessage () {
+    notificationSuccessMessage () {
       return this.$t(
         'notifications.updated.playlist',
         {
@@ -104,7 +105,7 @@ export default {
           'success'
         )
 
-        this.notify()
+        this.notifySuccess()
       }
     },
     formatUpdateArgs (
@@ -124,14 +125,6 @@ export default {
         isPrivate:
           fields.private
       }
-    },
-    notify () {
-      setToast(
-        {
-          message: this.updatedMessage,
-          icon: 'green check'
-        }
-      )
     }
   }
 }

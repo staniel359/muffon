@@ -18,7 +18,7 @@
       ]"
     >
       <BaseIcon
-        icon="ellipsis vertical"
+        icon="dotsVertical"
       />
 
       <div class="left menu">

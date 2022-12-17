@@ -36,7 +36,7 @@ export default function (
   }
 
   return {
-    icon: 'comments',
+    icon: 'conversation',
     title,
     path: formatPath()
   }

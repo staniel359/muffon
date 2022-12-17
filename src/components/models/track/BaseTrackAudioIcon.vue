@@ -23,6 +23,14 @@ export default {
     isError: Boolean,
     isCurrent: Boolean
   },
+  data () {
+    return {
+      audioActionIcons: {
+        play: 'audioPlay',
+        pause: 'audioPause'
+      }
+    }
+  },
   computed: {
     ...mapState(
       audioStore,
@@ -32,10 +40,15 @@ export default {
     ),
     icon () {
       if (this.isCurrent) {
-        return this.audioAction
+        return this.audioActionIcon
       } else {
         return 'play'
       }
+    },
+    audioActionIcon () {
+      return this.audioActionIcons[
+        this.audioAction
+      ]
     }
   }
 }

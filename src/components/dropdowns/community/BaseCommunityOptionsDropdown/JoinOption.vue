@@ -42,9 +42,9 @@ export default {
   computed: {
     icon () {
       if (this.isMember) {
-        return 'minus'
+        return 'communityLeave'
       } else {
-        return 'plus'
+        return 'communityJoin'
       }
     },
     membershipText () {

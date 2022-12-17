@@ -1,7 +1,7 @@
 <template>
   <div class="option">
     <BaseIcon
-      icon="headphones"
+      icon="library"
     />
 
     <BaseHeader

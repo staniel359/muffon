@@ -22,7 +22,8 @@
 
     <div>
       <BaseIcon
-        icon="green check"
+        class="green"
+        icon="success"
       />
 
       <strong
@@ -43,7 +44,7 @@ import {
 } from '@/helpers/actions/store'
 
 export default {
-  name: 'DisconnectButton',
+  name: 'DisconnectSection',
   components: {
     BaseErrorMessage,
     BaseButton,

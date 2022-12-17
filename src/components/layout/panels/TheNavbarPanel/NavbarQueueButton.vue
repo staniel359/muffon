@@ -2,7 +2,7 @@
   <div class="fitted item">
     <BaseButton
       class="basic large main-navbar-button"
-      icon="list ul"
+      icon="queue"
       :class="{
         active: isQueuePanelVisible
       }"

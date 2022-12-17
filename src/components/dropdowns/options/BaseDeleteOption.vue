@@ -1,7 +1,8 @@
 <template>
   <BaseOption
-    icon="red trash alternate outline"
+    icon="delete"
     :text="deleteText"
+    is-red
     @click="handleClick"
   />
 </template>

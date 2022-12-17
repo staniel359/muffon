@@ -1,6 +1,6 @@
 <template>
   <BaseOption
-    icon="star"
+    icon="favorite"
     :text="actionText"
     :is-loading="isLoading"
     :is-error="isError"

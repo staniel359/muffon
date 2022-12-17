@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     class="basic circular"
-    icon="plus"
+    icon="add"
     :class="{
       active: isActive
     }"

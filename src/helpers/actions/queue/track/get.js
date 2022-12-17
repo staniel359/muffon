@@ -37,8 +37,8 @@ export default function getQueueTrack (
     value
   ) {
     switch (position) {
-      case 'prev':
-        return queueStore().setIsGettingPrev(
+      case 'previous':
+        return queueStore().setIsGettingPrevious(
           value
         )
       case 'next':

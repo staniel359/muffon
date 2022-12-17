@@ -24,15 +24,16 @@ import createScrobblerPlay
   from '@/helpers/actions/api/lastfm/scrobbler/play/create'
 import createScrobblerSave
   from '@/helpers/actions/api/lastfm/scrobbler/save/create'
-import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'ScrobblePoint',
   components: {
     BaseIcon
   },
+  mixins: [
+    notificationMixin
+  ],
   data () {
     return {
       audioCurrentTime: 0,
@@ -130,13 +131,7 @@ export default {
           this.audioDuration
       ) || 0
     },
-    notificationData () {
-      return {
-        message: this.scrobbledMessage,
-        icon: 'green check'
-      }
-    },
-    scrobbledMessage () {
+    notificationSuccessMessage () {
       return this.$t(
         'notifications.scrobbled',
         {
@@ -205,7 +200,7 @@ export default {
     },
     handleSaveScrobbleSuccess () {
       if (this.isPlayerWithScrobbleNotifications) {
-        this.notify()
+        this.notifySuccess()
       }
     },
     playScrobble () {
@@ -218,11 +213,6 @@ export default {
         this.trackData
       ).then(
         this.handleSaveScrobbleSuccess
-      )
-    },
-    notify () {
-      setToast(
-        this.notificationData
       )
     },
     setScrobblingEnabledTime () {

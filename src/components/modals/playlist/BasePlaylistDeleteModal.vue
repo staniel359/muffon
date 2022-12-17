@@ -17,15 +17,16 @@ import deletePlaylist from '@/helpers/actions/api/playlist/delete'
 import {
   playlists as formatProfilePlaylistsLink
 } from '@/helpers/formatters/links/profile'
-import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'BasePlaylistDeleteModal',
   components: {
     BaseDeleteModal
   },
+  mixins: [
+    notificationMixin
+  ],
   props: {
     playlistData: {
       type: Object,
@@ -44,7 +45,7 @@ export default {
     }
   },
   computed: {
-    deletedMessage () {
+    notificationSuccessMessage () {
       return this.$t(
         'notifications.deleted.playlist',
         {
@@ -97,7 +98,7 @@ export default {
         if (this.isWithRedirect) {
           this.redirect()
 
-          this.notify()
+          this.notifySuccess()
         } else {
           this.$emit(
             'success'
@@ -108,14 +109,6 @@ export default {
     redirect () {
       this.$router.push(
         this.profilePlaylistsLink
-      )
-    },
-    notify () {
-      setToast(
-        {
-          message: this.deletedMessage,
-          icon: 'green check'
-        }
       )
     },
     show () {

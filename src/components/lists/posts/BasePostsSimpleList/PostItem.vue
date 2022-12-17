@@ -76,9 +76,7 @@ import BaseSendableContentSection
   from '@/components/models/sendable/BaseSendableContentSection.vue'
 import BasePostOptionsDropdown
   from '@/components/dropdowns/post/BasePostOptionsDropdown.vue'
-import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'PostItem',
@@ -92,6 +90,9 @@ export default {
     BaseSendableContentSection,
     BasePostOptionsDropdown
   },
+  mixins: [
+    notificationMixin
+  ],
   inject: {
     findPaginationItem: {
       default: () => false
@@ -150,7 +151,7 @@ export default {
           this.profileId
       )
     },
-    updatedMessage () {
+    notificationSuccessMessage () {
       return this.$t(
         'notifications.updated.post'
       )
@@ -206,18 +207,10 @@ export default {
         }
       )
 
-      this.notify()
+      this.notifySuccess()
     },
     handleDeleted () {
       this.paginationItem.isDeleted = true
-    },
-    notify () {
-      setToast(
-        {
-          message: this.updatedMessage,
-          icon: 'green check'
-        }
-      )
     }
   }
 }

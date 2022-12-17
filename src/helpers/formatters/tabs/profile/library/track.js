@@ -61,7 +61,7 @@ export default function (
   }
 
   return {
-    icon: 'music',
+    icon: 'track',
     title,
     path: formatPath()
   }

@@ -2,15 +2,19 @@
   <BaseSegmentContainer
     class="anonymous-segment"
   >
-    <strong
+    <span
       class="main-link"
       @click="handleLinkClick"
-      v-text="anonymousText"
-    />
+    >
+      <strong
+        v-text="anonymousText"
+      />
 
-    <BaseIcon
-      icon="right arrow continue-icon"
-    />
+      <BaseIcon
+        class="continue-icon"
+        icon="arrowRight"
+      />
+    </span>
   </BaseSegmentContainer>
 </template>
 

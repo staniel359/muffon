@@ -1,31 +1,31 @@
 <template>
-  <DisconnectButton
+  <DisconnectSection
     v-if="isConnected"
     :lastfm-nickname="lastfmNickname"
     @success="handleDisconnect"
   />
-  <ConnectButton
+  <ConnectSection
     v-else-if="token"
     :token="token"
     @clear-button-click="handleTokenClearButtonClick"
   />
-  <TokenButton
+  <TokenSection
     v-else
     @token-change="handleTokenChange"
   />
 </template>
 
 <script>
-import DisconnectButton from './ConnectOption/DisconnectButton.vue'
-import ConnectButton from './ConnectOption/ConnectButton.vue'
-import TokenButton from './ConnectOption/TokenButton.vue'
+import DisconnectSection from './ConnectOption/DisconnectSection.vue'
+import ConnectSection from './ConnectOption/ConnectSection.vue'
+import TokenSection from './ConnectOption/TokenSection.vue'
 
 export default {
   name: 'ConnectOption',
   components: {
-    DisconnectButton,
-    ConnectButton,
-    TokenButton
+    DisconnectSection,
+    ConnectSection,
+    TokenSection
   },
   props: {
     isConnected: Boolean,

@@ -26,7 +26,7 @@ export function setSliderOptions (
   )
 }
 
-export function clearSliderPrevImages (
+export function clearSliderPreviousImages (
   element
 ) {
   $(

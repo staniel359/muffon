@@ -13,7 +13,7 @@ export default function () {
   } = formatPlaylistsLink()
 
   return {
-    icon: 'file audio',
+    icon: 'playlist',
     title,
     path
   }

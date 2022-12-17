@@ -16,13 +16,14 @@
       :is-link-to-library="isLinkToLibrary"
       :profile-id="profileId"
       :size="size"
+      :is-with-artists-count="isWithArtistsCount"
       @click="handleClick"
     />
 
     <BaseLabel
       v-if="isMore"
       class="basic circular"
-      icon="ellipsis horizontal"
+      icon="dotsHorizontal"
       :class="size"
       is-clickable
       @click="handleMoreClick"
@@ -60,7 +61,8 @@ export default {
     isWithIcon: Boolean,
     isMore: Boolean,
     isLinkToLibrary: Boolean,
-    profileId: String
+    profileId: String,
+    isWithArtistsCount: Boolean
   },
   emits: [
     'linkClick',

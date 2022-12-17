@@ -36,11 +36,11 @@
       />
 
       <div
-        v-if="counter"
+        v-if="isWithArtistsCount && counter"
         class="detail"
       >
         <BaseIcon
-          icon="microphone alternate"
+          icon="artist"
         />
 
         <span
@@ -77,6 +77,7 @@ export default {
     isLoading: Boolean,
     link: Object,
     isClickable: Boolean,
+    isWithArtistsCount: Boolean,
     counter: Number
   },
   emits: [

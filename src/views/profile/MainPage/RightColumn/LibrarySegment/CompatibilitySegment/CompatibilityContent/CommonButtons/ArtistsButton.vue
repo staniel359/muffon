@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     class="basic circular compact main-compatibility-common-button"
-    icon="microphone alternate"
+    icon="artist"
     :class="{
       disabled: isDisabled
     }"

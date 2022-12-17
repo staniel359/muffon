@@ -13,7 +13,7 @@ export default function () {
   } = formatMultitagLink()
 
   return {
-    icon: 'tags',
+    icon: 'multitag',
     title,
     path
   }

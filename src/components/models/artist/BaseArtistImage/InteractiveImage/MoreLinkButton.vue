@@ -1,7 +1,7 @@
 <template>
   <BaseLabel
     class="basic circular large more-link-button"
-    icon="ellipsis horizontal"
+    icon="dotsHorizontal"
     :link="artistImagesLink"
   />
 </template>

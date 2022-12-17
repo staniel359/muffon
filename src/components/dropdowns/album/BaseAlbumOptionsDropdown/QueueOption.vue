@@ -1,6 +1,6 @@
 <template>
   <BaseOption
-    icon="list ul"
+    icon="queue"
     :text="queueText"
     @click="handleClick"
   />
@@ -16,21 +16,22 @@ import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
 import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
-import {
   collection as formatCollection,
   number as formatNumber
 } from '@/helpers/formatters'
 import {
   track as formatPlayerTrack
 } from '@/helpers/formatters/player/track'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'QueueOption',
   components: {
     BaseOption
   },
+  mixins: [
+    notificationMixin
+  ],
   props: {
     albumData: {
       type: Object,
@@ -66,7 +67,7 @@ export default {
         'actions.addTo.queue'
       )
     },
-    addedMessage () {
+    notificationSuccessMessage () {
       return this.$tc(
         'notifications.added.queue.tracks',
         this.tracksCount,
@@ -100,7 +101,7 @@ export default {
     handleClick () {
       this.addTracksToQueue()
 
-      this.notify()
+      this.notifySuccess()
     },
     addTracksToQueue () {
       const tracks = [
@@ -135,14 +136,6 @@ export default {
           },
           imageData: this.imageData,
           isFromSource
-        }
-      )
-    },
-    notify () {
-      setToast(
-        {
-          message: this.addedMessage,
-          icon: 'green check'
         }
       )
     }

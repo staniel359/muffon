@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="star"
+    icon="favorite"
     :text="favoritesText"
     :link="favoritesLink"
   />

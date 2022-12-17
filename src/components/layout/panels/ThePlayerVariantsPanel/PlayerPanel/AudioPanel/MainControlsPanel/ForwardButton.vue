@@ -1,7 +1,7 @@
 <template>
   <BaseQueueDirectionButtonContainer
     position="next"
-    icon="forward"
+    icon="audioNext"
   />
 </template>
 

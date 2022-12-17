@@ -12,6 +12,7 @@
         :tags="slotProps[scope]"
         :profile-id="profileId"
         is-link-to-library
+        is-with-artists-count
       />
     </template>
   </BaseProfileLibraryPaginatedSegmentContainer>

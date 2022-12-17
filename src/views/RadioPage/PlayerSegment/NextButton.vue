@@ -2,7 +2,7 @@
   <div class="next-button-container">
     <BaseButton
       class="basic circular compact"
-      icon="forward right"
+      icon="audioNext"
       :text="nextText"
       is-reverse
       @click="handleClick"

@@ -1,6 +1,6 @@
 <template>
   <BaseOption
-    icon="plus"
+    icon="add"
     :text="addText"
     :options="options"
   />
@@ -62,7 +62,7 @@ export default {
           onClick: this.showSearchModal
         },
         {
-          icon: 'user circle',
+          icon: 'account',
           text: this.$t(
             'actions.from.account'
           ),

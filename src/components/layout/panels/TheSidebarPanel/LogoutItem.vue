@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="sign out"
+    icon="logOut"
     :text="logoutText"
     @click="handleClick"
   />

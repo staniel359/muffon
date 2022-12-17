@@ -16,7 +16,7 @@
     >
       <BaseButton
         class="basic circular compact inverted"
-        icon="arrow up"
+        icon="arrowUp"
         @click="handleClick"
       />
     </BaseTransitionContainer>

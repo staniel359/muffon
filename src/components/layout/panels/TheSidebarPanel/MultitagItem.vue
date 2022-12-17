@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="tags"
+    icon="multitag"
     :text="multitagText"
     :link="multitagLink"
   />

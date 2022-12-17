@@ -92,7 +92,7 @@
       class="track-saved-icon"
     >
       <BaseIcon
-        icon="save"
+        icon="savedTrack"
       />
     </div>
 

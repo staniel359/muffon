@@ -42,7 +42,7 @@ export default function (
   }
 
   return {
-    icon: 'tv',
+    icon: 'videoChannel',
     title: formatTitle(),
     path: formatPath()
   }

@@ -49,126 +49,126 @@ export default {
           name: this.$t(
             'orders.createdDesc'
           ),
-          icon: 'calendar outline'
+          icon: 'date'
         },
         {
           id: 'createdAsc',
           name: this.$t(
             'orders.createdAsc'
           ),
-          icon: 'calendar outline'
+          icon: 'date'
         },
         {
           id: 'updatedDesc',
           name: this.$t(
             'orders.updatedDesc'
           ),
-          icon: 'edit'
+          icon: 'date'
         },
         {
           id: 'updatedAsc',
           name: this.$t(
             'orders.updatedAsc'
           ),
-          icon: 'edit'
+          icon: 'date'
         },
         {
           id: 'tracksCountDesc',
           name: this.$t(
             'orders.tracksCountDesc'
           ),
-          icon: 'music'
+          icon: 'track'
         },
         {
           id: 'tracksCountAsc',
           name: this.$t(
             'orders.tracksCountAsc'
           ),
-          icon: 'music'
+          icon: 'track'
         },
         {
           id: 'libraryArtistsCountDesc',
           name: this.$t(
             'orders.artistsCountDesc'
           ),
-          icon: 'microphone alternate'
+          icon: 'artist'
         },
         {
           id: 'libraryArtistsCountAsc',
           name: this.$t(
             'orders.artistsCountAsc'
           ),
-          icon: 'microphone alternate'
+          icon: 'artist'
         },
         {
           id: 'libraryAlbumsCountDesc',
           name: this.$t(
             'orders.albumsCountDesc'
           ),
-          icon: 'record vinyl'
+          icon: 'album'
         },
         {
           id: 'libraryAlbumsCountAsc',
           name: this.$t(
             'orders.albumsCountAsc'
           ),
-          icon: 'record vinyl'
+          icon: 'album'
         },
         {
           id: 'libraryTracksCountDesc',
           name: this.$t(
             'orders.tracksCountDesc'
           ),
-          icon: 'music'
+          icon: 'track'
         },
         {
           id: 'libraryTracksCountAsc',
           name: this.$t(
             'orders.tracksCountAsc'
           ),
-          icon: 'music'
+          icon: 'track'
         },
         {
           id: 'followersCountDesc',
           name: this.$t(
             'orders.followersCountDesc'
           ),
-          icon: 'user'
+          icon: 'follower'
         },
         {
           id: 'followersCountAsc',
           name: this.$t(
             'orders.followersCountAsc'
           ),
-          icon: 'user'
+          icon: 'follower'
         },
         {
           id: 'joinedDesc',
           name: this.$t(
             'orders.joinedDesc'
           ),
-          icon: 'plus'
+          icon: 'communityJoin'
         },
         {
           id: 'joinedAsc',
           name: this.$t(
             'orders.joinedAsc'
           ),
-          icon: 'plus'
+          icon: 'communityJoin'
         },
         {
           id: 'membersCountDesc',
           name: this.$t(
             'orders.membersCountDesc'
           ),
-          icon: 'user'
+          icon: 'member'
         },
         {
           id: 'membersCountAsc',
           name: this.$t(
             'orders.membersCountAsc'
           ),
-          icon: 'user'
+          icon: 'member'
         }
       ]
     }

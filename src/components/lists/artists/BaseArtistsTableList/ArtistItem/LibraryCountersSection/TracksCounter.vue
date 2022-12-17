@@ -5,7 +5,7 @@
   >
     <small>
       <BaseIcon
-        icon="music"
+        icon="track"
       />
 
       <span

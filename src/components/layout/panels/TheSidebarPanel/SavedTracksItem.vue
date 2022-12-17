@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="save"
+    icon="savedTrack"
     :text="savedTracksText"
     :link="savedTracksLink"
   />

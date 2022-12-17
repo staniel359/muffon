@@ -2,7 +2,7 @@
   <div class="track-section">
     <BaseIcon
       class="audio-icon"
-      icon="music"
+      icon="audio"
     />
   </div>
 </template>

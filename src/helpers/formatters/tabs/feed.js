@@ -13,7 +13,7 @@ export default function () {
   } = formatFeedLink()
 
   return {
-    icon: 'newspaper',
+    icon: 'feed',
     title,
     path
   }

@@ -1,7 +1,7 @@
 <template>
   <BaseIcon
     v-if="!isFirstSection"
-    icon="right chevron divider"
+    icon="navigationRight"
   />
 
   <BaseLink

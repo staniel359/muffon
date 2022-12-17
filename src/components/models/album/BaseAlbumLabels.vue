@@ -5,7 +5,7 @@
     <div class="ui labels">
       <BaseIcon
         class="labels-icon"
-        icon="record vinyl"
+        icon="label"
       />
 
       <BaseLabel

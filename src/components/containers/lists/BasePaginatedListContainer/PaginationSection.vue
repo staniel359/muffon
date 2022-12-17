@@ -6,8 +6,8 @@
       class="small main-pagination"
     >
       <PreviousPageItem
-        :is-disabled="isPrevPageDisabled"
-        @click="handlePrevPageClick"
+        :is-disabled="isPreviousPageDisabled"
+        @click="handlePreviousPageClick"
       />
 
       <template
@@ -59,11 +59,11 @@ export default {
   },
   emits: [
     'pageClick',
-    'prevPageClick',
+    'previousPageClick',
     'nextPageClick'
   ],
   computed: {
-    isPrevPageDisabled () {
+    isPreviousPageDisabled () {
       return (
         this.isDisabled ||
           this.isFirstPage
@@ -91,9 +91,9 @@ export default {
         value
       )
     },
-    handlePrevPageClick () {
+    handlePreviousPageClick () {
       this.$emit(
-        'prevPageClick'
+        'previousPageClick'
       )
     },
     handleNextPageClick () {

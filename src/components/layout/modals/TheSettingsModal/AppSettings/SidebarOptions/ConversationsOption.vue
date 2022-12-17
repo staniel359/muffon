@@ -1,7 +1,7 @@
 <template>
   <div class="option">
     <BaseIcon
-      icon="comments"
+      icon="conversation"
     />
 
     <BaseHeader

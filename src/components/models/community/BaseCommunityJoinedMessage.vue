@@ -6,7 +6,8 @@
   >
     <div class="main-joined-message">
       <BaseIcon
-        icon="green left arrow"
+        class="green"
+        icon="communityJoined"
       />
 
       <div

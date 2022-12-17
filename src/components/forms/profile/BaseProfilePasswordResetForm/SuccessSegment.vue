@@ -2,9 +2,7 @@
   <BaseSegmentContainer>
     <BaseMessage
       class="success"
-      :icons="[
-        'check'
-      ]"
+      icon="success"
       :header="passwordUpdatedHeaderText"
       :content="passwordUpdatedContentText"
     />

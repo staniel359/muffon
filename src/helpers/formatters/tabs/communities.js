@@ -13,7 +13,7 @@ export default function () {
   } = formatCommunitiesLink()
 
   return {
-    icon: 'users',
+    icon: 'community',
     title,
     path
   }

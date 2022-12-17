@@ -16,13 +16,13 @@ export default function (
   function formatIcon () {
     switch (scope) {
       case 'posts':
-        return 'edit'
+        return 'post'
       case 'playlists':
-        return 'file audio'
+        return 'playlist'
       case 'communities':
-        return 'users'
+        return 'community'
       default:
-        return 'user'
+        return 'profile'
     }
   }
 

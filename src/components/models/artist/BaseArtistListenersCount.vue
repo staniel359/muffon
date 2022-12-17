@@ -8,7 +8,7 @@
   >
     <small>
       <BaseIcon
-        icon="user"
+        icon="listener"
       />
 
       <span

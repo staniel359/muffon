@@ -13,7 +13,7 @@ export default function () {
   } = formatSavedTracksLink()
 
   return {
-    icon: 'save',
+    icon: 'savedTrack',
     title,
     path
   }

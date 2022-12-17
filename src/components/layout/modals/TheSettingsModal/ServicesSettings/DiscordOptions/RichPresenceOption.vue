@@ -14,10 +14,8 @@
 
   <BaseMessage
     class="client-message"
+    icon="infoCircle"
     :content="messageText"
-    :icons="[
-      'info circle'
-    ]"
   />
 </template>
 

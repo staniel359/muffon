@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     class="small circular compact"
-    icon="random"
+    icon="audioShuffle"
     :class="{
       basic: !isQueueShuffle
     }"

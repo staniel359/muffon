@@ -13,7 +13,7 @@ export default function () {
   } = formatRecommendationsLink()
 
   return {
-    icon: 'volume up',
+    icon: 'recommendation',
     title,
     path
   }

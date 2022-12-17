@@ -7,6 +7,9 @@
     @click="handleClick"
   >
     <BaseIcon
+      :class="{
+        red: isRed || isError
+      }"
       :icon="icon"
       :is-loading="isLoading"
       :is-error="isError"
@@ -56,7 +59,8 @@ export default {
     icon: String,
     isLoading: Boolean,
     isError: Boolean,
-    options: Array
+    options: Array,
+    isRed: Boolean
   },
   emits: [
     'click'

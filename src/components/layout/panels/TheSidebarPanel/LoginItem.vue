@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="sign in"
+    icon="logIn"
     :text="loginText"
     @click="handleClick"
   />

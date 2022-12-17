@@ -1,7 +1,7 @@
 <template>
   <BaseQueueDirectionButtonContainer
-    position="prev"
-    icon="backward"
+    position="previous"
+    icon="audioPrevious"
   />
 </template>
 

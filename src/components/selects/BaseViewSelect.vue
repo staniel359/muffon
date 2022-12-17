@@ -36,15 +36,15 @@ export default {
       options: [
         {
           id: 'simple',
-          icon: 'ul list'
+          icon: 'listSimple'
         },
         {
           id: 'table',
-          icon: 'th'
+          icon: 'listTable'
         },
         {
           id: 'extended',
-          icon: 'th list'
+          icon: 'listExtended'
         }
       ],
       viewsData: {

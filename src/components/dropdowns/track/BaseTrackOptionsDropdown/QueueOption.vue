@@ -1,6 +1,6 @@
 <template>
   <BaseOption
-    icon="list ul"
+    icon="queue"
     :text="queueText"
     @click="handleClick"
   />
@@ -16,17 +16,18 @@ import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
 import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
-import {
   generateKey
 } from '@/helpers/utils'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'QueueOption',
   components: {
     BaseOption
   },
+  mixins: [
+    notificationMixin
+  ],
   props: {
     trackData: {
       type: Object,
@@ -46,7 +47,7 @@ export default {
         'actions.addTo.queue'
       )
     },
-    addedMessage () {
+    notificationSuccessMessage () {
       return this.$t(
         'notifications.added.queue.track',
         {
@@ -76,7 +77,7 @@ export default {
     handleClick () {
       this.addToQueue()
 
-      this.notify()
+      this.notifySuccess()
     },
     addToQueue () {
       const trackDataFormatted = {
@@ -98,14 +99,6 @@ export default {
         {
           'queue.tracks': tracks,
           'queue.tracksShuffled': tracksShuffled
-        }
-      )
-    },
-    notify () {
-      setToast(
-        {
-          message: this.addedMessage,
-          icon: 'green check'
         }
       )
     }

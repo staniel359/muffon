@@ -14,9 +14,9 @@ export default function (
   function formatIcon () {
     switch (scope) {
       case 'posts':
-        return 'edit'
+        return 'post'
       default:
-        return 'users'
+        return 'community'
     }
   }
 

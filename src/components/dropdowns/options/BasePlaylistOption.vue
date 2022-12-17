@@ -1,6 +1,6 @@
 <template>
   <BaseOption
-    icon="file audio"
+    icon="playlist"
     :text="addText"
     @click="handleClick"
   />

@@ -1,9 +1,7 @@
 <template>
   <BaseMessage
     class="success"
-    :icons="[
-      'check'
-    ]"
+    icon="success"
     :header="successText"
   />
 </template>

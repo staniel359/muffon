@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="broadcast tower"
+    icon="radio"
     :text="radioText"
     :link="radioLink"
   />

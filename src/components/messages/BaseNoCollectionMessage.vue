@@ -1,6 +1,6 @@
 <template>
   <BaseMessage
-    :icons="icons"
+    icon="noCollection"
     :header="header"
     :content="content"
   />
@@ -22,13 +22,6 @@ export default {
     scope: {
       type: String,
       required: true
-    }
-  },
-  data () {
-    return {
-      icons: [
-        'question'
-      ]
     }
   },
   computed: {

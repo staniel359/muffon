@@ -2,7 +2,7 @@
   <BaseButton
     ref="button"
     class="small basic circular add-button"
-    icon="smile outline"
+    icon="emoji"
   />
 
   <BaseEmojiPopup

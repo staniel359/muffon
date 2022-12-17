@@ -5,7 +5,7 @@
       @click="handleBackLinkClick"
     >
       <BaseIcon
-        icon="arrow left"
+        icon="arrowLeft"
       />
 
       {{ backText }}

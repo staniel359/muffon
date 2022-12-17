@@ -1,6 +1,14 @@
 <template>
   <i
-    :class="iconConditional"
+    :class="[
+      {
+        flag: isFlag,
+        icon: !isFlag
+      },
+      iconConditional
+    ]"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
     @click="handleClick"
   >
     <div
@@ -11,31 +19,49 @@
 </template>
 
 <script>
+import icons from '@/helpers/data/icons'
+
 export default {
   name: 'BaseIcon',
   props: {
+    isFlag: Boolean,
     isLoading: Boolean,
     isError: Boolean,
-    icon: String,
-    isFlag: Boolean
+    icon: String
   },
   emits: [
+    'activeChange',
     'click'
   ],
   computed: {
     iconConditional () {
-      if (this.isFlag) {
-        return `${this.icon} flag`
-      } else if (this.isLoading) {
-        return 'icon'
+      if (this.isLoading) {
+        return null
       } else if (this.isError) {
-        return 'close icon'
+        return icons.error
       } else {
-        return `${this.icon} icon`
+        return this.iconFormatted
       }
+    },
+    iconFormatted () {
+      return icons[
+        this.icon
+      ] || this.icon
     }
   },
   methods: {
+    handleMouseEnter () {
+      this.$emit(
+        'activeChange',
+        true
+      )
+    },
+    handleMouseLeave () {
+      this.$emit(
+        'activeChange',
+        false
+      )
+    },
     handleClick () {
       this.$emit(
         'click'

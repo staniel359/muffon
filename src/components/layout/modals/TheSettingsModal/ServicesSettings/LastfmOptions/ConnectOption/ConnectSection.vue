@@ -42,7 +42,7 @@ import {
 } from '@/helpers/actions/store'
 
 export default {
-  name: 'ConnectButton',
+  name: 'ConnectSection',
   components: {
     BaseErrorMessage,
     BaseButton,

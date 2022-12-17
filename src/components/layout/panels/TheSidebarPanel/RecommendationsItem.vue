@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="volume up"
+    icon="recommendation"
     :text="recommendationsText"
     :link="recommendationsLink"
   />

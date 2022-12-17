@@ -9,7 +9,8 @@
       class="main-following-message"
     >
       <BaseIcon
-        icon="green left arrow"
+        class="green"
+        icon="profileFollowing"
       />
 
       <div
@@ -22,7 +23,8 @@
       class="main-following-message"
     >
       <BaseIcon
-        icon="green right arrow"
+        class="green"
+        icon="profileFollowed"
       />
 
       <div

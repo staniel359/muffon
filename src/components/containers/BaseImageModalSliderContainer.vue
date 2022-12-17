@@ -14,7 +14,7 @@
 <script>
 import {
   setSlider,
-  clearSliderPrevImages,
+  clearSliderPreviousImages,
   refreshSlider,
   setSliderOptions
 } from '@/helpers/actions/plugins/slick'
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     async handleImagesChange () {
-      clearSliderPrevImages(
+      clearSliderPreviousImages(
         this.$refs.slider
       )
 

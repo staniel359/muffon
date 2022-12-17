@@ -1,6 +1,6 @@
 <template>
   <BaseOption
-    icon="plus"
+    icon="add"
     :text="addText"
     :options="options"
   />
@@ -49,7 +49,7 @@ export default {
           onClick: this.showSearchModal
         },
         {
-          icon: 'headphones',
+          icon: 'library',
           text: this.$t(
             'actions.from.library'
           ),

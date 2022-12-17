@@ -32,14 +32,14 @@ export default {
   data () {
     return {
       icons: {
-        listeners: 'user',
-        plays: 'music',
-        taggers: 'user',
-        taggings: 'tags',
-        likes: 'thumbs up outline',
-        subscribers: 'user',
-        views: 'eye outline',
-        videos: 'film'
+        listeners: 'listener',
+        plays: 'play',
+        taggers: 'tagger',
+        taggings: 'tagging',
+        likes: 'like',
+        subscribers: 'subscriber',
+        views: 'watch',
+        videos: 'video'
       }
     }
   },

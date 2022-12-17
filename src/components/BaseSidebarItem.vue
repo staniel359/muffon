@@ -11,7 +11,8 @@
   >
     <div class="icon-container">
       <BaseIcon
-        :icon="`grey ${icon}`"
+        class="grey"
+        :icon="icon"
       />
     </div>
 

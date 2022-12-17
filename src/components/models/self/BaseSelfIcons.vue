@@ -2,26 +2,26 @@
   <div class="main-self-icons">
     <BaseIcon
       v-if="isRenderLibraryIcon"
-      class="main-simple-self-icon"
-      icon="primary headphones"
+      class="primary main-simple-self-icon"
+      icon="library"
     />
 
     <BaseIcon
       v-if="isRenderFavoriteIcon"
-      class="main-simple-self-icon"
-      icon="primary star"
+      class="primary main-simple-self-icon"
+      icon="favorite"
     />
 
     <BaseIcon
       v-if="isRenderBookmarkIcon"
-      class="main-simple-self-icon"
-      icon="primary bookmark"
+      class="primary main-simple-self-icon"
+      icon="bookmark"
     />
 
     <BaseIcon
       v-if="listenedId"
-      class="main-simple-self-icon"
-      icon="primary check"
+      class="primary main-simple-self-icon"
+      icon="listened"
     />
   </div>
 </template>

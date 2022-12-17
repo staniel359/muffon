@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="cog"
+    icon="settings"
     :text="settingsText"
     @click="handleClick"
   />

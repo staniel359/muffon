@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="arrow alternate circle up"
+    icon="top"
     :text="topText"
     :link="topLink"
   />

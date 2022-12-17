@@ -1,7 +1,7 @@
 <template>
   <div class="option">
     <BaseIcon
-      icon="volume up"
+      icon="recommendation"
     />
 
     <BaseHeader

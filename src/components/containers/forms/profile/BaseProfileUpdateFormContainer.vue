@@ -22,15 +22,16 @@ import updateProfile from '@/helpers/actions/api/profile/update'
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
-import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'BaseProfileUpdateFormContainer',
   components: {
     BaseFormContainer
   },
+  mixins: [
+    notificationMixin
+  ],
   props: {
     image: Object
   },
@@ -56,7 +57,7 @@ export default {
         }
       )
     },
-    updatedMessage () {
+    notificationSuccessMessage () {
       return this.$t(
         'notifications.updated.profile'
       )
@@ -92,7 +93,7 @@ export default {
           }
         )
 
-        this.notify()
+        this.notifySuccess()
       }
     },
     formatUpdateArgs (
@@ -134,14 +135,6 @@ export default {
         isPrivate:
           fields.private
       }
-    },
-    notify () {
-      setToast(
-        {
-          message: this.updatedMessage,
-          icon: 'green check'
-        }
-      )
     }
   }
 }

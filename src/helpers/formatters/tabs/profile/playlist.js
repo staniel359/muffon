@@ -37,7 +37,7 @@ export default function (
   )
 
   return {
-    icon: 'file audio',
+    icon: 'playlist',
     title,
     path
   }

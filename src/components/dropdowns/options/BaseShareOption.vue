@@ -12,17 +12,18 @@ import {
 } from 'crypto-js'
 import BaseOption from './BaseOption.vue'
 import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
-import {
   shareEncryptionKey
 } from '@/helpers/utils'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'BaseShareOption',
   components: {
     BaseOption
   },
+  mixins: [
+    notificationMixin
+  ],
   props: {
     shareData: {
       type: Object,
@@ -55,7 +56,7 @@ export default {
         this.shareData
       )
     },
-    copiedMessage () {
+    notificationSuccessMessage () {
       return this.$t(
         'notifications.copied'
       )
@@ -65,7 +66,7 @@ export default {
     handleClick () {
       this.copyToClipboard()
 
-      this.notify()
+      this.notifySuccess()
     },
     copyToClipboard () {
       navigator
@@ -73,14 +74,6 @@ export default {
         .writeText(
           this.shareDataFormatted
         )
-    },
-    notify () {
-      setToast(
-        {
-          message: this.copiedMessage,
-          icon: 'green check'
-        }
-      )
     }
   }
 }

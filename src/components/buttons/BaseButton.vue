@@ -19,6 +19,7 @@
 
     <BaseIcon
       v-if="icon && isReverse"
+      class="right"
       :icon="icon"
     />
   </div>

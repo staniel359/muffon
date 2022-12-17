@@ -25,6 +25,7 @@
 
   <div class="icon-container">
     <BaseIcon
+      :class="iconClass"
       :is-loading="isLoading"
       :icon="icon"
     />
@@ -88,9 +89,18 @@ export default {
     },
     icon () {
       if (this.isSuccess) {
-        return 'green check'
+        return 'success'
       } else if (this.isError) {
-        return 'red close'
+        return 'error'
+      } else {
+        return null
+      }
+    },
+    iconClass () {
+      if (this.isSuccess) {
+        return 'green'
+      } else if (this.isError) {
+        return 'red'
       } else {
         return null
       }

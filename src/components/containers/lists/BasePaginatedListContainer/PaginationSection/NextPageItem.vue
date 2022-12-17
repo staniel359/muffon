@@ -8,7 +8,7 @@
   >
     <BaseIcon
       class="direction-icon"
-      icon="chevron right"
+      icon="directionRight"
     />
   </a>
 </template>

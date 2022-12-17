@@ -61,7 +61,7 @@ export default function (
   }
 
   return {
-    icon: 'headphones',
+    icon: 'library',
     title: formatTitle(),
     path: formatPath()
   }

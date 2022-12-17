@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="file audio"
+    icon="playlist"
     :text="playlistsText"
     :link="playlistsLink"
   />

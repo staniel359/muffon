@@ -46,7 +46,7 @@
       :is-first-page="isFirstPage"
       :is-last-page="isLastPage"
       @page-click="handlePageClick"
-      @prev-page-click="handlePrevPageClick"
+      @previous-page-click="handlePreviousPageClick"
       @next-page-click="handleNextPageClick"
     />
   </div>
@@ -147,13 +147,13 @@ export default {
       return (
         this.clientTotalPagesCount > 1 ||
           this.responseNextPage ||
-            this.responsePrevPage
+            this.responsePreviousPage
       )
     },
     responseNextPage () {
       return this.responseData?.next_page
     },
-    responsePrevPage () {
+    responsePreviousPage () {
       return this.responseData?.prev_page
     },
     isResponsePagePageable () {
@@ -219,12 +219,12 @@ export default {
         collection.length > 0;
         page++
       ) {
-        const prevPageRemainder =
+        const previousPageRemainder =
           newCollection.length ? 0 : this.pageRemainder
 
         const pageDataLength = (
           this.clientPageLimitComputed -
-            prevPageRemainder
+            previousPageRemainder
         )
 
         const pageData =
@@ -372,7 +372,7 @@ export default {
     },
     backwardPage () {
       if (this.isPaginationSimple) {
-        return this.responsePrevPage
+        return this.responsePreviousPage
       } else {
         return (
           this.backwardPageOffset /
@@ -493,8 +493,8 @@ export default {
         this.getNextPageData()
       }
     },
-    handlePrevPageClick () {
-      this.goToPrevPage()
+    handlePreviousPageClick () {
+      this.goToPreviousPage()
     },
     handlePageClick (
       value
@@ -644,7 +644,7 @@ export default {
 
       this.key = generateKey()
     },
-    goToPrevPage () {
+    goToPreviousPage () {
       this.setClientPage(
         this.clientPage - 1
       )

@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     class="tiny circular compact"
-    icon="redo alternate"
+    icon="audioLoop"
     :class="{
       basic: !isAudioLoop
     }"

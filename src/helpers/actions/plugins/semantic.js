@@ -1,4 +1,5 @@
 import layoutStore from '@/stores/layout'
+import icons from '@/helpers/data/icons'
 
 // Dimmer
 
@@ -418,7 +419,7 @@ export function setProgressValue (
 export function setToast (
   {
     message,
-    icon
+    status
   }
 ) {
   const {
@@ -429,6 +430,18 @@ export function setToast (
   const className = isDarkMode
     ? 'inverted'
     : ''
+
+  const successIcon =
+    `green ${icons.success}`
+
+  const statusIcons = {
+    success: successIcon
+  }
+
+  const icon =
+    statusIcons[
+      status
+    ]
 
   $(
     'body'

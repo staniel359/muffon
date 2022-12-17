@@ -27,22 +27,26 @@
       <div class="main-content-section">
         <BaseIcon
           v-if="isWithImages"
-          icon="grey image"
+          class="grey"
+          icon="image"
         />
 
         <BaseIcon
           v-if="isWithArtists"
-          icon="grey microphone alternate"
+          class="grey"
+          icon="artist"
         />
 
         <BaseIcon
           v-if="isWithAlbums"
-          icon="grey record vinyl"
+          class="grey"
+          icon="album"
         />
 
         <BaseIcon
           v-if="isWithTracks"
-          icon="grey music"
+          class="grey"
+          icon="track"
         />
       </div>
     </div>

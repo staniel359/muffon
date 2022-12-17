@@ -11,7 +11,7 @@
 
     <BaseButton
       class="mini basic circular compact"
-      icon="plus"
+      icon="add"
       @click="handleAddTabButtonClick"
     />
   </BaseMenuContainer>

@@ -38,7 +38,7 @@ export default {
     ...mapState(
       queueStore,
       {
-        isQueueGettingPrev: 'isGettingPrev',
+        isQueueGettingPrevious: 'isGettingPrevious',
         isQueueGettingNext: 'isGettingNext',
         queueTracksCount: 'tracksCount',
         isQueueStart: 'isStart',
@@ -54,7 +54,7 @@ export default {
     },
     isEdge () {
       switch (this.position) {
-        case 'prev':
+        case 'previous':
           return this.isQueueStart
         case 'next':
           return this.isQueueEnd
@@ -64,8 +64,8 @@ export default {
     },
     isGetting () {
       switch (this.position) {
-        case 'prev':
-          return this.isQueueGettingPrev
+        case 'previous':
+          return this.isQueueGettingPrevious
         case 'next':
           return this.isQueueGettingNext
         default:

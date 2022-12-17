@@ -22,20 +22,19 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      directionIcons: {
+        back: 'arrowLeft',
+        forward: 'arrowRight'
+      }
+    }
+  },
   computed: {
     icon () {
-      return `arrow ${this.iconDirection}`
-    },
-    iconDirection () {
-      return this.actionDirections[
+      return this.directionIcons[
         this.direction
       ]
-    },
-    actionDirections () {
-      return {
-        back: 'left',
-        forward: 'right'
-      }
     }
   },
   methods: {

@@ -47,17 +47,14 @@ export default {
       return volumePopupOptions()
     },
     icon () {
-      return `volume ${this.volumeIcon}`
-    },
-    volumeIcon () {
       if (this.isAudioMuted) {
-        return 'mute'
+        return 'volumeMute'
       } else if (this.isVolumeOff) {
-        return 'off'
+        return 'volumeOff'
       } else if (this.isVolumeLow) {
-        return 'down'
+        return 'volumeDown'
       } else {
-        return 'up'
+        return 'volumeUp'
       }
     },
     isVolumeOff () {

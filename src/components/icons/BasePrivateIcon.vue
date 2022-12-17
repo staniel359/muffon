@@ -1,7 +1,7 @@
 <template>
   <BaseIcon
     class="small grey main-private-icon"
-    icon="lock"
+    icon="private"
   />
 </template>
 

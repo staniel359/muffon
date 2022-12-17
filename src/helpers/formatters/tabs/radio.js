@@ -13,7 +13,7 @@ export default function () {
   } = formatRadioLink()
 
   return {
-    icon: 'broadcast tower',
+    icon: 'radio',
     title,
     path
   }

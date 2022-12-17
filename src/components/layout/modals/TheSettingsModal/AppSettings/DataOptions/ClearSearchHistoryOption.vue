@@ -3,7 +3,7 @@
     <div class="option-header">
       <BaseButton
         class="red circular option-button"
-        icon="trash alternate outline"
+        icon="delete"
         :class="{
           loading: isLoading,
           disabled: isLoading
@@ -19,7 +19,8 @@
       class="option-text"
     >
       <BaseIcon
-        icon="green check"
+        class="green"
+        icon="success"
       />
 
       <span

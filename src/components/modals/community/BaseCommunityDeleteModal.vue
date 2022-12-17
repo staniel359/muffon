@@ -16,15 +16,16 @@ import deleteCommunity from '@/helpers/actions/api/community/delete'
 import {
   communities as formatCommunitiesLink
 } from '@/helpers/formatters/links'
-import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'BaseCommunityDeleteModal',
   components: {
     BaseDeleteModal
   },
+  mixins: [
+    notificationMixin
+  ],
   props: {
     communityData: {
       type: Object,
@@ -39,7 +40,7 @@ export default {
     }
   },
   computed: {
-    deletedMessage () {
+    notificationSuccessMessage () {
       return this.$t(
         'notifications.deleted.community',
         {
@@ -84,20 +85,12 @@ export default {
 
         this.redirect()
 
-        this.notify()
+        this.notifySuccess()
       }
     },
     redirect () {
       this.$router.push(
         this.communitiesLink
-      )
-    },
-    notify () {
-      setToast(
-        {
-          message: this.deletedMessage,
-          icon: 'green check'
-        }
       )
     },
     show () {

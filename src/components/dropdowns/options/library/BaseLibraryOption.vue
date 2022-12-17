@@ -1,7 +1,7 @@
 <template>
   <Component
     :is="component"
-    icon="headphones"
+    icon="library"
     :text="actionText"
     :is-loading="isLoading"
     :link="link"

@@ -33,16 +33,16 @@ export default {
       return this.$t(
         'player.variants',
         {
-          count:
-            this.playerVariantsCount
+          count: this.playerVariantsCount
         }
       )
     },
     icon () {
-      return `chevron ${this.iconDirection}`
-    },
-    iconDirection () {
-      return this.isPanelVisible ? 'down' : 'up'
+      if (this.isPanelVisible) {
+        return 'directionDown'
+      } else {
+        return 'directionUp'
+      }
     }
   }
 }

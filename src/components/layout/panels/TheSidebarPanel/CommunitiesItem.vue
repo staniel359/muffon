@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="users"
+    icon="community"
     :text="communitiesText"
     :link="communitiesLink"
   />

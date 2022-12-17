@@ -40,7 +40,7 @@ export default function (
   }
 
   return {
-    icon: 'arrow alternate circle up',
+    icon: 'top',
     title: formatTitle(),
     path: formatPath()
   }

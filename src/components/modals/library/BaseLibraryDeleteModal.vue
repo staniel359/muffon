@@ -17,15 +17,16 @@ import deleteLibraryModel from '@/helpers/actions/api/library/model/delete'
 import {
   main as formatProfileLibraryMainLink
 } from '@/helpers/formatters/links/profile/library'
-import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'BaseLibraryDeleteModal',
   components: {
     BaseDeleteModal
   },
+  mixins: [
+    notificationMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -56,7 +57,7 @@ export default {
     }
   },
   computed: {
-    deletedMessage () {
+    notificationSuccessMessage () {
       return this.$t(
         'notifications.deleted.library',
         {
@@ -106,7 +107,7 @@ export default {
         if (this.isWithRedirect) {
           this.redirect()
 
-          this.notify()
+          this.notifySuccess()
         } else {
           this.$emit(
             'success'
@@ -117,14 +118,6 @@ export default {
     redirect () {
       this.$router.push(
         this.profileLibraryMainLink
-      )
-    },
-    notify () {
-      setToast(
-        {
-          message: this.deletedMessage,
-          icon: 'green check'
-        }
       )
     },
     show () {

@@ -6,7 +6,7 @@
   >
     <BaseIcon
       v-if="isWithIcon"
-      icon="check"
+      icon="submit"
     />
 
     {{ actionText }}

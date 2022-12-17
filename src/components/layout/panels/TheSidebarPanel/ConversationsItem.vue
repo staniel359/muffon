@@ -1,6 +1,6 @@
 <template>
   <BaseSidebarItem
-    icon="comments"
+    icon="conversation"
     :text="conversationsText"
     :link="conversationsLink"
   />

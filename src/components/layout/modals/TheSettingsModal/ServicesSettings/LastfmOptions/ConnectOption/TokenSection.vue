@@ -31,7 +31,7 @@ import BaseButton from '@/components/buttons/BaseButton.vue'
 import getLastfmToken from '@/helpers/actions/api/lastfm/connect/token/get'
 
 export default {
-  name: 'TokenButton',
+  name: 'TokenSection',
   components: {
     BaseErrorMessage,
     BaseButton

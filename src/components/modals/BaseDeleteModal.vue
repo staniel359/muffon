@@ -31,7 +31,7 @@
 
       <BaseButton
         class="red circular"
-        icon="trash alternate outline"
+        icon="delete"
         :text="deleteText"
         :class="{
           loading: isLoading

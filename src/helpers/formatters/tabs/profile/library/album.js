@@ -71,7 +71,7 @@ export default function (
   }
 
   return {
-    icon: 'record vinyl',
+    icon: 'album',
     title,
     path: formatPath()
   }

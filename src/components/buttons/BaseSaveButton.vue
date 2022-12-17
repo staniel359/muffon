@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     class="primary circular fluid main-save-button"
-    icon="check"
+    icon="save"
     :text="saveText"
     :is-invertable="false"
     @click="handleClick"

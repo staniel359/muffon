@@ -1,7 +1,7 @@
 <template>
   <div class="option">
     <BaseIcon
-      icon="file audio"
+      icon="playlist"
     />
 
     <BaseHeader

@@ -61,7 +61,7 @@ export default function (
   }
 
   return {
-    icon: 'star',
+    icon: 'favorite',
     title: formatTitle(),
     path: formatPath()
   }
