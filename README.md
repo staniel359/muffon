@@ -28,10 +28,10 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - <img src="https://vk.com/images/icons/favicons/fav_logo.ico" height="16"> **VK**
 - <img src="https://ok.ru/favicon.ico" height="16"> **Odnoklassniki**
 - <img src="https://music.yandex.ru/favicon16.png" height="16"> **Yandex Music**
+- <img src="https://open.spotifycdn.com/cdn/images/favicon16.c498a969.png" height="16"> **Spotify**
 - <img src="https://s4.bcbits.com/img/favicon/favicon-16x16.png" height="16"> **Bandcamp**
 - <img src="https://e-cdn-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.526cde4edf20647be4ee32cdf35c1c13.png" height="16"> **Deezer**
 - <img src="https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico" height="16"> **SoundCloud**
-- <img src="https://open.spotifycdn.com/cdn/images/favicon16.c498a969.png" height="16"> **Spotify**
 - <img src="https://www.youtube.com/s/desktop/271dfaff/img/favicon.ico" height="16"> **YouTube**
 - <img src="https://st.discogs.com/94414fa553c3f284a04c3da67024dd6574b8ab6f/images/favicon.ico" height="16"> **Discogs**
 - <img src="https://assets.genius.com/images/apple-touch-icon.png" height="16"> **Genius**
@@ -49,7 +49,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **search** (through all of the sources above)
 - **radio** (tags / artists / top)
 - **scrobbling** (Last.FM)
-- **Rich Presence** (Discord)
+- **Discord Rich Presence**
 - **videos** (with related / channels / playlists) (YouTube)
 - **lyrics** (with annotations) (Genius)
 - **tags** (with top artists / albums / tracks)
