@@ -59,14 +59,8 @@ export default {
     }
   },
   watch: {
-    isPageLoading: {
-      immediate: true,
-      handler: 'handleIsPageLoadingChange'
-    },
-    isPageError: {
-      immediate: true,
-      handler: 'handleIsPageErrorChange'
-    }
+    isPageLoading: 'handleIsPageLoadingChange',
+    isPageError: 'handleIsPageErrorChange'
   },
   mounted () {
     this.scrollToTop()

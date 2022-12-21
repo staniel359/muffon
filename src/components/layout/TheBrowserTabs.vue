@@ -26,8 +26,12 @@ import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import BrowserTab from './TheBrowserTabs/BrowserTab.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
-  generateKey
+  generateKey,
+  isObjectChanged
 } from '@/helpers/utils'
+import {
+  home as formatHomeLink
+} from '@/helpers/formatters/links'
 
 export default {
   name: 'TheBrowserTabs',
@@ -95,17 +99,24 @@ export default {
   },
   methods: {
     handleTabsChange (
-      value
+      value,
+      oldValue
     ) {
       if (!value.length) {
         this.addNewTab()
       }
 
-      electronStore.set(
-        {
-          'layout.tabs': value
-        }
-      )
+      const isChanged =
+        isObjectChanged(
+          value,
+          oldValue
+        )
+
+      if (isChanged) {
+        this.setElectronStoreTabs(
+          value
+        )
+      }
     },
     handleAddTabButtonClick () {
       this.addNewTab()
@@ -125,10 +136,8 @@ export default {
     ) {
       this.activeTabId = tabId
 
-      electronStore.set(
-        {
-          'layout.activeTabId': tabId
-        }
+      this.setElectronStoreActiveTabId(
+        tabId
       )
     },
     handleRemoveTab (
@@ -138,33 +147,56 @@ export default {
       function isMatchedTab (
         tabData
       ) {
-        return tabData.uuid !== tabId
+        return (
+          tabData.uuid !== tabId
+        )
       }
 
-      this.tabs =
+      const tabs =
         this.tabs.filter(
           isMatchedTab
         )
+
+      this.tabs = [
+        ...tabs
+      ]
     },
     handleUpdateTab (
       _,
       {
         tabId,
-        data = {},
-        isLoading,
-        isError
+        data
       }
     ) {
+      function formatTabData (
+        tabData
+      ) {
+        return {
+          ...tabData
+        }
+      }
+
+      const tabs =
+        this.tabs.map(
+          formatTabData
+        )
+
       function isMatchedTab (
         tabData
       ) {
-        return tabData.uuid === tabId
+        return (
+          tabData.uuid === tabId
+        )
       }
 
       const tab =
-        this.tabs.find(
+        tabs.find(
           isMatchedTab
         )
+
+      const isUpdateTab = (
+        tab && data
+      )
 
       function updateTabKeyValue (
         [
@@ -175,20 +207,22 @@ export default {
         tab[key] = value
       }
 
-      if (tab) {
-        Object.entries(
-          data
-        ).forEach(
+      function updateTab () {
+        const keysValues =
+          Object.entries(
+            data
+          )
+
+        keysValues.forEach(
           updateTabKeyValue
         )
-
-        tab.isLoading = isLoading
-        tab.isError = isError
       }
 
-      this.tabs = [
-        ...this.tabs
-      ]
+      if (isUpdateTab) {
+        updateTab()
+
+        this.tabs = tabs
+      }
     },
     clearTabs () {
       ipcRenderer.send(
@@ -196,16 +230,17 @@ export default {
       )
     },
     addTabsFromElectronStore () {
-      this.electronStoreTabs.forEach(
-        this.addTab
-      )
+      this.electronStoreTabs
+        .forEach(
+          this.addTab
+        )
     },
     addTab (
-      tabData
+      value
     ) {
       ipcRenderer.send(
         'add-tab',
-        tabData
+        value
       )
     },
     setActiveTab () {
@@ -215,23 +250,43 @@ export default {
       )
     },
     addNewTab () {
-      const tab = this.getNewTabData()
+      const uuid = generateKey()
+
+      const {
+        path
+      } = formatHomeLink()
+
+      const tabData = {
+        uuid,
+        path
+      }
 
       this.addTab(
-        tab
+        tabData
       )
 
       ipcRenderer.send(
         'set-active-tab',
-        tab.uuid
+        uuid
       )
     },
-    getNewTabData () {
-      return {
-        uuid: generateKey(),
-        path: 'home',
-        isLoading: true
-      }
+    setElectronStoreTabs (
+      value
+    ) {
+      electronStore.set(
+        {
+          'layout.tabs': value
+        }
+      )
+    },
+    setElectronStoreActiveTabId (
+      value
+    ) {
+      electronStore.set(
+        {
+          'layout.activeTabId': value
+        }
+      )
     }
   }
 }

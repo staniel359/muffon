@@ -57,6 +57,12 @@ export default {
     },
     activeTabId: String
   },
+  data () {
+    return {
+      isLoading: true,
+      isError: false
+    }
+  },
   computed: {
     ...mapState(
       layoutStore,
@@ -93,17 +99,34 @@ export default {
         return !this.isActive
       }
     },
-    isLoading () {
-      return this.tabData.isLoading
-    },
-    isError () {
-      return this.tabData.isError
-    },
     icon () {
       return this.tabData.icon
     }
   },
+  mounted () {
+    ipcRenderer.on(
+      'update-tab',
+      this.handleUpdateTab
+    )
+  },
   methods: {
+    handleUpdateTab (
+      _,
+      {
+        tabId,
+        isLoading,
+        isError
+      }
+    ) {
+      const isCurrentTab = (
+        tabId === this.tabId
+      )
+
+      if (isCurrentTab) {
+        this.isLoading = isLoading
+        this.isError = isError
+      }
+    },
     handleClick () {
       ipcRenderer.send(
         'set-active-tab',
