@@ -16,6 +16,7 @@
 
       <input
         v-if="isFormField"
+        class="input"
         type="text"
         :name="inputName"
         :placeholder="inputText"
@@ -31,7 +32,8 @@ import {
 import layoutStore from '@/stores/layout'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
-  setCalendar
+  setCalendar,
+  resetCalendar
 } from '@/helpers/actions/plugins/semantic'
 import {
   birthdateCalendarOptions
@@ -48,6 +50,9 @@ export default {
     inputName: String,
     inputText: String
   },
+  emits: [
+    'change'
+  ],
   computed: {
     ...mapState(
       layoutStore,
@@ -58,7 +63,8 @@ export default {
     calendarOptions () {
       return birthdateCalendarOptions(
         {
-          startDate: this.date
+          startDate: this.date,
+          onChange: this.handleChange
         }
       )
     }
@@ -68,8 +74,26 @@ export default {
       this.$refs.calendar,
       this.calendarOptions
     )
+  },
+  methods: {
+    handleChange (
+      value
+    ) {
+      this.$emit(
+        'change',
+        value
+      )
+    },
+    reset () {
+      resetCalendar(
+        this.$refs.calendar
+      )
+    }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.input
+  @extend .w-100
+</style>

@@ -4,7 +4,7 @@
       type="text"
       name="city"
       :placeholder="cityText"
-      :value="value"
+      :value="city"
     >
   </div>
 </template>
@@ -13,7 +13,7 @@
 export default {
   name: 'BaseProfileCityField',
   props: {
-    value: String
+    city: String
   },
   computed: {
     cityText () {

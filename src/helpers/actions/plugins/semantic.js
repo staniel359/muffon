@@ -334,6 +334,16 @@ export function setCalendar (
   )
 }
 
+export function resetCalendar (
+  element
+) {
+  $(
+    element
+  ).calendar(
+    'clear'
+  )
+}
+
 // Accordion
 
 export function setAccordion (

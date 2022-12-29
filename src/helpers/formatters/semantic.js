@@ -709,7 +709,8 @@ export function communityFormOptions (
 
 export function birthdateCalendarOptions (
   {
-    startDate
+    startDate,
+    onChange
   }
 ) {
   const {
@@ -757,7 +758,8 @@ export function birthdateCalendarOptions (
     },
     minDate,
     maxDate,
-    initialDate
+    initialDate,
+    onChange
   }
 }
 

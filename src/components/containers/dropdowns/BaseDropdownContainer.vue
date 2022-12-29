@@ -126,10 +126,7 @@ export default {
     }
   },
   watch: {
-    selected: {
-      immediate: true,
-      handler: 'handleSelectedChange'
-    }
+    selected: 'handleSelectedChange'
   },
   async mounted () {
     await this.$nextTick()
@@ -138,21 +135,18 @@ export default {
       this.$refs.dropdown,
       this.dropdownOptions
     )
+
+    this.setValue(
+      this.selected
+    )
   },
   methods: {
-    async handleSelectedChange (
+    handleSelectedChange (
       value
     ) {
-      await this.$nextTick()
-
-      setDropdownValue(
-        this.$refs.dropdown,
+      this.setValue(
         value
       )
-
-      this.value = value
-
-      this.setIcon()
     },
     handleSelect (
       value
@@ -165,6 +159,18 @@ export default {
         'select',
         value
       )
+    },
+    setValue (
+      value
+    ) {
+      setDropdownValue(
+        this.$refs.dropdown,
+        value
+      )
+
+      this.value = value
+
+      this.setIcon()
     },
     reset () {
       resetDropdown(

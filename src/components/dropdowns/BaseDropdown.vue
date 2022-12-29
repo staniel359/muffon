@@ -1,5 +1,6 @@
 <template>
   <BaseDropdownContainer
+    ref="dropdown"
     :options="options"
     :selected="selected"
     :is-selection="isSelection"
@@ -78,6 +79,11 @@ export default {
         'select',
         value
       )
+    },
+    reset () {
+      this.$refs
+        .dropdown
+        .reset()
     }
   }
 }

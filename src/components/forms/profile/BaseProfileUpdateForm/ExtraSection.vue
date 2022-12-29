@@ -10,19 +10,19 @@
 
     <div class="extra-fields">
       <BaseProfileGenderField
-        :value="gender"
+        :gender="gender"
       />
 
       <BaseProfileBirthdateField
-        :value="birthdate"
+        :birthdate="birthdate"
       />
 
       <BaseProfileCountryField
-        :value="country"
+        :country="country"
       />
 
       <BaseProfileCityField
-        :value="city"
+        :city="city"
       />
 
       <BasePrivateField

@@ -132,8 +132,7 @@ export default {
           birthdateFormatted,
         country,
         city,
-        isPrivate:
-          fields.private
+        isPrivate: fields.private
       }
     }
   }
