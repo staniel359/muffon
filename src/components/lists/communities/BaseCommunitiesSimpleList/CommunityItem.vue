@@ -17,6 +17,15 @@
         :text="communityTitle"
       />
 
+      <div
+        v-if="description"
+        class="description"
+      >
+        <small
+          v-text="description"
+        />
+      </div>
+
       <div class="description">
         <small
           v-html="membersCountText"
@@ -150,6 +159,9 @@ export default {
     },
     uuid () {
       return this.communityData.uuid
+    },
+    description () {
+      return this.communityData.description
     }
   },
   methods: {
