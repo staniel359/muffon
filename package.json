@@ -29,10 +29,10 @@
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "@emoji-mart/data": "^1.1.0",
-    "axios": "^1.2.1",
+    "@emoji-mart/data": "^1.1.1",
+    "axios": "^1.2.2",
     "camel-case": "^4.1.2",
-    "core-js": "^3.26.1",
+    "core-js": "^3.27.0",
     "crypto-js": "^4.1.1",
     "deepmerge": "^4.2.2",
     "discord-rpc": "^4.0.1",
