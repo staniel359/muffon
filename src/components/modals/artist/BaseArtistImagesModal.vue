@@ -4,18 +4,20 @@
     @show="handleShow"
   >
     <div
-      :key="key"
-      class="ui container main-container main-image-modal-content"
+      :class="[
+        'ui container main-container',
+        'main-image-modal-content'
+      ]"
     >
       <MainSlider
         ref="mainSlider"
-        :images="imagesCollection"
+        :images="images"
         :sync-slider="thumbsSlider"
       />
 
       <ThumbsSlider
         ref="thumbsSlider"
-        :images="imagesCollection"
+        :images="images"
         :sync-slider="mainSlider"
       />
     </div>
@@ -25,51 +27,29 @@
 <script>
 import BaseImageModalContainer
   from '@/components/containers/modals/BaseImageModalContainer.vue'
-import MainSlider from './BaseArtistImageModal/MainSlider.vue'
-import ThumbsSlider from './BaseArtistImageModal/ThumbsSlider.vue'
-import {
-  collection as formatCollection
-} from '@/helpers/formatters'
+import MainSlider from './BaseArtistImagesModal/MainSlider.vue'
+import ThumbsSlider from './BaseArtistImagesModal/ThumbsSlider.vue'
 import {
   setSliderPosition,
   goToSliderSlide
 } from '@/helpers/actions/plugins/slick'
-import {
-  generateKey
-} from '@/helpers/utils'
 
 export default {
-  name: 'BaseArtistImageModal',
+  name: 'BaseArtistImagesModal',
   components: {
     BaseImageModalContainer,
     MainSlider,
     ThumbsSlider
   },
   props: {
-    images: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
+    images: Array,
     isReset: Boolean
   },
   data () {
     return {
-      key: null,
       mainSlider: null,
       thumbsSlider: null
     }
-  },
-  computed: {
-    imagesCollection () {
-      return formatCollection(
-        this.images
-      )
-    }
-  },
-  watch: {
-    images: 'handleImagesChange'
   },
   mounted () {
     this.mainSlider =
@@ -86,18 +66,15 @@ export default {
         this.goToSlide(
           0
         )
-      } else {
-        setSliderPosition(
-          this.mainSlider
-        )
       }
+
+      setSliderPosition(
+        this.mainSlider
+      )
 
       setSliderPosition(
         this.thumbsSlider
       )
-    },
-    handleImagesChange () {
-      this.key = generateKey()
     },
     show () {
       this.$refs

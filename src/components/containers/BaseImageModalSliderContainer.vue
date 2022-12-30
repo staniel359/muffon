@@ -1,7 +1,7 @@
 <template>
   <div ref="slider">
     <template
-      v-for="imageData in images"
+      v-for="imageData in imagesCollection"
       :key="imageData.uuid"
     >
       <slot
@@ -14,10 +14,11 @@
 <script>
 import {
   setSlider,
-  clearSliderPreviousImages,
-  refreshSlider,
   setSliderOptions
 } from '@/helpers/actions/plugins/slick'
+import {
+  collection as formatCollection
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseImageModalSliderContainer',
@@ -32,15 +33,16 @@ export default {
         return []
       }
     },
-    options: {
-      type: Object,
-      default () {
-        return {}
-      }
+    options: Object
+  },
+  computed: {
+    imagesCollection () {
+      return formatCollection(
+        this.images
+      )
     }
   },
   watch: {
-    images: 'handleImagesChange',
     options: 'handleOptionsChange'
   },
   mounted () {
@@ -50,17 +52,6 @@ export default {
     )
   },
   methods: {
-    async handleImagesChange () {
-      clearSliderPreviousImages(
-        this.$refs.slider
-      )
-
-      await this.$nextTick()
-
-      refreshSlider(
-        this.$refs.slider
-      )
-    },
     handleOptionsChange (
       value
     ) {

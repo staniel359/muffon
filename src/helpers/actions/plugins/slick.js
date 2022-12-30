@@ -1,7 +1,3 @@
-import 'slick-carousel'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-
 export function setSlider (
   element,
   options
@@ -23,29 +19,6 @@ export function setSliderOptions (
     'slickSetOption',
     options,
     true
-  )
-}
-
-export function clearSliderPreviousImages (
-  element
-) {
-  $(
-    element
-  ).slick(
-    'slickRemove',
-    null,
-    null,
-    true
-  )
-}
-
-export function refreshSlider (
-  element
-) {
-  $(
-    element
-  ).slick(
-    'refresh'
   )
 }
 
