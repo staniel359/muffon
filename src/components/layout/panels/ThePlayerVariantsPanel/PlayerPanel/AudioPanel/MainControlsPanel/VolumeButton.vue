@@ -1,8 +1,10 @@
 <template>
   <BaseButton
     ref="button"
-    class="tiny basic circular compact"
+    class="tiny circular compact"
+    :class="isActive ? 'primary' : 'basic'"
     :icon="icon"
+    :is-invertable="!isActive"
     @click="handleClick"
   />
 
@@ -62,6 +64,9 @@ export default {
     },
     isVolumeLow () {
       return this.audioVolume <= 0.5
+    },
+    isActive () {
+      return this.isAudioMuted
     }
   },
   methods: {

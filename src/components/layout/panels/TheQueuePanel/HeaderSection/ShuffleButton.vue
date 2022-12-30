@@ -2,9 +2,8 @@
   <BaseButton
     class="small circular compact"
     icon="audioShuffle"
-    :class="{
-      basic: !isQueueShuffle
-    }"
+    :class="isActive ? 'primary' : 'basic'"
+    :is-invertable="!isActive"
     @click="handleClick"
   />
 </template>
@@ -34,7 +33,10 @@ export default {
         isQueueShuffle: 'isShuffle',
         queueTracks: 'tracks'
       }
-    )
+    ),
+    isActive () {
+      return this.isQueueShuffle
+    }
   },
   methods: {
     handleClick () {

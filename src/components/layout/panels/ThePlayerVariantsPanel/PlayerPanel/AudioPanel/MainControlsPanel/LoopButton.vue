@@ -2,9 +2,8 @@
   <BaseButton
     class="tiny circular compact"
     icon="audioLoop"
-    :class="{
-      basic: !isAudioLoop
-    }"
+    :class="isActive ? 'primary' : 'basic'"
+    :is-invertable="!isActive"
     @click="handleClick"
   />
 </template>
@@ -29,7 +28,10 @@ export default {
         isAudioLoop: 'isLoop',
         audioElement: 'element'
       }
-    )
+    ),
+    isActive () {
+      return this.isAudioLoop
+    }
   },
   methods: {
     ...mapActions(
