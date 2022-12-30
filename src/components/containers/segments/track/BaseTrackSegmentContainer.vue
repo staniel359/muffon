@@ -4,8 +4,8 @@
     class="main-transparent-segment-container"
     :scope="scope"
     :header-link="headerLink"
-    is-basic
     :is-change-transparency="false"
+    is-basic
   >
     <slot
       :track-data="trackData"

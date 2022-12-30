@@ -41,7 +41,7 @@
       :is-loading="isLoading"
       :is-error="!!error"
       :client-page="clientPage"
-      :total-pages-count="clientTotalPagesCount"
+      :total-pages="clientTotalPages"
       :is-pagination-simple="isPaginationSimple"
       :is-first-page="isFirstPage"
       :is-last-page="isLastPage"
@@ -128,10 +128,8 @@ export default {
   computed: {
     isRenderPagination () {
       return (
-        this.isWithPagination || (
-          this.isResponsePageCollection &&
-            this.isPageable
-        )
+        this.isWithPagination ||
+          this.isPageable
       )
     },
     isResponsePageCollection () {
@@ -145,9 +143,11 @@ export default {
     },
     isResponsePageable () {
       return (
-        this.clientTotalPagesCount > 1 ||
-          this.responseNextPage ||
-            this.responsePreviousPage
+        this.responseNextPage ||
+          this.responsePreviousPage || (
+          this.responseTotalPages > 1 &&
+            this.clientTotalPages > 1
+        )
       )
     },
     responseNextPage () {
@@ -168,7 +168,7 @@ export default {
           this.limit
       )
     },
-    clientTotalPagesCount () {
+    clientTotalPages () {
       return Math.ceil(
         this.totalItems /
           this.clientPageLimitComputed
@@ -262,7 +262,9 @@ export default {
       )
     },
     responsePage () {
-      return this.responseData?.page || 1
+      return (
+        this.responseData?.page || 1
+      )
     },
     pageRemainder () {
       return (
@@ -271,10 +273,14 @@ export default {
       )
     },
     isGetNextPageData () {
-      return (
-        this.isResponsePageCollection &&
-          !this.isCollectionFull
-      )
+      if (this.isWithInfiniteScroll) {
+        return (
+          this.isResponsePageCollection &&
+            !this.isCollectionFull
+        )
+      } else {
+        return !this.isCollectionFull
+      }
     },
     isCollectionFull () {
       if (this.isWithInfiniteScroll) {
@@ -290,7 +296,9 @@ export default {
       }
     },
     newClientPageCollectionLength () {
-      return this.newClientPageCollection?.length || 0
+      return (
+        this.newClientPageCollection?.length || 0
+      )
     },
     clientCurrentPageLimit () {
       if (this.isPaginationSimple) {
@@ -315,7 +323,9 @@ export default {
       )
     },
     clientPageCollectionLength () {
-      return this.clientPageCollection?.length || 0
+      return (
+        this.clientPageCollection?.length || 0
+      )
     },
     requestPage () {
       if (this.isForward) {
@@ -354,7 +364,7 @@ export default {
       } else {
         return (
           this.clientPage ===
-            this.clientTotalPagesCount
+            this.clientTotalPages
         )
       }
     },
@@ -411,7 +421,9 @@ export default {
       )
     },
     isFirstPage () {
-      return this.clientPage === 1
+      return (
+        this.clientPage === 1
+      )
     },
     newNextClientPageCollection () {
       return this.clientCollectionPaginated[
@@ -425,16 +437,11 @@ export default {
       handler: 'handleResponseDataChange'
     },
     clientPage: 'handleClientPageChange',
-    clientPageCollection: {
-      immediate: true,
-      handler: 'handleClientPageCollectionChange'
-    },
-    newClientPageCollection: {
-      immediate: true,
-      handler: 'handleNewClientPageCollectionChange'
-    }
+    clientPageCollection:
+      'handleClientPageCollectionChange',
+    newClientPageCollection:
+      'handleNewClientPageCollectionChange'
   },
-
   methods: {
     handleRefresh () {
       this.getNextPageData()
@@ -443,11 +450,9 @@ export default {
       value
     ) {
       if (value) {
-        const totalPages = value.total_pages
-
-        if (totalPages) {
-          this.responseTotalPages = totalPages
-        }
+        this.responseTotalPages = (
+          value.total_pages || 0
+        )
 
         const collection =
           value[
@@ -550,21 +555,27 @@ export default {
       }
     },
     mergeArrays (
-      array,
-      newArray
+      firstArray,
+      secondArray
     ) {
-      if (this.isArrayFull(
-        array
-      )) {
-        return array
-      } else if (this.isArrayFull(
-        newArray
-      )) {
-        return newArray
+      const isFirstArrayFull =
+        this.isArrayFull(
+          firstArray
+        )
+
+      const isSecondArrayFull =
+        this.isArrayFull(
+          secondArray
+        )
+
+      if (isFirstArrayFull) {
+        return firstArray
+      } else if (isSecondArrayFull) {
+        return secondArray
       } else {
         return deepmerge(
-          array,
-          newArray
+          firstArray,
+          secondArray
         )
       }
     },
@@ -577,11 +588,16 @@ export default {
       )
     },
     reset () {
+      const initialData =
+        this.$options
+          .data
+          .apply(
+            this
+          )
+
       Object.assign(
         this.$data,
-        this.$options.data.apply(
-          this
-        )
+        initialData
       )
     },
     findPaginationItem (
@@ -592,7 +608,9 @@ export default {
       function isMatchedItem (
         itemData
       ) {
-        return itemData.uuid === uuid
+        return (
+          itemData.uuid === uuid
+        )
       }
 
       return this.clientPageCollection.find(
@@ -608,13 +626,16 @@ export default {
       function isMatchedItem (
         itemData
       ) {
-        return itemData.uuid === uuid
+        return (
+          itemData.uuid === uuid
+        )
       }
 
       const index =
-        this.clientPageCollection.findIndex(
-          isMatchedItem
-        )
+        this.clientPageCollection
+          .findIndex(
+            isMatchedItem
+          )
 
       this.clientPageCollection[
         index

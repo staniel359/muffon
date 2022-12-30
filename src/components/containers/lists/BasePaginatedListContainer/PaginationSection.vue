@@ -14,10 +14,10 @@
         v-if="!isPaginationSimple"
       >
         <PageItem
-          v-for="page in totalPagesCount"
+          v-for="page in totalPages"
           :key="page"
           :page="page"
-          :total-pages-count="totalPagesCount"
+          :total-pages="totalPages"
           :active-page="clientPage"
           :is-disabled="isDisabled"
           @click="handlePageClick"
@@ -52,7 +52,7 @@ export default {
     isLoading: Boolean,
     isError: Boolean,
     clientPage: Number,
-    totalPagesCount: Number,
+    totalPages: Number,
     isPaginationSimple: Boolean,
     isFirstPage: Boolean,
     isLastPage: Boolean

@@ -31,7 +31,7 @@ export default {
       type: Number,
       required: true
     },
-    totalPagesCount: {
+    totalPages: {
       type: Number,
       required: true
     },
@@ -46,17 +46,17 @@ export default {
   ],
   data () {
     return {
-      nearCount: 0,
-      emptyCount: 1
+      nearPages: 0,
+      emptyPages: 1
     }
   },
   computed: {
     isRenderPage () {
       const p = this.page
-      const t = this.totalPagesCount
+      const t = this.totalPages
       const a = this.activePage
-      const n = this.nearCount
-      const e = this.emptyCount
+      const n = this.nearPages
+      const e = this.emptyPages
 
       return (
         (a <= e + n + 2) &&
@@ -75,10 +75,10 @@ export default {
     },
     isPageEmpty () {
       const p = this.page
-      const t = this.totalPagesCount
+      const t = this.totalPages
       const a = this.activePage
-      const n = this.nearCount
-      const e = this.emptyCount
+      const n = this.nearPages
+      const e = this.emptyPages
 
       return (
         (a <= e + n + 2) &&
