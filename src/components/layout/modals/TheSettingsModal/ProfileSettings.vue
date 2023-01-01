@@ -37,12 +37,14 @@ export default {
         {
           nameCode:
             'settings.sections.profile.info',
+          icon: 'profileInfo',
           scope: 'info',
           component: 'InfoOptions'
         },
         {
           nameCode:
             'settings.sections.app.player',
+          icon: 'player',
           scope: 'player',
           component: 'PlayerOptions'
         }

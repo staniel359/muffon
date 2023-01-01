@@ -36,11 +36,13 @@ export default {
       tabs: [
         {
           name: 'Last.FM',
+          icon: 'lastfm',
           scope: 'lastfm',
           component: 'LastfmOptions'
         },
         {
           name: 'Discord',
+          icon: 'discord',
           scope: 'discord',
           component: 'DiscordOptions'
         }

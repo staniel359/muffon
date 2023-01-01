@@ -50,18 +50,21 @@ export default {
       tabs: [
         {
           nameCode: 'settings.tabs.app',
+          icon: 'app',
           scope: 'app',
           component: 'AppSettings',
           isAnonymous: true
         },
         {
           nameCode: 'settings.tabs.profile',
+          icon: 'profile',
           scope: 'profile',
           component: 'ProfileSettings',
           isAnonymous: false
         },
         {
           nameCode: 'settings.tabs.services',
+          icon: 'service',
           scope: 'services',
           component: 'ServicesSettings',
           isAnonymous: false

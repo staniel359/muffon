@@ -5,13 +5,24 @@
       'primary active': isActive
     }"
     @click="handleClick"
-    v-text="tabName"
-  />
+  >
+    <BaseIcon
+      v-if="icon"
+      :icon="icon"
+    />
+
+    {{ tabName }}
+  </a>
 </template>
 
 <script>
+import BaseIcon from '@/components/icons/BaseIcon.vue'
+
 export default {
   name: 'TabItem',
+  components: {
+    BaseIcon
+  },
   props: {
     tabData: {
       type: Object,
@@ -49,6 +60,9 @@ export default {
     },
     tabNameCode () {
       return this.tabData.nameCode
+    },
+    icon () {
+      return this.tabData.icon
     }
   },
   methods: {

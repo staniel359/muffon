@@ -50,7 +50,7 @@ export default {
 
 <style lang="sass" scoped>
 .source-select
-  width: 175px !important
+  width: 200px !important
 
 ::v-deep(.menu)
   max-height: 200px !important

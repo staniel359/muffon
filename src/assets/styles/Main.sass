@@ -975,12 +975,17 @@ p
   min-width: 60px !important
 
 .main-menu-item
+  @extend .d-flex, .align-items-center, .word-break-break-word 
   &.active
     @extend .text-bold
     &.primary
       @extend .background-base, .text-color-white
       .icon
         @extend .text-color-white
+  & > .icon
+    @extend .no-margin
+    float: none !important
+    margin-right: 0.75em !important
 
 .main-field
   @extend .d-flex, .align-items-center

@@ -63,6 +63,7 @@ export default {
         {
           nameCode:
             'settings.sections.app.interface',
+          icon: 'interface',
           scope: 'interface',
           component: 'InterfaceOptions',
           isAnonymous: true
@@ -70,6 +71,7 @@ export default {
         {
           nameCode:
             'settings.sections.app.theme',
+          icon: 'theme',
           scope: 'theme',
           component: 'ThemeOptions',
           isAnonymous: true
@@ -77,6 +79,7 @@ export default {
         {
           nameCode:
             'settings.sections.app.window',
+          icon: 'window',
           scope: 'window',
           component: 'WindowOptions',
           isAnonymous: true
@@ -84,6 +87,7 @@ export default {
         {
           nameCode:
             'settings.sections.app.tabs',
+          icon: 'tabs',
           scope: 'tabs',
           component: 'TabsOptions',
           isAnonymous: true
@@ -91,6 +95,7 @@ export default {
         {
           nameCode:
             'settings.sections.app.sidebar',
+          icon: 'sidebar',
           scope: 'sidebar',
           component: 'SidebarOptions',
           isAnonymous: true
@@ -98,6 +103,7 @@ export default {
         {
           nameCode:
             'settings.sections.app.search',
+          icon: 'search',
           scope: 'search',
           component: 'SearchOptions',
           isAnonymous: true
@@ -105,6 +111,7 @@ export default {
         {
           nameCode:
             'settings.sections.app.player',
+          icon: 'player',
           scope: 'player',
           component: 'PlayerOptions',
           isAnonymous: true
@@ -112,6 +119,7 @@ export default {
         {
           nameCode:
             'settings.sections.app.queue',
+          icon: 'queue',
           scope: 'queue',
           component: 'QueueOptions',
           isAnonymous: true
@@ -119,6 +127,7 @@ export default {
         {
           nameCode:
             'settings.sections.app.video',
+          icon: 'video',
           scope: 'video',
           component: 'VideoOptions',
           isAnonymous: true
@@ -126,18 +135,21 @@ export default {
         {
           nameCode:
             'settings.sections.app.recommendations',
+          icon: 'recommendation',
           scope: 'recommendations',
           component: 'RecommendationsOptions',
           isAnonymous: false
         },
         {
           nameCode: 'settings.sections.app.top',
+          icon: 'top',
           scope: 'top',
           component: 'TopOptions',
           isAnonymous: true
         },
         {
           nameCode: 'settings.sections.app.lyrics',
+          icon: 'lyrics',
           scope: 'lyrics',
           component: 'LyricsOptions',
           isAnonymous: true
@@ -145,6 +157,7 @@ export default {
         {
           nameCode:
             'settings.sections.app.data',
+          icon: 'data',
           scope: 'data',
           component: 'DataOptions',
           isAnonymous: true
