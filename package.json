@@ -32,7 +32,7 @@
     "@emoji-mart/data": "^1.1.1",
     "axios": "^1.2.2",
     "camel-case": "^4.1.2",
-    "core-js": "^3.27.0",
+    "core-js": "^3.27.1",
     "crypto-js": "^4.1.1",
     "deepmerge": "^4.2.2",
     "discord-rpc": "^4.0.1",
@@ -63,7 +63,7 @@
     "@vue/eslint-config-standard": "^8.0.1",
     "electron": "^22.0.0",
     "electron-builder": "^23.6.0",
-    "eslint": "^8.30.0",
+    "eslint": "^8.31.0",
     "eslint-plugin-vue": "^9.8.0",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0"
