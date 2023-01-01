@@ -17,7 +17,7 @@ export default {
   name: 'CopyrightLicenseSection',
   computed: {
     copyrightText () {
-      return `Copyright (c) 2020-2022 ${this.author}`
+      return `Copyright (c) 2020-2023 ${this.author}`
     },
     author () {
       return this.info.author.name
