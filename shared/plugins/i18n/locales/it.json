@@ -430,8 +430,7 @@
           "source": "Fonte"
         },
         "player": {
-          "audioSource": "Sorgente audio",
-          "fallbackSources": "Fonti secondarie",
+          "audioSources": "Sorgente audio",
           "bitrate": "Mostra bitrate audio",
           "album": "Mostra album"
         },

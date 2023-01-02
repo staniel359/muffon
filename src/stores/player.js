@@ -8,7 +8,6 @@ const data = {
       playing: null,
       currentTrackId: null,
       currentVariantId: null,
-      source: null,
       isWithBitrate: false,
       isWithDiscordRichPresence: false,
       isWithScrobbling: false,
@@ -16,7 +15,7 @@ const data = {
       scrobblePercent: 50,
       variants: [],
       isWithAlbum: false,
-      fallbackSources: []
+      audioSources: []
     }
   },
   getters: {
@@ -47,11 +46,6 @@ const data = {
     ) {
       this.currentVariantId = value
     },
-    setSource (
-      value
-    ) {
-      this.source = value
-    },
     setIsWithScrobbling (
       value
     ) {
@@ -77,10 +71,10 @@ const data = {
     ) {
       this.isWithAlbum = value
     },
-    setFallbackSources (
+    setAudioSources (
       value
     ) {
-      this.fallbackSources = value
+      this.audioSources = value
     },
     setIsWithDiscordRichPresence (
       value

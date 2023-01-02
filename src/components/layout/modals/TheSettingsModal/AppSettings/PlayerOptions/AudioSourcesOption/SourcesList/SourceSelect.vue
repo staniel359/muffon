@@ -9,6 +9,7 @@
     </BaseDropdownContainer>
 
     <BaseClearButton
+      v-if="isRenderClearButton"
       @click="handleClearButtonClick"
     />
   </div>
@@ -49,36 +50,43 @@ export default {
     ...mapState(
       playerStore,
       {
-        playerFallbackSources: 'fallbackSources'
+        playerAudioSources: 'audioSources'
       }
-    )
+    ),
+    isRenderClearButton () {
+      return (
+        this.playerAudioSources.length > 1
+      )
+    }
   },
   methods: {
     handleSelect (
       value
     ) {
       const sources = [
-        ...this.playerFallbackSources
+        ...this.playerAudioSources
       ]
 
-      sources[this.index] = value
+      sources[
+        this.index
+      ] = value
 
       updateGlobalStore(
         {
-          'player.fallbackSources': sources
+          'player.audioSources': sources
         }
       )
     },
     handleClearButtonClick () {
       const sources = [
-        ...this.playerFallbackSources.filter(
+        ...this.playerAudioSources.filter(
           this.isMatchedSource
         )
       ]
 
       updateGlobalStore(
         {
-          'player.fallbackSources': sources
+          'player.audioSources': sources
         }
       )
     },
@@ -86,7 +94,9 @@ export default {
       _,
       index
     ) {
-      return index !== this.index
+      return (
+        index !== this.index
+      )
     }
   }
 }

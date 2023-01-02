@@ -1,6 +1,6 @@
 <template>
   <SourceSelect
-    v-for="(sourceData, index) in playerFallbackSourcesCollection"
+    v-for="(sourceData, index) in playerAudioSourcesCollection"
     :key="sourceData.uuid"
     :source="sourceData.name"
     :index="index"
@@ -26,12 +26,12 @@ export default {
     ...mapState(
       playerStore,
       {
-        playerFallbackSources: 'fallbackSources'
+        playerAudioSources: 'audioSources'
       }
     ),
-    playerFallbackSourcesCollection () {
+    playerAudioSourcesCollection () {
       return formatCollection(
-        this.playerFallbackSources
+        this.playerAudioSources
       )
     }
   }

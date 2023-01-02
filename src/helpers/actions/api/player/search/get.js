@@ -11,65 +11,56 @@ export default function getPlayerSearch (
   {
     query,
     limit = 20,
-    fallbackSourceIndex
+    audioSourceIndex = 0
   }
 ) {
   const {
-    source,
-    fallbackSources
+    audioSources
   } = playerStore()
 
-  function getSource () {
-    if (fallbackSourceIndex >= 0) {
-      return fallbackSources[
-        fallbackSourceIndex
-      ]
-    } else {
-      return source
-    }
-  }
+  const audioSource =
+    audioSources[
+      audioSourceIndex
+    ]
 
-  const url = `/${getSource()}/search/tracks`
+  const url = `/${audioSource}/search/tracks`
 
   const params = {
     query
   }
 
-  function searchInFallbackSource (
-    nextFallbackSourceIndex
+  async function setVariants (
+    tracks
   ) {
-    return getPlayerSearch(
+    const variants =
+      formatCollection(
+        tracks
+      )
+
+    await updateGlobalStore(
       {
-        query,
-        limit,
-        fallbackSourceIndex:
-          nextFallbackSourceIndex
+        'player.variants': variants
       }
     )
   }
 
-  function searchInNextFallbackSource () {
-    const nextFallbackSourceIndex =
-      fallbackSourceIndex + 1
+  function searchInNextAudioSource () {
+    const nextAudioSourceIndex =
+      audioSourceIndex + 1
 
-    const nextFallbackSource =
-      fallbackSources[
-        nextFallbackSourceIndex
+    const nextAudioSource =
+      audioSources[
+        nextAudioSourceIndex
       ]
 
-    if (nextFallbackSource) {
-      return searchInFallbackSource(
-        nextFallbackSourceIndex
-      )
-    }
-  }
-
-  function searchInFallbackSources () {
-    if (fallbackSourceIndex >= 0) {
-      return searchInNextFallbackSource()
-    } else {
-      return searchInFallbackSource(
-        0
+    if (nextAudioSource) {
+      return getPlayerSearch(
+        {
+          query,
+          limit,
+          audioSourceIndex:
+            nextAudioSourceIndex
+        }
       )
     }
   }
@@ -81,24 +72,12 @@ export default function getPlayerSearch (
       tracks
     } = response.data.search
 
-    const variants =
-      formatCollection(
+    if (tracks.length) {
+      return setVariants(
         tracks
       )
-
-    await updateGlobalStore(
-      {
-        'player.variants': variants
-      }
-    )
-
-    const isSearchInFallbackSources = (
-      !tracks.length &&
-        fallbackSources.length
-    )
-
-    if (isSearchInFallbackSources) {
-      return searchInFallbackSources()
+    } else {
+      return searchInNextAudioSource()
     }
   }
 

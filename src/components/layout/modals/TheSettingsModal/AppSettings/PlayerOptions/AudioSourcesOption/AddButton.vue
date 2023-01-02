@@ -28,26 +28,26 @@ export default {
   },
   data () {
     return {
-      defaultFallbackSource: 'vk'
+      defaultAudioSource: 'vk'
     }
   },
   computed: {
     ...mapState(
       playerStore,
       {
-        playerFallbackSources: 'fallbackSources'
+        playerAudioSources: 'audioSources'
       }
     ),
     isRender () {
       return (
-        this.fallbackSourcesCount <
-          this.sourcesCount - 1
+        this.playerAudioSourcesCount <
+          this.streamableSourcesCount
       )
     },
-    fallbackSourcesCount () {
-      return this.playerFallbackSources.length
+    playerAudioSourcesCount () {
+      return this.playerAudioSources.length
     },
-    sourcesCount () {
+    streamableSourcesCount () {
       return getStreamableSources().length
     },
     addText () {
@@ -59,13 +59,13 @@ export default {
   methods: {
     handleClick () {
       const sources = [
-        ...this.playerFallbackSources,
-        this.defaultFallbackSource
+        ...this.playerAudioSources,
+        this.defaultAudioSource
       ]
 
       updateGlobalStore(
         {
-          'player.fallbackSources': sources
+          'player.audioSources': sources
         }
       )
     }

@@ -3,7 +3,7 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="fallbackSourcesText"
+      :text="audioSourcesText"
     />
 
     <div class="sources-list-container">
@@ -16,20 +16,20 @@
 
 <script>
 import BaseHeader from '@/components/BaseHeader.vue'
-import SourcesList from './FallbackSourcesOption/SourcesList.vue'
-import AddButton from './FallbackSourcesOption/AddButton.vue'
+import SourcesList from './AudioSourcesOption/SourcesList.vue'
+import AddButton from './AudioSourcesOption/AddButton.vue'
 
 export default {
-  name: 'FallbackSourcesOption',
+  name: 'AudioSourcesOption',
   components: {
     BaseHeader,
     SourcesList,
     AddButton
   },
   computed: {
-    fallbackSourcesText () {
+    audioSourcesText () {
       return this.$t(
-        'settings.options.app.player.fallbackSources'
+        'settings.options.app.player.audioSources'
       )
     }
   }

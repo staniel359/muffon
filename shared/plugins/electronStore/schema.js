@@ -99,9 +99,11 @@ const schema = {
     ],
     default: null
   },
-  'player.fallbackSources': {
+  'player.audioSources': {
     type: 'array',
-    default: []
+    default: [
+      'vk'
+    ]
   },
   'player.isWithAlbum': {
     type: 'boolean',
@@ -133,10 +135,6 @@ const schema = {
   'player.scrobblePercent': {
     type: 'number',
     default: 50
-  },
-  'player.source': {
-    type: 'string',
-    default: 'vk'
   },
   'player.variants': {
     type: 'array',
