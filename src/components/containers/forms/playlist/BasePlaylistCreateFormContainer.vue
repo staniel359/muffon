@@ -42,7 +42,8 @@ export default {
       error: null,
       isLoading: false,
       fields: [
-        'title'
+        'title',
+        'description'
       ]
     }
   },
@@ -107,16 +108,17 @@ export default {
       fields
     ) {
       const {
-        title
+        title,
+        description
       } = fields
 
       const image = this.image.data
 
       return {
         title,
+        description,
         image,
-        isPrivate:
-          fields.private
+        isPrivate: fields.private
       }
     }
   }

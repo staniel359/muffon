@@ -18,6 +18,15 @@
       />
     </div>
 
+    <div
+      v-if="description"
+      class="description"
+    >
+      <small
+        v-text="description"
+      />
+    </div>
+
     <TracksCountSection
       :tracks-count="tracksCount"
     />
@@ -60,7 +69,8 @@ export default {
   },
   provide () {
     return {
-      setPlaylistData: this.setPlaylistData
+      setPlaylistData:
+        this.setPlaylistData
     }
   },
   inject: {
@@ -117,6 +127,9 @@ export default {
     },
     uuid () {
       return this.playlistData.uuid
+    },
+    description () {
+      return this.playlistData.description
     }
   },
   methods: {

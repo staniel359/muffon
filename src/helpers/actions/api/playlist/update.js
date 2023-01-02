@@ -8,6 +8,7 @@ export default function (
   {
     playlistId,
     title,
+    description,
     image,
     isPrivate
   }
@@ -21,6 +22,7 @@ export default function (
 
   const params = {
     title,
+    description,
     image,
     private: (
       isPrivate ? 1 : 0

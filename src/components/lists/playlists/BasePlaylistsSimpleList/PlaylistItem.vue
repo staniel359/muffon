@@ -33,6 +33,15 @@
           />
         </div>
 
+        <div
+          v-if="description"
+          class="description"
+        >
+          <small
+            v-text="description"
+          />
+        </div>
+
         <span
           v-if="isWithProfileNickname"
           class="extra profile-nickname"
@@ -230,6 +239,9 @@ export default {
     },
     isProfilePrivate () {
       return this.profileData.private
+    },
+    description () {
+      return this.playlistData.description
     }
   },
   methods: {

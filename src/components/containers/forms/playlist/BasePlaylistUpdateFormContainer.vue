@@ -45,7 +45,8 @@ export default {
       error: null,
       isLoading: false,
       fields: [
-        'title'
+        'title',
+        'description'
       ]
     }
   },
@@ -112,18 +113,18 @@ export default {
       fields
     ) {
       const {
-        title
+        title,
+        description
       } = fields
 
       const image = this.image.data
 
       return {
-        playlistId:
-          this.playlistId,
+        playlistId: this.playlistId,
         title,
+        description,
         image,
-        isPrivate:
-          fields.private
+        isPrivate: fields.private
       }
     }
   }

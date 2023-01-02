@@ -25,6 +25,11 @@
               :value="playlistTitle"
             />
 
+            <BaseDescriptionField
+              :value="description"
+              @submit="handleSubmit"
+            />
+
             <BasePrivateField
               model="playlist"
               :is-checked="isPrivate"
@@ -34,6 +39,7 @@
 
         <div class="submit-button-container">
           <BaseSubmitButton
+            ref="submit"
             action-key="save"
           />
         </div>
@@ -49,6 +55,7 @@ import BasePlaylistUpdateFormContainer
   from '@/components/containers/forms/playlist/BasePlaylistUpdateFormContainer.vue'
 import BaseImageField from '@/components/fields/BaseImageField.vue'
 import BaseTitleField from '@/components/fields/BaseTitleField.vue'
+import BaseDescriptionField from '@/components/fields/BaseDescriptionField.vue'
 import BasePrivateField from '@/components/fields/BasePrivateField.vue'
 import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 
@@ -59,6 +66,7 @@ export default {
     BasePlaylistUpdateFormContainer,
     BaseImageField,
     BaseTitleField,
+    BaseDescriptionField,
     BasePrivateField,
     BaseSubmitButton
   },
@@ -85,6 +93,9 @@ export default {
     },
     isPrivate () {
       return this.playlistData.private
+    },
+    description () {
+      return this.playlistData.description
     }
   },
   methods: {
@@ -95,6 +106,9 @@ export default {
       value
     ) {
       this.image = value
+    },
+    handleSubmit () {
+      this.clickSubmit()
     },
     handleSuccess () {
       this.hide()
@@ -113,6 +127,11 @@ export default {
       this.$refs
         .title
         .focus()
+    },
+    clickSubmit () {
+      this.$refs
+        .submit
+        .click()
     }
   }
 }

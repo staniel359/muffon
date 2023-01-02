@@ -23,6 +23,10 @@
               ref="title"
             />
 
+            <BaseDescriptionField
+              @submit="handleSubmit"
+            />
+
             <BasePrivateField
               model="playlist"
             />
@@ -31,6 +35,7 @@
 
         <div class="submit-button-container">
           <BaseSubmitButton
+            ref="submit"
             action-key="create"
           />
         </div>
@@ -46,6 +51,7 @@ import BasePlaylistCreateFormContainer
   from '@/components/containers/forms/playlist/BasePlaylistCreateFormContainer.vue'
 import BaseImageField from '@/components/fields/BaseImageField.vue'
 import BaseTitleField from '@/components/fields/BaseTitleField.vue'
+import BaseDescriptionField from '@/components/fields/BaseDescriptionField.vue'
 import BasePrivateField from '@/components/fields/BasePrivateField.vue'
 import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 
@@ -56,6 +62,7 @@ export default {
     BasePlaylistCreateFormContainer,
     BaseImageField,
     BaseTitleField,
+    BaseDescriptionField,
     BasePrivateField,
     BaseSubmitButton
   },
@@ -79,6 +86,9 @@ export default {
     ) {
       this.image = value
     },
+    handleSubmit () {
+      this.clickSubmit()
+    },
     handleSuccess () {
       this.hide()
 
@@ -100,6 +110,11 @@ export default {
       this.$refs
         .title
         .focus()
+    },
+    clickSubmit () {
+      this.$refs
+        .submit
+        .click()
     }
   }
 }

@@ -23,6 +23,12 @@
           </div>
 
           <div
+            v-if="description"
+            class="description main-text-container"
+            v-text="description"
+          />
+
+          <div
             class="description"
             v-html="tracksCountText"
           />
@@ -125,6 +131,9 @@ export default {
     },
     isPrivate () {
       return this.playlistData.private
+    },
+    description () {
+      return this.playlistData.description
     }
   }
 }

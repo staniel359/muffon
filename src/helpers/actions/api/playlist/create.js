@@ -7,6 +7,7 @@ import {
 export default function (
   {
     title,
+    description,
     image,
     isPrivate
   }
@@ -18,6 +19,7 @@ export default function (
 
   const params = {
     title,
+    description,
     image,
     private: (
       isPrivate ? 1 : 0
