@@ -5,8 +5,6 @@ import {
 } from 'crypto-js'
 import moment from 'moment-timezone'
 
-export { v4 as generateKey } from 'uuid'
-
 export function getDistinctArray (
   value
 ) {

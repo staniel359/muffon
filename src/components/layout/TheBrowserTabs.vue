@@ -26,7 +26,9 @@ import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import BrowserTab from './TheBrowserTabs/BrowserTab.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
-  generateKey,
+  generateKey
+} from '#/helpers/utils'
+import {
   isObjectChanged
 } from '@/helpers/utils'
 import {

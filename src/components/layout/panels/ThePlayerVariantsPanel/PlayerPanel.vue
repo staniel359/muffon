@@ -47,7 +47,7 @@ import {
 } from '@/helpers/actions/store'
 import {
   generateKey
-} from '@/helpers/utils'
+} from '#/helpers/utils'
 
 export default {
   name: 'PlayerPanel',

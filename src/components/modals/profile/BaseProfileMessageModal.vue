@@ -73,7 +73,7 @@ import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 import sendableFormMixin from '@/mixins/sendableFormMixin'
 import {
   generateKey
-} from '@/helpers/utils'
+} from '#/helpers/utils'
 
 export default {
   name: 'BaseProfileMessageModal',

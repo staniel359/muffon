@@ -27,7 +27,7 @@ import BasePostsFormSegment
 import PostsListSegment from './PostsSegment/PostsListSegment.vue'
 import {
   generateKey
-} from '@/helpers/utils'
+} from '#/helpers/utils'
 import {
   posts as formatCommunityPostsLink
 } from '@/helpers/formatters/links/community'

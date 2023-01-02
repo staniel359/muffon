@@ -20,7 +20,7 @@ import InfoBlock from './PlayingBlock/InfoBlock.vue'
 import SourceIconBlock from './PlayingBlock/SourceIconBlock.vue'
 import {
   generateKey
-} from '@/helpers/utils'
+} from '#/helpers/utils'
 
 export default {
   name: 'PlayingBlock',

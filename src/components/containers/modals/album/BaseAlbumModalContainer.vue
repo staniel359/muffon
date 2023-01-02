@@ -25,7 +25,7 @@ import BaseSegmentModalContainer
 import getAlbum from '@/helpers/actions/api/album/get'
 import {
   generateKey
-} from '@/helpers/utils'
+} from '#/helpers/utils'
 import modalMixin from '@/mixins/modalMixin'
 
 export default {

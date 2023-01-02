@@ -22,7 +22,7 @@ import profileStore from '@/stores/profile'
 import BaseEmojiPicker from '@/components/BaseEmojiPicker.vue'
 import {
   generateKey
-} from '@/helpers/utils'
+} from '#/helpers/utils'
 
 export default {
   name: 'BaseEmojiPopup',

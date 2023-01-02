@@ -43,7 +43,7 @@ import TracksSegment from './MainPage/TracksSegment.vue'
 import TagsSegment from './MainPage/TagsSegment.vue'
 import {
   generateKey
-} from '@/helpers/utils'
+} from '#/helpers/utils'
 
 export default {
   name: 'MainPage',

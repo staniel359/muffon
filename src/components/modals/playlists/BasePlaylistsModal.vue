@@ -45,7 +45,7 @@ import getProfilePlaylists from '@/helpers/actions/api/profile/get'
 import modalMixin from '@/mixins/modalMixin'
 import {
   generateKey
-} from '@/helpers/utils'
+} from '#/helpers/utils'
 
 export default {
   name: 'BasePlaylistsModal',

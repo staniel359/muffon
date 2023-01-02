@@ -1,6 +1,8 @@
-const generateKey = require(
-  'uuid'
-).v4
+const {
+  generateKey
+} = require(
+  '../../../shared/helpers/utils'
+)
 const {
   audioFolderPath
 } = require(

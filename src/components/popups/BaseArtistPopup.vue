@@ -23,7 +23,7 @@ import ContentBlock from './BaseArtistPopup/ContentBlock.vue'
 import getArtist from '@/helpers/actions/api/artist/get'
 import {
   generateKey
-} from '@/helpers/utils'
+} from '#/helpers/utils'
 
 export default {
   name: 'BaseArtistPopup',
