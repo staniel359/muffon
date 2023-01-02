@@ -38,9 +38,11 @@
 
           <div class="buttons-container">
             <BaseFormAddButtonsSection
+              :key="key"
               :artists="artists"
               :albums="albums"
               :tracks="tracks"
+              is-modal
             />
 
             <BaseSubmitButton
@@ -69,6 +71,9 @@ import BaseFormAddButtonsSection
   from '@/components/forms/BaseFormAddButtonsSection.vue'
 import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 import sendableFormMixin from '@/mixins/sendableFormMixin'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseProfileMessageModal',
@@ -93,6 +98,7 @@ export default {
   },
   data () {
     return {
+      key: null,
       conversationId: null
     }
   },
@@ -103,6 +109,8 @@ export default {
   },
   methods: {
     handleVisible () {
+      this.key = generateKey()
+
       this.focusContent()
     },
     handleSuccess (

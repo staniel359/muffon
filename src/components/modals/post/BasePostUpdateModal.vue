@@ -44,9 +44,11 @@
 
         <div class="buttons-container">
           <BaseFormAddButtonsSection
+            :key="key"
             :artists="artists"
             :albums="albums"
             :tracks="tracks"
+            is-modal
           />
 
           <BaseSubmitButton
@@ -106,6 +108,7 @@ export default {
   ],
   data () {
     return {
+      key: null,
       videos: [],
       videoPlaylists: [],
       playlists: [],
@@ -202,6 +205,8 @@ export default {
   methods: {
     handleVisible () {
       this.focusContent()
+
+      this.key = generateKey()
     },
     handleSubmit () {
       this.clickSubmit()

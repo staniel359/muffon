@@ -6,6 +6,7 @@
   />
 
   <BaseEmojiPopup
+    :is-modal="isModal"
     @select="handleSelect"
   />
 </template>
@@ -30,6 +31,9 @@ export default {
   inject: [
     'addEmoji'
   ],
+  props: {
+    isModal: Boolean
+  },
   computed: {
     element () {
       return this.$refs.button.$el

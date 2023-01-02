@@ -8,7 +8,9 @@
 
     <ImagesButton />
 
-    <EmojiButton />
+    <EmojiButton
+      :is-modal="isModal"
+    />
   </div>
 </template>
 
@@ -28,7 +30,8 @@ export default {
     artists: Array,
     albums: Array,
     tracks: Array,
-    images: Array
+    images: Array,
+    isModal: Boolean
   }
 }
 </script>

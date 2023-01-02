@@ -2,7 +2,8 @@
   <div
     class="ui popup main-popup main-emoji-popup"
     :class="{
-      inverted: isDarkMode
+      inverted: isDarkMode,
+      'main-emoji-popup-modal': isModal
     }"
   >
     <BaseEmojiPicker
@@ -27,6 +28,9 @@ export default {
   name: 'BaseEmojiPopup',
   components: {
     BaseEmojiPicker
+  },
+  props: {
+    isModal: Boolean
   },
   emits: [
     'select'
