@@ -75,16 +75,13 @@ export default {
       )
     },
     isMatchedPath () {
-      return (
-        this.currentPath ===
-          this.pathFormatted
-      )
+      return this.currentPath
+        .includes(
+          this.path
+        )
     },
     currentPath () {
       return this.$route.path
-    },
-    pathFormatted () {
-      return `/${this.path}`
     },
     path () {
       return this.profileMainLink.path
