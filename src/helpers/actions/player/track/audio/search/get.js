@@ -10,8 +10,11 @@ export default function (
     trackData
   }
 ) {
+  let variantIndex = 0
+
   const artistName =
     trackData.artist.name
+
   const trackTitle = trackData.title
 
   const query = [
@@ -25,10 +28,17 @@ export default function (
     query
   }
 
-  function getFirstVariantId () {
-    return playerStore()
-      .variants[0]
-      .uuid
+  function getVariantId () {
+    const {
+      variants
+    } = playerStore()
+
+    const variant =
+      variants[
+        variantIndex
+      ]
+
+    return variant?.uuid
   }
 
   function setCurrentTrackIds () {
@@ -48,22 +58,47 @@ export default function (
     updateGlobalStore(
       {
         'player.currentVariantId':
-          getFirstVariantId()
+          getVariantId()
       }
     )
   }
 
-  function handleSearchSuccess () {
+  function handleVariantError (
+    error
+  ) {
+    variantIndex++
+
+    const variantId = getVariantId()
+
+    if (variantId) {
+      return getVariantAudio()
+    } else {
+      throw error
+    }
+  }
+
+  function getVariantAudio () {
+    const variantId = getVariantId()
+
+    const isFromRadio =
+      trackData.from_radio
+
     const playerVariantAudioArgs = {
-      variantId: getFirstVariantId(),
-      isFromRadio: trackData.from_radio
+      variantId,
+      isFromRadio
     }
 
     return getPlayerVariantAudio(
       playerVariantAudioArgs
     ).then(
       handleVariantSuccess
+    ).catch(
+      handleVariantError
     )
+  }
+
+  function handleSearchSuccess () {
+    return getVariantAudio()
   }
 
   return getPlayerSearch(
