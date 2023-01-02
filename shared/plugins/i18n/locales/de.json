@@ -430,7 +430,7 @@
           "source": "Quelle"
         },
         "player": {
-          "audioSources": "Audioquellen (nach Prioität)",
+          "audioSources": "Audioquellen (nach Priorität)",
           "bitrate": "Audiobitrate anzeigen",
           "album": "Album anzeigen"
         },
