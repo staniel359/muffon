@@ -33,18 +33,51 @@ export default {
     ),
     playing () {
       if (this.isUpdatePlaying) {
-        const {
-          audio
-        } = this.playerPlaying
-
-        return {
-          ...this.playerPlaying,
-          audio: {
-            present: audio.present
-          }
-        }
+        return this.playingFormatted
       } else {
         return null
+      }
+    },
+    playingFormatted () {
+      return {
+        source: this.sourceData,
+        player_id: this.playerId,
+        title: this.trackTitle,
+        artist: this.artistData,
+        artists: this.artists,
+        album: this.albumData,
+        image: this.imageData,
+        duration: this.duration,
+        audio: this.audioData
+      }
+    },
+    sourceData () {
+      return this.playerPlaying.source
+    },
+    playerId () {
+      return this.playerPlaying.player_id
+    },
+    trackTitle () {
+      return this.playerPlaying.title
+    },
+    artistData () {
+      return this.playerPlaying.artist
+    },
+    artists () {
+      return this.playerPlaying.artists
+    },
+    albumData () {
+      return this.playerPlaying.album
+    },
+    imageData () {
+      return this.playerPlaying.image
+    },
+    duration () {
+      return this.playerPlaying.duration
+    },
+    audioData () {
+      return {
+        present: this.playerPlaying.audio.present
       }
     },
     isUpdatePlaying () {
