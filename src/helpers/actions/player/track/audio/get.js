@@ -1,6 +1,6 @@
 import getAudio from '@/helpers/actions/api/audio/get'
-import searchPlayerTrackAudio
-  from '@/helpers/actions/player/track/audio/search'
+import getPlayerTrackAudioSearch
+  from '@/helpers/actions/player/track/audio/search/get'
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
@@ -49,7 +49,7 @@ export default function (
       handleSuccess
     )
   } else {
-    return searchPlayerTrackAudio(
+    return getPlayerTrackAudioSearch(
       playerTrackAudioArgs
     )
   }
