@@ -13,61 +13,48 @@
         @click="handleClick"
       />
     </div>
-
-    <div
-      v-if="isSuccess"
-      class="option-text"
-    >
-      <BaseIcon
-        class="green"
-        icon="success"
-      />
-
-      <span
-        v-text="clearedText"
-      />
-    </div>
   </div>
 </template>
 
 <script>
 import electronStore from '#/plugins/electronStore'
 import BaseButton from '@/components/buttons/BaseButton.vue'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'ClearSearchHistoryOption',
   components: {
-    BaseButton,
-    BaseIcon
+    BaseButton
   },
+  mixins: [
+    notificationMixin
+  ],
   data () {
     return {
-      isLoading: false,
-      isSuccess: false
+      isLoading: false
     }
   },
   computed: {
     clearText () {
       return this.$t(
-        'settings.options.app.data.history.search.clear'
+        'settings.options.app.data.clear.searchHistory'
       )
     },
-    clearedText () {
+    notificationSuccessMessage () {
       return this.$t(
-        'settings.options.app.data.history.search.cleared'
+        'notifications.cleared.searchHistory'
       )
     }
   },
   methods: {
     handleClick () {
-      this.isSuccess = false
       this.isLoading = true
 
       this.clearHistory()
 
-      this.isSuccess = true
       this.isLoading = false
+
+      this.notifySuccess()
     },
     clearHistory () {
       electronStore.delete(

@@ -314,7 +314,11 @@
       "playlist": "Playlist {playlistTitle} wurde gelöscht",
       "community": "Community {communityTitle} wurde gelöscht"
     },
-    "copied": "Link wurde in die Zwischenablage kopiert."
+    "copied": "Link wurde in die Zwischenablage kopiert.",
+    "cleared": {
+      "cache": "Zwischenspeicher wurde geleert",
+      "searchHistory": "Suchverlauf wurde gelöscht"
+    }
   },
   "counters": {
     "nominative": {
@@ -452,15 +456,9 @@
           "annotations": "Anmerkungen anzeigen"
         },
         "data": {
-          "cache": {
-            "clear": "Zwischenspeicher leeren",
-            "cleared": "Zwischenspeicher wurde geleert"
-          },
-          "history": {
-            "search": {
-              "clear": "Suchverlauf löschen",
-              "cleared": "Suchverlauf wurde gelöscht"
-            }
+          "clear": {
+            "cache": "Zwischenspeicher leeren",
+            "searchHistory": "Suchverlauf löschen"
           }
         }
       },

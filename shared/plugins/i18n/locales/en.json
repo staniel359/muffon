@@ -329,7 +329,11 @@
       "community": "Community {communityTitle} has been deleted",
       "account": "Your account has been deleted"
     },
-    "copied": "Link is copied to clipboard"
+    "copied": "Link is copied to clipboard",
+    "cleared": {
+      "cache": "Cache has been cleared",
+      "searchHistory": "Search history has been cleared"
+    }
   },
   "counters": {
     "nominative": {
@@ -467,15 +471,9 @@
           "annotations": "Show annotations"
         },
         "data": {
-          "cache": {
-            "clear": "Clear cache",
-            "cleared": "Cache has been cleared"
-          },
-          "history": {
-            "search": {
-              "clear": "Clear search history",
-              "cleared": "Search history has been cleared"
-            }
+          "clear": {
+            "cache": "Clear cache",
+            "searchHistory": "Clear search history"
           }
         }
       },

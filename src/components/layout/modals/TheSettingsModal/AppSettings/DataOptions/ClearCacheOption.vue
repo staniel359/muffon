@@ -13,20 +13,6 @@
         @click="handleClick"
       />
     </div>
-
-    <div
-      v-if="isSuccess"
-      class="option-text"
-    >
-      <BaseIcon
-        class="green"
-        icon="success"
-      />
-
-      <span
-        v-text="clearedText"
-      />
-    </div>
   </div>
 </template>
 
@@ -35,29 +21,30 @@ import {
   ipcRenderer
 } from 'electron'
 import BaseButton from '@/components/buttons/BaseButton.vue'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'ClearCacheOption',
   components: {
-    BaseButton,
-    BaseIcon
+    BaseButton
   },
+  mixins: [
+    notificationMixin
+  ],
   data () {
     return {
-      isLoading: false,
-      isSuccess: false
+      isLoading: false
     }
   },
   computed: {
     clearText () {
       return this.$t(
-        'settings.options.app.data.cache.clear'
+        'settings.options.app.data.clear.cache'
       )
     },
-    clearedText () {
+    notificationSuccessMessage () {
       return this.$t(
-        'settings.options.app.data.cache.cleared'
+        'notifications.cleared.cache'
       )
     }
   },
@@ -66,15 +53,15 @@ export default {
       this.clearCache()
     },
     async clearCache () {
-      this.isSuccess = false
       this.isLoading = true
 
       await ipcRenderer.invoke(
         'clear-cache'
       )
 
-      this.isSuccess = true
       this.isLoading = false
+
+      this.notifySuccess()
     }
   }
 }

@@ -314,7 +314,11 @@
       "playlist": "Playlist {playlistTitle} rimossa",
       "community": "Community {communityTitle} cancellata"
     },
-    "copied": "Link copiato negli Appunti"
+    "copied": "Link copiato negli Appunti",
+    "cleared": {
+      "cache": "Cache svuotata",
+      "searchHistory": "Cronologia ricerche cancellata"
+    }
   },
   "counters": {
     "nominative": {
@@ -452,15 +456,9 @@
           "annotations": "Mostra annotazioni"
         },
         "data": {
-          "cache": {
-            "clear": "Svuota cache",
-            "cleared": "Cache svuotata"
-          },
-          "history": {
-            "search": {
-              "clear": "Cancella cronologia ricerche",
-              "cleared": "Cronologia ricerche cancellata"
-            }
+          "clear": {
+            "cache": "Svuota cache",
+            "searchHistory": "Cancella cronologia ricerche"
           }
         }
       },
