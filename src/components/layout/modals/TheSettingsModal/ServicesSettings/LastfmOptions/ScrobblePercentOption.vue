@@ -10,10 +10,8 @@
       <BaseSeeker
         ref="seeker"
         class="bottom aligned labeled ticked with-thumb"
-        :class="{
-          disabled: isDisabled
-        }"
         :options="seekerOptions"
+        :is-disabled="isDisabled"
         @mouse-up="handleMouseUp"
       />
     </div>
