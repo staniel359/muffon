@@ -321,12 +321,14 @@ p
 .main-modal
   & > .content
     @extend .no-margin
-    max-height: $mainModalHeight !important
     &.full-height
       @extend .d-flex, .flex-column
       height: $mainModalHeight
       .main-tab
         @extend .absolute, .overflow-y-auto
+  &:not(.main-delete-modal)
+    & > .content
+      max-height: $mainModalHeight !important
   &.inverted
     @extend .background-black
     &:not(.main-image-modal)

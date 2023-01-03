@@ -1,13 +1,14 @@
 <template>
   <BaseModalContainer
     ref="modal"
+    class="main-delete-modal"
   >
     <div
       class="header"
       v-text="headerText"
     />
 
-    <div class="content">
+    <div class="scrolling content">
       <BaseErrorMessage
         v-if="error"
         class="error-message"

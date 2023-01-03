@@ -1,6 +1,8 @@
 <template>
   <TheSessionObserver />
 
+  <TheAccountDeleteObserver />
+
   <TheNativeThemeObserver />
 
   <TheBackgroundObserver />
@@ -33,6 +35,8 @@ import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
 import TheSessionObserver
   from '@/components/layout/observers/TheSessionObserver.vue'
+import TheAccountDeleteObserver
+  from '@/components/layout/observers/TheAccountDeleteObserver.vue'
 import TheNativeThemeObserver
   from '@/components/layout/observers/TheNativeThemeObserver.vue'
 import TheBackgroundObserver
@@ -54,6 +58,7 @@ export default {
   name: 'RootPage',
   components: {
     TheSessionObserver,
+    TheAccountDeleteObserver,
     TheNativeThemeObserver,
     TheBackgroundObserver,
     ThePlayingObserver,

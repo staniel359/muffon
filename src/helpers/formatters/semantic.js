@@ -16,6 +16,9 @@ export function mainModalOptions (
     allowMultiple: isMultiple,
     duration: 150,
     transition: 'fade',
+    className: {
+      innerDimmer: 'ui dimmer'
+    },
     dimmerSettings: {
       duration: 150
     },
@@ -567,6 +570,34 @@ export function profileUpdateFormOptions (
           {
             type: 'empty',
             prompt: emptyNicknamePrompt
+          }
+        ]
+      }
+    },
+    onSuccess
+  }
+}
+
+export function profileDeleteFormOptions (
+  {
+    onSuccess
+  }
+) {
+  const emptyPasswordPrompt =
+    i18n.global.t(
+      'forms.errors.empty.password'
+    )
+
+  return {
+    duration: 0,
+    inline: true,
+    fields: {
+      password: {
+        identifier: 'password',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyPasswordPrompt
           }
         ]
       }

@@ -5,11 +5,25 @@
       v-html="goingText"
     />
 
-    <p
+    <template
       v-if="isWithAlsoText"
-      class="text-section"
-      v-text="alsoText"
-    />
+    >
+      <template
+        v-if="isAlsoTextArray"
+      >
+        <p
+          v-for="(alsoTextItem, index) in alsoText"
+          :key="index"
+          class="text-section main-text-container"
+          v-html="alsoTextItem"
+        />
+      </template>
+      <p
+        v-else
+        class="text-section"
+        v-text="alsoText"
+      />
+    </template>
 
     <p
       class="text-section"
@@ -54,8 +68,11 @@ export default {
     parentModelNameStrong () {
       return `<strong>${this.parentModelName}</strong>`
     },
+    isAlsoTextArray () {
+      return this.alsoText instanceof Array
+    },
     alsoText () {
-      return this.$t(
+      return this.$tm(
         [
           'modals.delete.also',
           this.modelType,

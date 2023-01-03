@@ -135,6 +135,7 @@
     "share": "Share",
     "search": "Search",
     "filter": "Filter",
+    "confirm": "Confirm",
     "from": {
       "search": "From search",
       "folder": "From folder",
@@ -208,7 +209,8 @@
           "track": "Delete track from bookmarks"
         },
         "post": "Delete post",
-        "community": "Delete community"
+        "community": "Delete community",
+        "account": "Delete account"
       },
       "going": {
         "library": "You are going to delete {modelName} from your library.",
@@ -219,7 +221,8 @@
         "favorite": "You are going to delete {modelName} from your favorites.",
         "bookmark": "You are going to delete {modelName} from your bookmarks.",
         "post": "You are going to delete this post.",
-        "community": "You are going to delete this community."
+        "community": "You are going to delete this community.",
+        "account": "You are going to delete your account."
       },
       "also": {
         "library": {
@@ -227,7 +230,15 @@
           "album": "This will also delete all this album's tracks."
         },
         "playlist": "This will also delete all this playlist's tracks.",
-        "community": "This will also delete all this community's posts."
+        "community": "This will also delete all this community's posts.",
+        "account": [
+          "This will also delete your following data:",
+          "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- your page posts\n- subscriptions</strong>",
+          "This data will remain, but your nickname won't be displayed:",
+          "<strong>- created posts\n- conversations with you\n- created communities</strong>",
+          "And this data will remain unchanged:",
+          "<strong>- saved tracks\n- background images\n- settings</strong>"
+        ]
       },
       "undo": "You can't undo this action!",
       "sure": "Are you sure?"
@@ -290,6 +301,9 @@
       "confirmation": {
         "passwordConfirmation": "Password and its confirmation don't match"
       }
+    },
+    "confirm": {
+      "password": "Please confirm your password:"
     }
   },
   "notifications": {
@@ -312,7 +326,8 @@
     "deleted": {
       "library": "{modelName} was deleted from your library",
       "playlist": "Playlist {playlistTitle} was deleted",
-      "community": "Community {communityTitle} was deleted"
+      "community": "Community {communityTitle} was deleted",
+      "account": "Your account was deleted"
     },
     "copied": "Link is copied to clipboard"
   },
@@ -467,6 +482,11 @@
       "profile": {
         "player": {
           "playing": "Show current track on page"
+        },
+        "data": {
+          "account": {
+            "delete": "Delete account"
+          }
         }
       },
       "services": {
@@ -669,6 +689,9 @@
     "joinedAsc": "Least recently joined",
     "membersCountDesc": "Most members",
     "membersCountAsc": "Least members"
+  },
+  "deleted": {
+    "profile": "Deleted profile"
   },
   "error": "Error",
   "more": "More...",

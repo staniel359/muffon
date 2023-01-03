@@ -1,5 +1,6 @@
 <template>
   <BaseHeaderContainer
+    v-if="profileId"
     :tag="tag"
   >
     <BaseLink
@@ -7,6 +8,10 @@
       :text="profileNickname"
     />
   </BaseHeaderContainer>
+  <div
+    v-else
+    v-text="deletedProfileText"
+  />
 </template>
 
 <script>
@@ -46,6 +51,11 @@ export default {
     },
     profileNickname () {
       return this.profileData.nickname
+    },
+    deletedProfileText () {
+      return this.$t(
+        'deleted.profile'
+      )
     }
   }
 }

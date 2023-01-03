@@ -1,6 +1,9 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
+    :class="{
+      disabled: !profileId
+    }"
     :link="profileMainLink"
   >
     <BaseImage
@@ -11,10 +14,8 @@
 
     <div class="content">
       <div class="nickname-label-container">
-        <BaseHeader
-          tag="h4"
-          class="link"
-          :text="nickname"
+        <NicknameSection
+          :profile-data="profileData"
         />
 
         <BasePrivateIcon
@@ -29,7 +30,7 @@
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import NicknameSection from './ProfileMinimalItem/NicknameSection.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import {
   main as formatProfileMainLink
@@ -40,7 +41,7 @@ export default {
   components: {
     BaseLinkContainer,
     BaseImage,
-    BaseHeader,
+    NicknameSection,
     BasePrivateIcon
   },
   props: {
@@ -51,20 +52,21 @@ export default {
   },
   computed: {
     profileMainLink () {
-      return formatProfileMainLink(
-        {
-          profileId: this.profileId
-        }
-      )
+      if (this.profileId) {
+        return formatProfileMainLink(
+          {
+            profileId: this.profileId
+          }
+        )
+      } else {
+        return {}
+      }
     },
     profileId () {
-      return this.profileData.id.toString()
+      return this.profileData.id
     },
     imageData () {
       return this.profileData.image
-    },
-    nickname () {
-      return this.profileData.nickname
     },
     isPrivate () {
       return this.profileData.private

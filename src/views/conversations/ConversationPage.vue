@@ -17,6 +17,7 @@
         />
 
         <FormSegment
+          v-if="slotProps.profileId"
           :key="key"
           :profile-id="slotProps.profileId"
           @success="handleSuccess"

@@ -3,6 +3,7 @@
     ref="modal"
     size="small"
     is-settings-modal
+    is-multiple
   >
     <div class="content full-height">
       <BaseTabsContainer

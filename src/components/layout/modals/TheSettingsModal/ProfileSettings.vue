@@ -23,13 +23,15 @@ import BaseTabsContainer
   from '@/components/containers/tabs/BaseTabsContainer.vue'
 import InfoOptions from './ProfileSettings/InfoOptions.vue'
 import PlayerOptions from './ProfileSettings/PlayerOptions.vue'
+import DataOptions from './ProfileSettings/DataOptions.vue'
 
 export default {
   name: 'ProfileSettings',
   components: {
     BaseTabsContainer,
     InfoOptions,
-    PlayerOptions
+    PlayerOptions,
+    DataOptions
   },
   data () {
     return {
@@ -47,6 +49,13 @@ export default {
           icon: 'player',
           scope: 'player',
           component: 'PlayerOptions'
+        },
+        {
+          nameCode:
+            'settings.sections.app.data',
+          icon: 'data',
+          scope: 'data',
+          component: 'DataOptions'
         }
       ]
     }

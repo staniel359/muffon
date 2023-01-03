@@ -1,6 +1,7 @@
 <template>
   <div class="field">
     <input
+      ref="input"
       type="password"
       name="password"
       :placeholder="passwordText"
@@ -16,6 +17,13 @@ export default {
       return this.$t(
         'forms.fields.password'
       )
+    }
+  },
+  methods: {
+    focus () {
+      this.$refs
+        .input
+        .focus()
     }
   }
 }

@@ -143,7 +143,7 @@ export default {
       )
     },
     postProfileId () {
-      return this.profileData.id.toString()
+      return this.profileData.id?.toString()
     },
     isPageOwner () {
       return (
