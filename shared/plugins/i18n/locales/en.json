@@ -90,7 +90,7 @@
       "content": "You don't have rights to perform this action"
     },
     "notFound": {
-      "header": "Nothing was found",
+      "header": "Nothing has been found",
       "content": "Please try looking for something else"
     },
     "internalServer": {
@@ -307,27 +307,27 @@
     }
   },
   "notifications": {
-    "scrobbled": "Track {trackFullTitle} was scrobbled",
+    "scrobbled": "Track {trackFullTitle} has been scrobbled",
     "added": {
       "queue": {
-        "track": "Track {trackFullTitle} was added to queue",
-        "tracks": "{counter} was added to queue | {counter} were added to queue"
+        "track": "Track {trackFullTitle} has been added to queue",
+        "tracks": "{counter} has been added to queue | {counter} have been added to queue"
       },
       "savedTracks": {
-        "track": "Track {trackFullTitle} was added to saved tracks"
+        "track": "Track {trackFullTitle} has been added to saved tracks"
       }
     },
     "updated": {
-      "profile": "Profile was updated",
-      "post": "Post was updated",
-      "playlist": "Playlist {playlistTitle} was updated",
-      "community": "Community {communityTitle} was updated"
+      "profile": "Profile has been updated",
+      "post": "Post has been updated",
+      "playlist": "Playlist {playlistTitle} has been updated",
+      "community": "Community {communityTitle} has been updated"
     },
     "deleted": {
-      "library": "{modelName} was deleted from your library",
-      "playlist": "Playlist {playlistTitle} was deleted",
-      "community": "Community {communityTitle} was deleted",
-      "account": "Your account was deleted"
+      "library": "{modelName} has been deleted from your library",
+      "playlist": "Playlist {playlistTitle} has been deleted",
+      "community": "Community {communityTitle} has been deleted",
+      "account": "Your account has been deleted"
     },
     "copied": "Link is copied to clipboard"
   },
@@ -469,12 +469,12 @@
         "data": {
           "cache": {
             "clear": "Clear cache",
-            "cleared": "Cache was cleared"
+            "cleared": "Cache has been cleared"
           },
           "history": {
             "search": {
               "clear": "Clear search history",
-              "cleared": "Search history was cleared"
+              "cleared": "Search history has been cleared"
             }
           }
         }
@@ -523,10 +523,10 @@
     "text": "Forgot password?",
     "link": "Reset",
     "code": {
-      "sent": "Password reset code was sent to your email"
+      "sent": "Password reset code has been sent to your email"
     },
     "updated": {
-      "header": "Your password was updated",
+      "header": "Your password has been updated",
       "content": "Now you may go back and login"
     }
   },
@@ -551,7 +551,7 @@
   "message": {
     "send": "Send message",
     "sent": {
-      "header": "Message was sent",
+      "header": "Message has been sent",
       "content": "Go to conversation"
     }
   },
@@ -582,14 +582,14 @@
     "active": "Saving {count} of {counter}...",
     "success": {
       "library": {
-        "artists": "{counter} was added to library | {counter} were added to library",
-        "albums": "{counter} was added to library | {counter} were added to library",
-        "tracks": "{counter} was added to library | {counter} were added to library"
+        "artists": "{counter} has been added to library | {counter} have been added to library",
+        "albums": "{counter} has been added to library | {counter} have been added to library",
+        "tracks": "{counter} has been added to library | {counter} have been added to library"
       },
       "playlist": {
-        "artists": "{counter} was added to playlist | {counter} were added to playlist",
-        "albums": "{counter} was added to playlist | {counter} were added to playlist",
-        "tracks": "{counter} was added to playlist | {counter} were added to playlist"
+        "artists": "{counter} has been added to playlist | {counter} have been added to playlist",
+        "albums": "{counter} has been added to playlist | {counter} have been added to playlist",
+        "tracks": "{counter} has been added to playlist | {counter} have been added to playlist"
       }
     },
     "error": "{counter} could not be added:"
@@ -628,12 +628,12 @@
     "content": "Looks like there is nothing here"
   },
   "deleted": {
-    "artist": "Artist was deleted",
-    "album": "Album was deleted",
-    "track": "Track was deleted",
-    "recommendation": "Recommendation was deleted",
-    "playlist": "Playlist was deleted",
-    "post": "Post was deleted"
+    "artist": "Artist has been deleted",
+    "album": "Album has been deleted",
+    "track": "Track has been deleted",
+    "recommendation": "Recommendation has been deleted",
+    "playlist": "Playlist has been deleted",
+    "post": "Post has been deleted"
   },
   "messages": {
     "welcome": "Welcome, {profileNickname}"
