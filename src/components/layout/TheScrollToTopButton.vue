@@ -55,10 +55,6 @@ export default {
     this.scrollable =
       this.$refs.scrollable
   },
-  activated () {
-    this.scrollable =
-      this.$refs.scrollable
-  },
   methods: {
     handleClick () {
       this.scrollToTop()

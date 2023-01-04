@@ -21,7 +21,9 @@
 
   <TheSearchModal />
 
-  <TheScrollToTopButton />
+  <TheScrollToTopButton
+    :key="key"
+  />
 
   <TheDonateModal />
 
@@ -55,6 +57,9 @@ import TheScrollToTopButton from '@/components/layout/TheScrollToTopButton.vue'
 import TheDonateModal from '@/components/layout/modals/TheDonateModal.vue'
 import TheLoaderDimmer from '@/components/layout/TheLoaderDimmer.vue'
 import TheView from '@/components/layout/TheView.vue'
+import {
+  generateKey
+} from '#/helpers/utils'
 
 export default {
   name: 'DefaultPageLayout',
@@ -80,11 +85,26 @@ export default {
       refreshPage: this.refreshPage
     }
   },
+  data () {
+    return {
+      key: null
+    }
+  },
+  watch: {
+    $route: 'handleRouteChange'
+  },
   methods: {
+    handleRouteChange (
+      value
+    ) {
+      this.key = generateKey()
+    },
     refreshPage () {
       this.$refs
         .view
         .refresh()
+
+      this.key = generateKey()
     }
   }
 }
