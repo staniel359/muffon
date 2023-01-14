@@ -35,7 +35,8 @@
         icon="delete"
         :text="deleteText"
         :class="{
-          loading: isLoading
+          loading: isLoading,
+          disabled: isLoading
         }"
         :is-invertable="false"
         @click="handleDeleteButtonClick"
