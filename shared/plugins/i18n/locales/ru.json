@@ -688,7 +688,7 @@
     "membersCountDesc": "Больше участников",
     "membersCountAsc": "Меньше участников"
   },
-  "deleted": {
+  "deletedModel": {
     "profile": "Удалённый профиль"
   },
   "error": "Ошибка",

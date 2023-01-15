@@ -31,7 +31,7 @@ export default {
     },
     deletedProfileText () {
       return this.$t(
-        'deleted.profile'
+        'deletedModel.profile'
       )
     }
   }

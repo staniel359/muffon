@@ -688,7 +688,7 @@
     "membersCountDesc": "Most members",
     "membersCountAsc": "Least members"
   },
-  "deleted": {
+  "deletedModel": {
     "profile": "Deleted profile"
   },
   "error": "Error",
