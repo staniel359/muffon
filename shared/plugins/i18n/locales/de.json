@@ -135,6 +135,7 @@
     "share": "Teilen",
     "search": "Suchen",
     "filter": "Filter",
+    "confirm": "Bestätigen",
     "from": {
       "search": "Von der Suche",
       "folder": "Von dem Ordner",
@@ -208,7 +209,8 @@
           "track": "Titel aus Lesezeichen entfernen"
         },
         "post": "Post löschen",
-        "community": "Community löschen"
+        "community": "Community löschen",
+        "account": "Account löschen"
       },
       "going": {
         "library": "Sie werden {modelName} aus Ihrer Bibliothek löschen.",
@@ -219,7 +221,8 @@
         "favorite": "Sie werden {modelName} aus Ihren Favoriten löschen.",
         "bookmark": "Sie werden {modelName} aus Ihren Lesezeichen löschen.",
         "post": "Sie werden diesen Post löschen.",
-        "community": "Sie werden diese Community löschen."
+        "community": "Sie werden diese Community löschen.",
+        "account": "Sie werden Ihren Account löschen."
       },
       "also": {
         "library": {
@@ -227,7 +230,15 @@
           "album": "Dadurch werden auch alle Titel dieses Albums gelöscht."
         },
         "playlist": "Dadurch werden auch alle Titel dieser Playlist gelöscht.",
-        "community": "Dadurch werden auch alle Beiträge dieser Community gelöscht."
+        "community": "Dadurch werden auch alle Beiträge dieser Community gelöscht.",
+        "account": [
+          "Dadurch werden auch folgende Daten von Ihnen gelöscht:",
+          "<strong>- Bibliothek\n- Vorschläge\n- Playlists\n- Lesezeichen\n- Angehörte Titel\n- Beiträge auf Ihrer Seite\n- Abonnements</strong>",
+          "Diese Daten werden bleiben, aber Ihr Nickname wird nicht mehr angezeigt werden:",
+          "<strong>- erstellte Beiträge\n- Konversationen mit Ihnen\n- erstellte Communities</strong>",
+          "Diese Daten werden nicht geändert werden:",
+          "<strong>- gespeicherte Titel\n- Hintergrundbilder\n- Einstellungen</strong>"
+        ]
       },
       "undo": "Dies kann nicht rückgangig gemacht werden!",
       "sure": "Bist du dir sicher?"
@@ -260,7 +271,7 @@
       "remember": "Eingeloggt bleiben",
       "asCommunity": "Als Community"
     },
-    "extra": "Zusätzliche infos",
+    "extra": "Zusätzliche Infos",
     "errors": {
       "notFound": "Email oder Passwort ist falsch",
       "empty": {
@@ -290,6 +301,9 @@
       "confirmation": {
         "passwordConfirmation": "Passwörter stimmen nicht überein"
       }
+    },
+    "confirm": {
+      "password": "Bitte bestätigen Sie Ihr Passwort"
     }
   },
   "notifications": {
@@ -312,7 +326,8 @@
     "deleted": {
       "library": "{modelName} wurde von deiner Bibliothek entfernt",
       "playlist": "Playlist {playlistTitle} wurde gelöscht",
-      "community": "Community {communityTitle} wurde gelöscht"
+      "community": "Community {communityTitle} wurde gelöscht",
+      "account": "Ihr Account wurde gelöscht"
     },
     "copied": "Link wurde in die Zwischenablage kopiert.",
     "cleared": {
@@ -465,6 +480,11 @@
       "profile": {
         "player": {
           "playing": "Aktuellen Titel auf der Seite anzeigen"
+        }
+      },
+      "data": {
+        "account": {
+          "delete": "Account löschen"
         }
       },
       "services": {
@@ -667,6 +687,9 @@
     "joinedAsc": "Am ältesten",
     "membersCountDesc": "Meiste Mitglieder",
     "membersCountAsc": "Wengiste Mitglieder"
+  },
+  "deletedModel": {
+    "profile": "Deleted profile"
   },
   "error": "Fehler",
   "more": "Mehr",
