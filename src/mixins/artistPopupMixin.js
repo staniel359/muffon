@@ -96,7 +96,9 @@ export default {
       )
     },
     handleIsDarkModeChange () {
-      this.initialize()
+      if (this.isSetPopup) {
+        this.initialize()
+      }
     },
     handleShow () {
       this.isCalled = true
