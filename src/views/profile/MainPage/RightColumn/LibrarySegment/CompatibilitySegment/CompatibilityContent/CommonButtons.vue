@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="common-buttons">
     <ArtistsButton
       :compatibility-data="compatibilityData"
       :profile-id="profileId"
@@ -36,4 +36,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.common-buttons
+  display: inline-flex
+</style>
