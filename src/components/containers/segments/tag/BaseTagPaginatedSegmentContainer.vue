@@ -15,7 +15,6 @@
         :error="segmentSlotProps.error"
         :scope="scope"
         :limit="limit"
-        :response-page-limit="responsePageLimit"
         @focus="handleFocus"
       >
         <template
@@ -49,7 +48,6 @@ export default {
     tagName: String,
     scope: String,
     limit: Number,
-    responsePageLimit: Number,
     headerLink: Object
   }
 }

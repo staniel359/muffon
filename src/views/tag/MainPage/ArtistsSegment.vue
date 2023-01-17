@@ -2,7 +2,6 @@
   <BaseTagPaginatedSegmentContainer
     :scope="scope"
     :limit="limit"
-    :response-page-limit="responsePageLimit"
     :tag-name="tagName"
     :header-link="headerLink"
   >
@@ -47,7 +46,6 @@ export default {
   data () {
     return {
       limit: 5,
-      responsePageLimit: 21,
       itemsInRow: 5,
       scope: 'artists'
     }

@@ -3,7 +3,6 @@
     :tag-name="tagName"
     :scope="scope"
     :limit="limit"
-    :response-page-limit="responsePageLimit"
     :header-link="headerLink"
   >
     <template
@@ -48,7 +47,6 @@ export default {
   data () {
     return {
       limit: 4,
-      responsePageLimit: 20,
       itemsInRow: 4,
       scope: 'albums'
     }

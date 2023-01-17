@@ -3,7 +3,6 @@
     :tag-name="tagName"
     :scope="scope"
     :limit="limit"
-    :response-page-limit="responsePageLimit"
     :view-id="viewId"
     is-with-top-segment
     is-with-view-change
@@ -46,7 +45,6 @@ export default {
   },
   data () {
     return {
-      responsePageLimit: 20,
       scope: 'albums'
     }
   }

@@ -2,7 +2,6 @@
   <BaseTagPaginatedSegmentContainer
     :scope="scope"
     :limit="limit"
-    :response-page-limit="responsePageLimit"
     :tag-name="tagName"
     :header-link="headerLink"
   >
@@ -49,7 +48,6 @@ export default {
   data () {
     return {
       limit: 10,
-      responsePageLimit: 50,
       scope: 'tracks'
     }
   },

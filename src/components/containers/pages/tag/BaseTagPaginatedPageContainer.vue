@@ -14,7 +14,6 @@
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
-        :response-page-limit="responsePageLimit"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
         :view-id="viewId"
@@ -50,7 +49,6 @@ export default {
     tagName: String,
     scope: String,
     limit: Number,
-    responsePageLimit: Number,
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
     viewId: String
