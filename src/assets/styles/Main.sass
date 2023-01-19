@@ -173,13 +173,14 @@ p
         border-bottom: $borderInverted
         .image
           @extend .border-inverted
-        .title
-          @extend .text-color-white
-        .description
-          .artist-name
+        .content
+          .title
             @extend .text-color-white
-          .album-title
-            @extend .text-color-white-inverted
+          .description
+            .artist-name
+              @extend .text-color-white
+            .album-title
+              @extend .text-color-white-inverted
         &:hover,
         &.active
           @extend .background-grey-inverted
