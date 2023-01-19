@@ -74,9 +74,8 @@ function create (
   const isFullScreen =
     mainWindow.isFullScreen()
 
-  const titleBarHeight = (
-    isMac && !isFullScreen
-  ) ? 28 : 0
+  const titleBarHeight =
+    (isMac && !isFullScreen) ? 28 : 0
 
   const tabsPanelHeight = 45
 

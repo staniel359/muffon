@@ -1,34 +1,21 @@
-const setupDotenv = require(
-  './electron/actions/dotenv/setup'
+const preinitialize = require(
+  './electron/actions/app/preinitialize'
 )
 
-setupDotenv()
+preinitialize()
 
-const {
-  isDevelopment
-} = require(
-  './electron/utils'
+const setGlobalVariables = require(
+  './electron/actions/app/setGlobalVariables'
 )
-const setDevelopmentUserDataPath = require(
-  './electron/actions/app/setDevelopmentUserDataPath'
-)
-
-if (isDevelopment) {
-  setDevelopmentUserDataPath()
-}
-
-const globalVariables = require(
-  './electron/globalVariables'
-)
-const events = require(
-  './electron/events'
+const setEvents = require(
+  './electron/actions/app/setEvents'
 )
 const initialize = require(
   './electron/actions/app/initialize'
 )
 
-globalVariables
+setGlobalVariables()
 
-events
+setEvents()
 
 initialize()

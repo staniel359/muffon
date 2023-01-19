@@ -21,7 +21,7 @@ function createFolderIfNotExists (
       path
     )
 
-  if (!isFolderExist){
+  if (!isFolderExist) {
     fs.mkdirSync(
       path
     )

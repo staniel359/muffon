@@ -47,7 +47,7 @@ export default {
     ) {
       const createArgs = {
         tabId: this.tabId,
-        data
+        imageData: data
       }
 
       ipcRenderer.send(

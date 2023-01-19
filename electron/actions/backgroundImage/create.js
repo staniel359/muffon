@@ -16,56 +16,56 @@ const findTab = require(
 function create (
   {
     tabId,
-    data
+    imageData
   }
 ) {
   const isImage =
-    data.includes(
+    imageData.includes(
       'data:image'
     )
 
+  const fileName = generateKey()
+
+  const filePath =
+    getPath(
+      fileName
+    )
+
+  function handleComplete (
+    error
+  ) {
+    if (!error) {
+      const tab =
+        findTab(
+          tabId
+        )
+
+      const data = {
+        id: fileName,
+        path: filePath
+      }
+
+      tab
+        .webContents
+        .send(
+          'create-background-image',
+          data
+        )
+    }
+  }
+
   if (isImage) {
-    const fileName = generateKey()
-
-    const filePath =
-      getPath(
-        fileName
-      )
-
-    const dataFormatted =
-      data.replace(
+    const imageDataFormatted =
+      imageData.replace(
         /data:image\/(.+);base64,/,
         ''
       )
 
     const buffer =
       Buffer.from(
-        dataFormatted,
+        imageDataFormatted,
         'base64'
       )
-
-    function handleComplete (
-      error
-    ) {
-      if (!error) {
-        const tab =
-          findTab(
-            tabId
-          )
-
-        const data = {
-          id: fileName,
-          path: filePath
-        }
-
-        tab
-          .webContents
-          .send(
-            'create-background-image',
-            data
-          )
-      }
-    }
 
     fs.writeFile(
       filePath,

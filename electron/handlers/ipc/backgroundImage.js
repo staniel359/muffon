@@ -15,13 +15,13 @@ function handleCreateBackgroundImage (
   _,
   {
     tabId,
-    data
+    imageData
   }
 ) {
   createBackgroundImage(
     {
       tabId,
-      data
+      imageData
     }
   )
 }
