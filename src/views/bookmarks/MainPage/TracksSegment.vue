@@ -16,6 +16,7 @@
         is-with-source
         is-with-created
         is-bookmark
+        is-with-source-option
         is-with-library-option
         is-with-favorite-option
         is-with-listened-option

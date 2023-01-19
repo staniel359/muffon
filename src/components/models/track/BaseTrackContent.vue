@@ -120,6 +120,7 @@
       :is-playlist-track="isPlaylistTrack"
       :playlist-id="playlistId"
       :playlist-title="playlistTitle"
+      :is-with-source-option="isWithSourceOption"
       :is-with-library-option="isWithLibraryOption"
       :is-with-favorite-option="isWithFavoriteOption"
       :is-with-bookmark-option="isWithBookmarkOption"
@@ -130,6 +131,7 @@
       :is-with-delete-option="isWithDeleteOption && isSelf"
       :is-clearable="isClearable"
       @link-click="handleLinkClick"
+      @source-click="handleSourceClick"
       @delete-option-click="handleDeleteOptionClick"
       @deleted="handleDeleted"
     />
@@ -217,6 +219,7 @@ export default {
     isWithSavedIcon: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
+    isWithSourceOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
@@ -237,6 +240,7 @@ export default {
   },
   emits: [
     'linkClick',
+    'sourceClick',
     'clearButtonClick',
     'deleteOptionClick',
     'deleted'
@@ -356,6 +360,14 @@ export default {
     handleLinkClick () {
       this.$emit(
         'linkClick'
+      )
+    },
+    handleSourceClick (
+      value
+    ) {
+      this.$emit(
+        'sourceClick',
+        value
       )
     },
     handleDeleteOptionClick () {

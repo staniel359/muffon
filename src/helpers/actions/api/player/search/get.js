@@ -9,6 +9,7 @@ import {
 
 export default function getPlayerSearch (
   {
+    source,
     query,
     limit = 20,
     audioSourceIndex = 0
@@ -23,7 +24,11 @@ export default function getPlayerSearch (
       audioSourceIndex
     ]
 
-  const url = `/${audioSource}/search/tracks`
+  const sourceComputed = (
+    source || audioSource
+  )
+
+  const url = `/${sourceComputed}/search/tracks`
 
   const params = {
     query

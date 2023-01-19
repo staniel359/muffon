@@ -9,12 +9,9 @@
     <BaseButtonContainer
       ref="dropdown"
       :class="[
-        'compact basic circular',
-        'icon floating dropdown',
-        'main-options-dropdown-button',
-        {
-          scrolling: isScrolling
-        }
+        'compact basic circular icon',
+        'top right pointing dropdown',
+        'main-options-dropdown-button'
       ]"
     >
       <BaseIcon
@@ -48,12 +45,6 @@ export default {
   components: {
     BaseButtonContainer,
     BaseIcon
-  },
-  props: {
-    isScrolling: {
-      type: Boolean,
-      default: true
-    }
   },
   emits: [
     'activeChange'

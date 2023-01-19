@@ -5,6 +5,7 @@ import {
 
 export default function (
   {
+    source,
     trackData,
     queueTracks
   }
@@ -13,6 +14,7 @@ export default function (
   this.isLoading = true
 
   const playerTrackAudioArgs = {
+    source,
     trackData
   }
 

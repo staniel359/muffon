@@ -7,6 +7,7 @@ import {
 
 export default function (
   {
+    source,
     trackData
   }
 ) {
@@ -39,10 +40,15 @@ export default function (
   }
 
   const playerTrackAudioArgs = {
+    source,
     trackData
   }
 
-  if (isAudioPresent) {
+  const isGetAudio = (
+    isAudioPresent && !source
+  )
+
+  if (isGetAudio) {
     return getAudio(
       audioArgs
     ).then(

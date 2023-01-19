@@ -140,6 +140,7 @@
       "video": "Cerca video"
     },
     "searchIn": {
+      "source": "Cerca dalla fonte",
       "sources": "Cerca dalle fonti"
     },
     "from": {

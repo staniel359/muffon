@@ -9,6 +9,7 @@
     is-with-index
     is-with-artist-name
     is-with-duration
+    is-with-source-option
     is-with-library-option
     is-with-favorite-option
     is-with-bookmark-option

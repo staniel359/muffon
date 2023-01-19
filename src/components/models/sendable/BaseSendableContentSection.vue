@@ -42,6 +42,7 @@
       is-with-artist-name
       is-with-album-title
       is-with-source
+      is-with-source-option
       is-with-playlist-option
       is-with-share-option
       is-with-queue-option

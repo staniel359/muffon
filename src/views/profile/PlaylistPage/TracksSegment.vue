@@ -24,6 +24,7 @@
         is-with-source
         is-with-created
         is-playlist-track
+        is-with-source-option
         is-with-library-option
         is-with-favorite-option
         is-with-bookmark-option

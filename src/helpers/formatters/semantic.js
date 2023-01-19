@@ -312,15 +312,10 @@ export function mainDropdownOptions (
 }
 
 export function optionsDropdownOptions () {
-  const {
-    visibleContext
-  } = layoutStore()
-
   return {
     action: 'nothing',
     on: 'hover',
     transition: 'fade up',
-    context: visibleContext,
     delay: {
       show: 0,
       hide: 150

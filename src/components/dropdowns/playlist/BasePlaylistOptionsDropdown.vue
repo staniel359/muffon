@@ -1,7 +1,6 @@
 <template>
   <BaseOptionsDropdownContainer
     v-if="isRender"
-    :is-scrolling="isScrolling"
   >
     <AddOption
       v-if="isWithAddOption"
@@ -86,10 +85,6 @@ export default {
     BasePlaylistDeleteModal
   },
   props: {
-    isScrolling: {
-      type: Boolean,
-      default: true
-    },
     playlistData: Object,
     isWithAddOption: Boolean,
     isWithShareOption: Boolean,

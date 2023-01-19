@@ -13,6 +13,7 @@
         is-with-artist-name
         is-with-artist-image
         is-with-duration
+        is-with-source-option
         is-with-library-option
         is-with-favorite-option
         is-with-bookmark-option

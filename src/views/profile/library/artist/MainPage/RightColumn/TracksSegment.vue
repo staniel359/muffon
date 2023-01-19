@@ -20,6 +20,7 @@
         is-with-source
         is-with-created
         is-link-to-library
+        is-with-source-option
         is-with-playlist-option
         is-with-favorite-option
         is-with-bookmark-option

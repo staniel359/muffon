@@ -150,6 +150,18 @@ export default {
       this.getPlayerTrack(
         this.playerTrackArgs
       )
+    },
+    getSourceAudio (
+      {
+        source
+      }
+    ) {
+      this.getPlayerTrack(
+        {
+          source,
+          ...this.playerTrackArgs
+        }
+      )
     }
   }
 }

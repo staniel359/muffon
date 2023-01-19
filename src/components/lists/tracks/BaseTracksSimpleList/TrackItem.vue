@@ -30,6 +30,7 @@
         :is-with-saved-icon="isWithSavedIcon"
         :is-link-to-library="isLinkToLibrary"
         :profile-id="profileId"
+        :is-with-source-option="isWithSourceOption"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
@@ -49,6 +50,7 @@
         :is-deleted="isDeleted"
         :is-clearable="isClearable"
         @link-click="handleLinkClick"
+        @source-click="handleSourceClick"
         @clear-button-click="handleClearButtonClick"
         @delete-option-click="handleDeleteOptionClick"
         @deleted="handleDeleted"
@@ -90,6 +92,7 @@ export default {
     isWithSavedIcon: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
+    isWithSourceOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
@@ -135,6 +138,15 @@ export default {
         'linkClick'
       )
     },
+    handleSourceClick (
+      value
+    ) {
+      this.getSourceAudio(
+        {
+          source: value
+        }
+      )
+    },
     handleClearButtonClick (
       {
         uuid
@@ -167,6 +179,19 @@ export default {
       this.$refs
         .track
         .getAudio()
+    },
+    getSourceAudio (
+      {
+        source
+      }
+    ) {
+      this.$refs
+        .track
+        .getSourceAudio(
+          {
+            source
+          }
+        )
     }
   }
 }

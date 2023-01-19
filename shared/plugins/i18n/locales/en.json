@@ -143,6 +143,7 @@
       "library": "From library"
     },
     "searchIn": {
+      "source": "Search in source",
       "sources": "Search in sources"
     },
     "searchFor": {

@@ -1,7 +1,6 @@
 <template>
   <BaseOptionsDropdownContainer
     v-if="isRender"
-    :is-scrolling="false"
   >
     <AddOption
       v-if="isWithAddOption"

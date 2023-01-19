@@ -13,6 +13,7 @@
         :artist-name="slotProps.artistName"
         :top-track-count="slotProps.topTrackCount"
         is-with-listeners-count
+        is-with-source-option
         is-with-library-option
         is-with-favorite-option
         is-with-bookmark-option

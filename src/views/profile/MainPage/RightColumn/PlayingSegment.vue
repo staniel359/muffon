@@ -9,6 +9,7 @@
       is-with-album-title
       is-with-source
       is-with-duration
+      is-with-source-option
       is-with-playlist-option
       is-with-queue-option
       is-with-share-option

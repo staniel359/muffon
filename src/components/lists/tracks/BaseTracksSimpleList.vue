@@ -21,6 +21,7 @@
       :is-with-saved-icon="isWithSavedIcon"
       :is-link-to-library="isLinkToLibrary"
       :profile-id="profileId"
+      :is-with-source-option="isWithSourceOption"
       :is-with-library-option="isWithLibraryOption"
       :is-with-favorite-option="isWithFavoriteOption"
       :is-with-bookmark-option="isWithBookmarkOption"
@@ -89,6 +90,7 @@ export default {
     topTrackCount: Number,
     isLinkToLibrary: Boolean,
     profileId: String,
+    isWithSourceOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,

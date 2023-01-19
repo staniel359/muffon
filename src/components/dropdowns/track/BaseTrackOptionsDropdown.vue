@@ -2,6 +2,11 @@
   <BaseOptionsDropdownContainer
     v-if="isRender"
   >
+    <SourceOption
+      v-if="isWithSourceOption"
+      @click="handleSourceClick"
+    />
+
     <LibraryOption
       v-if="isRenderLibraryOption"
       :library-id="libraryId"
@@ -113,6 +118,7 @@ import {
 import profileStore from '@/stores/profile'
 import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+import SourceOption from './BaseTrackOptionsDropdown/SourceOption.vue'
 import LibraryOption from './BaseTrackOptionsDropdown/LibraryOption.vue'
 import BasePlaylistOption
   from '@/components/dropdowns/options/BasePlaylistOption.vue'
@@ -145,6 +151,7 @@ export default {
   name: 'BaseTrackOptionsDropdown',
   components: {
     BaseOptionsDropdownContainer,
+    SourceOption,
     LibraryOption,
     BasePlaylistOption,
     FavoriteOption,
@@ -176,6 +183,7 @@ export default {
     isPlaylistTrack: Boolean,
     playlistId: String,
     playlistTitle: String,
+    isWithSourceOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithPlaylistOption: Boolean,
     isWithFavoriteOption: Boolean,
@@ -190,6 +198,7 @@ export default {
   },
   emits: [
     'linkClick',
+    'sourceClick',
     'deleteOptionClick',
     'deleted'
   ],
@@ -202,7 +211,8 @@ export default {
     ),
     isRender () {
       return (
-        this.isRenderLibraryOption ||
+        this.isWithSourceOption ||
+          this.isRenderLibraryOption ||
           this.isRenderPlaylistOption ||
           this.isRenderFavoriteOption ||
           this.isRenderBookmarkOption ||
@@ -307,6 +317,14 @@ export default {
     handleDeleted () {
       this.$emit(
         'deleted'
+      )
+    },
+    handleSourceClick (
+      value
+    ) {
+      this.$emit(
+        'sourceClick',
+        value
       )
     },
     showPlaylistsModal () {

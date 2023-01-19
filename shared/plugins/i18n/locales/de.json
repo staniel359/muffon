@@ -143,6 +143,7 @@
       "library": "Von der Bibliothek"
     },
     "searchIn": {
+      "source": "In Quelle suchen",
       "sources": "In Quellen suchen"
     },
     "searchFor": {
