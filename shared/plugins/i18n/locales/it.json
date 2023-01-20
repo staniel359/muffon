@@ -301,7 +301,7 @@
       "confirmation": {
         "passwordConfirmation": "La password e la conferma non corrispondono"
       }
-      },
+    },
     "confirm": {
       "password": "Conferma la tua password:"
     }
@@ -483,9 +483,9 @@
         }
       },
       "data": {
-          "account": {
-            "delete": "Elimina account"
-          }
+        "account": {
+          "delete": "Elimina account"
+        }
       }
       "services": {
         "lastfm": {
