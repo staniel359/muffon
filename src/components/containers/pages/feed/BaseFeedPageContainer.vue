@@ -63,17 +63,13 @@ export default {
     }
   },
   watch: {
-    feedData: 'handleNavigationDataChange',
-    isGlobal: 'handleIsGlobalChange'
+    feedData: 'handleNavigationDataChange'
   },
   mounted () {
     this.getData()
   },
   methods: {
     getFeed,
-    handleIsGlobalChange () {
-      this.getData()
-    },
     getData (
       {
         page

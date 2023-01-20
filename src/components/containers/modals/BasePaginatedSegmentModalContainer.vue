@@ -83,10 +83,10 @@ export default {
         .modal
         .hide()
     },
-    reset () {
+    refresh () {
       this.$refs
         .segment
-        .reset()
+        .refresh()
     }
   }
 }

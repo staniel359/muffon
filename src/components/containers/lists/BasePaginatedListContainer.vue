@@ -587,19 +587,6 @@ export default {
           this.clientPageLimitComputed
       )
     },
-    reset () {
-      const initialData =
-        this.$options
-          .data
-          .apply(
-            this
-          )
-
-      Object.assign(
-        this.$data,
-        initialData
-      )
-    },
     findPaginationItem (
       {
         uuid

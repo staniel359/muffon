@@ -46,7 +46,7 @@ export default {
     order: String
   },
   emits: [
-    'reset'
+    'refresh'
   ],
   data () {
     return {
@@ -109,10 +109,8 @@ export default {
       this.refresh()
     },
     refresh () {
-      this.getData()
-
       this.$emit(
-        'reset'
+        'refresh'
       )
     },
     getData (

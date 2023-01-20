@@ -119,8 +119,10 @@ export default {
     handleSearchClearButtonClick () {
       this.query = ''
     },
-    handleQueryChange () {
-      this.reset()
+    async handleQueryChange () {
+      await this.$nextTick()
+
+      this.refresh()
     }
   }
 }

@@ -23,7 +23,7 @@ export default {
     BaseClearButton
   },
   inject: [
-    'reset'
+    'clearTags'
   ],
   props: {
     tags: {
@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     handleClearButtonClick () {
-      this.reset()
+      this.clearTags()
 
       this.clearInput()
 

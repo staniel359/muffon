@@ -49,7 +49,7 @@ export default {
     limit: Number
   },
   emits: [
-    'requestArtistDataChange'
+    'refresh'
   ],
   data () {
     return {
@@ -114,15 +114,18 @@ export default {
   },
   mounted () {
     this.resetRequestArtistData()
+
+    this.getData()
   },
   methods: {
     getArtist,
-    handleRequestArtistDataChange () {
-      this.$emit(
-        'requestArtistDataChange'
-      )
-
-      this.getData()
+    handleRequestArtistDataChange (
+      value,
+      oldValue
+    ) {
+      if (oldValue) {
+        this.refresh()
+      }
     },
     resetRequestArtistData () {
       this.requestArtistData =
@@ -138,6 +141,11 @@ export default {
           ...this.artistArgs,
           page
         }
+      )
+    },
+    refresh () {
+      this.$emit(
+        'refresh'
       )
     },
     setRequestArtistData (

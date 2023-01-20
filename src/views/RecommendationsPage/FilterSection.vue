@@ -41,7 +41,7 @@ export default {
   provide () {
     return {
       setScope: this.setScope,
-      reset: this.reset
+      clearCollection: this.clearCollection
     }
   },
   inject: [
@@ -80,7 +80,7 @@ export default {
         value
       )
 
-      this.reset()
+      this.clearCollection()
 
       await this.$nextTick()
 
@@ -121,7 +121,7 @@ export default {
     ) {
       return collectionItemData.name
     },
-    reset () {
+    clearCollection () {
       this.collection = []
     },
     focusInput () {

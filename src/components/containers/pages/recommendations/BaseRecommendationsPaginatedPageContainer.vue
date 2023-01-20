@@ -3,7 +3,7 @@
     ref="page"
     :limit="limit"
     :order="order"
-    @reset="handleReset"
+    @refresh="handleRefresh"
   >
     <template
       #default="pageSlotProps"
@@ -70,11 +70,6 @@ export default {
     model: String,
     isWithTopSegment: Boolean,
     isWithOrderChange: Boolean
-  },
-  methods: {
-    handleReset () {
-      this.reset()
-    }
   }
 }
 </script>

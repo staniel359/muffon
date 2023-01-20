@@ -1,6 +1,6 @@
 <template>
   <BasePaginatedPageContainer
-    ref="page"
+    ref="pagination"
     :response-data="multitagData"
     :is-loading="isLoading"
     :error="error"
@@ -48,6 +48,7 @@ import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
 import navigationMixin from '@/mixins/navigationMixin'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
 import collectionMixin from '@/mixins/collectionMixin'
+import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 import {
   multitag as formatMultitagPageNavigation
 } from '@/helpers/formatters/navigation'
@@ -65,13 +66,14 @@ export default {
   mixins: [
     navigationMixin,
     viewChangeMixin,
-    collectionMixin
+    collectionMixin,
+    paginatedPageMixin
   ],
   provide () {
     return {
       getData: this.getData,
       setScope: this.setScope,
-      reset: this.reset
+      clearTags: this.clearTags
     }
   },
   data () {
@@ -129,21 +131,21 @@ export default {
     handleTagsChange (
       value
     ) {
-      this.resetPage()
-
       if (value.length) {
-        this.getData()
+        this.refresh()
       } else {
         this.multitagData = null
+
+        this.reset()
       }
     },
     handleScopeChange () {
       if (this.tags.length) {
+        this.multitagData = null
+
         this.resetViewId()
 
-        this.resetPage()
-
-        this.getData()
+        this.refresh()
       }
     },
     getData (
@@ -163,18 +165,13 @@ export default {
     ) {
       this.scope = value
     },
-    reset () {
+    clearTags () {
       this.tags = []
     },
     formatTag (
       tagData
     ) {
       return tagData.name
-    },
-    resetPage () {
-      this.$refs
-        .page
-        .reset()
     }
   }
 }

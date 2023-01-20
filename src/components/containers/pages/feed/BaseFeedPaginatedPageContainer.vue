@@ -20,8 +20,8 @@
         :is-with-order-change="isWithOrderChange"
       >
         <template #top>
-          <slot
-            name="top"
+          <GlobalToggle
+            @refresh="handleRefresh"
           />
         </template>
 
@@ -41,13 +41,15 @@
 import BaseFeedPageContainer from './BaseFeedPageContainer.vue'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import GlobalToggle from './BaseFeedPaginatedPageContainer/GlobalToggle.vue'
 import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseFeedPaginatedPageContainer',
   components: {
     BaseFeedPageContainer,
-    BasePaginatedPageContainer
+    BasePaginatedPageContainer,
+    GlobalToggle
   },
   mixins: [
     paginatedPageMixin

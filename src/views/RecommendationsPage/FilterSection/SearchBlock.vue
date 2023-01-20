@@ -26,7 +26,7 @@ export default {
     BaseClearButton
   },
   inject: [
-    'reset'
+    'clearCollection'
   ],
   props: {
     scope: {
@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     handleClearButtonClick () {
-      this.reset()
+      this.clearCollection()
 
       this.clearInput()
 

@@ -27,7 +27,7 @@
 
           <BaseViewSelect
             v-if="isWithViewChange"
-            :key="key"
+            :key="viewSelectKey"
             class="select-block"
             :scope="scope"
             :view-id="viewId"
@@ -45,6 +45,7 @@
 
     <BasePaginatedSegmentContainer
       ref="pagination"
+      :key="paginationKey"
       class="main-paginated-page-segment-container"
       :response-data="responseDataComputed"
       :is-loading="isLoading"
@@ -127,7 +128,8 @@ export default {
   },
   data () {
     return {
-      key: null,
+      viewSelectKey: null,
+      paginationKey: null,
       responseDataComputed: null
     }
   },
@@ -182,29 +184,25 @@ export default {
       this.refresh()
     },
     handleScopeChange () {
-      this.key = generateKey()
+      this.viewSelectKey = generateKey()
     },
     handleFocus () {
       this.focus()
     },
-    async refresh () {
-      this.responseDataComputed = null
-
+    refresh () {
       this.reset()
 
-      await this.$nextTick()
-
       this.getData()
+    },
+    reset () {
+      this.responseDataComputed = null
+
+      this.paginationKey = generateKey()
     },
     focus () {
       this.$refs
         .pagination
         .focus()
-    },
-    reset () {
-      this.$refs
-        .pagination
-        .reset()
     }
   }
 }

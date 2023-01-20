@@ -2,7 +2,7 @@
   <BaseSegmentContainer
     ref="segment"
     class="main-paginated-segment-container"
-    :response-data="responseData"
+    :response-data="responseDataComputed"
     :is-loading="isSegmentLoading"
     :error="error"
     :is-change-transparency="isChangeTransparency"
@@ -14,7 +14,8 @@
 
     <BasePaginatedListContainer
       ref="pagination"
-      :response-data="responseData"
+      :key="key"
+      :response-data="responseDataComputed"
       :scope="scope"
       :text-scope="textScope"
       :limit="limit"
@@ -42,6 +43,9 @@ import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
   from '@/components/containers/lists/BasePaginatedListContainer.vue'
+import {
+  generateKey
+} from '#/helpers/utils'
 
 export default {
   name: 'BasePaginatedSegmentContainer',
@@ -76,6 +80,12 @@ export default {
   emits: [
     'focus'
   ],
+  data () {
+    return {
+      key: null,
+      responseDataComputed: null
+    }
+  },
   computed: {
     isSegmentLoading () {
       if (this.isWithInfiniteScroll) {
@@ -88,7 +98,18 @@ export default {
       }
     }
   },
+  watch: {
+    responseData: {
+      immediate: true,
+      handler: 'handleResponseDataChange'
+    }
+  },
   methods: {
+    handleResponseDataChange (
+      value
+    ) {
+      this.responseDataComputed = value
+    },
     handleRefresh () {
       this.getData()
     },
@@ -97,10 +118,15 @@ export default {
         'focus'
       )
     },
+    refresh () {
+      this.reset()
+
+      this.getData()
+    },
     reset () {
-      this.$refs
-        .pagination
-        .reset()
+      this.responseDataComputed = null
+
+      this.key = generateKey()
     },
     focus () {
       this.$refs

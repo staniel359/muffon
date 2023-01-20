@@ -24,7 +24,7 @@ export default {
     'setIsGlobal'
   ],
   emits: [
-    'change'
+    'refresh'
   ],
   computed: {
     globalText () {
@@ -41,8 +41,11 @@ export default {
         value
       )
 
+      this.refresh()
+    },
+    refresh () {
       this.$emit(
-        'change'
+        'refresh'
       )
     }
   }

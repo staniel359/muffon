@@ -122,9 +122,7 @@ export default {
     handlePlaylistCreate () {
       this.resetForm()
 
-      this.resetPagination()
-
-      this.getData()
+      this.refresh()
     },
     getData (
       {
@@ -141,10 +139,10 @@ export default {
     resetForm () {
       this.key = generateKey()
     },
-    resetPagination () {
+    refresh () {
       this.$refs
         .modal
-        .reset()
+        .refresh()
     }
   }
 }

@@ -91,8 +91,7 @@ export default {
     }
   },
   watch: {
-    profileData: 'handleNavigationDataChange',
-    query: 'handleQueryChange'
+    profileData: 'handleNavigationDataChange'
   },
   mounted () {
     this.getData()
@@ -100,9 +99,6 @@ export default {
   methods: {
     getProfileLibrary,
     getProfileLibrarySearch,
-    handleQueryChange () {
-      this.getData()
-    },
     getData (
       {
         page

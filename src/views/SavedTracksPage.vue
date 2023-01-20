@@ -1,6 +1,6 @@
 <template>
   <BasePaginatedPageContainer
-    ref="page"
+    ref="pagination"
     model="savedTrack"
     :response-data="tracksData"
     :scope="scope"
@@ -46,6 +46,7 @@ import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import navigationMixin from '@/mixins/navigationMixin'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 import {
   savedTracks as formatSavedTracksPageNavigation
 } from '@/helpers/formatters/navigation'
@@ -62,7 +63,8 @@ export default {
   },
   mixins: [
     navigationMixin,
-    orderChangeMixin
+    orderChangeMixin,
+    paginatedPageMixin
   ],
   data () {
     return {
@@ -119,11 +121,6 @@ export default {
   methods: {
     handleOrderChange () {
       this.reset()
-    },
-    reset () {
-      this.$refs
-        .page
-        .reset()
     }
   }
 }

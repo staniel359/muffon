@@ -4,7 +4,7 @@
     :artist-name="artistName"
     :scope="scope"
     :limit="limit"
-    @request-artist-data-change="handleRequestArtistDataChange"
+    @refresh="handleRefresh"
   >
     <template
       #default="pageSlotProps"
@@ -71,11 +71,6 @@ export default {
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
     viewId: String
-  },
-  methods: {
-    handleRequestArtistDataChange () {
-      this.reset()
-    }
   }
 }
 </script>

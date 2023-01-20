@@ -8,12 +8,6 @@
     is-with-top-segment
     is-with-order-change
   >
-    <template #top>
-      <GlobalToggle
-        @change="handleGlobalChange"
-      />
-    </template>
-
     <template
       #default="slotProps"
     >
@@ -27,7 +21,6 @@
 <script>
 import BaseFeedPaginatedPageContainer
   from '@/components/containers/pages/feed/BaseFeedPaginatedPageContainer.vue'
-import GlobalToggle from './FeedPage/GlobalToggle.vue'
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
@@ -36,7 +29,6 @@ export default {
   name: 'FeedPage',
   components: {
     BaseFeedPaginatedPageContainer,
-    GlobalToggle,
     BasePostsSimpleList
   },
   mixins: [
@@ -47,16 +39,6 @@ export default {
       limit: 50,
       scope: 'feed',
       order: 'createdDesc'
-    }
-  },
-  methods: {
-    handleGlobalChange () {
-      this.reset()
-    },
-    reset () {
-      this.$refs
-        .page
-        .reset()
     }
   }
 }
