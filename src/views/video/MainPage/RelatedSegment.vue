@@ -5,9 +5,7 @@
       :video-id="videoId"
       :scope="scope"
       :limit="limit"
-      :client-page-limit="clientPageLimit"
       :header-link="headerLink"
-      is-pagination-simple
     >
       <template
         #default="slotProps"
@@ -44,8 +42,7 @@ export default {
   },
   data () {
     return {
-      limit: 40,
-      clientPageLimit: 4,
+      limit: 4,
       scope: 'related'
     }
   },

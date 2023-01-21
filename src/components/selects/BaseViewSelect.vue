@@ -18,6 +18,9 @@ export default {
   components: {
     BaseDropdown
   },
+  inject: [
+    'setViewId'
+  ],
   props: {
     scope: {
       type: String,
@@ -28,9 +31,6 @@ export default {
       required: true
     }
   },
-  emits: [
-    'select'
-  ],
   data () {
     return {
       options: [
@@ -59,6 +59,14 @@ export default {
           'extended'
         ],
         albums: [
+          'simple',
+          'table'
+        ],
+        videos: [
+          'simple',
+          'table'
+        ],
+        related: [
           'simple',
           'table'
         ]
@@ -93,8 +101,7 @@ export default {
     handleSelect (
       value
     ) {
-      this.$emit(
-        'select',
+      this.setViewId(
         value
       )
     },

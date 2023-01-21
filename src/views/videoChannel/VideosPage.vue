@@ -3,12 +3,16 @@
     :channel-id="channelId"
     :scope="scope"
     :limit="limit"
+    :view-id="viewId"
+    is-with-top-segment
+    is-with-view-change
   >
     <template
       #default="slotProps"
     >
-      <BaseVideosTableList
+      <BaseVideosList
         :videos="slotProps[scope]"
+        :view-id="viewId"
         is-with-share-option
       />
     </template>
@@ -18,21 +22,23 @@
 <script>
 import BaseVideoChannelPaginatedPageContainer
   from '@/components/containers/pages/videoChannel/BaseVideoChannelPaginatedPageContainer.vue'
-import BaseVideosTableList
-  from '@/components/lists/videos/BaseVideosTableList.vue'
+import BaseVideosList from '@/components/lists/videos/BaseVideosList.vue'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'VideosPage',
   components: {
     BaseVideoChannelPaginatedPageContainer,
-    BaseVideosTableList
+    BaseVideosList
   },
+  mixins: [
+    viewChangeMixin
+  ],
   props: {
     channelId: String
   },
   data () {
     return {
-      limit: 40,
       scope: 'videos'
     }
   }

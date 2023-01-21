@@ -15,9 +15,7 @@
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
-        :client-page-limit="clientPageLimit"
         :is-change-transparency="false"
-        :is-pagination-simple="isPaginationSimple"
         @focus="handleFocus"
       >
         <template
@@ -52,9 +50,7 @@ export default {
     videoId: String,
     scope: String,
     limit: Number,
-    clientPageLimit: Number,
-    headerLink: Object,
-    isPaginationSimple: Boolean
+    headerLink: Object
   }
 }
 </script>

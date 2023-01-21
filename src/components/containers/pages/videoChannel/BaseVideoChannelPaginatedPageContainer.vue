@@ -14,6 +14,9 @@
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
+        :is-with-top-segment="isWithTopSegment"
+        :is-with-view-change="isWithViewChange"
+        :view-id="viewId"
         is-pagination-simple
       >
         <template
@@ -46,7 +49,10 @@ export default {
   props: {
     channelId: String,
     scope: String,
-    limit: Number
+    limit: Number,
+    isWithTopSegment: Boolean,
+    isWithViewChange: Boolean,
+    viewId: String
   }
 }
 </script>

@@ -13,8 +13,9 @@
     <template
       #default="slotProps"
     >
-      <BaseVideosSimpleList
+      <BaseVideosList
         :videos="slotProps[scope]"
+        :view-id="viewId"
         is-with-share-option
       />
     </template>
@@ -24,8 +25,7 @@
 <script>
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
-import BaseVideosSimpleList
-  from '@/components/lists/videos/BaseVideosSimpleList.vue'
+import BaseVideosList from '@/components/lists/videos/BaseVideosList.vue'
 import getVideoPlaylist from '@/helpers/actions/api/videoPlaylist/get'
 import paginatedSegmentMixin from '@/mixins/paginatedSegmentMixin'
 
@@ -33,7 +33,7 @@ export default {
   name: 'VideosSegment',
   components: {
     BasePaginatedSegmentContainer,
-    BaseVideosSimpleList
+    BaseVideosList
   },
   mixins: [
     paginatedSegmentMixin
@@ -42,15 +42,16 @@ export default {
     playlistId: {
       type: String,
       required: true
-    }
+    },
+    scope: String,
+    viewId: String,
+    limit: Number
   },
   data () {
     return {
       playlistData: null,
       error: null,
-      isLoading: false,
-      limit: 40,
-      scope: 'videos'
+      isLoading: false
     }
   },
   computed: {

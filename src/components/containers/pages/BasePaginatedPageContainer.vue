@@ -31,7 +31,6 @@
             class="select-block"
             :scope="scope"
             :view-id="viewId"
-            @select="handleViewSelect"
           />
         </div>
       </div>
@@ -94,9 +93,6 @@ export default {
   },
   inject: {
     setOrder: {
-      default: () => false
-    },
-    setViewId: {
       default: () => false
     },
     getData: {
@@ -162,13 +158,6 @@ export default {
       value
     ) {
       this.setOrder(
-        value
-      )
-    },
-    handleViewSelect (
-      value
-    ) {
-      this.setViewId(
         value
       )
     },

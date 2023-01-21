@@ -4,12 +4,16 @@
     :video-id="videoId"
     :scope="scope"
     :limit="limit"
+    :view-id="viewId"
+    is-with-top-segment
+    is-with-view-change
   >
     <template
       #default="slotProps"
     >
-      <BaseVideosTableList
+      <BaseVideosList
         :videos="slotProps[scope]"
+        :view-id="viewId"
         is-with-share-option
       />
     </template>
@@ -19,21 +23,23 @@
 <script>
 import BaseVideoPaginatedPageContainer
   from '@/components/containers/pages/video/BaseVideoPaginatedPageContainer.vue'
-import BaseVideosTableList
-  from '@/components/lists/videos/BaseVideosTableList.vue'
+import BaseVideosList from '@/components/lists/videos/BaseVideosList.vue'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'RelatedPage',
   components: {
     BaseVideoPaginatedPageContainer,
-    BaseVideosTableList
+    BaseVideosList
   },
+  mixins: [
+    viewChangeMixin
+  ],
   props: {
     videoId: String
   },
   data () {
     return {
-      limit: 40,
       scope: 'related'
     }
   }
