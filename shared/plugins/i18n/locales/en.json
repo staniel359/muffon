@@ -274,7 +274,7 @@
     },
     "extra": "Additional info",
     "errors": {
-      "notFound": "Email or password is wrong",
+      "notFound": "Profile is not found",
       "empty": {
         "email": "Email is empty",
         "password": "Password is empty",
@@ -285,8 +285,7 @@
         "legal": "You must agree to the Privacy Policy and the Terms And Conditions"
       },
       "invalid": {
-        "email": "Email is invalid",
-        "passwordResetCode": "Password reset code is invalid"
+        "email": "Email is invalid"
       },
       "taken": {
         "email": "Email is taken",
@@ -301,6 +300,10 @@
       },
       "confirmation": {
         "passwordConfirmation": "Password and its confirmation don't match"
+      },
+      "wrong": {
+        "password": "Wrong password",
+        "passwordResetCode": "Wrong password reset code"
       }
     },
     "confirm": {

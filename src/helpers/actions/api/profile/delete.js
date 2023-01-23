@@ -1,5 +1,8 @@
 import profileStore from '@/stores/profile'
 import deleteRequest from '@/helpers/actions/api/request/delete'
+import {
+  handleError as handleFormError
+} from '@/helpers/actions/form'
 
 export default function (
   {
@@ -14,6 +17,18 @@ export default function (
     password
   }
 
+  const handleError = (
+    error
+  ) => {
+    handleFormError.bind(
+      this
+    )(
+      {
+        error
+      }
+    )
+  }
+
   return deleteRequest.bind(
     this
   )(
@@ -21,7 +36,7 @@ export default function (
       url,
       params,
       isWithSelfToken: true,
-      isSaveError: true
+      onError: handleError
     }
   )
 }

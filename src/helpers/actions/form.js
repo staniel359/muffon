@@ -32,23 +32,15 @@ export function handleError (
       }
     )
   } else if (isNotFound) {
-    const addFieldError = (
-      field
-    ) => {
-      const notFoundError =
-        i18n.global.t(
-          'forms.errors.notFound'
-        )
-
-      addFormFieldError(
-        form,
-        field,
-        notFoundError
+    const notFoundError =
+      i18n.global.t(
+        'forms.errors.notFound'
       )
-    }
 
-    this.fields.forEach(
-      addFieldError
+    addFormFieldError(
+      form,
+      'email',
+      notFoundError
     )
   } else {
     this.error = error

@@ -274,7 +274,7 @@
     },
     "extra": "Zusätzliche Infos",
     "errors": {
-      "notFound": "Email oder Passwort ist falsch",
+      "notFound": "Profil wurde nicht gefunden",
       "empty": {
         "email": "Email ist leer",
         "password": "Passwort ist leer",
@@ -285,8 +285,7 @@
         "legal": "Du musst der Datenschutzrichtlinie und den Geschäftsbedingungen zustimmen!"
       },
       "invalid": {
-        "email": "Email ist ungültig",
-        "passwordResetCode": "Passwortzurücksetzungscode ist ungültig"
+        "email": "Email ist ungültig"
       },
       "taken": {
         "email": "Diese Email wurde bereits verwendet",
@@ -301,6 +300,10 @@
       },
       "confirmation": {
         "passwordConfirmation": "Passwörter stimmen nicht überein"
+      },
+      "wrong": {
+        "password": "Falsches Passwort",
+        "passwordResetCode": "Falscher Passwortzurücksetzungscode"
       }
     },
     "confirm": {

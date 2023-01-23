@@ -274,7 +274,7 @@
     },
     "extra": "Informazioni aggiuntive",
     "errors": {
-      "notFound": "L’email o la password sono sbagliate",
+      "notFound": "Profilo non trovato",
       "empty": {
         "email": "L’email è vuota",
         "password": "La password è vuota",
@@ -285,8 +285,7 @@
         "legal": "Devi sottoscrivere la Privacy Policy e i Termini e Condizioni d’uso"
       },
       "invalid": {
-        "email": "L’email non è valida",
-        "passwordResetCode": "Il codice reset password non è valido"
+        "email": "L’email non è valida"
       },
       "taken": {
         "email": "Indirizzo email già in uso",
@@ -301,6 +300,10 @@
       },
       "confirmation": {
         "passwordConfirmation": "La password e la conferma non corrispondono"
+      },
+      "wrong": {
+        "password": "Password errata",
+        "passwordResetCode": "Codice reset password errato"
       }
     },
     "confirm": {
