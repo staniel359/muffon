@@ -911,6 +911,10 @@ p
 
 .main-profile-online-label
   @extend .no-margin
+  &:not(.inverted)
+    @extend .border-white
+  &.inverted
+    @extend .border-black
 
 .main-transparent-segment-container
   .main-segment

@@ -225,8 +225,7 @@ export default {
 
 .online-label
   @extend .absolute
-  top: 0.25em
-  right: 0.25em
+  right: 0
   z-index: 1
 
 .nickname-label-container

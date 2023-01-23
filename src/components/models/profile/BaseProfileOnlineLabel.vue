@@ -1,11 +1,21 @@
 <template>
   <div
-    class="ui mini empty circular label main-profile-online-label"
-    :class="onlineLabelColor"
+    class="ui tiny empty circular label main-profile-online-label"
+    :class="[
+      onlineLabelColor,
+      {
+        inverted: isDarkMode
+      }
+    ]"
   />
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+
 export default {
   name: 'BaseProfileOnlineLabel',
   props: {
@@ -15,6 +25,12 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isDarkMode'
+      ]
+    ),
     onlineLabelColor () {
       if (this.isOnline) {
         return 'green'
