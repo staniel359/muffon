@@ -107,7 +107,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Download
 
-[Latest (v1.1.0)](https://github.com/staniel359/muffon/releases/tag/v1.1.0)
+[Latest (v1.2.0)](https://github.com/staniel359/muffon/releases/tag/v1.2.0)
 
 ## Troubleshooting
 
