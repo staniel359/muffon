@@ -304,7 +304,7 @@
       }
     },
     "confirm": {
-      "password": "Bitte bestätigen Sie Ihr Passwort"
+      "password": "Bitte bestätigen Sie Ihr Passwort:"
     }
   },
   "notifications": {
@@ -481,11 +481,11 @@
       "profile": {
         "player": {
           "playing": "Aktuellen Titel auf der Seite anzeigen"
-        }
-      },
-      "data": {
-        "account": {
-          "delete": "Account löschen"
+        },
+        "data": {
+          "account": {
+            "delete": "Account löschen"
+          }
         }
       },
       "services": {

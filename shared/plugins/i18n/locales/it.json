@@ -481,13 +481,13 @@
       "profile": {
         "player": {
           "playing": "Mostra brano attuale sulla pagina"
+        },
+        "data": {
+          "account": {
+            "delete": "Elimina account"
+          }
         }
       },
-      "data": {
-        "account": {
-          "delete": "Elimina account"
-        }
-      }
       "services": {
         "lastfm": {
           "scrobbling": "Scrobbling",
