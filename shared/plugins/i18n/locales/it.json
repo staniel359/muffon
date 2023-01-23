@@ -135,6 +135,7 @@
     "back": "Precedente",
     "sendCode": "Invia codice",
     "share": "Condividi",
+    "confirm": "Conferma",
     "searchFor": {
       "lyrics": "Cerca testo",
       "video": "Cerca video"
@@ -208,8 +209,9 @@
           "album": "Rimuovi album dai segnalibri",
           "track": "Rimuovi brano dai segnalibri"
         },
-        "post": "Rimuovi post",
-        "community": "Rimuovi community"
+        "post": "Elimina post",
+        "community": "Elimina community",
+        "account": "Elimina account"
       },
       "going": {
         "library": "Stai per rimuovere {modelName} dalla libreria.",
@@ -219,8 +221,9 @@
         "savedTrack": "Stai per rimuovere {modelName} dai tuoi brani salvati.",
         "favorite": "Stai per rimuovere {modelName} dai tuoi preferiti.",
         "bookmark": "Stai per rimuovere {modelName} dai tuoi segnalibri.",
-        "post": "Stai per rimuovere questo post.",
-        "community": "Stai per rimuovere questa community."
+        "post": "Stai per eliminare questo post.",
+        "community": "Stai per eliminare questa community.",
+        "account": "Stai per eliminare il tuo account."
       },
       "also": {
         "library": {
@@ -228,7 +231,15 @@
           "album": "Saranno rimossi anche tutti i brani di quest’album."
         },
         "playlist": "Saranno rimossi anche tutti i brani di questa playlist.",
-        "community": "Saranno cancellati anche tutti i post di questa community."
+        "community": "Saranno cancellati anche tutti i post di questa community.",
+        "account": [
+          "Questo eliminerà anche i seguenti dati:",
+          "<strong>- libreria\n- suggeriti\n- playlist\n- preferiti\n- salvati\n- ascoltati\n- i tuoi post\n- sottoscrizioni</strong>",
+          "Questi dati saranno conservati, ma il tuo nome utente non sarà mostrato:",
+          "<strong>- post creati\n- conversazioni con te\n- community create</strong>",
+          "E questi dati non saranno influenzati:",
+          "<strong>- brani salvate\n- immagini di sfondo\n- impostazioni</strong>"
+        ]
       },
       "undo": "Quest’azione non può essere annullata!",
       "sure": "Procedere?"
@@ -289,8 +300,11 @@
         "nickname": "Il nome utente è troppo lungo"
       },
       "confirmation": {
-        "passwordConfirmation": "La password e la conferma differiscono"
+        "passwordConfirmation": "La password e la conferma non corrispondono"
       }
+    },
+    "confirm": {
+      "password": "Conferma la tua password:"
     }
   },
   "notifications": {
@@ -313,7 +327,8 @@
     "deleted": {
       "library": "{modelName} rimossa dalla libreria",
       "playlist": "Playlist {playlistTitle} rimossa",
-      "community": "Community {communityTitle} cancellata"
+      "community": "Community {communityTitle} cancellata",
+      "account": "Il tuo account è stato eliminato"
     },
     "copied": "Link copiato negli Appunti",
     "cleared": {
@@ -468,6 +483,11 @@
           "playing": "Mostra brano attuale sulla pagina"
         }
       },
+      "data": {
+        "account": {
+          "delete": "Elimina account"
+        }
+      }
       "services": {
         "lastfm": {
           "scrobbling": "Scrobbling",
@@ -668,6 +688,9 @@
     "joinedAsc": "Aggiunti molto tempo fa",
     "membersCountDesc": "Più persone",
     "membersCountAsc": "Meno persone"
+  },
+  "deleted": {
+    "profile": "Profilo eliminato"
   },
   "error": "Errore",
   "more": "Altro...",
