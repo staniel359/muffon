@@ -60,7 +60,8 @@ export default {
   data () {
     return {
       artistData: null,
-      isLoading: false
+      isLoading: false,
+      imagesCount: 20
     }
   },
   computed: {
@@ -75,7 +76,12 @@ export default {
       return this.artistData?.image
     },
     responseImages () {
-      return this.artistData?.images
+      return this.artistData
+        ?.images
+        .slice(
+          0,
+          this.imagesCount
+        )
     },
     artistImageArgs () {
       return {

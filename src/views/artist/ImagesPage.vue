@@ -30,7 +30,7 @@ export default {
   },
   data () {
     return {
-      limit: 40,
+      limit: 20,
       scope: 'images'
     }
   }

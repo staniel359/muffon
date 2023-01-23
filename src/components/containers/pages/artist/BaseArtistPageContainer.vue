@@ -90,6 +90,8 @@ export default {
     responsePageLimit () {
       if (this.isDiscogsSource) {
         return 25
+      } else if (this.isImagesScope) {
+        return 40
       } else {
         return this.limit
       }
@@ -98,6 +100,11 @@ export default {
       return (
         this.requestArtistData.source ===
           'discogs'
+      )
+    },
+    isImagesScope () {
+      return (
+        this.scope === 'images'
       )
     },
     sourceParams () {
