@@ -433,7 +433,8 @@
           "timezone": "Zeitzone",
           "infiniteScroll": "Unendlicher Scroll",
           "artistPopup": "Künstlerdetails beim hovern anzeigen",
-          "cachePages": "Seiten zwischenspeichern"
+          "cachePages": "Seiten zwischenspeichern",
+          "scale": "Maßstab"
         },
         "theme": {
           "dark": "Dunkler Modus",

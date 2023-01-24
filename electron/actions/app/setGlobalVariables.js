@@ -6,6 +6,10 @@ function setGlobalVariables () {
   global.tray = null
 
   global.isMaximized = false
+
+  global.tabsPanelHeight = 45
+
+  global.topOffset = null
 }
 
 module.exports = setGlobalVariables

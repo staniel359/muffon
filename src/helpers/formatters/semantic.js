@@ -129,6 +129,34 @@ export function mainTransparencySeekerOptions (
   }
 }
 
+export function mainScaleSeekerOptions (
+  {
+    start
+  } = {}
+) {
+  const min = 1
+  const step = 0.2
+
+  function interpretLabel (
+    value
+  ) {
+    const percent = (
+      min + value * step
+    ) * 100
+
+    return `${percent}%`
+  }
+
+  return {
+    min,
+    max: 2,
+    step,
+    start,
+    smooth: true,
+    interpretLabel
+  }
+}
+
 export function mainScrobblePercentSeekerOptions (
   {
     start

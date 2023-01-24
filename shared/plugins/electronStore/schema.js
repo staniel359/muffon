@@ -73,6 +73,10 @@ const schema = {
     type: 'number',
     default: 0
   },
+  'layout.scale': {
+    type: 'number',
+    default: 1
+  },
   'lyrics.isWithAnnotations': {
     type: 'boolean',
     default: true

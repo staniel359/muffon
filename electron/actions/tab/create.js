@@ -12,14 +12,16 @@ const getActiveId = require(
 const setActive = require(
   './setActive'
 )
+const setBounds = require(
+  './setBounds'
+)
 const {
   baseUrl
 } = require(
   '../../urls'
 )
 const {
-  isDevelopment,
-  isMac
+  isDevelopment
 } = require(
   '../../utils'
 )
@@ -66,34 +68,8 @@ function create (
     )
   }
 
-  const [
-    width,
-    height
-  ] = mainWindow.getContentSize()
-
-  const isFullScreen =
-    mainWindow.isFullScreen()
-
-  const titleBarHeight =
-    (isMac && !isFullScreen) ? 28 : 0
-
-  const tabsPanelHeight = 45
-
-  const topOffset = (
-    titleBarHeight + tabsPanelHeight
-  )
-
-  const boundsOptions = {
-    x: 0,
-    y: topOffset,
-    width,
-    height: (
-      height - tabsPanelHeight
-    )
-  }
-
-  tab.setBounds(
-    boundsOptions
+  setBounds(
+    tab
   )
 
   const autoResizeOptions = {

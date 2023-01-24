@@ -7,6 +7,9 @@ const clearCache = require(
 const setLanguage = require(
   '../../actions/app/setLanguage'
 )
+const setScale = require(
+  '../../actions/app/setScale'
+)
 const checkTheme = require(
   '../../actions/app/checkTheme'
 )
@@ -42,6 +45,15 @@ function handleSetLanguage (
   )
 }
 
+function handleSetScale (
+  _,
+  value
+) {
+  setScale(
+    value
+  )
+}
+
 function handleCheckNativeTheme () {
   return checkTheme()
 }
@@ -62,6 +74,7 @@ module.exports = {
   handleSetTitle,
   handleClearCache,
   handleSetLanguage,
+  handleSetScale,
   handleCheckNativeTheme,
   handleLogout,
   handleAccountDelete,

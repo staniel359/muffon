@@ -33,6 +33,12 @@ const hide = require(
 const checkForUpdates = require(
   '../app/checkForUpdates'
 )
+const setTopOffset = require(
+  '../app/setTopOffset'
+)
+const setScale = require(
+  '../app/setScale'
+)
 const callExit = require(
   '../app/callExit'
 )
@@ -58,6 +64,17 @@ function handleReadyToShow () {
   show()
 
   checkForUpdates()
+
+  setTopOffset()
+
+  const scale =
+    electronStore.get(
+      'layout.scale'
+    )
+
+  setScale(
+    scale
+  )
 }
 
 function handleShow () {

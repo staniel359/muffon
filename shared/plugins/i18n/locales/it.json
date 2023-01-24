@@ -433,7 +433,8 @@
           "timezone": "Fuso orario",
           "infiniteScroll": "Scroll infinito",
           "artistPopup": "Mostra informazioni sull’artista al passaggio del mouse",
-          "cachePages": "Salva le pagine nella cache"
+          "cachePages": "Salva le pagine nella cache",
+          "scale": "Scala"
         },
         "theme": {
           "dark": "Modalità scura",

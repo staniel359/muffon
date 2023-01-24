@@ -25,7 +25,8 @@ const data = {
       isCloseTabsOnExit: false,
       isWithSystemTheme: false,
       isWithArtistPopup: true,
-      isCachePages: true
+      isCachePages: true,
+      scale: 1
     }
   },
   actions: {
@@ -133,6 +134,11 @@ const data = {
       value
     ) {
       this.isCachePages = value
+    },
+    setScale (
+      value
+    ) {
+      this.scale = value
     }
   }
 }

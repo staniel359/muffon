@@ -7,6 +7,7 @@ const {
   handleSetTitle,
   handleClearCache,
   handleSetLanguage,
+  handleSetScale,
   handleCheckNativeTheme,
   handleLogout,
   handleAccountDelete,
@@ -28,6 +29,11 @@ ipcMain.handle(
 ipcMain.on(
   'set-language',
   handleSetLanguage
+)
+
+ipcMain.on(
+  'set-scale',
+  handleSetScale
 )
 
 ipcMain.handle(

@@ -45,6 +45,17 @@ export default {
           [key]: value
         }
       )
+
+      const isChangeScale = (
+        key === 'layout.scale'
+      )
+
+      if (isChangeScale) {
+        ipcRenderer.send(
+          'set-scale',
+          value
+        )
+      }
     }
   }
 }

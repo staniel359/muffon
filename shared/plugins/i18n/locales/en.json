@@ -433,7 +433,8 @@
           "timezone": "Time zone",
           "infiniteScroll": "Infinite scroll",
           "artistPopup": "Show artist info on link hover",
-          "cachePages": "Cache pages"
+          "cachePages": "Cache pages",
+          "scale": "Scale"
         },
         "theme": {
           "dark": "Dark mode",
