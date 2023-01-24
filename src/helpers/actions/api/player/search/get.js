@@ -77,11 +77,15 @@ export default function getPlayerSearch (
       tracks
     } = response.data.search
 
-    if (tracks.length) {
-      return setVariants(
-        tracks
-      )
-    } else {
+    await setVariants(
+      tracks
+    )
+
+    const isSearchInNextAudioSource = (
+      !tracks.length && !source
+    )
+
+    if (isSearchInNextAudioSource) {
       return searchInNextAudioSource()
     }
   }
