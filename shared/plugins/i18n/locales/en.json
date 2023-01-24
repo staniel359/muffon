@@ -467,7 +467,8 @@
         },
         "recommendations": {
           "hideLibraryArtists": "Hide library artists",
-          "tracksCount": "with tracks count"
+          "tracksCount": "with tracks count",
+          "hideListenedArtists": "Hide listened artists"
         },
         "top": {
           "country": "Default country"

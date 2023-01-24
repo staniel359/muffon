@@ -3,7 +3,7 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="tracksCountText"
+      :text="tracksCountTextFormatted"
     />
 
     <BaseNumberInput
@@ -43,6 +43,9 @@ export default {
         recommendationsTracksCount: 'tracksCount'
       }
     ),
+    tracksCountTextFormatted () {
+      return `${this.tracksCountText} >=`
+    },
     tracksCountText () {
       return this.$t(
         'settings.options.app.recommendations.tracksCount'

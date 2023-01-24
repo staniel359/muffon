@@ -213,6 +213,10 @@ const schema = {
     type: 'boolean',
     default: false
   },
+  'recommendations.isHideListenedArtists': {
+    type: 'boolean',
+    default: false
+  },
   'recommendations.tracksCount': {
     type: 'number',
     default: 0

@@ -63,6 +63,8 @@ export default {
       {
         isRecommendationsHideLibraryArtists:
           'isHideLibraryArtists',
+        isRecommendationsHideListenedArtists:
+          'isHideListenedArtists',
         recommendationsTracksCount:
           'tracksCount'
       }
@@ -81,6 +83,8 @@ export default {
         filterValue: this.filterValue,
         isHideLibraryArtists:
           this.isRecommendationsHideLibraryArtists,
+        isHideListenedArtists:
+          this.isRecommendationsHideListenedArtists,
         tracksCount:
           this.recommendationsTracksCount
       }
@@ -90,6 +94,8 @@ export default {
     recommendationsData: 'handleNavigationDataChange',
     isRecommendationsHideLibraryArtists:
       'handleIsRecommendationsHideLibraryArtists',
+    isRecommendationsHideListenedArtists:
+      'handleIsRecommendationsHideListenedArtists',
     recommendationsTracksCount:
       'handleRecommendationsTracksCount',
     filterValue: 'handleFilterValueChange'
@@ -103,6 +109,9 @@ export default {
       this.refresh()
     },
     handleIsRecommendationsHideLibraryArtists () {
+      this.refresh()
+    },
+    handleIsRecommendationsHideListenedArtists () {
       this.refresh()
     },
     handleRecommendationsTracksCount () {

@@ -467,7 +467,8 @@
         },
         "recommendations": {
           "hideLibraryArtists": "Nascondi artisti della libreria",
-          "tracksCount": "con conteggio brani"
+          "tracksCount": "con conteggio brani",
+          "hideListenedArtists": "Nascondi artisti già ascoltati"
         },
         "top": {
           "country": "Paese predefinito"

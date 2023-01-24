@@ -467,7 +467,8 @@
         },
         "recommendations": {
           "hideLibraryArtists": "Bibliothekskünstler ausblenden",
-          "tracksCount": "Mit Titeln zählen"
+          "tracksCount": "Mit Titeln zählen",
+          "hideListenedArtists": "Angehörte Künstler ausblenden"
         },
         "top": {
           "country": "Standardmäßiges Land"

@@ -3,6 +3,8 @@
     <HideLibraryArtistsOption />
 
     <TracksCountOption />
+
+    <HideListenedArtistsOption />
   </div>
 </template>
 
@@ -10,12 +12,15 @@
 import HideLibraryArtistsOption
   from './RecommendationsOptions/HideLibraryArtistsOption.vue'
 import TracksCountOption from './RecommendationsOptions/TracksCountOption.vue'
+import HideListenedArtistsOption
+  from './RecommendationsOptions/HideListenedArtistsOption.vue'
 
 export default {
   name: 'RecommendationsOptions',
   components: {
     HideLibraryArtistsOption,
-    TracksCountOption
+    TracksCountOption,
+    HideListenedArtistsOption
   }
 }
 </script>

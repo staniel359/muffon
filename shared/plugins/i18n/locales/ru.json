@@ -467,7 +467,8 @@
         },
         "recommendations": {
           "hideLibraryArtists": "Скрывать исполнителей из библиотеки",
-          "tracksCount": "с количеством композиций"
+          "tracksCount": "с количеством композиций",
+          "hideListenedArtists": "Скрывать прослушанных исполнителей"
         },
         "top": {
           "country": "Страна по умолчанию"

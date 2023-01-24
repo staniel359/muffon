@@ -6,6 +6,7 @@ const data = {
   state () {
     return {
       isHideLibraryArtists: false,
+      isHideListenedArtists: false,
       tracksCount: 0
     }
   },
@@ -14,6 +15,11 @@ const data = {
       value
     ) {
       this.isHideLibraryArtists = value
+    },
+    setIsHideListenedArtists (
+      value
+    ) {
+      this.isHideListenedArtists = value
     },
     setTracksCount (
       value

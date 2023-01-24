@@ -9,6 +9,7 @@ export default function (
     filterScope,
     filterValue,
     isHideLibraryArtists,
+    isHideListenedArtists,
     tracksCount
   }
 ) {
@@ -34,6 +35,11 @@ export default function (
       isHideLibraryArtists && {
         hide_library_artists: 1,
         tracks_count: tracksCount
+      }
+    ),
+    ...(
+      isHideListenedArtists && {
+        hide_listened_artists: 1
       }
     )
   }

@@ -467,7 +467,8 @@
         },
         "recommendations": {
           "hideLibraryArtists": "Схоўваць выканаўцаў з бібліятэкі",
-          "tracksCount": "з колькасцю кампазіцый"
+          "tracksCount": "з колькасцю кампазіцый",
+          "hideListenedArtists": "Схоўваць праслуханых выканаўцаў"
         },
         "top": {
           "country": "Краіна па змоўчванні"
