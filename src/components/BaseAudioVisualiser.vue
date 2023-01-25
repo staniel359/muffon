@@ -1,5 +1,7 @@
 <template>
-  <canvas ref="canvas" />
+  <canvas
+    ref="canvas"
+  />
 </template>
 
 <script>

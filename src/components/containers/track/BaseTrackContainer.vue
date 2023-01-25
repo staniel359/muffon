@@ -46,7 +46,8 @@ export default {
     },
     isWithActiveClass: Boolean,
     isDisabled: Boolean,
-    isFromRadio: Boolean
+    isFromRadio: Boolean,
+    isExactTrack: Boolean
   },
   data () {
     return {
@@ -65,7 +66,8 @@ export default {
     ...mapState(
       playerStore,
       {
-        playerCurrentTrackId: 'currentTrackId'
+        playerCurrentTrackId: 'currentTrackId',
+        playerPlaying: 'playing'
       }
     ),
     isActive () {
@@ -78,8 +80,15 @@ export default {
     isCurrent () {
       return (
         this.trackId ===
-          this.playerCurrentTrackId
+          this.currentTrackId
       )
+    },
+    currentTrackId () {
+      if (this.isExactTrack) {
+        return this.playerPlaying?.player_id
+      } else {
+        return this.playerCurrentTrackId
+      }
     },
     trackId () {
       return this.trackData.player_id

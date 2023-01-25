@@ -2,6 +2,7 @@
   <BaseTrackContainer
     :track-data="firstTrackData"
     :queue-tracks="tracksCollection"
+    is-exact-track
   >
     <template
       #default="slotProps"

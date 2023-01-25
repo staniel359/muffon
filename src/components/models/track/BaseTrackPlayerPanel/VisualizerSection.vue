@@ -29,14 +29,17 @@ export default {
     ...mapState(
       playerStore,
       {
-        playerCurrentTrackId: 'currentTrackId'
+        playerPlaying: 'playing'
       }
     ),
     isCurrent () {
       return (
         this.trackId ===
-          this.playerCurrentTrackId
+          this.currentTrackId
       )
+    },
+    currentTrackId () {
+      return this.playerPlaying?.player_id
     }
   }
 }
