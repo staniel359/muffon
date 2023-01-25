@@ -79,9 +79,15 @@ export default function (
 
     this.artistData = artist
 
-    if (scope === 'tracks') {
+    const isTracksScope = (
+      scope === 'tracks'
+    )
+
+    if (isTracksScope) {
       this.topTrackCount ||=
-        artist.tracks[0]?.listeners_count
+        artist
+          .tracks[0]
+          ?.listeners_count
     }
   }
 

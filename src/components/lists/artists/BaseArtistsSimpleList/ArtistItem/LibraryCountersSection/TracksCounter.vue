@@ -1,19 +1,15 @@
 <template>
-  <div class="description counter-section">
-    <div
-      class="counter-bar"
-      :class="{
-        inverted: isDarkMode
-      }"
-      :style="{
-        width: counterBarWidthFormatted
-      }"
+  <div class="description main-counter-bar-container">
+    <BaseCounterBar
+      :count="tracksCount"
+      :top-count="topTracksCount"
     />
 
     <BaseLinkContainer
       class="ui main-link"
       :link="link"
       @active-change="handleLinkActiveChange"
+      @click="handleLinkClick"
     >
       <small>
         <BaseIcon
@@ -29,6 +25,7 @@
 </template>
 
 <script>
+import BaseCounterBar from '@/components/BaseCounterBar.vue'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
@@ -42,6 +39,7 @@ import {
 export default {
   name: 'TracksCounter',
   components: {
+    BaseCounterBar,
     BaseLinkContainer,
     BaseIcon
   },
@@ -54,30 +52,13 @@ export default {
       type: String,
       required: true
     },
-    widthMaxPercent: {
-      type: Number,
-      required: true
-    },
-    topTracksCount: {
-      type: Number,
-      required: true
-    },
-    isDarkMode: Boolean
+    topTracksCount: Number
   },
   emits: [
-    'linkActiveChange'
+    'linkActiveChange',
+    'linkClick'
   ],
   computed: {
-    counterBarWidthFormatted () {
-      return `${this.counterBarWidth}%`
-    },
-    counterBarWidth () {
-      return (
-        this.tracksCount *
-          this.widthMaxPercent /
-          this.topTracksCount
-      )
-    },
     tracksCount () {
       return this.artistData.tracks_count
     },
@@ -105,6 +86,11 @@ export default {
       this.$emit(
         'linkActiveChange',
         value
+      )
+    },
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
       )
     }
   }

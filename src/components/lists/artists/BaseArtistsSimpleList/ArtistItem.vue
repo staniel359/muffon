@@ -49,6 +49,7 @@
           :top-tracks-count="topTracksCount"
           :top-albums-count="topAlbumsCount"
           @link-active-change="handleCounterLinkActiveChange"
+          @link-click="handleLinkClick"
         />
       </div>
 

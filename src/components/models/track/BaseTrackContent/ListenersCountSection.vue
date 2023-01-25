@@ -1,13 +1,8 @@
 <template>
-  <div class="track-listeners-count">
-    <div
-      class="track-listeners-count-bar"
-      :class="{
-        inverted: isDarkMode
-      }"
-      :style="{
-        width: listenersCounterBarWidthPercent
-      }"
+  <div class="main-counter-bar-container">
+    <BaseCounterBar
+      :count="listenersCount"
+      :top-count="topTrackCount"
     />
 
     <div class="description">
@@ -25,10 +20,7 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import layoutStore from '@/stores/layout'
+import BaseCounterBar from '@/components/BaseCounterBar.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   number as formatNumber
@@ -37,6 +29,7 @@ import {
 export default {
   name: 'ListenersCountSection',
   components: {
+    BaseCounterBar,
     BaseIcon
   },
   props: {
@@ -44,27 +37,9 @@ export default {
       type: Number,
       required: true
     },
-    topTrackCount: {
-      type: Number,
-      required: true
-    }
+    topTrackCount: Number
   },
   computed: {
-    ...mapState(
-      layoutStore,
-      [
-        'isDarkMode'
-      ]
-    ),
-    listenersCounterBarWidthPercent () {
-      return `${this.listenersCounterBarWidth}%`
-    },
-    listenersCounterBarWidth () {
-      return (
-        this.listenersCount /
-          this.topTrackCount * 70
-      )
-    },
     listenersCountFormatted () {
       return formatNumber(
         this.listenersCount
@@ -75,17 +50,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.track-listeners-count
-  @extend .d-flex, .align-items-center
-
-.track-listeners-count-bar
-  @extend .background-grey
-  height: 4px
-  border-radius: 2px
-  margin-right: 0.5em
-  &.inverted
-    @extend .background-grey-inverted
-
 .description
   @extend .d-flex, .align-items-center
 </style>

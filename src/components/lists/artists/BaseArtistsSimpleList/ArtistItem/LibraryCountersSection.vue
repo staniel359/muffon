@@ -2,27 +2,21 @@
   <TracksCounter
     :artist-data="artistData"
     :profile-id="profileId"
-    :width-max-percent="widthMaxPercent"
     :top-tracks-count="topTracksCount"
-    :is-dark-mode="isDarkMode"
     @link-active-change="handleLinkActiveChange"
+    @link-click="handleLinkClick"
   />
 
   <AlbumsCounter
     :artist-data="artistData"
     :profile-id="profileId"
-    :width-max-percent="widthMaxPercent"
     :top-albums-count="topAlbumsCount"
-    :is-dark-mode="isDarkMode"
     @link-active-change="handleLinkActiveChange"
+    @link-click="handleLinkClick"
   />
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import layoutStore from '@/stores/layout'
 import TracksCounter from './LibraryCountersSection/TracksCounter.vue'
 import AlbumsCounter from './LibraryCountersSection/AlbumsCounter.vue'
 
@@ -39,21 +33,9 @@ export default {
     topAlbumsCount: Number
   },
   emits: [
-    'linkActiveChange'
+    'linkActiveChange',
+    'linkClick'
   ],
-  data () {
-    return {
-      widthMaxPercent: 70
-    }
-  },
-  computed: {
-    ...mapState(
-      layoutStore,
-      [
-        'isDarkMode'
-      ]
-    )
-  },
   methods: {
     handleLinkActiveChange (
       value
@@ -62,20 +44,14 @@ export default {
         'linkActiveChange',
         value
       )
+    },
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.counter-section
-  @extend .d-flex, .align-items-center
-
-::v-deep(.counter-bar)
-  @extend .background-grey
-  height: 4px
-  border-radius: 2px
-  margin-right: 0.5em
-  &.inverted
-    @extend .background-grey-inverted
-</style>
+<style lang="sass" scoped></style>

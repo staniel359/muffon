@@ -14,7 +14,10 @@
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
         :profile-id="profileId"
+        :top-tracks-count="topTracksCount"
+        :top-albums-count="topAlbumsCount"
         is-link-to-library
+        is-with-library
         is-with-share-option
         @link-click="handleLinkClick"
       />
@@ -71,6 +74,12 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
+    },
+    topTracksCount () {
+      return this.recommendationData.top_tracks_count
+    },
+    topAlbumsCount () {
+      return this.recommendationData.top_albums_count
     }
   },
   methods: {
