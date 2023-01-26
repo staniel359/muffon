@@ -190,7 +190,7 @@
   "modals": {
     "delete": {
       "header": {
-        "library": {
+        "libraryModel": {
           "artist": "Delete artist from library",
           "album": "Delete album from library",
           "track": "Delete track from library"
@@ -211,10 +211,11 @@
         },
         "post": "Delete post",
         "community": "Delete community",
-        "account": "Delete account"
+        "account": "Delete account",
+        "library": "Delete library"
       },
       "going": {
-        "library": "You are going to delete {modelName} from your library.",
+        "libraryModel": "You are going to delete {modelName} from your library.",
         "recommendation": "You are going to delete {modelName} from your recommendations.",
         "playlist": "You are going to delete {modelName} from your playlists.",
         "playlistTrack": "You are going to delete {modelName} from {parentModelName} playlist.",
@@ -223,10 +224,11 @@
         "bookmark": "You are going to delete {modelName} from your bookmarks.",
         "post": "You are going to delete this post.",
         "community": "You are going to delete this community.",
-        "account": "You are going to delete your account."
+        "account": "You are going to delete your account.",
+        "library": "You are going to delete your library."
       },
       "also": {
-        "library": {
+        "libraryModel": {
           "artist": "This will also delete all this artist's albums and tracks.",
           "album": "This will also delete all this album's tracks."
         },
@@ -239,6 +241,10 @@
           "<strong>- created posts\n- conversations with you\n- created communities</strong>",
           "And this data will remain unchanged:",
           "<strong>- saved tracks\n- background images\n- settings</strong>"
+        ],
+        "library": [
+          "This will delete your following data:",
+          "<strong>- artists\n- albums\n- tracks\n- recommendations</strong>"
         ]
       },
       "undo": "You can't undo this action!",
@@ -328,10 +334,15 @@
       "community": "Community {communityTitle} has been updated"
     },
     "deleted": {
-      "library": "{modelName} has been deleted from your library",
+      "libraryModel": {
+        "artist": "Artist {modelName} has been deleted from your library",
+        "album": "Album {modelName} has been deleted from your library",
+        "track": "Track {modelName} has been deleted from your library"
+      },
       "playlist": "Playlist {playlistTitle} has been deleted",
       "community": "Community {communityTitle} has been deleted",
-      "account": "Your account has been deleted"
+      "account": "Your account has been deleted",
+      "library": "Your library has been deleted"
     },
     "copied": "Link is copied to clipboard",
     "cleared": {
@@ -490,6 +501,9 @@
         "data": {
           "account": {
             "delete": "Delete account"
+          },
+          "library": {
+            "delete": "Delete library"
           }
         }
       },

@@ -190,7 +190,7 @@
   "modals": {
     "delete": {
       "header": {
-        "library": {
+        "libraryModel": {
           "artist": "Künstler aus der Bibliothek entfernen",
           "album": "Album aus der Bibliothek entfernen",
           "track": "Titel aus der Bibliothek entfernen"
@@ -211,22 +211,24 @@
         },
         "post": "Post löschen",
         "community": "Community löschen",
-        "account": "Account löschen"
+        "account": "Account löschen",
+        "library": "Bibliothek löschen"
       },
       "going": {
-        "library": "Sie werden {modelName} aus Ihrer Bibliothek löschen.",
-        "recommendation": "Sie werden {modelName} aus Ihren Vorschlägen löschen.",
-        "playlist": "Sie werden {modelName} von Ihrer Playlist löschen.",
-        "playlistTrack": "Sie werden {modelName} von der Playlist {parentModelName} löschen.",
-        "savedTrack": "Sie werden {modelName} aus Ihren gespeicherten Titeln löschen.",
-        "favorite": "Sie werden {modelName} aus Ihren Favoriten löschen.",
-        "bookmark": "Sie werden {modelName} aus Ihren Lesezeichen löschen.",
-        "post": "Sie werden diesen Post löschen.",
-        "community": "Sie werden diese Community löschen.",
-        "account": "Sie werden Ihren Account löschen."
+        "libraryModel": "Sie sind dabei, {modelName} aus Ihrer Bibliothek löschen.",
+        "recommendation": "Sie sind dabei, {modelName} aus Ihren Vorschlägen löschen.",
+        "playlist": "Sie sind dabei, {modelName} von Ihrer Playlist löschen.",
+        "playlistTrack": "Sie sind dabei, {modelName} von der Playlist {parentModelName} löschen.",
+        "savedTrack": "Sie sind dabei, {modelName} aus Ihren gespeicherten Titeln löschen.",
+        "favorite": "Sie sind dabei, {modelName} aus Ihren Favoriten löschen.",
+        "bookmark": "Sie sind dabei, {modelName} aus Ihren Lesezeichen löschen.",
+        "post": "Sie sind dabei, diesen Post löschen.",
+        "community": "Sie sind dabei, diese Community löschen.",
+        "account": "Sie sind dabei, Ihren Account löschen.",
+        "library": "Sie sind dabei, Ihre Bibliothek zu löschen."
       },
       "also": {
-        "library": {
+        "libraryModel": {
           "artist": "Dadurch werden auch alle Alben und Titel dieses Künstlers gelöscht.",
           "album": "Dadurch werden auch alle Titel dieses Albums gelöscht."
         },
@@ -239,6 +241,10 @@
           "<strong>- erstellte Beiträge\n- Konversationen mit Ihnen\n- erstellte Communities</strong>",
           "Diese Daten werden nicht geändert werden:",
           "<strong>- gespeicherte Titel\n- Hintergrundbilder\n- Einstellungen</strong>"
+        ],
+        "library": [
+          "Dadurch werden folgende Daten gelöscht:",
+          "<strong>- Künstler\n- Alben\n- Titel\n- Vorschläge</strong>"
         ]
       },
       "undo": "Dies kann nicht rückgangig gemacht werden!",
@@ -328,10 +334,15 @@
       "community": "Community {communityTitle} wurde aktualisiert"
     },
     "deleted": {
-      "library": "{modelName} wurde von deiner Bibliothek entfernt",
+      "libraryModel": {
+        "artist": "Künstler {modelName} wurde von Ihrer Bibliothek gelöscht",
+        "album": "Album {modelName} wurde von Ihrer Bibliothek gelöscht",
+        "track": "Titel {modelName} wurde von Ihrer Bibliothek gelöscht"
+      },
       "playlist": "Playlist {playlistTitle} wurde gelöscht",
       "community": "Community {communityTitle} wurde gelöscht",
-      "account": "Ihr Account wurde gelöscht"
+      "account": "Ihr Account wurde gelöscht",
+      "library": "Ihre Bibliothek wurde gelöscht"
     },
     "copied": "Link wurde in die Zwischenablage kopiert.",
     "cleared": {
@@ -490,6 +501,9 @@
         "data": {
           "account": {
             "delete": "Account löschen"
+          },
+          "library": {
+            "delete": "Bibliothek löschen"
           }
         }
       },

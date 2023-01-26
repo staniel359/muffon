@@ -629,6 +629,34 @@ export function profileDeleteFormOptions (
   }
 }
 
+export function libraryDeleteFormOptions (
+  {
+    onSuccess
+  }
+) {
+  const emptyPasswordPrompt =
+    i18n.global.t(
+      'forms.errors.empty.password'
+    )
+
+  return {
+    duration: 0,
+    inline: true,
+    fields: {
+      password: {
+        identifier: 'password',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyPasswordPrompt
+          }
+        ]
+      }
+    },
+    onSuccess
+  }
+}
+
 export function passwordUpdateFormOptions (
   {
     onSuccess

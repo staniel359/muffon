@@ -1,7 +1,7 @@
 <template>
   <BaseDeleteModal
     ref="modal"
-    model-type="library"
+    model-type="libraryModel"
     :model="model"
     :model-name="modelName"
     :is-loading="isLoading"
@@ -59,7 +59,7 @@ export default {
   computed: {
     notificationSuccessMessage () {
       return this.$t(
-        'notifications.deleted.library',
+        `notifications.deleted.libraryModel.${this.model}`,
         {
           modelName: this.modelNameStrong
         }

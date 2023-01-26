@@ -190,7 +190,7 @@
   "modals": {
     "delete": {
       "header": {
-        "library": {
+        "libraryModel": {
           "artist": "Rimuovi artista dalla libreria",
           "album": "Rimuovi album dalla libreria",
           "track": "Rimuovi brano dalla libreria"
@@ -211,10 +211,11 @@
         },
         "post": "Elimina post",
         "community": "Elimina community",
-        "account": "Elimina account"
+        "account": "Elimina account",
+        "library": "Elimina libreria"
       },
       "going": {
-        "library": "Stai per rimuovere {modelName} dalla libreria.",
+        "libraryModel": "Stai per rimuovere {modelName} dalla libreria.",
         "recommendation": "Stai per rimuovere {modelName} dai suggerimenti.",
         "playlist": "Stai per rimuovere {modelName} dalle tue playlist.",
         "playlistTrack": "Stai per rimuovere {modelName} dalla playlist {parentModelName}.",
@@ -223,10 +224,11 @@
         "bookmark": "Stai per rimuovere {modelName} dai tuoi segnalibri.",
         "post": "Stai per eliminare questo post.",
         "community": "Stai per eliminare questa community.",
-        "account": "Stai per eliminare il tuo account."
+        "account": "Stai per eliminare il tuo account.",
+        "library": "Stai per eliminare la tua libreria."
       },
       "also": {
-        "library": {
+        "libraryModel": {
           "artist": "Saranno rimossi anche gli album e i brani di quest’artista.",
           "album": "Saranno rimossi anche tutti i brani di quest’album."
         },
@@ -239,6 +241,10 @@
           "<strong>- post creati\n- conversazioni con te\n- community create</strong>",
           "E questi dati non saranno influenzati:",
           "<strong>- brani salvate\n- immagini di sfondo\n- impostazioni</strong>"
+        ],
+        "library": [
+          "Questo eliminerà i seguenti dati:",
+          "<strong>- Artisti\n- Album\n- Brani\n- Suggerimenti</strong>"
         ]
       },
       "undo": "Quest’azione non può essere annullata!",
@@ -328,10 +334,15 @@
       "community": "Community {communityTitle} aggiornata"
     },
     "deleted": {
-      "library": "{modelName} rimossa dalla libreria",
+      "libraryModel": {
+        "artist": "L'artista {modelName} è stato rimosso dalla tua libreria",
+        "album": "L'album {modelName} è stato rimosso dalla tua libreria",
+        "track": "Il brano {modelName} è stato rimosso dalla tua libreria"
+      },
       "playlist": "Playlist {playlistTitle} rimossa",
       "community": "Community {communityTitle} cancellata",
-      "account": "Il tuo account è stato eliminato"
+      "account": "Il tuo account è stato eliminato",
+      "library": "La tua libreria è stata eliminata"
     },
     "copied": "Link copiato negli Appunti",
     "cleared": {
@@ -490,6 +501,9 @@
         "data": {
           "account": {
             "delete": "Elimina account"
+          },
+          "library": {
+            "delete": "Elimina libreria"
           }
         }
       },
