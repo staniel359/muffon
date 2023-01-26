@@ -3,6 +3,12 @@
     v-if="isRender"
     @active-change="handleActiveChange"
   >
+    <PageOption
+      v-if="isWithPageOption"
+      :artist-data="artistData"
+      @click="handleLinkClick"
+    />
+
     <LibraryOption
       v-if="isWithLibraryOption"
       :library-id="libraryId"
@@ -81,6 +87,7 @@ import {
 import profileStore from '@/stores/profile'
 import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+import PageOption from './BaseArtistOptionsDropdown/PageOption.vue'
 import LibraryOption from './BaseArtistOptionsDropdown/LibraryOption.vue'
 import FavoriteOption from './BaseArtistOptionsDropdown/FavoriteOption.vue'
 import BookmarkOption from './BaseArtistOptionsDropdown/BookmarkOption.vue'
@@ -105,6 +112,7 @@ export default {
   name: 'BaseArtistOptionsDropdown',
   components: {
     BaseOptionsDropdownContainer,
+    PageOption,
     LibraryOption,
     FavoriteOption,
     BookmarkOption,
@@ -129,6 +137,7 @@ export default {
     isBookmark: Boolean,
     isFavorite: Boolean,
     isRecommendation: Boolean,
+    isWithPageOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
@@ -157,7 +166,8 @@ export default {
     },
     isWithProfileOptions () {
       return (
-        this.isWithLibraryOption ||
+        this.isWithPageOption ||
+          this.isWithLibraryOption ||
           this.isWithFavoriteOption ||
           this.isWithBookmarkOption ||
           this.isWithListenedOption ||

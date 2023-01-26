@@ -30,6 +30,7 @@
         :is-with-saved-icon="isWithSavedIcon"
         :is-link-to-library="isLinkToLibrary"
         :profile-id="profileId"
+        :is-with-page-option="isWithPageOption"
         :is-with-source-option="isWithSourceOption"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
@@ -92,6 +93,7 @@ export default {
     isWithSavedIcon: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
+    isWithPageOption: Boolean,
     isWithSourceOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,

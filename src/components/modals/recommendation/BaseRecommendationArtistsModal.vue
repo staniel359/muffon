@@ -18,6 +18,7 @@
         :top-albums-count="topAlbumsCount"
         is-link-to-library
         is-with-library
+        is-with-page-option
         is-with-share-option
         @link-click="handleLinkClick"
       />

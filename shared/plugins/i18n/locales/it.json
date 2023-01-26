@@ -171,7 +171,8 @@
       "savedTracks": "Aggiungi ai brani salvati"
     },
     "show": {
-      "library": "Mostra nella libreria"
+      "library": "Mostra nella libreria",
+      "page": "Mostra pagina"
     },
     "deleteFrom": {
       "favorites": "Rimuovi dai preferiti",

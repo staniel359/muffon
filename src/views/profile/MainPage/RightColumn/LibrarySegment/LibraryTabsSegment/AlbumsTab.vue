@@ -20,6 +20,7 @@
         is-with-created
         is-with-library
         is-link-to-library
+        is-with-page-option
         is-with-favorite-option
         is-with-bookmark-option
         is-with-listened-option

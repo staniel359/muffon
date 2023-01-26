@@ -13,6 +13,7 @@
     :is-paginated="false"
     is-image-small
     is-link-to-library
+    is-with-page-option
     is-with-share-option
   />
 

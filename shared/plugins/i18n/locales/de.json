@@ -171,7 +171,8 @@
       "savedTracks": "Zu gespeicherte Titel hinzufügen"
     },
     "show": {
-      "library": "In Bibliothek anzeigen"
+      "library": "In Bibliothek anzeigen",
+      "page": "Seite anzeigen"
     },
     "deleteFrom": {
       "favorites": "Von Favoriten entfernen",

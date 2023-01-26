@@ -13,6 +13,7 @@
       :is-with-library="isWithLibrary"
       :top-tracks-count="topTracksCount"
       :is-with-listeners-count="isWithListenersCount"
+      :is-with-page-option="isWithPageOption"
       :is-with-library-option="isWithLibraryOption"
       :is-with-favorite-option="isWithFavoriteOption"
       :is-with-bookmark-option="isWithBookmarkOption"
@@ -68,6 +69,7 @@ export default {
     isLinkToLibrary: Boolean,
     isWithLibrary: Boolean,
     topTracksCount: Number,
+    isWithPageOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,

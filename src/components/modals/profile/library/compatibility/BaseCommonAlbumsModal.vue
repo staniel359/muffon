@@ -12,6 +12,7 @@
         :profile-id="profileId"
         is-with-artist-name
         is-link-to-library
+        is-with-page-option
         is-with-share-option
         @link-click="handleLinkClick"
       />

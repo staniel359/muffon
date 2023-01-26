@@ -171,7 +171,8 @@
       "savedTracks": "Add to saved tracks"
     },
     "show": {
-      "library": "Show in library"
+      "library": "Show in library",
+      "page": "Show page"
     },
     "deleteFrom": {
       "favorites": "Delete from favorites",

@@ -4,7 +4,7 @@ export function main (
   {
     artistName,
     albumTitle,
-    sourceParams
+    sourceParams = {}
   }
 ) {
   const artistNameEncoded =

@@ -2,6 +2,12 @@
   <BaseOptionsDropdownContainer
     v-if="isRender"
   >
+    <PageOption
+      v-if="isWithPageOption"
+      :album-data="albumData"
+      @click="handleLinkClick"
+    />
+
     <LibraryOption
       v-if="isWithLibraryOption"
       :library-id="libraryId"
@@ -94,6 +100,7 @@ import {
 import profileStore from '@/stores/profile'
 import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+import PageOption from './BaseAlbumOptionsDropdown/PageOption.vue'
 import LibraryOption from './BaseAlbumOptionsDropdown/LibraryOption.vue'
 import BasePlaylistOption
   from '@/components/dropdowns/options/BasePlaylistOption.vue'
@@ -124,6 +131,7 @@ export default {
   name: 'BaseAlbumOptionsDropdown',
   components: {
     BaseOptionsDropdownContainer,
+    PageOption,
     LibraryOption,
     BasePlaylistOption,
     BasePlaylistsModal,
@@ -149,6 +157,7 @@ export default {
     isLinkToLibrary: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
+    isWithPageOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithPlaylistOption: Boolean,
     isWithFavoriteOption: Boolean,
@@ -178,7 +187,8 @@ export default {
     },
     isWithProfileOptions () {
       return (
-        this.isWithLibraryOption ||
+        this.isWithPageOption ||
+          this.isWithLibraryOption ||
           this.isWithPlaylistOption ||
           this.isWithFavoriteOption ||
           this.isWithBookmarkOption ||

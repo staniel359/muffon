@@ -18,6 +18,7 @@
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
         :is-link-to-library="isLinkToLibrary"
+        :is-with-page-option="isWithPageOption"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
@@ -134,6 +135,7 @@ export default {
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
+    isWithPageOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,

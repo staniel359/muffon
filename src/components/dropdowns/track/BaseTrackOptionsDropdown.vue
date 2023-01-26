@@ -2,6 +2,12 @@
   <BaseOptionsDropdownContainer
     v-if="isRender"
   >
+    <PageOption
+      v-if="isWithPageOption"
+      :track-data="trackData"
+      @click="handleLinkClick"
+    />
+
     <SourceOption
       v-if="isWithSourceOption"
       @click="handleSourceClick"
@@ -118,6 +124,7 @@ import {
 import profileStore from '@/stores/profile'
 import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+import PageOption from './BaseTrackOptionsDropdown/PageOption.vue'
 import SourceOption from './BaseTrackOptionsDropdown/SourceOption.vue'
 import LibraryOption from './BaseTrackOptionsDropdown/LibraryOption.vue'
 import BasePlaylistOption
@@ -151,6 +158,7 @@ export default {
   name: 'BaseTrackOptionsDropdown',
   components: {
     BaseOptionsDropdownContainer,
+    PageOption,
     SourceOption,
     LibraryOption,
     BasePlaylistOption,
@@ -183,6 +191,7 @@ export default {
     isPlaylistTrack: Boolean,
     playlistId: String,
     playlistTitle: String,
+    isWithPageOption: Boolean,
     isWithSourceOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithPlaylistOption: Boolean,
@@ -211,7 +220,8 @@ export default {
     ),
     isRender () {
       return (
-        this.isWithSourceOption ||
+        this.isWithPageOption ||
+          this.isWithSourceOption ||
           this.isRenderLibraryOption ||
           this.isRenderPlaylistOption ||
           this.isRenderFavoriteOption ||

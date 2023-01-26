@@ -14,6 +14,7 @@
         is-with-album-title
         is-link-to-library
         is-with-image
+        is-with-page-option
         is-with-source-option
         is-with-playlist-option
         is-with-share-option

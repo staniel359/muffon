@@ -11,6 +11,7 @@
         :artists="slotProps[scope]"
         :profile-id="profileId"
         is-link-to-library
+        is-with-page-option
         is-with-share-option
         @link-click="handleLinkClick"
       />
