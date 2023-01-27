@@ -112,5 +112,6 @@ export default {
   volumeOff: 'volume off',
   volumeUp: 'volume up',
   watch: 'eye',
+  watched: 'check',
   window: 'window maximize outline'
 }

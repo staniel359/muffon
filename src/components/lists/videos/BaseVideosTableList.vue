@@ -7,6 +7,7 @@
     >
       <VideoItem
         :video-data="videoData"
+        :is-with-watched-option="isWithWatchedOption"
         :is-with-share-option="isWithShareOption"
         @link-click="handleLinkClick"
       />
@@ -32,6 +33,7 @@ export default {
         return []
       }
     },
+    isWithWatchedOption: Boolean,
     isWithShareOption: Boolean
   },
   emits: [

@@ -167,6 +167,7 @@
       "favorites": "Aggiungi ai preferiti",
       "bookmarks": "Aggiungi ai segnalibri",
       "listened": "Aggiungi agli ascoltati",
+      "watched": "Aggiungi ai visualizzati",
       "queue": "Aggiungi in coda",
       "savedTracks": "Aggiungi ai brani salvati"
     },
@@ -177,7 +178,8 @@
     "deleteFrom": {
       "favorites": "Rimuovi dai preferiti",
       "bookmarks": "Rimuovi dai segnalibri",
-      "listened": "Rimuovi dagli ascolti"
+      "listened": "Rimuovi dagli ascolti",
+      "watched": "Rimuovi dai visualizzati"
     }
   },
   "links": {

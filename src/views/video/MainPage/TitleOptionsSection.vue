@@ -11,9 +11,15 @@
       />
     </div>
 
+    <BaseSelfIcons
+      :watched-id="watchedId"
+    />
+
     <BaseVideoOptionsDropdown
       class="video-options"
       :video-data="videoData"
+      :watched-id="watchedId"
+      is-with-watched-option
       is-with-share-option
     />
   </div>
@@ -23,16 +29,22 @@
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseVideoChannelLinkSection
   from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseVideoOptionsDropdown
   from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'TitleOptionsSection',
   components: {
     BaseHeader,
     BaseVideoChannelLinkSection,
+    BaseSelfIcons,
     BaseVideoOptionsDropdown
   },
+  mixins: [
+    selfMixin
+  ],
   props: {
     videoData: {
       type: Object,
@@ -40,6 +52,9 @@ export default {
     }
   },
   computed: {
+    modelData () {
+      return this.videoData
+    },
     videoTitle () {
       return this.videoData.title
     }

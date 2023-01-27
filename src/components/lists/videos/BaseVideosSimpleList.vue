@@ -7,6 +7,7 @@
       :key="videoData.uuid"
       :video-data="videoData"
       :is-with-channel-title="isWithChannelTitle"
+      :is-with-watched-option="isWithWatchedOption"
       :is-with-share-option="isWithShareOption"
       :is-with-clear-button="isWithClearButton"
       @link-click="handleLinkClick"
@@ -37,6 +38,7 @@ export default {
       }
     },
     isWithChannelTitle: Boolean,
+    isWithWatchedOption: Boolean,
     isWithShareOption: Boolean,
     isWithClearButton: Boolean
   },

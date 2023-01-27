@@ -23,6 +23,12 @@
       class="primary main-simple-self-icon"
       icon="listened"
     />
+
+    <BaseIcon
+      v-if="watchedId"
+      class="primary main-simple-self-icon"
+      icon="watched"
+    />
   </div>
 </template>
 
@@ -50,7 +56,8 @@ export default {
     libraryId: String,
     favoriteId: String,
     bookmarkId: String,
-    listenedId: String
+    listenedId: String,
+    watchedId: String
   },
   computed: {
     isRenderLibraryIcon () {

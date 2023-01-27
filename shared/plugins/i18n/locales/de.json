@@ -167,6 +167,7 @@
       "favorites": "Zu Favoriten hinzufügen",
       "bookmarks": "Zu Lesezeichen hinzufügen",
       "listened": "Zur Angehört hinzufügen",
+      "watched": "Zu angeschauten hinzufügen",
       "queue": "Zur Queue hinzufügen",
       "savedTracks": "Zu gespeicherte Titel hinzufügen"
     },
@@ -177,7 +178,8 @@
     "deleteFrom": {
       "favorites": "Von Favoriten entfernen",
       "bookmarks": "Lesezeichen entfernen",
-      "listened": "Von Angehörten entfernen"
+      "listened": "Von Angehörten entfernen",
+      "watched": "Von angeschauten löschen"
     }
   },
   "links": {

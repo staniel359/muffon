@@ -7,6 +7,8 @@
     >
       <BaseVideoOptionsDropdown
         :video-data="videoData"
+        :watched-id="watchedId"
+        :is-with-watched-option="isWithWatchedOption"
         :is-with-share-option="isWithShareOption"
       />
 
@@ -30,6 +32,10 @@
         class="description"
         :model-data="videoData"
       />
+
+      <BaseSelfIcons
+        :watched-id="watchedId"
+      />
     </div>
   </BaseSimpleCardContainer>
 </template>
@@ -45,9 +51,11 @@ import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import {
   main as formatVideoMainLink
 } from '@/helpers/formatters/links/video'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'VideoItem',
@@ -57,19 +65,27 @@ export default {
     BaseVideoOptionsDropdown,
     BaseImage,
     BaseHeader,
-    BasePublishDateSection
+    BasePublishDateSection,
+    BaseSelfIcons
   },
+  mixins: [
+    selfMixin
+  ],
   props: {
     videoData: {
       type: Object,
       required: true
     },
+    isWithWatchedOption: Boolean,
     isWithShareOption: Boolean
   },
   emits: [
     'linkClick'
   ],
   computed: {
+    modelData () {
+      return this.videoData
+    },
     imageData () {
       return this.videoData.image
     },

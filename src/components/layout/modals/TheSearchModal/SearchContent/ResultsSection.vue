@@ -30,13 +30,14 @@
             :is-with-source="isWithSource"
             is-with-artist-name
             is-with-album-title
+            is-with-channel-title
             is-with-duration
             is-with-library-option
-            is-with-listened-option
-            is-with-bookmark-option
-            is-with-channel-title
-            is-with-favorite-option
             is-with-playlist-option
+            is-with-favorite-option
+            is-with-bookmark-option
+            is-with-listened-option
+            is-with-watched-option
             is-with-share-option
             is-with-queue-option
             @link-click="handleLinkClick"

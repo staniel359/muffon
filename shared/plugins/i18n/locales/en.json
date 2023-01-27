@@ -167,6 +167,7 @@
       "favorites": "Add to favorites",
       "bookmarks": "Add to bookmarks",
       "listened": "Add to listened",
+      "watched": "Add to watched",
       "queue": "Add to queue",
       "savedTracks": "Add to saved tracks"
     },
@@ -177,7 +178,8 @@
     "deleteFrom": {
       "favorites": "Delete from favorites",
       "bookmarks": "Delete from bookmarks",
-      "listened": "Delete from listened"
+      "listened": "Delete from listened",
+      "watched": "Delete from watched"
     }
   },
   "links": {

@@ -8,7 +8,8 @@ export default {
       setLibraryId: this.setLibraryId,
       setFavoriteId: this.setFavoriteId,
       setBookmarkId: this.setBookmarkId,
-      setListenedId: this.setListenedId
+      setListenedId: this.setListenedId,
+      setWatchedId: this.setWatchedId
     }
   },
   data () {
@@ -16,7 +17,8 @@ export default {
       libraryId: null,
       favoriteId: null,
       bookmarkId: null,
-      listenedId: null
+      listenedId: null,
+      watchedId: null
     }
   },
   computed: {
@@ -66,6 +68,11 @@ export default {
           .listened_id
           ?.toString()
 
+      const watchedId =
+        this.modelData
+          .watched_id
+          ?.toString()
+
       this.setLibraryId(
         libraryId
       )
@@ -80,6 +87,10 @@ export default {
 
       this.setListenedId(
         listenedId
+      )
+
+      this.setWatchedId(
+        watchedId
       )
     },
     setLibraryId (
@@ -101,6 +112,11 @@ export default {
       value
     ) {
       this.listenedId = value
+    },
+    setWatchedId (
+      value
+    ) {
+      this.watchedId = value
     }
   }
 }

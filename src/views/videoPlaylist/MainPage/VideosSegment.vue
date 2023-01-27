@@ -16,6 +16,7 @@
       <BaseVideosList
         :videos="slotProps[scope]"
         :view-id="viewId"
+        is-with-watched-option
         is-with-share-option
       />
     </template>

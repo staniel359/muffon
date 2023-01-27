@@ -2,6 +2,12 @@
   <BaseOptionsDropdownContainer
     v-if="isRender"
   >
+    <WatchedOption
+      v-if="isWithWatchedOption"
+      :video-data="videoData"
+      :watched-id="watchedId"
+    />
+
     <BaseShareOption
       v-if="isWithShareOption"
       :share-data="shareData"
@@ -16,6 +22,7 @@ import {
 import profileStore from '@/stores/profile'
 import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+import WatchedOption from './BaseVideoOptionsDropdown/WatchedOption.vue'
 import BaseShareOption
   from '@/components/dropdowns/options/BaseShareOption.vue'
 import {
@@ -25,12 +32,15 @@ import {
 export default {
   name: 'BaseVideoOptionsDropdown',
   components: {
+    WatchedOption,
     BaseOptionsDropdownContainer,
     BaseShareOption
   },
   props: {
     videoData: Object,
-    isWithShareOption: Boolean
+    isWithWatchedOption: Boolean,
+    isWithShareOption: Boolean,
+    watchedId: String
   },
   computed: {
     ...mapState(
@@ -47,7 +57,8 @@ export default {
     },
     isWithProfileOptions () {
       return (
-        this.isWithShareOption
+        this.isWithWatchedOption ||
+          this.isWithShareOption
       )
     },
     shareData () {
