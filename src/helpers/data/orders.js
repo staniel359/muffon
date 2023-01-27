@@ -53,6 +53,10 @@ export default {
     'createdDesc',
     'createdAsc'
   ],
+  favoriteVideo: [
+    'createdDesc',
+    'createdAsc'
+  ],
   bookmarkArtist: [
     'createdDesc',
     'createdAsc'

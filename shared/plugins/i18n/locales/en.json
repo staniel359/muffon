@@ -65,7 +65,8 @@
       "favoritesModels": {
         "artists": "{modelName} favorite artists",
         "albums": "{modelName} favorite albums",
-        "tracks": "{modelName} favorite tracks"
+        "tracks": "{modelName} favorite tracks",
+        "videos": "{modelName} favorite videos"
       },
       "communities": "{modelName} communities"
     },
@@ -205,7 +206,8 @@
         "favorite": {
           "artist": "Delete artist from favorites",
           "album": "Delete album from favorites",
-          "track": "Delete track from favorites"
+          "track": "Delete track from favorites",
+          "video": "Delete video from favorites"
         },
         "bookmark": {
           "artist": "Delete artist from bookmarks",
@@ -655,7 +657,8 @@
     "track": "Track has been deleted",
     "recommendation": "Recommendation has been deleted",
     "playlist": "Playlist has been deleted",
-    "post": "Post has been deleted"
+    "post": "Post has been deleted",
+    "video": "Video has been deleted"
   },
   "messages": {
     "welcome": "Welcome, {profileNickname}"

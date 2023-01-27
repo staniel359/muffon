@@ -65,7 +65,8 @@
       "favoritesModels": {
         "artists": "{modelName} artisti preferiti",
         "albums": "{modelName} album preferiti",
-        "tracks": "{modelName} brani preferiti"
+        "tracks": "{modelName} brani preferiti",
+        "videos": "{modelName} video preferiti"
       },
       "communities": "{modelName} community"
     },
@@ -205,7 +206,8 @@
         "favorite": {
           "artist": "Rimuovi artista dai preferiti",
           "album": "Rimuovi album dai preferiti",
-          "track": "Rimuovi brano dai preferiti"
+          "track": "Rimuovi brano dai preferiti",
+          "video": "Rimuovi video dai preferiti"
         },
         "bookmark": {
           "artist": "Rimuovi artista dai segnalibri",
@@ -655,7 +657,8 @@
     "track": "Brano rimosso",
     "recommendation": "Suggerimento rimosso",
     "playlist": "Playlist rimossa",
-    "post": "Post rimosso"
+    "post": "Post rimosso",
+    "video": "Video rimosso"
   },
   "messages": {
     "welcome": "Benvenuto, {profileNickname}"
@@ -712,7 +715,7 @@
     "membersCountDesc": "Più persone",
     "membersCountAsc": "Meno persone"
   },
-  "deleted": {
+  "deletedModel": {
     "profile": "Profilo eliminato"
   },
   "error": "Errore",

@@ -151,6 +151,9 @@ const ProfileFavoritesAlbumsPage = () => import(
 const ProfileFavoritesTracksPage = () => import(
   '@/views/profile/favorites/TracksPage.vue'
 )
+const ProfileFavoritesVideosPage = () => import(
+  '@/views/profile/favorites/VideosPage.vue'
+)
 const TopMainPage = () => import(
   '@/views/top/MainPage.vue'
 )
@@ -568,6 +571,13 @@ export default [
     exact: true,
     name: 'ProfileFavoritesTracksPage',
     component: ProfileFavoritesTracksPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/favorites/videos',
+    exact: true,
+    name: 'ProfileFavoritesVideosPage',
+    component: ProfileFavoritesVideosPage,
     props: true
   },
   {

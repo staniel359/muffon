@@ -7,7 +7,9 @@
     >
       <BaseVideoOptionsDropdown
         :video-data="videoData"
+        :favorite-id="favoriteId"
         :watched-id="watchedId"
+        :is-with-favorite-option="isWithFavoriteOption"
         :is-with-watched-option="isWithWatchedOption"
         :is-with-share-option="isWithShareOption"
       />
@@ -34,6 +36,7 @@
       />
 
       <BaseSelfIcons
+        :favorite-id="favoriteId"
         :watched-id="watchedId"
       />
     </div>
@@ -76,6 +79,7 @@ export default {
       type: Object,
       required: true
     },
+    isWithFavoriteOption: Boolean,
     isWithWatchedOption: Boolean,
     isWithShareOption: Boolean
   },

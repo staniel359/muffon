@@ -1,5 +1,8 @@
 <template>
-  <div class="main-self-icons">
+  <div
+    v-if="isRender"
+    class="main-self-icons"
+  >
     <BaseIcon
       v-if="isRenderLibraryIcon"
       class="primary main-simple-self-icon"
@@ -60,6 +63,15 @@ export default {
     watchedId: String
   },
   computed: {
+    isRender () {
+      return (
+        this.isRenderLibraryIcon ||
+          this.isRenderFavoriteIcon ||
+          this.isRenderBookmarkIcon ||
+          this.listenedId ||
+          this.watchedId
+      )
+    },
     isRenderLibraryIcon () {
       return (
         this.isWithLibraryIcon &&

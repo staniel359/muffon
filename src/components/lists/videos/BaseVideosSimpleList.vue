@@ -7,8 +7,13 @@
       :key="videoData.uuid"
       :video-data="videoData"
       :is-with-channel-title="isWithChannelTitle"
+      :is-with-created="isWithCreated"
+      :profile-id="profileId"
+      :is-favorite="isFavorite"
+      :is-with-favorite-option="isWithFavoriteOption"
       :is-with-watched-option="isWithWatchedOption"
       :is-with-share-option="isWithShareOption"
+      :is-with-delete-option="isWithDeleteOption"
       :is-with-clear-button="isWithClearButton"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
@@ -38,8 +43,13 @@ export default {
       }
     },
     isWithChannelTitle: Boolean,
+    isWithCreated: Boolean,
+    profileId: String,
+    isFavorite: Boolean,
+    isWithFavoriteOption: Boolean,
     isWithWatchedOption: Boolean,
     isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
     isWithClearButton: Boolean
   },
   emits: [

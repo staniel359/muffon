@@ -53,3 +53,17 @@ export function tracks (
     path: `profiles/${profileId}/favorites/tracks`
   }
 }
+
+export function videos (
+  {
+    profileId
+  }
+) {
+  return {
+    name: 'ProfileFavoritesVideosPage',
+    params: {
+      profileId
+    },
+    path: `profiles/${profileId}/favorites/videos`
+  }
+}

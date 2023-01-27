@@ -65,7 +65,8 @@
       "favoritesModels": {
         "artists": "{modelName} Lieblingskünstler",
         "albums": "{modelName} Lieblingsalben",
-        "tracks": "{modelName} Lieblingstitel"
+        "tracks": "{modelName} Lieblingstitel",
+        "videos": "{modelName} Lieblingsvideos"
       },
       "communities": "{modelName} Communities"
     },
@@ -205,7 +206,8 @@
         "favorite": {
           "artist": "Künstler aus Favoriten löschen",
           "album": "Album aus Favoriten löschen",
-          "track": "Titel aus Favoriten löschen"
+          "track": "Titel aus Favoriten löschen",
+          "video": "Video aus Favoriten löschen"
         },
         "bookmark": {
           "artist": "Künstler aus Lesezeichen entfernen",
@@ -655,7 +657,8 @@
     "track": "Titel wurde gelöscht",
     "recommendation": "Empfehlung wurde gelöscht",
     "playlist": "Playlist wurde gelöscht",
-    "post": "Post wurde gelöscht"
+    "post": "Post wurde gelöscht",
+    "video": "Video wurde gelöscht"
   },
   "messages": {
     "welcome": "Willkommen, {profileNickname}"

@@ -13,7 +13,9 @@
       v-if="isDeleted"
       model="album"
     />
-    <template v-else>
+    <template
+      v-else
+    >
       <BaseImage
         class="rounded-medium bordered"
         model="album"

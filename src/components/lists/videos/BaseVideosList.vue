@@ -3,6 +3,7 @@
     :is="listComponent"
     :videos="videos"
     :is-with-channel-title="isWithChannelTitle"
+    :is-with-favorite-option="isWithFavoriteOption"
     :is-with-watched-option="isWithWatchedOption"
     :is-with-share-option="isWithShareOption"
     :is-with-clear-button="isWithClearButton"
@@ -26,6 +27,7 @@ export default {
     },
     videos: Array,
     isWithChannelTitle: Boolean,
+    isWithFavoriteOption: Boolean,
     isWithWatchedOption: Boolean,
     isWithShareOption: Boolean,
     isWithClearButton: Boolean

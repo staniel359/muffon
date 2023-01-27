@@ -12,13 +12,17 @@
     </div>
 
     <BaseSelfIcons
+      class="self-icons"
+      :favorite-id="favoriteId"
       :watched-id="watchedId"
     />
 
     <BaseVideoOptionsDropdown
       class="video-options"
       :video-data="videoData"
+      :favorite-id="favoriteId"
       :watched-id="watchedId"
+      is-with-favorite-option
       is-with-watched-option
       is-with-share-option
     />
@@ -71,5 +75,8 @@ export default {
   @extend .flex-full
 
 .video-options
+  margin-left: 1em
+
+.self-icons
   margin-left: 1em
 </style>

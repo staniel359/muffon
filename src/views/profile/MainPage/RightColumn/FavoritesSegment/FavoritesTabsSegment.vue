@@ -32,6 +32,7 @@ import BaseTabsContainer from '@/components/containers/tabs/BaseTabsContainer.vu
 import ArtistsTab from './FavoritesTabsSegment/ArtistsTab.vue'
 import AlbumsTab from './FavoritesTabsSegment/AlbumsTab.vue'
 import TracksTab from './FavoritesTabsSegment/TracksTab.vue'
+import VideosTab from './FavoritesTabsSegment/VideosTab.vue'
 
 export default {
   name: 'FavoritesTabsSegment',
@@ -40,7 +41,8 @@ export default {
     BaseTabsContainer,
     ArtistsTab,
     AlbumsTab,
-    TracksTab
+    TracksTab,
+    VideosTab
   },
   props: {
     profileId: String
@@ -59,6 +61,10 @@ export default {
         {
           nameCode: 'navigation.tracks',
           component: 'TracksTab'
+        },
+        {
+          nameCode: 'navigation.videos',
+          component: 'VideosTab'
         }
       ]
     }

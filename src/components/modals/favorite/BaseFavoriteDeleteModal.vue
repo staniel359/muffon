@@ -44,6 +44,8 @@ export default {
       switch (this.model) {
         case 'artist':
           return this.modelData.name
+        case 'video':
+          return this.modelData.title
         default:
           return [
             this.modelData.artist.name,
@@ -53,14 +55,14 @@ export default {
           )
       }
     },
-    favoriteId () {
-      return this.modelData.id
-    },
     deleteArgs () {
       return {
         model: this.model,
         favoriteId: this.favoriteId
       }
+    },
+    favoriteId () {
+      return this.modelData.id
     }
   },
   watch: {

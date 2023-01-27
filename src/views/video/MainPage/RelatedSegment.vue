@@ -12,6 +12,7 @@
       >
         <BaseVideosTableList
           :videos="slotProps[scope]"
+          is-with-favorite-option
           is-with-watched-option
           is-with-share-option
         />

@@ -13,6 +13,10 @@
     <TracksSegment
       :profile-id="profileId"
     />
+
+    <VideosSegment
+      :profile-id="profileId"
+    />
   </BaseProfileFavoritesPageContainer>
 </template>
 
@@ -22,6 +26,7 @@ import BaseProfileFavoritesPageContainer
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
+import VideosSegment from './MainPage/VideosSegment.vue'
 
 export default {
   name: 'MainPage',
@@ -29,7 +34,8 @@ export default {
     BaseProfileFavoritesPageContainer,
     ArtistsSegment,
     AlbumsSegment,
-    TracksSegment
+    TracksSegment,
+    VideosSegment
   },
   props: {
     profileId: {

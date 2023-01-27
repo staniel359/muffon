@@ -1,63 +1,89 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
+    :class="{
+      disabled: isDeleted
+    }"
     :link="link"
     @click="handleLinkClick"
   >
-    <BaseImage
-      class="rounded-medium bordered video-image"
+    <BaseDeletedSection
+      v-if="isDeleted"
       model="video"
-      :image="imageData?.extrasmall"
     />
-
-    <div class="content">
-      <BaseHeader
-        tag="h4"
-        :class="{
-          link: isMainLinkActive
-        }"
-        :text="videoTitle"
+    <template
+      v-else
+    >
+      <BaseImage
+        class="rounded-medium bordered video-image"
+        model="video"
+        :image="imageData?.extrasmall"
       />
 
-      <BaseVideoChannelLinkSection
-        v-if="isWithChannelTitle"
+      <div class="content">
+        <BaseHeader
+          tag="h4"
+          :class="{
+            link: isMainLinkActive
+          }"
+          :text="videoTitle"
+        />
+
+        <BaseVideoChannelLinkSection
+          v-if="isWithChannelTitle"
+          :model-data="videoData"
+          @link-click="handleLinkClick"
+          @active-change="handleChannelLinkActiveChange"
+        />
+      </div>
+
+      <BaseSelfIcons
+        :favorite-id="favoriteId"
+        :watched-id="watchedId"
+        :is-with-favorite-icon="isWithFavoriteIcon"
+      />
+
+      <BaseCreatedSection
+        v-if="isWithCreated"
+        class="description right"
         :model-data="videoData"
-        @link-click="handleLinkClick"
-        @active-change="handleChannelLinkActiveChange"
       />
-    </div>
+      <BasePublishDateSection
+        v-else
+        class="description"
+        :model-data="videoData"
+      />
 
-    <BaseSelfIcons
-      :watched-id="watchedId"
-    />
+      <BaseVideoOptionsDropdown
+        :video-data="videoData"
+        :favorite-id="favoriteId"
+        :watched-id="watchedId"
+        :is-favorite="isFavorite"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-watched-option="isWithWatchedOption"
+        :is-with-share-option="isWithShareOption"
+        :is-with-delete-option="isWithDeleteOption"
+        @deleted="handleDeleted"
+      />
 
-    <BasePublishDateSection
-      class="description"
-      :model-data="videoData"
-    />
-
-    <BaseVideoOptionsDropdown
-      :video-data="videoData"
-      :watched-id="watchedId"
-      :is-with-watched-option="isWithWatchedOption"
-      :is-with-share-option="isWithShareOption"
-    />
-
-    <BaseClearButton
-      v-if="isWithClearButton"
-      @click="handleClearButtonClick"
-    />
+      <BaseClearButton
+        v-if="isWithClearButton"
+        @click="handleClearButtonClick"
+      />
+    </template>
   </BaseLinkContainer>
 </template>
 
 <script>
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseVideoChannelLinkSection
   from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
 import BaseVideoOptionsDropdown
@@ -72,10 +98,12 @@ export default {
   name: 'VideoItem',
   components: {
     BaseLinkContainer,
+    BaseDeletedSection,
     BaseImage,
     BaseHeader,
     BaseVideoChannelLinkSection,
     BaseSelfIcons,
+    BaseCreatedSection,
     BasePublishDateSection,
     BaseVideoOptionsDropdown,
     BaseClearButton
@@ -83,14 +111,24 @@ export default {
   mixins: [
     selfMixin
   ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     videoData: {
       type: Object,
       required: true
     },
     isWithChannelTitle: Boolean,
+    isWithCreated: Boolean,
+    profileId: String,
+    isFavorite: Boolean,
+    isWithFavoriteOption: Boolean,
     isWithWatchedOption: Boolean,
     isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
     isWithClearButton: Boolean
   },
   emits: [
@@ -124,6 +162,16 @@ export default {
     },
     uuid () {
       return this.videoData.uuid
+    },
+    paginationItem () {
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
+    },
+    isDeleted () {
+      return !!this.videoData.isDeleted
     }
   },
   methods: {
@@ -144,6 +192,9 @@ export default {
       value
     ) {
       this.isMainLinkActive = !value
+    },
+    handleDeleted () {
+      this.paginationItem.isDeleted = true
     }
   }
 }
@@ -151,8 +202,8 @@ export default {
 
 <style lang="sass" scoped>
 .video-image
-  width: 110px !important
-  height: calc(110px / 16 * 9) !important
+  width: 100px !important
+  height: calc(100px / 16 * 9) !important
 
 .content
   @extend .no-padding
