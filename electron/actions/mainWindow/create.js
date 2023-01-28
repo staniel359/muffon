@@ -37,7 +37,7 @@ const setTopOffset = require(
   '../app/setTopOffset'
 )
 const setScale = require(
-  '../app/setScale'
+  './setScale'
 )
 const callExit = require(
   '../app/callExit'

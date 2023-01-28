@@ -4,7 +4,7 @@ const {
   '../../utils'
 )
 
-function setTopOffset() {
+function setTopOffset () {
   const isFullScreen =
     mainWindow.isFullScreen()
 

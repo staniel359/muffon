@@ -15,6 +15,9 @@ const setActive = require(
 const setBounds = require(
   './setBounds'
 )
+const setScale = require(
+  './setScale'
+)
 const {
   baseUrl
 } = require(
@@ -115,6 +118,18 @@ function create (
       )
   }
 
+  function handleDomReady () {
+    const scale =
+      electronStore.get(
+        'layout.scale'
+      )
+
+    setScale(
+      tab,
+      scale
+    )
+  }
+
   tab
     .webContents
     .setWindowOpenHandler(
@@ -126,6 +141,13 @@ function create (
     .on(
       'did-start-navigation',
       handleDidStartNavigation
+    )
+
+  tab
+    .webContents
+    .on(
+      'dom-ready',
+      handleDomReady
     )
 }
 

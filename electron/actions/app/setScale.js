@@ -1,21 +1,19 @@
-const getTabs = require(
-  '../tabs/get'
+const setMainWindowScale = require(
+  '../mainWindow/setScale'
 )
-const setTabBounds = require(
-  '../tab/setBounds'
+const setTabsScale = require(
+  '../tabs/setScale'
 )
 
 function setScale (
   value
 ) {
-  mainWindow
-    .webContents
-    .setZoomFactor(
-      value
-    )
+  setMainWindowScale(
+    value
+  )
 
-  getTabs().forEach(
-    setTabBounds
+  setTabsScale(
+    value
   )
 }
 
