@@ -57,9 +57,10 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **new / upcoming releases**
 - **multitag search** (artists / albums)
 - **playlists** (with album / queue adding)
-- **favorites** (artists / albums / tracks)
-- **bookmarks** (artists / albums / tracks)
+- **favorites** (artists / albums / tracks / videos)
+- **bookmarks** (artists / albums / tracks / videos)
 - **listened** (artists / albums / tracks)
+- **watched** (videos)
 - **posting**
 - **following**
 - **messaging**
@@ -67,24 +68,6 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **communities**
 - **sharing** (artists / albums / tracks / videos / playlists / communities)
 - **theming** (dark mode / background change / transparency change)
-
-### Upcoming features
-
-- Deezer / Spotify / Yandex Music integration
-- music labels (artists / albums)
-- playlists import
-- videos favorites / bookmarks / watched
-- new messenger
-- local audio playing
-- player history
-- browsing history
-- posts' likes / comments
-- taggings
-- Internet radio stations (?)
-- audio equalizer (?)
-- artist events (Last.FM) (?)
-- MusicBrainz source (?)
-- ??? (your suggestions)
 
 ### Languages
 
@@ -107,7 +90,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Download
 
-[Latest (v1.2.0)](https://github.com/staniel359/muffon/releases/tag/v1.2.0)
+[Latest (v1.3.0)](https://github.com/staniel359/muffon/releases/tag/v1.3.0)
 
 ## Troubleshooting
 
