@@ -45,7 +45,8 @@
     "bookmarkModels": {
       "artists": "Künstler Lesezeichen",
       "albums": "Albums Lesezeichen",
-      "tracks": "Titel Lesezeichen"
+      "tracks": "Titel Lesezeichen",
+      "videos": "Videos Lesezeichen"
     },
     "communities": "Communities",
     "settings": "Einstellungen",
@@ -212,7 +213,8 @@
         "bookmark": {
           "artist": "Künstler aus Lesezeichen entfernen",
           "album": "Album aus Lesezeichen entfernen",
-          "track": "Titel aus Lesezeichen entfernen"
+          "track": "Titel aus Lesezeichen entfernen",
+          "video": "Video aus Lesezeichen entfernen"
         },
         "post": "Post löschen",
         "community": "Community löschen",

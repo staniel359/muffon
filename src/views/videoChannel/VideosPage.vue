@@ -14,6 +14,7 @@
         :videos="slotProps[scope]"
         :view-id="viewId"
         is-with-favorite-option
+        is-with-bookmark-option
         is-with-watched-option
         is-with-share-option
       />

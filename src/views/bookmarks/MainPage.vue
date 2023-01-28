@@ -7,6 +7,8 @@
     <AlbumsSegment />
 
     <TracksSegment />
+
+    <VideosSegment />
   </BaseBookmarksPageContainer>
 </template>
 
@@ -16,6 +18,7 @@ import BaseBookmarksPageContainer
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
+import VideosSegment from './MainPage/VideosSegment.vue'
 
 export default {
   name: 'MainPage',
@@ -23,7 +26,8 @@ export default {
     BaseBookmarksPageContainer,
     ArtistsSegment,
     AlbumsSegment,
-    TracksSegment
+    TracksSegment,
+    VideosSegment
   }
 }
 </script>

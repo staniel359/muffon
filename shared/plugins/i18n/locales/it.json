@@ -43,9 +43,10 @@
     "favorites": "Preferiti",
     "bookmarks": "Segnalibri",
     "bookmarkModels": {
-      "artists": "Aggiungi artisti ai segnalibri",
-      "albums": "Aggiungi album ai segnalibri",
-      "tracks": "Aggiungi brani ai segnalibri"
+      "artists": "Artisti dei segnalibri",
+      "albums": "Album dei segnalibri",
+      "tracks": "Brani dei segnalibri",
+      "videos": "Video dei segnalibri"
     },
     "communities": "Community",
     "settings": "Impostazioni",
@@ -212,7 +213,8 @@
         "bookmark": {
           "artist": "Rimuovi artista dai segnalibri",
           "album": "Rimuovi album dai segnalibri",
-          "track": "Rimuovi brano dai segnalibri"
+          "track": "Rimuovi brano dai segnalibri",
+          "video": "Rimuovi video dai segnalibri"
         },
         "post": "Elimina post",
         "community": "Elimina community",

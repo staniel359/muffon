@@ -44,6 +44,8 @@ export default {
       switch (this.model) {
         case 'artist':
           return this.modelData.name
+        case 'video':
+          return this.modelData.title
         default:
           return [
             this.modelData.artist.name,

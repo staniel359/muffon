@@ -14,6 +14,7 @@
     <BaseSelfIcons
       class="self-icons"
       :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
       :watched-id="watchedId"
     />
 
@@ -21,8 +22,10 @@
       class="video-options"
       :video-data="videoData"
       :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
       :watched-id="watchedId"
       is-with-favorite-option
+      is-with-bookmark-option
       is-with-watched-option
       is-with-share-option
     />

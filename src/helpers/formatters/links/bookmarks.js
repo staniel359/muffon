@@ -29,3 +29,11 @@ export function tracks () {
     path: 'bookmarks/tracks'
   }
 }
+
+export function videos () {
+  return {
+    name: 'BookmarksVideosPage',
+    params: {},
+    path: 'bookmarks/videos'
+  }
+}

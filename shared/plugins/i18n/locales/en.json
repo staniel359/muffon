@@ -45,7 +45,8 @@
     "bookmarkModels": {
       "artists": "Bookmark artists",
       "albums": "Bookmark albums",
-      "tracks": "Bookmark tracks"
+      "tracks": "Bookmark tracks",
+      "videos": "Bookmark videos"
     },
     "communities": "Communities",
     "settings": "Settings",
@@ -212,7 +213,8 @@
         "bookmark": {
           "artist": "Delete artist from bookmarks",
           "album": "Delete album from bookmarks",
-          "track": "Delete track from bookmarks"
+          "track": "Delete track from bookmarks",
+          "video": "Delete video from bookmarks"
         },
         "post": "Delete post",
         "community": "Delete community",

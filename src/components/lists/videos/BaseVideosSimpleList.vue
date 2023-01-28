@@ -10,7 +10,9 @@
       :is-with-created="isWithCreated"
       :profile-id="profileId"
       :is-favorite="isFavorite"
+      :is-bookmark="isBookmark"
       :is-with-favorite-option="isWithFavoriteOption"
+      :is-with-bookmark-option="isWithBookmarkOption"
       :is-with-watched-option="isWithWatchedOption"
       :is-with-share-option="isWithShareOption"
       :is-with-delete-option="isWithDeleteOption"
@@ -46,7 +48,9 @@ export default {
     isWithCreated: Boolean,
     profileId: String,
     isFavorite: Boolean,
+    isBookmark: Boolean,
     isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
     isWithWatchedOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,

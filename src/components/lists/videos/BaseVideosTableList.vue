@@ -8,6 +8,7 @@
       <VideoItem
         :video-data="videoData"
         :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-watched-option="isWithWatchedOption"
         :is-with-share-option="isWithShareOption"
         @link-click="handleLinkClick"
@@ -35,6 +36,7 @@ export default {
       }
     },
     isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
     isWithWatchedOption: Boolean,
     isWithShareOption: Boolean
   },

@@ -69,6 +69,10 @@ export default {
     'createdDesc',
     'createdAsc'
   ],
+  bookmarkVideo: [
+    'createdDesc',
+    'createdAsc'
+  ],
   conversation: [
     'updatedDesc',
     'updatedAsc',

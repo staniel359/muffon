@@ -4,14 +4,20 @@
   >
     <FavoriteOption
       v-if="isWithFavoriteOption"
-      :video-data="videoData"
       :favorite-id="favoriteId"
+      :video-data="videoData"
+    />
+
+    <BookmarkOption
+      v-if="isWithBookmarkOption"
+      :bookmark-id="bookmarkId"
+      :video-data="videoData"
     />
 
     <WatchedOption
       v-if="isWithWatchedOption"
-      :video-data="videoData"
       :watched-id="watchedId"
+      :video-data="videoData"
     />
 
     <BaseShareOption
@@ -33,6 +39,13 @@
         :model-data="videoData"
         @success="handleDeleted"
       />
+      <BaseBookmarkDeleteModal
+        v-else-if="isBookmark"
+        ref="deleteModal"
+        model="video"
+        :model-data="videoData"
+        @success="handleDeleted"
+      />
     </template>
   </BaseOptionsDropdownContainer>
 </template>
@@ -45,6 +58,7 @@ import profileStore from '@/stores/profile'
 import BaseOptionsDropdownContainer
   from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import FavoriteOption from './BaseVideoOptionsDropdown/FavoriteOption.vue'
+import BookmarkOption from './BaseVideoOptionsDropdown/BookmarkOption.vue'
 import WatchedOption from './BaseVideoOptionsDropdown/WatchedOption.vue'
 import BaseShareOption
   from '@/components/dropdowns/options/BaseShareOption.vue'
@@ -52,6 +66,8 @@ import BaseDeleteOption
   from '@/components/dropdowns/options/BaseDeleteOption.vue'
 import BaseFavoriteDeleteModal
   from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+import BaseBookmarkDeleteModal
+  from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import {
   video as formatVideoShareData
 } from '@/helpers/formatters/share'
@@ -60,21 +76,26 @@ export default {
   name: 'BaseVideoOptionsDropdown',
   components: {
     FavoriteOption,
+    BookmarkOption,
     WatchedOption,
     BaseOptionsDropdownContainer,
     BaseShareOption,
     BaseDeleteOption,
-    BaseFavoriteDeleteModal
+    BaseFavoriteDeleteModal,
+    BaseBookmarkDeleteModal
   },
   props: {
     videoData: Object,
+    favoriteId: String,
+    bookmarkId: String,
+    watchedId: String,
     isFavorite: Boolean,
+    isBookmark: Boolean,
     isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
     isWithWatchedOption: Boolean,
     isWithShareOption: Boolean,
-    isWithDeleteOption: Boolean,
-    favoriteId: String,
-    watchedId: String
+    isWithDeleteOption: Boolean
   },
   emits: [
     'deleted'
@@ -95,6 +116,7 @@ export default {
     isWithProfileOptions () {
       return (
         this.isWithFavoriteOption ||
+          this.isWithBookmarkOption ||
           this.isWithWatchedOption ||
           this.isWithShareOption
       )
