@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@emoji-mart/data": "^1.1.2",
-    "axios": "^1.2.4",
+    "axios": "^1.2.6",
     "camel-case": "^4.1.2",
     "core-js": "^3.27.2",
     "crypto-js": "^4.1.1",
@@ -61,9 +61,9 @@
     "@vue/cli-plugin-router": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
     "@vue/eslint-config-standard": "^8.0.1",
-    "electron": "^22.0.3",
+    "electron": "^22.1.0",
     "electron-builder": "^23.6.0",
-    "eslint": "^8.32.0",
+    "eslint": "^8.33.0",
     "eslint-plugin-vue": "^9.9.0",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0"
