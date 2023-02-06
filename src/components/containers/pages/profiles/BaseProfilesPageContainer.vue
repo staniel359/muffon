@@ -30,6 +30,11 @@ export default {
   mixins: [
     navigationMixin
   ],
+  provide () {
+    return {
+      setIsOnline: this.setIsOnline
+    }
+  },
   props: {
     limit: Number,
     order: String
@@ -38,7 +43,8 @@ export default {
     return {
       profilesData: null,
       error: null,
-      isLoading: false
+      isLoading: false,
+      isOnline: false
     }
   },
   computed: {
@@ -51,7 +57,8 @@ export default {
     profilesArgs () {
       return {
         limit: this.limit,
-        order: this.order
+        order: this.order,
+        isOnline: this.isOnline
       }
     }
   },
@@ -74,6 +81,11 @@ export default {
           page
         }
       )
+    },
+    setIsOnline (
+      value
+    ) {
+      this.isOnline = value
     }
   }
 }

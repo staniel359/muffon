@@ -8,6 +8,7 @@
       #default="pageSlotProps"
     >
       <BasePaginatedPageContainer
+        ref="pagination"
         :response-data="pageSlotProps.profilesData"
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
@@ -18,6 +19,12 @@
         :is-with-top-segment="isWithTopSegment"
         :is-with-order-change="isWithOrderChange"
       >
+        <template #top>
+          <OnlineToggle
+            @refresh="handleRefresh"
+          />
+        </template>
+
         <template
           #default="slotProps"
         >
@@ -34,13 +41,16 @@
 import BaseProfilesPageContainer from './BaseProfilesPageContainer.vue'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import OnlineToggle
+  from './BaseProfilesPaginatedPageContainer/OnlineToggle.vue'
 import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseProfilesPaginatedPageContainer',
   components: {
     BaseProfilesPageContainer,
-    BasePaginatedPageContainer
+    BasePaginatedPageContainer,
+    OnlineToggle
   },
   mixins: [
     paginatedPageMixin

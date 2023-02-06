@@ -5,7 +5,8 @@ export default function (
   {
     page,
     limit,
-    order
+    order,
+    isOnline
   }
 ) {
   const url = '/profiles'
@@ -13,7 +14,10 @@ export default function (
   const otherProfileId = profileStore().id
 
   const params = {
-    other_profile_id: otherProfileId
+    other_profile_id: otherProfileId,
+    ...(isOnline && {
+      online: 1
+    })
   }
 
   const handleSuccess = (
