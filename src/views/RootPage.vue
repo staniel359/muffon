@@ -1,5 +1,9 @@
 <template>
-  <TheSessionObserver />
+  <TheOnlineObserver
+    v-if="profileId"
+  />
+
+  <TheLogoutObserver />
 
   <TheAccountDeleteObserver />
 
@@ -33,8 +37,10 @@ import {
 } from 'pinia'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
-import TheSessionObserver
-  from '@/components/layout/observers/TheSessionObserver.vue'
+import TheOnlineObserver
+  from '@/components/layout/observers/TheOnlineObserver.vue'
+import TheLogoutObserver
+  from '@/components/layout/observers/TheLogoutObserver.vue'
 import TheAccountDeleteObserver
   from '@/components/layout/observers/TheAccountDeleteObserver.vue'
 import TheNativeThemeObserver
@@ -57,7 +63,8 @@ import TheAuthentication from '@/components/layout/TheAuthentication.vue'
 export default {
   name: 'RootPage',
   components: {
-    TheSessionObserver,
+    TheOnlineObserver,
+    TheLogoutObserver,
     TheAccountDeleteObserver,
     TheNativeThemeObserver,
     TheBackgroundObserver,

@@ -14,7 +14,6 @@ import {
   ipcRenderer
 } from 'electron'
 import electronStore from '#/plugins/electronStore'
-import updateOnline from '@/helpers/actions/api/online/update'
 
 export default {
   name: 'TheExitObserver',
@@ -28,8 +27,7 @@ export default {
     ...mapState(
       profileStore,
       {
-        isRememberProfile: 'isRemember',
-        profileId: 'id'
+        isRememberProfile: 'isRemember'
       }
     )
   },
@@ -42,28 +40,17 @@ export default {
   methods: {
     async handleExit () {
       if (!this.isRememberProfile) {
-        this.clearProfileData()
+        await this.clearProfileData()
       }
 
       if (this.isCloseTabsOnExit) {
-        this.clearTabs()
-      }
-
-      if (this.profileId) {
-        await this.setOffline()
+        await this.clearTabs()
       }
 
       this.exit()
     },
-    setOffline () {
-      return updateOnline(
-        {
-          isOnline: false
-        }
-      )
-    },
     clearProfileData () {
-      electronStore.set(
+      return electronStore.set(
         {
           'profile.info': null,
           'profile.token': null
@@ -71,7 +58,7 @@ export default {
       )
     },
     clearTabs () {
-      electronStore.set(
+      return electronStore.set(
         {
           'layout.tabs': []
         }
