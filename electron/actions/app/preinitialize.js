@@ -9,6 +9,9 @@ const {
 const setDevelopmentUserDataPath = require(
   './setDevelopmentUserDataPath'
 )
+const setAudioFlags = require(
+  './setAudioFlags'
+)
 
 function preinitialize () {
   setupDotenv()
@@ -16,6 +19,8 @@ function preinitialize () {
   if (isDevelopment) {
     setDevelopmentUserDataPath()
   }
+
+  setAudioFlags()
 }
 
 module.exports = preinitialize
