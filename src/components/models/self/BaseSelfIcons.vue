@@ -36,6 +36,10 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 
 export default {
@@ -63,14 +67,14 @@ export default {
     watchedId: String
   },
   computed: {
+    ...mapState(
+      profileStore,
+      {
+        profileId: 'id'
+      }
+    ),
     isRender () {
-      return (
-        this.isRenderLibraryIcon ||
-          this.isRenderFavoriteIcon ||
-          this.isRenderBookmarkIcon ||
-          this.listenedId ||
-          this.watchedId
-      )
+      return this.profileId
     },
     isRenderLibraryIcon () {
       return (
