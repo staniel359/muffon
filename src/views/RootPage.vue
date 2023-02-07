@@ -11,7 +11,9 @@
 
   <TheBackgroundObserver />
 
-  <ThePlayingObserver />
+  <ThePlayingObserver
+    v-if="isRenderPlayingObserver"
+  />
 
   <TheDiscordObserver
     v-if="isPlayerWithDiscordRichPresence"
@@ -81,16 +83,25 @@ export default {
       playerStore,
       {
         isPlayerWithDiscordRichPresence:
-          'isWithDiscordRichPresence'
+          'isWithDiscordRichPresence',
+        playerPlaying: 'playing'
       }
     ),
     ...mapState(
       profileStore,
       {
+        profileId: 'id',
         isProfileAnonymous: 'isAnonymous',
-        profileId: 'id'
+        isShowProfilePlaying: 'isShowPlaying'
       }
     ),
+    isRenderPlayingObserver () {
+      return (
+        this.profileId &&
+          this.playerPlaying &&
+          this.isShowProfilePlaying
+      )
+    },
     isRenderBrowserTabs () {
       return (
         this.isProfileAnonymous ||

@@ -9,14 +9,18 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import profileStore from '@/stores/profile'
-import {
-  ipcRenderer
-} from 'electron'
-import updatePlaying from '@/helpers/actions/api/playing/update'
+import socketMixin from '@/mixins/socketMixin'
 
 export default {
   name: 'ThePlayingObserver',
+  mixins: [
+    socketMixin
+  ],
+  data () {
+    return {
+      channel: 'PlayingChannel'
+    }
+  },
   computed: {
     ...mapState(
       playerStore,
@@ -24,20 +28,6 @@ export default {
         playerPlaying: 'playing'
       }
     ),
-    ...mapState(
-      profileStore,
-      {
-        isShowProfilePlaying: 'isShowPlaying',
-        profileId: 'id'
-      }
-    ),
-    playing () {
-      if (this.isUpdatePlaying) {
-        return this.playingFormatted
-      } else {
-        return null
-      }
-    },
     playingFormatted () {
       return {
         source: this.sourceData,
@@ -80,83 +70,52 @@ export default {
         present: this.playerPlaying.audio.present
       }
     },
-    isUpdatePlaying () {
-      return (
-        this.playerPlaying &&
-          this.isShowProfilePlaying
+    updatePlayingMessage () {
+      return JSON.stringify(
+        {
+          command: 'message',
+          identifier: this.identifier,
+          data: this.updateData
+        }
       )
+    },
+    updateData () {
+      return JSON.stringify(
+        {
+          action: 'update',
+          payload: this.payload
+        }
+      )
+    },
+    payload () {
+      return {
+        playing: this.playingFormatted
+      }
     }
   },
   watch: {
-    profileId: {
-      immediate: true,
-      handler: 'handleProfileIdChange'
-    },
-    playerPlaying: 'handlePlayerPlayingChange',
-    isShowProfilePlaying:
-      'handleIsShowProfilePlayingChange'
-  },
-  mounted () {
-    ipcRenderer.on(
-      'logout',
-      this.handleLogout
-    )
-
-    ipcRenderer.on(
-      'exit',
-      this.handleExit
-    )
+    isSubscribed:
+      'handleIsSubscribedChange',
+    playerPlaying:
+      'handlePlayerPlayingChange'
   },
   methods: {
-    handleLogout () {
-      if (this.isUpdatePlaying) {
-        updatePlaying(
-          {
-            playing: null
-          }
-        )
-      }
-    },
-    handleExit () {
-      if (this.isUpdatePlaying) {
-        updatePlaying(
-          {
-            playing: null
-          }
-        )
-      }
-    },
-    handleProfileIdChange (
+    handleIsSubscribedChange (
       value
     ) {
-      if (
-        value &&
-          this.isUpdatePlaying
-      ) {
-        updatePlaying(
-          {
-            playing: this.playing
-          }
-        )
+      if (value) {
+        this.updatePlaying()
       }
     },
     handlePlayerPlayingChange () {
-      if (this.isShowProfilePlaying) {
-        updatePlaying(
-          {
-            playing: this.playing
-          }
-        )
+      if (this.isSubscribed) {
+        this.updatePlaying()
       }
     },
-    handleIsShowProfilePlayingChange () {
-      if (this.playerPlaying) {
-        updatePlaying(
-          {
-            playing: this.playing
-          }
-        )
-      }
+    updatePlaying () {
+      this.socket.send(
+        this.updatePlayingMessage
+      )
     }
   }
 }
