@@ -1,3 +1,7 @@
+const { app } = require('electron');
+
+app.commandLine.appendSwitch('try-supported-channel-layouts');
+
 const preinitialize = require(
   './electron/actions/app/preinitialize'
 )
