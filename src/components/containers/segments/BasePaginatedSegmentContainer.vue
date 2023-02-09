@@ -25,6 +25,7 @@
       :error="error"
       :is-pagination-simple="isPaginationSimple"
       :is-with-infinite-scroll="isWithInfiniteScroll"
+      :scroll-context="scrollContext"
       @focus="handleFocus"
     >
       <template
@@ -75,7 +76,8 @@ export default {
     clientPageLimit: Number,
     responsePageLimit: Number,
     isPaginationSimple: Boolean,
-    isWithInfiniteScroll: Boolean
+    isWithInfiniteScroll: Boolean,
+    scrollContext: HTMLDivElement
   },
   emits: [
     'focus'
@@ -102,7 +104,9 @@ export default {
     responseData: {
       immediate: true,
       handler: 'handleResponseDataChange'
-    }
+    },
+    isWithInfiniteScroll:
+      'handleIsWithInfiniteScrollChange'
   },
   methods: {
     handleResponseDataChange (
@@ -117,6 +121,9 @@ export default {
       this.$emit(
         'focus'
       )
+    },
+    handleIsWithInfiniteScrollChange () {
+      this.refresh()
     },
     refresh () {
       this.reset()
