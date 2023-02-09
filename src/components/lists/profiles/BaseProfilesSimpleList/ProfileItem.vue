@@ -59,6 +59,11 @@
           />
         </small>
       </div>
+
+      <PlayingSection
+        v-if="playing"
+        :playing="playing"
+      />
     </div>
 
     <BaseProfileFollowingMessage
@@ -98,6 +103,7 @@ import BaseProfileCityCountry
   from '@/components/models/profile/BaseProfileCityCountry.vue'
 import BaseProfileFollowCounters
   from '@/components/models/profile/BaseProfileFollowCounters.vue'
+import PlayingSection from './ProfileItem/PlayingSection.vue'
 import BaseProfileFollowingMessage
   from '@/components/models/profile/BaseProfileFollowingMessage.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
@@ -122,14 +128,17 @@ export default {
     BaseProfileGenderAge,
     BaseProfileCityCountry,
     BaseProfileFollowCounters,
+    PlayingSection,
     BaseProfileFollowingMessage,
     BaseCreatedSection,
     BaseProfileOptionsDropdown
   },
   provide () {
     return {
-      setIsFollowing: this.setIsFollowing,
-      setFollowersCount: this.setFollowersCount
+      setIsFollowing:
+        this.setIsFollowing,
+      setFollowersCount:
+        this.setFollowersCount
     }
   },
   inject: {
@@ -195,6 +204,9 @@ export default {
     },
     isPrivate () {
       return this.profileData.private
+    },
+    playing () {
+      return this.profileData.playing
     }
   },
   methods: {
