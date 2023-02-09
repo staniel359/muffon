@@ -102,7 +102,9 @@ export default {
     responseData: {
       immediate: true,
       handler: 'handleResponseDataChange'
-    }
+    },
+    isWithInfiniteScroll:
+      'handleIsWithInfiniteScrollChange'
   },
   methods: {
     handleResponseDataChange (
@@ -117,6 +119,9 @@ export default {
       this.$emit(
         'focus'
       )
+    },
+    handleIsWithInfiniteScrollChange () {
+      this.refresh()
     },
     refresh () {
       this.reset()
