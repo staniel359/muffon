@@ -28,6 +28,7 @@
         :is-loading="isLoading"
         :error="error"
         :is-last-page="isLastPage"
+        :scroll-context="scrollContext"
         @bottom-scroll="handleBottomScroll"
         @refresh="handleRefresh"
       />
@@ -108,7 +109,8 @@ export default {
     isReset: Boolean,
     isWithPagination: Boolean,
     isPaginationSimple: Boolean,
-    isWithInfiniteScroll: Boolean
+    isWithInfiniteScroll: Boolean,
+    scrollContext: HTMLDivElement
   },
   emits: [
     'focus'

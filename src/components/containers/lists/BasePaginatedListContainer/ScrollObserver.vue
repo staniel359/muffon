@@ -1,5 +1,11 @@
 <template>
-  <div ref="scrollable">
+  <div
+    ref="observer"
+    class="scroll-observer"
+    :class="{
+      loading: isLoading
+    }"
+  >
     <BaseSegmentContainer
       class="basic scroll-segment"
       :is-loading="isLoading"
@@ -24,18 +30,26 @@ export default {
   props: {
     isLoading: Boolean,
     error: Error,
-    isLastPage: Boolean
+    isLastPage: Boolean,
+    scrollContext: HTMLDivElement
   },
   emits: [
     'bottomScroll',
     'refresh'
   ],
+  data () {
+    return {
+      isTopVisible: false
+    }
+  },
   computed: {
     visibilityOptions () {
       return {
+        context: this.scrollContext,
         initialCheck: false,
         onTopVisible:
-          this.handleTopVisible
+          this.handleTopVisible,
+        onUpdate: this.handleUpdate
       }
     },
     isDisabled () {
@@ -45,33 +59,72 @@ export default {
       )
     }
   },
+  watch: {
+    isTopVisible:
+      'handleIsTopVisibleChange'
+  },
   mounted () {
     setVisibility(
-      this.$refs.scrollable,
+      this.$refs.observer,
       this.visibilityOptions
     )
   },
   methods: {
+    handleIsTopVisibleChange (
+      value
+    ) {
+      if (
+        this.scrollContext &&
+          value
+      ) {
+        this.scrollToBottom()
+      }
+    },
     handleTopVisible () {
-      if (!this.isDisabled) {
-        this.$emit(
-          'bottomScroll'
-        )
+      this.scrollToBottom()
+    },
+    handleUpdate () {
+      if (this.scrollContext) {
+        const contextOffsetHeight =
+          this.scrollContext.offsetHeight
+
+        const contextScrollTop =
+          this.scrollContext.scrollTop
+
+        const observerOffsetTop =
+          this.$refs.observer.offsetTop
+
+        const isTopVisible = (
+          contextOffsetHeight +
+            contextScrollTop
+        ) >= observerOffsetTop
+
+        this.isTopVisible = isTopVisible
       }
     },
     handleRefresh () {
       this.$emit(
         'refresh'
       )
+    },
+    scrollToBottom () {
+      if (!this.isDisabled) {
+        this.$emit(
+          'bottomScroll'
+        )
+      }
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
+.scroll-observer
+  &.loading
+    margin-top: 1em
+
 .scroll-segment
-  @extend .no-padding
-  margin-top: 1em !important
+  @extend .no-padding, .no-margin
   &.loading
     min-height: 100px !important
 </style>
