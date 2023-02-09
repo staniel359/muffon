@@ -16,6 +16,8 @@
       :scope="scope"
       :text-scope="textScope"
       :limit="limit"
+      :is-with-infinite-scroll="isWithInfiniteScroll"
+      :scroll-context="scrollContext"
       @focus="handleFocus"
     >
       <template #top>
@@ -36,6 +38,10 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import BasePaginatedSegmentContainer
@@ -59,11 +65,27 @@ export default {
   emits: [
     'call'
   ],
+  data () {
+    return {
+      scrollContext: null
+    }
+  },
+  computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isWithInfiniteScroll'
+      ]
+    )
+  },
   methods: {
     handleCall () {
       this.$emit(
         'call'
       )
+
+      this.scrollContext =
+        this.$refs.segment.$el
     },
     handleFocus () {
       this.scrollToTop()
