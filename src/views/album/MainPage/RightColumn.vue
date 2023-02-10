@@ -38,5 +38,5 @@ export default {
 <style lang="sass" scoped>
 .album-page-right-column
   @extend .flex-full
-  margin-left: 1.25em
+  margin-left: 1.5em
 </style>

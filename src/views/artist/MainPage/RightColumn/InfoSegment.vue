@@ -9,10 +9,18 @@
     />
 
     <div>
-      <BaseCounterLabelsSection
+      <div
         class="main-labels-section"
-        :counters="counters"
-      />
+      >
+        <BaseCounterLabelsSection
+          :counters="counters"
+        />
+
+        <BaseArtistInnerCounterLabelsSection
+          class="inline"
+          :artist-data="artistData"
+        />
+      </div>
 
       <BaseArtistTags
         class="main-labels-section"
@@ -39,6 +47,8 @@ import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistTags from '@/components/models/artist/BaseArtistTags.vue'
 import BaseCounterLabelsSection
   from '@/components/sections/BaseCounterLabelsSection.vue'
+import BaseArtistInnerCounterLabelsSection
+  from '@/components/sections/artist/BaseArtistInnerCounterLabelsSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import BaseArtistDescription
   from '@/components/models/artist/BaseArtistDescription.vue'
@@ -50,6 +60,7 @@ export default {
     BaseHeader,
     BaseArtistTags,
     BaseCounterLabelsSection,
+    BaseArtistInnerCounterLabelsSection,
     BaseDivider,
     BaseArtistDescription
   },

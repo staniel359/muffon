@@ -10,6 +10,7 @@
       clickable: isClickable || link
     }"
     :link="link"
+    @click="handleClick"
   >
     <div
       v-if="isLoading"
@@ -81,6 +82,7 @@ export default {
     counter: Number
   },
   emits: [
+    'click',
     'iconClick'
   ],
   computed: {
@@ -99,6 +101,11 @@ export default {
     }
   },
   methods: {
+    handleClick () {
+      this.$emit(
+        'click'
+      )
+    },
     handleIconClick () {
       this.$emit(
         'iconClick'

@@ -677,7 +677,6 @@
     "homepage": "Startseite",
     "contact": "Kontakt"
   },
-  "listeners": "{count} Zuhörer",
   "private": {
     "playlist": "Privat",
     "profile": "Privat"

@@ -1,41 +1,53 @@
 <template>
-  <div
+  <template
     v-if="listenersCount"
-    class="listeners-section"
   >
-    <BaseDivider />
-
-    <BaseListenersCountSection
+    <BaseInnerCounterLabelsSection
+      v-bind="$attrs"
       :listeners-count="listenersCount"
-      @click="handleListenersCountClick"
+      :size="size"
+      :is-clickable="isClickable"
+      @click="handleClick"
     />
 
     <BaseTrackListenersModal
+      v-if="isClickable"
       ref="modal"
       :request-track-data="requestTrackData"
     />
-  </div>
+  </template>
 </template>
 
 <script>
-import BaseDivider from '@/components/BaseDivider.vue'
-import BaseListenersCountSection
-  from '@/components/sections/BaseListenersCountSection.vue'
-import BaseTrackListenersModal
-  from '@/components/modals/track/BaseTrackListenersModal.vue'
+import {
+  defineAsyncComponent
+} from 'vue'
+import BaseInnerCounterLabelsSection
+  from '@/components/sections/BaseInnerCounterLabelsSection.vue'
+
+const BaseTrackListenersModal =
+  defineAsyncComponent(
+    () => import(
+      '@/components/modals/track/BaseTrackListenersModal.vue'
+    )
+  )
 
 export default {
-  name: 'ListenersSection',
+  name: 'BaseTrackInnerCounterLabelsSection',
   components: {
-    BaseDivider,
-    BaseListenersCountSection,
+    BaseInnerCounterLabelsSection,
     BaseTrackListenersModal
   },
   props: {
     trackData: {
       type: Object,
       required: true
-    }
+    },
+    isClickable: {
+      type: Boolean,
+      default: true
+    },
+    size: String
   },
   computed: {
     listenersCount () {
@@ -55,7 +67,7 @@ export default {
     }
   },
   methods: {
-    handleListenersCountClick () {
+    handleClick () {
       this.showModal()
     },
     showModal () {
@@ -67,7 +79,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.listeners-section
-  @extend .text-align-center
-</style>
+<style lang="sass" scoped></style>

@@ -677,7 +677,6 @@
     "homepage": "Дамашняя старонка",
     "contact": "Звязацца"
   },
-  "listeners": "{count} слухачоў | {count} слухач | {count} слухачы",
   "private": {
     "playlist": "Прыватны",
     "profile": "Прыватны"

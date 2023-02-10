@@ -2,8 +2,15 @@
   <div>
     <BaseCounterLabelsSection
       class="main-labels-section"
-      :counters="counters"
       size=""
+      :counters="counters"
+    />
+
+    <BaseArtistInnerCounterLabelsSection
+      class="main-labels-section"
+      size=""
+      :artist-data="artistData"
+      :is-clickable="false"
     />
 
     <BaseArtistTags
@@ -17,14 +24,25 @@
 </template>
 
 <script>
+import {
+  defineAsyncComponent
+} from 'vue'
 import BaseCounterLabelsSection
   from '@/components/sections/BaseCounterLabelsSection.vue'
 import BaseArtistTags from '@/components/models/artist/BaseArtistTags.vue'
+
+const BaseArtistInnerCounterLabelsSection =
+  defineAsyncComponent(
+    () => import(
+      '@/components/sections/artist/BaseArtistInnerCounterLabelsSection.vue'
+    )
+  )
 
 export default {
   name: 'LabelsSection',
   components: {
     BaseCounterLabelsSection,
+    BaseArtistInnerCounterLabelsSection,
     BaseArtistTags
   },
   props: {

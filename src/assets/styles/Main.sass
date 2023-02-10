@@ -948,6 +948,7 @@ p
   right: 7px
 
 .main-labels-section
+  @extend .d-flex, .align-items-center
   &:not(:last-child)
     margin-bottom: 0.25em
 
@@ -1008,3 +1009,11 @@ p
   margin-right: 0.5em
   &.inverted
     @extend .background-grey-inverted
+
+.main-inner-counter-labels-section
+  @extend .d-flex, .align-items-center
+  &.inline
+    margin-left: 1em
+  .logo
+    @extend .colorless
+    margin: 0 0.5em 0.5em 0

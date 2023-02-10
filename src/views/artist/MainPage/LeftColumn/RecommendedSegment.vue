@@ -19,7 +19,7 @@
         />
 
         <BaseButton
-          class="basic circular compact fluid"
+          class="basic circular compact fluid artists-button"
           icon="artist"
           :text="artistsText"
           @click="handleArtistsButtonClick"
@@ -115,6 +115,8 @@ export default {
   & > .content
     @extend .flex-full
     margin-left: 0.5em !important
-    & > .based-text
-      margin: 0.25em 0
+    .based-text
+      margin-top: 0.25em
+    .artists-button
+      margin-top: 0.5em !important
 </style>

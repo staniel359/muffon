@@ -677,7 +677,6 @@
     "homepage": "Pagina principale",
     "contact": "Contatta"
   },
-  "listeners": "{count} ascoltatore | {count} ascoltatori",
   "private": {
     "playlist": "Privata",
     "profile": "Privato"

@@ -1,9 +1,17 @@
 <template>
   <div>
-    <BaseCounterLabelsSection
+    <div
       class="main-labels-section"
-      :counters="counters"
-    />
+    >
+      <BaseCounterLabelsSection
+        :counters="counters"
+      />
+
+      <BaseAlbumInnerCounterLabelsSection
+        class="inline"
+        :album-data="albumData"
+      />
+    </div>
 
     <BaseDateLabelSection
       class="main-labels-section"
@@ -31,6 +39,8 @@
 <script>
 import BaseCounterLabelsSection
   from '@/components/sections/BaseCounterLabelsSection.vue'
+import BaseAlbumInnerCounterLabelsSection
+  from '@/components/sections/album/BaseAlbumInnerCounterLabelsSection.vue'
 import BaseDateLabelSection
   from '@/components/sections/BaseDateLabelSection.vue'
 import BaseAlbumLabels from '@/components/models/album/BaseAlbumLabels.vue'
@@ -42,6 +52,7 @@ export default {
   name: 'SecondarySection',
   components: {
     BaseCounterLabelsSection,
+    BaseAlbumInnerCounterLabelsSection,
     BaseDateLabelSection,
     BaseAlbumLabels,
     BaseAlbumTags,

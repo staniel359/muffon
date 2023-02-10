@@ -24,13 +24,13 @@ $geniusIconUrl: url('@/assets/images/genius.png')
   &:before
     content: $yandexMusicIconUrl
   &:not(.colored):before
-    filter: grayscale(1)
+    @extend .colorless
 
 .icon.deezer
   &:before
     content: $deezerIconUrl !important
   &:not(.colored):before
-    filter: grayscale(1)
+    @extend .colorless
 
 .icon.discogs
   &:before
@@ -43,4 +43,4 @@ $geniusIconUrl: url('@/assets/images/genius.png')
   width: 20px
   height: 20px
   &:not(.colored)
-    filter: grayscale(1)
+    @extend .colorless

@@ -21,10 +21,6 @@
       v-if="recommendationData"
       :recommendation-data="recommendationData"
     />
-
-    <ListenersSegment
-      :artist-data="artistData"
-    />
   </div>
 </template>
 
@@ -36,15 +32,13 @@ import profileStore from '@/stores/profile'
 import ImageNameSegment from './LeftColumn/ImageNameSegment.vue'
 import SelfSegment from './LeftColumn/SelfSegment.vue'
 import RecommendedSegment from './LeftColumn/RecommendedSegment.vue'
-import ListenersSegment from './LeftColumn/ListenersSegment.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
     ImageNameSegment,
     SelfSegment,
-    RecommendedSegment,
-    ListenersSegment
+    RecommendedSegment
   },
   props: {
     artistData: {

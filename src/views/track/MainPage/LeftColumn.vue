@@ -18,10 +18,6 @@
       :bookmark-id="bookmarkId"
       :listened-id="listenedId"
     />
-
-    <ListenersSection
-      :track-data="trackData"
-    />
   </div>
 </template>
 
@@ -29,7 +25,6 @@
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import HeaderSection from './LeftColumn/HeaderSection.vue'
 import SelfSection from './LeftColumn/SelfSection.vue'
-import ListenersSection from './LeftColumn/ListenersSection.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -37,8 +32,7 @@ export default {
   components: {
     BaseZoomableImage,
     HeaderSection,
-    SelfSection,
-    ListenersSection
+    SelfSection
   },
   mixins: [
     selfMixin
