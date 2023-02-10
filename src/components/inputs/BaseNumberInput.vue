@@ -1,15 +1,16 @@
 <template>
   <div
-    class="ui input main-number-input"
+    class="ui input"
     :class="{
       inverted: isDarkMode
     }"
   >
     <input
       type="number"
-      min="0"
-      step="5"
       :value="value"
+      :min="min"
+      :step="step"
+      :max="max"
       @blur="handleBlur"
     >
   </div>
@@ -24,7 +25,16 @@ import layoutStore from '@/stores/layout'
 export default {
   name: 'BaseNumberInput',
   props: {
-    value: Number
+    min: {
+      type: Number,
+      default: 0
+    },
+    step: {
+      type: Number,
+      default: 1
+    },
+    value: Number,
+    max: Number
   },
   emits: [
     'blur'
@@ -41,9 +51,10 @@ export default {
     handleBlur (
       event
     ) {
-      const value = parseInt(
-        event.target.value
-      )
+      const value =
+        parseInt(
+          event.target.value
+        ) || null
 
       this.$emit(
         'blur',

@@ -258,9 +258,11 @@ p
       box-shadow: 1px 1px 0 0 $colorGreyInverted !important
 
 .ui.input
+  & > input
+    @extend .main-input
   &.inverted
     & > input
-      @extend .border-inverted
+      @extend .main-input-inverted
 
 .ui.menu
   &.secondary
@@ -282,8 +284,7 @@ p
     @extend .border-color-base-light
 
 .main-input-inverted
-  @extend .background-black, .text-color-white
-  border-color: $colorGreyInverted
+  @extend .background-black, .text-color-white, .border-grey-inverted
 
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
@@ -916,13 +917,6 @@ p
 .main-image-placeholder
   &.bordered
     border: 1px solid rgba(0,0,0,.1)
-
-.main-number-input
-  input
-    @extend .main-input
-  &.inverted
-    input
-      @extend .main-input-inverted
 
 .main-save-button
   margin-top: 1em !important

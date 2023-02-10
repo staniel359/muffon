@@ -1,6 +1,7 @@
 <template>
   <div
-    class="item"
+    ref="item"
+    class="item empty-page-item"
     :class="{
       disabled: isDisabled
     }"
@@ -10,20 +11,66 @@
       icon="dotsHorizontal"
     />
   </div>
+
+  <div class="main-popup-container">
+    <BasePageSelectPopup
+      ref="popup"
+      :total-pages="totalPages"
+      @select="handleSelect"
+    />
+  </div>
 </template>
 
 <script>
 import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BasePageSelectPopup from '@/components/popups/BasePageSelectPopup.vue'
+import {
+  pageSelectPopupOptions
+} from '@/helpers/formatters/semantic'
+import popupMixin from '@/mixins/popupMixin'
 
 export default {
   name: 'EmptyPageItem',
   components: {
-    BaseIcon
+    BaseIcon,
+    BasePageSelectPopup
   },
+  mixins: [
+    popupMixin
+  ],
   props: {
+    totalPages: Number,
     isDisabled: Boolean
+  },
+  emits: [
+    'select'
+  ],
+  computed: {
+    element () {
+      return this.$refs.item
+    },
+    popupOptions () {
+      return pageSelectPopupOptions(
+        {
+          html: this.popup
+        }
+      )
+    }
+  },
+  methods: {
+    handleSelect (
+      value
+    ) {
+      this.$emit(
+        'select',
+        value
+      )
+    }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.empty-page-item
+  @extend .cursor-pointer
+</style>

@@ -47,6 +47,7 @@
       :is-first-page="isFirstPage"
       :is-last-page="isLastPage"
       @page-click="handlePageClick"
+      @page-select="handlePageSelect"
       @previous-page-click="handlePreviousPageClick"
       @next-page-click="handleNextPageClick"
     />
@@ -504,6 +505,13 @@ export default {
       this.goToPreviousPage()
     },
     handlePageClick (
+      value
+    ) {
+      this.setClientPage(
+        value
+      )
+    },
+    handlePageSelect (
       value
     ) {
       this.setClientPage(

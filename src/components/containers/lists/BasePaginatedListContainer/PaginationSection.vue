@@ -21,6 +21,7 @@
           :active-page="clientPage"
           :is-disabled="isDisabled"
           @click="handlePageClick"
+          @select="handlePageSelect"
         />
       </template>
 
@@ -59,6 +60,7 @@ export default {
   },
   emits: [
     'pageClick',
+    'pageSelect',
     'previousPageClick',
     'nextPageClick'
   ],
@@ -88,6 +90,14 @@ export default {
     ) {
       this.$emit(
         'pageClick',
+        value
+      )
+    },
+    handlePageSelect (
+      value
+    ) {
+      this.$emit(
+        'pageSelect',
         value
       )
     },

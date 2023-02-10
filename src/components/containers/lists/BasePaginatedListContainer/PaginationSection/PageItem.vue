@@ -4,7 +4,9 @@
   >
     <EmptyPageItem
       v-if="isPageEmpty"
+      :total-pages="totalPages"
       :is-disabled="isDisabled"
+      @select="handleSelect"
     />
     <NumberPageItem
       v-else
@@ -42,7 +44,8 @@ export default {
     isDisabled: Boolean
   },
   emits: [
-    'click'
+    'click',
+    'select'
   ],
   data () {
     return {
@@ -103,6 +106,14 @@ export default {
     ) {
       this.$emit(
         'click',
+        value
+      )
+    },
+    handleSelect (
+      value
+    ) {
+      this.$emit(
+        'select',
         value
       )
     }

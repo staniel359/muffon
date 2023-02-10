@@ -220,6 +220,37 @@ export function sourcePopupOptions (
   }
 }
 
+export function pageSelectPopupOptions (
+  {
+    html
+  }
+) {
+  const className = 'ui popup main-popup'
+
+  const {
+    isDarkMode
+  } = layoutStore()
+
+  const variation = isDarkMode
+    ? 'basic inverted'
+    : 'basic'
+
+  return {
+    hoverable: true,
+    position: 'top center',
+    transition: 'fade up',
+    className: {
+      popup: className
+    },
+    delay: {
+      show: 0,
+      hide: 150
+    },
+    html,
+    variation
+  }
+}
+
 export function artistPopupOptions (
   {
     html,
