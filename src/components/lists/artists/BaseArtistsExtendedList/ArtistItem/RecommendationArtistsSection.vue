@@ -18,7 +18,6 @@
   />
 
   <div
-    v-if="isMore"
     class="more-container"
   >
     <strong
@@ -103,9 +102,6 @@ export default {
     },
     artists () {
       return this.recommendationData.artists
-    },
-    isMore () {
-      return this.artistsCount > 5
     },
     moreText () {
       return this.$t(

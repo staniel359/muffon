@@ -18,7 +18,11 @@
         :top-albums-count="topAlbumsCount"
         is-link-to-library
         is-with-library
+        is-with-created
         is-with-page-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
         is-with-share-option
         @link-click="handleLinkClick"
       />
