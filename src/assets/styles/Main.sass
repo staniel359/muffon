@@ -101,10 +101,26 @@ p
       &:hover
         color: $colorBase
 
+.ui.card
+  &.disabled
+    @extend .text-color-black
+    &.inverted
+      @extend .text-color-white
+
 .ui.list
   &.selection
     & > .item
       padding: 0.5em !important
+  & > .item
+    &.disabled
+      @extend .text-color-black
+      opacity: 0.45
+  &.inverted
+    & > .item
+      & > .content
+        @extend .text-color-white
+      &.disabled
+        @extend .text-color-white
 
 .ui.dropdown
   &.button
@@ -136,11 +152,11 @@ p
       &:not(:first-child)
         border-top: $borderInverted
 
-.ui.list
-  &.inverted
-    & > .item
-      & > .content
-        @extend .text-color-white
+.ui.segment
+  &.disabled
+    @extend .text-color-black
+    &.inverted
+      @extend .text-color-white
 
 .ui.search
   .ui.input
