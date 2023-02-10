@@ -10,15 +10,22 @@
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         :profile-id="profileId"
+        is-with-image
         is-with-artist-name
         is-with-album-title
+        is-with-source
+        is-with-created
         is-link-to-library
-        is-with-image
+        is-compatibility
         is-with-page-option
         is-with-source-option
+        is-with-library-option
         is-with-playlist-option
-        is-with-share-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
         is-with-queue-option
+        is-with-share-option
         @link-click="handleLinkClick"
       />
     </template>

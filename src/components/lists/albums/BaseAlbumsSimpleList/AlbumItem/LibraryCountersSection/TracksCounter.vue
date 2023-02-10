@@ -9,6 +9,7 @@
       class="ui main-link"
       :link="link"
       @active-change="handleLinkActiveChange"
+      @click="handleLinkClick"
     >
       <small>
         <BaseIcon
@@ -54,7 +55,8 @@ export default {
     topTracksCount: Number
   },
   emits: [
-    'linkActiveChange'
+    'linkActiveChange',
+    'linkClick'
   ],
   computed: {
     tracksCount () {
@@ -84,6 +86,11 @@ export default {
       this.$emit(
         'linkActiveChange',
         value
+      )
+    },
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
       )
     }
   }

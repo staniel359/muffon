@@ -11,6 +11,7 @@
       :top-albums-count="topAlbumsCount"
       :is-with-library="isWithLibrary"
       :is-link-to-library="isLinkToLibrary"
+      :is-compatibility="isCompatibility"
       :profile-id="profileId"
       :is-with-self-icons="isWithSelfIcons"
       :is-with-page-option="isWithPageOption"
@@ -66,6 +67,7 @@ export default {
     topAlbumsCount: Number,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
+    isCompatibility: Boolean,
     profileId: String,
     isWithPageOption: Boolean,
     isWithLibraryOption: Boolean,

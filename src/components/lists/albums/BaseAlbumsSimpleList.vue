@@ -10,6 +10,7 @@
       :is-with-source="isWithSource"
       :is-with-self-icons="isWithSelfIcons"
       :is-link-to-library="isLinkToLibrary"
+      :is-compatibility="isCompatibility"
       :is-with-library="isWithLibrary"
       :top-tracks-count="topTracksCount"
       :is-with-listeners-count="isWithListenersCount"
@@ -67,6 +68,7 @@ export default {
     isWithSource: Boolean,
     isWithListenersCount: Boolean,
     isLinkToLibrary: Boolean,
+    isCompatibility: Boolean,
     isWithLibrary: Boolean,
     topTracksCount: Number,
     isWithPageOption: Boolean,

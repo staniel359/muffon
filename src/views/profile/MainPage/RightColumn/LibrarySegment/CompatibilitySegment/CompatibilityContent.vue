@@ -1,7 +1,6 @@
 <template>
   <div class="compatibility-content">
     <BaseHeader
-      class="compatibility-header"
       tag="h4"
       :text="headerText"
     />
@@ -58,9 +57,6 @@ export default {
 .compatibility-content
   margin-left: 1em
 
-.compatibility-header
-  margin-bottom: 0.25em !important
-
 .compatibility-common-text
-  margin-bottom: 0.25em
+  margin-top: 0.25em
 </style>

@@ -39,4 +39,5 @@ export default {
 <style lang="sass" scoped>
 .common-buttons
   display: inline-flex
+  margin-top: 0.5em
 </style>

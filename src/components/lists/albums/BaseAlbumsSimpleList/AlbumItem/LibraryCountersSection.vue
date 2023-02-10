@@ -4,6 +4,7 @@
     :profile-id="profileId"
     :top-tracks-count="topTracksCount"
     @link-active-change="handleLinkActiveChange"
+    @link-click="handleLinkClick"
   />
 </template>
 
@@ -21,7 +22,8 @@ export default {
     topTracksCount: Number
   },
   emits: [
-    'linkActiveChange'
+    'linkActiveChange',
+    'linkClick'
   ],
   methods: {
     handleLinkActiveChange (
@@ -30,6 +32,11 @@ export default {
       this.$emit(
         'linkActiveChange',
         value
+      )
+    },
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
       )
     }
   }

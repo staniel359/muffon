@@ -13,6 +13,8 @@
     >
       <slot
         :[scope]="slotProps[scope]"
+        :top-tracks-count="topTracksCount"
+        :top-albums-count="topAlbumsCount"
       />
     </template>
   </BasePaginatedSegmentModalContainer>
@@ -58,6 +60,12 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
+    },
+    topTracksCount () {
+      return this.compatibilityData.top_tracks_count
+    },
+    topAlbumsCount () {
+      return this.compatibilityData.top_albums_count
     }
   },
   methods: {

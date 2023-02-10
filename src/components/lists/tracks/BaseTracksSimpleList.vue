@@ -20,6 +20,7 @@
       :is-with-source="isWithSource"
       :is-with-saved-icon="isWithSavedIcon"
       :is-link-to-library="isLinkToLibrary"
+      :is-compatibility="isCompatibility"
       :profile-id="profileId"
       :is-with-page-option="isWithPageOption"
       :is-with-source-option="isWithSourceOption"
@@ -90,6 +91,7 @@ export default {
     isWithListenersCount: Boolean,
     topTrackCount: Number,
     isLinkToLibrary: Boolean,
+    isCompatibility: Boolean,
     profileId: String,
     isWithPageOption: Boolean,
     isWithSourceOption: Boolean,

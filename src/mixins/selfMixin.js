@@ -12,6 +12,9 @@ export default {
       setWatchedId: this.setWatchedId
     }
   },
+  props: {
+    isCompatibility: Boolean
+  },
   data () {
     return {
       libraryId: null,
@@ -24,8 +27,10 @@ export default {
   computed: {
     isWithLibraryIcon () {
       return !(
-        this.isLinkToLibrary &&
+        this.isCompatibility || (
+          this.isLinkToLibrary &&
           this.isSelf
+        )
       )
     },
     isSelf () {

@@ -55,6 +55,7 @@
           :profile-id="profileId"
           :top-tracks-count="topTracksCount"
           @link-active-change="handleCounterLinkActiveChange"
+          @link-click="handleLinkClick"
         />
       </div>
 
