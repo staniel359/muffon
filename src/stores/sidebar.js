@@ -17,7 +17,8 @@ const data = {
       isWithReleasesItem: true,
       isWithRadioItem: true,
       isWithMultitagItem: true,
-      isWithCommunitiesItem: true
+      isWithCommunitiesItem: true,
+      isWithHistoryItem: true
     }
   },
   actions: {
@@ -85,6 +86,11 @@ const data = {
       value
     ) {
       this.isWithCommunitiesItem = value
+    },
+    setIsWithHistoryItem (
+      value
+    ) {
+      this.isWithHistoryItem = value
     }
   }
 }

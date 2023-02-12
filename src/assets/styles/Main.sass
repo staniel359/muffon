@@ -463,6 +463,10 @@ p
     .description,
     .extra
       margin-top: 0.25em
+  &.main-post-item
+    padding: 1.5em 1em !important
+  &.main-event-item
+    padding: 0.5em 0.75em !important
 
 .main-message
   @extend .no-shadow, .no-margin, .border
@@ -869,11 +873,6 @@ p
     font-size: 14px
     &.inverted
       fill: $colorWhite
-
-.main-list
-  &.divided
-    & > .item
-      padding: 1.5em 1em !important
 
 .main-following-message-container,
 .main-joined-message-container

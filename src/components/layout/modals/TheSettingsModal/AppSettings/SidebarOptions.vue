@@ -37,6 +37,8 @@
     <MultitagOption />
 
     <CommunitiesOption />
+
+    <HistoryOption />
   </div>
 </template>
 
@@ -58,6 +60,7 @@ import ReleasesOption from './SidebarOptions/ReleasesOption.vue'
 import RadioOption from './SidebarOptions/RadioOption.vue'
 import MultitagOption from './SidebarOptions/MultitagOption.vue'
 import CommunitiesOption from './SidebarOptions/CommunitiesOption.vue'
+import HistoryOption from './SidebarOptions/HistoryOption.vue'
 
 export default {
   name: 'SidebarOptions',
@@ -74,7 +77,8 @@ export default {
     ReleasesOption,
     RadioOption,
     MultitagOption,
-    CommunitiesOption
+    CommunitiesOption,
+    HistoryOption
   },
   computed: {
     ...mapState(

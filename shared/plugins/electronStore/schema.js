@@ -277,6 +277,10 @@ const schema = {
     type: 'boolean',
     default: true
   },
+  'sidebar.isWithHistoryItem': {
+    type: 'boolean',
+    default: true
+  },
   'top.country': {
     type: [
       'null',

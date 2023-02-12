@@ -96,5 +96,9 @@ export default {
     'membersCountAsc',
     'createdDesc',
     'createdAsc'
+  ],
+  event: [
+    'createdDesc',
+    'createdAsc'
   ]
 }
