@@ -49,6 +49,11 @@
       "videos": "Videos Lesezeichen"
     },
     "communities": "Communities",
+    "history": "Verlauf",
+    "historyModels": {
+      "events": "Eventverlauf"
+    },
+    "events": "Events",
     "settings": "Einstellungen",
     "model": {
       "artists": "{modelName} Künstler",
@@ -649,7 +654,8 @@
       "related": "Keine Verwandten",
       "lyrics": "Keine Lyrics",
       "listeners": "Keine Zuhörer",
-      "images": "Keine Bilder"
+      "images": "Keine Bilder",
+      "events": "Keine Events"
     },
     "content": "Hier scheint nichts zu sein."
   },
@@ -718,6 +724,63 @@
   },
   "deletedModel": {
     "profile": "Deleted profile"
+  },
+  "events": {
+    "created": {
+      "profile": "Profil wurde erstellt",
+      "bookmarkAlbum": "Album {modelName} wurde zu Lesezeichen hinzugefügt",
+      "bookmarkArtist": "Künstler {modelName} wurde zu Lesezeichen hinzugefügt",
+      "bookmarkTrack": "Titel {modelName} wurde zu Lesezeichen hinzugefügt",
+      "bookmarkVideo": "Video {modelName} wurde zu Lesezeichen hinzugefügt",
+      "favoriteAlbum": "Album {modelName} wurde zu den Favoriten hinzugefügt",
+      "favoriteArtist": "Künstler {modelName} wurde zu den Favoriten hinzugefügt",
+      "favoriteTrack": "Titel {modelName} wurde zu den Favoriten hinzugefügt",
+      "favoriteVideo": "Video {modelName} wurde zu den Favoriten hinzugefügt",
+      "libraryAlbum": "Album {modelName} wurde zur Bibliothek hinzugefügt",
+      "libraryArtist": "Künstler {modelName} wurde zur Bibliothek hinzugefügt",
+      "libraryTrack": "Titel {modelName} wurde zur Bibliothek hinzugefügt",
+      "listenedAlbum": "Album {modelName} wurde zu Angehörten hinzugefügt",
+      "listenedArtist": "Künstler {modelName} wurde zu Angehörten hinzugefügt",
+      "listenedTrack": "Titel {modelName} wurde zu Angehörten hinzugefügt",
+      "watchedVideo": "Video {modelName} wurde zu Angesehenen hinzugefügt",
+      "playlistTrack": "Titel {modelName} wurde zur Playlist {playlistTitle} hinzugefügt",
+      "community": "Community {modelName} wurde erstellt",
+      "relationship": "Sie sind {modelName} gefolgt",
+      "post": "Beitrag {modelName} wurde erstellt",
+      "playlist": "Playlist {modelName} wurde erstellt",
+      "conversation": "Sie haben eine Konversation mit {modelName} gestartet",
+      "membership": "Sie sind der Community {modelName} beigetreten"
+    },
+    "updated": {
+      "profile": "Profil wurde aktualisiert",
+      "community": "Community {modelName} wurde aktualisiert",
+      "post": "Post {modelName} wurde aktualisiert",
+      "playlist": "Playlist {modelName} wurde aktualisiert"
+    },
+    "deleted": {
+      "bookmarkAlbum": "Album {modelName} wurde von Lesezeichen entfernt",
+      "bookmarkArtist": "Künstler {modelName} wurde von Lesezeichen entfernt",
+      "bookmarkTrack": "Titel {modelName} wurde von Lesezeichen entfernt",
+      "bookmarkVideo": "Video {modelName} wurde von Lesezeichen entfernt",
+      "favoriteAlbum": "Album {modelName} wurde von den Favoriten entfernt",
+      "favoriteArtist": "Künstler {modelName} wurde von den Favoriten entfernt",
+      "favoriteTrack": "Titel {modelName} wurde von den Favoriten entfernt",
+      "favoriteVideo": "Video {modelName} wurde von den Favoriten entfernt",
+      "libraryAlbum": "Album {modelName} wurde von der Bibliothek entfernt",
+      "libraryArtist": "Künstler {modelName} wurde von der Bibliothek entfernt",
+      "libraryTrack": "Titel {modelName} wurde von der Bibliothek entfernt",
+      "listenedAlbum": "Album {modelName} wurde von Angehörten entfernt",
+      "listenedArtist": "Künstler {modelName} wurde von Angehörten entfernt",
+      "listenedTrack": "Titel {modelName} wurde von Angehörten entfernt",
+      "watchedVideo": "Video {modelName} wurde von Angesehenen entfernt",
+      "playlistTrack": "Titel {modelName} wurde von Playlist {playlistTitle} entfernt",
+      "community": "Community {modelName} wurde entfernt",
+      "recommendation": "Künstler {modelName} wird aus den Empfehlungen gelöscht",
+      "relationship": "Sie sind {modelName} entfolgt",
+      "post": "Beitrag {modelName} wurde entfernt",
+      "playlist": "Playlist {modelName} wurde entfernt",
+      "membership": "Sie haben die Community {modelName} verlassen"
+    }
   },
   "online": "Online",
   "error": "Fehler",

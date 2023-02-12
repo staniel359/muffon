@@ -49,6 +49,11 @@
       "videos": "Закладки видео"
     },
     "communities": "Сообщества",
+    "history": "История",
+    "historyModels": {
+      "events": "История событий"
+    },
+    "events": "События",
     "settings": "Настройки",
     "model": {
       "artists": "Исполнители {modelName}",
@@ -649,7 +654,8 @@
       "related": "Нет связанных",
       "lyrics": "Нет текстов",
       "listeners": "Нет слушателей",
-      "images": "Нет изображений"
+      "images": "Нет изображений",
+      "events": "Нет событий"
     },
     "content": "Похоже, здесь ничего нет"
   },
@@ -718,6 +724,63 @@
   },
   "deletedModel": {
     "profile": "Удалённый профиль"
+  },
+  "events": {
+    "created": {
+      "profile": "Создан профиль",
+      "bookmarkAlbum": "Альбом {modelName} добавлен в закладки",
+      "bookmarkArtist": "Исполнитель {modelName} добавлен в закладки",
+      "bookmarkTrack": "Композиция {modelName} добавлена в закладки",
+      "bookmarkVideo": "Видео {modelName} добавлено в закладки",
+      "favoriteAlbum": "Альбом {modelName} добавлен в избранное",
+      "favoriteArtist": "Исполнитель {modelName} добавлен в избранное",
+      "favoriteTrack": "Композиция {modelName} добавлена в избранное",
+      "favoriteVideo": "Видео {modelName} добавлено в избранное",
+      "libraryAlbum": "Альбом {modelName} добавлен в библиотеку",
+      "libraryArtist": "Исполнитель {modelName} добавлен в библиотеку",
+      "libraryTrack": "Композиция {modelName} добавлена в библиотеку",
+      "listenedAlbum": "Альбом {modelName} добавлен в прослушанное",
+      "listenedArtist": "Исполнитель {modelName} добавлен в прослушанное",
+      "listenedTrack": "Композиция {modelName} добавлена в прослушанное",
+      "watchedVideo": "Видео {modelName} добавлено в просмотренное",
+      "playlistTrack": "Композиция {modelName} добавлена в список {playlistTitle}",
+      "community": "Создано сообщество {modelName}",
+      "relationship": "Вы подписались на {modelName}",
+      "post": "Создана публикация {modelName}",
+      "playlist": "Создан список {modelName}",
+      "conversation": "Вы начали переписку с {modelName}",
+      "membership": "Вы вступили в сообщество {modelName}"
+    },
+    "updated": {
+      "profile": "Обновлён профиль",
+      "community": "Обновлено сообщество {modelName}",
+      "post": "Обновлена публикация {modelName}",
+      "playlist": "Обновлён список {modelName}"
+    },
+    "deleted": {
+      "bookmarkAlbum": "Альбом {modelName} удалён из закладок",
+      "bookmarkArtist": "Исполнитель {modelName} удалён из закладок",
+      "bookmarkTrack": "Композиция {modelName} удалена из закладок",
+      "bookmarkVideo": "Видео {modelName} удалено из закладок",
+      "favoriteAlbum": "Альбом {modelName} удалён из избранного",
+      "favoriteArtist": "Исполнитель {modelName} удалён из избранного",
+      "favoriteTrack": "Композиция {modelName} удалена из избранного",
+      "favoriteVideo": "Видео {modelName} удалено из избранного",
+      "libraryAlbum": "Альбом {modelName} удалён из библиотеки",
+      "libraryArtist": "Исполнитель {modelName} удалён из библиотеки",
+      "libraryTrack": "Композиция {modelName} удалена из библиотеки",
+      "listenedAlbum": "Альбом {modelName} удалён из прослушанного",
+      "listenedArtist": "Исполнитель {modelName} удалён из прослушанного",
+      "listenedTrack": "Композиция {modelName} удалена из прослушанного",
+      "watchedVideo": "Видео {modelName} удалено из просмотренного",
+      "playlistTrack": "Композиция {modelName} удалена из списка {playlistTitle}",
+      "community": "Удалено сообщество {modelName}",
+      "recommendation": "Исполнитель {modelName} удалён из рекомендаций",
+      "relationship": "Вы отписались от {modelName}",
+      "post": "Удалена публикация {modelName}",
+      "playlist": "Удалён список {modelName}",
+      "membership": "Вы покинули сообщество {modelName}"
+    }
   },
   "online": "В сети",
   "error": "Ошибка",

@@ -49,6 +49,11 @@
       "videos": "Bookmark videos"
     },
     "communities": "Communities",
+    "history": "History",
+    "historyModels": {
+      "events": "Events history"
+    },
+    "events": "Events",
     "settings": "Settings",
     "model": {
       "artists": "{modelName} artists",
@@ -649,7 +654,8 @@
       "related": "No related",
       "lyrics": "No lyrics",
       "listeners": "No listeners",
-      "images": "No images"
+      "images": "No images",
+      "events": "No events"
     },
     "content": "Looks like there is nothing here"
   },
@@ -718,6 +724,63 @@
   },
   "deletedModel": {
     "profile": "Deleted profile"
+  },
+  "events": {
+    "created": {
+      "profile": "Profile is created",
+      "bookmarkAlbum": "Album {modelName} is added to bookmarks",
+      "bookmarkArtist": "Artist {modelName} is added to bookmarks",
+      "bookmarkTrack": "Track {modelName} is added to bookmarks",
+      "bookmarkVideo": "Video {modelName} is added to bookmarks",
+      "favoriteAlbum": "Album {modelName} is added to favorites",
+      "favoriteArtist": "Artist {modelName} is added to favorites",
+      "favoriteTrack": "Track {modelName} is added to favorites",
+      "favoriteVideo": "Video {modelName} is added to favorites",
+      "libraryAlbum": "Album {modelName} is added to library",
+      "libraryArtist": "Artist {modelName} is added to library",
+      "libraryTrack": "Track {modelName} is added to library",
+      "listenedAlbum": "Album {modelName} is added to listened",
+      "listenedArtist": "Artist {modelName} is added to listened",
+      "listenedTrack": "Track {modelName} is added to listened",
+      "watchedVideo": "Video {modelName} is added to watched",
+      "playlistTrack": "Track {modelName} is added to playlist {playlistTitle}",
+      "community": "Community {modelName} is created",
+      "relationship": "You followed {modelName}",
+      "post": "Post {modelName} is created",
+      "playlist": "Playlist {modelName} is created",
+      "conversation": "You started conversation with {modelName}",
+      "membership": "You joined community {modelName}"
+    },
+    "updated": {
+      "profile": "Profile is updated",
+      "community": "Community {modelName} is updated",
+      "post": "Post {modelName} is updated",
+      "playlist": "Playlist {modelName} is updated"
+    },
+    "deleted": {
+      "bookmarkAlbum": "Album {modelName} is deleted from bookmarks",
+      "bookmarkArtist": "Artist {modelName} is deleted from bookmarks",
+      "bookmarkTrack": "Track {modelName} is deleted from bookmarks",
+      "bookmarkVideo": "Video {modelName} is deleted from bookmarks",
+      "favoriteAlbum": "Album {modelName} is deleted from favorites",
+      "favoriteArtist": "Artist {modelName} is deleted from favorites",
+      "favoriteTrack": "Track {modelName} is deleted from favorites",
+      "favoriteVideo": "Video {modelName} is deleted from favorites",
+      "libraryAlbum": "Album {modelName} is deleted from library",
+      "libraryArtist": "Artist {modelName} is deleted from library",
+      "libraryTrack": "Track {modelName} is deleted from library",
+      "listenedAlbum": "Album {modelName} is deleted from listened",
+      "listenedArtist": "Artist {modelName} is deleted from listened",
+      "listenedTrack": "Track {modelName} is deleted from listened",
+      "watchedVideo": "Video {modelName} is deleted from watched",
+      "playlistTrack": "Track {modelName} is deleted from playlist {playlistTitle}",
+      "community": "Community {modelName} is deleted",
+      "recommendation": "Artist {modelName} is deleted from recommendations",
+      "relationship": "You unfollowed {modelName}",
+      "post": "Post {modelName} is deleted",
+      "playlist": "Playlist {modelName} is deleted",
+      "membership": "You left community {modelName}"
+    }
   },
   "online": "Online",
   "error": "Error",

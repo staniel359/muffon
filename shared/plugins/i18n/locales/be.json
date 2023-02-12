@@ -49,6 +49,11 @@
       "videos": "Закладкі відэа"
     },
     "communities": "Суполкі",
+    "history": "Гісторыя",
+    "historyModels": {
+      "events": "Гісторыя падзей"
+    },
+    "events": "Падзеі",
     "settings": "Налады",
     "model": {
       "artists": "Выканаўцы {modelName}",
@@ -649,7 +654,8 @@
       "related": "Няма звязаных",
       "lyrics": "Няма тэкстаў",
       "listeners": "Няма слухачоў",
-      "images": "Няма выяваў"
+      "images": "Няма выяваў",
+      "events": "Няма падзей"
     },
     "content": "Здаецца, тут нічога няма"
   },
@@ -718,6 +724,63 @@
   },
   "deletedModel": {
     "profile": "Выдалены профіль"
+  },
+  "events": {
+    "created": {
+      "profile": "Створаны профіль",
+      "bookmarkAlbum": "Альбом {modelName} дададзены да закладак",
+      "bookmarkArtist": "Выканаўца {modelName} дададзены да закладак",
+      "bookmarkTrack": "Кампазіцыя {modelName} дададзена да закладак",
+      "bookmarkVideo": "Відэа {modelName} дададзена да закладак",
+      "favoriteAlbum": "Альбом {modelName} дададзены да абранага",
+      "favoriteArtist": "Выканаўца {modelName} дададзены да абранага",
+      "favoriteTrack": "Кампазіцыя {modelName} дададзена да абранага",
+      "favoriteVideo": "Відэа {modelName} дададзена да абранага",
+      "libraryAlbum": "Альбом {modelName} дададзены да бібліятэкі",
+      "libraryArtist": "Выканаўца {modelName} дададзены да бібліятэкі",
+      "libraryTrack": "Кампазіцыя {modelName} дададзена да бібліятэкі",
+      "listenedAlbum": "Альбом {modelName} дададзены да праслуханага",
+      "listenedArtist": "Выканаўца {modelName} дададзены да праслуханага",
+      "listenedTrack": "Кампазіцыя {modelName} дададзена да праслуханага",
+      "watchedVideo": "Відэа {modelName} дададзена да прагледжанага",
+      "playlistTrack": "Кампазіцыя {modelName} дададзена да спісу {playlistTitle}",
+      "community": "Створана суполка {modelName}",
+      "relationship": "Вы падпісаліся на {modelName}",
+      "post": "Створана публікацыя {modelName}",
+      "playlist": "Створаны спіс {modelName}",
+      "conversation": "Вы пачалі перапіску з {modelName}",
+      "membership": "Вы ўступілі ў суполку {modelName}"
+    },
+    "updated": {
+      "profile": "Абноўлены профіль",
+      "community": "Абноўлена суполка {modelName}",
+      "post": "Абноўлена публікацыя {modelName}",
+      "playlist": "Абноўлены спіс {modelName}"
+    },
+    "deleted": {
+      "bookmarkAlbum": "Альбом {modelName} выдалены з закладак",
+      "bookmarkArtist": "Выканаўца {modelName} выдалены з закладак",
+      "bookmarkTrack": "Кампазіцыя {modelName} выдалена з закладак",
+      "bookmarkVideo": "Відэа {modelName} выдалена з закладак",
+      "favoriteAlbum": "Альбом {modelName} выдалены з абранага",
+      "favoriteArtist": "Выканаўца {modelName} выдалены з абранага",
+      "favoriteTrack": "Кампазіцыя {modelName} выдалена з абранага",
+      "favoriteVideo": "Відэа {modelName} выдалена з абранага",
+      "libraryAlbum": "Альбом {modelName} выдалены з бібліятэкі",
+      "libraryArtist": "Выканаўца {modelName} выдалены з бібліятэкі",
+      "libraryTrack": "Кампазіцыя {modelName} выдалена з бібліятэкі",
+      "listenedAlbum": "Альбом {modelName} выдалены з праслуханага",
+      "listenedArtist": "Выканаўца {modelName} выдалены з праслуханага",
+      "listenedTrack": "Кампазіцыя {modelName} выдалена з праслуханага",
+      "watchedVideo": "Відэа {modelName} выдалена з прагледжанага",
+      "playlistTrack": "Кампазіцыя {modelName} выдалена са спісу {playlistTitle}",
+      "community": "Выдалена суполка {modelName}",
+      "recommendation": "Выканаўца {modelName} выдалены з рэкамендацый",
+      "relationship": "Вы адпісаліся ад {modelName}",
+      "post": "Выдалена публікацыя {modelName}",
+      "playlist": "Выдалены спіс {modelName}",
+      "membership": "Вы выйшлі з суполкі {modelName}"
+    }
   },
   "online": "У сеціве",
   "error": "Памылка",

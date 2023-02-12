@@ -217,6 +217,12 @@ const SavedTracksPage = () => import(
 const AboutPage = () => import(
   '@/views/AboutPage.vue'
 )
+const HistoryMainPage = () => import(
+  '@/views/history/MainPage.vue'
+)
+const HistoryEventsPage = () => import(
+  '@/views/history/EventsPage.vue'
+)
 
 export default [
   {
@@ -728,6 +734,20 @@ export default [
     exact: true,
     name: 'AboutPage',
     component: AboutPage,
+    props: true
+  },
+  {
+    path: '/history',
+    exact: true,
+    name: 'HistoryMainPage',
+    component: HistoryMainPage,
+    props: true
+  },
+  {
+    path: '/history/events',
+    exact: true,
+    name: 'HistoryEventsPage',
+    component: HistoryEventsPage,
     props: true
   }
 ]

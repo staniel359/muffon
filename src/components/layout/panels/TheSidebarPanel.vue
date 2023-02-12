@@ -67,6 +67,10 @@
           v-if="isSidebarWithCommunitiesItem"
           :profile-id="profileId"
         />
+
+        <HistoryItem
+          v-if="isSidebarWithHistoryItem"
+        />
       </div>
 
       <div class="sidebar-bottom">
@@ -105,6 +109,7 @@ import ReleasesItem from './TheSidebarPanel/ReleasesItem.vue'
 import RadioItem from './TheSidebarPanel/RadioItem.vue'
 import MultitagItem from './TheSidebarPanel/MultitagItem.vue'
 import CommunitiesItem from './TheSidebarPanel/CommunitiesItem.vue'
+import HistoryItem from './TheSidebarPanel/HistoryItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
 import LoginItem from './TheSidebarPanel/LoginItem.vue'
@@ -128,6 +133,7 @@ export default {
     RadioItem,
     MultitagItem,
     CommunitiesItem,
+    HistoryItem,
     SettingsItem,
     LogoutItem,
     LoginItem
@@ -167,7 +173,9 @@ export default {
         isSidebarWithMultitagItem:
           'isWithMultitagItem',
         isSidebarWithCommunitiesItem:
-          'isWithCommunitiesItem'
+          'isWithCommunitiesItem',
+        isSidebarWithHistoryItem:
+          'isWithHistoryItem'
       }
     ),
     isRenderFeedItem () {

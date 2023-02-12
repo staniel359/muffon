@@ -49,6 +49,11 @@
       "videos": "Video dei segnalibri"
     },
     "communities": "Community",
+    "history": "Cronologia",
+    "historyModels": {
+      "events": "Cronologia eventi"
+    },
+    "events": "Eventi",
     "settings": "Impostazioni",
     "model": {
       "artists": "{modelName} artista",
@@ -649,7 +654,8 @@
       "related": "Nessun correlato",
       "lyrics": "Nessun testo",
       "listeners": "Nessun ascoltatore",
-      "images": "Nessuna immagine"
+      "images": "Nessuna immagine",
+      "events": "Nessun evento"
     },
     "content": "Sembra che qui non ci sia alcunché"
   },
@@ -718,6 +724,63 @@
   },
   "deletedModel": {
     "profile": "Profilo eliminato"
+  },
+  "events": {
+    "created": {
+      "profile": "Profilo creato",
+      "bookmarkAlbum": "L'Album {modelName} è stato aggiunto agli album salvati",
+      "bookmarkArtist": "L'artista {modelName} è stato aggiunto agli artisti salvati",
+      "bookmarkTrack": "Il brano {modelName} è stato aggiunto ai brani salvati",
+      "bookmarkVideo": "Il video {modelName} è stato aggiunto ai video salvati",
+      "favoriteAlbum": "L'album {modelName} è stato aggiunto ai preferiti",
+      "favoriteArtist": "L'artista {modelName} è stato aggiunto ai preferiti",
+      "favoriteTrack": "Il brano {modelName} è stato aggiunto ai preferiti",
+      "favoriteVideo": "Il video {modelName} è stato aggiunto ai preferiti",
+      "libraryAlbum": "L'album {modelName} è stato aggiunto alla libreria",
+      "libraryArtist": "L'artista {modelName} è stato aggiunto alla libreria",
+      "libraryTrack": "Il brano {modelName} è stato aggiunto alla libreria",
+      "listenedAlbum": "L'albulm {modelName} è stato aggiunto agli album ascoltati",
+      "listenedArtist": "L'artista {modelName} è stato aggiunto agli artisti ascoltati",
+      "listenedTrack": "Il brano {modelName} è stato aggiunto ai brani ascoltati",
+      "watchedVideo": "Il video {modelName} è stato aggiunto ai video guardati",
+      "playlistTrack": "Il brano {modelName} è stato aggiunto alla playlist {playlistTitle}",
+      "community": "La community {modelName} è stata creata",
+      "relationship": "Hai iniziato a seguire {modelName}",
+      "post": "Il post {modelName} è stato creato",
+      "playlist": "La playlist {modelName} è stata creata",
+      "conversation": "Hai avviato una conversazione con {modelName}",
+      "membership": "Ti sei unito alla community {modelName}"
+    },
+    "updated": {
+      "profile": "Il profilo è stato aggiornato",
+      "community": "La community {modelName} è stata aggiornata",
+      "post": "Il post {modelName} è stato aggiornato",
+      "playlist": "La playlist {modelName} è stata aggiornata"
+    },
+    "deleted": {
+      "bookmarkAlbum": "L'Album {modelName} è stato rimosso dagli album salvati",
+      "bookmarkArtist": "L'artista {modelName} è stato rimosso dagli artisti salvati",
+      "bookmarkTrack": "Il brano {modelName} è stato rimosso dai brani salvati",
+      "bookmarkVideo": "Il video {modelName} è stato rimosso dai video salvati",
+      "favoriteAlbum": "L'album {modelName} è stato rimosso dai preferiti",
+      "favoriteArtist": "L'artista {modelName} è stato rimosso dai preferiti",
+      "favoriteTrack": "Il brano {modelName} è stato rimosso dai preferiti",
+      "favoriteVideo": "Il video {modelName} è stato rimosso dai preferiti",
+      "libraryAlbum": "L'album {modelName} è stato rimosso dalla libreria",
+      "libraryArtist": "L'artista {modelName} è stato rimosso dalla libreria",
+      "libraryTrack": "Il brano {modelName} è stato rimosso dalla libreria",
+      "listenedAlbum": "L'albulm {modelName} è stato rimosso dagli album ascoltati",
+      "listenedArtist": "L'artista {modelName} è stato rimosso dagli artisti ascoltati",
+      "listenedTrack": "Il brano {modelName} è stato rimosso dai brani ascoltati",
+      "watchedVideo": "Il video {modelName} è stato rimosso dai video guardati",
+      "playlistTrack": "Il brano {modelName} è stato rimosso dalla playlist {playlistTitle}",
+      "community": "La community {modelName} è stata eliminata",
+      "recommendation": "L'artista {modelName} è stato rimosso dagli artisti raccomandati",
+      "relationship": "Hai smesso di seguire {modelName}",
+      "post": "Il post {modelName} è stato eliminato",
+      "playlist": "La playlist {modelName} è stata eliminata",
+      "membership": "Hai lasciato la community {modelName}"
+    }
   },
   "online": "Online",
   "error": "Errore",
