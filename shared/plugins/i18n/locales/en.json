@@ -585,9 +585,6 @@
       "content": "Go to conversation"
     }
   },
-  "library": {
-    "since": "In library since"
-  },
   "compatibility": {
     "header": "Your compatibility level with {profileNickname}",
     "common": "You have in common:"
@@ -672,8 +669,7 @@
     "welcome": "Welcome, {profileNickname}"
   },
   "profile": {
-    "wasOnline": "Was online",
-    "since": "On muffon since"
+    "wasOnline": "Was online"
   },
   "feed": {
     "global": "Global feed"
@@ -781,6 +777,11 @@
       "playlist": "Playlist {modelName} is deleted",
       "membership": "You left community {modelName}"
     }
+  },
+  "created": {
+    "profile": "On muffon since",
+    "library": "In library since",
+    "community": "Was created"
   },
   "online": "Online",
   "error": "Error",

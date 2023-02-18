@@ -23,15 +23,9 @@
             class="description main-text-container"
             v-text="description"
           />
-
-          <BaseTimestampSection
-            class="description"
-            :created="created"
-          />
         </div>
 
         <BaseCommunityOptionsDropdown
-          class="community-options"
           :community-data="communityData"
           :is-with-edit-option="isCommunityCreator"
           :is-with-delete-option="isCommunityCreator"
@@ -50,8 +44,6 @@ import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseTimestampSection
-  from '@/components/sections/BaseTimestampSection.vue'
 import BaseCommunityOptionsDropdown
   from '@/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
 
@@ -62,7 +54,6 @@ export default {
     BaseListContainer,
     BaseZoomableImage,
     BaseHeader,
-    BaseTimestampSection,
     BaseCommunityOptionsDropdown
   },
   props: {
@@ -81,9 +72,6 @@ export default {
     },
     description () {
       return this.communityData.description
-    },
-    created () {
-      return this.communityData.created
     }
   }
 }
@@ -92,7 +80,4 @@ export default {
 <style lang="sass" scoped>
 .community-info-segment
   margin-bottom: 1.5em
-
-.community-options
-  @extend .visibility-visible
 </style>

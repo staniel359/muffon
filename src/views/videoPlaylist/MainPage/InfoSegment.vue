@@ -22,7 +22,7 @@
 
           <div
             v-if="description"
-            class="extra"
+            class="description"
             v-text="description"
           />
 

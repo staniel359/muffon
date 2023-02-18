@@ -40,7 +40,6 @@
         </div>
 
         <BasePlaylistOptionsDropdown
-          class="playlist-options"
           :playlist-data="playlistData"
           :is-with-add-option="isSelf"
           :is-with-edit-option="isSelf"
@@ -141,7 +140,4 @@ export default {
 <style lang="sass" scoped>
 .title-container
   @extend .d-flex, .align-items-center
-
-.playlist-options
-  @extend .visibility-visible
 </style>

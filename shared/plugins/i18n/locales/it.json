@@ -585,9 +585,6 @@
       "content": "Vai alla conversazione"
     }
   },
-  "library": {
-    "since": "Nella libreria da"
-  },
   "compatibility": {
     "header": "La tua compatiblità con {profileNickname}",
     "common": "Avete in comune:"
@@ -672,8 +669,7 @@
     "welcome": "Benvenuto, {profileNickname}"
   },
   "profile": {
-    "wasOnline": "Era online",
-    "since": "Su muffon dal"
+    "wasOnline": "Era online"
   },
   "feed": {
     "global": "Feed globale"
@@ -781,6 +777,11 @@
       "playlist": "La playlist {modelName} è stata eliminata",
       "membership": "Hai lasciato la community {modelName}"
     }
+  },
+  "created": {
+    "library": "Nella libreria da",
+    "profile": "Su muffon dal",
+    "community": "Creata"
   },
   "online": "Online",
   "error": "Errore",

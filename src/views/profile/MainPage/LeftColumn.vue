@@ -24,7 +24,7 @@
       :profile-data="profileData"
     />
 
-    <BaseSinceSegment
+    <BaseCreatedSegment
       class="main-profile-page-info"
       model="profile"
       :model-data="profileData"
@@ -41,7 +41,7 @@ import InfoSegment from './LeftColumn/InfoSegment.vue'
 import ExtraInfoSegment from './LeftColumn/ExtraInfoSegment.vue'
 import FollowSegment from './LeftColumn/FollowSegment.vue'
 import OptionsSegment from './LeftColumn/OptionsSegment.vue'
-import BaseSinceSegment from '@/components/segments/BaseSinceSegment.vue'
+import BaseCreatedSegment from '@/components/segments/BaseCreatedSegment.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -53,7 +53,7 @@ export default {
     ExtraInfoSegment,
     FollowSegment,
     OptionsSegment,
-    BaseSinceSegment
+    BaseCreatedSegment
   },
   props: {
     profileData: {

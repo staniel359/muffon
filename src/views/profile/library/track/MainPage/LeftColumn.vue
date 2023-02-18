@@ -17,7 +17,7 @@
       :profile-id="profileId"
     />
 
-    <BaseSinceSegment
+    <BaseCreatedSegment
       class="main-profile-page-info"
       model="library"
       :model-data="trackData"
@@ -28,14 +28,14 @@
 <script>
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import SelfSegment from './LeftColumn/SelfSegment.vue'
-import BaseSinceSegment from '@/components/segments/BaseSinceSegment.vue'
+import BaseCreatedSegment from '@/components/segments/BaseCreatedSegment.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
     InfoSegment,
     SelfSegment,
-    BaseSinceSegment
+    BaseCreatedSegment
   },
   props: {
     trackData: Object,

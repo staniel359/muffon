@@ -585,9 +585,6 @@
       "content": "Zur Konversation"
     }
   },
-  "library": {
-    "since": "In der Bibliothek seit"
-  },
   "compatibility": {
     "header": "Dein Kompatibilitätsfaktor mit {profileNickname}",
     "common": "Ihr habt gemeinsam:"
@@ -672,8 +669,7 @@
     "welcome": "Willkommen, {profileNickname}"
   },
   "profile": {
-    "wasOnline": "War online",
-    "since": "Nutzt muffon seit"
+    "wasOnline": "War online"
   },
   "feed": {
     "global": "Globaler Feed"
@@ -781,6 +777,11 @@
       "playlist": "Playlist {modelName} wurde entfernt",
       "membership": "Sie haben die Community {modelName} verlassen"
     }
+  },
+  "created": {
+    "library": "In der Bibliothek seit",
+    "profile": "Nutzt muffon seit",
+    "community": "Wurde erstellt"
   },
   "online": "Online",
   "error": "Fehler",

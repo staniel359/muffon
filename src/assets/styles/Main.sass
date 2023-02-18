@@ -458,12 +458,17 @@ p
   &.main-message-item
     @extend .align-items-start
   &.main-info-item
+    @extend .align-items-start
     & > .image,
     & > .image-container
       @extend .image-big
-    .description,
+    .description
+      margin-top: 0.25em
+      line-height: initial
     .extra
       margin-top: 0.25em
+    .main-options-dropdown-container
+      @extend .visibility-visible
   &.main-post-item
     padding: 1.5em 1em !important
   &.main-event-item
@@ -1026,3 +1031,6 @@ p
   .logo
     @extend .colorless
     margin: 0 0.5em 0.5em 0
+
+.main-community-info-segment
+  @extend .d-flex, .flex-column, .text-align-center

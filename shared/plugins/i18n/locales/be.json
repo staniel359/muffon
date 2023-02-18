@@ -585,9 +585,6 @@
       "content": "Перайсці да перапіскі"
     }
   },
-  "library": {
-    "since": "У бібліятэцы з"
-  },
   "compatibility": {
     "header": "Ваш узровень сумяшчальнасці з {profileNickname}",
     "common": "З агульнага ў вас:"
@@ -672,8 +669,7 @@
     "welcome": "Вітаю, {profileNickname}"
   },
   "profile": {
-    "wasOnline": "Быў(-ла) ў сеціве",
-    "since": "На muffon'е з"
+    "wasOnline": "Быў(-ла) ў сеціве"
   },
   "feed": {
     "global": "Глабальная стужка"
@@ -781,6 +777,11 @@
       "playlist": "Выдалены спіс {modelName}",
       "membership": "Вы выйшлі з суполкі {modelName}"
     }
+  },
+  "created": {
+    "library": "У бібліятэцы з",
+    "profile": "На muffon'е з",
+    "community": "Была створана"
   },
   "online": "У сеціве",
   "error": "Памылка",

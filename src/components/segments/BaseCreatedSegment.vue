@@ -3,7 +3,7 @@
     v-if="created"
   >
     <div
-      v-text="sinceText"
+      v-text="createdText"
     />
 
     <strong
@@ -25,7 +25,7 @@ import {
 } from '@/helpers/formatters'
 
 export default {
-  name: 'BaseSinceSegment',
+  name: 'BaseCreatedSegment',
   components: {
     BaseSegmentContainer
   },
@@ -43,9 +43,9 @@ export default {
     created () {
       return this.modelData.created
     },
-    sinceText () {
+    createdText () {
       return this.$t(
-        `${this.model}.since`
+        `created.${this.model}`
       )
     },
     createdDateFormatted () {

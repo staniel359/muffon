@@ -585,9 +585,6 @@
       "content": "Перейти к переписке"
     }
   },
-  "library": {
-    "since": "В библиотеке с"
-  },
   "compatibility": {
     "header": "Ваш уровень совместимости с {profileNickname}",
     "common": "Из общего у вас:"
@@ -672,8 +669,7 @@
     "welcome": "Приветствую, {profileNickname}"
   },
   "profile": {
-    "wasOnline": "Был(-а) в сети",
-    "since": "На muffon'е с"
+    "wasOnline": "Был(-а) в сети"
   },
   "feed": {
     "global": "Глобальная лента"
@@ -781,6 +777,11 @@
       "playlist": "Удалён список {modelName}",
       "membership": "Вы покинули сообщество {modelName}"
     }
+  },
+  "created": {
+    "library": "В библиотеке с",
+    "profile": "На muffon'е с",
+    "community": "Было создано"
   },
   "online": "В сети",
   "error": "Ошибка",
