@@ -33,7 +33,7 @@ export default {
   computed: {
     scrobblingText () {
       return this.$t(
-        'settings.options.services.lastfm.scrobbling'
+        'settings.options.integrations.lastfm.scrobbling'
       )
     },
     isChecked () {

@@ -21,11 +21,11 @@
 <script>
 import BaseTabsContainer
   from '@/components/containers/tabs/BaseTabsContainer.vue'
-import LastfmOptions from './ServicesSettings/LastfmOptions.vue'
-import DiscordOptions from './ServicesSettings/DiscordOptions.vue'
+import LastfmOptions from './IntegrationsSettings/LastfmOptions.vue'
+import DiscordOptions from './IntegrationsSettings/DiscordOptions.vue'
 
 export default {
-  name: 'ServicesSettings',
+  name: 'IntegrationsSettings',
   components: {
     BaseTabsContainer,
     LastfmOptions,

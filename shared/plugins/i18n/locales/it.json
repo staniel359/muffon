@@ -427,7 +427,7 @@
     "tabs": {
       "app": "App",
       "profile": "Profilo",
-      "services": "Servizi"
+      "integrations": "Integrazioni"
     },
     "sections": {
       "app": {
@@ -519,7 +519,7 @@
           }
         }
       },
-      "services": {
+      "integrations": {
         "lastfm": {
           "scrobbling": "Scrobbling",
           "scrobbleNotifications": "Notifiche di scrobble",

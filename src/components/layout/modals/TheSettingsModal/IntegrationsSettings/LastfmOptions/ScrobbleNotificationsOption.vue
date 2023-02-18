@@ -44,7 +44,7 @@ export default {
     ),
     scrobbleNotificationsText () {
       return this.$t(
-        'settings.options.services.lastfm.scrobbleNotifications'
+        'settings.options.integrations.lastfm.scrobbleNotifications'
       )
     },
     isChecked () {

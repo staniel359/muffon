@@ -35,7 +35,7 @@ import BaseTabsContainer
   from '@/components/containers/tabs/BaseTabsContainer.vue'
 import AppSettings from './TheSettingsModal/AppSettings.vue'
 import ProfileSettings from './TheSettingsModal/ProfileSettings.vue'
-import ServicesSettings from './TheSettingsModal/ServicesSettings.vue'
+import IntegrationsSettings from './TheSettingsModal/IntegrationsSettings.vue'
 
 export default {
   name: 'TheSettingsModal',
@@ -44,7 +44,7 @@ export default {
     BaseTabsContainer,
     AppSettings,
     ProfileSettings,
-    ServicesSettings
+    IntegrationsSettings
   },
   data () {
     return {
@@ -64,10 +64,10 @@ export default {
           isAnonymous: false
         },
         {
-          nameCode: 'settings.tabs.services',
-          icon: 'service',
-          scope: 'services',
-          component: 'ServicesSettings',
+          nameCode: 'settings.tabs.integrations',
+          icon: 'integration',
+          scope: 'integrations',
+          component: 'IntegrationsSettings',
           isAnonymous: false
         }
       ]
