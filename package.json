@@ -61,11 +61,11 @@
     "@vue/cli-plugin-router": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
     "@vue/eslint-config-standard": "^8.0.1",
-    "electron": "^23.0.0",
+    "electron": "^23.1.0",
     "electron-builder": "^23.6.0",
     "eslint": "^8.34.0",
     "eslint-plugin-vue": "^9.9.0",
-    "sass": "^1.58.1",
+    "sass": "^1.58.3",
     "sass-loader": "^13.2.0"
   },
   "os": [
