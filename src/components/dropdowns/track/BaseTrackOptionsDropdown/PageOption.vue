@@ -12,6 +12,7 @@ import BaseLinkOption from '@/components/dropdowns/options/BaseLinkOption.vue'
 import {
   main as formatTrackMainLink
 } from '@/helpers/formatters/links/track'
+import formatRequestTrackData from '@/helpers/formatters/request/track/data'
 
 export default {
   name: 'PageOption',
@@ -32,7 +33,8 @@ export default {
       return formatTrackMainLink(
         {
           artistName: this.artistName,
-          trackTitle: this.trackTitle
+          trackTitle: this.trackTitle,
+          sourceParams: this.sourceParams
         }
       )
     },
@@ -45,6 +47,14 @@ export default {
     pageText () {
       return this.$t(
         'actions.show.page'
+      )
+    },
+    sourceParams () {
+      return formatRequestTrackData(
+        {
+          trackData: this.trackData,
+          artistName: this.artistName
+        }
       )
     }
   },
