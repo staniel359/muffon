@@ -47,7 +47,11 @@ export default {
       return this.communityData.members_count
     },
     membersCountStrong () {
-      return `<strong>${this.membersCountFormatted}</strong>`
+      return `
+        <strong>
+          ${this.membersCountFormatted}
+        </strong>
+      `
     },
     membersCountFormatted () {
       return formatNumber(

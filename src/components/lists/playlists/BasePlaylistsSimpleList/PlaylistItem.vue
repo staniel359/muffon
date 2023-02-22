@@ -203,7 +203,11 @@ export default {
       )
     },
     tracksCountStrong () {
-      return `<strong>${this.tracksCountFormatted}</strong>`
+      return `
+        <strong>
+          ${this.tracksCountFormatted}
+        </strong>
+      `
     },
     tracksCountFormatted () {
       return formatNumber(

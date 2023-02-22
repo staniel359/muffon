@@ -68,7 +68,11 @@ export default {
       )
     },
     trackFullTitleStrong () {
-      return `<strong>${this.trackFullTitle}</strong>`
+      return `
+        <strong>
+          ${this.trackFullTitle}
+        </strong>
+      `
     },
     trackFullTitle () {
       return [
@@ -86,7 +90,8 @@ export default {
     }
   },
   watch: {
-    savedTrackData: 'handleSavedTrackDataChange'
+    savedTrackData:
+      'handleSavedTrackDataChange'
   },
   mounted () {
     ipcRenderer.on(

@@ -20,8 +20,7 @@
     <BaseDivider />
 
     <SimilarSegment
-      :artist-name="artistName"
-      :track-title="trackTitle"
+      :track-data="trackData"
     />
   </div>
 </template>
@@ -43,16 +42,13 @@ export default {
     SimilarSegment
   },
   props: {
-    trackData: Object,
+    trackData: {
+      type: Object,
+      required: true
+    },
     requestTrackData: Object
   },
   computed: {
-    artistName () {
-      return this.trackData.artist.name
-    },
-    trackTitle () {
-      return this.trackData.title
-    },
     query () {
       return [
         this.artistName,
@@ -60,6 +56,12 @@ export default {
       ].join(
         ' - '
       )
+    },
+    artistName () {
+      return this.trackData.artist.name
+    },
+    trackTitle () {
+      return this.trackData.title
     }
   }
 }

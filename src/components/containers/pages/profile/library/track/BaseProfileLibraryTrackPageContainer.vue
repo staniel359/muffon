@@ -61,10 +61,13 @@ export default {
     navigationData () {
       return {
         profileId: this.profileId,
-        profileNickname: this.profileNickname,
-        libraryArtistId: this.libraryArtistId,
+        profileNickname:
+          this.profileNickname,
+        libraryArtistId:
+          this.libraryArtistId,
         artistName: this.artistName,
-        libraryTrackId: this.libraryTrackId,
+        libraryTrackId:
+          this.libraryTrackId,
         trackTitle: this.trackTitle,
         scope: this.scope
       }

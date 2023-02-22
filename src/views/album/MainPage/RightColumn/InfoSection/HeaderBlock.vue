@@ -1,19 +1,9 @@
 <template>
   <div class="header-block">
-    <BaseHeaderContainer
+    <BaseHeader
       tag="h2"
-    >
-      {{ albumTitle }}
-
-      <span
-        v-if="albumExtraTitle"
-        class="sub header main-extra-title"
-      >
-        <strong
-          v-text="albumExtraTitle"
-        />
-      </span>
-    </BaseHeaderContainer>
+      :text="albumTitle"
+    />
 
     <BaseHeaderContainer
       class="album-artist-name"
@@ -27,6 +17,7 @@
 </template>
 
 <script>
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseHeaderContainer
   from '@/components/containers/BaseHeaderContainer.vue'
 import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
@@ -34,6 +25,7 @@ import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
 export default {
   name: 'HeaderBlock',
   components: {
+    BaseHeader,
     BaseHeaderContainer,
     BaseArtistLinks
   },
@@ -46,9 +38,6 @@ export default {
   computed: {
     albumTitle () {
       return this.albumData.title
-    },
-    albumExtraTitle () {
-      return this.albumData.extra_title
     },
     artists () {
       return this.albumData.artists

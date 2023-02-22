@@ -141,7 +141,11 @@ export default {
       )
     },
     trackFullTitleStrong () {
-      return `<strong>${this.trackFullTitle}</strong>`
+      return `
+        <strong>
+          ${this.trackFullTitle}
+        </strong>
+      `
     },
     trackFullTitle () {
       return [

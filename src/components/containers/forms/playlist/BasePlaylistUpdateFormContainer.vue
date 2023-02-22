@@ -68,7 +68,11 @@ export default {
       )
     },
     playlistTitleStrong () {
-      return `<strong>${this.playlistTitle}</strong>`
+      return `
+        <strong>
+          ${this.playlistTitle}
+        </strong>
+      `
     },
     playlistTitle () {
       return this.playlistData.title

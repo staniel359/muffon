@@ -49,7 +49,11 @@ export default {
       )
     },
     followersCountStrong () {
-      return `<strong>${this.followersCountFormatted}</strong>`
+      return `
+        <strong>
+          ${this.followersCountFormatted}
+        </strong>
+      `
     },
     followersCountFormatted () {
       return formatNumber(
@@ -69,7 +73,11 @@ export default {
       )
     },
     followingCountStrong () {
-      return `<strong>${this.followingCount}</strong>`
+      return `
+        <strong>
+          ${this.followingCount}
+        </strong>
+      `
     },
     followingCount () {
       return this.profileData.following_count

@@ -140,7 +140,11 @@ export default {
       )
     },
     membersCountStrong () {
-      return `<strong>${this.membersCountFormatted}</strong>`
+      return `
+        <strong>
+          ${this.membersCountFormatted}
+        </strong>
+      `
     },
     membersCountFormatted () {
       return formatNumber(

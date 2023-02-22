@@ -63,10 +63,18 @@ export default {
       )
     },
     modelNameStrong () {
-      return `<strong>${this.modelName}</strong>`
+      return `
+        <strong>
+          ${this.modelName}
+        </strong>
+      `
     },
     parentModelNameStrong () {
-      return `<strong>${this.parentModelName}</strong>`
+      return `
+        <strong>
+          ${this.parentModelName}
+        </strong>
+      `
     },
     isAlsoTextArray () {
       return this.alsoText instanceof Array

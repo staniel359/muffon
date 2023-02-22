@@ -9,15 +9,6 @@
     >
       {{ trackTitle }}
     </BaseTrackLinkContainer>
-
-    <span
-      v-if="trackExtraTitle"
-      class="sub header main-extra-title-inline"
-    >
-      <strong
-        v-text="trackExtraTitle"
-      />
-    </span>
   </BaseHeaderContainer>
 </template>
 
@@ -42,9 +33,6 @@ export default {
   computed: {
     trackTitle () {
       return this.trackData.title
-    },
-    trackExtraTitle () {
-      return this.trackData.extra_title
     }
   }
 }

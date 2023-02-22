@@ -9,12 +9,6 @@
       >
         {{ trackTitle }}
       </BaseTrackLinkContainer>
-
-      <span
-        v-if="trackExtraTitle"
-        class="sub header description main-extra-title-inline"
-        v-text="trackExtraTitle"
-      />
     </BaseHeaderContainer>
   </BaseTickerContainer>
 </template>
@@ -47,9 +41,6 @@ export default {
     ),
     trackTitle () {
       return this.playerPlaying.title
-    },
-    trackExtraTitle () {
-      return this.playerPlaying.extra_title
     }
   }
 }

@@ -4,7 +4,6 @@
     :value="uuid"
     :image="imageData?.extrasmall"
     :header="trackTitle"
-    :subheader="trackExtraTitle"
     :content="artistName"
     :extra="durationFormatted"
     is-with-image
@@ -37,9 +36,6 @@ export default {
     },
     trackTitle () {
       return this.trackData.title
-    },
-    trackExtraTitle () {
-      return this.trackData.extra_title
     },
     artistName () {
       return this.trackData.artist.name

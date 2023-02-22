@@ -36,12 +36,8 @@ export default {
       type: String,
       required: true
     },
-    modelId: {
-      type: String,
-      required: true
-    },
-    modelName: {
-      type: String,
+    modelData: {
+      type: Object,
       required: true
     },
     isWithRedirect: Boolean
@@ -66,7 +62,24 @@ export default {
       )
     },
     modelNameStrong () {
-      return `<strong>${this.modelName}</strong>`
+      return `
+        <strong>
+          ${this.modelName}
+        </strong>
+      `
+    },
+    modelName () {
+      switch (this.model) {
+        case 'artist':
+          return this.modelData.name
+        default:
+          return [
+            this.modelData.artist.name,
+            this.modelData.title
+          ].join(
+            ' - '
+          )
+      }
     },
     profileLibraryMainLink () {
       return formatProfileLibraryMainLink(
@@ -86,6 +99,9 @@ export default {
         model: this.model,
         modelId: this.modelId
       }
+    },
+    modelId () {
+      return this.modelData.library.id
     }
   },
   watch: {

@@ -32,7 +32,7 @@ export default {
     playerTitle () {
       return [
         this.artistName,
-        this.trackFullTitle
+        this.trackTitle
       ].join(
         ' - '
       )
@@ -40,28 +40,8 @@ export default {
     artistName () {
       return this.playerPlaying.artist.name
     },
-    trackFullTitle () {
-      return [
-        this.trackTitle,
-        this.trackExtraTitleConditional
-      ].filter(
-        e => e
-      ).join(
-        ' '
-      )
-    },
     trackTitle () {
       return this.playerPlaying.title
-    },
-    trackExtraTitleConditional () {
-      if (this.trackExtraTitle) {
-        return `(${this.trackExtraTitle})`
-      } else {
-        return null
-      }
-    },
-    trackExtraTitle () {
-      return this.playerPlaying.extra_title
     },
     mediaMetadata () {
       if (this.playerPlaying) {
@@ -74,7 +54,7 @@ export default {
     },
     mediaMetadataOptions () {
       return {
-        title: this.trackFullTitle,
+        title: this.trackTitle,
         artist: this.artistName,
         album: this.albumTitle,
         artwork: [

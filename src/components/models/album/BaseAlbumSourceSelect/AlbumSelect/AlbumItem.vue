@@ -4,7 +4,6 @@
     :value="uuid"
     :image="imageData?.extrasmall"
     :header="albumTitle"
-    :subheader="albumExtraTitle"
     :content="artistName"
     is-with-image
   />
@@ -33,9 +32,6 @@ export default {
     },
     albumTitle () {
       return this.albumData.title
-    },
-    albumExtraTitle () {
-      return this.albumData.extra_title
     },
     artistName () {
       return this.albumData.artist.name

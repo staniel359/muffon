@@ -51,8 +51,7 @@
         ref="deleteModal"
         model="artist"
         :profile-id="profileId"
-        :model-id="libraryArtistId"
-        :model-name="artistName"
+        :model-data="artistData"
         :is-with-redirect="isDeleteWithRedirect"
         @success="handleDeleted"
       />
@@ -179,12 +178,6 @@ export default {
       return formatArtistShareData(
         this.artistData
       )
-    },
-    libraryArtistId () {
-      return this.artistData.library.id.toString()
-    },
-    artistName () {
-      return this.artistData.name
     }
   },
   methods: {

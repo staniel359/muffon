@@ -70,8 +70,7 @@
         ref="deleteModal"
         model="album"
         :profile-id="profileId"
-        :model-id="libraryAlbumId"
-        :model-name="albumFullTitle"
+        :model-data="albumData"
         :is-with-redirect="isDeleteWithRedirect"
         @success="handleDeleted"
       />
@@ -219,20 +218,6 @@ export default {
     },
     imageData () {
       return this.albumData.image
-    },
-    libraryAlbumId () {
-      return this.albumData.library.id.toString()
-    },
-    albumFullTitle () {
-      return [
-        this.artistName,
-        this.albumTitle
-      ].join(
-        ' - '
-      )
-    },
-    artistName () {
-      return this.albumData.artist.name
     }
   },
   methods: {

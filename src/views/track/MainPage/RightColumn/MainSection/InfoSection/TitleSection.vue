@@ -1,28 +1,17 @@
 <template>
-  <BaseHeaderContainer
+  <BaseHeader
     tag="h3"
-  >
-    {{ trackTitle }}
-
-    <span
-      v-if="trackExtraTitle"
-      class="sub header main-extra-title"
-    >
-      <strong
-        v-text="trackExtraTitle"
-      />
-    </span>
-  </BaseHeaderContainer>
+    :text="trackTitle"
+  />
 </template>
 
 <script>
-import BaseHeaderContainer
-  from '@/components/containers/BaseHeaderContainer.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 
 export default {
   name: 'TitleSection',
   components: {
-    BaseHeaderContainer
+    BaseHeader
   },
   props: {
     trackData: {
@@ -33,9 +22,6 @@ export default {
   computed: {
     trackTitle () {
       return this.trackData.title
-    },
-    trackExtraTitle () {
-      return this.trackData.extra_title
     }
   }
 }

@@ -80,8 +80,7 @@
         ref="deleteModal"
         model="track"
         :profile-id="profileId"
-        :model-id="libraryTrackId"
-        :model-name="trackFullTitle"
+        :model-data="trackData"
         :is-with-redirect="isDeleteWithRedirect"
         @success="handleDeleted"
       />
@@ -287,23 +286,6 @@ export default {
       return [
         this.trackData
       ]
-    },
-    libraryTrackId () {
-      return this.trackData.library.id.toString()
-    },
-    trackFullTitle () {
-      return [
-        this.artistName,
-        this.trackTitle
-      ].join(
-        ' - '
-      )
-    },
-    trackTitle () {
-      return this.trackData.title
-    },
-    artistName () {
-      return this.trackData.artist.name
     }
   },
   methods: {

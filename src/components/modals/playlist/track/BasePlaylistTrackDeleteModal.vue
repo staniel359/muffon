@@ -46,11 +46,17 @@ export default {
   computed: {
     playlistTrackFullTitle () {
       return [
-        this.playlistTrackData.artist.name,
-        this.playlistTrackData.title
+        this.artistName,
+        this.trackTitle
       ].join(
         ' - '
       )
+    },
+    artistName () {
+      return this.playlistTrackData.artist.name
+    },
+    trackTitle () {
+      return this.playlistTrackData.title
     },
     playlistTrackId () {
       return this.playlistTrackData.id
@@ -58,7 +64,8 @@ export default {
     deleteArgs () {
       return {
         playlistId: this.playlistId,
-        playlistTrackId: this.playlistTrackId
+        playlistTrackId:
+          this.playlistTrackId
       }
     }
   },

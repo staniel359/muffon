@@ -40,7 +40,11 @@ export default {
       return this.playlistData.videos_count
     },
     videosCountStrong () {
-      return `<strong>${this.videosCountFormatted}</strong>`
+      return `
+        <strong>
+          ${this.videosCountFormatted}
+        </strong>
+      `
     },
     videosCountFormatted () {
       return formatNumber(

@@ -35,7 +35,6 @@
 
     <ContentBlock
       :header="header"
-      :subheader="subheader"
       :content="content"
       :extra="extra"
     />
@@ -68,7 +67,6 @@ export default {
     image: String,
     model: String,
     header: String,
-    subheader: String,
     content: String,
     extra: String,
     value: String

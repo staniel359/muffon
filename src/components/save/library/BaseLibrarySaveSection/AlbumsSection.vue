@@ -150,8 +150,10 @@ export default {
     ) {
       return {
         albumTitle: album.title,
-        artistName: album.artist.name,
-        imageUrl: album.image?.large
+        artistName:
+          album.artist.name,
+        imageUrl:
+          album.image?.large
       }
     },
     setProgressTotalCount () {
