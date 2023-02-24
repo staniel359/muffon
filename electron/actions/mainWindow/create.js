@@ -50,6 +50,12 @@ const {
 const setTrayMenu = require(
   '../tray/setMenu'
 )
+const resetTabsBounds = require(
+  '../tabs/resetBounds'
+)
+const setTabsBounds = require(
+  '../tabs/setBounds'
+)
 
 function handleReadyToShow () {
   const isMaximizeOnStart =
@@ -124,6 +130,14 @@ function handleMaximizeChange () {
 
 function handleUnmaximizeChange () {
   isMaximized = false
+}
+
+function handleEnterFullScreen () {
+  resetTabsBounds()
+}
+
+function handleLeaveFullScreen () {
+  setTabsBounds()
 }
 
 function create () {
@@ -207,6 +221,16 @@ function create () {
       handleUnmaximizeChange
     )
   }
+
+  mainWindow.on(
+    'enter-full-screen',
+    handleEnterFullScreen
+  )
+
+  mainWindow.on(
+    'leave-full-screen',
+    handleLeaveFullScreen
+  )
 }
 
 module.exports = create

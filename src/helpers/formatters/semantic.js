@@ -410,7 +410,6 @@ export function mainVideoOptions (
   return {
     autoplay: isAutoplay,
     parameters: {
-      fs: 0,
       hl: language
     },
     url
