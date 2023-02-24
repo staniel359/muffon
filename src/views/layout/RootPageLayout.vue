@@ -3,8 +3,6 @@
 
   <TheStoreObserver />
 
-  <ThePlayerObserver />
-
   <TheBackground />
 
   <TheView />
@@ -15,8 +13,6 @@ import TheElectronStoreObserver
   from '@/components/layout/observers/TheElectronStoreObserver.vue'
 import TheStoreObserver
   from '@/components/layout/observers/TheStoreObserver.vue'
-import ThePlayerObserver
-  from '@/components/layout/observers/ThePlayerObserver.vue'
 import TheBackground from '@/components/layout/TheBackground.vue'
 import TheView from '@/components/layout/TheView.vue'
 
@@ -25,7 +21,6 @@ export default {
   components: {
     TheElectronStoreObserver,
     TheStoreObserver,
-    ThePlayerObserver,
     TheBackground,
     TheView
   }

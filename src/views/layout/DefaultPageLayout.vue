@@ -5,7 +5,9 @@
 
   <TheMediaKeysObserver />
 
-  <ThePlayerObserver />
+  <ThePlayerObserver
+    v-if="isRenderPlayerObserver"
+  />
 
   <TheBackground />
 
@@ -37,6 +39,11 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
+import playerStore from '@/stores/player'
 import TheElectronStoreObserver
   from '@/components/layout/observers/TheElectronStoreObserver.vue'
 import TheStoreObserver
@@ -88,6 +95,33 @@ export default {
   data () {
     return {
       key: null
+    }
+  },
+  computed: {
+    ...mapState(
+      profileStore,
+      {
+        profileId: 'id',
+        isProfileAnonymous: 'isAnonymous'
+      }
+    ),
+    ...mapState(
+      playerStore,
+      {
+        playerPlaying: 'playing'
+      }
+    ),
+    isRenderPlayerObserver () {
+      return (
+        this.isLoggedIn &&
+          this.playerPlaying
+      )
+    },
+    isLoggedIn () {
+      return (
+        this.profileId ||
+          this.isProfileAnonymous
+      )
     }
   },
   watch: {

@@ -22,14 +22,7 @@ export default {
         playerPlaying: 'playing'
       }
     ),
-    title () {
-      if (this.playerPlaying) {
-        return this.playerTitle
-      } else {
-        return null
-      }
-    },
-    playerTitle () {
+    trackFullTitle () {
       return [
         this.artistName,
         this.trackTitle
@@ -44,13 +37,9 @@ export default {
       return this.playerPlaying.title
     },
     mediaMetadata () {
-      if (this.playerPlaying) {
-        return new window.MediaMetadata(
-          this.mediaMetadataOptions
-        )
-      } else {
-        return null
-      }
+      return new MediaMetadata(
+        this.mediaMetadataOptions
+      )
     },
     mediaMetadataOptions () {
       return {
@@ -58,9 +47,7 @@ export default {
         artist: this.artistName,
         album: this.albumTitle,
         artwork: [
-          {
-            src: this.playerImage
-          }
+          this.artworkData
         ]
       }
     },
@@ -68,38 +55,60 @@ export default {
       return this.playerPlaying.album?.title
     },
     playerImage () {
-      return this.playerPlaying.image?.small || ''
+      return this.playerPlaying.image?.small
+    },
+    artworkData () {
+      return {
+        src: (
+          this.playerImage || ''
+        )
+      }
     }
   },
   watch: {
     playerPlaying: {
       immediate: true,
       handler: 'handlePlayerPlayingChange'
-    },
-    title: {
-      immediate: true,
-      handler: 'handleTitleChange'
     }
+  },
+  beforeUnmount () {
+    this.setMediaMetadata(
+      null
+    )
+
+    this.setTitle(
+      null
+    )
   },
   methods: {
     handlePlayerPlayingChange () {
-      this.changeMediaMetadata()
+      this.setMediaMetadata(
+        this.mediaMetadata
+      )
+
+      this.setTitle(
+        this.trackFullTitle
+      )
     },
-    handleTitleChange () {
+    setMediaMetadata (
+      value
+    ) {
+      navigator
+        .mediaSession
+        .metadata = value
+    },
+    setTitle (
+      value
+    ) {
       ipcRenderer.send(
         'set-title',
-        this.title
+        value
       )
 
       ipcRenderer.send(
         'set-tray-tooltip',
-        this.title
+        value
       )
-    },
-    changeMediaMetadata () {
-      navigator
-        .mediaSession
-        .metadata = this.mediaMetadata
     }
   }
 }
