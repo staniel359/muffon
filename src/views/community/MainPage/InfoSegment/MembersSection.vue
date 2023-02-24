@@ -1,23 +1,18 @@
 <template>
-  <BaseSegmentContainer
-    class="main-community-info-segment"
-  >
-    <span
-      class="main-link"
-      @click="handleMembersCountClick"
-      v-html="membersCountText"
-    />
+  <div
+    v-bind="$attrs"
+    class="main-link members-count"
+    @click="handleMembersCountClick"
+    v-html="membersCountText"
+  />
 
-    <BaseCommunityMembersModal
-      ref="modal"
-      :community-id="communityId"
-    />
-  </BaseSegmentContainer>
+  <BaseCommunityMembersModal
+    ref="modal"
+    :community-id="communityId"
+  />
 </template>
 
 <script>
-import BaseSegmentContainer
-  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseCommunityMembersModal
   from '@/components/modals/community/BaseCommunityMembersModal.vue'
 import {
@@ -25,13 +20,15 @@ import {
 } from '@/helpers/formatters'
 
 export default {
-  name: 'MembersSegment',
+  name: 'MembersSection',
   components: {
-    BaseSegmentContainer,
     BaseCommunityMembersModal
   },
   props: {
-    communityData: Object
+    communityData: {
+      type: Object,
+      required: true
+    }
   },
   computed: {
     membersCountText () {
@@ -75,4 +72,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.members-count
+  @extend .width-fit-content
+</style>

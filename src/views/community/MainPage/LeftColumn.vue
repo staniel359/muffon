@@ -16,10 +16,6 @@
       :community-data="communityData"
     />
 
-    <MembersSegment
-      :community-data="communityData"
-    />
-
     <CreatorSegment
       :creator-data="creatorData"
     />
@@ -35,7 +31,6 @@
 <script>
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import JoinedSegment from './LeftColumn/JoinedSegment.vue'
-import MembersSegment from './LeftColumn/MembersSegment.vue'
 import CreatorSegment from './LeftColumn/CreatorSegment.vue'
 import BaseCreatedSegment from '@/components/segments/BaseCreatedSegment.vue'
 
@@ -44,7 +39,6 @@ export default {
   components: {
     InfoSegment,
     JoinedSegment,
-    MembersSegment,
     CreatorSegment,
     BaseCreatedSegment
   },

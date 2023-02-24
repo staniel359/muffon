@@ -23,6 +23,11 @@
             class="description main-text-container"
             v-text="description"
           />
+
+          <MembersSection
+            class="description"
+            :community-data="communityData"
+          />
         </div>
 
         <BaseCommunityOptionsDropdown
@@ -44,6 +49,7 @@ import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import MembersSection from './InfoSegment/MembersSection.vue'
 import BaseCommunityOptionsDropdown
   from '@/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
 
@@ -54,6 +60,7 @@ export default {
     BaseListContainer,
     BaseZoomableImage,
     BaseHeader,
+    MembersSection,
     BaseCommunityOptionsDropdown
   },
   props: {
