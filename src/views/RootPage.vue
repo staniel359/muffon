@@ -11,8 +11,10 @@
 
   <TheBackgroundObserver />
 
-  <ThePlayingObserver
-    v-if="isRenderPlayingObserver"
+  <ThePlayingObserver />
+
+  <ThePlayingPublicObserver
+    v-if="isRenderPlayingPublicObserver"
   />
 
   <TheDiscordObserver
@@ -51,6 +53,8 @@ import TheBackgroundObserver
   from '@/components/layout/observers/TheBackgroundObserver.vue'
 import ThePlayingObserver
   from '@/components/layout/observers/ThePlayingObserver.vue'
+import ThePlayingPublicObserver
+  from '@/components/layout/observers/ThePlayingPublicObserver.vue'
 import TheDiscordObserver
   from '@/components/layout/observers/TheDiscordObserver.vue'
 import TheExitObserver
@@ -71,6 +75,7 @@ export default {
     TheNativeThemeObserver,
     TheBackgroundObserver,
     ThePlayingObserver,
+    ThePlayingPublicObserver,
     TheDiscordObserver,
     TheExitObserver,
     TheExternalUrlsObserver,
@@ -95,7 +100,7 @@ export default {
         isShowProfilePlaying: 'isShowPlaying'
       }
     ),
-    isRenderPlayingObserver () {
+    isRenderPlayingPublicObserver () {
       return (
         this.profileId &&
           this.playerPlaying &&

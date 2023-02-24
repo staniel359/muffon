@@ -5,6 +5,10 @@
     <EventsSegment
       v-if="profileId"
     />
+
+    <PlayerSegment
+      v-if="profileId"
+    />
   </BaseHistoryPageContainer>
 </template>
 
@@ -16,12 +20,14 @@ import profileStore from '@/stores/profile'
 import BaseHistoryPageContainer
   from '@/components/containers/pages/history/BaseHistoryPageContainer.vue'
 import EventsSegment from './MainPage/EventsSegment.vue'
+import PlayerSegment from './MainPage/PlayerSegment.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseHistoryPageContainer,
-    EventsSegment
+    EventsSegment,
+    PlayerSegment
   },
   computed: {
     ...mapState(

@@ -12,7 +12,7 @@
         :response-data="segmentSlotProps.historyData"
         :is-loading="segmentSlotProps.isLoading"
         :error="segmentSlotProps.error"
-        :scope="scope"
+        :scope="listScopeFormatted"
         :limit="limit"
         @focus="handleFocus"
       >
@@ -20,7 +20,7 @@
           #default="slotProps"
         >
           <slot
-            :[scope]="slotProps[scope]"
+            :[listScopeFormatted]="slotProps[listScopeFormatted]"
           />
         </template>
       </BasePaginatedSegmentContainer>
@@ -45,9 +45,18 @@ export default {
     paginatedSegmentMixin
   ],
   props: {
+    listScope: String,
     scope: String,
     limit: Number,
     headerLink: Object
+  },
+  computed: {
+    listScopeFormatted () {
+      return (
+        this.listScope ||
+          this.scope
+      )
+    }
   }
 }
 </script>

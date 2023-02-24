@@ -12,7 +12,7 @@
         :response-data="pageSlotProps.historyData"
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
-        :scope="scope"
+        :scope="listScopeFormatted"
         :limit="limit"
         :order="order"
         :model="model"
@@ -23,7 +23,7 @@
           #default="slotProps"
         >
           <slot
-            :[scope]="slotProps[scope]"
+            :[listScopeFormatted]="slotProps[listScopeFormatted]"
           />
         </template>
       </BasePaginatedPageContainer>
@@ -47,12 +47,21 @@ export default {
     paginatedPageMixin
   ],
   props: {
+    listScope: String,
     scope: String,
     limit: Number,
     order: String,
     model: String,
     isWithTopSegment: Boolean,
     isWithOrderChange: Boolean
+  },
+  computed: {
+    listScopeFormatted () {
+      return (
+        this.listScope ||
+          this.scope
+      )
+    }
   }
 }
 </script>

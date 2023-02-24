@@ -51,9 +51,11 @@
     "communities": "Communities",
     "history": "Verlauf",
     "historyModels": {
-      "events": "Eventverlauf"
+      "activity": "Aktivitätenverlauf",
+      "player": "Musikspielerverlauf"
     },
-    "events": "Events",
+    "activity": "Aktivität",
+    "player": "Musikspieler",
     "settings": "Einstellungen",
     "model": {
       "artists": "{modelName} Künstler",

@@ -1,6 +1,7 @@
 <template>
   <BaseHistoryPaginatedSegmentContainer
     :scope="scope"
+    :list-scope="listScope"
     :limit="limit"
     :header-link="headerLink"
   >
@@ -8,7 +9,7 @@
       #default="slotProps"
     >
       <BaseHistoryEventsSimpleList
-        :events="slotProps[scope]"
+        :events="slotProps[listScope]"
       />
     </template>
   </BaseHistoryPaginatedSegmentContainer>
@@ -32,7 +33,8 @@ export default {
   data () {
     return {
       limit: 10,
-      scope: 'events'
+      scope: 'activity',
+      listScope: 'events'
     }
   },
   computed: {

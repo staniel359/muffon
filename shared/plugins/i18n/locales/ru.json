@@ -51,9 +51,11 @@
     "communities": "Сообщества",
     "history": "История",
     "historyModels": {
-      "events": "История событий"
+      "activity": "История активности",
+      "player": "История проигрывателя"
     },
-    "events": "События",
+    "activity": "Активность",
+    "player": "Проигрыватель",
     "settings": "Настройки",
     "model": {
       "artists": "Исполнители {modelName}",

@@ -177,3 +177,33 @@ export function playsToTracks (
     }
   )
 }
+
+export function playing (
+  value
+) {
+  const {
+    source,
+    title,
+    artist,
+    artists,
+    album,
+    image,
+    duration,
+    audio
+  } = value
+
+  return {
+    source,
+    player_id:
+      value.player_id,
+    title,
+    artist,
+    artists,
+    album,
+    image,
+    duration,
+    audio: {
+      present: audio.present
+    }
+  }
+}

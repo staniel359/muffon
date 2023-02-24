@@ -11,8 +11,22 @@
     <template
       #default="slotProps"
     >
-      <BaseHistoryEventsSimpleList
-        :events="slotProps[listScope]"
+      <BaseTracksSimpleList
+        :tracks="slotProps[listScope]"
+        is-with-image
+        is-with-artist-name
+        is-with-album-title
+        is-with-duration
+        is-with-source
+        is-with-source-option
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
+        is-with-queue-option
+        is-with-playlist-option
+        is-with-share-option
+        is-with-created
       />
     </template>
   </BaseHistoryPaginatedPageContainer>
@@ -21,15 +35,15 @@
 <script>
 import BaseHistoryPaginatedPageContainer
   from '@/components/containers/pages/history/BaseHistoryPaginatedPageContainer.vue'
-import BaseHistoryEventsSimpleList
-  from '@/components/lists/history/events/BaseHistoryEventsSimpleList.vue'
+import BaseTracksSimpleList
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
-  name: 'EventsPage',
+  name: 'PlayerPage',
   components: {
     BaseHistoryPaginatedPageContainer,
-    BaseHistoryEventsSimpleList
+    BaseTracksSimpleList
   },
   mixins: [
     orderChangeMixin
@@ -37,8 +51,8 @@ export default {
   data () {
     return {
       limit: 50,
-      scope: 'activity',
-      listScope: 'events',
+      scope: 'player',
+      listScope: 'tracks',
       order: 'createdDesc'
     }
   }

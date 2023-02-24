@@ -1,6 +1,6 @@
 <template>
   <div
-    id="the-playing-observer"
+    id="the-playing-public-observer"
   />
 </template>
 
@@ -15,13 +15,13 @@ import {
 } from '@/helpers/formatters'
 
 export default {
-  name: 'ThePlayingObserver',
+  name: 'ThePlayingPublicObserver',
   mixins: [
     socketMixin
   ],
   data () {
     return {
-      channel: 'PlayingChannel'
+      channel: 'PlayingPublicChannel'
     }
   },
   computed: {
@@ -58,21 +58,24 @@ export default {
       return formatPlaying(
         this.playerPlaying
       )
-    },
-    isUpdatePlaying () {
-      return (
-        this.isSubscribed &&
-          this.playerPlaying
-      )
     }
   },
   watch: {
+    isSubscribed:
+      'handleIsSubscribedChange',
     playerPlaying:
       'handlePlayerPlayingChange'
   },
   methods: {
+    handleIsSubscribedChange (
+      value
+    ) {
+      if (value) {
+        this.updatePlaying()
+      }
+    },
     handlePlayerPlayingChange () {
-      if (this.isUpdatePlaying) {
+      if (this.isSubscribed) {
         this.updatePlaying()
       }
     },

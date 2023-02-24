@@ -13,3 +13,11 @@ export function events () {
     path: 'history/events'
   }
 }
+
+export function player () {
+  return {
+    name: 'HistoryPlayerPage',
+    params: {},
+    path: 'history/player'
+  }
+}

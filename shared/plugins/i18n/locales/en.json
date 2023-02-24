@@ -51,9 +51,11 @@
     "communities": "Communities",
     "history": "History",
     "historyModels": {
-      "events": "Events history"
+      "activity": "Activity history",
+      "player": "Player history"
     },
-    "events": "Events",
+    "activity": "Activity",
+    "player": "Player",
     "settings": "Settings",
     "model": {
       "artists": "{modelName} artists",

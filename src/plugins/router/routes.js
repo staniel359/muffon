@@ -223,6 +223,9 @@ const HistoryMainPage = () => import(
 const HistoryEventsPage = () => import(
   '@/views/history/EventsPage.vue'
 )
+const HistoryPlayerPage = () => import(
+  '@/views/history/PlayerPage.vue'
+)
 
 export default [
   {
@@ -748,6 +751,13 @@ export default [
     exact: true,
     name: 'HistoryEventsPage',
     component: HistoryEventsPage,
+    props: true
+  },
+  {
+    path: '/history/player',
+    exact: true,
+    name: 'HistoryPlayerPage',
+    component: HistoryPlayerPage,
     props: true
   }
 ]

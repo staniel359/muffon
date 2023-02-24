@@ -51,9 +51,11 @@
     "communities": "Community",
     "history": "Cronologia",
     "historyModels": {
-      "events": "Cronologia eventi"
+      "activity": "Cronologia Attività",
+      "player": "Cronologia riproduttore"
     },
-    "events": "Eventi",
+    "activity": "Attività",
+    "player": "Riproduttore",
     "settings": "Impostazioni",
     "model": {
       "artists": "{modelName} artista",

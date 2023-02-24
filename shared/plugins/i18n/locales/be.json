@@ -51,9 +51,11 @@
     "communities": "Суполкі",
     "history": "Гісторыя",
     "historyModels": {
-      "events": "Гісторыя падзей"
+      "activity": "Гісторыя актыўнасці",
+      "player": "Гісторыя прайгравальніка"
     },
-    "events": "Падзеі",
+    "activity": "Актыўнасць",
+    "player": "Прайгравальнік",
     "settings": "Налады",
     "model": {
       "artists": "Выканаўцы {modelName}",
