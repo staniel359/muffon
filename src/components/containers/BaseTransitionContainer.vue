@@ -10,6 +10,9 @@
 import {
   setVisibility
 } from '@/helpers/actions/plugins/semantic'
+import {
+  mainVisibilityOptions
+} from '@/helpers/formatters/semantic'
 
 export default {
   name: 'BaseTransitionContainer',
@@ -26,12 +29,14 @@ export default {
   },
   computed: {
     visibilityOptions () {
-      return {
-        once: false,
-        onTopPassed: this.handleTopPass,
-        onTopPassedReverse:
-          this.handleTopReversePass
-      }
+      return mainVisibilityOptions(
+        {
+          onTopPassed:
+            this.handleTopPass,
+          onTopPassedReverse:
+            this.handleTopReversePass
+        }
+      )
     }
   },
   mounted () {

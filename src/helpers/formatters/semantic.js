@@ -956,3 +956,31 @@ export function mainSearchOptions (
     onSelect
   }
 }
+
+export function mainVisibilityOptions (
+  {
+    onTopPassed,
+    onTopPassedReverse
+  }
+) {
+  return {
+    once: false,
+    onTopPassed,
+    onTopPassedReverse
+  }
+}
+
+export function infiniteScrollObserverVisibilityOptions (
+  {
+    context,
+    onTopVisible,
+    onUpdate
+  }
+) {
+  return {
+    initialCheck: false,
+    context,
+    onTopVisible,
+    onUpdate
+  }
+}

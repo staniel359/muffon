@@ -21,6 +21,9 @@ import BaseSegmentContainer
 import {
   setVisibility
 } from '@/helpers/actions/plugins/semantic'
+import {
+  infiniteScrollObserverVisibilityOptions
+} from '@/helpers/formatters/semantic'
 
 export default {
   name: 'ScrollObserver',
@@ -44,13 +47,16 @@ export default {
   },
   computed: {
     visibilityOptions () {
-      return {
-        context: this.scrollContext,
-        initialCheck: false,
-        onTopVisible:
-          this.handleTopVisible,
-        onUpdate: this.handleUpdate
-      }
+      return infiniteScrollObserverVisibilityOptions(
+        {
+          context:
+            this.scrollContext,
+          onTopVisible:
+            this.handleTopVisible,
+          onUpdate:
+            this.handleUpdate
+        }
+      )
     },
     isDisabled () {
       return (
