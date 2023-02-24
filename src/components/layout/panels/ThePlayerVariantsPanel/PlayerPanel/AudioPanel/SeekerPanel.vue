@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import Mousetrap from 'mousetrap'
 import {
   mapState
 } from 'pinia'
@@ -103,6 +104,11 @@ export default {
       this.handleAudioTimeUpdate
 
     this.setProgressBar()
+
+    this.bindKeys()
+  },
+  beforeUnmount () {
+    this.unbindKeys()
   },
   methods: {
     handleAudioTimeUpdate (
@@ -188,6 +194,35 @@ export default {
       if (this.isEndAudio) {
         this.endAudio()
       }
+    },
+    handleForwardMediumKeysPress () {
+      this.setAudioCurrentTime(
+        this.audioCurrentTime + 10
+      )
+    },
+    handleBackwardMediumKeysPress () {
+      this.setAudioCurrentTime(
+        this.audioCurrentTime - 10
+      )
+    },
+    bindKeys () {
+      Mousetrap.bind(
+        'mod+right',
+        this.handleForwardMediumKeysPress
+      )
+
+      Mousetrap.bind(
+        'mod+left',
+        this.handleBackwardMediumKeysPress
+      )
+    },
+    unbindKeys () {
+      Mousetrap.unbind(
+        [
+          'mod+right',
+          'mod+left'
+        ]
+      )
     },
     endAudio () {
       this.$emit(
