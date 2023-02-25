@@ -335,6 +335,33 @@ export function emojiPopupOptions () {
   }
 }
 
+export function profileInfoPopupOptions (
+  {
+    html
+  }
+) {
+  const className = 'ui popup main-popup'
+
+  const {
+    isDarkMode
+  } = layoutStore()
+
+  const variation = isDarkMode
+    ? 'basic inverted'
+    : 'basic'
+
+  return {
+    delay: 0,
+    position: 'right center',
+    transition: 'fade up',
+    className: {
+      popup: className
+    },
+    html,
+    variation
+  }
+}
+
 export function mainDropdownOptions (
   {
     isSelection,

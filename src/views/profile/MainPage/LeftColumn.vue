@@ -15,6 +15,11 @@
       :profile-data="profileData"
     />
 
+    <FollowingSegment
+      v-if="isRenderFollowingSegment"
+      :other-profile-data="otherProfileData"
+    />
+
     <FollowSegment
       :profile-data="profileData"
     />
@@ -22,12 +27,6 @@
     <OptionsSegment
       v-if="isRenderOptions"
       :profile-data="profileData"
-    />
-
-    <BaseCreatedSegment
-      class="main-profile-page-info"
-      model="profile"
-      :model-data="profileData"
     />
   </div>
 </template>
@@ -39,9 +38,9 @@ import {
 import profileStore from '@/stores/profile'
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import ExtraInfoSegment from './LeftColumn/ExtraInfoSegment.vue'
+import FollowingSegment from './LeftColumn/FollowingSegment.vue'
 import FollowSegment from './LeftColumn/FollowSegment.vue'
 import OptionsSegment from './LeftColumn/OptionsSegment.vue'
-import BaseCreatedSegment from '@/components/segments/BaseCreatedSegment.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -51,9 +50,9 @@ export default {
   components: {
     InfoSegment,
     ExtraInfoSegment,
+    FollowingSegment,
     FollowSegment,
-    OptionsSegment,
-    BaseCreatedSegment
+    OptionsSegment
   },
   props: {
     profileData: {
@@ -81,6 +80,21 @@ export default {
         this.currentProfileId &&
           !this.isSelf
       )
+    },
+    isRenderFollowingSegment () {
+      return (
+        this.isFollowing ||
+          this.isFollowed
+      )
+    },
+    isFollowing () {
+      return this.otherProfileData.follower_of_profile
+    },
+    otherProfileData () {
+      return this.profileData.other_profile
+    },
+    isFollowed () {
+      return this.otherProfileData.followed_by_profile
     }
   }
 }

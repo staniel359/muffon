@@ -14,6 +14,10 @@
         :image-data="imageData"
         is-circular
       />
+
+      <InfoSection
+        :profile-data="profileData"
+      />
     </div>
 
     <BaseHeader
@@ -39,10 +43,6 @@
       />
     </div>
 
-    <WasOnlineSection
-      :profile-data="profileData"
-    />
-
     <i
       v-if="status"
       class="status main-text-container"
@@ -57,10 +57,10 @@ import BaseSegmentContainer
 import BaseProfileOnlineLabel
   from '@/components/models/profile/BaseProfileOnlineLabel.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
+import InfoSection from './InfoSegment/InfoSection.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import BaseLabel from '@/components/labels/BaseLabel.vue'
-import WasOnlineSection from './InfoSegment/WasOnlineSection.vue'
 
 export default {
   name: 'InfoSegment',
@@ -68,10 +68,10 @@ export default {
     BaseSegmentContainer,
     BaseProfileOnlineLabel,
     BaseZoomableImage,
+    InfoSection,
     BaseHeader,
     BasePrivateIcon,
-    BaseLabel,
-    WasOnlineSection
+    BaseLabel
   },
   props: {
     profileData: {

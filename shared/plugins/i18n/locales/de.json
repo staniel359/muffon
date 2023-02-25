@@ -278,6 +278,7 @@
       "birthdate": "Geburtsdatum",
       "country": "Land",
       "city": "Stadt",
+      "status": "Status",
       "genders": {
         "male": "Männlich",
         "female": "Weiblich",
