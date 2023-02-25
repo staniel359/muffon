@@ -4,6 +4,7 @@
     :scope="scope"
     :limit="limit"
     :header-link="headerLink"
+    :is-get-data="isGetData"
   >
     <template
       #default="segmentSlotProps"
@@ -45,6 +46,10 @@ export default {
     paginatedSegmentMixin
   ],
   props: {
+    isGetData: {
+      type: Boolean,
+      default: true
+    },
     listScope: String,
     scope: String,
     limit: Number,

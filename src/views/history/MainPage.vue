@@ -6,9 +6,7 @@
       v-if="profileId"
     />
 
-    <PlayerSegment
-      v-if="profileId"
-    />
+    <PlayerSegment />
   </BaseHistoryPageContainer>
 </template>
 

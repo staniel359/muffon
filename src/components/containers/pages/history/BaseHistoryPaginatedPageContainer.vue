@@ -4,11 +4,13 @@
     :scope="scope"
     :limit="limit"
     :order="order"
+    :is-get-data="isGetData"
   >
     <template
       #default="pageSlotProps"
     >
       <BasePaginatedPageContainer
+        ref="pagination"
         :response-data="pageSlotProps.historyData"
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
@@ -18,6 +20,8 @@
         :model="model"
         :is-with-top-segment="isWithTopSegment"
         :is-with-order-change="isWithOrderChange"
+        :is-get-data="isGetData"
+        :response-page-limit="pageSlotProps.responsePageLimit"
       >
         <template
           #default="slotProps"
@@ -47,6 +51,10 @@ export default {
     paginatedPageMixin
   ],
   props: {
+    isGetData: {
+      type: Boolean,
+      default: true
+    },
     listScope: String,
     scope: String,
     limit: Number,
@@ -61,6 +69,14 @@ export default {
         this.listScope ||
           this.scope
       )
+    }
+  },
+  watch: {
+    order: 'handleOrderChange'
+  },
+  methods: {
+    handleOrderChange () {
+      this.reset()
     }
   }
 }

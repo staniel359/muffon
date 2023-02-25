@@ -11,7 +11,12 @@
 
   <TheBackgroundObserver />
 
-  <ThePlayingObserver />
+  <TheAnonymousPlayingObserver
+    v-if="isProfileAnonymous"
+  />
+  <ThePlayingObserver
+    v-else-if="profileId"
+  />
 
   <ThePlayingPublicObserver
     v-if="isRenderPlayingPublicObserver"
@@ -51,6 +56,8 @@ import TheNativeThemeObserver
   from '@/components/layout/observers/TheNativeThemeObserver.vue'
 import TheBackgroundObserver
   from '@/components/layout/observers/TheBackgroundObserver.vue'
+import TheAnonymousPlayingObserver
+  from '@/components/layout/observers/TheAnonymousPlayingObserver.vue'
 import ThePlayingObserver
   from '@/components/layout/observers/ThePlayingObserver.vue'
 import ThePlayingPublicObserver
@@ -74,6 +81,7 @@ export default {
     TheAccountDeleteObserver,
     TheNativeThemeObserver,
     TheBackgroundObserver,
+    TheAnonymousPlayingObserver,
     ThePlayingObserver,
     ThePlayingPublicObserver,
     TheDiscordObserver,

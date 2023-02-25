@@ -4,6 +4,7 @@
     :list-scope="listScope"
     :limit="limit"
     :header-link="headerLink"
+    :is-get-data="!!profileId"
   >
     <template
       #default="slotProps"
@@ -30,6 +31,10 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseHistoryPaginatedSegmentContainer
   from '@/components/containers/segments/history/BaseHistoryPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
@@ -52,6 +57,12 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      profileStore,
+      {
+        profileId: 'id'
+      }
+    ),
     headerLink () {
       return formatHistoryPlayerLink()
     }

@@ -89,6 +89,10 @@ const schema = {
     type: 'array',
     default: []
   },
+  'history.player': {
+    type: 'array',
+    default: []
+  },
   'player.currentTrackId': {
     type: [
       'null',

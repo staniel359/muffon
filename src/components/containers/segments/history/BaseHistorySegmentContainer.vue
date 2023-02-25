@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import electronStore from '#/plugins/electronStore'
 import BaseHeaderSegmentsContainer
   from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import getHistory from '@/helpers/actions/api/history/get'
@@ -26,6 +27,10 @@ export default {
     scope: {
       type: String,
       required: true
+    },
+    isGetData: {
+      type: Boolean,
+      default: true
     },
     limit: Number,
     headerLink: Object
@@ -43,10 +48,34 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
+    },
+    isPlayerScope () {
+      return (
+        this.scope === 'player'
+      )
+    },
+    playerHistoryData () {
+      return {
+        page: 1,
+        total_pages: 1,
+        tracks: this.playerTracks
+      }
+    },
+    playerTracks () {
+      return electronStore.get(
+        'history.player'
+      )
     }
   },
   mounted () {
-    this.getData()
+    if (this.isGetData) {
+      this.getData()
+    } else {
+      if (this.isPlayerScope) {
+        this.historyData =
+          this.playerHistoryData
+      }
+    }
   },
   methods: {
     getHistory,
