@@ -15,6 +15,7 @@ export default function (
     birthdate,
     country,
     city,
+    status,
     isPrivate
   }
 ) {
@@ -39,6 +40,7 @@ export default function (
     birthdate,
     country,
     city,
+    status,
     private: (
       isPrivate ? 1 : 0
     )

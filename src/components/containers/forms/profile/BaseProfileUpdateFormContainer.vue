@@ -106,7 +106,8 @@ export default {
         gender,
         birthdate,
         country,
-        city
+        city,
+        status
       } = fields
 
       const passwordConfirmation =
@@ -132,6 +133,7 @@ export default {
           birthdateFormatted,
         country,
         city,
+        status,
         isPrivate: fields.private
       }
     }

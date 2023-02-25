@@ -7,6 +7,7 @@
 
       <ExtraSection
         @image-change="handleImageChange"
+        @submit="handleSubmit"
       />
 
       <LegalSection />
@@ -15,6 +16,7 @@
         <BaseProfileRememberField />
 
         <BaseSubmitButton
+          ref="submit"
           action-key="signup"
         />
       </div>
@@ -55,6 +57,14 @@ export default {
       value
     ) {
       this.image = value
+    },
+    handleSubmit () {
+      this.clickSubmit()
+    },
+    clickSubmit () {
+      this.$refs
+        .submit
+        .click()
     }
   }
 }

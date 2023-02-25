@@ -58,10 +58,14 @@ export default {
       )
     },
     isRootPage () {
-      return this.$route.path === '/'
+      return (
+        this.$route.path === '/'
+      )
     },
     isAboutPage () {
-      return this.$route.path === '/about'
+      return (
+        this.$route.path === '/about'
+      )
     }
   },
   watch: {

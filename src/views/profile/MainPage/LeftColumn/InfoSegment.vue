@@ -42,6 +42,12 @@
     <WasOnlineSection
       :profile-data="profileData"
     />
+
+    <i
+      v-if="status"
+      class="status main-text-container"
+      v-html="status"
+    />
   </BaseSegmentContainer>
 </template>
 
@@ -93,6 +99,9 @@ export default {
     },
     isPrivate () {
       return this.profileData.private
+    },
+    status () {
+      return this.profileData.status
     }
   }
 }
@@ -110,4 +119,8 @@ export default {
   @extend .absolute
   top: 0.25em
   right: 0.25em
+
+.status
+  @extend .word-break-break-word
+  margin-top: 0.25em
 </style>

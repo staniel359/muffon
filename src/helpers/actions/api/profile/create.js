@@ -14,6 +14,7 @@ export default function (
     birthdate,
     country,
     city,
+    status,
     isPrivate,
     isRemember
   }
@@ -31,6 +32,7 @@ export default function (
     birthdate,
     country,
     city,
+    status,
     private: (
       isPrivate ? 1 : 0
     )

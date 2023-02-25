@@ -20,6 +20,10 @@
 
           <BaseProfileCityField />
 
+          <BaseProfileStatusField
+            @submit="handleSubmit"
+          />
+
           <BasePrivateField
             model="profile"
           />
@@ -41,6 +45,8 @@ import BaseProfileCountryField
   from '@/components/fields/profile/BaseProfileCountryField.vue'
 import BaseProfileCityField
   from '@/components/fields/profile/BaseProfileCityField.vue'
+import BaseProfileStatusField
+  from '@/components/fields/profile/BaseProfileStatusField.vue'
 import BasePrivateField from '@/components/fields/BasePrivateField.vue'
 
 export default {
@@ -52,10 +58,12 @@ export default {
     BaseProfileBirthdateField,
     BaseProfileCountryField,
     BaseProfileCityField,
+    BaseProfileStatusField,
     BasePrivateField
   },
   emits: [
-    'imageChange'
+    'imageChange',
+    'submit'
   ],
   computed: {
     extraText () {
@@ -71,6 +79,11 @@ export default {
       this.$emit(
         'imageChange',
         value
+      )
+    },
+    handleSubmit () {
+      this.$emit(
+        'submit'
       )
     }
   }

@@ -8,10 +8,12 @@
 
     <ExtraSection
       @image-change="handleImageChange"
+      @submit="handleSubmit"
     />
 
     <div class="submit-button-container">
       <BaseSubmitButton
+        ref="submit"
         action-key="save"
       />
     </div>
@@ -45,6 +47,14 @@ export default {
       value
     ) {
       this.image = value
+    },
+    handleSubmit () {
+      this.clickSubmit()
+    },
+    clickSubmit () {
+      this.$refs
+        .submit
+        .click()
     }
   }
 }
