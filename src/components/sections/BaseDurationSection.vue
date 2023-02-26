@@ -13,14 +13,26 @@ export default {
   name: 'BaseDurationSection',
   props: {
     duration: {
-      type: Number,
+      type: [
+        Number,
+        String
+      ],
       required: true
     }
   },
   computed: {
     durationFormatted () {
-      return formatSeconds(
-        this.duration
+      if (this.isNumber) {
+        return formatSeconds(
+          this.duration
+        )
+      } else {
+        return this.duration
+      }
+    },
+    isNumber () {
+      return (
+        typeof this.duration === 'number'
       )
     }
   }
