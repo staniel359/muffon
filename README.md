@@ -68,6 +68,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **communities**
 - **sharing** (artists / albums / tracks / videos / playlists / communities)
 - **theming** (dark mode / background change / transparency change)
+- **history** (activity / player / browser)
 
 ### Languages
 
@@ -90,7 +91,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Download
 
-[Latest (v1.3.0)](https://github.com/staniel359/muffon/releases/tag/v1.3.0)
+[Latest (v1.4.0)](https://github.com/staniel359/muffon/releases/tag/v1.4.0)
 
 ## Troubleshooting
 
