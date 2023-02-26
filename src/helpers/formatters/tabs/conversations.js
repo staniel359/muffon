@@ -23,21 +23,24 @@ export default function (
     ' | '
   )
 
-  function formatPath () {
+  function formatLink () {
     if (profileNickname) {
       return formatConversationLink(
         {
           conversationId
         }
-      ).path
+      )
     } else {
-      return formatConversationsLink().path
+      return formatConversationsLink()
     }
   }
+
+  const link = formatLink()
 
   return {
     icon: 'conversation',
     title,
-    path: formatPath()
+    link,
+    path: link.path
   }
 }

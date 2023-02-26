@@ -94,12 +94,36 @@ export default {
         'history.player'
       )
     },
+    browserHistoryData () {
+      return {
+        page: 1,
+        total_pages: 1,
+        routes:
+          this.browserRoutesCreatedSorted
+      }
+    },
+    browserRoutesCreatedSorted () {
+      return sortByCreated(
+        {
+          collection:
+            this.browserRoutes,
+          order: this.order
+        }
+      )
+    },
+    browserRoutes () {
+      return electronStore.get(
+        'history.browser'
+      )
+    },
     responsePageLimit () {
       if (this.isGetData) {
         return null
       } else {
         if (this.isPlayerScope) {
           return this.playerTracksCount
+        } else if (this.isBrowserScope) {
+          return this.browserRoutesCount
         } else {
           return null
         }
@@ -112,6 +136,14 @@ export default {
     },
     playerTracksCount () {
       return this.playerTracks.length
+    },
+    isBrowserScope () {
+      return (
+        this.scope === 'browser'
+      )
+    },
+    browserRoutesCount () {
+      return this.browserRoutes.length
     }
   },
   watch: {
@@ -126,6 +158,9 @@ export default {
       if (this.isPlayerScope) {
         this.historyData =
           this.playerHistoryData
+      } else if (this.isBrowserScope) {
+        this.historyData =
+          this.browserHistoryData
       } else {
         this.historyData = {}
       }
@@ -138,6 +173,9 @@ export default {
         if (this.isPlayerScope) {
           this.historyData =
             this.playerHistoryData
+        } else if (this.isBrowserScope) {
+          this.historyData =
+            this.browserHistoryData
         }
       }
     },

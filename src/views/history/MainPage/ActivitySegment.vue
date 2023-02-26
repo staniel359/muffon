@@ -1,12 +1,9 @@
 <template>
-  <BaseHistoryPaginatedPageContainer
-    model="event"
+  <BaseHistoryPaginatedSegmentContainer
     :scope="scope"
     :list-scope="listScope"
     :limit="limit"
-    :order="order"
-    is-with-top-segment
-    is-with-order-change
+    :header-link="headerLink"
   >
     <template
       #default="slotProps"
@@ -15,31 +12,34 @@
         :events="slotProps[listScope]"
       />
     </template>
-  </BaseHistoryPaginatedPageContainer>
+  </BaseHistoryPaginatedSegmentContainer>
 </template>
 
 <script>
-import BaseHistoryPaginatedPageContainer
-  from '@/components/containers/pages/history/BaseHistoryPaginatedPageContainer.vue'
+import BaseHistoryPaginatedSegmentContainer
+  from '@/components/containers/segments/history/BaseHistoryPaginatedSegmentContainer.vue'
 import BaseHistoryEventsSimpleList
   from '@/components/lists/history/events/BaseHistoryEventsSimpleList.vue'
-import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  activity as formatHistoryActivityLink
+} from '@/helpers/formatters/links/history'
 
 export default {
-  name: 'EventsPage',
+  name: 'ActivitySegment',
   components: {
-    BaseHistoryPaginatedPageContainer,
+    BaseHistoryPaginatedSegmentContainer,
     BaseHistoryEventsSimpleList
   },
-  mixins: [
-    orderChangeMixin
-  ],
   data () {
     return {
-      limit: 50,
+      limit: 10,
       scope: 'activity',
-      listScope: 'events',
-      order: 'createdDesc'
+      listScope: 'events'
+    }
+  },
+  computed: {
+    headerLink () {
+      return formatHistoryActivityLink()
     }
   }
 }

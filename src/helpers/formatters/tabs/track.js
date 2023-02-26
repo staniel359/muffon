@@ -39,7 +39,7 @@ export default function (
     ' | '
   )
 
-  function formatPath () {
+  function formatLink () {
     switch (scope) {
       case 'similar':
         return formatTrackSimilarLink(
@@ -47,7 +47,7 @@ export default function (
             artistName,
             trackTitle
           }
-        ).path
+        )
       default:
         return formatTrackMainLink(
           {
@@ -55,13 +55,16 @@ export default function (
             trackTitle,
             sourceParams
           }
-        ).path
+        )
     }
   }
+
+  const link = formatLink()
 
   return {
     icon: 'track',
     title,
-    path: formatPath()
+    link,
+    path: link.path
   }
 }

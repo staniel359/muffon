@@ -93,6 +93,10 @@ const schema = {
     type: 'array',
     default: []
   },
+  'history.browser': {
+    type: 'array',
+    default: []
+  },
   'player.currentTrackId': {
     type: [
       'null',

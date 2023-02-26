@@ -2,11 +2,13 @@
   <BaseHistoryPageContainer
     :is-get-data="false"
   >
-    <EventsSegment
+    <ActivitySegment
       v-if="profileId"
     />
 
     <PlayerSegment />
+
+    <BrowserSegment />
   </BaseHistoryPageContainer>
 </template>
 
@@ -17,15 +19,17 @@ import {
 import profileStore from '@/stores/profile'
 import BaseHistoryPageContainer
   from '@/components/containers/pages/history/BaseHistoryPageContainer.vue'
-import EventsSegment from './MainPage/EventsSegment.vue'
+import ActivitySegment from './MainPage/ActivitySegment.vue'
 import PlayerSegment from './MainPage/PlayerSegment.vue'
+import BrowserSegment from './MainPage/BrowserSegment.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseHistoryPageContainer,
-    EventsSegment,
-    PlayerSegment
+    ActivitySegment,
+    PlayerSegment,
+    BrowserSegment
   },
   computed: {
     ...mapState(

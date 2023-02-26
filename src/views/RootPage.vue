@@ -22,6 +22,13 @@
     v-if="isRenderPlayingPublicObserver"
   />
 
+  <TheAnonymousBrowserObserver
+    v-if="isProfileAnonymous"
+  />
+  <TheBrowserObserver
+    v-else-if="profileId"
+  />
+
   <TheDiscordObserver
     v-if="isPlayerWithDiscordRichPresence"
   />
@@ -62,6 +69,10 @@ import ThePlayingObserver
   from '@/components/layout/observers/ThePlayingObserver.vue'
 import ThePlayingPublicObserver
   from '@/components/layout/observers/ThePlayingPublicObserver.vue'
+import TheAnonymousBrowserObserver
+  from '@/components/layout/observers/TheAnonymousBrowserObserver.vue'
+import TheBrowserObserver
+  from '@/components/layout/observers/TheBrowserObserver.vue'
 import TheDiscordObserver
   from '@/components/layout/observers/TheDiscordObserver.vue'
 import TheExitObserver
@@ -84,6 +95,8 @@ export default {
     TheAnonymousPlayingObserver,
     ThePlayingObserver,
     ThePlayingPublicObserver,
+    TheAnonymousBrowserObserver,
+    TheBrowserObserver,
     TheDiscordObserver,
     TheExitObserver,
     TheExternalUrlsObserver,

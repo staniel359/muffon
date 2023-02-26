@@ -1,7 +1,9 @@
 import i18n from '#/plugins/i18n'
 import {
   main as formatHistoryMainLink,
-  events as formatHistoryEventsLink
+  activity as formatHistoryActivityLink,
+  player as formatHistoryPlayerLink,
+  browser as formatHistoryBrowserLink
 } from '@/helpers/formatters/links/history'
 
 export default function (
@@ -21,18 +23,27 @@ export default function (
     }
   }
 
-  function formatPath () {
+  const title = formatTitle()
+
+  function formatLink () {
     switch (scope) {
-      case 'events':
-        return formatHistoryEventsLink().path
+      case 'activity':
+        return formatHistoryActivityLink()
+      case 'player':
+        return formatHistoryPlayerLink()
+      case 'browser':
+        return formatHistoryBrowserLink()
       default:
-        return formatHistoryMainLink().path
+        return formatHistoryMainLink()
     }
   }
 
+  const link = formatLink()
+
   return {
     icon: 'history',
-    title: formatTitle(),
-    path: formatPath()
+    title,
+    link,
+    path: link.path
   }
 }

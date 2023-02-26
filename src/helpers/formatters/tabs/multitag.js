@@ -8,13 +8,12 @@ export default function () {
     'navigation.multitag'
   )
 
-  const {
-    path
-  } = formatMultitagLink()
+  const link = formatMultitagLink()
 
   return {
     icon: 'multitag',
     title,
-    path
+    link,
+    path: link.path
   }
 }

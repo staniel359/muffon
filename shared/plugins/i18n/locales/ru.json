@@ -52,10 +52,12 @@
     "history": "История",
     "historyModels": {
       "activity": "История активности",
-      "player": "История проигрывателя"
+      "player": "История проигрывателя",
+      "browser": "История браузера"
     },
     "activity": "Активность",
     "player": "Проигрыватель",
+    "browser": "Браузер",
     "settings": "Настройки",
     "model": {
       "artists": "Исполнители {modelName}",

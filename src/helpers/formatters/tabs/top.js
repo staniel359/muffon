@@ -24,24 +24,29 @@ export default function (
     }
   }
 
-  function formatPath () {
+  const title = formatTitle()
+
+  function formatLink () {
     switch (scope) {
       case 'artists':
-        return formatTopArtistsLink().path
+        return formatTopArtistsLink()
       case 'albums':
-        return formatTopAlbumsLink().path
+        return formatTopAlbumsLink()
       case 'tracks':
-        return formatTopTracksLink().path
+        return formatTopTracksLink()
       case 'tags':
-        return formatTopTagsLink().path
+        return formatTopTagsLink()
       default:
-        return formatTopMainLink().path
+        return formatTopMainLink()
     }
   }
 
+  const link = formatLink()
+
   return {
     icon: 'top',
-    title: formatTitle(),
-    path: formatPath()
+    title,
+    link,
+    path: link.path
   }
 }

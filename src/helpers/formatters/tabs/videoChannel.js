@@ -1,7 +1,8 @@
 import i18n from '#/plugins/i18n'
 import {
   main as formatVideoChannelMainLink,
-  videos as formatVideoChannelVideosLink
+  videos as formatVideoChannelVideosLink,
+  playlists as formatVideoChannelPlaylistsLink
 } from '@/helpers/formatters/links/videoChannel'
 
 export default function (
@@ -24,26 +25,37 @@ export default function (
     }
   }
 
-  function formatPath () {
+  const title = formatTitle()
+
+  function formatLink () {
     switch (scope) {
       case 'videos':
         return formatVideoChannelVideosLink(
           {
             channelId
           }
-        ).path
+        )
+      case 'playlists':
+        return formatVideoChannelPlaylistsLink(
+          {
+            channelId
+          }
+        )
       default:
         return formatVideoChannelMainLink(
           {
             channelId
           }
-        ).path
+        )
     }
   }
 
+  const link = formatLink()
+
   return {
     icon: 'videoChannel',
-    title: formatTitle(),
-    path: formatPath()
+    title,
+    link,
+    path: link.path
   }
 }

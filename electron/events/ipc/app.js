@@ -11,6 +11,7 @@ const {
   handleCheckNativeTheme,
   handleLogout,
   handleAccountDelete,
+  handleNavigate,
   handleExit
 } = require(
   '../../handlers/ipc/app'
@@ -49,6 +50,11 @@ ipcMain.on(
 ipcMain.on(
   'account-delete',
   handleAccountDelete
+)
+
+ipcMain.on(
+  'navigate',
+  handleNavigate
 )
 
 ipcMain.on(

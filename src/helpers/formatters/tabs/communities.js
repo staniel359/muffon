@@ -8,13 +8,12 @@ export default function () {
     'navigation.communities'
   )
 
-  const {
-    path
-  } = formatCommunitiesLink()
+  const link = formatCommunitiesLink()
 
   return {
     icon: 'community',
     title,
-    path
+    link,
+    path: link.path
   }
 }

@@ -6,6 +6,7 @@
   >
     <slot
       :history-data="historyData"
+      :response-page-limit="responsePageLimit"
       :is-loading="isLoading"
       :error="error"
     />
@@ -17,6 +18,9 @@ import electronStore from '#/plugins/electronStore'
 import BaseHeaderSegmentsContainer
   from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import getHistory from '@/helpers/actions/api/history/get'
+import {
+  sortByCreated
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseHistorySegmentContainer',
@@ -58,13 +62,67 @@ export default {
       return {
         page: 1,
         total_pages: 1,
-        tracks: this.playerTracks
+        tracks:
+          this.playerTracksCreatedSorted
       }
+    },
+    playerTracksCreatedSorted () {
+      return sortByCreated(
+        {
+          collection: this.playerTracks,
+          order: 'createdDesc'
+        }
+      )
     },
     playerTracks () {
       return electronStore.get(
         'history.player'
       )
+    },
+    isBrowserScope () {
+      return (
+        this.scope === 'browser'
+      )
+    },
+    browserHistoryData () {
+      return {
+        page: 1,
+        total_pages: 1,
+        routes:
+          this.browserRoutesCreatedSorted
+      }
+    },
+    browserRoutesCreatedSorted () {
+      return sortByCreated(
+        {
+          collection: this.browserRoutes,
+          order: 'createdDesc'
+        }
+      )
+    },
+    browserRoutes () {
+      return electronStore.get(
+        'history.browser'
+      )
+    },
+    responsePageLimit () {
+      if (this.isGetData) {
+        return null
+      } else {
+        if (this.isPlayerScope) {
+          return this.playerTracksCount
+        } else if (this.isBrowserScope) {
+          return this.browserRoutesCount
+        } else {
+          return null
+        }
+      }
+    },
+    playerTracksCount () {
+      return this.playerTracks.length
+    },
+    browserRoutesCount () {
+      return this.browserRoutes.length
     }
   },
   mounted () {
@@ -74,6 +132,9 @@ export default {
       if (this.isPlayerScope) {
         this.historyData =
           this.playerHistoryData
+      } else if (this.isBrowserScope) {
+        this.historyData =
+          this.browserHistoryData
       }
     }
   },

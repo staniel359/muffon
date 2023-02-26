@@ -3,7 +3,8 @@ import {
   main as formatProfileFavoritesMainLink,
   artists as formatProfileFavoritesArtistsLink,
   albums as formatProfileFavoritesAlbumsLink,
-  tracks as formatProfileFavoritesTracksLink
+  tracks as formatProfileFavoritesTracksLink,
+  videos as formatProfileFavoritesVideosLink
 } from '@/helpers/formatters/links/profile/favorites'
 
 export default function (
@@ -31,38 +32,49 @@ export default function (
     }
   }
 
-  function formatPath () {
+  const title = formatTitle()
+
+  function formatLink () {
     switch (scope) {
       case 'artists':
         return formatProfileFavoritesArtistsLink(
           {
             profileId
           }
-        ).path
+        )
       case 'albums':
         return formatProfileFavoritesAlbumsLink(
           {
             profileId
           }
-        ).path
+        )
       case 'tracks':
         return formatProfileFavoritesTracksLink(
           {
             profileId
           }
-        ).path
+        )
+      case 'videos':
+        return formatProfileFavoritesVideosLink(
+          {
+            profileId
+          }
+        )
       default:
         return formatProfileFavoritesMainLink(
           {
             profileId
           }
-        ).path
+        )
     }
   }
 
+  const link = formatLink()
+
   return {
     icon: 'favorite',
-    title: formatTitle(),
-    path: formatPath()
+    title,
+    link,
+    path: link.path
   }
 }

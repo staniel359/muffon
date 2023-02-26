@@ -8,13 +8,12 @@ export default function () {
     'navigation.profiles'
   )
 
-  const {
-    path
-  } = formatProfilesLink()
+  const link = formatProfilesLink()
 
   return {
     icon: 'profile',
     title,
-    path
+    link,
+    path: link.path
   }
 }

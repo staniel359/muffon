@@ -8,13 +8,12 @@ export default function () {
     'navigation.feed'
   )
 
-  const {
-    path
-  } = formatFeedLink()
+  const link = formatFeedLink()
 
   return {
     icon: 'feed',
     title,
-    path
+    link,
+    path: link.path
   }
 }

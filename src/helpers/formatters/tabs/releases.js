@@ -22,20 +22,25 @@ export default function (
     }
   }
 
-  function formatPath () {
+  const title = formatTitle()
+
+  function formatLink () {
     switch (scope) {
       case 'new':
-        return formatReleasesNewLink().path
+        return formatReleasesNewLink()
       case 'upcoming':
-        return formatReleasesUpcomingLink().path
+        return formatReleasesUpcomingLink()
       default:
-        return formatReleasesMainLink().path
+        return formatReleasesMainLink()
     }
   }
 
+  const link = formatLink()
+
   return {
     icon: 'release',
-    title: formatTitle(),
-    path: formatPath()
+    title,
+    link,
+    path: link.path
   }
 }

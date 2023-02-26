@@ -8,13 +8,12 @@ export default function () {
     'navigation.radio'
   )
 
-  const {
-    path
-  } = formatRadioLink()
+  const link = formatRadioLink()
 
   return {
     icon: 'radio',
     title,
-    path
+    link,
+    path: link.path
   }
 }

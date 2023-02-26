@@ -6,11 +6,11 @@ export function main () {
   }
 }
 
-export function events () {
+export function activity () {
   return {
-    name: 'HistoryEventsPage',
+    name: 'HistoryActivityPage',
     params: {},
-    path: 'history/events'
+    path: 'history/activity'
   }
 }
 
@@ -19,5 +19,13 @@ export function player () {
     name: 'HistoryPlayerPage',
     params: {},
     path: 'history/player'
+  }
+}
+
+export function browser () {
+  return {
+    name: 'HistoryBrowserPage',
+    params: {},
+    path: 'history/browser'
   }
 }

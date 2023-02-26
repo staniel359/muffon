@@ -38,7 +38,7 @@ export default function (
     ' | '
   )
 
-  function formatPath () {
+  function formatLink () {
     switch (scope) {
       default:
         return formatAlbumMainLink(
@@ -47,13 +47,16 @@ export default function (
             albumTitle,
             sourceParams
           }
-        ).path
+        )
     }
   }
+
+  const link = formatLink()
 
   return {
     icon: 'album',
     title,
-    path: formatPath()
+    link,
+    path: link.path
   }
 }

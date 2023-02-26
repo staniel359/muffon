@@ -52,10 +52,12 @@
     "history": "Cronologia",
     "historyModels": {
       "activity": "Cronologia Attività",
-      "player": "Cronologia riproduttore"
+      "player": "Cronologia riproduttore",
+      "browser": "Cronologia del browser"
     },
     "activity": "Attività",
     "player": "Riproduttore",
+    "browser": "Browser",
     "settings": "Impostazioni",
     "model": {
       "artists": "{modelName} artista",

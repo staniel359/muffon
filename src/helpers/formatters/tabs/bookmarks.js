@@ -3,7 +3,8 @@ import {
   main as formatBookmarksMainLink,
   artists as formatBookmarksArtistsLink,
   albums as formatBookmarksAlbumsLink,
-  tracks as formatBookmarksTracksLink
+  tracks as formatBookmarksTracksLink,
+  videos as formatBookmarksVideosLink
 } from '@/helpers/formatters/links/bookmarks'
 
 export default function (
@@ -23,22 +24,29 @@ export default function (
     }
   }
 
-  function formatPath () {
+  const title = formatTitle()
+
+  function formatLink () {
     switch (scope) {
       case 'artists':
-        return formatBookmarksArtistsLink().path
+        return formatBookmarksArtistsLink()
       case 'albums':
-        return formatBookmarksAlbumsLink().path
+        return formatBookmarksAlbumsLink()
       case 'tracks':
-        return formatBookmarksTracksLink().path
+        return formatBookmarksTracksLink()
+      case 'videos':
+        return formatBookmarksVideosLink()
       default:
-        return formatBookmarksMainLink().path
+        return formatBookmarksMainLink()
     }
   }
 
+  const link = formatLink()
+
   return {
     icon: 'bookmark',
-    title: formatTitle(),
-    path: formatPath()
+    title,
+    link,
+    path: link.path
   }
 }

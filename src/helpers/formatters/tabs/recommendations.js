@@ -8,13 +8,12 @@ export default function () {
     'navigation.recommendations'
   )
 
-  const {
-    path
-  } = formatRecommendationsLink()
+  const link = formatRecommendationsLink()
 
   return {
     icon: 'recommendation',
     title,
-    path
+    link,
+    path: link.path
   }
 }

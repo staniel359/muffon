@@ -40,26 +40,29 @@ export default function (
     ' | '
   )
 
-  function formatPath () {
+  function formatLink () {
     switch (scope) {
       case 'related':
         return formatVideoRelatedLink(
           {
             videoId
           }
-        ).path
+        )
       default:
         return formatVideoMainLink(
           {
             videoId
           }
-        ).path
+        )
     }
   }
+
+  const link = formatLink()
 
   return {
     icon: 'video',
     title,
-    path: formatPath()
+    link,
+    path: link.path
   }
 }

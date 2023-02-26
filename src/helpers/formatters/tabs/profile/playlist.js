@@ -27,9 +27,7 @@ export default function (
     ' | '
   )
 
-  const {
-    path
-  } = formatProfilePlaylistLink(
+  const link = formatProfilePlaylistLink(
     {
       profileId,
       playlistId
@@ -39,6 +37,7 @@ export default function (
   return {
     icon: 'playlist',
     title,
-    path
+    link,
+    path: link.path
   }
 }

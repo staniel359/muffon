@@ -25,38 +25,43 @@ export default function (
     }
   }
 
-  function formatPath () {
+  const title = formatTitle()
+
+  function formatLink () {
     switch (scope) {
       case 'artists':
         return formatTagArtistsLink(
           {
             tagName
           }
-        ).path
+        )
       case 'albums':
         return formatTagAlbumsLink(
           {
             tagName
           }
-        ).path
+        )
       case 'tracks':
         return formatTagTracksLink(
           {
             tagName
           }
-        ).path
+        )
       default:
         return formatTagMainLink(
           {
             tagName
           }
-        ).path
+        )
     }
   }
 
+  const link = formatLink()
+
   return {
     icon: 'tag',
-    title: formatTitle(),
-    path: formatPath()
+    title,
+    link,
+    path: link.path
   }
 }

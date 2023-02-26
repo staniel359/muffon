@@ -26,6 +26,8 @@ export default function (
     }
   }
 
+  const icon = formatIcon()
+
   function formatTitle () {
     if (scope) {
       return i18n.global.t(
@@ -39,38 +41,43 @@ export default function (
     }
   }
 
-  function formatPath () {
+  const title = formatTitle()
+
+  function formatLink () {
     switch (scope) {
       case 'posts':
         return formatProfilePostsLink(
           {
             profileId
           }
-        ).path
+        )
       case 'playlists':
         return formatProfilePlaylistsLink(
           {
             profileId
           }
-        ).path
+        )
       case 'communities':
         return formatProfileCommunitiesLink(
           {
             profileId
           }
-        ).path
+        )
       default:
         return formatProfileMainLink(
           {
             profileId
           }
-        ).path
+        )
     }
   }
 
+  const link = formatLink()
+
   return {
-    icon: formatIcon(),
-    title: formatTitle(),
-    path: formatPath()
+    icon,
+    title,
+    link,
+    path: link.path
   }
 }

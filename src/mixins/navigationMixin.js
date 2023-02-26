@@ -1,12 +1,12 @@
 import {
+  ipcRenderer
+} from 'electron'
+import {
   mapState,
   mapActions
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
-import {
-  ipcRenderer
-} from 'electron'
 
 export default {
   data () {
@@ -26,7 +26,21 @@ export default {
       {
         profileLanguage: 'language'
       }
-    )
+    ),
+    isAddRouteToHistory () {
+      return !!this.$route.name
+    },
+    routeString () {
+      return JSON.stringify(
+        this.routeFormatted
+      )
+    },
+    routeFormatted () {
+      return {
+        name: this.$route.name,
+        data: this.navigationData
+      }
+    }
   },
   watch: {
     profileLanguage:
@@ -35,6 +49,8 @@ export default {
   activated () {
     if (this.isRefreshNavigation) {
       this.setNavigation()
+
+      this.addRouteToHistory()
     }
   },
   methods: {
@@ -48,6 +64,8 @@ export default {
       this.setNavigation()
 
       this.isRefreshNavigation = true
+
+      this.addRouteToHistory()
     },
     handleProfileLanguageChange () {
       this.setNavigation()
@@ -67,6 +85,18 @@ export default {
           data: this.tabData
         }
       )
+    },
+    addRouteToHistory () {
+      if (this.isAddRouteToHistory) {
+        const data = {
+          route: this.routeString
+        }
+
+        ipcRenderer.send(
+          'navigate',
+          data
+        )
+      }
     }
   }
 }

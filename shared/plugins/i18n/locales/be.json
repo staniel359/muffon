@@ -52,10 +52,12 @@
     "history": "Гісторыя",
     "historyModels": {
       "activity": "Гісторыя актыўнасці",
-      "player": "Гісторыя прайгравальніка"
+      "player": "Гісторыя прайгравальніка",
+      "browser": "Гісторыя браўзера"
     },
     "activity": "Актыўнасць",
     "player": "Прайгравальнік",
+    "browser": "Браўзер",
     "settings": "Налады",
     "model": {
       "artists": "Выканаўцы {modelName}",

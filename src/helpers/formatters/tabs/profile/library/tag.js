@@ -41,7 +41,7 @@ export default function (
     ' | '
   )
 
-  function formatPath () {
+  function formatLink () {
     switch (scope) {
       case 'artists':
         return formatProfileLibraryTagArtistsLink(
@@ -49,20 +49,23 @@ export default function (
             profileId,
             libraryTagId
           }
-        ).path
+        )
       default:
         return formatProfileLibraryTagMainLink(
           {
             profileId,
             libraryTagId
           }
-        ).path
+        )
     }
   }
+
+  const link = formatLink()
 
   return {
     icon: 'tag',
     title,
-    path: formatPath()
+    link,
+    path: link.path
   }
 }

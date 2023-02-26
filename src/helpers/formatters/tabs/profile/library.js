@@ -3,7 +3,8 @@ import {
   main as formatProfileLibraryMainLink,
   artists as formatProfileLibraryArtistsLink,
   albums as formatProfileLibraryAlbumsLink,
-  tracks as formatProfileLibraryTracksLink
+  tracks as formatProfileLibraryTracksLink,
+  tags as formatProfileLibraryTagsLink
 } from '@/helpers/formatters/links/profile/library'
 
 export default function (
@@ -31,38 +32,49 @@ export default function (
     }
   }
 
-  function formatPath () {
+  const title = formatTitle()
+
+  function formatLink () {
     switch (scope) {
       case 'artists':
         return formatProfileLibraryArtistsLink(
           {
             profileId
           }
-        ).path
+        )
       case 'albums':
         return formatProfileLibraryAlbumsLink(
           {
             profileId
           }
-        ).path
+        )
       case 'tracks':
         return formatProfileLibraryTracksLink(
           {
             profileId
           }
-        ).path
+        )
+      case 'tags':
+        return formatProfileLibraryTagsLink(
+          {
+            profileId
+          }
+        )
       default:
         return formatProfileLibraryMainLink(
           {
             profileId
           }
-        ).path
+        )
     }
   }
 
+  const link = formatLink()
+
   return {
     icon: 'library',
-    title: formatTitle(),
-    path: formatPath()
+    title,
+    link,
+    path: link.path
   }
 }

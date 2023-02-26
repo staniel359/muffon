@@ -52,10 +52,12 @@
     "history": "History",
     "historyModels": {
       "activity": "Activity history",
-      "player": "Player history"
+      "player": "Player history",
+      "browser": "Browser history"
     },
     "activity": "Activity",
     "player": "Player",
+    "browser": "Browser",
     "settings": "Settings",
     "model": {
       "artists": "{modelName} artists",

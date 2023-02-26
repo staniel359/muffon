@@ -8,13 +8,12 @@ export default function () {
     'navigation.savedTracks'
   )
 
-  const {
-    path
-  } = formatSavedTracksLink()
+  const link = formatSavedTracksLink()
 
   return {
     icon: 'savedTrack',
     title,
-    path
+    link,
+    path: link.path
   }
 }

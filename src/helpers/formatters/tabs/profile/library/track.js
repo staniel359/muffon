@@ -1,6 +1,8 @@
 import i18n from '#/plugins/i18n'
 import {
-  main as formatProfileLibraryTrackMainLink
+  main as formatProfileLibraryTrackMainLink,
+  albums as formatProfileLibraryTrackAlbumsLink,
+  playlists as formatProfileLibraryTrackPlaylistsLink
 } from '@/helpers/formatters/links/profile/library/track'
 
 export default function (
@@ -48,21 +50,38 @@ export default function (
     ' | '
   )
 
-  function formatPath () {
+  function formatLink () {
     switch (scope) {
+      case 'albums':
+        return formatProfileLibraryTrackAlbumsLink(
+          {
+            profileId,
+            libraryTrackId
+          }
+        )
+      case 'playlists':
+        return formatProfileLibraryTrackPlaylistsLink(
+          {
+            profileId,
+            libraryTrackId
+          }
+        )
       default:
         return formatProfileLibraryTrackMainLink(
           {
             profileId,
             libraryTrackId
           }
-        ).path
+        )
     }
   }
+
+  const link = formatLink()
 
   return {
     icon: 'track',
     title,
-    path: formatPath()
+    link,
+    path: link.path
   }
 }

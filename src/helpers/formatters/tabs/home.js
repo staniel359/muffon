@@ -8,13 +8,12 @@ export default function () {
     'navigation.home'
   )
 
-  const {
-    path
-  } = formatHomeLink()
+  const link = formatHomeLink()
 
   return {
     icon: 'home',
     title,
-    path
+    link,
+    path: link.path
   }
 }

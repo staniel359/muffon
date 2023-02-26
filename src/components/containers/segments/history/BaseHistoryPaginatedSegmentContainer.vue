@@ -15,6 +15,7 @@
         :error="segmentSlotProps.error"
         :scope="listScopeFormatted"
         :limit="limit"
+        :response-page-limit="segmentSlotProps.responsePageLimit"
         @focus="handleFocus"
       >
         <template

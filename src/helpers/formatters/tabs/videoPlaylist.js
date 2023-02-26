@@ -39,20 +39,23 @@ export default function (
     ' | '
   )
 
-  function formatPath () {
+  function formatLink () {
     switch (scope) {
       default:
         return formatVideoPlaylistMainLink(
           {
             playlistId
           }
-        ).path
+        )
     }
   }
+
+  const link = formatLink()
 
   return {
     icon: 'videoPlaylist',
     title,
-    path: formatPath()
+    link,
+    path: link.path
   }
 }

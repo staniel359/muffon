@@ -8,13 +8,12 @@ export default function () {
     'navigation.playlists'
   )
 
-  const {
-    path
-  } = formatPlaylistsLink()
+  const link = formatPlaylistsLink()
 
   return {
     icon: 'playlist',
     title,
-    path
+    link,
+    path: link.path
   }
 }

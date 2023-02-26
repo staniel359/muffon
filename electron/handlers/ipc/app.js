@@ -19,6 +19,9 @@ const callLogout = require(
 const callAccountDelete = require(
   '../../actions/app/callAccountDelete'
 )
+const callNavigate = require(
+  '../../actions/app/callNavigate'
+)
 const exit = require(
   '../../actions/app/exit'
 )
@@ -66,6 +69,15 @@ function handleAccountDelete () {
   callAccountDelete()
 }
 
+function handleNavigate (
+  _,
+  value
+) {
+  callNavigate(
+    value
+  )
+}
+
 function handleExit () {
   exit()
 }
@@ -78,5 +90,6 @@ module.exports = {
   handleCheckNativeTheme,
   handleLogout,
   handleAccountDelete,
+  handleNavigate,
   handleExit
 }

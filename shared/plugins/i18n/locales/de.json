@@ -52,10 +52,12 @@
     "history": "Verlauf",
     "historyModels": {
       "activity": "Aktivitätenverlauf",
-      "player": "Musikspielerverlauf"
+      "player": "Musikspielerverlauf",
+      "browser": "Browserverlauf"
     },
     "activity": "Aktivität",
     "player": "Musikspieler",
+    "browser": "Browser",
     "settings": "Einstellungen",
     "model": {
       "artists": "{modelName} Künstler",
