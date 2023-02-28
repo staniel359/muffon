@@ -4,20 +4,32 @@
     class="item main-sidebar-item main-menu-item"
     :class="{
       inverted: isDarkMode,
-      'primary active': isMatchedPath
+      'primary active': isActive
     }"
     :link="link"
     @click="handleClick"
   >
-    <div class="icon-container">
+    <div class="icon-image-container">
       <BaseIcon
+        v-if="icon"
         class="grey"
         :icon="icon"
+      />
+      <BaseImage
+        v-else-if="image"
+        class="circular bordered"
+        :model="imageModel"
+        :image="image"
       />
     </div>
 
     <div class="content-container">
+      <strong
+        v-if="isTextStrong"
+        v-text="text"
+      />
       <span
+        v-else
         v-text="text"
       />
     </div>
@@ -32,23 +44,25 @@ import layoutStore from '@/stores/layout'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
 
 export default {
   name: 'BaseSidebarItem',
   components: {
     BaseLinkContainer,
-    BaseIcon
+    BaseIcon,
+    BaseImage
   },
   props: {
-    icon: {
-      type: String,
-      required: true
-    },
     text: {
       type: String,
       required: true
     },
-    link: Object
+    link: Object,
+    icon: String,
+    image: String,
+    imageModel: String,
+    isTextStrong: Boolean
   },
   emits: [
     'click'
@@ -67,16 +81,34 @@ export default {
         return 'a'
       }
     },
-    isMatchedPath () {
-      return this.currentPath.includes(
-        this.path
+    isActive () {
+      return (
+        this.isPathsMatch &&
+          this.isParamsMatch
       )
     },
-    currentPath () {
-      return this.$route.path
+    isPathsMatch () {
+      return this.$route
+        .path
+        .includes(
+          this.link?.path
+        )
     },
-    path () {
-      return this.link?.path
+    isParamsMatch () {
+      return (
+        this.routeParamsString ===
+          this.linkParamsString
+      )
+    },
+    routeParamsString () {
+      return JSON.stringify(
+        this.$route.params
+      )
+    },
+    linkParamsString () {
+      return JSON.stringify(
+        this.link?.params
+      )
     }
   },
   methods: {

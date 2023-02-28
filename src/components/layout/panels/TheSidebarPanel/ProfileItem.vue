@@ -1,37 +1,20 @@
 <template>
-  <BaseLinkContainer
-    class="item main-sidebar-item main-menu-item top-item"
-    :class="{
-      inverted: isDarkMode,
-      'primary active': isMatchedPath
-    }"
+  <BaseSidebarItem
+    class="top-item"
+    image-model="profile"
     :link="profileMainLink"
-  >
-    <div class="icon-container">
-      <BaseImage
-        class="circular bordered"
-        model="profile"
-        :image="imageData?.extrasmall"
-      />
-    </div>
-
-    <div class="content-container">
-      <strong
-        v-text="nickname"
-      />
-    </div>
-  </BaseLinkContainer>
+    :image="imageData?.extrasmall"
+    :text="nickname"
+    is-text-strong
+  />
 </template>
 
 <script>
 import {
   mapState
 } from 'pinia'
-import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
-import BaseLinkContainer
-  from '@/components/containers/links/BaseLinkContainer.vue'
-import BaseImage from '@/components/images/BaseImage.vue'
+import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
   main as formatProfileMainLink
 } from '@/helpers/formatters/links/profile'
@@ -39,34 +22,16 @@ import {
 export default {
   name: 'ProfileItem',
   components: {
-    BaseLinkContainer,
-    BaseImage
-  },
-  props: {
-    profileId: {
-      type: String,
-      required: true
-    }
+    BaseSidebarItem
   },
   computed: {
     ...mapState(
-      layoutStore,
-      [
-        'isDarkMode'
-      ]
-    ),
-    ...mapState(
       profileStore,
       {
+        profileId: 'id',
         profileInfo: 'info'
       }
     ),
-    imageData () {
-      return this.profileInfo.image
-    },
-    nickname () {
-      return this.profileInfo.nickname
-    },
     profileMainLink () {
       return formatProfileMainLink(
         {
@@ -74,17 +39,11 @@ export default {
         }
       )
     },
-    isMatchedPath () {
-      return this.currentPath
-        .includes(
-          this.path
-        )
+    imageData () {
+      return this.profileInfo.image
     },
-    currentPath () {
-      return this.$route.path
-    },
-    path () {
-      return this.profileMainLink.path
+    nickname () {
+      return this.profileInfo.nickname
     }
   }
 }

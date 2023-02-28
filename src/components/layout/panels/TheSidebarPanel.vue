@@ -5,7 +5,6 @@
     <div class="sidebar-panel-content">
       <ProfileItem
         v-if="profileId"
-        :profile-id="profileId"
       />
       <RootItem
         v-else
