@@ -287,9 +287,8 @@
         "other": "Other"
       },
       "legal": {
-        "agree": "I agree to the ",
+        "header": "I agree to the {privacyPolicy} and the {termsAndConditions}",
         "privacyPolicy": "Privacy Policy",
-        "and": " and the ",
         "termsAndConditions": "Terms And Conditions"
       },
       "remember": "Remember me",

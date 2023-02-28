@@ -287,9 +287,8 @@
         "other": "Другой"
       },
       "legal": {
-        "agree": "Я согласен с ",
+        "header": "Я согласен с {privacyPolicy} и {termsAndConditions}",
         "privacyPolicy": "Политикой Конфиденциальности",
-        "and": " и ",
         "termsAndConditions": "Условиями Использования"
       },
       "remember": "Запомнить меня",

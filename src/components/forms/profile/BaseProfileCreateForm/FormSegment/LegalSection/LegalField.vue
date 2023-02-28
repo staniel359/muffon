@@ -4,17 +4,22 @@
       name="legal"
     >
       <template #text>
-        <span
-          v-text="agreeText"
-        />
+        <i18n-t
+          tag="span"
+          keypath="forms.fields.legal.header"
+        >
+          <template
+            #privacyPolicy
+          >
+            <PrivacyPolicyText />
+          </template>
 
-        <PrivacyPolicyText />
-
-        <span
-          v-text="andText"
-        />
-
-        <TermsAndConditionsText />
+          <template
+            #termsAndConditions
+          >
+            <TermsAndConditionsText />
+          </template>
+        </i18n-t>
       </template>
     </BaseCheckbox>
   </div>
@@ -31,18 +36,6 @@ export default {
     BaseCheckbox,
     PrivacyPolicyText,
     TermsAndConditionsText
-  },
-  computed: {
-    agreeText () {
-      return this.$t(
-        'forms.fields.legal.agree'
-      )
-    },
-    andText () {
-      return this.$t(
-        'forms.fields.legal.and'
-      )
-    }
   }
 }
 </script>

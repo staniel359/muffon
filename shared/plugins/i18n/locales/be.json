@@ -287,9 +287,8 @@
         "other": "Іншы"
       },
       "legal": {
-        "agree": "Я згодны з ",
+        "header": "Я згодны з {privacyPolicy} і {termsAndConditions}",
         "privacyPolicy": "Палітыкай Канфідэнцыяльнасці",
-        "and": " і ",
         "termsAndConditions": "Ўмовамі Выкарыстання"
       },
       "remember": "Запомніць мяне",
