@@ -88,13 +88,13 @@ export default {
       )
     },
     isFollowing () {
-      return this.otherProfileData.follower_of_profile
+      return this.otherProfileData?.follower_of_profile
     },
     otherProfileData () {
       return this.profileData.other_profile
     },
     isFollowed () {
-      return this.otherProfileData.followed_by_profile
+      return this.otherProfileData?.followed_by_profile
     }
   }
 }
