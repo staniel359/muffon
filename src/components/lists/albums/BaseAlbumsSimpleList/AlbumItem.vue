@@ -102,7 +102,7 @@
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-listened-option="isWithListenedOption"
         :is-with-share-option="isWithShareOption"
-        :is-with-delete-option="isWithDeleteOption && isSelf"
+        :is-with-delete-option="isWithDeleteOption"
         @link-click="handleLinkClick"
         @deleted="handleDeleted"
       />

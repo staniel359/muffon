@@ -129,7 +129,7 @@
       :is-with-queue-option="isWithQueueOption"
       :is-with-playlist-option="isWithPlaylistOption"
       :is-with-share-option="isWithShareOption"
-      :is-with-delete-option="isWithDeleteOption && isSelf"
+      :is-with-delete-option="isWithDeleteOption"
       :is-clearable="isClearable"
       @link-click="handleLinkClick"
       @source-click="handleSourceClick"

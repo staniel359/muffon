@@ -75,8 +75,8 @@
       <BasePlaylistOptionsDropdown
         :playlist-data="playlistData"
         :is-with-share-option="isWithShareOption"
-        :is-with-edit-option="isWithEditOption && isSelf"
-        :is-with-delete-option="isWithDeleteOption && isSelf"
+        :is-with-edit-option="isWithEditOption"
+        :is-with-delete-option="isWithDeleteOption"
         @deleted="handleDeleted"
       />
 
@@ -107,9 +107,6 @@ import {
 import {
   number as formatNumber
 } from '@/helpers/formatters'
-import {
-  isCurrentProfile
-} from '@/helpers/utils'
 
 export default {
   name: 'PlaylistItem',
@@ -229,11 +226,6 @@ export default {
     },
     uuid () {
       return this.playlistData.uuid
-    },
-    isSelf () {
-      return isCurrentProfile(
-        this.profileId
-      )
     },
     profileNickname () {
       return this.profileData.nickname
