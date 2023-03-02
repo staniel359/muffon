@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import Mousetrap from 'mousetrap'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
@@ -57,7 +58,8 @@ export default {
       key: null,
       radioData: null,
       error: null,
-      isLoading: false
+      isLoading: false,
+      nextKeys: 'shift+right'
     }
   },
   computed: {
@@ -86,7 +88,10 @@ export default {
     }
   },
   watch: {
-    trackData: 'handleTrackDataChange'
+    trackData: {
+      immediate: true,
+      handler: 'handleTrackDataChange'
+    }
   },
   mounted () {
     if (this.isGetData) {
@@ -106,11 +111,28 @@ export default {
     ) {
       if (value) {
         this.key = generateKey()
+
+        this.bindNextKeys()
+      } else {
+        this.unbindNextKeys()
       }
     },
     getData () {
       this.getRadio(
         this.radioArgs
+      )
+    },
+    bindNextKeys () {
+      Mousetrap.bind(
+        this.nextKeys,
+        this.getData
+      )
+    },
+    unbindNextKeys () {
+      Mousetrap.unbind(
+        [
+          this.nextKeys
+        ]
       )
     }
   }
