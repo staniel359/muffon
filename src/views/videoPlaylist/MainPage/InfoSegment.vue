@@ -36,6 +36,11 @@
             :model-data="playlistData"
           />
         </div>
+
+        <BaseVideoPlaylistOptionsDropdown
+          :playlist-data="playlistData"
+          is-with-share-option
+        />
       </div>
     </BaseListContainer>
   </BaseSegmentContainer>
@@ -54,6 +59,8 @@ import BaseVideoPlaylistVideosCountSection
   from '@/components/sections/videoPlaylist/BaseVideoPlaylistVideosCountSection.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
+import BaseVideoPlaylistOptionsDropdown
+  from '@/components/dropdowns/videoPlaylist/BaseVideoPlaylistOptionsDropdown.vue'
 
 export default {
   name: 'InfoSegment',
@@ -64,7 +71,8 @@ export default {
     BaseHeader,
     BaseVideoChannelLinkSection,
     BaseVideoPlaylistVideosCountSection,
-    BasePublishDateSection
+    BasePublishDateSection,
+    BaseVideoPlaylistOptionsDropdown
   },
   props: {
     playlistData: {
