@@ -89,6 +89,16 @@ export function video (
   }
 }
 
+export function videoChannel (
+  channelData
+) {
+  return {
+    model: 'video_channel',
+    youtube_id:
+      channelData.source.id
+  }
+}
+
 export function videoPlaylist (
   playlistData
 ) {

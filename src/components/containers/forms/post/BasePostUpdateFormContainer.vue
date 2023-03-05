@@ -60,6 +60,12 @@ export default {
         return []
       }
     },
+    videoChannels: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
     videoPlaylists: {
       type: Array,
       default () {
@@ -131,6 +137,7 @@ export default {
           this.albums.length ||
           this.tracks.length ||
           this.videos.length ||
+          this.videoChannels.length ||
           this.videoPlaylists.length ||
           this.playlists.length ||
           this.communities.length
@@ -187,16 +194,22 @@ export default {
         )
 
       return {
-        communityId: this.communityId,
+        communityId:
+          this.communityId,
         postId: this.postId,
-        byCommunity: !!fields.community,
+        byCommunity:
+          !!fields.community,
         text,
-        images: this.imagesFormatted,
+        images:
+          this.imagesFormatted,
         artists: this.artists,
         albums: this.albums,
         tracks: this.tracks,
         videos: this.videos,
-        videoPlaylists: this.videoPlaylists,
+        videoChannels:
+          this.videoChannels,
+        videoPlaylists:
+          this.videoPlaylists,
         playlists: this.playlists,
         communities: this.communities
       }

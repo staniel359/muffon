@@ -56,6 +56,14 @@
       :videos="videos"
     />
 
+    <BaseVideoChannelsSimpleList
+      v-if="videoChannels?.length"
+      class="main-content-section"
+      :channels="videoChannels"
+      is-with-share-option
+      is-with-model-icon
+    />
+
     <BaseVideoPlaylistsSimpleList
       v-if="videoPlaylists?.length"
       class="main-content-section"
@@ -94,6 +102,8 @@ import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseVideosEmbeddedList
   from '@/components/lists/videos/BaseVideosEmbeddedList.vue'
+import BaseVideoChannelsSimpleList
+  from '@/components/lists/videoChannels/BaseVideoChannelsSimpleList.vue'
 import BaseVideoPlaylistsSimpleList
   from '@/components/lists/videoPlaylists/BaseVideoPlaylistsSimpleList.vue'
 import BasePlaylistsSimpleList
@@ -109,6 +119,7 @@ export default {
     BaseAlbumsSimpleList,
     BaseTracksSimpleList,
     BaseVideosEmbeddedList,
+    BaseVideoChannelsSimpleList,
     BaseVideoPlaylistsSimpleList,
     BasePlaylistsSimpleList,
     BaseCommunitiesSimpleList
@@ -137,6 +148,9 @@ export default {
     },
     videos () {
       return this.modelData.attachments?.videos
+    },
+    videoChannels () {
+      return this.modelData.attachments?.video_channels
     },
     videoPlaylists () {
       return this.modelData.attachments?.video_playlists

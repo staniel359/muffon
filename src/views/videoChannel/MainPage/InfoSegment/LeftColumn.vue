@@ -6,16 +6,26 @@
       :image-data="imageData"
       is-circular
     />
+
+    <div class="options-container">
+      <BaseVideoChannelOptionsDropdown
+        :channel-data="channelData"
+        is-with-share-option
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
+import BaseVideoChannelOptionsDropdown
+  from '@/components/dropdowns/videoChannel/BaseVideoChannelOptionsDropdown.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
-    BaseZoomableImage
+    BaseZoomableImage,
+    BaseVideoChannelOptionsDropdown
   },
   props: {
     channelData: {
@@ -34,4 +44,8 @@ export default {
 <style lang="sass" scoped>
 .left-column
   width: 120px
+
+.options-container
+  @extend .text-align-right
+  margin-top: 0.5em
 </style>

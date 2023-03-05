@@ -37,6 +37,13 @@
       @link-click="handleLinkClick"
     />
 
+    <VideoChannelsSection
+      v-if="videoChannels.length"
+      class="main-content-section"
+      :video-channels="videoChannels"
+      @link-click="handleLinkClick"
+    />
+
     <VideoPlaylistsSection
       v-if="videoPlaylists.length"
       class="main-content-section"
@@ -71,6 +78,8 @@ import TracksSection
   from './BaseSendableFormContentSection/TracksSection.vue'
 import VideosSection
   from './BaseSendableFormContentSection/VideosSection.vue'
+import VideoChannelsSection
+  from './BaseSendableFormContentSection/VideoChannelsSection.vue'
 import VideoPlaylistsSection
   from './BaseSendableFormContentSection/VideoPlaylistsSection.vue'
 import PlaylistsSection
@@ -86,6 +95,7 @@ export default {
     AlbumsSection,
     TracksSection,
     VideosSection,
+    VideoChannelsSection,
     VideoPlaylistsSection,
     PlaylistsSection,
     CommunitiesSection
@@ -121,6 +131,12 @@ export default {
         return []
       }
     },
+    videoChannels: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
     videoPlaylists: {
       type: Array,
       default () {
@@ -151,6 +167,7 @@ export default {
           this.albums.length ||
           this.tracks.length ||
           this.videos.length ||
+          this.videoChannels.length ||
           this.videoPlaylists.length ||
           this.playlists.length ||
           this.communities.length

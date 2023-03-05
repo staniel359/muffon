@@ -10,6 +10,7 @@ export default function (
     albums,
     tracks,
     videos,
+    videoChannels,
     videoPlaylists,
     playlists,
     communities
@@ -29,6 +30,8 @@ export default function (
     albums,
     tracks,
     videos,
+    video_channels:
+      videoChannels,
     video_playlists:
       videoPlaylists,
     playlists,

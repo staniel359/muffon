@@ -24,16 +24,16 @@ export default {
     counters () {
       return [
         {
+          scope: 'videos',
+          count: this.videosCount
+        },
+        {
           scope: 'subscribers',
           count: this.subscribersCount
         },
         {
           scope: 'views',
           count: this.viewsCount
-        },
-        {
-          scope: 'videos',
-          count: this.videosCount
         }
       ]
     },

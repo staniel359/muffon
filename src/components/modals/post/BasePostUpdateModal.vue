@@ -12,6 +12,7 @@
         :albums="albums"
         :tracks="tracks"
         :videos="videos"
+        :video-channels="videoChannels"
         :video-playlists="videoPlaylists"
         :playlists="playlists"
         :communities="communities"
@@ -29,6 +30,7 @@
           :albums="albums"
           :tracks="tracks"
           :videos="videos"
+          :video-channels="videoChannels"
           :video-playlists="videoPlaylists"
           :playlists="playlists"
           :communities="communities"
@@ -110,6 +112,7 @@ export default {
     return {
       key: null,
       videos: [],
+      videoChannels: [],
       videoPlaylists: [],
       playlists: [],
       communities: []
@@ -120,7 +123,9 @@ export default {
       return this.postData.text
     },
     postImages () {
-      return this.postData.attachments?.images || []
+      return (
+        this.postData.attachments?.images || []
+      )
     },
     postVideosFormatted () {
       return formatCollection(
@@ -128,7 +133,19 @@ export default {
       )
     },
     postVideos () {
-      return this.postData.attachments?.videos || []
+      return (
+        this.postData.attachments?.videos || []
+      )
+    },
+    postVideoChannelsFormatted () {
+      return formatCollection(
+        this.postVideoChannels
+      )
+    },
+    postVideoChannels () {
+      return (
+        this.postData.attachments?.video_channels || []
+      )
     },
     postVideoPlaylistsFormatted () {
       return formatCollection(
@@ -136,7 +153,9 @@ export default {
       )
     },
     postVideoPlaylists () {
-      return this.postData.attachments?.video_playlists || []
+      return (
+        this.postData.attachments?.video_playlists || []
+      )
     },
     postArtistsFormatted () {
       return formatCollection(
@@ -144,7 +163,9 @@ export default {
       )
     },
     postArtists () {
-      return this.postData.attachments?.artists || []
+      return (
+        this.postData.attachments?.artists || []
+      )
     },
     postAlbumsFormatted () {
       return formatCollection(
@@ -152,7 +173,9 @@ export default {
       )
     },
     postAlbums () {
-      return this.postData.attachments?.albums || []
+      return (
+        this.postData.attachments?.albums || []
+      )
     },
     postTracksFormatted () {
       return formatCollection(
@@ -160,7 +183,9 @@ export default {
       )
     },
     postTracks () {
-      return this.postData.attachments?.tracks || []
+      return (
+        this.postData.attachments?.tracks || []
+      )
     },
     postPlaylistsFormatted () {
       return formatCollection(
@@ -168,7 +193,9 @@ export default {
       )
     },
     postPlaylists () {
-      return this.postData.attachments?.playlists || []
+      return (
+        this.postData.attachments?.playlists || []
+      )
     },
     postCommunitiesFormatted () {
       return formatCollection(
@@ -176,7 +203,9 @@ export default {
       )
     },
     postCommunities () {
-      return this.postData.attachments?.communities || []
+      return (
+        this.postData.attachments?.communities || []
+      )
     },
     isByCommunity () {
       return this.postData.by_community
@@ -195,6 +224,8 @@ export default {
       this.postTracksFormatted
     this.videos =
       this.postVideosFormatted
+    this.videoChannels =
+      this.postVideoChannelsFormatted
     this.videoPlaylists =
       this.postVideoPlaylistsFormatted
     this.playlists =
