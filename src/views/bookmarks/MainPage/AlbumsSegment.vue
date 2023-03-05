@@ -9,7 +9,6 @@
     >
       <BaseAlbumsSimpleList
         :albums="slotProps[scope]"
-        :profile-id="profileId"
         is-with-artist-name
         is-with-source
         is-with-created
@@ -25,10 +24,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseBookmarksPaginatedSegmentContainer
   from '@/components/containers/segments/bookmarks/BaseBookmarksPaginatedSegmentContainer.vue'
 import BaseAlbumsSimpleList
@@ -50,12 +45,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    ),
     headerLink () {
       return formatBookmarkAlbumsLink()
     }

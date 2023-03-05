@@ -52,6 +52,9 @@ import {
   main as formatVideoMainLink
 } from '@/helpers/formatters/links/video'
 import {
+  main as formatVideoPlaylistMainLink
+} from '@/helpers/formatters/links/videoPlaylist'
+import {
   main as formatCommunityMainLink
 } from '@/helpers/formatters/links/community'
 import {
@@ -85,6 +88,7 @@ export default {
         bookmarkArtist: 'artist',
         bookmarkTrack: 'track',
         bookmarkVideo: 'video',
+        bookmarkVideoPlaylist: 'videoPlaylist',
         community: 'community',
         conversation: 'conversation',
         favoriteAlbum: 'album',
@@ -164,6 +168,12 @@ export default {
           return formatVideoMainLink(
             {
               videoId: this.videoId
+            }
+          )
+        case 'videoPlaylist':
+          return formatVideoPlaylistMainLink(
+            {
+              playlistId: this.videoPlaylistId
             }
           )
         case 'community':
@@ -247,6 +257,12 @@ export default {
     videoData () {
       return this.modelData.video
     },
+    videoPlaylistId () {
+      return this.videoPlaylistData.youtube_id
+    },
+    videoPlaylistData () {
+      return this.modelData.video_playlist
+    },
     id () {
       return this.modelData.id
     },
@@ -286,6 +302,8 @@ export default {
           )
         case 'video':
           return this.videoTitle
+        case 'videoPlaylist':
+          return this.videoPlaylistTitle
         case 'community':
           return this.title
         case 'recommendation':
@@ -306,6 +324,9 @@ export default {
     },
     videoTitle () {
       return this.videoData.title
+    },
+    videoPlaylistTitle () {
+      return this.videoPlaylistData.title
     },
     title () {
       return this.modelData.title

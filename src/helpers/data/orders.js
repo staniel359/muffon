@@ -73,6 +73,10 @@ export default {
     'createdDesc',
     'createdAsc'
   ],
+  bookmarkVideoPlaylist: [
+    'createdDesc',
+    'createdAsc'
+  ],
   conversation: [
     'updatedDesc',
     'updatedAsc',

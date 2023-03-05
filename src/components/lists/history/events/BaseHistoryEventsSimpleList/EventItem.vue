@@ -55,6 +55,7 @@ export default {
         bookmarkArtist: 'bookmark',
         bookmarkTrack: 'bookmark',
         bookmarkVideo: 'bookmark',
+        bookmarkVideoPlaylist: 'bookmark',
         community: 'community',
         conversation: 'conversation',
         favoriteAlbum: 'favorite',

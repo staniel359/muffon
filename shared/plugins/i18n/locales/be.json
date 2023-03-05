@@ -23,8 +23,9 @@
     "tag": "Метка",
     "similar": "Падобныя",
     "images": "Выявы",
-    "videoChannels": "Відэа-каналы",
     "videos": "Відэа",
+    "videoChannels": "Відэа-каналы",
+    "videoPlaylists": "Спісы відэа",
     "related": "Звязаныя",
     "top": "Папулярнае",
     "releases": "Рэлізы",
@@ -46,7 +47,8 @@
       "artists": "Закладкі выканаўцаў",
       "albums": "Закладкі альбомаў",
       "tracks": "Закладкі кампазіцый",
-      "videos": "Закладкі відэа"
+      "videos": "Закладкі відэа",
+      "videoPlaylists": "Закладкі спісаў відэа"
     },
     "communities": "Суполкі",
     "history": "Гісторыя",
@@ -223,7 +225,8 @@
           "artist": "Выдаліць выканаўца з закладак",
           "album": "Выдаліць альбом з закладак",
           "track": "Выдаліць кампазіцыю з закладак",
-          "video": "Выдаліць відэа з закладак"
+          "video": "Выдаліць відэа з закладак",
+          "videoPlaylist": "Выдаліць спіс відэа з закладак"
         },
         "post": "Выдаліць публікацыю",
         "community": "Выдаліць суполку",
@@ -656,6 +659,7 @@
       "communities": "Няма суполак",
       "members": "Няма ўдзельнікаў",
       "videos": "Няма відэа",
+      "videoPlaylists": "Няма спісаў відэа",
       "related": "Няма звязаных",
       "lyrics": "Няма тэкстаў",
       "listeners": "Няма слухачоў",
@@ -671,7 +675,8 @@
     "recommendation": "Рэкамендацыя была выдалена",
     "playlist": "Спіс быў выдалены",
     "post": "Публікацыя была выдалена",
-    "video": "Відэа было выдалена"
+    "video": "Відэа было выдалена",
+    "videoPlaylist": "Спіс відэа быў выдалены"
   },
   "messages": {
     "welcome": "Вітаю, {profileNickname}"
@@ -736,6 +741,7 @@
       "bookmarkArtist": "Выканаўца {modelName} дададзены да закладак",
       "bookmarkTrack": "Кампазіцыя {modelName} дададзена да закладак",
       "bookmarkVideo": "Відэа {modelName} дададзена да закладак",
+      "bookmarkVideoPlaylist": "Спіс відэа {modelName} дададзены да закладак",
       "favoriteAlbum": "Альбом {modelName} дададзены да абранага",
       "favoriteArtist": "Выканаўца {modelName} дададзены да абранага",
       "favoriteTrack": "Кампазіцыя {modelName} дададзена да абранага",
@@ -766,6 +772,7 @@
       "bookmarkArtist": "Выканаўца {modelName} выдалены з закладак",
       "bookmarkTrack": "Кампазіцыя {modelName} выдалена з закладак",
       "bookmarkVideo": "Відэа {modelName} выдалена з закладак",
+      "bookmarkVideoPlaylist": "Спіс відэа {modelName} выдалены з закладак",
       "favoriteAlbum": "Альбом {modelName} выдалены з абранага",
       "favoriteArtist": "Выканаўца {modelName} выдалены з абранага",
       "favoriteTrack": "Кампазіцыя {modelName} выдалена з абранага",

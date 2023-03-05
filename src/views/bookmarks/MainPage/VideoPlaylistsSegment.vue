@@ -7,13 +7,11 @@
     <template
       #default="slotProps"
     >
-      <BaseArtistsSimpleList
-        :artists="slotProps[scope]"
+      <BaseVideoPlaylistsSimpleList
+        :playlists="slotProps[scope]"
+        is-with-channel-title
         is-with-created
         is-bookmark
-        is-with-library-option
-        is-with-favorite-option
-        is-with-listened-option
         is-with-share-option
         is-with-delete-option
       />
@@ -24,27 +22,27 @@
 <script>
 import BaseBookmarksPaginatedSegmentContainer
   from '@/components/containers/segments/bookmarks/BaseBookmarksPaginatedSegmentContainer.vue'
-import BaseArtistsSimpleList
-  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
+import BaseVideoPlaylistsSimpleList
+  from '@/components/lists/videoPlaylists/BaseVideoPlaylistsSimpleList.vue'
 import {
-  artists as formatBookmarkArtistsLink
+  videoPlaylists as formatBookmarkVideoPlaylistsLink
 } from '@/helpers/formatters/links/bookmarks'
 
 export default {
-  name: 'ArtistsSegment',
+  name: 'VideoPlaylistsSegment',
   components: {
     BaseBookmarksPaginatedSegmentContainer,
-    BaseArtistsSimpleList
+    BaseVideoPlaylistsSimpleList
   },
   data () {
     return {
       limit: 5,
-      scope: 'artists'
+      scope: 'videoPlaylists'
     }
   },
   computed: {
     headerLink () {
-      return formatBookmarkArtistsLink()
+      return formatBookmarkVideoPlaylistsLink()
     }
   }
 }

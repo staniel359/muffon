@@ -37,3 +37,11 @@ export function videos () {
     path: 'bookmarks/videos'
   }
 }
+
+export function videoPlaylists () {
+  return {
+    name: 'BookmarksVideoPlaylistsPage',
+    params: {},
+    path: 'bookmarks/video_playlists'
+  }
+}

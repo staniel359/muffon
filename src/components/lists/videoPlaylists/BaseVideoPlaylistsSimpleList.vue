@@ -7,9 +7,14 @@
       :key="playlistData.uuid"
       :playlist-data="playlistData"
       :is-with-channel-title="isWithChannelTitle"
+      :is-with-bookmark-option="isWithBookmarkOption"
       :is-with-share-option="isWithShareOption"
+      :is-with-delete-option="isWithDeleteOption"
       :is-with-clear-button="isWithClearButton"
       :is-with-model-icon="isWithModelIcon"
+      :is-with-self-icons="isWithSelfIcons"
+      :is-bookmark="isBookmark"
+      :is-with-created="isWithCreated"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -38,10 +43,18 @@ export default {
         return []
       }
     },
+    isWithSelfIcons: {
+      type: Boolean,
+      default: true
+    },
     isWithChannelTitle: Boolean,
+    isWithBookmarkOption: Boolean,
     isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
     isWithClearButton: Boolean,
-    isWithModelIcon: Boolean
+    isWithModelIcon: Boolean,
+    isBookmark: Boolean,
+    isWithCreated: Boolean
   },
   emits: [
     'linkClick',

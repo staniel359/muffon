@@ -12,7 +12,6 @@
     >
       <BaseVideosSimpleList
         :videos="slotProps[scope]"
-        :profile-id="profileId"
         is-with-channel-title
         is-with-created
         is-bookmark
@@ -26,10 +25,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseBookmarksPaginatedPageContainer
   from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
 import BaseVideosSimpleList
@@ -51,14 +46,6 @@ export default {
       scope: 'videos',
       order: 'createdDesc'
     }
-  },
-  computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    )
   }
 }
 </script>

@@ -29,6 +29,11 @@
       />
     </div>
 
+    <BasePublishDateSection
+      class="description right"
+      :model-data="channelData"
+    />
+
     <BaseVideoChannelOptionsDropdown
       :channel-data="channelData"
       :is-with-share-option="isWithShareOption"
@@ -48,6 +53,8 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import CountersSection from './VideoChannelItem/CountersSection.vue'
+import BasePublishDateSection
+  from '@/components/sections/BasePublishDateSection.vue'
 import BaseVideoChannelOptionsDropdown
   from '@/components/dropdowns/videoChannel/BaseVideoChannelOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
@@ -63,6 +70,7 @@ export default {
     BaseImage,
     BaseHeader,
     CountersSection,
+    BasePublishDateSection,
     BaseVideoChannelOptionsDropdown,
     BaseClearButton
   },

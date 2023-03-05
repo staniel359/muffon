@@ -10,6 +10,7 @@
     >
       <BaseVideoPlaylistsSimpleList
         :playlists="slotProps[scope]"
+        is-with-bookmark-option
         is-with-share-option
       />
     </template>

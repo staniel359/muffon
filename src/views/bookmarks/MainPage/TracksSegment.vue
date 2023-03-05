@@ -9,7 +9,6 @@
     >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :profile-id="profileId"
         is-with-image
         is-with-artist-name
         is-with-album-title
@@ -30,10 +29,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseBookmarksPaginatedSegmentContainer
   from '@/components/containers/segments/bookmarks/BaseBookmarksPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
@@ -55,12 +50,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    ),
     headerLink () {
       return formatBookmarkTracksLink()
     }

@@ -1,73 +1,102 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
+    :class="{
+      disabled: isDeleted
+    }"
     :link="link"
     @click="handleLinkClick"
   >
-    <BaseIcon
-      v-if="isWithModelIcon"
-      class="main-simple-list-item-model-icon"
-      icon="videoPlaylist"
-    />
-
-    <BaseImage
-      class="rounded-medium bordered"
+    <BaseDeletedSection
+      v-if="isDeleted"
       model="videoPlaylist"
-      :image="imageData?.extrasmall"
     />
-
-    <div class="content">
-      <BaseHeader
-        tag="h4"
-        :class="{
-          link: isMainLinkActive
-        }"
-        :text="playlistTitle"
+    <template
+      v-else
+    >
+      <BaseIcon
+        v-if="isWithModelIcon"
+        class="main-simple-list-item-model-icon"
+        icon="videoPlaylist"
       />
 
-      <BaseVideoChannelLinkSection
-        v-if="isWithChannelTitle"
-        :model-data="playlistData"
-        @link-click="handleLinkClick"
-        @active-change="handleChannelLinkActiveChange"
+      <BaseImage
+        class="rounded-medium bordered"
+        model="videoPlaylist"
+        :image="imageData?.extrasmall"
       />
 
-      <div
-        v-if="description"
-        class="extra"
-      >
-        <small
-          v-html="description"
+      <div class="content">
+        <BaseHeader
+          tag="h4"
+          :class="{
+            link: isMainLinkActive
+          }"
+          :text="playlistTitle"
+        />
+
+        <BaseVideoChannelLinkSection
+          v-if="isWithChannelTitle"
+          :model-data="playlistData"
+          @link-click="handleLinkClick"
+          @active-change="handleChannelLinkActiveChange"
+        />
+
+        <div
+          v-if="description"
+          class="extra"
+        >
+          <small
+            v-html="description"
+          />
+        </div>
+
+        <BaseVideoPlaylistVideosCountSection
+          class="description"
+          :playlist-data="playlistData"
+          is-small
         />
       </div>
 
-      <BaseVideoPlaylistVideosCountSection
-        class="description"
-        :playlist-data="playlistData"
-        is-small
+      <BaseSelfIcons
+        v-if="isWithSelfIcons"
+        :bookmark-id="bookmarkId"
+        :is-with-bookmark-icon="isWithBookmarkIcon"
       />
 
-      <BasePublishDateSection
-        class="description"
+      <BaseCreatedSection
+        v-if="isWithCreated"
+        class="description right"
         :model-data="playlistData"
       />
-    </div>
+      <BasePublishDateSection
+        v-else
+        class="description right"
+        :model-data="playlistData"
+      />
 
-    <BaseVideoPlaylistOptionsDropdown
-      :playlist-data="playlistData"
-      :is-with-share-option="isWithShareOption"
-    />
+      <BaseVideoPlaylistOptionsDropdown
+        :playlist-data="playlistData"
+        :bookmark-id="bookmarkId"
+        :is-bookmark="isBookmark"
+        :is-with-bookmark-option="isWithBookmarkOption"
+        :is-with-share-option="isWithShareOption"
+        :is-with-delete-option="isWithDeleteOption"
+        @deleted="handleDeleted"
+      />
 
-    <BaseClearButton
-      v-if="isWithClearButton"
-      @click="handleClearButtonClick"
-    />
+      <BaseClearButton
+        v-if="isWithClearButton"
+        @click="handleClearButtonClick"
+      />
+    </template>
   </BaseLinkContainer>
 </template>
 
 <script>
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
@@ -75,27 +104,41 @@ import BaseVideoChannelLinkSection
   from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
 import BaseVideoPlaylistVideosCountSection
   from '@/components/sections/videoPlaylist/BaseVideoPlaylistVideosCountSection.vue'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseVideoPlaylistOptionsDropdown
   from '@/components/dropdowns/videoPlaylist/BaseVideoPlaylistOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   main as formatVideoPlaylistMainLink
 } from '@/helpers/formatters/links/videoPlaylist'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'VideoPlaylistItem',
   components: {
     BaseLinkContainer,
+    BaseDeletedSection,
     BaseIcon,
     BaseImage,
     BaseHeader,
     BaseVideoChannelLinkSection,
     BaseVideoPlaylistVideosCountSection,
+    BaseSelfIcons,
     BasePublishDateSection,
+    BaseCreatedSection,
     BaseVideoPlaylistOptionsDropdown,
     BaseClearButton
+  },
+  mixins: [
+    selfMixin
+  ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
   },
   props: {
     playlistData: {
@@ -103,9 +146,14 @@ export default {
       required: true
     },
     isWithChannelTitle: Boolean,
+    isWithBookmarkOption: Boolean,
     isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
     isWithClearButton: Boolean,
-    isWithModelIcon: Boolean
+    isWithModelIcon: Boolean,
+    isWithSelfIcons: Boolean,
+    isBookmark: Boolean,
+    isWithCreated: Boolean
   },
   emits: [
     'linkClick',
@@ -117,6 +165,9 @@ export default {
     }
   },
   computed: {
+    modelData () {
+      return this.playlistData
+    },
     link () {
       return formatVideoPlaylistMainLink(
         {
@@ -138,6 +189,16 @@ export default {
     },
     uuid () {
       return this.playlistData.uuid
+    },
+    paginationItem () {
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
+    },
+    isDeleted () {
+      return !!this.playlistData.isDeleted
     }
   },
   methods: {
@@ -158,6 +219,9 @@ export default {
       value
     ) {
       this.isMainLinkActive = !value
+    },
+    handleDeleted () {
+      this.paginationItem.isDeleted = true
     }
   }
 }

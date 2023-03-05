@@ -1,3 +1,6 @@
+import {
+  snakeCase
+} from 'snake-case'
 import profileStore from '@/stores/profile'
 import deleteRequest from '@/helpers/actions/api/request/delete'
 
@@ -9,9 +12,14 @@ export default function (
 ) {
   const profileId = profileStore().id
 
+  const modelFormatted =
+    snakeCase(
+      model
+    )
+
   const url =
-    `/profiles/${profileId}` +
-    `/bookmarks/${model}s/${bookmarkId}`
+    `/profiles/${profileId}/bookmarks` +
+    `/${modelFormatted}s/${bookmarkId}`
 
   return deleteRequest.bind(
     this

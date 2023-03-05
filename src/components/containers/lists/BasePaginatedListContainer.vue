@@ -56,6 +56,9 @@
 
 <script>
 import deepmerge from 'deepmerge'
+import {
+  snakeCase
+} from 'snake-case'
 import ContentContainer
   from './BasePaginatedListContainer/ContentContainer.vue'
 import ScrollObserver from './BasePaginatedListContainer/ScrollObserver.vue'
@@ -457,9 +460,14 @@ export default {
           value.total_pages || 0
         )
 
+        const scopeFormatted =
+          snakeCase(
+            this.scope
+          )
+
         const collection =
           value[
-            this.scope
+            scopeFormatted
           ]
 
         if (collection) {

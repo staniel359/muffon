@@ -1,6 +1,7 @@
 <template>
   <div
     v-if="publishDate"
+    class="main-publish-date-section"
   >
     <small
       v-text="publishDateFormatted"

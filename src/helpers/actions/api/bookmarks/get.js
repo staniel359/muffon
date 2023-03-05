@@ -1,3 +1,6 @@
+import {
+  snakeCase
+} from 'snake-case'
 import profileStore from '@/stores/profile'
 import getRequest from '@/helpers/actions/api/request/get'
 
@@ -11,8 +14,14 @@ export default function (
 ) {
   const profileId = profileStore().id
 
+  const scopeFormatted =
+    snakeCase(
+      scope
+    )
+
   const url =
-    `/profiles/${profileId}/bookmarks/${scope}`
+    `/profiles/${profileId}` +
+    `/bookmarks/${scopeFormatted}`
 
   const handleSuccess = (
     response

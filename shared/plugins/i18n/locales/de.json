@@ -23,8 +23,9 @@
     "tag": "Tag",
     "similar": "Ähnlich",
     "images": "Bilder",
-    "videoChannels": "Videokanäle",
     "videos": "Videos",
+    "videoChannels": "Videokanäle",
+    "videoPlaylists": "Videoplaylisten",
     "related": "Verwandt",
     "top": "Top",
     "releases": "Neuveröffentlichungen",
@@ -46,7 +47,8 @@
       "artists": "Künstler Lesezeichen",
       "albums": "Albums Lesezeichen",
       "tracks": "Titel Lesezeichen",
-      "videos": "Videos Lesezeichen"
+      "videos": "Videos Lesezeichen",
+      "videoPlaylists": "Videoplaylisten Lesezeichen"
     },
     "communities": "Communities",
     "history": "Verlauf",
@@ -223,7 +225,8 @@
           "artist": "Künstler aus Lesezeichen entfernen",
           "album": "Album aus Lesezeichen entfernen",
           "track": "Titel aus Lesezeichen entfernen",
-          "video": "Video aus Lesezeichen entfernen"
+          "video": "Video aus Lesezeichen entfernen",
+          "videoPlaylist": "Videoplaylist aus Lesezeichen entfernen"
         },
         "post": "Post löschen",
         "community": "Community löschen",
@@ -656,6 +659,7 @@
       "communities": "Keine Communities",
       "members": "Keine Mitglieder",
       "videos": "Keine Videos",
+      "videoPlaylists": "Keine Videoplaylisten",
       "related": "Keine Verwandten",
       "lyrics": "Keine Lyrics",
       "listeners": "Keine Zuhörer",
@@ -671,7 +675,8 @@
     "recommendation": "Empfehlung wurde gelöscht",
     "playlist": "Playlist wurde gelöscht",
     "post": "Post wurde gelöscht",
-    "video": "Video wurde gelöscht"
+    "video": "Video wurde gelöscht",
+    "videoPlaylist": "Videoplaylist wurde entfernt"
   },
   "messages": {
     "welcome": "Willkommen, {profileNickname}"
@@ -736,6 +741,7 @@
       "bookmarkArtist": "Künstler {modelName} wurde zu Lesezeichen hinzugefügt",
       "bookmarkTrack": "Titel {modelName} wurde zu Lesezeichen hinzugefügt",
       "bookmarkVideo": "Video {modelName} wurde zu Lesezeichen hinzugefügt",
+      "bookmarkVideoPlaylist": "Videoplaylist {modelName} wurde zu Lesezeichen hinzugefügt",
       "favoriteAlbum": "Album {modelName} wurde zu den Favoriten hinzugefügt",
       "favoriteArtist": "Künstler {modelName} wurde zu den Favoriten hinzugefügt",
       "favoriteTrack": "Titel {modelName} wurde zu den Favoriten hinzugefügt",
@@ -766,6 +772,7 @@
       "bookmarkArtist": "Künstler {modelName} wurde von Lesezeichen entfernt",
       "bookmarkTrack": "Titel {modelName} wurde von Lesezeichen entfernt",
       "bookmarkVideo": "Video {modelName} wurde von Lesezeichen entfernt",
+      "bookmarkVideoPlaylist": "Videoplaylist {modelName} wurde von Lesezeichen gelöscht",
       "favoriteAlbum": "Album {modelName} wurde von den Favoriten entfernt",
       "favoriteArtist": "Künstler {modelName} wurde von den Favoriten entfernt",
       "favoriteTrack": "Titel {modelName} wurde von den Favoriten entfernt",

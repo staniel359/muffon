@@ -23,8 +23,9 @@
     "tag": "Tag",
     "similar": "Similar",
     "images": "Images",
-    "videoChannels": "Video channels",
     "videos": "Videos",
+    "videoChannels": "Video channels",
+    "videoPlaylists": "Video playlists",
     "related": "Related",
     "top": "Top",
     "releases": "Releases",
@@ -46,7 +47,8 @@
       "artists": "Bookmark artists",
       "albums": "Bookmark albums",
       "tracks": "Bookmark tracks",
-      "videos": "Bookmark videos"
+      "videos": "Bookmark videos",
+      "videoPlaylists": "Bookmark video playlists"
     },
     "communities": "Communities",
     "history": "History",
@@ -223,7 +225,8 @@
           "artist": "Delete artist from bookmarks",
           "album": "Delete album from bookmarks",
           "track": "Delete track from bookmarks",
-          "video": "Delete video from bookmarks"
+          "video": "Delete video from bookmarks",
+          "videoPlaylist": "Delete video playlist from bookmarks"
         },
         "post": "Delete post",
         "community": "Delete community",
@@ -656,6 +659,7 @@
       "communities": "No communities",
       "members": "No members",
       "videos": "No videos",
+      "videoPlaylists": "No video playlists",
       "related": "No related",
       "lyrics": "No lyrics",
       "listeners": "No listeners",
@@ -671,7 +675,8 @@
     "recommendation": "Recommendation has been deleted",
     "playlist": "Playlist has been deleted",
     "post": "Post has been deleted",
-    "video": "Video has been deleted"
+    "video": "Video has been deleted",
+    "videoPlaylist": "Video playlist has been deleted"
   },
   "messages": {
     "welcome": "Welcome, {profileNickname}"
@@ -736,6 +741,7 @@
       "bookmarkArtist": "Artist {modelName} is added to bookmarks",
       "bookmarkTrack": "Track {modelName} is added to bookmarks",
       "bookmarkVideo": "Video {modelName} is added to bookmarks",
+      "bookmarkVideoPlaylist": "Video playlist {modelName} is added to bookmarks",
       "favoriteAlbum": "Album {modelName} is added to favorites",
       "favoriteArtist": "Artist {modelName} is added to favorites",
       "favoriteTrack": "Track {modelName} is added to favorites",
@@ -766,6 +772,7 @@
       "bookmarkArtist": "Artist {modelName} is deleted from bookmarks",
       "bookmarkTrack": "Track {modelName} is deleted from bookmarks",
       "bookmarkVideo": "Video {modelName} is deleted from bookmarks",
+      "bookmarkVideoPlaylist": "Video playlist {modelName} is deleted from bookmarks",
       "favoriteAlbum": "Album {modelName} is deleted from favorites",
       "favoriteArtist": "Artist {modelName} is deleted from favorites",
       "favoriteTrack": "Track {modelName} is deleted from favorites",

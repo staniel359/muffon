@@ -1,6 +1,6 @@
 <template>
   <BaseBookmarksPaginatedPageContainer
-    model="bookmarkAlbum"
+    model="bookmarkVideoPlaylist"
     :scope="scope"
     :limit="limit"
     :order="order"
@@ -10,15 +10,11 @@
     <template
       #default="slotProps"
     >
-      <BaseAlbumsSimpleList
-        :albums="slotProps[scope]"
-        is-with-artist-name
-        is-with-source
+      <BaseVideoPlaylistsSimpleList
+        :playlists="slotProps[scope]"
+        is-with-channel-title
         is-with-created
         is-bookmark
-        is-with-library-option
-        is-with-favorite-option
-        is-with-listened-option
         is-with-share-option
         is-with-delete-option
       />
@@ -29,15 +25,15 @@
 <script>
 import BaseBookmarksPaginatedPageContainer
   from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
-import BaseAlbumsSimpleList
-  from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
+import BaseVideoPlaylistsSimpleList
+  from '@/components/lists/videoPlaylists/BaseVideoPlaylistsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
 
 export default {
-  name: 'AlbumsPage',
+  name: 'VideoPlaylistsPage',
   components: {
     BaseBookmarksPaginatedPageContainer,
-    BaseAlbumsSimpleList
+    BaseVideoPlaylistsSimpleList
   },
   mixins: [
     orderChangeMixin
@@ -45,7 +41,7 @@ export default {
   data () {
     return {
       limit: 50,
-      scope: 'albums',
+      scope: 'videoPlaylists',
       order: 'createdDesc'
     }
   }

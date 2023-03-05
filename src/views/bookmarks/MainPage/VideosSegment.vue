@@ -9,7 +9,6 @@
     >
       <BaseVideosSimpleList
         :videos="slotProps[scope]"
-        :profile-id="profileId"
         is-with-channel-title
         is-with-created
         is-bookmark
@@ -23,10 +22,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseBookmarksPaginatedSegmentContainer
   from '@/components/containers/segments/bookmarks/BaseBookmarksPaginatedSegmentContainer.vue'
 import BaseVideosSimpleList
@@ -48,12 +43,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    ),
     headerLink () {
       return formatBookmarkVideosLink()
     }

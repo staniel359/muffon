@@ -68,6 +68,7 @@
       v-if="videoPlaylists?.length"
       class="main-content-section"
       :playlists="videoPlaylists"
+      :is-with-self-icons="false"
       is-with-channel-title
       is-with-share-option
       is-with-model-icon

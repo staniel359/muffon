@@ -46,6 +46,8 @@ export default {
           return this.modelData.name
         case 'video':
           return this.modelData.title
+        case 'videoPlaylist':
+          return this.modelData.title
         default:
           return [
             this.modelData.artist.name,

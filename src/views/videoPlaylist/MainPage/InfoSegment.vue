@@ -32,15 +32,23 @@
           />
 
           <BasePublishDateSection
-            class="description"
+            class="description publish-date"
             :model-data="playlistData"
           />
         </div>
 
-        <BaseVideoPlaylistOptionsDropdown
-          :playlist-data="playlistData"
-          is-with-share-option
-        />
+        <div class="self-options-section">
+          <BaseSelfIcons
+            :bookmark-id="bookmarkId"
+          />
+
+          <BaseVideoPlaylistOptionsDropdown
+            :playlist-data="playlistData"
+            :bookmark-id="bookmarkId"
+            is-with-bookmark-option
+            is-with-share-option
+          />
+        </div>
       </div>
     </BaseListContainer>
   </BaseSegmentContainer>
@@ -59,8 +67,10 @@ import BaseVideoPlaylistVideosCountSection
   from '@/components/sections/videoPlaylist/BaseVideoPlaylistVideosCountSection.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseVideoPlaylistOptionsDropdown
   from '@/components/dropdowns/videoPlaylist/BaseVideoPlaylistOptionsDropdown.vue'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'InfoSegment',
@@ -72,8 +82,12 @@ export default {
     BaseVideoChannelLinkSection,
     BaseVideoPlaylistVideosCountSection,
     BasePublishDateSection,
+    BaseSelfIcons,
     BaseVideoPlaylistOptionsDropdown
   },
+  mixins: [
+    selfMixin
+  ],
   props: {
     playlistData: {
       type: Object,
@@ -81,6 +95,9 @@ export default {
     }
   },
   computed: {
+    modelData () {
+      return this.playlistData
+    },
     imageData () {
       return this.playlistData.image
     },
@@ -94,4 +111,10 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.self-options-section
+  @extend .d-flex, .align-items-center
+
+.publish-date
+  @extend .no-margin
+</style>

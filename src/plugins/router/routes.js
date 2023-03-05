@@ -186,6 +186,9 @@ const BookmarksTracksPage = () => import(
 const BookmarksVideosPage = () => import(
   '@/views/bookmarks/VideosPage.vue'
 )
+const BookmarksVideoPlaylistsPage = () => import(
+  '@/views/bookmarks/VideoPlaylistsPage.vue'
+)
 const ProfileFavoritesMainPage = () => import(
   '@/views/profile/favorites/MainPage.vue'
 )
@@ -793,6 +796,17 @@ export default [
     exact: true,
     name: 'BookmarksVideosPage',
     component: BookmarksVideosPage,
+    props: true,
+    meta: {
+      formatter:
+        formatBookmarksPageLinkData
+    }
+  },
+  {
+    path: '/bookmarks/video_playlists',
+    exact: true,
+    name: 'BookmarksVideoPlaylistsPage',
+    component: BookmarksVideoPlaylistsPage,
     props: true,
     meta: {
       formatter:
