@@ -404,7 +404,7 @@
     "lyrics": "Выбрать текст:"
   },
   "sources": {
-    "streamable": "Проигрываемые",
+    "audio": "Аудио",
     "other": "Прочие",
     "albumTypes": {
       "album": "Альбом",
@@ -419,6 +419,10 @@
       "video": "Видео",
       "misc": "Разное",
       "appearance": "С участием"
+    },
+    "videoTypes": {
+      "video": "Видео",
+      "track": "Композиция"
     }
   },
   "player": {

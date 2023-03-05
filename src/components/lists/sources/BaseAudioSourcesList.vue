@@ -1,25 +1,25 @@
 <template>
   <SourceItem
-    v-for="sourceData in streamableSources"
+    v-for="sourceData in sources"
     :key="sourceData.id"
     :source-data="sourceData"
   />
 </template>
 
 <script>
-import SourceItem from './BaseStreamableSourcesList/SourceItem.vue'
+import SourceItem from './BaseAudioSourcesList/SourceItem.vue'
 import {
-  streamable as getStreamableSources
+  audio as audioSources
 } from '@/helpers/formatters/sources'
 
 export default {
-  name: 'BaseStreamableSourcesList',
+  name: 'BaseAudioSourcesList',
   components: {
     SourceItem
   },
   computed: {
-    streamableSources () {
-      return getStreamableSources()
+    sources () {
+      return audioSources
     }
   }
 }

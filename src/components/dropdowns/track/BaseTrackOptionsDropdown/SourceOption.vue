@@ -9,7 +9,7 @@
 <script>
 import BaseOption from '@/components/dropdowns/options/BaseOption.vue'
 import {
-  streamable as getStreamableSources
+  audio as audioSources
 } from '@/helpers/formatters/sources'
 
 export default {
@@ -32,7 +32,7 @@ export default {
       )
     },
     sources () {
-      return getStreamableSources()
+      return audioSources
     }
   },
   methods: {

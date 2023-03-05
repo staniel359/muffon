@@ -10,7 +10,7 @@
 <script>
 import SourceItem from './SourcesList/SourceItem.vue'
 import {
-  withAlbums as sourcesWithAlbums
+  video as videoSources
 } from '@/helpers/formatters/sources'
 
 export default {
@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     sources () {
-      return sourcesWithAlbums
+      return videoSources
     }
   }
 }

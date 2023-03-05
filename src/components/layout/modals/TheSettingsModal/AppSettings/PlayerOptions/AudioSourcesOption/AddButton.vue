@@ -15,7 +15,7 @@ import {
 import playerStore from '@/stores/player'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
-  streamable as getStreamableSources
+  audio as audioSources
 } from '@/helpers/formatters/sources'
 import {
   updateGlobal as updateGlobalStore
@@ -41,14 +41,14 @@ export default {
     isRender () {
       return (
         this.playerAudioSourcesCount <
-          this.streamableSourcesCount
+          this.audioSourcesCount
       )
     },
     playerAudioSourcesCount () {
       return this.playerAudioSources.length
     },
-    streamableSourcesCount () {
-      return getStreamableSources().length
+    audioSourcesCount () {
+      return audioSources.length
     },
     addText () {
       return this.$t(

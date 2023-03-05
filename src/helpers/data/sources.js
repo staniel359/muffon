@@ -3,7 +3,6 @@ export default [
     id: 'lastfm',
     icon: 'lastfm',
     name: 'Last.FM',
-    isStreamable: false,
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
@@ -21,7 +20,7 @@ export default [
     id: 'vk',
     icon: 'vk',
     name: 'VK',
-    isStreamable: true,
+    isAudio: true,
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
@@ -39,7 +38,7 @@ export default [
     id: 'odnoklassniki',
     icon: 'odnoklassniki',
     name: 'Odnoklassniki',
-    isStreamable: true,
+    isAudio: true,
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
@@ -57,7 +56,7 @@ export default [
     id: 'yandexmusic',
     icon: 'yandexmusic',
     name: 'Yandex Music',
-    isStreamable: true,
+    isAudio: true,
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
@@ -75,7 +74,7 @@ export default [
     id: 'spotify',
     icon: 'spotify',
     name: 'Spotify',
-    isStreamable: true,
+    isAudio: true,
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
@@ -99,7 +98,7 @@ export default [
     id: 'bandcamp',
     icon: 'bandcamp',
     name: 'Bandcamp',
-    isStreamable: true,
+    isAudio: true,
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
@@ -118,7 +117,7 @@ export default [
     id: 'deezer',
     icon: 'deezer',
     name: 'Deezer',
-    isStreamable: true,
+    isAudio: true,
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
@@ -140,7 +139,7 @@ export default [
     id: 'soundcloud',
     icon: 'soundcloud',
     name: 'SoundCloud',
-    isStreamable: true,
+    isAudio: true,
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
@@ -158,10 +157,8 @@ export default [
     id: 'discogs',
     icon: 'discogs',
     name: 'Discogs',
-    isStreamable: false,
     isWithArtists: true,
     isWithAlbums: true,
-    isWithTracks: false,
     albumTypes: [
       'group',
       'album'
@@ -183,7 +180,6 @@ export default [
     id: 'genius',
     icon: 'genius',
     name: 'Genius',
-    isStreamable: false,
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
@@ -197,13 +193,27 @@ export default [
     ]
   },
   {
+    id: 'youtubemusic',
+    icon: 'youtubemusic',
+    name: 'YouTube Music',
+    isVideo: true,
+    videoTypes: [
+      'track',
+      'video'
+    ],
+    searchScopes: [
+      'tracks',
+      'videos'
+    ]
+  },
+  {
     id: 'youtube',
     icon: 'youtube',
     name: 'YouTube',
-    isStreamable: false,
-    isWithArtists: false,
-    isWithAlbums: false,
-    isWithTracks: false,
+    isVideo: true,
+    videoTypes: [
+      'video'
+    ],
     searchScopes: [
       'videos'
     ]

@@ -2,7 +2,7 @@
   <div>
     <BaseVideo
       class="video-section"
-      :video-data="selectedVideoData"
+      :video-data="videoData"
       is-with-autoplay
     />
 
@@ -34,14 +34,14 @@ export default {
     BaseLinkContainer
   },
   props: {
-    selectedVideoData: {
+    videoData: {
       type: Object,
       required: true
     }
   },
   computed: {
     videoId () {
-      return this.selectedVideoData.source.id
+      return this.videoData.source.id
     },
     videoMainLink () {
       return formatVideoMainLink(

@@ -5,6 +5,7 @@
     :header="videoTitle"
     :content="channelTitle"
     :image="imageData?.extrasmall"
+    :is-image-contained="isImageContained"
     is-with-image
   />
 </template>
@@ -21,7 +22,8 @@ export default {
     videoData: {
       type: Object,
       required: true
-    }
+    },
+    isImageContained: Boolean
   },
   computed: {
     uuid () {

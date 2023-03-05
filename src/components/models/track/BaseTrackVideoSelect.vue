@@ -1,20 +1,21 @@
 <template>
   <div>
-    <SelectSection
-      :scope="scope"
-      :query="query"
+    <BaseTrackVideoSourceSelect
+      :track-data="trackData"
+      @reset="handleReset"
     />
 
     <VideoSection
       v-if="selectedVideoData"
       :key="key"
-      :selected-video-data="selectedVideoData"
+      :video-data="selectedVideoData"
     />
   </div>
 </template>
 
 <script>
-import SelectSection from './BaseTrackVideoSelect/SelectSection.vue'
+import BaseTrackVideoSourceSelect
+  from '@/components/models/track/video/BaseTrackVideoSourceSelect.vue'
 import VideoSection from './BaseTrackVideoSelect/VideoSection.vue'
 import {
   generateKey
@@ -23,7 +24,7 @@ import {
 export default {
   name: 'BaseTrackVideoSelect',
   components: {
-    SelectSection,
+    BaseTrackVideoSourceSelect,
     VideoSection
   },
   provide () {
@@ -33,7 +34,7 @@ export default {
     }
   },
   props: {
-    query: String,
+    trackData: Object,
     isShow: Boolean
   },
   emits: [
@@ -42,8 +43,7 @@ export default {
   data () {
     return {
       key: null,
-      selectedVideoData: null,
-      scope: 'videos'
+      selectedVideoData: null
     }
   },
   watch: {
@@ -67,6 +67,9 @@ export default {
       if (!value) {
         this.key = generateKey()
       }
+    },
+    handleReset () {
+      this.selectedVideoData = null
     },
     setSelectedVideoData (
       value

@@ -678,9 +678,17 @@ p
 
 .main-image
   @extend .object-fit-cover
-  &.inverted
+  &:not(.contained)
     &.bordered
-      @extend .border-inverted
+      @extend .border
+      &.inverted
+        @extend .border-inverted
+  &.contained
+    @extend .object-fit-contain, .no-border
+    background-color: black !important
+    outline: $border
+    &.inverted
+      outline: $borderInverted
 
 .main-source-select-container
   @extend .d-flex, .align-items-center

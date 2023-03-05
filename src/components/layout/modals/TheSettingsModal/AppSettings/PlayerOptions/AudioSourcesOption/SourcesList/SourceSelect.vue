@@ -5,7 +5,7 @@
       :selected="source"
       @select="handleSelect"
     >
-      <BaseStreamableSourcesList />
+      <BaseAudioSourcesList />
     </BaseDropdownContainer>
 
     <BaseClearButton
@@ -22,8 +22,8 @@ import {
 import playerStore from '@/stores/player'
 import BaseDropdownContainer
   from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
-import BaseStreamableSourcesList
-  from '@/components/lists/sources/BaseStreamableSourcesList.vue'
+import BaseAudioSourcesList
+  from '@/components/lists/sources/BaseAudioSourcesList.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   updateGlobal as updateGlobalStore
@@ -33,7 +33,7 @@ export default {
   name: 'SourceSelect',
   components: {
     BaseDropdownContainer,
-    BaseStreamableSourcesList,
+    BaseAudioSourcesList,
     BaseClearButton
   },
   props: {

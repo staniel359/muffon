@@ -5,6 +5,7 @@
     <VideoItem
       v-for="videoData in videosCollection"
       :key="videoData.uuid"
+      :scope="scope"
       :video-data="videoData"
       :is-with-channel-title="isWithChannelTitle"
       :is-with-created="isWithCreated"
@@ -43,6 +44,10 @@ export default {
       default () {
         return []
       }
+    },
+    scope: {
+      type: String,
+      default: 'videos'
     },
     isWithChannelTitle: Boolean,
     isWithCreated: Boolean,

@@ -404,7 +404,7 @@
     "lyrics": "Seleziona testi:"
   },
   "sources": {
-    "streamable": "Trasmissibile",
+    "audio": "Audio",
     "other": "Altro",
     "albumTypes": {
       "album": "Album",
@@ -419,6 +419,10 @@
       "video": "Video",
       "misc": "Miscellanei",
       "appearance": "Apparizioni"
+    },
+    "videoTypes": {
+      "video": "Video",
+      "track": "Brano"
     }
   },
   "player": {

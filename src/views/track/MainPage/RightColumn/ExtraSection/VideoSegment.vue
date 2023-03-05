@@ -10,7 +10,7 @@
       v-if="isVideoSelectCalled"
       v-show="isShowVideoSelect"
       class="video-select"
-      :query="query"
+      :track-data="trackData"
       :is-show="isShowVideoSelect"
       @focus="handleFocus"
     />
@@ -32,7 +32,7 @@ export default {
     BaseTrackVideoSelect
   },
   props: {
-    query: String
+    trackData: Object
   },
   data () {
     return {

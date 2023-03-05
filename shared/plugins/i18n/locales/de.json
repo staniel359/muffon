@@ -404,7 +404,7 @@
     "lyrics": "Lyrics auswählen:"
   },
   "sources": {
-    "streamable": "Streambar",
+    "audio": "Audio",
     "other": "Andere",
     "albumTypes": {
       "album": "Album",
@@ -419,6 +419,10 @@
       "video": "Videos",
       "misc": "Sonstige",
       "appearance": "Auftritte"
+    },
+    "videoTypes": {
+      "video": "Video",
+      "track": "Titel"
     }
   },
   "player": {

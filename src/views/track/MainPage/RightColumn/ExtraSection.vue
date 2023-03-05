@@ -8,7 +8,7 @@
     <BaseDivider />
 
     <VideoSegment
-      :query="query"
+      :track-data="trackData"
     />
 
     <BaseDivider />

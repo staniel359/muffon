@@ -2,6 +2,7 @@ $yandexMusicIconUrl: url('@/assets/images/yandexmusic.png')
 $deezerIconUrl: url('@/assets/images/deezer.png')
 $discogsIconUrl: url('@/assets/images/discogs.png')
 $geniusIconUrl: url('@/assets/images/genius.png')
+$youTubeMusicIconUrl: url('@/assets/images/youtubemusic.png')
 
 .icon
   &.colored
@@ -43,4 +44,11 @@ $geniusIconUrl: url('@/assets/images/genius.png')
   width: 20px
   height: 20px
   &:not(.colored)
+    @extend .colorless
+
+.icon.youtubemusic
+  content: $youTubeMusicIconUrl
+  width: 20px
+  height: 20px
+  &:not(.colored):before
     @extend .colorless

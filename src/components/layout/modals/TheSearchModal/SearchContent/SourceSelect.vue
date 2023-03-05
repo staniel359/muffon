@@ -13,7 +13,7 @@
 
 <script>
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
-import audioSources from '@/helpers/data/audio/sources'
+import sources from '@/helpers/data/sources'
 import sourceSelectMixin from '@/mixins/sourceSelectMixin'
 
 export default {
@@ -26,7 +26,7 @@ export default {
   ],
   computed: {
     sources () {
-      return audioSources
+      return sources
     },
     firstSource () {
       return this.sourcesWithScope[0].id

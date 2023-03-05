@@ -30,6 +30,7 @@
         }"
         :model="model"
         :image="image"
+        :is-contained="isImageContained"
       />
     </div>
 
@@ -69,7 +70,8 @@ export default {
     header: String,
     content: String,
     extra: String,
-    value: String
+    value: String,
+    isImageContained: Boolean
   }
 }
 </script>

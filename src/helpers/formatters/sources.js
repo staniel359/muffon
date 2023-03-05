@@ -1,57 +1,59 @@
-import audioSources from '@/helpers/data/audio/sources'
+import sources from '@/helpers/data/sources'
 
-export function streamable () {
-  return audioSources.filter(
-    isSourceStreamable
+export const audio =
+  sources.filter(
+    isAudioSource
   )
-}
 
-function isSourceStreamable (
-  sourceData
-) {
-  return sourceData.isStreamable
-}
-
-export function otherWithAlbums () {
-  return other().filter(
-    isSourceWithAlbums
+const nonAudio =
+  sources.filter(
+    isNonAudioSource
   )
-}
 
-function other () {
-  return audioSources.filter(
-    isSourceNotStreamable
-  )
-}
-
-function isSourceNotStreamable (
-  sourceData
-) {
-  return !sourceData.isStreamable
-}
-
-function isSourceWithAlbums (
-  sourceData
-) {
-  return sourceData.isWithAlbums
-}
-
-export function otherWithTracks () {
-  return other().filter(
-    isSourceWithTracks
-  )
-}
-
-function isSourceWithTracks (
-  sourceData
-) {
-  return sourceData.isWithTracks
-}
-
-export function allWithArtists () {
-  return audioSources.filter(
+export const withArtists =
+  sources.filter(
     isSourceWithArtists
   )
+
+export const withAlbums =
+  sources.filter(
+    isSourceWithAlbums
+  )
+
+export const withTracks =
+  sources.filter(
+    isSourceWithTracks
+  )
+
+export const albumAudio =
+  audio.filter(
+    isSourceWithAlbums
+  )
+
+export const albumNonAudio =
+  nonAudio.filter(
+    isSourceWithAlbums
+  )
+
+export const trackAudio =
+  audio.filter(
+    isSourceWithTracks
+  )
+
+export const trackNonAudio =
+  nonAudio.filter(
+    isSourceWithTracks
+  )
+
+export const video =
+  sources.filter(
+    isVideoSource
+  )
+
+function isAudioSource (
+  sourceData
+) {
+  return sourceData.isAudio
 }
 
 function isSourceWithArtists (
@@ -60,14 +62,26 @@ function isSourceWithArtists (
   return sourceData.isWithArtists
 }
 
-export function allWithAlbums () {
-  return audioSources.filter(
-    isSourceWithAlbums
-  )
+function isSourceWithAlbums (
+  sourceData
+) {
+  return sourceData.isWithAlbums
 }
 
-export function allWithTracks () {
-  return audioSources.filter(
-    isSourceWithTracks
-  )
+function isSourceWithTracks (
+  sourceData
+) {
+  return sourceData.isWithTracks
+}
+
+function isNonAudioSource (
+  sourceData
+) {
+  return !sourceData.isAudio
+}
+
+function isVideoSource (
+  sourceData
+) {
+  return sourceData.isVideo
 }

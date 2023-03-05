@@ -29,7 +29,7 @@ import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseNoCollectionMessage
   from '@/components/messages/BaseNoCollectionMessage.vue'
-import audioSources from '@/helpers/data/audio/sources'
+import sources from '@/helpers/data/sources'
 
 export default {
   name: 'TracksList',
@@ -54,10 +54,10 @@ export default {
       return this.albumData.image
     },
     isWithSource () {
-      return !!this.sourceData?.isStreamable
+      return !!this.sourceData?.isAudio
     },
     sourceData () {
-      return audioSources.find(
+      return sources.find(
         this.isMatchedSource
       )
     },

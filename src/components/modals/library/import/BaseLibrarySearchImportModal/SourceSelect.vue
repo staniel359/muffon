@@ -14,9 +14,9 @@
 <script>
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import {
-  allWithArtists as getSourcesWithArtists,
-  allWithAlbums as getSourcesWithAlbums,
-  allWithTracks as getSourcesWithTracks
+  withArtists as sourcesWithArtists,
+  withAlbums as sourcesWithAlbums,
+  withTracks as sourcesWithTracks
 } from '@/helpers/formatters/sources'
 import sourceSelectMixin from '@/mixins/sourceSelectMixin'
 
@@ -32,11 +32,11 @@ export default {
     sources () {
       switch (this.scope) {
         case 'artists':
-          return getSourcesWithArtists()
+          return sourcesWithArtists
         case 'albums':
-          return getSourcesWithAlbums()
+          return sourcesWithAlbums
         case 'tracks':
-          return getSourcesWithTracks()
+          return sourcesWithTracks
         default:
           return []
       }

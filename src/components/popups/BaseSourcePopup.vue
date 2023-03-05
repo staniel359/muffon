@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import audioSources from '@/helpers/data/audio/sources'
+import sources from '@/helpers/data/sources'
 
 export default {
   name: 'BaseSourcePopup',
@@ -35,7 +35,7 @@ export default {
       return this.sourceData?.name
     },
     sourceData () {
-      return audioSources.find(
+      return sources.find(
         this.isMatchedSource
       )
     }

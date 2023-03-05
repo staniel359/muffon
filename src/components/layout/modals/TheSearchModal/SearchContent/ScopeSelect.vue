@@ -9,7 +9,7 @@
 
 <script>
 import BaseScopeSelect from '@/components/selects/BaseScopeSelect.vue'
-import audioSources from '@/helpers/data/audio/sources'
+import sources from '@/helpers/data/sources'
 import sourceSelectMixin from '@/mixins/sourceSelectMixin'
 
 export default {
@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     sources () {
-      return audioSources
+      return sources
     },
     firstScope () {
       return this.sourceScopes[0]

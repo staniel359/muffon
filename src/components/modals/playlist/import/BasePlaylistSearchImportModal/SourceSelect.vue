@@ -14,7 +14,7 @@
 <script>
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import {
-  allWithTracks as getSourcesWithTracks
+  withTracks as sourcesWithTracks
 } from '@/helpers/formatters/sources'
 
 export default {
@@ -30,7 +30,7 @@ export default {
   ],
   computed: {
     sources () {
-      return getSourcesWithTracks()
+      return sourcesWithTracks
     }
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
   <SourceItem
-    v-for="sourceData in audioSources"
+    v-for="sourceData in sources"
     :key="sourceData.id"
     :source-data="sourceData"
   />
@@ -8,7 +8,7 @@
 
 <script>
 import SourceItem from './BaseSourcesList/SourceItem.vue'
-import audioSources from '@/helpers/data/audio/sources'
+import sources from '@/helpers/data/sources'
 
 export default {
   name: 'BaseSourcesList',
@@ -16,8 +16,8 @@ export default {
     SourceItem
   },
   computed: {
-    audioSources () {
-      return audioSources
+    sources () {
+      return sources
     }
   }
 }

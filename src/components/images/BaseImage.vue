@@ -2,7 +2,8 @@
   <img
     class="ui image main-image"
     :class="{
-      inverted: isDarkMode
+      inverted: isDarkMode,
+      contained: isContained
     }"
     :[attribute]="imageConditional"
     @click="handleClick"
@@ -23,7 +24,8 @@ export default {
   props: {
     image: String,
     model: String,
-    isLazy: Boolean
+    isLazy: Boolean,
+    isContained: Boolean
   },
   emits: [
     'click'

@@ -15,7 +15,7 @@
         :scope="searchScope"
         :limit="limit"
         :response-page-limit="responsePageLimit"
-        :is-pagination-simple="isVideos"
+        :is-pagination-simple="isPaginationSimple"
         @focus="handleFocus"
       >
         <template
@@ -24,6 +24,7 @@
           <Component
             :is="component"
             :[listScope]="slotProps[searchScope]"
+            :scope="searchScope"
             :is-with-artist-image="isLastfmSource"
             :is-with-image="!isLastfmSource"
             :is-with-listeners-count="isWithListenersCount"
@@ -177,10 +178,37 @@ export default {
     },
     tracksData () {
       return {
-        component: 'BaseTracksSimpleList',
-        limit: 50,
+        component:
+          this.tracksComponent,
+        listScope:
+          this.tracksListScope,
+        limit: this.tracksLimit,
         responsePageLimit:
           this.tracksResponsePageLimit
+      }
+    },
+    tracksComponent () {
+      switch (this.source) {
+        case 'youtubemusic':
+          return 'BaseVideosSimpleList'
+        default:
+          return 'BaseTracksSimpleList'
+      }
+    },
+    tracksListScope () {
+      switch (this.source) {
+        case 'youtubemusic':
+          return 'videos'
+        default:
+          return 'tracks'
+      }
+    },
+    tracksLimit () {
+      switch (this.source) {
+        case 'youtubemusic':
+          return 20
+        default:
+          return 50
       }
     },
     tracksResponsePageLimit () {
@@ -188,6 +216,8 @@ export default {
         case 'yandexmusic':
           return 20
         case 'genius':
+          return 20
+        case 'youtubemusic':
           return 20
         default:
           return null
@@ -212,8 +242,21 @@ export default {
     responsePageLimit () {
       return this.scopeData.responsePageLimit
     },
-    isVideos () {
-      return this.scope === 'videos'
+    isPaginationSimple () {
+      return (
+        this.isYouTubeSource ||
+          this.isYouTubeMusicSource
+      )
+    },
+    isYouTubeSource () {
+      return (
+        this.source === 'youtube'
+      )
+    },
+    isYouTubeMusicSource () {
+      return (
+        this.source === 'youtubemusic'
+      )
     },
     component () {
       return this.scopeData.component
@@ -234,13 +277,19 @@ export default {
       )
     },
     isTracks () {
-      return this.scope === 'tracks'
+      return (
+        this.scope === 'tracks'
+      )
     },
     isAlbums () {
-      return this.scope === 'albums'
+      return (
+        this.scope === 'albums'
+      )
     },
     isLastfmSource () {
-      return this.source === 'lastfm'
+      return (
+        this.source === 'lastfm'
+      )
     }
   },
   mounted () {

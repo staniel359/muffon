@@ -1,31 +1,19 @@
 <template>
-  <div class="main-track-dropdown-container">
-    <div class="main-track-dropdown-logo-container">
-      <BaseSourceIcon
-        source="youtube"
-        size="large"
-      />
-    </div>
-
-    <BaseDropdownContainer
-      class="video-select"
-      :header="headerText"
-      :is-loading="isLoading"
-      :is-error="isError"
-      :is-disabled="!isAnyVideos"
-      @select="handleSelect"
-    >
-      <VideoItem
-        v-for="videoData in videosCollection"
-        :key="videoData.uuid"
-        :video-data="videoData"
-      />
-    </BaseDropdownContainer>
-  </div>
+  <BaseDropdownContainer
+    class="main-source-select-item-select video-select"
+    :header="headerText"
+    @select="handleSelect"
+  >
+    <VideoItem
+      v-for="videoData in videosCollection"
+      :key="videoData.uuid"
+      :video-data="videoData"
+      :is-image-contained="isImageContained"
+    />
+  </BaseDropdownContainer>
 </template>
 
 <script>
-import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseDropdownContainer
   from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
 import VideoItem from './VideoSelect/VideoItem.vue'
@@ -36,7 +24,6 @@ import {
 export default {
   name: 'VideoSelect',
   components: {
-    BaseSourceIcon,
     BaseDropdownContainer,
     VideoItem
   },
@@ -44,38 +31,31 @@ export default {
     'setSelectedVideoData'
   ],
   props: {
+    typeId: {
+      type: String,
+      required: true
+    },
     videos: {
       type: Array,
       default () {
         return []
       }
-    },
-    isLoading: Boolean,
-    isError: Boolean
+    }
   },
   computed: {
     headerText () {
       return this.$t(
-        this.headerKey
+        `select.${this.typeId}`
       )
-    },
-    headerKey () {
-      if (this.isError) {
-        return 'error'
-      } else if (this.isLoading) {
-        return 'loading'
-      } else if (!this.isAnyVideos) {
-        return 'noCollection.header.videos'
-      } else {
-        return 'select.video'
-      }
-    },
-    isAnyVideos () {
-      return !!this.videos.length
     },
     videosCollection () {
       return formatCollection(
         this.videos
+      )
+    },
+    isImageContained () {
+      return (
+        this.typeId === 'track'
       )
     }
   },
@@ -106,8 +86,7 @@ export default {
 
 <style lang="sass" scoped>
 .video-select
-  width: 225px
-  @extend .no-margin
+  width: 220px
   ::v-deep(.image)
     width: 40px !important
 </style>

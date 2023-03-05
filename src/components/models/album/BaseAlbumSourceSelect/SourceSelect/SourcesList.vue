@@ -1,11 +1,11 @@
 <template>
   <div
     class="header"
-    v-text="streamableText"
+    v-text="audioText"
   />
 
   <SourceItem
-    v-for="sourceData in streamableSources"
+    v-for="sourceData in audioSources"
     :key="sourceData.id"
     :source-data="sourceData"
     :query="query"
@@ -20,7 +20,7 @@
   />
 
   <SourceItem
-    v-for="sourceData in otherSourcesWithAlbums"
+    v-for="sourceData in nonAudioSources"
     :key="sourceData.id"
     :query="query"
     :source-data="sourceData"
@@ -30,8 +30,8 @@
 <script>
 import SourceItem from './SourcesList/SourceItem.vue'
 import {
-  streamable as getStreamableSources,
-  otherWithAlbums as getOtherSourcesWithAlbums
+  albumAudio as albumAudioSources,
+  albumNonAudio as albumNonAudioSources
 } from '@/helpers/formatters/sources'
 
 export default {
@@ -43,21 +43,21 @@ export default {
     query: String
   },
   computed: {
-    streamableText () {
+    audioText () {
       return this.$t(
-        'sources.streamable'
+        'sources.audio'
       )
     },
-    streamableSources () {
-      return getStreamableSources()
+    audioSources () {
+      return albumAudioSources
     },
     otherText () {
       return this.$t(
         'sources.other'
       )
     },
-    otherSourcesWithAlbums () {
-      return getOtherSourcesWithAlbums()
+    nonAudioSources () {
+      return albumNonAudioSources
     }
   }
 }

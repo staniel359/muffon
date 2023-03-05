@@ -404,7 +404,7 @@
     "lyrics": "Выбраць тэкст:"
   },
   "sources": {
-    "streamable": "Прайграваемыя",
+    "audio": "Аудыё",
     "other": "Іншыя",
     "albumTypes": {
       "album": "Альбом",
@@ -419,6 +419,10 @@
       "video": "Відэа",
       "misc": "Рознае",
       "appearance": "З удзелам"
+    },
+    "videoTypes": {
+      "video": "Відэа",
+      "track": "Кампазіцыя"
     }
   },
   "player": {
