@@ -3,7 +3,9 @@
     v-if="isDeleted"
     model="track"
   />
-  <template v-else>
+  <template
+    v-else
+  >
     <BaseTrackAudioIcon
       class="track-play-button"
       :is-loading="isLoading"

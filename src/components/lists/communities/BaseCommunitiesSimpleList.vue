@@ -10,6 +10,7 @@
       :is-with-join-option="isWithJoinOption"
       :is-with-share-option="isWithShareOption"
       :is-with-clear-button="isWithClearButton"
+      :is-with-model-icon="isWithModelIcon"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -40,7 +41,8 @@ export default {
     isWithCreated: Boolean,
     isWithJoinOption: Boolean,
     isWithShareOption: Boolean,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isWithModelIcon: Boolean
   },
   emits: [
     'linkClick',

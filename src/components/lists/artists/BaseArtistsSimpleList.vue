@@ -27,6 +27,7 @@
       :is-favorite="isFavorite"
       :is-paginated="isPaginated"
       :is-with-created="isWithCreated"
+      :is-with-model-icon="isWithModelIcon"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -80,7 +81,8 @@ export default {
     isImageSmall: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
-    isWithCreated: Boolean
+    isWithCreated: Boolean,
+    isWithModelIcon: Boolean
   },
   emits: [
     'linkClick',

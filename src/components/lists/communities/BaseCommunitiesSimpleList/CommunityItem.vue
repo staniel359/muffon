@@ -4,6 +4,12 @@
     :link="communityLink"
     @click="handleLinkClick"
   >
+    <BaseIcon
+      v-if="isWithModelIcon"
+      class="main-simple-list-item-model-icon"
+      icon="community"
+    />
+
     <BaseImage
       class="rounded-medium bordered"
       model="community"
@@ -62,6 +68,7 @@
 <script>
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseCommunityJoinedMessage
@@ -81,6 +88,7 @@ export default {
   name: 'CommunityItem',
   components: {
     BaseLinkContainer,
+    BaseIcon,
     BaseImage,
     BaseHeader,
     BaseCommunityJoinedMessage,
@@ -107,7 +115,8 @@ export default {
     isWithCreated: Boolean,
     isWithJoinOption: Boolean,
     isWithShareOption: Boolean,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isWithModelIcon: Boolean
   },
   emits: [
     'linkClick',

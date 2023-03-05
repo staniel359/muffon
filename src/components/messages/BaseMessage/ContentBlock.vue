@@ -6,7 +6,9 @@
       :text="content"
       @click="handleLinkClick"
     />
-    <template v-else>
+    <template
+      v-else
+    >
       {{ content }}
     </template>
   </p>

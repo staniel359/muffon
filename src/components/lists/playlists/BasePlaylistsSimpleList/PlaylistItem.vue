@@ -11,7 +11,15 @@
       v-if="isDeleted"
       model="playlist"
     />
-    <template v-else>
+    <template
+      v-else
+    >
+      <BaseIcon
+        v-if="isWithModelIcon"
+        class="main-simple-list-item-model-icon"
+        icon="playlist"
+      />
+
       <BaseImage
         class="rounded-medium bordered"
         model="playlist"
@@ -92,6 +100,7 @@
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
@@ -113,6 +122,7 @@ export default {
   components: {
     BaseLinkContainer,
     BaseDeletedSection,
+    BaseIcon,
     BaseImage,
     BaseHeader,
     BasePrivateIcon,
@@ -141,7 +151,8 @@ export default {
     isWithShareOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isWithModelIcon: Boolean
   },
   emits: [
     'linkClick',

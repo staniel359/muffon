@@ -14,7 +14,15 @@
       v-if="isDeleted"
       model="artist"
     />
-    <template v-else>
+    <template
+      v-else
+    >
+      <BaseIcon
+        v-if="isWithModelIcon"
+        class="main-simple-list-item-model-icon"
+        icon="artist"
+      />
+
       <BaseArtistImage
         size="extrasmall"
         :class="{
@@ -104,6 +112,7 @@
 import BaseArtistLinkContainer
   from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistListenersCount
@@ -121,6 +130,7 @@ export default {
   components: {
     BaseArtistLinkContainer,
     BaseDeletedSection,
+    BaseIcon,
     BaseArtistImage,
     BaseHeader,
     BaseArtistListenersCount,
@@ -162,7 +172,8 @@ export default {
     isBookmark: Boolean,
     isFavorite: Boolean,
     isPaginated: Boolean,
-    isWithCreated: Boolean
+    isWithCreated: Boolean,
+    isWithModelIcon: Boolean
   },
   emits: [
     'linkClick',

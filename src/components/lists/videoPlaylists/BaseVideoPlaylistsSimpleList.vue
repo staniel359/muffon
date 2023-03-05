@@ -9,6 +9,7 @@
       :is-with-channel-title="isWithChannelTitle"
       :is-with-share-option="isWithShareOption"
       :is-with-clear-button="isWithClearButton"
+      :is-with-model-icon="isWithModelIcon"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -39,7 +40,8 @@ export default {
     },
     isWithChannelTitle: Boolean,
     isWithShareOption: Boolean,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isWithModelIcon: Boolean
   },
   emits: [
     'linkClick',

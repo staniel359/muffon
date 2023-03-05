@@ -20,6 +20,7 @@
       :is-paginated="false"
       is-with-listeners-count
       is-with-share-option
+      is-with-model-icon
     />
 
     <BaseAlbumsSimpleList
@@ -31,6 +32,7 @@
       is-with-listeners-count
       is-with-source
       is-with-share-option
+      is-with-model-icon
     />
 
     <BaseTracksSimpleList
@@ -60,6 +62,7 @@
       :playlists="videoPlaylists"
       is-with-channel-title
       is-with-share-option
+      is-with-model-icon
     />
 
     <BasePlaylistsSimpleList
@@ -68,6 +71,7 @@
       :playlists="playlists"
       is-with-profile-nickname
       is-with-share-option
+      is-with-model-icon
     />
 
     <BaseCommunitiesSimpleList
@@ -75,6 +79,7 @@
       class="main-content-section"
       :communities="communities"
       is-with-share-option
+      is-with-model-icon
     />
   </div>
 </template>

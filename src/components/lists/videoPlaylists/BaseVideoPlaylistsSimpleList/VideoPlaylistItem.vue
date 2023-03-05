@@ -4,6 +4,12 @@
     :link="link"
     @click="handleLinkClick"
   >
+    <BaseIcon
+      v-if="isWithModelIcon"
+      class="main-simple-list-item-model-icon"
+      icon="videoPlaylist"
+    />
+
     <BaseImage
       class="rounded-medium bordered"
       model="videoPlaylist"
@@ -62,6 +68,7 @@
 <script>
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseVideoChannelLinkSection
@@ -81,6 +88,7 @@ export default {
   name: 'VideoPlaylistItem',
   components: {
     BaseLinkContainer,
+    BaseIcon,
     BaseImage,
     BaseHeader,
     BaseVideoChannelLinkSection,
@@ -96,7 +104,8 @@ export default {
     },
     isWithChannelTitle: Boolean,
     isWithShareOption: Boolean,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isWithModelIcon: Boolean
   },
   emits: [
     'linkClick',

@@ -16,6 +16,12 @@
     <template
       v-else
     >
+      <BaseIcon
+        v-if="isWithModelIcon"
+        class="main-simple-list-item-model-icon"
+        icon="album"
+      />
+
       <BaseImage
         class="rounded-medium bordered"
         model="album"
@@ -119,6 +125,7 @@
 import BaseAlbumLinkContainer
   from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseAlbumArtistsSection
@@ -141,6 +148,7 @@ export default {
   components: {
     BaseAlbumLinkContainer,
     BaseDeletedSection,
+    BaseIcon,
     BaseImage,
     BaseHeader,
     BaseAlbumArtistsSection,
@@ -184,7 +192,8 @@ export default {
     isFavorite: Boolean,
     isWithSource: Boolean,
     profileId: String,
-    isWithCreated: Boolean
+    isWithCreated: Boolean,
+    isWithModelIcon: Boolean
   },
   emits: [
     'linkClick',

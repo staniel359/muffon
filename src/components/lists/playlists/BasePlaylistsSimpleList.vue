@@ -12,6 +12,7 @@
       :is-with-edit-option="isWithEditOption"
       :is-with-delete-option="isWithDeleteOption"
       :is-with-clear-button="isWithClearButton"
+      :is-with-model-icon="isWithModelIcon"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -44,7 +45,8 @@ export default {
     isWithShareOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isWithModelIcon: Boolean
   },
   emits: [
     'linkClick',

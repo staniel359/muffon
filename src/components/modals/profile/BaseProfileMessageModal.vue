@@ -9,7 +9,9 @@
         :conversation-id="conversationId"
         @link-click="handleLinkClick"
       />
-      <template v-else>
+      <template
+        v-else
+      >
         <OtherProfileSection
           :profile-data="profileData"
         />

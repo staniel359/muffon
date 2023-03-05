@@ -9,7 +9,9 @@
       v-if="isDeleted"
       model="post"
     />
-    <template v-else>
+    <template
+      v-else
+    >
       <BaseImage
         class="small bordered"
         :class="imageClass"
