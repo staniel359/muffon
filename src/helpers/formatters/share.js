@@ -71,21 +71,10 @@ export function track (
 export function video (
   videoData
 ) {
-  const {
-    source,
-    title,
-    image
-  } = videoData
-
-  const imageData = image && {
-    small: image.small
-  }
-
   return {
     model: 'video',
-    source,
-    title,
-    image: imageData
+    youtube_id:
+      videoData.source.id
   }
 }
 
