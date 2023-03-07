@@ -48,9 +48,7 @@ export default {
       )
     },
     videosCount () {
-      return this.channelData
-        .statistics
-        .videos_count
+      return this.channelData.videos_count
     },
     subscribersCountFormatted () {
       return formatNumber(
@@ -58,9 +56,7 @@ export default {
       )
     },
     subscribersCount () {
-      return this.channelData
-        .statistics
-        .subscribers_count
+      return this.channelData.subscribers_count
     }
   }
 }

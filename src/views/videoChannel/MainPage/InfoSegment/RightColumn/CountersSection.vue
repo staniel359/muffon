@@ -38,16 +38,13 @@ export default {
       ]
     },
     subscribersCount () {
-      return this.statisticsData.subscribers_count
-    },
-    statisticsData () {
-      return this.channelData.statistics
+      return this.channelData.subscribers_count
     },
     viewsCount () {
-      return this.statisticsData.views_count
+      return this.channelData.views_count
     },
     videosCount () {
-      return this.statisticsData.videos_count
+      return this.channelData.videos_count
     }
   }
 }
