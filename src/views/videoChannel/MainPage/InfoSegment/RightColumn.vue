@@ -12,7 +12,7 @@
 
     <BaseDateLabelSection
       class="main-labels-section"
-      :date="created"
+      :date="publishDate"
     />
 
     <DescriptionSection
@@ -46,8 +46,8 @@ export default {
     channelTitle () {
       return this.channelData.title
     },
-    created () {
-      return this.channelData.created
+    publishDate () {
+      return this.channelData.publish_date
     }
   }
 }
