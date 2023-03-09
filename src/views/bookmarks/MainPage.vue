@@ -10,6 +10,8 @@
 
     <VideosSegment />
 
+    <VideoChannelsSegment />
+
     <VideoPlaylistsSegment />
   </BaseBookmarksPageContainer>
 </template>
@@ -21,6 +23,7 @@ import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
 import VideosSegment from './MainPage/VideosSegment.vue'
+import VideoChannelsSegment from './MainPage/VideoChannelsSegment.vue'
 import VideoPlaylistsSegment from './MainPage/VideoPlaylistsSegment.vue'
 
 export default {
@@ -31,6 +34,7 @@ export default {
     AlbumsSegment,
     TracksSegment,
     VideosSegment,
+    VideoChannelsSegment,
     VideoPlaylistsSegment
   }
 }

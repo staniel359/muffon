@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="isRender"
+    v-if="videosCount >= 0"
   >
     <small
       v-if="isSmall"
@@ -28,9 +28,6 @@ export default {
     isSmall: Boolean
   },
   computed: {
-    isRender () {
-      return this.videosCount >= 0
-    },
     videosCountText () {
       return this.$tc(
         'counters.nominative.videos',

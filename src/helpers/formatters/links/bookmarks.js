@@ -38,6 +38,14 @@ export function videos () {
   }
 }
 
+export function videoChannels () {
+  return {
+    name: 'BookmarksVideoChannelsPage',
+    params: {},
+    path: 'bookmarks/video_channels'
+  }
+}
+
 export function videoPlaylists () {
   return {
     name: 'BookmarksVideoPlaylistsPage',

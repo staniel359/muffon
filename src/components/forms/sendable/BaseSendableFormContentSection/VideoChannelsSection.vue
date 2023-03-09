@@ -1,6 +1,7 @@
 <template>
   <BaseVideoChannelsSimpleList
     :channels="videoChannels"
+    :is-with-self-icons="false"
     is-with-clear-button
     @link-click="handleLinkClick"
     @clear-button-click="handleClearButtonClick"

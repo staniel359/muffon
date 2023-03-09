@@ -48,6 +48,7 @@
       "albums": "Album dei segnalibri",
       "tracks": "Brani dei segnalibri",
       "videos": "Video dei segnalibri",
+      "videoChannels": "Canali video dei segnalibri",
       "videoPlaylists": "Playlist video dei segnalibri"
     },
     "communities": "Community",
@@ -226,6 +227,7 @@
           "album": "Rimuovi album dai segnalibri",
           "track": "Rimuovi brano dai segnalibri",
           "video": "Rimuovi video dai segnalibri",
+          "videoChannel": "Rimuovi il canale video dai segnalibri",
           "videoPlaylist": "Rimuovi la playlist di video dai segnalibri"
         },
         "post": "Elimina post",
@@ -659,6 +661,7 @@
       "communities": "Nessuna community",
       "members": "Nessun membro",
       "videos": "Nessun video",
+      "videoChannels": "Nessun canale video",
       "videoPlaylists": "Nessuna playlist di video",
       "related": "Nessun correlato",
       "lyrics": "Nessun testo",
@@ -677,6 +680,7 @@
     "playlist": "Playlist rimossa",
     "post": "Post rimosso",
     "video": "Video rimosso",
+    "videoChannel": "Il canale video è stato eliminato",
     "videoPlaylist": "La playlist video è stata eliminata"
   },
   "messages": {
@@ -742,6 +746,7 @@
       "bookmarkArtist": "L'artista {modelName} è stato aggiunto ai segnalibri",
       "bookmarkTrack": "Il brano {modelName} è stato aggiunto ai segnalibri",
       "bookmarkVideo": "Il video {modelName} è stato aggiunto ai segnalibri",
+      "bookmarkVideoChannel": "Il canale video {modelName} è stato aggiunto ai segnalibri",
       "bookmarkVideoPlaylist": "La playlist video {modelName} è stata aggiunta ai segnalibri",
       "favoriteAlbum": "L'album {modelName} è stato aggiunto ai preferiti",
       "favoriteArtist": "L'artista {modelName} è stato aggiunto ai preferiti",
@@ -773,6 +778,7 @@
       "bookmarkArtist": "L'artista {modelName} è stato rimosso dai segnalibri",
       "bookmarkTrack": "Il brano {modelName} è stato rimosso dai segnalibri",
       "bookmarkVideo": "Il video {modelName} è stato rimosso dai segnalibri",
+      "bookmarkVideoChannel": "Il canale video {modelName} è stato rimosso dai segnalibri",
       "bookmarkVideoPlaylist": "La playlist video {modelName} è stata rimossa dai segnalibri",
       "favoriteAlbum": "L'album {modelName} è stato rimosso dai preferiti",
       "favoriteArtist": "L'artista {modelName} è stato rimosso dai preferiti",

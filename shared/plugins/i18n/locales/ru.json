@@ -24,7 +24,7 @@
     "similar": "Похожие",
     "images": "Изображения",
     "videos": "Видео",
-    "videoChannels": "Видео-каналы",
+    "videoChannels": "Каналы видео",
     "videoPlaylists": "Списки видео",
     "related": "Связанные",
     "top": "Популярное",
@@ -48,6 +48,7 @@
       "albums": "Закладки альбомов",
       "tracks": "Закладки композиций",
       "videos": "Закладки видео",
+      "videoChannels": "Закладки каналов видео",
       "videoPlaylists": "Закладки списков видео"
     },
     "communities": "Сообщества",
@@ -226,6 +227,7 @@
           "album": "Удалить альбом из закладок",
           "track": "Удалить композицию из закладок",
           "video": "Удалить видео из закладок",
+          "videoChannel": "Удалить канал видео из закладок",
           "videoPlaylist": "Удалить список видео из закладок"
         },
         "post": "Удалить публикацию",
@@ -659,6 +661,7 @@
       "communities": "Нет сообществ",
       "members": "Нет участников",
       "videos": "Нет видео",
+      "videoChannels": "Нет каналов видео",
       "videoPlaylists": "Нет списков видео",
       "related": "Нет связанных",
       "lyrics": "Нет текстов",
@@ -677,6 +680,7 @@
     "playlist": "Список был удалён",
     "post": "Публикация была удалена",
     "video": "Видео было удалено",
+    "videoChannel": "Канал видео был удалён",
     "videoPlaylist": "Список видео был удалён"
   },
   "messages": {
@@ -742,6 +746,7 @@
       "bookmarkArtist": "Исполнитель {modelName} добавлен в закладки",
       "bookmarkTrack": "Композиция {modelName} добавлена в закладки",
       "bookmarkVideo": "Видео {modelName} добавлено в закладки",
+      "bookmarkVideoChannel": "Канал видео {modelName} добавлен в закладки",
       "bookmarkVideoPlaylist": "Список видео {modelName} добавлен в закладки",
       "favoriteAlbum": "Альбом {modelName} добавлен в избранное",
       "favoriteArtist": "Исполнитель {modelName} добавлен в избранное",
@@ -773,6 +778,7 @@
       "bookmarkArtist": "Исполнитель {modelName} удалён из закладок",
       "bookmarkTrack": "Композиция {modelName} удалена из закладок",
       "bookmarkVideo": "Видео {modelName} удалено из закладок",
+      "bookmarkVideoChannel": "Канал видео {modelName} удалён из закладок",
       "bookmarkVideoPlaylist": "Список видео {modelName} удалён из закладок",
       "favoriteAlbum": "Альбом {modelName} удалён из избранного",
       "favoriteArtist": "Исполнитель {modelName} удалён из избранного",

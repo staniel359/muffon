@@ -48,6 +48,7 @@
       "albums": "Bookmark albums",
       "tracks": "Bookmark tracks",
       "videos": "Bookmark videos",
+      "videoChannels": "Bookmark video channels",
       "videoPlaylists": "Bookmark video playlists"
     },
     "communities": "Communities",
@@ -226,6 +227,7 @@
           "album": "Delete album from bookmarks",
           "track": "Delete track from bookmarks",
           "video": "Delete video from bookmarks",
+          "videoChannel": "Delete video channel from bookmarks",
           "videoPlaylist": "Delete video playlist from bookmarks"
         },
         "post": "Delete post",
@@ -659,6 +661,7 @@
       "communities": "No communities",
       "members": "No members",
       "videos": "No videos",
+      "videoChannels": "No video channels",
       "videoPlaylists": "No video playlists",
       "related": "No related",
       "lyrics": "No lyrics",
@@ -677,6 +680,7 @@
     "playlist": "Playlist has been deleted",
     "post": "Post has been deleted",
     "video": "Video has been deleted",
+    "videoChannel": "Video channel has been deleted",
     "videoPlaylist": "Video playlist has been deleted"
   },
   "messages": {
@@ -742,6 +746,7 @@
       "bookmarkArtist": "Artist {modelName} is added to bookmarks",
       "bookmarkTrack": "Track {modelName} is added to bookmarks",
       "bookmarkVideo": "Video {modelName} is added to bookmarks",
+      "bookmarkVideoChannel": "Video channel {modelName} is added to bookmarks",
       "bookmarkVideoPlaylist": "Video playlist {modelName} is added to bookmarks",
       "favoriteAlbum": "Album {modelName} is added to favorites",
       "favoriteArtist": "Artist {modelName} is added to favorites",
@@ -773,6 +778,7 @@
       "bookmarkArtist": "Artist {modelName} is deleted from bookmarks",
       "bookmarkTrack": "Track {modelName} is deleted from bookmarks",
       "bookmarkVideo": "Video {modelName} is deleted from bookmarks",
+      "bookmarkVideoChannel": "Video channel {modelName} is deleted from bookmarks",
       "bookmarkVideoPlaylist": "Video playlist {modelName} is deleted from bookmarks",
       "favoriteAlbum": "Album {modelName} is deleted from favorites",
       "favoriteArtist": "Artist {modelName} is deleted from favorites",

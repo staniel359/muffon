@@ -1,6 +1,7 @@
 <template>
   <BaseVideoPlaylistsSimpleList
     :playlists="videoPlaylists"
+    :is-with-self-icons="false"
     is-with-channel-title
     is-with-clear-button
     @link-click="handleLinkClick"

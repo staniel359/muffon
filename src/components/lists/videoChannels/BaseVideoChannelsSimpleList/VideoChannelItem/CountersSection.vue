@@ -1,7 +1,10 @@
 <template>
   <div class="counters-section">
     <small>
-      <span class="counter-section">
+      <span
+        v-if="videosCount >= 0"
+        class="counter-section"
+      >
         <BaseIcon
           icon="video"
         />
@@ -11,7 +14,10 @@
         />
       </span>
 
-      <span class="counter-section">
+      <span
+        v-if="subscribersCount >= 0"
+        class="counter-section"
+      >
         <BaseIcon
           icon="subscriber"
         />

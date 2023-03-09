@@ -1,6 +1,7 @@
 <template>
   <BaseAlbumsSimpleList
     :albums="albums"
+    :is-with-self-icons="false"
     is-with-artist-name
     is-with-source
     is-with-clear-button

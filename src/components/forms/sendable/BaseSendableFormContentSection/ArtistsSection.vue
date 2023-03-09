@@ -2,6 +2,7 @@
   <BaseArtistsSimpleList
     :artists="artists"
     :is-paginated="false"
+    :is-with-self-icons="false"
     is-with-image
     is-with-clear-button
     @link-click="handleLinkClick"

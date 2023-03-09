@@ -1,6 +1,7 @@
 <template>
   <BaseTracksSimpleList
     :tracks="tracks"
+    :is-with-self-icons="false"
     is-with-image
     is-with-artist-name
     is-with-album-title

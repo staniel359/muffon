@@ -73,6 +73,10 @@ export default {
     'createdDesc',
     'createdAsc'
   ],
+  bookmarkVideoChannel: [
+    'createdDesc',
+    'createdAsc'
+  ],
   bookmarkVideoPlaylist: [
     'createdDesc',
     'createdAsc'

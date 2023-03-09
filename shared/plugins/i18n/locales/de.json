@@ -48,6 +48,7 @@
       "albums": "Albums Lesezeichen",
       "tracks": "Titel Lesezeichen",
       "videos": "Videos Lesezeichen",
+      "videoChannels": "Videokanäle Lesezeichen",
       "videoPlaylists": "Videoplaylisten Lesezeichen"
     },
     "communities": "Communities",
@@ -226,6 +227,7 @@
           "album": "Album aus Lesezeichen löschen",
           "track": "Titel aus Lesezeichen löschen",
           "video": "Video aus Lesezeichen löschen",
+          "videoChannel": "Videokanal aus Lesezeichen löschen",
           "videoPlaylist": "Videoplaylist aus Lesezeichen löschen"
         },
         "post": "Post löschen",
@@ -659,6 +661,7 @@
       "communities": "Keine Communities",
       "members": "Keine Mitglieder",
       "videos": "Keine Videos",
+      "videoChannels": "Keine Videokanäle",
       "videoPlaylists": "Keine Videoplaylisten",
       "related": "Keine Verwandten",
       "lyrics": "Keine Lyrics",
@@ -677,6 +680,7 @@
     "playlist": "Playlist wurde gelöscht",
     "post": "Post wurde gelöscht",
     "video": "Video wurde gelöscht",
+    "videoChannel": "Videokanal wurde gelöscht",
     "videoPlaylist": "Videoplaylist wurde gelöscht"
   },
   "messages": {
@@ -742,6 +746,7 @@
       "bookmarkArtist": "Künstler {modelName} wurde zu Lesezeichen hinzugefügt",
       "bookmarkTrack": "Titel {modelName} wurde zu Lesezeichen hinzugefügt",
       "bookmarkVideo": "Video {modelName} wurde zu Lesezeichen hinzugefügt",
+      "bookmarkVideoChannel": "Videokanal {modelName} wurde zu Lesezeichen hinzugefügt",
       "bookmarkVideoPlaylist": "Videoplaylist {modelName} wurde zu Lesezeichen hinzugefügt",
       "favoriteAlbum": "Album {modelName} wurde zu den Favoriten hinzugefügt",
       "favoriteArtist": "Künstler {modelName} wurde zu den Favoriten hinzugefügt",
@@ -773,6 +778,7 @@
       "bookmarkArtist": "Künstler {modelName} wurde von Lesezeichen gelöscht",
       "bookmarkTrack": "Titel {modelName} wurde von Lesezeichen gelöscht",
       "bookmarkVideo": "Video {modelName} wurde von Lesezeichen gelöscht",
+      "bookmarkVideoChannel": "Videokanal {modelName} wurde von Lesezeichen gelöscht",
       "bookmarkVideoPlaylist": "Videoplaylist {modelName} wurde von Lesezeichen gelöscht",
       "favoriteAlbum": "Album {modelName} wurde von den Favoriten gelöscht",
       "favoriteArtist": "Künstler {modelName} wurde von den Favoriten gelöscht",

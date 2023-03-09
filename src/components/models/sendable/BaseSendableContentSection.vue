@@ -60,6 +60,7 @@
       v-if="videoChannels?.length"
       class="main-content-section"
       :channels="videoChannels"
+      :is-with-self-icons="false"
       is-with-share-option
       is-with-model-icon
     />

@@ -5,6 +5,7 @@ import {
   albums as formatBookmarksAlbumsLink,
   tracks as formatBookmarksTracksLink,
   videos as formatBookmarksVideosLink,
+  videoChannels as formatBookmarksVideoChannelsLink,
   videoPlaylists as formatBookmarksVideoPlaylistsLink
 } from '@/helpers/formatters/links/bookmarks'
 
@@ -37,6 +38,8 @@ export default function (
         return formatBookmarksTracksLink()
       case 'videos':
         return formatBookmarksVideosLink()
+      case 'videoChannels':
+        return formatBookmarksVideoChannelsLink()
       case 'videoPlaylists':
         return formatBookmarksVideoPlaylistsLink()
       default:
