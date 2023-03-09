@@ -16,8 +16,15 @@
       <template
         #default="slotProps"
       >
-        <slot
-          :[scope]="slotProps[scope]"
+        <div>
+          <slot
+            :[scope]="slotProps[scope]"
+          />
+        </div>
+
+        <MoreSection
+          :scope="scope"
+          :profile-id="profileId"
         />
       </template>
     </BasePaginatedListContainer>
@@ -31,12 +38,14 @@ import {
 import layoutStore from '@/stores/layout'
 import BasePaginatedListContainer
   from '@/components/containers/lists/BasePaginatedListContainer.vue'
+import MoreSection from './BaseProfileLibraryTabContainer/MoreSection.vue'
 import getProfileLibrary from '@/helpers/actions/api/profile/library/get'
 
 export default {
   name: 'BaseProfileLibraryTabContainer',
   components: {
-    BasePaginatedListContainer
+    BasePaginatedListContainer,
+    MoreSection
   },
   provide () {
     return {
