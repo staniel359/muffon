@@ -1,3 +1,4 @@
+$muffonIconUrl: url('@/assets/images/muffon.png')
 $yandexMusicIconUrl: url('@/assets/images/yandexmusic.png')
 $deezerIconUrl: url('@/assets/images/deezer.png')
 $discogsIconUrl: url('@/assets/images/discogs.png')
@@ -20,6 +21,13 @@ $youTubeMusicIconUrl: url('@/assets/images/youtubemusic.png')
       color: $colorSpotify !important
     &.youtube
       color: $colorYouTube !important
+
+.icon.muffon
+  content: $muffonIconUrl
+  width: 20px
+  height: 20px
+  &:not(.colored)
+    @extend .colorless
 
 .icon.yandexmusic
   &:before

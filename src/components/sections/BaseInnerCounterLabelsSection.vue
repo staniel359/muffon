@@ -2,9 +2,8 @@
   <div
     class="main-inner-counter-labels-section"
   >
-    <BaseImage
-      class="image-extrasmall logo"
-      :image="logo"
+    <BaseIcon
+      icon="colored muffon"
     />
 
     <div class="ui labels">
@@ -21,7 +20,7 @@
 </template>
 
 <script>
-import BaseImage from '@/components/images/BaseImage.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseLabel from '@/components/labels/BaseLabel.vue'
 import {
   number as formatNumber
@@ -30,7 +29,7 @@ import {
 export default {
   name: 'BaseInnerCounterLabelsSection',
   components: {
-    BaseImage,
+    BaseIcon,
     BaseLabel
   },
   props: {
@@ -51,11 +50,6 @@ export default {
     'click'
   ],
   computed: {
-    logo () {
-      return require(
-        '@/../public/logo.png'
-      )
-    },
     listenersCountFormatted () {
       return formatNumber(
         this.listenersCount
