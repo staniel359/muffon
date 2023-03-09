@@ -24,6 +24,9 @@ import BaseHistoryPaginatedPageContainer
 import BaseHistoryEventsSimpleList
   from '@/components/lists/history/events/BaseHistoryEventsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  events as eventsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'ActivityPage',
@@ -36,7 +39,8 @@ export default {
   ],
   data () {
     return {
-      limit: 50,
+      limit:
+        eventsLimits.simple.large,
       scope: 'activity',
       listScope: 'events',
       order: 'createdDesc'

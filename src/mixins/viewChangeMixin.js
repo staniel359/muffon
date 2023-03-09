@@ -6,20 +6,32 @@ export default {
   },
   data () {
     return {
+      listScope: null,
       defaultViewId: 'table',
-      viewId: 'table',
-      viewLimitsData: {
-        simple: 50,
-        table: 20,
-        extended: 10
-      }
+      viewId: 'table'
     }
   },
   computed: {
     limit () {
-      return this.viewLimitsData[
+      return this.scopeViewLimitsData[
         this.viewId
+      ].large
+    },
+    scopeViewLimitsData () {
+      return this.viewLimitsData[
+        this.viewScope
       ]
+    },
+    viewLimitsData () {
+      return require(
+        '@/helpers/data/limits'
+      )
+    },
+    viewScope () {
+      return (
+        this.listScope ||
+          this.scope
+      )
     }
   },
   methods: {

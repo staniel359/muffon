@@ -37,6 +37,9 @@ import BaseArtistsTableList
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import {
+  artists as artistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'ArtistsTab',
@@ -57,8 +60,10 @@ export default {
   data () {
     return {
       scope: 'artists',
-      limit: 4,
-      itemsInRow: 4
+      limit:
+        artistsLimits.table.extrasmall,
+      itemsInRow:
+        artistsLimits.table.extrasmall
     }
   },
   computed: {

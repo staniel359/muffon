@@ -62,6 +62,13 @@ import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseVideosSimpleList
   from '@/components/lists/videos/BaseVideosSimpleList.vue'
 import getSearch from '@/helpers/actions/api/search/get'
+import {
+  artists as artistsLimits,
+  albums as albumsLimits,
+  tracks as tracksLimits,
+  tags as tagsLimits,
+  videos as videosLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'ResultsSection',
@@ -127,7 +134,8 @@ export default {
       return {
         artists: this.artistsData,
         albums: this.albumsData,
-        albumGroups: this.albumGroupsData,
+        albumGroups:
+          this.albumGroupsData,
         tracks: this.tracksData,
         tags: this.tagsData,
         videos: this.videosData
@@ -135,8 +143,10 @@ export default {
     },
     artistsData () {
       return {
-        component: 'BaseArtistsSimpleList',
-        limit: 20,
+        component:
+          'BaseArtistsSimpleList',
+        limit:
+          artistsLimits.simple.medium,
         responsePageLimit:
           this.artistsResponsePageLimit,
         isWithListenersCount: true
@@ -152,8 +162,10 @@ export default {
     },
     albumsData () {
       return {
-        component: 'BaseAlbumsSimpleList',
-        limit: 20,
+        component:
+          'BaseAlbumsSimpleList',
+        limit:
+          albumsLimits.simple.medium,
         responsePageLimit:
           this.albumsResponsePageLimit,
         isWithListenersCount: true
@@ -169,10 +181,12 @@ export default {
     },
     albumGroupsData () {
       return {
-        component: 'BaseAlbumsSimpleList',
+        component:
+          'BaseAlbumsSimpleList',
         searchScope: 'groups',
         listScope: 'albums',
-        limit: 20,
+        limit:
+          albumsLimits.simple.medium,
         isWithListenersCount: true
       }
     },
@@ -206,9 +220,9 @@ export default {
     tracksLimit () {
       switch (this.source) {
         case 'youtubemusic':
-          return 20
+          return videosLimits.simple.medium
         default:
-          return 50
+          return tracksLimits.simple.medium
       }
     },
     tracksResponsePageLimit () {
@@ -225,15 +239,19 @@ export default {
     },
     tagsData () {
       return {
-        component: 'BaseTagsSimpleList',
-        limit: 20,
+        component:
+          'BaseTagsSimpleList',
+        limit:
+          tagsLimits.simple.small,
         responsePageLimit: 10
       }
     },
     videosData () {
       return {
-        component: 'BaseVideosSimpleList',
-        limit: 20
+        component:
+          'BaseVideosSimpleList',
+        limit:
+          videosLimits.simple.medium
       }
     },
     limit () {

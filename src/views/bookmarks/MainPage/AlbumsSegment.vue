@@ -31,6 +31,9 @@ import BaseAlbumsSimpleList
 import {
   albums as formatBookmarkAlbumsLink
 } from '@/helpers/formatters/links/bookmarks'
+import {
+  albums as albumsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'AlbumsSegment',
@@ -40,7 +43,8 @@ export default {
   },
   data () {
     return {
-      limit: 5,
+      limit:
+        albumsLimits.simple.small,
       scope: 'albums'
     }
   },

@@ -4,7 +4,6 @@
     :scope="scope"
     :limit="limit"
     :header-link="headerLink"
-    :client-page-limit="clientPageLimit"
     is-pagination-simple
   >
     <template
@@ -27,6 +26,9 @@ import BaseVideoPlaylistsSimpleList
 import {
   playlists as formatVideoChannelPlaylistsLink
 } from '@/helpers/formatters/links/videoChannel'
+import {
+  videoPlaylists as videoPlaylistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'PlaylistsSegment',
@@ -42,8 +44,8 @@ export default {
   },
   data () {
     return {
-      limit: 10,
-      clientPageLimit: 5,
+      limit:
+        videoPlaylistsLimits.simple.extrasmall,
       scope: 'playlists'
     }
   },

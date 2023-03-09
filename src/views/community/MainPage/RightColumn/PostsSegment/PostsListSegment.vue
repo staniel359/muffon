@@ -27,6 +27,9 @@ import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
 import getCommunityPosts from '@/helpers/actions/api/community/get'
 import paginatedSegmentMixin from '@/mixins/paginatedSegmentMixin'
+import {
+  posts as postsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'PostsListSegment',
@@ -49,7 +52,8 @@ export default {
       communityData: null,
       error: null,
       isLoading: false,
-      limit: 10,
+      limit:
+        postsLimits.simple.small,
       scope: 'posts'
     }
   },

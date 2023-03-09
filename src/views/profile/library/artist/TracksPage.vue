@@ -45,6 +45,9 @@ import {
   isCurrentProfile
 } from '@/helpers/utils'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'TracksPage',
@@ -64,7 +67,8 @@ export default {
   },
   data () {
     return {
-      limit: 50,
+      limit:
+        tracksLimits.simple.large,
       scope: 'tracks',
       order: 'createdDesc'
     }

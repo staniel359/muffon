@@ -26,6 +26,9 @@ import BaseCommunitiesSimpleList
 import {
   communities as formatProfileCommunitiesLink
 } from '@/helpers/formatters/links/profile'
+import {
+  communities as communitiesLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'CommunitiesSegment',
@@ -41,7 +44,8 @@ export default {
   },
   data () {
     return {
-      limit: 3,
+      limit:
+        communitiesLimits.simple.extrasmall,
       scope: 'communities'
     }
   },

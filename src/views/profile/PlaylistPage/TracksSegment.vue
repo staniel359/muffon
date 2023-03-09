@@ -52,6 +52,9 @@ import paginatedSegmentMixin from '@/mixins/paginatedSegmentMixin'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'TracksSegment',
@@ -79,7 +82,8 @@ export default {
       profileData: null,
       error: null,
       isLoading: false,
-      limit: 50,
+      limit:
+        tracksLimits.simple.large,
       scope: 'tracks'
     }
   },

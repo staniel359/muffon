@@ -46,6 +46,9 @@ import modalMixin from '@/mixins/modalMixin'
 import {
   generateKey
 } from '#/helpers/utils'
+import {
+  playlists as playlistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'BasePlaylistsModal',
@@ -69,7 +72,8 @@ export default {
       profileData: null,
       error: null,
       isLoading: false,
-      limit: 50,
+      limit:
+        playlistsLimits.simple.large,
       scope: 'playlists'
     }
   },

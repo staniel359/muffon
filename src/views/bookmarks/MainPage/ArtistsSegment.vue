@@ -29,6 +29,9 @@ import BaseArtistsSimpleList
 import {
   artists as formatBookmarkArtistsLink
 } from '@/helpers/formatters/links/bookmarks'
+import {
+  artists as artistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'ArtistsSegment',
@@ -38,7 +41,8 @@ export default {
   },
   data () {
     return {
-      limit: 5,
+      limit:
+        artistsLimits.simple.small,
       scope: 'artists'
     }
   },

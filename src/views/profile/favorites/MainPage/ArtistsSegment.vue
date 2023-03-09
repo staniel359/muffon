@@ -34,6 +34,9 @@ import {
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import {
+  artists as artistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'ArtistsSegment',
@@ -49,7 +52,8 @@ export default {
   },
   data () {
     return {
-      limit: 5,
+      limit:
+        artistsLimits.simple.small,
       scope: 'artists'
     }
   },

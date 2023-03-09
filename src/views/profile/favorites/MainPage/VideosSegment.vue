@@ -33,6 +33,9 @@ import {
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import {
+  videos as videosLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'VideosSegment',
@@ -48,7 +51,8 @@ export default {
   },
   data () {
     return {
-      limit: 5,
+      limit:
+        videosLimits.simple.small,
       scope: 'videos'
     }
   },

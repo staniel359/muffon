@@ -26,6 +26,9 @@ import BaseProfilesSimpleList
   from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
 import getCommunityMembers from '@/helpers/actions/api/community/get'
 import modalMixin from '@/mixins/modalMixin'
+import {
+  profiles as profilesLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'BaseCommunityMembersModal',
@@ -47,7 +50,8 @@ export default {
       communityData: null,
       error: null,
       isLoading: false,
-      limit: 50,
+      limit:
+        profilesLimits.simple.large,
       scope: 'members'
     }
   },

@@ -43,14 +43,14 @@ export default {
     scope: {
       type: String,
       required: true
-    }
+    },
+    limit: Number
   },
   data () {
     return {
       compatibilityData: null,
       error: null,
-      isLoading: false,
-      limit: 50
+      isLoading: false
     }
   },
   computed: {

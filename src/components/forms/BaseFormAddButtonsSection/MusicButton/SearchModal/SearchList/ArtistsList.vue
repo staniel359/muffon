@@ -27,6 +27,9 @@ import BasePaginatedListContainer
   from '@/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsSimpleList
   from '@/components/lists/artists/BaseArtistsSimpleList.vue'
+import {
+  artists as artistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'ArtistsList',
@@ -51,7 +54,8 @@ export default {
   ],
   data () {
     return {
-      limit: 20,
+      limit:
+        artistsLimits.simple.large,
       scope: 'artists'
     }
   },

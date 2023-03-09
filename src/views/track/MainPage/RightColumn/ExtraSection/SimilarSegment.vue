@@ -35,6 +35,9 @@ import BaseTracksSimpleList
 import {
   similar as formatTrackSimilarLink
 } from '@/helpers/formatters/links/track'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'SimilarSegment',
@@ -50,7 +53,8 @@ export default {
   },
   data () {
     return {
-      limit: 5,
+      limit:
+        tracksLimits.simple.extrasmall,
       scope: 'similar'
     }
   },

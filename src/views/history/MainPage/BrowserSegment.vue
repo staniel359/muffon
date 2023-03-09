@@ -28,6 +28,9 @@ import BaseRoutesSimpleList
 import {
   browser as formatHistoryBrowserLink
 } from '@/helpers/formatters/links/history'
+import {
+  routes as routesLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'BrowserSegment',
@@ -37,7 +40,8 @@ export default {
   },
   data () {
     return {
-      limit: 10,
+      limit:
+        routesLimits.simple.small,
       scope: 'browser',
       listScope: 'routes'
     }

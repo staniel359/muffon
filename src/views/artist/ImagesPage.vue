@@ -18,6 +18,9 @@
 import BaseArtistPaginatedPageContainer
   from '@/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
 import ImagesSection from './ImagesPage/ImagesSection.vue'
+import {
+  images as imagesLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'ImagesPage',
@@ -30,7 +33,8 @@ export default {
   },
   data () {
     return {
-      limit: 20,
+      limit:
+        imagesLimits.simple.large,
       scope: 'images'
     }
   }

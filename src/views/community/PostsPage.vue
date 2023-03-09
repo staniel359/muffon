@@ -25,6 +25,9 @@ import BaseCommunityPaginatedPageContainer
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  posts as postsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'PostsPage',
@@ -40,7 +43,8 @@ export default {
   },
   data () {
     return {
-      limit: 20,
+      limit:
+        postsLimits.simple.large,
       scope: 'posts',
       order: 'createdDesc'
     }

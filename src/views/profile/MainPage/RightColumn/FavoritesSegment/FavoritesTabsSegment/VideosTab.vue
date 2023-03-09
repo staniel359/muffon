@@ -32,6 +32,9 @@ import BaseVideosSimpleList
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import {
+  videos as videosLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'VideosTab',
@@ -48,7 +51,8 @@ export default {
   ],
   data () {
     return {
-      limit: 3,
+      limit:
+        videosLimits.simple.extrasmall,
       scope: 'videos'
     }
   },

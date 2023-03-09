@@ -44,6 +44,9 @@ import {
   communities as formatCommunitiesLink
 } from '@/helpers/formatters/links'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  communities as communitiesLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'CommunitiesPage',
@@ -61,7 +64,8 @@ export default {
   },
   data () {
     return {
-      limit: 50,
+      limit:
+        communitiesLimits.simple.large,
       scope: 'communities',
       order: 'joinedDesc'
     }

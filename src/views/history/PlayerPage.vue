@@ -43,6 +43,9 @@ import BaseHistoryPaginatedPageContainer
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'PlayerPage',
@@ -55,7 +58,8 @@ export default {
   ],
   data () {
     return {
-      limit: 50,
+      limit:
+        tracksLimits.simple.large,
       scope: 'player',
       listScope: 'tracks',
       order: 'createdDesc'

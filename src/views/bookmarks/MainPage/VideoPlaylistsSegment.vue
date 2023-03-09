@@ -27,6 +27,9 @@ import BaseVideoPlaylistsSimpleList
 import {
   videoPlaylists as formatBookmarkVideoPlaylistsLink
 } from '@/helpers/formatters/links/bookmarks'
+import {
+  videoPlaylists as videoPlaylistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'VideoPlaylistsSegment',
@@ -36,7 +39,8 @@ export default {
   },
   data () {
     return {
-      limit: 5,
+      limit:
+        videoPlaylistsLimits.simple.small,
       scope: 'videoPlaylists'
     }
   },

@@ -35,6 +35,9 @@ import {
   isCurrentProfile
 } from '@/helpers/utils'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  videos as videosLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'VideosPage',
@@ -53,7 +56,8 @@ export default {
   },
   data () {
     return {
-      limit: 50,
+      limit:
+        videosLimits.simple.large,
       scope: 'videos',
       order: 'createdDesc'
     }

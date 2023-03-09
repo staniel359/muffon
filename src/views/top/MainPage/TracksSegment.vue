@@ -33,6 +33,9 @@ import BaseTracksSimpleList
 import {
   tracks as formatTopTracksLink
 } from '@/helpers/formatters/links/top'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'TracksSegment',
@@ -45,7 +48,8 @@ export default {
   },
   data () {
     return {
-      limit: 10,
+      limit:
+        tracksLimits.simple.small,
       scope: 'tracks'
     }
   },

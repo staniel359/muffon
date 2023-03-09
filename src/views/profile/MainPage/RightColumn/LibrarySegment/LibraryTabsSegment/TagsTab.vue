@@ -23,6 +23,9 @@
 import BaseProfileLibraryTabContainer
   from '@/components/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
 import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
+import {
+  tags as tagsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'TagsTab',
@@ -40,7 +43,8 @@ export default {
   data () {
     return {
       scope: 'tags',
-      limit: 10
+      limit:
+        tagsLimits.simple.extrasmall
     }
   },
   methods: {

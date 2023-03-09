@@ -29,6 +29,9 @@ import BaseVideosTableList
 import {
   videos as formatVideoChannelVideosLink
 } from '@/helpers/formatters/links/videoChannel'
+import {
+  videos as videosLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'VideosSegment',
@@ -45,7 +48,8 @@ export default {
   data () {
     return {
       limit: 8,
-      clientPageLimit: 4,
+      clientPageLimit:
+        videosLimits.table.extrasmall,
       scope: 'videos'
     }
   },

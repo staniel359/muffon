@@ -27,6 +27,9 @@ import BasePlaylistsSimpleList
 import {
   playlists as formatProfileLibraryTrackPlaylistsLink
 } from '@/helpers/formatters/links/profile/library/track'
+import {
+  playlists as playlistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'PlaylistsSegment',
@@ -46,7 +49,8 @@ export default {
   },
   data () {
     return {
-      limit: 3,
+      limit:
+        playlistsLimits.simple.extrasmall,
       scope: 'playlists'
     }
   },

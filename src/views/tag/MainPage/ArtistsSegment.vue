@@ -30,6 +30,9 @@ import BaseArtistsTableList
 import {
   artists as formatTagArtistsLink
 } from '@/helpers/formatters/links/tag'
+import {
+  artists as artistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'ArtistsSegment',
@@ -45,8 +48,11 @@ export default {
   },
   data () {
     return {
-      limit: 5,
-      itemsInRow: 5,
+      limit:
+        artistsLimits.table.small,
+      itemsInRow: (
+        artistsLimits.table.small / 2
+      ),
       scope: 'artists'
     }
   },

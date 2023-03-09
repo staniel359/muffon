@@ -44,7 +44,8 @@ export default {
   },
   data () {
     return {
-      scope: 'similar'
+      scope: 'similar',
+      listScope: 'artists'
     }
   }
 }

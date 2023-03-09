@@ -43,7 +43,8 @@ export default {
   },
   data () {
     return {
-      scope: 'related'
+      scope: 'related',
+      listScope: 'videos'
     }
   }
 }

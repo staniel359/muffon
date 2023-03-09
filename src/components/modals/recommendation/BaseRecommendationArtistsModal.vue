@@ -41,6 +41,9 @@ import BaseArtistsSimpleList
   from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import getRecommendation from '@/helpers/actions/api/recommendation/get'
 import modalMixin from '@/mixins/modalMixin'
+import {
+  artists as artistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'BaseRecommendationArtistsModal',
@@ -62,7 +65,8 @@ export default {
       recommendationData: null,
       error: null,
       isLoading: false,
-      limit: 50,
+      limit:
+        artistsLimits.simple.large,
       scope: 'artists'
     }
   },

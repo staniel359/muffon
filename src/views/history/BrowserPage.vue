@@ -29,6 +29,9 @@ import BaseHistoryPaginatedPageContainer
 import BaseRoutesSimpleList
   from '@/components/lists/routes/BaseRoutesSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  routes as routesLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'BrowserPage',
@@ -41,7 +44,8 @@ export default {
   ],
   data () {
     return {
-      limit: 50,
+      limit:
+        routesLimits.simple.large,
       scope: 'browser',
       listScope: 'routes',
       order: 'createdDesc'

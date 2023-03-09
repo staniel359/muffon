@@ -30,6 +30,9 @@ import BaseArtistsTableList
 import {
   similar as formatArtistSimilarLink
 } from '@/helpers/formatters/links/artist'
+import {
+  artists as artistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'SimilarSegment',
@@ -45,8 +48,10 @@ export default {
   },
   data () {
     return {
-      limit: 4,
-      itemsInRow: 4,
+      limit:
+        artistsLimits.table.extrasmall,
+      itemsInRow:
+        artistsLimits.table.extrasmall,
       scope: 'similar'
     }
   },

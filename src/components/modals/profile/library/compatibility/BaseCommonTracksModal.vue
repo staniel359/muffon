@@ -3,6 +3,7 @@
     ref="modal"
     :profile-id="profileId"
     :scope="scope"
+    :limit="limit"
   >
     <template
       #default="slotProps"
@@ -37,6 +38,9 @@ import BaseProfileLibraryCommonModalContainer
   from '@/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'BaseCommonTracksModal',
@@ -49,6 +53,8 @@ export default {
   },
   data () {
     return {
+      limit:
+        tracksLimits.simple.large,
       scope: 'tracks'
     }
   },

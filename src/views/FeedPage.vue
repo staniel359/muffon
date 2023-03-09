@@ -24,6 +24,9 @@ import BaseFeedPaginatedPageContainer
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  posts as postsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'FeedPage',
@@ -36,7 +39,8 @@ export default {
   ],
   data () {
     return {
-      limit: 50,
+      limit:
+        postsLimits.simple.large,
       scope: 'feed',
       order: 'createdDesc'
     }

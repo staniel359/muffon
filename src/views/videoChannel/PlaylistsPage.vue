@@ -22,6 +22,9 @@ import BaseVideoChannelPaginatedPageContainer
   from '@/components/containers/pages/videoChannel/BaseVideoChannelPaginatedPageContainer.vue'
 import BaseVideoPlaylistsSimpleList
   from '@/components/lists/videoPlaylists/BaseVideoPlaylistsSimpleList.vue'
+import {
+  videoPlaylists as videoPlaylistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'PlaylistsPage',
@@ -34,7 +37,8 @@ export default {
   },
   data () {
     return {
-      limit: 50,
+      limit:
+        videoPlaylistsLimits.simple.large,
       scope: 'playlists'
     }
   }

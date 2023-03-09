@@ -54,6 +54,9 @@ import formatSavedTracksPageTab from '@/helpers/formatters/tabs/savedTracks'
 import {
   sortByCreated
 } from '@/helpers/utils'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'SavedTracksPage',
@@ -68,7 +71,8 @@ export default {
   ],
   data () {
     return {
-      limit: 50,
+      limit:
+        tracksLimits.simple.large,
       scope: 'tracks',
       order: 'createdDesc'
     }

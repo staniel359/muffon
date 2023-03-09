@@ -40,6 +40,9 @@ import BaseTracksSimpleList
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'TracksTab',
@@ -56,7 +59,8 @@ export default {
   ],
   data () {
     return {
-      limit: 5,
+      limit:
+        tracksLimits.simple.extrasmall,
       scope: 'tracks'
     }
   },

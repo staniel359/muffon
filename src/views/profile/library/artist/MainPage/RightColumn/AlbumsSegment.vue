@@ -40,6 +40,9 @@ import {
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import {
+  albums as albumsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'AlbumsSegment',
@@ -59,8 +62,10 @@ export default {
   },
   data () {
     return {
-      limit: 3,
-      itemsInRow: 3,
+      limit:
+        albumsLimits.table.extrasmall,
+      itemsInRow:
+        albumsLimits.table.extrasmall,
       scope: 'albums'
     }
   },

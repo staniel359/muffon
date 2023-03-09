@@ -38,6 +38,9 @@ import BaseAlbumsTableList
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import {
+  albums as albumsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'AlbumsTab',
@@ -58,8 +61,10 @@ export default {
   data () {
     return {
       scope: 'albums',
-      limit: 3,
-      itemsInRow: 3
+      limit:
+        albumsLimits.table.extrasmall,
+      itemsInRow:
+        albumsLimits.table.extrasmall
     }
   },
   computed: {

@@ -23,6 +23,9 @@ import BaseConversationsPaginatedPageContainer
 import BaseConversationsSimpleList
   from '@/components/lists/conversations/BaseConversationsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  conversations as conversationsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'MainPage',
@@ -35,7 +38,8 @@ export default {
   ],
   data () {
     return {
-      limit: 10,
+      limit:
+        conversationsLimits.simple.large,
       scope: 'conversations',
       order: 'updatedDesc'
     }

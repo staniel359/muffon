@@ -32,6 +32,9 @@ import BaseAlbumsTableList
 import {
   upcoming as formatReleasesUpcomingLink
 } from '@/helpers/formatters/links/releases'
+import {
+  albums as albumsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'UpcomingSegment',
@@ -41,9 +44,12 @@ export default {
   },
   data () {
     return {
-      limit: 4,
+      limit:
+        albumsLimits.table.small,
+      itemsInRow: (
+        albumsLimits.table.small / 2
+      ),
       responsePageLimit: 20,
-      itemsInRow: 4,
       scope: 'upcoming',
       listScope: 'albums'
     }

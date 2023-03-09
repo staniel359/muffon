@@ -25,6 +25,9 @@ import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import {
   tags as formatProfileLibraryTagsLink
 } from '@/helpers/formatters/links/profile/library'
+import {
+  tags as tagsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'TagsSegment',
@@ -40,7 +43,8 @@ export default {
   },
   data () {
     return {
-      limit: 20,
+      limit:
+        tagsLimits.simple.small,
       scope: 'tags'
     }
   },

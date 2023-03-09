@@ -38,6 +38,9 @@ import {
   isCurrentProfile
 } from '@/helpers/utils'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  albums as albumsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'AlbumsPage',
@@ -56,7 +59,8 @@ export default {
   },
   data () {
     return {
-      limit: 50,
+      limit:
+        albumsLimits.simple.large,
       scope: 'albums',
       order: 'createdDesc'
     }

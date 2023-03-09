@@ -47,6 +47,9 @@ import BaseRecommendationArtistsModal
 import {
   number as formatNumber
 } from '@/helpers/formatters'
+import {
+  artists as artistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'RecommendationArtistsSection',
@@ -64,7 +67,8 @@ export default {
   },
   data () {
     return {
-      limit: 5,
+      limit:
+        artistsLimits.simple.extrasmall,
       scope: 'artists'
     }
   },

@@ -29,6 +29,9 @@ import BasePaginatedListContainer
   from '@/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseAlbumsSimpleList
   from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
+import {
+  albums as albumsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'AlbumsList',
@@ -53,7 +56,8 @@ export default {
   ],
   data () {
     return {
-      limit: 20,
+      limit:
+        albumsLimits.simple.large,
       scope: 'albums'
     }
   },

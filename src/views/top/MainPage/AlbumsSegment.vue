@@ -31,6 +31,9 @@ import BaseAlbumsTableList
 import {
   albums as formatTopAlbumsLink
 } from '@/helpers/formatters/links/top'
+import {
+  albums as albumsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'AlbumsSegment',
@@ -43,8 +46,11 @@ export default {
   },
   data () {
     return {
-      limit: 4,
-      itemsInRow: 4,
+      limit:
+        albumsLimits.table.small,
+      itemsInRow: (
+        albumsLimits.table.small / 2
+      ),
       scope: 'albums'
     }
   },

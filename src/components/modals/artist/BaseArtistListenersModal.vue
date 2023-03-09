@@ -24,6 +24,9 @@ import BaseArtistModalContainer
 import BaseProfilesSimpleList
   from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
 import modalMixin from '@/mixins/modalMixin'
+import {
+  profiles as profilesLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'BaseArtistListenersModal',
@@ -41,7 +44,8 @@ export default {
     return {
       scope: 'profiles',
       textScope: 'listeners',
-      limit: 50
+      limit:
+        profilesLimits.simple.large
     }
   }
 }

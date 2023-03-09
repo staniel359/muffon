@@ -31,6 +31,9 @@ import BaseTrackPaginatedPageContainer
   from '@/components/containers/pages/track/BaseTrackPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'SimilarPage',
@@ -44,7 +47,8 @@ export default {
   },
   data () {
     return {
-      limit: 50,
+      limit:
+        tracksLimits.simple.large,
       scope: 'similar'
     }
   },

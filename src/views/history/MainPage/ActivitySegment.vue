@@ -23,6 +23,9 @@ import BaseHistoryEventsSimpleList
 import {
   activity as formatHistoryActivityLink
 } from '@/helpers/formatters/links/history'
+import {
+  events as eventsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'ActivitySegment',
@@ -32,7 +35,8 @@ export default {
   },
   data () {
     return {
-      limit: 10,
+      limit:
+        eventsLimits.simple.small,
       scope: 'activity',
       listScope: 'events'
     }

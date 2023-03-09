@@ -43,6 +43,9 @@ import {
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'TracksSegment',
@@ -58,7 +61,8 @@ export default {
   },
   data () {
     return {
-      limit: 10,
+      limit:
+        tracksLimits.simple.small,
       scope: 'tracks'
     }
   },

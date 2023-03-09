@@ -28,6 +28,9 @@ import BaseBookmarksPaginatedPageContainer
 import BaseVideoPlaylistsSimpleList
   from '@/components/lists/videoPlaylists/BaseVideoPlaylistsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  videoPlaylists as videoPlaylistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'VideoPlaylistsPage',
@@ -40,7 +43,8 @@ export default {
   ],
   data () {
     return {
-      limit: 50,
+      limit:
+        videoPlaylistsLimits.simple.large,
       scope: 'videoPlaylists',
       order: 'createdDesc'
     }

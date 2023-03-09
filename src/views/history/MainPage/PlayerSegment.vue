@@ -42,6 +42,9 @@ import BaseTracksSimpleList
 import {
   player as formatHistoryPlayerLink
 } from '@/helpers/formatters/links/history'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'PlayerSegment',
@@ -51,7 +54,8 @@ export default {
   },
   data () {
     return {
-      limit: 10,
+      limit:
+        tracksLimits.simple.small,
       scope: 'player',
       listScope: 'tracks'
     }

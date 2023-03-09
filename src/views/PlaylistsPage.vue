@@ -28,6 +28,9 @@ import BasePlaylistsPaginatedPageContainer
 import BasePlaylistsSimpleList
   from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  playlists as playlistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'PlaylistsPage',
@@ -40,7 +43,8 @@ export default {
   ],
   data () {
     return {
-      limit: 50,
+      limit:
+        playlistsLimits.simple.large,
       scope: 'playlists',
       order: 'createdDesc'
     }

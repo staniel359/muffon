@@ -27,6 +27,9 @@ import BaseBookmarksPaginatedPageContainer
 import BaseVideoChannelsSimpleList
   from '@/components/lists/videoChannels/BaseVideoChannelsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  videoChannels as videoChannelsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'VideoChannelsPage',
@@ -39,7 +42,8 @@ export default {
   ],
   data () {
     return {
-      limit: 50,
+      limit:
+        videoChannelsLimits.simple.large,
       scope: 'videoChannels',
       order: 'createdDesc'
     }

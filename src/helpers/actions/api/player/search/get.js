@@ -11,7 +11,7 @@ export default function getPlayerSearch (
   {
     source,
     query,
-    limit = 20,
+    limit,
     audioSourceIndex = 0
   }
 ) {

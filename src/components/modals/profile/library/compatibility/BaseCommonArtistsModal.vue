@@ -3,6 +3,7 @@
     ref="modal"
     :profile-id="profileId"
     :scope="scope"
+    :limit="limit"
   >
     <template
       #default="slotProps"
@@ -33,6 +34,9 @@ import BaseProfileLibraryCommonModalContainer
   from '@/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
 import BaseArtistsSimpleList
   from '@/components/lists/artists/BaseArtistsSimpleList.vue'
+import {
+  artists as artistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'BaseCommonArtistsModal',
@@ -45,6 +49,8 @@ export default {
   },
   data () {
     return {
+      limit:
+        artistsLimits.simple.large,
       scope: 'artists'
     }
   },

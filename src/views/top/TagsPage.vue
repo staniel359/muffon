@@ -19,6 +19,9 @@
 import BaseTopPaginatedPageContainer
   from '@/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
 import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
+import {
+  tags as tagsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'TagsPage',
@@ -28,7 +31,8 @@ export default {
   },
   data () {
     return {
-      limit: 100,
+      limit:
+        tagsLimits.simple.large,
       scope: 'tags'
     }
   }

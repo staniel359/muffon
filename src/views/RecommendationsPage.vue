@@ -52,6 +52,9 @@ import FilterSection from './RecommendationsPage/FilterSection.vue'
 import BaseArtistsExtendedList
   from '@/components/lists/artists/BaseArtistsExtendedList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  artists as artistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'RecommendationsPage',
@@ -67,7 +70,8 @@ export default {
   data () {
     return {
       isShowFilter: false,
-      limit: 10,
+      limit:
+        artistsLimits.extended.large,
       scope: 'recommendations',
       order: 'libraryArtistsCountDesc'
     }

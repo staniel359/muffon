@@ -26,6 +26,9 @@ import BaseProfilesSimpleList
   from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
 import getProfileFollow from '@/helpers/actions/api/profile/get'
 import modalMixin from '@/mixins/modalMixin'
+import {
+  profiles as profilesLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'BaseProfileFollowModal',
@@ -51,7 +54,8 @@ export default {
       profileData: null,
       error: null,
       isLoading: false,
-      limit: 50
+      limit:
+        profilesLimits.simple.large
     }
   },
   computed: {

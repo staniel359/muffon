@@ -36,6 +36,9 @@ import {
   isCurrentProfile
 } from '@/helpers/utils'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  artists as artistsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'ArtistsPage',
@@ -54,7 +57,8 @@ export default {
   },
   data () {
     return {
-      limit: 50,
+      limit:
+        artistsLimits.simple.large,
       scope: 'artists',
       order: 'createdDesc'
     }

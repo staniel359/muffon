@@ -30,6 +30,9 @@ import BaseTopPaginatedPageContainer
   from '@/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import {
+  tracks as tracksLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'TracksPage',
@@ -39,7 +42,8 @@ export default {
   },
   data () {
     return {
-      limit: 50,
+      limit:
+        tracksLimits.simple.large,
       scope: 'tracks'
     }
   }

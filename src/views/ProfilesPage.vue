@@ -24,6 +24,9 @@ import BaseProfilesPaginatedPageContainer
 import BaseProfilesSimpleList
   from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import {
+  profiles as profilesLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'ProfilesPage',
@@ -36,7 +39,8 @@ export default {
   ],
   data () {
     return {
-      limit: 50,
+      limit:
+        profilesLimits.simple.large,
       scope: 'profiles',
       order: 'createdDesc'
     }

@@ -26,6 +26,9 @@ import BaseMessagesSimpleList
   from '@/components/lists/messages/BaseMessagesSimpleList.vue'
 import getConversation from '@/helpers/actions/api/conversation/get'
 import paginatedSegmentMixin from '@/mixins/paginatedSegmentMixin'
+import {
+  messages as messagesLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'MessagesSegment',
@@ -47,7 +50,8 @@ export default {
       conversationData: null,
       error: null,
       isLoading: false,
-      limit: 20,
+      limit:
+        messagesLimits.simple.large,
       scope: 'messages'
     }
   },

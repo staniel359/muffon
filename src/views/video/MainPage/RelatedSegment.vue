@@ -30,6 +30,9 @@ import BaseVideosTableList
 import {
   related as formatVideoRelatedLink
 } from '@/helpers/formatters/links/video'
+import {
+  videos as videosLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'RelatedSegment',
@@ -45,7 +48,8 @@ export default {
   },
   data () {
     return {
-      limit: 4,
+      limit:
+        videosLimits.table.extrasmall,
       scope: 'related'
     }
   },

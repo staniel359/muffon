@@ -26,6 +26,9 @@ import BaseVideoChannelsSimpleList
 import {
   videoChannels as formatBookmarkVideoChannelsLink
 } from '@/helpers/formatters/links/bookmarks'
+import {
+  videoChannels as videoChannelsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'VideoChannelsSegment',
@@ -35,7 +38,8 @@ export default {
   },
   data () {
     return {
-      limit: 5,
+      limit:
+        videoChannelsLimits.simple.small,
       scope: 'videoChannels'
     }
   },

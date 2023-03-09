@@ -3,6 +3,7 @@
     ref="modal"
     :profile-id="profileId"
     :scope="scope"
+    :limit="limit"
   >
     <template
       #default="slotProps"
@@ -33,6 +34,9 @@ import BaseProfileLibraryCommonModalContainer
   from '@/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
 import BaseAlbumsSimpleList
   from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
+import {
+  albums as albumsLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'BaseCommonAlbumsModal',
@@ -45,6 +49,8 @@ export default {
   },
   data () {
     return {
+      limit:
+        albumsLimits.simple.large,
       scope: 'albums'
     }
   },
