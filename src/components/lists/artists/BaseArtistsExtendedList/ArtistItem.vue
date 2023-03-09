@@ -36,13 +36,6 @@
                 @load-end="handleImageLoadEnd"
               />
 
-              <BaseCreatedSection
-                v-if="isWithCreated"
-                class="description centered created-section"
-                :model-data="artistData"
-                :is-small="false"
-              />
-
               <LibraryCountersSection
                 v-if="isWithLibrary"
                 :artist-data="artistData"
@@ -102,6 +95,12 @@
                   />
                 </div>
 
+                <BaseCreatedLabelSection
+                  v-if="isWithCreated"
+                  class="main-labels-section"
+                  :model-data="artistData"
+                />
+
                 <BaseArtistTags
                   class="main-labels-section"
                   :artist-data="responseData"
@@ -137,7 +136,6 @@ import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
-import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseArtistOptionsDropdown
@@ -147,6 +145,8 @@ import BaseCounterLabelsSection
   from '@/components/sections/BaseCounterLabelsSection.vue'
 import BaseArtistInnerCounterLabelsSection
   from '@/components/sections/artist/BaseArtistInnerCounterLabelsSection.vue'
+import BaseCreatedLabelSection
+  from '@/components/sections/BaseCreatedLabelSection.vue'
 import BaseArtistTags from '@/components/models/artist/BaseArtistTags.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import BaseArtistDescription
@@ -162,13 +162,13 @@ export default {
     BaseSegmentContainer,
     BaseDeletedSection,
     BaseArtistImage,
-    BaseCreatedSection,
     LibraryCountersSection,
     BaseSelfIcons,
     BaseArtistOptionsDropdown,
     HeaderSection,
     BaseCounterLabelsSection,
     BaseArtistInnerCounterLabelsSection,
+    BaseCreatedLabelSection,
     BaseArtistTags,
     BaseDivider,
     BaseArtistDescription,
@@ -301,7 +301,4 @@ export default {
 
 .artist-info
   @extend .flex-full
-
-.created-section
-  margin-top: 0.75em
 </style>
