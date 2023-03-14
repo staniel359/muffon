@@ -1,5 +1,5 @@
 <template>
-  <BaseProfileFavoriteTabContainer
+  <BaseProfileFavoritesTabContainer
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
@@ -11,7 +11,6 @@
     >
       <BaseVideosSimpleList
         :videos="slotProps[scope]"
-        :profile-id="profileId"
         :is-with-favorite-option="!isSelf"
         :is-with-delete-option="isSelf"
         is-with-channel-title
@@ -21,12 +20,12 @@
         is-with-share-option
       />
     </template>
-  </BaseProfileFavoriteTabContainer>
+  </BaseProfileFavoritesTabContainer>
 </template>
 
 <script>
-import BaseProfileFavoriteTabContainer
-  from '@/components/containers/tabs/profile/favorites/BaseProfileFavoriteTabContainer.vue'
+import BaseProfileFavoritesTabContainer
+  from '@/components/containers/tabs/profile/favorites/BaseProfileFavoritesTabContainer.vue'
 import BaseVideosSimpleList
   from '@/components/lists/videos/BaseVideosSimpleList.vue'
 import {
@@ -39,11 +38,14 @@ import {
 export default {
   name: 'VideosTab',
   components: {
-    BaseProfileFavoriteTabContainer,
+    BaseProfileFavoritesTabContainer,
     BaseVideosSimpleList
   },
   props: {
-    profileId: String,
+    profileId: {
+      type: String,
+      required: true
+    },
     isActive: Boolean
   },
   emits: [

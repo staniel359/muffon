@@ -16,20 +16,9 @@
         />
       </div>
 
-      <ArtistsSegment
+      <TabsSegment
         :profile-id="profileId"
-      />
-
-      <AlbumsSegment
-        :profile-id="profileId"
-      />
-
-      <TracksSegment
-        :profile-id="profileId"
-      />
-
-      <TagsSegment
-        :profile-id="profileId"
+        :is-self="isSelf"
       />
     </template>
   </BaseProfileLibraryPageContainer>
@@ -40,10 +29,7 @@ import BaseProfileLibraryPageContainer
   from '@/components/containers/pages/profile/library/BaseProfileLibraryPageContainer.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import ExtraSegment from './MainPage/ExtraSegment.vue'
-import ArtistsSegment from './MainPage/ArtistsSegment.vue'
-import AlbumsSegment from './MainPage/AlbumsSegment.vue'
-import TracksSegment from './MainPage/TracksSegment.vue'
-import TagsSegment from './MainPage/TagsSegment.vue'
+import TabsSegment from './MainPage/TabsSegment.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -54,10 +40,7 @@ export default {
     BaseProfileLibraryPageContainer,
     StatisticsSegment,
     ExtraSegment,
-    ArtistsSegment,
-    AlbumsSegment,
-    TracksSegment,
-    TagsSegment
+    TabsSegment
   },
   props: {
     profileId: {

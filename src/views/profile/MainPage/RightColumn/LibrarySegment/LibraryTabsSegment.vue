@@ -1,35 +1,25 @@
 <template>
-  <BaseSegmentContainer
-    ref="segment"
+  <BaseTabsSegmentContainer
+    :tabs="tabs"
+    is-attached
   >
-    <BaseTabsContainer
-      :tabs="tabs"
-      is-fluid
-      @tab-click="handleTabClick"
+    <template
+      #default="slotProps"
     >
-      <template
-        v-for="(tabData, index) in tabs"
-        :key="index"
-        #[index]="slotProps"
-      >
-        <Component
-          :is="tabData.component"
-          class="main-relative-tab"
-          :class="slotProps.class"
-          :is-active="slotProps.isActive"
-          :profile-id="profileId"
-          @focus="handleFocus"
-        />
-      </template>
-    </BaseTabsContainer>
-  </BaseSegmentContainer>
+      <Component
+        :is="slotProps.component"
+        :class="slotProps.class"
+        :is-active="slotProps.isActive"
+        :profile-id="profileId"
+        @focus="slotProps.handleFocus"
+      />
+    </template>
+  </BaseTabsSegmentContainer>
 </template>
 
 <script>
-import BaseSegmentContainer
-  from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseTabsContainer
-  from '@/components/containers/tabs/BaseTabsContainer.vue'
+import BaseTabsSegmentContainer
+  from '@/components/containers/segments/tabs/BaseTabsSegmentContainer.vue'
 import ArtistsTab from './LibraryTabsSegment/ArtistsTab.vue'
 import AlbumsTab from './LibraryTabsSegment/AlbumsTab.vue'
 import TracksTab from './LibraryTabsSegment/TracksTab.vue'
@@ -38,8 +28,7 @@ import TagsTab from './LibraryTabsSegment/TagsTab.vue'
 export default {
   name: 'LibraryTabsSegment',
   components: {
-    BaseSegmentContainer,
-    BaseTabsContainer,
+    BaseTabsSegmentContainer,
     ArtistsTab,
     AlbumsTab,
     TracksTab,
@@ -48,9 +37,9 @@ export default {
   props: {
     profileId: String
   },
-  computed: {
-    tabs () {
-      return [
+  data () {
+    return {
+      tabs: [
         {
           nameCode: 'navigation.artists',
           component: 'ArtistsTab'
@@ -68,19 +57,6 @@ export default {
           component: 'TagsTab'
         }
       ]
-    }
-  },
-  methods: {
-    handleTabClick () {
-      this.focus()
-    },
-    handleFocus () {
-      this.focus()
-    },
-    focus () {
-      this.$refs
-        .segment
-        .focus()
     }
   }
 }

@@ -1,23 +1,21 @@
 <template>
   <div class="main-paginated-list-container">
-    <div class="main-paginated-list-content-container">
-      <ContentContainer
-        v-show="isRenderContent"
-        :client-page-collection="clientPageCollection"
-        :scope="scope"
-        :text-scope="textScope"
-        :error="errorComputed"
-        @refresh="handleRefresh"
+    <ContentContainer
+      v-show="isRenderContent"
+      :client-page-collection="clientPageCollection"
+      :scope="scope"
+      :text-scope="textScope"
+      :error="errorComputed"
+      @refresh="handleRefresh"
+    >
+      <template
+        #default="slotProps"
       >
-        <template
-          #default="slotProps"
-        >
-          <slot
-            :[scope]="slotProps[scope]"
-          />
-        </template>
-      </ContentContainer>
-    </div>
+        <slot
+          :[scope]="slotProps[scope]"
+        />
+      </template>
+    </ContentContainer>
 
     <template
       v-if="isWithInfiniteScroll"

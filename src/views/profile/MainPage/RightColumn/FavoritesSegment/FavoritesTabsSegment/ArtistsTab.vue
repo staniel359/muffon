@@ -1,5 +1,5 @@
 <template>
-  <BaseProfileFavoriteTabContainer
+  <BaseProfileFavoritesTabContainer
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
@@ -10,11 +10,9 @@
       #default="slotProps"
     >
       <BaseArtistsSimpleList
-        :[scope]="slotProps[scope]"
-        :profile-id="profileId"
+        :artists="slotProps[scope]"
         :is-with-favorite-option="!isSelf"
         :is-with-delete-option="isSelf"
-        is-with-image
         is-with-created
         is-favorite
         is-with-library-option
@@ -23,12 +21,12 @@
         is-with-share-option
       />
     </template>
-  </BaseProfileFavoriteTabContainer>
+  </BaseProfileFavoritesTabContainer>
 </template>
 
 <script>
-import BaseProfileFavoriteTabContainer
-  from '@/components/containers/tabs/profile/favorites/BaseProfileFavoriteTabContainer.vue'
+import BaseProfileFavoritesTabContainer
+  from '@/components/containers/tabs/profile/favorites/BaseProfileFavoritesTabContainer.vue'
 import BaseArtistsSimpleList
   from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import {
@@ -41,11 +39,14 @@ import {
 export default {
   name: 'ArtistsTab',
   components: {
-    BaseProfileFavoriteTabContainer,
+    BaseProfileFavoritesTabContainer,
     BaseArtistsSimpleList
   },
   props: {
-    profileId: String,
+    profileId: {
+      type: String,
+      required: true
+    },
     isActive: Boolean
   },
   emits: [

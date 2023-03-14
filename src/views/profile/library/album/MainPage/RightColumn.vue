@@ -1,15 +1,10 @@
 <template>
-  <div class="main-profile-page-right-column">
+  <div class="main-right-column">
     <StatisticsSegment
       :album-data="albumData"
     />
 
-    <TracksSegment
-      :profile-id="profileId"
-      :library-album-id="libraryAlbumId"
-    />
-
-    <PlaylistsSegment
+    <TabsSegment
       :profile-id="profileId"
       :library-album-id="libraryAlbumId"
     />
@@ -18,19 +13,17 @@
 
 <script>
 import StatisticsSegment from './RightColumn/StatisticsSegment.vue'
-import TracksSegment from './RightColumn/TracksSegment.vue'
-import PlaylistsSegment from './RightColumn/PlaylistsSegment.vue'
+import TabsSegment from './RightColumn/TabsSegment.vue'
 
 export default {
   name: 'RightColumn',
   components: {
     StatisticsSegment,
-    TracksSegment,
-    PlaylistsSegment
+    TabsSegment
   },
   props: {
-    albumData: Object,
     profileId: String,
+    albumData: Object,
     libraryAlbumId: String
   }
 }

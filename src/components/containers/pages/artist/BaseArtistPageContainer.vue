@@ -93,7 +93,7 @@ export default {
       } else if (this.isImagesScope) {
         return 40
       } else {
-        return this.limit
+        return null
       }
     },
     isDiscogsSource () {

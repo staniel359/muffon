@@ -4,7 +4,7 @@
     :playlist-id="playlistId"
   >
     <template
-      #default="pageSlotProps"
+      #default="slotProps"
     >
       <div
         :class="[
@@ -14,7 +14,7 @@
         ]"
       >
         <InfoSegment
-          :playlist-data="pageSlotProps.playlistData"
+          :playlist-data="slotProps.playlistData"
           :profile-id="profileId"
         />
 
@@ -26,7 +26,7 @@
           :key="key"
           :profile-id="profileId"
           :playlist-id="playlistId"
-          :playlist-title="pageSlotProps.playlistTitle"
+          :playlist-title="slotProps.playlistTitle"
           :order="order"
         />
       </div>

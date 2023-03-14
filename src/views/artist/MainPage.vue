@@ -1,20 +1,21 @@
 <template>
   <BaseArtistPageContainer
     ref="page"
-    class="page-container"
     :artist-name="artistName"
   >
     <template
       #default="slotProps"
     >
-      <LeftColumn
-        :artist-data="slotProps.artistData"
-        :scrollable="scrollable"
-      />
+      <div class="main-columns-container">
+        <LeftColumn
+          :artist-data="slotProps.artistData"
+          :scrollable="scrollable"
+        />
 
-      <RightColumn
-        :artist-data="slotProps.artistData"
-      />
+        <RightColumn
+          :artist-data="slotProps.artistData"
+        />
+      </div>
     </template>
   </BaseArtistPageContainer>
 </template>
@@ -47,7 +48,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.page-container
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

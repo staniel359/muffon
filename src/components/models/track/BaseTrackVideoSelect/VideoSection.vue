@@ -6,23 +6,15 @@
       is-with-autoplay
     />
 
-    <div class="video-more-container">
-      <BaseLinkContainer
-        :link="videoMainLink"
-      >
-        <strong
-          class="link"
-          v-text="moreText"
-        />
-      </BaseLinkContainer>
-    </div>
+    <BaseMoreLinkButton
+      :link="link"
+    />
   </div>
 </template>
 
 <script>
 import BaseVideo from '@/components/BaseVideo.vue'
-import BaseLinkContainer
-  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseMoreLinkButton from '@/components/buttons/BaseMoreLinkButton.vue'
 import {
   main as formatVideoMainLink
 } from '@/helpers/formatters/links/video'
@@ -31,7 +23,7 @@ export default {
   name: 'VideoSection',
   components: {
     BaseVideo,
-    BaseLinkContainer
+    BaseMoreLinkButton
   },
   props: {
     videoData: {
@@ -43,16 +35,11 @@ export default {
     videoId () {
       return this.videoData.source.id
     },
-    videoMainLink () {
+    link () {
       return formatVideoMainLink(
         {
           videoId: this.videoId
         }
-      )
-    },
-    moreText () {
-      return this.$t(
-        'more'
       )
     }
   }
@@ -62,7 +49,4 @@ export default {
 <style lang="sass" scoped>
 .video-section
   margin: 1em 0
-
-.video-more-container
-  @extend .d-flex, .justify-content-flex-end
 </style>

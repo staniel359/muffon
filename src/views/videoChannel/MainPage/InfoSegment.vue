@@ -2,7 +2,7 @@
   <BaseSegmentContainer
     class="raised main-segment-container"
   >
-    <div class="info-segment-content">
+    <div class="main-columns-container">
       <LeftColumn
         :channel-data="channelData"
       />
@@ -33,7 +33,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.info-segment-content
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

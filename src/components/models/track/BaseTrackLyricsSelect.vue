@@ -34,7 +34,10 @@ export default {
     }
   },
   props: {
-    query: String
+    trackData: {
+      type: Object,
+      required: true
+    }
   },
   emits: [
     'focus'
@@ -44,6 +47,22 @@ export default {
       key: null,
       selectedTrackData: null,
       scope: 'tracks'
+    }
+  },
+  computed: {
+    query () {
+      return [
+        this.artistName,
+        this.trackTitle
+      ].join(
+        ' - '
+      )
+    },
+    artistName () {
+      return this.trackData.artist.name
+    },
+    trackTitle () {
+      return this.trackData.title
     }
   },
   watch: {

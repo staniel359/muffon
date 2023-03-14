@@ -1,16 +1,17 @@
 <template>
-  <div class="main-profile-page-right-column">
+  <div class="main-right-column">
     <PlayingSegment
       v-if="playing"
       :playing="playing"
     />
 
-    <LibrarySegment
+    <CompatibilitySegment
+      v-if="isRenderCompatibility"
       :profile-id="profileId"
       :profile-nickname="profileNickname"
     />
 
-    <PlaylistsSegment
+    <LibrarySegment
       :profile-id="profileId"
     />
 
@@ -18,47 +19,68 @@
       :profile-id="profileId"
     />
 
-    <CommunitiesSegment
-      :profile-id="profileId"
-    />
-
-    <PostsSegment
+    <TabsSegment
       :profile-id="profileId"
     />
   </div>
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import PlayingSegment from './RightColumn/PlayingSegment.vue'
+import CompatibilitySegment from './RightColumn/CompatibilitySegment.vue'
 import LibrarySegment from './RightColumn/LibrarySegment.vue'
-import PlaylistsSegment from './RightColumn/PlaylistsSegment.vue'
 import FavoritesSegment from './RightColumn/FavoritesSegment.vue'
-import CommunitiesSegment from './RightColumn/CommunitiesSegment.vue'
-import PostsSegment from './RightColumn/PostsSegment.vue'
+import TabsSegment from './RightColumn/TabsSegment.vue'
+import {
+  isCurrentProfile
+} from '@/helpers/utils'
 
 export default {
   name: 'RightColumn',
   components: {
     PlayingSegment,
+    CompatibilitySegment,
     LibrarySegment,
-    PlaylistsSegment,
     FavoritesSegment,
-    CommunitiesSegment,
-    PostsSegment
+    TabsSegment
   },
   props: {
     profileData: {
       type: Object,
       required: true
     },
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   computed: {
+    ...mapState(
+      profileStore,
+      {
+        currentProfileId: 'id'
+      }
+    ),
+    isSelf () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
     profileNickname () {
       return this.profileData.nickname
     },
     playing () {
       return this.profileData.playing
+    },
+    isRenderCompatibility () {
+      return (
+        this.currentProfileId &&
+          !this.isSelf
+      )
     }
   }
 }

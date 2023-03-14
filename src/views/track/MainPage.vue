@@ -6,47 +6,23 @@
     <template
       #default="slotProps"
     >
-      <div
-        :class="[
-          'ui raised segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
-      >
-        <BaseSegmentContainer>
-          <BaseSearchButton
-            scope="sources"
-            :is-active="isShowSourceSelect"
-            @click="handleSearchButtonClick"
-          />
+      <div class="ui raised segments main-segment-container">
+        <SourceSelectSegment
+          :track-data="slotProps.trackData"
+        />
 
-          <BaseTrackSourceSelect
-            v-if="isSourceSelectCalled"
-            v-show="isShowSourceSelect"
-            class="source-select"
-            :track-data="slotProps.trackData"
-          />
-        </BaseSegmentContainer>
-
-        <BaseSegmentContainer
-          class="track-segment"
+        <TrackSegment
+          :track-data="slotProps.trackData"
+          :request-track-data="slotProps.requestTrackData"
           :is-loading="slotProps.isLoading"
           :error="slotProps.error"
-          @init="handleInit"
           @refresh="handleRefresh"
-        >
-          <LeftColumn
-            v-if="scrollable"
-            :track-data="slotProps.trackData"
-            :scrollable="scrollable"
-          />
-
-          <RightColumn
-            :track-data="slotProps.trackData"
-            :request-track-data="slotProps.requestTrackData"
-          />
-        </BaseSegmentContainer>
+        />
       </div>
+
+      <TabsSegment
+        :track-data="slotProps.trackData"
+      />
     </template>
   </BaseTrackPageContainer>
 </template>
@@ -54,34 +30,21 @@
 <script>
 import BaseTrackPageContainer
   from '@/components/containers/pages/track/BaseTrackPageContainer.vue'
-import BaseSegmentContainer
-  from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
-import BaseTrackSourceSelect
-  from '@/components/models/track/BaseTrackSourceSelect.vue'
-import LeftColumn from './MainPage/LeftColumn.vue'
-import RightColumn from './MainPage/RightColumn.vue'
+import SourceSelectSegment from './MainPage/SourceSelectSegment.vue'
+import TrackSegment from './MainPage/TrackSegment.vue'
+import TabsSegment from './MainPage/TabsSegment.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseTrackPageContainer,
-    BaseSegmentContainer,
-    BaseSearchButton,
-    BaseTrackSourceSelect,
-    LeftColumn,
-    RightColumn
+    SourceSelectSegment,
+    TrackSegment,
+    TabsSegment
   },
   props: {
     trackTitle: String,
     artistName: String
-  },
-  data () {
-    return {
-      scrollable: null,
-      isSourceSelectCalled: false,
-      isShowSourceSelect: false
-    }
   },
   computed: {
     sourceParams () {
@@ -108,26 +71,9 @@ export default {
       this.$refs
         .page
         .getData()
-    },
-    handleInit (
-      element
-    ) {
-      this.scrollable = element
-    },
-    handleSearchButtonClick () {
-      this.isSourceSelectCalled = true
-
-      this.isShowSourceSelect =
-        !this.isShowSourceSelect
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.track-segment
-  @extend .flex-full, .d-flex
-
-.source-select
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

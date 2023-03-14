@@ -2,24 +2,52 @@
   <BaseReleasesPageContainer
     :is-get-data="false"
   >
-    <NewSegment />
-
-    <UpcomingSegment />
+    <BaseTabsSegmentContainer
+      :tabs="tabs"
+    >
+      <template
+        #default="slotProps"
+      >
+        <Component
+          :is="slotProps.component"
+          :class="slotProps.class"
+          :is-active="slotProps.isActive"
+          @focus="slotProps.handleFocus"
+        />
+      </template>
+    </BaseTabsSegmentContainer>
   </BaseReleasesPageContainer>
 </template>
 
 <script>
 import BaseReleasesPageContainer
   from '@/components/containers/pages/releases/BaseReleasesPageContainer.vue'
-import NewSegment from './MainPage/NewSegment.vue'
-import UpcomingSegment from './MainPage/UpcomingSegment.vue'
+import BaseTabsSegmentContainer
+  from '@/components/containers/segments/tabs/BaseTabsSegmentContainer.vue'
+import NewTab from './MainPage/NewTab.vue'
+import UpcomingTab from './MainPage/UpcomingTab.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseReleasesPageContainer,
-    NewSegment,
-    UpcomingSegment
+    BaseTabsSegmentContainer,
+    NewTab,
+    UpcomingTab
+  },
+  data () {
+    return {
+      tabs: [
+        {
+          nameCode: 'navigation.new',
+          component: 'NewTab'
+        },
+        {
+          nameCode: 'navigation.upcoming',
+          component: 'UpcomingTab'
+        }
+      ]
+    }
   }
 }
 </script>

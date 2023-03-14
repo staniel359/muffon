@@ -7,22 +7,7 @@
       @country-select="handleCountrySelect"
     />
 
-    <ArtistsSegment
-      :key="key"
-      :country="country"
-    />
-
-    <AlbumsSegment
-      :key="key"
-      :country="country"
-    />
-
-    <TracksSegment
-      :key="key"
-      :country="country"
-    />
-
-    <TagsSegment
+    <TabsSegment
       :key="key"
       :country="country"
     />
@@ -37,10 +22,7 @@ import topStore from '@/stores/top'
 import BaseTopPageContainer
   from '@/components/containers/pages/top/BaseTopPageContainer.vue'
 import TopSegment from './MainPage/TopSegment.vue'
-import ArtistsSegment from './MainPage/ArtistsSegment.vue'
-import AlbumsSegment from './MainPage/AlbumsSegment.vue'
-import TracksSegment from './MainPage/TracksSegment.vue'
-import TagsSegment from './MainPage/TagsSegment.vue'
+import TabsSegment from './MainPage/TabsSegment.vue'
 import {
   generateKey
 } from '#/helpers/utils'
@@ -50,10 +32,7 @@ export default {
   components: {
     BaseTopPageContainer,
     TopSegment,
-    ArtistsSegment,
-    AlbumsSegment,
-    TracksSegment,
-    TagsSegment
+    TabsSegment
   },
   data () {
     return {
@@ -79,13 +58,22 @@ export default {
     handleTopCountryChange (
       value
     ) {
-      this.country = value
-      this.key = generateKey()
+      this.changeCountry(
+        value
+      )
     },
     handleCountrySelect (
       value
     ) {
+      this.changeCountry(
+        value
+      )
+    },
+    changeCountry (
+      value
+    ) {
       this.country = value
+
       this.key = generateKey()
     }
   }

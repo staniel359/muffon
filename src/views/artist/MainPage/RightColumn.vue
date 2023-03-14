@@ -1,50 +1,29 @@
 <template>
-  <div class="artist-page-right-column">
+  <div class="main-right-column">
     <InfoSegment
       :artist-data="artistData"
     />
 
-    <TracksSegment
-      :artist-name="artistName"
-    />
-
-    <AlbumsSegment
-      :artist-name="artistName"
-    />
-
-    <SimilarSegment
-      :artist-name="artistName"
+    <TabsSegment
+      :artist-data="artistData"
     />
   </div>
 </template>
 
 <script>
 import InfoSegment from './RightColumn/InfoSegment.vue'
-import TracksSegment from './RightColumn/TracksSegment.vue'
-import AlbumsSegment from './RightColumn/AlbumsSegment.vue'
-import SimilarSegment from './RightColumn/SimilarSegment.vue'
+import TabsSegment from './RightColumn/TabsSegment.vue'
 
 export default {
   name: 'RightColumn',
   components: {
     InfoSegment,
-    TracksSegment,
-    AlbumsSegment,
-    SimilarSegment
+    TabsSegment
   },
   props: {
     artistData: Object
-  },
-  computed: {
-    artistName () {
-      return this.artistData.name
-    }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.artist-page-right-column
-  @extend .flex-full
-  margin-left: 1.5em
-</style>
+<style lang="sass" scoped></style>

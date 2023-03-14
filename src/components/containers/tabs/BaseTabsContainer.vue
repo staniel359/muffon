@@ -50,7 +50,8 @@ export default {
     },
     isPointing: Boolean,
     isFluid: Boolean,
-    isVertical: Boolean
+    isVertical: Boolean,
+    itemsInRow: Number
   },
   emits: [
     'tabClick'
@@ -66,7 +67,13 @@ export default {
     },
     columnWidth () {
       return numberToColumnWidth(
-        this.tabsCount
+        this.itemsInRowComputed
+      )
+    },
+    itemsInRowComputed () {
+      return (
+        this.itemsInRow ||
+          this.tabsCount
       )
     },
     tabsCount () {

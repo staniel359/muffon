@@ -1,15 +1,8 @@
 <template>
-  <BaseProfileSegmentContainer
-    scope="library"
+  <BaseHeaderSegmentsContainer
+    :scope="scope"
     :header-link="headerLink"
-    :is-get-data="false"
   >
-    <CompatibilitySegment
-      v-if="isRenderCompatibility"
-      :profile-id="profileId"
-      :profile-nickname="profileNickname"
-    />
-
     <StatisticsSegment
       :profile-id="profileId"
     />
@@ -17,22 +10,14 @@
     <LibraryTabsSegment
       :profile-id="profileId"
     />
-  </BaseProfileSegmentContainer>
+  </BaseHeaderSegmentsContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
-import BaseProfileSegmentContainer
-  from '@/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
-import CompatibilitySegment from './LibrarySegment/CompatibilitySegment.vue'
+import BaseHeaderSegmentsContainer
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import StatisticsSegment from './LibrarySegment/StatisticsSegment.vue'
 import LibraryTabsSegment from './LibrarySegment/LibraryTabsSegment.vue'
-import {
-  isCurrentProfile
-} from '@/helpers/utils'
 import {
   main as formatProfileLibraryMainLink
 } from '@/helpers/formatters/links/profile/library'
@@ -40,8 +25,7 @@ import {
 export default {
   name: 'LibrarySegment',
   components: {
-    BaseProfileSegmentContainer,
-    CompatibilitySegment,
+    BaseHeaderSegmentsContainer,
     StatisticsSegment,
     LibraryTabsSegment
   },
@@ -49,32 +33,19 @@ export default {
     profileId: {
       type: String,
       required: true
-    },
-    profileNickname: String
+    }
+  },
+  data () {
+    return {
+      scope: 'library'
+    }
   },
   computed: {
-    ...mapState(
-      profileStore,
-      {
-        currentProfileId: 'id'
-      }
-    ),
-    isSelf () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
     headerLink () {
       return formatProfileLibraryMainLink(
         {
           profileId: this.profileId
         }
-      )
-    },
-    isRenderCompatibility () {
-      return (
-        this.currentProfileId &&
-          !this.isSelf
       )
     }
   }

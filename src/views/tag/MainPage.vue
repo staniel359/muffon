@@ -9,15 +9,7 @@
         :tag-data="slotProps.tagData"
       />
 
-      <ArtistsSegment
-        :tag-name="slotProps.tagName"
-      />
-
-      <AlbumsSegment
-        :tag-name="slotProps.tagName"
-      />
-
-      <TracksSegment
+      <TabsSegment
         :tag-name="slotProps.tagName"
       />
     </template>
@@ -28,18 +20,14 @@
 import BaseTagPageContainer
   from '@/components/containers/pages/tag/BaseTagPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
-import ArtistsSegment from './MainPage/ArtistsSegment.vue'
-import AlbumsSegment from './MainPage/AlbumsSegment.vue'
-import TracksSegment from './MainPage/TracksSegment.vue'
+import TabsSegment from './MainPage/TabsSegment.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseTagPageContainer,
     InfoSegment,
-    ArtistsSegment,
-    AlbumsSegment,
-    TracksSegment
+    TabsSegment
   },
   props: {
     tagName: String

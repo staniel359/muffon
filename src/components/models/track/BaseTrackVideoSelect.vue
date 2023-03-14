@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-video-select-container">
     <BaseTrackVideoSourceSelect
       :track-data="trackData"
       @reset="handleReset"

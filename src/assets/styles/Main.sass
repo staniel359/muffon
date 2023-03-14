@@ -302,6 +302,8 @@ p
 
 .main-segment-container
   @extend .no-border
+  &:first-child
+    @extend .no-margin
   &:not(:first-child)
     margin: 1.5em 0 0 0
 
@@ -314,10 +316,6 @@ p
     &.inverted
       &:before
         @extend .background-black-transparent
-
-.main-page-segment-container
-  @extend .d-flex, .flex-column
-  min-height: calc(100vh - #{$mainContainerTopPadding} - #{$mainContainerBottomPadding}) !important
 
 .main-paginated-page-segment-container
   @extend .flex-full, .d-flex, .flex-column
@@ -646,6 +644,8 @@ p
   @extend .flex-full, .d-flex
   &:not(.vertical)
     @extend .flex-column
+    .main-tabs
+      overflow-x: auto
 
 .main-tab-container
   @extend .flex-full, .d-flex, .flex-column, .relative
@@ -658,6 +658,8 @@ p
     @extend .d-none
   &.main-segment
     @extend .background-transparent
+  &.with-top-segment
+    @extend .flex-column
 
 .main-relative-tab
   @extend .relative
@@ -753,7 +755,7 @@ p
   @extend .flex-full, .w-100, .d-flex, .flex-column
 
 .main-paginated-list-content-container
-  @extend .flex-full
+  @extend .flex-full, .d-flex, .flex-column
 
 .main-pagination-container
   @extend .d-flex, .justify-content-center
@@ -770,8 +772,8 @@ p
       &.base
         @extend .background-base
 
-.main-profile-page-columns-container
-  @extend .d-flex
+.main-columns-container
+  @extend .d-flex, .flex-full
 
 .main-profile-page-left-column
   @extend .no-margin
@@ -788,8 +790,8 @@ p
     & > .image
       @extend .w-100, .h-100
 
-.main-profile-page-right-column
-  @extend .flex-full
+.main-right-column
+  @extend .d-flex, .flex-column, .flex-full
   margin-left: 1.5em
 
 .main-sticky-container
@@ -939,9 +941,8 @@ p
   &.inverted
     @extend .border-black
 
-.main-transparent-segment-container
-  .main-segment
-    @extend .background-transparent
+.main-nested-segment-container
+  @extend .background-transparent, .no-shadow, .no-padding
 
 .main-description
   @extend .word-break-break-word
@@ -1009,7 +1010,7 @@ p
   min-width: 60px !important
 
 .main-menu-item
-  @extend .d-flex, .align-items-center, .word-break-break-word 
+  @extend .d-flex, .align-items-center, .word-break-break-word
   &.active
     @extend .text-bold
     &.primary
@@ -1020,6 +1021,8 @@ p
     @extend .no-margin
     float: none !important
     margin-right: 0.75em !important
+  &:last-child
+    @extend .no-border
 
 .main-field
   @extend .d-flex, .align-items-center
@@ -1052,4 +1055,17 @@ p
 
 .main-more-container
   @extend .text-align-right
-  margin-top: 0.5em
+  margin-top: 1em
+
+.main-page-list-container
+  @extend .d-flex, .flex-column, .flex-full
+
+.main-video-select-container
+  @extend .w-100
+
+.main-page-container
+  @extend .d-flex, .flex-column
+  min-height: calc(100vh - #{$mainContainerTopPadding} - #{$mainContainerBottomPadding}) !important
+
+.main-page-segment-container
+  @extend .d-flex, .flex-full

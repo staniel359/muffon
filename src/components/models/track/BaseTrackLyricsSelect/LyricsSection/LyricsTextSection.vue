@@ -5,13 +5,9 @@
       v-text="lyrics"
     />
 
-    <div class="more-container">
-      <strong
-        class="main-link"
-        @click="handleMoreClick"
-        v-text="moreText"
-      />
-    </div>
+    <BaseMoreButton
+      @click="handleMoreButtonClick"
+    />
   </div>
 
   <BaseTrackLyricsModal
@@ -21,12 +17,14 @@
 </template>
 
 <script>
+import BaseMoreButton from '@/components/buttons/BaseMoreButton.vue'
 import BaseTrackLyricsModal
   from '@/components/modals/track/BaseTrackLyricsModal.vue'
 
 export default {
   name: 'LyricsTextSection',
   components: {
+    BaseMoreButton,
     BaseTrackLyricsModal
   },
   props: {
@@ -36,15 +34,8 @@ export default {
     },
     trackId: Number
   },
-  computed: {
-    moreText () {
-      return this.$t(
-        'more'
-      )
-    }
-  },
   methods: {
-    handleMoreClick () {
+    handleMoreButtonClick () {
       this.showModal()
     },
     showModal () {
@@ -56,7 +47,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.more-container
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

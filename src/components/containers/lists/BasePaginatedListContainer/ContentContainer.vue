@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-paginated-list-content-container">
     <BaseErrorMessage
       v-if="error"
       :error="error"

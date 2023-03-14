@@ -1,6 +1,7 @@
 <template>
   <i18n-t
     tag="div"
+    scope="global"
     :keypath="eventTextKey"
   >
     <template

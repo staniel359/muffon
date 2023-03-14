@@ -17,20 +17,14 @@
     is-with-share-option
   />
 
-  <div
-    class="more-container"
-  >
-    <strong
-      class="main-link"
-      @click="handleMoreClick"
-      v-text="moreText"
-    />
+  <BaseMoreButton
+    @click="handleMoreButtonClick"
+  />
 
-    <BaseRecommendationArtistsModal
-      ref="modal"
-      :recommendation-id="recommendationId"
-    />
-  </div>
+  <BaseRecommendationArtistsModal
+    ref="modal"
+    :recommendation-id="recommendationId"
+  />
 </template>
 
 <script>
@@ -42,6 +36,7 @@ import BaseDivider from '@/components/BaseDivider.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistsSimpleList
   from '@/components/lists/artists/BaseArtistsSimpleList.vue'
+import BaseMoreButton from '@/components/buttons/BaseMoreButton.vue'
 import BaseRecommendationArtistsModal
   from '@/components/modals/recommendation/BaseRecommendationArtistsModal.vue'
 import {
@@ -57,6 +52,7 @@ export default {
     BaseDivider,
     BaseHeader,
     BaseArtistsSimpleList,
+    BaseMoreButton,
     BaseRecommendationArtistsModal
   },
   props: {
@@ -107,17 +103,12 @@ export default {
     artists () {
       return this.recommendationData.artists
     },
-    moreText () {
-      return this.$t(
-        'more'
-      )
-    },
     recommendationId () {
       return this.recommendationData.id.toString()
     }
   },
   methods: {
-    handleMoreClick () {
+    handleMoreButtonClick () {
       this.showModal()
     },
     showModal () {
@@ -132,7 +123,4 @@ export default {
 <style lang="sass" scoped>
 .artists-list
   margin: 0.5em 0
-
-.more-container
-  @extend .text-align-right
 </style>

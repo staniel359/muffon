@@ -4,7 +4,7 @@
     :source-params="sourceParams"
   >
     <template
-      #default="pageSlotProps"
+      #default="slotProps"
     >
       <div
         :class="[
@@ -13,39 +13,17 @@
           'main-page-segment-container'
         ]"
       >
-        <BaseSegmentContainer>
-          <BaseSearchButton
-            scope="sources"
-            :is-active="isShowSourceSelect"
-            @click="handleSearchButtonClick"
-          />
+        <SourceSelectSegment
+          :album-data="slotProps.albumData"
+        />
 
-          <BaseAlbumSourceSelect
-            v-if="isSourceSelectCalled"
-            v-show="isShowSourceSelect"
-            class="source-select"
-            :album-data="pageSlotProps.albumData"
-          />
-        </BaseSegmentContainer>
-
-        <BaseSegmentContainer
-          class="album-segment"
-          :is-loading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          @init="handleInit"
+        <AlbumSegment
+          :album-data="slotProps.albumData"
+          :request-album-data="slotProps.requestAlbumData"
+          :is-loading="slotProps.isLoading"
+          :error="slotProps.error"
           @refresh="handleRefresh"
-        >
-          <LeftColumn
-            v-if="scrollable"
-            :album-data="pageSlotProps.albumData"
-            :scrollable="scrollable"
-          />
-
-          <RightColumn
-            :album-data="pageSlotProps.albumData"
-            :request-album-data="pageSlotProps.requestAlbumData"
-          />
-        </BaseSegmentContainer>
+        />
       </div>
     </template>
   </BaseAlbumPageContainer>
@@ -54,34 +32,19 @@
 <script>
 import BaseAlbumPageContainer
   from '@/components/containers/pages/album/BaseAlbumPageContainer.vue'
-import BaseSegmentContainer
-  from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
-import BaseAlbumSourceSelect
-  from '@/components/models/album/BaseAlbumSourceSelect.vue'
-import LeftColumn from './MainPage/LeftColumn.vue'
-import RightColumn from './MainPage/RightColumn.vue'
+import SourceSelectSegment from './MainPage/SourceSelectSegment.vue'
+import AlbumSegment from './MainPage/AlbumSegment.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseAlbumPageContainer,
-    BaseSegmentContainer,
-    BaseSearchButton,
-    BaseAlbumSourceSelect,
-    LeftColumn,
-    RightColumn
+    SourceSelectSegment,
+    AlbumSegment
   },
   props: {
     artistName: String,
     albumTitle: String
-  },
-  data () {
-    return {
-      scrollable: null,
-      isSourceSelectCalled: false,
-      isShowSourceSelect: false
-    }
   },
   computed: {
     sourceParams () {
@@ -108,30 +71,13 @@ export default {
     }
   },
   methods: {
-    handleInit (
-      element
-    ) {
-      this.scrollable = element
-    },
     handleRefresh () {
       this.$refs
         .page
         .getData()
-    },
-    handleSearchButtonClick () {
-      this.isSourceSelectCalled = true
-
-      this.isShowSourceSelect =
-        !this.isShowSourceSelect
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.album-segment
-  @extend .flex-full, .d-flex
-
-.source-select
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

@@ -31,15 +31,15 @@ export default {
       return [
         {
           text: this.$t(
-            'navigation.albums'
-          ),
-          value: this.albumsCount
-        },
-        {
-          text: this.$t(
             'navigation.tracks'
           ),
           value: this.tracksCount
+        },
+        {
+          text: this.$t(
+            'navigation.albums'
+          ),
+          value: this.albumsCount
         },
         {
           text: this.$t(

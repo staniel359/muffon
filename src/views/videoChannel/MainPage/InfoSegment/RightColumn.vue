@@ -1,5 +1,5 @@
 <template>
-  <div class="right-column">
+  <div class="main-right-column">
     <BaseHeader
       class="channel-title"
       tag="h2"
@@ -54,10 +54,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.right-column
-  @extend .flex-full
-  margin-left: 1em
-
 .channel-title
   margin-bottom: 0.4em !important
 </style>

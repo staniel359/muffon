@@ -1,90 +1,52 @@
 <template>
-  <div
-    :class="{
-      loading: isActive && isLoading,
-      inverted: isDarkMode
-    }"
+  <BasePaginatedTabContainer
+    :response-data="libraryData"
+    :scope="scope"
+    :limit="limit"
+    :is-loading="isLoading"
+    :error="error"
+    :is-active="isActive"
+    :more-link="moreLink"
+    @focus="handleFocus"
+    @activate="handleActivate"
   >
-    <BasePaginatedListContainer
-      :response-data="libraryData"
-      :scope="scope"
-      :limit="limit"
-      :is-loading="isLoading"
-      :error="error"
-      @focus="handleFocus"
+    <template
+      #default="slotProps"
     >
-      <template
-        #default="slotProps"
-      >
-        <div>
-          <slot
-            :[scope]="slotProps[scope]"
-          />
-        </div>
-
-        <MoreSection
-          :scope="scope"
-          :profile-id="profileId"
-        />
-      </template>
-    </BasePaginatedListContainer>
-  </div>
+      <slot
+        :[scope]="slotProps[scope]"
+      />
+    </template>
+  </BasePaginatedTabContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import layoutStore from '@/stores/layout'
-import BasePaginatedListContainer
-  from '@/components/containers/lists/BasePaginatedListContainer.vue'
-import MoreSection from './BaseProfileLibraryTabContainer/MoreSection.vue'
+import tabContainerMixin from '@/mixins/tabContainerMixin'
 import getProfileLibrary from '@/helpers/actions/api/profile/library/get'
+import {
+  artists as formatProfileLibraryArtistsLink,
+  albums as formatProfileLibraryAlbumsLink,
+  tracks as formatProfileLibraryTracksLink,
+  tags as formatProfileLibraryTagsLink
+} from '@/helpers/formatters/links/profile/library'
 
 export default {
   name: 'BaseProfileLibraryTabContainer',
-  components: {
-    BasePaginatedListContainer,
-    MoreSection
-  },
-  provide () {
-    return {
-      getData: this.getData
-    }
-  },
+  mixins: [
+    tabContainerMixin
+  ],
   props: {
     profileId: {
       type: String,
       required: true
-    },
-    scope: {
-      type: String,
-      required: true
-    },
-    limit: {
-      type: Number,
-      required: true
-    },
-    isActive: Boolean
+    }
   },
-  emits: [
-    'focus'
-  ],
   data () {
     return {
-      profileData: null,
-      error: null,
-      isLoading: false,
-      isActivated: false
+      profileData: null
     }
   },
   computed: {
-    ...mapState(
-      layoutStore,
-      [
-        'isDarkMode'
-      ]
-    ),
     libraryArgs () {
       return {
         profileId: this.profileId,
@@ -94,39 +56,40 @@ export default {
     },
     libraryData () {
       return this.profileData?.library
-    }
-  },
-  watch: {
-    isActive: {
-      immediate: true,
-      handler: 'handleIsActive'
     },
-    isActivated: {
-      immediate: true,
-      handler: 'handleIsActivated'
+    moreLink () {
+      switch (this.scope) {
+        case 'artists':
+          return formatProfileLibraryArtistsLink(
+            {
+              profileId: this.profileId
+            }
+          )
+        case 'albums':
+          return formatProfileLibraryAlbumsLink(
+            {
+              profileId: this.profileId
+            }
+          )
+        case 'tracks':
+          return formatProfileLibraryTracksLink(
+            {
+              profileId: this.profileId
+            }
+          )
+        case 'tags':
+          return formatProfileLibraryTagsLink(
+            {
+              profileId: this.profileId
+            }
+          )
+        default:
+          return {}
+      }
     }
   },
   methods: {
     getProfileLibrary,
-    handleIsActive (
-      value
-    ) {
-      if (value) {
-        this.isActivated = true
-      }
-    },
-    handleIsActivated (
-      value
-    ) {
-      if (value) {
-        this.getData()
-      }
-    },
-    handleFocus () {
-      this.$emit(
-        'focus'
-      )
-    },
     getData (
       {
         page

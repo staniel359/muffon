@@ -1,18 +1,17 @@
 <template>
-  <BaseProfileSegmentContainer
-    scope="favorites"
+  <BaseHeaderSegmentsContainer
+    :scope="scope"
     :header-link="headerLink"
-    :is-get-data="false"
   >
     <FavoritesTabsSegment
       :profile-id="profileId"
     />
-  </BaseProfileSegmentContainer>
+  </BaseHeaderSegmentsContainer>
 </template>
 
 <script>
-import BaseProfileSegmentContainer
-  from '@/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
+import BaseHeaderSegmentsContainer
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import FavoritesTabsSegment from './FavoritesSegment/FavoritesTabsSegment.vue'
 import {
   main as formatProfileFavoritesMainLink
@@ -21,13 +20,18 @@ import {
 export default {
   name: 'FavoritesSegment',
   components: {
-    BaseProfileSegmentContainer,
+    BaseHeaderSegmentsContainer,
     FavoritesTabsSegment
   },
   props: {
     profileId: {
       type: String,
       required: true
+    }
+  },
+  data () {
+    return {
+      scope: 'favorites'
     }
   },
   computed: {

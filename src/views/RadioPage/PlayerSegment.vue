@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="track-segment"
+    class="player-segment"
     :response-data="radioData"
     :is-loading="isLoading"
     :error="error"
@@ -140,6 +140,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.track-segment
+.player-segment
   @extend .flex-full
 </style>

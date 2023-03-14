@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="raised community-info-segment main-segment-container"
+    class="raised main-segment-container info-segment"
   >
     <BaseListContainer>
       <div class="item main-simple-list-item main-info-item">
@@ -85,6 +85,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.community-info-segment
-  margin-bottom: 1.5em
+.info-segment
+  margin-bottom: 1.5em !important
 </style>

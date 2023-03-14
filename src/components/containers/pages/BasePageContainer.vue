@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-page-container">
     <BaseErrorMessage
       v-if="isPageError"
       :error="error"

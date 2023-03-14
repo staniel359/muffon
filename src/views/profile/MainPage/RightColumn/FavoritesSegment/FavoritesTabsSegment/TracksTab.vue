@@ -1,5 +1,5 @@
 <template>
-  <BaseProfileFavoriteTabContainer
+  <BaseProfileFavoritesTabContainer
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
@@ -10,8 +10,7 @@
       #default="slotProps"
     >
       <BaseTracksSimpleList
-        :[scope]="slotProps[scope]"
-        :profile-id="profileId"
+        :tracks="slotProps[scope]"
         :is-with-favorite-option="!isSelf"
         :is-with-delete-option="isSelf"
         is-with-image
@@ -29,12 +28,12 @@
         is-with-queue-option
       />
     </template>
-  </BaseProfileFavoriteTabContainer>
+  </BaseProfileFavoritesTabContainer>
 </template>
 
 <script>
-import BaseProfileFavoriteTabContainer
-  from '@/components/containers/tabs/profile/favorites/BaseProfileFavoriteTabContainer.vue'
+import BaseProfileFavoritesTabContainer
+  from '@/components/containers/tabs/profile/favorites/BaseProfileFavoritesTabContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
@@ -47,11 +46,14 @@ import {
 export default {
   name: 'TracksTab',
   components: {
-    BaseProfileFavoriteTabContainer,
+    BaseProfileFavoritesTabContainer,
     BaseTracksSimpleList
   },
   props: {
-    profileId: String,
+    profileId: {
+      type: String,
+      required: true
+    },
     isActive: Boolean
   },
   emits: [

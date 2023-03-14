@@ -5,7 +5,7 @@
     <template
       #default="slotProps"
     >
-      <div class="main-profile-page-columns-container">
+      <div class="main-columns-container">
         <LeftColumn
           :profile-data="slotProps.profileData"
         />

@@ -11,7 +11,7 @@
         :is-community-creator="slotProps.isCommunityCreator"
       />
 
-      <div class="columns-container">
+      <div class="main-columns-container">
         <LeftColumn
           :community-data="slotProps.communityData"
           :scrollable="scrollable"
@@ -56,7 +56,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.columns-container
-  @extend .d-flex, .align-items-start
-</style>
+<style lang="sass" scoped></style>

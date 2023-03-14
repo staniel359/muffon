@@ -1,20 +1,15 @@
 <template>
   <BaseVideoChannelPageContainer
-    ref="page"
     :channel-id="channelId"
   >
     <template
-      #default="pageSlotProps"
+      #default="slotProps"
     >
       <InfoSegment
-        :channel-data="pageSlotProps.channelData"
+        :channel-data="slotProps.channelData"
       />
 
-      <VideosSegment
-        :channel-id="channelId"
-      />
-
-      <PlaylistsSegment
+      <TabsSegment
         :channel-id="channelId"
       />
     </template>
@@ -25,16 +20,14 @@
 import BaseVideoChannelPageContainer
   from '@/components/containers/pages/videoChannel/BaseVideoChannelPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
-import VideosSegment from './MainPage/VideosSegment.vue'
-import PlaylistsSegment from './MainPage/PlaylistsSegment.vue'
+import TabsSegment from './MainPage/TabsSegment.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseVideoChannelPageContainer,
     InfoSegment,
-    VideosSegment,
-    PlaylistsSegment
+    TabsSegment
   },
   props: {
     channelId: String

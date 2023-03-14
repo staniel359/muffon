@@ -150,19 +150,19 @@
     "sendCode": "Invia codice",
     "share": "Condividi",
     "confirm": "Conferma",
-    "searchFor": {
-      "lyrics": "Cerca testo",
-      "video": "Cerca video"
-    },
-    "searchIn": {
-      "source": "Cerca dalla fonte",
-      "sources": "Cerca dalle fonti"
-    },
     "from": {
       "search": "Da ricerca",
       "folder": "Da cartella",
       "account": "Da account",
       "library": "Da libreria"
+    },
+    "searchIn": {
+      "source": "Cerca dalla fonte",
+      "sources": "Cerca dalle fonti"
+    },
+    "searchFor": {
+      "lyrics": "Cerca testo",
+      "video": "Cerca video"
     },
     "import": {
       "lastfm": "Importa dati da Last.FM"

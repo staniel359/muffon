@@ -3,7 +3,7 @@
     :class="[
       'ui raised segments',
       'main-segment-container',
-      'main-page-segment-container'
+      'main-page-container'
     ]"
   >
     <SearchSegment
