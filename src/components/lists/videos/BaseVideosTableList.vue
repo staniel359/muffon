@@ -7,12 +7,15 @@
     >
       <VideoItem
         :video-data="videoData"
+        :is-with-channel-title="isWithChannelTitle"
+        :is-with-created="isWithCreated"
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-watched-option="isWithWatchedOption"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
         :is-bookmark="isBookmark"
+        :is-favorite="isFavorite"
         @link-click="handleLinkClick"
       />
     </div>
@@ -37,12 +40,15 @@ export default {
         return []
       }
     },
+    isWithChannelTitle: Boolean,
+    isWithCreated: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithWatchedOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
-    isBookmark: Boolean
+    isBookmark: Boolean,
+    isFavorite: Boolean
   },
   emits: [
     'linkClick'

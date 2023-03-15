@@ -5,15 +5,18 @@
     :scope="scope"
     :limit="limit"
     :order="order"
+    :view-id="viewId"
     is-with-top-segment
     is-with-order-change
+    is-with-view-change
   >
     <template
       #default="slotProps"
     >
-      <BaseVideosSimpleList
+      <BaseVideosList
         :videos="slotProps[scope]"
         :profile-id="profileId"
+        :view-id="viewId"
         :is-with-favorite-option="!isSelf"
         :is-with-delete-option="isSelf"
         is-with-channel-title
@@ -29,24 +32,22 @@
 <script>
 import BaseProfileFavoritesPaginatedPageContainer
   from '@/components/containers/pages/profile/favorites/BaseProfileFavoritesPaginatedPageContainer.vue'
-import BaseVideosSimpleList
-  from '@/components/lists/videos/BaseVideosSimpleList.vue'
+import BaseVideosList from '@/components/lists/videos/BaseVideosList.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
-import {
-  videos as videosLimits
-} from '@/helpers/data/limits'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'VideosPage',
   components: {
     BaseProfileFavoritesPaginatedPageContainer,
-    BaseVideosSimpleList
+    BaseVideosList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    viewChangeMixin
   ],
   props: {
     profileId: {
@@ -56,8 +57,7 @@ export default {
   },
   data () {
     return {
-      limit:
-        videosLimits.simple.large,
+      viewId: 'simple',
       scope: 'videos',
       order: 'createdDesc'
     }

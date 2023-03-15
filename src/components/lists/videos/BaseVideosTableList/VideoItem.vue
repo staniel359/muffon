@@ -27,6 +27,7 @@
           :is-with-share-option="isWithShareOption"
           :is-with-delete-option="isWithDeleteOption"
           :is-bookmark="isBookmark"
+          :is-favorite="isFavorite"
           @deleted="handleDeleted"
         />
 
@@ -46,7 +47,20 @@
       </BaseLinkContainer>
 
       <div class="center aligned content">
+        <BaseVideoChannelLinkSection
+          v-if="isWithChannelTitle"
+          class="extra"
+          :model-data="videoData"
+          @link-click="handleLinkClick"
+        />
+
+        <BaseCreatedSection
+          v-if="isWithCreated"
+          class="description"
+          :model-data="videoData"
+        />
         <BasePublishDateSection
+          v-else
           class="description"
           :model-data="videoData"
         />
@@ -71,6 +85,9 @@ import BaseVideoOptionsDropdown
   from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import BaseVideoChannelLinkSection
+  from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
+import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
@@ -88,6 +105,8 @@ export default {
     BaseVideoOptionsDropdown,
     BaseImage,
     BaseHeader,
+    BaseVideoChannelLinkSection,
+    BaseCreatedSection,
     BasePublishDateSection,
     BaseSelfIcons
   },
@@ -104,12 +123,15 @@ export default {
       type: Object,
       required: true
     },
+    isWithChannelTitle: Boolean,
+    isWithCreated: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithWatchedOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
-    isBookmark: Boolean
+    isBookmark: Boolean,
+    isFavorite: Boolean
   },
   emits: [
     'linkClick'

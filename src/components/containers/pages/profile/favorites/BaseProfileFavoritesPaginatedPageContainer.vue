@@ -19,6 +19,8 @@
         :model="model"
         :is-with-top-segment="isWithTopSegment"
         :is-with-order-change="isWithOrderChange"
+        :is-with-view-change="isWithViewChange"
+        :view-id="viewId"
       >
         <template
           #default="slotProps"
@@ -54,7 +56,9 @@ export default {
     order: String,
     model: String,
     isWithTopSegment: Boolean,
-    isWithOrderChange: Boolean
+    isWithOrderChange: Boolean,
+    isWithViewChange: Boolean,
+    viewId: String
   }
 }
 </script>

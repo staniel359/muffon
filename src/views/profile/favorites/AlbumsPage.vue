@@ -5,15 +5,18 @@
     :scope="scope"
     :limit="limit"
     :order="order"
+    :view-id="viewId"
     is-with-top-segment
     is-with-order-change
+    is-with-view-change
   >
     <template
       #default="slotProps"
     >
-      <BaseAlbumsSimpleList
+      <BaseAlbumsList
         :albums="slotProps[scope]"
         :profile-id="profileId"
+        :view-id="viewId"
         :is-with-favorite-option="!isSelf"
         :is-with-delete-option="isSelf"
         is-with-artist-name
@@ -32,24 +35,22 @@
 <script>
 import BaseProfileFavoritesPaginatedPageContainer
   from '@/components/containers/pages/profile/favorites/BaseProfileFavoritesPaginatedPageContainer.vue'
-import BaseAlbumsSimpleList
-  from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
+import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
-import {
-  albums as albumsLimits
-} from '@/helpers/data/limits'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'AlbumsPage',
   components: {
     BaseProfileFavoritesPaginatedPageContainer,
-    BaseAlbumsSimpleList
+    BaseAlbumsList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    viewChangeMixin
   ],
   props: {
     profileId: {
@@ -59,8 +60,7 @@ export default {
   },
   data () {
     return {
-      limit:
-        albumsLimits.simple.large,
+      viewId: 'simple',
       scope: 'albums',
       order: 'createdDesc'
     }

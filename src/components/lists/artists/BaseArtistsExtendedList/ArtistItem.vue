@@ -70,6 +70,7 @@
                   :is-with-share-option="isWithShareOption"
                   :is-with-delete-option="isWithDeleteOption"
                   :is-bookmark="isBookmark"
+                  :is-favorite="isFavorite"
                   @deleted="handleDeleted"
                 />
               </div>
