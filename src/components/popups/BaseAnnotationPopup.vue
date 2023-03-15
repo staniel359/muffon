@@ -51,7 +51,7 @@ export default {
     annotationTextFormatted () {
       return this.annotationText.replaceAll(
         '<a href',
-        '<a class="main-link active" target="_blank" href'
+        '<a class="main-link bold" target="_blank" href'
       )
     },
     annotationText () {
