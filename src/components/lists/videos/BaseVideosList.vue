@@ -7,7 +7,9 @@
     :is-with-bookmark-option="isWithBookmarkOption"
     :is-with-watched-option="isWithWatchedOption"
     :is-with-share-option="isWithShareOption"
+    :is-with-delete-option="isWithDeleteOption"
     :is-with-clear-button="isWithClearButton"
+    :is-bookmark="isBookmark"
   />
 </template>
 
@@ -32,7 +34,9 @@ export default {
     isWithBookmarkOption: Boolean,
     isWithWatchedOption: Boolean,
     isWithShareOption: Boolean,
-    isWithClearButton: Boolean
+    isWithDeleteOption: Boolean,
+    isWithClearButton: Boolean,
+    isBookmark: Boolean
   },
   data () {
     return {

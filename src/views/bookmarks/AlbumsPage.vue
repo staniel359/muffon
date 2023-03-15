@@ -4,14 +4,17 @@
     :scope="scope"
     :limit="limit"
     :order="order"
+    :view-id="viewId"
     is-with-top-segment
     is-with-order-change
+    is-with-view-change
   >
     <template
       #default="slotProps"
     >
-      <BaseAlbumsSimpleList
+      <BaseAlbumsList
         :albums="slotProps[scope]"
+        :view-id="viewId"
         is-with-artist-name
         is-with-source
         is-with-created
@@ -29,26 +32,23 @@
 <script>
 import BaseBookmarksPaginatedPageContainer
   from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
-import BaseAlbumsSimpleList
-  from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
+import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
-import {
-  albums as albumsLimits
-} from '@/helpers/data/limits'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'AlbumsPage',
   components: {
     BaseBookmarksPaginatedPageContainer,
-    BaseAlbumsSimpleList
+    BaseAlbumsList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    viewChangeMixin
   ],
   data () {
     return {
-      limit:
-        albumsLimits.simple.large,
+      viewId: 'simple',
       scope: 'albums',
       order: 'createdDesc'
     }

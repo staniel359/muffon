@@ -33,6 +33,7 @@
           :is-with-listened-option="isWithListenedOption"
           :is-with-share-option="isWithShareOption"
           :is-with-delete-option="isWithDeleteOption"
+          :is-bookmark="isBookmark"
           @link-click="handleLinkClick"
           @deleted="handleDeleted"
         />

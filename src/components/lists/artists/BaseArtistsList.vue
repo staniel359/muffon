@@ -17,6 +17,7 @@
     :is-with-favorite-option="isWithFavoriteOption"
     :is-with-share-option="isWithShareOption"
     :is-with-delete-option="isWithDeleteOption"
+    :is-bookmark="isBookmark"
   />
 </template>
 
@@ -51,7 +52,8 @@ export default {
     isWithBookmarkOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithShareOption: Boolean,
-    isWithDeleteOption: Boolean
+    isWithDeleteOption: Boolean,
+    isBookmark: Boolean
   },
   data () {
     return {

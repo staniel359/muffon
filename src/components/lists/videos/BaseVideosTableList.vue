@@ -11,6 +11,8 @@
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-watched-option="isWithWatchedOption"
         :is-with-share-option="isWithShareOption"
+        :is-with-delete-option="isWithDeleteOption"
+        :is-bookmark="isBookmark"
         @link-click="handleLinkClick"
       />
     </div>
@@ -38,7 +40,9 @@ export default {
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithWatchedOption: Boolean,
-    isWithShareOption: Boolean
+    isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isBookmark: Boolean
   },
   emits: [
     'linkClick'

@@ -1,54 +1,70 @@
 <template>
-  <BaseSimpleCardContainer>
-    <BaseLinkContainer
-      class="card-link"
-      :link="link"
-      @click="handleLinkClick"
+  <BaseSimpleCardContainer
+    :class="{
+      disabled: isDeleted
+    }"
+  >
+    <BaseDeletedSection
+      v-if="isDeleted"
+      model="video"
+    />
+    <template
+      v-else
     >
-      <BaseVideoOptionsDropdown
-        :video-data="videoData"
-        :favorite-id="favoriteId"
-        :bookmark-id="bookmarkId"
-        :watched-id="watchedId"
-        :is-with-favorite-option="isWithFavoriteOption"
-        :is-with-bookmark-option="isWithBookmarkOption"
-        :is-with-watched-option="isWithWatchedOption"
-        :is-with-share-option="isWithShareOption"
-      />
+      <BaseLinkContainer
+        class="card-link"
+        :link="link"
+        @click="handleLinkClick"
+      >
+        <BaseVideoOptionsDropdown
+          :video-data="videoData"
+          :favorite-id="favoriteId"
+          :bookmark-id="bookmarkId"
+          :watched-id="watchedId"
+          :is-with-favorite-option="isWithFavoriteOption"
+          :is-with-bookmark-option="isWithBookmarkOption"
+          :is-with-watched-option="isWithWatchedOption"
+          :is-with-share-option="isWithShareOption"
+          :is-with-delete-option="isWithDeleteOption"
+          :is-bookmark="isBookmark"
+          @deleted="handleDeleted"
+        />
 
-      <div class="main-image-container">
-        <BaseImage
-          class="rounded-medium bordered"
-          model="video"
-          :image="imageData?.small"
+        <div class="main-image-container">
+          <BaseImage
+            class="rounded-medium bordered"
+            model="video"
+            :image="imageData?.small"
+          />
+        </div>
+
+        <BaseHeader
+          class="center aligned link"
+          tag="h4"
+          :text="videoTitle"
+        />
+      </BaseLinkContainer>
+
+      <div class="center aligned content">
+        <BasePublishDateSection
+          class="description"
+          :model-data="videoData"
+        />
+
+        <BaseSelfIcons
+          :favorite-id="favoriteId"
+          :bookmark-id="bookmarkId"
+          :watched-id="watchedId"
         />
       </div>
-
-      <BaseHeader
-        class="center aligned link"
-        tag="h4"
-        :text="videoTitle"
-      />
-    </BaseLinkContainer>
-
-    <div class="center aligned content">
-      <BasePublishDateSection
-        class="description"
-        :model-data="videoData"
-      />
-
-      <BaseSelfIcons
-        :favorite-id="favoriteId"
-        :bookmark-id="bookmarkId"
-        :watched-id="watchedId"
-      />
-    </div>
+    </template>
   </BaseSimpleCardContainer>
 </template>
 
 <script>
 import BaseSimpleCardContainer
   from '@/components/containers/cards/BaseSimpleCardContainer.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseVideoOptionsDropdown
@@ -67,6 +83,7 @@ export default {
   name: 'VideoItem',
   components: {
     BaseSimpleCardContainer,
+    BaseDeletedSection,
     BaseLinkContainer,
     BaseVideoOptionsDropdown,
     BaseImage,
@@ -77,6 +94,11 @@ export default {
   mixins: [
     selfMixin
   ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     videoData: {
       type: Object,
@@ -85,7 +107,9 @@ export default {
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithWatchedOption: Boolean,
-    isWithShareOption: Boolean
+    isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isBookmark: Boolean
   },
   emits: [
     'linkClick'
@@ -109,6 +133,19 @@ export default {
     },
     videoTitle () {
       return this.videoData.title
+    },
+    isDeleted () {
+      return !!this.videoData.isDeleted
+    },
+    paginationItem () {
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
+    },
+    uuid () {
+      return this.videoData.uuid
     }
   },
   methods: {
@@ -116,6 +153,9 @@ export default {
       this.$emit(
         'linkClick'
       )
+    },
+    handleDeleted () {
+      this.paginationItem.isDeleted = true
     }
   }
 }

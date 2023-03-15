@@ -21,7 +21,7 @@
         >
           <BaseDeletedSection
             v-if="isDeleted"
-            model="recommendation"
+            :model="model"
           />
           <template
             v-else
@@ -69,6 +69,7 @@
                   :is-with-listened-option="isWithListenedOption"
                   :is-with-share-option="isWithShareOption"
                   :is-with-delete-option="isWithDeleteOption"
+                  :is-bookmark="isBookmark"
                   @deleted="handleDeleted"
                 />
               </div>
@@ -252,6 +253,13 @@ export default {
     },
     description () {
       return this.responseData.description
+    },
+    model () {
+      if (this.isRecommendation) {
+        return 'recommendation'
+      } else {
+        return 'artist'
+      }
     }
   },
   watch: {
