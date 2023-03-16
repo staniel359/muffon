@@ -21,10 +21,9 @@
             :model-data="playlistData"
           />
 
-          <div
-            v-if="description"
+          <DescriptionSection
             class="description"
-            v-text="description"
+            :playlist-data="playlistData"
           />
 
           <BaseCounterSection
@@ -65,6 +64,7 @@ import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseVideoChannelLinkSection
   from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
+import DescriptionSection from './InfoSegment/DescriptionSection.vue'
 import BaseCounterSection from '@/components/sections/BaseCounterSection.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
@@ -81,6 +81,7 @@ export default {
     BaseZoomableImage,
     BaseHeader,
     BaseVideoChannelLinkSection,
+    DescriptionSection,
     BaseCounterSection,
     BasePublishDateSection,
     BaseSelfIcons,
@@ -104,9 +105,6 @@ export default {
     },
     playlistTitle () {
       return this.playlistData.title
-    },
-    description () {
-      return this.playlistData.description
     },
     videosCount () {
       return this.playlistData.videos_count
