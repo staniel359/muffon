@@ -15,11 +15,11 @@
           :text="nickname"
         />
 
-        <div class="description">
-          <small
-            v-text="playsTextFormatted"
-          />
-        </div>
+        <BaseListCounterSection
+          class="description"
+          icon="play"
+          :count="playsCount"
+        />
       </div>
     </div>
   </BaseListContainer>
@@ -30,16 +30,16 @@ import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 
 export default {
   name: 'UserInfoSection',
   components: {
     BaseListContainer,
     BaseImage,
-    BaseHeader
+    BaseHeader,
+    BaseListCounterSection
   },
   props: {
     userData: {
@@ -54,22 +54,8 @@ export default {
     nickname () {
       return this.userData.nickname
     },
-    playsTextFormatted () {
-      return this.$tc(
-        'counters.nominative.plays',
-        this.playsCount,
-        {
-          count: this.playsCountFormatted
-        }
-      )
-    },
     playsCount () {
       return this.userData.plays_count
-    },
-    playsCountFormatted () {
-      return formatNumber(
-        this.playsCount
-      )
     }
   }
 }

@@ -39,6 +39,7 @@
 
         <BaseAlbumArtistsSection
           v-if="isWithArtistName"
+          class="extra"
           :album-data="albumData"
           :is-link-to-library="isLinkToLibrary"
           :profile-id="profileId"
@@ -78,12 +79,12 @@
 
       <BaseSourceIcon
         v-if="isRenderSource"
-        class="album-source-icon"
+        class="right"
         :source="source"
       />
 
       <BaseAlbumReleaseDateSection
-        class="description release-date-section"
+        class="description right"
         :album-data="albumData"
       />
 
@@ -297,13 +298,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.album-source-icon
-  margin-left: 0.75em
-
-.listeners-count
-  margin-top: 0.15em
-
-.release-date-section
-  margin-left: 0.75em
-</style>
+<style lang="sass" scoped></style>

@@ -1,16 +1,18 @@
 <template>
-  <BaseLink
-    v-if="channelId"
-    :link="link"
-    :text="channelTitle"
-    @click="handleLinkClick"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
-  />
-  <span
-    v-else
-    v-html="channelTitle"
-  />
+  <div>
+    <BaseLink
+      v-if="channelId"
+      :link="link"
+      :text="channelTitle"
+      @click="handleLinkClick"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
+    />
+    <span
+      v-else
+      v-html="channelTitle"
+    />
+  </div>
 </template>
 
 <script>

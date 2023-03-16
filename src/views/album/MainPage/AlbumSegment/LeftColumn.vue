@@ -76,5 +76,5 @@ export default {
 
 <style lang="sass" scoped>
 .album-page-left-column
-  width: 180px
+  width: 185px
 </style>

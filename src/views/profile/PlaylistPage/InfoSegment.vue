@@ -28,9 +28,10 @@
             v-text="description"
           />
 
-          <div
+          <BaseCounterSection
             class="description"
-            v-html="tracksCountText"
+            scope="tracks"
+            :count="tracksCount"
           />
 
           <BaseTimestampSection
@@ -60,13 +61,11 @@ import BaseListContainer
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
+import BaseCounterSection from '@/components/sections/BaseCounterSection.vue'
 import BaseTimestampSection
   from '@/components/sections/BaseTimestampSection.vue'
 import BasePlaylistOptionsDropdown
   from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -79,6 +78,7 @@ export default {
     BaseZoomableImage,
     BaseHeader,
     BasePrivateIcon,
+    BaseCounterSection,
     BaseTimestampSection,
     BasePlaylistOptionsDropdown
   },
@@ -98,27 +98,6 @@ export default {
     },
     playlistTitle () {
       return this.playlistData.title
-    },
-    tracksCountText () {
-      return this.$tc(
-        'counters.nominative.tracks',
-        this.tracksCount,
-        {
-          count: this.tracksCountStrong
-        }
-      )
-    },
-    tracksCountStrong () {
-      return `
-        <strong>
-          ${this.tracksCountFormatted}
-        </strong>
-      `
-    },
-    tracksCountFormatted () {
-      return formatNumber(
-        this.tracksCount
-      )
     },
     tracksCount () {
       return this.playlistData.tracks_count

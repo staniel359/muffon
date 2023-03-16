@@ -37,8 +37,13 @@
         />
       </div>
 
-      <div class="description">
-        <small class="extra-data-section">
+      <div
+        v-if="isRenderExtraData"
+        class="description main-small-container"
+      >
+        <small
+          class="extra-data-section"
+        >
           <BaseProfileGenderAge
             class="extra-data-item"
             :profile-data="profileData"
@@ -51,14 +56,11 @@
         </small>
       </div>
 
-      <div class="description">
-        <small>
-          <BaseProfileFollowCounters
-            class="follow-counters"
-            :profile-data="profileData"
-          />
-        </small>
-      </div>
+      <BaseListCounterSection
+        class="description"
+        icon="follower"
+        :count="followersCount"
+      />
 
       <PlayingSection
         v-if="playing"
@@ -101,8 +103,8 @@ import BaseProfileGenderAge
   from '@/components/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry
   from '@/components/models/profile/BaseProfileCityCountry.vue'
-import BaseProfileFollowCounters
-  from '@/components/models/profile/BaseProfileFollowCounters.vue'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 import PlayingSection from './ProfileItem/PlayingSection.vue'
 import BaseProfileFollowingMessage
   from '@/components/models/profile/BaseProfileFollowingMessage.vue'
@@ -127,7 +129,7 @@ export default {
     BaseLabel,
     BaseProfileGenderAge,
     BaseProfileCityCountry,
-    BaseProfileFollowCounters,
+    BaseListCounterSection,
     PlayingSection,
     BaseProfileFollowingMessage,
     BaseCreatedSection,
@@ -207,6 +209,29 @@ export default {
     },
     playing () {
       return this.profileData.playing
+    },
+    followersCount () {
+      return this.profileData.followers_count
+    },
+    isRenderExtraData () {
+      return (
+        this.gender ||
+          this.birthdate ||
+          this.country ||
+          this.city
+      )
+    },
+    gender () {
+      return this.profileData.gender
+    },
+    birthdate () {
+      return this.profileData.birthdate
+    },
+    country () {
+      return this.profileData.country
+    },
+    city () {
+      return this.profileData.city
     }
   },
   methods: {
@@ -245,9 +270,6 @@ export default {
 
 .role-label
   margin-left: 0.75em
-
-.description
-  margin-top: 0.15em
 
 .follow-counters
   @extend .d-flex

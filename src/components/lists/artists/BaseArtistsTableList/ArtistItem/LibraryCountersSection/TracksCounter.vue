@@ -3,34 +3,27 @@
     class="main-link"
     :link="link"
   >
-    <small>
-      <BaseIcon
-        icon="track"
-      />
-
-      <span
-        v-text="tracksCountFormatted"
-      />
-    </small>
+    <BaseListCounterSection
+      icon="track"
+      :count="tracksCount"
+    />
   </BaseLinkContainer>
 </template>
 
 <script>
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 import {
   tracks as formatProfileLibraryArtistTracksLink
 } from '@/helpers/formatters/links/profile/library/artist'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
 
 export default {
   name: 'TracksCounter',
   components: {
     BaseLinkContainer,
-    BaseIcon
+    BaseListCounterSection
   },
   props: {
     artistData: {
@@ -53,11 +46,6 @@ export default {
     },
     libraryArtistId () {
       return this.artistData.library.id
-    },
-    tracksCountFormatted () {
-      return formatNumber(
-        this.tracksCount
-      )
     },
     tracksCount () {
       return this.artistData.tracks_count

@@ -1,5 +1,5 @@
 <template>
-  <div class="description">
+  <div class="description main-counters-section">
     <TracksCounter
       class="tracks-link"
       :artist-data="artistData"

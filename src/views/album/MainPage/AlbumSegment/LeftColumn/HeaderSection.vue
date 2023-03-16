@@ -77,6 +77,6 @@ export default {
 
 <style lang="sass" scoped>
 .album-full-title
-  @extend .text-align-center
+  @extend .text-align-center, .word-break-break-word
   margin-top: 0.75em
 </style>

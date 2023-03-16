@@ -32,6 +32,7 @@
 
         <BaseVideoChannelLinkSection
           v-if="isWithChannelTitle"
+          class="extra"
           :model-data="videoData"
           @link-click="handleLinkClick"
           @active-change="handleChannelLinkActiveChange"

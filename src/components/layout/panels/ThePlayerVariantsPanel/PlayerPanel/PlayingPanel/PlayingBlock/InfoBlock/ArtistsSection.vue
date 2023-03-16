@@ -1,8 +1,10 @@
 <template>
   <BaseTickerContainer>
-    <BaseArtistLinks
-      :artists="artists"
-    />
+    <div class="extra">
+      <BaseArtistLinks
+        :artists="artists"
+      />
+    </div>
   </BaseTickerContainer>
 </template>
 

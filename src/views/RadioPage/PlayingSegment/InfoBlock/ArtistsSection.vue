@@ -38,5 +38,4 @@ export default {
 <style lang="sass" scoped>
 .artists-section
   @extend .text-medium-light
-  line-height: 1.3em !important
 </style>

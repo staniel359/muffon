@@ -1,6 +1,6 @@
 <template>
   <BaseTickerContainer>
-    <div class="description">
+    <div class="description main-small-container">
       <small>
         <BaseAlbumLinkContainer
           class="main-link"

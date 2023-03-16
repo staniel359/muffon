@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-source-icon">
     <BaseIcon
       ref="icon"
       class="source-icon"

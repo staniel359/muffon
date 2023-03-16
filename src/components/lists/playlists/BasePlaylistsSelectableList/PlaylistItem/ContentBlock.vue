@@ -20,15 +20,17 @@
 
     <div
       v-if="description"
-      class="description"
+      class="description main-small-container"
     >
       <small
         v-text="description"
       />
     </div>
 
-    <TracksCountSection
-      :tracks-count="tracksCount"
+    <BaseListCounterSection
+      class="description"
+      icon="track"
+      :count="tracksCount"
     />
   </div>
 
@@ -52,7 +54,8 @@
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
-import TracksCountSection from './ContentBlock/TracksCountSection.vue'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BasePlaylistOptionsDropdown
   from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
@@ -63,7 +66,7 @@ export default {
     BaseImage,
     BaseHeader,
     BasePrivateIcon,
-    TracksCountSection,
+    BaseListCounterSection,
     BaseIcon,
     BasePlaylistOptionsDropdown
   },

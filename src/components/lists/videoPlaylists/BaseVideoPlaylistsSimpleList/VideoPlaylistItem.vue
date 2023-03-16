@@ -37,6 +37,7 @@
 
         <BaseVideoChannelLinkSection
           v-if="isWithChannelTitle"
+          class="extra"
           :model-data="playlistData"
           @link-click="handleLinkClick"
           @active-change="handleChannelLinkActiveChange"
@@ -44,17 +45,18 @@
 
         <div
           v-if="description"
-          class="extra"
+          class="description main-small-container"
         >
           <small
             v-html="description"
           />
         </div>
 
-        <BaseVideoPlaylistVideosCountSection
+        <BaseListCounterSection
+          v-if="videosCount"
           class="description"
-          :playlist-data="playlistData"
-          is-small
+          icon="video"
+          :count="videosCount"
         />
       </div>
 
@@ -102,8 +104,8 @@ import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseVideoChannelLinkSection
   from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
-import BaseVideoPlaylistVideosCountSection
-  from '@/components/sections/videoPlaylist/BaseVideoPlaylistVideosCountSection.vue'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
@@ -125,7 +127,7 @@ export default {
     BaseImage,
     BaseHeader,
     BaseVideoChannelLinkSection,
-    BaseVideoPlaylistVideosCountSection,
+    BaseListCounterSection,
     BaseSelfIcons,
     BasePublishDateSection,
     BaseCreatedSection,
@@ -199,6 +201,9 @@ export default {
     },
     isDeleted () {
       return !!this.playlistData.isDeleted
+    },
+    videosCount () {
+      return this.playlistData.videos_count
     }
   },
   methods: {

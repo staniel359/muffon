@@ -50,8 +50,8 @@ export default {
 <style lang="sass" scoped>
 .playing-section
   @extend .d-flex, .align-items-center
-  margin-top: 0.3em !important
+  margin-top: 0.5em !important
 
 .playing-section-content
-  margin-left: 0.3em
+  margin-left: 0.2em
 </style>

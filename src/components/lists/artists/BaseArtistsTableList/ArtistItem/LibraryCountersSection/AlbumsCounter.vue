@@ -3,34 +3,27 @@
     class="main-link"
     :link="link"
   >
-    <small>
-      <BaseIcon
-        icon="album"
-      />
-
-      <span
-        v-text="albumsCountFormatted"
-      />
-    </small>
+    <BaseListCounterSection
+      icon="album"
+      :count="albumsCount"
+    />
   </BaseLinkContainer>
 </template>
 
 <script>
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 import {
   albums as formatProfileLibraryArtistAlbumsLink
 } from '@/helpers/formatters/links/profile/library/artist'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
 
 export default {
   name: 'AlbumsCounter',
   components: {
     BaseLinkContainer,
-    BaseIcon
+    BaseListCounterSection
   },
   props: {
     artistData: {
@@ -53,11 +46,6 @@ export default {
     },
     libraryArtistId () {
       return this.artistData.library.id
-    },
-    albumsCountFormatted () {
-      return formatNumber(
-        this.albumsCount
-      )
     },
     albumsCount () {
       return this.artistData.albums_count

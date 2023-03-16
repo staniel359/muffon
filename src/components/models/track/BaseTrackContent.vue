@@ -38,38 +38,36 @@
     </template>
 
     <div class="content">
-      <div class="track-main-info-block">
-        <div>
-          <TitleSection
-            :track-data="trackData"
-            :is-link-to-library="isLinkToLibrary"
-            :profile-id="profileId"
-            @link-click="handleLinkClick"
-          />
+      <div>
+        <TitleSection
+          :track-data="trackData"
+          :is-link-to-library="isLinkToLibrary"
+          :profile-id="profileId"
+          @link-click="handleLinkClick"
+        />
 
-          <ArtistsSection
-            v-if="isRenderArtistName"
-            :track-data="trackData"
-            :is-link-to-library="isLinkToLibrary"
-            :profile-id="profileId"
-            @link-click="handleLinkClick"
-          />
+        <ArtistsSection
+          v-if="isRenderArtistName"
+          :track-data="trackData"
+          :is-link-to-library="isLinkToLibrary"
+          :profile-id="profileId"
+          @link-click="handleLinkClick"
+        />
 
-          <AlbumSection
-            v-if="isRenderAlbumTitle"
-            :track-data="trackData"
-            :is-link-to-library="isLinkToLibrary"
-            :profile-id="profileId"
-            @link-click="handleLinkClick"
-          />
-        </div>
-
-        <ListenersCountSection
-          v-if="isRenderListenersCount"
-          :listeners-count="listenersCount"
-          :top-track-count="topTrackCount"
+        <AlbumSection
+          v-if="isRenderAlbumTitle"
+          :track-data="trackData"
+          :is-link-to-library="isLinkToLibrary"
+          :profile-id="profileId"
+          @link-click="handleLinkClick"
         />
       </div>
+
+      <ListenersCountSection
+        v-if="isRenderListenersCount"
+        :track-data="trackData"
+        :top-track-count="topTrackCount"
+      />
     </div>
 
     <BaseSelfIcons
@@ -100,7 +98,7 @@
 
     <BaseSourceIcon
       v-if="isRenderSource"
-      class="track-source-icon"
+      class="right"
       :source="source"
     />
 
@@ -300,9 +298,6 @@ export default {
           this.topTrackCount
       )
     },
-    listenersCount () {
-      return this.trackData.listeners_count
-    },
     isRenderDuration () {
       return (
         this.isWithDuration &&
@@ -412,19 +407,10 @@ export default {
   min-width: unset !important
   margin: 0 1em 0 0.5em !important
 
-.content
-  @extend .d-flex, .align-items-center
-
-.track-main-info-block
-  @extend .flex-full
-
 .track-saved-icon
   margin-left: 0.75em
   .icon
     @extend .no-margin
-
-.track-source-icon
-  margin-left: 0.75em
 
 .track-duration
   margin-left: 0.75em

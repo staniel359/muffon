@@ -417,7 +417,7 @@ p
     @extend .no-padding, .no-border
     .extra
       line-height: 1.2em
-      margin-top: 0.1em
+      margin-top: 0.2em
     .description
       line-height: 1.2em
       margin-top: 0.2em
@@ -447,7 +447,12 @@ p
       font-size: 18px
       line-height: 1.2em
     .description
+      &:not(.right)
+        line-height: 1em
+        margin-top: 0.2em
+    .extra
       line-height: 1em
+      margin-top: 0.2em
   & > .main-options-dropdown-container
     @extend .visibility-hidden
     margin-left: 0.75em
@@ -469,10 +474,10 @@ p
     & > .image-container
       @extend .image-big
     .description
-      margin-top: 0.25em
-      line-height: initial
+      margin-top: 0.25em !important
+      line-height: initial !important
     .extra
-      margin-top: 0.25em
+      margin-top: 0.25em !important
     .main-options-dropdown-container
       @extend .visibility-visible
   &.main-post-item
@@ -764,7 +769,7 @@ p
   padding: 5px
 
 .main-small-container
-  line-height: 0.9em
+  line-height: 0.9em !important
 
 .main-progress
   & > .label
@@ -995,15 +1000,18 @@ p
   @extend .d-flex, .align-items-center
 
 .main-created-section
+  min-width: 75px
   &.right
     @extend .text-align-right
     margin-left: 0.75em
   &.centered
     @extend .text-align-center
-  .created
-    line-height: 0.9em
 
 .main-publish-date-section
+  &.right
+    margin-left: 0.75em
+
+.main-release-date-section
   &.right
     margin-left: 0.75em
 
@@ -1043,7 +1051,8 @@ p
 .main-inner-counter-labels-section
   @extend .d-flex, .align-items-center
   &.inline
-    margin-left: 1em
+    &:not(:first-child)
+      margin-left: 1em
   & > .icon
     margin: 0 0.5em 0.5em 0
 
@@ -1071,3 +1080,13 @@ p
 
 .main-page-segment-container
   @extend .d-flex, .flex-full
+
+.main-counters-section
+  @extend .d-flex, .justify-content-center
+
+.main-counter-section
+  @extend .width-fit-content
+
+.main-source-icon
+  &.right
+    margin-left: 0.75em

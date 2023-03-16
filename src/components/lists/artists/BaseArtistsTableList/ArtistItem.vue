@@ -59,13 +59,16 @@
           :model-data="artistData"
         />
 
-        <BaseArtistListenersCount
+        <div
           v-if="isWithListenersCount"
-          class="description"
-          :artist-name="artistName"
-          :listeners-count="listenersCount"
-          @load-end="handleListenersCountLoadEnd"
-        />
+          class="description main-counters-section"
+        >
+          <BaseArtistListenersCount
+            :artist-name="artistName"
+            :listeners-count="listenersCount"
+            @load-end="handleListenersCountLoadEnd"
+          />
+        </div>
 
         <LibraryCountersSection
           v-if="isWithLibrary"

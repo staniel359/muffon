@@ -11,15 +11,10 @@
       @active-change="handleLinkActiveChange"
       @click="handleLinkClick"
     >
-      <small>
-        <BaseIcon
-          icon="track"
-        />
-
-        <span
-          v-text="tracksCountFormatted"
-        />
-      </small>
+      <BaseListCounterSection
+        icon="track"
+        :count="tracksCount"
+      />
     </BaseLinkContainer>
   </div>
 </template>
@@ -28,10 +23,8 @@
 import BaseCounterBar from '@/components/BaseCounterBar.vue'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 import {
   tracks as formatProfileLibraryArtistTracksLink
 } from '@/helpers/formatters/links/profile/library/artist'
@@ -41,7 +34,7 @@ export default {
   components: {
     BaseCounterBar,
     BaseLinkContainer,
-    BaseIcon
+    BaseListCounterSection
   },
   props: {
     artistData: {
@@ -61,11 +54,6 @@ export default {
   computed: {
     tracksCount () {
       return this.artistData.tracks_count
-    },
-    tracksCountFormatted () {
-      return formatNumber(
-        this.tracksCount
-      )
     },
     link () {
       return formatProfileLibraryArtistTracksLink(

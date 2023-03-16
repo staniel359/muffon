@@ -7,13 +7,9 @@
     />
 
     <div class="ui labels">
-      <BaseLabel
-        class="basic circular"
-        icon="listener"
-        :class="size"
-        :text="listenersCountFormatted"
-        :is-clickable="isClickable"
-        @click="handleClick"
+      <BaseCounterLabelsSection
+        :counters="counters"
+        :size="size"
       />
     </div>
   </div>
@@ -21,16 +17,14 @@
 
 <script>
 import BaseIcon from '@/components/icons/BaseIcon.vue'
-import BaseLabel from '@/components/labels/BaseLabel.vue'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
+import BaseCounterLabelsSection
+  from '@/components/sections/BaseCounterLabelsSection.vue'
 
 export default {
   name: 'BaseInnerCounterLabelsSection',
   components: {
     BaseIcon,
-    BaseLabel
+    BaseCounterLabelsSection
   },
   props: {
     listenersCount: {
@@ -50,19 +44,22 @@ export default {
     'click'
   ],
   computed: {
-    listenersCountFormatted () {
-      return formatNumber(
-        this.listenersCount
-      )
+    counters () {
+      return [
+        {
+          scope: 'listeners',
+          count: this.listenersCount,
+          isClickable: this.isClickable,
+          onClick: this.handleClick
+        }
+      ]
     }
   },
   methods: {
     handleClick () {
-      if (this.isClickable) {
-        this.$emit(
-          'click'
-        )
-      }
+      this.$emit(
+        'click'
+      )
     }
   }
 }

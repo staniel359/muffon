@@ -1,45 +1,29 @@
 <template>
   <div class="counters-section">
-    <small>
-      <span
-        v-if="videosCount >= 0"
-        class="counter-section"
-      >
-        <BaseIcon
-          icon="video"
-        />
+    <BaseListCounterSection
+      v-if="videosCount >= 0"
+      class="counter-section"
+      icon="video"
+      :count="videosCount"
+    />
 
-        <span
-          v-text="videosCountFormatted"
-        />
-      </span>
-
-      <span
-        v-if="subscribersCount >= 0"
-        class="counter-section"
-      >
-        <BaseIcon
-          icon="subscriber"
-        />
-
-        <span
-          v-text="subscribersCountFormatted"
-        />
-      </span>
-    </small>
+    <BaseListCounterSection
+      v-if="subscribersCount >= 0"
+      class="counter-section"
+      icon="subscriber"
+      :count="subscribersCount"
+    />
   </div>
 </template>
 
 <script>
-import BaseIcon from '@/components/icons/BaseIcon.vue'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 
 export default {
   name: 'CountersSection',
   components: {
-    BaseIcon
+    BaseListCounterSection
   },
   props: {
     channelData: {
@@ -48,18 +32,8 @@ export default {
     }
   },
   computed: {
-    videosCountFormatted () {
-      return formatNumber(
-        this.videosCount
-      )
-    },
     videosCount () {
       return this.channelData.videos_count
-    },
-    subscribersCountFormatted () {
-      return formatNumber(
-        this.subscribersCount
-      )
     },
     subscribersCount () {
       return this.channelData.subscribers_count
@@ -70,7 +44,7 @@ export default {
 
 <style lang="sass" scoped>
 .counters-section
-  margin-top: 0.15em
+  @extend .d-flex
 
 .counter-section
   &:not(:first-child)

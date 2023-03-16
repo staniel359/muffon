@@ -3,32 +3,22 @@
     v-if="isLoading"
     class="ui active mini inline loader"
   />
-  <div
+  <BaseListCounterSection
     v-else
-  >
-    <small>
-      <BaseIcon
-        icon="listener"
-      />
-
-      <span
-        v-text="listenersCountFormatted"
-      />
-    </small>
-  </div>
+    icon="listener"
+    :count="responseListenersCount"
+  />
 </template>
 
 <script>
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 import getAlbum from '@/helpers/actions/api/album/get'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
 
 export default {
   name: 'BaseAlbumListenersCount',
   components: {
-    BaseIcon
+    BaseListCounterSection
   },
   props: {
     artistName: {
@@ -61,11 +51,6 @@ export default {
     },
     albumListenersCount () {
       return this.albumData?.listeners_count
-    },
-    listenersCountFormatted () {
-      return formatNumber(
-        this.responseListenersCount
-      )
     },
     albumArgs () {
       return {

@@ -5,51 +5,38 @@
       :top-count="topTrackCount"
     />
 
-    <div class="description">
-      <small>
-        <BaseIcon
-          icon="listener"
-        />
-
-        <span
-          v-text="listenersCountFormatted"
-        />
-      </small>
-    </div>
+    <BaseListCounterSection
+      class="description"
+      icon="listener"
+      :count="listenersCount"
+    />
   </div>
 </template>
 
 <script>
 import BaseCounterBar from '@/components/BaseCounterBar.vue'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 
 export default {
   name: 'ListenersCountSection',
   components: {
     BaseCounterBar,
-    BaseIcon
+    BaseListCounterSection
   },
   props: {
-    listenersCount: {
-      type: Number,
+    trackData: {
+      type: Object,
       required: true
     },
     topTrackCount: Number
   },
   computed: {
-    listenersCountFormatted () {
-      return formatNumber(
-        this.listenersCount
-      )
+    listenersCount () {
+      return this.trackData.listeners_count
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.description
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

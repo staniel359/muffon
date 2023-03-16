@@ -74,14 +74,17 @@
           :model-data="albumData"
         />
 
-        <BaseAlbumListenersCount
+        <div
           v-if="isWithListenersCount"
-          class="description"
-          :album-title="albumTitle"
-          :artist-name="artistName"
-          :listeners-count="listenersCount"
-          @load-end="handleListenersCountLoadEnd"
-        />
+          class="description main-counters-section"
+        >
+          <BaseAlbumListenersCount
+            :album-title="albumTitle"
+            :artist-name="artistName"
+            :listeners-count="listenersCount"
+            @load-end="handleListenersCountLoadEnd"
+          />
+        </div>
 
         <TracksSection
           v-if="isWithLibrary"

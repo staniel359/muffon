@@ -1,9 +1,10 @@
 <template>
-  <div
+  <BaseCounterSection
     v-bind="$attrs"
-    class="main-link members-count"
+    class="main-link"
+    scope="members"
+    :count="membersCount"
     @click="handleMembersCountClick"
-    v-html="membersCountText"
   />
 
   <BaseCommunityMembersModal
@@ -13,15 +14,14 @@
 </template>
 
 <script>
+import BaseCounterSection from '@/components/sections/BaseCounterSection.vue'
 import BaseCommunityMembersModal
   from '@/components/modals/community/BaseCommunityMembersModal.vue'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
 
 export default {
   name: 'MembersSection',
   components: {
+    BaseCounterSection,
     BaseCommunityMembersModal
   },
   props: {
@@ -31,29 +31,8 @@ export default {
     }
   },
   computed: {
-    membersCountText () {
-      return this.$tc(
-        'counters.nominative.members',
-        this.membersCount,
-        {
-          count: this.membersCountStrong
-        }
-      )
-    },
     membersCount () {
       return this.communityData.members_count
-    },
-    membersCountStrong () {
-      return `
-        <strong>
-          ${this.membersCountFormatted}
-        </strong>
-      `
-    },
-    membersCountFormatted () {
-      return formatNumber(
-        this.membersCount
-      )
     },
     communityId () {
       return this.communityData.id.toString()
@@ -72,7 +51,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.members-count
-  @extend .width-fit-content
-</style>
+<style lang="sass" scoped></style>

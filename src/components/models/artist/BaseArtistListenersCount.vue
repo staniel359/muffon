@@ -3,32 +3,22 @@
     v-if="isLoading"
     class="ui active mini inline loader"
   />
-  <div
+  <BaseListCounterSection
     v-else
-  >
-    <small>
-      <BaseIcon
-        icon="listener"
-      />
-
-      <span
-        v-text="listenersCountFormatted"
-      />
-    </small>
-  </div>
+    icon="listener"
+    :count="responseListenersCount"
+  />
 </template>
 
 <script>
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 import getArtist from '@/helpers/actions/api/artist/get'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
 
 export default {
   name: 'BaseArtistListenersCount',
   components: {
-    BaseIcon
+    BaseListCounterSection
   },
   props: {
     artistName: {
@@ -57,11 +47,6 @@ export default {
     },
     artistListenersCount () {
       return this.artistData?.listeners_count
-    },
-    listenersCountFormatted () {
-      return formatNumber(
-        this.responseListenersCount
-      )
     },
     artistArgs () {
       return {

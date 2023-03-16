@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <div class="extra">
     <BaseArtistLinkContainer
       v-if="isLinkToLibrary"
       class="main-link"
@@ -16,7 +16,7 @@
       :artists="artists"
       @link-click="handleLinkClick"
     />
-  </span>
+  </div>
 </template>
 
 <script>

@@ -5,6 +5,8 @@
     :class="size"
     :icon="iconFormatted"
     :text="countFormatted"
+    :is-clickable="isClickable"
+    @click="handleClick"
   />
 </template>
 
@@ -61,6 +63,16 @@ export default {
       return (
         this.counterData.count || 0
       )
+    },
+    isClickable () {
+      return this.counterData.isClickable
+    }
+  },
+  methods: {
+    handleClick () {
+      if (this.isClickable) {
+        this.counterData.onClick()
+      }
     }
   }
 }

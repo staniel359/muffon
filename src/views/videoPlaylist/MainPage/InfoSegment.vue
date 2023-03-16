@@ -17,6 +17,7 @@
           />
 
           <BaseVideoChannelLinkSection
+            class="extra"
             :model-data="playlistData"
           />
 
@@ -26,13 +27,14 @@
             v-text="description"
           />
 
-          <BaseVideoPlaylistVideosCountSection
+          <BaseCounterSection
             class="description"
-            :playlist-data="playlistData"
+            scope="videos"
+            :count="videosCount"
           />
 
           <BasePublishDateSection
-            class="description publish-date"
+            class="description"
             :model-data="playlistData"
           />
         </div>
@@ -63,8 +65,7 @@ import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseVideoChannelLinkSection
   from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
-import BaseVideoPlaylistVideosCountSection
-  from '@/components/sections/videoPlaylist/BaseVideoPlaylistVideosCountSection.vue'
+import BaseCounterSection from '@/components/sections/BaseCounterSection.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
@@ -80,7 +81,7 @@ export default {
     BaseZoomableImage,
     BaseHeader,
     BaseVideoChannelLinkSection,
-    BaseVideoPlaylistVideosCountSection,
+    BaseCounterSection,
     BasePublishDateSection,
     BaseSelfIcons,
     BaseVideoPlaylistOptionsDropdown
@@ -106,6 +107,9 @@ export default {
     },
     description () {
       return this.playlistData.description
+    },
+    videosCount () {
+      return this.playlistData.videos_count
     }
   }
 }
@@ -114,7 +118,4 @@ export default {
 <style lang="sass" scoped>
 .self-options-section
   @extend .d-flex, .align-items-center
-
-.publish-date
-  @extend .no-margin
 </style>

@@ -43,35 +43,27 @@
 
         <div
           v-if="description"
-          class="description"
+          class="description main-small-container"
         >
           <small
             v-text="description"
           />
         </div>
 
-        <span
+        <ProfileNicknameSection
           v-if="isWithProfileNickname"
-          class="extra profile-nickname"
-          @mouseenter="handleProfileNicknameMouseEnter"
-          @mouseleave="handleProfileNicknameMouseLeave"
-        >
-          <BaseLink
-            :text="profileNickname"
-            :link="profileMainLink"
-            @click="handleLinkClick"
-          />
+          class="extra"
+          :profile-data="profileData"
+          :is-main-link-active="isMainLinkActive"
+          @active-change="handleProfileLinkActiveChange"
+          @link-click="handleLinkClick"
+        />
 
-          <BasePrivateIcon
-            v-if="isProfilePrivate"
-          />
-        </span>
-
-        <div class="description">
-          <small
-            v-html="tracksCountText"
-          />
-        </div>
+        <BaseListCounterSection
+          class="description"
+          icon="track"
+          :count="tracksCount"
+        />
       </div>
 
       <BaseCreatedSection
@@ -104,7 +96,9 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
-import BaseLink from '@/components/links/BaseLink.vue'
+import ProfileNicknameSection from './PlaylistItem/ProfileNicknameSection.vue'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BasePlaylistOptionsDropdown
   from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
@@ -113,9 +107,6 @@ import {
   main as formatProfileMainLink,
   playlist as formatProfilePlaylistLink
 } from '@/helpers/formatters/links/profile'
-import {
-  number as formatNumber
-} from '@/helpers/formatters'
 
 export default {
   name: 'PlaylistItem',
@@ -126,7 +117,8 @@ export default {
     BaseImage,
     BaseHeader,
     BasePrivateIcon,
-    BaseLink,
+    ProfileNicknameSection,
+    BaseListCounterSection,
     BaseCreatedSection,
     BasePlaylistOptionsDropdown,
     BaseClearButton
@@ -185,6 +177,9 @@ export default {
     profileData () {
       return this.playlistData.profile
     },
+    playlistId () {
+      return this.playlistData.id.toString()
+    },
     profileMainLink () {
       return formatProfileMainLink(
         {
@@ -192,35 +187,11 @@ export default {
         }
       )
     },
-    playlistId () {
-      return this.playlistData.id.toString()
-    },
     imageData () {
       return this.playlistData.image
     },
     playlistTitle () {
       return this.playlistData.title
-    },
-    tracksCountText () {
-      return this.$tc(
-        'counters.nominative.tracks',
-        this.tracksCount,
-        {
-          count: this.tracksCountStrong
-        }
-      )
-    },
-    tracksCountStrong () {
-      return `
-        <strong>
-          ${this.tracksCountFormatted}
-        </strong>
-      `
-    },
-    tracksCountFormatted () {
-      return formatNumber(
-        this.tracksCount
-      )
     },
     tracksCount () {
       return this.playlistData.tracks_count
@@ -238,14 +209,8 @@ export default {
     uuid () {
       return this.playlistData.uuid
     },
-    profileNickname () {
-      return this.profileData.nickname
-    },
     isPrivate () {
       return this.playlistData.private
-    },
-    isProfilePrivate () {
-      return this.profileData.private
     },
     description () {
       return this.playlistData.description
@@ -268,11 +233,10 @@ export default {
     handleDeleted () {
       this.paginationItem.isDeleted = true
     },
-    handleProfileNicknameMouseEnter () {
-      this.isMainLinkActive = false
-    },
-    handleProfileNicknameMouseLeave () {
-      this.isMainLinkActive = true
+    handleProfileLinkActiveChange (
+      value
+    ) {
+      this.isMainLinkActive = !value
     },
     setPlaylistData (
       value
@@ -287,12 +251,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-simple-list-item
-  & > .content
-    & > .description
-      &.profile-nickname
-        @extend .width-fit-content
-
 .title-container
   @extend .d-flex, .align-items-center
 </style>
