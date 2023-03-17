@@ -11,8 +11,19 @@ const schema = {
     default: null
   },
   'layout.backgroundImageId': {
-    type: 'number',
-    default: 0
+    anyOf: [
+      {
+        type: 'number',
+        default: 0
+      },
+      {
+        type: [
+          'null',
+          'string'
+        ],
+        default: null
+      }
+    ]
   },
   'layout.backgroundImages': {
     type: 'array',
