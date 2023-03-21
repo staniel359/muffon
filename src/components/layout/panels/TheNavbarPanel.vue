@@ -1,6 +1,7 @@
 <template>
   <BaseMenuContainer
-    class="top fixed borderless the-navbar-panel"
+    class="top fixed borderless blurred the-navbar-panel"
+    :class="transparentClass"
   >
     <div class="ui container main-container">
       <NavbarSearchButton />
@@ -29,6 +30,7 @@ import NavbarSearchButton from './TheNavbarPanel/NavbarSearchButton.vue'
 import NavbarNavigation from './TheNavbarPanel/NavbarNavigation.vue'
 import NavbarRefreshButton from './TheNavbarPanel/NavbarRefreshButton.vue'
 import NavbarQueueButton from './TheNavbarPanel/NavbarQueueButton.vue'
+import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'TheNavbarPanel',
@@ -39,7 +41,10 @@ export default {
     NavbarNavigation,
     NavbarRefreshButton,
     NavbarQueueButton
-  }
+  },
+  mixins: [
+    transparencyMixin
+  ]
 }
 </script>
 

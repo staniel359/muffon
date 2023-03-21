@@ -7,7 +7,8 @@
       icon: icon && !text,
       'right icon': icon && text && isReverse,
       'with-text': text,
-      clickable: isClickable || link
+      clickable: isClickable || link,
+      [transparentClass]: isInvertable
     }"
     :link="link"
     @click="handleClick"
@@ -60,6 +61,7 @@ import layoutStore from '@/stores/layout'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
+import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'BaseLabel',
@@ -67,6 +69,9 @@ export default {
     BaseLinkContainer,
     BaseIcon
   },
+  mixins: [
+    transparencyMixin
+  ],
   props: {
     isInvertable: {
       type: Boolean,

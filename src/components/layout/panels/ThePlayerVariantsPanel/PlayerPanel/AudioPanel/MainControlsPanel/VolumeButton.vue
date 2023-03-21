@@ -8,7 +8,11 @@
     @click="handleClick"
   />
 
-  <BaseVolumePopup />
+  <div class="main-popup-container">
+    <BaseVolumePopup
+      ref="popup"
+    />
+  </div>
 </template>
 
 <script>
@@ -46,7 +50,11 @@ export default {
       return this.$refs.button.$el
     },
     popupOptions () {
-      return volumePopupOptions()
+      return volumePopupOptions(
+        {
+          html: this.popup
+        }
+      )
     },
     icon () {
       if (this.isAudioMuted) {

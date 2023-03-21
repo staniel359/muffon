@@ -5,7 +5,6 @@
     :response-data="responseDataComputed"
     :is-loading="isSegmentLoading"
     :error="error"
-    :is-change-transparency="isChangeTransparency"
     @refresh="handleRefresh"
   >
     <slot
@@ -63,10 +62,6 @@ export default {
     scope: {
       type: String,
       required: true
-    },
-    isChangeTransparency: {
-      type: Boolean,
-      default: true
     },
     textScope: String,
     responseData: Object,

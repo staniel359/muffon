@@ -52,8 +52,11 @@
     >
 
     <div
-      class="menu"
-      :class="menuDirection"
+      class="blurred menu"
+      :class="[
+        menuDirection,
+        transparentClass
+      ]"
     >
       <slot />
     </div>
@@ -75,6 +78,7 @@ import {
   setDropdownValue,
   resetDropdown
 } from '@/helpers/actions/plugins/semantic'
+import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'BaseDropdownContainer',
@@ -82,6 +86,9 @@ export default {
     BaseHeader,
     BaseIcon
   },
+  mixins: [
+    transparencyMixin
+  ],
   props: {
     isSelection: {
       type: Boolean,

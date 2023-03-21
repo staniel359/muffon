@@ -37,7 +37,8 @@ export default {
     pickerOptions () {
       return {
         data: pickerData,
-        locale: this.profileLanguage,
+        locale:
+          this.profileLanguage,
         parent: this.$refs.picker,
         previewPosition: 'none',
         set: 'native',

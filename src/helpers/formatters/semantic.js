@@ -3,6 +3,7 @@ import profileStore from '@/stores/profile'
 import i18n from '#/plugins/i18n'
 import moment from 'moment-timezone'
 import axios from 'axios'
+import icons from '@/helpers/data/icons'
 
 export function mainModalOptions (
   {
@@ -179,17 +180,29 @@ export function mainScrobblePercentSeekerOptions (
   }
 }
 
-export function volumePopupOptions () {
+export function volumePopupOptions (
+  {
+    html
+  }
+) {
+  const className =
+    'ui popup main-popup main-volume-popup'
+
   return {
     position: 'top center',
     transition: 'fade up',
     variation: 'basic',
     closable: false,
     hoverable: true,
+    preserve: true,
+    className: {
+      popup: className
+    },
     delay: {
       show: 0,
       hide: 150
-    }
+    },
+    html
   }
 }
 
@@ -200,23 +213,15 @@ export function sourcePopupOptions (
 ) {
   const className = 'ui popup main-popup'
 
-  const {
-    isDarkMode
-  } = layoutStore()
-
-  const variation = isDarkMode
-    ? 'basic inverted'
-    : 'basic'
-
   return {
     delay: 0,
     position: 'top center',
     transition: 'fade up',
+    variation: 'basic',
     className: {
       popup: className
     },
-    html,
-    variation
+    html
   }
 }
 
@@ -227,18 +232,11 @@ export function pageSelectPopupOptions (
 ) {
   const className = 'ui popup main-popup'
 
-  const {
-    isDarkMode
-  } = layoutStore()
-
-  const variation = isDarkMode
-    ? 'basic inverted'
-    : 'basic'
-
   return {
     hoverable: true,
     position: 'top center',
     transition: 'fade up',
+    variation: 'basic',
     className: {
       popup: className
     },
@@ -246,8 +244,7 @@ export function pageSelectPopupOptions (
       show: 0,
       hide: 150
     },
-    html,
-    variation
+    html
   }
 }
 
@@ -261,17 +258,10 @@ export function artistPopupOptions (
   const className =
     'ui popup main-popup main-artist-popup'
 
-  const {
-    isDarkMode
-  } = layoutStore()
-
-  const variation = isDarkMode
-    ? 'basic inverted'
-    : 'basic'
-
   return {
     position: 'top center',
     transition: 'fade up',
+    variation: 'basic',
     hoverable: true,
     lastResort: true,
     className: {
@@ -282,7 +272,6 @@ export function artistPopupOptions (
       hide: 150
     },
     html,
-    variation,
     onShow,
     onHide
   }
@@ -297,18 +286,10 @@ export function annotationPopupOptions (
   const className =
     'ui popup main-popup main-annotation-popup'
 
-  const {
-    isDarkMode
-  } = layoutStore()
-
-  const variation = isDarkMode
-    ? 'basic inverted'
-    : 'basic'
-
   return {
     position: 'top center',
     transition: 'fade up',
-    variation,
+    variation: 'basic',
     hoverable: true,
     lastResort: true,
     className: {
@@ -322,16 +303,29 @@ export function annotationPopupOptions (
   }
 }
 
-export function emojiPopupOptions () {
+export function emojiPopupOptions (
+  {
+    html,
+    onShow
+  }
+) {
+  const className = 'ui popup main-popup'
+
   return {
     position: 'right center',
     transition: 'fade up',
     variation: 'basic',
     hoverable: true,
+    preserve: true,
+    className: {
+      popup: className
+    },
     delay: {
       show: 0,
       hide: 150
-    }
+    },
+    html,
+    onShow
   }
 }
 
@@ -342,23 +336,15 @@ export function profileInfoPopupOptions (
 ) {
   const className = 'ui popup main-popup'
 
-  const {
-    isDarkMode
-  } = layoutStore()
-
-  const variation = isDarkMode
-    ? 'basic inverted'
-    : 'basic'
-
   return {
     delay: 0,
     position: 'right center',
     transition: 'fade up',
+    variation: 'basic',
     className: {
       popup: className
     },
-    html,
-    variation
+    html
   }
 }
 
@@ -1008,5 +994,51 @@ export function infiniteScrollObserverVisibilityOptions (
     context,
     onTopVisible,
     onUpdate
+  }
+}
+
+export function mainToastOptions (
+  {
+    message,
+    status,
+    className
+  }
+) {
+  const {
+    visibleContext,
+    isDarkMode
+  } = layoutStore()
+
+  const successIcon =
+    `green ${icons.success}`
+
+  const statusIcons = {
+    success: successIcon
+  }
+
+  const icon =
+    statusIcons[
+      status
+    ]
+
+  const variation = (
+    isDarkMode ? 'inverted' : null
+  )
+
+  const classNameFormatted = [
+    variation,
+    className
+  ].filter(
+    e => e
+  ).join(
+    ' '
+  )
+
+  return {
+    showIcon: icon,
+    context: visibleContext,
+    class: classNameFormatted,
+    newestOnTop: true,
+    message
   }
 }

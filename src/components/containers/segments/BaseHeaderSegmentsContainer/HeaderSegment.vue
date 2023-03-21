@@ -1,7 +1,5 @@
 <template>
-  <BaseSegmentContainer
-    :is-change-transparency="isChangeTransparency"
-  >
+  <BaseSegmentContainer>
     <BaseHeaderContainer
       tag="h3"
     >
@@ -35,10 +33,6 @@ export default {
     scope: {
       type: String,
       required: true
-    },
-    isChangeTransparency: {
-      type: Boolean,
-      default: true
     }
   },
   computed: {

@@ -1,6 +1,7 @@
 <template>
   <BaseSegmentContainer
     v-if="currentProfileId"
+    :is-change-transparency="false"
   >
     <BaseAddButton
       model="post"

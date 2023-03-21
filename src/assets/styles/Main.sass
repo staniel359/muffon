@@ -90,6 +90,8 @@ p
     @extend .absolute, .no-margin
     top: 10px
     right: 10px
+  .toast-box
+    @extend .blurred
 
 .ui.card.main-simple-card,
 .ui.card.main-horizontal-card
@@ -286,11 +288,12 @@ p
     @extend .border-radius-small
 
 .main-input
+  @extend .background-transparent
   &:focus
     @extend .border-color-base-light
 
 .main-input-inverted
-  @extend .background-black, .text-color-white, .border-grey-inverted
+  @extend .background-transparent, .text-color-white, .border-grey-inverted
 
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
@@ -312,10 +315,7 @@ p
     min-height: 150px
     z-index: 1
     &:before
-      @extend .background-white-transparent
-    &.inverted
-      &:before
-        @extend .background-black-transparent
+      @extend .background-transparent, .blurred
 
 .main-paginated-page-segment-container
   @extend .flex-full, .d-flex, .flex-column
@@ -491,13 +491,18 @@ p
     @extend .border-inverted
 
 .main-popup
-  @extend .no-border
+  @extend .no-border, .no-padding, .background-transparent, .blurred
   max-width: unset !important
   &.inverted
     @extend .border-inverted
 
 .main-popup-container
   @extend .d-none
+
+.main-popup-content-container
+  @extend .no-border
+  &.inverted
+    @extend .border-inverted
 
 .main-artist-popup
   width: 420px
@@ -511,19 +516,16 @@ p
     height: unset !important
     max-width: 100%
 
-.main-emoji-popup
-  @extend .no-padding
-  margin-left: 15px !important
-
-.main-emoji-popup-modal
-  @extend .fixed
-  margin-left: 35px !important
-
 .main-emoji-picker
   em-emoji-picker
     @extend .border-radius
     max-height: 300px
     --font-family: inherit
+    --rgb-background: transparent !important
+
+.main-volume-popup
+  @extend .text-align-center
+  min-width: 60px !important
 
 .main-header
   @extend .no-margin
@@ -533,7 +535,7 @@ p
   margin-bottom: 0.3em !important
 
 .main-dropdown
-  @extend .d-flex, .align-items-center, .text-color-unset
+  @extend .d-flex, .align-items-center, .text-color-unset, .background-transparent
   min-width: unset !important
   padding-right: 1em !important
   & > .text
@@ -1014,10 +1016,6 @@ p
 .main-release-date-section
   &.right
     margin-left: 0.75em
-
-.main-volume-popup
-  @extend .text-align-center
-  min-width: 60px !important
 
 .main-menu-item
   @extend .d-flex, .align-items-center, .word-break-break-word

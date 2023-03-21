@@ -1,16 +1,13 @@
 <template>
-  <div
-    class="ui popup main-popup main-emoji-popup"
-    :class="{
-      inverted: isDarkMode,
-      'main-emoji-popup-modal': isModal
-    }"
+  <BaseSegmentContainer
+    class="blurred main-segment-container popup-segment"
   >
     <BaseEmojiPicker
+      v-if="isCalled"
       :key="key"
       @select="handleSelect"
     />
-  </div>
+  </BaseSegmentContainer>
 </template>
 
 <script>
@@ -19,6 +16,8 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
+import BaseSegmentContainer
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseEmojiPicker from '@/components/BaseEmojiPicker.vue'
 import {
   generateKey
@@ -27,10 +26,11 @@ import {
 export default {
   name: 'BaseEmojiPopup',
   components: {
+    BaseSegmentContainer,
     BaseEmojiPicker
   },
   props: {
-    isModal: Boolean
+    isCalled: Boolean
   },
   emits: [
     'select'
@@ -57,7 +57,8 @@ export default {
   watch: {
     profileLanguage:
       'handleProfileLanguageChange',
-    isDarkMode: 'handleIsDarkModeChange'
+    isDarkMode:
+      'handleIsDarkModeChange'
   },
   methods: {
     handleProfileLanguageChange () {
@@ -78,4 +79,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.popup-segment
+  @extend .no-padding
+</style>

@@ -1,14 +1,23 @@
 <template>
-  <span
-    v-html="popupText"
-  />
+  <BaseSegmentContainer
+    class="main-popup-content-container"
+  >
+    <span
+      v-html="popupText"
+    />
+  </BaseSegmentContainer>
 </template>
 
 <script>
+import BaseSegmentContainer
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import sources from '@/helpers/data/sources'
 
 export default {
   name: 'BaseSourcePopup',
+  components: {
+    BaseSegmentContainer
+  },
   props: {
     source: {
       type: String,

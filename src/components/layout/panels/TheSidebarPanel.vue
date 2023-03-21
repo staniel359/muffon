@@ -1,6 +1,7 @@
 <template>
   <BaseMenuContainer
-    class="vertical left overlay visible sidebar the-sidebar-panel"
+    class="vertical left overlay visible blurred sidebar the-sidebar-panel"
+    :class="transparentClass"
   >
     <div class="sidebar-panel-content">
       <ProfileItem
@@ -112,6 +113,7 @@ import HistoryItem from './TheSidebarPanel/HistoryItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
 import LoginItem from './TheSidebarPanel/LoginItem.vue'
+import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'TheSidebarPanel',
@@ -137,6 +139,9 @@ export default {
     LogoutItem,
     LoginItem
   },
+  mixins: [
+    transparencyMixin
+  ],
   computed: {
     ...mapState(
       profileStore,

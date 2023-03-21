@@ -1,10 +1,9 @@
 <template>
   <BaseSegmentContainer
-    class="queue-tracks-container"
+    class="blurred queue-tracks-container"
     :class="{
       'player-panel-padded': playerPlaying
     }"
-    :is-change-transparency="false"
   >
     <BaseTracksSimpleList
       :key="key"

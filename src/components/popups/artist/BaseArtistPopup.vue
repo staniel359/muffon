@@ -1,7 +1,7 @@
 <template>
   <BaseSegmentContainer
     ref="segment"
-    class="basic main-segment-container artist-segment"
+    class="main-popup-content-container"
     :response-data="artistData"
     :is-loading="isLoading"
     :error="error"
@@ -114,7 +114,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.artist-segment
-  @extend .no-padding, .no-margin
-</style>
+<style lang="sass" scoped></style>

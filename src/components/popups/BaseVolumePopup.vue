@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="ui popup main-popup main-volume-popup"
-    :class="{
-      inverted: isDarkMode
-    }"
+  <BaseSegmentContainer
+    class="blurred main-popup-content-container"
   >
     <div class="volume-header-container">
       <BaseHeader
@@ -19,7 +16,7 @@
       @move="handleMove"
       @mouse-up="handleMouseUp"
     />
-  </div>
+  </BaseSegmentContainer>
 </template>
 
 <script>
@@ -27,7 +24,8 @@ import {
   mapState
 } from 'pinia'
 import audioStore from '@/stores/audio'
-import layoutStore from '@/stores/layout'
+import BaseSegmentContainer
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
@@ -40,6 +38,7 @@ import {
 export default {
   name: 'BaseVolumePopup',
   components: {
+    BaseSegmentContainer,
     BaseHeader,
     BaseSeeker
   },
@@ -50,12 +49,6 @@ export default {
         audioVolume: 'volume',
         audioElement: 'element'
       }
-    ),
-    ...mapState(
-      layoutStore,
-      [
-        'isDarkMode'
-      ]
     ),
     volumeText () {
       return Math.floor(

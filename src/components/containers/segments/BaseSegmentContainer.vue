@@ -2,13 +2,15 @@
   <div
     ref="segment"
     class="ui segment main-segment"
-    :class="{
-      loading: isLoading,
-      inverted: isInverted || isDarkMode
-    }"
-    :style="isChangeTransparency && {
-      background: backgroundStyle
-    }"
+    :class="[
+      transparentClass,
+      {
+        loading: isLoading,
+        inverted: (
+          isInverted || isDarkMode
+        )
+      }
+    ]"
   >
     <BaseErrorMessage
       v-if="isError"
@@ -23,25 +25,21 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import layoutStore from '@/stores/layout'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import {
   focusOnSegment
 } from '@/helpers/actions/layout'
+import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'BaseSegmentContainer',
   components: {
     BaseErrorMessage
   },
+  mixins: [
+    transparencyMixin
+  ],
   props: {
-    isChangeTransparency: {
-      type: Boolean,
-      default: true
-    },
     responseData: Object,
     isLoading: Boolean,
     error: Error,
@@ -51,46 +49,11 @@ export default {
     'init',
     'refresh'
   ],
-  data () {
-    return {
-      colorCodes: {
-        light: '255 255 255',
-        dark: '32 33 34'
-      }
-    }
-  },
   computed: {
-    ...mapState(
-      layoutStore,
-      [
-        'isDarkMode',
-        'transparency'
-      ]
-    ),
     isError () {
       return !!(
         !this.responseData &&
           this.error
-      )
-    },
-    backgroundStyle () {
-      return `rgb(${this.colorCode} / ${this.opacity}%) !important`
-    },
-    colorCode () {
-      return this.colorCodes[
-        this.color
-      ]
-    },
-    color () {
-      if (this.isDarkMode) {
-        return 'dark'
-      } else {
-        return 'light'
-      }
-    },
-    opacity () {
-      return (
-        100 - this.transparency
       )
     }
   },

@@ -50,16 +50,17 @@ export default {
 
 <style lang="sass" scoped>
 .variants-panel
-  @extend .fixed, .w-100, .pointer-events-none
+  @extend .fixed, .w-100, .pointer-events-none, .overflow-hidden
   bottom: $playerPanelHeight
   z-index: 200
 
 .variants-block
   @extend .relative
   width: 300px
-  height: 0
+  height: 300px
   padding-top: 30px
-  transition: height 0.3s
+  top: 270px
+  transition: top 0.3s
   &.visible
-    height: 275px
+    top: 0
 </style>

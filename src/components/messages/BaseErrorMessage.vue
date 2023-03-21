@@ -1,6 +1,7 @@
 <template>
   <div class="main-error-message">
     <BaseMessage
+      :class="transparentClass"
       :icon="icon"
       :icons="icons"
       :header="header"
@@ -14,12 +15,16 @@
 <script>
 import BaseMessage from '@/components/messages/BaseMessage.vue'
 import errorsData from '@/helpers/data/errors'
+import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'BaseErrorMessage',
   components: {
     BaseMessage
   },
+  mixins: [
+    transparencyMixin
+  ],
   props: {
     error: {
       type: Error,

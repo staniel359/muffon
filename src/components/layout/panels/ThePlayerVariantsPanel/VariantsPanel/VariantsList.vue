@@ -1,8 +1,7 @@
 <template>
   <BaseSegmentContainer
     ref="segment"
-    class="raised top attached variants-list"
-    :is-change-transparency="false"
+    class="raised top attached blurred variants-list"
   >
     <BaseListContainer
       class="selection"

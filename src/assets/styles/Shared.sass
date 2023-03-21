@@ -59,8 +59,6 @@ $trackPagePlayerPanelHeight: 40px
 
 .background-base
   background: $colorBase !important
-.background-white-transparent
-  background: $colorWhiteTransparent !important
 .background-grey
   background: $colorGrey !important
 .background-grey-inverted
@@ -219,3 +217,16 @@ $trackPagePlayerPanelHeight: 40px
 
 .colorless
   filter: grayscale(1)
+
+.blurred
+  backdrop-filter: blur(7.5px)
+
+@for $i from 0 through 10
+  $transparency: $i * 10
+  $opacity: (10 - $i) * 10%
+
+  .transparent-light-#{$transparency}
+    background: rgb(255 255 255 / #{$opacity}) !important
+
+  .transparent-dark-#{$transparency}
+    background: rgb(32 33 34 / #{$opacity}) !important

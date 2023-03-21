@@ -50,7 +50,6 @@
             :artists="artists"
             :albums="albums"
             :tracks="tracks"
-            is-modal
           />
 
           <BaseSubmitButton

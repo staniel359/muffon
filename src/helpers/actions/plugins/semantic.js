@@ -1,6 +1,3 @@
-import layoutStore from '@/stores/layout'
-import icons from '@/helpers/data/icons'
-
 // Dimmer
 
 export function setDimmer (
@@ -427,41 +424,12 @@ export function setProgressValue (
 // Toast
 
 export function setToast (
-  {
-    message,
-    status
-  }
+  options
 ) {
-  const {
-    visibleContext,
-    isDarkMode
-  } = layoutStore()
-
-  const className = isDarkMode
-    ? 'inverted'
-    : ''
-
-  const successIcon =
-    `green ${icons.success}`
-
-  const statusIcons = {
-    success: successIcon
-  }
-
-  const icon =
-    statusIcons[
-      status
-    ]
-
   $(
     'body'
   ).toast(
-    {
-      showIcon: icon,
-      context: visibleContext,
-      class: className,
-      message
-    }
+    options
   )
 }
 

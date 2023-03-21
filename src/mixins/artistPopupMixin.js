@@ -2,7 +2,7 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import BaseArtistPopup from '@/components/popups/BaseArtistPopup.vue'
+import BaseArtistPopup from '@/components/popups/artist/BaseArtistPopup.vue'
 import {
   setPopup,
   repositionPopup,
@@ -66,19 +66,18 @@ export default {
     }
   },
   watch: {
-    isSetPopup: 'handleIsSetPopupChange',
-    isLinkActive: 'handleIsLinkActiveChange',
-    isDarkMode: 'handleIsDarkModeChange'
+    isSetPopup:
+      'handleIsSetPopupChange',
+    isLinkActive:
+      'handleIsLinkActiveChange',
+    isDarkMode:
+      'handleIsDarkModeChange'
   },
   mounted () {
-    if (this.isSetPopup) {
-      this.initialize()
-    }
+    this.initialize()
   },
   activated () {
-    if (this.isSetPopup) {
-      this.initialize()
-    }
+    this.initialize()
   },
   methods: {
     handleIsSetPopupChange (
@@ -96,9 +95,7 @@ export default {
       )
     },
     handleIsDarkModeChange () {
-      if (this.isSetPopup) {
-        this.initialize()
-      }
+      this.initialize()
     },
     handleShow () {
       this.isCalled = true
@@ -129,10 +126,12 @@ export default {
       }
     },
     initialize () {
-      setPopup(
-        this.element,
-        this.popupOptions
-      )
+      if (this.isSetPopup) {
+        setPopup(
+          this.element,
+          this.popupOptions
+        )
+      }
     },
     reposition () {
       repositionPopup(

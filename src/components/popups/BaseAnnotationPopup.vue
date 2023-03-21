@@ -1,7 +1,7 @@
 <template>
   <BaseSegmentContainer
     ref="segment"
-    class="basic main-segment-container annotation-segment"
+    class="main-popup-content-container"
     :response-data="annotationData"
     :is-loading="isLoading"
     :error="error"
@@ -91,7 +91,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.annotation-segment
-  @extend .no-padding, .no-margin
-</style>
+<style lang="sass" scoped></style>

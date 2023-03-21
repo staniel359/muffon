@@ -1,6 +1,7 @@
 <template>
   <BaseLabel
-    class="basic top attached variants-label"
+    class="basic top attached blurred variants-label"
+    :class="transparentClass"
     :icon="icon"
     :text="variantsText"
     is-reverse
@@ -13,12 +14,16 @@ import {
 } from 'pinia'
 import playerStore from '@/stores/player'
 import BaseLabel from '@/components/labels/BaseLabel.vue'
+import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'VariantsLabel',
   components: {
     BaseLabel
   },
+  mixins: [
+    transparencyMixin
+  ],
   props: {
     isPanelVisible: Boolean
   },

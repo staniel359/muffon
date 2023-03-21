@@ -5,10 +5,13 @@
     icon="emoji"
   />
 
-  <BaseEmojiPopup
-    :is-modal="isModal"
-    @select="handleSelect"
-  />
+  <div class="main-popup-container">
+    <BaseEmojiPopup
+      ref="popup"
+      :is-called="isCalled"
+      @select="handleSelect"
+    />
+  </div>
 </template>
 
 <script>
@@ -18,6 +21,9 @@ import {
   emojiPopupOptions
 } from '@/helpers/formatters/semantic'
 import popupMixin from '@/mixins/popupMixin'
+import {
+  repositionPopup
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'EmojiButton',
@@ -31,15 +37,22 @@ export default {
   inject: [
     'addEmoji'
   ],
-  props: {
-    isModal: Boolean
+  data () {
+    return {
+      isCalled: false
+    }
   },
   computed: {
     element () {
       return this.$refs.button.$el
     },
     popupOptions () {
-      return emojiPopupOptions()
+      return emojiPopupOptions(
+        {
+          html: this.popup,
+          onShow: this.handleShow
+        }
+      )
     }
   },
   methods: {
@@ -48,6 +61,15 @@ export default {
     ) {
       this.addEmoji(
         value.native
+      )
+    },
+    async handleShow () {
+      this.isCalled = true
+
+      await this.$nextTick()
+
+      repositionPopup(
+        this.element
       )
     }
   }

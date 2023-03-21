@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <BaseSegmentContainer
+    class="main-popup-content-container"
+  >
     <div class="info-section">
       <div
         v-text="createdText"
@@ -22,10 +24,12 @@
         v-text="wasOnlineFormatted"
       />
     </div>
-  </div>
+  </BaseSegmentContainer>
 </template>
 
 <script>
+import BaseSegmentContainer
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import {
   date as formatDate,
   time as formatTime
@@ -33,6 +37,9 @@ import {
 
 export default {
   name: 'BaseProfileInfoPopup',
+  components: {
+    BaseSegmentContainer
+  },
   props: {
     profileData: {
       type: Object,

@@ -10,7 +10,6 @@
     <HeaderSegment
       :scope="scope"
       :link="headerLink"
-      :is-change-transparency="isChangeTransparency"
     />
 
     <slot />
@@ -29,10 +28,6 @@ export default {
     HeaderSegment
   },
   props: {
-    isChangeTransparency: {
-      type: Boolean,
-      default: true
-    },
     scope: String,
     headerLink: Object,
     isBasic: Boolean
