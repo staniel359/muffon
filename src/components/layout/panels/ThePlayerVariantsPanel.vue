@@ -3,9 +3,7 @@
     v-if="isRenderVariantsPanel"
   />
 
-  <PlayerPanel
-    @visibility-change="handlePlayerPanelVisibilityChange"
-  />
+  <PlayerPanel />
 </template>
 
 <script>
@@ -24,28 +22,52 @@ export default {
   },
   data () {
     return {
-      isPlayerPanelVisible: false
+      isVisible: false,
+      playerPanelTransitionDuration: 500
     }
   },
   computed: {
     ...mapState(
       playerStore,
       {
+        playerPlaying: 'playing',
         playerVariantsCount: 'variantsCount'
       }
     ),
     isRenderVariantsPanel () {
       return (
-        this.isPlayerPanelVisible &&
+        this.isVisible &&
           this.playerVariantsCount
       )
     }
   },
+  watch: {
+    playerPlaying:
+      'handlePlayerPlayingChange'
+  },
+  mounted () {
+    if (this.playerPlaying) {
+      this.setVisible()
+    }
+  },
   methods: {
-    handlePlayerPanelVisibilityChange (
+    handlePlayerPlayingChange (
       value
     ) {
-      this.isPlayerPanelVisible = value
+      if (value) {
+        setTimeout(
+          this.setVisible,
+          this.playerPanelTransitionDuration
+        )
+      } else {
+        this.setHidden()
+      }
+    },
+    setVisible () {
+      this.isVisible = true
+    },
+    setHidden () {
+      this.isVisible = false
     }
   }
 }

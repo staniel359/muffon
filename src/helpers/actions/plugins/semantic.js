@@ -111,16 +111,6 @@ export function setSidebar (
   )
 }
 
-export function showSidebar (
-  element
-) {
-  $(
-    element
-  ).sidebar(
-    'show'
-  )
-}
-
 export function hideSidebar (
   element
 ) {

@@ -1,7 +1,10 @@
 <template>
-  <div
+  <BaseSegmentContainer
     ref="player"
-    class="ui bottom overlay segment sidebar the-player-panel"
+    class="bottom overlay blurred sidebar the-player-panel"
+    :class="{
+      visible: playerPlaying
+    }"
   >
     <div class="ui container main-container player-content-container">
       <AudioElement />
@@ -18,48 +21,45 @@
         <CloseButton />
       </template>
     </div>
-  </div>
+  </BaseSegmentContainer>
 </template>
 
 <script>
 import {
   mapState
 } from 'pinia'
-import layoutStore from '@/stores/layout'
 import playerStore from '@/stores/player'
+import BaseSegmentContainer
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import AudioElement from './PlayerPanel/AudioElement.vue'
 import PlayingPanel from './PlayerPanel/PlayingPanel.vue'
 import AudioPanel from './PlayerPanel/AudioPanel.vue'
 import CloseButton from './PlayerPanel/CloseButton.vue'
 import {
-  setPlayerPanel,
-  showPlayerPanel,
-  hidePlayerPanel
+  setPlayerPanel
 } from '@/helpers/actions/layout'
 import {
   mainSidebarOptions
 } from '@/helpers/formatters/semantic'
-import {
-  toggleClass
-} from '@/helpers/actions/plugins/jquery'
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
 import {
   generateKey
 } from '#/helpers/utils'
+import {
+  isObjectChanged
+} from '@/helpers/utils'
 
 export default {
   name: 'PlayerPanel',
   components: {
+    BaseSegmentContainer,
     AudioElement,
     PlayingPanel,
     AudioPanel,
     CloseButton
   },
-  emits: [
-    'visibilityChange'
-  ],
   data () {
     return {
       key: null
@@ -67,81 +67,43 @@ export default {
   },
   computed: {
     ...mapState(
-      layoutStore,
-      [
-        'isDarkMode'
-      ]
-    ),
-    ...mapState(
       playerStore,
       {
         playerPlaying: 'playing'
       }
     ),
     playerPanelOptions () {
-      return mainSidebarOptions(
-        {
-          onVisible: this.handleVisible,
-          onHide: this.handleHide
-        }
-      )
+      return mainSidebarOptions()
     }
   },
   watch: {
-    playerPlaying: {
-      immediate: true,
-      handler: 'handlePlayerPlayingChange'
-    },
-    isDarkMode: {
-      immediate: true,
-      handler: 'handleIsDarkModeChange'
-    }
+    playerPlaying:
+      'handlePlayerPlayingChange'
   },
   mounted () {
     setPlayerPanel(
-      this.$refs.player,
+      this.$refs.player.$el,
       this.playerPanelOptions
     )
   },
   methods: {
-    async handlePlayerPlayingChange (
-      value
+    handlePlayerPlayingChange (
+      value,
+      oldValue
     ) {
-      await this.$nextTick()
-
       if (value) {
-        showPlayerPanel()
+        const isChanged =
+          isObjectChanged(
+            value,
+            oldValue
+          )
 
-        this.key = generateKey()
+        if (isChanged) {
+          this.key = generateKey()
+        }
       } else {
         this.clearPlayer()
-
-        hidePlayerPanel()
       }
-    },
-    async handleIsDarkModeChange () {
-      await this.$nextTick()
-
-      this.toggleInvertedClass()
-    },
-    handleVisible () {
-      this.$emit(
-        'visibilityChange',
-        true
-      )
-    },
-    handleHide () {
-      this.$emit(
-        'visibilityChange',
-        false
-      )
-    },
-    toggleInvertedClass () {
-      toggleClass(
-        this.$refs.player,
-        'inverted',
-        this.isDarkMode
-      )
     },
     clearPlayer () {
       updateGlobalStore(
@@ -158,9 +120,10 @@ export default {
 
 <style lang="sass" scoped>
 .the-player-panel
-  @extend .no-padding, .no-border
+  @extend .no-padding, .no-border, .visibility-visible
   overflow: visible !important
   z-index: 200 !important
+  transition: transform 0.5s ease
   &.inverted
     border-top: $borderInverted !important
 

@@ -3,7 +3,6 @@ import {
   setDimmer,
   toggleDimmer,
   setSidebar,
-  showSidebar,
   toggleSidebar,
   hideSidebar
 } from '@/helpers/actions/plugins/semantic'
@@ -42,18 +41,6 @@ export function setPlayerPanel (
   setSidebar(
     layoutStore().playerPanel,
     options
-  )
-}
-
-export function showPlayerPanel () {
-  showSidebar(
-    layoutStore().playerPanel
-  )
-}
-
-export function hidePlayerPanel () {
-  hideSidebar(
-    layoutStore().playerPanel
   )
 }
 
