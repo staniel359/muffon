@@ -11,7 +11,7 @@
         :is-with-library-icon="!isSelf"
       />
 
-      <BaseTrackOptionsDropdown
+      <BaseTrackOptionsPopup
         :track-data="trackData"
         :library-id="libraryId"
         :favorite-id="favoriteId"
@@ -36,8 +36,8 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseTrackOptionsDropdown
-  from '@/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
+import BaseTrackOptionsPopup
+  from '@/components/popups/track/BaseTrackOptionsPopup.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -48,7 +48,7 @@ export default {
   components: {
     BaseSegmentContainer,
     BaseSelfIcons,
-    BaseTrackOptionsDropdown
+    BaseTrackOptionsPopup
   },
   mixins: [
     selfMixin

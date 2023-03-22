@@ -40,7 +40,7 @@
           />
         </div>
 
-        <BasePlaylistOptionsDropdown
+        <BasePlaylistOptionsPopup
           :playlist-data="playlistData"
           :is-with-add-option="isSelf"
           :is-with-edit-option="isSelf"
@@ -64,8 +64,8 @@ import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import BaseCounterSection from '@/components/sections/BaseCounterSection.vue'
 import BaseTimestampSection
   from '@/components/sections/BaseTimestampSection.vue'
-import BasePlaylistOptionsDropdown
-  from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
+import BasePlaylistOptionsPopup
+  from '@/components/popups/playlist/BasePlaylistOptionsPopup.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -80,7 +80,7 @@ export default {
     BasePrivateIcon,
     BaseCounterSection,
     BaseTimestampSection,
-    BasePlaylistOptionsDropdown
+    BasePlaylistOptionsPopup
   },
   props: {
     playlistData: {

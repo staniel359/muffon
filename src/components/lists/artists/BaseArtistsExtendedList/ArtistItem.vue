@@ -54,7 +54,7 @@
                   :is-with-bookmark-icon="isWithBookmarkIcon"
                 />
 
-                <BaseArtistOptionsDropdown
+                <BaseArtistOptionsPopup
                   :artist-data="artistData"
                   :library-id="libraryId"
                   :favorite-id="favoriteId"
@@ -140,8 +140,8 @@ import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseArtistOptionsDropdown
-  from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
+import BaseArtistOptionsPopup
+  from '@/components/popups/artist/BaseArtistOptionsPopup.vue'
 import HeaderSection from './ArtistItem/HeaderSection.vue'
 import BaseCounterLabelsSection
   from '@/components/sections/BaseCounterLabelsSection.vue'
@@ -166,7 +166,7 @@ export default {
     BaseArtistImage,
     LibraryCountersSection,
     BaseSelfIcons,
-    BaseArtistOptionsDropdown,
+    BaseArtistOptionsPopup,
     HeaderSection,
     BaseCounterLabelsSection,
     BaseArtistInnerCounterLabelsSection,

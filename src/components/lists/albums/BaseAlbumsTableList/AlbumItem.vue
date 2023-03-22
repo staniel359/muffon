@@ -19,7 +19,7 @@
         :profile-id="profileId"
         @link-click="handleLinkClick"
       >
-        <BaseAlbumOptionsDropdown
+        <BaseAlbumOptionsPopup
           :album-data="albumData"
           :library-id="libraryId"
           :favorite-id="favoriteId"
@@ -35,6 +35,7 @@
           :is-with-delete-option="isWithDeleteOption"
           :is-bookmark="isBookmark"
           :is-favorite="isFavorite"
+          :is-transparent="false"
           @link-click="handleLinkClick"
           @deleted="handleDeleted"
         />
@@ -113,8 +114,8 @@ import BaseSimpleCardContainer
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseAlbumLinkContainer
   from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
-import BaseAlbumOptionsDropdown
-  from '@/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
+import BaseAlbumOptionsPopup
+  from '@/components/popups/album/BaseAlbumOptionsPopup.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseAlbumArtistsSection
@@ -134,7 +135,7 @@ export default {
     BaseSimpleCardContainer,
     BaseDeletedSection,
     BaseAlbumLinkContainer,
-    BaseAlbumOptionsDropdown,
+    BaseAlbumOptionsPopup,
     BaseImage,
     BaseHeader,
     BaseAlbumArtistsSection,

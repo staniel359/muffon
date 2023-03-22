@@ -16,7 +16,7 @@
         :link="link"
         @click="handleLinkClick"
       >
-        <BaseVideoOptionsDropdown
+        <BaseVideoOptionsPopup
           :video-data="videoData"
           :favorite-id="favoriteId"
           :bookmark-id="bookmarkId"
@@ -28,6 +28,7 @@
           :is-with-delete-option="isWithDeleteOption"
           :is-bookmark="isBookmark"
           :is-favorite="isFavorite"
+          :is-transparent="false"
           @deleted="handleDeleted"
         />
 
@@ -81,8 +82,8 @@ import BaseSimpleCardContainer
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
-import BaseVideoOptionsDropdown
-  from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
+import BaseVideoOptionsPopup
+  from '@/components/popups/video/BaseVideoOptionsPopup.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseVideoChannelLinkSection
@@ -102,7 +103,7 @@ export default {
     BaseSimpleCardContainer,
     BaseDeletedSection,
     BaseLinkContainer,
-    BaseVideoOptionsDropdown,
+    BaseVideoOptionsPopup,
     BaseImage,
     BaseHeader,
     BaseVideoChannelLinkSection,

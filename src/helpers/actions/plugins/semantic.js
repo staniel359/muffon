@@ -183,6 +183,16 @@ export function repositionPopup (
   }
 }
 
+export function showPopup (
+  element
+) {
+  $(
+    element
+  ).popup(
+    'show'
+  )
+}
+
 export function hidePopup (
   element
 ) {

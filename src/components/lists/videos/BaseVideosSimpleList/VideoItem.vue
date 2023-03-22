@@ -58,7 +58,7 @@
         :model-data="videoData"
       />
 
-      <BaseVideoOptionsDropdown
+      <BaseVideoOptionsPopup
         :video-data="videoData"
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
@@ -93,8 +93,8 @@ import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
-import BaseVideoOptionsDropdown
-  from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
+import BaseVideoOptionsPopup
+  from '@/components/popups/video/BaseVideoOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   main as formatVideoMainLink
@@ -112,7 +112,7 @@ export default {
     BaseSelfIcons,
     BaseCreatedSection,
     BasePublishDateSection,
-    BaseVideoOptionsDropdown,
+    BaseVideoOptionsPopup,
     BaseClearButton
   },
   mixins: [

@@ -7,7 +7,7 @@
       :listened-id="listenedId"
     />
 
-    <BaseAlbumOptionsDropdown
+    <BaseAlbumOptionsPopup
       :album-data="albumData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
@@ -26,14 +26,14 @@
 
 <script>
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseAlbumOptionsDropdown
-  from '@/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
+import BaseAlbumOptionsPopup
+  from '@/components/popups/album/BaseAlbumOptionsPopup.vue'
 
 export default {
   name: 'SelfSection',
   components: {
     BaseSelfIcons,
-    BaseAlbumOptionsDropdown
+    BaseAlbumOptionsPopup
   },
   props: {
     albumData: Object,

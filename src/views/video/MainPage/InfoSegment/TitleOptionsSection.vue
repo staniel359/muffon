@@ -18,7 +18,7 @@
       :watched-id="watchedId"
     />
 
-    <BaseVideoOptionsDropdown
+    <BaseVideoOptionsPopup
       class="video-options"
       :video-data="videoData"
       :favorite-id="favoriteId"
@@ -37,8 +37,8 @@ import BaseHeader from '@/components/BaseHeader.vue'
 import BaseVideoChannelLinkSection
   from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseVideoOptionsDropdown
-  from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
+import BaseVideoOptionsPopup
+  from '@/components/popups/video/BaseVideoOptionsPopup.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -47,7 +47,7 @@ export default {
     BaseHeader,
     BaseVideoChannelLinkSection,
     BaseSelfIcons,
-    BaseVideoOptionsDropdown
+    BaseVideoOptionsPopup
   },
   mixins: [
     selfMixin

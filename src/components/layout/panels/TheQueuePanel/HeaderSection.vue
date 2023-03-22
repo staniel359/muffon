@@ -11,7 +11,7 @@
       v-text="tracksCountText"
     />
 
-    <BaseQueueOptionsDropdown
+    <BaseQueueOptionsPopup
       v-if="queueTracksCount"
     />
   </BaseSegmentContainer>
@@ -25,8 +25,8 @@ import queueStore from '@/stores/queue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import ShuffleButton from './HeaderSection/ShuffleButton.vue'
-import BaseQueueOptionsDropdown
-  from '@/components/dropdowns/queue/BaseQueueOptionsDropdown.vue'
+import BaseQueueOptionsPopup
+  from '@/components/popups/queue/BaseQueueOptionsPopup.vue'
 import {
   number as formatNumber
 } from '@/helpers/formatters'
@@ -36,7 +36,7 @@ export default {
   components: {
     BaseSegmentContainer,
     ShuffleButton,
-    BaseQueueOptionsDropdown
+    BaseQueueOptionsPopup
   },
   computed: {
     ...mapState(

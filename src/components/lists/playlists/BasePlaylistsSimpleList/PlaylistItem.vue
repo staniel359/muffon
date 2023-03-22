@@ -72,7 +72,7 @@
         :model-data="playlistData"
       />
 
-      <BasePlaylistOptionsDropdown
+      <BasePlaylistOptionsPopup
         :playlist-data="playlistData"
         :is-with-share-option="isWithShareOption"
         :is-with-edit-option="isWithEditOption"
@@ -100,8 +100,8 @@ import ProfileNicknameSection from './PlaylistItem/ProfileNicknameSection.vue'
 import BaseListCounterSection
   from '@/components/sections/BaseListCounterSection.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
-import BasePlaylistOptionsDropdown
-  from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
+import BasePlaylistOptionsPopup
+  from '@/components/popups/playlist/BasePlaylistOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   main as formatProfileMainLink,
@@ -120,7 +120,7 @@ export default {
     ProfileNicknameSection,
     BaseListCounterSection,
     BaseCreatedSection,
-    BasePlaylistOptionsDropdown,
+    BasePlaylistOptionsPopup,
     BaseClearButton
   },
   provide () {

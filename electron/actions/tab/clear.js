@@ -1,11 +1,6 @@
 const find = require(
   './find'
 )
-const {
-  isDevelopment
-} = require(
-  '../../utils'
-)
 
 function clear (
   tabId
@@ -19,12 +14,6 @@ function clear (
     mainWindow.removeBrowserView(
       tab
     )
-
-    if (isDevelopment) {
-      tab
-        .webContents
-        .closeDevTools()
-    }
 
     tab
       .webContents

@@ -43,7 +43,7 @@
             :bookmark-id="bookmarkId"
           />
 
-          <BaseVideoPlaylistOptionsDropdown
+          <BaseVideoPlaylistOptionsPopup
             :playlist-data="playlistData"
             :bookmark-id="bookmarkId"
             is-with-bookmark-option
@@ -69,8 +69,8 @@ import BaseCounterSection from '@/components/sections/BaseCounterSection.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseVideoPlaylistOptionsDropdown
-  from '@/components/dropdowns/videoPlaylist/BaseVideoPlaylistOptionsDropdown.vue'
+import BaseVideoPlaylistOptionsPopup
+  from '@/components/popups/videoPlaylist/BaseVideoPlaylistOptionsPopup.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -85,7 +85,7 @@ export default {
     BaseCounterSection,
     BasePublishDateSection,
     BaseSelfIcons,
-    BaseVideoPlaylistOptionsDropdown
+    BaseVideoPlaylistOptionsPopup
   },
   mixins: [
     selfMixin

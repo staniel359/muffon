@@ -11,7 +11,7 @@
         :is-with-library-icon="!isSelf"
       />
 
-      <BaseArtistOptionsDropdown
+      <BaseArtistOptionsPopup
         :artist-data="artistData"
         :library-id="libraryId"
         :favorite-id="favoriteId"
@@ -34,8 +34,8 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseArtistOptionsDropdown
-  from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
+import BaseArtistOptionsPopup
+  from '@/components/popups/artist/BaseArtistOptionsPopup.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -46,7 +46,7 @@ export default {
   components: {
     BaseSegmentContainer,
     BaseSelfIcons,
-    BaseArtistOptionsDropdown
+    BaseArtistOptionsPopup
   },
   mixins: [
     selfMixin

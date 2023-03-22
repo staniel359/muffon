@@ -30,7 +30,7 @@
           />
         </div>
 
-        <BaseCommunityOptionsDropdown
+        <BaseCommunityOptionsPopup
           :community-data="communityData"
           :is-with-edit-option="isCommunityCreator"
           :is-with-delete-option="isCommunityCreator"
@@ -50,8 +50,8 @@ import BaseListContainer
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import MembersSection from './InfoSegment/MembersSection.vue'
-import BaseCommunityOptionsDropdown
-  from '@/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
+import BaseCommunityOptionsPopup
+  from '@/components/popups/community/BaseCommunityOptionsPopup.vue'
 
 export default {
   name: 'InfoSegment',
@@ -61,7 +61,7 @@ export default {
     BaseZoomableImage,
     BaseHeader,
     MembersSection,
-    BaseCommunityOptionsDropdown
+    BaseCommunityOptionsPopup
   },
   props: {
     communityData: {

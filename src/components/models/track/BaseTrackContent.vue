@@ -108,7 +108,7 @@
       :model-data="trackData"
     />
 
-    <BaseTrackOptionsDropdown
+    <BaseTrackOptionsPopup
       :track-data="trackData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
@@ -161,8 +161,8 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
-import BaseTrackOptionsDropdown
-  from '@/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
+import BaseTrackOptionsPopup
+  from '@/components/popups/track/BaseTrackOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import selfMixin from '@/mixins/selfMixin'
 
@@ -183,7 +183,7 @@ export default {
     BaseSourceIcon,
     BaseSelfIcons,
     BaseCreatedSection,
-    BaseTrackOptionsDropdown,
+    BaseTrackOptionsPopup,
     BaseClearButton
   },
   mixins: [

@@ -11,7 +11,9 @@
     <template
       v-else
     >
-      <BaseArtistOptionsDropdown
+      <div />
+
+      <BaseArtistOptionsPopup
         :artist-data="artistData"
         :library-id="libraryId"
         :favorite-id="favoriteId"
@@ -27,6 +29,7 @@
         :is-with-delete-option="isWithDeleteOption"
         :is-bookmark="isBookmark"
         :is-favorite="isFavorite"
+        :is-transparent="false"
         @deleted="handleDeleted"
       />
 
@@ -97,8 +100,8 @@ import BaseSimpleCardContainer
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseArtistLinkContainer
   from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
-import BaseArtistOptionsDropdown
-  from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
+import BaseArtistOptionsPopup
+  from '@/components/popups/artist/BaseArtistOptionsPopup.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
@@ -114,7 +117,7 @@ export default {
     BaseSimpleCardContainer,
     BaseDeletedSection,
     BaseArtistLinkContainer,
-    BaseArtistOptionsDropdown,
+    BaseArtistOptionsPopup,
     BaseArtistImage,
     BaseHeader,
     BaseCreatedSection,

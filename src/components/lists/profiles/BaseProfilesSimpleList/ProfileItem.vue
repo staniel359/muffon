@@ -81,7 +81,7 @@
       :model-data="profileData"
     />
 
-    <BaseProfileOptionsDropdown
+    <BaseProfileOptionsPopup
       v-if="!isSelf"
       :profile-data="profileData"
       is-with-follow-option
@@ -109,8 +109,8 @@ import PlayingSection from './ProfileItem/PlayingSection.vue'
 import BaseProfileFollowingMessage
   from '@/components/models/profile/BaseProfileFollowingMessage.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
-import BaseProfileOptionsDropdown
-  from '@/components/dropdowns/profile/BaseProfileOptionsDropdown.vue'
+import BaseProfileOptionsPopup
+  from '@/components/popups/profile/BaseProfileOptionsPopup.vue'
 import {
   main as formatProfileMainLink
 } from '@/helpers/formatters/links/profile'
@@ -133,7 +133,7 @@ export default {
     PlayingSection,
     BaseProfileFollowingMessage,
     BaseCreatedSection,
-    BaseProfileOptionsDropdown
+    BaseProfileOptionsPopup
   },
   provide () {
     return {

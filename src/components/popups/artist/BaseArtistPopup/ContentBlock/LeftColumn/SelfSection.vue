@@ -11,7 +11,7 @@
       is-with-bookmark-icon
     />
 
-    <BaseArtistOptionsDropdown
+    <BaseArtistOptionsPopup
       class="options-dropdown"
       :artist-data="artistData"
       :library-id="libraryId"
@@ -29,15 +29,15 @@
 
 <script>
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseArtistOptionsDropdown
-  from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
+import BaseArtistOptionsPopup
+  from '@/components/popups/artist/BaseArtistOptionsPopup.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'SelfSection',
   components: {
     BaseSelfIcons,
-    BaseArtistOptionsDropdown
+    BaseArtistOptionsPopup
   },
   mixins: [
     selfMixin

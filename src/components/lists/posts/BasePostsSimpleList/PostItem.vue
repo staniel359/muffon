@@ -47,7 +47,7 @@
         />
       </div>
 
-      <BasePostOptionsDropdown
+      <BasePostOptionsPopup
         v-if="isWithOptions"
         :post-data="postData"
         :is-with-edit-option="isWithEditOption"
@@ -76,8 +76,8 @@ import BaseTimestampSection
   from '@/components/sections/BaseTimestampSection.vue'
 import BaseSendableContentSection
   from '@/components/models/sendable/BaseSendableContentSection.vue'
-import BasePostOptionsDropdown
-  from '@/components/dropdowns/post/BasePostOptionsDropdown.vue'
+import BasePostOptionsPopup
+  from '@/components/popups/post/BasePostOptionsPopup.vue'
 import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
@@ -90,7 +90,7 @@ export default {
     BasePrivateIcon,
     BaseTimestampSection,
     BaseSendableContentSection,
-    BasePostOptionsDropdown
+    BasePostOptionsPopup
   },
   mixins: [
     notificationMixin

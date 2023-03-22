@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="isRender"
+    v-if="isRender || isCalled"
     ref="modal"
     class="ui page modal main-modal"
     :class="size"
@@ -29,14 +29,12 @@ import {
 export default {
   name: 'BaseModalContainer',
   props: {
-    isImageModal: Boolean,
-    isSettingsModal: Boolean,
-    isSearchModal: Boolean,
-    isMultiple: Boolean,
     size: {
       type: String,
       default: 'tiny'
-    }
+    },
+    isRender: Boolean,
+    isMultiple: Boolean
   },
   emits: [
     'show',
@@ -54,14 +52,6 @@ export default {
         'isDarkMode'
       ]
     ),
-    isRender () {
-      return (
-        this.isCalled ||
-          this.isImageModal ||
-          this.isSettingsModal ||
-          this.isSearchModal
-      )
-    },
     modalOptions () {
       return mainModalOptions(
         {

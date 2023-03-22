@@ -42,7 +42,7 @@
     />
   </div>
 
-  <BasePlaylistOptionsDropdown
+  <BasePlaylistOptionsPopup
     :playlist-data="playlistData"
     is-with-edit-option
     is-with-delete-option
@@ -57,8 +57,8 @@ import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import BaseListCounterSection
   from '@/components/sections/BaseListCounterSection.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
-import BasePlaylistOptionsDropdown
-  from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
+import BasePlaylistOptionsPopup
+  from '@/components/popups/playlist/BasePlaylistOptionsPopup.vue'
 
 export default {
   name: 'ContentBlock',
@@ -68,7 +68,7 @@ export default {
     BasePrivateIcon,
     BaseListCounterSection,
     BaseIcon,
-    BasePlaylistOptionsDropdown
+    BasePlaylistOptionsPopup
   },
   provide () {
     return {

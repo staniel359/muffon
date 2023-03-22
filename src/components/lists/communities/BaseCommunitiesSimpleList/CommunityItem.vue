@@ -52,7 +52,7 @@
       :model-data="communityData"
     />
 
-    <BaseCommunityOptionsDropdown
+    <BaseCommunityOptionsPopup
       :community-data="communityData"
       :is-with-join-option="isWithJoinOption"
       :is-with-share-option="isWithShareOption"
@@ -76,8 +76,8 @@ import BaseListCounterSection
 import BaseCommunityJoinedMessage
   from '@/components/models/community/BaseCommunityJoinedMessage.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
-import BaseCommunityOptionsDropdown
-  from '@/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
+import BaseCommunityOptionsPopup
+  from '@/components/popups/community/BaseCommunityOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   main as formatCommunityMainLink
@@ -93,7 +93,7 @@ export default {
     BaseListCounterSection,
     BaseCommunityJoinedMessage,
     BaseCreatedSection,
-    BaseCommunityOptionsDropdown,
+    BaseCommunityOptionsPopup,
     BaseClearButton
   },
   provide () {

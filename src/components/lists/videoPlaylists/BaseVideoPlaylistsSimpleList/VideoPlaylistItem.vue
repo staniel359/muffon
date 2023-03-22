@@ -77,7 +77,7 @@
         :model-data="playlistData"
       />
 
-      <BaseVideoPlaylistOptionsDropdown
+      <BaseVideoPlaylistOptionsPopup
         :playlist-data="playlistData"
         :bookmark-id="bookmarkId"
         :is-bookmark="isBookmark"
@@ -110,8 +110,8 @@ import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
-import BaseVideoPlaylistOptionsDropdown
-  from '@/components/dropdowns/videoPlaylist/BaseVideoPlaylistOptionsDropdown.vue'
+import BaseVideoPlaylistOptionsPopup
+  from '@/components/popups/videoPlaylist/BaseVideoPlaylistOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   main as formatVideoPlaylistMainLink
@@ -131,7 +131,7 @@ export default {
     BaseSelfIcons,
     BasePublishDateSection,
     BaseCreatedSection,
-    BaseVideoPlaylistOptionsDropdown,
+    BaseVideoPlaylistOptionsPopup,
     BaseClearButton
   },
   mixins: [

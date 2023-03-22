@@ -15,11 +15,12 @@ export default {
       ]
     ),
     popup () {
-      return this.$refs.popup.$el
+      return this.$refs.popup?.$el
     }
   },
   watch: {
-    isDarkMode: 'handleIsDarkModeChange'
+    isDarkMode:
+      'handleIsDarkModeChange'
   },
   mounted () {
     this.initialize()
@@ -32,10 +33,12 @@ export default {
       this.initialize()
     },
     initialize () {
-      setPopup(
-        this.element,
-        this.popupOptions
-      )
+      if (this.popup) {
+        setPopup(
+          this.element,
+          this.popupOptions
+        )
+      }
     }
   }
 }

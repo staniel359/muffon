@@ -1,5 +1,5 @@
 <template>
-  <BaseTrackOptionsDropdown
+  <BaseTrackOptionsPopup
     :track-data="playerPlaying"
     :library-id="libraryId"
     :favorite-id="favoriteId"
@@ -21,14 +21,14 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import BaseTrackOptionsDropdown
-  from '@/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
+import BaseTrackOptionsPopup
+  from '@/components/popups/track/BaseTrackOptionsPopup.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'OptionsBlock',
   components: {
-    BaseTrackOptionsDropdown
+    BaseTrackOptionsPopup
   },
   mixins: [
     selfMixin

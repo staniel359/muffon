@@ -2,7 +2,7 @@
   <BaseModalContainer
     ref="modal"
     size="small"
-    is-settings-modal
+    is-render
     is-multiple
   >
     <div class="content full-height">

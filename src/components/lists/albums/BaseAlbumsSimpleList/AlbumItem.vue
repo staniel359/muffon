@@ -94,7 +94,7 @@
         :model-data="albumData"
       />
 
-      <BaseAlbumOptionsDropdown
+      <BaseAlbumOptionsPopup
         :album-data="albumData"
         :library-id="libraryId"
         :favorite-id="favoriteId"
@@ -139,8 +139,8 @@ import LibraryCountersSection from './AlbumItem/LibraryCountersSection.vue'
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
-import BaseAlbumOptionsDropdown
-  from '@/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
+import BaseAlbumOptionsPopup
+  from '@/components/popups/album/BaseAlbumOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import selfMixin from '@/mixins/selfMixin'
 
@@ -159,7 +159,7 @@ export default {
     BaseSourceIcon,
     BaseSelfIcons,
     BaseCreatedSection,
-    BaseAlbumOptionsDropdown,
+    BaseAlbumOptionsPopup,
     BaseClearButton
   },
   mixins: [

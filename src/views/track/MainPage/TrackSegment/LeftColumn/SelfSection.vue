@@ -8,7 +8,7 @@
       :listened-id="listenedId"
     />
 
-    <BaseTrackOptionsDropdown
+    <BaseTrackOptionsPopup
       :track-data="trackData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
@@ -27,14 +27,14 @@
 
 <script>
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseTrackOptionsDropdown
-  from '@/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
+import BaseTrackOptionsPopup
+  from '@/components/popups/track/BaseTrackOptionsPopup.vue'
 
 export default {
   name: 'SelfSection',
   components: {
     BaseSelfIcons,
-    BaseTrackOptionsDropdown
+    BaseTrackOptionsPopup
   },
   props: {
     trackData: Object,

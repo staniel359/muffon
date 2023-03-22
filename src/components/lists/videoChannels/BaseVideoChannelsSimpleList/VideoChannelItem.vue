@@ -56,7 +56,7 @@
         :model-data="channelData"
       />
 
-      <BaseVideoChannelOptionsDropdown
+      <BaseVideoChannelOptionsPopup
         :channel-data="channelData"
         :bookmark-id="bookmarkId"
         :is-bookmark="isBookmark"
@@ -86,8 +86,8 @@ import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
-import BaseVideoChannelOptionsDropdown
-  from '@/components/dropdowns/videoChannel/BaseVideoChannelOptionsDropdown.vue'
+import BaseVideoChannelOptionsPopup
+  from '@/components/popups/videoChannel/BaseVideoChannelOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   main as formatVideoChannelMainLink
@@ -106,7 +106,7 @@ export default {
     BaseSelfIcons,
     BaseCreatedSection,
     BasePublishDateSection,
-    BaseVideoChannelOptionsDropdown,
+    BaseVideoChannelOptionsPopup,
     BaseClearButton
   },
   mixins: [

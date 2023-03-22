@@ -1,7 +1,7 @@
 <template>
   <BaseModalContainer
     ref="modal"
-    is-search-modal
+    is-render
     @visible="handleVisible"
   >
     <SearchContent

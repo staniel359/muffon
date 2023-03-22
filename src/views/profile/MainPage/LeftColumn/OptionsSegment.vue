@@ -2,7 +2,7 @@
   <BaseSegmentContainer
     class="options-segment"
   >
-    <BaseProfileOptionsDropdown
+    <BaseProfileOptionsPopup
       :profile-data="profileData"
       is-with-follow-option
       is-with-message-option
@@ -13,14 +13,14 @@
 <script>
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseProfileOptionsDropdown
-  from '@/components/dropdowns/profile/BaseProfileOptionsDropdown.vue'
+import BaseProfileOptionsPopup
+  from '@/components/popups/profile/BaseProfileOptionsPopup.vue'
 
 export default {
   name: 'OptionsSegment',
   components: {
     BaseSegmentContainer,
-    BaseProfileOptionsDropdown
+    BaseProfileOptionsPopup
   },
   props: {
     profileData: Object

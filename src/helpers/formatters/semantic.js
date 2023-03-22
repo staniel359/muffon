@@ -346,6 +346,60 @@ export function profileInfoPopupOptions (
   }
 }
 
+export function optionsPopupOptions (
+  {
+    html,
+    onShow,
+    onHide,
+    onHidden
+  }
+) {
+  const className = 'ui popup main-popup'
+
+  return {
+    position: 'bottom right',
+    transition: 'fade up',
+    variation: 'basic',
+    closable: false,
+    hoverable: true,
+    className: {
+      popup: className
+    },
+    delay: {
+      show: 0,
+      hide: 150
+    },
+    html,
+    onShow,
+    onHide,
+    onHidden
+  }
+}
+
+export function optionsSubmenuPopupOptions (
+  {
+    html
+  }
+) {
+  const className = 'ui popup main-popup'
+
+  return {
+    position: 'left center',
+    transition: 'fade up',
+    variation: 'basic',
+    closable: false,
+    hoverable: true,
+    className: {
+      popup: className
+    },
+    delay: {
+      show: 0,
+      hide: 150
+    },
+    html
+  }
+}
+
 export function mainDropdownOptions (
   {
     isSelection,

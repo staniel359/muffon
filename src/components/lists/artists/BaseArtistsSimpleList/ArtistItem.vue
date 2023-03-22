@@ -78,7 +78,7 @@
         :model-data="artistData"
       />
 
-      <BaseArtistOptionsDropdown
+      <BaseArtistOptionsPopup
         :artist-data="artistData"
         :library-id="libraryId"
         :favorite-id="favoriteId"
@@ -120,8 +120,8 @@ import BaseArtistListenersCount
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
-import BaseArtistOptionsDropdown
-  from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
+import BaseArtistOptionsPopup
+  from '@/components/popups/artist/BaseArtistOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import selfMixin from '@/mixins/selfMixin'
 
@@ -137,7 +137,7 @@ export default {
     LibraryCountersSection,
     BaseSelfIcons,
     BaseCreatedSection,
-    BaseArtistOptionsDropdown,
+    BaseArtistOptionsPopup,
     BaseClearButton
   },
   mixins: [

@@ -15,7 +15,7 @@
         />
       </BaseLinkContainer>
 
-      <BaseVideoOptionsDropdown
+      <BaseVideoOptionsPopup
         class="video-options"
         :video-data="videoData"
         is-with-share-option
@@ -29,8 +29,8 @@ import BaseVideo from '@/components/BaseVideo.vue'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseVideoOptionsDropdown
-  from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
+import BaseVideoOptionsPopup
+  from '@/components/popups/video/BaseVideoOptionsPopup.vue'
 import {
   main as formatVideoMainLink
 } from '@/helpers/formatters/links/video'
@@ -41,7 +41,7 @@ export default {
     BaseVideo,
     BaseLinkContainer,
     BaseHeader,
-    BaseVideoOptionsDropdown
+    BaseVideoOptionsPopup
   },
   props: {
     videoData: {

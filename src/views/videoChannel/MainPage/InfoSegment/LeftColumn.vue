@@ -12,7 +12,7 @@
         :bookmark-id="bookmarkId"
       />
 
-      <BaseVideoChannelOptionsDropdown
+      <BaseVideoChannelOptionsPopup
         :channel-data="channelData"
         :bookmark-id="bookmarkId"
         is-with-bookmark-option
@@ -25,8 +25,8 @@
 <script>
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseVideoChannelOptionsDropdown
-  from '@/components/dropdowns/videoChannel/BaseVideoChannelOptionsDropdown.vue'
+import BaseVideoChannelOptionsPopup
+  from '@/components/popups/videoChannel/BaseVideoChannelOptionsPopup.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -34,7 +34,7 @@ export default {
   components: {
     BaseZoomableImage,
     BaseSelfIcons,
-    BaseVideoChannelOptionsDropdown
+    BaseVideoChannelOptionsPopup
   },
   mixins: [
     selfMixin
