@@ -4,7 +4,7 @@
     :to="link"
   >
     <BaseIcon
-      class="left route-icon"
+      class="left-icon route-icon"
       :icon="icon"
     />
 

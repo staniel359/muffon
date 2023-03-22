@@ -72,8 +72,10 @@ export default {
     }
   },
   watch: {
-    isFollowing: 'handleIsFollowingChange',
-    followersCount: 'handleFollowersCountChange'
+    isFollowing:
+      'handleIsFollowingChange',
+    followersCount:
+      'handleFollowersCountChange'
   },
   mounted () {
     this.isFollowing = this.isFollower

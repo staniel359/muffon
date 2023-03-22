@@ -14,6 +14,7 @@ export function mainModalOptions (
 ) {
   return {
     autofocus: false,
+    blurring: true,
     allowMultiple: isMultiple,
     duration: 150,
     transition: 'fade',

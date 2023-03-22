@@ -31,8 +31,10 @@ export default {
   ],
   provide () {
     return {
-      setIsFollowing: this.setIsFollowing,
-      setFollowersCount: this.setFollowersCount
+      setIsFollowing:
+        this.setIsFollowing,
+      setFollowersCount:
+        this.setFollowersCount
     }
   },
   props: {

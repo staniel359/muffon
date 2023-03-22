@@ -6,6 +6,7 @@
     :error="error"
     :scope="scope"
     :limit="limit"
+    is-multiple
     @call="handleCall"
   >
     <template

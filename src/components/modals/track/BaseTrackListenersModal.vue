@@ -6,6 +6,7 @@
     :text-scope="textScope"
     :limit="limit"
     is-paginated
+    is-multiple
   >
     <template
       #default="slotProps"

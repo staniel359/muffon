@@ -9,11 +9,21 @@
     :scope="scope"
     :text-scope="textScope"
     :limit="limit"
+    :is-multiple="isMultiple"
     @call="handleCall"
   >
-    <slot
-      :[scope]="trackData[scope]"
-    />
+    <template
+      #default="slotProps"
+    >
+      <slot
+        v-if="isPaginated"
+        :[scope]="slotProps[scope]"
+      />
+      <slot
+        v-else
+        :[scope]="trackData[scope]"
+      />
+    </template>
   </Component>
 </template>
 
@@ -48,7 +58,8 @@ export default {
     },
     textScope: String,
     limit: Number,
-    isPaginated: Boolean
+    isPaginated: Boolean,
+    isMultiple: Boolean
   },
   data () {
     return {
