@@ -1,11 +1,9 @@
-const getPath = require(
-  './getPath'
-)
-const fs = require(
-  'fs'
-)
+import getPath from './getPath.js'
+import {
+  writeFileSync
+} from 'fs'
 
-function create (
+export default function create (
   fileName,
   data
 ) {
@@ -14,10 +12,8 @@ function create (
       fileName
     )
 
-  fs.writeFileSync(
+  writeFileSync(
     filePath,
     data
   )
 }
-
-module.exports = create

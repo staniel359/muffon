@@ -1,21 +1,19 @@
-const {
+import {
   ipcMain
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   handleSaveAudio,
   handleDeleteAudio
-} = require(
-  '../../handlers/ipc/audio'
-)
+} from '../../handlers/ipc/audio.js'
 
-ipcMain.on(
-  'save-audio',
-  handleSaveAudio
-)
+export default function set () {
+  ipcMain.on(
+    'save-audio',
+    handleSaveAudio
+  )
 
-ipcMain.on(
-  'delete-audio',
-  handleDeleteAudio
-)
+  ipcMain.on(
+    'delete-audio',
+    handleDeleteAudio
+  )
+}

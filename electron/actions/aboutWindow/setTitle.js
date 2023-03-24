@@ -1,8 +1,6 @@
-const i18n = require(
-  '../../../shared/plugins/i18n'
-)
+import i18n from '../../../shared/plugins/i18n.js'
 
-function setTitle () {
+export default function setTitle () {
   const title =
     i18n.global.t(
       'electron.about'
@@ -12,5 +10,3 @@ function setTitle () {
     title
   )
 }
-
-module.exports = setTitle

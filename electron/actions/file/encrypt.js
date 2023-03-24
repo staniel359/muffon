@@ -1,20 +1,21 @@
-const crypto = require(
-  'crypto'
-)
+import {
+  randomBytes,
+  createCipheriv
+} from 'crypto'
 
-function getRandomKey (
-  bytesSize
-) {
-  return crypto.randomBytes(
-    bytesSize
-  ).toString(
-    'hex'
-  )
-}
-
-function encrypt (
+export default function encrypt (
   file
 ) {
+  function getRandomKey (
+    bytesSize
+  ) {
+    return randomBytes(
+      bytesSize
+    ).toString(
+      'hex'
+    )
+  }
+
   const key =
     getRandomKey(
       16
@@ -26,7 +27,7 @@ function encrypt (
     )
 
   const cipher =
-    crypto.createCipheriv(
+    createCipheriv(
       'aes-256-cbc',
       key,
       iv
@@ -48,5 +49,3 @@ function encrypt (
     encryptedFile
   }
 }
-
-module.exports = encrypt

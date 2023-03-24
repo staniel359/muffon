@@ -1,31 +1,17 @@
-const {
+import {
   app,
   Menu
-} = require(
-  'electron'
-)
-const showMainWindow = require(
-  '../mainWindow/show'
-)
-const hideMainWindow = require(
-  '../mainWindow/hide'
-)
-const showAboutWindow = require(
-  '../aboutWindow/show'
-)
-const callExit = require(
-  '../app/callExit'
-)
-const i18n = require(
-  '../../../shared/plugins/i18n'
-)
-const {
+} from 'electron'
+import showMainWindow from '../mainWindow/show.js'
+import hideMainWindow from '../mainWindow/hide.js'
+import showAboutWindow from '../aboutWindow/show.js'
+import callExit from '../app/callExit.js'
+import i18n from '../../../shared/plugins/i18n.js'
+import {
   isMac
-} = require(
-  '../../utils'
-)
+} from '../../utils.js'
 
-function setMenu () {
+export default function setMenu () {
   const isVisible =
     mainWindow.isVisible()
 
@@ -96,5 +82,3 @@ function setMenu () {
     )
   }
 }
-
-module.exports = setMenu

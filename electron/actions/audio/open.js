@@ -1,11 +1,9 @@
-const getPath = require(
-  './getPath'
-)
-const fs = require(
-  'fs'
-)
+import getPath from './getPath.js'
+import {
+  readFileSync
+} from 'fs'
 
-function open (
+export default function open (
   fileName
 ) {
   const filePath =
@@ -13,9 +11,7 @@ function open (
       fileName
     )
 
-  return fs.readFileSync(
+  return readFileSync(
     filePath
   )
 }
-
-module.exports = open

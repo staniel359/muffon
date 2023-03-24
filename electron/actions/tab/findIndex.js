@@ -1,19 +1,17 @@
-const getTabs = require(
-  '../tabs/get'
-)
+import getTabs from '../tabs/get.js'
 
-function findIndex (
+export default function findIndex (
   tabId
 ) {
   function isMatchedTab (
     tabData
   ) {
-    return tabData.uuid === tabId
+    return (
+      tabData.uuid === tabId
+    )
   }
 
   return getTabs().findIndex(
     isMatchedTab
   )
 }
-
-module.exports = findIndex

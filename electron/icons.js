@@ -1,27 +1,25 @@
-const {
+import {
   nativeImage
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   isDevelopment
-} = require(
-  './utils'
-)
-
-const path = require(
-  'path'
-)
+} from './utils.js'
+import {
+  join as joinPath
+} from 'path'
+import {
+  formatFileRootPath
+} from './paths.js'
 
 const publicPath =
   isDevelopment ? 'public' : ''
 
 const iconPath =
-  path.join(
-    __dirname,
-    '..',
-    publicPath,
-    'logo.png'
+  formatFileRootPath(
+    joinPath(
+      publicPath,
+      'logo.png'
+    )
   )
 
 const icon =
@@ -29,7 +27,7 @@ const icon =
     iconPath
   )
 
-const windowIcon =
+export const windowIcon =
   icon.resize(
     {
       width: 64,
@@ -37,15 +35,10 @@ const windowIcon =
     }
   )
 
-const trayIcon =
+export const trayIcon =
   icon.resize(
     {
       width: 16,
       height: 16
     }
   )
-
-module.exports = {
-  windowIcon,
-  trayIcon
-}

@@ -1,8 +1,6 @@
-const {
+import {
   session
-} = require(
-  'electron'
-)
+} from 'electron'
 
 function handleBeforeSendHeaders (
   details,
@@ -24,7 +22,7 @@ function handleBeforeSendHeaders (
   )
 }
 
-function createHeadersHandler () {
+export default function createHeadersHandler () {
   const filter = {
     urls: [
       'https://*.youtube.com/*'
@@ -39,5 +37,3 @@ function createHeadersHandler () {
       handleBeforeSendHeaders
     )
 }
-
-module.exports = createHeadersHandler

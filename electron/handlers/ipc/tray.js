@@ -1,16 +1,10 @@
-const setTrayTooltip = require(
-  '../../actions/tray/setTooltip'
-)
+import setTrayTooltip from '../../actions/tray/setTooltip.js'
 
-function handleSetTrayTooltip (
+export function handleSetTrayTooltip (
   _,
   value
 ) {
   setTrayTooltip(
     value
   )
-}
-
-module.exports = {
-  handleSetTrayTooltip
 }

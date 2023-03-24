@@ -1,11 +1,5 @@
-const clearTabs = require(
-  '../../actions/tabs/clear'
-)
+import clearTabs from '../../actions/tabs/clear.js'
 
-function handleClearTabs () {
+export function handleClearTabs () {
   clearTabs()
-}
-
-module.exports = {
-  handleClearTabs
 }

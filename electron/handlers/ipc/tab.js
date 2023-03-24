@@ -1,23 +1,11 @@
-const createTab = require(
-  '../../actions/tab/create'
-)
-const setActiveTab = require(
-  '../../actions/tab/setActive'
-)
-const updateTab = require(
-  '../../actions/tab/update'
-)
-const isReplaceActiveTab = require(
-  '../../actions/tab/isReplaceActive'
-)
-const replaceActiveTab = require(
-  '../../actions/tab/replaceActive'
-)
-const removeTab = require(
-  '../../actions/tab/remove'
-)
+import createTab from '../../actions/tab/create.js'
+import setActiveTab from '../../actions/tab/setActive.js'
+import updateTab from '../../actions/tab/update.js'
+import isReplaceActiveTab from '../../actions/tab/isReplaceActive.js'
+import replaceActiveTab from '../../actions/tab/replaceActive.js'
+import removeTab from '../../actions/tab/remove.js'
 
-function handleAddTab (
+export function handleAddTab (
   _,
   data
 ) {
@@ -26,7 +14,7 @@ function handleAddTab (
   )
 }
 
-function handleSetActiveTab (
+export function handleSetActiveTab (
   _,
   tabId
 ) {
@@ -35,7 +23,7 @@ function handleSetActiveTab (
   )
 }
 
-function handleUpdateTab (
+export function handleUpdateTab (
   _,
   data
 ) {
@@ -44,7 +32,7 @@ function handleUpdateTab (
   )
 }
 
-function handleRemoveTab (
+export function handleRemoveTab (
   _,
   tabId
 ) {
@@ -62,11 +50,4 @@ function handleRemoveTab (
   removeTab(
     tabId
   )
-}
-
-module.exports = {
-  handleAddTab,
-  handleSetActiveTab,
-  handleUpdateTab,
-  handleRemoveTab
 }

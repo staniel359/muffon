@@ -1,4 +1,4 @@
-const schema = {
+export default {
   'audio.volume': {
     type: 'number',
     default: 1
@@ -312,5 +312,3 @@ const schema = {
     default: false
   }
 }
-
-module.exports = schema

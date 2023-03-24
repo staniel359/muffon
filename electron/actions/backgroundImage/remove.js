@@ -1,16 +1,13 @@
-const getPath = require(
-  './getPath'
-)
-const removeFile = require(
-  '../file/remove'
-)
+import getPath from './getPath.js'
+import removeFile from '../file/remove.js'
 
-function remove (
+export default function remove (
   {
     imageId
   }
 ) {
-  const fileName = imageId.toString()
+  const fileName =
+    imageId.toString()
 
   const filePath =
     getPath(
@@ -32,5 +29,3 @@ function remove (
       data
     )
 }
-
-module.exports = remove

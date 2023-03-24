@@ -1,15 +1,13 @@
-const {
+import {
   nativeTheme
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   handleNativeThemeUpdated
-} = require(
-  '../handlers/nativeTheme'
-)
+} from '../handlers/nativeTheme.js'
 
-nativeTheme.on(
-  'updated',
-  handleNativeThemeUpdated
-)
+export default function set () {
+  nativeTheme.on(
+    'updated',
+    handleNativeThemeUpdated
+  )
+}

@@ -1,30 +1,16 @@
-const {
+import {
   generateKey
-} = require(
-  '../../../shared/helpers/utils'
-)
-const {
+} from '../../../shared/helpers/utils.js'
+import {
   audioFolderPath
-} = require(
-  '../../paths'
-)
-const findTab = require(
-  '../tab/find'
-)
-const {
+} from '../../paths.js'
+import findTab from '../tab/find.js'
+import {
   download
-} = require(
-  'electron-dl'
-)
-const encrypt = require(
-  './encrypt'
-)
-const getPath = require(
-  './getPath'
-)
-const moment = require(
-  'moment-timezone'
-)
+} from 'electron-dl'
+import encrypt from './encrypt.js'
+import getPath from './getPath.js'
+import moment from 'moment-timezone'
 
 let trackData
 
@@ -90,7 +76,7 @@ function handleError () {
     )
 }
 
-function save (
+export default function save (
   {
     track,
     tabId
@@ -125,5 +111,3 @@ function save (
     handleError
   )
 }
-
-module.exports = save

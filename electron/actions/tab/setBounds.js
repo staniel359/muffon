@@ -1,8 +1,6 @@
-const electronStore = require(
-  '../../../shared/plugins/electronStore'
-)
+import electronStore from '../../../shared/plugins/electronStore.js'
 
-function setBounds (
+export default function setBounds (
   tab
 ) {
   const scale =
@@ -35,5 +33,3 @@ function setBounds (
     options
   )
 }
-
-module.exports = setBounds

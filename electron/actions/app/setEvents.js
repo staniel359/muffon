@@ -1,49 +1,29 @@
-const appEvents = require(
-  '../../events/app'
-)
-const nativeThemeEvents = require(
-  '../../events/nativeTheme'
-)
-const ipcAppEvents = require(
-  '../../events/ipc/app'
-)
-const ipcTrayEvents = require(
-  '../../events/ipc/tray'
-)
-const ipcTabEvents = require(
-  '../../events/ipc/tab'
-)
-const ipcTabsEvents = require(
-  '../../events/ipc/tabs'
-)
-const ipcStoreEvents = require(
-  '../../events/ipc/store'
-)
-const ipcAudioEvents = require(
-  '../../events/ipc/audio'
-)
-const ipcBackgroundImageEvents = require(
-  '../../events/ipc/backgroundImage'
-)
+import setAppEvents from '../../events/app.js'
+import setNativeThemeEvents from '../../events/nativeTheme.js'
+import setIpcAppEvents from '../../events/ipc/app.js'
+import setIpcTrayEvents from '../../events/ipc/tray.js'
+import setIpcTabEvents from '../../events/ipc/tab.js'
+import setIpcTabsEvents from '../../events/ipc/tabs.js'
+import setIpcStoreEvents from '../../events/ipc/store.js'
+import setIpcAudioEvents from '../../events/ipc/audio.js'
+import setIpcBackgroundImageEvents from '../../events/ipc/backgroundImage.js'
 
-function setEvents () {
-  appEvents
+export default function setEvents () {
+  setAppEvents()
 
-  nativeThemeEvents
+  setNativeThemeEvents()
 
-  ipcAppEvents
+  setIpcAppEvents()
 
-  ipcTrayEvents
+  setIpcTrayEvents()
 
-  ipcTabEvents
+  setIpcTabEvents()
 
-  ipcTabsEvents
+  setIpcTabsEvents()
 
-  ipcStoreEvents
+  setIpcStoreEvents()
 
-  ipcAudioEvents
+  setIpcAudioEvents()
 
-  ipcBackgroundImageEvents
+  setIpcBackgroundImageEvents()
 }
-
-module.exports = setEvents

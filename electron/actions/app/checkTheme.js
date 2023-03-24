@@ -1,10 +1,8 @@
-const {
+import {
   nativeTheme
-} = require(
-  'electron'
-)
+} from 'electron'
 
-function checkTheme () {
+export default function checkTheme () {
   const isDarkMode =
     nativeTheme.shouldUseDarkColors
 
@@ -12,5 +10,3 @@ function checkTheme () {
     isDarkMode
   }
 }
-
-module.exports = checkTheme

@@ -1,33 +1,31 @@
-const {
+import {
   ipcMain
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   handleAddTab,
   handleSetActiveTab,
   handleUpdateTab,
   handleRemoveTab
-} = require(
-  '../../handlers/ipc/tab'
-)
+} from '../../handlers/ipc/tab.js'
 
-ipcMain.on(
-  'add-tab',
-  handleAddTab
-)
+export default function set () {
+  ipcMain.on(
+    'add-tab',
+    handleAddTab
+  )
 
-ipcMain.on(
-  'set-active-tab',
-  handleSetActiveTab
-)
+  ipcMain.on(
+    'set-active-tab',
+    handleSetActiveTab
+  )
 
-ipcMain.on(
-  'update-tab',
-  handleUpdateTab
-)
+  ipcMain.on(
+    'update-tab',
+    handleUpdateTab
+  )
 
-ipcMain.on(
-  'remove-tab',
-  handleRemoveTab
-)
+  ipcMain.on(
+    'remove-tab',
+    handleRemoveTab
+  )
+}

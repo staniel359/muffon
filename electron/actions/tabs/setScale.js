@@ -1,14 +1,8 @@
-const getTabs = require(
-  './get'
-)
-const setTabBounds = require(
-  '../tab/setBounds'
-)
-const setTabScale = require(
-  '../tab/setScale'
-)
+import getTabs from './get.js'
+import setTabBounds from '../tab/setBounds.js'
+import setTabScale from '../tab/setScale.js'
 
-function setScale (
+export default function setScale (
   value
 ) {
   function setTabBoundsAndScale (
@@ -28,5 +22,3 @@ function setScale (
     setTabBoundsAndScale
   )
 }
-
-module.exports = setScale

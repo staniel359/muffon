@@ -1,11 +1,7 @@
-const getPath = require(
-  './getPath'
-)
-const removeFile = require(
-  '../file/remove'
-)
+import getPath from './getPath.js'
+import removeFile from '../file/remove.js'
 
-function remove (
+export default function remove (
   fileName
 ) {
   const filePath =
@@ -17,5 +13,3 @@ function remove (
     filePath
   )
 }
-
-module.exports = remove

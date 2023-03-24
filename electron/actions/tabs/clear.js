@@ -1,9 +1,5 @@
-const get = require(
-  './get'
-)
-const clearTab = require(
-  '../tab/clear'
-)
+import get from './get.js'
+import clearTab from '../tab/clear.js'
 
 function getTabId (
   tabData
@@ -11,7 +7,7 @@ function getTabId (
   return tabData.uuid
 }
 
-function clear () {
+export default function clear () {
   const tabIds =
     get().map(
       getTabId
@@ -21,5 +17,3 @@ function clear () {
     clearTab
   )
 }
-
-module.exports = clear

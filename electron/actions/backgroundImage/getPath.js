@@ -1,19 +1,15 @@
-const path = require(
-  'path'
-)
-const {
+import {
+  join as joinPath
+} from 'path'
+import {
   backgroundImagesFolderPath
-} = require(
-  '../../paths'
-)
+} from '../../paths.js'
 
-function getPath (
+export default function getPath (
   fileName
 ) {
-  return path.join(
+  return joinPath(
     backgroundImagesFolderPath,
     fileName
   )
 }
-
-module.exports = getPath

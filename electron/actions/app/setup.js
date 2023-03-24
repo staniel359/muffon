@@ -1,20 +1,10 @@
-const ElectronStore = require(
-  'electron-store'
-)
-const createMainWindow = require(
-  '../mainWindow/create'
-)
-const createAboutWindow = require(
-  '../aboutWindow/create'
-)
-const createTray = require(
-  '../tray/create'
-)
-const createSessionHeadersHandler = require(
-  '../session/createHeadersHandler'
-)
+import ElectronStore from 'electron-store'
+import createMainWindow from '../mainWindow/create.js'
+import createAboutWindow from '../aboutWindow/create.js'
+import createTray from '../tray/create.js'
+import createSessionHeadersHandler from '../session/createHeadersHandler.js'
 
-function setup () {
+export default function setup () {
   ElectronStore.initRenderer()
 
   createMainWindow()
@@ -25,5 +15,3 @@ function setup () {
 
   createSessionHeadersHandler()
 }
-
-module.exports = setup

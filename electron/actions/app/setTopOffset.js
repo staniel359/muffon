@@ -1,10 +1,8 @@
-const {
+import {
   isMac
-} = require(
-  '../../utils'
-)
+} from '../../utils.js'
 
-function setTopOffset () {
+export default function setTopOffset () {
   const isFullScreen =
     mainWindow.isFullScreen()
 
@@ -16,5 +14,3 @@ function setTopOffset () {
       tabsPanelHeight
   )
 }
-
-module.exports = setTopOffset

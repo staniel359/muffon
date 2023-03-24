@@ -1,33 +1,31 @@
-const {
+import {
   ipcMain
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   handleCreateBackgroundImage,
   handleChangeBackgroundImage,
   handleResetBackgroundImage,
   handleDeleteBackgroundImage
-} = require(
-  '../../handlers/ipc/backgroundImage'
-)
+} from '../../handlers/ipc/backgroundImage.js'
 
-ipcMain.on(
-  'create-background-image',
-  handleCreateBackgroundImage
-)
+export default function set () {
+  ipcMain.on(
+    'create-background-image',
+    handleCreateBackgroundImage
+  )
 
-ipcMain.on(
-  'change-background-image',
-  handleChangeBackgroundImage
-)
+  ipcMain.on(
+    'change-background-image',
+    handleChangeBackgroundImage
+  )
 
-ipcMain.on(
-  'reset-background-image',
-  handleResetBackgroundImage
-)
+  ipcMain.on(
+    'reset-background-image',
+    handleResetBackgroundImage
+  )
 
-ipcMain.on(
-  'delete-background-image',
-  handleDeleteBackgroundImage
-)
+  ipcMain.on(
+    'delete-background-image',
+    handleDeleteBackgroundImage
+  )
+}

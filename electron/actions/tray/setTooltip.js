@@ -1,15 +1,11 @@
-const {
+import {
   appName
-} = require(
-  '../../utils'
-)
+} from '../../utils.js'
 
-function setTooltip (
+export default function setTooltip (
   value
 ) {
   tray.setToolTip(
     value || appName
   )
 }
-
-module.exports = setTooltip

@@ -1,11 +1,7 @@
-const {
+import {
   app
-} = require(
-  'electron'
-)
+} from 'electron'
 
-function exit () {
+export default function exit () {
   app.exit()
 }
-
-module.exports = exit

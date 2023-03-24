@@ -1,8 +1,6 @@
-const clear = require(
-  './clear'
-)
+import clear from './clear.js'
 
-function remove (
+export default function remove (
   tabId
 ) {
   clear(
@@ -16,5 +14,3 @@ function remove (
       tabId
     )
 }
-
-module.exports = remove

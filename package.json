@@ -13,7 +13,8 @@
     "email": "staniel359@gmail.com",
     "url": "https://github.com/staniel359"
   },
-  "main": "electron.js",
+  "type": "module",
+  "main": "main.cjs",
   "repository": "github:staniel359/muffon",
   "scripts": {
     "start": "vue-cli-service serve",

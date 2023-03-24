@@ -1,4 +1,4 @@
-function change (
+export default function change (
   {
     imageId,
     imagePath
@@ -16,5 +16,3 @@ function change (
       data
     )
 }
-
-module.exports = change

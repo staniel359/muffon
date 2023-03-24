@@ -1,7 +1,3 @@
-const generateKey = require(
-  'uuid'
-).v4
-
-module.exports = {
-  generateKey
-}
+export {
+  v4 as generateKey
+} from 'uuid'

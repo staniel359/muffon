@@ -1,19 +1,13 @@
-const {
+import {
   generateKey
-} = require(
-  '../../../shared/helpers/utils'
-)
-const getPath = require(
-  './getPath'
-)
-const fs = require(
-  'fs'
-)
-const findTab = require(
-  '../tab/find'
-)
+} from '../../../shared/helpers/utils.js'
+import getPath from './getPath.js'
+import {
+  writeFile
+} from 'fs'
+import findTab from '../tab/find.js'
 
-function create (
+export default function create (
   {
     tabId,
     imageData
@@ -67,12 +61,10 @@ function create (
         'base64'
       )
 
-    fs.writeFile(
+    writeFile(
       filePath,
       buffer,
       handleComplete
     )
   }
 }
-
-module.exports = create

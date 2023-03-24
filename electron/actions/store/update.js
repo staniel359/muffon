@@ -1,8 +1,6 @@
-const getTabs = require(
-  '../tabs/get'
-)
+import getTabs from '../tabs/get.js'
 
-function update (
+export default function update (
   data,
   {
     isSave
@@ -38,5 +36,3 @@ function update (
       )
   }
 }
-
-module.exports = update

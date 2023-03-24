@@ -1,32 +1,14 @@
-const setTitle = require(
-  '../../actions/app/setTitle'
-)
-const clearCache = require(
-  '../../actions/app/clearCache'
-)
-const setLanguage = require(
-  '../../actions/app/setLanguage'
-)
-const setScale = require(
-  '../../actions/app/setScale'
-)
-const checkTheme = require(
-  '../../actions/app/checkTheme'
-)
-const callLogout = require(
-  '../../actions/app/callLogout'
-)
-const callAccountDelete = require(
-  '../../actions/app/callAccountDelete'
-)
-const callNavigate = require(
-  '../../actions/app/callNavigate'
-)
-const exit = require(
-  '../../actions/app/exit'
-)
+import setTitle from '../../actions/app/setTitle.js'
+import clearCache from '../../actions/app/clearCache.js'
+import setLanguage from '../../actions/app/setLanguage.js'
+import setScale from '../../actions/app/setScale.js'
+import checkTheme from '../../actions/app/checkTheme.js'
+import callLogout from '../../actions/app/callLogout.js'
+import callAccountDelete from '../../actions/app/callAccountDelete.js'
+import callNavigate from '../../actions/app/callNavigate.js'
+import exit from '../../actions/app/exit.js'
 
-function handleSetTitle (
+export function handleSetTitle (
   _,
   value
 ) {
@@ -35,11 +17,11 @@ function handleSetTitle (
   )
 }
 
-function handleClearCache () {
+export function handleClearCache () {
   return clearCache()
 }
 
-function handleSetLanguage (
+export function handleSetLanguage (
   _,
   value
 ) {
@@ -48,7 +30,7 @@ function handleSetLanguage (
   )
 }
 
-function handleSetScale (
+export function handleSetScale (
   _,
   value
 ) {
@@ -57,19 +39,19 @@ function handleSetScale (
   )
 }
 
-function handleCheckNativeTheme () {
+export function handleCheckNativeTheme () {
   return checkTheme()
 }
 
-function handleLogout () {
+export function handleLogout () {
   callLogout()
 }
 
-function handleAccountDelete () {
+export function handleAccountDelete () {
   callAccountDelete()
 }
 
-function handleNavigate (
+export function handleNavigate (
   _,
   value
 ) {
@@ -78,18 +60,6 @@ function handleNavigate (
   )
 }
 
-function handleExit () {
+export function handleExit () {
   exit()
-}
-
-module.exports = {
-  handleSetTitle,
-  handleClearCache,
-  handleSetLanguage,
-  handleSetScale,
-  handleCheckNativeTheme,
-  handleLogout,
-  handleAccountDelete,
-  handleNavigate,
-  handleExit
 }

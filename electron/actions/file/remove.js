@@ -1,14 +1,12 @@
-const fs = require(
-  'fs'
-)
+import {
+  unlinkSync
+} from 'fs'
 
-function remove (
+export default function remove (
   filePath
 ) {
-  fs.unlinkSync(
+  unlinkSync(
     filePath,
     () => true
   )
 }
-
-module.exports = remove

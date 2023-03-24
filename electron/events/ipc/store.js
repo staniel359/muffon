@@ -1,15 +1,13 @@
-const {
+import {
   ipcMain
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   handleUpdateStore
-} = require(
-  '../../handlers/ipc/store'
-)
+} from '../../handlers/ipc/store.js'
 
-ipcMain.handle(
-  'update-store',
-  handleUpdateStore
-)
+export default function set () {
+  ipcMain.handle(
+    'update-store',
+    handleUpdateStore
+  )
+}

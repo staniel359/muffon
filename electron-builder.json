@@ -54,7 +54,7 @@
   },
   "files": [
     "./.env",
-    "./electron.js",
+    "./main.cjs",
     "./electron/**/*",
     "./shared/**/*",
     {

@@ -1,8 +1,6 @@
-const find = require(
-  './find'
-)
+import find from './find.js'
 
-function clear (
+export default function clear (
   tabId
 ) {
   const tab =
@@ -20,5 +18,3 @@ function clear (
       .destroy()
   }
 }
-
-module.exports = clear

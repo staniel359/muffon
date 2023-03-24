@@ -1,15 +1,13 @@
-const {
+import {
   ipcMain
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   handleClearTabs
-} = require(
-  '../../handlers/ipc/tabs'
-)
+} from '../../handlers/ipc/tabs.js'
 
-ipcMain.on(
-  'clear-tabs',
-  handleClearTabs
-)
+export default function set () {
+  ipcMain.on(
+    'clear-tabs',
+    handleClearTabs
+  )
+}

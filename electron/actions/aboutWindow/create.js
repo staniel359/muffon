@@ -1,18 +1,12 @@
-const {
+import {
   BrowserWindow
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   windowIcon
-} = require(
-  '../../icons'
-)
-const {
+} from '../../icons.js'
+import {
   baseUrl
-} = require(
-  '../../urls'
-)
+} from '../../urls.js'
 
 function handleClose (
   event
@@ -22,7 +16,7 @@ function handleClose (
   aboutWindow.hide()
 }
 
-function create () {
+export default function create () {
   const aboutWindowWidth = 450
   const aboutWindowHeight = 230
 
@@ -63,5 +57,3 @@ function create () {
     handleClose
   )
 }
-
-module.exports = create

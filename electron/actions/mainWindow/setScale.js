@@ -1,4 +1,4 @@
-function setScale (
+export default function setScale (
   value
 ) {
   mainWindow
@@ -7,5 +7,3 @@ function setScale (
       value
     )
 }
-
-module.exports = setScale

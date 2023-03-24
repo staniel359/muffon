@@ -1,4 +1,4 @@
-function callNavigate (
+export default function callNavigate (
   value
 ) {
   mainWindow
@@ -8,5 +8,3 @@ function callNavigate (
       value
     )
 }
-
-module.exports = callNavigate

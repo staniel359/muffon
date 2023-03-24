@@ -1,4 +1,4 @@
-function setScale (
+export default function setScale (
   tab,
   value
 ) {
@@ -8,5 +8,3 @@ function setScale (
       value
     )
 }
-
-module.exports = setScale

@@ -1,40 +1,22 @@
-const {
+import {
   BrowserView
-} = require(
-  'electron'
-)
-const electronStore = require(
-  '../../../shared/plugins/electronStore'
-)
-const getActiveId = require(
-  './getActiveId'
-)
-const setActive = require(
-  './setActive'
-)
-const setBounds = require(
-  './setBounds'
-)
-const setScale = require(
-  './setScale'
-)
-const {
+} from 'electron'
+import electronStore from '../../../shared/plugins/electronStore.js'
+import getActiveId from './getActiveId.js'
+import setActive from './setActive.js'
+import setBounds from './setBounds.js'
+import setScale from './setScale.js'
+import {
   baseUrl
-} = require(
-  '../../urls'
-)
-const {
+} from '../../urls.js'
+import {
   isDevelopment
-} = require(
-  '../../utils'
-)
-const {
+} from '../../utils.js'
+import {
   handleNewWindow
-} = require(
-  '../../handlers/app'
-)
+} from '../../handlers/app.js'
 
-function create (
+export default function create (
   data
 ) {
   const {
@@ -150,5 +132,3 @@ function create (
       handleDomReady
     )
 }
-
-module.exports = create

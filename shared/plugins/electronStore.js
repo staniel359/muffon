@@ -1,9 +1,5 @@
-const ElectronStore = require(
-  'electron-store'
-)
-const schema = require(
-  './electronStore/schema'
-)
+import ElectronStore from 'electron-store'
+import schema from './electronStore/schema.js'
 
 const encryptionKey =
   process.env.VUE_APP_ELECTRON_STORE_KEY
@@ -15,9 +11,6 @@ const options = {
   schema
 }
 
-const electronStore =
-  new ElectronStore(
-    options
-  )
-
-module.exports = electronStore
+export default new ElectronStore(
+  options
+)

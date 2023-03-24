@@ -1,16 +1,10 @@
-const getTabs = require(
-  './get'
-)
-const setTabBounds = require(
-  '../tab/setBounds'
-)
+import getTabs from './get.js'
+import setTabBounds from '../tab/setBounds.js'
 
-function setBounds (
+export default function setBounds (
   value
 ) {
   getTabs().forEach(
     setTabBounds
   )
 }
-
-module.exports = setBounds

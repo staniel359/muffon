@@ -1,11 +1,7 @@
-const electronStore = require(
-  '../../../shared/plugins/electronStore'
-)
+import electronStore from '../../../shared/plugins/electronStore.js'
 
-function getActiveId () {
+export default function getActiveId () {
   return electronStore.get(
     'layout.activeTabId'
   )
 }
-
-module.exports = getActiveId

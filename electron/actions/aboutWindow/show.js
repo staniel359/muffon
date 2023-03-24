@@ -1,11 +1,7 @@
-const setTitle = require(
-  './setTitle'
-)
+import setTitle from './setTitle.js'
 
-function show () {
+export default function show () {
   setTitle()
 
   aboutWindow.show()
 }
-
-module.exports = show

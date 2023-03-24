@@ -1,5 +1,3 @@
-function get () {
+export default function get () {
   return mainWindow.getBrowserViews()
 }
-
-module.exports = get

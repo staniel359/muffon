@@ -1,18 +1,18 @@
-const {
+import {
   isDevelopment
-} = require(
-  './utils'
-)
-const {
+} from './utils.js'
+import {
   productionPath
-} = require(
-  './paths'
+} from './paths.js'
+
+const developmentUrl =
+  'http://localhost:3000/'
+
+const productionUrl =
+  `file://${productionPath}`
+
+export const baseUrl = (
+  isDevelopment
+    ? developmentUrl
+    : productionUrl
 )
-
-const baseUrl = isDevelopment
-  ? 'http://localhost:3000/'
-  : `file://${productionPath}`
-
-module.exports = {
-  baseUrl
-}

@@ -1,18 +1,21 @@
-const {
+import {
   app
-} = require(
-  'electron'
-)
-const setup = require(
-  './setup'
-)
-const {
+} from 'electron'
+import setFlags from './setFlags.js'
+import setGlobalVariables from './setGlobalVariables.js'
+import setEvents from './setEvents.js'
+import setup from './setup.js'
+import {
   appName
-} = require(
-  '../../utils'
-)
+} from '../../utils.js'
 
-function initialize () {
+export default function initialize () {
+  setFlags()
+
+  setGlobalVariables()
+
+  setEvents()
+
   app
     .whenReady()
     .then(
@@ -23,5 +26,3 @@ function initialize () {
     appName
   )
 }
-
-module.exports = initialize

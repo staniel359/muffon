@@ -1,11 +1,7 @@
-const saveAudio = require(
-  '../../actions/audio/save'
-)
-const removeAudio = require(
-  '../../actions/audio/remove'
-)
+import saveAudio from '../../actions/audio/save.js'
+import removeAudio from '../../actions/audio/remove.js'
 
-function handleSaveAudio (
+export function handleSaveAudio (
   _,
   {
     track,
@@ -20,7 +16,7 @@ function handleSaveAudio (
   )
 }
 
-function handleDeleteAudio (
+export function handleDeleteAudio (
   _,
   {
     fileName
@@ -29,9 +25,4 @@ function handleDeleteAudio (
   removeAudio(
     fileName
   )
-}
-
-module.exports = {
-  handleSaveAudio,
-  handleDeleteAudio
 }

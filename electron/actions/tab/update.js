@@ -1,4 +1,4 @@
-function update (
+export default function update (
   data
 ) {
   mainWindow
@@ -8,5 +8,3 @@ function update (
       data
     )
 }
-
-module.exports = update

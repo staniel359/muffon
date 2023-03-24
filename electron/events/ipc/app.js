@@ -1,9 +1,7 @@
-const {
+import {
   ipcMain
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   handleSetTitle,
   handleClearCache,
   handleSetLanguage,
@@ -13,51 +11,51 @@ const {
   handleAccountDelete,
   handleNavigate,
   handleExit
-} = require(
-  '../../handlers/ipc/app'
-)
+} from '../../handlers/ipc/app.js'
 
-ipcMain.on(
-  'set-title',
-  handleSetTitle
-)
+export default function set () {
+  ipcMain.on(
+    'set-title',
+    handleSetTitle
+  )
 
-ipcMain.handle(
-  'clear-cache',
-  handleClearCache
-)
+  ipcMain.handle(
+    'clear-cache',
+    handleClearCache
+  )
 
-ipcMain.on(
-  'set-language',
-  handleSetLanguage
-)
+  ipcMain.on(
+    'set-language',
+    handleSetLanguage
+  )
 
-ipcMain.on(
-  'set-scale',
-  handleSetScale
-)
+  ipcMain.on(
+    'set-scale',
+    handleSetScale
+  )
 
-ipcMain.handle(
-  'check-native-theme',
-  handleCheckNativeTheme
-)
+  ipcMain.handle(
+    'check-native-theme',
+    handleCheckNativeTheme
+  )
 
-ipcMain.on(
-  'logout',
-  handleLogout
-)
+  ipcMain.on(
+    'logout',
+    handleLogout
+  )
 
-ipcMain.on(
-  'account-delete',
-  handleAccountDelete
-)
+  ipcMain.on(
+    'account-delete',
+    handleAccountDelete
+  )
 
-ipcMain.on(
-  'navigate',
-  handleNavigate
-)
+  ipcMain.on(
+    'navigate',
+    handleNavigate
+  )
 
-ipcMain.on(
-  'exit',
-  handleExit
-)
+  ipcMain.on(
+    'exit',
+    handleExit
+  )
+}

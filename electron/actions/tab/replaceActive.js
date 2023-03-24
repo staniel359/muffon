@@ -1,14 +1,8 @@
-const findIndex = require(
-  './findIndex'
-)
-const getTabs = require(
-  '../tabs/get'
-)
-const setActive = require(
-  './setActive'
-)
+import findIndex from './findIndex.js'
+import getTabs from '../tabs/get.js'
+import setActive from './setActive.js'
 
-function replaceActive (
+export default function replaceActive (
   tabId
 ) {
   const tabIndex =
@@ -28,5 +22,3 @@ function replaceActive (
     newActiveTabId
   )
 }
-
-module.exports = replaceActive

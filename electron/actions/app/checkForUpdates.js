@@ -1,16 +1,10 @@
-const {
+import {
   app,
   dialog,
   shell
-} = require(
-  'electron'
-)
-const axios = require(
-  'axios'
-)
-const i18n = require(
-  '../../../shared/plugins/i18n'
-)
+} from 'electron'
+import axios from 'axios'
+import i18n from '../../../shared/plugins/i18n.js'
 
 let latestRelease
 let latestVersion
@@ -94,7 +88,7 @@ function handleError () {
   )
 }
 
-function checkForUpdates () {
+export default function checkForUpdates () {
   const releasesUrl =
     'https://api.github.com/repos/staniel359/muffon/releases/latest'
 
@@ -106,5 +100,3 @@ function checkForUpdates () {
     handleError
   )
 }
-
-module.exports = checkForUpdates

@@ -1,11 +1,7 @@
-const electronStore = require(
-  '../../shared/plugins/electronStore'
-)
-const updateTheme = require(
-  '../actions/app/updateTheme'
-)
+import electronStore from '../../shared/plugins/electronStore.js'
+import updateTheme from '../actions/app/updateTheme.js'
 
-function handleNativeThemeUpdated () {
+export function handleNativeThemeUpdated () {
   const isWithSystemTheme =
     electronStore.get(
       'layout.isWithSystemTheme'
@@ -14,8 +10,4 @@ function handleNativeThemeUpdated () {
   if (isWithSystemTheme) {
     updateTheme()
   }
-}
-
-module.exports = {
-  handleNativeThemeUpdated
 }

@@ -1,10 +1,10 @@
-function handleAllWindowsClosed (
+export function handleAllWindowsClosed (
   event
 ) {
   event.preventDefault()
 }
 
-function handleNewWindow (
+export function handleNewWindow (
   {
     url
   }
@@ -23,9 +23,4 @@ function handleNewWindow (
   return {
     action: 'deny'
   }
-}
-
-module.exports = {
-  handleAllWindowsClosed,
-  handleNewWindow
 }

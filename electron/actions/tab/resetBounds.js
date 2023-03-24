@@ -1,4 +1,4 @@
-function resetBounds (
+export default function resetBounds (
   tab
 ) {
   const [
@@ -17,5 +17,3 @@ function resetBounds (
     options
   )
 }
-
-module.exports = resetBounds

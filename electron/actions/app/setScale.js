@@ -1,11 +1,7 @@
-const setMainWindowScale = require(
-  '../mainWindow/setScale'
-)
-const setTabsScale = require(
-  '../tabs/setScale'
-)
+import setMainWindowScale from '../mainWindow/setScale.js'
+import setTabsScale from '../tabs/setScale.js'
 
-function setScale (
+export default function setScale (
   value
 ) {
   setMainWindowScale(
@@ -16,5 +12,3 @@ function setScale (
     value
   )
 }
-
-module.exports = setScale

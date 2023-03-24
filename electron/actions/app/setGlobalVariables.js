@@ -1,4 +1,4 @@
-function setGlobalVariables () {
+export default function setGlobalVariables () {
   global.mainWindow = null
 
   global.aboutWindow = null
@@ -11,5 +11,3 @@ function setGlobalVariables () {
 
   global.topOffset = null
 }
-
-module.exports = setGlobalVariables

@@ -1,15 +1,11 @@
-const {
+import {
   appName
-} = require(
-  '../../utils'
-)
+} from '../../utils.js'
 
-function setTitle (
+export default function setTitle (
   value
 ) {
   mainWindow.setTitle(
     value || appName
   )
 }
-
-module.exports = setTitle

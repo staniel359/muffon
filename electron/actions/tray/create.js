@@ -1,25 +1,17 @@
-const {
+import {
   Tray
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   trayIcon
-} = require(
-  '../../icons'
-)
-const setMenu = require(
-  './setMenu'
-)
-const setTooltip = require(
-  './setTooltip'
-)
+} from '../../icons.js'
+import setMenu from './setMenu.js'
+import setTooltip from './setTooltip.js'
 
 function handleClick () {
   mainWindow.show()
 }
 
-function create () {
+export default function create () {
   tray = new Tray(
     trayIcon
   )
@@ -33,5 +25,3 @@ function create () {
     handleClick
   )
 }
-
-module.exports = create

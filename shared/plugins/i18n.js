@@ -1,40 +1,62 @@
-const {
+import {
   createI18n
-} = require(
-  'vue-i18n'
-)
-const electronStore = require(
-  './electronStore'
-)
-const {
-  formatLocales
-} = require(
-  './i18n/locales'
-)
-const belarusianRussianPluralizationRule = require(
-  './i18n/rules/pluralization/beRu'
-)
+} from 'vue-i18n'
+import electronStore from './electronStore.js'
+import locales from '../helpers/data/i18n/locales.js'
+import belarusianRussianPluralizationRule
+  from './i18n/rules/pluralization/beRu.js'
 
 const locale =
   electronStore.get(
     'profile.language'
   )
 
-function importLocaleFile (
-  {
-    id
-  }
+async function importLocale (
+  localeData
 ) {
-  return require(
-    `./i18n/locales/${id}.json`
+  const {
+    id
+  } = localeData
+
+  const importPath =
+    `../helpers/data/i18n/locales/${id}.json`
+
+  const importData = {
+    assert: {
+      type: 'json'
+    }
+  }
+
+  function handleImport (
+    result
+  ) {
+    return [
+      id,
+      result.default
+    ]
+  }
+
+  return import(
+    importPath,
+    importData
+  ).then(
+    handleImport
   )
 }
 
+const localesImported =
+  locales.map(
+    importLocale
+  )
+
+const localesFormatted =
+  await Promise.all(
+    localesImported
+  )
+
 const messages =
-  formatLocales(
-    {
-      importLocaleFile
-    }
+  Object.fromEntries(
+    localesFormatted
   )
 
 const pluralizationRules = {
@@ -42,7 +64,7 @@ const pluralizationRules = {
   ru: belarusianRussianPluralizationRule
 }
 
-const i18n = createI18n(
+export default createI18n(
   {
     fallbackLocale: 'en',
     locale,
@@ -50,5 +72,3 @@ const i18n = createI18n(
     pluralizationRules
   }
 )
-
-module.exports = i18n

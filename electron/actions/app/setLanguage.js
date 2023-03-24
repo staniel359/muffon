@@ -1,14 +1,8 @@
-const i18n = require(
-  '../../../shared/plugins/i18n'
-)
-const setTrayMenu = require(
-  '../tray/setMenu'
-)
-const setAboutWindowTitle = require(
-  '../aboutWindow/setTitle'
-)
+import i18n from '../../../shared/plugins/i18n.js'
+import setTrayMenu from '../tray/setMenu.js'
+import setAboutWindowTitle from '../aboutWindow/setTitle.js'
 
-function setLanguage (
+export default function setLanguage (
   value
 ) {
   i18n.global.locale = value
@@ -17,5 +11,3 @@ function setLanguage (
 
   setAboutWindowTitle()
 }
-
-module.exports = setLanguage

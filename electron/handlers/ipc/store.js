@@ -1,8 +1,6 @@
-const updateStore = require(
-  '../../actions/store/update'
-)
+import updateStore from '../../actions/store/update.js'
 
-function handleUpdateStore (
+export function handleUpdateStore (
   _,
   data,
   {
@@ -15,8 +13,4 @@ function handleUpdateStore (
       isSave
     }
   )
-}
-
-module.exports = {
-  handleUpdateStore
 }

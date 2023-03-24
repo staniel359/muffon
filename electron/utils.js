@@ -1,37 +1,37 @@
-const fs = require(
-  'fs'
+import {
+  existsSync,
+  mkdirSync
+} from 'fs'
+
+export const appName = 'muffon'
+
+export const isDevelopment = (
+  process.env.NODE_ENV === 'development'
 )
 
-const appName = 'muffon'
+export const isShowDevTools = (
+  process.env.DEV_TOOLS === 'true'
+)
 
-const isDevelopment =
-  process.env.NODE_ENV === 'development'
-
-const isMac =
+export const isMac = (
   process.platform === 'darwin'
+)
 
-const isLinux =
+export const isLinux = (
   process.platform === 'linux'
+)
 
-function createFolderIfNotExists (
+export function createFolderIfNotExists (
   path
 ) {
   const isFolderExist =
-    fs.existsSync(
+    existsSync(
       path
     )
 
   if (!isFolderExist) {
-    fs.mkdirSync(
+    mkdirSync(
       path
     )
   }
-}
-
-module.exports = {
-  appName,
-  isDevelopment,
-  isMac,
-  isLinux,
-  createFolderIfNotExists
 }

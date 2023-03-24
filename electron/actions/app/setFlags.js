@@ -1,15 +1,11 @@
-const {
+import {
   app
-} = require(
-  'electron'
-)
+} from 'electron'
 
-function setFlags () {
+export default function setFlags () {
   app
     .commandLine
     .appendSwitch(
       'try-supported-channel-layouts'
     )
 }
-
-module.exports = setFlags

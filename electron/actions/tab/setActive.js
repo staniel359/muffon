@@ -1,8 +1,6 @@
-const find = require(
-  './find'
-)
+import find from './find.js'
 
-function setActive (
+export default function setActive (
   tabId
 ) {
   const tab =
@@ -21,5 +19,3 @@ function setActive (
       tabId
     )
 }
-
-module.exports = setActive

@@ -1,9 +1,7 @@
-function callExit () {
+export default function callExit () {
   mainWindow
     .webContents
     .send(
       'exit'
     )
 }
-
-module.exports = callExit

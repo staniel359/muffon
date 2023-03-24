@@ -1,17 +1,9 @@
-const open = require(
-  './open'
-)
-const encryptFile = require(
-  '../file/encrypt'
-)
-const create = require(
-  './create'
-)
-const remove = require(
-  './remove'
-)
+import open from './open.js'
+import encryptFile from '../file/encrypt.js'
+import create from './create.js'
+import remove from './remove.js'
 
-function encrypt (
+export default function encrypt (
   {
     tempFileName,
     fileName
@@ -47,5 +39,3 @@ function encrypt (
     iv
   }
 }
-
-module.exports = encrypt

@@ -1,15 +1,13 @@
-const {
+import {
   app
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   handleAllWindowsClosed
-} = require(
-  '../handlers/app'
-)
+} from '../handlers/app.js'
 
-app.on(
-  'window-all-closed',
-  handleAllWindowsClosed
-)
+export default function set () {
+  app.on(
+    'window-all-closed',
+    handleAllWindowsClosed
+  )
+}

@@ -1,30 +1,58 @@
-const {
+import {
   app
-} = require(
-  'electron'
-)
-const path = require(
-  'path'
-)
-const {
+} from 'electron'
+import {
+  dirname,
+  join as joinPath
+} from 'path'
+import {
+  fileURLToPath
+} from 'url'
+import {
+  isDevelopment,
   createFolderIfNotExists
-} = require(
-  './utils'
-)
+} from './utils.js'
 
-const productionPath =
-  path.join(
-    __dirname,
-    '../index.html'
+export function formatFileRootPath (
+  filePath
+) {
+  const directory = dirname(
+    fileURLToPath(
+      import.meta.url
+    )
   )
+
+  return joinPath(
+    directory,
+    '..',
+    filePath
+  )
+}
+
+export const productionPath =
+  formatFileRootPath(
+    'index.html'
+  )
+
+if (isDevelopment) {
+  const developmentUserDataPath =
+    formatFileRootPath(
+      'electron_data'
+    )
+
+  app.setPath(
+    'userData',
+    developmentUserDataPath
+  )
+}
 
 const userDataPath =
   app.getPath(
     'userData'
   )
 
-const audioFolderPath =
-  path.join(
+export const audioFolderPath =
+  joinPath(
     userDataPath,
     'audio'
   )
@@ -33,8 +61,8 @@ createFolderIfNotExists(
   audioFolderPath
 )
 
-const backgroundImagesFolderPath =
-  path.join(
+export const backgroundImagesFolderPath =
+  joinPath(
     userDataPath,
     'background_images'
   )
@@ -42,9 +70,3 @@ const backgroundImagesFolderPath =
 createFolderIfNotExists(
   backgroundImagesFolderPath
 )
-
-module.exports = {
-  productionPath,
-  audioFolderPath,
-  backgroundImagesFolderPath
-}

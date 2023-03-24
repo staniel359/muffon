@@ -1,8 +1,6 @@
-const getTabs = require(
-  '../tabs/get'
-)
+import getTabs from '../tabs/get.js'
 
-function find (
+export default function find (
   tabId
 ) {
   function isMatchedTab (
@@ -15,5 +13,3 @@ function find (
     isMatchedTab
   )
 }
-
-module.exports = find

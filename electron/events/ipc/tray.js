@@ -1,15 +1,13 @@
-const {
+import {
   ipcMain
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   handleSetTrayTooltip
-} = require(
-  '../../handlers/ipc/tray'
-)
+} from '../../handlers/ipc/tray.js'
 
-ipcMain.on(
-  'set-tray-tooltip',
-  handleSetTrayTooltip
-)
+export default function set () {
+  ipcMain.on(
+    'set-tray-tooltip',
+    handleSetTrayTooltip
+  )
+}

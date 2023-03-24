@@ -1,61 +1,32 @@
-const {
+import {
   BrowserWindow,
   Menu,
   screen
-} = require(
-  'electron'
-)
-const {
+} from 'electron'
+import {
   windowIcon
-} = require(
-  '../../icons'
-)
-const {
+} from '../../icons.js'
+import {
   isDevelopment,
-  isLinux
-} = require(
-  '../../utils'
-)
-const {
+  isLinux,
+  isShowDevTools
+} from '../../utils.js'
+import {
   baseUrl
-} = require(
-  '../../urls'
-)
-const electronStore = require(
-  '../../../shared/plugins/electronStore'
-)
-const show = require(
-  './show'
-)
-const hide = require(
-  './hide'
-)
-const checkForUpdates = require(
-  '../app/checkForUpdates'
-)
-const setTopOffset = require(
-  '../app/setTopOffset'
-)
-const setScale = require(
-  './setScale'
-)
-const callExit = require(
-  '../app/callExit'
-)
-const {
+} from '../../urls.js'
+import electronStore from '../../../shared/plugins/electronStore.js'
+import show from './show.js'
+import hide from './hide.js'
+import checkForUpdates from '../app/checkForUpdates.js'
+import setTopOffset from '../app/setTopOffset.js'
+import setScale from './setScale.js'
+import callExit from '../app/callExit.js'
+import {
   handleNewWindow
-} = require(
-  '../../handlers/app'
-)
-const setTrayMenu = require(
-  '../tray/setMenu'
-)
-const resetTabsBounds = require(
-  '../tabs/resetBounds'
-)
-const setTabsBounds = require(
-  '../tabs/setBounds'
-)
+} from '../../handlers/app.js'
+import setTrayMenu from '../tray/setMenu.js'
+import resetTabsBounds from '../tabs/resetBounds.js'
+import setTabsBounds from '../tabs/setBounds.js'
 
 function handleReadyToShow () {
   const isMaximizeOnStart =
@@ -140,7 +111,7 @@ function handleLeaveFullScreen () {
   setTabsBounds()
 }
 
-function create () {
+export default function create () {
   const mainWindowWidth = 900
   const mainWindowHeight = 600
 
@@ -174,15 +145,17 @@ function create () {
     null
   )
 
-  // const devToolsData = {
-  //   mode: 'detach'
-  // }
+  if (isShowDevTools) {
+    const devToolsData = {
+      mode: 'detach'
+    }
 
-  // mainWindow
-  //   .webContents
-  //   .openDevTools(
-  //     devToolsData
-  //   )
+    mainWindow
+      .webContents
+      .openDevTools(
+        devToolsData
+      )
+  }
 
   mainWindow.once(
     'ready-to-show',
@@ -232,5 +205,3 @@ function create () {
     handleLeaveFullScreen
   )
 }
-
-module.exports = create

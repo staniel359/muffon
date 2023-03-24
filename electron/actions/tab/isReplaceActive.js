@@ -1,11 +1,7 @@
-const getTabs = require(
-  '../tabs/get'
-)
-const getActiveId = require(
-  './getActiveId'
-)
+import getTabs from '../tabs/get.js'
+import getActiveId from './getActiveId.js'
 
-function isReplaceActive (
+export default function isReplaceActive (
   tabId
 ) {
   const isMultipleTabs =
@@ -20,5 +16,3 @@ function isReplaceActive (
       isActive
   )
 }
-
-module.exports = isReplaceActive
