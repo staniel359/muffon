@@ -4,6 +4,9 @@ import {
   enc
 } from 'crypto-js'
 import moment from 'moment-timezone'
+import {
+  shareEncryptionKey
+} from '@/helpers/data/env'
 
 export function getDistinctArray (
   value
@@ -97,9 +100,6 @@ export function isStringChanged (
       oldString
   )
 }
-
-export const shareEncryptionKey =
-  process.env.VUE_APP_SHARE_ENCRYPTION_KEY
 
 export function decryptTextWithLinks (
   text

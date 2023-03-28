@@ -14,18 +14,12 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import ImageItem from './BaseBackgroundImagesTableList/ImageItem.vue'
+import defaultImagePath from '@/assets/images/background.jpg'
 
 export default {
   name: 'BaseBackgroundImagesTableList',
   components: {
     ImageItem
-  },
-  data () {
-    return {
-      defaultImagePath: require(
-        '@/assets/images/Background.jpg'
-      )
-    }
   },
   computed: {
     ...mapState(
@@ -43,7 +37,7 @@ export default {
     defaultImageData () {
       return {
         id: 0,
-        path: this.defaultImagePath
+        path: defaultImagePath
       }
     }
   }

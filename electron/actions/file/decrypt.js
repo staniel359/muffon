@@ -1,0 +1,31 @@
+import crypto from 'crypto'
+import read from './read.js'
+
+export default function decrypt (
+  {
+    filePath,
+    key,
+    iv
+  }
+) {
+  const file =
+    read(
+      filePath
+    )
+
+  const decipher =
+    crypto.createDecipheriv(
+      'aes-256-cbc',
+      key,
+      iv
+    )
+
+  return Buffer.concat(
+    [
+      decipher.update(
+        file
+      ),
+      decipher.final()
+    ]
+  )
+}

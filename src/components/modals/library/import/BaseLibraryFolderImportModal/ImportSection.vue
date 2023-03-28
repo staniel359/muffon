@@ -15,12 +15,15 @@
 </template>
 
 <script>
+import {
+  parseFile
+} from 'music-metadata'
 import BaseProgress from '@/components/BaseProgress.vue'
 import BaseImportCompleteSection
   from '@/components/import/BaseImportCompleteSection.vue'
 import {
-  formatTags as formatFileTags
-} from '@/helpers/actions/file'
+  metatags as formatAudioFileMetatags
+} from '@/helpers/formatters/audioFile'
 import collectionMixin from '@/mixins/collectionMixin'
 
 export default {
@@ -63,7 +66,7 @@ export default {
     this.processFiles()
   },
   methods: {
-    formatFileTags,
+    formatAudioFileMetatags,
     handleProgressComplete () {
       this.isProgress = false
     },
@@ -78,10 +81,62 @@ export default {
       for (
         const file of this.files
       ) {
-        await this.formatFileTags(
+        await this.formatFile(
           file
         )
       }
+    },
+    async formatFile (
+      file
+    ) {
+      const filePath = file.path
+
+      const handleSuccess = async (
+        metadata
+      ) => {
+        const successTrack =
+          await formatAudioFileMetatags(
+            {
+              filePath,
+              metatags:
+                metadata.common
+            }
+          )
+
+        this.addCollectionItem(
+          {
+            collection: 'successTracks',
+            item: successTrack
+          }
+        )
+      }
+
+      const handleError = () => {
+        const errorTrack = {
+          text: filePath
+        }
+
+        this.addCollectionItem(
+          {
+            collection: 'errorTracks',
+            item: errorTrack
+          }
+        )
+      }
+
+      const handleFinish = () => {
+        this.incrementProgress()
+      }
+
+      await parseFile(
+        filePath
+      ).then(
+        handleSuccess
+      ).catch(
+        handleError
+      ).finally(
+        handleFinish
+      )
     },
     setProgressTotalCount () {
       this.$refs

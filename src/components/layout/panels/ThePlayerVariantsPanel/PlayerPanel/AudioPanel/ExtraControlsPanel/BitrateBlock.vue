@@ -21,11 +21,13 @@
 
 <script>
 import {
+  ipcRenderer
+} from 'electron'
+import axios from 'axios'
+import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import fs from 'fs'
-import axios from 'axios'
 import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 
@@ -100,11 +102,19 @@ export default {
     handleRemoteAudioError () {
       this.audioSize = 0
     },
-    getLocalAudioBitrate () {
-      this.audioSize =
-        fs.statSync(
-          this.audioPath
-        ).size
+    async getLocalAudioBitrate () {
+      const details =
+        await this.getLocalFileDetails()
+
+      this.audioSize = details.size
+    },
+    getLocalFileDetails () {
+      return ipcRenderer.invoke(
+        'read-file-details',
+        {
+          filePath: this.audioPath
+        }
+      )
     },
     getRemoteAudioBitrate () {
       axios.get(

@@ -19,6 +19,7 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import BaseImage from '@/components/images/BaseImage.vue'
+import logo from '@/assets/images/logo.png'
 
 export default {
   name: 'RootItem',
@@ -33,9 +34,7 @@ export default {
       ]
     ),
     logo () {
-      return require(
-        '@/../public/logo.png'
-      )
+      return logo
     }
   }
 }

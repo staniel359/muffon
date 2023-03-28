@@ -24,10 +24,9 @@ import {
 } from 'pinia'
 import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
-import fs from 'fs'
 import {
-  decrypt as decryptFile
-} from '@/helpers/actions/file'
+  decrypt as decryptAudioFile
+} from '@/helpers/actions/audioFile'
 
 export default {
   name: 'AudioElement',
@@ -43,50 +42,7 @@ export default {
       {
         playerPlaying: 'playing'
       }
-    ),
-    audioLink () {
-      const {
-        local,
-        link
-      } = this.playerPlaying.audio
-
-      if (local) {
-        return this.filePath
-      } else {
-        return link
-      }
-    },
-    filePath () {
-      if (this.isFileExist) {
-        return this.fileLink
-      } else {
-        return ''
-      }
-    },
-    isFileExist () {
-      const {
-        path
-      } = this.playerPlaying.audio.local
-
-      return fs.existsSync(
-        path
-      )
-    },
-    fileLink () {
-      const {
-        path,
-        key,
-        iv
-      } = this.playerPlaying.audio.local
-
-      return decryptFile(
-        {
-          filePath: path,
-          key,
-          iv
-        }
-      )
-    }
+    )
   },
   watch: {
     playerPlaying: {
@@ -205,14 +161,40 @@ export default {
         false
       )
     },
-    loadAudio () {
-      this.$refs
-        .audio
-        .src = this.audioLink
+    async loadAudio () {
+      this.$refs.audio.src =
+        await this.getAudioLink()
 
       this.$refs
         .audio
         .load()
+    },
+    getAudioLink () {
+      const {
+        local,
+        link
+      } = this.playerPlaying.audio
+
+      if (local) {
+        return this.getLocalLink()
+      } else {
+        return link
+      }
+    },
+    getLocalLink () {
+      const {
+        path,
+        key,
+        iv
+      } = this.playerPlaying.audio.local
+
+      return decryptAudioFile(
+        {
+          filePath: path,
+          key,
+          iv
+        }
+      )
     },
     stopAudio () {
       this.setAudioStatus(

@@ -13,7 +13,7 @@ import {
 import BaseOption from './BaseOption.vue'
 import {
   shareEncryptionKey
-} from '@/helpers/utils'
+} from '@/helpers/data/env'
 import notificationMixin from '@/mixins/notificationMixin'
 
 export default {

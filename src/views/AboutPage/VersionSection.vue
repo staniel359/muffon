@@ -5,19 +5,15 @@
 </template>
 
 <script>
+import {
+  version
+} from '@/../package.json'
+
 export default {
   name: 'VersionSection',
   computed: {
     versionText () {
-      return `v.${this.version}`
-    },
-    version () {
-      return this.info.version
-    },
-    info () {
-      return require(
-        '@/../package.json'
-      )
+      return `v.${version}`
     }
   }
 }

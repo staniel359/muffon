@@ -1,3 +1,5 @@
+import * as viewLimitsData from '@/helpers/data/limits'
+
 export default {
   provide () {
     return {
@@ -18,14 +20,9 @@ export default {
       ].large
     },
     scopeViewLimitsData () {
-      return this.viewLimitsData[
+      return viewLimitsData[
         this.viewScope
       ]
-    },
-    viewLimitsData () {
-      return require(
-        '@/helpers/data/limits'
-      )
     },
     viewScope () {
       return (

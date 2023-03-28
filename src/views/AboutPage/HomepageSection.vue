@@ -10,18 +10,13 @@
 import {
   shell
 } from 'electron'
+import {
+  homepage
+} from '@/../package.json'
 
 export default {
   name: 'HomepageSection',
   computed: {
-    homepage () {
-      return this.info.homepage
-    },
-    info () {
-      return require(
-        '@/../package.json'
-      )
-    },
     homepageText () {
       return this.$t(
         'about.homepage'
@@ -31,7 +26,7 @@ export default {
   methods: {
     handleClick () {
       shell.openExternal(
-        this.homepage
+        homepage
       )
     }
   }

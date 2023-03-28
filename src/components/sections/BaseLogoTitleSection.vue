@@ -19,6 +19,7 @@
 <script>
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import logo from '@/assets/images/logo.png'
 
 export default {
   name: 'BaseLogoTitleSection',
@@ -28,9 +29,7 @@ export default {
   },
   computed: {
     logo () {
-      return require(
-        '@/../public/logo.png'
-      )
+      return logo
     }
   }
 }

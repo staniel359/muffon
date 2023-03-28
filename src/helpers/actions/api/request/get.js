@@ -3,6 +3,9 @@ import axios from 'axios'
 import {
   snakeCase
 } from 'snake-case'
+import {
+  anonymousToken
+} from '@/helpers/data/env'
 
 export default function (
   {
@@ -30,9 +33,6 @@ export default function (
     token,
     language
   } = profileStore()
-
-  const anonymousToken =
-    process.env.VUE_APP_ANONYMOUS_TOKEN
 
   const paramsData = {
     ...params,

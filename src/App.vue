@@ -11,9 +11,27 @@
 </template>
 
 <script>
-import RootPageLayout from './views/layout/RootPageLayout.vue'
-import AboutPageLayout from './views/layout/AboutPageLayout.vue'
-import DefaultPageLayout from './views/layout/DefaultPageLayout.vue'
+import {
+  defineAsyncComponent
+} from 'vue'
+const RootPageLayout =
+  defineAsyncComponent(
+    () => import(
+      './views/layout/RootPageLayout.vue'
+    )
+  )
+const AboutPageLayout =
+  defineAsyncComponent(
+    () => import(
+      './views/layout/AboutPageLayout.vue'
+    )
+  )
+const DefaultPageLayout =
+  defineAsyncComponent(
+    () => import(
+      './views/layout/DefaultPageLayout.vue'
+    )
+  )
 
 export default {
   name: 'App',

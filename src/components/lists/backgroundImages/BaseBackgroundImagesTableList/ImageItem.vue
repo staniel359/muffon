@@ -29,8 +29,8 @@ import {
 import BaseImage from '@/components/images/BaseImage.vue'
 import ClearButton from './ImageItem/ClearButton.vue'
 import {
-  getLink as getFileLink
-} from '@/helpers/actions/file'
+  getLink as getImageFileLink
+} from '@/helpers/actions/imageFile'
 
 export default {
   name: 'ImageItem',
@@ -42,6 +42,11 @@ export default {
     imageData: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      imageLink: null
     }
   },
   computed: {
@@ -67,11 +72,6 @@ export default {
         return this.imagePath
       }
     },
-    imageLink () {
-      return getFileLink(
-        this.imagePath
-      )
-    },
     imagePath () {
       return this.imageData.path
     },
@@ -80,6 +80,14 @@ export default {
         imageId: this.imageId,
         imagePath: this.imagePath
       }
+    }
+  },
+  async mounted () {
+    if (this.imageId) {
+      this.imageLink =
+        await getImageFileLink(
+          this.imagePath
+        )
     }
   },
   methods: {

@@ -1,5 +1,8 @@
 import profileStore from '@/stores/profile'
 import axios from 'axios'
+import {
+  anonymousToken
+} from '@/helpers/data/env'
 
 export default function (
   {
@@ -27,9 +30,6 @@ export default function (
     token,
     language
   } = profileStore()
-
-  const anonymousToken =
-    process.env.VUE_APP_ANONYMOUS_TOKEN
 
   const paramsData = {
     ...params,

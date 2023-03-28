@@ -7,6 +7,9 @@
 
 <script>
 import BaseHeader from '@/components/BaseHeader.vue'
+import {
+  name
+} from '@/../package.json'
 
 export default {
   name: 'NameSection',
@@ -15,12 +18,7 @@ export default {
   },
   computed: {
     name () {
-      return this.info.name
-    },
-    info () {
-      return require(
-        '@/../package.json'
-      )
+      return name
     }
   }
 }

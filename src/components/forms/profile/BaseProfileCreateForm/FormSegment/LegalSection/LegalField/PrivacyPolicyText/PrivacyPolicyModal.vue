@@ -13,7 +13,7 @@
 <script>
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
-import privacyPolicyText from '@/helpers/data/text/legal/privacyPolicy.txt'
+import privacyPolicyText from '@/helpers/data/text/privacyPolicy.txt?raw'
 
 export default {
   name: 'PrivacyPolicyModal',

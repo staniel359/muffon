@@ -34,6 +34,9 @@ import {
 import {
   mainSearchOptions
 } from '@/helpers/formatters/semantic'
+import {
+  anonymousToken
+} from '@/helpers/data/env'
 
 export default {
   name: 'BaseSearchInput',
@@ -91,11 +94,8 @@ export default {
     token () {
       return (
         this.profileToken ||
-          this.anonymousToken
+          anonymousToken
       )
-    },
-    anonymousToken () {
-      return process.env.VUE_APP_ANONYMOUS_TOKEN
     }
   },
   watch: {

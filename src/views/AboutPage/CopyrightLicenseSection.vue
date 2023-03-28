@@ -13,6 +13,11 @@
 </template>
 
 <script>
+import {
+  author,
+  license
+} from '@/../package.json'
+
 export default {
   name: 'CopyrightLicenseSection',
   computed: {
@@ -20,23 +25,15 @@ export default {
       return `Copyright (c) 2020-2023 ${this.author}`
     },
     author () {
-      return this.info.author.name
-    },
-    info () {
-      return require(
-        '@/../package.json'
-      )
+      return author.name
     },
     licenseText () {
       return this.$t(
         'about.license',
         {
-          license: this.license
+          license
         }
       )
-    },
-    license () {
-      return this.info.license
     }
   }
 }

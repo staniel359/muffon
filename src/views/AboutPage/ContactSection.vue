@@ -10,6 +10,9 @@
 import {
   shell
 } from 'electron'
+import {
+  author
+} from '@/../package.json'
 
 export default {
   name: 'ContactSection',
@@ -20,12 +23,7 @@ export default {
       )
     },
     contactLink () {
-      return this.info.author.url
-    },
-    info () {
-      return require(
-        '@/../package.json'
-      )
+      return author.url
     }
   },
   methods: {

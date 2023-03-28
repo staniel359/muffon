@@ -56,6 +56,7 @@
     "./.env",
     "./main.cjs",
     "./electron/**/*",
+    "./index.html",
     "./shared/**/*",
     {
       "from": "./build",

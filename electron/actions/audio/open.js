@@ -1,7 +1,5 @@
 import getPath from './getPath.js'
-import {
-  readFileSync
-} from 'fs'
+import readFile from '../file/read.js'
 
 export default function open (
   fileName
@@ -11,7 +9,7 @@ export default function open (
       fileName
     )
 
-  return readFileSync(
+  return readFile(
     filePath
   )
 }

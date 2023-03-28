@@ -6,6 +6,7 @@
 
 <script>
 import BaseImage from '@/components/images/BaseImage.vue'
+import logo from '@/assets/images/logo.png'
 
 export default {
   name: 'ImageSection',
@@ -14,9 +15,7 @@ export default {
   },
   computed: {
     logo () {
-      return require(
-        '@/../public/logo.png'
-      )
+      return logo
     }
   }
 }

@@ -1,18 +1,21 @@
 import countries from 'i18n-iso-countries'
-import {
-  locales
-} from '#/plugins/i18n/locales'
+import be from 'i18n-iso-countries/langs/be.json'
+import de from 'i18n-iso-countries/langs/de.json'
+import en from 'i18n-iso-countries/langs/en.json'
+import it from 'i18n-iso-countries/langs/it.json'
+import ru from 'i18n-iso-countries/langs/ru.json'
+
+const locales = [
+  be,
+  de,
+  en,
+  it,
+  ru
+]
 
 function addLocale (
-  {
-    id
-  }
+  locale
 ) {
-  const locale =
-    require(
-      `i18n-iso-countries/langs/${id}.json`
-    )
-
   countries.registerLocale(
     locale
   )

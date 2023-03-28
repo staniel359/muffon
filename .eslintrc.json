@@ -1,8 +1,7 @@
 {
   "env": {
     "es2022": true,
-    "jquery": true,
-    "node": true
+    "jquery": true
   },
   "extends": [
     "eslint:recommended",
@@ -15,7 +14,6 @@
   "overrides": [
     {
       "files": [
-        "electron.js",
         "electron/**/*"
       ],
       "rules": {
@@ -26,7 +24,13 @@
   "parserOptions": {
     "ecmaVersion": "latest",
     "parser": "@babel/eslint-parser",
-    "sourceType": "module"
+    "sourceType": "module",
+    "requireConfigFile": false,
+    "babelOptions": {
+      "plugins": [
+        "@babel/plugin-syntax-import-assertions"
+      ]
+    }
   },
   "rules": {
     "array-bracket-newline": [
