@@ -8,6 +8,10 @@ import {
   shareEncryptionKey
 } from '@/helpers/data/env'
 
+export {
+  v4 as generateKey
+} from 'uuid'
+
 export function getDistinctArray (
   value
 ) {
@@ -24,21 +28,27 @@ export function shuffleArray (
   const array = [
     ...value
   ]
+
   const maxIndex = array.length - 1
 
-  for (let i = maxIndex; i > 0; i--) {
+  for (
+    let i = maxIndex;
+    i > 0;
+    i--
+  ) {
     const j = Math.floor(
-      Math.random() * (i + 1)
+      Math.random() * (
+        i + 1
+      )
     );
 
     [
       array[i],
       array[j]
-    ] =
-      [
-        array[j],
-        array[i]
-      ]
+    ] = [
+      array[j],
+      array[i]
+    ]
   }
 
   return array
@@ -52,7 +62,8 @@ export function isCurrentProfile (
       value
     )
 
-  const profileId = profileStore().id
+  const profileId =
+    profileStore().id
 
   const profileIdFormatted =
     parseInt(

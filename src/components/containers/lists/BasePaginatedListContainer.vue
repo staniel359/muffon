@@ -68,7 +68,7 @@ import {
 } from '@/helpers/formatters'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePaginatedListContainer',

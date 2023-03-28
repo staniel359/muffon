@@ -28,7 +28,7 @@ import TrackSelect from './BaseTrackSourceSelect/TrackSelect.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseTrackSourceSelect',

@@ -29,7 +29,7 @@ import {
 import layoutStore from '@/stores/layout'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'TheView',

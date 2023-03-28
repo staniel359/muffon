@@ -42,11 +42,9 @@ import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
 import {
+  generateKey,
   isObjectChanged
 } from '@/helpers/utils'
-import {
-  generateKey
-} from '#/helpers/utils'
 
 export default {
   name: 'TracksSection',

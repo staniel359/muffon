@@ -17,7 +17,7 @@ import MainSection from './RightColumn/MainSection.vue'
 import ExtraSection from './RightColumn/ExtraSection.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'RightColumn',

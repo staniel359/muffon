@@ -45,7 +45,7 @@ import getProfilePlaylists from '@/helpers/actions/api/profile/get'
 import modalMixin from '@/mixins/modalMixin'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 import {
   playlists as playlistsLimits
 } from '@/helpers/data/limits'

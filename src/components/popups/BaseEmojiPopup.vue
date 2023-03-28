@@ -21,7 +21,7 @@ import BaseSegmentContainer
 import BaseEmojiPicker from '@/components/BaseEmojiPicker.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseEmojiPopup',

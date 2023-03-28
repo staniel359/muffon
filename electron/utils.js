@@ -3,6 +3,10 @@ import {
   mkdirSync
 } from 'fs'
 
+export {
+  v4 as generateKey
+} from 'uuid'
+
 export const appName = 'muffon'
 
 export const isDevelopment = (

@@ -17,7 +17,7 @@ import {
 } from '@/helpers/actions/store'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 import notificationMixin from '@/mixins/notificationMixin'
 
 export default {

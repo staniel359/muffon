@@ -36,7 +36,7 @@ import {
 import formatRadioPageTab from '@/helpers/formatters/tabs/radio'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'RadioPage',

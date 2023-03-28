@@ -45,7 +45,7 @@ import BasePaginatedListContainer
   from '@/components/containers/lists/BasePaginatedListContainer.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePaginatedSegmentContainer',

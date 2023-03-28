@@ -41,7 +41,7 @@ import AlbumSelect from './BaseAlbumSourceSelect/AlbumSelect.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseAlbumSourceSelect',

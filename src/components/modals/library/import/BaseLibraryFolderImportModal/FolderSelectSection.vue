@@ -33,7 +33,7 @@ import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'FolderSelectSection',

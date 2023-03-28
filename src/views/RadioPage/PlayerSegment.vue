@@ -35,7 +35,7 @@ import NextButton from './PlayerSegment/NextButton.vue'
 import getRadio from '@/helpers/actions/api/radio/get'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'PlayerSegment',

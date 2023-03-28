@@ -17,7 +17,7 @@ import BaseArtistImagesModal
   from '@/components/modals/artist/BaseArtistImagesModal.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'ImagesSection',

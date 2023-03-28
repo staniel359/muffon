@@ -1,6 +1,6 @@
 import {
   generateKey
-} from '../../../shared/helpers/utils.js'
+} from '../../utils.js'
 import {
   audioFolderPath
 } from '../../paths.js'

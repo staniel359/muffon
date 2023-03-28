@@ -35,7 +35,7 @@ import BaseSegmentModalContainer
 import getTrack from '@/helpers/actions/api/track/get'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 import modalMixin from '@/mixins/modalMixin'
 
 export default {

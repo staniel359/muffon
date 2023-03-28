@@ -51,7 +51,7 @@ import BasePostDeleteModal
   from '@/components/modals/post/BasePostDeleteModal.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePostOptionsPopup',

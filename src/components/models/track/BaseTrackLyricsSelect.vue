@@ -19,7 +19,7 @@ import SelectSection from './BaseTrackLyricsSelect/SelectSection.vue'
 import LyricsSection from './BaseTrackLyricsSelect/LyricsSection.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseTrackLyricsSelect',

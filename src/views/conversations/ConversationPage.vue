@@ -40,7 +40,7 @@ import FormSegment from './ConversationPage/FormSegment.vue'
 import MessagesSegment from './ConversationPage/MessagesSegment.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'ConversationPage',

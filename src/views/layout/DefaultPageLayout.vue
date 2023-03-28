@@ -66,7 +66,7 @@ import TheLoaderDimmer from '@/components/layout/TheLoaderDimmer.vue'
 import TheView from '@/components/layout/TheView.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'DefaultPageLayout',

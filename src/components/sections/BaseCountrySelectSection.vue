@@ -19,7 +19,7 @@ import BaseCountrySelect from '@/components/selects/BaseCountrySelect.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseCountrySelectSection',

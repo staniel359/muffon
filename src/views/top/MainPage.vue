@@ -25,7 +25,7 @@ import TopSegment from './MainPage/TopSegment.vue'
 import TabsSegment from './MainPage/TabsSegment.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'MainPage',

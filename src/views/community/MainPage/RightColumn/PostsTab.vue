@@ -48,7 +48,7 @@ import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
 import {
   generateKey
-} from '#/helpers/utils'
+} from '@/helpers/utils'
 import {
   posts as postsLimits
 } from '@/helpers/data/limits'
