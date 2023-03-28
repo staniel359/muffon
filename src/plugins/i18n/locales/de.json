@@ -1,17 +1,4 @@
 {
-  "electron": {
-    "show": "Anzeigen",
-    "hide": "Verstecken",
-    "about": "Über",
-    "exit": "Beenden",
-    "update": {
-      "message": "Eine neue Version ist verfügbar",
-      "buttons": {
-        "download": "Herunterladen",
-        "close": "Schließen"
-      }
-    }
-  },
   "navigation": {
     "home": "Startseite",
     "artists": "Künstler",

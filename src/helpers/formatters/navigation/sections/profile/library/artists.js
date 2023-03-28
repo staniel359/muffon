@@ -1,4 +1,4 @@
-import i18n from '#/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   artists as formatProfileLibraryArtistsLink
 } from '@/helpers/formatters/links/profile/library'

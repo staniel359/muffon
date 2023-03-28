@@ -1,6 +1,7 @@
 import {
   app
 } from 'electron'
+import setupI18n from '../../plugins/i18n.js'
 import setFlags from './setFlags.js'
 import setGlobalVariables from './setGlobalVariables.js'
 import setEvents from './setEvents.js'
@@ -10,6 +11,8 @@ import {
 } from '../../utils.js'
 
 export default function initialize () {
+  setupI18n()
+
   setFlags()
 
   setGlobalVariables()

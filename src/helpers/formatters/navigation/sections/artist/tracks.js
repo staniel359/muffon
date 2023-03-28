@@ -1,4 +1,4 @@
-import i18n from '#/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   tracks as formatArtistTracksLink
 } from '@/helpers/formatters/links/artist'

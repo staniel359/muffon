@@ -1,17 +1,4 @@
 {
-  "electron": {
-    "show": "Show",
-    "hide": "Hide",
-    "about": "About",
-    "exit": "Exit",
-    "update": {
-      "message": "New version is available",
-      "buttons": {
-        "download": "Download",
-        "close": "Close"
-      }
-    }
-  },
   "navigation": {
     "home": "Home page",
     "artists": "Artists",

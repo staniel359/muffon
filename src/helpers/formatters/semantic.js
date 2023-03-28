@@ -1,6 +1,6 @@
 import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
-import i18n from '#/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import moment from 'moment-timezone'
 import axios from 'axios'
 import icons from '@/helpers/data/icons'

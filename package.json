@@ -40,6 +40,7 @@
     "electron-store": "^8.1.0",
     "emoji-mart": "^5.5.2",
     "fomantic-ui": "^2.9.2",
+    "i18n": "^0.15.1",
     "i18n-iso-countries": "^7.5.0",
     "jquery": "^3.6.4",
     "moment-timezone": "^0.5.41",

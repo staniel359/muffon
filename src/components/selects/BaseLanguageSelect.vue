@@ -19,9 +19,7 @@ import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
-import {
-  locales
-} from '#/plugins/i18n/locales'
+import locales from '@/helpers/data/locales'
 
 export default {
   name: 'BaseLanguageSelect',

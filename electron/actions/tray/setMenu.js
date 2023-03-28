@@ -6,7 +6,7 @@ import showMainWindow from '../mainWindow/show.js'
 import hideMainWindow from '../mainWindow/hide.js'
 import showAboutWindow from '../aboutWindow/show.js'
 import callExit from '../app/callExit.js'
-import i18n from '../../../shared/plugins/i18n.js'
+import i18n from 'i18n'
 import {
   isMac
 } from '../../utils.js'
@@ -35,18 +35,18 @@ export default function setMenu () {
   }
 
   const toggleText =
-    i18n.global.t(
-      `electron.${toggleKey}`
+    i18n.__(
+      toggleKey
     )
 
   const aboutText =
-    i18n.global.t(
-      'electron.about'
+    i18n.__(
+      'about'
     )
 
   const exitText =
-    i18n.global.t(
-      'electron.exit'
+    i18n.__(
+      'exit'
     )
 
   const menuItems = [

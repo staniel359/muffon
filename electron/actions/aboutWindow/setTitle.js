@@ -1,9 +1,9 @@
-import i18n from '../../../shared/plugins/i18n.js'
+import i18n from 'i18n'
 
 export default function setTitle () {
   const title =
-    i18n.global.t(
-      'electron.about'
+    i18n.__(
+      'about'
     )
 
   aboutWindow.setTitle(

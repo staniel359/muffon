@@ -4,7 +4,7 @@ import {
   shell
 } from 'electron'
 import axios from 'axios'
-import i18n from '../../../shared/plugins/i18n.js'
+import i18n from 'i18n'
 
 let latestRelease
 let latestVersion
@@ -26,18 +26,18 @@ function handleNotificationButtonClick (
 
 function showNotification () {
   const message =
-    i18n.global.t(
-      'electron.update.message'
+    i18n.__(
+      'update.message'
     )
 
   const downloadText =
-    i18n.global.t(
-      'electron.update.buttons.download'
+    i18n.__(
+      'update.buttons.download'
     )
 
   const closeText =
-    i18n.global.t(
-      'electron.update.buttons.close'
+    i18n.__(
+      'update.buttons.close'
     )
 
   const buttons = [

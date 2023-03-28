@@ -27,10 +27,6 @@ export default defineConfig(
         '@': resolvePath(
           __dirname,
           './src'
-        ),
-        '#': resolvePath(
-          __dirname,
-          './shared'
         )
       }
     },
