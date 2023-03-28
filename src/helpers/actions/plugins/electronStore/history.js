@@ -1,19 +1,20 @@
-import electronStore from '#/plugins/electronStore'
+import {
+  ipcRenderer
+} from 'electron'
 import {
   getDistinctArray
 } from '@/helpers/utils'
 
-export function get (
+export async function get (
   key,
   {
     isDistinct
   }
 ) {
-  const historyKey = `history.${key}`
-
   const history =
-    electronStore.get(
-      historyKey
+    await ipcRenderer.invoke(
+      'get-electron-store-key',
+      `history.${key}`
     )
 
   function getScopedHistory () {
@@ -41,33 +42,42 @@ export function get (
   )
 }
 
-export function update (
+export async function update (
   key,
   item
 ) {
   const historyKey = `history.${key}`
 
   const history =
-    electronStore.get(
+    await ipcRenderer.invoke(
+      'get-electron-store-key',
       historyKey
     )
 
-  const isNewItem =
+  const isNewItem = (
     item && (
-      item.toLowerCase() !==
-        history[0]?.toLowerCase()
+      item !== history[0]
     )
-
-  const newHistory = [
-    item,
-    ...history
-  ]
+  )
 
   if (isNewItem) {
-    electronStore.set(
-      {
-        [historyKey]: newHistory
-      }
+    const newHistory = [
+      item,
+      ...history
+    ]
+
+    const data = {
+      [historyKey]: newHistory
+    }
+
+    const dataFormatted =
+      JSON.stringify(
+        data
+      )
+
+    ipcRenderer.invoke(
+      'set-electron-store-data',
+      dataFormatted
     )
   }
 }

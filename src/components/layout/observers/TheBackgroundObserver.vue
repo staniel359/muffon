@@ -69,7 +69,7 @@ export default {
         imageId
       )
 
-      this.removeFromBackgroundImages(
+      this.deleteFromBackgroundImages(
         imageId
       )
     },
@@ -93,13 +93,15 @@ export default {
         this.resetBackgroundImage()
       }
     },
-    removeFromBackgroundImages (
+    deleteFromBackgroundImages (
       imageId
     ) {
       function isMatchedImage (
         imageData
       ) {
-        return imageData.id !== imageId
+        return (
+          imageData.id !== imageId
+        )
       }
 
       const images = [

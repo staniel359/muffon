@@ -21,7 +21,6 @@
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '#/plugins/electronStore'
 import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import BrowserTab from './TheBrowserTabs/BrowserTab.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
@@ -46,34 +45,10 @@ export default {
       tabs: []
     }
   },
-  computed: {
-    electronStoreTabs () {
-      return electronStore.get(
-        'layout.tabs'
-      )
-    },
-    electronStoreActiveTabId () {
-      return electronStore.get(
-        'layout.activeTabId'
-      )
-    }
-  },
   watch: {
     tabs: 'handleTabsChange'
   },
-  mounted () {
-    this.clearTabs()
-
-    if (this.electronStoreTabs.length) {
-      this.addTabsFromElectronStore()
-
-      if (this.electronStoreActiveTabId) {
-        this.setActiveTab()
-      }
-    } else {
-      this.addNewTab()
-    }
-
+  async mounted () {
     ipcRenderer.on(
       'add-tab',
       this.handleAddTab
@@ -85,14 +60,36 @@ export default {
     )
 
     ipcRenderer.on(
-      'remove-tab',
-      this.handleRemoveTab
+      'delete-tab',
+      this.handleDeleteTab
     )
 
     ipcRenderer.on(
       'update-tab',
       this.handleUpdateTab
     )
+
+    this.clearTabs()
+
+    const electronStoreTabs =
+      await this.getElectronStoreTabs()
+
+    if (electronStoreTabs.length) {
+      electronStoreTabs.forEach(
+        this.addTab
+      )
+
+      const electronStoreActiveTabId =
+        await this.getElectronStoreActiveTabId()
+
+      if (electronStoreActiveTabId) {
+        this.setActiveTab(
+          electronStoreActiveTabId
+        )
+      }
+    } else {
+      this.addNewTab()
+    }
   },
   unmounted () {
     this.clearTabs()
@@ -113,9 +110,7 @@ export default {
         )
 
       if (isChanged) {
-        this.setElectronStoreTabs(
-          value
-        )
+        this.setElectronStoreTabs()
       }
     },
     handleAddTabButtonClick () {
@@ -130,17 +125,17 @@ export default {
         value
       ]
     },
-    handleSetActiveTab (
+    async handleSetActiveTab (
       _,
       tabId
     ) {
       this.activeTabId = tabId
 
-      this.setElectronStoreActiveTabId(
-        tabId
-      )
+      await this.$nextTick()
+
+      this.setElectronStoreActiveTabId()
     },
-    handleRemoveTab (
+    handleDeleteTab (
       _,
       tabId
     ) {
@@ -229,11 +224,11 @@ export default {
         'clear-tabs'
       )
     },
-    addTabsFromElectronStore () {
-      this.electronStoreTabs
-        .forEach(
-          this.addTab
-        )
+    getElectronStoreTabs () {
+      return ipcRenderer.invoke(
+        'get-electron-store-key',
+        'layout.tabs'
+      )
     },
     addTab (
       value
@@ -243,10 +238,10 @@ export default {
         value
       )
     },
-    setActiveTab () {
-      ipcRenderer.send(
-        'set-active-tab',
-        this.electronStoreActiveTabId
+    getElectronStoreActiveTabId () {
+      return ipcRenderer.invoke(
+        'get-electron-store-key',
+        'layout.activeTabId'
       )
     },
     addNewTab () {
@@ -265,26 +260,45 @@ export default {
         tabData
       )
 
-      ipcRenderer.send(
-        'set-active-tab',
+      this.setActiveTab(
         uuid
       )
     },
-    setElectronStoreTabs (
+    setActiveTab (
       value
     ) {
-      electronStore.set(
+      ipcRenderer.send(
+        'set-active-tab',
+        value
+      )
+    },
+    setElectronStoreTabs () {
+      this.setElectronStoreData(
         {
-          'layout.tabs': value
+          'layout.tabs': this.tabs
         }
+      )
+    },
+    setElectronStoreData (
+      value
+    ) {
+      const dataFormatted =
+        JSON.stringify(
+          value
+        )
+
+      ipcRenderer.invoke(
+        'set-electron-store-data',
+        dataFormatted
       )
     },
     setElectronStoreActiveTabId (
       value
     ) {
-      electronStore.set(
+      this.setElectronStoreData(
         {
-          'layout.activeTabId': value
+          'layout.activeTabId':
+            this.activeTabId
         }
       )
     }

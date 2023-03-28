@@ -5,7 +5,6 @@ import {
   handleSetTitle,
   handleClearCache,
   handleSetLanguage,
-  handleSetScale,
   handleCheckNativeTheme,
   handleLogout,
   handleAccountDelete,
@@ -27,11 +26,6 @@ export default function set () {
   ipcMain.on(
     'set-language',
     handleSetLanguage
-  )
-
-  ipcMain.on(
-    'set-scale',
-    handleSetScale
   )
 
   ipcMain.handle(

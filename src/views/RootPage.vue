@@ -37,8 +37,6 @@
 
   <TheExternalUrlsObserver />
 
-  <TheElectronStoreSaver />
-
   <TheBrowserTabs
     v-if="isRenderBrowserTabs"
   />
@@ -79,8 +77,6 @@ import TheExitObserver
   from '@/components/layout/observers/TheExitObserver.vue'
 import TheExternalUrlsObserver
   from '@/components/layout/observers/TheExternalUrlsObserver.vue'
-import TheElectronStoreSaver
-  from '@/components/layout/savers/TheElectronStoreSaver.vue'
 import TheBrowserTabs from '@/components/layout/TheBrowserTabs.vue'
 import TheAuthentication from '@/components/layout/TheAuthentication.vue'
 
@@ -100,7 +96,6 @@ export default {
     TheDiscordObserver,
     TheExitObserver,
     TheExternalUrlsObserver,
-    TheElectronStoreSaver,
     TheBrowserTabs,
     TheAuthentication
   },

@@ -1,7 +1,7 @@
 import createBackgroundImage from '../../actions/backgroundImage/create.js'
 import changeBackgroundImage from '../../actions/backgroundImage/change.js'
 import resetBackgroundImage from '../../actions/backgroundImage/reset.js'
-import removeBackgroundImage from '../../actions/backgroundImage/remove.js'
+import deleteBackgroundImage from '../../actions/backgroundImage/delete.js'
 
 export function handleCreateBackgroundImage (
   _,
@@ -43,7 +43,7 @@ export function handleDeleteBackgroundImage (
     imageId
   }
 ) {
-  removeBackgroundImage(
+  deleteBackgroundImage(
     {
       imageId
     }

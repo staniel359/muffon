@@ -1,7 +1,7 @@
-import electronStore from '../../../shared/plugins/electronStore.js'
+import getElectronStoreKey from '../electronStore/getKey.js'
 
 export default function getActiveId () {
-  return electronStore.get(
+  return getElectronStoreKey(
     'layout.activeTabId'
   )
 }

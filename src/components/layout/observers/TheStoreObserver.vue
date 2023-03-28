@@ -25,11 +25,14 @@ export default {
       _,
       data
     ) {
+      const dataFormatted =
+        JSON.parse(
+          data
+        )
+
       const storeKeysValues =
         Object.entries(
-          JSON.parse(
-            data
-          )
+          dataFormatted
         )
 
       storeKeysValues.forEach(

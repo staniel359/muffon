@@ -11,7 +11,6 @@
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '#/plugins/electronStore'
 import BaseDeleteModal from '@/components/modals/BaseDeleteModal.vue'
 
 export default {
@@ -45,28 +44,17 @@ export default {
     },
     uuid () {
       return this.trackData.uuid
-    },
-    tracks () {
-      return electronStore.get(
-        'profile.savedTracks'
-      )
     }
   },
   methods: {
-    handleDeleteButtonClick () {
-      const tracks = [
-        ...this.tracks.filter(
-          this.isMatchedTrack
-        )
-      ]
-
-      electronStore.set(
-        {
-          'profile.savedTracks': tracks
-        }
+    async handleDeleteButtonClick () {
+      await ipcRenderer.invoke(
+        'delete-electron-store-value',
+        'profile.savedTracks',
+        this.uuid
       )
 
-      ipcRenderer.send(
+      await ipcRenderer.invoke(
         'delete-audio',
         {
           fileName: this.uuid
@@ -78,14 +66,6 @@ export default {
       )
 
       this.hide()
-    },
-    isMatchedTrack (
-      trackData
-    ) {
-      return (
-        trackData.uuid !==
-          this.uuid
-      )
     },
     show () {
       this.$refs

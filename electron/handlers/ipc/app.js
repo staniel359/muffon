@@ -1,7 +1,6 @@
 import setTitle from '../../actions/app/setTitle.js'
 import clearCache from '../../actions/app/clearCache.js'
 import setLanguage from '../../actions/app/setLanguage.js'
-import setScale from '../../actions/app/setScale.js'
 import checkTheme from '../../actions/app/checkTheme.js'
 import callLogout from '../../actions/app/callLogout.js'
 import callAccountDelete from '../../actions/app/callAccountDelete.js'
@@ -26,15 +25,6 @@ export function handleSetLanguage (
   value
 ) {
   setLanguage(
-    value
-  )
-}
-
-export function handleSetScale (
-  _,
-  value
-) {
-  setScale(
     value
   )
 }

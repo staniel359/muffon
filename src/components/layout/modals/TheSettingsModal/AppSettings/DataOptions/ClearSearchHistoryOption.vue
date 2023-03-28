@@ -17,7 +17,9 @@
 </template>
 
 <script>
-import electronStore from '#/plugins/electronStore'
+import {
+  ipcRenderer
+} from 'electron'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import notificationMixin from '@/mixins/notificationMixin'
 
@@ -47,21 +49,23 @@ export default {
     }
   },
   methods: {
-    handleClick () {
+    async handleClick () {
       this.isLoading = true
 
-      this.clearHistory()
+      await this.clearHistory()
 
       this.isLoading = false
 
       this.notifySuccess()
     },
-    clearHistory () {
-      electronStore.delete(
+    async clearHistory () {
+      await ipcRenderer.invoke(
+        'delete-electron-store-key',
         'history.search'
       )
 
-      electronStore.delete(
+      await ipcRenderer.invoke(
+        'delete-electron-store-key',
         'history.librarySearch'
       )
     }

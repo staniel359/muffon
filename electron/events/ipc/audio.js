@@ -12,7 +12,7 @@ export default function set () {
     handleSaveAudio
   )
 
-  ipcMain.on(
+  ipcMain.handle(
     'delete-audio',
     handleDeleteAudio
   )

@@ -1,10 +1,10 @@
-import electronStore from '../../../shared/plugins/electronStore.js'
+import getElectronStoreKey from '../electronStore/getKey.js'
 
 export default function setBounds (
   tab
 ) {
   const scale =
-    electronStore.get(
+    getElectronStoreKey(
       'layout.scale'
     )
 

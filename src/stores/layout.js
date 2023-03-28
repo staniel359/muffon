@@ -26,7 +26,8 @@ const data = {
       isWithSystemTheme: false,
       isWithArtistPopup: true,
       isCachePages: true,
-      scale: 1
+      scale: 1,
+      isShowDonateModal: true
     }
   },
   actions: {
@@ -139,6 +140,11 @@ const data = {
       value
     ) {
       this.scale = value
+    },
+    setIsShowDonateModal (
+      value
+    ) {
+      this.isShowDonateModal = value
     }
   }
 }

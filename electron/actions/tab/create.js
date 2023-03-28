@@ -1,7 +1,7 @@
 import {
   BrowserView
 } from 'electron'
-import electronStore from '../../../shared/plugins/electronStore.js'
+import getElectronStoreKey from '../electronStore/getKey.js'
 import getActiveId from './getActiveId.js'
 import setActive from './setActive.js'
 import setBounds from './setBounds.js'
@@ -43,7 +43,7 @@ export default function create (
   )
 
   const isSwitchToNewTab =
-    electronStore.get(
+    getElectronStoreKey(
       'layout.isSwitchToNewTab'
     )
 
@@ -66,10 +66,12 @@ export default function create (
     autoResizeOptions
   )
 
+  const url = `${baseUrl}#/${path}`
+
   tab
     .webContents
     .loadURL(
-      `${baseUrl}#/${path}`
+      url
     )
 
   if (isDevelopment) {
@@ -102,7 +104,7 @@ export default function create (
 
   function handleDomReady () {
     const scale =
-      electronStore.get(
+      getElectronStoreKey(
         'layout.scale'
       )
 

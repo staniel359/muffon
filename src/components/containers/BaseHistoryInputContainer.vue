@@ -40,6 +40,11 @@ export default {
   emits: [
     'select'
   ],
+  data () {
+    return {
+      history: null
+    }
+  },
   computed: {
     ...mapState(
       layoutStore,
@@ -50,17 +55,22 @@ export default {
     searchOptions () {
       return mainHistoryInputOptions(
         {
-          source: this.getHistory(),
-          onSelect: this.handleSelect
+          source: this.history,
+          onSelect:
+            this.handleSelect
         }
       )
     }
   },
   watch: {
-    isDistinct: 'handleIsDictinctChange',
+    isDistinct:
+      'handleIsDictinctChange',
     item: 'handleItemChange'
   },
-  mounted () {
+  async mounted () {
+    this.history =
+      await this.getHistory()
+
     setSearch(
       this.$refs.search,
       this.searchOptions
@@ -70,8 +80,9 @@ export default {
     handleIsDictinctChange () {
       this.updateInput()
     },
-    handleItemChange () {
-      this.updateHistory()
+    async handleItemChange () {
+      await this.updateHistory()
+
       this.updateInput()
     },
     handleSelect (
@@ -93,15 +104,18 @@ export default {
       )
     },
     updateHistory () {
-      updateElectronStoreHistory(
+      return updateElectronStoreHistory(
         this.scope,
         this.item
       )
     },
-    updateInput () {
+    async updateInput () {
+      this.history =
+        await this.getHistory()
+
       setSearchSource(
         this.$refs.search,
-        this.getHistory()
+        this.history
       )
     }
   }

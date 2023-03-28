@@ -14,7 +14,7 @@ import {
 import {
   baseUrl
 } from '../../urls.js'
-import electronStore from '../../../shared/plugins/electronStore.js'
+import getElectronStoreKey from '../electronStore/getKey.js'
 import show from './show.js'
 import hide from './hide.js'
 import checkForUpdates from '../app/checkForUpdates.js'
@@ -30,7 +30,7 @@ import setTabsBounds from '../tabs/setBounds.js'
 
 function handleReadyToShow () {
   const isMaximizeOnStart =
-    electronStore.get(
+    getElectronStoreKey(
       'layout.isMaximizeOnStart'
     )
 
@@ -45,7 +45,7 @@ function handleReadyToShow () {
   setTopOffset()
 
   const scale =
-    electronStore.get(
+    getElectronStoreKey(
       'layout.scale'
     )
 
@@ -68,7 +68,7 @@ function handleClose (
   event.preventDefault()
 
   const isExitOnClose =
-    electronStore.get(
+    getElectronStoreKey(
       'layout.isExitOnClose'
     )
 

@@ -1,6 +1,6 @@
 import clear from './clear.js'
 
-export default function remove (
+export default function deleteTab (
   tabId
 ) {
   clear(
@@ -10,7 +10,7 @@ export default function remove (
   mainWindow
     .webContents
     .send(
-      'remove-tab',
+      'delete-tab',
       tabId
     )
 }

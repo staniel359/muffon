@@ -13,7 +13,6 @@ import profileStore from '@/stores/profile'
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '#/plugins/electronStore'
 
 export default {
   name: 'TheExitObserver',
@@ -50,15 +49,28 @@ export default {
       this.exit()
     },
     clearProfileData () {
-      return electronStore.set(
+      return this.setElectronStoreData(
         {
           'profile.info': null,
           'profile.token': null
         }
       )
     },
+    setElectronStoreData (
+      value
+    ) {
+      const dataFormatted =
+        JSON.stringify(
+          value
+        )
+
+      return ipcRenderer.invoke(
+        'set-electron-store-data',
+        dataFormatted
+      )
+    },
     clearTabs () {
-      return electronStore.set(
+      return this.setElectronStoreData(
         {
           'layout.tabs': []
         }

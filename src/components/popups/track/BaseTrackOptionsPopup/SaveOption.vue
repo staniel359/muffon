@@ -12,7 +12,6 @@
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '#/plugins/electronStore'
 import {
   mapState
 } from 'pinia'
@@ -129,32 +128,27 @@ export default {
       this.isLoading = false
       this.isError = true
     },
-    handleSavedTrackDataChange (
+    async handleSavedTrackDataChange (
       value
     ) {
       if (value) {
-        this.isLoading = false
+        await this.setSavedTracks()
 
-        this.setSavedTracks()
+        this.isLoading = false
 
         this.notifySuccess()
       }
     },
     setSavedTracks () {
-      const tracks =
-        electronStore.get(
-          'profile.savedTracks'
+      const savedTrackDataFormatted =
+        JSON.stringify(
+          this.savedTrackData
         )
 
-      const newTracks = [
-        ...tracks,
-        this.savedTrackData
-      ]
-
-      electronStore.set(
-        {
-          'profile.savedTracks': newTracks
-        }
+      return ipcRenderer.invoke(
+        'add-electron-store-value',
+        'profile.savedTracks',
+        savedTrackDataFormatted
       )
     }
   }

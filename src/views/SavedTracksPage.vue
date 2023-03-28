@@ -36,10 +36,12 @@
 
 <script>
 import {
+  ipcRenderer
+} from 'electron'
+import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import electronStore from '#/plugins/electronStore'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import BaseTracksSimpleList
@@ -71,6 +73,7 @@ export default {
   ],
   data () {
     return {
+      tracksData: null,
       limit:
         tracksLimits.simple.large,
       scope: 'tracks',
@@ -90,41 +93,54 @@ export default {
     tabData () {
       return formatSavedTracksPageTab()
     },
-    tracksData () {
-      return {
-        page: 1,
-        total_pages: 1,
-        tracks: this.tracksCreatedSorted
-      }
-    },
-    tracksCreatedSorted () {
-      return sortByCreated(
-        {
-          collection: this.tracks,
-          order: this.order
-        }
-      )
-    },
-    tracks () {
-      return electronStore.get(
-        'profile.savedTracks'
-      )
-    },
     totalCount () {
-      return this.tracks.length
+      return this.tracksData?.tracks?.length
     }
   },
   watch: {
     order: 'handleOrderChange'
   },
-  mounted () {
+  async mounted () {
+    this.tracksData =
+      await this.getTracksData()
+
     this.setNavigation()
 
     this.isRefreshNavigation = true
   },
   methods: {
-    handleOrderChange () {
+    async handleOrderChange () {
       this.reset()
+
+      this.tracksData =
+        await this.getTracksData()
+    },
+    async getTracksData () {
+      const tracks =
+        await this.getTracksCreatedSorted()
+
+      return {
+        page: 1,
+        total_pages: 1,
+        tracks
+      }
+    },
+    async getTracksCreatedSorted () {
+      const collection =
+        await this.getTracks()
+
+      return sortByCreated(
+        {
+          collection,
+          order: this.order
+        }
+      )
+    },
+    getTracks () {
+      return ipcRenderer.invoke(
+        'get-electron-store-key',
+        'profile.savedTracks'
+      )
     }
   }
 }

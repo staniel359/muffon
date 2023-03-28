@@ -8,7 +8,6 @@
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '#/plugins/electronStore'
 import moment from 'moment-timezone'
 
 export default {
@@ -31,6 +30,9 @@ export default {
           route
         )
 
+      routeData.created =
+        moment.utc().toDate()
+
       this.addRouteToHistory(
         routeData
       )
@@ -38,23 +40,15 @@ export default {
     addRouteToHistory (
       value
     ) {
-      value.created =
-        moment.utc().toDate()
-
-      const routes =
-        electronStore.get(
-          'history.browser'
+      const routeFormatted =
+        JSON.stringify(
+          value
         )
 
-      const newRoutes = [
-        ...routes,
-        value
-      ]
-
-      electronStore.set(
-        {
-          'history.browser': newRoutes
-        }
+      ipcRenderer.invoke(
+        'add-electron-store-value',
+        'history.browser',
+        routeFormatted
       )
     }
   }

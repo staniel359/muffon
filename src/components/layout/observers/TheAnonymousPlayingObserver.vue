@@ -5,8 +5,9 @@
 </template>
 
 <script>
-import electronStore from '#/plugins/electronStore'
-import moment from 'moment-timezone'
+import {
+  ipcRenderer
+} from 'electron'
 import {
   mapState
 } from 'pinia'
@@ -24,18 +25,12 @@ export default {
         playerPlaying: 'playing'
       }
     ),
-    playingFormattedWithCreated () {
-      const created =
-        moment.utc().toDate()
-
-      return {
-        ...this.playingFormatted,
-        created
-      }
-    },
-    playingFormatted () {
+    playerPlayingFormatted () {
       return formatPlaying(
-        this.playerPlaying
+        this.playerPlaying,
+        {
+          isWithCreated: true
+        }
       )
     }
   },
@@ -52,20 +47,15 @@ export default {
       }
     },
     updatePlaying () {
-      const tracks =
-        electronStore.get(
-          'history.player'
+      const playingFormatted =
+        JSON.stringify(
+          this.playerPlayingFormatted
         )
 
-      const newTracks = [
-        ...tracks,
-        this.playingFormattedWithCreated
-      ]
-
-      electronStore.set(
-        {
-          'history.player': newTracks
-        }
+      ipcRenderer.invoke(
+        'add-electron-store-value',
+        'history.player',
+        playingFormatted
       )
     }
   }

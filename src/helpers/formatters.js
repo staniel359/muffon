@@ -177,7 +177,10 @@ export function playsToTracks (
 }
 
 export function playing (
-  value
+  value,
+  {
+    isWithCreated
+  } = {}
 ) {
   const {
     source,
@@ -188,7 +191,12 @@ export function playing (
     image,
     duration,
     audio
-  } = value
+  } = {
+    ...value
+  }
+
+  const created =
+    moment.utc().toDate()
 
   return {
     source,
@@ -202,6 +210,9 @@ export function playing (
     duration,
     audio: {
       present: audio.present
-    }
+    },
+    created: (
+      isWithCreated && created
+    )
   }
 }

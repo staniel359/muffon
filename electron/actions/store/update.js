@@ -1,4 +1,6 @@
 import getTabs from '../tabs/get.js'
+import setElectronStoreData from '../electronStore/setData.js'
+import setScale from '../app/setScale.js'
 
 export default function update (
   data,
@@ -28,11 +30,28 @@ export default function update (
   )
 
   if (isSave) {
-    mainWindow
-      .webContents
-      .send(
-        'update-electron-store',
+    const dataFormatted =
+      JSON.parse(
         data
       )
+
+    setElectronStoreData(
+      dataFormatted
+    )
+
+    const scale =
+      dataFormatted[
+        'layout.scale'
+      ]
+
+    const isChangeScale = (
+      scale >= 0
+    )
+
+    if (isChangeScale) {
+      setScale(
+        scale
+      )
+    }
   }
 }

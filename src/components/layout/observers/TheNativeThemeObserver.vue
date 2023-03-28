@@ -27,7 +27,8 @@ export default {
     )
   },
   watch: {
-    isWithSystemTheme: 'handleIsWithSystemThemeChange'
+    isWithSystemTheme:
+      'handleIsWithSystemThemeChange'
   },
   mounted () {
     ipcRenderer.on(
@@ -36,25 +37,17 @@ export default {
     )
   },
   methods: {
-    handleIsWithSystemThemeChange (
+    async handleIsWithSystemThemeChange (
       value
     ) {
       if (value) {
-        ipcRenderer.invoke(
-          'check-native-theme'
-        ).then(
-          this.handleCheckNativeTheme
+        const data =
+          await this.checkNativeTheme()
+
+        this.updateIsDarkMode(
+          data.isDarkMode
         )
       }
-    },
-    handleCheckNativeTheme (
-      {
-        isDarkMode
-      }
-    ) {
-      this.updateIsDarkMode(
-        isDarkMode
-      )
     },
     handleUpdateNativeTheme (
       _,
@@ -64,6 +57,11 @@ export default {
     ) {
       this.updateIsDarkMode(
         isDarkMode
+      )
+    },
+    checkNativeTheme () {
+      return ipcRenderer.invoke(
+        'check-native-theme'
       )
     },
     updateIsDarkMode (

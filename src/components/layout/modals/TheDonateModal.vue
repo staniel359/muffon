@@ -18,12 +18,18 @@
 </template>
 
 <script>
-import electronStore from '#/plugins/electronStore'
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import ContentSection from './TheDonateModal/ContentSection.vue'
 import DeclineButton from './TheDonateModal/DeclineButton.vue'
 import AcceptButton from './TheDonateModal/AcceptButton.vue'
+import {
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'TheDonateModal',
@@ -35,15 +41,17 @@ export default {
   },
   provide () {
     return {
-      setModalHidden: this.setModalHidden
+      setModalHidden:
+        this.setModalHidden
     }
   },
   computed: {
-    isShow () {
-      return electronStore.get(
-        'layout.isShowDonateModal'
-      )
-    },
+    ...mapState(
+      layoutStore,
+      [
+        'isShowDonateModal'
+      ]
+    ),
     headerText () {
       return this.$t(
         'donate.header'
@@ -51,7 +59,7 @@ export default {
     }
   },
   mounted () {
-    if (this.isShow) {
+    if (this.isShowDonateModal) {
       this.show()
     }
   },
@@ -62,7 +70,7 @@ export default {
         .show()
     },
     setModalHidden () {
-      electronStore.set(
+      updateGlobalStore(
         {
           'layout.isShowDonateModal': false
         }

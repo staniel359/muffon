@@ -1,7 +1,7 @@
 import getPath from './getPath.js'
-import removeFile from '../file/remove.js'
+import deleteFile from '../file/delete.js'
 
-export default function remove (
+export default function deleteBackgroundImage (
   {
     imageId
   }
@@ -14,7 +14,7 @@ export default function remove (
       fileName
     )
 
-  removeFile(
+  deleteFile(
     filePath
   )
 

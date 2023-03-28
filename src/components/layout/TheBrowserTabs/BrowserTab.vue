@@ -135,7 +135,7 @@ export default {
     },
     handleCloseButtonClick () {
       ipcRenderer.send(
-        'remove-tab',
+        'delete-tab',
         this.tabId
       )
     }

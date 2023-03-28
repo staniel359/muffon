@@ -3,7 +3,7 @@ import setActiveTab from '../../actions/tab/setActive.js'
 import updateTab from '../../actions/tab/update.js'
 import isReplaceActiveTab from '../../actions/tab/isReplaceActive.js'
 import replaceActiveTab from '../../actions/tab/replaceActive.js'
-import removeTab from '../../actions/tab/remove.js'
+import deleteTab from '../../actions/tab/delete.js'
 
 export function handleAddTab (
   _,
@@ -32,7 +32,7 @@ export function handleUpdateTab (
   )
 }
 
-export function handleRemoveTab (
+export function handleDeleteTab (
   _,
   tabId
 ) {
@@ -47,7 +47,7 @@ export function handleRemoveTab (
     )
   }
 
-  removeTab(
+  deleteTab(
     tabId
   )
 }

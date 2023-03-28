@@ -1,7 +1,7 @@
 import open from './open.js'
 import encryptFile from '../file/encrypt.js'
 import create from './create.js'
-import remove from './remove.js'
+import deleteAudio from './delete.js'
 
 export default function encrypt (
   {
@@ -30,7 +30,7 @@ export default function encrypt (
     encryptedFile
   )
 
-  remove(
+  deleteAudio(
     tempFileName
   )
 

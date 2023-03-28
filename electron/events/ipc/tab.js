@@ -5,7 +5,7 @@ import {
   handleAddTab,
   handleSetActiveTab,
   handleUpdateTab,
-  handleRemoveTab
+  handleDeleteTab
 } from '../../handlers/ipc/tab.js'
 
 export default function set () {
@@ -25,7 +25,7 @@ export default function set () {
   )
 
   ipcMain.on(
-    'remove-tab',
-    handleRemoveTab
+    'delete-tab',
+    handleDeleteTab
   )
 }

@@ -12,27 +12,29 @@ import layoutStore from '@/stores/layout'
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '#/plugins/electronStore'
 import {
   update as updateLocalStore
 } from '@/helpers/actions/store/local'
 
 export default {
   name: 'TheElectronStoreObserver',
-  computed: {
-    electronStoreKeysValues () {
-      return Object.entries(
-        electronStore.store
-      )
-    }
-  },
-  mounted () {
+  async mounted () {
     ipcRenderer.on(
       'set-tab-id',
       this.handleSetTabId
     )
 
-    this.electronStoreKeysValues.forEach(
+    const electronStoreData =
+      await ipcRenderer.invoke(
+        'get-electron-store-data'
+      )
+
+    const electronStoreKeysValues =
+      Object.entries(
+        electronStoreData
+      )
+
+    electronStoreKeysValues.forEach(
       this.setStoreKeyValue
     )
   },

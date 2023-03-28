@@ -14,7 +14,9 @@
 </template>
 
 <script>
-import electronStore from '#/plugins/electronStore'
+import {
+  ipcRenderer
+} from 'electron'
 import BasePageContainer
   from '@/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '@/mixins/navigationMixin'
@@ -73,49 +75,6 @@ export default {
         order: this.order
       }
     },
-    playerHistoryData () {
-      return {
-        page: 1,
-        total_pages: 1,
-        tracks:
-          this.playerTracksCreatedSorted
-      }
-    },
-    playerTracksCreatedSorted () {
-      return sortByCreated(
-        {
-          collection: this.playerTracks,
-          order: this.order
-        }
-      )
-    },
-    playerTracks () {
-      return electronStore.get(
-        'history.player'
-      )
-    },
-    browserHistoryData () {
-      return {
-        page: 1,
-        total_pages: 1,
-        routes:
-          this.browserRoutesCreatedSorted
-      }
-    },
-    browserRoutesCreatedSorted () {
-      return sortByCreated(
-        {
-          collection:
-            this.browserRoutes,
-          order: this.order
-        }
-      )
-    },
-    browserRoutes () {
-      return electronStore.get(
-        'history.browser'
-      )
-    },
     responsePageLimit () {
       if (this.isGetData) {
         return null
@@ -135,7 +94,7 @@ export default {
       )
     },
     playerTracksCount () {
-      return this.playerTracks.length
+      return this.historyData?.tracks?.length
     },
     isBrowserScope () {
       return (
@@ -143,7 +102,7 @@ export default {
       )
     },
     browserRoutesCount () {
-      return this.browserRoutes.length
+      return this.historyData?.routes?.length
     }
   },
   watch: {
@@ -151,16 +110,16 @@ export default {
       'handleNavigationDataChange',
     order: 'handleOrderChange'
   },
-  mounted () {
+  async mounted () {
     if (this.isGetData) {
       this.getData()
     } else {
       if (this.isPlayerScope) {
         this.historyData =
-          this.playerHistoryData
+          await this.getPlayerHistoryData()
       } else if (this.isBrowserScope) {
         this.historyData =
-          this.browserHistoryData
+          await this.getBrowserHistoryData()
       } else {
         this.historyData = {}
       }
@@ -168,16 +127,70 @@ export default {
   },
   methods: {
     getHistory,
-    handleOrderChange () {
+    async handleOrderChange () {
       if (!this.isGetData) {
         if (this.isPlayerScope) {
           this.historyData =
-            this.playerHistoryData
+            await this.getPlayerHistoryData()
         } else if (this.isBrowserScope) {
           this.historyData =
-            this.browserHistoryData
+            await this.getBrowserHistoryData()
         }
       }
+    },
+    async getPlayerHistoryData () {
+      const tracks =
+        await this.getPlayerTracksCreatedSorted()
+
+      return {
+        page: 1,
+        total_pages: 1,
+        tracks
+      }
+    },
+    async getPlayerTracksCreatedSorted () {
+      const collection =
+        await this.getPlayerTracks()
+
+      return sortByCreated(
+        {
+          collection,
+          order: this.order
+        }
+      )
+    },
+    getPlayerTracks () {
+      return ipcRenderer.invoke(
+        'get-electron-store-key',
+        'history.player'
+      )
+    },
+    async getBrowserHistoryData () {
+      const routes =
+        await this.getBrowserRoutesCreatedSorted()
+
+      return {
+        page: 1,
+        total_pages: 1,
+        routes
+      }
+    },
+    async getBrowserRoutesCreatedSorted () {
+      const collection =
+        await this.getBrowserRoutes()
+
+      return sortByCreated(
+        {
+          collection,
+          order: this.order
+        }
+      )
+    },
+    getBrowserRoutes () {
+      return ipcRenderer.invoke(
+        'get-electron-store-key',
+        'history.browser'
+      )
     },
     getData (
       {

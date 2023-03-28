@@ -152,7 +152,7 @@ import BaseFavoriteDeleteModal
 import BasePlaylistTrackDeleteModal
   from '@/components/modals/playlist/track/BasePlaylistTrackDeleteModal.vue'
 import BaseSavedTrackDeleteModal
-  from '@/components/modals/saved_tracks/BaseSavedTrackDeleteModal.vue'
+  from '@/components/modals/savedTracks/BaseSavedTrackDeleteModal.vue'
 import {
   track as formatTrackShareData
 } from '@/helpers/formatters/share'

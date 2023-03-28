@@ -1,9 +1,9 @@
-import electronStore from '../../shared/plugins/electronStore.js'
+import getElectronStoreKey from '../actions/electronStore/getKey.js'
 import updateTheme from '../actions/app/updateTheme.js'
 
 export function handleNativeThemeUpdated () {
   const isWithSystemTheme =
-    electronStore.get(
+    getElectronStoreKey(
       'layout.isWithSystemTheme'
     )
 

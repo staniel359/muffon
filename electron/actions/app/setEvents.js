@@ -8,6 +8,7 @@ import setIpcStoreEvents from '../../events/ipc/store.js'
 import setIpcAudioEvents from '../../events/ipc/audio.js'
 import setIpcBackgroundImageEvents from '../../events/ipc/backgroundImage.js'
 import setIpcFileEvents from '../../events/ipc/file.js'
+import setIpcElectronStoreEvents from '../../events/ipc/electronStore.js'
 
 export default function setEvents () {
   setAppEvents()
@@ -29,4 +30,6 @@ export default function setEvents () {
   setIpcBackgroundImageEvents()
 
   setIpcFileEvents()
+
+  setIpcElectronStoreEvents()
 }
