@@ -25,8 +25,8 @@ import recommendationsStore from '@/stores/recommendations'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseNumberInput from '@/components/inputs/BaseNumberInput.vue'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'TracksCountOption',

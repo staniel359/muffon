@@ -2,8 +2,8 @@ import playerStore from '@/stores/player'
 import getPlayerSearch from '@/helpers/actions/api/player/search/get'
 import getPlayerVariantAudio from '@/helpers/actions/player/variant/audio/get'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default function (
   {

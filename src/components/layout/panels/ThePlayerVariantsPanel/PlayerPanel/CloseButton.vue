@@ -11,8 +11,8 @@ import {
 import queueStore from '@/stores/queue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'CloseButton',

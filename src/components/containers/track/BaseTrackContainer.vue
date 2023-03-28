@@ -22,8 +22,8 @@ import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
 import getPlayerTrack from '@/helpers/actions/player/track/get'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 import {
   setPlaying as setPlayerPlaying
 } from '@/helpers/actions/player'

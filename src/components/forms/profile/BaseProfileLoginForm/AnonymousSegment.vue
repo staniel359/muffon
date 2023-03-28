@@ -23,8 +23,8 @@ import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'AnonymousSegment',

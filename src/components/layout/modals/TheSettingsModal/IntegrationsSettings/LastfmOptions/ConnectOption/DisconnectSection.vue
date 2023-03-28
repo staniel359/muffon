@@ -40,8 +40,8 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import deleteLastfmSession
   from '@/helpers/actions/api/lastfm/connect/session/delete'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'DisconnectSection',

@@ -17,8 +17,8 @@ import {
 } from 'electron'
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 import {
   locales
 } from '#/plugins/i18n/locales'

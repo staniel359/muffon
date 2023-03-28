@@ -1,8 +1,8 @@
 import queueStore from '@/stores/queue'
 import getPlayerTrackAudio from '@/helpers/actions/player/track/audio/get'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 import {
   setPlaying as setPlayerPlaying
 } from '@/helpers/actions/player'

@@ -25,8 +25,8 @@ import {
 import createProfile from '@/helpers/actions/api/profile/create'
 import getProfile from '@/helpers/actions/api/profile/get'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'BaseProfileCreateFormContainer',

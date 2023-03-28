@@ -22,8 +22,8 @@ import BaseHeader from '@/components/BaseHeader.vue'
 import BaseCountrySelectSection
   from '@/components/sections/BaseCountrySelectSection.vue'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'CountryOption',

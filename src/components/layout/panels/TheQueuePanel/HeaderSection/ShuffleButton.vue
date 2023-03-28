@@ -15,8 +15,8 @@ import {
 import queueStore from '@/stores/queue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 import {
   shuffleArray
 } from '@/helpers/utils'

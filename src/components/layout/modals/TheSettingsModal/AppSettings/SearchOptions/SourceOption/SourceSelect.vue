@@ -17,8 +17,8 @@ import BaseDropdownContainer
   from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
 import BaseSourcesList from '@/components/lists/sources/BaseSourcesList.vue'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'SourceSelect',

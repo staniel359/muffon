@@ -20,8 +20,8 @@ import {
 } from '@/helpers/formatters'
 import updateProfile from '@/helpers/actions/api/profile/update'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 import notificationMixin from '@/mixins/notificationMixin'
 
 export default {

@@ -14,8 +14,8 @@ import {
 } from 'electron'
 import electronStore from '#/plugins/electronStore'
 import {
-  updateLocal as updateLocalStore
-} from '@/helpers/actions/store'
+  update as updateLocalStore
+} from '@/helpers/actions/store/local'
 
 export default {
   name: 'TheElectronStoreObserver',

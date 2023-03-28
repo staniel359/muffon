@@ -13,8 +13,8 @@ import {
 import queueStore from '@/stores/queue'
 import BaseOption from '@/components/popups/options/BaseOption.vue'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 import {
   collection as formatCollection,
   number as formatNumber

@@ -1,8 +1,8 @@
 import playerStore from '@/stores/player'
 import getAudio from '@/helpers/actions/api/audio/get'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default async function (
   {

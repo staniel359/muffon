@@ -4,8 +4,8 @@ import {
   collection as formatCollection
 } from '@/helpers/formatters'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default function getPlayerSearch (
   {

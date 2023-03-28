@@ -38,8 +38,8 @@ import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import createLastfmSession
   from '@/helpers/actions/api/lastfm/connect/session/create'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'ConnectSection',

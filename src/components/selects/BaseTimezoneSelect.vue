@@ -15,8 +15,8 @@ import profileStore from '@/stores/profile'
 import moment from 'moment-timezone'
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'BaseTimezoneSelect',

@@ -22,8 +22,8 @@ import {
 import createSession from '@/helpers/actions/api/session/create'
 import getProfile from '@/helpers/actions/api/profile/get'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'BaseProfileLoginFormContainer',

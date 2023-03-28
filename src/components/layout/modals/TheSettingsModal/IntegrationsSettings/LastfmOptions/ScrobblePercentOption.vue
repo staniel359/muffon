@@ -29,8 +29,8 @@ import {
   mainScrobblePercentSeekerOptions
 } from '@/helpers/formatters/semantic'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'ScrobblePercentOption',

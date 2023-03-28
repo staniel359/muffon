@@ -9,8 +9,8 @@ import {
   ipcRenderer
 } from 'electron'
 import {
-  updateLocal as updateLocalStore
-} from '@/helpers/actions/store'
+  update as updateLocalStore
+} from '@/helpers/actions/store/local'
 
 export default {
   name: 'TheStoreObserver',

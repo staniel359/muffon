@@ -9,8 +9,8 @@
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'LoginItem',
