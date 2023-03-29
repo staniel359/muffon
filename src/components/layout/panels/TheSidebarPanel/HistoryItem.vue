@@ -9,7 +9,7 @@
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatHistoryMainLink
+  main as formatHistoryLink
 } from '@/helpers/formatters/links/history'
 
 export default {
@@ -24,7 +24,7 @@ export default {
       )
     },
     historyLink () {
-      return formatHistoryMainLink()
+      return formatHistoryLink()
     }
   }
 }

@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatTopMainLink,
+  main as formatTopLink,
   artists as formatTopArtistsLink,
   albums as formatTopAlbumsLink,
   tracks as formatTopTracksLink,
@@ -37,7 +37,7 @@ export default function (
       case 'tags':
         return formatTopTagsLink()
       default:
-        return formatTopMainLink()
+        return formatTopLink()
     }
   }
 

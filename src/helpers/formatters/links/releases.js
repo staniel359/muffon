@@ -1,6 +1,6 @@
 export function main () {
   return {
-    name: 'ReleasesMainPage',
+    name: 'ReleasesPage',
     params: {},
     path: 'releases'
   }

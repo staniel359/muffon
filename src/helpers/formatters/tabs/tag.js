@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatTagMainLink,
+  main as formatTagLink,
   artists as formatTagArtistsLink,
   albums as formatTagAlbumsLink,
   tracks as formatTagTracksLink
@@ -48,7 +48,7 @@ export default function (
           }
         )
       default:
-        return formatTagMainLink(
+        return formatTagLink(
           {
             tagName
           }

@@ -1,5 +1,5 @@
 import {
-  main as formatVideoChannelMainLink
+  main as formatVideoChannelLink
 } from '@/helpers/formatters/links/videoChannel'
 
 export default function (
@@ -11,7 +11,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatVideoChannelMainLink(
+      return formatVideoChannelLink(
         {
           channelId
         }

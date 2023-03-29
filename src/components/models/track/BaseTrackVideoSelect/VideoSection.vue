@@ -16,7 +16,7 @@
 import BaseVideo from '@/components/BaseVideo.vue'
 import BaseMoreLinkButton from '@/components/buttons/BaseMoreLinkButton.vue'
 import {
-  main as formatVideoMainLink
+  main as formatVideoLink
 } from '@/helpers/formatters/links/video'
 
 export default {
@@ -36,7 +36,7 @@ export default {
       return this.videoData.source.id
     },
     link () {
-      return formatVideoMainLink(
+      return formatVideoLink(
         {
           videoId: this.videoId
         }

@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatBookmarksMainLink
+  main as formatBookmarksLink
 } from '@/helpers/formatters/links/bookmarks'
 
 export default function (
@@ -10,7 +10,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatBookmarksMainLink()
+      return formatBookmarksLink()
     }
   }
 

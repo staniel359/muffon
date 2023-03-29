@@ -1,5 +1,5 @@
 import {
-  main as formatProfileLibraryAlbumMainLink
+  main as formatProfileLibraryAlbumLink
 } from '@/helpers/formatters/links/profile/library/album'
 
 export default function (
@@ -12,7 +12,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatProfileLibraryAlbumMainLink(
+      return formatProfileLibraryAlbumLink(
         {
           profileId,
           libraryAlbumId

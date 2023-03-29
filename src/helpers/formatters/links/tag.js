@@ -11,7 +11,7 @@ export function main (
   const path = `tags/${tagNameEncoded}`
 
   return {
-    name: 'TagMainPage',
+    name: 'TagPage',
     params: {
       tagName
     },

@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatBookmarksMainLink,
+  main as formatBookmarksLink,
   artists as formatBookmarksArtistsLink,
   albums as formatBookmarksAlbumsLink,
   tracks as formatBookmarksTracksLink,
@@ -43,7 +43,7 @@ export default function (
       case 'videoPlaylists':
         return formatBookmarksVideoPlaylistsLink()
       default:
-        return formatBookmarksMainLink()
+        return formatBookmarksLink()
     }
   }
 

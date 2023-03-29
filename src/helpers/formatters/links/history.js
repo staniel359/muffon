@@ -1,6 +1,6 @@
 export function main () {
   return {
-    name: 'HistoryMainPage',
+    name: 'HistoryPage',
     params: {},
     path: 'history'
   }

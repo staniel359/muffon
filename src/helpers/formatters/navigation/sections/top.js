@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatTopMainLink
+  main as formatTopLink
 } from '@/helpers/formatters/links/top'
 
 export default function (
@@ -10,7 +10,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatTopMainLink()
+      return formatTopLink()
     }
   }
 

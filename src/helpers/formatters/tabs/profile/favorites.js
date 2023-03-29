@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatProfileFavoritesMainLink,
+  main as formatProfileFavoritesLink,
   artists as formatProfileFavoritesArtistsLink,
   albums as formatProfileFavoritesAlbumsLink,
   tracks as formatProfileFavoritesTracksLink,
@@ -61,7 +61,7 @@ export default function (
           }
         )
       default:
-        return formatProfileFavoritesMainLink(
+        return formatProfileFavoritesLink(
           {
             profileId
           }

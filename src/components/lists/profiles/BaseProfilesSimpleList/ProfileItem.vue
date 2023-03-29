@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
-    :link="profileMainLink"
+    :link="profileLink"
     @click="handleLinkClick"
   >
     <div class="image-container">
@@ -112,7 +112,7 @@ import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseProfileOptionsPopup
   from '@/components/popups/profile/BaseProfileOptionsPopup.vue'
 import {
-  main as formatProfileMainLink
+  main as formatProfileLink
 } from '@/helpers/formatters/links/profile'
 import {
   isCurrentProfile
@@ -159,8 +159,8 @@ export default {
     'linkClick'
   ],
   computed: {
-    profileMainLink () {
-      return formatProfileMainLink(
+    profileLink () {
+      return formatProfileLink(
         {
           profileId: this.profileId
         }

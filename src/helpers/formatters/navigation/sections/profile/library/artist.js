@@ -1,5 +1,5 @@
 import {
-  main as formatProfileLibraryArtistMainLink
+  main as formatProfileLibraryArtistLink
 } from '@/helpers/formatters/links/profile/library/artist'
 
 export default function (
@@ -12,7 +12,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatProfileLibraryArtistMainLink(
+      return formatProfileLibraryArtistLink(
         {
           profileId,
           libraryArtistId

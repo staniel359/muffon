@@ -10,7 +10,7 @@
 <script>
 import BaseLinkOption from '@/components/popups/options/BaseLinkOption.vue'
 import {
-  main as formatTrackMainLink
+  main as formatTrackLink
 } from '@/helpers/formatters/links/track'
 import formatRequestTrackData from '@/helpers/formatters/request/track/data'
 
@@ -30,7 +30,7 @@ export default {
   ],
   computed: {
     link () {
-      return formatTrackMainLink(
+      return formatTrackLink(
         {
           artistName: this.artistName,
           trackTitle: this.trackTitle,

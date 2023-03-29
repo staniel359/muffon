@@ -10,7 +10,7 @@
 <script>
 import BaseLabel from '@/components/labels/BaseLabel.vue'
 import {
-  main as formatTagMainLink
+  main as formatTagLink
 } from '@/helpers/formatters/links/tag'
 
 export default {
@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     link () {
-      return formatTagMainLink(
+      return formatTagLink(
         {
           tagName: this.tagName
         }

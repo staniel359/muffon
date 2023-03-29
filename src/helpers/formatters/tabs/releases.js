@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatReleasesMainLink,
+  main as formatReleasesLink,
   newReleases as formatReleasesNewLink,
   upcoming as formatReleasesUpcomingLink
 } from '@/helpers/formatters/links/releases'
@@ -31,7 +31,7 @@ export default function (
       case 'upcoming':
         return formatReleasesUpcomingLink()
       default:
-        return formatReleasesMainLink()
+        return formatReleasesLink()
     }
   }
 

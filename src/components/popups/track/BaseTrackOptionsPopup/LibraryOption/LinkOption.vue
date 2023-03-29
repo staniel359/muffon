@@ -14,7 +14,7 @@ import profileStore from '@/stores/profile'
 import BaseLibraryOption
   from '@/components/popups/options/BaseLibraryOption.vue'
 import {
-  main as formatProfileLibraryTrackMainLink
+  main as formatProfileLibraryTrackLink
 } from '@/helpers/formatters/links/profile/library/track'
 
 export default {
@@ -39,7 +39,7 @@ export default {
       }
     ),
     link () {
-      return formatProfileLibraryTrackMainLink(
+      return formatProfileLibraryTrackLink(
         {
           profileId: this.profileId,
           libraryTrackId: this.libraryId

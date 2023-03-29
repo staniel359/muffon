@@ -5,7 +5,7 @@ export function main (
   }
 ) {
   return {
-    name: 'ProfileLibraryTrackMainPage',
+    name: 'ProfileLibraryTrackPage',
     params: {
       profileId,
       libraryTrackId

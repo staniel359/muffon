@@ -1,5 +1,5 @@
 import {
-  main as formatProfileMainLink
+  main as formatProfileLink
 } from '@/helpers/formatters/links/profile'
 
 export default function (
@@ -11,7 +11,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatProfileMainLink(
+      return formatProfileLink(
         {
           profileId
         }

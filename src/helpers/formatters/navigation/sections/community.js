@@ -1,5 +1,5 @@
 import {
-  main as formatCommunityMainLink
+  main as formatCommunityLink
 } from '@/helpers/formatters/links/community'
 
 export default function (
@@ -11,7 +11,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatCommunityMainLink(
+      return formatCommunityLink(
         {
           communityId
         }

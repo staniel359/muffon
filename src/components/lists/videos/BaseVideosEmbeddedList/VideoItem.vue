@@ -32,7 +32,7 @@ import BaseHeader from '@/components/BaseHeader.vue'
 import BaseVideoOptionsPopup
   from '@/components/popups/video/BaseVideoOptionsPopup.vue'
 import {
-  main as formatVideoMainLink
+  main as formatVideoLink
 } from '@/helpers/formatters/links/video'
 
 export default {
@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     link () {
-      return formatVideoMainLink(
+      return formatVideoLink(
         {
           videoId: this.videoId
         }

@@ -19,8 +19,8 @@ import BaseLinkContainer
 import OtherProfileSection from './ConversationItem/OtherProfileSection.vue'
 import LastMessageSegment from './ConversationItem/LastMessageSegment.vue'
 import {
-  conversation as formatConversationLink
-} from '@/helpers/formatters/links/conversations'
+  main as formatConversationLink
+} from '@/helpers/formatters/links/conversation'
 
 export default {
   name: 'ConversationItem',

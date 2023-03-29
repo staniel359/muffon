@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatArtistMainLink,
+  main as formatArtistLink,
   images as formatArtistImagesLink,
   tracks as formatArtistTracksLink,
   albums as formatArtistAlbumsLink,
@@ -55,7 +55,7 @@ export default function (
           }
         )
       default:
-        return formatArtistMainLink(
+        return formatArtistLink(
           {
             artistName
           }

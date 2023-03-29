@@ -104,7 +104,7 @@ import BasePlaylistOptionsPopup
   from '@/components/popups/playlist/BasePlaylistOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
-  main as formatProfileMainLink,
+  main as formatProfileLink,
   playlist as formatProfilePlaylistLink
 } from '@/helpers/formatters/links/profile'
 
@@ -160,7 +160,7 @@ export default {
       if (this.isMainLinkActive) {
         return this.profilePlaylistLink
       } else {
-        return this.profileMainLink
+        return this.profileLink
       }
     },
     profilePlaylistLink () {
@@ -180,8 +180,8 @@ export default {
     playlistId () {
       return this.playlistData.id.toString()
     },
-    profileMainLink () {
-      return formatProfileMainLink(
+    profileLink () {
+      return formatProfileLink(
         {
           profileId: this.profileId
         }

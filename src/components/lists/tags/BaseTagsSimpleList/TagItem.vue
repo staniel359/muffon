@@ -13,10 +13,10 @@
 <script>
 import BaseLabel from '@/components/labels/BaseLabel.vue'
 import {
-  main as formatTagMainLink
+  main as formatTagLink
 } from '@/helpers/formatters/links/tag'
 import {
-  main as formatProfileLibraryTagMainLink
+  main as formatProfileLibraryTagLink
 } from '@/helpers/formatters/links/profile/library/tag'
 
 export default {
@@ -40,14 +40,14 @@ export default {
   computed: {
     link () {
       if (this.isLinkToLibrary) {
-        return formatProfileLibraryTagMainLink(
+        return formatProfileLibraryTagLink(
           {
             profileId: this.profileId,
             libraryTagId: this.libraryTagId
           }
         )
       } else {
-        return formatTagMainLink(
+        return formatTagLink(
           {
             tagName: this.tagName
           }

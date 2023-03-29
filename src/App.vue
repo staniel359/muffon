@@ -17,19 +17,19 @@ import {
 const RootPageLayout =
   defineAsyncComponent(
     () => import(
-      './views/layout/RootPageLayout.vue'
+      './pages/layout/RootPageLayout.vue'
     )
   )
 const AboutPageLayout =
   defineAsyncComponent(
     () => import(
-      './views/layout/AboutPageLayout.vue'
+      './pages/layout/AboutPageLayout.vue'
     )
   )
 const DefaultPageLayout =
   defineAsyncComponent(
     () => import(
-      './views/layout/DefaultPageLayout.vue'
+      './pages/layout/DefaultPageLayout.vue'
     )
   )
 

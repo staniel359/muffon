@@ -9,7 +9,7 @@
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatProfileFavoritesMainLink
+  main as formatProfileFavoritesLink
 } from '@/helpers/formatters/links/profile/favorites'
 
 export default {
@@ -30,7 +30,7 @@ export default {
       )
     },
     favoritesLink () {
-      return formatProfileFavoritesMainLink(
+      return formatProfileFavoritesLink(
         {
           profileId: this.profileId
         }

@@ -18,7 +18,7 @@
 <script>
 import BaseLink from '@/components/links/BaseLink.vue'
 import {
-  main as formatVideoChannelMainLink
+  main as formatVideoChannelLink
 } from '@/helpers/formatters/links/videoChannel'
 
 export default {
@@ -38,7 +38,7 @@ export default {
   ],
   computed: {
     link () {
-      return formatVideoChannelMainLink(
+      return formatVideoChannelLink(
         {
           channelId: this.channelId
         }

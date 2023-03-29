@@ -114,7 +114,7 @@ import BaseVideoPlaylistOptionsPopup
   from '@/components/popups/videoPlaylist/BaseVideoPlaylistOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
-  main as formatVideoPlaylistMainLink
+  main as formatVideoPlaylistLink
 } from '@/helpers/formatters/links/videoPlaylist'
 import selfMixin from '@/mixins/selfMixin'
 
@@ -171,7 +171,7 @@ export default {
       return this.playlistData
     },
     link () {
-      return formatVideoPlaylistMainLink(
+      return formatVideoPlaylistLink(
         {
           playlistId: this.playlistId
         }

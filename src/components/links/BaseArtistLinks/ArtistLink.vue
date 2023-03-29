@@ -29,7 +29,7 @@
 <script>
 import BaseLink from '@/components/links/BaseLink.vue'
 import {
-  main as formatArtistMainLink
+  main as formatArtistLink
 } from '@/helpers/formatters/links/artist'
 import artistPopupMixin from '@/mixins/artistPopupMixin'
 
@@ -54,7 +54,7 @@ export default {
   ],
   computed: {
     link () {
-      return formatArtistMainLink(
+      return formatArtistLink(
         {
           artistName: this.artistName
         }

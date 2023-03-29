@@ -10,7 +10,7 @@
 <script>
 import BaseLinkOption from '@/components/popups/options/BaseLinkOption.vue'
 import {
-  main as formatAlbumMainLink
+  main as formatAlbumLink
 } from '@/helpers/formatters/links/album'
 
 export default {
@@ -29,7 +29,7 @@ export default {
   ],
   computed: {
     link () {
-      return formatAlbumMainLink(
+      return formatAlbumLink(
         {
           artistName: this.artistName,
           albumTitle: this.albumTitle

@@ -1,5 +1,5 @@
 import {
-  main as formatArtistMainLink
+  main as formatArtistLink
 } from '@/helpers/formatters/links/artist'
 
 export default function (
@@ -10,7 +10,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatArtistMainLink(
+      return formatArtistLink(
         {
           artistName
         }

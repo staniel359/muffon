@@ -2,14 +2,14 @@
   <BaseSidebarItem
     icon="library"
     :text="profileLibraryText"
-    :link="profileLibraryMainLink"
+    :link="profileLibraryLink"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatProfileLibraryMainLink
+  main as formatProfileLibraryLink
 } from '@/helpers/formatters/links/profile/library'
 
 export default {
@@ -29,8 +29,8 @@ export default {
         'navigation.library'
       )
     },
-    profileLibraryMainLink () {
-      return formatProfileLibraryMainLink(
+    profileLibraryLink () {
+      return formatProfileLibraryLink(
         {
           profileId: this.profileId
         }

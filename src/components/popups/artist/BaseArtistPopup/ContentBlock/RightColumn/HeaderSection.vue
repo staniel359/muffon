@@ -16,7 +16,7 @@ import BaseHeaderContainer
   from '@/components/containers/BaseHeaderContainer.vue'
 import BaseLink from '@/components/links/BaseLink.vue'
 import {
-  main as formatArtistMainLink
+  main as formatArtistLink
 } from '@/helpers/formatters/links/artist'
 
 export default {
@@ -36,7 +36,7 @@ export default {
   ],
   computed: {
     link () {
-      return formatArtistMainLink(
+      return formatArtistLink(
         {
           artistName: this.artistName
         }

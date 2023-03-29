@@ -4,7 +4,7 @@
     :class="{
       disabled: !profileId
     }"
-    :link="profileMainLink"
+    :link="profileLink"
   >
     <BaseImage
       class="small circular bordered"
@@ -33,7 +33,7 @@ import BaseImage from '@/components/images/BaseImage.vue'
 import NicknameSection from './ProfileMinimalItem/NicknameSection.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import {
-  main as formatProfileMainLink
+  main as formatProfileLink
 } from '@/helpers/formatters/links/profile'
 
 export default {
@@ -51,9 +51,9 @@ export default {
     }
   },
   computed: {
-    profileMainLink () {
+    profileLink () {
       if (this.profileId) {
-        return formatProfileMainLink(
+        return formatProfileLink(
           {
             profileId: this.profileId
           }

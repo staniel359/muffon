@@ -1,5 +1,5 @@
 import {
-  main as formatProfileLibraryTagMainLink
+  main as formatProfileLibraryTagLink
 } from '@/helpers/formatters/links/profile/library/tag'
 
 export default function (
@@ -12,7 +12,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatProfileLibraryTagMainLink(
+      return formatProfileLibraryTagLink(
         {
           profileId,
           libraryTagId

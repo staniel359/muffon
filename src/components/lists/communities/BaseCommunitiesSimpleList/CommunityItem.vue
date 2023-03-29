@@ -80,7 +80,7 @@ import BaseCommunityOptionsPopup
   from '@/components/popups/community/BaseCommunityOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
-  main as formatCommunityMainLink
+  main as formatCommunityLink
 } from '@/helpers/formatters/links/community'
 
 export default {
@@ -124,7 +124,7 @@ export default {
   ],
   computed: {
     communityLink () {
-      return formatCommunityMainLink(
+      return formatCommunityLink(
         {
           communityId: this.communityId
         }

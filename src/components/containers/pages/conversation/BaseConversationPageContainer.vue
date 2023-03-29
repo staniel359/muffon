@@ -17,8 +17,8 @@ import BasePageContainer
 import navigationMixin from '@/mixins/navigationMixin'
 import formatConversationPageNavigation
   from '@/helpers/formatters/navigation/conversation'
-import formatConversationsPageTab
-  from '@/helpers/formatters/tabs/conversations'
+import formatConversationPageTab
+  from '@/helpers/formatters/tabs/conversation'
 import getConversation from '@/helpers/actions/api/conversation/get'
 
 export default {
@@ -61,7 +61,7 @@ export default {
       return this.conversationData?.profile?.id?.toString()
     },
     tabData () {
-      return formatConversationsPageTab(
+      return formatConversationPageTab(
         this.navigationData
       )
     },

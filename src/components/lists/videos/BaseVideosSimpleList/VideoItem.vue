@@ -97,7 +97,7 @@ import BaseVideoOptionsPopup
   from '@/components/popups/video/BaseVideoOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
-  main as formatVideoMainLink
+  main as formatVideoLink
 } from '@/helpers/formatters/links/video'
 import selfMixin from '@/mixins/selfMixin'
 
@@ -158,7 +158,7 @@ export default {
       return this.videoData
     },
     link () {
-      return formatVideoMainLink(
+      return formatVideoLink(
         {
           videoId: this.videoId
         }

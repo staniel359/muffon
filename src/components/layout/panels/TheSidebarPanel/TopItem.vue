@@ -9,7 +9,7 @@
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatTopMainLink
+  main as formatTopLink
 } from '@/helpers/formatters/links/top'
 
 export default {
@@ -24,7 +24,7 @@ export default {
       )
     },
     topLink () {
-      return formatTopMainLink()
+      return formatTopLink()
     }
   }
 }

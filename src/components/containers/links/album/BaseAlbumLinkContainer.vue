@@ -11,10 +11,10 @@
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import {
-  main as formatProfileLibraryAlbumMainLink
+  main as formatProfileLibraryAlbumLink
 } from '@/helpers/formatters/links/profile/library/album'
 import {
-  main as formatAlbumMainLink
+  main as formatAlbumLink
 } from '@/helpers/formatters/links/album'
 import formatRequestAlbumData from '@/helpers/formatters/request/album/data'
 
@@ -39,13 +39,13 @@ export default {
   computed: {
     link () {
       if (this.isLinkToLibrary) {
-        return this.profileLibraryAlbumMainLink
+        return this.profileLibraryAlbumLink
       } else {
-        return this.albumMainLink
+        return this.albumLink
       }
     },
-    profileLibraryAlbumMainLink () {
-      return formatProfileLibraryAlbumMainLink(
+    profileLibraryAlbumLink () {
+      return formatProfileLibraryAlbumLink(
         {
           profileId: this.profileId,
           libraryAlbumId:
@@ -59,8 +59,8 @@ export default {
           this.libraryAlbumId
       )
     },
-    albumMainLink () {
-      return formatAlbumMainLink(
+    albumLink () {
+      return formatAlbumLink(
         {
           albumTitle: this.albumTitle,
           artistName: this.artistNameComputed,

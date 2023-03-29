@@ -1,5 +1,5 @@
 import {
-  main as formatVideoPlaylistMainLink
+  main as formatVideoPlaylistLink
 } from '@/helpers/formatters/links/videoPlaylist'
 
 export default function (
@@ -11,7 +11,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatVideoPlaylistMainLink(
+      return formatVideoPlaylistLink(
         {
           playlistId
         }

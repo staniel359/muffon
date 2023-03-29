@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatVideoPlaylistMainLink
+  main as formatVideoPlaylistLink
 } from '@/helpers/formatters/links/videoPlaylist'
 
 export default function (
@@ -42,7 +42,7 @@ export default function (
   function formatLink () {
     switch (scope) {
       default:
-        return formatVideoPlaylistMainLink(
+        return formatVideoPlaylistLink(
           {
             playlistId
           }

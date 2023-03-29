@@ -1,5 +1,5 @@
 import {
-  main as formatTagMainLink
+  main as formatTagLink
 } from '@/helpers/formatters/links/tag'
 
 export default function (
@@ -10,7 +10,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatTagMainLink(
+      return formatTagLink(
         {
           tagName
         }

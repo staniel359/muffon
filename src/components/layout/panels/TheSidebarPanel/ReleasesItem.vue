@@ -9,7 +9,7 @@
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatReleasesMainLink
+  main as formatReleasesLink
 } from '@/helpers/formatters/links/releases'
 
 export default {
@@ -24,7 +24,7 @@ export default {
       )
     },
     releasesLink () {
-      return formatReleasesMainLink()
+      return formatReleasesLink()
     }
   }
 }

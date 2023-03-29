@@ -1,5 +1,5 @@
 import {
-  main as formatTrackMainLink
+  main as formatTrackLink
 } from '@/helpers/formatters/links/track'
 
 export default function (
@@ -12,7 +12,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatTrackMainLink(
+      return formatTrackLink(
         {
           artistName,
           trackTitle,

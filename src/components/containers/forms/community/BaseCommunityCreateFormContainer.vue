@@ -17,7 +17,7 @@ import {
 } from '@/helpers/formatters/semantic'
 import createCommunity from '@/helpers/actions/api/community/create'
 import {
-  main as formatCommunityMainLink
+  main as formatCommunityLink
 } from '@/helpers/formatters/links/community'
 
 export default {
@@ -51,7 +51,7 @@ export default {
       )
     },
     communityUrl () {
-      return formatCommunityMainLink(
+      return formatCommunityLink(
         {
           communityId: this.communityId
         }

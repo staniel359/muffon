@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatProfileLibraryMainLink,
+  main as formatProfileLibraryLink,
   artists as formatProfileLibraryArtistsLink,
   albums as formatProfileLibraryAlbumsLink,
   tracks as formatProfileLibraryTracksLink,
@@ -61,7 +61,7 @@ export default function (
           }
         )
       default:
-        return formatProfileLibraryMainLink(
+        return formatProfileLibraryLink(
           {
             profileId
           }

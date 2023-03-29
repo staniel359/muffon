@@ -1,5 +1,5 @@
 import {
-  main as formatProfileLibraryTrackMainLink
+  main as formatProfileLibraryTrackLink
 } from '@/helpers/formatters/links/profile/library/track'
 
 export default function (
@@ -12,7 +12,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatProfileLibraryTrackMainLink(
+      return formatProfileLibraryTrackLink(
         {
           profileId,
           libraryTrackId

@@ -5,17 +5,3 @@ export function main () {
     path: 'conversations'
   }
 }
-
-export function conversation (
-  {
-    conversationId
-  }
-) {
-  return {
-    name: 'ConversationPage',
-    params: {
-      conversationId
-    },
-    path: `conversations/${conversationId}`
-  }
-}

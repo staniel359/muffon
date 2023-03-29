@@ -28,10 +28,10 @@
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import {
-  main as formatProfileLibraryArtistMainLink
+  main as formatProfileLibraryArtistLink
 } from '@/helpers/formatters/links/profile/library/artist'
 import {
-  main as formatArtistMainLink
+  main as formatArtistLink
 } from '@/helpers/formatters/links/artist'
 import artistPopupMixin from '@/mixins/artistPopupMixin'
 
@@ -59,13 +59,13 @@ export default {
   computed: {
     link () {
       if (this.isLinkToLibrary) {
-        return this.profileLibraryArtistMainLink
+        return this.profileLibraryArtistLink
       } else {
-        return this.artistMainLink
+        return this.artistLink
       }
     },
-    profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink(
+    profileLibraryArtistLink () {
+      return formatProfileLibraryArtistLink(
         {
           profileId: this.profileId,
           libraryArtistId:
@@ -79,8 +79,8 @@ export default {
           this.libraryArtistId
       )
     },
-    artistMainLink () {
-      return formatArtistMainLink(
+    artistLink () {
+      return formatArtistLink(
         {
           artistName: this.artistName
         }

@@ -2,7 +2,7 @@ import formatQuery from '@/helpers/formatters/query'
 
 export function main () {
   return {
-    name: 'TopMainPage',
+    name: 'TopPage',
     params: {},
     path: 'top'
   }

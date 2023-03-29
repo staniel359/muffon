@@ -11,10 +11,10 @@
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import {
-  main as formatProfileLibraryTrackMainLink
+  main as formatProfileLibraryTrackLink
 } from '@/helpers/formatters/links/profile/library/track'
 import {
-  main as formatTrackMainLink
+  main as formatTrackLink
 } from '@/helpers/formatters/links/track'
 import formatRequestTrackData from '@/helpers/formatters/request/track/data'
 
@@ -39,13 +39,13 @@ export default {
   computed: {
     link () {
       if (this.isLinkToLibrary) {
-        return this.profileLibraryTrackMainLink
+        return this.profileLibraryTrackLink
       } else {
-        return this.trackMainLink
+        return this.trackLink
       }
     },
-    profileLibraryTrackMainLink () {
-      return formatProfileLibraryTrackMainLink(
+    profileLibraryTrackLink () {
+      return formatProfileLibraryTrackLink(
         {
           profileId: this.profileId,
           libraryTrackId:
@@ -59,8 +59,8 @@ export default {
           this.libraryTrackId
       )
     },
-    trackMainLink () {
-      return formatTrackMainLink(
+    trackLink () {
+      return formatTrackLink(
         {
           trackTitle: this.trackTitle,
           artistName:

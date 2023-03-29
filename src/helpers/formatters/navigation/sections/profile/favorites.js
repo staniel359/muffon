@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatProfileFavoritesMainLink
+  main as formatProfileFavoritesLink
 } from '@/helpers/formatters/links/profile/favorites'
 
 export default function (
@@ -11,7 +11,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatProfileFavoritesMainLink(
+      return formatProfileFavoritesLink(
         {
           profileId
         }

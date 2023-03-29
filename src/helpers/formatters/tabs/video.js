@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatVideoMainLink,
+  main as formatVideoLink,
   related as formatVideoRelatedLink
 } from '@/helpers/formatters/links/video'
 
@@ -49,7 +49,7 @@ export default function (
           }
         )
       default:
-        return formatVideoMainLink(
+        return formatVideoLink(
           {
             videoId
           }

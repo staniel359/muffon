@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatProfileLibraryMainLink
+  main as formatProfileLibraryLink
 } from '@/helpers/formatters/links/profile/library'
 
 export default function (
@@ -11,7 +11,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatProfileLibraryMainLink(
+      return formatProfileLibraryLink(
         {
           profileId
         }

@@ -4,7 +4,7 @@ export function main (
   }
 ) {
   return {
-    name: 'CommunityMainPage',
+    name: 'CommunityPage',
     params: {
       communityId
     },

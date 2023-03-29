@@ -14,7 +14,7 @@ import profileStore from '@/stores/profile'
 import BaseLibraryOption
   from '@/components/popups/options/BaseLibraryOption.vue'
 import {
-  main as formatProfileLibraryArtistMainLink
+  main as formatProfileLibraryArtistLink
 } from '@/helpers/formatters/links/profile/library/artist'
 
 export default {
@@ -39,7 +39,7 @@ export default {
       }
     ),
     link () {
-      return formatProfileLibraryArtistMainLink(
+      return formatProfileLibraryArtistLink(
         {
           profileId: this.profileId,
           libraryArtistId: this.libraryId

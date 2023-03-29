@@ -4,7 +4,7 @@ export function main (
   }
 ) {
   return {
-    name: 'ProfileFavoritesMainPage',
+    name: 'ProfileFavoritesPage',
     params: {
       profileId
     },

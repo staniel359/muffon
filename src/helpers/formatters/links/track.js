@@ -42,7 +42,7 @@ export function main (
     `?${queryFormatted.string}`
 
   return {
-    name: 'TrackMainPage',
+    name: 'TrackPage',
     params: {
       artistName,
       trackTitle

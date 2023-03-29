@@ -5,7 +5,7 @@ export function main (
   }
 ) {
   return {
-    name: 'ProfileLibraryAlbumMainPage',
+    name: 'ProfileLibraryAlbumPage',
     params: {
       profileId,
       libraryAlbumId

@@ -10,10 +10,10 @@ import {
   shell
 } from 'electron'
 import {
-  main as formatVideoMainLink
+  main as formatVideoLink
 } from '@/helpers/formatters/links/video'
 import {
-  main as formatVideoChannelMainLink
+  main as formatVideoChannelLink
 } from '@/helpers/formatters/links/videoChannel'
 import newTabMixin from '@/mixins/newTabMixin'
 
@@ -38,7 +38,7 @@ export default {
           regex:
             /https:\/\/www.youtube.com\/watch\?.*v=([\w_-]+)/,
           formatPath: id => {
-            return formatVideoMainLink(
+            return formatVideoLink(
               {
                 videoId: id
               }
@@ -50,7 +50,7 @@ export default {
           regex:
             /https:\/\/www.youtube.com\/channel\/([\w_-]+)/,
           formatPath: id => {
-            return formatVideoChannelMainLink(
+            return formatVideoChannelLink(
               {
                 channelId: id
               }

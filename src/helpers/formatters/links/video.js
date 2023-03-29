@@ -4,7 +4,7 @@ export function main (
   }
 ) {
   return {
-    name: 'VideoMainPage',
+    name: 'VideoPage',
     params: {
       videoId
     },

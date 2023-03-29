@@ -3,7 +3,7 @@
     :tag="tag"
   >
     <BaseLink
-      :link="communityMainLink"
+      :link="communityLink"
       :text="communityTitle"
     />
   </BaseHeaderContainer>
@@ -14,7 +14,7 @@ import BaseHeaderContainer
   from '@/components/containers/BaseHeaderContainer.vue'
 import BaseLink from '@/components/links/BaseLink.vue'
 import {
-  main as formatCommunityMainLink
+  main as formatCommunityLink
 } from '@/helpers/formatters/links/community'
 
 export default {
@@ -34,8 +34,8 @@ export default {
     }
   },
   computed: {
-    communityMainLink () {
-      return formatCommunityMainLink(
+    communityLink () {
+      return formatCommunityLink(
         {
           communityId: this.communityId
         }

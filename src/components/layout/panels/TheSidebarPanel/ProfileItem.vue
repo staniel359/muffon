@@ -2,7 +2,7 @@
   <BaseSidebarItem
     class="top-item"
     image-model="profile"
-    :link="profileMainLink"
+    :link="profileLink"
     :image="imageData?.extrasmall"
     :text="nickname"
     is-text-strong
@@ -16,7 +16,7 @@ import {
 import profileStore from '@/stores/profile'
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatProfileMainLink
+  main as formatProfileLink
 } from '@/helpers/formatters/links/profile'
 
 export default {
@@ -32,8 +32,8 @@ export default {
         profileInfo: 'info'
       }
     ),
-    profileMainLink () {
-      return formatProfileMainLink(
+    profileLink () {
+      return formatProfileLink(
         {
           profileId: this.profileId
         }

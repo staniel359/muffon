@@ -4,7 +4,7 @@
     :tag="tag"
   >
     <BaseLink
-      :link="profileMainLink"
+      :link="profileLink"
       :text="profileNickname"
     />
   </BaseHeaderContainer>
@@ -19,7 +19,7 @@ import BaseHeaderContainer
   from '@/components/containers/BaseHeaderContainer.vue'
 import BaseLink from '@/components/links/BaseLink.vue'
 import {
-  main as formatProfileMainLink
+  main as formatProfileLink
 } from '@/helpers/formatters/links/profile'
 
 export default {
@@ -39,8 +39,8 @@ export default {
     }
   },
   computed: {
-    profileMainLink () {
-      return formatProfileMainLink(
+    profileLink () {
+      return formatProfileLink(
         {
           profileId: this.profileId
         }

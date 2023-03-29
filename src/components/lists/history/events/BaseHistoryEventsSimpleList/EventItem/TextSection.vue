@@ -41,25 +41,25 @@ import {
 import profileStore from '@/stores/profile'
 import BaseLink from '@/components/links/BaseLink.vue'
 import {
-  main as formatAlbumMainLink
+  main as formatAlbumLink
 } from '@/helpers/formatters/links/album'
 import {
-  main as formatArtistMainLink
+  main as formatArtistLink
 } from '@/helpers/formatters/links/artist'
 import {
-  main as formatTrackMainLink
+  main as formatTrackLink
 } from '@/helpers/formatters/links/track'
 import {
-  main as formatVideoMainLink
+  main as formatVideoLink
 } from '@/helpers/formatters/links/video'
 import {
-  main as formatVideoPlaylistMainLink
+  main as formatVideoPlaylistLink
 } from '@/helpers/formatters/links/videoPlaylist'
 import {
-  main as formatCommunityMainLink
+  main as formatCommunityLink
 } from '@/helpers/formatters/links/community'
 import {
-  main as formatProfileMainLink,
+  main as formatProfileLink,
   playlist as formatProfilePlaylistLink
 } from '@/helpers/formatters/links/profile'
 
@@ -132,7 +132,7 @@ export default {
     modelLink () {
       switch (this.model) {
         case 'album':
-          return formatAlbumMainLink(
+          return formatAlbumLink(
             {
               albumTitle:
                 this.albumTitle,
@@ -141,14 +141,14 @@ export default {
             }
           )
         case 'artist':
-          return formatArtistMainLink(
+          return formatArtistLink(
             {
               artistName:
                 this.artistName
             }
           )
         case 'track':
-          return formatTrackMainLink(
+          return formatTrackLink(
             {
               trackTitle:
                 this.trackTitle,
@@ -157,7 +157,7 @@ export default {
             }
           )
         case 'playlistTrack':
-          return formatTrackMainLink(
+          return formatTrackLink(
             {
               trackTitle:
                 this.trackTitle,
@@ -166,32 +166,32 @@ export default {
             }
           )
         case 'video':
-          return formatVideoMainLink(
+          return formatVideoLink(
             {
               videoId: this.videoId
             }
           )
         case 'videoPlaylist':
-          return formatVideoPlaylistMainLink(
+          return formatVideoPlaylistLink(
             {
               playlistId: this.videoPlaylistId
             }
           )
         case 'community':
-          return formatCommunityMainLink(
+          return formatCommunityLink(
             {
               communityId: this.id
             }
           )
         case 'recommendation':
-          return formatArtistMainLink(
+          return formatArtistLink(
             {
               artistName:
                 this.artistName
             }
           )
         case 'relationship':
-          return formatProfileMainLink(
+          return formatProfileLink(
             {
               profileId:
                 this.otherProfileId
@@ -206,14 +206,14 @@ export default {
             }
           )
         case 'conversation':
-          return formatProfileMainLink(
+          return formatProfileLink(
             {
               profileId:
                 this.otherProfileId
             }
           )
         case 'membership':
-          return formatCommunityMainLink(
+          return formatCommunityLink(
             {
               communityId:
                 this.communityId

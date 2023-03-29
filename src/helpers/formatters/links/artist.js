@@ -9,7 +9,7 @@ export function main (
     )
 
   return {
-    name: 'ArtistMainPage',
+    name: 'ArtistPage',
     params: {
       artistName
     },

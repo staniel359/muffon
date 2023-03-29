@@ -4,7 +4,7 @@ export function main (
   }
 ) {
   return {
-    name: 'VideoPlaylistMainPage',
+    name: 'VideoPlaylistPage',
     params: {
       playlistId
     },

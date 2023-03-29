@@ -5,7 +5,7 @@ export function main (
   }
 ) {
   return {
-    name: 'ProfileLibraryArtistMainPage',
+    name: 'ProfileLibraryArtistPage',
     params: {
       profileId,
       libraryArtistId

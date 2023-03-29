@@ -5,7 +5,7 @@ export function main (
   }
 ) {
   return {
-    name: 'ProfileLibraryTagMainPage',
+    name: 'ProfileLibraryTagPage',
     params: {
       profileId,
       libraryTagId

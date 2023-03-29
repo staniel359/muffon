@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatHistoryMainLink,
+  main as formatHistoryLink,
   activity as formatHistoryActivityLink,
   player as formatHistoryPlayerLink,
   browser as formatHistoryBrowserLink
@@ -34,7 +34,7 @@ export default function (
       case 'browser':
         return formatHistoryBrowserLink()
       default:
-        return formatHistoryMainLink()
+        return formatHistoryLink()
     }
   }
 

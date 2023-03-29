@@ -1,6 +1,6 @@
 export function main () {
   return {
-    name: 'BookmarksMainPage',
+    name: 'BookmarksPage',
     params: {},
     path: 'bookmarks'
   }

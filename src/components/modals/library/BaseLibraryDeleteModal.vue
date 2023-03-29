@@ -15,7 +15,7 @@
 import BaseDeleteModal from '@/components/modals/BaseDeleteModal.vue'
 import deleteLibraryModel from '@/helpers/actions/api/library/model/delete'
 import {
-  main as formatProfileLibraryMainLink
+  main as formatProfileLibraryLink
 } from '@/helpers/formatters/links/profile/library'
 import notificationMixin from '@/mixins/notificationMixin'
 
@@ -81,8 +81,8 @@ export default {
           )
       }
     },
-    profileLibraryMainLink () {
-      return formatProfileLibraryMainLink(
+    profileLibraryLink () {
+      return formatProfileLibraryLink(
         {
           profileId: this.profileId
         }
@@ -133,7 +133,7 @@ export default {
     },
     redirect () {
       this.$router.push(
-        this.profileLibraryMainLink
+        this.profileLibraryLink
       )
     },
     show () {

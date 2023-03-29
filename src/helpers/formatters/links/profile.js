@@ -4,7 +4,7 @@ export function main (
   }
 ) {
   return {
-    name: 'ProfileMainPage',
+    name: 'ProfilePage',
     params: {
       profileId
     },

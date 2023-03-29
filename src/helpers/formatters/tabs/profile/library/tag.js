@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatProfileLibraryTagMainLink,
+  main as formatProfileLibraryTagLink,
   artists as formatProfileLibraryTagArtistsLink
 } from '@/helpers/formatters/links/profile/library/tag'
 
@@ -51,7 +51,7 @@ export default function (
           }
         )
       default:
-        return formatProfileLibraryTagMainLink(
+        return formatProfileLibraryTagLink(
           {
             profileId,
             libraryTagId

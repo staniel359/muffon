@@ -10,7 +10,7 @@
 <script>
 import BaseLinkOption from '@/components/popups/options/BaseLinkOption.vue'
 import {
-  main as formatArtistMainLink
+  main as formatArtistLink
 } from '@/helpers/formatters/links/artist'
 
 export default {
@@ -29,7 +29,7 @@ export default {
   ],
   computed: {
     link () {
-      return formatArtistMainLink(
+      return formatArtistLink(
         {
           artistName: this.artistName
         }

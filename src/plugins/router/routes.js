@@ -2,6 +2,8 @@ import formatHomePageLinkData from '@/helpers/formatters/tabs/home'
 import formatFeedPageLinkData from '@/helpers/formatters/tabs/feed'
 import formatConversationsPageLinkData
   from '@/helpers/formatters/tabs/conversations'
+import formatConversationPageLinkData
+  from '@/helpers/formatters/tabs/conversation'
 import formatArtistPageLinkData from '@/helpers/formatters/tabs/artist'
 import formatAlbumPageLinkData from '@/helpers/formatters/tabs/album'
 import formatTrackPageLinkData from '@/helpers/formatters/tabs/track'
@@ -43,241 +45,241 @@ import formatSavedTracksPageLinkData
 import formatHistoryPageLinkData from '@/helpers/formatters/tabs/history'
 
 const RootPage = () => import(
-  '@/views/RootPage.vue'
+  '@/pages/RootPage.vue'
 )
 const HomePage = () => import(
-  '@/views/HomePage.vue'
+  '@/pages/home/MainPage.vue'
 )
 const FeedPage = () => import(
-  '@/views/FeedPage.vue'
+  '@/pages/feed/MainPage.vue'
 )
 const ConversationsPage = () => import(
-  '@/views/conversations/MainPage.vue'
+  '@/pages/conversations/MainPage.vue'
 )
 const ConversationPage = () => import(
-  '@/views/conversations/ConversationPage.vue'
+  '@/pages/conversation/MainPage.vue'
 )
-const ArtistMainPage = () => import(
-  '@/views/artist/MainPage.vue'
+const ArtistPage = () => import(
+  '@/pages/artist/MainPage.vue'
 )
 const ArtistImagesPage = () => import(
-  '@/views/artist/ImagesPage.vue'
+  '@/pages/artist/ImagesPage.vue'
 )
 const ArtistTracksPage = () => import(
-  '@/views/artist/TracksPage.vue'
+  '@/pages/artist/TracksPage.vue'
 )
 const ArtistAlbumsPage = () => import(
-  '@/views/artist/AlbumsPage.vue'
+  '@/pages/artist/AlbumsPage.vue'
 )
 const ArtistSimilarPage = () => import(
-  '@/views/artist/SimilarPage.vue'
+  '@/pages/artist/SimilarPage.vue'
 )
-const AlbumMainPage = () => import(
-  '@/views/album/MainPage.vue'
+const AlbumPage = () => import(
+  '@/pages/album/MainPage.vue'
 )
-const TrackMainPage = () => import(
-  '@/views/track/MainPage.vue'
+const TrackPage = () => import(
+  '@/pages/track/MainPage.vue'
 )
 const TrackSimilarPage = () => import(
-  '@/views/track/SimilarPage.vue'
+  '@/pages/track/SimilarPage.vue'
 )
-const TagMainPage = () => import(
-  '@/views/tag/MainPage.vue'
+const TagPage = () => import(
+  '@/pages/tag/MainPage.vue'
 )
 const TagArtistsPage = () => import(
-  '@/views/tag/ArtistsPage.vue'
+  '@/pages/tag/ArtistsPage.vue'
 )
 const TagAlbumsPage = () => import(
-  '@/views/tag/AlbumsPage.vue'
+  '@/pages/tag/AlbumsPage.vue'
 )
 const TagTracksPage = () => import(
-  '@/views/tag/TracksPage.vue'
+  '@/pages/tag/TracksPage.vue'
 )
-const VideoChannelMainPage = () => import(
-  '@/views/videoChannel/MainPage.vue'
+const VideoChannelPage = () => import(
+  '@/pages/videoChannel/MainPage.vue'
 )
 const VideoChannelVideosPage = () => import(
-  '@/views/videoChannel/VideosPage.vue'
+  '@/pages/videoChannel/VideosPage.vue'
 )
 const VideoChannelPlaylistsPage = () => import(
-  '@/views/videoChannel/PlaylistsPage.vue'
+  '@/pages/videoChannel/PlaylistsPage.vue'
 )
-const VideoMainPage = () => import(
-  '@/views/video/MainPage.vue'
+const VideoPage = () => import(
+  '@/pages/video/MainPage.vue'
 )
 const VideoRelatedPage = () => import(
-  '@/views/video/RelatedPage.vue'
+  '@/pages/video/RelatedPage.vue'
 )
-const VideoPlaylistMainPage = () => import(
-  '@/views/videoPlaylist/MainPage.vue'
+const VideoPlaylistPage = () => import(
+  '@/pages/videoPlaylist/MainPage.vue'
 )
 const ProfilesPage = () => import(
-  '@/views/ProfilesPage.vue'
+  '@/pages/profiles/MainPage.vue'
 )
-const ProfileMainPage = () => import(
-  '@/views/profile/MainPage.vue'
+const ProfilePage = () => import(
+  '@/pages/profile/MainPage.vue'
 )
-const ProfileLibraryMainPage = () => import(
-  '@/views/profile/library/MainPage.vue'
+const ProfileLibraryPage = () => import(
+  '@/pages/profile/library/MainPage.vue'
 )
 const ProfileLibraryArtistsPage = () => import(
-  '@/views/profile/library/ArtistsPage.vue'
+  '@/pages/profile/library/ArtistsPage.vue'
 )
-const ProfileLibraryArtistMainPage = () => import(
-  '@/views/profile/library/artist/MainPage.vue'
+const ProfileLibraryArtistPage = () => import(
+  '@/pages/profile/library/artist/MainPage.vue'
 )
 const ProfileLibraryArtistAlbumsPage = () => import(
-  '@/views/profile/library/artist/AlbumsPage.vue'
+  '@/pages/profile/library/artist/AlbumsPage.vue'
 )
 const ProfileLibraryArtistTracksPage = () => import(
-  '@/views/profile/library/artist/TracksPage.vue'
+  '@/pages/profile/library/artist/TracksPage.vue'
 )
 const ProfileLibraryArtistPlaylistsPage = () => import(
-  '@/views/profile/library/artist/PlaylistsPage.vue'
+  '@/pages/profile/library/artist/PlaylistsPage.vue'
 )
 const ProfileLibraryAlbumsPage = () => import(
-  '@/views/profile/library/AlbumsPage.vue'
+  '@/pages/profile/library/AlbumsPage.vue'
 )
-const ProfileLibraryAlbumMainPage = () => import(
-  '@/views/profile/library/album/MainPage.vue'
+const ProfileLibraryAlbumPage = () => import(
+  '@/pages/profile/library/album/MainPage.vue'
 )
 const ProfileLibraryAlbumTracksPage = () => import(
-  '@/views/profile/library/album/TracksPage.vue'
+  '@/pages/profile/library/album/TracksPage.vue'
 )
 const ProfileLibraryAlbumPlaylistsPage = () => import(
-  '@/views/profile/library/album/PlaylistsPage.vue'
+  '@/pages/profile/library/album/PlaylistsPage.vue'
 )
 const ProfileLibraryTracksPage = () => import(
-  '@/views/profile/library/TracksPage.vue'
+  '@/pages/profile/library/TracksPage.vue'
 )
-const ProfileLibraryTrackMainPage = () => import(
-  '@/views/profile/library/track/MainPage.vue'
+const ProfileLibraryTrackPage = () => import(
+  '@/pages/profile/library/track/MainPage.vue'
 )
 const ProfileLibraryTrackAlbumsPage = () => import(
-  '@/views/profile/library/track/AlbumsPage.vue'
+  '@/pages/profile/library/track/AlbumsPage.vue'
 )
 const ProfileLibraryTrackPlaylistsPage = () => import(
-  '@/views/profile/library/track/PlaylistsPage.vue'
+  '@/pages/profile/library/track/PlaylistsPage.vue'
 )
 const ProfileLibraryTagsPage = () => import(
-  '@/views/profile/library/TagsPage.vue'
+  '@/pages/profile/library/TagsPage.vue'
 )
-const ProfileLibraryTagMainPage = () => import(
-  '@/views/profile/library/tag/MainPage.vue'
+const ProfileLibraryTagPage = () => import(
+  '@/pages/profile/library/tag/MainPage.vue'
 )
 const ProfileLibraryTagArtistsPage = () => import(
-  '@/views/profile/library/tag/ArtistsPage.vue'
+  '@/pages/profile/library/tag/ArtistsPage.vue'
 )
 const RecommendationsPage = () => import(
-  '@/views/RecommendationsPage.vue'
+  '@/pages/recommendations/MainPage.vue'
 )
-const BookmarksMainPage = () => import(
-  '@/views/bookmarks/MainPage.vue'
+const BookmarksPage = () => import(
+  '@/pages/bookmarks/MainPage.vue'
 )
 const BookmarksArtistsPage = () => import(
-  '@/views/bookmarks/ArtistsPage.vue'
+  '@/pages/bookmarks/ArtistsPage.vue'
 )
 const BookmarksAlbumsPage = () => import(
-  '@/views/bookmarks/AlbumsPage.vue'
+  '@/pages/bookmarks/AlbumsPage.vue'
 )
 const BookmarksTracksPage = () => import(
-  '@/views/bookmarks/TracksPage.vue'
+  '@/pages/bookmarks/TracksPage.vue'
 )
 const BookmarksVideosPage = () => import(
-  '@/views/bookmarks/VideosPage.vue'
+  '@/pages/bookmarks/VideosPage.vue'
 )
 const BookmarksVideoChannelsPage = () => import(
-  '@/views/bookmarks/VideoChannelsPage.vue'
+  '@/pages/bookmarks/VideoChannelsPage.vue'
 )
 const BookmarksVideoPlaylistsPage = () => import(
-  '@/views/bookmarks/VideoPlaylistsPage.vue'
+  '@/pages/bookmarks/VideoPlaylistsPage.vue'
 )
-const ProfileFavoritesMainPage = () => import(
-  '@/views/profile/favorites/MainPage.vue'
+const ProfileFavoritesPage = () => import(
+  '@/pages/profile/favorites/MainPage.vue'
 )
 const ProfileFavoritesArtistsPage = () => import(
-  '@/views/profile/favorites/ArtistsPage.vue'
+  '@/pages/profile/favorites/ArtistsPage.vue'
 )
 const ProfileFavoritesAlbumsPage = () => import(
-  '@/views/profile/favorites/AlbumsPage.vue'
+  '@/pages/profile/favorites/AlbumsPage.vue'
 )
 const ProfileFavoritesTracksPage = () => import(
-  '@/views/profile/favorites/TracksPage.vue'
+  '@/pages/profile/favorites/TracksPage.vue'
 )
 const ProfileFavoritesVideosPage = () => import(
-  '@/views/profile/favorites/VideosPage.vue'
+  '@/pages/profile/favorites/VideosPage.vue'
 )
-const TopMainPage = () => import(
-  '@/views/top/MainPage.vue'
+const TopPage = () => import(
+  '@/pages/top/MainPage.vue'
 )
 const TopArtistsPage = () => import(
-  '@/views/top/ArtistsPage.vue'
+  '@/pages/top/ArtistsPage.vue'
 )
 const TopAlbumsPage = () => import(
-  '@/views/top/AlbumsPage.vue'
+  '@/pages/top/AlbumsPage.vue'
 )
 const TopTracksPage = () => import(
-  '@/views/top/TracksPage.vue'
+  '@/pages/top/TracksPage.vue'
 )
 const TopTagsPage = () => import(
-  '@/views/top/TagsPage.vue'
+  '@/pages/top/TagsPage.vue'
 )
 const ProfilePlaylistsPage = () => import(
-  '@/views/profile/PlaylistsPage.vue'
+  '@/pages/profile/playlists/MainPage.vue'
 )
 const ProfilePlaylistPage = () => import(
-  '@/views/profile/PlaylistPage.vue'
+  '@/pages/profile/playlist/MainPage.vue'
 )
 const RadioPage = () => import(
-  '@/views/RadioPage.vue'
+  '@/pages/radio/MainPage.vue'
 )
 const ProfilePostsPage = () => import(
-  '@/views/profile/PostsPage.vue'
+  '@/pages/profile/posts/MainPage.vue'
 )
 const PlaylistsPage = () => import(
-  '@/views/PlaylistsPage.vue'
+  '@/pages/playlists/MainPage.vue'
 )
 const ProfileCommunitiesPage = () => import(
-  '@/views/profile/CommunitiesPage.vue'
+  '@/pages/profile/communities/MainPage.vue'
 )
 const CommunitiesPage = () => import(
-  '@/views/CommunitiesPage.vue'
+  '@/pages/communities/MainPage.vue'
 )
-const CommunityMainPage = () => import(
-  '@/views/community/MainPage.vue'
+const CommunityPage = () => import(
+  '@/pages/community/MainPage.vue'
 )
 const CommunityPostsPage = () => import(
-  '@/views/community/PostsPage.vue'
+  '@/pages/community/PostsPage.vue'
 )
-const ReleasesMainPage = () => import(
-  '@/views/releases/MainPage.vue'
+const ReleasesPage = () => import(
+  '@/pages/releases/MainPage.vue'
 )
 const ReleasesNewPage = () => import(
-  '@/views/releases/NewPage.vue'
+  '@/pages/releases/NewPage.vue'
 )
 const ReleasesUpcomingPage = () => import(
-  '@/views/releases/UpcomingPage.vue'
+  '@/pages/releases/UpcomingPage.vue'
 )
 const MultitagPage = () => import(
-  '@/views/MultitagPage.vue'
+  '@/pages/multitag/MainPage.vue'
 )
 const SavedTracksPage = () => import(
-  '@/views/SavedTracksPage.vue'
+  '@/pages/savedTracks/MainPage.vue'
 )
 const AboutPage = () => import(
-  '@/views/AboutPage.vue'
+  '@/pages/about/MainPage.vue'
 )
-const HistoryMainPage = () => import(
-  '@/views/history/MainPage.vue'
+const HistoryPage = () => import(
+  '@/pages/history/MainPage.vue'
 )
 const HistoryActivityPage = () => import(
-  '@/views/history/ActivityPage.vue'
+  '@/pages/history/ActivityPage.vue'
 )
 const HistoryPlayerPage = () => import(
-  '@/views/history/PlayerPage.vue'
+  '@/pages/history/PlayerPage.vue'
 )
 const HistoryBrowserPage = () => import(
-  '@/views/history/BrowserPage.vue'
+  '@/pages/history/BrowserPage.vue'
 )
 
 export default [
@@ -329,14 +331,14 @@ export default [
     props: true,
     meta: {
       formatter:
-        formatConversationsPageLinkData
+        formatConversationPageLinkData
     }
   },
   {
     path: '/artists/:artistName',
     exact: true,
-    name: 'ArtistMainPage',
-    component: ArtistMainPage,
+    name: 'ArtistPage',
+    component: ArtistPage,
     props: true,
     meta: {
       formatter:
@@ -390,8 +392,8 @@ export default [
   {
     path: '/artists/:artistName/albums/:albumTitle',
     exact: true,
-    name: 'AlbumMainPage',
-    component: AlbumMainPage,
+    name: 'AlbumPage',
+    component: AlbumPage,
     props: true,
     meta: {
       formatter:
@@ -401,8 +403,8 @@ export default [
   {
     path: '/artists/:artistName/tracks/:trackTitle',
     exact: true,
-    name: 'TrackMainPage',
-    component: TrackMainPage,
+    name: 'TrackPage',
+    component: TrackPage,
     props: true,
     meta: {
       formatter:
@@ -423,8 +425,8 @@ export default [
   {
     path: '/tags/:tagName',
     exact: true,
-    name: 'TagMainPage',
-    component: TagMainPage,
+    name: 'TagPage',
+    component: TagPage,
     props: true,
     meta: {
       formatter:
@@ -467,8 +469,8 @@ export default [
   {
     path: '/video/channels/:channelId',
     exact: true,
-    name: 'VideoChannelMainPage',
-    component: VideoChannelMainPage,
+    name: 'VideoChannelPage',
+    component: VideoChannelPage,
     props: true,
     meta: {
       formatter:
@@ -500,8 +502,8 @@ export default [
   {
     path: '/video/videos/:videoId',
     exact: true,
-    name: 'VideoMainPage',
-    component: VideoMainPage,
+    name: 'VideoPage',
+    component: VideoPage,
     props: true,
     meta: {
       formatter:
@@ -522,8 +524,8 @@ export default [
   {
     path: '/video/videoPlaylists/:playlistId',
     exact: true,
-    name: 'VideoPlaylistMainPage',
-    component: VideoPlaylistMainPage,
+    name: 'VideoPlaylistPage',
+    component: VideoPlaylistPage,
     props: true,
     meta: {
       formatter:
@@ -544,8 +546,8 @@ export default [
   {
     path: '/profiles/:profileId',
     exact: true,
-    name: 'ProfileMainPage',
-    component: ProfileMainPage,
+    name: 'ProfilePage',
+    component: ProfilePage,
     props: true,
     meta: {
       formatter:
@@ -555,8 +557,8 @@ export default [
   {
     path: '/profiles/:profileId/library',
     exact: true,
-    name: 'ProfileLibraryMainPage',
-    component: ProfileLibraryMainPage,
+    name: 'ProfileLibraryPage',
+    component: ProfileLibraryPage,
     props: true,
     meta: {
       formatter:
@@ -577,8 +579,8 @@ export default [
   {
     path: '/profiles/:profileId/library/artists/:libraryArtistId',
     exact: true,
-    name: 'ProfileLibraryArtistMainPage',
-    component: ProfileLibraryArtistMainPage,
+    name: 'ProfileLibraryArtistPage',
+    component: ProfileLibraryArtistPage,
     props: true,
     meta: {
       formatter:
@@ -632,8 +634,8 @@ export default [
   {
     path: '/profiles/:profileId/library/albums/:libraryAlbumId',
     exact: true,
-    name: 'ProfileLibraryAlbumMainPage',
-    component: ProfileLibraryAlbumMainPage,
+    name: 'ProfileLibraryAlbumPage',
+    component: ProfileLibraryAlbumPage,
     props: true,
     meta: {
       formatter:
@@ -676,8 +678,8 @@ export default [
   {
     path: '/profiles/:profileId/library/tracks/:libraryTrackId',
     exact: true,
-    name: 'ProfileLibraryTrackMainPage',
-    component: ProfileLibraryTrackMainPage,
+    name: 'ProfileLibraryTrackPage',
+    component: ProfileLibraryTrackPage,
     props: true,
     meta: {
       formatter:
@@ -720,8 +722,8 @@ export default [
   {
     path: '/profiles/:profileId/library/tags/:libraryTagId',
     exact: true,
-    name: 'ProfileLibraryTagMainPage',
-    component: ProfileLibraryTagMainPage,
+    name: 'ProfileLibraryTagPage',
+    component: ProfileLibraryTagPage,
     props: true,
     meta: {
       formatter:
@@ -753,8 +755,8 @@ export default [
   {
     path: '/bookmarks',
     exact: true,
-    name: 'BookmarksMainPage',
-    component: BookmarksMainPage,
+    name: 'BookmarksPage',
+    component: BookmarksPage,
     props: true,
     meta: {
       formatter:
@@ -830,8 +832,8 @@ export default [
   {
     path: '/profiles/:profileId/favorites',
     exact: true,
-    name: 'ProfileFavoritesMainPage',
-    component: ProfileFavoritesMainPage,
+    name: 'ProfileFavoritesPage',
+    component: ProfileFavoritesPage,
     props: true,
     meta: {
       formatter:
@@ -885,8 +887,8 @@ export default [
   {
     path: '/top',
     exact: true,
-    name: 'TopMainPage',
-    component: TopMainPage,
+    name: 'TopPage',
+    component: TopPage,
     props: true,
     meta: {
       formatter:
@@ -1017,8 +1019,8 @@ export default [
   {
     path: '/communities/:communityId',
     exact: true,
-    name: 'CommunityMainPage',
-    component: CommunityMainPage,
+    name: 'CommunityPage',
+    component: CommunityPage,
     props: true,
     meta: {
       formatter:
@@ -1039,8 +1041,8 @@ export default [
   {
     path: '/releases',
     exact: true,
-    name: 'ReleasesMainPage',
-    component: ReleasesMainPage,
+    name: 'ReleasesPage',
+    component: ReleasesPage,
     props: true,
     meta: {
       formatter:
@@ -1101,8 +1103,8 @@ export default [
   {
     path: '/history',
     exact: true,
-    name: 'HistoryMainPage',
-    component: HistoryMainPage,
+    name: 'HistoryPage',
+    component: HistoryPage,
     props: true,
     meta: {
       formatter:

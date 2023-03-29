@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatReleasesMainLink
+  main as formatReleasesLink
 } from '@/helpers/formatters/links/releases'
 
 export default function (
@@ -10,7 +10,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatReleasesMainLink()
+      return formatReleasesLink()
     }
   }
 

@@ -93,7 +93,7 @@ import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import {
-  main as formatVideoMainLink
+  main as formatVideoLink
 } from '@/helpers/formatters/links/video'
 import selfMixin from '@/mixins/selfMixin'
 
@@ -145,7 +145,7 @@ export default {
       return this.videoData.image
     },
     link () {
-      return formatVideoMainLink(
+      return formatVideoLink(
         {
           videoId: this.videoId
         }

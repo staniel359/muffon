@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatProfileMainLink,
+  main as formatProfileLink,
   posts as formatProfilePostsLink,
   playlists as formatProfilePlaylistsLink,
   communities as formatProfileCommunitiesLink
@@ -64,7 +64,7 @@ export default function (
           }
         )
       default:
-        return formatProfileMainLink(
+        return formatProfileLink(
           {
             profileId
           }

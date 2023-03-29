@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatAlbumMainLink
+  main as formatAlbumLink
 } from '@/helpers/formatters/links/album'
 
 export default function (
@@ -41,7 +41,7 @@ export default function (
   function formatLink () {
     switch (scope) {
       default:
-        return formatAlbumMainLink(
+        return formatAlbumLink(
           {
             artistName,
             albumTitle,

@@ -4,7 +4,7 @@ export function main (
   }
 ) {
   return {
-    name: 'VideoChannelMainPage',
+    name: 'VideoChannelPage',
     params: {
       channelId
     },

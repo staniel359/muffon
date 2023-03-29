@@ -1,5 +1,5 @@
 import {
-  main as formatAlbumMainLink
+  main as formatAlbumLink
 } from '@/helpers/formatters/links/album'
 
 export default function (
@@ -12,7 +12,7 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatAlbumMainLink(
+      return formatAlbumLink(
         {
           artistName,
           albumTitle,

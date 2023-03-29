@@ -50,7 +50,7 @@ export function main (
     `?${queryFormatted.string}`
 
   return {
-    name: 'AlbumMainPage',
+    name: 'AlbumPage',
     params: {
       artistName,
       albumTitle

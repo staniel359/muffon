@@ -1,6 +1,6 @@
 import i18n from '@/plugins/i18n'
 import {
-  main as formatVideoChannelMainLink,
+  main as formatVideoChannelLink,
   videos as formatVideoChannelVideosLink,
   playlists as formatVideoChannelPlaylistsLink
 } from '@/helpers/formatters/links/videoChannel'
@@ -42,7 +42,7 @@ export default function (
           }
         )
       default:
-        return formatVideoChannelMainLink(
+        return formatVideoChannelLink(
           {
             channelId
           }
