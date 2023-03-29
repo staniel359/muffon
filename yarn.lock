@@ -7730,10 +7730,10 @@ vinyl@^2.0.0, vinyl@^2.0.1, vinyl@^2.1.0, vinyl@^2.2.0:
     remove-trailing-separator "^1.0.1"
     replace-ext "^1.0.0"
 
-vite-plugin-electron-renderer@^0.13.6:
-  version "0.13.12"
-  resolved "https://registry.yarnpkg.com/vite-plugin-electron-renderer/-/vite-plugin-electron-renderer-0.13.12.tgz#0ce22ffccffbbe96efe77a3c912fde00250414b9"
-  integrity sha512-Cd46e5dwoH7QJzgDXNh0Xh1q6yJg0TMaQ8+jNjaaxX4p4RRWet7rLY/AJbW/uzOHcZADtsolJ6lOIftFXQjPEQ==
+vite-plugin-electron-renderer@^0.13.13:
+  version "0.13.13"
+  resolved "https://registry.yarnpkg.com/vite-plugin-electron-renderer/-/vite-plugin-electron-renderer-0.13.13.tgz#f6688fa672378c24231a5910155962c4ed232581"
+  integrity sha512-Xg9k6NaTDSf1yQLWsUK4s5BepHv0jpr86Q7RvhLEQG9SVDL6EUnnTnl8Ex4gcvOxHLDL6lWrVafjauBd9iLAPA==
   dependencies:
     lib-esm "~0.3.0"
 

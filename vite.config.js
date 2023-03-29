@@ -20,7 +20,17 @@ export default defineConfig(
         }
       ),
       eslint(),
-      electronRenderer()
+      electronRenderer(
+        {
+          resolve: {
+            'discord-rpc': () => (
+              {
+                platform: 'node'
+              }
+            )
+          }
+        }
+      )
     ],
     resolve: {
       alias: {
