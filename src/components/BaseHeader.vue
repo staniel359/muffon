@@ -3,15 +3,25 @@
     :is="tag"
     class="ui header main-header"
     :class="{
-      inverted: isDarkMode
+      inverted: isDarkMode,
+      'center aligned icon': isPage
     }"
   >
     <BaseIcon
       v-if="icon"
+      :class="{
+        big: isPage
+      }"
       :icon="icon"
     />
 
     {{ text }}
+
+    <div
+      v-if="isPage"
+      class="sub header"
+      v-text="subheader"
+    />
   </Component>
 </template>
 
@@ -36,7 +46,9 @@ export default {
       type: String,
       required: true
     },
-    icon: String
+    icon: String,
+    isPage: Boolean,
+    subheader: String
   },
   computed: {
     ...mapState(

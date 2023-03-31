@@ -1,6 +1,21 @@
 <template>
-  <div class="main-error-message">
+  <div
+    class="main-error-message"
+    :class="{
+      'main-page-error-message': isPage
+    }"
+  >
+    <BaseHeader
+      v-if="isPage"
+      class="inverted"
+      tag="h2"
+      :icon="icon"
+      :text="header"
+      :subheader="content"
+      is-page
+    />
     <BaseMessage
+      v-else
       :class="transparentClass"
       :icon="icon"
       :icons="icons"
@@ -13,6 +28,7 @@
 </template>
 
 <script>
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseMessage from '@/components/messages/BaseMessage.vue'
 import errorsData from '@/helpers/data/errors'
 import transparencyMixin from '@/mixins/transparencyMixin'
@@ -20,6 +36,7 @@ import transparencyMixin from '@/mixins/transparencyMixin'
 export default {
   name: 'BaseErrorMessage',
   components: {
+    BaseHeader,
     BaseMessage
   },
   mixins: [
@@ -30,7 +47,8 @@ export default {
       type: Error,
       required: true
     },
-    isWithRefreshButton: Boolean
+    isWithRefreshButton: Boolean,
+    isPage: Boolean
   },
   emits: [
     'refresh'

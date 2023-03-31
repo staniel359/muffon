@@ -3,6 +3,7 @@
     <BaseErrorMessage
       v-if="isPageError"
       :error="error"
+      is-page
     />
     <slot
       v-else-if="responseData"
