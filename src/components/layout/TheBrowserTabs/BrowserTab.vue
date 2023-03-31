@@ -1,9 +1,11 @@
 <template>
   <BaseButtonContainer
-    class="basic circular browser-tab"
+    class="circular browser-tab"
     :class="{
-      active: isActiveClass
+      primary: isActive,
+      basic: !isActive
     }"
+    :is-invertable="!isActive"
     @click="handleClick"
   >
     <BaseIcon
@@ -23,8 +25,11 @@
 
     <BaseClearButton
       class="browser-tab-close-button"
+      :class="{
+        inverted: isActive
+      }"
       :is-red="false"
-      is-invertable
+      :is-invertable="!isActive"
       @click.stop="handleCloseButtonClick"
     />
   </BaseButtonContainer>
@@ -91,13 +96,6 @@ export default {
         this.tabId ===
           this.activeTabId
       )
-    },
-    isActiveClass () {
-      if (this.isDarkMode) {
-        return this.isActive
-      } else {
-        return !this.isActive
-      }
     },
     icon () {
       return this.tabData.icon

@@ -1,10 +1,10 @@
 <template>
   <div
     class="ui button main-simple-button"
-    :class="{
-      inverted: isDarkMode,
-      icon: !!icon && !text
-    }"
+    :class="[
+      buttonColorClass,
+      buttonIconClass
+    ]"
     @click="handleClick"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
@@ -36,6 +36,10 @@ export default {
     BaseIcon
   },
   props: {
+    isInvertable: {
+      type: Boolean,
+      default: true
+    },
     icon: String,
     text: String
   },
@@ -49,7 +53,28 @@ export default {
       [
         'isDarkMode'
       ]
-    )
+    ),
+    buttonColorClass () {
+      if (this.isDarkMode) {
+        if (this.isInvertable) {
+          return 'inverted'
+        } else {
+          return null
+        }
+      } else {
+        return null
+      }
+    },
+    buttonIconClass () {
+      if (
+        !!this.icon &&
+          !this.text
+      ) {
+        return 'icon'
+      } else {
+        return null
+      }
+    }
   },
   methods: {
     handleClick (
