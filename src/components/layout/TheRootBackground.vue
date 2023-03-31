@@ -15,49 +15,30 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import {
-  getLink as getImageFileLink
-} from '@/helpers/actions/imageFile'
+import profileStore from '@/stores/profile'
 import defaultImageLink from '@/assets/images/background.jpg'
 
 export default {
-  name: 'TheBackground',
-  data () {
-    return {
-      imageLink: null
-    }
-  },
+  name: 'TheRootBackground',
   computed: {
     ...mapState(
       layoutStore,
       [
-        'backgroundImagePath',
         'isDarkMode'
       ]
     ),
+    ...mapState(
+      profileStore,
+      {
+        profileId: 'id'
+      }
+    ),
     backgroundStyle () {
       return `url(${this.imageLink}) center/cover no-repeat`
-    }
-  },
-  watch: {
-    backgroundImagePath: {
-      immediate: true,
-      handler:
-        'handleBackgroundImagePathChange'
-    }
-  },
-  methods: {
-    async handleBackgroundImagePathChange (
-      value
-    ) {
-      this.imageLink =
-        await this.getImageLink()
     },
-    getImageLink () {
-      if (this.backgroundImagePath) {
-        return getImageFileLink(
-          this.backgroundImagePath
-        )
+    imageLink () {
+      if (this.profileId) {
+        return null
       } else {
         return defaultImageLink
       }
