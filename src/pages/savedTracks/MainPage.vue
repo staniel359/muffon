@@ -1,13 +1,9 @@
 <template>
-  <BasePaginatedPageContainer
-    ref="pagination"
+  <BaseSavedTracksPaginatedPageContainer
     model="savedTrack"
-    :response-data="tracksData"
     :scope="scope"
     :limit="limit"
     :order="order"
-    :response-page-limit="totalCount"
-    :is-get-data="false"
     is-with-top-segment
     is-with-order-change
   >
@@ -16,7 +12,6 @@
     >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :profile-id="profileId"
         :is-with-self-icons="false"
         is-with-image
         is-with-artist-name
@@ -31,31 +26,15 @@
         is-with-delete-option
       />
     </template>
-  </BasePaginatedPageContainer>
+  </BaseSavedTracksPaginatedPageContainer>
 </template>
 
 <script>
-import {
-  ipcRenderer
-} from 'electron'
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
-import BasePaginatedPageContainer
-  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import BaseSavedTracksPaginatedPageContainer
+  from '@/components/containers/pages/savedTracks/BaseSavedTracksPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
-import navigationMixin from '@/mixins/navigationMixin'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
-import paginatedPageMixin from '@/mixins/paginatedPageMixin'
-import {
-  savedTracks as formatSavedTracksPageNavigation
-} from '@/helpers/formatters/navigation'
-import formatSavedTracksPageTab from '@/helpers/formatters/tabs/savedTracks'
-import {
-  sortByCreated
-} from '@/helpers/utils'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -63,84 +42,18 @@ import {
 export default {
   name: 'MainPage',
   components: {
-    BasePaginatedPageContainer,
+    BaseSavedTracksPaginatedPageContainer,
     BaseTracksSimpleList
   },
   mixins: [
-    navigationMixin,
-    orderChangeMixin,
-    paginatedPageMixin
+    orderChangeMixin
   ],
   data () {
     return {
-      tracksData: null,
       limit:
         tracksLimits.simple.large,
       scope: 'tracks',
       order: 'createdDesc'
-    }
-  },
-  computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    ),
-    navigationSections () {
-      return formatSavedTracksPageNavigation()
-    },
-    tabData () {
-      return formatSavedTracksPageTab()
-    },
-    totalCount () {
-      return this.tracksData?.tracks?.length
-    }
-  },
-  watch: {
-    order: 'handleOrderChange'
-  },
-  async mounted () {
-    this.tracksData =
-      await this.getTracksData()
-
-    this.setNavigation()
-
-    this.isRefreshNavigation = true
-  },
-  methods: {
-    async handleOrderChange () {
-      this.reset()
-
-      this.tracksData =
-        await this.getTracksData()
-    },
-    async getTracksData () {
-      const tracks =
-        await this.getTracksCreatedSorted()
-
-      return {
-        page: 1,
-        total_pages: 1,
-        tracks
-      }
-    },
-    async getTracksCreatedSorted () {
-      const collection =
-        await this.getTracks()
-
-      return sortByCreated(
-        {
-          collection,
-          order: this.order
-        }
-      )
-    },
-    getTracks () {
-      return ipcRenderer.invoke(
-        'get-electron-store-key',
-        'profile.savedTracks'
-      )
     }
   }
 }

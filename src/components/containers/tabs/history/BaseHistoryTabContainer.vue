@@ -23,13 +23,12 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import tabContainerMixin from '@/mixins/tabContainerMixin'
-import getHistory from '@/helpers/actions/api/history/get'
-import {
-  sortByCreated
-} from '@/helpers/utils'
+import getRemoteHistory from '@/helpers/actions/api/history/get'
+import getLocalHistory from '@/helpers/actions/local/history/get'
 import {
   activity as formatHistoryActivityLink,
   player as formatHistoryPlayerLink,
@@ -45,10 +44,6 @@ export default {
     listScope: {
       type: String,
       required: true
-    },
-    isGetData: {
-      type: Boolean,
-      default: true
     }
   },
   data () {
@@ -57,40 +52,28 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      profileStore,
+      {
+        profileId: 'id'
+      }
+    ),
     historyArgs () {
       return {
         scope: this.scope,
-        limit: this.limit
+        listScope: this.listScope,
+        limit: this.limit,
+        order: 'createdDesc'
       }
-    },
-    isPlayerScope () {
-      return (
-        this.scope === 'player'
-      )
-    },
-    isBrowserScope () {
-      return (
-        this.scope === 'browser'
-      )
     },
     responsePageLimit () {
-      if (this.isGetData) {
+      if (this.profileId) {
         return null
       } else {
-        if (this.isPlayerScope) {
-          return this.playerTracksCount
-        } else if (this.isBrowserScope) {
-          return this.browserRoutesCount
-        } else {
-          return null
-        }
+        return this.historyData?.[
+          this.listScope
+        ]?.length
       }
-    },
-    playerTracksCount () {
-      return this.historyData?.tracks?.length
-    },
-    browserRoutesCount () {
-      return this.historyData?.routes?.length
     },
     moreLink () {
       switch (this.scope) {
@@ -106,74 +89,8 @@ export default {
     }
   },
   methods: {
-    getHistory,
-    async handleActivate () {
-      if (this.isGetData) {
-        this.getData()
-      } else {
-        if (this.isPlayerScope) {
-          this.historyData =
-            await this.getPlayerHistoryData()
-        } else if (this.isBrowserScope) {
-          this.historyData =
-            await this.getBrowserHistoryData()
-        }
-      }
-    },
-    async getPlayerHistoryData () {
-      const tracks =
-        await this.getPlayerTracksCreatedSorted()
-
-      return {
-        page: 1,
-        total_pages: 1,
-        tracks
-      }
-    },
-    async getPlayerTracksCreatedSorted () {
-      const collection =
-        await this.getPlayerTracks()
-
-      return sortByCreated(
-        {
-          collection,
-          order: 'createdDesc'
-        }
-      )
-    },
-    getPlayerTracks () {
-      return ipcRenderer.invoke(
-        'get-electron-store-key',
-        'history.player'
-      )
-    },
-    async getBrowserHistoryData () {
-      const routes =
-        await this.getBrowserRoutesCreatedSorted()
-
-      return {
-        page: 1,
-        total_pages: 1,
-        routes
-      }
-    },
-    async getBrowserRoutesCreatedSorted () {
-      const collection =
-        await this.getBrowserRoutes()
-
-      return sortByCreated(
-        {
-          collection,
-          order: 'createdDesc'
-        }
-      )
-    },
-    getBrowserRoutes () {
-      return ipcRenderer.invoke(
-        'get-electron-store-key',
-        'history.browser'
-      )
-    },
+    getRemoteHistory,
+    getLocalHistory,
     getData (
       {
         page
@@ -185,6 +102,19 @@ export default {
           page
         }
       )
+    },
+    getHistory (
+      args
+    ) {
+      if (this.profileId) {
+        return this.getRemoteHistory(
+          args
+        )
+      } else {
+        return this.getLocalHistory(
+          args
+        )
+      }
     }
   }
 }

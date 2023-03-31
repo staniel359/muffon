@@ -1,9 +1,6 @@
 <template>
-  <BaseHistoryPageContainer
+  <BaseSavedTracksPageContainer
     ref="page"
-    :scope="scope"
-    :list-scope="listScope"
-    :limit="limit"
     :order="order"
   >
     <template
@@ -11,60 +8,54 @@
     >
       <BasePaginatedPageContainer
         ref="pagination"
-        :response-data="pageSlotProps.historyData"
+        :response-data="pageSlotProps.savedTracksData"
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
-        :scope="listScope"
+        :scope="scope"
         :limit="limit"
+        :response-page-limit="pageSlotProps.responsePageLimit"
         :order="order"
         :model="model"
         :is-with-top-segment="isWithTopSegment"
         :is-with-order-change="isWithOrderChange"
-        :response-page-limit="pageSlotProps.responsePageLimit"
       >
         <template
           #default="slotProps"
         >
           <slot
-            :[listScope]="slotProps[listScope]"
+            :[scope]="slotProps[scope]"
           />
         </template>
       </BasePaginatedPageContainer>
     </template>
-  </BaseHistoryPageContainer>
+  </BaseSavedTracksPageContainer>
 </template>
 
 <script>
-import BaseHistoryPageContainer from './BaseHistoryPageContainer.vue'
+import BaseSavedTracksPageContainer from './BaseSavedTracksPageContainer.vue'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
-  name: 'BaseHistoryPaginatedPageContainer',
+  name: 'BaseSavedTracksPaginatedPageContainer',
   components: {
-    BaseHistoryPageContainer,
+    BaseSavedTracksPageContainer,
     BasePaginatedPageContainer
   },
   mixins: [
     paginatedPageMixin
   ],
   props: {
-    scope: String,
-    listScope: String,
+    scope: {
+      type: String,
+      required: true
+    },
     limit: Number,
     order: String,
     model: String,
     isWithTopSegment: Boolean,
     isWithOrderChange: Boolean
-  },
-  watch: {
-    order: 'handleOrderChange'
-  },
-  methods: {
-    handleOrderChange () {
-      this.reset()
-    }
   }
 }
 </script>

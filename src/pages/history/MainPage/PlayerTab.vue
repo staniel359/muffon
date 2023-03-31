@@ -3,7 +3,6 @@
     :scope="scope"
     :list-scope="listScope"
     :limit="limit"
-    :is-get-data="!!profileId"
     :is-active="isActive"
     @focus="handleFocus"
   >
@@ -32,10 +31,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseHistoryTabContainer
   from '@/components/containers/tabs/history/BaseHistoryTabContainer.vue'
 import BaseTracksSimpleList
@@ -61,14 +56,6 @@ export default {
       scope: 'player',
       listScope: 'tracks'
     }
-  },
-  computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    )
   }
 }
 </script>

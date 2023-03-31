@@ -5,7 +5,6 @@
     :list-scope="listScope"
     :limit="limit"
     :order="order"
-    :is-get-data="!!profileId"
     is-with-top-segment
     is-with-order-change
   >
@@ -34,10 +33,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseHistoryPaginatedPageContainer
   from '@/components/containers/pages/history/BaseHistoryPaginatedPageContainer.vue'
 import BaseTracksSimpleList
@@ -64,14 +59,6 @@ export default {
       listScope: 'tracks',
       order: 'createdDesc'
     }
-  },
-  computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    )
   }
 }
 </script>

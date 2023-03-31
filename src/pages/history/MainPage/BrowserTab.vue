@@ -3,7 +3,6 @@
     :scope="scope"
     :list-scope="listScope"
     :limit="limit"
-    :is-get-data="!!profileId"
     :is-active="isActive"
     @focus="handleFocus"
   >
@@ -18,10 +17,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseHistoryTabContainer
   from '@/components/containers/tabs/history/BaseHistoryTabContainer.vue'
 import BaseRoutesSimpleList
@@ -47,14 +42,6 @@ export default {
       scope: 'browser',
       listScope: 'routes'
     }
-  },
-  computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    )
   }
 }
 </script>
