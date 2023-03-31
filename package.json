@@ -13,8 +13,7 @@
     "email": "staniel359@gmail.com",
     "url": "https://github.com/staniel359"
   },
-  "type": "module",
-  "main": "main.cjs",
+  "main": "build_electron/main.js",
   "repository": "github:staniel359/muffon",
   "scripts": {
     "start": "vite",
@@ -35,7 +34,6 @@
     "crypto-js": "^4.1.1",
     "deepmerge": "^4.3.1",
     "discord-rpc": "^4.0.1",
-    "dotenv": "^16.0.3",
     "electron-dl": "^3.5.0",
     "electron-store": "^8.1.0",
     "emoji-mart": "^5.5.2",
@@ -67,6 +65,7 @@
     "eslint-plugin-vue": "^9.9.0",
     "sass": "^1.59.3",
     "vite": "^4.2.1",
+    "vite-electron-plugin": "^0.8.2",
     "vite-plugin-electron-renderer": "^0.13.13",
     "vite-plugin-eslint": "^1.8.1"
   },

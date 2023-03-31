@@ -1,3 +1,0 @@
-import(
-  './electron/main.js'
-)

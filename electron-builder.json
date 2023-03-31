@@ -50,12 +50,12 @@
   },
   "directories": {
     "buildResources": "build",
-    "output": "build_electron"
+    "output": "package_electron"
   },
   "files": [
     "./.env",
-    "./main.cjs",
-    "./electron/**/*",
+    "./main.js",
+    "./build_electron/**/*",
     "./index.html",
     {
       "from": "./build",

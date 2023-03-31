@@ -19,7 +19,7 @@ const locales = [
 
 const directory =
   formatFileRootPath(
-    'electron/plugins/i18n/locales'
+    'build_electron/plugins/i18n/locales'
   )
 
 const options = {

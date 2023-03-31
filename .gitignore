@@ -1,5 +1,6 @@
 /build
 /build_electron
+/package_electron
 /electron_data
 /node_modules
 /semantic/src

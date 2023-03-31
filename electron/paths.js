@@ -13,14 +13,27 @@ import {
   createFolderIfNotExists
 } from './utils.js'
 
+function getDirectory () {
+  const fileUrl = import.meta.url
+
+  if (fileUrl) {
+    const filePath =
+      fileURLToPath(
+        fileUrl
+      )
+
+    return dirname(
+      filePath
+    )
+  } else {
+    return __dirname
+  }
+}
+
 export function formatFileRootPath (
   filePath
 ) {
-  const directory = dirname(
-    fileURLToPath(
-      import.meta.url
-    )
-  )
+  const directory = getDirectory()
 
   return joinPath(
     directory,

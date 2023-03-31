@@ -4,6 +4,12 @@ import {
 import vue from '@vitejs/plugin-vue'
 import inject from '@rollup/plugin-inject'
 import eslint from 'vite-plugin-eslint'
+import electron from 'vite-electron-plugin'
+import {
+  copy as electronCopy,
+  customStart as electronCustomStart,
+  loadViteEnv as electronLoadViteEnv
+} from 'vite-electron-plugin/plugin'
 import electronRenderer from 'vite-plugin-electron-renderer'
 import {
   resolve as resolvePath
@@ -17,6 +23,28 @@ export default defineConfig(
         {
           $: 'jquery',
           jQuery: 'jquery'
+        }
+      ),
+      electron(
+        {
+          include: [
+            'electron'
+          ],
+          outDir: 'build_electron',
+          plugins: [
+            electronCopy(
+              [
+                {
+                  from: 'electron/plugins/i18n/locales/*.json',
+                  to: 'build_electron/plugins/i18n/locales'
+                }
+              ]
+            ),
+            electronCustomStart(
+              () => false
+            ),
+            electronLoadViteEnv()
+          ]
         }
       ),
       eslint(),
