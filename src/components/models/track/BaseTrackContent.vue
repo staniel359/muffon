@@ -87,20 +87,18 @@
       :duration="duration"
     />
 
-    <div
-      v-if="isRenderSavedIcon"
-      class="track-saved-icon"
-    >
-      <BaseIcon
-        icon="savedTrack"
+    <div class="icons-section">
+      <BaseSourceIcon
+        v-if="isRenderSource"
+        class="right icon-item"
+        :source="source"
+      />
+
+      <BaseSavedIcon
+        v-if="isRenderSavedIcon"
+        class="right icon-item"
       />
     </div>
-
-    <BaseSourceIcon
-      v-if="isRenderSource"
-      class="right"
-      :source="source"
-    />
 
     <BaseCreatedSection
       v-if="isWithCreated"
@@ -157,8 +155,8 @@ import AlbumSection from './BaseTrackContent/AlbumSection.vue'
 import ListenersCountSection
   from './BaseTrackContent/ListenersCountSection.vue'
 import BaseDurationSection from '@/components/sections/BaseDurationSection.vue'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
+import BaseSavedIcon from '@/components/icons/BaseSavedIcon.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseTrackOptionsPopup
@@ -179,8 +177,8 @@ export default {
     AlbumSection,
     ListenersCountSection,
     BaseDurationSection,
-    BaseIcon,
     BaseSourceIcon,
+    BaseSavedIcon,
     BaseSelfIcons,
     BaseCreatedSection,
     BaseTrackOptionsPopup,
@@ -407,11 +405,12 @@ export default {
   min-width: unset !important
   margin: 0 1em 0 0.5em !important
 
-.track-saved-icon
-  margin-left: 0.75em
-  .icon
-    @extend .no-margin
-
 .track-duration
   margin-left: 0.75em
+
+.icons-section
+  @extend .d-flex, .flex-column
+  .icon-item
+    &:not(:first-child)
+      margin-top: 0.5em !important
 </style>
