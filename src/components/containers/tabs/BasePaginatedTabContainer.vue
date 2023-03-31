@@ -13,6 +13,7 @@
     />
 
     <BasePaginatedListContainer
+      ref="pagination"
       :response-data="responseData"
       :scope="scope"
       :limit="limit"
@@ -90,13 +91,12 @@ export default {
     )
   },
   watch: {
-    isActive: {
-      immediate: true,
-      handler: 'handleIsActiveChange'
-    },
-    isActivated: {
-      immediate: true,
-      handler: 'handleIsActivatedChange'
+    isActive: 'handleIsActiveChange',
+    isActivated: 'handleIsActivatedChange'
+  },
+  mounted () {
+    if (this.isActive) {
+      this.isActivated = true
     }
   },
   methods: {
@@ -105,6 +105,8 @@ export default {
     ) {
       if (value) {
         this.isActivated = true
+
+        this.setFocusable()
       }
     },
     handleIsActivatedChange (
@@ -120,6 +122,11 @@ export default {
       this.$emit(
         'focus'
       )
+    },
+    setFocusable () {
+      this.$refs
+        .pagination
+        .setFocusable()
     }
   }
 }

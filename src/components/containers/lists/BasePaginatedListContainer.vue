@@ -565,7 +565,7 @@ export default {
       this.clientPage = value
 
       if (!this.isWithInfiniteScroll) {
-        this.isFocusable = true
+        this.setFocusable()
 
         this.focus()
       }
@@ -677,6 +677,9 @@ export default {
       this.setClientPage(
         this.clientPage + 1
       )
+    },
+    setFocusable () {
+      this.isFocusable = true
     }
   }
 }
