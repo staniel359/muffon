@@ -115,10 +115,7 @@ export default {
       return this.trackData.audio
     },
     audioLink () {
-      return (
-        this.audioData?.local?.path ||
-          this.audioData?.link
-      )
+      return this.audioData?.link
     },
     uuid () {
       return this.trackData.uuid

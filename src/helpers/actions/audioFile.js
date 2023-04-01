@@ -10,22 +10,24 @@ export async function decrypt (
   }
 ) {
   function getDecryptedFile () {
+    const decryptArgs = {
+      filePath,
+      key,
+      iv
+    }
+
     return ipcRenderer.invoke(
       'decrypt-file',
-      {
-        filePath,
-        key,
-        iv
-      }
+      decryptArgs
     )
   }
 
-  const data =
+  const result =
     await getDecryptedFile()
 
   const blob = new Blob(
     [
-      data
+      result
     ]
   )
 

@@ -1,4 +1,5 @@
-import getAudio from '@/helpers/actions/api/audio/get'
+import getRemoteAudio from '@/helpers/actions/api/audio/get'
+import getLocalAudio from '@/helpers/actions/local/audio/get'
 import getPlayerTrackAudioSearch
   from '@/helpers/actions/player/track/audio/search/get'
 import {
@@ -48,10 +49,23 @@ export default function (
     isAudioPresent && !source
   )
 
+  function getAudio () {
+    const isLocal =
+      trackData.audio.local
+
+    if (isLocal) {
+      return getLocalAudio(
+        audioArgs
+      )
+    } else {
+      return getRemoteAudio(
+        audioArgs
+      )
+    }
+  }
+
   if (isGetAudio) {
-    return getAudio(
-      audioArgs
-    ).then(
+    return getAudio().then(
       handleSuccess
     )
   } else {

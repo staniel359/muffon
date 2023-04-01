@@ -24,9 +24,6 @@ import {
 } from 'pinia'
 import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
-import {
-  decrypt as decryptAudioFile
-} from '@/helpers/actions/audioFile'
 
 export default {
   name: 'AudioElement',
@@ -42,7 +39,10 @@ export default {
       {
         playerPlaying: 'playing'
       }
-    )
+    ),
+    audioLink () {
+      return this.playerPlaying.audio.link
+    }
   },
   watch: {
     playerPlaying: {
@@ -161,40 +161,13 @@ export default {
         false
       )
     },
-    async loadAudio () {
+    loadAudio () {
       this.$refs.audio.src =
-        await this.getAudioLink()
+        this.audioLink
 
       this.$refs
         .audio
         .load()
-    },
-    getAudioLink () {
-      const {
-        local,
-        link
-      } = this.playerPlaying.audio
-
-      if (local) {
-        return this.getLocalLink()
-      } else {
-        return link
-      }
-    },
-    getLocalLink () {
-      const {
-        path,
-        key,
-        iv
-      } = this.playerPlaying.audio.local
-
-      return decryptAudioFile(
-        {
-          filePath: path,
-          key,
-          iv
-        }
-      )
     },
     stopAudio () {
       this.setAudioStatus(
