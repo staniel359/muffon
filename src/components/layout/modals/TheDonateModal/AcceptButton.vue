@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="primary circular cancel"
+    class="primary circular cancel action-button"
     :text="acceptText"
     :is-invertable="false"
     @click="handleClick"
@@ -33,11 +33,14 @@ export default {
   },
   methods: {
     handleClick () {
+      this.setModalHidden()
+
+      this.openDonateLink()
+    },
+    openDonateLink () {
       shell.openExternal(
         donateLink
       )
-
-      this.setModalHidden()
     }
   }
 }

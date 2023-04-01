@@ -27,7 +27,8 @@ const data = {
       isWithArtistPopup: true,
       isCachePages: true,
       scale: 1,
-      isShowDonateModal: true
+      isShowDonateModal: true,
+      isShowDonateModalLater: true
     }
   },
   actions: {
@@ -145,6 +146,11 @@ const data = {
       value
     ) {
       this.isShowDonateModal = value
+    },
+    setIsShowDonateModalLater (
+      value
+    ) {
+      this.isShowDonateModalLater = value
     }
   }
 }

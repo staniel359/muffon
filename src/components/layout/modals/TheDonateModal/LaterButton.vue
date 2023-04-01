@@ -1,7 +1,7 @@
 <template>
   <BaseButton
-    class="red circular cancel action-button"
-    :text="declineText"
+    class="basic circular cancel action-button"
+    :text="laterText"
     @click="handleClick"
   />
 </template>
@@ -10,7 +10,7 @@
 import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
-  name: 'DeclineButton',
+  name: 'LaterButton',
   components: {
     BaseButton
   },
@@ -18,15 +18,19 @@ export default {
     'setModalHidden'
   ],
   computed: {
-    declineText () {
+    laterText () {
       return this.$t(
-        'donate.decline'
+        'donate.later'
       )
     }
   },
   methods: {
     handleClick () {
-      this.setModalHidden()
+      this.setModalHidden(
+        {
+          isShowLater: true
+        }
+      )
     }
   }
 }

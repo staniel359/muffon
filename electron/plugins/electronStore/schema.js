@@ -60,6 +60,10 @@ export default {
     type: 'boolean',
     default: true
   },
+  'layout.isShowDonateModalLater': {
+    type: 'boolean',
+    default: true
+  },
   'layout.isSwitchToNewTab': {
     type: 'boolean',
     default: true

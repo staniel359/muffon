@@ -20,7 +20,8 @@ export default {
     ...mapState(
       layoutStore,
       [
-        'isCloseTabsOnExit'
+        'isCloseTabsOnExit',
+        'isShowDonateModalLater'
       ]
     ),
     ...mapState(
@@ -44,6 +45,10 @@ export default {
 
       if (this.isCloseTabsOnExit) {
         await this.clearTabs()
+      }
+
+      if (this.isShowDonateModalLater) {
+        await this.resetDonateModalData()
       }
 
       this.exit()
@@ -73,6 +78,13 @@ export default {
       return this.setElectronStoreData(
         {
           'layout.tabs': []
+        }
+      )
+    },
+    resetDonateModalData () {
+      return this.setElectronStoreData(
+        {
+          'layout.isShowDonateModal': true
         }
       )
     },

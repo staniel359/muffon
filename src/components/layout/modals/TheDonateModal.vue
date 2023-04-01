@@ -12,6 +12,8 @@
     <div class="actions">
       <DeclineButton />
 
+      <LaterButton />
+
       <AcceptButton />
     </div>
   </BaseModalContainer>
@@ -26,6 +28,7 @@ import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import ContentSection from './TheDonateModal/ContentSection.vue'
 import DeclineButton from './TheDonateModal/DeclineButton.vue'
+import LaterButton from './TheDonateModal/LaterButton.vue'
 import AcceptButton from './TheDonateModal/AcceptButton.vue'
 import {
   update as updateGlobalStore
@@ -37,6 +40,7 @@ export default {
     BaseModalContainer,
     ContentSection,
     DeclineButton,
+    LaterButton,
     AcceptButton
   },
   provide () {
@@ -69,10 +73,15 @@ export default {
         .modal
         .show()
     },
-    setModalHidden () {
+    setModalHidden (
+      {
+        isShowLater = false
+      } = {}
+    ) {
       updateGlobalStore(
         {
-          'layout.isShowDonateModal': false
+          'layout.isShowDonateModal': false,
+          'layout.isShowDonateModalLater': isShowLater
         }
       )
     }
@@ -80,4 +89,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.action-button
+  &:not(:first-child)
+    margin-left: 1em !important
+</style>
