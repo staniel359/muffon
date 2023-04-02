@@ -59,8 +59,7 @@ export default {
     tabData: {
       type: Object,
       required: true
-    },
-    activeTabId: String
+    }
   },
   data () {
     return {
@@ -72,7 +71,8 @@ export default {
     ...mapState(
       layoutStore,
       [
-        'isDarkMode'
+        'isDarkMode',
+        'activeTabId'
       ]
     ),
     tabId () {

@@ -21,15 +21,8 @@ export default {
   methods: {
     handleNavigate (
       _,
-      {
-        route
-      }
+      routeData
     ) {
-      const routeData =
-        JSON.parse(
-          route
-        )
-
       routeData.created =
         moment.utc().toDate()
 

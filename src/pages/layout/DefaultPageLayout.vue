@@ -1,8 +1,4 @@
 <template>
-  <TheElectronStoreObserver />
-
-  <TheStoreObserver />
-
   <TheMediaKeysObserver />
 
   <ThePlayerObserver
@@ -44,10 +40,6 @@ import {
 } from 'pinia'
 import profileStore from '@/stores/profile'
 import playerStore from '@/stores/player'
-import TheElectronStoreObserver
-  from '@/components/layout/observers/TheElectronStoreObserver.vue'
-import TheStoreObserver
-  from '@/components/layout/observers/TheStoreObserver.vue'
 import TheMediaKeysObserver
   from '@/components/layout/observers/TheMediaKeysObserver.vue'
 import ThePlayerObserver
@@ -71,8 +63,6 @@ import {
 export default {
   name: 'DefaultPageLayout',
   components: {
-    TheElectronStoreObserver,
-    TheStoreObserver,
     TheMediaKeysObserver,
     ThePlayerObserver,
     TheBackground,

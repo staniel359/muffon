@@ -82,10 +82,7 @@ export default function save (
     tabId
   }
 ) {
-  trackData =
-    JSON.parse(
-      track
-    )
+  trackData = track
 
   const url = trackData.audio.link
 

@@ -29,16 +29,9 @@ export default {
   methods: {
     handleNavigate (
       _,
-      {
-        route
-      }
+      routeData
     ) {
       if (this.isSubscribed) {
-        const routeData =
-          JSON.parse(
-            route
-          )
-
         this.addRouteToHistory(
           routeData
         )

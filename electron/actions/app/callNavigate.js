@@ -1,10 +1,10 @@
 export default function callNavigate (
-  value
+  data
 ) {
   mainWindow
     .webContents
     .send(
       'navigate',
-      value
+      data
     )
 }

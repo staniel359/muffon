@@ -30,12 +30,7 @@ export default {
     isAddRouteToHistory () {
       return !!this.$route.name
     },
-    routeString () {
-      return JSON.stringify(
-        this.routeFormatted
-      )
-    },
-    routeFormatted () {
+    routeDataFormatted () {
       return {
         name: this.$route.name,
         data: this.navigationData
@@ -88,13 +83,14 @@ export default {
     },
     addRouteToHistory () {
       if (this.isAddRouteToHistory) {
-        const data = {
-          route: this.routeString
-        }
+        const routeData =
+          JSON.stringify(
+            this.routeDataFormatted
+          )
 
         ipcRenderer.send(
           'navigate',
-          data
+          routeData
         )
       }
     }

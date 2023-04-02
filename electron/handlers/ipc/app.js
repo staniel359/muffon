@@ -43,10 +43,15 @@ export function handleAccountDelete () {
 
 export function handleNavigate (
   _,
-  value
+  data
 ) {
+  const dataFormatted =
+    JSON.parse(
+      data
+    )
+
   callNavigate(
-    value
+    dataFormatted
   )
 }
 

@@ -19,20 +19,35 @@ export default {
       'update-store',
       this.handleUpdateStore
     )
+
+    ipcRenderer.invoke(
+      'get-electron-store-data'
+    ).then(
+      this.handleGetData
+    )
   },
   methods: {
     handleUpdateStore (
       _,
       data
     ) {
-      const dataFormatted =
-        JSON.parse(
-          data
-        )
-
+      this.setStoreData(
+        data
+      )
+    },
+    handleGetData (
+      data
+    ) {
+      this.setStoreData(
+        data
+      )
+    },
+    setStoreData (
+      value
+    ) {
       const storeKeysValues =
         Object.entries(
-          dataFormatted
+          value
         )
 
       storeKeysValues.forEach(

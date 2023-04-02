@@ -1,10 +1,10 @@
 import {
+  ipcRenderer
+} from 'electron'
+import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import {
-  ipcRenderer
-} from 'electron'
 import {
   generateKey
 } from '@/helpers/utils'
@@ -24,35 +24,41 @@ export default {
         path
       }
     ) {
-      const tabData =
-        this.getTabData(
-          {
-            path
-          }
-        )
+      const tabData = {
+        uuid: generateKey(),
+        path
+      }
 
-      ipcRenderer.send(
-        'add-tab',
+      this.addTab(
         tabData
       )
 
       if (this.isSwitchToNewTab) {
-        ipcRenderer.send(
-          'set-active-tab',
+        this.setActiveTab(
           tabData.uuid
         )
       }
     },
-    getTabData (
-      {
-        path
-      }
+    addTab (
+      value
     ) {
-      return {
-        uuid: generateKey(),
-        path,
-        isLoading: true
-      }
+      const tabDataFormatted =
+        JSON.stringify(
+          value
+        )
+
+      ipcRenderer.send(
+        'add-tab',
+        tabDataFormatted
+      )
+    },
+    setActiveTab (
+      tabId
+    ) {
+      ipcRenderer.send(
+        'set-active-tab',
+        tabId
+      )
     }
   }
 }

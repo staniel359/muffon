@@ -28,7 +28,9 @@ const data = {
       isCachePages: true,
       scale: 1,
       isShowDonateModal: true,
-      isShowDonateModalLater: true
+      isShowDonateModalLater: true,
+      tabs: [],
+      activeTabId: null
     }
   },
   actions: {
@@ -151,6 +153,16 @@ const data = {
       value
     ) {
       this.isShowDonateModalLater = value
+    },
+    setTabs (
+      value
+    ) {
+      this.tabs = value
+    },
+    setActiveTabId (
+      value
+    ) {
+      this.activeTabId = value
     }
   }
 }

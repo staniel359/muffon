@@ -30,17 +30,12 @@ export default function update (
   )
 
   if (isSave) {
-    const dataFormatted =
-      JSON.parse(
-        data
-      )
-
     setElectronStoreData(
-      dataFormatted
+      data
     )
 
     const scale =
-      dataFormatted[
+      data[
         'layout.scale'
       ]
 

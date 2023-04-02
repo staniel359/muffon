@@ -8,9 +8,14 @@ export function handleSaveAudio (
     tabId
   }
 ) {
+  const trackFormatted =
+    JSON.parse(
+      track
+    )
+
   saveAudio(
     {
-      track,
+      track: trackFormatted,
       tabId
     }
   )

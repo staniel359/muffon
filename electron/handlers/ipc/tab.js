@@ -9,8 +9,13 @@ export function handleAddTab (
   _,
   data
 ) {
+  const dataFormatted =
+    JSON.parse(
+      data
+    )
+
   createTab(
-    data
+    dataFormatted
   )
 }
 

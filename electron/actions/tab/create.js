@@ -94,11 +94,15 @@ export default function create (
     )
 
   function handleDidStartNavigation () {
+    const data = {
+      'layout.tabId': uuid
+    }
+
     tab
       .webContents
       .send(
-        'set-tab-id',
-        uuid
+        'update-store',
+        data
       )
   }
 

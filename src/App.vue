@@ -1,4 +1,6 @@
 <template>
+  <TheStoreObserver />
+
   <RootPageLayout
     v-if="isRootPage"
   />
@@ -14,6 +16,9 @@
 import {
   defineAsyncComponent
 } from 'vue'
+import TheStoreObserver
+  from '@/components/layout/observers/TheStoreObserver.vue'
+
 const RootPageLayout =
   defineAsyncComponent(
     () => import(
@@ -36,6 +41,7 @@ const DefaultPageLayout =
 export default {
   name: 'App',
   components: {
+    TheStoreObserver,
     RootPageLayout,
     AboutPageLayout,
     DefaultPageLayout

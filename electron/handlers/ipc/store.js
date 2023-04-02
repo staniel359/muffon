@@ -7,8 +7,13 @@ export function handleUpdateStore (
     isSave
   }
 ) {
+  const dataFormatted =
+    JSON.parse(
+      data
+    )
+
   updateStore(
-    data,
+    dataFormatted,
     {
       isSave
     }

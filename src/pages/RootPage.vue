@@ -37,9 +37,14 @@
 
   <TheExternalUrlsObserver />
 
-  <TheBrowserTabs
+  <template
     v-if="isRenderBrowserTabs"
-  />
+  >
+    <TheBrowserTabs />
+
+    <TheBrowserTabsObserver />
+  </template>
+
   <TheAuthentication
     v-else
   />
@@ -78,6 +83,8 @@ import TheExitObserver
 import TheExternalUrlsObserver
   from '@/components/layout/observers/TheExternalUrlsObserver.vue'
 import TheBrowserTabs from '@/components/layout/TheBrowserTabs.vue'
+import TheBrowserTabsObserver
+  from '@/components/layout/observers/TheBrowserTabsObserver.vue'
 import TheAuthentication from '@/components/layout/TheAuthentication.vue'
 
 export default {
@@ -97,6 +104,7 @@ export default {
     TheExitObserver,
     TheExternalUrlsObserver,
     TheBrowserTabs,
+    TheBrowserTabsObserver,
     TheAuthentication
   },
   computed: {
