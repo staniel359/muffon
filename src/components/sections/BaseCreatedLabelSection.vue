@@ -15,9 +15,8 @@
 <script>
 import BaseLabel from '@/components/labels/BaseLabel.vue'
 import {
-  date as formatDate,
-  time as formatTime
-} from '@/helpers/formatters'
+  dateTime as formatDateTime
+} from '@/helpers/formatters/dateTimeString'
 
 export default {
   name: 'BaseCreatedLabelSection',
@@ -35,20 +34,7 @@ export default {
       return this.modelData.created
     },
     createdFormatted () {
-      return [
-        this.dateFormatted,
-        this.timeFormatted
-      ].join(
-        ' '
-      )
-    },
-    dateFormatted () {
-      return formatDate(
-        this.created
-      )
-    },
-    timeFormatted () {
-      return formatTime(
+      return formatDateTime(
         this.created
       )
     }

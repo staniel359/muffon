@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import audioStore from '@/stores/audio'
 import layoutStore from '@/stores/layout'
 import lyricsStore from '@/stores/lyrics'
@@ -105,5 +106,9 @@ export function update (
 
   if (isChangeLanguage) {
     i18n.global.locale = value
+
+    dayjs.locale(
+      value
+    )
   }
 }

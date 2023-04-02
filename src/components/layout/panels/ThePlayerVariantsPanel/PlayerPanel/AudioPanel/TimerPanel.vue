@@ -12,7 +12,7 @@ import {
 import audioStore from '@/stores/audio'
 import {
   seconds as formatSeconds
-} from '@/helpers/formatters'
+} from '@/helpers/formatters/dateTimeString'
 
 export default {
   name: 'TimerPanel',

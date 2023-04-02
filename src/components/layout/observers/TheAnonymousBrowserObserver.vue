@@ -8,7 +8,9 @@
 import {
   ipcRenderer
 } from 'electron'
-import moment from 'moment-timezone'
+import {
+  currentTime as formatCurrentTime
+} from '@/helpers/formatters/dateTimeString'
 
 export default {
   name: 'TheAnonymousBrowserObserver',
@@ -24,7 +26,7 @@ export default {
       routeData
     ) {
       routeData.created =
-        moment.utc().toDate()
+        formatCurrentTime()
 
       this.addRouteToHistory(
         routeData

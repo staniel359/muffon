@@ -9,8 +9,8 @@
 <script>
 import {
   date as formatDate,
-  time as formatTime
-} from '@/helpers/formatters'
+  dateTime as formatDateTime
+} from '@/helpers/formatters/dateTimeString'
 
 export default {
   name: 'BaseTimestampSection',
@@ -26,12 +26,7 @@ export default {
       if (this.isOnlyDate) {
         return this.createdDateFormatted
       } else {
-        return [
-          this.createdDateFormatted,
-          this.createdTimeFormatted
-        ].join(
-          ' '
-        )
+        return this.createdDateTimeFormatted
       }
     },
     createdDateFormatted () {
@@ -39,8 +34,8 @@ export default {
         this.created
       )
     },
-    createdTimeFormatted () {
-      return formatTime(
+    createdDateTimeFormatted () {
+      return formatDateTime(
         this.created
       )
     }

@@ -4,6 +4,8 @@ import {
 } from '../paths.js'
 import getElectronStoreKey from '../actions/electronStore/getKey.js'
 
+// i18n
+
 const locale =
   getElectronStoreKey(
     'profile.language'

@@ -3,7 +3,9 @@ import {
   AES,
   enc
 } from 'crypto-js'
-import moment from 'moment-timezone'
+import {
+  date as formatDate
+} from '@/helpers/formatters/dateTime'
 import {
   shareEncryptionKey
 } from '@/helpers/data/env'
@@ -147,22 +149,14 @@ export function sortByCreated (
     first,
     second
   ) {
-    function formatCreated (
-      item
-    ) {
-      return moment(
-        item.created || 0
-      ).toDate()
-    }
-
     const firstCreated =
-      formatCreated(
-        first
+      formatDate(
+        first.created
       )
 
     const secondCreated =
-      formatCreated(
-        second
+      formatDate(
+        second.created
       )
 
     switch (order) {

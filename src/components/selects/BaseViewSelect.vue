@@ -76,9 +76,12 @@ export default {
   computed: {
     optionsData () {
       return Object.fromEntries(
-        this.options.map(
-          this.formatOption
-        )
+        this.optionsFormatted
+      )
+    },
+    optionsFormatted () {
+      return this.options.map(
+        this.formatOption
       )
     },
     scopeOptions () {

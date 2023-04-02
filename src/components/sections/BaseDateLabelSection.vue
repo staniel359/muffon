@@ -16,7 +16,7 @@
 import BaseLabel from '@/components/labels/BaseLabel.vue'
 import {
   date as formatDate
-} from '@/helpers/formatters'
+} from '@/helpers/formatters/dateTimeString'
 
 export default {
   name: 'BaseDateLabelSection',

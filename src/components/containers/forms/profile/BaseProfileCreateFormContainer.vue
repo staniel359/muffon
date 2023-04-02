@@ -20,8 +20,8 @@ import {
   profileCreateFormOptions
 } from '@/helpers/formatters/semantic'
 import {
-  stringToDate as formatStringToDate
-} from '@/helpers/formatters'
+  birthdate as formatBirthdate
+} from '@/helpers/formatters/dateTimeString'
 import createProfile from '@/helpers/actions/api/profile/create'
 import getProfile from '@/helpers/actions/api/profile/get'
 import {
@@ -142,7 +142,7 @@ export default {
       const image = this.image.data
 
       const birthdateFormatted =
-        formatStringToDate(
+        formatBirthdate(
           birthdate
         )
 

@@ -2,6 +2,7 @@ import {
   app
 } from 'electron'
 import setupI18n from '../../plugins/i18n.js'
+import setupDayjs from '../../plugins/dayjs.js'
 import setFlags from './setFlags.js'
 import setGlobalVariables from './setGlobalVariables.js'
 import setEvents from './setEvents.js'
@@ -12,6 +13,8 @@ import {
 
 export default function initialize () {
   setupI18n()
+
+  setupDayjs()
 
   setFlags()
 

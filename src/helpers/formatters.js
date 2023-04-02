@@ -1,9 +1,13 @@
+import dayjs from 'dayjs'
 import profileStore from '@/stores/profile'
 import {
   generateKey,
   sortByCreated
 } from '@/helpers/utils'
-import moment from 'moment-timezone'
+import timezonesList from '@/helpers/data/timezones'
+import {
+  currentTime as formatCurrentTime
+} from '@/helpers/formatters/dateTimeString'
 
 export function collection (
   value
@@ -53,82 +57,6 @@ export function number (
 
   return value.toLocaleString(
     language
-  )
-}
-
-export function seconds (
-  value
-) {
-  const isWithHours = (
-    value >= 3600
-  )
-
-  const format = isWithHours
-    ? 'H:mm:ss'
-    : 'mm:ss'
-
-  return moment.utc(
-    value * 1000
-  ).format(
-    format
-  )
-}
-
-export function stringToDate (
-  value
-) {
-  if (value) {
-    return moment(
-      value
-    ).format(
-      'YYYY-MM-DD'
-    )
-  } else {
-    return null
-  }
-}
-
-export function date (
-  value
-) {
-  const {
-    timezone,
-    language
-  } = profileStore()
-
-  return moment.utc(
-    value
-  ).tz(
-    timezone
-  ).locale(
-    language
-  ).format(
-    'll'
-  )
-}
-
-export function time (
-  value
-) {
-  const {
-    timezone
-  } = profileStore()
-
-  return moment.utc(
-    value
-  ).tz(
-    timezone
-  ).format(
-    'HH:mm:ss'
-  )
-}
-
-export function age (
-  value
-) {
-  return moment().diff(
-    value,
-    'years'
   )
 }
 
@@ -195,8 +123,12 @@ export function playing (
     ...value
   }
 
+  const audioData = {
+    present: audio.present
+  }
+
   const created =
-    moment.utc().toDate()
+    formatCurrentTime()
 
   return {
     source,
@@ -208,11 +140,62 @@ export function playing (
     album,
     image,
     duration,
-    audio: {
-      present: audio.present
-    },
-    created: (
-      isWithCreated && created
-    )
+    audio: audioData,
+    ...(isWithCreated && {
+      created
+    })
+  }
+}
+
+export function timezones () {
+  function formatTimezone (
+    name
+  ) {
+    return {
+      id: name,
+      name
+    }
+  }
+
+  return timezonesList.map(
+    formatTimezone
+  )
+}
+
+export function calendarData (
+  {
+    startDate
+  }
+) {
+  const days =
+    dayjs.weekdaysShort()
+
+  const months = dayjs.months()
+
+  const monthsShort =
+    dayjs.monthsShort()
+
+  const minDate =
+    dayjs().subtract(
+      100,
+      'year'
+    ).toDate()
+
+  const maxDate = dayjs().toDate()
+
+  const initialDate = (
+    startDate &&
+      dayjs(
+        startDate
+      ).toDate()
+  )
+
+  return {
+    days,
+    months,
+    monthsShort,
+    minDate,
+    maxDate,
+    initialDate
   }
 }

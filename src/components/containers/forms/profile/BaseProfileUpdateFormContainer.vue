@@ -16,8 +16,8 @@ import {
   profileUpdateFormOptions
 } from '@/helpers/formatters/semantic'
 import {
-  stringToDate as formatStringToDate
-} from '@/helpers/formatters'
+  birthdate as formatBirthdate
+} from '@/helpers/formatters/dateTimeString'
 import updateProfile from '@/helpers/actions/api/profile/update'
 import {
   update as updateGlobalStore
@@ -118,7 +118,7 @@ export default {
       const image = this.image.data
 
       const birthdateFormatted =
-        formatStringToDate(
+        formatBirthdate(
           birthdate
         )
 

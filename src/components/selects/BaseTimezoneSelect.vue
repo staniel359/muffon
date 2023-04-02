@@ -12,11 +12,13 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import moment from 'moment-timezone'
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
+import {
+  timezones as formatTimezones
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseTimezoneSelect',
@@ -31,12 +33,7 @@ export default {
       }
     ),
     timezonesFormatted () {
-      return this.timezones.map(
-        this.formatTimezone
-      )
-    },
-    timezones () {
-      return moment.tz.names()
+      return formatTimezones()
     }
   },
   methods: {
@@ -48,14 +45,6 @@ export default {
           'profile.timezone': value
         }
       )
-    },
-    formatTimezone (
-      timezone
-    ) {
-      return {
-        id: timezone,
-        name: timezone
-      }
     }
   }
 }

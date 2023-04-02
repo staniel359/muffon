@@ -37,7 +37,7 @@
 import {
   date as formatDate,
   time as formatTime
-} from '@/helpers/formatters'
+} from '@/helpers/formatters/dateTimeString'
 
 export default {
   name: 'BaseCreatedSection',

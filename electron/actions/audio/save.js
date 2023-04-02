@@ -10,7 +10,9 @@ import {
 } from 'electron-dl'
 import encrypt from './encrypt.js'
 import getPath from './getPath.js'
-import moment from 'moment-timezone'
+import {
+  currentTime as formatCurrentTime
+} from '../../formatters.js'
 
 let trackData
 
@@ -28,7 +30,7 @@ function formatTrackData () {
   trackData.uuid = fileName
 
   trackData.created =
-    moment.utc().toDate()
+    formatCurrentTime()
 
   const filePath =
     getPath(

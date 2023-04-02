@@ -12,7 +12,7 @@
 <script>
 import {
   date as formatDate
-} from '@/helpers/formatters'
+} from '@/helpers/formatters/dateTimeString'
 
 export default {
   name: 'BasePublishDateSection',

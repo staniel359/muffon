@@ -14,6 +14,7 @@ import pinia from '@/plugins/pinia'
 import i18n from '@/plugins/i18n'
 import setupAxios from '@/plugins/axios'
 import setupI18nCountries from '@/plugins/i18nCountries'
+import setupDayjs from '@/plugins/dayjs'
 
 createApp(
   App
@@ -30,3 +31,5 @@ createApp(
 setupAxios()
 
 setupI18nCountries()
+
+setupDayjs()

@@ -1,9 +1,11 @@
+import axios from 'axios'
 import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
 import i18n from '@/plugins/i18n'
-import moment from 'moment-timezone'
-import axios from 'axios'
 import icons from '@/helpers/data/icons'
+import {
+  calendarData as formatCalendarData
+} from '@/helpers/formatters'
 
 export function mainModalOptions (
   {
@@ -891,35 +893,21 @@ export function birthdateCalendarOptions (
     onChange
   }
 ) {
-  const {
-    language
-  } = profileStore()
-
-  moment.locale(
-    language
-  )
-
-  const days =
-    moment.weekdaysShort()
-  const months =
-    moment.months()
-  const monthsShort =
-    moment.monthsShort()
-
-  const minDate =
-    moment().subtract(
-      100,
-      'years'
-    ).toDate()
-
-  const maxDate = moment().toDate()
-
-  const initialDate = (
-    startDate &&
-      moment(
+  const calendarData =
+    formatCalendarData(
+      {
         startDate
-      ).toDate()
-  )
+      }
+    )
+
+  const {
+    days,
+    months,
+    monthsShort,
+    minDate,
+    maxDate,
+    initialDate
+  } = calendarData
 
   return {
     firstDayOfWeek: 1,

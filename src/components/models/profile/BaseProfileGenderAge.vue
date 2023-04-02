@@ -19,7 +19,7 @@
 <script>
 import {
   age as formatAge
-} from '@/helpers/formatters'
+} from '@/helpers/formatters/dateTimeString'
 
 export default {
   name: 'BaseProfileGenderAge',

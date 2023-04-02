@@ -31,9 +31,8 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import {
-  date as formatDate,
-  time as formatTime
-} from '@/helpers/formatters'
+  dateTime as formatDateTime
+} from '@/helpers/formatters/dateTimeString'
 
 export default {
   name: 'BaseProfileInfoPopup',
@@ -53,25 +52,12 @@ export default {
       )
     },
     createdFormatted () {
-      return [
-        this.createdDateFormatted,
-        this.createdTimeFormatted
-      ].join(
-        ' '
-      )
-    },
-    createdDateFormatted () {
-      return formatDate(
+      return formatDateTime(
         this.created
       )
     },
     created () {
       return this.profileData.created
-    },
-    createdTimeFormatted () {
-      return formatTime(
-        this.created
-      )
     },
     wasOnlineText () {
       return this.$t(
@@ -79,25 +65,12 @@ export default {
       )
     },
     wasOnlineFormatted () {
-      return [
-        this.wasOnlineDateFormatted,
-        this.wasOnlineTimeFormatted
-      ].join(
-        ' '
-      )
-    },
-    wasOnlineDateFormatted () {
-      return formatDate(
+      return formatDateTime(
         this.wasOnline
       )
     },
     wasOnline () {
       return this.profileData.was_online
-    },
-    wasOnlineTimeFormatted () {
-      return formatTime(
-        this.wasOnline
-      )
     }
   }
 }
