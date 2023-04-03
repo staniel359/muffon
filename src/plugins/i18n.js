@@ -24,10 +24,13 @@ const pluralizationRules = {
   ru: belarusianRussianPluralizationRule
 }
 
-export default createI18n(
-  {
-    fallbackLocale: 'en',
-    messages: localesData,
-    pluralizationRules
-  }
-)
+const i18n =
+  createI18n(
+    {
+      fallbackLocale: 'en',
+      messages: localesData,
+      pluralizationRules
+    }
+  )
+
+export default i18n

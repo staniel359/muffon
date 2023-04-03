@@ -10,6 +10,9 @@ const options = {
   schema
 }
 
-export default new ElectronStore(
-  options
-)
+const electronStore =
+  new ElectronStore(
+    options
+  )
+
+export default electronStore
