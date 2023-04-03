@@ -24,19 +24,11 @@
 </template>
 
 <script>
-import {
-  defineAsyncComponent
-} from 'vue'
 import BaseCounterLabelsSection
   from '@/components/sections/BaseCounterLabelsSection.vue'
+import BaseArtistInnerCounterLabelsSection
+  from '@/components/sections/artist/BaseArtistInnerCounterLabelsSection.vue'
 import BaseArtistTags from '@/components/models/artist/BaseArtistTags.vue'
-
-const BaseArtistInnerCounterLabelsSection =
-  defineAsyncComponent(
-    () => import(
-      '@/components/sections/artist/BaseArtistInnerCounterLabelsSection.vue'
-    )
-  )
 
 export default {
   name: 'LabelsSection',

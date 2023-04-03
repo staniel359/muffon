@@ -36,14 +36,15 @@
 
 <script>
 import {
+  defineAsyncComponent
+} from 'vue'
+import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
 import playerStore from '@/stores/player'
 import TheMediaKeysObserver
   from '@/components/layout/observers/TheMediaKeysObserver.vue'
-import ThePlayerObserver
-  from '@/components/layout/observers/ThePlayerObserver.vue'
 import TheBackground from '@/components/layout/TheBackground.vue'
 import TheNavbarPanel from '@/components/layout/panels/TheNavbarPanel.vue'
 import TheSidebarPanel from '@/components/layout/panels/TheSidebarPanel.vue'
@@ -59,6 +60,13 @@ import TheView from '@/components/layout/TheView.vue'
 import {
   generateKey
 } from '@/helpers/utils'
+
+const ThePlayerObserver =
+  defineAsyncComponent(
+    () => import(
+      '@/components/layout/observers/ThePlayerObserver.vue'
+    )
+  )
 
 export default {
   name: 'DefaultPageLayout',
