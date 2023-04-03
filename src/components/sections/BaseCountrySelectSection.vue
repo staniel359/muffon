@@ -4,6 +4,7 @@
       :key="key"
       class="country-select"
       :selected="country"
+      :is-form-field="isFormField"
       @select="handleCountrySelect"
     />
 
@@ -15,6 +16,10 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseCountrySelect from '@/components/selects/BaseCountrySelect.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
@@ -28,7 +33,8 @@ export default {
     BaseClearButton
   },
   props: {
-    country: String
+    country: String,
+    isFormField: Boolean
   },
   emits: [
     'select'
@@ -38,10 +44,23 @@ export default {
       key: null
     }
   },
+  computed: {
+    ...mapState(
+      profileStore,
+      {
+        profileLanguage: 'language'
+      }
+    )
+  },
   watch: {
+    profileLanguage:
+      'handleProfileLanguageChange',
     country: 'handleCountryChange'
   },
   methods: {
+    handleProfileLanguageChange () {
+      this.key = generateKey()
+    },
     handleCountrySelect (
       value
     ) {
