@@ -11,7 +11,7 @@ import {
   appName
 } from '../../utils.js'
 
-export default function initialize () {
+export default function () {
   setupI18n()
 
   setupDayjs()

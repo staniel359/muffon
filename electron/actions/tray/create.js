@@ -11,7 +11,7 @@ function handleClick () {
   mainWindow.show()
 }
 
-export default function create () {
+export default function () {
   tray = new Tray(
     trayIcon
   )

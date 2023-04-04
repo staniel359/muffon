@@ -7,7 +7,7 @@ function getTabId (
   return tabData.uuid
 }
 
-export default function clear () {
+export default function () {
   const tabIds =
     get().map(
       getTabId

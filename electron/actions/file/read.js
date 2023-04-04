@@ -2,7 +2,7 @@ import {
   readFileSync
 } from 'fs'
 
-export default function read (
+export default function (
   filePath
 ) {
   return readFileSync(

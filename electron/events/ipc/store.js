@@ -5,7 +5,7 @@ import {
   handleUpdateStore
 } from '../../handlers/ipc/store.js'
 
-export default function set () {
+export default function () {
   ipcMain.handle(
     'update-store',
     handleUpdateStore

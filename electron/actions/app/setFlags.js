@@ -2,7 +2,7 @@ import {
   app
 } from 'electron'
 
-export default function setFlags () {
+export default function () {
   app
     .commandLine
     .appendSwitch(

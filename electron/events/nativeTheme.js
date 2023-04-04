@@ -5,7 +5,7 @@ import {
   handleNativeThemeUpdated
 } from '../handlers/nativeTheme.js'
 
-export default function set () {
+export default function () {
   nativeTheme.on(
     'updated',
     handleNativeThemeUpdated

@@ -31,7 +31,7 @@ const options = {
   objectNotation: true
 }
 
-export default function setup () {
+export default function () {
   i18n.configure(
     options
   )

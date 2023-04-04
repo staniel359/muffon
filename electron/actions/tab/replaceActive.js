@@ -2,7 +2,7 @@ import findIndex from './findIndex.js'
 import getTabs from '../tabs/get.js'
 import setActive from './setActive.js'
 
-export default function replaceActive (
+export default function (
   tabId
 ) {
   const tabIndex =

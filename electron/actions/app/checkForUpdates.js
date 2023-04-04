@@ -88,7 +88,7 @@ function handleError () {
   )
 }
 
-export default function checkForUpdates () {
+export default function () {
   const releasesUrl =
     'https://api.github.com/repos/staniel359/muffon/releases/latest'
 

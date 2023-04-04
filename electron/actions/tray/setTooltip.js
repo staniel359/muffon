@@ -2,7 +2,7 @@ import {
   appName
 } from '../../utils.js'
 
-export default function setTooltip (
+export default function (
   value
 ) {
   tray.setToolTip(

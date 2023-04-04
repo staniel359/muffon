@@ -11,7 +11,7 @@ import {
   isMac
 } from '../../utils.js'
 
-export default function setMenu () {
+export default function () {
   const isVisible =
     mainWindow.isVisible()
 

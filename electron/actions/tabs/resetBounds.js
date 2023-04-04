@@ -1,7 +1,7 @@
 import getTabs from './get.js'
 import resetTabBounds from '../tab/resetBounds.js'
 
-export default function resetBounds (
+export default function (
   value
 ) {
   getTabs().forEach(

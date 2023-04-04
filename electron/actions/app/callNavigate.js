@@ -1,4 +1,4 @@
-export default function callNavigate (
+export default function (
   data
 ) {
   mainWindow

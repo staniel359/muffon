@@ -3,7 +3,7 @@ import {
   createCipheriv
 } from 'crypto'
 
-export default function encrypt (
+export default function (
   file
 ) {
   function getRandomKey (

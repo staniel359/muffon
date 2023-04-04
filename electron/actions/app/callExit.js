@@ -1,4 +1,4 @@
-export default function callExit () {
+export default function () {
   mainWindow
     .webContents
     .send(

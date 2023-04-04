@@ -2,7 +2,7 @@ import {
   isMac
 } from '../../utils.js'
 
-export default function setTopOffset () {
+export default function () {
   const isFullScreen =
     mainWindow.isFullScreen()
 

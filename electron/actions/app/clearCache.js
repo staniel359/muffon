@@ -1,4 +1,4 @@
-export default function clearCache () {
+export default function () {
   return mainWindow
     .webContents
     .session

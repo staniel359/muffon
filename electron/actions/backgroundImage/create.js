@@ -7,7 +7,7 @@ import {
 } from 'fs'
 import findTab from '../tab/find.js'
 
-export default function create (
+export default function (
   {
     tabId,
     imageData

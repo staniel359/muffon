@@ -2,7 +2,7 @@ import {
   appName
 } from '../../utils.js'
 
-export default function setTitle (
+export default function (
   value
 ) {
   mainWindow.setTitle(

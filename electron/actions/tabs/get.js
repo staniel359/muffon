@@ -1,3 +1,3 @@
-export default function get () {
+export default function () {
   return mainWindow.getBrowserViews()
 }

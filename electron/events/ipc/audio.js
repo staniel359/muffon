@@ -6,7 +6,7 @@ import {
   handleDeleteAudio
 } from '../../handlers/ipc/audio.js'
 
-export default function set () {
+export default function () {
   ipcMain.on(
     'save-audio',
     handleSaveAudio

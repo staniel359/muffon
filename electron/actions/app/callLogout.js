@@ -1,4 +1,4 @@
-export default function callLogout () {
+export default function () {
   mainWindow
     .webContents
     .send(

@@ -12,7 +12,7 @@ import {
   handleExit
 } from '../../handlers/ipc/app.js'
 
-export default function set () {
+export default function () {
   ipcMain.on(
     'set-title',
     handleSetTitle

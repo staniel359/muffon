@@ -2,6 +2,6 @@ import {
   app
 } from 'electron'
 
-export default function exit () {
+export default function () {
   app.exit()
 }

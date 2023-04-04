@@ -3,7 +3,7 @@ import createAboutWindow from '../aboutWindow/create.js'
 import createTray from '../tray/create.js'
 import createSessionHeadersHandler from '../session/createHeadersHandler.js'
 
-export default function setup () {
+export default function () {
   createMainWindow()
 
   createAboutWindow()

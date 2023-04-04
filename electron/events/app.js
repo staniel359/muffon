@@ -5,7 +5,7 @@ import {
   handleAllWindowsClosed
 } from '../handlers/app.js'
 
-export default function set () {
+export default function () {
   app.on(
     'window-all-closed',
     handleAllWindowsClosed

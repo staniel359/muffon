@@ -1,6 +1,6 @@
 import find from './find.js'
 
-export default function setActive (
+export default function (
   tabId
 ) {
   const tab =

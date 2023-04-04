@@ -1,3 +1,3 @@
-export default function show () {
+export default function () {
   mainWindow.show()
 }

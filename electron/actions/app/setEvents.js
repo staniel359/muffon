@@ -10,7 +10,7 @@ import setIpcBackgroundImageEvents from '../../events/ipc/backgroundImage.js'
 import setIpcFileEvents from '../../events/ipc/file.js'
 import setIpcElectronStoreEvents from '../../events/ipc/electronStore.js'
 
-export default function setEvents () {
+export default function () {
   setAppEvents()
 
   setNativeThemeEvents()

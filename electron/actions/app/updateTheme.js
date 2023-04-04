@@ -2,7 +2,7 @@ import {
   nativeTheme
 } from 'electron'
 
-export default function updateTheme () {
+export default function () {
   const isDarkMode =
     nativeTheme.shouldUseDarkColors
 

@@ -3,7 +3,7 @@ import encryptFile from '../file/encrypt.js'
 import create from './create.js'
 import deleteAudio from './delete.js'
 
-export default function encrypt (
+export default function (
   {
     tempFileName,
     fileName

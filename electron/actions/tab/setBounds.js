@@ -1,6 +1,6 @@
 import getElectronStoreKey from '../electronStore/getKey.js'
 
-export default function setBounds (
+export default function (
   tab
 ) {
   const scale =

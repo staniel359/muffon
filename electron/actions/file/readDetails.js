@@ -2,7 +2,7 @@ import {
   statSync
 } from 'fs'
 
-export default function readDetails (
+export default function (
   filePath
 ) {
   return statSync(

@@ -16,7 +16,7 @@ import {
   handleNewWindow
 } from '../../handlers/app.js'
 
-export default function create (
+export default function (
   data
 ) {
   const {

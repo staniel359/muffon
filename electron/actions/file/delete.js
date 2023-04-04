@@ -3,7 +3,7 @@ import {
   unlinkSync
 } from 'fs'
 
-export default function deleteFile (
+export default function (
   filePath
 ) {
   const isFileExist =

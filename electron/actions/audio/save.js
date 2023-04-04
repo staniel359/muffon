@@ -78,7 +78,7 @@ function handleError () {
     )
 }
 
-export default function save (
+export default function (
   {
     track,
     tabId

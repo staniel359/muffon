@@ -2,7 +2,7 @@ import getTabs from '../tabs/get.js'
 import setElectronStoreData from '../electronStore/setData.js'
 import setScale from '../app/setScale.js'
 
-export default function update (
+export default function (
   data,
   {
     isSave

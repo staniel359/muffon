@@ -7,7 +7,7 @@ import {
   handleDecryptFile
 } from '../../handlers/ipc/file.js'
 
-export default function set () {
+export default function () {
   ipcMain.handle(
     'read-file',
     handleReadFile

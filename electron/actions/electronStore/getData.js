@@ -1,5 +1,5 @@
 import electronStore from '../../plugins/electronStore.js'
 
-export default function getData () {
+export default function () {
   return electronStore.store
 }

@@ -16,7 +16,7 @@ function handleClose (
   aboutWindow.hide()
 }
 
-export default function create () {
+export default function () {
   const aboutWindowWidth = 450
   const aboutWindowHeight = 230
 

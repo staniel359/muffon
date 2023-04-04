@@ -1,4 +1,4 @@
-export default function callAccountDelete () {
+export default function () {
   mainWindow
     .webContents
     .send(

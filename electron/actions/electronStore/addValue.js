@@ -1,7 +1,7 @@
 import getKey from './getKey.js'
 import setData from './setData.js'
 
-export default function addValue (
+export default function (
   key,
   value
 ) {

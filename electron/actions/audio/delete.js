@@ -1,7 +1,7 @@
 import getPath from './getPath.js'
 import deleteFile from '../file/delete.js'
 
-export default function deleteAudio (
+export default function (
   fileName
 ) {
   const filePath =

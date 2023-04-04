@@ -22,7 +22,7 @@ function handleBeforeSendHeaders (
   )
 }
 
-export default function createHeadersHandler () {
+export default function () {
   const filter = {
     urls: [
       'https://*.youtube.com/*'

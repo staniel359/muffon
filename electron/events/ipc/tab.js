@@ -8,7 +8,7 @@ import {
   handleDeleteTab
 } from '../../handlers/ipc/tab.js'
 
-export default function set () {
+export default function () {
   ipcMain.on(
     'add-tab',
     handleAddTab

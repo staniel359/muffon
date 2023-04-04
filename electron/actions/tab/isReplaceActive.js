@@ -1,7 +1,7 @@
 import getTabs from '../tabs/get.js'
 import getActiveId from './getActiveId.js'
 
-export default function isReplaceActive (
+export default function (
   tabId
 ) {
   const isMultipleTabs =

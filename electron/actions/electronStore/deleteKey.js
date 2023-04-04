@@ -1,6 +1,6 @@
 import electronStore from '../../plugins/electronStore.js'
 
-export default function deleteKey (
+export default function (
   key
 ) {
   return electronStore.delete(

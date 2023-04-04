@@ -1,7 +1,7 @@
 import crypto from 'crypto'
 import read from './read.js'
 
-export default function decrypt (
+export default function (
   {
     filePath,
     key,

@@ -8,7 +8,7 @@ import {
   handleDeleteBackgroundImage
 } from '../../handlers/ipc/backgroundImage.js'
 
-export default function set () {
+export default function () {
   ipcMain.on(
     'create-background-image',
     handleCreateBackgroundImage

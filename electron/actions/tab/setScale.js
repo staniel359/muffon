@@ -1,4 +1,4 @@
-export default function setScale (
+export default function (
   tab,
   value
 ) {

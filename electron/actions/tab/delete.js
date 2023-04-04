@@ -1,6 +1,6 @@
 import clear from './clear.js'
 
-export default function deleteTab (
+export default function (
   tabId
 ) {
   clear(

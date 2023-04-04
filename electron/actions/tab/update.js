@@ -1,4 +1,4 @@
-export default function update (
+export default function (
   data
 ) {
   mainWindow

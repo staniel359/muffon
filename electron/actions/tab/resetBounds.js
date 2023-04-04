@@ -1,4 +1,4 @@
-export default function resetBounds (
+export default function (
   tab
 ) {
   const [

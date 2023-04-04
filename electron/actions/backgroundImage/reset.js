@@ -1,4 +1,4 @@
-export default function reset () {
+export default function () {
   mainWindow
     .webContents
     .send(

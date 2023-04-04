@@ -1,4 +1,4 @@
-export default function setGlobalVariables () {
+export default function () {
   global.mainWindow = null
 
   global.aboutWindow = null

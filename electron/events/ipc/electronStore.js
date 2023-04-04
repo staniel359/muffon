@@ -10,7 +10,7 @@ import {
   handleDeleteElectronStoreKey
 } from '../../handlers/ipc/electronStore.js'
 
-export default function set () {
+export default function () {
   ipcMain.handle(
     'get-electron-store-data',
     handleGetElectronStoreData

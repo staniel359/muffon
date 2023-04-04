@@ -3,7 +3,7 @@ import {
   writeFileSync
 } from 'fs'
 
-export default function create (
+export default function (
   fileName,
   data
 ) {

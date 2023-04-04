@@ -1,7 +1,7 @@
 import getPath from './getPath.js'
 import deleteFile from '../file/delete.js'
 
-export default function deleteBackgroundImage (
+export default function (
   {
     imageId
   }

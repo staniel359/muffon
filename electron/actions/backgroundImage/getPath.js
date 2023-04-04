@@ -5,7 +5,7 @@ import {
   backgroundImagesFolderPath
 } from '../../paths.js'
 
-export default function getPath (
+export default function (
   fileName
 ) {
   return joinPath(

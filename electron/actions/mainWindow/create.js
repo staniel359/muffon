@@ -111,7 +111,7 @@ function handleLeaveFullScreen () {
   setTabsBounds()
 }
 
-export default function create () {
+export default function () {
   const mainWindowWidth = 900
   const mainWindowHeight = 600
 
