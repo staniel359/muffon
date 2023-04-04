@@ -1,7 +1,9 @@
 <template>
   <div
-    v-if="isRender"
     class="scrobble-point"
+    :class="{
+      hidden: isHidden
+    }"
     :style="{
       left: offsetPercentFormatted
     }"
@@ -20,8 +22,6 @@ import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
-import createScrobblerPlay
-  from '@/helpers/actions/api/lastfm/scrobbler/play/create'
 import createScrobblerSave
   from '@/helpers/actions/api/lastfm/scrobbler/save/create'
 import notificationMixin from '@/mixins/notificationMixin'
@@ -64,18 +64,9 @@ export default {
         profileId: 'id'
       }
     ),
-    isRender () {
+    isHidden () {
       return (
-        this.isToScrobble && (
-          this.scrobblePercent < 100
-        )
-      )
-    },
-    isToScrobble () {
-      return (
-        this.profileId &&
-          this.playerPlaying &&
-          this.isPlayerWithScrobbling
+        this.scrobblePercent > 100
       )
     },
     offsetPercentFormatted () {
@@ -103,13 +94,7 @@ export default {
     },
     isToSaveScrobble () {
       return (
-        this.isToScrobble &&
-          this.isScrobbled
-      )
-    },
-    isScrobbled () {
-      return (
-        this.audioCurrentPercent >
+        this.audioCurrentPercent >=
           this.scrobblePercent
       )
     },
@@ -157,10 +142,6 @@ export default {
     }
   },
   watch: {
-    playerPlaying: {
-      immediate: true,
-      handler: 'handlePlayerPlayingChange'
-    },
     isPlayerWithScrobbling:
       'handleIsPlayerWithScrobblingChange',
     isToSaveScrobble:
@@ -174,11 +155,6 @@ export default {
       this.handleAudioTimeUpdate
   },
   methods: {
-    handlePlayerPlayingChange () {
-      if (this.isToScrobble) {
-        this.playScrobble()
-      }
-    },
     handleIsPlayerWithScrobblingChange (
       value
     ) {
@@ -206,11 +182,6 @@ export default {
       if (this.isPlayerWithScrobbleNotifications) {
         this.notifySuccess()
       }
-    },
-    playScrobble () {
-      createScrobblerPlay(
-        this.trackData
-      )
     },
     saveScrobble () {
       createScrobblerSave(
@@ -258,4 +229,6 @@ export default {
   .icon
     @extend .no-margin
     color: $colorLastfm
+  &.hidden
+    @extend .d-none
 </style>

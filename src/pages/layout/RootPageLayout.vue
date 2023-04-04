@@ -22,6 +22,10 @@
     v-if="isRenderPlayingPublicObserver"
   />
 
+  <TheScrobbleObserver
+    v-if="isRenderScrobbleObserver"
+  />
+
   <TheAnonymousBrowserObserver
     v-if="isProfileAnonymous"
   />
@@ -94,6 +98,12 @@ const ThePlayingPublicObserver =
       '@/components/layout/observers/ThePlayingPublicObserver.vue'
     )
   )
+const TheScrobbleObserver =
+  defineAsyncComponent(
+    () => import(
+      '@/components/layout/observers/TheScrobbleObserver.vue'
+    )
+  )
 const TheAnonymousBrowserObserver =
   defineAsyncComponent(
     () => import(
@@ -130,6 +140,7 @@ export default {
     TheAnonymousPlayingObserver,
     ThePlayingObserver,
     ThePlayingPublicObserver,
+    TheScrobbleObserver,
     TheAnonymousBrowserObserver,
     TheBrowserObserver,
     TheDiscordObserver,
@@ -143,9 +154,11 @@ export default {
     ...mapState(
       playerStore,
       {
+        playerPlaying: 'playing',
         isPlayerWithDiscordRichPresence:
           'isWithDiscordRichPresence',
-        playerPlaying: 'playing'
+        isPlayerWithScrobbling:
+          'isWithScrobbling'
       }
     ),
     ...mapState(
@@ -167,6 +180,13 @@ export default {
       return (
         this.isProfileAnonymous ||
           this.profileId
+      )
+    },
+    isRenderScrobbleObserver () {
+      return (
+        this.profileId &&
+          this.isPlayerWithScrobbling &&
+          this.playerPlaying
       )
     }
   }

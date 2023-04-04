@@ -9,7 +9,9 @@
     </div>
 
     <div class="bottom-section">
-      <ScrobblePoint />
+      <ScrobblePoint
+        v-if="isRenderScrobblePoint"
+      />
 
       <SeekerPanel
         @audio-end="handleAudioEnd"
@@ -23,6 +25,8 @@ import {
   mapState
 } from 'pinia'
 import audioStore from '@/stores/audio'
+import playerStore from '@/stores/player'
+import profileStore from '@/stores/profile'
 import queueStore from '@/stores/queue'
 import TimerPanel from './AudioPanel/TimerPanel.vue'
 import MainControlsPanel from './AudioPanel/MainControlsPanel.vue'
@@ -48,6 +52,20 @@ export default {
       }
     ),
     ...mapState(
+      playerStore,
+      {
+        playerPlaying: 'playing',
+        isPlayerWithScrobbling:
+          'isWithScrobbling'
+      }
+    ),
+    ...mapState(
+      profileStore,
+      {
+        profileId: 'id'
+      }
+    ),
+    ...mapState(
       queueStore,
       {
         isQueueAutoplay: 'isAutoplay',
@@ -64,6 +82,13 @@ export default {
       return {
         position: 'next'
       }
+    },
+    isRenderScrobblePoint () {
+      return (
+        this.profileId &&
+          this.playerPlaying &&
+          this.isPlayerWithScrobbling
+      )
     }
   },
   watch: {
