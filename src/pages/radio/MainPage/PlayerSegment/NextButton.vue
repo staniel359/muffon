@@ -1,6 +1,7 @@
 <template>
   <div class="next-button-container">
     <BaseButton
+      ref="button"
       class="basic circular compact"
       icon="audioNext"
       :text="nextText"
@@ -33,6 +34,11 @@ export default {
       this.$emit(
         'click'
       )
+    },
+    click () {
+      this.$refs
+        .button
+        .click()
     }
   }
 }

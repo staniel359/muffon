@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import Mousetrap from 'mousetrap'
 import {
   mapState
 } from 'pinia'
@@ -48,7 +49,8 @@ export default {
     ...mapState(
       audioStore,
       {
-        audioElement: 'element'
+        audioElement: 'element',
+        isAudioLoop: 'isLoop'
       }
     ),
     ...mapState(
@@ -72,7 +74,7 @@ export default {
         isQueueEnd: 'isEnd'
       }
     ),
-    isPlayNext () {
+    isGetQueueNextTrack () {
       return (
         this.isQueueAutoplay &&
           !this.isQueueEnd
@@ -89,6 +91,15 @@ export default {
           this.playerPlaying &&
           this.isPlayerWithScrobbling
       )
+    },
+    isGetRadioNextTrack () {
+      return (
+        this.isPlayingFromRadio &&
+          !this.isAudioLoop
+      )
+    },
+    isPlayingFromRadio () {
+      return this.playerPlaying.from_radio
     }
   },
   watch: {
@@ -98,13 +109,15 @@ export default {
   methods: {
     getQueueTrack,
     handleAudioEnd () {
-      if (this.isPlayNext) {
+      if (this.isGetQueueNextTrack) {
         this.getQueueNextTrack()
+      } else if (this.isGetRadioNextTrack) {
+        this.getRadioNextTrack()
       }
     },
     handleIsQueueAutoplayChange () {
       if (
-        this.isPlayNext &&
+        this.isGetQueueNextTrack &&
           this.audioElement.ended
       ) {
         this.getQueueNextTrack()
@@ -113,6 +126,11 @@ export default {
     getQueueNextTrack () {
       this.getQueueTrack(
         this.queueTrackArgs
+      )
+    },
+    getRadioNextTrack () {
+      Mousetrap.trigger(
+        'shift+right'
       )
     }
   }

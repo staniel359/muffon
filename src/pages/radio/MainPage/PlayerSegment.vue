@@ -19,6 +19,7 @@
       />
 
       <NextButton
+        ref="nextButton"
         @click="handleNextButtonClick"
       />
     </template>
@@ -125,8 +126,13 @@ export default {
     bindNextKeys () {
       Mousetrap.bind(
         this.nextKeys,
-        this.getData
+        this.clickNextButton
       )
+    },
+    clickNextButton () {
+      this.$refs
+        .nextButton
+        .click()
     },
     unbindNextKeys () {
       Mousetrap.unbind(

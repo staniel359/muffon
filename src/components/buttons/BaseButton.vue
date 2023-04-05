@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="button"
     class="ui button main-simple-button"
     :class="[
       buttonColorClass,
@@ -86,6 +87,11 @@ export default {
         'click',
         event
       )
+    },
+    click () {
+      this.$refs
+        .button
+        .click()
     }
   }
 }

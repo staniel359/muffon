@@ -43,6 +43,6 @@ export default {
 .playing-info-block
   @extend .absolute, .w-100, .background-black-transparent, .no-margin
   z-index: 1
-  padding: 1.25em 2.25em
+  padding: 1em 2em
   bottom: 0
 </style>
