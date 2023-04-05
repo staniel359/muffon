@@ -148,11 +148,17 @@ export default {
       'handleIsToSaveScrobbleChange'
   },
   mounted () {
-    this.audioElement.onseeking =
-      this.handleAudioSeeking
+    this.audioElement
+      .addEventListener(
+        'seeking',
+        this.handleAudioSeeking
+      )
 
-    this.audioElement.ontimeupdate =
-      this.handleAudioTimeUpdate
+    this.audioElement
+      .addEventListener(
+        'timeupdate',
+        this.handleAudioTimeUpdate
+      )
   },
   methods: {
     handleIsPlayerWithScrobblingChange (

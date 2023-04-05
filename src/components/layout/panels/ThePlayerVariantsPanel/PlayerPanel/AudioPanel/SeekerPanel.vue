@@ -100,8 +100,11 @@ export default {
     }
   },
   mounted () {
-    this.audioElement.ontimeupdate =
-      this.handleAudioTimeUpdate
+    this.audioElement
+      .addEventListener(
+        'timeupdate',
+        this.handleAudioTimeUpdate
+      )
 
     this.setProgressBar()
 
