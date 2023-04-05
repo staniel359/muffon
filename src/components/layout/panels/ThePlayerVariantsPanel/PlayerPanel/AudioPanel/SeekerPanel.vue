@@ -282,6 +282,8 @@ export default {
       value
     ) {
       this.audioElement.currentTime = value
+
+      this.audioCurrentTime = value
     },
     setSeekerValue (
       value
