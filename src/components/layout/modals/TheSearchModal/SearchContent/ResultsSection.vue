@@ -61,13 +61,16 @@ import BaseTracksSimpleList
 import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseVideosSimpleList
   from '@/components/lists/videos/BaseVideosSimpleList.vue'
+import BaseVideoChannelsSimpleList
+  from '@/components/lists/videoChannels/BaseVideoChannelsSimpleList.vue'
 import getSearch from '@/helpers/actions/api/search/get'
 import {
   artists as artistsLimits,
   albums as albumsLimits,
   tracks as tracksLimits,
   tags as tagsLimits,
-  videos as videosLimits
+  videos as videosLimits,
+  videoChannels as videoChannelsLimits
 } from '@/helpers/data/limits'
 
 export default {
@@ -78,7 +81,8 @@ export default {
     BaseAlbumsSimpleList,
     BaseTracksSimpleList,
     BaseTagsSimpleList,
-    BaseVideosSimpleList
+    BaseVideosSimpleList,
+    BaseVideoChannelsSimpleList
   },
   provide () {
     return {
@@ -138,7 +142,9 @@ export default {
           this.albumGroupsData,
         tracks: this.tracksData,
         tags: this.tagsData,
-        videos: this.videosData
+        videos: this.videosData,
+        videoChannels:
+          this.videoChannelsData
       }
     },
     artistsData () {
@@ -252,6 +258,16 @@ export default {
           'BaseVideosSimpleList',
         limit:
           videosLimits.simple.medium
+      }
+    },
+    videoChannelsData () {
+      return {
+        component:
+          'BaseVideoChannelsSimpleList',
+        searchScope: 'channels',
+        listScope: 'channels',
+        limit:
+          videoChannelsLimits.simple.medium
       }
     },
     limit () {

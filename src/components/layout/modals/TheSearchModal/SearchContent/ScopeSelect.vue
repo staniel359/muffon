@@ -28,7 +28,8 @@ export default {
         'albumGroups',
         'tracks',
         'tags',
-        'videos'
+        'videos',
+        'videoChannels'
       ]
     }
   },

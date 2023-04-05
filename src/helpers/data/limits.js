@@ -70,6 +70,7 @@ export const videos = {
 export const videoChannels = {
   simple: {
     small: 10,
+    medium: 20,
     large: 50
   }
 }

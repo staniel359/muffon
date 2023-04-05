@@ -215,7 +215,8 @@ export default [
       'video'
     ],
     searchScopes: [
-      'videos'
+      'videos',
+      'videoChannels'
     ]
   }
 ]
