@@ -13,12 +13,8 @@ export function main (
     params: {
       artistName
     },
-    path: [
-      'artists',
-      artistNameEncoded
-    ].join(
-      '/'
-    )
+    path:
+      `artists/${artistNameEncoded}`
   }
 }
 
@@ -37,13 +33,8 @@ export function images (
     params: {
       artistName
     },
-    path: [
-      'artists',
-      artistNameEncoded,
-      'images'
-    ].join(
-      '/'
-    )
+    path:
+      `artists/${artistNameEncoded}/images`
   }
 }
 
@@ -62,13 +53,8 @@ export function tracks (
     params: {
       artistName
     },
-    path: [
-      'artists',
-      artistNameEncoded,
-      'tracks'
-    ].join(
-      '/'
-    )
+    path:
+      `artists/${artistNameEncoded}/tracks`
   }
 }
 
@@ -87,13 +73,8 @@ export function albums (
     params: {
       artistName
     },
-    path: [
-      'artists',
-      artistNameEncoded,
-      'albums'
-    ].join(
-      '/'
-    )
+    path:
+      `artists/${artistNameEncoded}/albums`
   }
 }
 
@@ -112,12 +93,7 @@ export function similar (
     params: {
       artistName
     },
-    path: [
-      'artists',
-      artistNameEncoded,
-      'similar'
-    ].join(
-      '/'
-    )
+    path:
+      `artists/${artistNameEncoded}/similar`
   }
 }

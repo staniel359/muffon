@@ -66,6 +66,14 @@ export default {
       return (
         this.$route.path === '/about'
       )
+    },
+    fullPathDecoded () {
+      return decodeURI(
+        this.fullPath
+      )
+    },
+    fullPath () {
+      return this.$route.fullPath
     }
   },
   watch: {
@@ -78,7 +86,8 @@ export default {
     handleRouteChange (
       value
     ) {
-      this.key = value.fullPath
+      this.key =
+        this.fullPathDecoded
     },
     refresh () {
       this.key = generateKey()
