@@ -18,6 +18,11 @@
         icon="search"
       />
     </div>
+
+    <div
+      class="results"
+      :class="transparentClass"
+    />
   </div>
 </template>
 
@@ -37,12 +42,16 @@ import {
 import {
   anonymousToken
 } from '@/helpers/data/env'
+import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'BaseSearchInput',
   components: {
     BaseIcon
   },
+  mixins: [
+    transparencyMixin
+  ],
   props: {
     url: {
       type: String,

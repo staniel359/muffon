@@ -16,7 +16,6 @@
     />
     <BaseMessage
       v-else
-      :class="transparentClass"
       :icon="icon"
       :icons="icons"
       :header="header"
@@ -31,7 +30,6 @@
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseMessage from '@/components/messages/BaseMessage.vue'
 import errorsData from '@/helpers/data/errors'
-import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'BaseErrorMessage',
@@ -39,9 +37,6 @@ export default {
     BaseHeader,
     BaseMessage
   },
-  mixins: [
-    transparencyMixin
-  ],
   props: {
     error: {
       type: Error,

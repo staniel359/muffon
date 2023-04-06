@@ -482,7 +482,7 @@ p
     padding: 0.5em 0.75em !important
 
 .main-message
-  @extend .no-shadow, .no-margin, .border
+  @extend .no-shadow, .no-margin, .border, .background-transparent
   &.inverted
     @extend .border-inverted
 
@@ -720,10 +720,9 @@ p
     margin-top: 1em
   & > .remember-submit-button-container
     @extend .d-flex, .align-items-center, .justify-content-space-between
-  &.inverted
-    &.loading
-      &:before
-        @extend .background-black-transparent
+  &.loading
+    &:before
+      @extend .background-transparent, .blurred
 
 .main-sidebar-item
   @extend .no-padding, .d-flex
