@@ -1,0 +1,798 @@
+{
+  "electron": {
+    "show": "表示",
+    "hide": "非表示",
+    "about": "情報",
+    "exit": "終了",
+    "update": {
+      "message": "最新版があります",
+      "buttons": {
+        "download": "ダウンロード",
+        "close": "閉じる"
+      }
+    }
+  },
+  "navigation": {
+    "home": "ホーム",
+    "artists": "アーティスト",
+    "artist": "アーティスト",
+    "albums": "アルバム",
+    "albumGroups": "アルバムグループ",
+    "tracks": "曲",
+    "tags": "タグ",
+    "tag": "タグ",
+    "similar": "類似",
+    "images": "画像",
+    "videoChannels": "動画チャンネル",
+    "videos": "動画",
+    "related": "関連",
+    "top": "トップ",
+    "releases": "リリース",
+    "new": "新着",
+    "upcoming": "予定",
+    "radio": "ラジオ",
+    "multitag": "複数タグ検索",
+    "profiles": "Profiles",
+    "feed": "フィード",
+    "posts": "投稿",
+    "conversations": "Conversations",
+    "library": "ライブラリ",
+    "recommendations": "Recommendations",
+    "savedTracks": "保存済みの曲",
+    "playlists": "再生リスト",
+    "favorites": "お気に入り",
+    "bookmarks": "ブックマーク",
+    "bookmarkModels": {
+      "artists": "ブックマーク アーティスト",
+      "albums": "ブックマーク アルバム",
+      "tracks": "ブックマーク 曲",
+      "videos": "ブックマーク 動画"
+    },
+    "communities": "コミュニティ",
+    "history": "履歴",
+    "historyModels": {
+      "activity": "利用履歴",
+      "player": "プレイヤーの履歴",
+      "browser": "ブラウザーの履歴"
+    },
+    "activity": "利用履歴",
+    "player": "プレイヤー",
+    "browser": "ブラウザー",
+    "settings": "設定",
+    "model": {
+      "artists": "{modelName} アーティスト",
+      "albums": "{modelName} アルバム",
+      "tracks": "{modelName} トラック",
+      "tags": "{modelName} タグ",
+      "similar": "{modelName} 類似",
+      "images": "{modelName} 画像",
+      "videos": "{modelName} 動画",
+      "related": "{modelName} 関連",
+      "posts": "{modelName} 投稿",
+      "library": "{modelName} ライブラリ",
+      "playlists": "{modelName} 再生リスト",
+      "favorites": "{modelName} お気に入り",
+      "favoritesModels": {
+        "artists": "{modelName} お気に入り アーティスト",
+        "albums": "{modelName} お気に入り アルバム",
+        "tracks": "{modelName} お気に入り 曲",
+        "videos": "{modelName} お気に入り 動画"
+      },
+      "communities": "{modelName} コミュニティ"
+    },
+    "topCollection": {
+      "artists": "トップ アーティスト",
+      "albums": "トップ アルバム",
+      "tracks": "トップ 曲",
+      "tags": "トップ タグ"
+    },
+    "releasesCollection": {
+      "new": "新作",
+      "upcoming": "リリース予定"
+    }
+  },
+  "errors": {
+    "badRequest": {
+      "header": "正しくないリクエスト",
+      "content": "有効なデータでリクエストしてください"
+    },
+    "forbidden": {
+      "header": "禁止",
+      "content": "この操作を実行する権限がありません"
+    },
+    "notFound": {
+      "header": "何も見つかりませんでした",
+      "content": "他の検索をお試しください"
+    },
+    "internalServer": {
+      "header": "サーバー内部エラー",
+      "content": "詳細はお問い合わせください"
+    },
+    "badGateway": {
+      "header": "リモートサーバーのエラー",
+      "content": "しばらく後で再度お試しください"
+    },
+    "gatewayTimeout": {
+      "header": "リモートサーバーのタイムアウト",
+      "content": "しばらく後で再度お試しください"
+    },
+    "connection": {
+      "header": "接続が切れました",
+      "content": "しばらく後で再度お試しください"
+    },
+    "client": {
+      "header": "接続エラー",
+      "content": "詳細はお問い合わせください"
+    }
+  },
+  "actions": {
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "signup": "登録",
+    "add": "追加",
+    "create": "作成",
+    "edit": "編集",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "clear": "消去",
+    "retry": "再試行",
+    "post": "投稿",
+    "send": "送信",
+    "next": "次へ",
+    "upload": "アップロード",
+    "back": "戻る",
+    "sendCode": "コード送信",
+    "share": "共有",
+    "search": "検索",
+    "filter": "絞り込み",
+    "confirm": "確認",
+    "from": {
+      "search": "From search",
+      "folder": "From folder",
+      "account": "From account",
+      "library": "From library"
+    },
+    "searchIn": {
+      "source": "提供元から検索",
+      "sources": "提供元から検索"
+    },
+    "searchFor": {
+      "video": "動画を検索",
+      "lyrics": "歌詞を検索"
+    },
+    "import": {
+      "lastfm": "Last.FM データをインポート"
+    },
+    "folder": {
+      "select": "フォルダを選択"
+    },
+    "addModel": {
+      "playlist": "Add playlist",
+      "community": "Add community",
+      "post": "Add post"
+    },
+    "addTo": {
+      "library": "ライブラリに追加",
+      "playlist": "再生リストに追加",
+      "favorites": "お気に入りに追加",
+      "bookmarks": "ブックマークに追加",
+      "listened": "視聴済みに追加",
+      "watched": "閲覧済みに追加",
+      "queue": "Add to queue",
+      "savedTracks": "保存済みの曲に追加"
+    },
+    "show": {
+      "library": "Show in library",
+      "page": "Show page"
+    },
+    "deleteFrom": {
+      "favorites": "お気に入りから削除",
+      "bookmarks": "ブックマークから削除",
+      "listened": "視聴済みから削除",
+      "watched": "閲覧済みから削除"
+    }
+  },
+  "links": {
+    "playlists": "すべての再生リスト",
+    "communities": "すべてのコミュニティ"
+  },
+  "inputs": {
+    "search": "検索...",
+    "content": "何か入力してください..."
+  },
+  "modals": {
+    "delete": {
+      "header": {
+        "libraryModel": {
+          "artist": "ライブラリからアーティストを削除",
+          "album": "ライブラリからアルバムを削除",
+          "track": "ライブラリから曲を削除"
+        },
+        "recommendation": "Delete recommendation",
+        "playlist": "Delete playlist",
+        "playlistTrack": "再生リストから曲を削除",
+        "savedTrack": "保存済みの曲から曲を削除",
+        "favorite": {
+          "artist": "お気に入りからアーティストを削除",
+          "album": "お気に入りからアルバムを削除",
+          "track": "お気に入りから曲を削除",
+          "video": "お気に入りから動画を削除"
+        },
+        "bookmark": {
+          "artist": "ブックマークからアーティストを削除",
+          "album": "ブックマークからアルバムを削除",
+          "track": "ブックマークから曲を削除",
+          "video": "ブックマークから動画を削除"
+        },
+        "post": "投稿を削除",
+        "community": "コミュニティを削除",
+        "account": "アカウントを削除",
+        "library": "ライブラリを削除"
+      },
+      "going": {
+        "libraryModel": "ライブラリから {modelName} を削除しようとしています。",
+        "recommendation": "recommendations から {modelName} を削除しようとしています。",
+        "playlist": "再生地ストから {modelName} を削除しようとしています。",
+        "playlistTrack": "{parentModelName} 再生リストから {modelName} を削除しようとしています。",
+        "savedTrack": "保存済みの曲から {modelName} を削除しようとしています。",
+        "favorite": "お気に入りから {modelName} を削除しようとしています。",
+        "bookmark": "ブックマークから {modelName} を削除しようとしています。",
+        "post": "この投稿を削除しようとしています。",
+        "community": "このコミュニティを削除しようとしています。",
+        "account": "お使いのアカウントを削除しようとしています。",
+        "library": "あなたのライブラリを削除しようとしています。"
+      },
+      "also": {
+        "libraryModel": {
+          "artist": "このアーティストのアルバムや曲もすべて削除されます。",
+          "album": "このアルバムの曲もすべて削除されます。"
+        },
+        "playlist": "この再生リストの曲もすべて削除されます。",
+        "community": "このコミュニティの曲もすべて削除されます。",
+        "account": [
+          "以下のデータも削除します:",
+          "<strong>- ライブラリ\n- recommendations\n- 再生リスト\n- お気に入り\n- ブックマーク\n- 視聴済み\n- あなたのページ投稿\n- subscriptions</strong>",
+          "以下のデータは残りますが、あなたのニックネームは表示されません:",
+          "<strong>- 作成済みの投稿\n- conversations with you\n- 作成したコミュニティ</strong>",
+          "以下のデータはそのままです:",
+          "<strong>- 保存済みの曲\n- 背景の画像\n- 設定</strong>"
+        ],
+        "library": [
+          "以下のデータを削除します:",
+          "<strong>- アーティスト\n- アルバム\n- 曲\n- recommendations</strong>"
+        ]
+      },
+      "undo": "この操作を実行すると元に戻せません！",
+      "sure": "よろしいですか？"
+    }
+  },
+  "forms": {
+    "fields": {
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "passwordConfirmation": "パスワードの確認",
+      "passwordResetCode": "パスワードのリセット用コード",
+      "nickname": "ニックネーム",
+      "title": "Title",
+      "description": "Description",
+      "gender": "性別",
+      "birthdate": "誕生日",
+      "country": "国",
+      "city": "年",
+      "status": "ステータス",
+      "genders": {
+        "male": "男",
+        "female": "女",
+        "other": "ほか"
+      },
+      "legal": {
+        "header": "{privacyPolicy}と{termsAndConditions}に同意する",
+        "privacyPolicy": "個人情報保護方針",
+        "termsAndConditions": "利用規約"
+      },
+      "remember": "保存する",
+      "asCommunity": "As community"
+    },
+    "extra": "追加の情報",
+    "errors": {
+      "notFound": "Profile is not found",
+      "empty": {
+        "email": "メールアドレスがありません",
+        "password": "パスワードがありません",
+        "passwordConfirmation": "パスワードの確認がありません",
+        "passwordResetCode": "パスワードのリセット用コードがありません",
+        "nickname": "ニックネームがありません",
+        "title": "Title is empty",
+        "legal": "個人情報保護方針と利用規約に同意する必要があります"
+      },
+      "invalid": {
+        "email": "メールアドレスが正しくありません"
+      },
+      "taken": {
+        "email": "Email is taken",
+        "nickname": "Nickname is taken",
+        "title": "Title is taken"
+      },
+      "tooShort": {
+        "password": "パスワードが短すぎます"
+      },
+      "tooLong": {
+        "nickname": "ニックネームが長すぎます"
+      },
+      "confirmation": {
+        "passwordConfirmation": "パスワードとその確認が一致しません"
+      },
+      "wrong": {
+        "password": "パスワードが間違っています",
+        "passwordResetCode": "パスワードのリセット用コードが間違っています"
+      }
+    },
+    "confirm": {
+      "password": "パスワードを確認してください:"
+    }
+  },
+  "notifications": {
+    "scrobbled": "Track {trackFullTitle} has been scrobbled",
+    "added": {
+      "queue": {
+        "track": "Track {trackFullTitle} has been added to queue",
+        "tracks": "{counter} has been added to queue | {counter} have been added to queue"
+      },
+      "savedTracks": {
+        "track": "Track {trackFullTitle} has been added to saved tracks"
+      }
+    },
+    "updated": {
+      "profile": "Profile has been updated",
+      "post": "Post has been updated",
+      "playlist": "Playlist {playlistTitle} has been updated",
+      "community": "Community {communityTitle} has been updated"
+    },
+    "deleted": {
+      "libraryModel": {
+        "artist": "アーティスト {modelName} has been deleted from your library",
+        "album": "アルバム {modelName} has been deleted from your library",
+        "track": "曲 {modelName} has been deleted from your library"
+      },
+      "playlist": "Playlist {playlistTitle} has been deleted",
+      "community": "Community {communityTitle} has been deleted",
+      "account": "Your account has been deleted",
+      "library": "Your library has been deleted"
+    },
+    "copied": "Link is copied to clipboard",
+    "cleared": {
+      "cache": "Cache has been cleared",
+      "searchHistory": "Search history has been cleared"
+    }
+  },
+  "counters": {
+    "nominative": {
+      "artists": "{count} artist | {count} artists",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} track | {count} tracks",
+      "videos": "{count} video | {count} videos",
+      "files": "{count} file | {count} files",
+      "plays": "{count} play | {count} plays",
+      "followers": "{count} follower | {count} followers",
+      "following": "{count} following",
+      "members": "{count} member | {count} members"
+    },
+    "genitive": {
+      "artists": "{count} artist | {count} artists",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} track | {count} tracks",
+      "files": "{count} file | {count} files",
+      "plays": "{count} play | {count} plays"
+    },
+    "accusative": {
+      "artists": "{count} artist | {count} artists",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} track | {count} tracks",
+      "files": "{count} file | {count} files"
+    }
+  },
+  "select": {
+    "source": "Select source:",
+    "type": "Select type:",
+    "album": "アルバムを選択:",
+    "group": "アルバムグループを選択:",
+    "artist": "アーティストを選択:",
+    "track": "曲を選択:",
+    "country": "国を選択:",
+    "video": "動画を選択:",
+    "lyrics": "歌詞を選択:"
+  },
+  "sources": {
+    "audio": "音声",
+    "other": "ほか",
+    "albumTypes": {
+      "album": "アルバム",
+      "group": "アルバムグループ",
+      "track": "曲"
+    },
+    "albumsTypes": {
+      "album": "アルバム",
+      "single": "シングル",
+      "singleEp": "シングル / EP",
+      "compilation": "コンピレーション",
+      "video": "動画",
+      "misc": "Miscellaneous",
+      "appearance": "Appearances"
+    },
+    "videoTypes": {
+      "video": "動画",
+      "track": "曲"
+    }
+  },
+  "player": {
+    "variants": "Variants ({count})",
+    "audio": {
+      "bitrate": "{value} kbit/秒"
+    }
+  },
+  "settings": {
+    "tabs": {
+      "app": "アプリ",
+      "profile": "Profile",
+      "integrations": "Integrations"
+    },
+    "sections": {
+      "app": {
+        "interface": "Interface",
+        "theme": "テーマ",
+        "window": "ウィンドウ",
+        "tabs": "タブ",
+        "sidebar": "サイドバー",
+        "search": "検索",
+        "player": "プレイヤー",
+        "queue": "Queue",
+        "video": "動画",
+        "recommendations": "Recommendations",
+        "top": "トップ",
+        "lyrics": "歌詞",
+        "data": "データ"
+      },
+      "profile": {
+        "info": "情報"
+      }
+    },
+    "options": {
+      "app": {
+        "interface": {
+          "language": "言語",
+          "timezone": "時間帯",
+          "infiniteScroll": "無限スクロール",
+          "artistPopup": "リンクにカーソルを乗せるとアーティスト情報",
+          "cachePages": "Cache pages",
+          "scale": "拡大"
+        },
+        "theme": {
+          "dark": "ダークモード",
+          "system": "System theme",
+          "background": "背景",
+          "transparency": "透明度"
+        },
+        "window": {
+          "maximize": "起動時に最大化",
+          "exit": "閉じると終了"
+        },
+        "tabs": {
+          "newTabSwitch": "Switch to new tab",
+          "closeOnExit": "終了時にタブを閉じる"
+        },
+        "search": {
+          "source": "検索先"
+        },
+        "player": {
+          "audioSources": "音声の取得先 (優先順)",
+          "bitrate": "音声のビットレートを表示",
+          "album": "アルバムを表示"
+        },
+        "queue": {
+          "autoplay": "自動再生",
+          "clear": "プレイヤーを閉じたら消去"
+        },
+        "video": {
+          "autoplay": "自動再生"
+        },
+        "recommendations": {
+          "hideLibraryArtists": "Hide library artists",
+          "tracksCount": "with tracks count",
+          "hideListenedArtists": "Hide listened artists"
+        },
+        "top": {
+          "country": "既定の国"
+        },
+        "lyrics": {
+          "annotations": "注釈を表示"
+        },
+        "data": {
+          "clear": {
+            "cache": "キャッシュを消去",
+            "searchHistory": "検索履歴を消去"
+          }
+        }
+      },
+      "profile": {
+        "player": {
+          "playing": "Show current track on page"
+        },
+        "data": {
+          "account": {
+            "delete": "アカウントを削除"
+          },
+          "library": {
+            "delete": "ライブラリを削除"
+          }
+        }
+      },
+      "integrations": {
+        "lastfm": {
+          "scrobbling": "Scrobbling",
+          "scrobbleNotifications": "Scrobble notifications",
+          "scrobblePercent": "Scrobble after"
+        },
+        "discord": {
+          "richPresence": {
+            "header": "Enable Rich Presence",
+            "client": "Before enabling make sure your Discord desktop client is running"
+          }
+        }
+      }
+    }
+  },
+  "track": {
+    "source": "Via {source}"
+  },
+  "recommended": {
+    "header": "Recommended to you",
+    "based": "Based on your:"
+  },
+  "signup": {
+    "text": "アカウントがない?",
+    "link": "登録"
+  },
+  "login": {
+    "text": "登録済み?",
+    "link": "ログイン"
+  },
+  "passwordReset": {
+    "text": "パスワードを忘れた?",
+    "link": "リセット",
+    "code": {
+      "sent": "パスワードのリセット用コードがメールに送信されました"
+    },
+    "updated": {
+      "header": "パスワードを更新しました",
+      "content": "戻ってログインしてください"
+    }
+  },
+  "anonymous": {
+    "continue": "匿名のまま次へ",
+    "nickname": "匿名さん"
+  },
+  "roles": {
+    "creator": "Creator"
+  },
+  "relationships": {
+    "followed": "Following you",
+    "following": "You are following",
+    "follow": "Follow",
+    "unfollow": "Unfollow"
+  },
+  "memberships": {
+    "joined": "You have joined",
+    "join": "Join",
+    "leave": "Leave"
+  },
+  "message": {
+    "send": "メッセージ送信",
+    "sent": {
+      "header": "Message has been sent",
+      "content": "Go to conversation"
+    }
+  },
+  "compatibility": {
+    "header": "Your compatibility level with {profileNickname}",
+    "common": "You have in common:"
+  },
+  "recommendation": {
+    "similar": "Similar to {counter}:"
+  },
+  "import": {
+    "lastfm": {
+      "historyVisible": "Before import make sure that your Last.FM listening history is visible."
+    },
+    "active": "Importing {count} of {counter}...",
+    "success": {
+      "header": "{counter} has been imported | {counter} have been imported",
+      "content": "You may want to check data before saving to library"
+    },
+    "error": {
+      "files": "{counter} could not be imported. Please ensure these files have metadata defined:"
+    }
+  },
+  "save": {
+    "active": "Saving {count} of {counter}...",
+    "success": {
+      "library": {
+        "artists": "{counter} has been added to library | {counter} have been added to library",
+        "albums": "{counter} has been added to library | {counter} have been added to library",
+        "tracks": "{counter} has been added to library | {counter} have been added to library"
+      },
+      "playlist": {
+        "artists": "{counter} has been added to playlist | {counter} have been added to playlist",
+        "albums": "{counter} has been added to playlist | {counter} have been added to playlist",
+        "tracks": "{counter} has been added to playlist | {counter} have been added to playlist"
+      }
+    },
+    "error": "{counter} could not be added:"
+  },
+  "delete": {
+    "active": "Deleting {count} of {counter}..."
+  },
+  "accounts": {
+    "connect": "Connect account",
+    "wait": "Your browser will now open. Confirm connection there and click this button again.",
+    "disconnect": "Disconnect account"
+  },
+  "noCollection": {
+    "header": {
+      "artists": "アーティストなし",
+      "albums": "アルバムなし",
+      "groups": "アルバムグループなし",
+      "tracks": "曲なし",
+      "similar": "類似なし",
+      "tags": "タグなし",
+      "posts": "No posts",
+      "feed": "フィードなし",
+      "conversations": "No conversations",
+      "messages": "メッセージなし",
+      "followers": "フォロワーなし",
+      "following": "No following",
+      "recommendations": "No recommendations",
+      "playlists": "再生リストなし",
+      "communities": "コミュニティーなし",
+      "members": "No members",
+      "videos": "動画なし",
+      "related": "関連なし",
+      "lyrics": "歌詞なし",
+      "listeners": "No listeners",
+      "images": "画像なし",
+      "events": "イベントなし"
+    },
+    "content": "なにもありません"
+  },
+  "deleted": {
+    "artist": "アーティストは削除されました",
+    "album": "アルバムは削除されました",
+    "track": "曲は削除されました",
+    "recommendation": "Recommendation has been deleted",
+    "playlist": "再生リストは削除されました",
+    "post": "Post has been deleted",
+    "video": "動画は削除されました"
+  },
+  "messages": {
+    "welcome": "ようこそ、{profileNickname}"
+  },
+  "profile": {
+    "wasOnline": "オンライン日時"
+  },
+  "feed": {
+    "global": "みんなのフィード"
+  },
+  "about": {
+    "license": "{license} ライセンス",
+    "homepage": "ホームページ",
+    "contact": "連絡先"
+  },
+  "private": {
+    "playlist": "Private",
+    "profile": "Private"
+  },
+  "donate": {
+    "header": "寄付",
+    "content": {
+      "nonProfit": "muffon は非営利のプロジェクトで、広告や有料の機能やコンテンツはありません。",
+      "funds": "しかし当然ですが、開発や設備に必要な資金がないと成り立ちません。",
+      "timeEffort": "このプロジェクトを作るために多くの時間と労力を費やしてきました。投資がいい効果を生むなら最良なことです。",
+      "help": "だから muffon を支援して欲しいのです。",
+      "would": "寄付をしていいただけませんか？"
+    },
+    "decline": "いいえ",
+    "accept": "はいもちろん"
+  },
+  "lists": {
+    "simple": "Simple list",
+    "table": "Table",
+    "extended": "Detailed list"
+  },
+  "orders": {
+    "createdDesc": "最新",
+    "createdAsc": "最古",
+    "updatedDesc": "Most recently updated",
+    "updatedAsc": "Least recently updated",
+    "artistsCountDesc": "Most artists",
+    "artistsCountAsc": "Least artists",
+    "albumsCountDesc": "Most albums",
+    "albumsCountAsc": "Least albums",
+    "tracksCountDesc": "Most tracks",
+    "tracksCountAsc": "Least tracks",
+    "followersCountDesc": "Most followers",
+    "followersCountAsc": "Least followers",
+    "joinedDesc": "Most recently joined",
+    "joinedAsc": "Least recently joined",
+    "membersCountDesc": "Most members",
+    "membersCountAsc": "Least members"
+  },
+  "deletedModel": {
+    "profile": "プロファイルを削除"
+  },
+  "events": {
+    "created": {
+      "profile": "プロファイルが作成されました",
+      "bookmarkAlbum": "アルバム {modelName} をブックマークに追加しました",
+      "bookmarkArtist": "アーティスト {modelName} をブックマークに追加しました",
+      "bookmarkTrack": "曲 {modelName} をブックマークに追加しました",
+      "bookmarkVideo": "動画 {modelName} をブックマークに追加しました",
+      "favoriteAlbum": "アルバム {modelName} をお気に入りに追加しました",
+      "favoriteArtist": "アーティスト {modelName} をお気に入りに追加しました",
+      "favoriteTrack": "曲 {modelName} をお気に入りに追加しました",
+      "favoriteVideo": "動画 {modelName} をお気に入りに追加しました",
+      "libraryAlbum": "アルバム {modelName} をライブラリに追加しました",
+      "libraryArtist": "アーティスト {modelName} をライブラリに追加しました",
+      "libraryTrack": "曲 {modelName} をライブラリに追加しました",
+      "listenedAlbum": "アルバム {modelName} を視聴済みに追加しました",
+      "listenedArtist": "アーティスト {modelName} を視聴済みに追加しました",
+      "listenedTrack": "曲 {modelName} を視聴済みに追加しました",
+      "watchedVideo": "動画 {modelName} を閲覧済み追加しました",
+      "playlistTrack": "曲 {modelName} を再生リスト {playlistTitle} に追加しました",
+      "community": "コミュニティ {modelName} を作成しました",
+      "relationship": "{modelName} をフォローしました",
+      "post": "投稿 {modelName} を作成しました",
+      "playlist": "再生リスト {modelName} を作成しました",
+      "conversation": "{modelName} と conversation を開始しました",
+      "membership": "コミュニティ {modelName} に参加しました"
+    },
+    "updated": {
+      "profile": "プロファイルが更新されました",
+      "community": "コミュニティ {modelName} が更新されました",
+      "post": "投稿 {modelName} が更新されました",
+      "playlist": "再生リスト {modelName} が更新されました"
+    },
+    "deleted": {
+      "bookmarkAlbum": "アルバム {modelName} をブックマークから削除しました",
+      "bookmarkArtist": "アーティスト {modelName} をブックマークから削除しました",
+      "bookmarkTrack": "曲 {modelName} をブックマークから削除しました",
+      "bookmarkVideo": "動画 {modelName} をブックマークから削除しました",
+      "favoriteAlbum": "アルバム {modelName} をお気に入りから削除しました",
+      "favoriteArtist": "アーティスト {modelName} をお気に入りから削除しました",
+      "favoriteTrack": "曲 {modelName} をお気に入りから削除しました",
+      "favoriteVideo": "動画 {modelName} をお気に入りから削除しました",
+      "libraryAlbum": "アルバム {modelName} をライブラリから削除しました",
+      "libraryArtist": "アーティスト {modelName} をライブラリから削除しました",
+      "libraryTrack": "曲 {modelName} をライブラリから削除しました",
+      "listenedAlbum": "アルバム {modelName} を視聴済みから削除しました",
+      "listenedArtist": "アーティスト {modelName} を視聴済みから削除しました",
+      "listenedTrack": "曲 {modelName} を視聴済みから削除しました",
+      "watchedVideo": "動画 {modelName} を閲覧済みから削除しました",
+      "playlistTrack": "曲 {modelName} を再生リスト {playlistTitle} から削除しました",
+      "community": "コミュニティ {modelName} を削除しました",
+      "recommendation": "アーティスト {modelName} を recommendations から削除しました",
+      "relationship": "{modelName} のフォローを外しました",
+      "post": "投稿 {modelName} を削除しました",
+      "playlist": "再生リスト {modelName} を削除しました",
+      "membership": "コミュニティ {modelName} を離脱しました"
+    }
+  },
+  "created": {
+    "profile": "muffon 登録日",
+    "library": "In library since",
+    "community": "作成日時"
+  },
+  "online": "オンライン",
+  "error": "エラー",
+  "more": "詳細...",
+  "loading": "読み込み中..."
+}
