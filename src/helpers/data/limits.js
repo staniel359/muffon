@@ -79,6 +79,7 @@ export const videoPlaylists = {
   simple: {
     extrasmall: 5,
     small: 10,
+    medium: 20,
     large: 50
   }
 }

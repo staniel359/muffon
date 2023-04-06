@@ -29,7 +29,8 @@ export default {
         'tracks',
         'tags',
         'videos',
-        'videoChannels'
+        'videoChannels',
+        'videoPlaylists'
       ]
     }
   },
