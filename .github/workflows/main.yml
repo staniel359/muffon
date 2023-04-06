@@ -33,7 +33,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '19.x'
 
       - name: Set up dependencies
         run: yarn --ignore-scripts
@@ -49,6 +49,9 @@ jobs:
           echo VITE_APP_ANONYMOUS_TOKEN=${{ secrets.ANONYMOUS_TOKEN }} >> .env
           echo VITE_APP_DISCORD_CLIENT_ID=${{ secrets.DISCORD_CLIENT_ID }} >> .env
           cat .env
+
+      - name: Prebuild Electron
+        run: node ${{ github.workspace }}/node_modules/vite-plugin-electron-renderer/install.js
 
       - name: Release
         env:

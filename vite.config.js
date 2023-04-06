@@ -1,5 +1,6 @@
 import {
-  defineConfig
+  defineConfig,
+  splitVendorChunkPlugin
 } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import inject from '@rollup/plugin-inject'
@@ -58,7 +59,8 @@ export default defineConfig(
             )
           }
         }
-      )
+      ),
+      splitVendorChunkPlugin()
     ],
     resolve: {
       alias: {
