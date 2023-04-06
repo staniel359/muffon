@@ -32,6 +32,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - <img src="https://s4.bcbits.com/img/favicon/favicon-16x16.png" height="16"> **Bandcamp**
 - <img src="https://e-cdn-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.526cde4edf20647be4ee32cdf35c1c13.png" height="16"> **Deezer**
 - <img src="https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico" height="16"> **SoundCloud**
+- <img src="https://music.youtube.com/favicon.ico" height="16"> **YouTube Music**
 - <img src="https://www.youtube.com/s/desktop/271dfaff/img/favicon.ico" height="16"> **YouTube**
 - <img src="https://st.discogs.com/94414fa553c3f284a04c3da67024dd6574b8ab6f/images/favicon.ico" height="16"> **Discogs**
 - <img src="https://assets.genius.com/images/apple-touch-icon.png" height="16"> **Genius**
@@ -46,7 +47,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **music library** (and compatibility with others)
 - **music services integration** (Last.FM)
 - **recommendations** (based on your library)
-- **search** (through all of the sources above)
+- **search** (artists / albums / album groups / tracks / tags / videos / video channels / video playlists) (through all of the sources above)
 - **radio** (tags / artists / top)
 - **scrobbling** (Last.FM)
 - **Discord Rich Presence**
@@ -58,7 +59,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **multitag search** (artists / albums)
 - **playlists** (with album / queue adding)
 - **favorites** (artists / albums / tracks / videos)
-- **bookmarks** (artists / albums / tracks / videos)
+- **bookmarks** (artists / albums / tracks / videos / video channels / video playlists)
 - **listened** (artists / albums / tracks)
 - **watched** (videos)
 - **posting**
@@ -66,7 +67,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **messaging**
 - **feed** (also global)
 - **communities**
-- **sharing** (artists / albums / tracks / videos / playlists / communities)
+- **sharing** (artists / albums / tracks / videos / video channels / video playlists / playlists / communities)
 - **theming** (dark mode / background change / transparency change)
 - **history** (activity / player / browser)
 
@@ -91,7 +92,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Download
 
-[Latest (v1.4.0)](https://github.com/staniel359/muffon/releases/tag/v1.4.0)
+[Latest (v1.5.0)](https://github.com/staniel359/muffon/releases/tag/v1.5.0)
 
 ## Troubleshooting
 
