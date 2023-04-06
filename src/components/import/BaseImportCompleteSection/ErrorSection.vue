@@ -1,9 +1,13 @@
 <template>
-  <BaseMessage
-    class="error"
-    :header="errorText"
-    :list-items="collection"
-  />
+  <div class="main-modal-import-section">
+    <div>
+      <BaseMessage
+        class="error"
+        :header="errorText"
+        :list-items="collection"
+      />
+    </div>
+  </div>
 </template>
 
 <script>

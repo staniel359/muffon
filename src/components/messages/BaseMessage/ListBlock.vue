@@ -1,16 +1,21 @@
 <template>
   <ul class="list">
-    <li
+    <ListItem
       v-for="listItemData in listItems"
       :key="listItemData.key"
-      v-text="listItemData.text"
+      :list-item-data="listItemData"
     />
   </ul>
 </template>
 
 <script>
+import ListItem from './ListBlock/ListItem.vue'
+
 export default {
   name: 'ListBlock',
+  components: {
+    ListItem
+  },
   props: {
     listItems: {
       type: Array,

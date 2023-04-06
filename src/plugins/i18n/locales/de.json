@@ -602,7 +602,7 @@
       "content": "Möglicherweise möchten Sie die Daten vor dem Speichern in der Bibliothek überprüfen"
     },
     "error": {
-      "files": "{counter} konnte nicht importiert werden. Bitte stellen Sie sicher, dass für diese Dateien Metadaten definiert sind:"
+      "files": "{counter} konnte nicht importiert werden. Bitte stellen Sie sicher, dass das Metadatenformat korrekt ist:"
     }
   },
   "save": {
