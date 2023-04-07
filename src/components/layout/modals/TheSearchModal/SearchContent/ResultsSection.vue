@@ -149,6 +149,8 @@ export default {
         videos: this.videosData,
         videoChannels:
           this.videoChannelsData,
+        videoMixes:
+          this.videoMixesData,
         videoPlaylists:
           this.videoPlaylistsData
       }
@@ -274,6 +276,16 @@ export default {
         listScope: 'channels',
         limit:
           videoChannelsLimits.simple.medium
+      }
+    },
+    videoMixesData () {
+      return {
+        component:
+          'BaseVideoPlaylistsSimpleList',
+        searchScope: 'mixes',
+        listScope: 'playlists',
+        limit:
+          videoPlaylistsLimits.simple.medium
       }
     },
     videoPlaylistsData () {

@@ -30,6 +30,7 @@ export default {
         'tags',
         'videos',
         'videoChannels',
+        'videoMixes',
         'videoPlaylists'
       ]
     }

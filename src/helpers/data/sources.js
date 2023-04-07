@@ -203,7 +203,9 @@ export default [
     ],
     searchScopes: [
       'tracks',
-      'videos'
+      'videos',
+      'videoMixes',
+      'videoPlaylists'
     ]
   },
   {
