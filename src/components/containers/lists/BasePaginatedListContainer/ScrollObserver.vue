@@ -10,6 +10,7 @@
       class="basic scroll-segment"
       :is-loading="isLoading"
       :error="error"
+      :is-change-transparency="false"
       @refresh="handleRefresh"
     />
   </div>
@@ -70,6 +71,12 @@ export default {
       'handleIsTopVisibleChange'
   },
   mounted () {
+    setVisibility(
+      this.$refs.observer,
+      this.visibilityOptions
+    )
+  },
+  activated () {
     setVisibility(
       this.$refs.observer,
       this.visibilityOptions

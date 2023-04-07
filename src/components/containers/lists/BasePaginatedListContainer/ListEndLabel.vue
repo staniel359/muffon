@@ -2,6 +2,7 @@
   <div class="list-end-label-container">
     <BaseLabel
       class="mini empty circular list-end-label"
+      :is-change-transparency="false"
     />
   </div>
 </template>

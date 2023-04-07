@@ -8,7 +8,9 @@
       'right icon': icon && text && isReverse,
       'with-text': text,
       clickable: isClickable || link,
-      [transparentClass]: isInvertable
+      [transparentClass]: (
+        isChangeTransparency && isInvertable
+      )
     }"
     :link="link"
     @click="handleClick"
@@ -73,6 +75,10 @@ export default {
     transparencyMixin
   ],
   props: {
+    isChangeTransparency: {
+      type: Boolean,
+      default: true
+    },
     isInvertable: {
       type: Boolean,
       default: true

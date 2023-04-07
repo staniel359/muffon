@@ -2,15 +2,14 @@
   <div
     ref="segment"
     class="ui segment main-segment"
-    :class="[
-      transparentClass,
-      {
-        loading: isLoading,
-        inverted: (
-          isInverted || isDarkMode
-        )
-      }
-    ]"
+    :class="{
+      loading: isLoading,
+      inverted: (
+        isInverted || isDarkMode
+      ),
+      [transparentClass]:
+        isChangeTransparency
+    }"
   >
     <BaseErrorMessage
       v-if="isError"
@@ -40,6 +39,10 @@ export default {
     transparencyMixin
   ],
   props: {
+    isChangeTransparency: {
+      type: Boolean,
+      default: true
+    },
     responseData: Object,
     isLoading: Boolean,
     error: Error,
