@@ -7,6 +7,7 @@
     :error="error"
     :scope="scope"
     :limit="limit"
+    :is-with-infinite-scroll="isWithInfiniteScroll"
     is-pagination-simple
     @focus="handleFocus"
   >
@@ -26,6 +27,10 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseVideosList from '@/components/lists/videos/BaseVideosList.vue'
@@ -58,6 +63,12 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isWithInfiniteScroll'
+      ]
+    ),
     playlistArgs () {
       return {
         playlistId: this.playlistId,
