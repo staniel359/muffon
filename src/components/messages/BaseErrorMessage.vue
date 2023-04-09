@@ -10,6 +10,7 @@
       class="inverted"
       tag="h2"
       :icon="icon"
+      :icons="icons"
       :text="header"
       :subheader="content"
       is-page

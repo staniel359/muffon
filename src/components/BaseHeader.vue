@@ -4,7 +4,7 @@
     class="ui header main-header"
     :class="{
       inverted: isDarkMode,
-      'center aligned icon': isPage
+      'main-page-header': isPage
     }"
   >
     <BaseIcon
@@ -13,6 +13,11 @@
         big: isPage
       }"
       :icon="icon"
+    />
+    <IconsSection
+      v-else-if="icons"
+      :icons="icons"
+      :is-page="isPage"
     />
 
     {{ text }}
@@ -31,11 +36,13 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
+import IconsSection from './BaseHeader/IconsSection.vue'
 
 export default {
   name: 'BaseHeader',
   components: {
-    BaseIcon
+    BaseIcon,
+    IconsSection
   },
   props: {
     tag: {
@@ -47,6 +54,7 @@ export default {
       required: true
     },
     icon: String,
+    icons: Array,
     isPage: Boolean,
     subheader: String
   },

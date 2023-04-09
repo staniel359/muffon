@@ -1,5 +1,10 @@
 <template>
-  <i class="icons">
+  <i
+    class="icons"
+    :class="{
+      big: isPage
+    }"
+  >
     <BaseIcon
       v-for="(icon, index) in icons"
       :key="index"
@@ -12,15 +17,13 @@
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 
 export default {
-  name: 'IconsBlock',
+  name: 'IconsSection',
   components: {
     BaseIcon
   },
   props: {
-    icons: {
-      type: Array,
-      required: true
-    }
+    icons: Array,
+    isPage: Boolean
   }
 }
 </script>
