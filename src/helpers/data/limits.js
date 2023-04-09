@@ -11,7 +11,7 @@ export const artists = {
     large: 50
   },
   extended: {
-    large: 20
+    large: 10
   }
 }
 
