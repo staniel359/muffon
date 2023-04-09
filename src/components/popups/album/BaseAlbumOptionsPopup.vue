@@ -213,7 +213,9 @@ export default {
       )
     },
     tracks () {
-      return this.albumData.tracks
+      return (
+        this.albumData.tracks || []
+      )
     },
     albumTitle () {
       return this.albumData.title
