@@ -3,6 +3,7 @@ $yandexMusicIconUrl: url('@/assets/icons/yandexmusic.png')
 $deezerIconUrl: url('@/assets/icons/deezer.png')
 $discogsIconUrl: url('@/assets/icons/discogs.png')
 $geniusIconUrl: url('@/assets/icons/genius.png')
+$musicBrainzIconUrl: url('@/assets/icons/musicbrainz.png')
 $youTubeMusicIconUrl: url('@/assets/icons/youtubemusic.png')
 
 .icon
@@ -52,6 +53,12 @@ $youTubeMusicIconUrl: url('@/assets/icons/youtubemusic.png')
   width: 20px
   height: 20px
   &:not(.colored)
+    @extend .colorless
+
+.icon.musicbrainz
+  &:before
+    content: $musicBrainzIconUrl !important
+  &:not(.colored):before
     @extend .colorless
 
 .icon.youtubemusic

@@ -407,11 +407,13 @@
     "albumsTypes": {
       "album": "Album",
       "single": "Singoli",
+      "ep": "EP",
       "singleEp": "Singoli / EP",
       "compilation": "Compilation",
       "video": "Video",
       "misc": "Miscellanei",
-      "appearance": "Apparizioni"
+      "appearance": "Apparizioni",
+      "live": "Live"
     },
     "videoTypes": {
       "video": "Video",

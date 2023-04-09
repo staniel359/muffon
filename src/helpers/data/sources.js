@@ -193,6 +193,32 @@ export default [
     ]
   },
   {
+    id: 'musicbrainz',
+    icon: 'musicbrainz',
+    name: 'MusicBrainz',
+    isWithArtists: true,
+    isWithAlbums: true,
+    isWithTracks: true,
+    albumTypes: [
+      'group',
+      'album'
+    ],
+    albumsTypes: [
+      'album',
+      'single',
+      'ep',
+      'compilation',
+      'live',
+      'misc'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'albumGroups',
+      'tracks'
+    ]
+  },
+  {
     id: 'youtubemusic',
     icon: 'youtubemusic',
     name: 'YouTube Music',

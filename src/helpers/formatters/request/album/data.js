@@ -46,6 +46,14 @@ export default function (
               albumData.source.album_type
           )
         }
+      case 'musicbrainz':
+        return {
+          albumId: albumData.source.id,
+          albumType: (
+            albumData.source.model ||
+              albumData.source.album_type
+          )
+        }
       default:
         return {
           albumId: albumData.source.id

@@ -407,11 +407,13 @@
     "albumsTypes": {
       "album": "Альбомы",
       "single": "Сінглы",
+      "ep": "EP",
       "singleEp": "Сінглы / EP",
       "compilation": "Складанкі",
       "video": "Відэа",
       "misc": "Рознае",
-      "appearance": "З удзелам"
+      "appearance": "З удзелам",
+      "live": "Жывыя выступленні"
     },
     "videoTypes": {
       "video": "Відэа",
