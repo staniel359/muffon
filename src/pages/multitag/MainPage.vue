@@ -1,42 +1,46 @@
 <template>
-  <BasePaginatedPageContainer
-    ref="pagination"
-    :response-data="multitagData"
-    :is-loading="isLoading"
-    :error="error"
-    :scope="scope"
-    :limit="limit"
-    :view-id="viewId"
-    :is-with-view-change="isWithViewChange"
-    is-with-top-segment
-  >
-    <template #topExtra>
-      <FilterSection
-        :class="{
-          'filter-section': isWithViewChange
-        }"
-        :scope="scope"
-        :tags="tags"
-      />
-    </template>
-
-    <template
-      #default="slotProps"
+  <div class="main-page-container">
+    <BasePaginatedPageContainer
+      ref="pagination"
+      :response-data="multitagData"
+      :is-loading="isLoading"
+      :error="error"
+      :scope="scope"
+      :limit="limit"
+      :view-id="viewId"
+      :is-with-view-change="isWithViewChange"
+      is-with-top-segment
     >
-      <Component
-        :is="listComponent"
-        :[scope]="slotProps[scope]"
-        :view-id="viewId"
-        is-with-artist-name
-        is-with-listeners-count
-        is-with-library-option
-        is-with-favorite-option
-        is-with-bookmark-option
-        is-with-listened-option
-        is-with-share-option
-      />
-    </template>
-  </BasePaginatedPageContainer>
+      <template
+        #topExtra
+      >
+        <FilterSection
+          :class="{
+            'filter-section': isWithViewChange
+          }"
+          :scope="scope"
+          :tags="tags"
+        />
+      </template>
+
+      <template
+        #default="slotProps"
+      >
+        <Component
+          :is="listComponent"
+          :[scope]="slotProps[scope]"
+          :view-id="viewId"
+          is-with-artist-name
+          is-with-listeners-count
+          is-with-library-option
+          is-with-favorite-option
+          is-with-bookmark-option
+          is-with-listened-option
+          is-with-share-option
+        />
+      </template>
+    </BasePaginatedPageContainer>
+  </div>
 </template>
 
 <script>
