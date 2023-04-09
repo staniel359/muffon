@@ -3,6 +3,7 @@
     :scope="scope"
     :list-scope="listScope"
     :limit="limit"
+    :response-page-limit="responsePageLimit"
     :view-id="viewId"
     is-with-top-segment
     is-with-view-change

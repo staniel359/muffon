@@ -440,11 +440,15 @@ export default {
       immediate: true,
       handler: 'handleResponseDataChange'
     },
-    clientPage: 'handleClientPageChange',
-    clientPageCollection:
-      'handleClientPageCollectionChange',
-    newClientPageCollection:
-      'handleNewClientPageCollectionChange'
+    clientPageCollection: {
+      immediate: true,
+      handler: 'handleClientPageCollectionChange'
+    },
+    newClientPageCollection: {
+      immediate: true,
+      handler: 'handleNewClientPageCollectionChange'
+    },
+    clientPage: 'handleClientPageChange'
   },
   methods: {
     handleRefresh () {
