@@ -13,6 +13,7 @@
         :is-loading="isLoading"
         :error="error"
         :scope="searchScope"
+        :text-scope="scope"
         :limit="limit"
         :response-page-limit="responsePageLimit"
         :is-pagination-simple="isPaginationSimple"

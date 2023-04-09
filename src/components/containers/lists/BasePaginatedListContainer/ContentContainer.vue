@@ -60,7 +60,8 @@ export default {
     },
     scopeFormatted () {
       return (
-        this.textScope || this.scope
+        this.textScope ||
+          this.scope
       )
     }
   },
