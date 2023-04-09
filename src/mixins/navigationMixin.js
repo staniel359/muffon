@@ -55,12 +55,17 @@ export default {
         'setNavigationSections'
       ]
     ),
-    handleNavigationDataChange () {
+    handleNavigationDataChange (
+      _,
+      oldValue
+    ) {
       this.setNavigation()
 
       this.isRefreshNavigation = true
 
-      this.addRouteToHistory()
+      if (!oldValue) {
+        this.addRouteToHistory()
+      }
     },
     handleProfileLanguageChange () {
       this.setNavigation()
