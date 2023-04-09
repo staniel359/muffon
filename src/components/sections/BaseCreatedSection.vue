@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="created"
-    class="main-created-section"
+    class="main-date-section"
   >
     <div
       v-if="isSmall"
