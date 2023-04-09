@@ -1,5 +1,6 @@
 <template>
   <img
+    ref="image"
     class="ui image main-image"
     :class="{
       inverted: isDarkMode,
@@ -7,6 +8,7 @@
     }"
     :[attribute]="imageConditional"
     @click="handleClick"
+    @error="handleError"
   >
 </template>
 
@@ -38,9 +40,11 @@ export default {
       ]
     ),
     attribute () {
-      return this.isLazy
-        ? 'data-lazy'
-        : 'src'
+      if (this.isLazy) {
+        return 'data-lazy'
+      } else {
+        return 'src'
+      }
     },
     imageConditional () {
       return (
@@ -59,6 +63,15 @@ export default {
       this.$emit(
         'click'
       )
+    },
+    handleError () {
+      this.setDefaultImage()
+    },
+    setDefaultImage () {
+      if (this.$refs.image) {
+        this.$refs.image.src =
+          this.defaultImage
+      }
     }
   }
 }
