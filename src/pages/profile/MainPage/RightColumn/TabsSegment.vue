@@ -19,17 +19,17 @@
 <script>
 import BaseTabsSegmentContainer
   from '@/components/containers/segments/tabs/BaseTabsSegmentContainer.vue'
+import PostsTab from './TabsSegment/PostsTab.vue'
 import PlaylistsTab from './TabsSegment/PlaylistsTab.vue'
 import CommunitiesTab from './TabsSegment/CommunitiesTab.vue'
-import PostsTab from './TabsSegment/PostsTab.vue'
 
 export default {
   name: 'TabsSegment',
   components: {
     BaseTabsSegmentContainer,
+    PostsTab,
     PlaylistsTab,
-    CommunitiesTab,
-    PostsTab
+    CommunitiesTab
   },
   props: {
     profileId: String
@@ -38,16 +38,16 @@ export default {
     return {
       tabs: [
         {
+          nameCode: 'navigation.posts',
+          component: 'PostsTab'
+        },
+        {
           nameCode: 'navigation.playlists',
           component: 'PlaylistsTab'
         },
         {
           nameCode: 'navigation.communities',
           component: 'CommunitiesTab'
-        },
-        {
-          nameCode: 'navigation.posts',
-          component: 'PostsTab'
         }
       ]
     }
