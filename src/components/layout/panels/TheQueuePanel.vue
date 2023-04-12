@@ -22,7 +22,7 @@ import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
 import {
   mainSidebarOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import {
   setQueuePanel,
   hideQueuePanel

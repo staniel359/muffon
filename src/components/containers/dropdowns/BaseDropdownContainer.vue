@@ -72,7 +72,7 @@ import BaseHeader from '@/components/BaseHeader.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   mainDropdownOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import {
   setDropdown,
   setDropdownValue,

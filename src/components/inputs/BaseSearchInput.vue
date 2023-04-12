@@ -38,7 +38,7 @@ import {
 } from '@/helpers/actions/plugins/semantic'
 import {
   mainSearchOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import {
   anonymousToken
 } from '@/helpers/data/env'

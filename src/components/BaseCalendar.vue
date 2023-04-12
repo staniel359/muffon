@@ -37,7 +37,7 @@ import {
 } from '@/helpers/actions/plugins/semantic'
 import {
   birthdateCalendarOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 
 export default {
   name: 'BaseCalendar',

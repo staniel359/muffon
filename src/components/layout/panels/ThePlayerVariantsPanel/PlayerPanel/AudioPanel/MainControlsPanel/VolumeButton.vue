@@ -25,7 +25,7 @@ import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseVolumePopup from '@/components/popups/BaseVolumePopup.vue'
 import {
   volumePopupOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import popupMixin from '@/mixins/popupMixin'
 
 export default {

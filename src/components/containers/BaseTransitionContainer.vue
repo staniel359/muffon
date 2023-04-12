@@ -12,7 +12,7 @@ import {
 } from '@/helpers/actions/plugins/semantic'
 import {
   mainVisibilityOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 
 export default {
   name: 'BaseTransitionContainer',

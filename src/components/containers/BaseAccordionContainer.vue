@@ -38,7 +38,7 @@ import {
 } from '@/helpers/actions/plugins/semantic'
 import {
   mainAccordionOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 
 export default {
   name: 'BaseAccordionContainer',

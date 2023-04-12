@@ -18,7 +18,7 @@ import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   loginFormOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import createSession from '@/helpers/actions/api/session/create'
 import getProfile from '@/helpers/actions/api/profile/get'
 import {

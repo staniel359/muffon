@@ -17,7 +17,7 @@ import {
 import layoutStore from '@/stores/layout'
 import {
   mainCheckboxOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import {
   setCheckbox,
   checkCheckbox

@@ -16,7 +16,7 @@ import {
 import layoutStore from '@/stores/layout'
 import {
   mainModalOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import {
   setModal,
   showModal,

@@ -4,7 +4,7 @@ import {
 import transparencyMixin from '@/mixins/transparencyMixin'
 import {
   mainToastOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 
 export default {
   mixins: [

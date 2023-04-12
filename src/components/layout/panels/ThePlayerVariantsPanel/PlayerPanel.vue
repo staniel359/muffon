@@ -40,7 +40,7 @@ import {
 } from '@/helpers/actions/layout'
 import {
   mainSidebarOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'

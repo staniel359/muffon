@@ -24,7 +24,7 @@ import {
 } from '@/helpers/actions/plugins/semantic'
 import {
   infiniteScrollObserverVisibilityOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 
 export default {
   name: 'ScrollObserver',

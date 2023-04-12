@@ -14,7 +14,7 @@ import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   communityFormOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import updateCommunity from '@/helpers/actions/api/community/update'
 import notificationMixin from '@/mixins/notificationMixin'
 

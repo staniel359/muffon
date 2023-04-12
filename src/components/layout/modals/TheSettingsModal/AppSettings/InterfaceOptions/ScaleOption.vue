@@ -26,7 +26,7 @@ import BaseHeader from '@/components/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   mainScaleSeekerOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'

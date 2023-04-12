@@ -23,7 +23,7 @@ import BaseImageModalSliderContainer
   from '@/components/containers/BaseImageModalSliderContainer.vue'
 import {
   artistImagesModalThumbsSliderOptions
-} from '@/helpers/formatters/slick'
+} from '@/helpers/formatters/plugins/slick'
 
 export default {
   name: 'ThumbsSlider',

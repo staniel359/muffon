@@ -18,7 +18,7 @@ import audioStore from '@/stores/audio'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   mainSeekerOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import {
   clone as cloneElement,
   addClass as addElementClass,

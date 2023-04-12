@@ -55,7 +55,7 @@ import BaseOptionsPopupMenuContainer
 import popupMixin from '@/mixins/popupMixin'
 import {
   optionsSubmenuPopupOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 
 const OptionsMenu =
   defineAsyncComponent(

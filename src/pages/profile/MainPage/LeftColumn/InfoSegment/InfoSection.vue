@@ -20,7 +20,7 @@ import BaseProfileInfoPopup
 import popupMixin from '@/mixins/popupMixin'
 import {
   profileInfoPopupOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 
 export default {
   name: 'InfoSection',

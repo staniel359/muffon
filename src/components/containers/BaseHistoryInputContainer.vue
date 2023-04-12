@@ -17,7 +17,7 @@ import {
 import layoutStore from '@/stores/layout'
 import {
   mainHistoryInputOptions
-} from '@/helpers/formatters/semantic'
+} from '@/helpers/formatters/plugins/semantic'
 import {
   setSearch,
   setSearchSource
