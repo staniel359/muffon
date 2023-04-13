@@ -16,6 +16,10 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseHistoryInput from '@/components/inputs/BaseHistoryInput.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
@@ -33,6 +37,18 @@ export default {
     'clearButtonClick',
     'submit'
   ],
+  computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isSearchPanelVisible'
+      ]
+    )
+  },
+  watch: {
+    isSearchPanelVisible:
+      'handleIsSearchPanelVisibleChange'
+  },
   methods: {
     handleSubmit (
       value
@@ -48,6 +64,15 @@ export default {
       this.$emit(
         'clearButtonClick'
       )
+    },
+    async handleIsSearchPanelVisibleChange (
+      value
+    ) {
+      await this.$nextTick()
+
+      if (value) {
+        this.focus()
+      }
     },
     focus () {
       this.$refs

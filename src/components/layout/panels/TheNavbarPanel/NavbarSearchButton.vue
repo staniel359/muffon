@@ -10,7 +10,7 @@
 
 <script>
 import {
-  mapState
+  mapActions
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import BaseButton from '@/components/buttons/BaseButton.vue'
@@ -20,17 +20,17 @@ export default {
   components: {
     BaseButton
   },
-  computed: {
-    ...mapState(
+  methods: {
+    ...mapActions(
       layoutStore,
       [
-        'searchModal'
+        'setIsSearchPanelVisible'
       ]
-    )
-  },
-  methods: {
+    ),
     handleClick () {
-      this.searchModal.show()
+      this.setIsSearchPanelVisible(
+        true
+      )
     }
   }
 }

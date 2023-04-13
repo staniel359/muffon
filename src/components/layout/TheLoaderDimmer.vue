@@ -1,7 +1,10 @@
 <template>
   <div
-    ref="loader"
+    ref="dimmer"
     class="ui page dimmer"
+    :class="{
+      inverted: !isDarkMode
+    }"
   >
     <div
       class="ui large loader"
@@ -18,7 +21,7 @@ import {
   setLoaderDimmer
 } from '@/helpers/actions/layout'
 import {
-  mainLoaderOptions
+  loaderDimmerOptions
 } from '@/helpers/formatters/plugins/semantic'
 
 export default {
@@ -29,27 +32,13 @@ export default {
       [
         'isDarkMode'
       ]
-    ),
-    loaderOptions () {
-      return mainLoaderOptions()
-    }
-  },
-  watch: {
-    isDarkMode: 'handleIsDarkModeChange'
+    )
   },
   mounted () {
-    this.initialize()
-  },
-  methods: {
-    handleIsDarkModeChange () {
-      this.initialize()
-    },
-    initialize () {
-      setLoaderDimmer(
-        this.$refs.loader,
-        this.loaderOptions
-      )
-    }
+    setLoaderDimmer(
+      this.$refs.dimmer,
+      loaderDimmerOptions()
+    )
   }
 }
 </script>

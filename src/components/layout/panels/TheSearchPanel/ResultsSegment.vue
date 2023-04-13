@@ -1,56 +1,60 @@
 <template>
-  <div
-    ref="section"
-    :class="[
-      'search-segments-container',
-      'main-basic-segments-container'
-    ]"
-  >
-    <div class="ui basic segments search-segment-container">
-      <BasePaginatedSegmentContainer
-        class="search-segment main-paginated-segment-container"
-        :response-data="searchData"
-        :is-loading="isLoading"
-        :error="error"
-        :scope="searchScope"
-        :text-scope="scope"
-        :limit="limit"
-        :response-page-limit="responsePageLimit"
-        :is-pagination-simple="isPaginationSimple"
-        @focus="handleFocus"
+  <div class="ui container main-container">
+    <BasePaginatedSegmentContainer
+      ref="segment"
+      :class="[
+        'raised results-segment',
+        'main-paginated-segment-container'
+      ]"
+      :response-data="searchData"
+      :is-loading="isLoading"
+      :error="error"
+      :scope="searchScope"
+      :text-scope="scope"
+      :limit="limit"
+      :response-page-limit="responsePageLimit"
+      :is-pagination-simple="isPaginationSimple"
+      :is-with-infinite-scroll="isWithInfiniteScroll"
+      :scroll-context="scrollContext"
+      :is-change-transparency="false"
+      @focus="handleFocus"
+    >
+      <template
+        #default="slotProps"
       >
-        <template
-          #default="slotProps"
-        >
-          <Component
-            :is="component"
-            :[listScope]="slotProps[searchScope]"
-            :scope="searchScope"
-            :is-with-artist-image="isLastfmSource"
-            :is-with-image="!isLastfmSource"
-            :is-with-listeners-count="isWithListenersCount"
-            :is-with-source="isWithSource"
-            is-with-artist-name
-            is-with-album-title
-            is-with-channel-title
-            is-with-duration
-            is-with-library-option
-            is-with-playlist-option
-            is-with-favorite-option
-            is-with-bookmark-option
-            is-with-listened-option
-            is-with-watched-option
-            is-with-share-option
-            is-with-queue-option
-            @link-click="handleLinkClick"
-          />
-        </template>
-      </BasePaginatedSegmentContainer>
-    </div>
+        <Component
+          :is="component"
+          :[listScope]="slotProps[searchScope]"
+          :scope="searchScope"
+          :is-with-artist-image="isLastfmSource"
+          :is-with-image="!isLastfmSource"
+          :is-with-listeners-count="isWithListenersCount"
+          :is-with-source="isWithSource"
+          is-with-artist-name
+          is-with-album-title
+          is-with-channel-title
+          is-with-duration
+          is-with-library-option
+          is-with-playlist-option
+          is-with-favorite-option
+          is-with-bookmark-option
+          is-with-listened-option
+          is-with-watched-option
+          is-with-share-option
+          is-with-queue-option
+          @link-click="handleLinkClick"
+        />
+      </template>
+    </BasePaginatedSegmentContainer>
   </div>
 </template>
 
 <script>
+import {
+  mapState,
+  mapActions
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseArtistsSimpleList
@@ -78,7 +82,7 @@ import {
 } from '@/helpers/data/limits'
 
 export default {
-  name: 'ResultsSection',
+  name: 'ResultsSegment',
   components: {
     BasePaginatedSegmentContainer,
     BaseArtistsSimpleList,
@@ -94,9 +98,6 @@ export default {
       getData: this.getData
     }
   },
-  inject: [
-    'hideSearch'
-  ],
   props: {
     query: {
       type: String,
@@ -113,12 +114,19 @@ export default {
   },
   data () {
     return {
+      scrollContext: null,
       searchData: null,
       error: null,
       isLoading: false
     }
   },
   computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isWithInfiniteScroll'
+      ]
+    ),
     searchArgs () {
       return {
         query: this.query,
@@ -357,19 +365,30 @@ export default {
   },
   mounted () {
     this.getData()
+
+    this.scrollContext =
+      this.$refs.segment.$el
   },
   methods: {
+    ...mapActions(
+      layoutStore,
+      [
+        'setIsSearchPanelVisible'
+      ]
+    ),
     getSearch,
     handleFocus () {
       this.$refs
-        .section
-        .scrollTo(
-          0,
-          0
-        )
+        .segment
+        .scrollToTop()
     },
     handleLinkClick () {
       this.hideSearch()
+    },
+    hideSearch () {
+      this.setIsSearchPanelVisible(
+        false
+      )
     },
     getData (
       {
@@ -388,12 +407,18 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.search-segments-container
-  @extend .overflow-y-auto, .d-flex, .flex-full, .scroll-smooth
-
-.search-segment-container
-  @extend .d-flex, .flex-full
-
-.search-segment
-  @extend .flex-full
+.results-segment
+  @extend .fixed, .no-margin, .overflow-y-auto, .flex-column, .no-border
+  top: $navbarHeight
+  max-height: 400px
+  width: 500px
+  border-top: $border !important
+  border-top-left-radius: 0
+  border-top-right-radius: 0
+  z-index: 1100
+  &.inverted
+    @extend .border-inverted
+    border-top: none !important
+  &:not(.loading)
+    @extend .blurred
 </style>

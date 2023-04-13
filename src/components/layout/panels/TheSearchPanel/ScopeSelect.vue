@@ -1,10 +1,14 @@
 <template>
-  <BaseScopeSelect
-    class="scope-select-container"
-    :selected="scope"
-    :scopes="scopes"
-    @select="handleSelect"
-  />
+  <div class="scope-select-container">
+    <BaseScopeSelect
+      class="floating scrolling scope-select"
+      menu-direction="left"
+      :selected="scope"
+      :scopes="scopes"
+      :is-selection="false"
+      @select="handleSelect"
+    />
+  </div>
 </template>
 
 <script>
@@ -63,5 +67,8 @@ export default {
 
 <style lang="sass" scoped>
 .scope-select-container
-  margin-left: 1em !important
+  margin-left: 2em
+
+.scope-select
+  width: unset
 </style>

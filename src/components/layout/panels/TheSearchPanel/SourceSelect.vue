@@ -1,14 +1,15 @@
 <template>
-  <BaseDropdown
-    class="floating scrolling source-select-container"
-    menu-direction="left"
-    :options="sources"
-    :selected="source"
-    :is-selection="false"
-    is-only-icon
-    is-colored
-    @select="handleSelect"
-  />
+  <div class="source-select-container">
+    <BaseDropdown
+      class="floating scrolling"
+      menu-direction="left"
+      :options="sources"
+      :selected="source"
+      :is-selection="false"
+      is-colored
+      @select="handleSelect"
+    />
+  </div>
 </template>
 
 <script>
@@ -56,9 +57,5 @@ export default {
 
 <style lang="sass" scoped>
 .source-select-container
-  @extend .no-padding
   margin-left: 1em
-  &.ui.dropdown
-    ::v-deep(.menu)
-      width: 175px !important
 </style>

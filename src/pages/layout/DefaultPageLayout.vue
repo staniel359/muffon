@@ -9,6 +9,8 @@
 
   <TheNavbarPanel />
 
+  <TheSearchPanel />
+
   <TheSidebarPanel />
 
   <TheQueuePanel />
@@ -16,8 +18,6 @@
   <ThePlayerVariantsPanel />
 
   <TheVisibleArea />
-
-  <TheSearchModal />
 
   <TheScrollToTopButton
     :key="key"
@@ -47,12 +47,12 @@ import TheMediaKeysObserver
   from '@/components/layout/observers/TheMediaKeysObserver.vue'
 import TheBackground from '@/components/layout/TheBackground.vue'
 import TheNavbarPanel from '@/components/layout/panels/TheNavbarPanel.vue'
+import TheSearchPanel from '@/components/layout/panels/TheSearchPanel.vue'
 import TheSidebarPanel from '@/components/layout/panels/TheSidebarPanel.vue'
 import TheQueuePanel from '@/components/layout/panels/TheQueuePanel.vue'
 import ThePlayerVariantsPanel
   from '@/components/layout/panels/ThePlayerVariantsPanel.vue'
 import TheVisibleArea from '@/components/layout/TheVisibleArea.vue'
-import TheSearchModal from '@/components/layout/modals/TheSearchModal.vue'
 import TheScrollToTopButton from '@/components/layout/TheScrollToTopButton.vue'
 import TheDonateModal from '@/components/layout/modals/TheDonateModal.vue'
 import TheLoaderDimmer from '@/components/layout/TheLoaderDimmer.vue'
@@ -75,11 +75,11 @@ export default {
     ThePlayerObserver,
     TheBackground,
     TheNavbarPanel,
+    TheSearchPanel,
     TheSidebarPanel,
     TheQueuePanel,
     ThePlayerVariantsPanel,
     TheVisibleArea,
-    TheSearchModal,
     TheScrollToTopButton,
     TheDonateModal,
     TheLoaderDimmer,

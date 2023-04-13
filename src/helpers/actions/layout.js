@@ -77,7 +77,7 @@ export function focusOnSegment (
     element
   ).offset().top
 
-  const navbarHeight = 45
+  const navbarHeight = 50
   const marginTop = 20
 
   const offsetTop =

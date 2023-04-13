@@ -172,6 +172,7 @@ p
     input
       @extend .main-input
   .results
+    @extend .no-border
     .result
       @extend .d-flex, .align-items-center
       .image
@@ -193,7 +194,7 @@ p
       .icon
         @extend .text-color-white
     .results
-      @extend .background-black, .border-inverted
+      @extend .border-inverted
       .result
         border-bottom: $borderInverted
         .image
@@ -312,6 +313,7 @@ p
     margin: 1.5em 0 0 0
 
 .main-segment
+  @extend .scroll-smooth
   &.loading
     min-height: 150px
     z-index: 1

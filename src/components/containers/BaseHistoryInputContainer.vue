@@ -1,12 +1,17 @@
 <template>
   <div
     ref="search"
-    class="ui local search main-history-input"
+    class="ui local search"
     :class="{
       inverted: isDarkMode
     }"
   >
     <slot />
+
+    <div
+      class="blurred results"
+      :class="transparentClass"
+    />
   </div>
 </template>
 
@@ -26,9 +31,13 @@ import {
   get as getElectronStoreHistory,
   update as updateElectronStoreHistory
 } from '@/helpers/actions/plugins/electronStore/history'
+import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'BaseHistoryInputContainer',
+  mixins: [
+    transparencyMixin
+  ],
   props: {
     scope: {
       type: String,
@@ -122,7 +131,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.results
-  z-index: 1500 !important
-</style>
+<style lang="sass" scoped></style>

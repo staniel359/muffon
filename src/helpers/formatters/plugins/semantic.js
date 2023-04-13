@@ -31,22 +31,6 @@ export function mainModalOptions (
   }
 }
 
-export function mainLoaderOptions () {
-  const {
-    isDarkMode
-  } = layoutStore()
-
-  const variation = (
-    !isDarkMode && 'inverted'
-  )
-
-  return {
-    closable: false,
-    duration: 0,
-    variation
-  }
-}
-
 export function mainHistoryInputOptions (
   {
     source,
@@ -1081,5 +1065,18 @@ export function mainToastOptions (
     class: classNameFormatted,
     newestOnTop: true,
     message
+  }
+}
+
+export function mainDimmerOptions () {
+  return {
+    duration: 300
+  }
+}
+
+export function loaderDimmerOptions () {
+  return {
+    closable: false,
+    duration: 0
   }
 }

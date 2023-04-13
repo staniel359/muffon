@@ -8,7 +8,6 @@ const data = {
       loaderDimmer: null,
       playerPanel: null,
       queuePanel: null,
-      searchModal: null,
       tabId: null,
       visibleContext: null,
       isDarkMode: false,
@@ -30,7 +29,8 @@ const data = {
       isShowDonateModal: true,
       isShowDonateModalLater: true,
       tabs: [],
-      activeTabId: null
+      activeTabId: null,
+      isSearchPanelVisible: false
     }
   },
   actions: {
@@ -73,11 +73,6 @@ const data = {
       value
     ) {
       this.tabId = value
-    },
-    setSearchModal (
-      value
-    ) {
-      this.searchModal = value
     },
     setIsSwitchToNewTab (
       value
@@ -163,6 +158,11 @@ const data = {
       value
     ) {
       this.activeTabId = value
+    },
+    setIsSearchPanelVisible (
+      value
+    ) {
+      this.isSearchPanelVisible = value
     }
   }
 }
