@@ -86,7 +86,8 @@ export default {
     ...mapState(
       searchStore,
       {
-        searchSource: 'source'
+        searchSource: 'source',
+        searchScope: 'scope'
       }
     ),
     isWithClearButton () {
@@ -105,6 +106,10 @@ export default {
     searchSource: {
       immediate: true,
       handler: 'handleSearchSourceChange'
+    },
+    searchScope: {
+      immediate: true,
+      handler: 'handleSearchScopeChange'
     },
     isSearchPanelVisible:
       'handleIsSearchPanelVisibleChange'
@@ -140,6 +145,11 @@ export default {
       value
     ) {
       this.source = value
+    },
+    handleSearchScopeChange (
+      value
+    ) {
+      this.scope = value
     },
     async handleScopeSelect (
       value

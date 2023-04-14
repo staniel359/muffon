@@ -477,7 +477,8 @@
           "closeOnExit": "Close tabs on exit"
         },
         "search": {
-          "source": "Source"
+          "source": "Source",
+          "scope": "Scope"
         },
         "player": {
           "audioSources": "Audio sources (by priority)",

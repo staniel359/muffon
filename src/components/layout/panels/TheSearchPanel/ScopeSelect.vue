@@ -15,6 +15,7 @@
 import BaseScopeSelect from '@/components/selects/BaseScopeSelect.vue'
 import sources from '@/helpers/data/sources'
 import sourceSelectMixin from '@/mixins/sourceSelectMixin'
+import searchScopes from '@/helpers/data/searchScopes'
 
 export default {
   name: 'ScopeSelect',
@@ -24,22 +25,10 @@ export default {
   mixins: [
     sourceSelectMixin
   ],
-  data () {
-    return {
-      scopes: [
-        'artists',
-        'albums',
-        'albumGroups',
-        'tracks',
-        'tags',
-        'videos',
-        'videoChannels',
-        'videoMixes',
-        'videoPlaylists'
-      ]
-    }
-  },
   computed: {
+    scopes () {
+      return searchScopes
+    },
     sources () {
       return sources
     },

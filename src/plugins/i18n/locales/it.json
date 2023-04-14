@@ -477,7 +477,8 @@
           "closeOnExit": "Chiudi schede all’uscita"
         },
         "search": {
-          "source": "Fonte"
+          "source": "Fonte",
+          "scope": "Tipologia"
         },
         "player": {
           "audioSources": "Sorgente audio",

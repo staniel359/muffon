@@ -248,6 +248,10 @@ export default {
     type: 'string',
     default: 'lastfm'
   },
+  'search.scope': {
+    type: 'string',
+    default: 'artists'
+  },
   'sidebar.isWithFeedItem': {
     type: 'boolean',
     default: true

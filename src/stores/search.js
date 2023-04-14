@@ -5,7 +5,8 @@ import {
 const data = {
   state () {
     return {
-      source: 'lastfm'
+      source: 'lastfm',
+      scope: 'artists'
     }
   },
   actions: {
@@ -13,6 +14,11 @@ const data = {
       value
     ) {
       this.source = value
+    },
+    setScope (
+      value
+    ) {
+      this.scope = value
     }
   }
 }
