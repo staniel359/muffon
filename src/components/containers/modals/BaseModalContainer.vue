@@ -63,13 +63,16 @@ export default {
     }
   },
   watch: {
-    isDarkMode: 'handleIsDarkModeChange'
+    isDarkMode:
+      'handleIsDarkModeChange'
   },
   methods: {
     handleIsDarkModeChange () {
-      this.toggleInvertedClass()
+      this.toggleDarkMode()
     },
     handleShow () {
+      this.toggleDarkMode()
+
       this.$emit(
         'show'
       )
@@ -79,11 +82,25 @@ export default {
         'visible'
       )
     },
-    toggleInvertedClass () {
+    toggleDarkMode () {
+      this.toggleModalDarkMode()
+
+      this.toggleDimmerDarkMode()
+    },
+    toggleModalDarkMode () {
       toggleClass(
         this.$refs.modal,
         'inverted',
         this.isDarkMode
+      )
+    },
+    toggleDimmerDarkMode () {
+      toggleClass(
+        $(
+          '.ui.modals'
+        ),
+        'inverted',
+        !this.isDarkMode
       )
     },
     async show () {
@@ -96,8 +113,6 @@ export default {
           this.$refs.modal,
           this.modalOptions
         )
-
-        this.toggleInvertedClass()
       }
 
       showModal(
