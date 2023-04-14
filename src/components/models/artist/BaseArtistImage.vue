@@ -7,7 +7,7 @@
     v-else-if="isRenderInteractive"
     :class="imageClass"
     :image-data="responseImageData"
-    :images="responseImages"
+    :images="responseImagesLimited"
     :artist-name="artistName"
   />
   <BaseZoomableImage
@@ -31,6 +31,9 @@ import InteractiveImage from './BaseArtistImage/InteractiveImage.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import getArtist from '@/helpers/actions/api/artist/get'
+import {
+  images as imagesLimits
+} from '@/helpers/data/limits'
 
 export default {
   name: 'BaseArtistImage',
@@ -61,7 +64,8 @@ export default {
     return {
       artistData: null,
       isLoading: false,
-      imagesCount: 20
+      limit:
+        imagesLimits.simple.medium
     }
   },
   computed: {
@@ -75,13 +79,14 @@ export default {
     responseImageData () {
       return this.artistData?.image
     },
+    responseImagesLimited () {
+      return this.responseImages.slice(
+        0,
+        this.limit
+      )
+    },
     responseImages () {
-      return this.artistData
-        ?.images
-        .slice(
-          0,
-          this.imagesCount
-        )
+      return this.artistData?.images
     },
     artistImageArgs () {
       return {

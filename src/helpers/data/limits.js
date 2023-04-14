@@ -49,6 +49,7 @@ export const tags = {
 
 export const images = {
   simple: {
+    medium: 20,
     large: 40
   }
 }

@@ -1,5 +1,6 @@
 <template>
   <BaseImageModalSliderContainer
+    ref="slider"
     size="small"
     :images="images"
     :options="sliderOptions"
@@ -9,6 +10,7 @@
     >
       <div class="image-container main-image-container">
         <BaseImage
+          class="bordered"
           :image="slotProps.image"
           is-lazy
         />

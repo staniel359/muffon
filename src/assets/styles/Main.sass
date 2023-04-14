@@ -1097,3 +1097,22 @@ p
   & > .icons
     @extend .no-margin
     margin-bottom: 0.2em !important
+
+.main-image-modal-slider-container
+  .slick-slide
+    outline: none
+  .slick-prev
+    left: 25px
+    z-index: 1
+  .slick-next
+    right: 25px
+  .slick-arrow
+    width: 25px
+    height: 25px
+    &:before
+      @extend .text-color-black
+      font-size: 25px
+  &.inverted
+    .slick-arrow
+      &:before
+        @extend .text-color-white

@@ -1,17 +1,30 @@
 <template>
-  <div ref="slider">
-    <template
-      v-for="imageData in imagesCollection"
-      :key="imageData.uuid"
+  <div
+    class="main-image-modal-slider-container"
+    :class="{
+      inverted: isDarkMode
+    }"
+  >
+    <div
+      ref="slider"
     >
-      <slot
-        :image="imageData[size]"
-      />
-    </template>
+      <template
+        v-for="imageData in imagesCollection"
+        :key="imageData.uuid"
+      >
+        <slot
+          :image="imageData[size]"
+        />
+      </template>
+    </div>
   </div>
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import {
   setSlider,
   setSliderOptions
@@ -36,6 +49,12 @@ export default {
     options: Object
   },
   computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isDarkMode'
+      ]
+    ),
     imagesCollection () {
       return formatCollection(
         this.images
@@ -64,14 +83,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-::v-deep(.slick-slide)
-  outline: none
-  .image
-    border-top: $borderInverted
-    border-bottom: $borderInverted
-    border-left: $borderInverted
-  &:last-child
-    .image
-      border-right: $borderInverted
-</style>
+<style lang="sass" scoped></style>

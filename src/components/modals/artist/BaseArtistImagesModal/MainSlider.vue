@@ -1,5 +1,6 @@
 <template>
   <BaseImageModalSliderContainer
+    ref="slider"
     size="original"
     :images="images"
     :options="sliderOptions"
@@ -9,6 +10,7 @@
     >
       <div class="image-container">
         <BaseImage
+          class="bordered"
           :image="slotProps.image"
           is-lazy
         />
@@ -53,12 +55,5 @@ export default {
   height: calc(#{$imageModalHeight} - #{$imageModalThumbHeight} - 1.5em)
   margin-bottom: 1.5em
   .image
-    @extend .border-inverted
     max-height: 100%
-
-::v-deep(.slick-prev)
-  left: 20px
-  z-index: 1
-::v-deep(.slick-next)
-  right: 20px
 </style>

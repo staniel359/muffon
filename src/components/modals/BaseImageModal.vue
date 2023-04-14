@@ -4,6 +4,7 @@
   >
     <div class="main-image-modal-content">
       <BaseImage
+        class="bordered image-item"
         :image="image"
       />
     </div>
@@ -35,8 +36,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-image-modal-content
-  .image
-    @extend .border-inverted
-    max-height: $imageModalHeight
+.image-item
+  max-height: $imageModalHeight
 </style>

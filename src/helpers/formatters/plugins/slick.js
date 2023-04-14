@@ -6,7 +6,8 @@ export function artistImagesModalMainSliderOptions (
   return {
     asNavFor: syncSlider,
     draggable: false,
-    infinite: false
+    infinite: false,
+    fade: true
   }
 }
 

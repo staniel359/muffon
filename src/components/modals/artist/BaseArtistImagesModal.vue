@@ -53,10 +53,20 @@ export default {
   },
   mounted () {
     this.mainSlider =
-      this.$refs.mainSlider.$el
+      this.$refs
+        .mainSlider
+        .$refs
+        .slider
+        .$refs
+        .slider
 
     this.thumbsSlider =
-      this.$refs.thumbsSlider.$el
+      this.$refs
+        .thumbsSlider
+        .$refs
+        .slider
+        .$refs
+        .slider
   },
   methods: {
     async handleShow () {
