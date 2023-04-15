@@ -20,14 +20,20 @@ export default {
   data () {
     return {
       scopes: [
-        'artists',
-        'tracks'
+        {
+          id: 'artists',
+          icon: 'artist'
+        },
+        {
+          id: 'tracks',
+          icon: 'track'
+        }
       ]
     }
   },
   computed: {
     selected () {
-      return this.scopes[0]
+      return this.scopes[0].id
     }
   },
   mounted () {

@@ -89,7 +89,9 @@ export default {
       ]
     },
     isTopScope () {
-      return this.scope === 'top'
+      return (
+        this.scope === 'top'
+      )
     }
   },
   methods: {

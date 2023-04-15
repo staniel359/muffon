@@ -64,7 +64,9 @@ export default {
       return formatRadioPageTab()
     },
     isTopScope () {
-      return this.scope === 'top'
+      return (
+        this.scope === 'top'
+      )
     }
   },
   mounted () {

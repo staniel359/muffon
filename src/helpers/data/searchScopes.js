@@ -1,11 +1,38 @@
 export default [
-  'artists',
-  'albums',
-  'albumGroups',
-  'tracks',
-  'tags',
-  'videos',
-  'videoChannels',
-  'videoMixes',
-  'videoPlaylists'
+  {
+    id: 'artists',
+    icon: 'artist'
+  },
+  {
+    id: 'albums',
+    icon: 'album'
+  },
+  {
+    id: 'albumGroups',
+    icon: 'albumGroup'
+  },
+  {
+    id: 'tracks',
+    icon: 'track'
+  },
+  {
+    id: 'tags',
+    icon: 'tag'
+  },
+  {
+    id: 'videos',
+    icon: 'video'
+  },
+  {
+    id: 'videoChannels',
+    icon: 'videoChannel'
+  },
+  {
+    id: 'videoMixes',
+    icon: 'videoMix'
+  },
+  {
+    id: 'videoPlaylists',
+    icon: 'videoPlaylist'
+  }
 ]

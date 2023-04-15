@@ -23,9 +23,18 @@ export default {
   data () {
     return {
       scopes: [
-        'top',
-        'tag',
-        'artist'
+        {
+          id: 'top',
+          icon: 'top'
+        },
+        {
+          id: 'tag',
+          icon: 'tag'
+        },
+        {
+          id: 'artist',
+          icon: 'artist'
+        }
       ]
     }
   },

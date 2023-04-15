@@ -44,13 +44,22 @@ export default {
       )
     },
     formatOption (
-      scope
+      scopeData
     ) {
-      return {
-        id: scope,
-        name: this.$t(
-          `navigation.${scope}`
+      const {
+        id,
+        icon
+      } = scopeData
+
+      const name =
+        this.$t(
+          `navigation.${id}`
         )
+
+      return {
+        id,
+        name,
+        icon
       }
     }
   }
