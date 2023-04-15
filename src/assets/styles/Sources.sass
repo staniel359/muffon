@@ -24,9 +24,8 @@ $youTubeMusicIconUrl: url('@/assets/icons/youtubemusic.png')
       color: $colorYouTube !important
 
 .icon.muffon
-  content: $muffonIconUrl
-  width: 20px
-  height: 20px
+  &:before
+    content: $muffonIconUrl
   &:not(.colored)
     @extend .colorless
 
@@ -49,9 +48,8 @@ $youTubeMusicIconUrl: url('@/assets/icons/youtubemusic.png')
     filter: opacity(0.85)
 
 .icon.genius
-  content: $geniusIconUrl
-  width: 20px
-  height: 20px
+  &:before
+    content: $geniusIconUrl
   &:not(.colored)
     @extend .colorless
 
@@ -62,8 +60,7 @@ $youTubeMusicIconUrl: url('@/assets/icons/youtubemusic.png')
     @extend .colorless
 
 .icon.youtubemusic
-  content: $youTubeMusicIconUrl
-  width: 20px
-  height: 20px
+  &:before
+    content: $youTubeMusicIconUrl
   &:not(.colored):before
     @extend .colorless
