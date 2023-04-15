@@ -19,6 +19,7 @@
       is-with-saved-icon
       is-with-source-option
       is-with-playlist-option
+      is-with-save-option
       is-with-share-option
       is-with-delete-option
       is-clearable

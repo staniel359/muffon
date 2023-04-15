@@ -269,8 +269,12 @@ export default {
     isRenderSaveOption () {
       return (
         this.isWithSaveOption &&
+          this.isAudioPresent &&
           !this.isSavedTrack
       )
+    },
+    isAudioPresent () {
+      return !!this.trackData.audio?.present
     },
     isSavedTrack () {
       return !!this.trackData.audio?.local

@@ -40,6 +40,7 @@
           is-with-bookmark-option
           is-with-listened-option
           is-with-watched-option
+          is-with-save-option
           is-with-share-option
           is-with-queue-option
           @link-click="handleLinkClick"

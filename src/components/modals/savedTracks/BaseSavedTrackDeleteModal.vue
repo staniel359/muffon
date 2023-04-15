@@ -3,6 +3,7 @@
     ref="modal"
     model-type="savedTrack"
     :model-name="trackFullTitle"
+    :is-loading="isLoading"
     @delete-button-click="handleDeleteButtonClick"
   />
 </template>
@@ -27,6 +28,11 @@ export default {
   emits: [
     'success'
   ],
+  data () {
+    return {
+      isLoading: false
+    }
+  },
   computed: {
     trackFullTitle () {
       return [
@@ -48,6 +54,8 @@ export default {
   },
   methods: {
     async handleDeleteButtonClick () {
+      this.isLoading = true
+
       await ipcRenderer.invoke(
         'delete-electron-store-value',
         'profile.savedTracks',
@@ -60,6 +68,8 @@ export default {
           fileName: this.uuid
         }
       )
+
+      this.isLoading = false
 
       this.$emit(
         'success'

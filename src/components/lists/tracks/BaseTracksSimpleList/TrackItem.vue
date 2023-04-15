@@ -39,6 +39,7 @@
         :is-with-listened-option="isWithListenedOption"
         :is-with-queue-option="isWithQueueOption"
         :is-with-playlist-option="isWithPlaylistOption"
+        :is-with-save-option="isWithSaveOption"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
         :is-with-clear-button="isWithClearButton"
@@ -103,6 +104,7 @@ export default {
     isWithListenedOption: Boolean,
     isWithQueueOption: Boolean,
     isWithPlaylistOption: Boolean,
+    isWithSaveOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
     isWithClearButton: Boolean,

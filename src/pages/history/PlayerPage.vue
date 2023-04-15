@@ -23,9 +23,10 @@
         is-with-favorite-option
         is-with-bookmark-option
         is-with-listened-option
-        is-with-queue-option
         is-with-playlist-option
+        is-with-save-option
         is-with-share-option
+        is-with-queue-option
         is-with-created
       />
     </template>

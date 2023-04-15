@@ -4,19 +4,18 @@ import deleteAudio from '../../actions/audio/delete.js'
 export function handleSaveAudio (
   _,
   {
-    track,
-    tabId
+    trackData
   }
 ) {
-  const trackFormatted =
+  const trackDataFormatted =
     JSON.parse(
-      track
+      trackData
     )
 
-  saveAudio(
+  return saveAudio(
     {
-      track: trackFormatted,
-      tabId
+      trackData:
+        trackDataFormatted
     }
   )
 }
@@ -27,7 +26,7 @@ export function handleDeleteAudio (
     fileName
   }
 ) {
-  deleteAudio(
+  return deleteAudio(
     fileName
   )
 }

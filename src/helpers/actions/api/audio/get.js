@@ -6,18 +6,20 @@ import {
 
 export default function (
   {
-    trackData
+    trackData,
+    isSetPlayerPlaying = true
   }
 ) {
   const sourceData = trackData.source
 
-  const url = formatTrackRequestUrl(
-    {
-      source: sourceData.name,
-      trackId: sourceData.id,
-      artistId: sourceData.artist_id
-    }
-  )
+  const url =
+    formatTrackRequestUrl(
+      {
+        source: sourceData.name,
+        trackId: sourceData.id,
+        artistId: sourceData.artist_id
+      }
+    )
 
   function handleSuccess (
     response
@@ -44,9 +46,13 @@ export default function (
     )
 
     if (isAudioPresent) {
-      setPlayerPlaying(
-        playingData
-      )
+      if (isSetPlayerPlaying) {
+        setPlayerPlaying(
+          playingData
+        )
+      } else {
+        return playingData
+      }
     } else {
       throw new Error()
     }

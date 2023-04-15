@@ -11,8 +11,9 @@
       is-with-duration
       is-with-source-option
       is-with-playlist-option
-      is-with-queue-option
+      is-with-save-option
       is-with-share-option
+      is-with-queue-option
     />
   </BaseSegmentContainer>
 </template>

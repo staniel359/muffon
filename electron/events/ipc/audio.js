@@ -7,7 +7,7 @@ import {
 } from '../../handlers/ipc/audio.js'
 
 export default function () {
-  ipcMain.on(
+  ipcMain.handle(
     'save-audio',
     handleSaveAudio
   )

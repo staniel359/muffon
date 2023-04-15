@@ -46,6 +46,7 @@
       is-with-source
       is-with-source-option
       is-with-playlist-option
+      is-with-save-option
       is-with-share-option
       is-with-queue-option
     />

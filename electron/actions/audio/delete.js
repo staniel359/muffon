@@ -9,7 +9,7 @@ export default function (
       fileName
     )
 
-  deleteFile(
+  return deleteFile(
     filePath
   )
 }

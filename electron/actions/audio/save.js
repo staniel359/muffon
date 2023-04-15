@@ -4,7 +4,6 @@ import {
 import {
   audioFolderPath
 } from '../../paths.js'
-import findTab from '../tab/find.js'
 import {
   download
 } from 'electron-dl'
@@ -14,99 +13,64 @@ import {
   currentTime as formatCurrentTime
 } from '../../formatters.js'
 
-let trackData
-
-let fileName
-let tempFileName
-
-let tab
-
-let key
-let iv
-
-function formatTrackData () {
-  delete trackData.audio.link
-
-  trackData.uuid = fileName
-
-  trackData.created =
-    formatCurrentTime()
-
-  const filePath =
-    getPath(
-      fileName
-    )
-
-  trackData.audio.local = {
-    path: filePath,
-    key,
-    iv
-  }
-}
-
-function handleSuccess () {
-  const encryptedData =
-    encrypt(
-      {
-        tempFileName,
-        fileName
-      }
-    )
-
-  key = encryptedData.key
-  iv = encryptedData.iv
-
-  formatTrackData()
-
-  const data = {
-    trackData
-  }
-
-  tab
-    .webContents
-    .send(
-      'save-audio-complete',
-      data
-    )
-}
-
-function handleError () {
-  tab
-    .webContents
-    .send(
-      'save-audio-error'
-    )
-}
-
 export default function (
   {
-    track,
-    tabId
+    trackData
   }
 ) {
-  trackData = track
-
   const url = trackData.audio.link
 
-  fileName = generateKey()
-  tempFileName = `${fileName}-temp`
+  const fileName = generateKey()
+
+  const tempFileName = `${fileName}-temp`
 
   const options = {
     directory: audioFolderPath,
     filename: tempFileName
   }
 
-  tab = findTab(
-    tabId
-  )
+  function handleSuccess () {
+    const filePath =
+      getPath(
+        fileName
+      )
 
-  download(
+    const encryptedData =
+      encrypt(
+        {
+          tempFileName,
+          fileName
+        }
+      )
+
+    const {
+      key,
+      iv
+    } = encryptedData
+
+    const localData = {
+      path: filePath,
+      key,
+      iv
+    }
+
+    delete trackData.audio.link
+
+    trackData.audio.local = localData
+
+    trackData.uuid = fileName
+
+    trackData.created =
+      formatCurrentTime()
+
+    return trackData
+  }
+
+  return download(
     mainWindow,
     url,
     options
   ).then(
     handleSuccess
-  ).catch(
-    handleError
   )
 }

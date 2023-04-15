@@ -12,12 +12,9 @@
 import {
   ipcRenderer
 } from 'electron'
-import {
-  mapState
-} from 'pinia'
-import layoutStore from '@/stores/layout'
 import BaseOption from '@/components/popups/options/BaseOption.vue'
 import notificationMixin from '@/mixins/notificationMixin'
+import getAudio from '@/helpers/actions/api/audio/get'
 
 export default {
   name: 'SaveOption',
@@ -41,20 +38,9 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      layoutStore,
-      [
-        'tabId'
-      ]
-    ),
     saveText () {
       return this.$t(
         'actions.addTo.savedTracks'
-      )
-    },
-    trackDataString () {
-      return JSON.stringify(
-        this.trackData
       )
     },
     notificationSuccessMessage () {
@@ -86,45 +72,52 @@ export default {
     },
     trackTitle () {
       return this.savedTrackData.title
+    },
+    isAudioLinkPresent () {
+      return this.trackData.audio?.link
     }
   },
   watch: {
     savedTrackData:
       'handleSavedTrackDataChange'
   },
-  mounted () {
-    ipcRenderer.on(
-      'save-audio-complete',
-      this.handleSaveAudioComplete
-    )
-
-    ipcRenderer.on(
-      'save-audio-error',
-      this.handleSaveAudioError
-    )
-  },
   methods: {
-    handleClick () {
+    async handleClick () {
       this.isLoading = true
       this.isError = false
 
-      ipcRenderer.send(
-        'save-audio',
-        {
-          track: this.trackDataString,
-          tabId: this.tabId
-        }
-      )
+      const trackData =
+        await this.getTrackData()
+
+      if (trackData) {
+        const trackDataFormatted =
+          JSON.stringify(
+            trackData
+          )
+
+        ipcRenderer.invoke(
+          'save-audio',
+          {
+            trackData:
+              trackDataFormatted
+          }
+        ).then(
+          this.handleSaveAudioComplete
+        ).catch(
+          this.handleSaveAudioError
+        )
+      }
     },
     handleSaveAudioComplete (
-      _,
-      {
-        trackData
-      }
+      trackData
     ) {
       this.savedTrackData = trackData
     },
     handleSaveAudioError () {
+      this.isLoading = false
+      this.isError = true
+    },
+    handleTrackAudioDataError () {
       this.isLoading = false
       this.isError = true
     },
@@ -137,6 +130,20 @@ export default {
         this.isLoading = false
 
         this.notifySuccess()
+      }
+    },
+    getTrackData () {
+      if (this.isAudioLinkPresent) {
+        return this.trackData
+      } else {
+        return getAudio(
+          {
+            trackData: this.trackData,
+            isSetPlayerPlaying: false
+          }
+        ).catch(
+          this.handleTrackAudioDataError
+        )
       }
     },
     setSavedTracks () {
