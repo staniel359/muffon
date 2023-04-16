@@ -506,13 +506,14 @@ p
   width: 420px
 
 .main-annotation-popup
-  @extend .overflow-y-auto
   width: 375px
-  max-height: 250px
-  img
-    width: unset !important
-    height: unset !important
-    max-width: 100%
+  .main-popup-content-container
+    @extend .overflow-y-auto
+    max-height: 250px
+    img
+      width: unset !important
+      height: unset !important
+      max-width: 100%
 
 .main-emoji-picker
   em-emoji-picker

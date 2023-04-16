@@ -20,6 +20,10 @@ export default [
     icon: 'tag'
   },
   {
+    id: 'lyrics',
+    icon: 'lyrics'
+  },
+  {
     id: 'videos',
     icon: 'video'
   },

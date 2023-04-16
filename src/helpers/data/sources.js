@@ -189,7 +189,8 @@ export default [
     searchScopes: [
       'artists',
       'albums',
-      'tracks'
+      'tracks',
+      'lyrics'
     ]
   },
   {

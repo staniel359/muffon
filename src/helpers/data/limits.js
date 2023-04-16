@@ -54,6 +54,12 @@ export const images = {
   }
 }
 
+export const lyrics = {
+  simple: {
+    medium: 20
+  }
+}
+
 export const videos = {
   simple: {
     extrasmall: 5,
