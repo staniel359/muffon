@@ -43,8 +43,14 @@ export default {
     TabsSegment
   },
   props: {
-    trackTitle: String,
-    artistName: String
+    trackTitle: {
+      type: String,
+      required: true
+    },
+    artistName: {
+      type: String,
+      required: true
+    }
   },
   computed: {
     sourceParams () {

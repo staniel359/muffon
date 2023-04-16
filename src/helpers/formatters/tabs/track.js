@@ -1,7 +1,8 @@
 import i18n from '@/plugins/i18n'
 import {
   main as formatTrackLink,
-  similar as formatTrackSimilarLink
+  similar as formatTrackSimilarLink,
+  lyrics as formatTrackLyricsLink
 } from '@/helpers/formatters/links/track'
 
 export default function (
@@ -25,12 +26,13 @@ export default function (
     }
   }
 
-  const artistPageTitle = i18n.global.t(
-    'navigation.model.tracks',
-    {
-      modelName: artistName
-    }
-  )
+  const artistPageTitle =
+    i18n.global.t(
+      'navigation.model.tracks',
+      {
+        modelName: artistName
+      }
+    )
 
   const title = [
     formatTrackPageTitle(),
@@ -46,6 +48,14 @@ export default function (
           {
             artistName,
             trackTitle
+          }
+        )
+      case 'lyrics':
+        return formatTrackLyricsLink(
+          {
+            artistName,
+            trackTitle,
+            sourceParams
           }
         )
       default:

@@ -80,3 +80,53 @@ export function similar (
       '/similar'
   }
 }
+
+export function lyrics (
+  {
+    trackTitle,
+    artistName,
+    sourceParams
+  }
+) {
+  const artistNameEncoded =
+    encodeURIComponent(
+      artistName
+    )
+
+  const trackTitleEncoded =
+    encodeURIComponent(
+      trackTitle
+    )
+
+  const {
+    source,
+    trackId
+  } = sourceParams
+
+  const query = {
+    source,
+    track_id: trackId
+  }
+
+  const queryFormatted =
+    formatQuery(
+      {
+        query
+      }
+    )
+
+  const path =
+    `artists/${artistNameEncoded}` +
+    `/tracks/${trackTitleEncoded}` +
+    `/lyrics?${queryFormatted.string}`
+
+  return {
+    name: 'TrackLyricsPage',
+    params: {
+      artistName,
+      trackTitle
+    },
+    path,
+    query: queryFormatted.data
+  }
+}

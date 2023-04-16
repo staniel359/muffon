@@ -42,8 +42,14 @@ export default {
     BaseTracksSimpleList
   },
   props: {
-    trackTitle: String,
-    artistName: String
+    trackTitle: {
+      type: String,
+      required: true
+    },
+    artistName: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {

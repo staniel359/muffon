@@ -5,43 +5,58 @@
       v-text="lyrics"
     />
 
-    <BaseMoreButton
-      @click="handleMoreButtonClick"
+    <BaseMoreLinkButton
+      :link="link"
     />
   </div>
-
-  <BaseTrackLyricsModal
-    ref="modal"
-    :track-id="trackId"
-  />
 </template>
 
 <script>
-import BaseMoreButton from '@/components/buttons/BaseMoreButton.vue'
-import BaseTrackLyricsModal
-  from '@/components/modals/track/BaseTrackLyricsModal.vue'
+import BaseMoreLinkButton from '@/components/buttons/BaseMoreLinkButton.vue'
+import {
+  lyrics as formatTrackLyricsLink
+} from '@/helpers/formatters/links/track'
 
 export default {
   name: 'LyricsTextSection',
   components: {
-    BaseMoreButton,
-    BaseTrackLyricsModal
+    BaseMoreLinkButton
   },
   props: {
     lyrics: {
       type: String,
       required: true
     },
-    trackId: Number
-  },
-  methods: {
-    handleMoreButtonClick () {
-      this.showModal()
+    trackId: {
+      type: Number,
+      required: true
     },
-    showModal () {
-      this.$refs
-        .modal
-        .show()
+    trackData: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    link () {
+      return formatTrackLyricsLink(
+        {
+          artistName: this.artistName,
+          trackTitle: this.trackTitle,
+          sourceParams: this.sourceParams
+        }
+      )
+    },
+    artistName () {
+      return this.trackData.artist.name
+    },
+    trackTitle () {
+      return this.trackData.title
+    },
+    sourceParams () {
+      return {
+        source: 'genius',
+        trackId: this.trackId
+      }
     }
   }
 }

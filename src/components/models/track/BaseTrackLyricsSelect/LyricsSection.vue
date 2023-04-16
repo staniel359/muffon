@@ -10,6 +10,7 @@
       <LyricsTextSection
         :lyrics="slotProps.lyrics"
         :track-id="slotProps.trackId"
+        :track-data="trackData"
       />
     </template>
   </BaseTrackLyricsContainer>
@@ -27,10 +28,8 @@ export default {
     LyricsTextSection
   },
   props: {
-    selectedTrackData: {
-      type: Object,
-      required: true
-    }
+    selectedTrackData: Object,
+    trackData: Object
   },
   emits: [
     'focus'

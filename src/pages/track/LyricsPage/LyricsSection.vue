@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import LyricItem from './ContentSection/LyricItem.vue'
+import LyricItem from './LyricsSection/LyricItem.vue'
 
 export default {
-  name: 'ContentSection',
+  name: 'LyricsSection',
   components: {
     LyricItem
   },
