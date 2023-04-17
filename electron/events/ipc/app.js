@@ -10,7 +10,7 @@ import {
   handleAccountDelete,
   handleNavigate,
   handleExit
-} from '../../handlers/ipc/app.js'
+} from '#/handlers/ipc/app'
 
 export default function () {
   ipcMain.on(

@@ -1,4 +1,4 @@
-import clear from './clear.js'
+import clear from './clear'
 
 export default function (
   tabId

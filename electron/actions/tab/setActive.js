@@ -1,4 +1,4 @@
-import find from './find.js'
+import find from './find'
 
 export default function (
   tabId

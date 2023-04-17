@@ -1,6 +1,6 @@
 import {
   appName
-} from '../../utils.js'
+} from '#/utils'
 
 export default function (
   value

@@ -1,5 +1,5 @@
-import getTabs from './get.js'
-import resetTabBounds from '../tab/resetBounds.js'
+import getTabs from './get'
+import resetTabBounds from '#/actions/tab/resetBounds'
 
 export default function (
   value

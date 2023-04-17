@@ -7,6 +7,7 @@ import inject from '@rollup/plugin-inject'
 import eslint from 'vite-plugin-eslint'
 import electron from 'vite-electron-plugin'
 import {
+  alias as electronAlias,
   copy as electronCopy,
   customStart as electronCustomStart,
   loadViteEnv as electronLoadViteEnv
@@ -33,6 +34,17 @@ export default defineConfig(
           ],
           outDir: 'build_electron',
           plugins: [
+            electronAlias(
+              [
+                {
+                  find: '#',
+                  replacement: resolvePath(
+                    __dirname,
+                    'electron'
+                  )
+                }
+              ]
+            ),
             electronCopy(
               [
                 {

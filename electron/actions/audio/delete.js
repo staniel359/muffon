@@ -1,5 +1,5 @@
-import getPath from './getPath.js'
-import deleteFile from '../file/delete.js'
+import getPath from './getPath'
+import deleteFile from '#/actions/file/delete'
 
 export default function (
   fileName

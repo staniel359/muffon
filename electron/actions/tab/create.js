@@ -1,20 +1,20 @@
 import {
   BrowserView
 } from 'electron'
-import getElectronStoreKey from '../electronStore/getKey.js'
-import getActiveId from './getActiveId.js'
-import setActive from './setActive.js'
-import setBounds from './setBounds.js'
-import setScale from './setScale.js'
+import getElectronStoreKey from '#/actions/electronStore/getKey'
+import getActiveId from './getActiveId'
+import setActive from './setActive'
+import setBounds from './setBounds'
+import setScale from './setScale'
 import {
   baseUrl
-} from '../../urls.js'
+} from '#/urls'
 import {
   isDevelopment
-} from '../../utils.js'
+} from '#/utils'
 import {
   handleNewWindow
-} from '../../handlers/app.js'
+} from '#/handlers/app'
 
 export default function (
   data

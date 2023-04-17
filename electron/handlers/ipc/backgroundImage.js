@@ -1,7 +1,7 @@
-import createBackgroundImage from '../../actions/backgroundImage/create.js'
-import changeBackgroundImage from '../../actions/backgroundImage/change.js'
-import resetBackgroundImage from '../../actions/backgroundImage/reset.js'
-import deleteBackgroundImage from '../../actions/backgroundImage/delete.js'
+import createBackgroundImage from '#/actions/backgroundImage/create'
+import changeBackgroundImage from '#/actions/backgroundImage/change'
+import resetBackgroundImage from '#/actions/backgroundImage/reset'
+import deleteBackgroundImage from '#/actions/backgroundImage/delete'
 
 export function handleCreateBackgroundImage (
   _,

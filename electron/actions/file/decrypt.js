@@ -1,5 +1,5 @@
 import crypto from 'crypto'
-import read from './read.js'
+import read from './read'
 
 export default function (
   {

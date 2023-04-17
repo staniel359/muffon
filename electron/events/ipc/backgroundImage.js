@@ -6,7 +6,7 @@ import {
   handleChangeBackgroundImage,
   handleResetBackgroundImage,
   handleDeleteBackgroundImage
-} from '../../handlers/ipc/backgroundImage.js'
+} from '#/handlers/ipc/backgroundImage'
 
 export default function () {
   ipcMain.on(

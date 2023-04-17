@@ -1,9 +1,9 @@
 import {
   isDevelopment
-} from './utils.js'
+} from '#/utils'
 import {
   productionPath
-} from './paths.js'
+} from '#/paths'
 
 const developmentUrl =
   'http://localhost:3000/'

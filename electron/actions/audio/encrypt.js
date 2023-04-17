@@ -1,7 +1,7 @@
-import open from './open.js'
-import encryptFile from '../file/encrypt.js'
-import create from './create.js'
-import deleteAudio from './delete.js'
+import open from './open'
+import encryptFile from '#/actions/file/encrypt'
+import create from './create'
+import deleteAudio from './delete'
 
 export default function (
   {

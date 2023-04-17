@@ -3,13 +3,13 @@ import {
 } from 'electron'
 import {
   isDevelopment
-} from './utils.js'
+} from '#/utils'
 import {
   join as joinPath
 } from 'path'
 import {
   formatFileRootPath
-} from './paths.js'
+} from '#/paths'
 
 const publicPath =
   isDevelopment ? 'public' : ''

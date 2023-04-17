@@ -1,3 +1,3 @@
-import initialize from './actions/app/initialize.js'
+import initialize from './actions/app/initialize'
 
 initialize()

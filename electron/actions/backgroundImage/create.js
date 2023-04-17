@@ -1,11 +1,11 @@
 import {
   generateKey
-} from '../../utils.js'
-import getPath from './getPath.js'
+} from '#/utils'
+import getPath from './getPath'
 import {
   writeFile
 } from 'fs'
-import findTab from '../tab/find.js'
+import findTab from '#/actions/tab/find'
 
 export default function (
   {

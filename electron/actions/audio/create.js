@@ -1,4 +1,4 @@
-import getPath from './getPath.js'
+import getPath from './getPath'
 import {
   writeFileSync
 } from 'fs'

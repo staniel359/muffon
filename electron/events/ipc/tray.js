@@ -3,7 +3,7 @@ import {
 } from 'electron'
 import {
   handleSetTrayTooltip
-} from '../../handlers/ipc/tray.js'
+} from '#/handlers/ipc/tray'
 
 export default function () {
   ipcMain.on(

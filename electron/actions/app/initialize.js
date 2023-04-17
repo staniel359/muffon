@@ -1,15 +1,15 @@
 import {
   app
 } from 'electron'
-import setupI18n from '../../plugins/i18n.js'
-import setupDayjs from '../../plugins/dayjs.js'
-import setFlags from './setFlags.js'
-import setGlobalVariables from './setGlobalVariables.js'
-import setEvents from './setEvents.js'
-import setup from './setup.js'
+import setupI18n from '#/plugins/i18n'
+import setupDayjs from '#/plugins/dayjs'
+import setFlags from './setFlags'
+import setGlobalVariables from './setGlobalVariables'
+import setEvents from './setEvents'
+import setup from './setup'
 import {
   appName
-} from '../../utils.js'
+} from '#/utils'
 
 export default function () {
   setupI18n()

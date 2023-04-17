@@ -1,5 +1,5 @@
 import ElectronStore from 'electron-store'
-import schema from './electronStore/schema.js'
+import schema from './electronStore/schema'
 
 const encryptionKey =
   import.meta.env.VITE_APP_ELECTRON_STORE_KEY

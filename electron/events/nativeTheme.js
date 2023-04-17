@@ -3,7 +3,7 @@ import {
 } from 'electron'
 import {
   handleNativeThemeUpdated
-} from '../handlers/nativeTheme.js'
+} from '#/handlers/nativeTheme'
 
 export default function () {
   nativeTheme.on(

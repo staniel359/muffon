@@ -1,5 +1,5 @@
-import getElectronStoreKey from '../actions/electronStore/getKey.js'
-import updateTheme from '../actions/app/updateTheme.js'
+import getElectronStoreKey from '#/actions/electronStore/getKey'
+import updateTheme from '#/actions/app/updateTheme'
 
 export function handleNativeThemeUpdated () {
   const isWithSystemTheme =

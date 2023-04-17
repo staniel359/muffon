@@ -1,5 +1,5 @@
-import getKey from './getKey.js'
-import setData from './setData.js'
+import getKey from './getKey'
+import setData from './setData'
 
 export default function (
   key,

@@ -1,5 +1,5 @@
-import saveAudio from '../../actions/audio/save.js'
-import deleteAudio from '../../actions/audio/delete.js'
+import saveAudio from '#/actions/audio/save'
+import deleteAudio from '#/actions/audio/delete'
 
 export function handleSaveAudio (
   _,

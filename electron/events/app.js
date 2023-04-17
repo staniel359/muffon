@@ -3,7 +3,7 @@ import {
 } from 'electron'
 import {
   handleAllWindowsClosed
-} from '../handlers/app.js'
+} from '#/handlers/app'
 
 export default function () {
   app.on(

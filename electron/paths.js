@@ -11,7 +11,7 @@ import {
 import {
   isDevelopment,
   createFolderIfNotExists
-} from './utils.js'
+} from '#/utils'
 
 function getDirectory () {
   const fileUrl = import.meta.url

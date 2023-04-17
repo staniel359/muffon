@@ -1,4 +1,4 @@
-import getTabs from '../tabs/get.js'
+import getTabs from '#/actions/tabs/get'
 
 export default function (
   tabId

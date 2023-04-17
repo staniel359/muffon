@@ -3,7 +3,7 @@ import {
 } from 'path'
 import {
   audioFolderPath
-} from '../../paths.js'
+} from '#/paths'
 
 export default function (
   fileName

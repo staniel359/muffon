@@ -1,17 +1,17 @@
 import {
   generateKey
-} from '../../utils.js'
+} from '#/utils'
 import {
   audioFolderPath
-} from '../../paths.js'
+} from '#/paths'
 import {
   download
 } from 'electron-dl'
-import encrypt from './encrypt.js'
-import getPath from './getPath.js'
+import encrypt from './encrypt'
+import getPath from './getPath'
 import {
   currentTime as formatCurrentTime
-} from '../../formatters.js'
+} from '#/formatters'
 
 export default function (
   {

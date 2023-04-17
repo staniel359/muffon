@@ -1,6 +1,6 @@
-import getTabs from '../tabs/get.js'
-import setElectronStoreData from '../electronStore/setData.js'
-import setScale from '../app/setScale.js'
+import getTabs from '#/actions/tabs/get'
+import setElectronStoreData from '#/actions/electronStore/setData'
+import setScale from '#/actions/app/setScale'
 
 export default function (
   data,

@@ -1,8 +1,8 @@
 import i18n from 'i18n'
 import {
   formatFileRootPath
-} from '../paths.js'
-import getElectronStoreKey from '../actions/electronStore/getKey.js'
+} from '#/paths'
+import getElectronStoreKey from '#/actions/electronStore/getKey'
 
 // i18n
 

@@ -3,9 +3,9 @@ import {
 } from 'electron'
 import {
   trayIcon
-} from '../../icons.js'
-import setMenu from './setMenu.js'
-import setTooltip from './setTooltip.js'
+} from '#/icons'
+import setMenu from './setMenu'
+import setTooltip from './setTooltip'
 
 function handleClick () {
   mainWindow.show()

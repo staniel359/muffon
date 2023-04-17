@@ -1,4 +1,4 @@
-import setTitle from './setTitle.js'
+import setTitle from './setTitle'
 
 export default function () {
   setTitle()

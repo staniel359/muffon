@@ -1,4 +1,4 @@
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getElectronStoreKey from '#/actions/electronStore/getKey'
 
 export default function (
   tab

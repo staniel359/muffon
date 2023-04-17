@@ -3,7 +3,7 @@ import {
 } from 'electron'
 import {
   handleUpdateStore
-} from '../../handlers/ipc/store.js'
+} from '#/handlers/ipc/store'
 
 export default function () {
   ipcMain.handle(

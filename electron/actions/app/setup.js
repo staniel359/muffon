@@ -1,7 +1,8 @@
-import createMainWindow from '../mainWindow/create.js'
-import createAboutWindow from '../aboutWindow/create.js'
-import createTray from '../tray/create.js'
-import createSessionHeadersHandler from '../session/createHeadersHandler.js'
+import createMainWindow from '#/actions/mainWindow/create'
+import createAboutWindow from '#/actions/aboutWindow/create'
+import createTray from '#/actions/tray/create'
+import createSessionHeadersHandler
+  from '#/actions/session/createHeadersHandler'
 
 export default function () {
   createMainWindow()

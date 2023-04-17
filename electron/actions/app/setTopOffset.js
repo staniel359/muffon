@@ -1,6 +1,6 @@
 import {
   isMac
-} from '../../utils.js'
+} from '#/utils'
 
 export default function () {
   const isFullScreen =

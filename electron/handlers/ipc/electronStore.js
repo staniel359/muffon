@@ -1,10 +1,10 @@
-import getElectronStoreData from '../../actions/electronStore/getData.js'
-import getElectronStoreKey from '../../actions/electronStore/getKey.js'
-import addElectronStoreValue from '../../actions/electronStore/addValue.js'
+import getElectronStoreData from '#/actions/electronStore/getData'
+import getElectronStoreKey from '#/actions/electronStore/getKey'
+import addElectronStoreValue from '#/actions/electronStore/addValue'
 import deleteElectronStoreValue
-  from '../../actions/electronStore/deleteValue.js'
-import setElectronStoreData from '../../actions/electronStore/setData.js'
-import deleteElectronStoreKey from '../../actions/electronStore/deleteKey.js'
+  from '#/actions/electronStore/deleteValue'
+import setElectronStoreData from '#/actions/electronStore/setData'
+import deleteElectronStoreKey from '#/actions/electronStore/deleteKey'
 
 export function handleGetElectronStoreData () {
   return getElectronStoreData()

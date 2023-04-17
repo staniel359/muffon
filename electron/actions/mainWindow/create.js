@@ -5,28 +5,28 @@ import {
 } from 'electron'
 import {
   windowIcon
-} from '../../icons.js'
+} from '#/icons'
 import {
   isDevelopment,
   isLinux,
   isShowDevTools
-} from '../../utils.js'
+} from '#/utils'
 import {
   baseUrl
-} from '../../urls.js'
-import getElectronStoreKey from '../electronStore/getKey.js'
-import show from './show.js'
-import hide from './hide.js'
-import checkForUpdates from '../app/checkForUpdates.js'
-import setTopOffset from '../app/setTopOffset.js'
-import setScale from './setScale.js'
-import callExit from '../app/callExit.js'
+} from '#/urls'
+import getElectronStoreKey from '#/actions/electronStore/getKey'
+import show from './show'
+import hide from './hide'
+import checkForUpdates from '#/actions/app/checkForUpdates'
+import setTopOffset from '#/actions/app/setTopOffset'
+import setScale from './setScale'
+import callExit from '#/actions/app/callExit'
 import {
   handleNewWindow
-} from '../../handlers/app.js'
-import setTrayMenu from '../tray/setMenu.js'
-import resetTabsBounds from '../tabs/resetBounds.js'
-import setTabsBounds from '../tabs/setBounds.js'
+} from '#/handlers/app'
+import setTrayMenu from '#/actions/tray/setMenu'
+import resetTabsBounds from '#/actions/tabs/resetBounds'
+import setTabsBounds from '#/actions/tabs/setBounds'
 
 function handleReadyToShow () {
   const isMaximizeOnStart =

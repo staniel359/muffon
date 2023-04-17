@@ -1,5 +1,5 @@
-import getPath from './getPath.js'
-import readFile from '../file/read.js'
+import getPath from './getPath'
+import readFile from '#/actions/file/read'
 
 export default function (
   fileName
