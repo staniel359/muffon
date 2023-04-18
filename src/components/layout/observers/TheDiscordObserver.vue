@@ -1,26 +1,23 @@
 <template>
-  <div id="the-discord-observer" />
+  <div
+    id="the-discord-observer"
+  />
 </template>
 
 <script>
 import {
+  ipcRenderer
+} from 'electron'
+import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import {
-  client as discordClient,
-  login as loginDiscordClient
-} from '@/plugins/discordRPC'
-import {
-  homepage
-} from '@/helpers/data/links'
 
 export default {
   name: 'TheDiscordObserver',
   data () {
     return {
-      isConnected: false,
-      appName: 'muffon'
+      isConnected: false
     }
   },
   computed: {
@@ -30,16 +27,17 @@ export default {
         playerPlaying: 'playing'
       }
     ),
-    activity () {
+    playingDataFormatted () {
+      return JSON.stringify(
+        this.playingData
+      )
+    },
+    playingData () {
       return {
-        details: this.trackTitle,
-        state: this.artistName,
-        startTimestamp: Date.now(),
-        largeImageText: this.albumTitle,
-        smallImageText: this.appName,
-        largeImageKey: this.image,
-        smallImageKey: 'logo',
-        buttons: this.buttons
+        trackTitle: this.trackTitle,
+        artistName: this.artistName,
+        albumTitle: this.albumTitle,
+        image: this.image
       }
     },
     trackTitle () {
@@ -53,29 +51,14 @@ export default {
     },
     image () {
       return this.playerPlaying.image?.medium
-    },
-    buttons () {
-      return [
-        this.downloadButtonData
-      ]
-    },
-    downloadButtonData () {
-      return {
-        label: this.appName,
-        url: homepage
-      }
     }
   },
   watch: {
-    playerPlaying: 'handlePlayerPlayingChange'
+    playerPlaying:
+      'handlePlayerPlayingChange'
   },
   mounted () {
-    loginDiscordClient()
-      .then(
-        this.handleLoginSuccess
-      ).catch(
-        this.handleError
-      )
+    this.connect()
   },
   beforeUnmount () {
     if (this.isConnected) {
@@ -96,6 +79,15 @@ export default {
         this.updateActivity()
       }
     },
+    connect () {
+      return ipcRenderer.invoke(
+        'connect-discord'
+      ).then(
+        this.handleLoginSuccess
+      ).catch(
+        this.handleError
+      )
+    },
     updateActivity () {
       if (this.playerPlaying) {
         this.setActivity()
@@ -104,15 +96,19 @@ export default {
       }
     },
     setActivity () {
-      discordClient
-        .setActivity(
-          this.activity
-        ).catch(
-          this.handleError
-        )
+      ipcRenderer.invoke(
+        'set-discord-activity',
+        this.playingDataFormatted
+      ).catch(
+        this.handleError
+      )
     },
     resetActivity () {
-      discordClient.clearActivity()
+      ipcRenderer.invoke(
+        'reset-discord-activity'
+      ).catch(
+        this.handleError
+      )
     }
   }
 }

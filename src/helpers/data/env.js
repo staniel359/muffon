@@ -3,6 +3,3 @@ export const anonymousToken =
 
 export const shareEncryptionKey =
   import.meta.env.VITE_APP_SHARE_ENCRYPTION_KEY
-
-export const discordClientId =
-  import.meta.env.VITE_APP_DISCORD_CLIENT_ID

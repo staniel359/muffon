@@ -16,3 +16,6 @@ export const baseUrl = (
     ? developmentUrl
     : productionUrl
 )
+
+export const homepageUrl =
+  'https://muffon.netlify.app'

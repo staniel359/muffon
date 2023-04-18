@@ -61,17 +61,7 @@ export default defineConfig(
         }
       ),
       eslint(),
-      electronRenderer(
-        {
-          resolve: {
-            'discord-rpc': () => (
-              {
-                platform: 'node'
-              }
-            )
-          }
-        }
-      ),
+      electronRenderer(),
       splitVendorChunkPlugin()
     ],
     resolve: {

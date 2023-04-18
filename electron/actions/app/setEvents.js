@@ -9,6 +9,7 @@ import setIpcAudioEvents from '#/events/ipc/audio'
 import setIpcBackgroundImageEvents from '#/events/ipc/backgroundImage'
 import setIpcFileEvents from '#/events/ipc/file'
 import setIpcElectronStoreEvents from '#/events/ipc/electronStore'
+import setIpcDiscordEvents from '#/events/ipc/discord'
 
 export default function () {
   setAppEvents()
@@ -32,4 +33,6 @@ export default function () {
   setIpcFileEvents()
 
   setIpcElectronStoreEvents()
+
+  setIpcDiscordEvents()
 }

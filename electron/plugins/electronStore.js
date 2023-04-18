@@ -1,12 +1,12 @@
 import ElectronStore from 'electron-store'
 import schema from './electronStore/schema'
-
-const encryptionKey =
-  import.meta.env.VITE_APP_ELECTRON_STORE_KEY
+import {
+  electronStoreKey
+} from '#/env'
 
 const options = {
   accessPropertiesByDotNotation: false,
-  encryptionKey,
+  encryptionKey: electronStoreKey,
   schema
 }
 
