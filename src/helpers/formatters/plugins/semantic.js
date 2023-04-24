@@ -150,6 +150,12 @@ export function mainScrobblePercentSeekerOptions (
 ) {
   const step = 25
 
+  function interpretLabel (
+    value
+  ) {
+    return `${(value + 1) * step}%`
+  }
+
   return {
     min: 25,
     max: 75,
@@ -157,11 +163,33 @@ export function mainScrobblePercentSeekerOptions (
     start,
     smooth: true,
     autoAdjustLabels: false,
-    interpretLabel: (
-      value
-    ) => {
-      return `${(value + 1) * step}%`
+    interpretLabel
+  }
+}
+
+export function mainAudioEqualizerSeekerOptions (
+  {
+    start
+  }
+) {
+  function interpretLabel (
+    value
+  ) {
+    if (value === 12) {
+      return 0
+    } else {
+      return ' '
     }
+  }
+
+  return {
+    step: 0,
+    max: 12,
+    min: -12,
+    autoAdjustLabels: false,
+    smooth: true,
+    start,
+    interpretLabel
   }
 }
 
@@ -172,6 +200,31 @@ export function volumePopupOptions (
 ) {
   const className =
     'ui popup main-popup main-volume-popup'
+
+  return {
+    position: 'top center',
+    transition: 'fade up',
+    variation: 'basic',
+    closable: false,
+    hoverable: true,
+    preserve: true,
+    className: {
+      popup: className
+    },
+    delay: {
+      show: 0,
+      hide: 150
+    },
+    html
+  }
+}
+
+export function audioEqualizerPopupOptions (
+  {
+    html
+  }
+) {
+  const className = 'ui popup main-popup'
 
   return {
     position: 'top center',

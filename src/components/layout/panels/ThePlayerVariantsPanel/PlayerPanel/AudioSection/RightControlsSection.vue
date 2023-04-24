@@ -1,10 +1,10 @@
 <template>
-  <div class="extra-controls-panel">
-    <BitrateBlock
+  <div class="right-controls-section">
+    <BitrateSection
       v-if="isPlayerWithBitrate"
     />
 
-    <OptionsBlock />
+    <OptionsSection />
   </div>
 </template>
 
@@ -13,14 +13,14 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import BitrateBlock from './ExtraControlsPanel/BitrateBlock.vue'
-import OptionsBlock from './ExtraControlsPanel/OptionsBlock.vue'
+import BitrateSection from './RightControlsSection/BitrateSection.vue'
+import OptionsSection from './RightControlsSection/OptionsSection.vue'
 
 export default {
-  name: 'ExtraControlsPanel',
+  name: 'RightControlsSection',
   components: {
-    BitrateBlock,
-    OptionsBlock
+    BitrateSection,
+    OptionsSection
   },
   computed: {
     ...mapState(
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.extra-controls-panel
+.right-controls-section
   @extend .d-flex, .align-items-center, .justify-content-flex-end
   flex: 0.3
 </style>

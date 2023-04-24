@@ -1,6 +1,6 @@
 <template>
   <div
-    class="player-timer"
+    class="timer-section"
     v-text="audioTime"
   />
 </template>
@@ -15,7 +15,7 @@ import {
 } from '@/helpers/formatters/dateTimeString'
 
 export default {
-  name: 'TimerPanel',
+  name: 'TimerSection',
   computed: {
     ...mapState(
       audioStore,
@@ -47,7 +47,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.player-timer
+.timer-section
   @extend .cursor-default
-  flex: 0.3
 </style>

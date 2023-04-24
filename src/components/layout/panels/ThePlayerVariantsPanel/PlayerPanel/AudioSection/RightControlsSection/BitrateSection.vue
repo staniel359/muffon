@@ -1,6 +1,6 @@
 <template>
   <BaseListContainer
-    class="bitrate-block"
+    class="bitrate-section"
   >
     <div class="item">
       <div class="content">
@@ -32,7 +32,7 @@ import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 
 export default {
-  name: 'BitrateBlock',
+  name: 'BitrateSection',
   components: {
     BaseListContainer
   },
@@ -78,16 +78,24 @@ export default {
     }
   },
   watch: {
+    playerPlaying: {
+      immediate: true,
+      handler: 'handlePlayerPlayingChange'
+    },
     audioSize: 'handleAudioSizeChange'
   },
-  mounted () {
-    if (this.audioLocal) {
-      this.getLocalAudioBitrate()
-    } else {
-      this.getRemoteAudioBitrate()
-    }
-  },
   methods: {
+    handlePlayerPlayingChange (
+      value
+    ) {
+      if (value) {
+        if (this.audioLocal) {
+          this.getLocalAudioBitrate()
+        } else {
+          this.getRemoteAudioBitrate()
+        }
+      }
+    },
     handleAudioSizeChange () {
       this.isLoading = false
     },
@@ -130,7 +138,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.bitrate-block
+.bitrate-section
   @extend .flex-full, .text-align-center
   margin: 0 0.5em
 </style>

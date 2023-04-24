@@ -425,7 +425,12 @@
   "player": {
     "variants": "Varianten ({count})",
     "audio": {
-      "bitrate": "{value} kbit/s"
+      "bitrate": "{value} kbit/s",
+      "equalizer": {
+        "decibel": "{value} dB",
+        "hertz": "{value} Hz",
+        "kilohertz": "{value} kHz"
+      }
     }
   },
   "settings": {

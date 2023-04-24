@@ -31,7 +31,10 @@ export default {
     ...mapState(
       audioStore,
       {
-        isAudioAutoplay: 'isAutoplay'
+        audioContext: 'context',
+        audioSource: 'source',
+        isAudioAutoplay: 'isAutoplay',
+        isAudioEqualizerEnabled: 'isEqualizerEnabled'
       }
     ),
     ...mapState(
@@ -42,24 +45,39 @@ export default {
     ),
     audioLink () {
       return this.playerPlaying.audio.link
+    },
+    audioOutput () {
+      return this.audioContext.destination
     }
   },
   watch: {
     playerPlaying: {
       immediate: true,
       handler: 'handlePlayerPlayingChange'
-    }
+    },
+    isAudioEqualizerEnabled:
+      'handleIsAudioEqualizerEnabledChange'
   },
   mounted () {
     this.setAudioElement(
       this.$refs.audio
     )
+
+    this.setAudioContextData()
+
+    this.setAudioSourceData()
+
+    if (!this.isAudioEqualizerEnabled) {
+      this.setAudioSourceConnection()
+    }
   },
   methods: {
     ...mapActions(
       audioStore,
       {
         setAudioElement: 'setElement',
+        setAudioContext: 'setContext',
+        setAudioSource: 'setSource',
         setAudioDuration: 'setDuration',
         setAudioProgress: 'setProgress',
         setIsAudioLoop: 'setIsLoop',
@@ -83,6 +101,15 @@ export default {
       this.setIsAudioLoop(
         false
       )
+    },
+    handleIsAudioEqualizerEnabledChange (
+      value
+    ) {
+      if (value) {
+        this.resetAudioSourceConnection()
+      } else {
+        this.setAudioSourceConnection()
+      }
     },
     handleLoadStart () {
       this.setIsAudioPlayable(
@@ -159,6 +186,39 @@ export default {
     handleEmptied () {
       this.setIsAudioPlayable(
         false
+      )
+    },
+    setAudioContextData () {
+      if (!this.audioContext) {
+        const context =
+          new AudioContext()
+
+        this.setAudioContext(
+          context
+        )
+      }
+    },
+    setAudioSourceData () {
+      if (!this.audioSource) {
+        const source =
+          this.audioContext
+            .createMediaElementSource(
+              this.$refs.audio
+            )
+
+        this.setAudioSource(
+          source
+        )
+      }
+    },
+    setAudioSourceConnection () {
+      this.audioSource.connect(
+        this.audioOutput
+      )
+    },
+    resetAudioSourceConnection () {
+      this.audioSource.disconnect(
+        this.audioOutput
       )
     },
     loadAudio () {

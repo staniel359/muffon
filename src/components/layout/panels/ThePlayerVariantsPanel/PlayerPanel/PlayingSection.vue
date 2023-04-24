@@ -11,10 +11,10 @@
 <script>
 import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
-import PlayingBlock from './PlayingPanel/PlayingBlock.vue'
+import PlayingBlock from './PlayingSection/PlayingBlock.vue'
 
 export default {
-  name: 'PlayingPanel',
+  name: 'PlayingSection',
   components: {
     BaseListContainer,
     PlayingBlock

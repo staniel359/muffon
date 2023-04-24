@@ -12,7 +12,7 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import BaseAudioVisualiser from '@/components/BaseAudioVisualiser.vue'
+import BaseAudioVisualiser from '@/components/audio/BaseAudioVisualiser.vue'
 
 export default {
   name: 'VisualizerSection',

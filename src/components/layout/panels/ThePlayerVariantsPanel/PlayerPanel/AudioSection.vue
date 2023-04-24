@@ -1,11 +1,11 @@
 <template>
-  <div class="audio-panel">
+  <div class="audio-section">
     <div class="top-section">
-      <TimerPanel />
+      <LeftControlsSection />
 
-      <MainControlsPanel />
+      <CenterControlsSection />
 
-      <ExtraControlsPanel />
+      <RightControlsSection />
     </div>
 
     <div class="bottom-section">
@@ -29,19 +29,19 @@ import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
 import queueStore from '@/stores/queue'
-import TimerPanel from './AudioPanel/TimerPanel.vue'
-import MainControlsPanel from './AudioPanel/MainControlsPanel.vue'
-import ExtraControlsPanel from './AudioPanel/ExtraControlsPanel.vue'
-import ScrobblePoint from './AudioPanel/ScrobblePoint.vue'
-import SeekerPanel from './AudioPanel/SeekerPanel.vue'
+import LeftControlsSection from './AudioSection/LeftControlsSection.vue'
+import CenterControlsSection from './AudioSection/CenterControlsSection.vue'
+import RightControlsSection from './AudioSection/RightControlsSection.vue'
+import ScrobblePoint from './AudioSection/ScrobblePoint.vue'
+import SeekerPanel from './AudioSection/SeekerPanel.vue'
 import getQueueTrack from '@/helpers/actions/queue/track/get'
 
 export default {
-  name: 'AudioPanel',
+  name: 'AudioSection',
   components: {
-    TimerPanel,
-    MainControlsPanel,
-    ExtraControlsPanel,
+    LeftControlsSection,
+    CenterControlsSection,
+    RightControlsSection,
     ScrobblePoint,
     SeekerPanel
   },
@@ -138,7 +138,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.audio-panel
+.audio-section
   @extend .flex-full, .d-flex, .flex-column, .align-items-center, .justify-content-center
   margin-left: 1em
 

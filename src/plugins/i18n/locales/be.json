@@ -425,7 +425,12 @@
   "player": {
     "variants": "Варыянты ({count})",
     "audio": {
-      "bitrate": "{value} кбіт/с"
+      "bitrate": "{value} кбіт/с",
+      "equalizer": {
+        "decibel": "{value} дБ",
+        "hertz": "{value} Гц",
+        "kilohertz": "{value} кГц"
+      }
     }
   },
   "settings": {

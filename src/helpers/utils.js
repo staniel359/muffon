@@ -31,7 +31,9 @@ export function shuffleArray (
     ...value
   ]
 
-  const maxIndex = array.length - 1
+  const maxIndex = (
+    array.length - 1
+  )
 
   for (
     let i = maxIndex;

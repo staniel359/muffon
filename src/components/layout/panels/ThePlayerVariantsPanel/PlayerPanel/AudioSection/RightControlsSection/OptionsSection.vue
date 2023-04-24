@@ -26,7 +26,7 @@ import BaseTrackOptionsPopup
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
-  name: 'OptionsBlock',
+  name: 'OptionsSection',
   components: {
     BaseTrackOptionsPopup
   },

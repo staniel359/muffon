@@ -1,25 +1,22 @@
 <template>
   <BaseSegmentContainer
     ref="player"
-    class="bottom overlay blurred sidebar the-player-panel"
+    class="bottom overlay blurred sidebar player-panel"
     :class="{
       visible: playerPlaying
     }"
   >
-    <div class="ui container main-container player-content-container">
-      <AudioElement />
+    <AudioElement />
 
-      <template
-        v-if="playerPlaying"
-      >
-        <PlayingPanel />
+    <div
+      v-if="playerPlaying"
+      class="ui container main-container player-content-container"
+    >
+      <PlayingSection />
 
-        <AudioPanel
-          :key="key"
-        />
+      <AudioSection />
 
-        <CloseButton />
-      </template>
+      <CloseButton />
     </div>
   </BaseSegmentContainer>
 </template>
@@ -32,8 +29,8 @@ import playerStore from '@/stores/player'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import AudioElement from './PlayerPanel/AudioElement.vue'
-import PlayingPanel from './PlayerPanel/PlayingPanel.vue'
-import AudioPanel from './PlayerPanel/AudioPanel.vue'
+import PlayingSection from './PlayerPanel/PlayingSection.vue'
+import AudioSection from './PlayerPanel/AudioSection.vue'
 import CloseButton from './PlayerPanel/CloseButton.vue'
 import {
   setPlayerPanel
@@ -44,24 +41,15 @@ import {
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
-import {
-  generateKey,
-  isObjectChanged
-} from '@/helpers/utils'
 
 export default {
   name: 'PlayerPanel',
   components: {
     BaseSegmentContainer,
     AudioElement,
-    PlayingPanel,
-    AudioPanel,
+    PlayingSection,
+    AudioSection,
     CloseButton
-  },
-  data () {
-    return {
-      key: null
-    }
   },
   computed: {
     ...mapState(
@@ -86,20 +74,9 @@ export default {
   },
   methods: {
     handlePlayerPlayingChange (
-      value,
-      oldValue
+      value
     ) {
-      if (value) {
-        const isChanged =
-          isObjectChanged(
-            value,
-            oldValue
-          )
-
-        if (isChanged) {
-          this.key = generateKey()
-        }
-      } else {
+      if (!value) {
         this.clearPlayer()
       }
     },
@@ -117,7 +94,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.the-player-panel
+.player-panel
   @extend .no-padding, .no-border, .visibility-visible
   overflow: visible !important
   z-index: 200 !important
@@ -127,5 +104,6 @@ export default {
 
 .player-content-container
   @extend .d-flex, .align-items-center
+  width: 720px !important
   height: $playerPanelHeight
 </style>

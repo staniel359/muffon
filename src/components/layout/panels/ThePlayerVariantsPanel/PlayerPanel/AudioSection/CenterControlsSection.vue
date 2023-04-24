@@ -1,5 +1,5 @@
 <template>
-  <div class="player-main-controls">
+  <div class="center-controls-section">
     <LoopButton />
 
     <BackwardButton />
@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import LoopButton from './MainControlsPanel/LoopButton.vue'
-import BackwardButton from './MainControlsPanel/BackwardButton.vue'
-import PlayButton from './MainControlsPanel/PlayButton.vue'
-import ForwardButton from './MainControlsPanel/ForwardButton.vue'
-import VolumeButton from './MainControlsPanel/VolumeButton.vue'
+import LoopButton from './CenterControlsSection/LoopButton.vue'
+import BackwardButton from './CenterControlsSection/BackwardButton.vue'
+import PlayButton from './CenterControlsSection/PlayButton.vue'
+import ForwardButton from './CenterControlsSection/ForwardButton.vue'
+import VolumeButton from './CenterControlsSection/VolumeButton.vue'
 
 export default {
-  name: 'MainControlsPanel',
+  name: 'CenterControlsSection',
   components: {
     LoopButton,
     BackwardButton,
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.player-main-controls
+.center-controls-section
   @extend .d-flex, .align-items-center, .justify-content-center
   flex: 0.4
   .button
