@@ -8,10 +8,10 @@ import setBounds from './setBounds'
 import setScale from './setScale'
 import {
   baseUrl
-} from '#/urls'
+} from '#/helpers/urls'
 import {
   isDevelopment
-} from '#/utils'
+} from '#/helpers/utils'
 import {
   handleNewWindow
 } from '#/handlers/app'

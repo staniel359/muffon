@@ -2,7 +2,7 @@ import ElectronStore from 'electron-store'
 import schema from './electronStore/schema'
 import {
   electronStoreKey
-} from '#/env'
+} from '#/helpers/env'
 
 const options = {
   accessPropertiesByDotNotation: false,

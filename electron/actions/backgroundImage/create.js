@@ -1,6 +1,6 @@
 import {
   generateKey
-} from '#/utils'
+} from '#/helpers/utils'
 import getPath from './getPath'
 import {
   writeFile

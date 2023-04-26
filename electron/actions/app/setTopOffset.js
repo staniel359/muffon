@@ -1,6 +1,6 @@
 import {
   isMac
-} from '#/utils'
+} from '#/helpers/utils'
 
 export default function () {
   const isFullScreen =

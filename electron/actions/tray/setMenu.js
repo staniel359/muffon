@@ -9,7 +9,7 @@ import callExit from '#/actions/app/callExit'
 import i18n from 'i18n'
 import {
   isMac
-} from '#/utils'
+} from '#/helpers/utils'
 
 export default function () {
   const isVisible =

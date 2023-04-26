@@ -3,7 +3,7 @@ import {
 } from 'discord-rpc'
 import {
   discordClientId
-} from '#/env'
+} from '#/helpers/env'
 
 export default async function () {
   const options = {

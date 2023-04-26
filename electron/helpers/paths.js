@@ -11,7 +11,7 @@ import {
 import {
   isDevelopment,
   createFolderIfNotExists
-} from '#/utils'
+} from '#/helpers/utils'
 
 function getDirectory () {
   const fileUrl = import.meta.url
@@ -37,6 +37,7 @@ export function formatFileRootPath (
 
   return joinPath(
     directory,
+    '..',
     '..',
     filePath
   )

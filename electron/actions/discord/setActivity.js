@@ -1,9 +1,9 @@
 import {
   appName
-} from '#/utils'
+} from '#/helpers/utils'
 import {
   homepageUrl
-} from '#/urls'
+} from '#/helpers/urls'
 
 export default function (
   {

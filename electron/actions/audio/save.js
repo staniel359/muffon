@@ -1,9 +1,9 @@
 import {
   generateKey
-} from '#/utils'
+} from '#/helpers/utils'
 import {
   audioFolderPath
-} from '#/paths'
+} from '#/helpers/paths'
 import {
   download
 } from 'electron-dl'
@@ -11,7 +11,7 @@ import encrypt from './encrypt'
 import getPath from './getPath'
 import {
   currentTime as formatCurrentTime
-} from '#/formatters'
+} from '#/helpers/formatters'
 
 export default function (
   {

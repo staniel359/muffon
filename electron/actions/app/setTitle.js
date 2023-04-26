@@ -1,6 +1,6 @@
 import {
   appName
-} from '#/utils'
+} from '#/helpers/utils'
 
 export default function (
   value

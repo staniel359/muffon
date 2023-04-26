@@ -9,7 +9,7 @@ import setEvents from './setEvents'
 import setup from './setup'
 import {
   appName
-} from '#/utils'
+} from '#/helpers/utils'
 
 export default function () {
   setupI18n()

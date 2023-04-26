@@ -5,15 +5,15 @@ import {
 } from 'electron'
 import {
   windowIcon
-} from '#/icons'
+} from '#/helpers/icons'
 import {
   isDevelopment,
   isLinux,
   isShowDevTools
-} from '#/utils'
+} from '#/helpers/utils'
 import {
   baseUrl
-} from '#/urls'
+} from '#/helpers/urls'
 import getElectronStoreKey from '#/actions/electronStore/getKey'
 import show from './show'
 import hide from './hide'

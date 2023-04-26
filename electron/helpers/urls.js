@@ -1,9 +1,9 @@
 import {
   isDevelopment
-} from '#/utils'
+} from '#/helpers/utils'
 import {
   productionPath
-} from '#/paths'
+} from '#/helpers/paths'
 
 const developmentUrl =
   'http://localhost:3000/'

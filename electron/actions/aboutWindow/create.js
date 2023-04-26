@@ -3,10 +3,10 @@ import {
 } from 'electron'
 import {
   windowIcon
-} from '#/icons'
+} from '#/helpers/icons'
 import {
   baseUrl
-} from '#/urls'
+} from '#/helpers/urls'
 
 function handleClose (
   event

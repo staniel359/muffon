@@ -1,7 +1,7 @@
 import i18n from 'i18n'
 import {
   formatFileRootPath
-} from '#/paths'
+} from '#/helpers/paths'
 import getElectronStoreKey from '#/actions/electronStore/getKey'
 
 // i18n

@@ -3,7 +3,7 @@ import {
 } from 'path'
 import {
   audioFolderPath
-} from '#/paths'
+} from '#/helpers/paths'
 
 export default function (
   fileName

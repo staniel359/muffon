@@ -3,7 +3,7 @@ import {
 } from 'electron'
 import {
   trayIcon
-} from '#/icons'
+} from '#/helpers/icons'
 import setMenu from './setMenu'
 import setTooltip from './setTooltip'
 
