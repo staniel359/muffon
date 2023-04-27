@@ -1,3 +1,7 @@
+import {
+  generateKey
+} from '@/helpers/utils'
+
 export default {
   props: {
     scope: {
@@ -12,6 +16,11 @@ export default {
   emits: [
     'select'
   ],
+  data () {
+    return {
+      key: null
+    }
+  },
   computed: {
     isSourceHasScope () {
       return this.sourceScopes.includes(
@@ -31,6 +40,8 @@ export default {
   },
   methods: {
     handleScopeChange () {
+      this.key = generateKey()
+
       if (!this.isSourceHasScope) {
         this.select(
           this.firstSource

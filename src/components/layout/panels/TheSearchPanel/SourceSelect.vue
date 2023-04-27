@@ -1,6 +1,7 @@
 <template>
   <div class="source-select-container">
     <BaseDropdown
+      :key="key"
       class="floating scrolling"
       menu-direction="left"
       :options="sources"
@@ -26,14 +27,11 @@ export default {
     sourceSelectMixin
   ],
   computed: {
-    sources () {
-      return sources
-    },
     firstSource () {
-      return this.sourcesWithScope[0].id
+      return this.sources[0].id
     },
-    sourcesWithScope () {
-      return this.sources.filter(
+    sources () {
+      return sources.filter(
         this.isSourceWithScope
       )
     }

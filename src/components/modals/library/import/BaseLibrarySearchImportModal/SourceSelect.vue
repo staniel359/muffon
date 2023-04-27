@@ -1,5 +1,6 @@
 <template>
   <BaseDropdown
+    :key="key"
     class="floating scrolling source-select-container"
     menu-direction="left"
     :options="sources"
