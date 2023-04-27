@@ -1,6 +1,7 @@
 <template>
   <BaseSegmentContainer
     v-if="currentProfileId"
+    ref="segment"
     :is-change-transparency="false"
   >
     <BaseAddButton
@@ -60,14 +61,29 @@ export default {
       }
     )
   },
+  watch: {
+    isShowForm: 'handleIsShowFormChange'
+  },
   methods: {
     handleAddButtonClick () {
       this.isShowForm = !this.isShowForm
+    },
+    handleIsShowFormChange (
+      value
+    ) {
+      if (value) {
+        this.focus()
+      }
     },
     handleSuccess () {
       this.$emit(
         'success'
       )
+    },
+    focus () {
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }
