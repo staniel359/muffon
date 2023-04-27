@@ -1,12 +1,19 @@
 import ElectronStore from 'electron-store'
 import schema from './electronStore/schema'
 import {
+  isDevelopment
+} from '#/helpers/utils'
+import {
   electronStoreKey
 } from '#/helpers/env'
 
+const encryptionKey = (
+  isDevelopment ? null : electronStoreKey
+)
+
 const options = {
   accessPropertiesByDotNotation: false,
-  encryptionKey: electronStoreKey,
+  encryptionKey,
   schema
 }
 
