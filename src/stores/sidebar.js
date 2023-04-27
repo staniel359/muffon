@@ -5,20 +5,20 @@ import {
 const data = {
   state () {
     return {
-      isWithFeedItem: true,
-      isWithConversationsItem: true,
-      isWithLibraryItem: true,
-      isWithRecommendationsItem: true,
-      isWithSavedTracksItem: true,
-      isWithPlaylistsItem: true,
-      isWithFavoritesItem: true,
-      isWithBookmarksItem: true,
-      isWithTopItem: true,
-      isWithReleasesItem: true,
-      isWithRadioItem: true,
-      isWithMultitagItem: true,
-      isWithCommunitiesItem: true,
-      isWithHistoryItem: true
+      isWithFeedItem: null,
+      isWithConversationsItem: null,
+      isWithLibraryItem: null,
+      isWithRecommendationsItem: null,
+      isWithSavedTracksItem: null,
+      isWithPlaylistsItem: null,
+      isWithFavoritesItem: null,
+      isWithBookmarksItem: null,
+      isWithTopItem: null,
+      isWithReleasesItem: null,
+      isWithRadioItem: null,
+      isWithMultitagItem: null,
+      isWithCommunitiesItem: null,
+      isWithHistoryItem: null
     }
   },
   actions: {

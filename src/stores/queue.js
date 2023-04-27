@@ -6,13 +6,13 @@ const data = {
   state () {
     return {
       currentTrackId: null,
-      isAutoplay: true,
+      isAutoplay: null,
       isGettingPrevious: false,
       isGettingNext: false,
-      isShuffle: false,
-      tracks: [],
-      tracksShuffled: [],
-      isClearOnPlayerClose: false
+      isShuffle: null,
+      tracks: null,
+      tracksShuffled: null,
+      isClearOnPlayerClose: null
     }
   },
   getters: {

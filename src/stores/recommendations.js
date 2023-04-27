@@ -5,9 +5,9 @@ import {
 const data = {
   state () {
     return {
-      isHideLibraryArtists: false,
-      isHideListenedArtists: false,
-      tracksCount: 0
+      isHideLibraryArtists: null,
+      isHideListenedArtists: null,
+      tracksCount: null
     }
   },
   actions: {

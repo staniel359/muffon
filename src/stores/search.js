@@ -5,8 +5,8 @@ import {
 const data = {
   state () {
     return {
-      source: 'lastfm',
-      scope: 'artists'
+      source: null,
+      scope: null
     }
   },
   actions: {

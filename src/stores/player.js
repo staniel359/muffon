@@ -8,14 +8,14 @@ const data = {
       playing: null,
       currentTrackId: null,
       currentVariantId: null,
-      isWithBitrate: false,
-      isWithDiscordRichPresence: false,
-      isWithScrobbling: false,
-      isWithScrobbleNotifications: false,
-      scrobblePercent: 50,
-      variants: [],
-      isWithAlbum: false,
-      audioSources: []
+      isWithBitrate: null,
+      isWithDiscordRichPresence: null,
+      isWithScrobbling: null,
+      isWithScrobbleNotifications: null,
+      scrobblePercent: null,
+      variants: null,
+      isWithAlbum: null,
+      audioSources: null
     }
   },
   getters: {

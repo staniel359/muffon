@@ -5,7 +5,7 @@ import {
 const data = {
   state () {
     return {
-      isAutoplay: false
+      isAutoplay: null
     }
   },
   actions: {

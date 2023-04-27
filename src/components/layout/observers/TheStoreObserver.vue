@@ -14,6 +14,9 @@ import {
 
 export default {
   name: 'TheStoreObserver',
+  emits: [
+    'init'
+  ],
   mounted () {
     ipcRenderer.on(
       'update-store',
@@ -40,6 +43,10 @@ export default {
     ) {
       this.setStoreData(
         data
+      )
+
+      this.$emit(
+        'init'
       )
     },
     setStoreData (

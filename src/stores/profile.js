@@ -7,11 +7,11 @@ const data = {
     return {
       info: null,
       token: null,
-      isRemember: false,
-      language: 'en',
-      isShowPlaying: false,
-      timezone: 'UTC',
-      isAnonymous: false
+      isRemember: null,
+      language: null,
+      isShowPlaying: null,
+      timezone: null,
+      isAnonymous: null
     }
   },
   getters: {

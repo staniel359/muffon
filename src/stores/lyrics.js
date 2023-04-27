@@ -5,7 +5,7 @@ import {
 const data = {
   state () {
     return {
-      isWithAnnotations: false
+      isWithAnnotations: null
     }
   },
   actions: {

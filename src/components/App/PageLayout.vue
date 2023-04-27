@@ -1,6 +1,4 @@
 <template>
-  <TheStoreObserver />
-
   <RootPageLayout
     v-if="isRootPage"
   />
@@ -16,32 +14,29 @@
 import {
   defineAsyncComponent
 } from 'vue'
-import TheStoreObserver
-  from '@/components/layout/observers/TheStoreObserver.vue'
 
 const RootPageLayout =
   defineAsyncComponent(
     () => import(
-      './pages/layout/RootPageLayout.vue'
+      './PageLayout/RootPageLayout.vue'
     )
   )
 const AboutPageLayout =
   defineAsyncComponent(
     () => import(
-      './pages/layout/AboutPageLayout.vue'
+      './PageLayout/AboutPageLayout.vue'
     )
   )
 const DefaultPageLayout =
   defineAsyncComponent(
     () => import(
-      './pages/layout/DefaultPageLayout.vue'
+      './PageLayout/DefaultPageLayout.vue'
     )
   )
 
 export default {
-  name: 'App',
+  name: 'PageLayout',
   components: {
-    TheStoreObserver,
     RootPageLayout,
     AboutPageLayout,
     DefaultPageLayout
@@ -49,16 +44,19 @@ export default {
   computed: {
     isRootPage () {
       return (
-        this.$route.path === '/'
+        this.currentPath === '/'
       )
+    },
+    currentPath () {
+      return this.$route.path
     },
     isAboutPage () {
       return (
-        this.$route.path === '/about'
+        this.currentPath === '/about'
       )
     }
   }
 }
 </script>
 
-<style lang="sass"></style>
+<style lang="sass" scoped></style>
