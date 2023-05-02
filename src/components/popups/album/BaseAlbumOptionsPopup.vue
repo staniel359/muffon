@@ -3,92 +3,102 @@
     v-if="isRender"
     :is-transparent="isTransparent"
   >
-    <PageOption
-      v-if="isWithPageOption"
-      :album-data="albumData"
-      @click="handleLinkClick"
-    />
-
-    <LibraryOption
-      v-if="isWithLibraryOption"
-      :library-id="libraryId"
-      :album-data="albumData"
-      @link-click="handleLinkClick"
-    />
-
     <template
-      v-if="isWithPlaylistOption"
+      #default="slotProps"
     >
-      <BasePlaylistOption
-        @click="handlePlaylistOptionClick"
+      <PageOption
+        v-if="isWithPageOption"
+        :album-data="albumData"
+        @click="handleLinkClick"
       />
 
-      <BasePlaylistsModal
-        ref="playlistsModal"
+      <LibraryOption
+        v-if="isRenderLibraryOption"
+        :library-id="libraryId"
+        :album-data="albumData"
+        @link-click="handleLinkClick"
+      />
+
+      <template
+        v-if="isRenderPlaylistOption"
+      >
+        <BasePlaylistOption
+          @click="handlePlaylistOptionClick"
+        />
+
+        <BasePlaylistsModal
+          ref="playlistsModal"
+          model="album"
+          :model-data="albumData"
+          :tracks="playlistTracks"
+        />
+      </template>
+
+      <FavoriteOption
+        v-if="isRenderFavoriteOption"
+        :favorite-id="favoriteId"
+        :album-data="albumData"
+      />
+
+      <BookmarkOption
+        v-if="isRenderBookmarkOption"
+        :bookmark-id="bookmarkId"
+        :album-data="albumData"
+      />
+
+      <ListenedOption
+        v-if="isRenderListenedOption"
+        :listened-id="listenedId"
+        :album-data="albumData"
+      />
+
+      <QueueOption
+        v-if="isWithQueueOption"
+        :album-data="albumData"
+      />
+
+      <BaseShareOption
+        v-if="isRenderShareOption"
+        :share-data="shareData"
+      />
+
+      <BaseExternalLinkOption
+        v-if="isWithExternalLinkOption && slotProps.isVisible"
         model="album"
         :model-data="albumData"
-        :tracks="playlistTracks"
-      />
-    </template>
-
-    <FavoriteOption
-      v-if="isWithFavoriteOption"
-      :favorite-id="favoriteId"
-      :album-data="albumData"
-    />
-
-    <BookmarkOption
-      v-if="isWithBookmarkOption"
-      :bookmark-id="bookmarkId"
-      :album-data="albumData"
-    />
-
-    <ListenedOption
-      v-if="isWithListenedOption"
-      :listened-id="listenedId"
-      :album-data="albumData"
-    />
-
-    <QueueOption
-      v-if="isWithQueueOption"
-      :album-data="albumData"
-    />
-
-    <BaseShareOption
-      v-if="isWithShareOption"
-      :share-data="shareData"
-    />
-
-    <template
-      v-if="isWithDeleteOption"
-    >
-      <BaseDeleteOption
-        @click="handleDeleteOptionClick"
       />
 
-      <BaseLibraryDeleteModal
-        v-if="isLinkToLibrary"
-        ref="deleteModal"
-        model="album"
-        :profile-id="profileId"
-        :model-data="albumData"
-        :is-with-redirect="isDeleteWithRedirect"
-        @success="handleDeleted"
-      />
-      <BaseBookmarkDeleteModal
-        v-else-if="isBookmark"
-        ref="deleteModal"
-        model="album"
-        :model-data="albumData"
-        @success="handleDeleted"
-      />
-      <BaseFavoriteDeleteModal
-        v-else-if="isFavorite"
-        ref="deleteModal"
-        model="album"
-        :model-data="albumData"
-        @success="handleDeleted"
-      />
+      <template
+        v-if="isRenderDeleteOption"
+      >
+        <BaseDeleteOption
+          @click="handleDeleteOptionClick"
+        />
+
+        <BaseLibraryDeleteModal
+          v-if="isLinkToLibrary"
+          ref="deleteModal"
+          model="album"
+          :profile-id="profileId"
+          :model-data="albumData"
+          :is-with-redirect="isDeleteWithRedirect"
+          @success="handleDeleted"
+        />
+        <BaseBookmarkDeleteModal
+          v-else-if="isBookmark"
+          ref="deleteModal"
+          model="album"
+          :model-data="albumData"
+          @success="handleDeleted"
+        />
+        <BaseFavoriteDeleteModal
+          v-else-if="isFavorite"
+          ref="deleteModal"
+          model="album"
+          :model-data="albumData"
+          @success="handleDeleted"
+        />
+      </template>
     </template>
   </BaseOptionsPopupContainer>
 </template>
@@ -112,6 +122,8 @@ import ListenedOption from './BaseAlbumOptionsPopup/ListenedOption.vue'
 import QueueOption from './BaseAlbumOptionsPopup/QueueOption.vue'
 import BaseShareOption
   from '@/components/popups/options/BaseShareOption.vue'
+import BaseExternalLinkOption
+  from '@/components/popups/options/BaseExternalLinkOption.vue'
 import BaseDeleteOption
   from '@/components/popups/options/BaseDeleteOption.vue'
 import BaseLibraryDeleteModal
@@ -140,6 +152,7 @@ export default {
     ListenedOption,
     QueueOption,
     BaseShareOption,
+    BaseExternalLinkOption,
     BaseDeleteOption,
     BaseLibraryDeleteModal,
     BaseBookmarkDeleteModal,
@@ -169,6 +182,7 @@ export default {
     isWithListenedOption: Boolean,
     isWithQueueOption: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
     isDeleteWithRedirect: Boolean
   },
@@ -192,19 +206,62 @@ export default {
     isWithProfileOptions () {
       return (
         this.isWithPageOption ||
-          this.isWithLibraryOption ||
-          this.isWithPlaylistOption ||
-          this.isWithFavoriteOption ||
-          this.isWithBookmarkOption ||
-          this.isWithListenedOption ||
+          this.isRenderLibraryOption ||
+          this.isRenderPlaylistOption ||
+          this.isRenderFavoriteOption ||
+          this.isRenderBookmarkOption ||
+          this.isRenderListenedOption ||
           this.isWithQueueOption ||
-          this.isWithShareOption ||
-          this.isWithDeleteOption
+          this.isRenderShareOption ||
+          this.isWithExternalLinkOption ||
+          this.isRenderDeleteOption
+      )
+    },
+    isRenderLibraryOption () {
+      return (
+        this.profileId &&
+          this.isWithLibraryOption
+      )
+    },
+    isRenderPlaylistOption () {
+      return (
+        this.profileId &&
+          this.isWithPlaylistOption
+      )
+    },
+    isRenderFavoriteOption () {
+      return (
+        this.profileId &&
+          this.isWithFavoriteOption
+      )
+    },
+    isRenderBookmarkOption () {
+      return (
+        this.profileId &&
+          this.isWithBookmarkOption
+      )
+    },
+    isRenderListenedOption () {
+      return (
+        this.profileId &&
+          this.isWithListenedOption
+      )
+    },
+    isRenderShareOption () {
+      return (
+        this.profileId &&
+          this.isWithShareOption
       )
     },
     shareData () {
       return formatAlbumShareData(
         this.albumData
+      )
+    },
+    isRenderDeleteOption () {
+      return (
+        this.profileId &&
+          this.isWithDeleteOption
       )
     },
     playlistTracks () {

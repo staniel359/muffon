@@ -128,6 +128,7 @@
       :is-with-playlist-option="isWithPlaylistOption"
       :is-with-save-option="isWithSaveOption"
       :is-with-share-option="isWithShareOption"
+      :is-with-external-link-option="isWithExternalLinkOption"
       :is-with-delete-option="isWithDeleteOption"
       :is-clearable="isClearable"
       @link-click="handleLinkClick"
@@ -229,6 +230,7 @@ export default {
     isWithPlaylistOption: Boolean,
     isWithSaveOption: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
     isWithClearButton: Boolean,
     isWithCreated: Boolean,

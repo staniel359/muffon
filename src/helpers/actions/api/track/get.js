@@ -59,8 +59,12 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.trackData =
+    const trackData =
       response.data.track
+
+    this.trackData = trackData
+
+    return trackData
   }
 
   return getRequest.bind(

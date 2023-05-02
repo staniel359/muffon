@@ -6,7 +6,7 @@
       #default="slotProps"
     >
       <template
-        v-if="isWithAddOption"
+        v-if="isRenderAddOption"
       >
         <AddOption
           v-if="slotProps.isVisible"
@@ -70,13 +70,13 @@ export default {
     ),
     isRender () {
       return (
-        this.profileId &&
-          this.isWithProfileOptions
+        this.isRenderAddOption
       )
     },
-    isWithProfileOptions () {
+    isRenderAddOption () {
       return (
-        this.isWithAddOption
+        this.profileId &&
+          this.isWithAddOption
       )
     },
     isAccountConnected () {

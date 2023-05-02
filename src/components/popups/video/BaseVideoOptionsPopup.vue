@@ -3,50 +3,60 @@
     v-if="isRender"
     :is-transparent="isTransparent"
   >
-    <FavoriteOption
-      v-if="isWithFavoriteOption"
-      :favorite-id="favoriteId"
-      :video-data="videoData"
-    />
-
-    <BookmarkOption
-      v-if="isWithBookmarkOption"
-      :bookmark-id="bookmarkId"
-      :video-data="videoData"
-    />
-
-    <WatchedOption
-      v-if="isWithWatchedOption"
-      :watched-id="watchedId"
-      :video-data="videoData"
-    />
-
-    <BaseShareOption
-      v-if="isWithShareOption"
-      :share-data="shareData"
-    />
-
     <template
-      v-if="isWithDeleteOption"
+      #default="slotProps"
     >
-      <BaseDeleteOption
-        @click="handleDeleteOptionClick"
+      <FavoriteOption
+        v-if="isRenderFavoriteOption"
+        :favorite-id="favoriteId"
+        :video-data="videoData"
       />
 
-      <BaseFavoriteDeleteModal
-        v-if="isFavorite"
-        ref="deleteModal"
+      <BookmarkOption
+        v-if="isRenderBookmarkOption"
+        :bookmark-id="bookmarkId"
+        :video-data="videoData"
+      />
+
+      <WatchedOption
+        v-if="isRenderWatchedOption"
+        :watched-id="watchedId"
+        :video-data="videoData"
+      />
+
+      <BaseShareOption
+        v-if="isRenderShareOption"
+        :share-data="shareData"
+      />
+
+      <BaseExternalLinkOption
+        v-if="isWithExternalLinkOption && slotProps.isVisible"
         model="video"
         :model-data="videoData"
-        @success="handleDeleted"
       />
-      <BaseBookmarkDeleteModal
-        v-else-if="isBookmark"
-        ref="deleteModal"
-        model="video"
-        :model-data="videoData"
-        @success="handleDeleted"
-      />
+
+      <template
+        v-if="isRenderDeleteOption"
+      >
+        <BaseDeleteOption
+          @click="handleDeleteOptionClick"
+        />
+
+        <BaseFavoriteDeleteModal
+          v-if="isFavorite"
+          ref="deleteModal"
+          model="video"
+          :model-data="videoData"
+          @success="handleDeleted"
+        />
+        <BaseBookmarkDeleteModal
+          v-else-if="isBookmark"
+          ref="deleteModal"
+          model="video"
+          :model-data="videoData"
+          @success="handleDeleted"
+        />
+      </template>
     </template>
   </BaseOptionsPopupContainer>
 </template>
@@ -63,6 +73,8 @@ import BookmarkOption from './BaseVideoOptionsPopup/BookmarkOption.vue'
 import WatchedOption from './BaseVideoOptionsPopup/WatchedOption.vue'
 import BaseShareOption
   from '@/components/popups/options/BaseShareOption.vue'
+import BaseExternalLinkOption
+  from '@/components/popups/options/BaseExternalLinkOption.vue'
 import BaseDeleteOption
   from '@/components/popups/options/BaseDeleteOption.vue'
 import BaseFavoriteDeleteModal
@@ -81,6 +93,7 @@ export default {
     WatchedOption,
     BaseOptionsPopupContainer,
     BaseShareOption,
+    BaseExternalLinkOption,
     BaseDeleteOption,
     BaseFavoriteDeleteModal,
     BaseBookmarkDeleteModal
@@ -100,6 +113,7 @@ export default {
     isWithBookmarkOption: Boolean,
     isWithWatchedOption: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean
   },
   emits: [
@@ -114,21 +128,47 @@ export default {
     ),
     isRender () {
       return (
-        this.profileId &&
-          this.isWithProfileOptions
+        this.isRenderFavoriteOption ||
+          this.isRenderBookmarkOption ||
+          this.isRenderWatchedOption ||
+          this.isRenderShareOption ||
+          this.isWithExternalLinkOption ||
+          this.isRenderDeleteOption
       )
     },
-    isWithProfileOptions () {
+    isRenderFavoriteOption () {
       return (
-        this.isWithFavoriteOption ||
-          this.isWithBookmarkOption ||
-          this.isWithWatchedOption ||
+        this.profileId &&
+          this.isWithFavoriteOption
+      )
+    },
+    isRenderBookmarkOption () {
+      return (
+        this.profileId &&
+          this.isWithBookmarkOption
+      )
+    },
+    isRenderWatchedOption () {
+      return (
+        this.profileId &&
+          this.isWithWatchedOption
+      )
+    },
+    isRenderShareOption () {
+      return (
+        this.profileId &&
           this.isWithShareOption
       )
     },
     shareData () {
       return formatVideoShareData(
         this.videoData
+      )
+    },
+    isRenderDeleteOption () {
+      return (
+        this.profileId &&
+          this.isWithDeleteOption
       )
     }
   },

@@ -184,6 +184,11 @@
       "bookmarks": "Lesezeichen löschen",
       "listened": "Von Angehörten löschen",
       "watched": "Von angeschauten löschen"
+    },
+    "externalLink": {
+      "open": "Externen Link öffnen",
+      "original": "Original",
+      "streaming": "Streaming"
     }
   },
   "links": {

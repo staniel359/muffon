@@ -75,10 +75,14 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.albumData =
+    const albumData =
       response.data[
         albumType
       ]
+
+    this.albumData = albumData
+
+    return albumData
   }
 
   return getRequest.bind(

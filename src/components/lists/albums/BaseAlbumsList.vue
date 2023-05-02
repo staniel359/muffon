@@ -16,6 +16,7 @@
     :is-with-bookmark-option="isWithBookmarkOption"
     :is-with-favorite-option="isWithFavoriteOption"
     :is-with-share-option="isWithShareOption"
+    :is-with-external-link-option="isWithExternalLinkOption"
     :is-with-delete-option="isWithDeleteOption"
     :is-with-created="isWithCreated"
     :is-bookmark="isBookmark"
@@ -52,6 +53,7 @@ export default {
     isWithBookmarkOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
     isWithCreated: Boolean,
     isBookmark: Boolean,

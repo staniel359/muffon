@@ -3,11 +3,15 @@
     ref="item"
     class="item"
     :class="{
-      disabled: isLoading
+      disabled: (
+        isDisabled || isLoading
+      )
     }"
     @click="handleClick"
+    @mouseenter="handleMouseEnter"
   >
     <BaseIcon
+      v-if="icon"
       :class="{
         red: (
           isIconRed || isError
@@ -87,11 +91,18 @@ export default {
     isError: Boolean,
     options: Array,
     isIconRed: Boolean,
-    isIconColored: Boolean
+    isIconColored: Boolean,
+    isDisabled: Boolean
   },
   emits: [
-    'click'
+    'click',
+    'activate'
   ],
+  data () {
+    return {
+      isActivated: false
+    }
+  },
   computed: {
     element () {
       return this.$refs.item
@@ -103,6 +114,9 @@ export default {
         }
       )
     }
+  },
+  watch: {
+    isActivated: 'handleIsActivatedChange'
   },
   methods: {
     handleClick () {
@@ -116,6 +130,18 @@ export default {
       this.changeSubmenuActive(
         value
       )
+    },
+    handleMouseEnter () {
+      this.isActivated = true
+    },
+    handleIsActivatedChange (
+      value
+    ) {
+      if (value) {
+        this.$emit(
+          'activate'
+        )
+      }
     }
   }
 }

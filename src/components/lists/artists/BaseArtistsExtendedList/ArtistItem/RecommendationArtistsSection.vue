@@ -15,6 +15,7 @@
     is-link-to-library
     is-with-page-option
     is-with-share-option
+    is-with-external-link-option
   />
 
   <BaseMoreButton

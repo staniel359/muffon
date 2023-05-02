@@ -19,6 +19,7 @@
         class="video-options"
         :video-data="videoData"
         is-with-share-option
+        is-with-external-link-option
       />
     </div>
   </div>

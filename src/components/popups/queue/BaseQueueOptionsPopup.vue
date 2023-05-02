@@ -1,7 +1,7 @@
 <template>
   <BaseOptionsPopupContainer>
     <template
-      v-if="profileId"
+      v-if="isRenderPlaylistOption"
     >
       <BasePlaylistOption
         @click="handlePlaylistOptionClick"
@@ -51,7 +51,10 @@ export default {
       {
         queueTracksComputed: 'tracksComputed'
       }
-    )
+    ),
+    isRenderPlaylistOption () {
+      return this.profileId
+    }
   },
   methods: {
     handlePlaylistOptionClick () {

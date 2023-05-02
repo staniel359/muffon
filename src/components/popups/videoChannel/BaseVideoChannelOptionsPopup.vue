@@ -2,31 +2,41 @@
   <BaseOptionsPopupContainer
     v-if="isRender"
   >
-    <BookmarkOption
-      v-if="isWithBookmarkOption"
-      :bookmark-id="bookmarkId"
-      :channel-data="channelData"
-    />
-
-    <BaseShareOption
-      v-if="isWithShareOption"
-      :share-data="shareData"
-    />
-
     <template
-      v-if="isWithDeleteOption"
+      #default="slotProps"
     >
-      <BaseDeleteOption
-        @click="handleDeleteOptionClick"
+      <BookmarkOption
+        v-if="isRenderBookmarkOption"
+        :bookmark-id="bookmarkId"
+        :channel-data="channelData"
       />
 
-      <BaseBookmarkDeleteModal
-        v-if="isBookmark"
-        ref="deleteModal"
+      <BaseShareOption
+        v-if="isRenderShareOption"
+        :share-data="shareData"
+      />
+
+      <BaseExternalLinkOption
+        v-if="isWithExternalLinkOption && slotProps.isVisible"
         model="videoChannel"
         :model-data="channelData"
-        @success="handleDeleted"
       />
+
+      <template
+        v-if="isRenderDeleteOption"
+      >
+        <BaseDeleteOption
+          @click="handleDeleteOptionClick"
+        />
+
+        <BaseBookmarkDeleteModal
+          v-if="isBookmark"
+          ref="deleteModal"
+          model="videoChannel"
+          :model-data="channelData"
+          @success="handleDeleted"
+        />
+      </template>
     </template>
   </BaseOptionsPopupContainer>
 </template>
@@ -42,6 +52,8 @@ import BookmarkOption
   from './BaseVideoChannelOptionsPopup/BookmarkOption.vue'
 import BaseShareOption
   from '@/components/popups/options/BaseShareOption.vue'
+import BaseExternalLinkOption
+  from '@/components/popups/options/BaseExternalLinkOption.vue'
 import BaseDeleteOption
   from '@/components/popups/options/BaseDeleteOption.vue'
 import BaseBookmarkDeleteModal
@@ -56,6 +68,7 @@ export default {
     BaseOptionsPopupContainer,
     BookmarkOption,
     BaseShareOption,
+    BaseExternalLinkOption,
     BaseDeleteOption,
     BaseBookmarkDeleteModal
   },
@@ -65,6 +78,7 @@ export default {
     isBookmark: Boolean,
     isWithBookmarkOption: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean
   },
   emits: [
@@ -79,19 +93,33 @@ export default {
     ),
     isRender () {
       return (
-        this.profileId &&
-          this.isWithProfileOptions
+        this.isRenderBookmarkOption ||
+          this.isRenderShareOption ||
+          this.isWithExternalLinkOption ||
+          this.isRenderDeleteOption
       )
     },
-    isWithProfileOptions () {
+    isRenderBookmarkOption () {
       return (
-        this.isWithBookmarkOption ||
+        this.profileId &&
+          this.isWithBookmarkOption
+      )
+    },
+    isRenderShareOption () {
+      return (
+        this.profileId &&
           this.isWithShareOption
       )
     },
     shareData () {
       return formatVideoChannelShareData(
         this.channelData
+      )
+    },
+    isRenderDeleteOption () {
+      return (
+        this.profileId &&
+          this.isWithDeleteOption
       )
     }
   },

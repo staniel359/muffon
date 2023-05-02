@@ -62,6 +62,7 @@
         :is-bookmark="isBookmark"
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-share-option="isWithShareOption"
+        :is-with-external-link-option="isWithExternalLinkOption"
         :is-with-delete-option="isWithDeleteOption"
         @deleted="handleDeleted"
       />
@@ -125,6 +126,7 @@ export default {
     isBookmark: Boolean,
     isWithBookmarkOption: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
     isWithClearButton: Boolean,
     isWithModelIcon: Boolean,

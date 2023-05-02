@@ -6,7 +6,7 @@
       #default="slotProps"
     >
       <template
-        v-if="isWithAddOption"
+        v-if="isRenderAddOption"
       >
         <AddOption
           v-if="slotProps.isVisible"
@@ -27,12 +27,12 @@
       </template>
 
       <BaseShareOption
-        v-if="isWithShareOption"
+        v-if="isRenderShareOption"
         :share-data="shareData"
       />
 
       <template
-        v-if="isWithEditOption"
+        v-if="isRenderEditOption"
       >
         <BaseEditOption
           @click="handleEditOptionClick"
@@ -45,7 +45,7 @@
       </template>
 
       <template
-        v-if="isWithDeleteOption"
+        v-if="isRenderDeleteOption"
       >
         <BaseDeleteOption
           @click="handleDeleteOptionClick"
@@ -133,21 +133,39 @@ export default {
     ),
     isRender () {
       return (
-        this.profileId &&
-          this.isWithProfileOptions
+        this.isRenderAddOption ||
+          this.isRenderShareOption ||
+          this.isRenderEditOption ||
+          this.isRenderDeleteOption
       )
     },
-    isWithProfileOptions () {
+    isRenderAddOption () {
       return (
-        this.isWithAddOption ||
-          this.isWithShareOption ||
-          this.isWithEditOption ||
-          this.isWithDeleteOption
+        this.profileId &&
+          this.isWithAddOption
+      )
+    },
+    isRenderShareOption () {
+      return (
+        this.profileId &&
+          this.isWithShareOption
       )
     },
     shareData () {
       return formatPlaylistShareData(
         this.playlistData
+      )
+    },
+    isRenderEditOption () {
+      return (
+        this.profileId &&
+          this.isWithEditOption
+      )
+    },
+    isRenderDeleteOption () {
+      return (
+        this.profileId &&
+          this.isWithDeleteOption
       )
     },
     playlistId () {

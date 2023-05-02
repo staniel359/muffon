@@ -19,7 +19,6 @@
         is-with-artist-name
         is-with-album-title
         is-with-source
-        is-with-source-option
         is-with-clear-button
         @link-click="handleLinkClick"
         @clear-button-click="handleClearButtonClick"

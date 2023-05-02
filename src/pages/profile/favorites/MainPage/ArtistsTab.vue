@@ -19,6 +19,7 @@
         is-with-bookmark-option
         is-with-listened-option
         is-with-share-option
+        is-with-external-link-option
       />
     </template>
   </BaseProfileFavoritesTabContainer>

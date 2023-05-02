@@ -18,6 +18,7 @@
         is-favorite
         is-with-watched-option
         is-with-share-option
+        is-with-external-link-option
       />
     </template>
   </BaseProfileFavoritesTabContainer>

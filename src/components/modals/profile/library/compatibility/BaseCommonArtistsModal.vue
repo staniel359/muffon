@@ -23,6 +23,7 @@
         is-with-bookmark-option
         is-with-listened-option
         is-with-share-option
+        is-with-external-link-option
         @link-click="handleLinkClick"
       />
     </template>

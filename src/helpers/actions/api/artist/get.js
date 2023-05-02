@@ -73,11 +73,10 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    const {
-      artist
-    } = response.data
+    const artistData =
+      response.data.artist
 
-    this.artistData = artist
+    this.artistData = artistData
 
     const isTracksScope = (
       scope === 'tracks'
@@ -85,10 +84,12 @@ export default function (
 
     if (isTracksScope) {
       this.topTrackCount ||=
-        artist
+        artistData
           .tracks[0]
           ?.listeners_count
     }
+
+    return artistData
   }
 
   return getRequest.bind(

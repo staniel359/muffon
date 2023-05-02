@@ -21,6 +21,7 @@
       is-with-playlist-option
       is-with-save-option
       is-with-share-option
+      is-with-external-link-option
       is-with-delete-option
       is-clearable
       @delete-option-click="handleDeleteOptionClick"

@@ -46,6 +46,7 @@ export default {
   eventCreated: 'green plus',
   eventDeleted: 'red minus',
   eventUpdated: 'edit',
+  externalLink: 'external alternate',
   favorite: 'star',
   feed: 'newspaper outline',
   filter: 'filter',

@@ -8,6 +8,7 @@
       :channel-data="channelData"
       :is-with-bookmark-option="isWithBookmarkOption"
       :is-with-share-option="isWithShareOption"
+      :is-with-external-link-option="isWithExternalLinkOption"
       :is-with-delete-option="isWithDeleteOption"
       :is-with-clear-button="isWithClearButton"
       :is-with-model-icon="isWithModelIcon"
@@ -48,6 +49,7 @@ export default {
     },
     isWithBookmarkOption: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
     isWithClearButton: Boolean,
     isWithModelIcon: Boolean,

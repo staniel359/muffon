@@ -14,8 +14,12 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.channelData =
+    const channelData =
       response.data.channel
+
+    this.channelData = channelData
+
+    return channelData
   }
 
   return getRequest.bind(

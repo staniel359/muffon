@@ -71,6 +71,12 @@
         :share-data="shareData"
       />
 
+      <BaseExternalLinkOption
+        v-if="isWithExternalLinkOption && slotProps.isVisible"
+        model="track"
+        :model-data="trackData"
+      />
+
       <template
         v-if="isWithDeleteOption"
       >
@@ -141,6 +147,8 @@ import QueueOption from './BaseTrackOptionsPopup/QueueOption.vue'
 import SaveOption from './BaseTrackOptionsPopup/SaveOption.vue'
 import BaseShareOption
   from '@/components/popups/options/BaseShareOption.vue'
+import BaseExternalLinkOption
+  from '@/components/popups/options/BaseExternalLinkOption.vue'
 import BaseDeleteOption
   from '@/components/popups/options/BaseDeleteOption.vue'
 import BaseLibraryDeleteModal
@@ -171,6 +179,7 @@ export default {
     QueueOption,
     SaveOption,
     BaseShareOption,
+    BaseExternalLinkOption,
     BaseDeleteOption,
     BasePlaylistsModal,
     BaseLibraryDeleteModal,
@@ -204,6 +213,7 @@ export default {
     isWithQueueOption: Boolean,
     isWithSaveOption: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
     isDeleteWithRedirect: Boolean,
     isClearable: Boolean
@@ -233,6 +243,7 @@ export default {
           this.isWithQueueOption ||
           this.isRenderSaveOption ||
           this.isRenderShareOption ||
+          this.isWithExternalLinkOption ||
           this.isWithDeleteOption
       )
     },

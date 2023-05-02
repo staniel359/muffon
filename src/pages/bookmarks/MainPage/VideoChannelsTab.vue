@@ -13,6 +13,7 @@
         is-with-created
         is-bookmark
         is-with-share-option
+        is-with-external-link-option
         is-with-delete-option
       />
     </template>

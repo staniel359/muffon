@@ -1,6 +1,7 @@
 export default function (
   {
-    artistData
+    artistData,
+    scope
   }
 ) {
   const source = (
@@ -23,6 +24,7 @@ export default function (
 
   return {
     source,
+    scope,
     ...formatArtistData(),
     albumType:
       artistData.albumType

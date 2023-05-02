@@ -14,6 +14,7 @@
         :playlists="slotProps[scope]"
         is-with-bookmark-option
         is-with-share-option
+        is-with-external-link-option
       />
     </template>
   </BaseVideoChannelTabContainer>

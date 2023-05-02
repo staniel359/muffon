@@ -3,7 +3,7 @@
     v-if="isRender"
   >
     <template
-      v-if="isWithEditOption"
+      v-if="isRenderEditOption"
     >
       <BaseEditOption
         @click="handleEditOptionClick"
@@ -19,7 +19,7 @@
     </template>
 
     <template
-      v-if="isWithDeleteOption"
+      v-if="isRenderDeleteOption"
     >
       <BaseDeleteOption
         @click="handleDeleteOptionClick"
@@ -86,13 +86,19 @@ export default {
     ),
     isRender () {
       return (
-        this.profileId &&
-          this.isWithProfileOptions
+        this.isRenderEditOption ||
+          this.isRenderDeleteOption
       )
     },
-    isWithProfileOptions () {
+    isRenderEditOption () {
       return (
-        this.isWithEditOption ||
+        this.profileId &&
+          this.isWithEditOption
+      )
+    },
+    isRenderDeleteOption () {
+      return (
+        this.profileId &&
           this.isWithDeleteOption
       )
     }

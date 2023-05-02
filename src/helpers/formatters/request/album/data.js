@@ -1,7 +1,8 @@
 export default function (
   {
     albumData,
-    artistName
+    artistName,
+    scope
   }
 ) {
   const source = (
@@ -63,6 +64,7 @@ export default function (
 
   return {
     source,
+    scope,
     ...formatAlbumData()
   }
 }

@@ -184,6 +184,11 @@
       "bookmarks": "Delete from bookmarks",
       "listened": "Delete from listened",
       "watched": "Delete from watched"
+    },
+    "externalLink": {
+      "open": "Open external link",
+      "original": "Original",
+      "streaming": "Streaming"
     }
   },
   "links": {

@@ -14,8 +14,12 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.videoData =
+    const videoData =
       response.data.video
+
+    this.videoData = videoData
+
+    return videoData
   }
 
   return getRequest.bind(

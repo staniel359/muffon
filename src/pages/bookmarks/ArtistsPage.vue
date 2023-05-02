@@ -21,6 +21,7 @@
         is-with-favorite-option
         is-with-listened-option
         is-with-share-option
+        is-with-external-link-option
         is-with-delete-option
       />
     </template>

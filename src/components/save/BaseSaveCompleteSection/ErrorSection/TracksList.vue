@@ -17,7 +17,6 @@
         is-with-album-title
         is-with-image
         is-with-created
-        is-with-source-option
         is-with-clear-button
         @link-click="handleLinkClick"
         @clear-button-click="handleClearButtonClick"

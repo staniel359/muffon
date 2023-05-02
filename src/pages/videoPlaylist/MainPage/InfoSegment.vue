@@ -48,6 +48,7 @@
             :bookmark-id="bookmarkId"
             is-with-bookmark-option
             is-with-share-option
+            is-with-external-link-option
           />
         </div>
       </div>

@@ -3,17 +3,17 @@
     v-if="isRender"
   >
     <JoinOption
-      v-if="isWithJoinOption"
+      v-if="isRenderJoinOption"
       :community-data="communityData"
     />
 
     <BaseShareOption
-      v-if="isWithShareOption"
+      v-if="isRenderShareOption"
       :share-data="shareData"
     />
 
     <template
-      v-if="isWithEditOption"
+      v-if="isRenderEditOption"
     >
       <BaseEditOption
         @click="handleEditOptionClick"
@@ -26,7 +26,7 @@
     </template>
 
     <template
-      v-if="isWithDeleteOption"
+      v-if="isRenderDeleteOption"
     >
       <BaseDeleteOption
         @click="handleDeleteOptionClick"
@@ -89,21 +89,39 @@ export default {
     ),
     isRender () {
       return (
-        this.profileId &&
-          this.isWithProfileOptions
+        this.isRenderJoinOption ||
+          this.isRenderShareOption ||
+          this.isRenderEditOption ||
+          this.isRenderDeleteOption
       )
     },
-    isWithProfileOptions () {
+    isRenderJoinOption () {
       return (
-        this.isWithJoinOption ||
-          this.isWithShareOption ||
-          this.isWithEditOption ||
-          this.isWithDeleteOption
+        this.profileId &&
+          this.isWithJoinOption
+      )
+    },
+    isRenderShareOption () {
+      return (
+        this.profileId &&
+          this.isWithShareOption
       )
     },
     shareData () {
       return formatCommunityShareData(
         this.communityData
+      )
+    },
+    isRenderEditOption () {
+      return (
+        this.profileId &&
+          this.isWithEditOption
+      )
+    },
+    isRenderDeleteOption () {
+      return (
+        this.profileId &&
+          this.isWithDeleteOption
       )
     }
   },

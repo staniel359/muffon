@@ -20,6 +20,7 @@
       :is-paginated="false"
       is-with-listeners-count
       is-with-share-option
+      is-with-external-link-option
       is-with-model-icon
     />
 
@@ -32,6 +33,7 @@
       is-with-listeners-count
       is-with-source
       is-with-share-option
+      is-with-external-link-option
       is-with-model-icon
     />
 
@@ -46,9 +48,10 @@
       is-with-source
       is-with-source-option
       is-with-playlist-option
+      is-with-queue-option
       is-with-save-option
       is-with-share-option
-      is-with-queue-option
+      is-with-external-link-option
     />
 
     <BaseVideosEmbeddedList
@@ -63,6 +66,7 @@
       :channels="videoChannels"
       :is-with-self-icons="false"
       is-with-share-option
+      is-with-external-link-option
       is-with-model-icon
     />
 
@@ -73,6 +77,7 @@
       :is-with-self-icons="false"
       is-with-channel-title
       is-with-share-option
+      is-with-external-link-option
       is-with-model-icon
     />
 

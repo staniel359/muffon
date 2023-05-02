@@ -1,7 +1,8 @@
 export default function (
   {
     trackData,
-    artistName
+    artistName,
+    scope
   }
 ) {
   const source = (
@@ -38,6 +39,7 @@ export default function (
 
   return {
     source,
+    scope,
     ...formatTrackData()
   }
 }

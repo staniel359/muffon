@@ -22,6 +22,7 @@
         :is-with-listened-option="isWithListenedOption"
         :is-with-self-icons="isWithSelfIcons"
         :is-with-share-option="isWithShareOption"
+        :is-with-external-link-option="isWithExternalLinkOption"
         :is-with-delete-option="isWithDeleteOption"
         :is-favorite="isFavorite"
         :is-bookmark="isBookmark"
@@ -73,6 +74,7 @@ export default {
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
     isFavorite: Boolean,
     isBookmark: Boolean,

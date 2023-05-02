@@ -3,12 +3,12 @@
     v-if="isRender"
   >
     <FollowOption
-      v-if="isWithFollowOption"
+      v-if="isRenderFollowOption"
       :profile-data="profileData"
     />
 
     <template
-      v-if="isWithMessageOption"
+      v-if="isRenderMessageOption"
     >
       <MessageOption
         @click="handleMessageOptionClick"
@@ -56,13 +56,19 @@ export default {
     ),
     isRender () {
       return (
-        this.profileId &&
-          this.isWithProfileOptions
+        this.isRenderFollowOption ||
+          this.isRenderMessageOption
       )
     },
-    isWithProfileOptions () {
+    isRenderFollowOption () {
       return (
-        this.isWithFollowOption ||
+        this.profileId &&
+          this.isWithFollowOption
+      )
+    },
+    isRenderMessageOption () {
+      return (
+        this.profileId &&
           this.isWithMessageOption
       )
     }

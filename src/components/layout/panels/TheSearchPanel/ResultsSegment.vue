@@ -40,9 +40,10 @@
           is-with-bookmark-option
           is-with-listened-option
           is-with-watched-option
+          is-with-queue-option
           is-with-save-option
           is-with-share-option
-          is-with-queue-option
+          is-with-external-link-option
           @link-click="handleLinkClick"
         />
       </template>

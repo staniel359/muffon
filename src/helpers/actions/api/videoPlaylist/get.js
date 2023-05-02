@@ -14,8 +14,12 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.playlistData =
+    const playlistData =
       response.data.playlist
+
+    this.playlistData = playlistData
+
+    return playlistData
   }
 
   return getRequest.bind(

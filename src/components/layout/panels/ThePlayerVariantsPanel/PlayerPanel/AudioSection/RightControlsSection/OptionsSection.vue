@@ -13,6 +13,7 @@
     is-with-queue-option
     is-with-save-option
     is-with-share-option
+    is-with-external-link-option
   />
 </template>
 

@@ -125,7 +125,6 @@
     "add": "Aggiungi",
     "create": "Crea",
     "edit": "Modifica",
-    "filter": "Filtra",
     "save": "Salva",
     "cancel": "Annulla",
     "delete": "Cancella",
@@ -134,11 +133,12 @@
     "post": "Posta",
     "send": "Invia",
     "next": "Successivo",
-    "search": "Cerca",
     "upload": "Carica",
     "back": "Precedente",
     "sendCode": "Invia codice",
     "share": "Condividi",
+    "search": "Cerca",
+    "filter": "Filtra",
     "confirm": "Conferma",
     "from": {
       "search": "Da ricerca",
@@ -184,6 +184,11 @@
       "bookmarks": "Rimuovi dai segnalibri",
       "listened": "Rimuovi dagli ascolti",
       "watched": "Rimuovi dai visualizzati"
+    },
+    "externalLink": {
+      "open": "Apri link esterno",
+      "original": "Originale",
+      "streaming": "Streaming"
     }
   },
   "links": {
