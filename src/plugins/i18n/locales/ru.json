@@ -10,7 +10,7 @@
     "tag": "Метка",
     "similar": "Похожие",
     "images": "Изображения",
-    "lyrics": "Текст",
+    "lyrics": "Тексты",
     "videos": "Видео",
     "videoChannels": "Каналы видео",
     "videoMixes": "Сборники видео",
@@ -457,7 +457,7 @@
         "video": "Видео",
         "recommendations": "Рекомендации",
         "top": "Популярное",
-        "lyrics": "Тексты песен",
+        "lyrics": "Тексты",
         "data": "Данные"
       },
       "profile": {
