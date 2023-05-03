@@ -1,6 +1,6 @@
 <template>
   <BaseImage
-    class="rounded-medium bordered"
+    class="rounded-medium"
     model="playlist"
     :image="imageData?.extrasmall"
   />

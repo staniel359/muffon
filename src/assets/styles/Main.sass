@@ -94,15 +94,20 @@ p
   .toast-box
     @extend .blurred
 
-.ui.card.main-simple-card,
-.ui.card.main-horizontal-card
-  & > .content
-    .star.icon
-      opacity: 1
-      cursor: unset
-      transition: unset
-      &:hover
-        color: $colorBase
+.ui.card
+  &.main-simple-card,
+  &.main-horizontal-card
+    & > .content
+      .star.icon
+        opacity: 1
+        cursor: unset
+        transition: unset
+        &:hover
+          color: $colorBase
+    &.raised
+      @extend .shadow
+      &.inverted
+        @extend .no-shadow, .border-inverted
 
 .ui.card
   &.disabled
@@ -434,11 +439,14 @@ p
   & > .image,
   & > .image-container
     @extend .image-large
-    margin-right: 0.75em !important
     &.medium
       @extend .image-medium
     &.small
       @extend .image-small
+  & > .image
+    margin-right: 0.75em !important
+  & > .image-container
+    margin-right: 1em !important
   .content
     @extend .flex-full, .no-padding
     .text
@@ -699,6 +707,9 @@ p
     outline: $border
     &.inverted
       outline: $borderInverted
+  &.raised
+    &:not(.main-logo-image)
+      @extend .shadow
 
 .main-source-select-container
   @extend .d-flex, .align-items-center
@@ -933,10 +944,6 @@ p
 
 .main-zoomable-image
   @extend .cursor-zoom-in
-
-.main-image-placeholder
-  &.bordered
-    border: 1px solid rgba(0,0,0,.1)
 
 .main-save-button
   margin-top: 1em !important

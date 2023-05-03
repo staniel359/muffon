@@ -2,7 +2,7 @@
   <div>
     <div class="main-image-container">
       <BaseImage
-        class="rounded bordered main-zoomable-image"
+        class="rounded main-zoomable-image"
         :image="imageData.small"
         @click="handleClick"
       />

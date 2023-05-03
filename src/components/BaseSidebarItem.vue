@@ -17,7 +17,7 @@
       />
       <BaseImage
         v-else-if="image"
-        class="circular bordered"
+        class="circular"
         :model="imageModel"
         :image="image"
       />

@@ -1,7 +1,8 @@
 <template>
-  <BaseImagePlaceholder
+  <BaseImage
     v-if="isLoading"
     :class="imageClass"
+    is-loading
   />
   <InteractiveImage
     v-else-if="isRenderInteractive"
@@ -26,10 +27,9 @@
 </template>
 
 <script>
-import BaseImagePlaceholder from '@/components/images/BaseImagePlaceholder.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
 import InteractiveImage from './BaseArtistImage/InteractiveImage.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
-import BaseImage from '@/components/images/BaseImage.vue'
 import getArtist from '@/helpers/actions/api/artist/get'
 import {
   images as imagesLimits
@@ -38,10 +38,9 @@ import {
 export default {
   name: 'BaseArtistImage',
   components: {
-    BaseImagePlaceholder,
+    BaseImage,
     InteractiveImage,
-    BaseZoomableImage,
-    BaseImage
+    BaseZoomableImage
   },
   props: {
     size: {
@@ -115,7 +114,6 @@ export default {
     },
     imageClass () {
       return {
-        bordered: true,
         circular: this.isCircular,
         rounded: !this.isCircular
       }

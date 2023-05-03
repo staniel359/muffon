@@ -1,5 +1,6 @@
 <template>
   <BaseImage
+    class="main-logo-image"
     :image="logo"
   />
 </template>

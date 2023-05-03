@@ -15,7 +15,7 @@
       v-else
     >
       <BaseImage
-        class="rounded-medium bordered video-image"
+        class="rounded-medium video-image"
         model="video"
         :image="imageData?.extrasmall"
         :is-contained="isTracksScope"

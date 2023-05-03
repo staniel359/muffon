@@ -1,7 +1,7 @@
 <template>
   <div class="main-image-container">
     <BaseImage
-      class="rounded bordered track-image"
+      class="rounded track-image"
       model="track"
       :image="imageData?.medium"
     />

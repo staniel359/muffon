@@ -22,7 +22,6 @@
       class="image-container"
     >
       <BaseImage
-        class="bordered"
         size="extrasmall"
         :class="{
           circular: isImageCircular,

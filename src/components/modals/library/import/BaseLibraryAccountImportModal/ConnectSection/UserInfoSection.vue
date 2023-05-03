@@ -4,7 +4,7 @@
   >
     <div class="item main-simple-list-item">
       <BaseImage
-        class="circular bordered"
+        class="circular"
         model="profile"
         :image="imageData?.small"
       />

@@ -2,7 +2,6 @@
   <div class="field image-field">
     <div class="image-container">
       <BaseImage
-        class="bordered"
         :class="imageClass"
         :model="model"
         :image="imageUrl"

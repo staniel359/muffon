@@ -6,7 +6,7 @@
     }"
   >
     <BaseImage
-      class="rounded-medium bordered"
+      class="rounded-medium"
       :image="image"
       @click="handleClick"
     />

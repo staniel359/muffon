@@ -2,7 +2,7 @@
   <BaseSegmentContainer>
     <div class="main-simple-list-item">
       <BaseImage
-        class="circular bordered"
+        class="circular"
         model="profile"
         :image="imageData?.small"
       />

@@ -7,6 +7,7 @@
   >
     <div class="icon-image-container">
       <BaseImage
+        class="main-logo-image"
         :image="logo"
       />
     </div>

@@ -35,7 +35,7 @@
 
         <div class="main-image-container">
           <BaseImage
-            class="rounded-medium bordered"
+            class="rounded-medium"
             model="video"
             :image="imageData?.small"
           />

@@ -4,8 +4,9 @@
   >
     <div class="main-image-modal-content">
       <BaseImage
-        class="bordered image-item"
+        class="image-item"
         :image="image"
+        is-bordered
       />
     </div>
   </BaseImageModalContainer>

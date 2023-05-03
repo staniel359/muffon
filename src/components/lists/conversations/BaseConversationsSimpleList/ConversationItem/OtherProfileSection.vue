@@ -1,7 +1,7 @@
 <template>
   <div class="main-simple-list-item">
     <BaseImage
-      class="small circular bordered"
+      class="small circular"
       model="profile"
       :image="imageData?.extrasmall"
     />

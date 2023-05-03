@@ -1,11 +1,25 @@
 <template>
+  <div
+    v-if="isLoading"
+    class="ui image placeholder main-image"
+    :class="[
+      borderedRaisedClass,
+      {
+        inverted: isDarkMode
+      }
+    ]"
+  />
   <img
+    v-else
     ref="image"
     class="ui image main-image"
-    :class="{
-      inverted: isDarkMode,
-      contained: isContained
-    }"
+    :class="[
+      borderedRaisedClass,
+      {
+        inverted: isDarkMode,
+        contained: isContained
+      }
+    ]"
     :[attribute]="imageConditional"
     @click="handleClick"
     @error="handleError"
@@ -27,7 +41,9 @@ export default {
     image: String,
     model: String,
     isLazy: Boolean,
-    isContained: Boolean
+    isContained: Boolean,
+    isLoading: Boolean,
+    isBordered: Boolean
   },
   emits: [
     'click'
@@ -56,6 +72,16 @@ export default {
       return defaultImages[
         this.model
       ]
+    },
+    borderedRaisedClass () {
+      if (
+        this.isDarkMode ||
+          this.isBordered
+      ) {
+        return 'bordered'
+      } else {
+        return 'raised'
+      }
     }
   },
   methods: {

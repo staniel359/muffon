@@ -43,7 +43,7 @@
 
         <div class="main-image-container">
           <BaseImage
-            class="rounded bordered"
+            class="rounded"
             model="album"
             :image="imageData?.medium"
           />

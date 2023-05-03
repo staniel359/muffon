@@ -23,7 +23,7 @@
       />
 
       <BaseImage
-        class="rounded-medium bordered"
+        class="rounded-medium"
         model="album"
         :image="imageData?.extrasmall"
       />

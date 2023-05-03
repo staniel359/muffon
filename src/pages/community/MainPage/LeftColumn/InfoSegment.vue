@@ -6,7 +6,7 @@
       <div class="main-simple-list-item">
         <div class="community-image-container">
           <BaseImage
-            class="rounded-medium bordered"
+            class="rounded-medium"
             model="community"
             :image="imageData?.extrasmall"
           />

@@ -23,7 +23,7 @@
     >
       <BaseImage
         v-if="isWithImage"
-        class="rounded-medium bordered small"
+        class="rounded-medium small"
         model="track"
         :image="imageData?.extrasmall"
       />

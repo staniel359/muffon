@@ -10,9 +10,9 @@
     >
       <div class="image-container">
         <BaseImage
-          class="bordered"
           :image="slotProps.image"
           is-lazy
+          is-bordered
         />
       </div>
     </template>

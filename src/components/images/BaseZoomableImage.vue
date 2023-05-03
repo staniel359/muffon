@@ -45,7 +45,6 @@ export default {
   computed: {
     imageClass () {
       return {
-        bordered: true,
         circular: this.isCircular,
         rounded: !this.isCircular,
         'main-zoomable-image': this.imageData

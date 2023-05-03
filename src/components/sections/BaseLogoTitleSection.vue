@@ -2,6 +2,7 @@
   <div class="main-logo-title-section">
     <div class="logo-block">
       <BaseImage
+        class="main-logo-image"
         :image="logo"
       />
     </div>

@@ -11,7 +11,7 @@
       />
 
       <BaseImage
-        class="circular bordered"
+        class="circular"
         model="profile"
         :image="imageData?.extrasmall"
       />
