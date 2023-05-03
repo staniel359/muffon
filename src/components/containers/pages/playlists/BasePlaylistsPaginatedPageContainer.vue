@@ -18,7 +18,9 @@
         :is-with-top-segment="isWithTopSegment"
         :is-with-order-change="isWithOrderChange"
       >
-        <template #top>
+        <template
+          #top
+        >
           <slot
             name="top"
           />

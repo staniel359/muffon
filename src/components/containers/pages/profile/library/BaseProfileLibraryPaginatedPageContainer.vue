@@ -24,7 +24,9 @@
         :is-with-view-change="isWithViewChange"
         :view-id="viewId"
       >
-        <template #top>
+        <template
+          #top
+        >
           <BaseSearchButton
             v-if="isWithSearch"
             :is-active="isShowSearch"
@@ -32,7 +34,9 @@
           />
         </template>
 
-        <template #topExtra>
+        <template
+          #topExtra
+        >
           <BaseProfileLibrarySearchInput
             v-if="isWithSearch"
             v-show="isShowSearch"

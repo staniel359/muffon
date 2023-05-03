@@ -22,13 +22,17 @@
         :limit="limit"
         :response-page-limit="pageSlotProps.responsePageLimit"
       >
-        <template #top>
+        <template
+          #top
+        >
           <slot
             name="top"
           />
         </template>
 
-        <template #topExtra>
+        <template
+          #topExtra
+        >
           <slot
             name="topExtra"
             :artist-name="pageSlotProps.artistName"

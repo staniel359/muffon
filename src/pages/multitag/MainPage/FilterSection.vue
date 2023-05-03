@@ -9,33 +9,21 @@
         :selected="scope"
       />
     </div>
-
-    <TagsSection
-      v-if="tags.length"
-      :tags="tags"
-    />
   </div>
 </template>
 
 <script>
 import SearchSection from './FilterSection/SearchSection.vue'
 import ScopeSelect from './FilterSection/ScopeSelect.vue'
-import TagsSection from './FilterSection/TagsSection.vue'
 
 export default {
   name: 'FilterSection',
   components: {
     SearchSection,
-    ScopeSelect,
-    TagsSection
+    ScopeSelect
   },
   props: {
-    tags: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
+    tags: Array,
     scope: String
   }
 }

@@ -7,14 +7,18 @@
     is-with-top-segment
     is-with-order-change
   >
-    <template #top>
+    <template
+      #top
+    >
       <BaseFilterButton
         :is-active="isShowFilter"
         @click="handleFilterButtonClick"
       />
     </template>
 
-    <template #topExtra>
+    <template
+      #topExtra
+    >
       <FilterSection
         v-show="isShowFilter"
         class="filter-section"

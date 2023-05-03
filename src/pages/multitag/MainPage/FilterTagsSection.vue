@@ -15,7 +15,7 @@
 import BaseFilterItemLabel from '@/components/labels/BaseFilterItemLabel.vue'
 
 export default {
-  name: 'TagsSection',
+  name: 'FilterTagsSection',
   components: {
     BaseFilterItemLabel
   },

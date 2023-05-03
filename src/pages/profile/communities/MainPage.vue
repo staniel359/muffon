@@ -8,7 +8,9 @@
     is-with-top-segment
     is-with-order-change
   >
-    <template #top>
+    <template
+      #top
+    >
       <BaseLinkContainer
         :link="communitiesLink"
       >

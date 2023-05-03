@@ -9,7 +9,9 @@
     is-multiple
     @call="handleCall"
   >
-    <template #top>
+    <template
+      #top
+    >
       <BasePlaylistCreateButton
         :key="key"
         @success="handlePlaylistCreate"

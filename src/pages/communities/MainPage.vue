@@ -7,7 +7,9 @@
     is-with-top-segment
     is-with-order-change
   >
-    <template #top>
+    <template
+      #top
+    >
       <BaseCommunityCreateButton
         v-if="profileId"
       />

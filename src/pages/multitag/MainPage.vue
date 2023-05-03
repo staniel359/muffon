@@ -12,13 +12,19 @@
       is-with-top-segment
     >
       <template
-        #topExtra
+        #top
       >
         <FilterSection
-          :class="{
-            'filter-section': isWithViewChange
-          }"
           :scope="scope"
+          :tags="tags"
+        />
+      </template>
+
+      <template
+        #topExtra
+      >
+        <FilterTagsSection
+          v-if="tags.length"
           :tags="tags"
         />
       </template>
@@ -48,6 +54,7 @@
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import FilterSection from './MainPage/FilterSection.vue'
+import FilterTagsSection from './MainPage/FilterTagsSection.vue'
 import BaseArtistsList from '@/components/lists/artists/BaseArtistsList.vue'
 import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
 import navigationMixin from '@/mixins/navigationMixin'
@@ -65,6 +72,7 @@ export default {
   components: {
     BasePaginatedPageContainer,
     FilterSection,
+    FilterTagsSection,
     BaseArtistsList,
     BaseAlbumsList
   },
@@ -182,7 +190,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.filter-section
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

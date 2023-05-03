@@ -8,7 +8,9 @@
     is-with-top-segment
     is-with-view-change
   >
-    <template #top>
+    <template
+      #top
+    >
       <BaseSearchButton
         scope="sources"
         :is-active="isShowSourceSelect"

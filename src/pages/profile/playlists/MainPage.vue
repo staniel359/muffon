@@ -8,7 +8,9 @@
     is-with-top-segment
     is-with-order-change
   >
-    <template #top>
+    <template
+      #top
+    >
       <BasePlaylistCreateButton
         v-if="isSelf"
         class="create-button"

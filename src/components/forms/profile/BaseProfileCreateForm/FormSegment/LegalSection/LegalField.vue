@@ -3,7 +3,9 @@
     <BaseCheckbox
       name="legal"
     >
-      <template #text>
+      <template
+        #text
+      >
         <i18n-t
           tag="span"
           keypath="forms.fields.legal.header"

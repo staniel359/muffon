@@ -20,7 +20,9 @@
       :scroll-context="scrollContext"
       @focus="handleFocus"
     >
-      <template #top>
+      <template
+        #top
+      >
         <slot
           name="top"
         />
