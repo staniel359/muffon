@@ -11,6 +11,9 @@ import {
 import playerStore from '@/stores/player'
 import createScrobblerPlay
   from '@/helpers/actions/api/lastfm/scrobbler/play/create'
+import {
+  track as formatScrobblerTrack
+} from '@/helpers/formatters/scrobbler'
 
 export default {
   name: 'TheScrobbleObserver',
@@ -22,24 +25,11 @@ export default {
       }
     ),
     trackData () {
-      return {
-        title: this.trackTitle,
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        duration: this.duration
-      }
-    },
-    trackTitle () {
-      return this.playerPlaying.title
-    },
-    artistName () {
-      return this.playerPlaying.artist.name
-    },
-    albumTitle () {
-      return this.playerPlaying.album?.title
-    },
-    duration () {
-      return this.playerPlaying.duration
+      return formatScrobblerTrack(
+        {
+          trackData: this.playerPlaying
+        }
+      )
     }
   },
   watch: {

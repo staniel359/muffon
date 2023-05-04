@@ -25,6 +25,9 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import createScrobblerSave
   from '@/helpers/actions/api/lastfm/scrobbler/save/create'
 import notificationMixin from '@/mixins/notificationMixin'
+import {
+  track as formatScrobblerTrack
+} from '@/helpers/formatters/scrobbler'
 
 export default {
   name: 'ScrobblePoint',
@@ -73,24 +76,11 @@ export default {
       return `${this.scrobblePercent}%`
     },
     trackData () {
-      return {
-        title: this.trackTitle,
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        duration: this.duration
-      }
-    },
-    trackTitle () {
-      return this.playerPlaying.title
-    },
-    artistName () {
-      return this.playerPlaying.artist.name
-    },
-    albumTitle () {
-      return this.playerPlaying.album?.title
-    },
-    duration () {
-      return this.playerPlaying.duration
+      return formatScrobblerTrack(
+        {
+          trackData: this.playerPlaying
+        }
+      )
     },
     isToSaveScrobble () {
       return (
@@ -133,12 +123,12 @@ export default {
       `
     },
     trackFullTitle () {
-      return [
-        this.artistName,
-        this.trackTitle
-      ].join(
-        ' - '
-      )
+      const {
+        artistName,
+        title
+      } = this.trackData
+
+      return `${artistName} - ${title}`
     }
   },
   watch: {
