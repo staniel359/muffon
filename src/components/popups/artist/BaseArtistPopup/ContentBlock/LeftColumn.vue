@@ -55,6 +55,6 @@ export default {
 
 <style lang="sass" scoped>
 .artist-image
-  width: 110px
-  height: 110px
+  width: 115px
+  height: 115px
 </style>

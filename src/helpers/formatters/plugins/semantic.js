@@ -290,7 +290,8 @@ export function artistPopupOptions (
   {
     html,
     onShow,
-    onHide
+    onHide,
+    onHidden
   }
 ) {
   const className =
@@ -311,7 +312,8 @@ export function artistPopupOptions (
     },
     html,
     onShow,
-    onHide
+    onHide,
+    onHidden
   }
 }
 

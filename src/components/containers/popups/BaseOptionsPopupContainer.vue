@@ -70,7 +70,8 @@ export default {
     }
   },
   emits: [
-    'activeChange'
+    'activeChange',
+    'menuActiveChange'
   ],
   data () {
     return {
@@ -142,6 +143,11 @@ export default {
       value
     ) {
       this.isMenuActive = value
+
+      this.$emit(
+        'menuActiveChange',
+        value
+      )
     },
     handleIsSubmenuActiveChange (
       value

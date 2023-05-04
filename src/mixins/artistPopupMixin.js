@@ -17,6 +17,12 @@ export default {
   components: {
     BaseArtistPopup
   },
+  provide () {
+    return {
+      setIsOptionsActive:
+        this.setIsOptionsActive
+    }
+  },
   props: {
     isWithPopup: {
       type: Boolean,
@@ -27,7 +33,8 @@ export default {
   data () {
     return {
       isCalled: false,
-      isVisible: false
+      isVisible: false,
+      isOptionsActive: false
     }
   },
   computed: {
@@ -52,7 +59,8 @@ export default {
         {
           html: this.popup,
           onShow: this.handleShow,
-          onHide: this.handleHide
+          onHide: this.handleHide,
+          onHidden: this.handleHidden
         }
       )
     },
@@ -102,6 +110,9 @@ export default {
       this.isVisible = true
     },
     handleHide () {
+      return !this.isOptionsActive
+    },
+    handleHidden () {
       this.isVisible = false
     },
     async handleArtistDataChange () {
@@ -147,6 +158,11 @@ export default {
       destroyPopup(
         this.element
       )
+    },
+    setIsOptionsActive (
+      value
+    ) {
+      this.isOptionsActive = value
     }
   }
 }

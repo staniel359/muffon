@@ -39,7 +39,7 @@
     >
       <BaseOptionsPopupMenuContainer
         ref="popup"
-        @active-change="handleMenuActiveChange"
+        @active-change="handleSubmenuActiveChange"
       >
         <OptionsMenu
           :options="options"
@@ -124,7 +124,7 @@ export default {
         'click'
       )
     },
-    handleMenuActiveChange (
+    handleSubmenuActiveChange (
       value
     ) {
       this.changeSubmenuActive(

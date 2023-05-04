@@ -24,6 +24,7 @@
       is-with-listened-option
       is-with-share-option
       is-with-external-link-option
+      @menu-active-change="handleOptionsActiveChange"
     />
   </div>
 </template>
@@ -43,6 +44,9 @@ export default {
   mixins: [
     selfMixin
   ],
+  inject: [
+    'setIsOptionsActive'
+  ],
   props: {
     artistData: {
       type: Object,
@@ -52,6 +56,15 @@ export default {
   computed: {
     modelData () {
       return this.artistData
+    }
+  },
+  methods: {
+    handleOptionsActiveChange (
+      value
+    ) {
+      this.setIsOptionsActive(
+        value
+      )
     }
   }
 }
