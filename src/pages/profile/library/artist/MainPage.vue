@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryArtistPageContainer
+    :key="refreshKey"
     :profile-id="profileId"
     :library-artist-id="libraryArtistId"
   >
@@ -27,6 +28,7 @@ import BaseProfileLibraryArtistPageContainer
   from '@/components/containers/pages/profile/library/artist/BaseProfileLibraryArtistPageContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -35,6 +37,9 @@ export default {
     LeftColumn,
     RightColumn
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     profileId: String,
     libraryArtistId: String

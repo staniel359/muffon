@@ -1,5 +1,6 @@
 <template>
   <BaseProfilePaginatedPageContainer
+    :key="refreshKey"
     model="profileCommunity"
     :profile-id="profileId"
     :scope="scope"
@@ -46,6 +47,7 @@ import {
   communities as formatCommunitiesLink
 } from '@/helpers/formatters/links'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   communities as communitiesLimits
 } from '@/helpers/data/limits'
@@ -59,7 +61,8 @@ export default {
     BaseCommunitiesSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   props: {
     profileId: String

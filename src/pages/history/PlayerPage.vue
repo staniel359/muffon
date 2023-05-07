@@ -1,5 +1,6 @@
 <template>
   <BaseHistoryPaginatedPageContainer
+    :key="refreshKey"
     model="event"
     :scope="scope"
     :list-scope="listScope"
@@ -40,6 +41,7 @@ import BaseHistoryPaginatedPageContainer
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -51,7 +53,8 @@ export default {
     BaseTracksSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   data () {
     return {

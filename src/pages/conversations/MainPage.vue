@@ -1,5 +1,6 @@
 <template>
   <BaseConversationsPaginatedPageContainer
+    :key="refreshKey"
     model="conversation"
     :scope="scope"
     :limit="limit"
@@ -23,6 +24,7 @@ import BaseConversationsPaginatedPageContainer
 import BaseConversationsSimpleList
   from '@/components/lists/conversations/BaseConversationsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   conversations as conversationsLimits
 } from '@/helpers/data/limits'
@@ -34,7 +36,8 @@ export default {
     BaseConversationsSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   data () {
     return {

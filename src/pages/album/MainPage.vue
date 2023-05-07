@@ -1,6 +1,7 @@
 <template>
   <BaseAlbumPageContainer
     ref="page"
+    :key="refreshKey"
     :source-params="sourceParams"
   >
     <template
@@ -34,6 +35,7 @@ import BaseAlbumPageContainer
   from '@/components/containers/pages/album/BaseAlbumPageContainer.vue'
 import SourceSelectSegment from './MainPage/SourceSelectSegment.vue'
 import AlbumSegment from './MainPage/AlbumSegment.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -42,6 +44,9 @@ export default {
     SourceSelectSegment,
     AlbumSegment
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     artistName: String,
     albumTitle: String

@@ -41,6 +41,13 @@ export default {
     profileLanguage:
       'handleProfileLanguageChange'
   },
+  mounted () {
+    if (this.isPageLoaded) {
+      this.setNavigation()
+
+      this.isRefreshNavigation = true
+    }
+  },
   activated () {
     if (this.isRefreshNavigation) {
       this.setNavigation()

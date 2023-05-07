@@ -1,5 +1,6 @@
 <template>
   <BaseReleasesPaginatedPageContainer
+    :key="refreshKey"
     :scope="scope"
     :list-scope="listScope"
     :limit="limit"
@@ -32,6 +33,7 @@ import BaseReleasesPaginatedPageContainer
   from '@/components/containers/pages/releases/BaseReleasesPaginatedPageContainer.vue'
 import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'UpcomingPage',
@@ -40,7 +42,8 @@ export default {
     BaseAlbumsList
   },
   mixins: [
-    viewChangeMixin
+    viewChangeMixin,
+    pageMixin
   ],
   data () {
     return {

@@ -1,5 +1,6 @@
 <template>
   <BaseBookmarksPaginatedPageContainer
+    :key="refreshKey"
     model="bookmarkVideoChannel"
     :scope="scope"
     :limit="limit"
@@ -28,6 +29,7 @@ import BaseBookmarksPaginatedPageContainer
 import BaseVideoChannelsSimpleList
   from '@/components/lists/videoChannels/BaseVideoChannelsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   videoChannels as videoChannelsLimits
 } from '@/helpers/data/limits'
@@ -39,7 +41,8 @@ export default {
     BaseVideoChannelsSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   data () {
     return {

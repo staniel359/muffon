@@ -1,5 +1,6 @@
 <template>
   <BaseVideoPageContainer
+    :key="refreshKey"
     :video-id="videoId"
   >
     <template
@@ -21,6 +22,7 @@ import BaseVideoPageContainer
   from '@/components/containers/pages/video/BaseVideoPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import TabsSegment from './MainPage/TabsSegment.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -29,6 +31,9 @@ export default {
     InfoSegment,
     TabsSegment
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     videoId: String
   }

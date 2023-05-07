@@ -16,7 +16,7 @@
   "main": "build_electron/main.js",
   "repository": "github:staniel359/muffon",
   "scripts": {
-    "start": "vite",
+    "start": "NODE_OPTIONS='--max_old_space_size=512' vite",
     "start:electron": "NODE_ENV=development DEV_TOOLS=false electron .",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "build": "vite build",

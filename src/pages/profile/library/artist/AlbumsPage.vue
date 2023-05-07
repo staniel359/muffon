@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryArtistPaginatedPageContainer
+    :key="refreshKey"
     model="libraryAlbum"
     :profile-id="profileId"
     :library-artist-id="libraryArtistId"
@@ -45,6 +46,7 @@ import {
 } from '@/helpers/utils'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'AlbumsPage',
@@ -54,7 +56,8 @@ export default {
   },
   mixins: [
     viewChangeMixin,
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   props: {
     profileId: {

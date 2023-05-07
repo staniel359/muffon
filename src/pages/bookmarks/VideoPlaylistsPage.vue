@@ -1,5 +1,6 @@
 <template>
   <BaseBookmarksPaginatedPageContainer
+    :key="refreshKey"
     model="bookmarkVideoPlaylist"
     :scope="scope"
     :limit="limit"
@@ -29,6 +30,7 @@ import BaseBookmarksPaginatedPageContainer
 import BaseVideoPlaylistsSimpleList
   from '@/components/lists/videoPlaylists/BaseVideoPlaylistsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   videoPlaylists as videoPlaylistsLimits
 } from '@/helpers/data/limits'
@@ -40,7 +42,8 @@ export default {
     BaseVideoPlaylistsSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   data () {
     return {

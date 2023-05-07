@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryPageContainer
+    :key="refreshKey"
     :profile-id="profileId"
   >
     <template
@@ -33,6 +34,7 @@ import TabsSegment from './MainPage/TabsSegment.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -42,6 +44,9 @@ export default {
     ExtraSegment,
     TabsSegment
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     profileId: {
       type: String,

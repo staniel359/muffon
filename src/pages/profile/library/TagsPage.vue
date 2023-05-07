@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryPaginatedPageContainer
+    :key="refreshKey"
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
@@ -26,6 +27,7 @@ import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import {
   tags as tagsLimits
 } from '@/helpers/data/limits'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'TagsPage',
@@ -33,6 +35,9 @@ export default {
     BaseProfileLibraryPaginatedPageContainer,
     BaseTagsSimpleList
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     profileId: String
   },

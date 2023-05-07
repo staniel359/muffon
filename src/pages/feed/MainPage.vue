@@ -1,6 +1,7 @@
 <template>
   <BaseFeedPaginatedPageContainer
     ref="page"
+    :key="refreshKey"
     model="post"
     :scope="scope"
     :limit="limit"
@@ -24,6 +25,7 @@ import BaseFeedPaginatedPageContainer
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   posts as postsLimits
 } from '@/helpers/data/limits'
@@ -35,7 +37,8 @@ export default {
     BasePostsSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   data () {
     return {

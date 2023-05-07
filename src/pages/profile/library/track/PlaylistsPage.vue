@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryTrackPaginatedPageContainer
+    :key="refreshKey"
     model="playlist"
     :profile-id="profileId"
     :library-track-id="libraryTrackId"
@@ -28,6 +29,7 @@ import BaseProfileLibraryTrackPaginatedPageContainer
 import BasePlaylistsSimpleList
   from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   playlists as playlistsLimits
 } from '@/helpers/data/limits'
@@ -39,7 +41,8 @@ export default {
     BasePlaylistsSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   props: {
     profileId: String,

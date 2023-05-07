@@ -1,5 +1,6 @@
 <template>
   <BaseTopPaginatedPageContainer
+    :key="refreshKey"
     :scope="scope"
     :limit="limit"
     is-with-top-segment
@@ -34,6 +35,7 @@ import BaseTracksSimpleList
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'TracksPage',
@@ -41,6 +43,9 @@ export default {
     BaseTopPaginatedPageContainer,
     BaseTracksSimpleList
   },
+  mixins: [
+    pageMixin
+  ],
   data () {
     return {
       limit:

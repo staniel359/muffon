@@ -1,5 +1,6 @@
 <template>
   <BaseTagPageContainer
+    :key="refreshKey"
     :tag-name="tagName"
   >
     <template
@@ -21,6 +22,7 @@ import BaseTagPageContainer
   from '@/components/containers/pages/tag/BaseTagPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import TabsSegment from './MainPage/TabsSegment.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -29,6 +31,9 @@ export default {
     InfoSegment,
     TabsSegment
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     tagName: String
   }

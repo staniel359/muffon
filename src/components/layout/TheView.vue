@@ -1,21 +1,23 @@
 <template>
-  <div class="ui container main-container the-view">
+  <div class="ui container main-container main-view">
     <RouterView
       v-slot="{
         Component
       }"
     >
       <KeepAlive
-        v-if="isKeepAlive"
+        v-if="isCachePages"
       >
         <Component
           :is="Component"
+          ref="component"
           :key="key"
         />
       </KeepAlive>
       <Component
         :is="Component"
         v-else
+        ref="component"
         :key="key"
       />
     </RouterView>
@@ -27,9 +29,6 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import {
-  generateKey
-} from '@/helpers/utils'
 
 export default {
   name: 'TheView',
@@ -45,28 +44,6 @@ export default {
         'isCachePages'
       ]
     ),
-    isKeepAlive () {
-      return (
-        !this.isBasePage &&
-          this.isCachePages
-      )
-    },
-    isBasePage () {
-      return (
-        this.isRootPage ||
-          this.isAboutPage
-      )
-    },
-    isRootPage () {
-      return (
-        this.$route.path === '/'
-      )
-    },
-    isAboutPage () {
-      return (
-        this.$route.path === '/about'
-      )
-    },
     fullPathDecoded () {
       return decodeURI(
         this.fullPath
@@ -90,14 +67,12 @@ export default {
         this.fullPathDecoded
     },
     refresh () {
-      this.key = generateKey()
+      this.$refs
+        .component
+        .refresh()
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.the-view
-  padding-top: $mainContainerTopPadding
-  padding-bottom: $mainContainerBottomPadding
-</style>
+<style lang="sass" scoped></style>

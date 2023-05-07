@@ -47,7 +47,9 @@
 
   <TheRootBackground />
 
-  <TheView />
+  <div class="ui container main-container main-view">
+    <RouterView />
+  </div>
 </template>
 
 <script>
@@ -72,7 +74,6 @@ import TheExternalUrlsObserver
 import TheExitObserver
   from '@/components/layout/observers/TheExitObserver.vue'
 import TheRootBackground from '@/components/layout/TheRootBackground.vue'
-import TheView from '@/components/layout/TheView.vue'
 
 const TheOnlineObserver =
   defineAsyncComponent(
@@ -147,8 +148,7 @@ export default {
     TheExternalUrlsObserver,
     TheBrowserTabsObserver,
     TheExitObserver,
-    TheRootBackground,
-    TheView
+    TheRootBackground
   },
   computed: {
     ...mapState(

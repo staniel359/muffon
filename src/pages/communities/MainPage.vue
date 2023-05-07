@@ -1,5 +1,6 @@
 <template>
   <BaseCommunitiesPaginatedPageContainer
+    :key="refreshKey"
     model="community"
     :scope="scope"
     :limit="limit"
@@ -40,6 +41,7 @@ import BaseCommunityCreateButton
 import BaseCommunitiesSimpleList
   from '@/components/lists/communities/BaseCommunitiesSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   communities as communitiesLimits
 } from '@/helpers/data/limits'
@@ -52,7 +54,8 @@ export default {
     BaseCommunitiesSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   data () {
     return {

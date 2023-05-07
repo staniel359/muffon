@@ -1,6 +1,7 @@
 <template>
   <BaseArtistPaginatedPageContainer
     ref="page"
+    :key="refreshKey"
     :artist-name="artistName"
     :scope="scope"
     :limit="limit"
@@ -57,6 +58,7 @@ import BaseArtistAlbumsSourceSelect
   from '@/components/models/artist/BaseArtistAlbumsSourceSelect.vue'
 import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'AlbumsPage',
@@ -67,7 +69,8 @@ export default {
     BaseAlbumsList
   },
   mixins: [
-    viewChangeMixin
+    viewChangeMixin,
+    pageMixin
   ],
   props: {
     artistName: String

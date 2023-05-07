@@ -1,6 +1,7 @@
 <template>
   <BaseVideoPlaylistPageContainer
     ref="page"
+    :key="refreshKey"
     :playlist-id="playlistId"
   >
     <template
@@ -41,6 +42,7 @@ import InfoSegment from './MainPage/InfoSegment.vue'
 import ExtraSegment from './MainPage/ExtraSegment.vue'
 import VideosSegment from './MainPage/VideosSegment.vue'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   generateKey
 } from '@/helpers/utils'
@@ -54,7 +56,8 @@ export default {
     VideosSegment
   },
   mixins: [
-    viewChangeMixin
+    viewChangeMixin,
+    pageMixin
   ],
   props: {
     playlistId: String

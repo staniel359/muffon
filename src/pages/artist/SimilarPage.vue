@@ -1,5 +1,6 @@
 <template>
   <BaseArtistPaginatedPageContainer
+    :key="refreshKey"
     :artist-name="artistName"
     :scope="scope"
     :limit="limit"
@@ -30,6 +31,7 @@ import BaseArtistPaginatedPageContainer
   from '@/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
 import BaseArtistsList from '@/components/lists/artists/BaseArtistsList.vue'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'SimilarPage',
@@ -38,7 +40,8 @@ export default {
     BaseArtistsList
   },
   mixins: [
-    viewChangeMixin
+    viewChangeMixin,
+    pageMixin
   ],
   props: {
     artistName: String

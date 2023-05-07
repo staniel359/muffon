@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryTagPageContainer
+    :key="refreshKey"
     :profile-id="profileId"
     :library-tag-id="libraryTagId"
   >
@@ -26,6 +27,7 @@ import BaseProfileLibraryTagPageContainer
   from '@/components/containers/pages/profile/library/tag/BaseProfileLibraryTagPageContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -34,6 +36,9 @@ export default {
     LeftColumn,
     RightColumn
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     profileId: String,
     libraryTagId: String

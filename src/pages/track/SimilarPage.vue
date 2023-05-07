@@ -1,5 +1,6 @@
 <template>
   <BaseTrackPaginatedPageContainer
+    :key="refreshKey"
     :scope="scope"
     :limit="limit"
     :source-params="sourceParams"
@@ -35,6 +36,7 @@ import BaseTracksSimpleList
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'SimilarPage',
@@ -42,6 +44,9 @@ export default {
     BaseTrackPaginatedPageContainer,
     BaseTracksSimpleList
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     trackTitle: {
       type: String,

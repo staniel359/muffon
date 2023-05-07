@@ -1,5 +1,6 @@
 <template>
   <BaseProfileFavoritesPageContainer
+    :key="refreshKey"
     :profile-id="profileId"
   >
     <BaseTabsSegmentContainer
@@ -29,6 +30,7 @@ import ArtistsTab from './MainPage/ArtistsTab.vue'
 import AlbumsTab from './MainPage/AlbumsTab.vue'
 import TracksTab from './MainPage/TracksTab.vue'
 import VideosTab from './MainPage/VideosTab.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -40,6 +42,9 @@ export default {
     TracksTab,
     VideosTab
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     profileId: String
   },

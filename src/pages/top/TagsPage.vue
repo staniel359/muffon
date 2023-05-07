@@ -1,5 +1,6 @@
 <template>
   <BaseTopPaginatedPageContainer
+    :key="refreshKey"
     :scope="scope"
     :limit="limit"
     is-with-top-segment
@@ -22,6 +23,7 @@ import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import {
   tags as tagsLimits
 } from '@/helpers/data/limits'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'TagsPage',
@@ -29,6 +31,9 @@ export default {
     BaseTopPaginatedPageContainer,
     BaseTagsSimpleList
   },
+  mixins: [
+    pageMixin
+  ],
   data () {
     return {
       limit:

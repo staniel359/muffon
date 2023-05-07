@@ -1,5 +1,6 @@
 <template>
   <BaseBookmarksPageContainer
+    :key="refreshKey"
     :is-get-data="false"
   >
     <BaseTabsSegmentContainer
@@ -30,6 +31,7 @@ import TracksTab from './MainPage/TracksTab.vue'
 import VideosTab from './MainPage/VideosTab.vue'
 import VideoChannelsTab from './MainPage/VideoChannelsTab.vue'
 import VideoPlaylistsTab from './MainPage/VideoPlaylistsTab.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -43,6 +45,9 @@ export default {
     VideoChannelsTab,
     VideoPlaylistsTab
   },
+  mixins: [
+    pageMixin
+  ],
   data () {
     return {
       tabs: [

@@ -1,6 +1,7 @@
 <template>
   <BaseTrackPageContainer
     ref="page"
+    :key="refreshKey"
     :source-params="sourceParams"
   >
     <template
@@ -33,6 +34,7 @@ import BaseTrackPageContainer
 import SourceSelectSegment from './MainPage/SourceSelectSegment.vue'
 import TrackSegment from './MainPage/TrackSegment.vue'
 import TabsSegment from './MainPage/TabsSegment.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -42,6 +44,9 @@ export default {
     TrackSegment,
     TabsSegment
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     trackTitle: {
       type: String,

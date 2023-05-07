@@ -1,5 +1,6 @@
 <template>
   <BaseProfilePaginatedPageContainer
+    :key="refreshKey"
     model="playlist"
     :profile-id="profileId"
     :scope="scope"
@@ -58,6 +59,7 @@ import {
   playlists as formatPlaylistsLink
 } from '@/helpers/formatters/links'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   playlists as playlistsLimits
 } from '@/helpers/data/limits'
@@ -72,7 +74,8 @@ export default {
     BasePlaylistsSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   props: {
     profileId: {

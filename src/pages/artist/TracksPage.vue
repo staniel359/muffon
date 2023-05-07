@@ -1,5 +1,6 @@
 <template>
   <BaseArtistPaginatedPageContainer
+    :key="refreshKey"
     :artist-name="artistName"
     :scope="scope"
     :limit="limit"
@@ -34,6 +35,7 @@ import BaseTracksSimpleList
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'TracksPage',
@@ -41,6 +43,9 @@ export default {
     BaseArtistPaginatedPageContainer,
     BaseTracksSimpleList
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     artistName: String
   },

@@ -1,5 +1,6 @@
 <template>
   <BaseProfilesPaginatedPageContainer
+    :key="refreshKey"
     model="profile"
     :scope="scope"
     :limit="limit"
@@ -24,6 +25,7 @@ import BaseProfilesPaginatedPageContainer
 import BaseProfilesSimpleList
   from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   profiles as profilesLimits
 } from '@/helpers/data/limits'
@@ -35,7 +37,8 @@ export default {
     BaseProfilesSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   data () {
     return {

@@ -1,5 +1,6 @@
 <template>
   <BaseProfileFavoritesPaginatedPageContainer
+    :key="refreshKey"
     model="favoriteVideo"
     :profile-id="profileId"
     :scope="scope"
@@ -39,6 +40,7 @@ import {
 } from '@/helpers/utils'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'VideosPage',
@@ -48,7 +50,8 @@ export default {
   },
   mixins: [
     orderChangeMixin,
-    viewChangeMixin
+    viewChangeMixin,
+    pageMixin
   ],
   props: {
     profileId: {

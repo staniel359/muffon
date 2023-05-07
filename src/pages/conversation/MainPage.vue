@@ -1,5 +1,6 @@
 <template>
   <BaseConversationPageContainer
+    :key="refreshKey"
     :conversation-id="conversationId"
   >
     <template
@@ -41,6 +42,7 @@ import MessagesSegment from './MainPage/MessagesSegment.vue'
 import {
   generateKey
 } from '@/helpers/utils'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -50,6 +52,9 @@ export default {
     FormSegment,
     MessagesSegment
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     conversationId: String
   },

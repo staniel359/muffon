@@ -1,5 +1,6 @@
 <template>
   <BaseProfileFavoritesPaginatedPageContainer
+    :key="refreshKey"
     model="favoriteArtist"
     :profile-id="profileId"
     :scope="scope"
@@ -40,6 +41,7 @@ import {
 } from '@/helpers/utils'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'ArtistsPage',
@@ -49,7 +51,8 @@ export default {
   },
   mixins: [
     orderChangeMixin,
-    viewChangeMixin
+    viewChangeMixin,
+    pageMixin
   ],
   props: {
     profileId: {

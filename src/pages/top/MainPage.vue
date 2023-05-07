@@ -1,5 +1,6 @@
 <template>
   <BaseTopPageContainer
+    :key="refreshKey"
     :is-get-data="false"
   >
     <TopSegment
@@ -26,6 +27,7 @@ import TabsSegment from './MainPage/TabsSegment.vue'
 import {
   generateKey
 } from '@/helpers/utils'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -34,6 +36,9 @@ export default {
     TopSegment,
     TabsSegment
   },
+  mixins: [
+    pageMixin
+  ],
   data () {
     return {
       key: null,

@@ -1,5 +1,6 @@
 <template>
   <BaseBookmarksPaginatedPageContainer
+    :key="refreshKey"
     model="bookmarkTrack"
     :scope="scope"
     :limit="limit"
@@ -39,6 +40,7 @@ import BaseBookmarksPaginatedPageContainer
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -50,7 +52,8 @@ export default {
     BaseTracksSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   data () {
     return {

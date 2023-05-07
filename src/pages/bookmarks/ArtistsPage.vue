@@ -1,5 +1,6 @@
 <template>
   <BaseBookmarksPaginatedPageContainer
+    :key="refreshKey"
     model="bookmarkArtist"
     :scope="scope"
     :limit="limit"
@@ -34,6 +35,7 @@ import BaseBookmarksPaginatedPageContainer
 import BaseArtistsList from '@/components/lists/artists/BaseArtistsList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'ArtistsPage',
@@ -43,7 +45,8 @@ export default {
   },
   mixins: [
     orderChangeMixin,
-    viewChangeMixin
+    viewChangeMixin,
+    pageMixin
   ],
   data () {
     return {

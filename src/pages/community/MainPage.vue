@@ -1,6 +1,7 @@
 <template>
   <BaseCommunityPageContainer
     ref="page"
+    :key="refreshKey"
     :community-id="communityId"
   >
     <template
@@ -32,6 +33,7 @@ import BaseCommunityPageContainer
 import InfoSegment from './MainPage/InfoSegment.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -41,6 +43,9 @@ export default {
     LeftColumn,
     RightColumn
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     communityId: String
   },

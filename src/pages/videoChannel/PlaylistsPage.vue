@@ -1,6 +1,7 @@
 <template>
   <BaseVideoChannelPaginatedPageContainer
     ref="page"
+    :key="refreshKey"
     :channel-id="channelId"
     :scope="scope"
     :limit="limit"
@@ -26,6 +27,7 @@ import BaseVideoPlaylistsSimpleList
 import {
   videoPlaylists as videoPlaylistsLimits
 } from '@/helpers/data/limits'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'PlaylistsPage',
@@ -33,6 +35,9 @@ export default {
     BaseVideoChannelPaginatedPageContainer,
     BaseVideoPlaylistsSimpleList
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     channelId: String
   },

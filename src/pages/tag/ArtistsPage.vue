@@ -1,5 +1,6 @@
 <template>
   <BaseTagPaginatedPageContainer
+    :key="refreshKey"
     :tag-name="tagName"
     :scope="scope"
     :limit="limit"
@@ -30,6 +31,7 @@ import BaseTagPaginatedPageContainer
   from '@/components/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
 import BaseArtistsList from '@/components/lists/artists/BaseArtistsList.vue'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'ArtistsPage',
@@ -38,7 +40,8 @@ export default {
     BaseArtistsList
   },
   mixins: [
-    viewChangeMixin
+    viewChangeMixin,
+    pageMixin
   ],
   props: {
     tagName: String

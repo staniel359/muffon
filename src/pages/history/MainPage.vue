@@ -1,5 +1,6 @@
 <template>
   <BaseHistoryPageContainer
+    :key="refreshKey"
     :is-get-data="false"
   >
     <BaseTabsSegmentContainer
@@ -31,6 +32,7 @@ import BaseTabsSegmentContainer
 import ActivityTab from './MainPage/ActivityTab.vue'
 import PlayerTab from './MainPage/PlayerTab.vue'
 import BrowserTab from './MainPage/BrowserTab.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -41,6 +43,9 @@ export default {
     PlayerTab,
     BrowserTab
   },
+  mixins: [
+    pageMixin
+  ],
   data () {
     return {
       tabs: [

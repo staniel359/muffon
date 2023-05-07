@@ -1,5 +1,6 @@
 <template>
   <BaseTrackPageContainer
+    :key="refreshKey"
     :scope="scope"
     :source-params="sourceParams"
   >
@@ -26,6 +27,7 @@ import BaseTrackPageContainer
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import LyricsSection from './LyricsPage/LyricsSection.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'LyricsPage',
@@ -34,6 +36,9 @@ export default {
     BaseSegmentContainer,
     LyricsSection
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     trackTitle: {
       type: String,

@@ -1,5 +1,6 @@
 <template>
   <BaseRecommendationsPaginatedPageContainer
+    :key="refreshKey"
     model="recommendation"
     :scope="scope"
     :limit="limit"
@@ -57,6 +58,7 @@ import FilterSection from './MainPage/FilterSection.vue'
 import BaseArtistsExtendedList
   from '@/components/lists/artists/BaseArtistsExtendedList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   artists as artistsLimits
 } from '@/helpers/data/limits'
@@ -70,7 +72,8 @@ export default {
     BaseArtistsExtendedList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   data () {
     return {

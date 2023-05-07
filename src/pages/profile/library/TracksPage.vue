@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryPaginatedPageContainer
+    :key="refreshKey"
     model="libraryTrack"
     :profile-id="profileId"
     :scope="scope"
@@ -47,6 +48,7 @@ import {
   isCurrentProfile
 } from '@/helpers/utils'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -58,7 +60,8 @@ export default {
     BaseTracksSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   props: {
     profileId: {

@@ -1,6 +1,7 @@
 <template>
   <BaseVideoPaginatedPageContainer
     ref="page"
+    :key="refreshKey"
     :video-id="videoId"
     :scope="scope"
     :limit="limit"
@@ -29,6 +30,7 @@ import BaseVideoPaginatedPageContainer
   from '@/components/containers/pages/video/BaseVideoPaginatedPageContainer.vue'
 import BaseVideosList from '@/components/lists/videos/BaseVideosList.vue'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'RelatedPage',
@@ -37,7 +39,8 @@ export default {
     BaseVideosList
   },
   mixins: [
-    viewChangeMixin
+    viewChangeMixin,
+    pageMixin
   ],
   props: {
     videoId: String

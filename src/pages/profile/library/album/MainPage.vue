@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryAlbumPageContainer
+    :key="refreshKey"
     :profile-id="profileId"
     :library-album-id="libraryAlbumId"
   >
@@ -27,6 +28,7 @@ import BaseProfileLibraryAlbumPageContainer
   from '@/components/containers/pages/profile/library/album/BaseProfileLibraryAlbumPageContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -35,6 +37,9 @@ export default {
     LeftColumn,
     RightColumn
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     profileId: String,
     libraryAlbumId: String

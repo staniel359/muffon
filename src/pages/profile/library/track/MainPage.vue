@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryTrackPageContainer
+    :key="refreshKey"
     :profile-id="profileId"
     :library-track-id="libraryTrackId"
   >
@@ -27,6 +28,7 @@ import BaseProfileLibraryTrackPageContainer
   from '@/components/containers/pages/profile/library/track/BaseProfileLibraryTrackPageContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -35,6 +37,9 @@ export default {
     LeftColumn,
     RightColumn
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     profileId: String,
     libraryTrackId: String

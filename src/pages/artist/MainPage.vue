@@ -1,6 +1,7 @@
 <template>
   <BaseArtistPageContainer
     ref="page"
+    :key="refreshKey"
     :artist-name="artistName"
   >
     <template
@@ -25,6 +26,7 @@ import BaseArtistPageContainer
   from '@/components/containers/pages/artist/BaseArtistPageContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -33,6 +35,9 @@ export default {
     LeftColumn,
     RightColumn
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     artistName: String
   },

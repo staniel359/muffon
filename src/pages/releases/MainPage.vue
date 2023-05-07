@@ -1,5 +1,6 @@
 <template>
   <BaseReleasesPageContainer
+    :key="refreshKey"
     :is-get-data="false"
   >
     <BaseTabsSegmentContainer
@@ -26,6 +27,7 @@ import BaseTabsSegmentContainer
   from '@/components/containers/segments/tabs/BaseTabsSegmentContainer.vue'
 import NewTab from './MainPage/NewTab.vue'
 import UpcomingTab from './MainPage/UpcomingTab.vue'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
@@ -35,6 +37,9 @@ export default {
     NewTab,
     UpcomingTab
   },
+  mixins: [
+    pageMixin
+  ],
   data () {
     return {
       tabs: [

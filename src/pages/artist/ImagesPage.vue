@@ -1,5 +1,6 @@
 <template>
   <BaseArtistPaginatedPageContainer
+    :key="refreshKey"
     :artist-name="artistName"
     :scope="scope"
     :limit="limit"
@@ -21,6 +22,7 @@ import ImagesSection from './ImagesPage/ImagesSection.vue'
 import {
   images as imagesLimits
 } from '@/helpers/data/limits'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'ImagesPage',
@@ -28,6 +30,9 @@ export default {
     BaseArtistPaginatedPageContainer,
     ImagesSection
   },
+  mixins: [
+    pageMixin
+  ],
   props: {
     artistName: String
   },

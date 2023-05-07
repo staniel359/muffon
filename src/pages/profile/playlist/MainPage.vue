@@ -1,5 +1,6 @@
 <template>
   <BaseProfilePlaylistPageContainer
+    :key="refreshKey"
     :profile-id="profileId"
     :playlist-id="playlistId"
   >
@@ -41,6 +42,7 @@ import InfoSegment from './MainPage/InfoSegment.vue'
 import ExtraSegment from './MainPage/ExtraSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   generateKey
 } from '@/helpers/utils'
@@ -54,7 +56,8 @@ export default {
     TracksSegment
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   props: {
     profileId: String,

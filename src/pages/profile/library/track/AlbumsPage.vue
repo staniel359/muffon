@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryTrackPaginatedPageContainer
+    :key="refreshKey"
     model="libraryAlbum"
     :profile-id="profileId"
     :library-track-id="libraryTrackId"
@@ -44,6 +45,7 @@ import {
 } from '@/helpers/utils'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'AlbumsPage',
@@ -53,7 +55,8 @@ export default {
   },
   mixins: [
     viewChangeMixin,
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   props: {
     profileId: {

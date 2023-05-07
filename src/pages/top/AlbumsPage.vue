@@ -1,5 +1,6 @@
 <template>
   <BaseTopPaginatedPageContainer
+    :key="refreshKey"
     :scope="scope"
     :limit="limit"
     :view-id="viewId"
@@ -31,6 +32,7 @@ import BaseTopPaginatedPageContainer
   from '@/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
 import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
 import viewChangeMixin from '@/mixins/viewChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'AlbumsPage',
@@ -39,7 +41,8 @@ export default {
     BaseAlbumsList
   },
   mixins: [
-    viewChangeMixin
+    viewChangeMixin,
+    pageMixin
   ],
   data () {
     return {

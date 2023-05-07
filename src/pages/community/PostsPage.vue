@@ -1,5 +1,6 @@
 <template>
   <BaseCommunityPaginatedPageContainer
+    :key="refreshKey"
     model="post"
     :community-id="communityId"
     :scope="scope"
@@ -25,6 +26,7 @@ import BaseCommunityPaginatedPageContainer
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
+import pageMixin from '@/mixins/pageMixin'
 import {
   posts as postsLimits
 } from '@/helpers/data/limits'
@@ -36,7 +38,8 @@ export default {
     BasePostsSimpleList
   },
   mixins: [
-    orderChangeMixin
+    orderChangeMixin,
+    pageMixin
   ],
   props: {
     communityId: String
