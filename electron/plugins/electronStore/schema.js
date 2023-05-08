@@ -145,6 +145,10 @@ export default {
     type: 'boolean',
     default: false
   },
+  'layout.isWithInnerCounters': {
+    type: 'boolean',
+    default: true
+  },
   'layout.isWithSystemTheme': {
     type: 'boolean',
     default: false

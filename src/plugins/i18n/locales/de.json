@@ -471,6 +471,7 @@
           "timezone": "Zeitzone",
           "infiniteScroll": "Unendlicher Scroll",
           "artistPopup": "Künstlerdetails beim hovern anzeigen",
+          "innerCounters": "Muffon Zuhörer-Zähler anzeigen",
           "cachePages": "Seiten zwischenspeichern",
           "scale": "Maßstab"
         },
@@ -806,8 +807,8 @@
     }
   },
   "created": {
-    "library": "In der Bibliothek seit",
     "profile": "Nutzt muffon seit",
+    "library": "In der Bibliothek seit",
     "community": "Wurde erstellt"
   },
   "online": "Online",

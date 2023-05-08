@@ -471,6 +471,7 @@
           "timezone": "Fuso orario",
           "infiniteScroll": "Scroll infinito",
           "artistPopup": "Mostra informazioni sull’artista al passaggio del mouse",
+          "innerCounters": "Mostra ascoltatori su muffon",
           "cachePages": "Salva le pagine nella cache",
           "scale": "Scala"
         },
@@ -806,8 +807,8 @@
     }
   },
   "created": {
-    "library": "Nella libreria da",
     "profile": "Su muffon dal",
+    "library": "Nella libreria da",
     "community": "Creata"
   },
   "online": "Online",

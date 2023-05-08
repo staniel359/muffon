@@ -8,6 +8,8 @@
 
     <ArtistPopupOption />
 
+    <InnerCountersOption />
+
     <CachePagesOption />
 
     <ScaleOption />
@@ -19,6 +21,7 @@ import LanguageOption from './InterfaceOptions/LanguageOption.vue'
 import TimezoneOption from './InterfaceOptions/TimezoneOption.vue'
 import InfiniteScrollOption from './InterfaceOptions/InfiniteScrollOption.vue'
 import ArtistPopupOption from './InterfaceOptions/ArtistPopupOption.vue'
+import InnerCountersOption from './InterfaceOptions/InnerCountersOption.vue'
 import CachePagesOption from './InterfaceOptions/CachePagesOption.vue'
 import ScaleOption from './InterfaceOptions/ScaleOption.vue'
 
@@ -29,6 +32,7 @@ export default {
     TimezoneOption,
     InfiniteScrollOption,
     ArtistPopupOption,
+    InnerCountersOption,
     CachePagesOption,
     ScaleOption
   }

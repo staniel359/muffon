@@ -30,7 +30,8 @@ const data = {
       isShowDonateModalLater: null,
       tabs: null,
       activeTabId: null,
-      isSearchPanelVisible: false
+      isSearchPanelVisible: false,
+      isWithInnerCounters: null
     }
   },
   actions: {
@@ -163,6 +164,11 @@ const data = {
       value
     ) {
       this.isSearchPanelVisible = value
+    },
+    setIsWithInnerCounters (
+      value
+    ) {
+      this.isWithInnerCounters = value
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <template
-    v-if="listenersCount"
+    v-if="isRender"
   >
     <BaseInnerCounterLabelsSection
       v-bind="$attrs"
@@ -22,6 +22,10 @@
 import {
   defineAsyncComponent
 } from 'vue'
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseInnerCounterLabelsSection
   from '@/components/sections/BaseInnerCounterLabelsSection.vue'
 
@@ -50,6 +54,18 @@ export default {
     size: String
   },
   computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isWithInnerCounters'
+      ]
+    ),
+    isRender () {
+      return (
+        this.isWithInnerCounters &&
+          this.listenersCount
+      )
+    },
     listenersCount () {
       return this.trackData.profiles_count
     },

@@ -1,0 +1,46 @@
+<template>
+  <div class="option">
+    <BaseHeader
+      class="option-header"
+      tag="h4"
+      :text="innerCountersText"
+    />
+
+    <BaseToggle
+      store-key="layout.isWithInnerCounters"
+      :is-checked="isWithInnerCounters"
+    />
+  </div>
+</template>
+
+<script>
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseToggle from '@/components/toggles/BaseToggle.vue'
+
+export default {
+  name: 'InnerCountersOption',
+  components: {
+    BaseHeader,
+    BaseToggle
+  },
+  computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isWithInnerCounters'
+      ]
+    ),
+    innerCountersText () {
+      return this.$t(
+        'settings.options.app.interface.innerCounters'
+      )
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped></style>
