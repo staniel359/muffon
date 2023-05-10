@@ -86,7 +86,8 @@ export default {
     }
   },
   watch: {
-    requestTrackData: 'handleRequestTrackDataChange'
+    requestTrackData:
+      'handleRequestTrackDataChange'
   },
   methods: {
     getTrack,

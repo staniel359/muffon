@@ -4,25 +4,23 @@
     :limit="limit"
     :artist-name="artistName"
     :track-title="trackTitle"
-    :request-track-data="requestTrackData"
     :is-active="isActive"
+    :request-track-data="requestTrackData"
     @focus="handleFocus"
   >
     <template
       #default="slotProps"
     >
-      <BaseTracksSimpleList
-        :tracks="slotProps[scope]"
+      <BaseAlbumsTableList
+        :albums="slotProps[scope]"
+        :items-in-row="itemsInRow"
         is-with-artist-name
-        is-with-artist-image
-        is-with-duration
-        is-with-source-option
+        is-with-multiple-artist-names
+        is-with-listeners-count
         is-with-library-option
         is-with-favorite-option
         is-with-bookmark-option
         is-with-listened-option
-        is-with-playlist-option
-        is-with-queue-option
         is-with-share-option
         is-with-external-link-option
       />
@@ -33,18 +31,18 @@
 <script>
 import BaseTrackTabContainer
   from '@/components/containers/tabs/track/BaseTrackTabContainer.vue'
-import BaseTracksSimpleList
-  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseAlbumsTableList
+  from '@/components/lists/albums/BaseAlbumsTableList.vue'
 import {
-  tracks as tracksLimits
+  albums as albumsLimits
 } from '@/helpers/data/limits'
 import tabMixin from '@/mixins/tabMixin'
 
 export default {
-  name: 'SimilarTab',
+  name: 'AlbumsTab',
   components: {
     BaseTrackTabContainer,
-    BaseTracksSimpleList
+    BaseAlbumsTableList
   },
   mixins: [
     tabMixin
@@ -59,8 +57,11 @@ export default {
   data () {
     return {
       limit:
-        tracksLimits.simple.small,
-      scope: 'similar'
+        albumsLimits.table.small,
+      itemsInRow: (
+        albumsLimits.table.small / 2
+      ),
+      scope: 'albums'
     }
   },
   computed: {

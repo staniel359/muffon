@@ -23,6 +23,7 @@
 
       <TabsSegment
         :track-data="slotProps.trackData"
+        :request-track-data="slotProps.requestTrackData"
       />
     </template>
   </BaseTrackPageContainer>

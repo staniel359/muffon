@@ -14,6 +14,9 @@
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
+        :is-with-top-segment="isWithTopSegment"
+        :is-with-view-change="isWithViewChange"
+        :view-id="viewId"
       >
         <template
           #default="slotProps"
@@ -45,7 +48,10 @@ export default {
   props: {
     scope: String,
     limit: Number,
-    sourceParams: Object
+    sourceParams: Object,
+    isWithTopSegment: Boolean,
+    isWithViewChange: Boolean,
+    viewId: String
   }
 }
 </script>

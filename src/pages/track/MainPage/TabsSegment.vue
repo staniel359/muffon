@@ -11,6 +11,7 @@
         :class="slotProps.class"
         :is-active="slotProps.isActive"
         :track-data="trackData"
+        :request-track-data="slotProps.tabData.requestTrackData || requestTrackData"
         @focus="slotProps.handleFocus"
       />
     </template>
@@ -21,6 +22,7 @@
 import BaseTabsSegmentContainer
   from '@/components/containers/segments/tabs/BaseTabsSegmentContainer.vue'
 import SimilarTab from './TabsSegment/SimilarTab.vue'
+import AlbumsTab from './TabsSegment/AlbumsTab.vue'
 import {
   generateKey
 } from '@/helpers/utils'
@@ -29,23 +31,44 @@ export default {
   name: 'TabsSegment',
   components: {
     BaseTabsSegmentContainer,
-    SimilarTab
+    SimilarTab,
+    AlbumsTab
   },
   props: {
     trackData: {
       type: Object,
       required: true
-    }
+    },
+    requestTrackData: Object
   },
   data () {
     return {
-      key: null,
-      tabs: [
+      key: null
+    }
+  },
+  computed: {
+    tabs () {
+      return [
         {
           nameCode: 'navigation.similar',
-          component: 'SimilarTab'
+          component: 'SimilarTab',
+          requestTrackData: {
+            source: 'lastfm',
+            artistName: this.artistName,
+            trackTitle: this.trackTitle
+          }
+        },
+        {
+          nameCode: 'navigation.albums',
+          component: 'AlbumsTab'
         }
       ]
+    },
+    artistName () {
+      return this.trackData.artist.name
+    },
+    trackTitle () {
+      return this.trackData.title
     }
   },
   watch: {

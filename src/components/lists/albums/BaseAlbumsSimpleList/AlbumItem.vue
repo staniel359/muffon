@@ -38,7 +38,7 @@
         />
 
         <BaseAlbumArtistsSection
-          v-if="isWithArtistName"
+          v-if="isRenderArtistName"
           class="extra"
           :album-data="albumData"
           :is-link-to-library="isLinkToLibrary"
@@ -177,6 +177,7 @@ export default {
       required: true
     },
     isWithArtistName: Boolean,
+    isWithMultipleArtistNames: Boolean,
     isWithListenersCount: Boolean,
     isLinkToLibrary: Boolean,
     isWithLibrary: Boolean,
@@ -259,6 +260,14 @@ export default {
     },
     sourceData () {
       return this.albumData.source
+    },
+    isRenderArtistName () {
+      return (
+        this.isWithArtistName || (
+          this.isWithMultipleArtistNames &&
+            this.artists?.length > 1
+        )
+      )
     }
   },
   methods: {

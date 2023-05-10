@@ -2,6 +2,7 @@ import i18n from '@/plugins/i18n'
 import {
   main as formatTrackLink,
   similar as formatTrackSimilarLink,
+  albums as formatTrackAlbumsLink,
   lyrics as formatTrackLyricsLink
 } from '@/helpers/formatters/links/track'
 
@@ -48,6 +49,14 @@ export default function (
           {
             artistName,
             trackTitle
+          }
+        )
+      case 'albums':
+        return formatTrackAlbumsLink(
+          {
+            artistName,
+            trackTitle,
+            sourceParams
           }
         )
       case 'lyrics':

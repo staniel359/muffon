@@ -83,6 +83,9 @@ const TrackPage = () => import(
 const TrackSimilarPage = () => import(
   '@/pages/track/SimilarPage.vue'
 )
+const TrackAlbumsPage = () => import(
+  '@/pages/track/AlbumsPage.vue'
+)
 const TrackLyricsPage = () => import(
   '@/pages/track/LyricsPage.vue'
 )
@@ -419,6 +422,17 @@ export default [
     exact: true,
     name: 'TrackSimilarPage',
     component: TrackSimilarPage,
+    props: true,
+    meta: {
+      formatter:
+        formatTrackPageLinkData
+    }
+  },
+  {
+    path: '/artists/:artistName/tracks/:trackTitle/albums',
+    exact: true,
+    name: 'TrackAlbumsPage',
+    component: TrackAlbumsPage,
     props: true,
     meta: {
       formatter:

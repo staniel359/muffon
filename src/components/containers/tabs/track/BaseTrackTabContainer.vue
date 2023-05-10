@@ -24,7 +24,8 @@
 import tabContainerMixin from '@/mixins/tabContainerMixin'
 import getTrack from '@/helpers/actions/api/track/get'
 import {
-  similar as formatTrackSimilarLink
+  similar as formatTrackSimilarLink,
+  albums as formatTrackAlbumsLink
 } from '@/helpers/formatters/links/track'
 
 export default {
@@ -40,6 +41,10 @@ export default {
     trackTitle: {
       type: String,
       required: true
+    },
+    requestTrackData: {
+      type: Object,
+      required: true
     }
   },
   data () {
@@ -50,8 +55,7 @@ export default {
   computed: {
     trackArgs () {
       return {
-        artistName: this.artistName,
-        trackTitle: this.trackTitle,
+        ...this.requestTrackData,
         scope: this.scope,
         limit: this.limit
       }
@@ -63,6 +67,15 @@ export default {
             {
               artistName: this.artistName,
               trackTitle: this.trackTitle
+            }
+          )
+        case 'albums':
+          return formatTrackAlbumsLink(
+            {
+              artistName: this.artistName,
+              trackTitle: this.trackTitle,
+              sourceParams:
+                this.requestTrackData
             }
           )
         default:

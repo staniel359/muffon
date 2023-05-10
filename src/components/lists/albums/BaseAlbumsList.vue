@@ -7,6 +7,7 @@
     :is-with-listeners-count="isWithListenersCount"
     :top-tracks-count="topTracksCount"
     :is-with-artist-name="isWithArtistName"
+    :is-with-multiple-artist-names="isWithMultipleArtistNames"
     :is-with-library="isWithLibrary"
     :is-link-to-library="isLinkToLibrary"
     :profile-id="profileId"
@@ -18,6 +19,7 @@
     :is-with-share-option="isWithShareOption"
     :is-with-external-link-option="isWithExternalLinkOption"
     :is-with-delete-option="isWithDeleteOption"
+    :is-with-source="isWithSource"
     :is-with-created="isWithCreated"
     :is-bookmark="isBookmark"
     :is-favorite="isFavorite"
@@ -44,6 +46,7 @@ export default {
     isWithListenersCount: Boolean,
     topTracksCount: Number,
     isWithArtistName: Boolean,
+    isWithMultipleArtistNames: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
@@ -55,6 +58,7 @@ export default {
     isWithShareOption: Boolean,
     isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
+    isWithSource: Boolean,
     isWithCreated: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean
