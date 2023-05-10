@@ -52,4 +52,14 @@ export default {
 <style lang="sass" scoped>
 .image-container
   @extend .cursor-pointer
+
+.slick-slide
+  .ui.image
+    &.main-image
+      border-width: 2px !important
+
+.slick-current
+  .ui.image
+    &.main-image
+      @extend .border-color-base
 </style>
