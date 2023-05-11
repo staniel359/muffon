@@ -36,28 +36,30 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - <img src="https://www.youtube.com/s/desktop/271dfaff/img/favicon.ico" height="16"> **YouTube**
 - <img src="https://st.discogs.com/94414fa553c3f284a04c3da67024dd6574b8ab6f/images/favicon.ico" height="16"> **Discogs**
 - <img src="https://assets.genius.com/images/apple-touch-icon.png" height="16"> **Genius**
+- <img src="https://musicbrainz.org/static/images/favicons/favicon-16x16.png" height="16"> **MusicBrainz**
 
 ### Features
 
 - **absolutely free**
 - **no ads**
-- **no login** (login required for certain features)
-- **listening** (artists / albums / tracks) (also offline)
-- **queue** (with track / album adding)
-- **music library** (and compatibility with others)
+- **no login** (but login is required for certain features)
+- **listening** (artists / albums / tracks) (+ offline) (+ equalizer)
+- **queue** (+ albums adding)
+- **music library** (+ compatibility with others)
 - **music services integration** (Last.FM)
 - **recommendations** (based on your library)
-- **search** (artists / albums / album groups / tracks / tags / videos / video channels / video playlists) (through all of the sources above)
+- **search** (artists / albums / album groups / tracks / lyrics / tags / videos / video channels / video playlists) (through all of the sources above)
 - **radio** (tags / artists / top)
 - **scrobbling** (Last.FM)
 - **Discord Rich Presence**
-- **videos** (with related / channels / playlists) (YouTube)
-- **lyrics** (with annotations) (Genius)
-- **tags** (with top artists / albums / tracks)
-- **top** (artists / albums / tracks / tags) (with country select)
+- **videos** (+ related / channels / playlists) (YouTube, YouTube Music)
+- **lyrics** (+ annotations) (Genius)
+- **tags** (artists / albums / tracks)
+- **top** (artists / albums / tracks / tags) (+ country select)
 - **new / upcoming releases**
 - **multitag search** (artists / albums)
-- **playlists** (with album / queue adding)
+- **external links** (artists / albums / tracks / videos / video channels / video playlists)
+- **playlists** (+ album / queue adding)
 - **favorites** (artists / albums / tracks / videos)
 - **bookmarks** (artists / albums / tracks / videos / video channels / video playlists)
 - **listened** (artists / albums / tracks)
@@ -65,10 +67,10 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **posting**
 - **following**
 - **messaging**
-- **feed** (also global)
+- **feed** (+ global)
 - **communities**
 - **sharing** (artists / albums / tracks / videos / video channels / video playlists / playlists / communities)
-- **theming** (dark mode / background change / transparency change)
+- **theming** (dark mode / background / transparency)
 - **history** (activity / player / browser)
 
 ### Languages
@@ -92,7 +94,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Download
 
-[Latest (v1.5.0)](https://github.com/staniel359/muffon/releases/tag/v1.5.0)
+[Latest (v1.6.0)](https://github.com/staniel359/muffon/releases/tag/v1.6.0)
 
 ## Troubleshooting
 
@@ -117,6 +119,8 @@ If you're using Windows 10 and during the installation you see this window:
 
 - **Translators** wanted for localization
 - **Python + Ruby developers** wanted for [Spotify library](https://github.com/kokarare1212/librespot-python) reverse engineering
+
+## Donate
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/staniel359)
 
