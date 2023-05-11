@@ -94,16 +94,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.player-panel
-  @extend .no-padding, .no-border, .visibility-visible
-  overflow: visible !important
-  z-index: 200 !important
-  transition: transform 0.5s ease
-  &.inverted
-    border-top: $borderInverted !important
+.ui.sidebar
+  &.player-panel
+    @extend .no-padding, .no-border, .visibility-visible
+    height: $playerPanelHeight !important
+    overflow: visible !important
+    z-index: 200 !important
+    transition: transform 0.5s ease
+    &.inverted
+      border-top: $borderInverted !important
 
 .player-content-container
-  @extend .d-flex, .align-items-center
+  @extend .d-flex, .align-items-center, .h-100
   width: 720px !important
-  height: $playerPanelHeight
 </style>
