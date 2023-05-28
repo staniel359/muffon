@@ -53,20 +53,20 @@
     "vue-router": "^4.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.8",
+    "@babel/core": "^7.22.1",
     "@babel/eslint-parser": "^7.21.8",
     "@babel/plugin-syntax-import-assertions": "^7.20.0",
     "@rollup/plugin-inject": "^5.0.3",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/eslint-config-standard": "^8.0.1",
-    "electron": "^24.3.1",
+    "electron": "^24.4.0",
     "electron-builder": "^23.6.0",
     "eslint": "^8.41.0",
-    "eslint-plugin-vue": "^9.13.0",
+    "eslint-plugin-vue": "^9.14.1",
     "sass": "^1.62.1",
-    "vite": "^4.3.8",
+    "vite": "^4.3.9",
     "vite-electron-plugin": "^0.8.2",
-    "vite-plugin-electron-renderer": "^0.14.4",
+    "vite-plugin-electron-renderer": "^0.14.5",
     "vite-plugin-eslint": "^1.8.1"
   },
   "os": [
