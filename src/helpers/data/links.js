@@ -1,2 +1,2 @@
 export const donate =
-  'https://www.buymeacoffee.com/staniel359'
+  'https://ko-fi.com/staniel359'

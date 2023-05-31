@@ -122,7 +122,7 @@ If you're using Windows 10 and during the installation you see this window:
 
 ## Donate
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/staniel359)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/staniel359)
 
 ## Related projects
 
