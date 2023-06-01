@@ -1,5 +1,6 @@
 <template>
   <BaseTrackOptionsPopup
+    :key="key"
     :track-data="playerPlaying"
     :library-id="libraryId"
     :favorite-id="favoriteId"
@@ -25,6 +26,9 @@ import playerStore from '@/stores/player'
 import BaseTrackOptionsPopup
   from '@/components/popups/track/BaseTrackOptionsPopup.vue'
 import selfMixin from '@/mixins/selfMixin'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'OptionsSection',
@@ -34,6 +38,11 @@ export default {
   mixins: [
     selfMixin
   ],
+  data () {
+    return {
+      key: null
+    }
+  },
   computed: {
     ...mapState(
       playerStore,
@@ -43,6 +52,15 @@ export default {
     ),
     modelData () {
       return this.playerPlaying
+    }
+  },
+  watch: {
+    playerPlaying:
+      'handlePlayerPlayingChange'
+  },
+  methods: {
+    handlePlayerPlayingChange () {
+      this.key = generateKey()
     }
   }
 }
