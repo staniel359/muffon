@@ -16,7 +16,7 @@
 
 #
 
-<img src="https://i.ibb.co/PMBN8XS/light.png" alt="screenshot">
+<img src="https://i.ibb.co/rFMdxt2/preview.png" alt="screenshot">
 
 ## Description
 
