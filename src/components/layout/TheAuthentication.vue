@@ -1,6 +1,6 @@
 <template>
   <div class="the-authentication">
-    <BaseLogoTitleSection />
+    <BaseLogoSection />
 
     <div class="form-segment-container">
       <BaseProfileLoginForm
@@ -21,8 +21,7 @@
 </template>
 
 <script>
-import BaseLogoTitleSection
-  from '@/components/sections/BaseLogoTitleSection.vue'
+import BaseLogoSection from '@/components/sections/BaseLogoSection.vue'
 import BaseProfileLoginForm
   from '@/components/forms/profile/BaseProfileLoginForm.vue'
 import BaseProfilePasswordResetForm
@@ -33,7 +32,7 @@ import BaseProfileCreateForm
 export default {
   name: 'TheAuthentication',
   components: {
-    BaseLogoTitleSection,
+    BaseLogoSection,
     BaseProfileLoginForm,
     BaseProfilePasswordResetForm,
     BaseProfileCreateForm

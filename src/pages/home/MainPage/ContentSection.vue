@@ -1,9 +1,9 @@
 <template>
-  <BaseLogoTitleSection />
+  <BaseLogoSection />
 
   <BaseHeader
     class="welcome-message"
-    tag="h2"
+    tag="h1"
     :text="welcomeText"
   />
 </template>
@@ -13,14 +13,13 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import BaseLogoTitleSection
-  from '@/components/sections/BaseLogoTitleSection.vue'
+import BaseLogoSection from '@/components/sections/BaseLogoSection.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 
 export default {
   name: 'ContentSection',
   components: {
-    BaseLogoTitleSection,
+    BaseLogoSection,
     BaseHeader
   },
   computed: {
@@ -60,5 +59,5 @@ export default {
 <style lang="sass" scoped>
 .welcome-message
   @extend .text-color-white
-  margin-top: 0.5em !important
+  margin-top: 0.25em !important
 </style>
