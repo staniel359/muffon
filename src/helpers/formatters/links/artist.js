@@ -8,13 +8,18 @@ export function main (
       artistName
     )
 
+  const params = {
+    artistName:
+      artistNameEncoded
+  }
+
+  const path =
+    `artists/${artistNameEncoded}`
+
   return {
     name: 'ArtistPage',
-    params: {
-      artistName
-    },
-    path:
-      `artists/${artistNameEncoded}`
+    params,
+    path
   }
 }
 
@@ -28,13 +33,18 @@ export function images (
       artistName
     )
 
+  const params = {
+    artistName:
+      artistNameEncoded
+  }
+
+  const path =
+    `artists/${artistNameEncoded}/images`
+
   return {
     name: 'ArtistImagesPage',
-    params: {
-      artistName
-    },
-    path:
-      `artists/${artistNameEncoded}/images`
+    params,
+    path
   }
 }
 
@@ -48,13 +58,18 @@ export function tracks (
       artistName
     )
 
+  const params = {
+    artistName:
+      artistNameEncoded
+  }
+
+  const path =
+    `artists/${artistNameEncoded}/tracks`
+
   return {
     name: 'ArtistTracksPage',
-    params: {
-      artistName
-    },
-    path:
-      `artists/${artistNameEncoded}/tracks`
+    params,
+    path
   }
 }
 
@@ -68,13 +83,18 @@ export function albums (
       artistName
     )
 
+  const params = {
+    artistName:
+      artistNameEncoded
+  }
+
+  const path =
+    `artists/${artistNameEncoded}/albums`
+
   return {
     name: 'ArtistAlbumsPage',
-    params: {
-      artistName
-    },
-    path:
-      `artists/${artistNameEncoded}/albums`
+    params,
+    path
   }
 }
 
@@ -88,12 +108,17 @@ export function similar (
       artistName
     )
 
+  const params = {
+    artistName:
+      artistNameEncoded
+  }
+
+  const path =
+    `artists/${artistNameEncoded}/similar`
+
   return {
     name: 'ArtistSimilarPage',
-    params: {
-      artistName
-    },
-    path:
-      `artists/${artistNameEncoded}/similar`
+    params,
+    path
   }
 }

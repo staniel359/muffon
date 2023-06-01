@@ -17,6 +17,13 @@ export function main (
       trackTitle
     )
 
+  const params = {
+    artistName:
+      artistNameEncoded,
+    trackTitle:
+      trackTitleEncoded
+  }
+
   const {
     source,
     trackId,
@@ -43,12 +50,10 @@ export function main (
 
   return {
     name: 'TrackPage',
-    params: {
-      artistName,
-      trackTitle
-    },
+    params,
     path,
-    query: queryFormatted.data
+    query:
+      queryFormatted.data
   }
 }
 
@@ -68,16 +73,22 @@ export function similar (
       trackTitle
     )
 
+  const params = {
+    artistName:
+      artistNameEncoded,
+    trackTitle:
+      trackTitleEncoded
+  }
+
+  const path =
+    `artists/${artistNameEncoded}` +
+    `/tracks/${trackTitleEncoded}` +
+    '/similar'
+
   return {
     name: 'TrackSimilarPage',
-    params: {
-      artistName,
-      trackTitle
-    },
-    path:
-      `artists/${artistNameEncoded}` +
-      `/tracks/${trackTitleEncoded}` +
-      '/similar'
+    params,
+    path
   }
 }
 
@@ -97,6 +108,13 @@ export function albums (
     encodeURIComponent(
       trackTitle
     )
+
+  const params = {
+    artistName:
+      artistNameEncoded,
+    trackTitle:
+      trackTitleEncoded
+  }
 
   const {
     source,
@@ -124,12 +142,10 @@ export function albums (
 
   return {
     name: 'TrackAlbumsPage',
-    params: {
-      artistName,
-      trackTitle
-    },
+    params,
     path,
-    query: queryFormatted.data
+    query:
+      queryFormatted.data
   }
 }
 
@@ -149,6 +165,13 @@ export function lyrics (
     encodeURIComponent(
       trackTitle
     )
+
+  const params = {
+    artistName:
+      artistNameEncoded,
+    trackTitle:
+      trackTitleEncoded
+  }
 
   const {
     source,
@@ -174,11 +197,9 @@ export function lyrics (
 
   return {
     name: 'TrackLyricsPage',
-    params: {
-      artistName,
-      trackTitle
-    },
+    params,
     path,
-    query: queryFormatted.data
+    query:
+      queryFormatted.data
   }
 }
