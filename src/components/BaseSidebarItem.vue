@@ -16,7 +16,7 @@
         :icon="icon"
       />
       <BaseImage
-        v-else-if="image"
+        v-else
         class="circular"
         :model="imageModel"
         :image="image"
