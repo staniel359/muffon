@@ -1,3 +1,6 @@
+const plain =
+  'https://fomantic-ui.com/images/wireframe/image.png'
+
 export const artist =
   'https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png'
 
@@ -13,6 +16,7 @@ const profile =
 const video = 'https://i.ytimg.com'
 
 export const images = {
+  plain,
   artist,
   album,
   track,

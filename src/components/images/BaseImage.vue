@@ -38,8 +38,11 @@ import {
 export default {
   name: 'BaseImage',
   props: {
+    model: {
+      type: String,
+      default: 'plain'
+    },
     image: String,
-    model: String,
     isLazy: Boolean,
     isContained: Boolean,
     isLoading: Boolean,
