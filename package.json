@@ -32,7 +32,7 @@
     "axios": "^1.4.0",
     "camel-case": "^4.1.2",
     "crypto-js": "^4.1.1",
-    "dayjs": "^1.11.7",
+    "dayjs": "^1.11.8",
     "deepmerge": "^4.3.1",
     "discord-rpc": "^4.0.1",
     "electron-dl": "^3.5.0",
@@ -50,7 +50,7 @@
     "uuid": "^9.0.0",
     "vue": "^3.3.4",
     "vue-i18n": "^9.2.2",
-    "vue-router": "^4.2.1"
+    "vue-router": "^4.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.1",
@@ -59,9 +59,9 @@
     "@rollup/plugin-inject": "^5.0.3",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/eslint-config-standard": "^8.0.1",
-    "electron": "^24.4.0",
+    "electron": "^25.0.1",
     "electron-builder": "^23.6.0",
-    "eslint": "^8.41.0",
+    "eslint": "^8.42.0",
     "eslint-plugin-vue": "^9.14.1",
     "sass": "^1.62.1",
     "vite": "^4.3.9",
