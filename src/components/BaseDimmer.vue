@@ -17,12 +17,12 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import {
-  setDimmer,
-  toggleDimmer
-} from '@/helpers/actions/plugins/semantic'
+  set as setDimmer,
+  toggle as toggleDimmer
+} from '@/helpers/actions/plugins/semantic/dimmer'
 import {
-  mainDimmerOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainDimmerOptions
+} from '@/helpers/formatters/plugins/semantic/options/dimmer'
 
 export default {
   name: 'BaseDimmer',

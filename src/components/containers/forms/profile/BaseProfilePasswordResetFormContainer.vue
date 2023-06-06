@@ -13,8 +13,8 @@
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
-  passwordResetFormOptions
-} from '@/helpers/formatters/plugins/semantic'
+  reset as passwordResetFormOptions
+} from '@/helpers/formatters/plugins/semantic/options/form/password'
 import resetPassword from '@/helpers/actions/api/password/reset'
 
 export default {

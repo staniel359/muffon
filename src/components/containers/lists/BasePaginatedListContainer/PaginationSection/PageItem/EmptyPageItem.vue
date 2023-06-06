@@ -25,8 +25,8 @@
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BasePageSelectPopup from '@/components/popups/BasePageSelectPopup.vue'
 import {
-  pageSelectPopupOptions
-} from '@/helpers/formatters/plugins/semantic'
+  pageSelect as pageSelectPopupOptions
+} from '@/helpers/formatters/plugins/semantic/options/popup'
 import popupMixin from '@/mixins/popupMixin'
 
 export default {

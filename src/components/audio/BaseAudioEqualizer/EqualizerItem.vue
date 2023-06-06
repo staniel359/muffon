@@ -46,8 +46,8 @@ import layoutStore from '@/stores/layout'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
-  mainAudioEqualizerSeekerOptions
-} from '@/helpers/formatters/plugins/semantic'
+  audioEqualizer as audioEqualizerSeekerOptions
+} from '@/helpers/formatters/plugins/semantic/options/seeker'
 
 export default {
   name: 'EqualizerItem',
@@ -89,7 +89,7 @@ export default {
       ]
     ),
     seekerOptions () {
-      return mainAudioEqualizerSeekerOptions(
+      return audioEqualizerSeekerOptions(
         {
           start: this.equalizerGain
         }

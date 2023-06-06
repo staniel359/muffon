@@ -71,13 +71,13 @@ import layoutStore from '@/stores/layout'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
-  mainDropdownOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainDropdownOptions
+} from '@/helpers/formatters/plugins/semantic/options/dropdown'
 import {
-  setDropdown,
-  setDropdownValue,
-  resetDropdown
-} from '@/helpers/actions/plugins/semantic'
+  set as setDropdown,
+  setValue as setDropdownValue,
+  reset as resetDropdown
+} from '@/helpers/actions/plugins/semantic/dropdown'
 import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {

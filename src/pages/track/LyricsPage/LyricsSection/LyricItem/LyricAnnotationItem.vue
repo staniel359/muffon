@@ -32,13 +32,13 @@ import layoutStore from '@/stores/layout'
 import lyricsStore from '@/stores/lyrics'
 import BaseAnnotationPopup from '@/components/popups/BaseAnnotationPopup.vue'
 import {
-  setPopup,
-  repositionPopup,
-  destroyPopup
-} from '@/helpers/actions/plugins/semantic'
+  set as setPopup,
+  reposition as repositionPopup,
+  destroy as destroyPopup
+} from '@/helpers/actions/plugins/semantic/popup'
 import {
-  annotationPopupOptions
-} from '@/helpers/formatters/plugins/semantic'
+  lyricsAnnotation as lyricsAnnotationPopupOptions
+} from '@/helpers/formatters/plugins/semantic/options/popup'
 
 export default {
   name: 'LyricAnnotationItem',
@@ -80,7 +80,7 @@ export default {
       return this.$refs.annotation
     },
     popupOptions () {
-      return annotationPopupOptions(
+      return lyricsAnnotationPopupOptions(
         {
           html: this.popup,
           onShow: this.handleShow

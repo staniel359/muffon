@@ -13,8 +13,8 @@
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
-  libraryDeleteFormOptions
-} from '@/helpers/formatters/plugins/semantic'
+  deleteForm as libraryDeleteFormOptions
+} from '@/helpers/formatters/plugins/semantic/options/form/library'
 import deleteLibrary from '@/helpers/actions/api/library/delete'
 import notificationMixin from '@/mixins/notificationMixin'
 

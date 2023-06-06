@@ -23,15 +23,15 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import {
-  setProgress,
-  setProgressTotalCount,
-  incrementProgress,
-  resetProgress,
-  setProgressValue
-} from '@/helpers/actions/plugins/semantic'
+  set as setProgress,
+  setTotalCount as setProgressTotalCount,
+  increment as incrementProgress,
+  reset as resetProgress,
+  setValue as setProgressValue
+} from '@/helpers/actions/plugins/semantic/progress'
 import {
-  mainProgressOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainProgressOptions
+} from '@/helpers/formatters/plugins/semantic/options/progress'
 import {
   number as formatNumber
 } from '@/helpers/formatters'

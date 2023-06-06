@@ -29,8 +29,8 @@ import BaseSegmentContainer
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
-  mainVolumeSeekerOptions
-} from '@/helpers/formatters/plugins/semantic'
+  volume as volumeSeekerOptions
+} from '@/helpers/formatters/plugins/semantic/options/seeker'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
@@ -56,7 +56,7 @@ export default {
       ).toString()
     },
     seekerOptions () {
-      return mainVolumeSeekerOptions(
+      return volumeSeekerOptions(
         {
           start: this.audioVolume
         }

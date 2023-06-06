@@ -12,8 +12,8 @@
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
-  postFormOptions
-} from '@/helpers/formatters/plugins/semantic'
+  post as postFormOptions
+} from '@/helpers/formatters/plugins/semantic/options/form'
 import updateProfilePost from '@/helpers/actions/api/profile/post/update'
 import updateCommunityPost from '@/helpers/actions/api/community/post/update'
 import {

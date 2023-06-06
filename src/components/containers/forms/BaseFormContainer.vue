@@ -24,8 +24,8 @@ import {
 import layoutStore from '@/stores/layout'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import {
-  setForm
-} from '@/helpers/actions/plugins/semantic'
+  set as setForm
+} from '@/helpers/actions/plugins/semantic/form'
 
 export default {
   name: 'BaseFormContainer',

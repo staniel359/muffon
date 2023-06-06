@@ -28,8 +28,8 @@
 
 <script>
 import {
-  setCheckbox
-} from '@/helpers/actions/plugins/semantic'
+  set as setCheckbox
+} from '@/helpers/actions/plugins/semantic/checkbox'
 
 export default {
   name: 'BaseCheckbox',

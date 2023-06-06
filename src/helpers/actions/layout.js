@@ -1,11 +1,13 @@
 import layoutStore from '@/stores/layout'
 import {
-  setDimmer,
-  toggleDimmer,
-  setSidebar,
-  toggleSidebar,
-  hideSidebar
-} from '@/helpers/actions/plugins/semantic'
+  set as setDimmer,
+  toggle as toggleDimmer
+} from '@/helpers/actions/plugins/semantic/dimmer'
+import {
+  set as setSidebar,
+  toggle as toggleSidebar,
+  hide as hideSidebar
+} from '@/helpers/actions/plugins/semantic/sidebar'
 
 export function setLoaderDimmer (
   element,

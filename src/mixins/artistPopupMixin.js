@@ -4,14 +4,14 @@ import {
 import layoutStore from '@/stores/layout'
 import BaseArtistPopup from '@/components/popups/artist/BaseArtistPopup.vue'
 import {
-  setPopup,
-  repositionPopup,
-  hidePopup,
-  destroyPopup
-} from '@/helpers/actions/plugins/semantic'
+  set as setPopup,
+  reposition as repositionPopup,
+  hide as hidePopup,
+  destroy as destroyPopup
+} from '@/helpers/actions/plugins/semantic/popup'
 import {
-  artistPopupOptions
-} from '@/helpers/formatters/plugins/semantic'
+  artist as artistPopupOptions
+} from '@/helpers/formatters/plugins/semantic/options/popup'
 
 export default {
   components: {

@@ -23,8 +23,8 @@ import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseAudioEqualizerPopup
   from '@/components/popups/BaseAudioEqualizerPopup.vue'
 import {
-  audioEqualizerPopupOptions
-} from '@/helpers/formatters/plugins/semantic'
+  audioEqualizer as audioEqualizerPopupOptions
+} from '@/helpers/formatters/plugins/semantic/options/popup'
 import popupMixin from '@/mixins/popupMixin'
 
 export default {

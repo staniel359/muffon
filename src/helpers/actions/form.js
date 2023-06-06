@@ -6,8 +6,8 @@ import {
   snakeCase
 } from 'snake-case'
 import {
-  addFormFieldError
-} from '@/helpers/actions/plugins/semantic'
+  addFieldError as addFormFieldError
+} from '@/helpers/actions/plugins/semantic/form'
 
 export function handleError (
   {

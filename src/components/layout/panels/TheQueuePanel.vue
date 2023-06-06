@@ -21,8 +21,8 @@ import queueStore from '@/stores/queue'
 import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
 import {
-  mainSidebarOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainSidebarOptions
+} from '@/helpers/formatters/plugins/semantic/options/sidebar'
 import {
   setQueuePanel,
   hideQueuePanel

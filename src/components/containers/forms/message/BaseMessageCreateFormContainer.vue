@@ -12,8 +12,8 @@
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
-  messageFormOptions
-} from '@/helpers/formatters/plugins/semantic'
+  message as messageFormOptions
+} from '@/helpers/formatters/plugins/semantic/options/form'
 import createMessage from '@/helpers/actions/api/message/create'
 import {
   decryptTextWithLinks

@@ -16,8 +16,8 @@ import {
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
-  profileDeleteFormOptions
-} from '@/helpers/formatters/plugins/semantic'
+  deleteForm as profileDeleteFormOptions
+} from '@/helpers/formatters/plugins/semantic/options/form/profile'
 import deleteProfile from '@/helpers/actions/api/profile/delete'
 
 export default {

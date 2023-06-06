@@ -1,4 +1,4 @@
-export function artistImagesModalMainSliderOptions (
+export function main (
   {
     syncSlider
   } = {}
@@ -11,7 +11,7 @@ export function artistImagesModalMainSliderOptions (
   }
 }
 
-export function artistImagesModalThumbsSliderOptions (
+export function thumbs (
   {
     syncSlider
   } = {}

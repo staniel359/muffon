@@ -20,11 +20,11 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import {
-  setVisibility
-} from '@/helpers/actions/plugins/semantic'
+  set as setVisibility
+} from '@/helpers/actions/plugins/semantic/visibility'
 import {
-  infiniteScrollObserverVisibilityOptions
-} from '@/helpers/formatters/plugins/semantic'
+  infiniteScrollObserver as infiniteScrollObserverVisibilityOptions
+} from '@/helpers/formatters/plugins/semantic/options/visibility'
 
 export default {
   name: 'ScrollObserver',

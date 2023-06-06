@@ -26,8 +26,8 @@ import playerStore from '@/stores/player'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
-  mainScrobblePercentSeekerOptions
-} from '@/helpers/formatters/plugins/semantic'
+  scrobblePercent as scrobblePercentSeekerOptions
+} from '@/helpers/formatters/plugins/semantic/options/seeker'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
@@ -55,7 +55,7 @@ export default {
       )
     },
     seekerOptions () {
-      return mainScrobblePercentSeekerOptions(
+      return scrobblePercentSeekerOptions(
         {
           start: this.playerScrobblePercent
         }

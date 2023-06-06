@@ -1,10 +1,10 @@
 import {
-  setToast
-} from '@/helpers/actions/plugins/semantic'
+  set as setToast
+} from '@/helpers/actions/plugins/semantic/toast'
 import transparencyMixin from '@/mixins/transparencyMixin'
 import {
-  mainToastOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainToastOptions
+} from '@/helpers/formatters/plugins/semantic/options/toast'
 
 export default {
   mixins: [

@@ -15,13 +15,13 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import {
-  mainModalOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainModalOptions
+} from '@/helpers/formatters/plugins/semantic/options/modal'
 import {
-  setModal,
-  showModal,
-  hideModal
-} from '@/helpers/actions/plugins/semantic'
+  set as setModal,
+  show as showModal,
+  hide as hideModal
+} from '@/helpers/actions/plugins/semantic/modal'
 import {
   toggleClass
 } from '@/helpers/actions/plugins/jquery'

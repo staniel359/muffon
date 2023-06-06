@@ -8,11 +8,11 @@
 
 <script>
 import {
-  setVisibility
-} from '@/helpers/actions/plugins/semantic'
+  set as setVisibility
+} from '@/helpers/actions/plugins/semantic/visibility'
 import {
-  mainVisibilityOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainVisibilityOptions
+} from '@/helpers/formatters/plugins/semantic/options/visibility'
 
 export default {
   name: 'BaseTransitionContainer',

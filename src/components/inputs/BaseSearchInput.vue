@@ -34,11 +34,11 @@ import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
-  setSearch
-} from '@/helpers/actions/plugins/semantic'
+  set as setSearch
+} from '@/helpers/actions/plugins/semantic/search'
 import {
-  mainSearchOptions
-} from '@/helpers/formatters/plugins/semantic'
+  search as searchInputOptions
+} from '@/helpers/formatters/plugins/semantic/options/input'
 import {
   anonymousToken
 } from '@/helpers/data/env'
@@ -88,7 +88,7 @@ export default {
       )
     },
     searchOptions () {
-      return mainSearchOptions(
+      return searchInputOptions(
         {
           onResponse: this.formatResponse,
           url: this.urlFormatted,

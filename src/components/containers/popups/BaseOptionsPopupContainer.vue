@@ -38,14 +38,14 @@ import layoutStore from '@/stores/layout'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseOptionsPopupMenuContainer from './BaseOptionsPopupMenuContainer.vue'
 import {
-  optionsPopupOptions
-} from '@/helpers/formatters/plugins/semantic'
+  options as optionsPopupOptions
+} from '@/helpers/formatters/plugins/semantic/options/popup'
 import popupMixin from '@/mixins/popupMixin'
 import {
-  showPopup,
-  hidePopup,
-  repositionPopup
-} from '@/helpers/actions/plugins/semantic'
+  show as showPopup,
+  hide as hidePopup,
+  reposition as repositionPopup
+} from '@/helpers/actions/plugins/semantic/popup'
 
 export default {
   name: 'BaseOptionsPopupContainer',

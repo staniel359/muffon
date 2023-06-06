@@ -18,12 +18,12 @@
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseEmojiPopup from '@/components/popups/BaseEmojiPopup.vue'
 import {
-  emojiPopupOptions
-} from '@/helpers/formatters/plugins/semantic'
+  emoji as emojiPopupOptions
+} from '@/helpers/formatters/plugins/semantic/options/popup'
 import popupMixin from '@/mixins/popupMixin'
 import {
-  repositionPopup
-} from '@/helpers/actions/plugins/semantic'
+  reposition as repositionPopup
+} from '@/helpers/actions/plugins/semantic/popup'
 
 export default {
   name: 'EmojiButton',

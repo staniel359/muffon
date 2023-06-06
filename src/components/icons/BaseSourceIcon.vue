@@ -24,8 +24,8 @@
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseSourcePopup from '@/components/popups/BaseSourcePopup.vue'
 import {
-  sourcePopupOptions
-} from '@/helpers/formatters/plugins/semantic'
+  source as sourcePopupOptions
+} from '@/helpers/formatters/plugins/semantic/options/popup'
 import popupMixin from '@/mixins/popupMixin'
 
 export default {

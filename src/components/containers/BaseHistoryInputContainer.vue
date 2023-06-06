@@ -21,16 +21,16 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import {
-  mainHistoryInputOptions
-} from '@/helpers/formatters/plugins/semantic'
+  history as historyInputOptions
+} from '@/helpers/formatters/plugins/semantic/options/input'
 import {
-  setSearch,
-  setSearchSource
-} from '@/helpers/actions/plugins/semantic'
-import {
-  get as getElectronStoreHistory,
-  update as updateElectronStoreHistory
-} from '@/helpers/actions/plugins/electronStore/history'
+  set as setSearch,
+  setSource as setSearchSource
+} from '@/helpers/actions/plugins/semantic/search'
+import getElectronStoreHistory
+  from '@/helpers/actions/plugins/electronStore/history/get'
+import updateElectronStoreHistory
+  from '@/helpers/actions/plugins/electronStore/history/update'
 import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
@@ -62,7 +62,7 @@ export default {
       ]
     ),
     searchOptions () {
-      return mainHistoryInputOptions(
+      return historyInputOptions(
         {
           source: this.history,
           onSelect:

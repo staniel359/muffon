@@ -16,12 +16,12 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import {
-  mainCheckboxOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainCheckboxOptions
+} from '@/helpers/formatters/plugins/semantic/options/checkbox'
 import {
-  setCheckbox,
-  checkCheckbox
-} from '@/helpers/actions/plugins/semantic'
+  set as setCheckbox,
+  check as checkCheckbox
+} from '@/helpers/actions/plugins/semantic/checkbox'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'

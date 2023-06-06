@@ -21,8 +21,8 @@ import {
   setLoaderDimmer
 } from '@/helpers/actions/layout'
 import {
-  loaderDimmerOptions
-} from '@/helpers/formatters/plugins/semantic'
+  loader as loaderDimmerOptions
+} from '@/helpers/formatters/plugins/semantic/options/dimmer'
 
 export default {
   name: 'TheLoaderDimmer',

@@ -25,8 +25,8 @@ import layoutStore from '@/stores/layout'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
-  mainTransparencySeekerOptions
-} from '@/helpers/formatters/plugins/semantic'
+  transparency as transparencySeekerOptions
+} from '@/helpers/formatters/plugins/semantic/options/seeker'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
@@ -45,7 +45,7 @@ export default {
       ]
     ),
     seekerOptions () {
-      return mainTransparencySeekerOptions(
+      return transparencySeekerOptions(
         {
           start: this.transparency
         }

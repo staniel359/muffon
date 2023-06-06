@@ -34,11 +34,11 @@ import {
 import layoutStore from '@/stores/layout'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
-  setAccordion
-} from '@/helpers/actions/plugins/semantic'
+  set as setAccordion
+} from '@/helpers/actions/plugins/semantic/accordion'
 import {
-  mainAccordionOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainAccordionOptions
+} from '@/helpers/formatters/plugins/semantic/options/accordion'
 
 export default {
   name: 'BaseAccordionContainer',

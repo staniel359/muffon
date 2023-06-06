@@ -32,12 +32,12 @@ import {
 import layoutStore from '@/stores/layout'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
-  setCalendar,
-  resetCalendar
-} from '@/helpers/actions/plugins/semantic'
+  set as setCalendar,
+  reset as resetCalendar
+} from '@/helpers/actions/plugins/semantic/calendar'
 import {
-  birthdateCalendarOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainCalendarOptions
+} from '@/helpers/formatters/plugins/semantic/options/calendar'
 
 export default {
   name: 'BaseCalendar',
@@ -61,7 +61,7 @@ export default {
       ]
     ),
     calendarOptions () {
-      return birthdateCalendarOptions(
+      return mainCalendarOptions(
         {
           startDate: this.date,
           onChange: this.handleChange

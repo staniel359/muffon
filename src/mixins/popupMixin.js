@@ -3,8 +3,8 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import {
-  setPopup
-} from '@/helpers/actions/plugins/semantic'
+  set as setPopup
+} from '@/helpers/actions/plugins/semantic/popup'
 
 export default {
   computed: {

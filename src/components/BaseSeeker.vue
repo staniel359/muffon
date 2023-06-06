@@ -16,9 +16,9 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import {
-  setSeeker,
-  setSeekerValue
-} from '@/helpers/actions/plugins/semantic'
+  set as setSeeker,
+  setValue as setSeekerValue
+} from '@/helpers/actions/plugins/semantic/seeker'
 
 export default {
   name: 'BaseSeeker',

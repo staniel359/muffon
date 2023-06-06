@@ -19,11 +19,11 @@ import {
 import layoutStore from '@/stores/layout'
 import videoStore from '@/stores/video'
 import {
-  setVideo
-} from '@/helpers/actions/plugins/semantic'
+  set as setVideo
+} from '@/helpers/actions/plugins/semantic/video'
 import {
-  mainVideoOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainVideoOptions
+} from '@/helpers/formatters/plugins/semantic/options/video'
 
 export default {
   name: 'BaseVideo',

@@ -17,8 +17,8 @@ import profileStore from '@/stores/profile'
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
-  profileCreateFormOptions
-} from '@/helpers/formatters/plugins/semantic'
+  create as profileCreateFormOptions
+} from '@/helpers/formatters/plugins/semantic/options/form/profile'
 import {
   birthdate as formatBirthdate
 } from '@/helpers/formatters/dateTimeString'

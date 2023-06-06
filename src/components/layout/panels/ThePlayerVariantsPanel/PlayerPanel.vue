@@ -36,8 +36,8 @@ import {
   setPlayerPanel
 } from '@/helpers/actions/layout'
 import {
-  mainSidebarOptions
-} from '@/helpers/formatters/plugins/semantic'
+  main as mainSidebarOptions
+} from '@/helpers/formatters/plugins/semantic/options/sidebar'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'

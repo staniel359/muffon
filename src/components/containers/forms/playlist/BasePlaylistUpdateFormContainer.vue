@@ -13,8 +13,8 @@
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import {
-  playlistFormOptions
-} from '@/helpers/formatters/plugins/semantic'
+  playlist as playlistFormOptions
+} from '@/helpers/formatters/plugins/semantic/options/form'
 import updatePlaylist from '@/helpers/actions/api/playlist/update'
 import notificationMixin from '@/mixins/notificationMixin'
 
