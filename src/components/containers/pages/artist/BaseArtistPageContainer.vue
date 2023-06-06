@@ -3,6 +3,7 @@
     :response-data="artistData"
     :is-loading="isLoading"
     :error="error"
+    @init="handleInit"
   >
     <slot
       :artist-data="artistData"
@@ -49,6 +50,7 @@ export default {
     limit: Number
   },
   emits: [
+    'init',
     'refresh'
   ],
   data () {
@@ -126,6 +128,14 @@ export default {
   },
   methods: {
     getArtist,
+    handleInit (
+      element
+    ) {
+      this.$emit(
+        'init',
+        element
+      )
+    },
     handleRequestArtistDataChange (
       value,
       oldValue

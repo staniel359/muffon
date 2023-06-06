@@ -1,8 +1,8 @@
 <template>
   <BaseArtistPageContainer
-    ref="page"
     :key="refreshKey"
     :artist-name="artistName"
+    @init="handleInit"
   >
     <template
       #default="slotProps"
@@ -46,9 +46,12 @@ export default {
       scrollable: null
     }
   },
-  mounted () {
-    this.scrollable =
-      this.$refs.page.$el
+  methods: {
+    handleInit (
+      element
+    ) {
+      this.scrollable = element
+    }
   }
 }
 </script>

@@ -1,5 +1,8 @@
 <template>
-  <div class="main-page-container">
+  <div
+    ref="page"
+    class="main-page-container"
+  >
     <BaseErrorMessage
       v-if="isPageError"
       :error="error"
@@ -39,6 +42,9 @@ export default {
     isLoading: Boolean,
     error: Error
   },
+  emits: [
+    'init'
+  ],
   computed: {
     ...mapState(
       layoutStore,
@@ -65,6 +71,11 @@ export default {
   },
   mounted () {
     this.scrollToTop()
+
+    this.$emit(
+      'init',
+      this.$refs.page
+    )
   },
   activated () {
     if (this.isPageError) {
