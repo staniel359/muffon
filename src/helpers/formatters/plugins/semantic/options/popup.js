@@ -11,6 +11,7 @@ export function volume (
     transition: 'fade up',
     variation: 'basic',
     closable: false,
+    exclusive: true,
     hoverable: true,
     preserve: true,
     className: {
@@ -36,6 +37,7 @@ export function audioEqualizer (
     transition: 'fade up',
     variation: 'basic',
     closable: false,
+    exclusive: true,
     hoverable: true,
     preserve: true,
     className: {
@@ -60,6 +62,7 @@ export function source (
     position: 'top center',
     transition: 'fade up',
     variation: 'basic',
+    exclusive: true,
     delay: 0,
     className: {
       popup: className
@@ -79,6 +82,7 @@ export function pageSelect (
     position: 'top center',
     transition: 'fade up',
     variation: 'basic',
+    exclusive: true,
     hoverable: true,
     className: {
       popup: className
@@ -106,6 +110,7 @@ export function artist (
     position: 'top center',
     transition: 'fade up',
     variation: 'basic',
+    exclusive: true,
     hoverable: true,
     lastResort: true,
     className: {
@@ -135,6 +140,7 @@ export function lyricsAnnotation (
     position: 'top center',
     transition: 'fade up',
     variation: 'basic',
+    exclusive: true,
     hoverable: true,
     lastResort: true,
     className: {
@@ -161,6 +167,7 @@ export function emoji (
     position: 'right center',
     transition: 'fade up',
     variation: 'basic',
+    exclusive: true,
     hoverable: true,
     preserve: true,
     className: {
@@ -186,6 +193,7 @@ export function profileInfo (
     position: 'right center',
     transition: 'fade up',
     variation: 'basic',
+    exclusive: true,
     delay: 0,
     className: {
       popup: className
