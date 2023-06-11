@@ -1,3 +1,5 @@
+// i18n
+
 export default [
   {
     id: 'be',
