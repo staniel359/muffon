@@ -54,7 +54,6 @@
   },
   "files": [
     "./.env",
-    "./main.js",
     "./build_electron/**/*",
     "./index.html",
     {

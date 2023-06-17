@@ -3,10 +3,6 @@
   "version": "1.6.0",
   "description": "Music streaming browser",
   "homepage": "https://github.com/staniel359/muffon",
-  "bugs": {
-    "url": "https://github.com/staniel359/muffon/issues",
-    "email": "staniel359@gmail.com"
-  },
   "license": "MIT",
   "author": {
     "name": "Aleksey Shpakovsky",
@@ -14,15 +10,14 @@
     "url": "https://github.com/staniel359"
   },
   "main": "build_electron/main.js",
-  "repository": "github:staniel359/muffon",
   "scripts": {
-    "start": "NODE_OPTIONS='--max_old_space_size=512' vite",
+    "start": "vite",
     "start:electron": "NODE_ENV=development DEV_TOOLS=false electron .",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "build": "vite build",
     "build:electron": "electron-builder --dir",
     "build:all": "yarn build && yarn build:electron",
-    "release:electron": "electron-builder -mwl -p always",
+    "release:electron": "electron-builder --publish always",
     "release": "yarn build && yarn release:electron",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
@@ -68,13 +63,5 @@
     "vite-electron-plugin": "^0.8.2",
     "vite-plugin-electron-renderer": "^0.14.5",
     "vite-plugin-eslint": "^1.8.1"
-  },
-  "os": [
-    "win32",
-    "darwin",
-    "linux"
-  ],
-  "cpu": [
-    "x64"
-  ]
+  }
 }

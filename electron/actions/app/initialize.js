@@ -8,10 +8,23 @@ import setGlobalVariables from './setGlobalVariables'
 import setEvents from './setEvents'
 import setup from './setup'
 import {
-  appName
+  appName,
+  createFolderIfNotExists
 } from '#/helpers/utils'
+import {
+  audioFolderPath,
+  backgroundImagesFolderPath
+} from '#/helpers/paths'
 
 export default function () {
+  createFolderIfNotExists(
+    audioFolderPath
+  )
+
+  createFolderIfNotExists(
+    backgroundImagesFolderPath
+  )
+
   setupI18n()
 
   setupDayjs()

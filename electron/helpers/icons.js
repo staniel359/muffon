@@ -2,25 +2,8 @@ import {
   nativeImage
 } from 'electron'
 import {
-  isDevelopment
-} from '#/helpers/utils'
-import {
-  join as joinPath
-} from 'path'
-import {
-  formatFileRootPath
+  iconPath
 } from '#/helpers/paths'
-
-const publicPath =
-  isDevelopment ? 'public' : ''
-
-const iconPath =
-  formatFileRootPath(
-    joinPath(
-      publicPath,
-      'logo.png'
-    )
-  )
 
 const icon =
   nativeImage.createFromPath(

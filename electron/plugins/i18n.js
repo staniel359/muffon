@@ -1,8 +1,10 @@
 import i18n from 'i18n'
-import {
-  formatFileRootPath
-} from '#/helpers/paths'
 import getElectronStoreKey from '#/actions/electronStore/getKey'
+import be from './i18n/locales/be.json'
+import de from './i18n/locales/de.json'
+import en from './i18n/locales/en.json'
+import it from './i18n/locales/it.json'
+import ru from './i18n/locales/ru.json'
 
 // i18n
 
@@ -11,23 +13,17 @@ const locale =
     'profile.language'
   )
 
-const locales = [
-  'be',
-  'de',
-  'en',
-  'it',
-  'ru'
-]
-
-const directory =
-  formatFileRootPath(
-    'build_electron/plugins/i18n/locales'
-  )
+const localesData = {
+  be,
+  de,
+  en,
+  it,
+  ru
+}
 
 const options = {
   defaultLocale: locale,
-  locales,
-  directory,
+  staticCatalog: localesData,
   objectNotation: true
 }
 
