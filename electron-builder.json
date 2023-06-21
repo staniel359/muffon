@@ -34,7 +34,8 @@
     "icon": "build/icons/icon.icns",
     "target": [
       "AppImage",
-      "deb"
+      "deb",
+      "flatpak"
     ]
   },
   "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
