@@ -8,25 +8,20 @@
   <div class="option">
     <div class="option-header">
       <BaseButton
-        class="red circular option-button"
-        icon="lastfm"
+        class="green basic circular option-button"
+        icon="spotify"
         :class="{
           loading: isLoading,
           disabled: isLoading
         }"
-        :text="connectText"
+        :text="disconnectText"
         :is-invertable="false"
         @click="handleClick"
       />
     </div>
 
-    <div
-      class="option-text"
-      v-text="confirmText"
-    />
-
-    <BaseClearButton
-      @click="handleClearButtonClick"
+    <BaseAccountSection
+      :account-data="spotifyAccountData"
     />
   </div>
 </template>
@@ -34,51 +29,39 @@
 <script>
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
-import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import createLastfmConnection
-  from '@/helpers/actions/api/connection/lastfm/create'
+import BaseAccountSection from '@/components/sections/BaseAccountSection.vue'
+import deleteSpotifyConnection
+  from '@/helpers/actions/api/connection/spotify/delete'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
 
 export default {
-  name: 'ConnectSection',
+  name: 'ConnectedSection',
   components: {
     BaseErrorMessage,
     BaseButton,
-    BaseClearButton
+    BaseAccountSection
   },
   props: {
-    token: {
-      type: String,
-      required: true
-    }
+    spotifyAccountData: Object
   },
   emits: [
-    'clearButtonClick'
+    'success'
   ],
   data () {
     return {
       connectionsData: null,
       error: null,
-      isLoading: false
+      isLoading: false,
+      isSuccess: false
     }
   },
   computed: {
-    connectText () {
+    disconnectText () {
       return this.$t(
-        'connections.connect'
+        'connections.disconnect'
       )
-    },
-    confirmText () {
-      return this.$t(
-        'connections.confirm.token'
-      )
-    },
-    connectionArgs () {
-      return {
-        lastfmToken: this.token
-      }
     }
   },
   watch: {
@@ -86,16 +69,9 @@ export default {
       'handleConnectionsDataChange'
   },
   methods: {
-    createLastfmConnection,
+    deleteSpotifyConnection,
     handleClick () {
-      this.createLastfmConnection(
-        this.connectionArgs
-      )
-    },
-    handleClearButtonClick () {
-      this.$emit(
-        'clearButtonClick'
-      )
+      this.deleteSpotifyConnection()
     },
     handleConnectionsDataChange (
       value
@@ -105,6 +81,10 @@ export default {
           {
             'profile.connections': value
           }
+        )
+
+        this.$emit(
+          'success'
         )
       }
     }

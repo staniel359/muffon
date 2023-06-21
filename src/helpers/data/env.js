@@ -3,3 +3,6 @@ export const anonymousToken =
 
 export const shareEncryptionKey =
   import.meta.env.VITE_APP_SHARE_ENCRYPTION_KEY
+
+export const spotifyClientId =
+  import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID

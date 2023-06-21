@@ -644,9 +644,13 @@
   "connections": {
     "connect": "Connect account",
     "confirm": {
-      "token": "Your browser will now open. Confirm connection there and click this button again."
+      "token": "Your browser will now open. Confirm connection there and click this button again.",
+      "code": "Your browser will now open. Confirm connection there, paste the received code and click this button again."
     },
     "disconnect": "Disconnect account"
+  },
+  "accounts": {
+    "premium": "Premium"
   },
   "noCollection": {
     "header": {

@@ -8,8 +8,8 @@
   <div class="option">
     <div class="option-header">
       <BaseButton
-        class="red circular option-button"
-        icon="lastfm"
+        class="green circular option-button"
+        icon="spotify"
         :class="{
           loading: isLoading,
           disabled: isLoading
@@ -29,14 +29,20 @@
       @click="handleClearButtonClick"
     />
   </div>
+
+  <BaseInput
+    v-model.trim="code"
+    class="code-input"
+  />
 </template>
 
 <script>
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseInput from '@/components/inputs/BaseInput.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import createLastfmConnection
-  from '@/helpers/actions/api/connection/lastfm/create'
+import createSpotifyConnection
+  from '@/helpers/actions/api/connection/spotify/create'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
@@ -46,13 +52,8 @@ export default {
   components: {
     BaseErrorMessage,
     BaseButton,
+    BaseInput,
     BaseClearButton
-  },
-  props: {
-    token: {
-      type: String,
-      required: true
-    }
   },
   emits: [
     'clearButtonClick'
@@ -61,7 +62,8 @@ export default {
     return {
       connectionsData: null,
       error: null,
-      isLoading: false
+      isLoading: false,
+      code: ''
     }
   },
   computed: {
@@ -72,12 +74,12 @@ export default {
     },
     confirmText () {
       return this.$t(
-        'connections.confirm.token'
+        'connections.confirm.code'
       )
     },
     connectionArgs () {
       return {
-        lastfmToken: this.token
+        code: this.code
       }
     }
   },
@@ -86,9 +88,9 @@ export default {
       'handleConnectionsDataChange'
   },
   methods: {
-    createLastfmConnection,
+    createSpotifyConnection,
     handleClick () {
-      this.createLastfmConnection(
+      this.createSpotifyConnection(
         this.connectionArgs
       )
     },
@@ -112,4 +114,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.code-input
+  margin-top: 1em
+</style>

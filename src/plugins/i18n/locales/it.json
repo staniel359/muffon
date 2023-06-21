@@ -58,8 +58,8 @@
       "tags": "{modelName} tag",
       "similar": "{modelName} simili",
       "images": "{modelName} immagini",
-      "videos": "{modelName} video",
       "lyrics": "Testo di {modelName}",
+      "videos": "{modelName} video",
       "related": "{modelName} correlati",
       "posts": "{modelName} post",
       "library": "{modelName} library",
@@ -151,8 +151,8 @@
       "sources": "Cerca dalle fonti"
     },
     "searchFor": {
-      "lyrics": "Cerca testo",
-      "video": "Cerca video"
+      "video": "Cerca video",
+      "lyrics": "Cerca testo"
     },
     "import": {
       "lastfm": "Importa dati da Last.FM"
@@ -642,11 +642,15 @@
     "active": "Rimozione di {count} di {counter}..."
   },
   "connections": {
-    "confirm": {
-      "token": "Sarà aperto il browser. Conferma la connessione e clicca di nuovo questo pulsante."
-    },
     "connect": "Connetti account",
+    "confirm": {
+      "token": "Sarà aperto il browser. Conferma la connessione e clicca di nuovo questo pulsante.",
+      "code": "Il tuo browser si aprirà. Conferma lì la connessione, copia il codice ricevuto e clicca nuovamente su questo pulsante."
+    },
     "disconnect": "Disconnetti account"
+  },
+  "accounts": {
+    "premium": "Premium"
   },
   "noCollection": {
     "header": {
@@ -668,8 +672,8 @@
       "members": "Nessun membro",
       "videos": "Nessun video",
       "videoChannels": "Nessun canale video",
-      "videoPlaylists": "Nessuna playlist di video",
       "videoMixes": "Nessun mix video",
+      "videoPlaylists": "Nessuna playlist di video",
       "related": "Nessun correlato",
       "lyrics": "Nessun testo",
       "listeners": "Nessun ascoltatore",

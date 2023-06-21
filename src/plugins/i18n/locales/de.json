@@ -58,8 +58,8 @@
       "tags": "{modelName} Tags",
       "similar": "{modelName} Ähnlich",
       "images": "{modelName} Bilder",
-      "videos": "{modelName} Videos",
       "lyrics": "Liedtext von {modelName}",
+      "videos": "{modelName} Videos",
       "related": "{modelName} Verbunden",
       "posts": "{modelName} Posts",
       "library": "{modelName} Bibliothek",
@@ -644,9 +644,13 @@
   "connections": {
     "connect": "Account verbinden",
     "confirm": {
-      "token": "Ihr Browser wird sich nun öffnen. Bestätigen Sie dort die Verbindung und klicken Sie erneut auf diese Schaltfläche."
+      "token": "Ihr Browser wird sich nun öffnen. Bestätigen Sie dort die Verbindung und klicken Sie erneut auf diese Schaltfläche.",
+      "code": "Ihr Browser wird nun geöffnet. Bestätigen Sie dort die Verbindung, fügen Sie den erhaltenen Code ein und klicken Sie erneut auf diese Schaltfläche."
     },
     "disconnect": "Account trennen"
+  },
+  "accounts": {
+    "premium": "Premium"
   },
   "noCollection": {
     "header": {
@@ -668,8 +672,8 @@
       "members": "Keine Mitglieder",
       "videos": "Keine Videos",
       "videoChannels": "Keine Videokanäle",
-      "videoPlaylists": "Keine Videoplaylisten",
       "videoMixes": "Keine Video-Mixe",
+      "videoPlaylists": "Keine Videoplaylisten",
       "related": "Keine Verwandten",
       "lyrics": "Keine Lyrics",
       "listeners": "Keine Zuhörer",

@@ -22,6 +22,7 @@
 import BaseTabsContainer
   from '@/components/containers/tabs/BaseTabsContainer.vue'
 import LastfmOptions from './IntegrationsSettings/LastfmOptions.vue'
+import SpotifyOptions from './IntegrationsSettings/SpotifyOptions.vue'
 import DiscordOptions from './IntegrationsSettings/DiscordOptions.vue'
 
 export default {
@@ -29,6 +30,7 @@ export default {
   components: {
     BaseTabsContainer,
     LastfmOptions,
+    SpotifyOptions,
     DiscordOptions
   },
   data () {
@@ -39,6 +41,12 @@ export default {
           icon: 'lastfm',
           scope: 'lastfm',
           component: 'LastfmOptions'
+        },
+        {
+          name: 'Spotify',
+          icon: 'spotify',
+          scope: 'spotify',
+          component: 'SpotifyOptions'
         },
         {
           name: 'Discord',
