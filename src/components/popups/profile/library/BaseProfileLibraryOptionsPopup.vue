@@ -10,7 +10,7 @@
       >
         <AddOption
           v-if="slotProps.isVisible"
-          :is-account-connected="isAccountConnected"
+          :is-connections="isConnections"
           @search-option-click="handleAddSearchOptionClick"
           @account-option-click="handleAddAccountOptionClick"
           @folder-option-click="handleAddFolderOptionClick"
@@ -21,7 +21,7 @@
         />
 
         <BaseLibraryAccountImportModal
-          v-if="isAccountConnected"
+          v-if="isConnections"
           ref="accountModal"
         />
 
@@ -65,7 +65,7 @@ export default {
       profileStore,
       {
         profileId: 'id',
-        profileInfo: 'info'
+        profileConnections: 'connections'
       }
     ),
     isRender () {
@@ -79,11 +79,8 @@ export default {
           this.isWithAddOption
       )
     },
-    isAccountConnected () {
-      return !!this.lastfmNickname
-    },
-    lastfmNickname () {
-      return this.profileInfo.lastfm_nickname
+    isConnections () {
+      return !!this.profileConnections.lastfm
     }
   },
   methods: {

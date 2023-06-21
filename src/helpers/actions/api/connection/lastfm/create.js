@@ -6,7 +6,7 @@ export default function (
     lastfmToken
   }
 ) {
-  const url = '/lastfm/connect/sessions'
+  const url = '/lastfm/connections'
 
   const params = {
     lastfm_token: lastfmToken
@@ -15,14 +15,9 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    const profileInfo = profileStore().info
-
-    const profileLastFmData =
-      response.data.profile
-
-    this.profileData = {
-      ...profileInfo,
-      ...profileLastFmData
+    this.connectionsData = {
+      ...profileStore().connections,
+      ...response.data.profile.connections
     }
   }
 

@@ -5,19 +5,18 @@ export default function () {
   const profileId = profileStore().id
 
   const url =
-    `/lastfm/connect/sessions/${profileId}`
+    `/lastfm/connections/${profileId}`
 
   const handleSuccess = (
     response
   ) => {
-    const info = {
-      ...profileStore().info
+    const connectionsData = {
+      ...profileStore().connections
     }
 
-    delete info.lastfm_nickname
-    delete info.lastfm_session_key
+    delete connectionsData.lastfm
 
-    this.profileData = info
+    this.connectionsData = connectionsData
   }
 
   return deleteRequest.bind(

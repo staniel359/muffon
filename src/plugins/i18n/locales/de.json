@@ -641,9 +641,11 @@
   "delete": {
     "active": "Lösche {count} von {counter}..."
   },
-  "accounts": {
+  "connections": {
     "connect": "Account verbinden",
-    "wait": "Ihr Browser wird sich nun öffnen. Bestätigen Sie dort die Verbindung und klicken Sie erneut auf diese Schaltfläche.",
+    "confirm": {
+      "token": "Ihr Browser wird sich nun öffnen. Bestätigen Sie dort die Verbindung und klicken Sie erneut auf diese Schaltfläche."
+    },
     "disconnect": "Account trennen"
   },
   "noCollection": {

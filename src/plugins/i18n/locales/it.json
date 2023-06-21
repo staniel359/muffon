@@ -641,9 +641,11 @@
   "delete": {
     "active": "Rimozione di {count} di {counter}..."
   },
-  "accounts": {
+  "connections": {
+    "confirm": {
+      "token": "Sarà aperto il browser. Conferma la connessione e clicca di nuovo questo pulsante."
+    },
     "connect": "Connetti account",
-    "wait": "Sarà aperto il browser. Conferma la connessione e clicca di nuovo questo pulsante.",
     "disconnect": "Disconnetti account"
   },
   "noCollection": {

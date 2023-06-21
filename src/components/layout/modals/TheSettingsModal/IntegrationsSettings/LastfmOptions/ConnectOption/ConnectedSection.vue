@@ -8,7 +8,7 @@
   <div class="option">
     <div class="option-header">
       <BaseButton
-        class="basic circular red option-button"
+        class="red basic circular option-button"
         icon="lastfm"
         :class="{
           loading: isLoading,
@@ -20,48 +20,38 @@
       />
     </div>
 
-    <div>
-      <BaseIcon
-        class="green"
-        icon="success"
-      />
-
-      <strong
-        v-text="lastfmNickname"
-      />
-    </div>
+    <BaseAccountSection
+      :account-data="lastfmAccountData"
+    />
   </div>
 </template>
 
 <script>
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
-import deleteLastfmSession
-  from '@/helpers/actions/api/lastfm/connect/session/delete'
+import BaseAccountSection from '@/components/sections/BaseAccountSection.vue'
+import deleteLastfmConnection
+  from '@/helpers/actions/api/connection/lastfm/delete'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
 
 export default {
-  name: 'DisconnectSection',
+  name: 'ConnectedSection',
   components: {
     BaseErrorMessage,
     BaseButton,
-    BaseIcon
+    BaseAccountSection
   },
   props: {
-    lastfmNickname: {
-      type: String,
-      required: true
-    }
+    lastfmAccountData: Object
   },
   emits: [
     'success'
   ],
   data () {
     return {
-      profileData: null,
+      connectionsData: null,
       error: null,
       isLoading: false,
       isSuccess: false
@@ -70,25 +60,25 @@ export default {
   computed: {
     disconnectText () {
       return this.$t(
-        'accounts.disconnect'
+        'connections.disconnect'
       )
     }
   },
   watch: {
-    profileData: 'handleProfileDataChange'
+    connectionsData: 'handleConnectionsDataChange'
   },
   methods: {
-    deleteLastfmSession,
+    deleteLastfmConnection,
     handleClick () {
-      this.deleteLastfmSession()
+      this.deleteLastfmConnection()
     },
-    handleProfileDataChange (
+    handleConnectionsDataChange (
       value
     ) {
       if (value) {
         updateGlobalStore(
           {
-            'profile.info': value
+            'profile.connections': value
           }
         )
 

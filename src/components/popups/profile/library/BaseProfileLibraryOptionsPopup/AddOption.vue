@@ -18,7 +18,7 @@ export default {
     'hidePopup'
   ],
   props: {
-    isAccountConnected: Boolean
+    isConnections: Boolean
   },
   emits: [
     'searchOptionClick',
@@ -47,7 +47,7 @@ export default {
             'actions.from.account'
           ),
           isDisabled:
-            !this.isAccountConnected,
+            !this.isConnections,
           onClick:
             this.handleAccountOptionClick
         },

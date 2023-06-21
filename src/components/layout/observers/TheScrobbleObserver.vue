@@ -9,8 +9,7 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import createScrobblerPlay
-  from '@/helpers/actions/api/lastfm/scrobbler/play/create'
+import createScrobblerPlay from '@/helpers/actions/api/scrobbler/play/create'
 import {
   track as formatScrobblerTrack
 } from '@/helpers/formatters/scrobbler'

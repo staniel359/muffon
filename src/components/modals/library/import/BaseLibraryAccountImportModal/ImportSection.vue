@@ -26,7 +26,7 @@ import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseProgress from '@/components/BaseProgress.vue'
 import BaseImportCompleteSection
   from '@/components/import/BaseImportCompleteSection.vue'
-import getLastfmUserPlays from '@/helpers/actions/api/lastfm/user/plays/get'
+import getUser from '@/helpers/actions/api/user/get'
 import {
   playsToTracks as formatPlaysToTracks
 } from '@/helpers/formatters'
@@ -43,14 +43,14 @@ export default {
     collectionMixin
   ],
   props: {
-    userData: {
-      type: Object,
+    playsCount: {
+      type: Number,
       required: true
     }
   },
   data () {
     return {
-      totalPagesCount: null,
+      userData: null,
       error: null,
       page: 1,
       isProgress: true,
@@ -66,34 +66,41 @@ export default {
           !this.isComplete
       )
     },
-    playsCount () {
-      return this.userData.plays_count
-    },
-    playsArgs () {
+    userArgs () {
       return {
-        lastfmNickname:
-          this.lastfmNickname,
-        page: this.page
+        source: 'lastfm',
+        scope: 'plays',
+        page: this.page,
+        limit: 500
       }
-    },
-    lastfmNickname () {
-      return this.userData.nickname
     },
     isGetPlays () {
       return (
         this.page <
           this.totalPagesCount
       )
+    },
+    totalPagesCount () {
+      return this.userData?.total_pages
     }
   },
   watch: {
+    userData: 'handleUserDataChange',
     plays: 'handlePlaysChange'
   },
   mounted () {
     this.processPlays()
   },
   methods: {
-    getLastfmUserPlays,
+    getUser,
+    handleUserDataChange (
+      value
+    ) {
+      this.plays = [
+        ...this.plays,
+        ...value.plays
+      ]
+    },
     handlePlaysChange (
       value
     ) {
@@ -126,8 +133,8 @@ export default {
       this.getData()
     },
     getData () {
-      this.getLastfmUserPlays(
-        this.playsArgs
+      this.getUser(
+        this.userArgs
       )
     },
     setProgressTotalCount () {

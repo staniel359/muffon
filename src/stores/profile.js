@@ -11,7 +11,8 @@ const data = {
       language: null,
       isShowPlaying: null,
       timezone: null,
-      isAnonymous: null
+      isAnonymous: null,
+      connections: null
     }
   },
   getters: {
@@ -56,6 +57,11 @@ const data = {
       value
     ) {
       this.isAnonymous = value
+    },
+    setConnections (
+      value
+    ) {
+      this.connections = value
     }
   }
 }

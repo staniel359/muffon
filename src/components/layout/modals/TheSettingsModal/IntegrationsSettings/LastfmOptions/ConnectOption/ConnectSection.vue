@@ -8,7 +8,7 @@
   <div class="option">
     <div class="option-header">
       <BaseButton
-        class="lastfm circular option-button"
+        class="red circular option-button"
         icon="lastfm"
         :class="{
           loading: isLoading,
@@ -35,8 +35,8 @@
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import createLastfmSession
-  from '@/helpers/actions/api/lastfm/connect/session/create'
+import createLastfmConnection
+  from '@/helpers/actions/api/connection/lastfm/create'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
@@ -59,7 +59,7 @@ export default {
   ],
   data () {
     return {
-      profileData: null,
+      connectionsData: null,
       error: null,
       isLoading: false
     }
@@ -67,28 +67,29 @@ export default {
   computed: {
     connectText () {
       return this.$t(
-        'accounts.connect'
+        'connections.connect'
       )
     },
     waitText () {
       return this.$t(
-        'accounts.wait'
+        'connections.confirm.token'
       )
     },
-    sessionArgs () {
+    connectionArgs () {
       return {
         lastfmToken: this.token
       }
     }
   },
   watch: {
-    profileData: 'handleProfileDataChange'
+    connectionsData:
+      'handleConnectionsDataChange'
   },
   methods: {
-    createLastfmSession,
+    createLastfmConnection,
     handleClick () {
-      this.createLastfmSession(
-        this.sessionArgs
+      this.createLastfmConnection(
+        this.connectionArgs
       )
     },
     handleClearButtonClick () {
@@ -96,13 +97,13 @@ export default {
         'clearButtonClick'
       )
     },
-    handleProfileDataChange (
+    handleConnectionsDataChange (
       value
     ) {
       if (value) {
         updateGlobalStore(
           {
-            'profile.info': value
+            'profile.connections': value
           }
         )
       }

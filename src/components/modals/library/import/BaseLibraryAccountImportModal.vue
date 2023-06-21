@@ -9,7 +9,7 @@
 
       <ImportSection
         v-if="isImport"
-        :user-data="userData"
+        :plays-count="playsCount"
       />
       <BaseLibrarySaveSection
         v-if="isSave"
@@ -64,6 +64,9 @@ export default {
       return (
         this.status === 'save'
       )
+    },
+    playsCount () {
+      return this.userData?.plays_count
     }
   },
   methods: {

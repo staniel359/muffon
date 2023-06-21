@@ -25,16 +25,6 @@
       icon="infoCircle"
       :content="historyVisibleText"
     />
-
-    <template
-      v-if="userData"
-    >
-      <BaseDivider />
-
-      <UserInfoSection
-        :user-data="userData"
-      />
-    </template>
   </div>
 </template>
 
@@ -43,9 +33,7 @@ import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import ImportButton from './ConnectSection/ImportButton.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import BaseMessage from '@/components/messages/BaseMessage.vue'
-import BaseDivider from '@/components/BaseDivider.vue'
-import UserInfoSection from './ConnectSection/UserInfoSection.vue'
-import getLastfmUser from '@/helpers/actions/api/lastfm/user/get'
+import getUser from '@/helpers/actions/api/user/get'
 
 export default {
   name: 'ConnectSection',
@@ -53,9 +41,7 @@ export default {
     BaseErrorMessage,
     ImportButton,
     BaseClearButton,
-    BaseMessage,
-    BaseDivider,
-    UserInfoSection
+    BaseMessage
   },
   inject: [
     'import',
@@ -73,15 +59,22 @@ export default {
       return this.$t(
         'import.lastfm.historyVisible'
       )
+    },
+    userArgs () {
+      return {
+        source: 'lastfm'
+      }
     }
   },
   watch: {
     userData: 'handleUserDataChange'
   },
   methods: {
-    getLastfmUser,
+    getUser,
     handleImportButtonClick () {
-      this.getLastfmUser()
+      this.getUser(
+        this.userArgs
+      )
     },
     handleUserDataChange (
       value

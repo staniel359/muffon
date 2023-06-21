@@ -2,7 +2,7 @@
   <div class="main-settings-options-block">
     <ConnectOption
       :is-connected="isConnected"
-      :lastfm-nickname="lastfmNickname"
+      :lastfm-account-data="lastfmAccountData"
     />
 
     <ScrobbleOption
@@ -52,20 +52,14 @@ export default {
     ...mapState(
       profileStore,
       {
-        profileInfo: 'info'
+        profileConnections: 'connections'
       }
     ),
     isConnected () {
-      return !!(
-        this.lastfmNickname &&
-          this.lastfmSessionKey
-      )
+      return !!this.lastfmAccountData
     },
-    lastfmNickname () {
-      return this.profileInfo.lastfm_nickname
-    },
-    lastfmSessionKey () {
-      return this.profileInfo.lastfm_session_key
+    lastfmAccountData () {
+      return this.profileConnections.lastfm
     }
   }
 }

@@ -1,17 +1,24 @@
 import profileStore from '@/stores/profile'
 import getRequest from '@/helpers/actions/api/request/get'
 
-export default function () {
-  const lastfmNickname =
-    profileStore().info.lastfm_nickname
+export default function (
+  {
+    source,
+    scope = '',
+    page,
+    limit
+  }
+) {
+  const profileId = profileStore().id
 
   const url =
-    `/lastfm/users/${lastfmNickname}`
+    `/${source}/users/${profileId}/${scope}`
 
   const handleSuccess = (
     response
   ) => {
-    this.userData = response.data.user
+    this.userData =
+      response.data.user
   }
 
   return getRequest.bind(
@@ -19,6 +26,8 @@ export default function () {
   )(
     {
       url,
+      page,
+      limit,
       isWithSelfToken: true,
       onSuccess: handleSuccess
     }

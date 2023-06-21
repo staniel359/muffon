@@ -240,6 +240,10 @@ export default {
     type: 'array',
     default: []
   },
+  'profile.connections': {
+    type: 'object',
+    default: {}
+  },
   'profile.info': {
     type: [
       'null',

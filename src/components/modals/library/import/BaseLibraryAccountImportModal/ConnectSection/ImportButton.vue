@@ -1,7 +1,7 @@
 <template>
   <div class="import-button-container">
     <BaseButton
-      class="lastfm circular"
+      class="red circular"
       icon="lastfm"
       :class="{
         loading: isLoading,

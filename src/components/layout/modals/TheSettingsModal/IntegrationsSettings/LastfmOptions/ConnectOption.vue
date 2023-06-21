@@ -1,7 +1,7 @@
 <template>
-  <DisconnectSection
+  <ConnectedSection
     v-if="isConnected"
-    :lastfm-nickname="lastfmNickname"
+    :lastfm-account-data="lastfmAccountData"
     @success="handleDisconnect"
   />
   <ConnectSection
@@ -16,20 +16,20 @@
 </template>
 
 <script>
-import DisconnectSection from './ConnectOption/DisconnectSection.vue'
+import ConnectedSection from './ConnectOption/ConnectedSection.vue'
 import ConnectSection from './ConnectOption/ConnectSection.vue'
 import TokenSection from './ConnectOption/TokenSection.vue'
 
 export default {
   name: 'ConnectOption',
   components: {
-    DisconnectSection,
+    ConnectedSection,
     ConnectSection,
     TokenSection
   },
   props: {
     isConnected: Boolean,
-    lastfmNickname: String
+    lastfmAccountData: Object
   },
   data () {
     return {

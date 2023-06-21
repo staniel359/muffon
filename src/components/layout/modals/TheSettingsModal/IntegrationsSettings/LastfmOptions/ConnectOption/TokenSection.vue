@@ -8,7 +8,7 @@
   <div class="option">
     <div class="option-header">
       <BaseButton
-        class="lastfm circular option-button"
+        class="red circular option-button"
         icon="lastfm"
         :class="{
           loading: isLoading,
@@ -28,7 +28,7 @@ import {
 } from 'electron'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
-import getLastfmToken from '@/helpers/actions/api/lastfm/connect/token/get'
+import getLastfmToken from '@/helpers/actions/api/connection/lastfm/token/get'
 
 export default {
   name: 'TokenSection',
@@ -49,7 +49,7 @@ export default {
   computed: {
     connectText () {
       return this.$t(
-        'accounts.connect'
+        'connections.connect'
       )
     }
   },

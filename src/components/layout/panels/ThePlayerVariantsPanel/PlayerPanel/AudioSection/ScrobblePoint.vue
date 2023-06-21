@@ -22,8 +22,7 @@ import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
-import createScrobblerSave
-  from '@/helpers/actions/api/lastfm/scrobbler/save/create'
+import createScrobblerSave from '@/helpers/actions/api/scrobbler/save/create'
 import notificationMixin from '@/mixins/notificationMixin'
 import {
   track as formatScrobblerTrack
