@@ -1,6 +1,5 @@
 import {
   BrowserWindow,
-  Menu,
   screen
 } from 'electron'
 import {
@@ -141,7 +140,7 @@ export default function () {
     mainWindowHeight
   )
 
-  Menu.setApplicationMenu(
+  mainWindow.setMenu(
     null
   )
 
