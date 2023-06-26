@@ -20,15 +20,15 @@
       />
     </div>
 
-    <div
-      class="option-text"
-      v-text="confirmText"
-    />
-
     <BaseClearButton
       @click="handleClearButtonClick"
     />
   </div>
+
+  <div
+    class="confirm-text"
+    v-text="confirmText"
+  />
 
   <BaseInput
     v-model.trim="code"
@@ -41,8 +41,7 @@ import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseInput from '@/components/inputs/BaseInput.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import createSpotifyConnection
-  from '@/helpers/actions/api/connection/spotify/create'
+import createConnection from '@/helpers/actions/api/connection/create'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
@@ -79,7 +78,8 @@ export default {
     },
     connectionArgs () {
       return {
-        code: this.code
+        source: 'spotify',
+        spotifyCode: this.code
       }
     }
   },
@@ -88,9 +88,9 @@ export default {
       'handleConnectionsDataChange'
   },
   methods: {
-    createSpotifyConnection,
+    createConnection,
     handleClick () {
-      this.createSpotifyConnection(
+      this.createConnection(
         this.connectionArgs
       )
     },
@@ -115,6 +115,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.confirm-text
+  margin-top: 0.75em
+
 .code-input
-  margin-top: 1em
+  margin-top: 0.75em
 </style>

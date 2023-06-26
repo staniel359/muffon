@@ -442,7 +442,7 @@
     "tabs": {
       "app": "Прыкладанне",
       "profile": "Профіль",
-      "integrations": "Інтэграцыі"
+      "connections": "Падключэнні"
     },
     "sections": {
       "app": {
@@ -536,7 +536,7 @@
           }
         }
       },
-      "integrations": {
+      "connections": {
         "lastfm": {
           "scrobbling": "Скроблінг",
           "scrobbleNotifications": "Апавяшченні аб скроблах",

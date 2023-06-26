@@ -1,11 +1,15 @@
 import profileStore from '@/stores/profile'
 import deleteRequest from '@/helpers/actions/api/request/delete'
 
-export default function () {
+export default function (
+  {
+    source
+  }
+) {
   const profileId = profileStore().id
 
   const url =
-    `/spotify/connections/${profileId}`
+    `/${source}/connections/${profileId}`
 
   const handleSuccess = (
     response
@@ -14,7 +18,7 @@ export default function () {
       ...profileStore().connections
     }
 
-    delete connectionsData.spotify
+    delete connectionsData[source]
 
     this.connectionsData = connectionsData
   }

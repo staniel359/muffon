@@ -3,21 +3,34 @@ import postRequest from '@/helpers/actions/api/request/post'
 
 export default function (
   {
-    lastfmToken
+    source,
+    lastfmToken,
+    spotifyCode
   }
 ) {
-  const url = '/lastfm/connections'
+  const url = `/${source}/connections`
 
   const params = {
-    lastfm_token: lastfmToken
+    ...(lastfmToken && {
+      lastfm_token: lastfmToken
+    }),
+    ...(spotifyCode && {
+      spotify_code: spotifyCode
+    })
   }
 
   const handleSuccess = (
     response
   ) => {
+    const existingConnections =
+      profileStore().connections
+
+    const newConnections =
+      response.data.profile.connections
+
     this.connectionsData = {
-      ...profileStore().connections,
-      ...response.data.profile.connections
+      ...existingConnections,
+      ...newConnections
     }
   }
 

@@ -28,7 +28,7 @@ import {
 } from 'electron'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
-import getLastfmToken from '@/helpers/actions/api/connection/lastfm/token/get'
+import getToken from '@/helpers/actions/api/connection/token/get'
 
 export default {
   name: 'TokenSection',
@@ -51,15 +51,22 @@ export default {
       return this.$t(
         'connections.connect'
       )
+    },
+    tokenArgs () {
+      return {
+        source: 'lastfm'
+      }
     }
   },
   watch: {
     connectData: 'handleConnectDataChange'
   },
   methods: {
-    getLastfmToken,
+    getToken,
     handleClick () {
-      this.getLastfmToken()
+      this.getToken(
+        this.tokenArgs
+      )
     },
     handleConnectDataChange (
       value

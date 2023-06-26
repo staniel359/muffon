@@ -8,8 +8,8 @@
   <div class="option">
     <div class="option-header">
       <BaseButton
-        class="green basic circular option-button"
-        icon="spotify"
+        class="red basic circular option-button"
+        icon="lastfm"
         :class="{
           loading: isLoading,
           disabled: isLoading
@@ -21,7 +21,7 @@
     </div>
 
     <BaseAccountSection
-      :account-data="spotifyAccountData"
+      :account-data="lastfmAccountData"
     />
   </div>
 </template>
@@ -30,8 +30,7 @@
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseAccountSection from '@/components/sections/BaseAccountSection.vue'
-import deleteSpotifyConnection
-  from '@/helpers/actions/api/connection/spotify/delete'
+import deleteConnection from '@/helpers/actions/api/connection/delete'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
@@ -44,7 +43,7 @@ export default {
     BaseAccountSection
   },
   props: {
-    spotifyAccountData: Object
+    lastfmAccountData: Object
   },
   emits: [
     'success'
@@ -62,16 +61,22 @@ export default {
       return this.$t(
         'connections.disconnect'
       )
+    },
+    connectionArgs () {
+      return {
+        source: 'lastfm'
+      }
     }
   },
   watch: {
-    connectionsData:
-      'handleConnectionsDataChange'
+    connectionsData: 'handleConnectionsDataChange'
   },
   methods: {
-    deleteSpotifyConnection,
+    deleteConnection,
     handleClick () {
-      this.deleteSpotifyConnection()
+      this.deleteConnection(
+        this.connectionArgs
+      )
     },
     handleConnectionsDataChange (
       value

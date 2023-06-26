@@ -1,8 +1,12 @@
 import getRequest from '@/helpers/actions/api/request/get'
 
-export default function () {
+export default function (
+  {
+    source
+  }
+) {
   const url =
-    '/lastfm/connections/token'
+    `/${source}/connections/token`
 
   const handleSuccess = (
     response

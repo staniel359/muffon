@@ -3,11 +3,11 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="scrobbleNotificationsText"
+      :text="scrobblingText"
     />
 
     <BaseToggle
-      store-key="player.isWithScrobbleNotifications"
+      store-key="player.isWithScrobbling"
       :class="{
         disabled: isDisabled
       }"
@@ -17,15 +17,11 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import playerStore from '@/stores/player'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
-  name: 'ScrobbleNotificationsOption',
+  name: 'ScrobbleOption',
   components: {
     BaseHeader,
     BaseToggle
@@ -35,29 +31,19 @@ export default {
     isPlayerWithScrobbling: Boolean
   },
   computed: {
-    ...mapState(
-      playerStore,
-      {
-        isPlayerWithScrobbleNotifications:
-        'isWithScrobbleNotifications'
-      }
-    ),
-    scrobbleNotificationsText () {
+    scrobblingText () {
       return this.$t(
-        'settings.options.integrations.lastfm.scrobbleNotifications'
+        'settings.options.connections.lastfm.scrobbling'
       )
     },
     isChecked () {
       return (
         this.isConnected &&
-          this.isPlayerWithScrobbleNotifications
+          this.isPlayerWithScrobbling
       )
     },
     isDisabled () {
-      return !(
-        this.isConnected &&
-          this.isPlayerWithScrobbling
-      )
+      return !this.isConnected
     }
   }
 }

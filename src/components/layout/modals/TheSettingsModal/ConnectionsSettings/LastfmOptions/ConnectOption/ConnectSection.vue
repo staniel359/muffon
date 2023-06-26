@@ -20,23 +20,22 @@
       />
     </div>
 
-    <div
-      class="option-text"
-      v-text="confirmText"
-    />
-
     <BaseClearButton
       @click="handleClearButtonClick"
     />
   </div>
+
+  <div
+    class="confirm-text"
+    v-text="confirmText"
+  />
 </template>
 
 <script>
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import createLastfmConnection
-  from '@/helpers/actions/api/connection/lastfm/create'
+import createConnection from '@/helpers/actions/api/connection/create'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
@@ -77,6 +76,7 @@ export default {
     },
     connectionArgs () {
       return {
+        source: 'lastfm',
         lastfmToken: this.token
       }
     }
@@ -86,9 +86,9 @@ export default {
       'handleConnectionsDataChange'
   },
   methods: {
-    createLastfmConnection,
+    createConnection,
     handleClick () {
-      this.createLastfmConnection(
+      this.createConnection(
         this.connectionArgs
       )
     },
@@ -112,4 +112,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.confirm-text
+  margin-top: 0.75em
+</style>

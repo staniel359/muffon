@@ -45,12 +45,12 @@ export default {
     ),
     headerText () {
       return this.$t(
-        'settings.options.integrations.discord.richPresence.header'
+        'settings.options.connections.discord.richPresence.header'
       )
     },
     messageText () {
       return this.$t(
-        'settings.options.integrations.discord.richPresence.client'
+        'settings.options.connections.discord.richPresence.client'
       )
     }
   }

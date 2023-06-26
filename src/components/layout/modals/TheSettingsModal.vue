@@ -35,7 +35,7 @@ import BaseTabsContainer
   from '@/components/containers/tabs/BaseTabsContainer.vue'
 import AppSettings from './TheSettingsModal/AppSettings.vue'
 import ProfileSettings from './TheSettingsModal/ProfileSettings.vue'
-import IntegrationsSettings from './TheSettingsModal/IntegrationsSettings.vue'
+import ConnectionsSettings from './TheSettingsModal/ConnectionsSettings.vue'
 
 export default {
   name: 'TheSettingsModal',
@@ -44,7 +44,7 @@ export default {
     BaseTabsContainer,
     AppSettings,
     ProfileSettings,
-    IntegrationsSettings
+    ConnectionsSettings
   },
   data () {
     return {
@@ -64,10 +64,10 @@ export default {
           isAnonymous: false
         },
         {
-          nameCode: 'settings.tabs.integrations',
-          icon: 'integration',
-          scope: 'integrations',
-          component: 'IntegrationsSettings',
+          nameCode: 'settings.tabs.connections',
+          icon: 'connection',
+          scope: 'connections',
+          component: 'ConnectionsSettings',
           isAnonymous: false
         }
       ]

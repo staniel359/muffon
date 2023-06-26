@@ -51,7 +51,7 @@ export default {
     ),
     percentText () {
       return this.$t(
-        'settings.options.integrations.lastfm.scrobblePercent'
+        'settings.options.connections.lastfm.scrobblePercent'
       )
     },
     seekerOptions () {
