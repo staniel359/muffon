@@ -37,7 +37,8 @@ export default {
         trackTitle: this.trackTitle,
         artistName: this.artistName,
         albumTitle: this.albumTitle,
-        image: this.image
+        image: this.image,
+        duration: this.duration
       }
     },
     trackTitle () {
@@ -51,6 +52,9 @@ export default {
     },
     image () {
       return this.playerPlaying.image?.medium
+    },
+    duration () {
+      return this.playerPlaying.duration
     }
   },
   watch: {

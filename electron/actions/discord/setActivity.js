@@ -10,10 +10,16 @@ export default function (
     trackTitle,
     artistName,
     albumTitle,
-    image
+    image,
+    duration
   }
 ) {
-  const currentTime = Date.now()
+  const startTimestamp = Date.now()
+
+  const endTimestamp = (
+    startTimestamp +
+      duration * 1000
+  )
 
   const downloadButtonData = {
     label: appName,
@@ -27,11 +33,12 @@ export default function (
   const activity = {
     details: trackTitle,
     state: artistName,
-    startTimestamp: currentTime,
     largeImageText: albumTitle,
     smallImageText: appName,
     largeImageKey: image,
     smallImageKey: 'logo',
+    startTimestamp,
+    endTimestamp,
     buttons
   }
 
