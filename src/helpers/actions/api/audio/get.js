@@ -21,6 +21,10 @@ export default function (
       }
     )
 
+  const params = {
+    audio_link: true
+  }
+
   function handleSuccess (
     response
   ) {
@@ -61,6 +65,7 @@ export default function (
   return getRequest(
     {
       url,
+      params,
       isWithSelfToken: true,
       onSuccess: handleSuccess
     }
