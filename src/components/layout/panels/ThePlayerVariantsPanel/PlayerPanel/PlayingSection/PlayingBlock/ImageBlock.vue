@@ -9,6 +9,7 @@
     v-else
     :key="key"
     class="medium"
+    :image-data="artistImageData"
     :artist-name="artistName"
     :size="size"
   />
@@ -60,6 +61,9 @@ export default {
     },
     artistName () {
       return this.playerPlaying?.artist?.name
+    },
+    artistImageData () {
+      return this.playerPlaying?.artist?.image
     }
   },
   watch: {
