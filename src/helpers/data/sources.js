@@ -167,7 +167,6 @@ export default [
       'album',
       'singleEp',
       'compilation',
-      'video',
       'misc'
     ],
     searchScopes: [

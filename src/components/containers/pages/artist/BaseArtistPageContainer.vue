@@ -90,19 +90,11 @@ export default {
       }
     },
     responsePageLimit () {
-      if (this.isDiscogsSource) {
-        return 25
-      } else if (this.isImagesScope) {
+      if (this.isImagesScope) {
         return 40
       } else {
         return null
       }
-    },
-    isDiscogsSource () {
-      return (
-        this.requestArtistData.source ===
-          'discogs'
-      )
     },
     isImagesScope () {
       return (
