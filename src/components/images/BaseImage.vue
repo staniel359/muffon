@@ -3,9 +3,9 @@
     v-if="isLoading"
     class="ui image placeholder main-image"
     :class="[
-      borderedRaisedClass,
       {
-        inverted: isDarkMode
+        inverted: isDarkMode,
+        [borderedRaisedClass]: !isPlain
       }
     ]"
   />
@@ -14,10 +14,10 @@
     ref="image"
     class="ui image main-image"
     :class="[
-      borderedRaisedClass,
       {
         inverted: isDarkMode,
-        contained: isContained
+        contained: isContained,
+        [borderedRaisedClass]: !isPlain
       }
     ]"
     :[attribute]="imageConditional"
@@ -46,7 +46,8 @@ export default {
     isLazy: Boolean,
     isContained: Boolean,
     isLoading: Boolean,
-    isBordered: Boolean
+    isBordered: Boolean,
+    isPlain: Boolean
   },
   emits: [
     'click'
@@ -77,14 +78,17 @@ export default {
       ]
     },
     borderedRaisedClass () {
-      if (
-        this.isDarkMode ||
-          this.isBordered
-      ) {
+      if (this.isWithBorder) {
         return 'bordered'
       } else {
         return 'raised'
       }
+    },
+    isWithBorder () {
+      return (
+        this.isDarkMode ||
+          this.isBordered
+      )
     }
   },
   methods: {

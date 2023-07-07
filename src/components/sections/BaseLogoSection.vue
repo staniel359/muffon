@@ -2,6 +2,7 @@
   <BaseImage
     class="main-logo-image"
     :image="logo"
+    is-plain
   />
 </template>
 

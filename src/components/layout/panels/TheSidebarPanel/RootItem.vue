@@ -9,6 +9,7 @@
       <BaseImage
         class="main-logo-image"
         :image="logo"
+        is-plain
       />
     </div>
   </div>
