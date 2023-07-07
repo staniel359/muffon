@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Mousetrap from 'mousetrap'
+import hotkeys from 'hotkeys-js'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
@@ -124,8 +124,8 @@ export default {
       )
     },
     bindNextKeys () {
-      Mousetrap.bind(
-        this.nextKeys,
+      hotkeys(
+        'shift+right',
         this.clickNextButton
       )
     },
@@ -135,10 +135,8 @@ export default {
         .click()
     },
     unbindNextKeys () {
-      Mousetrap.unbind(
-        [
-          this.nextKeys
-        ]
+      hotkeys.unbind(
+        'shift+right'
       )
     }
   }

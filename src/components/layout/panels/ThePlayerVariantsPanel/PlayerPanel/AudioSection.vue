@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Mousetrap from 'mousetrap'
+import hotkeys from 'hotkeys-js'
 import {
   mapState
 } from 'pinia'
@@ -129,7 +129,7 @@ export default {
       )
     },
     getRadioNextTrack () {
-      Mousetrap.trigger(
+      hotkeys.trigger(
         'shift+right'
       )
     }

@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import Mousetrap from 'mousetrap'
+import hotkeys from 'hotkeys-js'
 import {
   mapState,
   mapActions
@@ -115,7 +115,7 @@ export default {
       'handleIsSearchPanelVisibleChange'
   },
   mounted () {
-    Mousetrap.bind(
+    hotkeys(
       'esc',
       this.handlePressEscape
     )

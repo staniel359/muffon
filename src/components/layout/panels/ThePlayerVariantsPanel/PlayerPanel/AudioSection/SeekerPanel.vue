@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Mousetrap from 'mousetrap'
+import hotkeys from 'hotkeys-js'
 import {
   mapState
 } from 'pinia'
@@ -209,22 +209,19 @@ export default {
       )
     },
     bindKeys () {
-      Mousetrap.bind(
-        'mod+right',
+      hotkeys(
+        'ctrl+right, command+right',
         this.handleForwardMediumKeysPress
       )
 
-      Mousetrap.bind(
-        'mod+left',
+      hotkeys(
+        'ctrl+left, command+left',
         this.handleBackwardMediumKeysPress
       )
     },
     unbindKeys () {
-      Mousetrap.unbind(
-        [
-          'mod+right',
-          'mod+left'
-        ]
+      hotkeys.unbind(
+        'ctrl+right, command+right, ctrl+left, command+left'
       )
     },
     endAudio () {
