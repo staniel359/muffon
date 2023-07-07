@@ -8,9 +8,11 @@
         :text="albumTitle"
       />
 
-      <BaseArtistLinks
-        :artists="artists"
-      />
+      <div class="artist-names">
+        <BaseArtistLinks
+          :artists="artists"
+        />
+      </div>
 
       <BaseDivider
         v-if="profileId"
@@ -79,4 +81,8 @@ export default {
 .album-full-title
   @extend .text-align-center, .word-break-break-word
   margin-top: 0.75em
+
+.artist-names
+  margin-top: 0.3em
+  line-height: 1.2em
 </style>
