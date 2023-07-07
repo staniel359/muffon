@@ -155,7 +155,8 @@
       "lyrics": "Nach Lyrics suchen"
     },
     "import": {
-      "lastfm": "Last.FM Daten importieren"
+      "lastfm": "Last.FM Daten importieren",
+      "spotify": "Spotify Daten importieren"
     },
     "folder": {
       "select": "Ordner auswählen"

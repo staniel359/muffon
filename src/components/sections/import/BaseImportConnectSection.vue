@@ -1,69 +1,81 @@
 <template>
-  <div>
+  <div class="main-import-connect-section">
     <BaseErrorMessage
       v-if="error"
-      class="connect-error"
+      class="error-section"
       :error="error"
     />
 
-    <div class="connect-block-container">
-      <ImportButton
-        :is-loading="isLoading"
-        :is-user-data="!!userData"
-        @click="handleImportButtonClick"
-      />
+    <div class="top-section">
+      <div class="button-info-section">
+        <ImportButton
+          :source="source"
+          :is-loading="isLoading"
+          :is-user-data="!!userData"
+          @click="handleImportButtonClick"
+        />
+
+        <Component
+          :is="infoComponent"
+          v-if="isWithInfo"
+        />
+      </div>
 
       <BaseClearButton
         v-if="userData"
         @click="handleClearButtonClick"
       />
     </div>
-
-    <BaseMessage
-      v-if="!userData"
-      class="history-visible-message"
-      icon="infoCircle"
-      :content="historyVisibleText"
-    />
   </div>
 </template>
 
 <script>
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
-import ImportButton from './ConnectSection/ImportButton.vue'
+import ImportButton from './BaseImportConnectSection/ImportButton.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import BaseMessage from '@/components/messages/BaseMessage.vue'
+import LastfmInfoSection
+  from './BaseImportConnectSection/info/LastfmInfoSection.vue'
 import getUser from '@/helpers/actions/api/user/get'
 
 export default {
-  name: 'ConnectSection',
+  name: 'BaseImportConnectSection',
   components: {
     BaseErrorMessage,
     ImportButton,
     BaseClearButton,
-    BaseMessage
+    LastfmInfoSection
   },
   inject: [
     'import',
     'reset'
   ],
+  props: {
+    source: {
+      type: String,
+      required: true
+    },
+    isWithInfo: Boolean
+  },
   data () {
     return {
       userData: null,
       error: null,
-      isLoading: false
+      isLoading: false,
+      infoComponentsData: {
+        lastfm: 'LastfmInfoSection'
+      }
     }
   },
   computed: {
-    historyVisibleText () {
-      return this.$t(
-        'import.lastfm.historyVisible'
-      )
-    },
     userArgs () {
       return {
-        source: 'lastfm'
+        source: this.source
       }
+    },
+    infoComponent () {
+      return this.infoComponentsData[
+        this.source
+      ]
     }
   },
   watch: {
@@ -80,7 +92,10 @@ export default {
       value
     ) {
       this.import(
-        value
+        {
+          userData: value,
+          source: this.source
+        }
       )
     },
     handleClearButtonClick () {
@@ -93,13 +108,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.connect-error
-  margin-bottom: 1em !important
-
-.connect-block-container
-  @extend .d-flex, .align-items-center
-
-.history-visible-message
-  margin-top: 1em !important
-</style>
+<style lang="sass" scoped></style>

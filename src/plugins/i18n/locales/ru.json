@@ -155,7 +155,8 @@
       "lyrics": "Искать текст"
     },
     "import": {
-      "lastfm": "Загрузить данные Last.FM"
+      "lastfm": "Загрузить данные Last.FM",
+      "spotify": "Загрузить данные Spotify"
     },
     "folder": {
       "select": "Выбрать папку"

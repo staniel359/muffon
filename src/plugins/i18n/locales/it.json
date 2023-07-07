@@ -155,7 +155,8 @@
       "lyrics": "Cerca testo"
     },
     "import": {
-      "lastfm": "Importa dati da Last.FM"
+      "lastfm": "Importa dati da Last.FM",
+      "spotify": "Importa dati da Spotify"
     },
     "folder": {
       "select": "Seleziona cartella"

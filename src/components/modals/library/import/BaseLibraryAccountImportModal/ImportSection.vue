@@ -11,7 +11,7 @@
     v-if="isShowProgress"
     ref="progress"
     status="import"
-    scope="plays"
+    :scope="scope"
     @complete="handleProgressComplete"
   />
   <BaseImportCompleteSection
@@ -28,7 +28,8 @@ import BaseImportCompleteSection
   from '@/components/import/BaseImportCompleteSection.vue'
 import getUser from '@/helpers/actions/api/user/get'
 import {
-  playsToTracks as formatPlaysToTracks
+  playsToTracks as formatPlaysToTracks,
+  collection as formatCollection
 } from '@/helpers/formatters'
 import collectionMixin from '@/mixins/collectionMixin'
 
@@ -43,7 +44,19 @@ export default {
     collectionMixin
   ],
   props: {
-    playsCount: {
+    source: {
+      type: String,
+      required: true
+    },
+    scope: {
+      type: String,
+      required: true
+    },
+    totalCount: {
+      type: Number,
+      required: true
+    },
+    limit: {
       type: Number,
       required: true
     }
@@ -55,7 +68,7 @@ export default {
       page: 1,
       isProgress: true,
       isComplete: false,
-      plays: [],
+      collection: [],
       successTracks: []
     }
   },
@@ -68,13 +81,13 @@ export default {
     },
     userArgs () {
       return {
-        source: 'lastfm',
-        scope: 'plays',
+        source: this.source,
+        scope: this.scope,
         page: this.page,
-        limit: 500
+        limit: this.limit
       }
     },
-    isGetPlays () {
+    isGetNextPageData () {
       return (
         this.page <
           this.totalPagesCount
@@ -82,41 +95,49 @@ export default {
     },
     totalPagesCount () {
       return this.userData?.total_pages
+    },
+    isPlaysScope () {
+      return (
+        this.scope === 'plays'
+      )
     }
   },
   watch: {
     userData: 'handleUserDataChange',
-    plays: 'handlePlaysChange'
+    collection: 'handleCollectionChange'
   },
   mounted () {
-    this.processPlays()
+    this.processCollection()
   },
   methods: {
     getUser,
     handleUserDataChange (
       value
     ) {
-      this.plays = [
-        ...this.plays,
-        ...value.plays
+      const newCollection =
+        value[
+          this.scope
+        ]
+
+      this.collection = [
+        ...this.collection,
+        ...newCollection
       ]
     },
-    handlePlaysChange (
+    handleCollectionChange (
       value
     ) {
       this.setProgressValue(
         value.length
       )
 
-      if (this.isGetPlays) {
+      if (this.isGetNextPageData) {
         this.page += 1
 
         this.getData()
       } else {
         this.successTracks =
-          formatPlaysToTracks(
-            this.plays
-          )
+          this.formatSuccessTracks()
 
         this.isComplete = true
       }
@@ -127,7 +148,7 @@ export default {
     handleProgressComplete () {
       this.isProgress = false
     },
-    processPlays () {
+    processCollection () {
       this.setProgressTotalCount()
 
       this.getData()
@@ -141,7 +162,7 @@ export default {
       this.$refs
         .progress
         .setTotalCount(
-          this.playsCount
+          this.totalCount
         )
     },
     setProgressValue (
@@ -152,6 +173,17 @@ export default {
         .setValue(
           value
         )
+    },
+    formatSuccessTracks () {
+      if (this.isPlaysScope) {
+        return formatPlaysToTracks(
+          this.collection
+        )
+      } else {
+        return formatCollection(
+          this.collection
+        )
+      }
     }
   }
 }

@@ -155,7 +155,8 @@
       "lyrics": "Search for lyrics"
     },
     "import": {
-      "lastfm": "Import Last.FM data"
+      "lastfm": "Import Last.FM data",
+      "spotify": "Import Spotify data"
     },
     "folder": {
       "select": "Select folder"
@@ -616,7 +617,7 @@
     "active": "Importing {count} of {counter}...",
     "success": {
       "header": "{counter} has been imported | {counter} have been imported",
-      "content": "You may want to check data before saving to library"
+      "content": "You may want to check the data before saving to library"
     },
     "error": {
       "files": "{counter} could not be imported. Please make sure that metadata format is valid:"

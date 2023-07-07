@@ -155,7 +155,8 @@
       "lyrics": "Шукаць тэкст"
     },
     "import": {
-      "lastfm": "Загрузіць дадзеныя Last.FM"
+      "lastfm": "Загрузіць дадзеныя Last.FM",
+      "spotify": "Загрузіць дадзеныя Spotify"
     },
     "folder": {
       "select": "Выбраць тэчку"

@@ -1,15 +1,28 @@
 <template>
   <BaseModalContainer
     ref="modal"
+    @show="handleShow"
   >
     <div class="content full-height">
-      <ConnectSection />
+      <BaseImportConnectSection
+        v-if="isRenderLastfmConnectSection"
+        source="lastfm"
+        :is-with-info="isShow"
+      />
+
+      <BaseImportConnectSection
+        v-if="isRenderSpotifyConnectSection"
+        source="spotify"
+      />
 
       <BaseDivider />
 
       <ImportSection
         v-if="isImport"
-        :plays-count="playsCount"
+        :source="source"
+        :scope="scope"
+        :limit="limit"
+        :total-count="totalCount"
       />
       <BaseLibrarySaveSection
         v-if="isSave"
@@ -21,9 +34,14 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
-import ConnectSection from './BaseLibraryAccountImportModal/ConnectSection.vue'
+import BaseImportConnectSection
+  from '@/components/sections/import/BaseImportConnectSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import ImportSection from './BaseLibraryAccountImportModal/ImportSection.vue'
 import BaseLibrarySaveSection
@@ -33,7 +51,7 @@ export default {
   name: 'BaseLibraryAccountImportModal',
   components: {
     BaseModalContainer,
-    ConnectSection,
+    BaseImportConnectSection,
     BaseDivider,
     ImportSection,
     BaseLibrarySaveSection
@@ -50,11 +68,27 @@ export default {
   data () {
     return {
       status: null,
+      source: null,
       userData: null,
-      tracks: []
+      isShow: false,
+      tracks: [],
+      scopesData: {
+        lastfm: 'plays',
+        spotify: 'tracks'
+      },
+      limitsData: {
+        lastfm: 500,
+        spotify: 50
+      }
     }
   },
   computed: {
+    ...mapState(
+      profileStore,
+      {
+        profileConnections: 'connections'
+      }
+    ),
     isImport () {
       return (
         this.status === 'import'
@@ -65,18 +99,69 @@ export default {
         this.status === 'save'
       )
     },
-    playsCount () {
-      return this.userData?.plays_count
+    totalCount () {
+      return this.userData?.[
+        `${this.scope}_count`
+      ]
+    },
+    scope () {
+      return this.scopesData[
+        this.source
+      ]
+    },
+    isRenderLastfmConnectSection () {
+      return (
+        !!this.lastfmConnection && (
+          !this.source ||
+            this.isLastfmSource
+        )
+      )
+    },
+    lastfmConnection () {
+      return this.profileConnections.lastfm
+    },
+    isLastfmSource () {
+      return (
+        this.source === 'lastfm'
+      )
+    },
+    isRenderSpotifyConnectSection () {
+      return (
+        !!this.spotifyConnection && (
+          !this.source ||
+            this.isSpotifySource
+        )
+      )
+    },
+    spotifyConnection () {
+      return this.profileConnections.spotify
+    },
+    isSpotifySource () {
+      return (
+        this.source === 'spotify'
+      )
+    },
+    limit () {
+      return this.limitsData[
+        this.source
+      ]
     }
   },
   methods: {
+    handleShow () {
+      this.isShow = true
+    },
     import (
-      value
+      {
+        userData,
+        source
+      } = {}
     ) {
-      if (value) {
+      if (userData) {
         this.status = 'import'
 
-        this.userData = value
+        this.userData = userData
+        this.source = source
       }
     },
     save (
@@ -97,6 +182,7 @@ export default {
     },
     reset () {
       this.status = null
+      this.source = null
     },
     show () {
       this.$refs

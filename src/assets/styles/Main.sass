@@ -534,6 +534,9 @@ p
   @extend .text-align-center
   min-width: 60px !important
 
+.main-lastfm-import-info-popup
+  max-width: 250px !important
+
 .main-header
   @extend .no-margin
   line-height: normal !important
@@ -1138,3 +1141,15 @@ p
     margin-left: 0.75em !important
   .premium-label
     margin-top: 0.5em !important
+
+.main-import-connect-section
+  &:not(:first-child)
+    margin-top: 1em
+  .error-section
+    margin-bottom: 1em !important
+  .top-section
+    @extend .d-flex, .align-items-center
+  .button-info-section
+    @extend .d-flex, .align-items-center, .flex-full
+  .info-section
+    margin-left: 0.5em

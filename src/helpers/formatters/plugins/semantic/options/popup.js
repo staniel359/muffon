@@ -202,6 +202,27 @@ export function profileInfo (
   }
 }
 
+export function lastfmImportInfo (
+  {
+    html
+  }
+) {
+  const className =
+    'ui popup main-popup main-lastfm-import-info-popup'
+
+  return {
+    position: 'right center',
+    transition: 'fade up',
+    variation: 'basic',
+    exclusive: true,
+    delay: 0,
+    className: {
+      popup: className
+    },
+    html
+  }
+}
+
 export function options (
   {
     html,

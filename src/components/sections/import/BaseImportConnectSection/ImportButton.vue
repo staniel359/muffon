@@ -1,17 +1,18 @@
 <template>
-  <div class="import-button-container">
-    <BaseButton
-      class="red circular"
-      icon="lastfm"
-      :class="{
+  <BaseButton
+    class="circular"
+    :class="[
+      color,
+      {
         loading: isLoading,
         disabled: isDisabled
-      }"
-      :text="importText"
-      :is-invertable="false"
-      @click="handleClick"
-    />
-  </div>
+      }
+    ]"
+    :icon="source"
+    :text="importText"
+    :is-invertable="false"
+    @click="handleClick"
+  />
 </template>
 
 <script>
@@ -23,12 +24,24 @@ export default {
     BaseButton
   },
   props: {
+    source: {
+      type: String,
+      required: true
+    },
     isLoading: Boolean,
     isUserData: Boolean
   },
   emits: [
     'click'
   ],
+  data () {
+    return {
+      sourceColorsData: {
+        lastfm: 'red',
+        spotify: 'green'
+      }
+    }
+  },
   computed: {
     isDisabled () {
       return (
@@ -38,8 +51,13 @@ export default {
     },
     importText () {
       return this.$t(
-        'actions.import.lastfm'
+        `actions.import.${this.source}`
       )
+    },
+    color () {
+      return this.sourceColorsData[
+        this.source
+      ]
     }
   },
   methods: {
@@ -52,7 +70,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.import-button-container
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

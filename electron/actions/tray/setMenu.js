@@ -15,8 +15,9 @@ export default function () {
   const isVisible =
     mainWindow.isVisible()
 
-  const toggleKey =
+  const toggleKey = (
     isVisible ? 'hide' : 'show'
+  )
 
   function handleToggleActionClick () {
     if (isVisible) {

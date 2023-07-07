@@ -80,7 +80,16 @@ export default {
       )
     },
     isConnections () {
-      return !!this.profileConnections.lastfm
+      return !!(
+        this.lastfmConnection ||
+          this.spotifyConnection
+      )
+    },
+    lastfmConnection () {
+      return this.profileConnections.lastfm
+    },
+    spotifyConnection () {
+      return this.profileConnections.spotify
     }
   },
   methods: {
