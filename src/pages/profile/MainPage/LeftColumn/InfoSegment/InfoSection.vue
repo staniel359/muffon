@@ -52,7 +52,7 @@ export default {
 <style lang="sass" scoped>
 .info-label
   @extend .absolute, .no-margin, .cursor-pointer
-  bottom: 0.1em
-  right: 0.1em
+  bottom: 0
+  right: 0
   width: 1em
 </style>

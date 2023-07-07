@@ -117,8 +117,8 @@ export default {
 
 .online-label
   @extend .absolute
-  top: 0.25em
-  right: 0.25em
+  top: 0.15em
+  right: 0.15em
 
 .status
   @extend .word-break-break-word
