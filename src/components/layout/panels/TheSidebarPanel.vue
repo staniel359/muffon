@@ -233,6 +233,8 @@ export default {
     width: 240px !important
     .sidebar-top
       @extend .overflow-y-auto
+      &::-webkit-scrollbar
+        @extend .d-block
   &.inverted
     border-right: $borderInverted !important
     .sidebar-bottom
