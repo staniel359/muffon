@@ -85,6 +85,7 @@ export default {
       this.isMouseUp = true
     },
     handleMove (
+      _,
       value
     ) {
       this.$emit(
