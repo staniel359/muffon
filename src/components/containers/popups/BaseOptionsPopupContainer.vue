@@ -67,7 +67,8 @@ export default {
     isTransparent: {
       type: Boolean,
       default: true
-    }
+    },
+    isInline: Boolean
   },
   emits: [
     'activeChange',
@@ -95,6 +96,7 @@ export default {
       return optionsPopupOptions(
         {
           html: this.popup,
+          inline: this.isInline,
           onShow: this.handleShow,
           onHide: this.handleHide,
           onHidden: this.handleHidden

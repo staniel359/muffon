@@ -13,6 +13,7 @@ export function volume (
     closable: false,
     exclusive: true,
     hoverable: true,
+    inline: true,
     preserve: true,
     className: {
       popup: className
@@ -39,6 +40,7 @@ export function audioEqualizer (
     closable: false,
     exclusive: true,
     hoverable: true,
+    inline: true,
     preserve: true,
     className: {
       popup: className
@@ -226,6 +228,7 @@ export function lastfmImportInfo (
 export function options (
   {
     html,
+    inline,
     onShow,
     onHide,
     onHidden
@@ -247,6 +250,7 @@ export function options (
       hide: 150
     },
     html,
+    inline,
     onShow,
     onHide,
     onHidden
