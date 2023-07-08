@@ -1,3 +1,4 @@
+import profileStore from '@/stores/profile'
 import getRequest from '@/helpers/actions/api/request/get'
 
 export default function (
@@ -13,7 +14,10 @@ export default function (
   const url =
     `/profiles/${profileId}/library/search/${scope}`
 
+  const otherProfileId = profileStore().id
+
   const params = {
+    other_profile_id: otherProfileId,
     query
   }
 
