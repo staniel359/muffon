@@ -6,6 +6,9 @@ import {
 import {
   anonymousToken
 } from '@/helpers/data/env'
+import {
+  version
+} from '@/../package.json'
 
 export default function (
   {
@@ -57,7 +60,8 @@ export default function (
       order: snakeCase(
         order
       )
-    })
+    }),
+    version
   }
 
   const handleComplete = () => {

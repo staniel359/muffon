@@ -43,6 +43,9 @@ import {
   anonymousToken
 } from '@/helpers/data/env'
 import transparencyMixin from '@/mixins/transparencyMixin'
+import {
+  version
+} from '@/../package.json'
 
 export default {
   name: 'BaseSearchInput',
@@ -98,7 +101,7 @@ export default {
       )
     },
     urlFormatted () {
-      return `${this.url}&token=${this.token}`
+      return `${this.url}&token=${this.token}&version=${version}`
     },
     token () {
       return (

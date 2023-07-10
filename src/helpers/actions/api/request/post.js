@@ -3,6 +3,9 @@ import axios from 'axios'
 import {
   anonymousToken
 } from '@/helpers/data/env'
+import {
+  version
+} from '@/../package.json'
 
 export default function (
   {
@@ -43,7 +46,8 @@ export default function (
     }),
     ...(isWithSelfLanguage && {
       language
-    })
+    }),
+    version
   }
 
   const handleComplete = () => {
