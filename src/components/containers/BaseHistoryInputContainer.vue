@@ -19,6 +19,7 @@
 import {
   mapState
 } from 'pinia'
+import historyStore from '@/stores/history'
 import layoutStore from '@/stores/layout'
 import {
   history as historyInputOptions
@@ -27,11 +28,13 @@ import {
   set as setSearch,
   setSource as setSearchSource
 } from '@/helpers/actions/plugins/semantic/search'
-import getElectronStoreHistory
-  from '@/helpers/actions/plugins/electronStore/history/get'
-import updateElectronStoreHistory
-  from '@/helpers/actions/plugins/electronStore/history/update'
 import transparencyMixin from '@/mixins/transparencyMixin'
+import {
+  getDistinctArray
+} from '@/helpers/utils'
+import {
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'BaseHistoryInputContainer',
@@ -49,11 +52,6 @@ export default {
   emits: [
     'select'
   ],
-  data () {
-    return {
-      history: null
-    }
-  },
   computed: {
     ...mapState(
       layoutStore,
@@ -64,35 +62,65 @@ export default {
     searchOptions () {
       return historyInputOptions(
         {
-          source: this.history,
+          source:
+            this.historyFormatted,
           onSelect:
             this.handleSelect
         }
       )
+    },
+    historyFormatted () {
+      return this.historyScoped.map(
+        this.formatHistoryItem
+      )
+    },
+    historyScoped () {
+      if (this.isDistinct) {
+        return getDistinctArray(
+          this.history
+        )
+      } else {
+        return [
+          ...this.history
+        ]
+      }
+    },
+    history () {
+      return historyStore()[
+        this.scope
+      ]
+    },
+    historyKey () {
+      return `history.${this.scope}`
+    },
+    isNewItem () {
+      return (
+        this.item && (
+          this.item !==
+            this.history[0]
+        )
+      )
     }
   },
   watch: {
-    isDistinct:
-      'handleIsDictinctChange',
+    historyFormatted:
+      'handleHistoryFormattedChange',
     item: 'handleItemChange'
   },
-  async mounted () {
-    this.history =
-      await this.getHistory()
-
+  mounted () {
     setSearch(
       this.$refs.search,
       this.searchOptions
     )
   },
   methods: {
-    handleIsDictinctChange () {
-      this.updateInput()
+    handleHistoryFormattedChange () {
+      this.updateList()
     },
-    async handleItemChange () {
-      await this.updateHistory()
-
-      this.updateInput()
+    handleItemChange () {
+      if (this.isNewItem) {
+        this.updateHistory()
+      }
     },
     handleSelect (
       {
@@ -104,27 +132,29 @@ export default {
         title
       )
     },
-    getHistory () {
-      return getElectronStoreHistory(
-        this.scope,
-        {
-          isDistinct: this.isDistinct
-        }
-      )
-    },
-    updateHistory () {
-      return updateElectronStoreHistory(
-        this.scope,
-        this.item
-      )
-    },
-    async updateInput () {
-      this.history =
-        await this.getHistory()
-
+    updateList () {
       setSearchSource(
         this.$refs.search,
-        this.history
+        this.historyFormatted
+      )
+    },
+    formatHistoryItem (
+      item
+    ) {
+      return {
+        title: item
+      }
+    },
+    updateHistory () {
+      const newHistory = [
+        this.item,
+        ...this.history
+      ]
+
+      updateGlobalStore(
+        {
+          [this.historyKey]: newHistory
+        }
       )
     }
   }

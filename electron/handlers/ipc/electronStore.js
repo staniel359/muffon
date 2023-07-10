@@ -4,7 +4,6 @@ import addElectronStoreValue from '#/actions/electronStore/addValue'
 import deleteElectronStoreValue
   from '#/actions/electronStore/deleteValue'
 import setElectronStoreData from '#/actions/electronStore/setData'
-import deleteElectronStoreKey from '#/actions/electronStore/deleteKey'
 
 export function handleGetElectronStoreData () {
   return getElectronStoreData()
@@ -57,14 +56,5 @@ export function handleSetElectronStoreData (
 
   return setElectronStoreData(
     dataFormatted
-  )
-}
-
-export function handleDeleteElectronStoreKey (
-  _,
-  key
-) {
-  return deleteElectronStoreKey(
-    key
   )
 }

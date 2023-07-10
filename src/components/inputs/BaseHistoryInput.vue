@@ -1,5 +1,6 @@
 <template>
   <BaseHistoryInputContainer
+    :key="key"
     class="scrolling fluid"
     :scope="scope"
     :item="query"
@@ -18,9 +19,13 @@
 </template>
 
 <script>
+import historyStore from '@/stores/history'
 import BaseHistoryInputContainer
   from '@/components/containers/BaseHistoryInputContainer.vue'
 import BaseInput from '@/components/inputs/BaseInput.vue'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseHistoryInput',
@@ -38,6 +43,7 @@ export default {
   ],
   data () {
     return {
+      key: null,
       input: ''
     }
   },
@@ -49,9 +55,24 @@ export default {
       return this.$t(
         'inputs.search'
       )
+    },
+    history () {
+      return historyStore()[
+        this.scope
+      ]
     }
   },
+  watch: {
+    history: 'handleHistoryChange'
+  },
   methods: {
+    handleHistoryChange (
+      value
+    ) {
+      if (!value.length) {
+        this.key = generateKey()
+      }
+    },
     handleSelect (
       value
     ) {
@@ -82,12 +103,13 @@ export default {
         .input
         .unfocus()
     },
-    async clear () {
+    clear () {
       this.input = ''
 
-      await this.$nextTick()
-
-      this.focus()
+      setTimeout(
+        this.focus,
+        50
+      )
     }
   }
 }

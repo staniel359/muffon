@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import {
-  ipcRenderer
-} from 'electron'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import notificationMixin from '@/mixins/notificationMixin'
+import {
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'ClearSearchHistoryOption',
@@ -58,15 +58,12 @@ export default {
 
       this.notifySuccess()
     },
-    async clearHistory () {
-      await ipcRenderer.invoke(
-        'delete-electron-store-key',
-        'history.search'
-      )
-
-      await ipcRenderer.invoke(
-        'delete-electron-store-key',
-        'history.librarySearch'
+    clearHistory () {
+      return updateGlobalStore(
+        {
+          'history.search': [],
+          'history.librarySearch': []
+        }
       )
     }
   }
