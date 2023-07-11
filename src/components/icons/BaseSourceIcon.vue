@@ -1,5 +1,5 @@
 <template>
-  <div class="main-source-icon">
+  <i class="icon main-source-icon">
     <BaseIcon
       ref="icon"
       class="source-icon"
@@ -17,7 +17,7 @@
         :source="source"
       />
     </div>
-  </div>
+  </i>
 </template>
 
 <script>
