@@ -82,7 +82,9 @@
     "releasesCollection": {
       "new": "Novità",
       "upcoming": "In arrivo"
-    }
+    },
+    "search": "Ricerca",
+    "queue": "Coda"
   },
   "errors": {
     "badRequest": {
@@ -446,24 +448,14 @@
       "connections": "Connessioni"
     },
     "sections": {
-      "app": {
-        "interface": "Interfaccia",
-        "theme": "Tema",
-        "window": "Finestra",
-        "tabs": "Schede",
-        "sidebar": "Barra laterale",
-        "search": "Ricerca",
-        "player": "Player",
-        "queue": "Coda",
-        "video": "Video",
-        "recommendations": "Suggerimenti",
-        "top": "Top",
-        "lyrics": "Testi",
-        "data": "Dati"
-      },
-      "profile": {
-        "info": "Info"
-      }
+      "interface": "Interfaccia",
+      "theme": "Tema",
+      "window": "Finestra",
+      "tabs": "Schede",
+      "sidebar": "Barra laterale",
+      "video": "Video",
+      "data": "Dati",
+      "info": "Info"
     },
     "options": {
       "app": {

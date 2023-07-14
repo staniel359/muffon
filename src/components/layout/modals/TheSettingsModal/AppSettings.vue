@@ -62,7 +62,7 @@ export default {
       tabs: [
         {
           nameCode:
-            'settings.sections.app.interface',
+            'settings.sections.interface',
           icon: 'interface',
           scope: 'interface',
           component: 'InterfaceOptions',
@@ -70,7 +70,7 @@ export default {
         },
         {
           nameCode:
-            'settings.sections.app.theme',
+            'settings.sections.theme',
           icon: 'theme',
           scope: 'theme',
           component: 'ThemeOptions',
@@ -78,7 +78,7 @@ export default {
         },
         {
           nameCode:
-            'settings.sections.app.window',
+            'settings.sections.window',
           icon: 'window',
           scope: 'window',
           component: 'WindowOptions',
@@ -86,7 +86,7 @@ export default {
         },
         {
           nameCode:
-            'settings.sections.app.tabs',
+            'settings.sections.tabs',
           icon: 'tabs',
           scope: 'tabs',
           component: 'TabsOptions',
@@ -94,39 +94,35 @@ export default {
         },
         {
           nameCode:
-            'settings.sections.app.sidebar',
+            'settings.sections.sidebar',
           icon: 'sidebar',
           scope: 'sidebar',
           component: 'SidebarOptions',
           isAnonymous: true
         },
         {
-          nameCode:
-            'settings.sections.app.search',
+          nameCode: 'navigation.search',
           icon: 'search',
           scope: 'search',
           component: 'SearchOptions',
           isAnonymous: true
         },
         {
-          nameCode:
-            'settings.sections.app.player',
+          nameCode: 'navigation.player',
           icon: 'player',
           scope: 'player',
           component: 'PlayerOptions',
           isAnonymous: true
         },
         {
-          nameCode:
-            'settings.sections.app.queue',
+          nameCode: 'navigation.queue',
           icon: 'queue',
           scope: 'queue',
           component: 'QueueOptions',
           isAnonymous: true
         },
         {
-          nameCode:
-            'settings.sections.app.video',
+          nameCode: 'navigation.videos',
           icon: 'video',
           scope: 'video',
           component: 'VideoOptions',
@@ -134,21 +130,22 @@ export default {
         },
         {
           nameCode:
-            'settings.sections.app.recommendations',
+            'navigation.recommendations',
           icon: 'recommendation',
           scope: 'recommendations',
-          component: 'RecommendationsOptions',
+          component:
+            'RecommendationsOptions',
           isAnonymous: false
         },
         {
-          nameCode: 'settings.sections.app.top',
+          nameCode: 'navigation.top',
           icon: 'top',
           scope: 'top',
           component: 'TopOptions',
           isAnonymous: true
         },
         {
-          nameCode: 'settings.sections.app.lyrics',
+          nameCode: 'navigation.lyrics',
           icon: 'lyrics',
           scope: 'lyrics',
           component: 'LyricsOptions',
@@ -156,7 +153,7 @@ export default {
         },
         {
           nameCode:
-            'settings.sections.app.data',
+            'settings.sections.data',
           icon: 'data',
           scope: 'data',
           component: 'DataOptions',

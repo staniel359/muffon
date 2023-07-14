@@ -82,7 +82,9 @@
     "releasesCollection": {
       "new": "New releases",
       "upcoming": "Upcoming releases"
-    }
+    },
+    "search": "Search",
+    "queue": "Queue"
   },
   "errors": {
     "badRequest": {
@@ -446,24 +448,14 @@
       "connections": "Connections"
     },
     "sections": {
-      "app": {
-        "interface": "Interface",
-        "theme": "Theme",
-        "window": "Window",
-        "tabs": "Tabs",
-        "sidebar": "Sidebar",
-        "search": "Search",
-        "player": "Player",
-        "queue": "Queue",
-        "video": "Video",
-        "recommendations": "Recommendations",
-        "top": "Top",
-        "lyrics": "Lyrics",
-        "data": "Data"
-      },
-      "profile": {
-        "info": "Info"
-      }
+      "interface": "Interface",
+      "theme": "Theme",
+      "window": "Window",
+      "tabs": "Tabs",
+      "sidebar": "Sidebar",
+      "video": "Video",
+      "data": "Data",
+      "info": "Info"
     },
     "options": {
       "app": {

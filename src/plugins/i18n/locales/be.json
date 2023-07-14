@@ -82,7 +82,9 @@
     "releasesCollection": {
       "new": "Новыя рэлізы",
       "upcoming": "Чаканыя рэлізы"
-    }
+    },
+    "search": "Пошук",
+    "queue": "Чарга"
   },
   "errors": {
     "badRequest": {
@@ -446,24 +448,14 @@
       "connections": "Падключэнні"
     },
     "sections": {
-      "app": {
-        "interface": "Інтэрфэйс",
-        "theme": "Тэма",
-        "window": "Акно",
-        "tabs": "Укладкі",
-        "sidebar": "Бакавая панэль",
-        "search": "Пошук",
-        "player": "Прайгравальнік",
-        "queue": "Чарга",
-        "video": "Відэа",
-        "recommendations": "Рэкамендацыі",
-        "top": "Папулярнае",
-        "lyrics": "Тэксты",
-        "data": "Дадзеныя"
-      },
-      "profile": {
-        "info": "Інфармацыя"
-      }
+      "interface": "Інтэрфэйс",
+      "theme": "Тэма",
+      "window": "Акно",
+      "tabs": "Укладкі",
+      "sidebar": "Бакавая панэль",
+      "video": "Відэа",
+      "data": "Дадзеныя",
+      "info": "Інфармацыя"
     },
     "options": {
       "app": {

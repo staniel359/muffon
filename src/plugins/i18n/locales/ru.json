@@ -82,7 +82,9 @@
     "releasesCollection": {
       "new": "Новые релизы",
       "upcoming": "Ожидаемые релизы"
-    }
+    },
+    "search": "Поиск",
+    "queue": "Очередь"
   },
   "errors": {
     "badRequest": {
@@ -446,24 +448,14 @@
       "connections": "Подключения"
     },
     "sections": {
-      "app": {
-        "interface": "Интерфейс",
-        "theme": "Тема",
-        "window": "Окно",
-        "tabs": "Вкладки",
-        "sidebar": "Боковая панель",
-        "search": "Поиск",
-        "player": "Проигрыватель",
-        "queue": "Очередь",
-        "video": "Видео",
-        "recommendations": "Рекомендации",
-        "top": "Популярное",
-        "lyrics": "Тексты",
-        "data": "Данные"
-      },
-      "profile": {
-        "info": "Информация"
-      }
+      "interface": "Интерфейс",
+      "theme": "Тема",
+      "window": "Окно",
+      "tabs": "Вкладки",
+      "sidebar": "Боковая панель",
+      "video": "Видео",
+      "data": "Данные",
+      "info": "Информация"
     },
     "options": {
       "app": {

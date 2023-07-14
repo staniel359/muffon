@@ -38,14 +38,13 @@ export default {
       tabs: [
         {
           nameCode:
-            'settings.sections.profile.info',
+            'settings.sections.info',
           icon: 'profileInfo',
           scope: 'info',
           component: 'InfoOptions'
         },
         {
-          nameCode:
-            'settings.sections.app.player',
+          nameCode: 'navigation.player',
           icon: 'player',
           scope: 'player',
           component: 'PlayerOptions'

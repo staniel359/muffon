@@ -82,7 +82,9 @@
     "releasesCollection": {
       "new": "Neuveröffentlichungen",
       "upcoming": "Zukünftige veröffentlichungen"
-    }
+    },
+    "search": "Suche",
+    "queue": "Queue"
   },
   "errors": {
     "badRequest": {
@@ -446,24 +448,14 @@
       "connections": "Verbindungen"
     },
     "sections": {
-      "app": {
-        "interface": "Oberfläche",
-        "theme": "Thema",
-        "window": "Fenster",
-        "tabs": "Tabs",
-        "sidebar": "Sidebar",
-        "search": "Suche",
-        "player": "Player",
-        "queue": "Queue",
-        "video": "Video",
-        "recommendations": "Vorschläge",
-        "top": "Top",
-        "lyrics": "Lyrics",
-        "data": "Daten"
-      },
-      "profile": {
-        "info": "Info"
-      }
+      "interface": "Oberfläche",
+      "theme": "Thema",
+      "window": "Fenster",
+      "tabs": "Tabs",
+      "sidebar": "Sidebar",
+      "video": "Video",
+      "data": "Daten",
+      "info": "Info"
     },
     "options": {
       "app": {
