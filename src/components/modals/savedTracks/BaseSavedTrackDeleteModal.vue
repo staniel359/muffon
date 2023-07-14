@@ -57,16 +57,16 @@ export default {
       this.isLoading = true
 
       await ipcRenderer.invoke(
-        'delete-electron-store-value',
-        'profile.savedTracks',
-        this.uuid
-      )
-
-      await ipcRenderer.invoke(
         'delete-audio',
         {
           fileName: this.uuid
         }
+      )
+
+      await ipcRenderer.invoke(
+        'delete-electron-store-value',
+        'profile.savedTracks',
+        this.uuid
       )
 
       this.isLoading = false
