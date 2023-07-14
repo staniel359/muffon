@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-video"
+    class="base-video"
     :class="{
       inverted: isDarkMode
     }"
@@ -85,4 +85,9 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-video
+  @extend .overflow-hidden, .border-radius, .border-inner
+  &.inverted
+    @extend .border-inner-inverted
+</style>

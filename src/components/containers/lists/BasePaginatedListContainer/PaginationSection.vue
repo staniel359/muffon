@@ -1,9 +1,9 @@
 <template>
   <BaseDivider />
 
-  <div class="main-pagination-container">
+  <div class="pagination-container">
     <BaseMenuContainer
-      class="small main-pagination"
+      class="small pagination"
     >
       <PreviousPageItem
         :is-disabled="isPreviousPageDisabled"
@@ -115,4 +115,21 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.pagination-container
+  @extend .d-flex, .justify-content-center
+  padding: 5px
+
+.pagination
+  @extend .background-transparent
+  &.inverted
+    @extend .border-inverted
+  & > .item
+    &:last-child
+      border-top-right-radius: inherit
+      border-bottom-right-radius: inherit
+      &:before
+        width: 0
+    & > ::v-deep(.direction-icon)
+      @extend .no-margin
+</style>

@@ -3,7 +3,7 @@
     :is="component"
   >
     <p
-      class="main-description"
+      class="base-description"
       :class="{
         'main-text-container': isModal
       }"
@@ -59,4 +59,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-description
+  @extend .word-break-break-word
+</style>

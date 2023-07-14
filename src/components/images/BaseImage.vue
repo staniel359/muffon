@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="isLoading"
-    class="ui image placeholder main-image"
+    class="ui image placeholder base-image"
     :class="[
       {
         inverted: isDarkMode,
@@ -12,7 +12,7 @@
   <img
     v-else
     ref="image"
-    class="ui image main-image"
+    class="ui image base-image"
     :class="[
       {
         inverted: isDarkMode,
@@ -110,4 +110,26 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-image
+  @extend .object-fit-cover
+  &:not(.contained)
+    &.bordered
+      @extend .border
+      &.inverted
+        @extend .border-inverted
+  &.contained
+    @extend .object-fit-contain, .no-border, .border-inner
+    background-color: black !important
+    &.inverted
+      @extend .border-inner-inverted
+  &.raised
+    &:not(.main-logo-image)
+      @extend .shadow
+  &.rounded
+    @extend .border-radius
+  &.rounded-medium
+    @extend .border-radius-medium
+  &.rounded-small
+    @extend .border-radius-small
+</style>

@@ -9,7 +9,7 @@
     >
       <div
         :class="[
-          'ui raised segments',
+          'ui raised segments main-segments',
           'main-segment-container',
           'main-page-segment-container'
         ]"

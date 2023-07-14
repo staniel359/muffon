@@ -1,6 +1,6 @@
 <template>
   <BaseHeaderContainer
-    class="main-artist-name artist-name"
+    class="main-artist-name"
     tag="h2"
   >
     <BaseLink
@@ -57,6 +57,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.artist-name
+.main-artist-name
   font-size: 1.5em !important
 </style>

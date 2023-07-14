@@ -1,6 +1,6 @@
 <template>
   <BaseSourceIcon
-    class="description source-icon-block"
+    class="description right"
     :source="source"
   />
 </template>
@@ -31,7 +31,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.source-icon-block
-  margin-left: 0.5em
-</style>
+<style lang="sass" scoped></style>

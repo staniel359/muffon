@@ -11,7 +11,7 @@
       @submit="handleSubmit"
     />
 
-    <div class="submit-button-container">
+    <div class="main-form-submit-button-container">
       <BaseSubmitButton
         ref="submit"
         action-key="save"

@@ -7,7 +7,7 @@
 
       <BaseProfilePasswordField />
 
-      <div class="remember-submit-button-container">
+      <div class="main-form-remember-submit-button-container">
         <BaseProfileRememberField />
 
         <BaseSubmitButton

@@ -1,5 +1,5 @@
 <template>
-  <div class="main-country-select-section">
+  <div class="base-country-select-section">
     <BaseCountrySelect
       :key="key"
       class="country-select"
@@ -93,6 +93,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.base-country-select-section
+  @extend .d-flex, .align-items-center
+
 .country-select
   width: 220px
 </style>

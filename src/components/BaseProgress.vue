@@ -1,17 +1,17 @@
 <template>
   <div
     ref="progress"
-    class="ui small progress main-progress"
+    class="ui small progress base-progress"
     :class="{
       inverted: isDarkMode
     }"
   >
-    <div class="bar base">
+    <div class="bar progress-bar">
       <div class="progress" />
     </div>
 
     <div
-      class="label"
+      class="label text-label"
       v-text="activeTextConditional"
     />
   </div>
@@ -165,4 +165,11 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-progress
+  .text-label
+    margin-top: 0.75em
+  &:not(.success, .error)
+    .progress-bar
+      @extend .background-base
+</style>

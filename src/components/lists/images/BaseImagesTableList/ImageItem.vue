@@ -1,5 +1,5 @@
 <template>
-  <div class="column main-image-item">
+  <div class="column main-image-list-item">
     <BaseImage
       class="rounded-medium"
       :image="imageUrl"

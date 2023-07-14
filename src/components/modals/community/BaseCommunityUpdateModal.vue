@@ -5,7 +5,7 @@
   >
     <div class="content">
       <BaseCommunityUpdateFormContainer
-        class="main-community-form"
+        class="main-creatable-form"
         :community-id="communityId"
         :image="image"
         @success="handleSuccess"
@@ -31,7 +31,7 @@
           </div>
         </div>
 
-        <div class="submit-button-container">
+        <div class="main-form-submit-button-container">
           <BaseSubmitButton
             ref="submit"
             action-key="save"

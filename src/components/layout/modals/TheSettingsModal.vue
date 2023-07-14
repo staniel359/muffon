@@ -110,11 +110,11 @@ export default {
 
 <style lang="sass" scoped>
 ::v-deep(.settings-group-tabs-container)
-  .main-tabs
+  .base-tabs
     @extend .no-margin, .overflow-y-auto
     flex: 0.3
     margin-right: 1em !important
-  .main-tab-container
+  .base-tab-container
     flex: 0.7 !important
 
 ::v-deep(.settings-group-tab)

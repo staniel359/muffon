@@ -1,5 +1,5 @@
 <template>
-  <div class="main-self-container self-section">
+  <div class="main-self-container">
     <BaseSelfIcons
       class="track-self-icons"
       :library-id="libraryId"
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.self-section
+.main-self-container
   margin-top: 1em
 
 .track-self-icons

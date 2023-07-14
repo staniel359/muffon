@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="about-page-segment main-segment-container"
+    class="main-segment-container"
     :is-change-transparency="false"
   >
     <div class="left-column">
@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.about-page-segment
+.main-segment-container
   @extend .d-flex, .h-100, .no-margin, .no-border-radius
   padding: 2em 3em
 

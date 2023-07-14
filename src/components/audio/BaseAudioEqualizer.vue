@@ -1,5 +1,5 @@
 <template>
-  <div class="main-audio-equalizer">
+  <div class="base-audio-equalizer">
     <div class="actions">
       <div class="actions-section">
         <BaseToggle
@@ -211,4 +211,13 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-audio-equalizer
+  .actions
+    @extend .d-flex, .align-items-center, .justify-content-space-between
+    margin-bottom: 1em
+  .actions-section
+    @extend .d-flex, .align-items-center
+  .equalizers
+    @extend .d-flex
+</style>

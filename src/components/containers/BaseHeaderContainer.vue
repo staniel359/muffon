@@ -3,7 +3,9 @@
     :is="tag"
     class="ui header main-header"
     :class="{
-      inverted: isInverted || isDarkMode
+      inverted: (
+        isInverted || isDarkMode
+      )
     }"
   >
     <BaseIcon

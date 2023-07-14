@@ -6,7 +6,12 @@
     <template
       #default="slotProps"
     >
-      <div class="ui raised segments main-segment-container">
+      <div
+        :class="[
+          'ui raised segments main-segments',
+          'main-segment-container'
+        ]"
+      >
         <StatisticsSegment
           :library-data="slotProps.libraryData"
         />

@@ -1,5 +1,5 @@
 <template>
-  <div class="other-profile-item main-simple-list-item">
+  <div class="main-simple-list-item">
     <BaseImage
       class="small circular"
       model="profile"
@@ -43,6 +43,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.other-profile-item
+.main-simple-list-item
   margin-bottom: 1em
 </style>

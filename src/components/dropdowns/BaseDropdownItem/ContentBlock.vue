@@ -1,9 +1,9 @@
 <template>
   <div class="content">
-    <BaseHeader
+    <h5
       v-if="header"
-      tag="h5"
-      :text="header"
+      class="header main-header"
+      v-text="header"
     />
 
     <div
@@ -24,13 +24,8 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
-
 export default {
   name: 'ContentBlock',
-  components: {
-    BaseHeader
-  },
   props: {
     header: String,
     content: String,

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui raised horizontal card main-horizontal-card"
+    class="ui raised horizontal card base-horizontal-card"
     :class="{
       inverted: isDarkMode
     }"
@@ -30,4 +30,11 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-horizontal-card
+  @extend .w-100, .background-transparent
+  &.raised
+    @extend .shadow
+    &.inverted
+      @extend .no-shadow, .border-inverted
+</style>

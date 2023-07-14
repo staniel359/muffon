@@ -22,7 +22,7 @@
 
     <BaseSourceIcon
       v-if="isRenderSource"
-      class="source-icon-block"
+      class="right"
       :source="source"
     />
   </div>
@@ -82,7 +82,4 @@ export default {
 
 .track-info-block
   @extend .flex-full
-
-.source-icon-block
-  margin-left: 0.5em
 </style>

@@ -6,7 +6,7 @@
   >
     <div class="content">
       <BasePlaylistUpdateFormContainer
-        class="main-playlist-form"
+        class="main-creatable-form"
         :playlist-id="playlistId"
         :image="image"
         @success="handleSuccess"
@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <div class="submit-button-container">
+        <div class="main-form-submit-button-container">
           <BaseSubmitButton
             ref="submit"
             action-key="save"

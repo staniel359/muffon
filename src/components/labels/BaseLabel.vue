@@ -1,7 +1,7 @@
 <template>
   <Component
     :is="component"
-    class="ui label main-label"
+    class="ui label base-label"
     :class="{
       inverted: isInvertable && isDarkMode,
       icon: icon && !text,
@@ -126,4 +126,19 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-label
+  &:not(.clickable)
+    @extend .cursor-default
+    &.basic
+      &.inverted
+        @extend .text-color-white
+  &.clickable
+    @extend .cursor-pointer
+    &:not(.primary)
+      &:hover
+        @extend .text-color-base
+  &.circular
+    &.with-text
+      padding: 0.6em 1.2em !important
+</style>

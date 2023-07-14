@@ -1,5 +1,5 @@
 <template>
-  <div class="track-page-left-column main-sticky-container">
+  <div class="main-sticky-container">
     <BaseZoomableImage
       model="track"
       size="medium"
@@ -64,6 +64,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.track-page-left-column
+.main-sticky-container
   width: 140px
 </style>

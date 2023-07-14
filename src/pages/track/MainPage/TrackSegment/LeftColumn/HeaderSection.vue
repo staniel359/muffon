@@ -8,7 +8,7 @@
         :text="trackTitle"
       />
 
-      <div class="artist-names">
+      <div class="main-small-artist-name">
         <BaseArtistLinks
           :artists="artists"
         />
@@ -16,7 +16,7 @@
 
       <div
         v-if="albumData"
-        class="main-small-container album-title"
+        class="main-small-container main-small-album-title"
       >
         <small>
           <BaseAlbumLinkContainer
@@ -83,11 +83,4 @@ export default {
 .track-full-title
   @extend .text-align-center, .word-break-break-word
   margin-top: 0.5em
-
-.artist-names
-  margin-top: 0.3em
-  line-height: 1.2em
-
-.album-title
-  margin-top: 0.2em
 </style>

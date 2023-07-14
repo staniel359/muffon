@@ -1,17 +1,25 @@
 <template>
-  <div class="field">
+  <BaseInputContainer
+    class="fluid field"
+  >
     <input
       type="text"
       name="nickname"
       :placeholder="nicknameText"
       :value="value"
     >
-  </div>
+  </BaseInputContainer>
 </template>
 
 <script>
+import BaseInputContainer
+  from '@/components/containers/inputs/BaseInputContainer.vue'
+
 export default {
   name: 'BaseProfileNicknameField',
+  components: {
+    BaseInputContainer
+  },
   props: {
     value: String
   },

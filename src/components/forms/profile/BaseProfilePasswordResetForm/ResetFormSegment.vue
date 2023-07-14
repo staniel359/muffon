@@ -5,7 +5,7 @@
         ref="email"
       />
 
-      <div class="submit-button-container">
+      <div class="main-form-submit-button-container">
         <BaseSubmitButton
           action-key="sendCode"
           :is-with-icon="false"

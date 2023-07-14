@@ -5,7 +5,7 @@
   >
     <div class="scrolling content">
       <BasePostUpdateFormContainer
-        class="main-post-form"
+        class="main-sendable-form"
         :post-data="postData"
         :images="images"
         :artists="artists"

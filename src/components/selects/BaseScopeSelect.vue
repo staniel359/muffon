@@ -1,6 +1,6 @@
 <template>
   <BaseDropdown
-    class="main-scope-select"
+    class="base-scope-select"
     :options="options"
     :selected="selected"
     :header="header"
@@ -66,4 +66,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-scope-select
+  min-width: 140px !important
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="item main-simple-list-item main-post-item"
+    class="item main-simple-list-item base-post-item"
     :class="{
       disabled: isDeleted
     }"
@@ -219,6 +219,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.base-post-item
+  @extend .align-items-start
+  padding: 1.5em 1em !important
+
 .profile-nickname-container
   @extend .d-flex, .align-items-center
 </style>

@@ -2,7 +2,7 @@
   <div
     :key="refreshKey"
     :class="[
-      'ui raised segments',
+      'ui raised segments main-segments',
       'main-segment-container',
       'main-page-container'
     ]"

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="item main-simple-list-item main-event-item"
+    class="item main-simple-list-item base-event-item"
   >
     <BaseIcon
       class="grey"
@@ -103,6 +103,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.base-event-item
+  padding: 0.5em 0.75em !important
+
 .content
   margin-left: 0.75em
 

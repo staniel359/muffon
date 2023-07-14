@@ -1,19 +1,15 @@
 <template>
   <div
     ref="calendar"
-    class="ui calendar"
+    class="ui calendar base-calendar"
     :class="{
       inverted: isDarkMode
     }"
   >
-    <div class="ui input left icon">
-      <BaseIcon
-        icon="date"
-        :class="{
-          inverted: isDarkMode
-        }"
-      />
-
+    <BaseInputContainer
+      class="left icon"
+      icon="date"
+    >
       <input
         v-if="isFormField"
         class="input"
@@ -21,7 +17,7 @@
         :name="inputName"
         :placeholder="inputText"
       >
-    </div>
+    </BaseInputContainer>
   </div>
 </template>
 
@@ -30,7 +26,8 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseInputContainer
+  from '@/components/containers/inputs/BaseInputContainer.vue'
 import {
   set as setCalendar,
   reset as resetCalendar
@@ -42,7 +39,7 @@ import {
 export default {
   name: 'BaseCalendar',
   components: {
-    BaseIcon
+    BaseInputContainer
   },
   props: {
     date: String,
@@ -94,6 +91,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.input
-  @extend .w-100
+.base-calendar
+  &.inverted
+    ::v-deep(.popup)
+      @extend .border-inverted
 </style>

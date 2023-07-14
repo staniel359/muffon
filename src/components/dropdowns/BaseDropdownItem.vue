@@ -10,7 +10,7 @@
       v-if="icon"
       class="main-dropdown-icon"
       :class="{
-        colored: isColored
+        colored: isIconColored
       }"
       :icon="icon"
       :is-loading="isLoading"
@@ -61,7 +61,7 @@ export default {
     isWithImage: Boolean,
     isDisabled: Boolean,
     icon: String,
-    isColored: Boolean,
+    isIconColored: Boolean,
     isLoading: Boolean,
     isError: Boolean,
     image: String,

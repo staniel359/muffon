@@ -1,5 +1,5 @@
 <template>
-  <div class="option">
+  <div class="main-settings-option">
     <BaseIcon
       icon="multitag"
     />

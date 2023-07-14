@@ -1,8 +1,7 @@
 <template>
   <div
-    class="main-error-message"
     :class="{
-      'main-page-error-message': isPage
+      'base-page-error-message': isPage
     }"
   >
     <BaseHeader
@@ -124,4 +123,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-page-error-message
+  @extend .flex-full, .d-flex, .flex-column, .justify-content-center
+</style>

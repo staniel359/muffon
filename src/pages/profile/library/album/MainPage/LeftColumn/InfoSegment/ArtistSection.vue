@@ -1,13 +1,15 @@
 <template>
-  <BaseArtistLinkContainer
-    class="main-link"
-    :artist-data="artistData"
-    :profile-id="profileId"
-    :library-artist-id="libraryArtistId"
-    is-link-to-library
-  >
-    {{ artistName }}
-  </BaseArtistLinkContainer>
+  <div class="main-small-artist-name">
+    <BaseArtistLinkContainer
+      class="main-link"
+      :artist-data="artistData"
+      :profile-id="profileId"
+      :library-artist-id="libraryArtistId"
+      is-link-to-library
+    >
+      {{ artistName }}
+    </BaseArtistLinkContainer>
+  </div>
 </template>
 
 <script>

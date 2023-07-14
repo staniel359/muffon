@@ -1,17 +1,27 @@
 <template>
-  <textarea
-    ref="input"
-    name="content"
-    rows="4"
-    :placeholder="contentText"
-    :value="value"
-    @keypress.ctrl.enter="handleCtrlEnter"
-  />
+  <BaseInputContainer
+    class="fluid field"
+  >
+    <textarea
+      ref="input"
+      name="content"
+      rows="4"
+      :placeholder="contentText"
+      :value="value"
+      @keypress.ctrl.enter="handleCtrlEnter"
+    />
+  </BaseInputContainer>
 </template>
 
 <script>
+import BaseInputContainer
+  from '@/components/containers/inputs/BaseInputContainer.vue'
+
 export default {
   name: 'BaseContentField',
+  components: {
+    BaseInputContainer
+  },
   props: {
     value: String
   },

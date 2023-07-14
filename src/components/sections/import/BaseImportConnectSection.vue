@@ -1,5 +1,5 @@
 <template>
-  <div class="main-import-connect-section">
+  <div class="base-import-connect-section">
     <BaseErrorMessage
       v-if="error"
       class="error-section"
@@ -108,4 +108,16 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-import-connect-section
+  &:not(:first-child)
+    margin-top: 1em
+  .error-section
+    margin-bottom: 1em !important
+  .top-section
+    @extend .d-flex, .align-items-center
+  .button-info-section
+    @extend .d-flex, .align-items-center, .flex-full
+  .info-section
+    margin-left: 0.5em
+</style>

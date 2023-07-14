@@ -1,5 +1,5 @@
 <template>
-  <div class="option">
+  <div class="main-settings-option">
     <div class="option-header">
       <BaseButton
         class="red circular option-button"

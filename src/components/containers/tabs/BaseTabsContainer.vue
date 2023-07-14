@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-tabs-container"
+    class="base-tabs-container"
     :class="{
       vertical: isVertical
     }"
@@ -16,10 +16,10 @@
       @tab-click="handleTabClick"
     />
 
-    <div class="main-tab-container">
+    <div class="base-tab-container">
       <slot
         v-for="(tabData, index) in tabs"
-        class="ui segment main-tab main-segment"
+        class="ui segment base-tab main-segment"
         :name="index"
         :class="{
           active: isActive(index)
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import BaseTabs from '@/components/BaseTabs.vue'
+import BaseTabs from '@/components/tabs/BaseTabs.vue'
 import {
   numberToColumnWidth
 } from '@/helpers/actions/plugins/semantic'
@@ -109,4 +109,23 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-tabs-container
+  @extend .flex-full, .d-flex
+  &:not(.vertical)
+    @extend .flex-column
+    .base-tabs
+      overflow-x: auto
+
+.base-tab-container
+  @extend .flex-full, .d-flex, .flex-column, .relative
+
+::v-deep(.base-tab)
+  @extend .no-shadow, .no-border, .no-margin, .h-100, .w-100, .d-flex, .flex-full, .background-transparent
+  &:not(.main-settings-options-block)
+    @extend .no-padding
+  &:not(.active)
+    @extend .d-none
+  &.with-top-segment
+    @extend .flex-column
+</style>

@@ -5,7 +5,7 @@
       inverted: isDarkMode
     }"
   >
-    <div class="icon-image-container">
+    <div class="main-sidebar-item-icon-image-container">
       <BaseImage
         class="main-logo-image"
         :image="logo"

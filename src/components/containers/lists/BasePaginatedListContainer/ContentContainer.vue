@@ -1,5 +1,5 @@
 <template>
-  <div class="main-paginated-list-content-container">
+  <div class="content-container">
     <BaseErrorMessage
       v-if="error"
       :error="error"
@@ -80,4 +80,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.content-container
+  @extend .flex-full, .d-flex, .flex-column
+</style>

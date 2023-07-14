@@ -37,4 +37,5 @@ export default {
 <style lang="sass" scoped>
 .artists-section
   @extend .text-medium-light
+  margin-top: 0.15em !important
 </style>

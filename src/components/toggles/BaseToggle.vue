@@ -1,7 +1,7 @@
 <template>
   <div
     ref="checkbox"
-    class="ui toggle checkbox main-toggle-checkbox"
+    class="ui toggle checkbox base-toggle"
     :class="{
       inverted: isDarkMode
     }"
@@ -108,4 +108,19 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-toggle
+  ::v-deep(label)
+    padding-left: 3em !important
+  ::v-deep(input)
+    &:not(:checked)
+      & ~ label
+        &:before
+          @extend .background-grey
+  &.inverted
+    ::v-deep(input)
+      &:not(:checked)
+        & ~ label
+          &:before
+            @extend .background-grey-inverted
+</style>

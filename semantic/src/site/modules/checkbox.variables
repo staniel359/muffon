@@ -1,0 +1,7 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@toggleLaneWidth: 3rem;
+@toggleHandleSize: 1.3rem;
+@toggleOnFocusLaneColor: @primaryColor;

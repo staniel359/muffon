@@ -18,7 +18,7 @@
         />
 
         <BaseMessageCreateFormContainer
-          class="main-message-form"
+          class="main-sendable-form"
           :profile-id="profileId"
           :images="images"
           :artists="artists"

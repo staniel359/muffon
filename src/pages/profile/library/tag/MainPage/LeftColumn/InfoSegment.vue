@@ -1,5 +1,10 @@
 <template>
-  <div class="ui raised segments main-segment-container">
+  <div
+    :class="[
+      'ui raised segments main-segments',
+      'main-segment-container'
+    ]"
+  >
     <BaseSegmentContainer
       class="main-profile-page-info"
     >

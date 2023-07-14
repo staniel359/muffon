@@ -2,6 +2,18 @@
 html
   @extend .scroll-smooth
 
+body
+  &.pushable
+    @extend .background-transparent
+    .pusher
+      @extend .overflow-visible, .background-transparent
+      &:after
+        @extend .background-transparent
+  &.dimmable
+    &.scrolling
+      & > .dimmer
+        justify-content: center
+
 a
   outline: none
   -webkit-user-drag: none
@@ -14,77 +26,9 @@ p
   .main-container
     width: 670px !important
 
-.pushable
-  @extend .background-transparent
-  .pusher
-    @extend .overflow-visible, .background-transparent
-    &:after
-      @extend .background-transparent
-
-.scrolling.dimmable
-  & > .dimmer
-    justify-content: center
-
 .ui.modals
   @extend .no-padding
   z-index: 2000
-
-.ui.modal
-  &.main-image-modal
-    @extend .background-transparent
-  &.inverted
-    & > .header
-      border-bottom: $borderInverted
-    & > .actions
-      border-top: $borderInverted
-  & > .content
-    &.scrolling
-      @extend .scroll-smooth
-
-.ui.checkbox
-  &.main-toggle-checkbox
-    width: $mainCheckboxWidth
-    min-height: $mainCheckboxThumbHeight
-    & > input
-      width: $mainCheckboxWidth
-      height: $mainCheckboxThumbHeight
-      & ~ label
-        &:before
-          @extend .background-grey
-        &:after
-          left: 0
-      &:checked
-        & ~ label
-          &:after
-            left: calc(#{$mainCheckboxWidth} - #{$mainCheckboxThumbHeight})
-      &:checked,
-      &:focus:checked
-        & ~ label
-          &:before
-            @extend .background-base
-    & > label
-      padding-left: 0
-      padding-top: 0
-      min-height: $mainCheckboxThumbHeight
-      line-height: $mainCheckboxThumbHeight
-      &:before
-        width: $mainCheckboxWidth
-        height: $mainCheckboxThumbHeight
-      &:after
-        height: $mainCheckboxThumbHeight
-        width: $mainCheckboxThumbHeight
-    &.inverted
-      & > input
-        & ~ label
-          &:before,
-          &:hover:before
-            @extend .background-grey-inverted
-        &:checked,
-        &:focus:checked
-          & ~ label
-            &:before,
-            &:hover:before
-              @extend .background-base
 
 .ui.toast-container
   @extend .pointer-events-auto
@@ -95,213 +39,84 @@ p
   .toast-box
     @extend .blurred
 
-.ui.card
-  &.main-simple-card,
-  &.main-horizontal-card
-    & > .content
-      .star.icon
-        opacity: 1
-        cursor: unset
-        transition: unset
-        &:hover
-          color: $colorBase
-    &.raised
-      @extend .shadow
-      &.inverted
-        @extend .no-shadow, .border-inverted
-
-.ui.card
-  &.disabled
-    @extend .text-color-black
-    &.inverted
-      @extend .text-color-white
-
-.ui.list
-  &.selection
-    & > .item
-      padding: 0.5em !important
-  & > .item
-    &.disabled
-      @extend .text-color-black
-      opacity: 0.45
+.ui.toast
   &.inverted
-    & > .item
-      & > .content
-        @extend .text-color-white
-      &.disabled
-        @extend .text-color-white
-    &.selection
-      .item
-        &:hover
-          .icon
-            &.left-icon
-              @extend .text-color-white
+    @extend .border-inverted
 
-.ui.dropdown
-  &.button
-    .menu
-      min-width: max-content !important
-  &.pointing.upward
-    &.inverted
-      & > .menu:after
-        box-shadow: 1px 1px 0 0 #ffffff26
-        margin: -0.3em 0 0
-  &.selection
-    &.active,
-    .menu
-      @extend .border-color-base-light
-  &.scrolling
-    .menu
-      max-height: 220px
-  .item
-    &:first-child
-      border-top-left-radius: inherit
-      border-top-right-radius: inherit
-    &:last-child
-      border-bottom-left-radius: inherit
-      border-bottom-right-radius: inherit
-
-.ui.segments
+.main-segments
   & > .main-segment
     &.inverted
       &:not(:first-child)
         border-top: $borderInverted
 
-.ui.segment
-  &.disabled
-    @extend .text-color-black
-    &.inverted
-      @extend .text-color-white
-
-.ui.search
-  .ui.input
-    input
-      @extend .main-input
-  .results
-    @extend .no-border
-    .result
-      @extend .d-flex, .align-items-center
-      .image
-        @extend .border, .image-medium
-        margin-right: 0.75em
-        img
-          @extend .image-medium
-      .content
-        @extend .no-margin, .flex-full, .word-break-break-word
-        .description
-          .artist-name
-            @extend .text-color-black
-      &:only-child
-        border-radius: inherit
-  &.inverted
-    .ui.input
-      input
-        @extend .main-input-inverted
-      .icon
-        @extend .text-color-white
-    .results
-      @extend .border-inverted
-      .result
-        border-bottom: $borderInverted
-        .image
-          @extend .border-inverted
-        .content
-          .title
-            @extend .text-color-white
-          .description
-            .artist-name
-              @extend .text-color-white
-            .album-title
-              @extend .text-color-white-inverted
-        &:hover,
-        &.active
-          @extend .background-grey-inverted
-      .message
-        .header,
-        .description
-          @extend .text-color-white
+.main-search
   &.scrolling
-    .results
-      max-height: 200px
+    .main-search-results
+      max-height: 200px !important
   .prompt
     @extend .border-radius
-  &.artists-input
-    .results
-      .result
-        .image
-          border-radius: 50%
-          img
-            @extend .object-fit-cover
-  &.tracks-input
-    .results
-      .result
-        .image
-          @extend .image-small
-          img
-            @extend .image-small, .object-fit-cover
 
-.ui.label
-  &.circular
-    &.with-text
-      padding: 0.6em 1.1em !important
-
-.ui.toast
+.main-search-results
+  @extend .no-border
+  .result
+    @extend .d-flex, .align-items-center
+    .image
+      @extend .border, .image-medium
+      margin-right: 0.75em
+    .content
+      @extend .no-margin, .flex-full, .word-break-break-word
+      .description
+        .artist-name
+          @extend .text-color-black
+    &:only-child
+      &:hover
+        border-radius: inherit !important
   &.inverted
     @extend .border-inverted
-
-.ui.form
-  input[type=text],
-  input[type=password],
-  textarea
-    @extend .main-input
-  &.inverted
-    input[type=text],
-    input[type=password],
-    textarea
-      @extend .main-input-inverted
-
-.ui.calendar
-  &:before
-    box-shadow: 1px 1px 0 0 $colorGrey !important
-    z-index: -1
-  &.inverted
-    table
-      @extend .border-inverted
-      .disabled
-        color: #e1e1e14d !important
-    &:before
-      background: #333 !important
-      box-shadow: 1px 1px 0 0 $colorGreyInverted !important
-
-.ui.input
-  & > input
-    @extend .main-input
-  &.inverted
-    & > input
-      @extend .main-input-inverted
-
-.ui.menu
-  &.secondary
-    &:not(.pointing)
-      &.main-tabs
-        .item
-          padding: 0.8em 1.5em
-
-.ui.image
-  &.rounded
-    @extend .border-radius
-  &.rounded-medium
-    @extend .border-radius-medium
-  &.rounded-small
-    @extend .border-radius-small
+    .result
+      border-bottom: $borderInverted !important
+      .image
+        @extend .border-inverted
+      .content
+        .title
+          @extend .text-color-white
+        .description
+          .artist-name
+            @extend .text-color-white
+          .album-title
+            @extend .text-color-white-inverted
+      &:hover,
+      &.active
+        @extend .background-grey-inverted
+    .message
+      .header,
+      .description
+        @extend .text-color-white
+  &.artists-results
+    .result
+      .image
+        border-radius: 50% !important
+        img
+          @extend .object-fit-cover
+  &.tracks-results
+    .result
+      .image
+        @extend .image-small
+        img
+          @extend .object-fit-cover
 
 .main-input
-  @extend .background-transparent
-  &:focus
-    @extend .border-color-base-light
-
-.main-input-inverted
-  @extend .background-transparent, .text-color-white, .border-grey-inverted
+  & > input,
+  & > textarea
+    @extend .background-transparent
+  &.inverted
+    & > input,
+    & > textarea
+      @extend .background-transparent, .text-color-white, .border-grey-inverted
+      &:focus
+        @extend .border-color-base-light
+    & > .icon
+      @extend .text-color-white
 
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
@@ -325,50 +140,13 @@ p
     z-index: 1
     &:before
       @extend .background-transparent, .blurred
+  &.disabled
+    @extend .text-color-black
+    &.inverted
+      @extend .text-color-white
 
 .main-paginated-page-segment-container
   @extend .flex-full, .d-flex, .flex-column
-
-.main-basic-segments-container
-  & > .segments
-    @extend .no-margin
-    &:not(:first-child)
-      margin-top: 1.5em !important
-    & > .segment:only-child
-      @extend .no-padding
-    & > .segment:first-child
-      padding: 0 0 1em 0
-    & > .segment
-      padding: 1em 0
-    & > .segment:last-child
-      @extend .no-shadow
-      padding: 1em 0 0 0
-
-.main-modal
-  & > .content
-    @extend .no-margin
-    &.full-height
-      @extend .d-flex, .flex-column
-      height: $mainModalHeight
-      .main-tab
-        @extend .absolute, .overflow-y-auto
-  &:not(.main-delete-modal)
-    & > .content
-      max-height: $mainModalHeight !important
-  &.inverted
-    @extend .background-black
-    &:not(.main-image-modal)
-      @extend .border-inverted
-    & > .header,
-    & > .content,
-    & > .actions
-      @extend .background-black
-
-.main-image-modal
-  @extend .no-margin, .no-shadow, .no-border, .no-border-radius, .width-fit-content
-  &.scrolling
-    &:after
-      @extend .d-none
 
 .main-image-modal-content
   @extend .d-flex, .flex-column, .justify-content-center
@@ -388,14 +166,6 @@ p
   &.bold
     @extend .text-bold
 
-.main-link-container
-  @extend .cursor-pointer
-  &:not(.main-label, .main-sidebar-item, .main-option-link, .main-simple-list-item)
-    @extend .text-color-unset
-  &:hover
-    .link
-      @extend .text-color-base
-
 .main-text-container
   @extend .word-break-break-word
   white-space: pre-wrap
@@ -406,34 +176,6 @@ p
   & > .lyrics
     @extend .no-margin
     font-size: 16px
-
-.main-simple-card
-  @extend .h-100, .background-transparent
-  .main-options-popup-container
-    @extend .absolute, .visibility-hidden
-    z-index: 10
-    top: 10px
-    right: 10px
-  &:hover
-    .main-options-popup-container
-      @extend .visibility-visible
-  .content
-    @extend .no-padding, .no-border
-    .extra
-      line-height: 1.2em
-      margin-top: 0.2em
-    .description
-      line-height: 1.2em
-      margin-top: 0.2em
-    .main-self-icons
-      margin-top: 0.2em
-  .main-image-container
-    margin-bottom: 0.5em
-    & > .placeholder
-      left: 0
-
-.main-horizontal-card
-  @extend .w-100, .background-transparent
 
 .main-simple-list-item
   @extend .d-flex, .align-items-center, .word-break-break-word
@@ -472,9 +214,9 @@ p
       @extend .text-color-base
     & > .main-options-popup-container
       @extend .visibility-visible
-  &.main-post-item,
   &.main-message-item
     @extend .align-items-start
+    padding: 1.5em
   &.main-info-item
     @extend .align-items-start
     & > .image,
@@ -487,19 +229,16 @@ p
       margin-top: 0.25em !important
     .main-options-popup-container
       @extend .visibility-visible
-  &.main-post-item
-    padding: 1.5em 1em !important
-  &.main-event-item
-    padding: 0.5em 0.75em !important
 
-.main-message
-  @extend .no-shadow, .no-margin, .border, .background-transparent
-  &.inverted
-    @extend .border-inverted
+.main-simple-list-item-model-icon
+  @extend .no-padding
+  margin-right: 0.75em !important
+  min-width: unset !important
 
 .main-popup
   @extend .no-border, .no-padding, .background-transparent, .blurred
   max-width: unset !important
+  z-index: 2000 !important
   &.inverted
     @extend .border-inverted
 
@@ -524,13 +263,6 @@ p
       height: unset !important
       max-width: 100%
 
-.main-emoji-picker
-  em-emoji-picker
-    @extend .border-radius
-    max-height: 300px
-    --font-family: inherit
-    --rgb-background: transparent !important
-
 .main-volume-popup
   @extend .text-align-center
   min-width: 60px !important
@@ -544,18 +276,6 @@ p
 
 .main-artist-name
   margin-bottom: 0.3em !important
-
-.main-dropdown
-  @extend .d-flex, .align-items-center, .text-color-unset, .background-transparent
-  min-width: unset !important
-  padding-right: 1em !important
-  & > .text
-    @extend .flex-full
-  & > .icon.dropdown
-    @extend .relative, .no-padding, .no-margin
-    top: 0 !important
-    right: 0 !important
-    margin-left: 0.5em !important
 
 .main-dropdown-item
   @extend .d-flex, .align-items-center
@@ -580,140 +300,17 @@ p
   height: 18px !important
   width: 18px !important
 
-.main-dropdown-right-icon
-  @extend .no-margin
-  margin-left: 0.75em !important
-
-.main-track-dropdown-container
+.main-settings-option
   @extend .d-flex, .align-items-center
-
-.main-track-dropdown-logo-container
-  @extend .d-flex, .align-items-center, .justify-content-center
-  margin-right: 0.75em
-  width: 25px
-  height: 25px
-  & > .icon
-    @extend .no-margin
-  & > .image
-    width: 20px
-    height: 20px
-
-.main-settings-options-block
-  padding: 1em !important
-  .option
-    @extend .d-flex, .align-items-center
-    &:not(:first-child)
-      margin-top: 1.5em
-    .option-header
-      @extend .flex-full
-      margin-right: 1.5em !important
-      .option-button
-        max-width: 200px
-    .option-text
-      @extend .flex-full, .text-align-center
-
-.main-seeker
-  @extend .no-padding
-  & > .inner
-    @extend .cursor-pointer
-    & > .track-fill
-      @extend .background-base
-    & > .track-progress
-      @extend .background-grey
-      transition: width 0.3s
-    & > .thumb
-      @extend .d-none, .no-shadow, .background-base
-      width: 13px !important
-      height: 13px !important
-  &:not(.disabled)
-    &:hover, &:active
-      & > .inner
-        & > .thumb
-          @extend .d-block
-  &:not(.vertical)
-    & > .inner
-      & > .thumb
-        top: 1px !important
-  &.vertical
-    & > .inner
-      & > .thumb
-        left: 1px !important
-  &.inverted
-    & > .inner
-      & > .track-progress
-        @extend .background-grey-inverted
-  &.with-thumb
-    & > .inner
-      & > .thumb
-        @extend .d-block
-
-.main-pagination
-  @extend .no-margin, .align-self-center, .background-transparent
-  &.inverted
-    @extend .border-inverted
-  & > .item
-    &:last-child
-      border-top-right-radius: inherit
-      border-bottom-right-radius: inherit
-      &:before
-        width: 0
-    & > .direction-icon
-      @extend .no-margin
-
-.main-tabs-container
-  @extend .flex-full, .d-flex
-  &:not(.vertical)
-    @extend .flex-column
-    .main-tabs
-      overflow-x: auto
-
-.main-tab-container
-  @extend .flex-full, .d-flex, .flex-column, .relative
-
-.main-tab
-  @extend .no-padding, .no-shadow, .no-border, .no-margin, .h-100, .w-100, .d-flex, .flex-full, .background-transparent
-  &.active
-    @extend .visibility-visible
-  &:not(.active)
-    @extend .d-none
-  &.main-segment
-    @extend .background-transparent
-  &.with-top-segment
-    @extend .flex-column
-
-.main-relative-tab
-  @extend .relative
-  &:not(.active)
-    height: 0px !important
-
-.main-label
-  &:not(.clickable)
-    @extend .cursor-default
-    &.basic
-      &.inverted
-        @extend .text-color-white
-  &.clickable
-    @extend .cursor-pointer
-    &:not(.primary)
-      &:hover
-        @extend .text-color-base
-
-.main-image
-  @extend .object-fit-cover
-  &:not(.contained)
-    &.bordered
-      @extend .border
-      &.inverted
-        @extend .border-inverted
-  &.contained
-    @extend .object-fit-contain, .no-border
-    background-color: black !important
-    outline: $border
-    &.inverted
-      outline: $borderInverted
-  &.raised
-    &:not(.main-logo-image)
-      @extend .shadow
+  &:not(:first-child)
+    margin-top: 1.5em
+  .option-header
+    @extend .flex-full
+    margin-right: 1.5em !important
+    .option-button
+      max-width: 200px
+  .option-text
+    @extend .flex-full, .text-align-center
 
 .main-source-select-container
   @extend .d-flex, .align-items-center
@@ -731,16 +328,6 @@ p
 .main-source-select-item-select
   width: 200px
   margin-left: 1em !important
-
-.main-form
-  & > .submit-button-container
-    @extend .d-flex, .justify-content-flex-end
-    margin-top: 1em
-  & > .remember-submit-button-container
-    @extend .d-flex, .align-items-center, .justify-content-space-between
-  &.loading
-    &:before
-      @extend .background-transparent, .blurred
 
 .main-sidebar-item
   @extend .no-padding, .d-flex
@@ -762,37 +349,16 @@ p
       &.inverted
         .icon
           @extend .text-color-white
-  .icon-image-container
-    @extend .d-flex, .align-items-center, .justify-content-center, .image-medium
-    flex-shrink: 0
-    .icon
-      @extend .no-margin
-      font-size: 16px
-  .content-container
-    @extend .d-flex, .align-items-center
-    width: 200px
-    flex-shrink: 0
 
-.main-paginated-list-container
-  @extend .flex-full, .w-100, .d-flex, .flex-column
-
-.main-paginated-list-content-container
-  @extend .flex-full, .d-flex, .flex-column
-
-.main-pagination-container
-  @extend .d-flex, .justify-content-center
-  padding: 5px
+.main-sidebar-item-icon-image-container
+  @extend .d-flex, .align-items-center, .justify-content-center, .image-medium
+  flex-shrink: 0
+  .icon
+    @extend .no-margin
+    font-size: 16px
 
 .main-small-container
   line-height: 0.9em !important
-
-.main-progress
-  & > .label
-    margin-top: 0.5em !important
-  &:not(.success, .error)
-    & > .bar
-      &.base
-        @extend .background-base
 
 .main-columns-container
   @extend .d-flex, .flex-full
@@ -827,24 +393,6 @@ p
 .main-library-modal-message-container
   margin-bottom: 1em
 
-.main-simple-self-icon
-  @extend .no-margin, .d-inline-block
-  margin: 0.25em !important
-
-.main-error-message
-  @extend .w-100, .no-margin
-
-.main-deleted-container
-  @extend .d-flex, .align-items-center, .justify-content-center, .flex-full, .text-align-center
-  .deleted-icon
-    @extend .d-inline
-    margin-right: 0.5em !important
-  .deleted-text
-    @extend .d-inline
-
-.main-options-dropdown-button
-  padding: 0.5em !important
-
 .main-self-container
   @extend .d-flex, .w-100, .justify-content-center, .align-items-center, .relative
   min-height: 30px
@@ -852,10 +400,6 @@ p
   .main-options-popup-container
     @extend .absolute
     right: 0
-
-.main-self-icons-segment-container
-  @extend .width-fit-content, .no-margin
-  padding: 0.25em !important
 
 .main-simple-button
   @extend .no-margin
@@ -866,15 +410,8 @@ p
 
 .main-search-input
   width: 230px
-  .results
-    .title
-      @extend .no-padding
 
-.main-image-input
-  @extend .d-none
-
-.main-playlist-form,
-.main-community-form
+.main-creatable-form
   & > .fields-container
     @extend .d-flex
     & > .image-field
@@ -883,8 +420,7 @@ p
     & > .fields-right-column
       @extend .flex-full
 
-.main-post-form,
-.main-message-form
+.main-sendable-form
   & > .as-community-container
     margin-top: 1em
   & > .buttons-container
@@ -895,29 +431,6 @@ p
     & > .main-as-community-checkbox
       margin: 0 1em
 
-.main-percent-circle
-  & > path
-    fill: none
-    &.background
-      stroke: $colorGrey
-      &.inverted
-        stroke: $colorGreyInverted
-    &.main
-      stroke: $colorBase
-  & > text
-    text-anchor: middle
-    font-size: 14px
-    &.inverted
-      fill: $colorWhite
-
-.main-following-message-container,
-.main-joined-message-container
-  @extend .d-flex, .flex-column, .align-items-center
-
-.main-following-message,
-.main-joined-message
-  @extend .d-flex, .align-items-center
-
 .main-message-item
   &.inverted
     @extend .border-inverted
@@ -925,15 +438,9 @@ p
 .main-paginated-segment-container
   @extend .d-flex
 
-.main-language-select
-  width: 125px
-
 .main-compatibility-common-button
   &:not(:first-child)
     margin-left: 0.5em !important
-
-.main-scope-select
-  min-width: 140px !important
 
 .main-content-container
   margin-top: 1em
@@ -943,49 +450,28 @@ p
   &:not(:first-child)
     margin-top: 0.75em !important
 
-.main-clear-button
-  margin-left: 1em !important
-
 .main-zoomable-image
   @extend .cursor-zoom-in
-
-.main-save-button
-  margin-top: 1em !important
-
-.main-profile-online-label
-  @extend .no-margin
-  &:not(.inverted)
-    @extend .border-white
-  &.inverted
-    @extend .border-black
 
 .main-nested-segment-container
   @extend .background-transparent, .no-shadow, .no-padding
 
-.main-description
-  @extend .word-break-break-word
-
-.main-video
-  @extend .overflow-hidden, .border-radius
-  outline: $border
-  &.inverted
-    outline: $borderInverted
-  .video.play.icon
-    @extend .no-margin
-
-.main-timezone-select
-  min-width: 200px !important
-
-.main-image-item
+.main-image-list-item
   @extend .relative, .align-self-center
+  &.selectable
+    &.active
+      @extend .border-radius-medium
+      border: $borderBaseLight
+    .image
+      @extend .cursor-pointer
   &:hover
     .main-image-clear-button
       @extend .d-block
 
 .main-image-clear-button
   @extend .no-margin, .absolute, .d-none
-  top: 7px,
-  right: 7px
+  top: 1em,
+  right: 1em
 
 .main-labels-section
   @extend .d-flex, .align-items-center
@@ -995,13 +481,6 @@ p
 .main-logo-image
   width: 110px
   -webkit-user-drag: none
-
-.main-private-icon
-  @extend .no-margin
-  margin-left: 0.25em !important
-
-.main-country-select-section
-  @extend .d-flex, .align-items-center
 
 .main-date-section
   min-width: 85px
@@ -1032,39 +511,9 @@ p
 .main-counter-bar-container
   @extend .d-flex, .align-items-center
 
-.main-counter-bar
-  @extend .background-grey
-  height: 4px
-  border-radius: 2px
-  margin-right: 0.5em
-  &.inverted
-    @extend .background-grey-inverted
-
-.main-inner-counter-labels-section
-  @extend .d-flex, .align-items-center
-  &.inline
-    &:not(:first-child)
-      margin-left: 1em
-  & > .icon
-    margin: 0 0.5em 0.5em 0
-
-.main-community-info-segment
-  @extend .d-flex, .flex-column, .text-align-center
-
-.main-simple-list-item-model-icon
-  @extend .no-padding
-  margin-right: 0.75em !important
-  min-width: unset !important
-
 .main-more-container
   @extend .text-align-right
   margin-top: 1em
-
-.main-page-list-container
-  @extend .d-flex, .flex-column, .flex-full
-
-.main-video-select-container
-  @extend .w-100
 
 .main-page-container
   @extend .d-flex, .flex-column
@@ -1079,79 +528,29 @@ p
 .main-counter-section
   @extend .width-fit-content
 
-.main-source-icon
-  @extend .no-padding
-  &.right
-    margin-left: 0.75em
-
-.main-saved-icon
-  &.right
-    margin-left: 0.75em
-
 .main-background
   @extend .fixed, .w-100, .h-100
   transition: background 0.25s ease
   &.dark
     filter: brightness(0.5)
 
-.main-page-error-message
-  @extend .flex-full, .d-flex, .flex-column, .justify-content-center
-
-.main-page-header
-  @extend .d-flex, .flex-column, .align-items-center
-  & > .icon,
-  & > .icons
-    @extend .no-margin
-    margin-bottom: 0.2em !important
-
-.main-image-modal-slider-container
-  .slick-slide
-    outline: none
-  .slick-prev
-    left: 25px
-    z-index: 1
-  .slick-next
-    right: 25px
-  .slick-arrow
-    width: 25px
-    height: 25px
-    &:before
-      @extend .text-color-black
-      font-size: 25px
-  &.inverted
-    .slick-arrow
-      &:before
-        @extend .text-color-white
-
-.main-audio-equalizer
-  .actions
-    @extend .d-flex, .align-items-center, .justify-content-space-between
-    margin-bottom: 1em
-    .actions-section
-      @extend .d-flex, .align-items-center
-  .equalizers
-    @extend .d-flex
-
 .main-view
   padding-top: $mainContainerTopPadding
   padding-bottom: $mainContainerBottomPadding
 
-.main-account-section
-  @extend .d-flex, .align-items-center
-  .nickname-premium-section
-    @extend .flex-full, .word-break-break-word
-    margin-left: 0.75em !important
-  .premium-label
-    margin-top: 0.5em !important
+.main-popup-icon
+  @extend .cursor-pointer, .no-margin
 
-.main-import-connect-section
-  &:not(:first-child)
-    margin-top: 1em
-  .error-section
-    margin-bottom: 1em !important
-  .top-section
-    @extend .d-flex, .align-items-center
-  .button-info-section
-    @extend .d-flex, .align-items-center, .flex-full
-  .info-section
-    margin-left: 0.5em
+.main-form-submit-button-container
+  @extend .d-flex, .justify-content-flex-end
+  margin-top: 1em
+
+.main-form-remember-submit-button-container
+  @extend .d-flex, .align-items-center, .justify-content-space-between
+
+.main-small-artist-name
+  margin-top: 0.3em
+  line-height: 1.2em
+
+.main-small-album-title
+  margin-top: 0.2em

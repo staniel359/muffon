@@ -10,7 +10,7 @@
       ref="password"
     />
 
-    <div class="submit-button-container">
+    <div class="main-form-submit-button-container">
       <BaseSubmitButton
         action-key="confirm"
       />

@@ -1,6 +1,6 @@
 <template>
   <BaseDropdown
-    class="search main-timezone-select"
+    class="search base-timezone-select"
     :options="timezonesFormatted"
     :selected="profileTimezone"
     @select="handleSelect"
@@ -50,4 +50,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-timezone-select
+  min-width: 190px !important
+</style>

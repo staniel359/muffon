@@ -30,7 +30,9 @@ export function main (
     startMode: 'year',
     type: 'date',
     popupOptions: {
-      position: 'top left'
+      position: 'top left',
+      variation: 'basic',
+      transition: 'fade up'
     },
     text: {
       days,

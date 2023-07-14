@@ -3,7 +3,7 @@
     :value="source"
     :icon="icon"
     :header="sourceName"
-    is-colored
+    is-icon-colored
   />
 </template>
 

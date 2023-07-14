@@ -7,7 +7,7 @@
       :options="sources"
       :selected="source"
       :is-selection="false"
-      is-colored
+      is-icon-colored
       @select="handleSelect"
     />
   </div>

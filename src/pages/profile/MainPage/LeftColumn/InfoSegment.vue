@@ -121,6 +121,5 @@ export default {
   right: 0.15em
 
 .status
-  @extend .word-break-break-word
   margin-top: 0.25em
 </style>

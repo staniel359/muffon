@@ -11,7 +11,7 @@
 
     <BaseSeeker
       ref="seeker"
-      class="vertical reversed volume-seeker"
+      class="vertical reversed base-volume-seeker"
       :options="seekerOptions"
       @move="handleMove"
       @mouse-up="handleMouseUp"
@@ -121,7 +121,7 @@ export default {
 .volume-header-container
   margin-bottom: 0.35em
 
-.volume-seeker
+.base-volume-seeker
   @extend .w-100, .d-flex, .justify-content-center
   height: 120px !important
   padding: 5px 0 !important

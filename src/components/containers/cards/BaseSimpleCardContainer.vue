@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui basic card main-simple-card"
+    class="ui basic card base-simple-card"
     :class="{
       inverted: isDarkMode
     }"
@@ -28,4 +28,37 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-simple-card
+  @extend .h-100, .background-transparent
+  &.disabled
+    @extend .text-color-black
+    &.inverted
+      @extend .text-color-white
+  ::v-deep(.main-options-popup-container)
+    @extend .absolute, .visibility-hidden
+    z-index: 10
+    top: 10px
+    right: 10px
+  &:hover
+    ::v-deep(.main-options-popup-container)
+      @extend .visibility-visible
+  ::v-deep(.content)
+    @extend .no-padding, .no-border
+    .extra
+      line-height: 1.2em
+      margin-top: 0.2em
+    .description
+      line-height: 1.2em
+      margin-top: 0.2em
+    .main-self-icons
+      margin-top: 0.2em
+    .icon
+      &.star
+        opacity: 1 !important
+        cursor: unset !important
+  ::v-deep(.main-image-container)
+    margin-bottom: 0.5em
+    & > .placeholder
+      left: 0
+</style>

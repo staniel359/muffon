@@ -1,5 +1,5 @@
 <template>
-  <div class="main-deleted-container">
+  <div class="base-deleted-section">
     <div>
       <BaseIcon
         class="deleted-icon"
@@ -38,4 +38,12 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-deleted-section
+  @extend .d-flex, .align-items-center, .justify-content-center, .flex-full, .text-align-center
+  .deleted-icon
+    @extend .d-inline
+    margin-right: 0.75em
+  .deleted-text
+    @extend .d-inline
+</style>

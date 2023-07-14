@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-inner-counter-labels-section"
+    class="base-inner-counter-labels-section"
   >
     <BaseIcon
       icon="colored muffon"
@@ -65,4 +65,12 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-inner-counter-labels-section
+  @extend .d-flex, .align-items-center
+  &.inline
+    &:not(:first-child)
+      margin-left: 1em
+  & > .icon
+    margin: 0 0.5em 0.5em 0
+</style>

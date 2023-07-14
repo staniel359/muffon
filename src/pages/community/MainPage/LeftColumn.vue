@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'ui raised segments',
+      'ui raised segments main-segments',
       'main-segment-container',
       'main-sticky-container',
       'left-column'
@@ -21,7 +21,7 @@
     />
 
     <BaseCreatedSegment
-      class="main-community-info-segment"
+      class="created-segment"
       model="community"
       :model-data="communityData"
     />
@@ -58,4 +58,7 @@ export default {
 .left-column
   @extend .no-margin
   width: 180px
+
+.created-segment
+  @extend .d-flex, .flex-column, .text-align-center
 </style>

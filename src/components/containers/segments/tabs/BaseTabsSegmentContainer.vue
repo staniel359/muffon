@@ -18,7 +18,6 @@
         #[index]="slotProps"
       >
         <slot
-          class="main-relative-tab"
           :class="slotProps.class"
           :component="tabData.component"
           :is-active="slotProps.isActive"

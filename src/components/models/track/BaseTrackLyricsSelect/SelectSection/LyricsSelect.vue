@@ -1,10 +1,9 @@
 <template>
-  <div class="main-track-dropdown-container">
-    <div class="main-track-dropdown-logo-container">
-      <BaseSourceIcon
-        source="genius"
-      />
-    </div>
+  <div class="lyrics-select-container">
+    <BaseSourceIcon
+      class="left"
+      source="genius"
+    />
 
     <BaseDropdownContainer
       class="lyrics-select"
@@ -104,6 +103,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.lyrics-select-container
+  @extend .d-flex, .align-items-center
+
 .lyrics-select
   width: 225px
 </style>

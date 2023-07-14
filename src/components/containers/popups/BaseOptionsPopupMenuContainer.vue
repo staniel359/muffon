@@ -71,4 +71,5 @@ export default {
 .options-menu
   @extend .d-block, .relative
   margin-bottom: -4.75px !important
+  max-height: 200px !important
 </style>

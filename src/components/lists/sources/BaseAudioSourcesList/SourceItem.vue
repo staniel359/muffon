@@ -4,7 +4,7 @@
     :icon="icon"
     :header="sourceName"
     :extra="bitrateText"
-    is-colored
+    is-icon-colored
   />
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div
     ref="picker"
-    class="main-emoji-picker"
+    class="base-emoji-picker"
   />
 </template>
 
@@ -73,4 +73,11 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-emoji-picker
+  ::v-deep(em-emoji-picker)
+    @extend .border-radius
+    max-height: 300px
+    --font-family: inherit
+    --rgb-background: transparent !important
+</style>

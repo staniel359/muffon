@@ -1,6 +1,6 @@
 <template>
   <div
-    class="column main-image-item"
+    class="column main-image-list-item selectable"
     :class="{
       active: isActive
     }"
@@ -113,11 +113,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-image-item
-  &.active
-    @extend .border-radius-medium
-    border: $borderBaseLight
-  .image
-    @extend .cursor-pointer
-</style>
+<style lang="sass" scoped></style>

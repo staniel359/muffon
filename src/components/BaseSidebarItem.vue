@@ -9,7 +9,7 @@
     :link="link"
     @click="handleClick"
   >
-    <div class="icon-image-container">
+    <div class="main-sidebar-item-icon-image-container">
       <BaseIcon
         v-if="icon"
         class="grey"
@@ -121,4 +121,9 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.content-container
+  @extend .d-flex, .align-items-center
+  width: 200px
+  flex-shrink: 0
+</style>

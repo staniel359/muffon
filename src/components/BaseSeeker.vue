@@ -1,7 +1,7 @@
 <template>
   <div
     ref="seeker"
-    class="ui small slider main-seeker"
+    class="ui small slider base-seeker"
     :class="{
       disabled: isDisabled,
       inverted: isDarkMode
@@ -141,4 +141,50 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-seeker
+  @extend .no-padding
+  & > ::v-deep(.inner)
+    @extend .cursor-pointer
+    & > .track-fill
+      @extend .background-base
+    & > .track-progress
+      @extend .background-grey
+      transition: width 0.3s
+    & > .thumb
+      @extend .d-none, .no-shadow, .background-base
+      width: 13px !important
+      height: 13px !important
+  &:not(.disabled)
+    &:hover,
+    &:active
+      & > ::v-deep(.inner)
+        & > .thumb
+          @extend .d-block
+  &:not(.vertical)
+    &.small
+      & > ::v-deep(.inner)
+        & > .track,
+        & > .track-fill
+          height: 0.35em
+    & > ::v-deep(.inner)
+      & > .thumb
+        top: 1px !important
+  &.vertical
+    &.small
+      & > ::v-deep(.inner)
+        & > .track,
+        & > .track-fill
+          width: 0.35em
+    & > ::v-deep(.inner)
+      & > .thumb
+        left: 1px !important
+  &.inverted
+    & > ::v-deep(.inner)
+      & > .track-progress
+        @extend .background-grey-inverted
+  &.with-thumb
+    & > ::v-deep(.inner)
+      & > .thumb
+        @extend .d-block
+</style>

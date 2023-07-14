@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-counter-bar"
+    class="base-counter-bar"
     :class="{
       inverted: isDarkMode
     }"
@@ -54,4 +54,12 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-counter-bar
+  @extend .background-grey
+  height: 4px
+  border-radius: 2px
+  margin-right: 0.5em
+  &.inverted
+    @extend .background-grey-inverted
+</style>

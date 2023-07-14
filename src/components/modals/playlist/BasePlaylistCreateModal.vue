@@ -6,7 +6,7 @@
   >
     <div class="content">
       <BasePlaylistCreateFormContainer
-        class="main-playlist-form"
+        class="main-creatable-form"
         :image="image"
         :is-with-redirect="isWithRedirect"
         @success="handleSuccess"
@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <div class="submit-button-container">
+        <div class="main-form-submit-button-container">
           <BaseSubmitButton
             ref="submit"
             action-key="create"

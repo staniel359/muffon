@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-image-modal-slider-container"
+    class="base-image-modal-slider-container"
     :class="{
       inverted: isDarkMode
     }"
@@ -83,4 +83,21 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-image-modal-slider-container
+  ::v-deep(.slick-prev)
+    left: 25px
+    z-index: 1
+  ::v-deep(.slick-next)
+    right: 25px
+  ::v-deep(.slick-arrow)
+    width: 25px
+    height: 25px
+    &:before
+      @extend .text-color-black
+      font-size: 25px
+  &.inverted
+    ::v-deep(.slick-arrow)
+      &:before
+        @extend .text-color-white
+</style>

@@ -1,9 +1,9 @@
 <template>
-  <div
-    class="ui input"
+  <BaseInputContainer
     :class="{
       icon
     }"
+    :icon="icon"
   >
     <input
       ref="input"
@@ -13,21 +13,17 @@
       @input="handleInput"
       @keypress.enter="handleEnterPress"
     >
-
-    <BaseIcon
-      v-if="icon"
-      :icon="icon"
-    />
-  </div>
+  </BaseInputContainer>
 </template>
 
 <script>
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseInputContainer
+  from '@/components/containers/inputs/BaseInputContainer.vue'
 
 export default {
   name: 'BaseInput',
   components: {
-    BaseIcon
+    BaseInputContainer
   },
   props: {
     modelValue: String,

@@ -1,6 +1,6 @@
 <template>
   <BaseMenuContainer
-    class="secondary main-tabs"
+    class="secondary base-tabs"
   >
     <TabItem
       v-for="(tabData, index) in tabs"
@@ -48,4 +48,10 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-tabs
+  &.secondary
+    &:not(.pointing)
+      ::v-deep(.item)
+        padding: 0.8em 1.6em
+</style>

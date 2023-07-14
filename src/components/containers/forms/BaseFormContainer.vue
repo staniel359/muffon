@@ -1,7 +1,7 @@
 <template>
   <form
     ref="form"
-    class="ui form main-form"
+    class="ui form base-form"
     :class="{
       loading: isLoading,
       inverted: isDarkMode
@@ -63,6 +63,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.base-form
+  &.loading
+    &:before
+      @extend .background-transparent, .blurred
+
 .form-error
   margin-bottom: 1em !important
 </style>

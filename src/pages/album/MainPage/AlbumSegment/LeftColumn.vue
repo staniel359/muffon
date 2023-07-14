@@ -1,5 +1,5 @@
 <template>
-  <div class="album-page-left-column main-sticky-container">
+  <div class="main-sticky-container">
     <BaseZoomableImage
       model="album"
       size="medium"
@@ -75,6 +75,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.album-page-left-column
+.main-sticky-container
   width: 185px
 </style>

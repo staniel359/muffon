@@ -18,7 +18,7 @@
 
     <BaseSourceIcon
       v-if="isRenderSource"
-      class="source-icon"
+      class="bottom"
       :source="source"
     />
   </BaseSegmentContainer>
@@ -66,7 +66,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.source-icon
-  margin-top: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

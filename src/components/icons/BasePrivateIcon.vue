@@ -1,6 +1,6 @@
 <template>
   <BaseIcon
-    class="small grey main-private-icon"
+    class="small grey base-private-icon"
     icon="private"
   />
 </template>
@@ -16,4 +16,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-private-icon
+  @extend .no-margin
+  margin-left: 0.5em !important
+</style>

@@ -2,7 +2,7 @@
   <div class="info-section">
     <BaseIcon
       ref="icon"
-      class="grey"
+      class="grey main-popup-icon"
       icon="infoCircle"
     />
 

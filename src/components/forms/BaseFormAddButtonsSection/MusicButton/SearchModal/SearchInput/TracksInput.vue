@@ -1,10 +1,11 @@
 <template>
   <BaseSearchInput
     ref="input"
-    class="search-input tracks-input"
+    class="search-input"
     :url="url"
     :fields="fields"
     :format-response="formatResponse"
+    is-tracks-input
     @select="handleSelect"
   />
 

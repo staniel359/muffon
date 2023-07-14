@@ -1,7 +1,7 @@
 <template>
   <div
     ref="search"
-    class="ui local search"
+    class="ui local search main-search"
     :class="{
       inverted: isDarkMode
     }"
@@ -9,8 +9,13 @@
     <slot />
 
     <div
-      class="blurred results"
-      :class="transparentClass"
+      class="blurred results main-search-results"
+      :class="[
+        transparentClass,
+        {
+          inverted: isDarkMode
+        }
+      ]"
     />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="main-paginated-list-container">
+  <div class="base-paginated-list-container">
     <ContentContainer
       v-show="isRenderContent"
       :client-page-collection="clientPageCollection"
@@ -689,4 +689,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-paginated-list-container
+  @extend .flex-full, .w-100, .d-flex, .flex-column
+</style>

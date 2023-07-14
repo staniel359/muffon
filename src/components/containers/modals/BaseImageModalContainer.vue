@@ -1,7 +1,7 @@
 <template>
   <BaseModalContainer
     ref="modal"
-    class="main-image-modal"
+    class="base-image-modal"
     is-render
     @show="handleShow"
   >
@@ -36,4 +36,10 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-image-modal
+  @extend .no-margin, .no-shadow, .no-border, .no-border-radius, .width-fit-content, .background-transparent
+  &.scrolling
+    &:after
+      @extend .d-none
+</style>

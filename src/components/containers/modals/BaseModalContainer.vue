@@ -2,7 +2,7 @@
   <div
     v-if="isRender || isCalled"
     ref="modal"
-    class="ui page modal main-modal"
+    class="ui page modal base-modal"
     :class="size"
   >
     <slot />
@@ -128,4 +128,29 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-modal
+  & > ::v-deep(.content)
+    @extend .no-margin
+    &.full-height
+      @extend .d-flex, .flex-column
+      height: $mainModalHeight
+      .base-tab
+        @extend .absolute, .overflow-y-auto
+    &.scrolling
+      @extend .scroll-smooth
+  &:not(.main-delete-modal)
+    & > ::v-deep(.content)
+      max-height: $mainModalHeight !important
+  &.inverted
+    &:not(.base-image-modal)
+      @extend .background-black, .border-inverted
+    & > ::v-deep(.header),
+    & > ::v-deep(.content),
+    & > ::v-deep(.actions)
+      @extend .background-black
+    & > ::v-deep(.header)
+      border-bottom: $borderInverted
+    & > ::v-deep(.actions)
+      border-top: $borderInverted
+</style>

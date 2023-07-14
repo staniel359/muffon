@@ -4,7 +4,7 @@
     class="ui header main-header"
     :class="{
       inverted: isDarkMode,
-      'main-page-header': isPage
+      'base-page-header': isPage
     }"
   >
     <BaseIcon
@@ -69,4 +69,11 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-page-header
+  @extend .d-flex, .flex-column, .align-items-center
+  & > .icon,
+  & > .icons
+    @extend .no-margin
+    margin-bottom: 0.2em !important
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'ui raised segments',
+      'ui raised segments main-segments',
       'artist-page-left-column',
       'main-segment-container',
       'main-sticky-container'

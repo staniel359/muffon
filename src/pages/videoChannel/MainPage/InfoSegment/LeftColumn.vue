@@ -7,7 +7,7 @@
       is-circular
     />
 
-    <div class="main-self-container self-options-container">
+    <div class="main-self-container">
       <BaseSelfIcons
         :bookmark-id="bookmarkId"
       />
@@ -61,6 +61,6 @@ export default {
 .left-column
   width: 120px
 
-.self-options-container
+.main-self-container
   margin-top: 0.5em
 </style>

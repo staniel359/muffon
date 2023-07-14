@@ -1,5 +1,5 @@
 <template>
-  <div class="main-account-section">
+  <div class="base-account-section">
     <BaseImage
       class="circular image-medium"
       model="profile"
@@ -59,4 +59,12 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-account-section
+  @extend .d-flex, .align-items-center
+  .nickname-premium-section
+    @extend .flex-full, .word-break-break-word
+    margin-left: 0.75em
+  .premium-label
+    margin-top: 0.5em
+</style>

@@ -1,10 +1,13 @@
 <template>
   <div
-    class="ui top segment sidebar main-segment-container the-search-panel"
-    :class="{
-      inverted: isDarkMode,
-      visible: isSearchPanelVisible
-    }"
+    :class="[
+      'ui top segment sidebar the-search-panel',
+      'main-segment-container',
+      {
+        inverted: isDarkMode,
+        visible: isSearchPanelVisible
+      }
+    ]"
   >
     <div class="ui container main-container content-container">
       <div class="inputs-section">

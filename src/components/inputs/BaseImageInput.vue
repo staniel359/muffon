@@ -2,7 +2,7 @@
   <input
     ref="input"
     :key="key"
-    class="main-image-input"
+    class="base-image-input"
     type="file"
     name="image"
     accept="image/jpeg,image/png,image/gif"
@@ -92,4 +92,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-image-input
+  @extend .d-none
+</style>

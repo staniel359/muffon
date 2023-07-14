@@ -1,7 +1,7 @@
 <template>
   <div
     ref="segment"
-    class="ui segments main-segment-container"
+    class="ui segments main-segments main-segment-container"
     :class="{
       basic: isBasic,
       raised: !isBasic

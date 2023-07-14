@@ -7,7 +7,7 @@
     :is-only-icon="isOnlyIcon"
     :menu-direction="menuDirection"
     :header="header"
-    :is-colored="isColored"
+    :is-icon-colored="isIconColored"
     @select="handleSelect"
   >
     <div
@@ -20,7 +20,7 @@
         v-if="optionData.icon"
         class="main-dropdown-icon"
         :class="{
-          colored: isColored
+          colored: isIconColored
         }"
         :icon="optionData.icon"
         :is-flag="isFlagIcon"
@@ -58,7 +58,7 @@ export default {
     isOnlyIcon: Boolean,
     menuDirection: String,
     header: String,
-    isColored: Boolean,
+    isIconColored: Boolean,
     isFlagIcon: Boolean
   },
   emits: [

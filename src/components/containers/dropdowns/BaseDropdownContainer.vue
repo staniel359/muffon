@@ -1,43 +1,21 @@
 <template>
   <div
     ref="dropdown"
-    class="ui dropdown main-dropdown"
+    class="ui dropdown base-dropdown"
     :class="{
       inverted: isDarkMode,
       disabled: isDisabled,
       selection: isSelection
     }"
   >
-    <BaseIcon
-      v-if="isOnlyIcon"
-      class="main-dropdown-icon"
-      :class="{
-        colored: isColored
-      }"
+    <SelectedSection
+      :is-only-icon="isOnlyIcon"
+      :is-icon-colored="isIconColored"
       :icon="icon"
+      :is-form-field="isFormField"
+      :value="value"
+      :header="header"
     />
-    <div
-      v-else
-      class="text main-dropdown-item"
-      :class="{
-        inverted: isDarkMode,
-        default: isFormField && !value
-      }"
-    >
-      <template
-        v-if="header"
-      >
-        <div
-          v-if="isFormField"
-          v-text="header"
-        />
-        <BaseHeader
-          v-else
-          tag="h5"
-          :text="header"
-        />
-      </template>
-    </div>
 
     <BaseIcon
       icon="dropdown"
@@ -68,7 +46,7 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import BaseHeader from '@/components/BaseHeader.vue'
+import SelectedSection from './BaseDropdownContainer/SelectedSection.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   main as mainDropdownOptions
@@ -83,7 +61,7 @@ import transparencyMixin from '@/mixins/transparencyMixin'
 export default {
   name: 'BaseDropdownContainer',
   components: {
-    BaseHeader,
+    SelectedSection,
     BaseIcon
   },
   mixins: [
@@ -104,7 +82,7 @@ export default {
     isFormField: Boolean,
     inputType: String,
     inputName: String,
-    isColored: Boolean,
+    isIconColored: Boolean,
     options: Object
   },
   emits: [
@@ -207,12 +185,22 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-dropdown-item
-  &:not(.inverted)
-    ::v-deep(.ui.header)
-      &.inverted
-        @extend .text-color-initial
-  &.inverted
-    ::v-deep(.ui.header)
-      @extend .text-color-white
+.base-dropdown
+  @extend .d-flex, .align-items-center, .text-color-unset, .background-transparent
+  min-width: unset !important
+  padding-right: 1em !important
+  &.selection
+    &.active,
+    .menu
+      @extend .border-color-base-light
+  .menu
+    max-height: 200px !important
+  & > .text
+    @extend .flex-full
+  & > .icon
+    &.dropdown
+      @extend .relative, .no-padding, .no-margin
+      top: 0 !important
+      right: 0 !important
+      margin-left: 0.75em !important
 </style>

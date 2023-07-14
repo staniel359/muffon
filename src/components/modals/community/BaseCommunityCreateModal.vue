@@ -5,7 +5,7 @@
   >
     <div class="content">
       <BaseCommunityCreateFormContainer
-        class="main-community-form"
+        class="main-creatable-form"
         :image="image"
         @success="handleSuccess"
       >
@@ -27,7 +27,7 @@
           </div>
         </div>
 
-        <div class="submit-button-container">
+        <div class="main-form-submit-button-container">
           <BaseSubmitButton
             ref="submit"
             action-key="create"

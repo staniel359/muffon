@@ -1,5 +1,5 @@
 <template>
-  <div class="item main-simple-list-item playing-block">
+  <div class="item main-simple-list-item">
     <ImageBlock />
 
     <InfoBlock
@@ -53,7 +53,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.playing-block
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

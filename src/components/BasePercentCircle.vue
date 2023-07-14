@@ -1,6 +1,6 @@
 <template>
   <svg
-    class="main-percent-circle"
+    class="base-percent-circle"
     :viewBox="viewBox"
   >
     <path
@@ -86,4 +86,19 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-percent-circle
+  & > path
+    fill: none
+    &.background
+      stroke: $colorGrey
+      &.inverted
+        stroke: $colorGreyInverted
+    &.main
+      stroke: $colorBase
+  & > text
+    text-anchor: middle
+    font-size: 1em
+    &.inverted
+      fill: $colorWhite
+</style>

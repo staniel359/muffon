@@ -1,5 +1,7 @@
 <template>
-  <div class="field">
+  <BaseInputContainer
+    class="fluid field"
+  >
     <textarea
       type="text"
       name="status"
@@ -8,12 +10,18 @@
       :value="status"
       @keypress.ctrl.enter="handleCtrlEnter"
     />
-  </div>
+  </BaseInputContainer>
 </template>
 
 <script>
+import BaseInputContainer
+  from '@/components/containers/inputs/BaseInputContainer.vue'
+
 export default {
   name: 'BaseProfileStatusField',
+  components: {
+    BaseInputContainer
+  },
   props: {
     status: String
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="option">
+  <div class="main-settings-option">
     <BaseHeader
       class="option-header"
       tag="h4"

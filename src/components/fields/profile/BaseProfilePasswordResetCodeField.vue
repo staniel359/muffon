@@ -1,17 +1,25 @@
 <template>
-  <div class="field">
+  <BaseInputContainer
+    class="fluid field"
+  >
     <input
       ref="input"
       type="text"
       name="password-reset-code"
       :placeholder="passwordResetCodeText"
     >
-  </div>
+  </BaseInputContainer>
 </template>
 
 <script>
+import BaseInputContainer
+  from '@/components/containers/inputs/BaseInputContainer.vue'
+
 export default {
   name: 'BaseProfilePasswordResetCodeField',
+  components: {
+    BaseInputContainer
+  },
   computed: {
     passwordResetCodeText () {
       return this.$t(

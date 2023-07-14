@@ -1,5 +1,7 @@
 <template>
-  <div class="field">
+  <BaseInputContainer
+    class="fluid field"
+  >
     <input
       ref="input"
       type="text"
@@ -7,12 +9,18 @@
       :placeholder="emailText"
       :value="value"
     >
-  </div>
+  </BaseInputContainer>
 </template>
 
 <script>
+import BaseInputContainer
+  from '@/components/containers/inputs/BaseInputContainer.vue'
+
 export default {
   name: 'BaseProfileEmailField',
+  components: {
+    BaseInputContainer
+  },
   props: {
     value: String
   },

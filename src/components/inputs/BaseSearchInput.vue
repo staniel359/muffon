@@ -1,27 +1,33 @@
 <template>
   <div
     ref="search"
-    class="ui fluid search main-search-input"
+    class="ui search main-search main-search-input"
     :class="{
       inverted: isDarkMode
     }"
   >
-    <div class="ui icon fluid input">
+    <BaseInputContainer
+      class="fluid icon"
+      icon="search"
+    >
       <input
         ref="input"
         class="prompt"
         type="text"
         :placeholder="searchText"
       >
-
-      <BaseIcon
-        icon="search"
-      />
-    </div>
+    </BaseInputContainer>
 
     <div
-      class="results"
-      :class="transparentClass"
+      class="blurred results main-search-results"
+      :class="[
+        transparentClass,
+        {
+          inverted: isDarkMode,
+          'artists-results': isArtistsInput,
+          'tracks-results': isTracksInput
+        }
+      ]"
     />
   </div>
 </template>
@@ -32,7 +38,8 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseInputContainer
+  from '@/components/containers/inputs/BaseInputContainer.vue'
 import {
   set as setSearch
 } from '@/helpers/actions/plugins/semantic/search'
@@ -50,7 +57,7 @@ import {
 export default {
   name: 'BaseSearchInput',
   components: {
-    BaseIcon
+    BaseInputContainer
   },
   mixins: [
     transparencyMixin
@@ -67,7 +74,9 @@ export default {
     formatResponse: {
       type: Function,
       required: true
-    }
+    },
+    isArtistsInput: Boolean,
+    isTracksInput: Boolean
   },
   emits: [
     'select'

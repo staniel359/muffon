@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="ui input"
-    :class="{
-      inverted: isDarkMode
-    }"
-  >
+  <BaseInputContainer>
     <input
       type="number"
       :value="value"
@@ -13,17 +8,18 @@
       :max="max"
       @blur="handleBlur"
     >
-  </div>
+  </BaseInputContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import layoutStore from '@/stores/layout'
+import BaseInputContainer
+  from '@/components/containers/inputs/BaseInputContainer.vue'
 
 export default {
   name: 'BaseNumberInput',
+  components: {
+    BaseInputContainer
+  },
   props: {
     min: {
       type: Number,
@@ -39,14 +35,6 @@ export default {
   emits: [
     'blur'
   ],
-  computed: {
-    ...mapState(
-      layoutStore,
-      [
-        'isDarkMode'
-      ]
-    )
-  },
   methods: {
     handleBlur (
       event
