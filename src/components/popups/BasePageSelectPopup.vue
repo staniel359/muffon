@@ -7,7 +7,7 @@
       :value="1"
       :min="1"
       :max="totalPages"
-      @blur="handleBlur"
+      @change="handleChange"
     />
   </BaseSegmentContainer>
 </template>
@@ -33,7 +33,7 @@ export default {
     'select'
   ],
   methods: {
-    handleBlur (
+    handleChange (
       value
     ) {
       const isSelectPage = (

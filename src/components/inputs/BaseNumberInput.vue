@@ -33,7 +33,7 @@ export default {
     max: Number
   },
   emits: [
-    'blur'
+    'change'
   ],
   methods: {
     handleBlur (
@@ -42,10 +42,10 @@ export default {
       const value =
         parseInt(
           event.target.value
-        ) || null
+        ) || 0
 
       this.$emit(
-        'blur',
+        'change',
         value
       )
     }

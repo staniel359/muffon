@@ -9,10 +9,10 @@
     <BaseNumberInput
       class="tracks-count-input"
       :class="{
-        disabled: !isRecommendationsHideLibraryArtists
+        disabled: isNumberInputDisabled
       }"
       :value="recommendationsTracksCount"
-      @blur="handleTracksCountChange"
+      @change="handleTracksCountChange"
     />
   </div>
 </template>
@@ -50,6 +50,9 @@ export default {
       return this.$t(
         'settings.options.app.recommendations.tracksCount'
       )
+    },
+    isNumberInputDisabled () {
+      return !this.isRecommendationsHideLibraryArtists
     }
   },
   methods: {
