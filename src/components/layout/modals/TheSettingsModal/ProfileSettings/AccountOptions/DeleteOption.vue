@@ -18,10 +18,10 @@
 
 <script>
 import BaseButton from '@/components/buttons/BaseButton.vue'
-import DeleteModal from './DeleteAccountOption/DeleteModal.vue'
+import DeleteModal from './DeleteOption/DeleteModal.vue'
 
 export default {
-  name: 'DeleteAccountOption',
+  name: 'DeleteOption',
   components: {
     BaseButton,
     DeleteModal

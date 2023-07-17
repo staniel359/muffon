@@ -22,16 +22,18 @@
 import BaseTabsContainer
   from '@/components/containers/tabs/BaseTabsContainer.vue'
 import InfoOptions from './ProfileSettings/InfoOptions.vue'
+import LibraryOptions from './ProfileSettings/LibraryOptions.vue'
 import PlayerOptions from './ProfileSettings/PlayerOptions.vue'
-import DataOptions from './ProfileSettings/DataOptions.vue'
+import AccountOptions from './ProfileSettings/AccountOptions.vue'
 
 export default {
   name: 'ProfileSettings',
   components: {
     BaseTabsContainer,
     InfoOptions,
+    LibraryOptions,
     PlayerOptions,
-    DataOptions
+    AccountOptions
   },
   data () {
     return {
@@ -44,6 +46,12 @@ export default {
           component: 'InfoOptions'
         },
         {
+          nameCode: 'navigation.library',
+          icon: 'library',
+          scope: 'library',
+          component: 'LibraryOptions'
+        },
+        {
           nameCode: 'navigation.player',
           icon: 'player',
           scope: 'player',
@@ -51,10 +59,10 @@ export default {
         },
         {
           nameCode:
-            'settings.sections.app.data',
-          icon: 'data',
-          scope: 'data',
-          component: 'DataOptions'
+            'settings.sections.account',
+          icon: 'profile',
+          scope: 'account',
+          component: 'AccountOptions'
         }
       ]
     }

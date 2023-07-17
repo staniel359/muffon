@@ -24,7 +24,7 @@ import {
 } from '@/helpers/actions/store/global'
 
 export default {
-  name: 'ClearSearchHistoryOption',
+  name: 'ClearOption',
   components: {
     BaseButton
   },

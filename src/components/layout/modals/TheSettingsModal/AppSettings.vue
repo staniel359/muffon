@@ -37,7 +37,7 @@ import VideoOptions from './AppSettings/VideoOptions.vue'
 import RecommendationsOptions from './AppSettings/RecommendationsOptions.vue'
 import TopOptions from './AppSettings/TopOptions.vue'
 import LyricsOptions from './AppSettings/LyricsOptions.vue'
-import DataOptions from './AppSettings/DataOptions.vue'
+import OtherOptions from './AppSettings/OtherOptions.vue'
 
 export default {
   name: 'AppSettings',
@@ -55,7 +55,7 @@ export default {
     RecommendationsOptions,
     TopOptions,
     LyricsOptions,
-    DataOptions
+    OtherOptions
   },
   data () {
     return {
@@ -153,10 +153,10 @@ export default {
         },
         {
           nameCode:
-            'settings.sections.data',
-          icon: 'data',
-          scope: 'data',
-          component: 'DataOptions',
+            'settings.sections.other',
+          icon: 'other',
+          scope: 'other',
+          component: 'OtherOptions',
           isAnonymous: true
         }
       ]

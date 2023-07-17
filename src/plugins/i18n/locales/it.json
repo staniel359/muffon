@@ -455,7 +455,9 @@
       "sidebar": "Barra laterale",
       "video": "Video",
       "data": "Dati",
-      "info": "Info"
+      "info": "Info",
+      "account": "Account",
+      "other": "Altre"
     },
     "options": {
       "app": {

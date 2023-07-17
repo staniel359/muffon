@@ -76,6 +76,7 @@ export default {
   music: 'music',
   navigationRight: 'right chevron divider',
   noCollection: 'question',
+  other: 'hamburger',
   play: 'play',
   player: 'play',
   playlist: 'file audio outline',
