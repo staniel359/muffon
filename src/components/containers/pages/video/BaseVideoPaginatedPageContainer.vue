@@ -14,9 +14,11 @@
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
+        :response-page-limit="responsePageLimit"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
         :view-id="viewId"
+        :is-pagination-simple="isPaginationSimple"
       >
         <template
           #default="slotProps"
@@ -51,7 +53,9 @@ export default {
     limit: Number,
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
-    viewId: String
+    viewId: String,
+    responsePageLimit: Number,
+    isPaginationSimple: Boolean
   }
 }
 </script>

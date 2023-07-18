@@ -3,10 +3,12 @@
     :response-data="videoData"
     :scope="scope"
     :limit="limit"
+    :response-page-limit="responsePageLimit"
     :is-loading="isLoading"
     :error="error"
     :is-active="isActive"
     :more-link="moreLink"
+    :is-pagination-simple="isPaginationSimple"
     @focus="handleFocus"
     @activate="handleActivate"
   >
@@ -36,7 +38,9 @@ export default {
     videoId: {
       type: String,
       required: true
-    }
+    },
+    responsePageLimit: Number,
+    isPaginationSimple: Boolean
   },
   data () {
     return {

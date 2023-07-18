@@ -3,7 +3,9 @@
     :video-id="videoId"
     :scope="scope"
     :limit="limit"
+    :response-page-limit="responsePageLimit"
     :is-active="isActive"
+    is-pagination-simple
     @focus="handleFocus"
   >
     <template
@@ -11,6 +13,7 @@
     >
       <BaseVideosTableList
         :videos="slotProps[scope]"
+        is-with-channel-title
         is-with-favorite-option
         is-with-bookmark-option
         is-with-watched-option
@@ -45,6 +48,7 @@ export default {
   },
   data () {
     return {
+      responsePageLimit: 20,
       limit:
         videosLimits.table.small,
       scope: 'related'

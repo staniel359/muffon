@@ -5,9 +5,11 @@
     :video-id="videoId"
     :scope="scope"
     :limit="limit"
+    :response-page-limit="responsePageLimit"
     :view-id="viewId"
     is-with-top-segment
     is-with-view-change
+    is-pagination-simple
   >
     <template
       #default="slotProps"
@@ -15,6 +17,7 @@
       <BaseVideosList
         :videos="slotProps[scope]"
         :view-id="viewId"
+        is-with-channel-title
         is-with-favorite-option
         is-with-bookmark-option
         is-with-watched-option
@@ -47,6 +50,7 @@ export default {
   },
   data () {
     return {
+      responsePageLimit: 20,
       scope: 'related',
       listScope: 'videos'
     }
