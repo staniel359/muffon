@@ -26,6 +26,11 @@
     <DescriptionSection
       :video-data="videoData"
     />
+
+    <ArtistSection
+      v-if="artistData"
+      :artist-data="artistData"
+    />
   </BaseSegmentContainer>
 </template>
 
@@ -38,6 +43,7 @@ import BaseDivider from '@/components/BaseDivider.vue'
 import CountersDateSection from './InfoSegment/CountersDateSection.vue'
 import TagsSection from './InfoSegment/TagsSection.vue'
 import DescriptionSection from './InfoSegment/DescriptionSection.vue'
+import ArtistSection from './InfoSegment/ArtistSection.vue'
 
 export default {
   name: 'InfoSegment',
@@ -48,10 +54,16 @@ export default {
     BaseDivider,
     CountersDateSection,
     TagsSection,
-    DescriptionSection
+    DescriptionSection,
+    ArtistSection
   },
   props: {
     videoData: Object
+  },
+  computed: {
+    artistData () {
+      return this.videoData.artist
+    }
   }
 }
 </script>
