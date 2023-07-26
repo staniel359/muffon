@@ -95,4 +95,5 @@ export default {
   @extend .no-margin, .h-100, .overflow-y-auto, .pointer-events-auto
   &.inverted
     @extend .border-color-grey-inverted
+    border-bottom: none !important
 </style>
