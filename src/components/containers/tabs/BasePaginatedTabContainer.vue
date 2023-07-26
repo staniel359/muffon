@@ -12,12 +12,12 @@
       name="top"
     />
 
-    <BasePaginatedListContainer
+    <Component
+      :is="listComponent"
       ref="pagination"
       :response-data="responseData"
       :scope="scope"
       :limit="limit"
-      :client-page-limit="clientPageLimit"
       :response-page-limit="responsePageLimit"
       :is-loading="isLoading"
       :error="error"
@@ -37,7 +37,7 @@
           :link="moreLink"
         />
       </template>
-    </BasePaginatedListContainer>
+    </Component>
   </div>
 </template>
 
@@ -46,14 +46,17 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+import BasePaginatedSimpleListContainer
+  from '@/components/containers/lists/paginated/BasePaginatedSimpleListContainer.vue'
 import BasePaginatedListContainer
-  from '@/components/containers/lists/BasePaginatedListContainer.vue'
+  from '@/components/containers/lists/paginated/BasePaginatedListContainer.vue'
 import BaseMoreLinkButton
   from '@/components/buttons/BaseMoreLinkButton.vue'
 
 export default {
   name: 'BasePaginatedTabContainer',
   components: {
+    BasePaginatedSimpleListContainer,
     BasePaginatedListContainer,
     BaseMoreLinkButton
   },
@@ -64,7 +67,6 @@ export default {
     },
     responseData: Object,
     limit: Number,
-    clientPageLimit: Number,
     responsePageLimit: Number,
     isActive: Boolean,
     isLoading: Boolean,
@@ -88,7 +90,14 @@ export default {
       [
         'isDarkMode'
       ]
-    )
+    ),
+    listComponent () {
+      if (this.isPaginationSimple) {
+        return 'BasePaginatedSimpleListContainer'
+      } else {
+        return 'BasePaginatedListContainer'
+      }
+    }
   },
   watch: {
     isActive: 'handleIsActiveChange',

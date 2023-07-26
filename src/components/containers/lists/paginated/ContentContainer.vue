@@ -82,5 +82,6 @@ export default {
 
 <style lang="sass" scoped>
 .content-container
-  @extend .flex-full, .d-flex, .flex-column
+  @extend .flex-full, .flex-column
+  display: flex
 </style>

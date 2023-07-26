@@ -3,7 +3,6 @@
     :video-id="videoId"
     :scope="scope"
     :limit="limit"
-    :response-page-limit="responsePageLimit"
     :is-active="isActive"
     is-pagination-simple
     @focus="handleFocus"
@@ -48,7 +47,6 @@ export default {
   },
   data () {
     return {
-      responsePageLimit: 20,
       limit:
         videosLimits.table.small,
       scope: 'related'

@@ -3,7 +3,6 @@
     :response-data="videoData"
     :scope="scope"
     :limit="limit"
-    :response-page-limit="responsePageLimit"
     :is-loading="isLoading"
     :error="error"
     :is-active="isActive"
@@ -39,7 +38,6 @@ export default {
       type: String,
       required: true
     },
-    responsePageLimit: Number,
     isPaginationSimple: Boolean
   },
   data () {

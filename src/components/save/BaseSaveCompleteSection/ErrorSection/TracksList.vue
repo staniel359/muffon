@@ -27,7 +27,7 @@
 
 <script>
 import BasePaginatedListContainer
-  from '@/components/containers/lists/BasePaginatedListContainer.vue'
+  from '@/components/containers/lists/paginated/BasePaginatedListContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import {

@@ -11,19 +11,17 @@
       name="top"
     />
 
-    <BasePaginatedListContainer
+    <Component
+      :is="listComponent"
       ref="pagination"
       :key="key"
       :response-data="responseDataComputed"
       :scope="scope"
       :text-scope="textScope"
       :limit="limit"
-      :client-page-limit="clientPageLimit"
       :response-page-limit="responsePageLimit"
       :is-loading="isLoading"
       :error="error"
-      :is-pagination-simple="isPaginationSimple"
-      :is-with-infinite-scroll="isWithInfiniteScroll"
       :scroll-context="scrollContext"
       @focus="handleFocus"
     >
@@ -34,15 +32,21 @@
           :[scope]="slotProps[scope]"
         />
       </template>
-    </BasePaginatedListContainer>
+    </Component>
   </BaseSegmentContainer>
 </template>
 
 <script>
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BasePaginatedInfiniteSimpleListContainer
+  from '@/components/containers/lists/paginated/BasePaginatedInfiniteSimpleListContainer.vue'
+import BasePaginatedInfiniteListContainer
+  from '@/components/containers/lists/paginated/BasePaginatedInfiniteListContainer.vue'
+import BasePaginatedSimpleListContainer
+  from '@/components/containers/lists/paginated/BasePaginatedSimpleListContainer.vue'
 import BasePaginatedListContainer
-  from '@/components/containers/lists/BasePaginatedListContainer.vue'
+  from '@/components/containers/lists/paginated/BasePaginatedListContainer.vue'
 import {
   generateKey
 } from '@/helpers/utils'
@@ -51,6 +55,9 @@ export default {
   name: 'BasePaginatedSegmentContainer',
   components: {
     BaseSegmentContainer,
+    BasePaginatedInfiniteSimpleListContainer,
+    BasePaginatedInfiniteListContainer,
+    BasePaginatedSimpleListContainer,
     BasePaginatedListContainer
   },
   inject: {
@@ -68,7 +75,6 @@ export default {
     isLoading: Boolean,
     error: Error,
     limit: Number,
-    clientPageLimit: Number,
     responsePageLimit: Number,
     isPaginationSimple: Boolean,
     isWithInfiniteScroll: Boolean,
@@ -84,6 +90,21 @@ export default {
     }
   },
   computed: {
+    listComponent () {
+      if (this.isWithInfiniteScroll) {
+        if (this.isPaginationSimple) {
+          return 'BasePaginatedInfiniteSimpleListContainer'
+        } else {
+          return 'BasePaginatedInfiniteListContainer'
+        }
+      } else {
+        if (this.isPaginationSimple) {
+          return 'BasePaginatedSimpleListContainer'
+        } else {
+          return 'BasePaginatedListContainer'
+        }
+      }
+    },
     isSegmentLoading () {
       if (this.isWithInfiniteScroll) {
         return (

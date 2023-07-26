@@ -133,8 +133,7 @@ export default {
 
 <style lang="sass" scoped>
 .scroll-observer
-  &.loading
-    margin-top: 1em
+  margin-top: 1em
 
 .scroll-segment
   @extend .no-padding, .no-margin

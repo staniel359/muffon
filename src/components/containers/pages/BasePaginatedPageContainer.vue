@@ -51,7 +51,6 @@
       :error="error"
       :scope="scope"
       :limit="limit"
-      :client-page-limit="clientPageLimit"
       :response-page-limit="responsePageLimit"
       :is-pagination-simple="isPaginationSimple"
       :is-with-infinite-scroll="isWithInfiniteScroll"
@@ -114,7 +113,6 @@ export default {
     limit: Number,
     order: String,
     model: String,
-    clientPageLimit: Number,
     responsePageLimit: Number,
     isPaginationSimple: Boolean,
     isWithTopSegment: Boolean,

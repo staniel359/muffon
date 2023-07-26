@@ -23,7 +23,7 @@
 
 <script>
 import BasePaginatedListContainer
-  from '@/components/containers/lists/BasePaginatedListContainer.vue'
+  from '@/components/containers/lists/paginated/BasePaginatedListContainer.vue'
 import BaseArtistsSimpleList
   from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import {
