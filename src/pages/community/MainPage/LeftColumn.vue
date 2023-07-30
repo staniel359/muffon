@@ -16,14 +16,8 @@
       :community-data="communityData"
     />
 
-    <CreatorSegment
-      :creator-data="creatorData"
-    />
-
-    <BaseCreatedSegment
-      class="created-segment"
-      model="community"
-      :model-data="communityData"
+    <MembersSegment
+      :community-data="communityData"
     />
   </div>
 </template>
@@ -31,25 +25,18 @@
 <script>
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import JoinedSegment from './LeftColumn/JoinedSegment.vue'
-import CreatorSegment from './LeftColumn/CreatorSegment.vue'
-import BaseCreatedSegment from '@/components/segments/BaseCreatedSegment.vue'
+import MembersSegment from './LeftColumn/MembersSegment.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
     InfoSegment,
     JoinedSegment,
-    CreatorSegment,
-    BaseCreatedSegment
+    MembersSegment
   },
   props: {
     communityData: Object,
     scrollable: HTMLDivElement
-  },
-  computed: {
-    creatorData () {
-      return this.communityData.creator
-    }
   }
 }
 </script>
@@ -58,7 +45,4 @@ export default {
 .left-column
   @extend .no-margin
   width: 180px
-
-.created-segment
-  @extend .d-flex, .flex-column, .text-align-center
 </style>

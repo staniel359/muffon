@@ -12,17 +12,17 @@
       />
     </div>
 
-    <div
-      v-if="wasOnline"
-      class="info-section"
-    >
+    <div class="info-section">
       <div
-        v-text="wasOnlineText"
+        v-text="creatorText"
       />
 
-      <strong
-        v-text="wasOnlineFormatted"
-      />
+      <div class="creator-section">
+        <BaseProfilesSimpleList
+          :profiles="profiles"
+          is-minimal
+        />
+      </div>
     </div>
   </BaseSegmentContainer>
 </template>
@@ -30,17 +30,20 @@
 <script>
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseProfilesSimpleList
+  from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
 import {
   dateTime as formatDateTime
 } from '@/helpers/formatters/dateTimeString'
 
 export default {
-  name: 'BaseProfileInfoPopup',
+  name: 'BaseCommunityInfoPopup',
   components: {
-    BaseSegmentContainer
+    BaseSegmentContainer,
+    BaseProfilesSimpleList
   },
   props: {
-    profileData: {
+    communityData: {
       type: Object,
       required: true
     }
@@ -48,7 +51,7 @@ export default {
   computed: {
     createdText () {
       return this.$t(
-        'created.profile'
+        'created.community'
       )
     },
     createdFormatted () {
@@ -57,23 +60,26 @@ export default {
       )
     },
     created () {
-      return this.profileData.created
+      return this.communityData.created
     },
-    wasOnlineText () {
+    creatorText () {
       return this.$t(
-        'profile.wasOnline'
+        'roles.creator'
       )
     },
-    wasOnlineFormatted () {
-      return formatDateTime(
-        this.wasOnline
-      )
+    profiles () {
+      return [
+        this.creatorData
+      ]
     },
-    wasOnline () {
-      return this.profileData.was_online
+    creatorData () {
+      return this.communityData.creator
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.creator-section
+  margin-top: 0.25em
+</style>

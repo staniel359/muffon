@@ -1,26 +1,32 @@
 <template>
-  <BaseCounterSection
-    v-bind="$attrs"
-    class="main-link"
-    scope="members"
-    :count="membersCount"
-    @click="handleMembersCountClick"
-  />
+  <BaseSegmentContainer
+    class="members-segment"
+  >
+    <BaseCounterSection
+      class="main-link"
+      scope="members"
+      :count="membersCount"
+      @click="handleMembersCountClick"
+    />
 
-  <BaseCommunityMembersModal
-    ref="modal"
-    :community-id="communityId"
-  />
+    <BaseCommunityMembersModal
+      ref="modal"
+      :community-id="communityId"
+    />
+  </BaseSegmentContainer>
 </template>
 
 <script>
+import BaseSegmentContainer
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseCounterSection from '@/components/sections/BaseCounterSection.vue'
 import BaseCommunityMembersModal
   from '@/components/modals/community/BaseCommunityMembersModal.vue'
 
 export default {
-  name: 'MembersSection',
+  name: 'MembersSegment',
   components: {
+    BaseSegmentContainer,
     BaseCounterSection,
     BaseCommunityMembersModal
   },
@@ -51,4 +57,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.members-segment
+  @extend .d-flex, .justify-content-center
+</style>

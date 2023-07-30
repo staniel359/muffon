@@ -24,8 +24,7 @@
             v-text="description"
           />
 
-          <MembersSection
-            class="description"
+          <InfoSection
             :community-data="communityData"
           />
         </div>
@@ -49,7 +48,7 @@ import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import MembersSection from './InfoSegment/MembersSection.vue'
+import InfoSection from './InfoSegment/InfoSection.vue'
 import BaseCommunityOptionsPopup
   from '@/components/popups/community/BaseCommunityOptionsPopup.vue'
 
@@ -60,7 +59,7 @@ export default {
     BaseListContainer,
     BaseZoomableImage,
     BaseHeader,
-    MembersSection,
+    InfoSection,
     BaseCommunityOptionsPopup
   },
   props: {

@@ -204,6 +204,30 @@ export function profileInfo (
   }
 }
 
+export function communityInfo (
+  {
+    html
+  }
+) {
+  const className = 'ui popup main-popup'
+
+  return {
+    position: 'right center',
+    transition: 'fade up',
+    variation: 'basic',
+    exclusive: true,
+    hoverable: true,
+    delay: {
+      show: 0,
+      hide: 150
+    },
+    className: {
+      popup: className
+    },
+    html
+  }
+}
+
 export function lastfmImportInfo (
   {
     html
