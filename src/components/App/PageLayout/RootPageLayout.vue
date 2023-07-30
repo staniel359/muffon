@@ -18,10 +18,6 @@
     v-else-if="profileId"
   />
 
-  <ThePlayingPublicObserver
-    v-if="isRenderPlayingPublicObserver"
-  />
-
   <TheScrobbleObserver
     v-if="isRenderScrobbleObserver"
   />
@@ -93,12 +89,6 @@ const ThePlayingObserver =
       '@/components/layout/observers/ThePlayingObserver.vue'
     )
   )
-const ThePlayingPublicObserver =
-  defineAsyncComponent(
-    () => import(
-      '@/components/layout/observers/ThePlayingPublicObserver.vue'
-    )
-  )
 const TheScrobbleObserver =
   defineAsyncComponent(
     () => import(
@@ -140,7 +130,6 @@ export default {
     TheBackgroundObserver,
     TheAnonymousPlayingObserver,
     ThePlayingObserver,
-    ThePlayingPublicObserver,
     TheScrobbleObserver,
     TheAnonymousBrowserObserver,
     TheBrowserObserver,
@@ -165,17 +154,9 @@ export default {
       profileStore,
       {
         profileId: 'id',
-        isProfileAnonymous: 'isAnonymous',
-        isShowProfilePlaying: 'isShowPlaying'
+        isProfileAnonymous: 'isAnonymous'
       }
     ),
-    isRenderPlayingPublicObserver () {
-      return (
-        this.profileId &&
-          this.playerPlaying &&
-          this.isShowProfilePlaying
-      )
-    },
     isRenderBrowserTabsObserver () {
       return (
         this.isProfileAnonymous ||

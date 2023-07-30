@@ -8,18 +8,10 @@
 import {
   ipcRenderer
 } from 'electron'
-import socketMixin from '@/mixins/socketMixin'
+import updateHistory from '@/helpers/actions/api/history/update'
 
 export default {
   name: 'TheBrowserObserver',
-  mixins: [
-    socketMixin
-  ],
-  data () {
-    return {
-      channel: 'BrowserChannel'
-    }
-  },
   mounted () {
     ipcRenderer.on(
       'navigate',
@@ -31,36 +23,11 @@ export default {
       _,
       routeData
     ) {
-      if (this.isSubscribed) {
-        this.addRouteToHistory(
-          routeData
-        )
-      }
-    },
-    addRouteToHistory (
-      value
-    ) {
-      const updateData =
-        JSON.stringify(
-          {
-            action: 'update',
-            payload: {
-              route: value
-            }
-          }
-        )
-
-      const updateRouteMessage =
-        JSON.stringify(
-          {
-            command: 'message',
-            identifier: this.identifier,
-            data: updateData
-          }
-        )
-
-      this.socket.send(
-        updateRouteMessage
+      updateHistory(
+        {
+          scope: 'browser',
+          route: routeData
+        }
       )
     }
   }

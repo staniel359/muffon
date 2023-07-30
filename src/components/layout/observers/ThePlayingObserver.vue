@@ -9,21 +9,15 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import socketMixin from '@/mixins/socketMixin'
+import profileStore from '@/stores/profile'
 import {
   playing as formatPlaying
 } from '@/helpers/formatters'
+import updateHistory from '@/helpers/actions/api/history/update'
+import updatePlaying from '@/helpers/actions/api/playing/update'
 
 export default {
   name: 'ThePlayingObserver',
-  mixins: [
-    socketMixin
-  ],
-  data () {
-    return {
-      channel: 'PlayingChannel'
-    }
-  },
   computed: {
     ...mapState(
       playerStore,
@@ -31,54 +25,84 @@ export default {
         playerPlaying: 'playing'
       }
     ),
-    updatePlayingMessage () {
-      return JSON.stringify(
-        {
-          command: 'message',
-          identifier: this.identifier,
-          data: this.updateData
-        }
+    ...mapState(
+      profileStore,
+      {
+        isShowProfilePlaying: 'isShowPlaying'
+      }
+    ),
+    playingFormatted () {
+      if (this.playerPlaying) {
+        return formatPlaying(
+          this.playerPlaying
+        )
+      } else {
+        return null
+      }
+    },
+    publicPlayingFormatted () {
+      if (this.isShowProfilePlaying) {
+        return this.playerPlaying
+      } else {
+        return null
+      }
+    },
+    isUpdatePublicPlaying () {
+      return (
+        this.isShowProfilePlaying &&
+          this.playerPlaying
       )
     },
-    updateData () {
-      return JSON.stringify(
-        {
-          action: 'update',
-          payload: this.payload
-        }
-      )
-    },
-    payload () {
+    historyArgs () {
       return {
+        scope: 'player',
         playing:
           this.playingFormatted
       }
     },
-    playingFormatted () {
-      return formatPlaying(
-        this.playerPlaying
-      )
-    },
-    isUpdatePlaying () {
-      return (
-        this.isSubscribed &&
-          this.playerPlaying
-      )
+    publicPlayingArgs () {
+      return {
+        playing:
+          this.publicPlayingFormatted
+      }
     }
   },
   watch: {
     playerPlaying:
-      'handlePlayerPlayingChange'
+      'handlePlayerPlayingChange',
+    isShowProfilePlaying:
+      'handleIsShowProfilePlayingChange'
+  },
+  mounted () {
+    if (this.isUpdatePublicPlaying) {
+      this.updatePublicPlaying()
+    }
   },
   methods: {
-    handlePlayerPlayingChange () {
-      if (this.isUpdatePlaying) {
-        this.updatePlaying()
+    handlePlayerPlayingChange (
+      value
+    ) {
+      if (value) {
+        this.updatePlayerHistory()
+      }
+
+      if (this.isShowProfilePlaying) {
+        this.updatePublicPlaying()
       }
     },
-    updatePlaying () {
-      this.socket.send(
-        this.updatePlayingMessage
+    handleIsShowProfilePlayingChange () {
+      if (this.playerPlaying) {
+        this.updatePublicPlaying()
+      }
+    },
+    updatePlayerHistory () {
+      updateHistory(
+        this.historyArgs
+      )
+    },
+    updatePublicPlaying () {
+      updatePlaying(
+        this.publicPlayingArgs
       )
     }
   }
