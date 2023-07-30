@@ -189,5 +189,5 @@ export default {
 
 <style lang="sass" scoped>
 .joined-message
-  margin-left: 0.5em
+  margin-left: 0.75em
 </style>

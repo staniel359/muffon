@@ -32,5 +32,5 @@ export default {
 
 <style lang="sass" scoped>
 .tracks-link
-  margin-right: 0.5em
+  margin-right: 0.75em
 </style>
