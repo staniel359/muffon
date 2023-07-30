@@ -1,6 +1,6 @@
 <template>
   <BaseDropdown
-    class="floating"
+    class="floating scrolling"
     menu-direction="left"
     :options="optionsFormatted"
     :selected="order"
