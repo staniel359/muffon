@@ -10,7 +10,7 @@ export default {
       socket: null,
       isSocketOpen: false,
       isSubscribed: false,
-      retryTimeout: 1000
+      retryTimeout: 2000
     }
   },
   computed: {
@@ -129,24 +129,29 @@ export default {
           this.socketUrl
         )
 
-      this.socket.onopen =
-        this.handleSocketOpen
+      this.socket
+        .onopen =
+          this.handleSocketOpen
 
-      this.socket.onerror =
-        this.handleSocketError
+      this.socket
+        .onclose =
+          this.handleSocketError
 
-      this.socket.onmessage =
-        this.handleSocketMessage
+      this.socket
+        .onmessage =
+          this.handleSocketMessage
     },
     subscribe () {
-      this.socket.send(
-        this.subscribeMessage
-      )
+      this.socket
+        .send(
+          this.subscribeMessage
+        )
     },
     unsubscribe () {
-      this.socket.send(
-        this.unsubscribeMessage
-      )
+      this.socket
+        .send(
+          this.unsubscribeMessage
+        )
     }
   }
 }

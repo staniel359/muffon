@@ -1,13 +1,17 @@
 <template>
-  <RootPageLayout
-    v-if="isRootPage"
-  />
-  <AboutPageLayout
-    v-else-if="isAboutPage"
-  />
-  <DefaultPageLayout
-    v-else
-  />
+  <template
+    v-if="currentRouteName"
+  >
+    <RootPageLayout
+      v-if="isRootPage"
+    />
+    <AboutPageLayout
+      v-else-if="isAboutPage"
+    />
+    <DefaultPageLayout
+      v-else
+    />
+  </template>
 </template>
 
 <script>
@@ -42,17 +46,17 @@ export default {
     DefaultPageLayout
   },
   computed: {
+    currentRouteName () {
+      return this.$route.name
+    },
     isRootPage () {
       return (
-        this.currentPath === '/'
+        this.currentRouteName === 'RootPage'
       )
-    },
-    currentPath () {
-      return this.$route.path
     },
     isAboutPage () {
       return (
-        this.currentPath === '/about'
+        this.currentRouteName === 'AboutPage'
       )
     }
   }
