@@ -22,7 +22,7 @@
     ]"
     :[attribute]="imageConditional"
     @click="handleClick"
-    @error="handleError"
+    @error.once="handleError"
   >
 </template>
 
