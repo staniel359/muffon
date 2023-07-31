@@ -4,53 +4,165 @@
     :is-change-transparency="false"
   >
     <div class="left-column">
-      <ImageSection />
+      <BaseImage
+        class="main-logo-image"
+        :image="logo"
+        is-plain
+      />
     </div>
 
     <div class="right-column">
-      <NameSection />
+      <BaseHeader
+        tag="h2"
+        :text="name"
+      />
 
-      <VersionSection />
+      <div class="version-section">
+        <strong
+          v-text="version"
+        />
+      </div>
 
-      <CopyrightLicenseSection />
+      <div class="copyright-license-section">
+        <div>
+          <small
+            v-text="copyrightText"
+          />
+        </div>
+
+        <div>
+          <small
+            v-text="licenseText"
+          />
+        </div>
+      </div>
 
       <BaseDivider />
 
       <div>
-        <HomepageSection />
+        <div class="link-section">
+          <strong
+            class="main-link"
+            @click="handleHomepageLinkClick"
+            v-text="homepageText"
+          />
+        </div>
 
-        <DonateSection />
+        <div class="link-section">
+          <strong
+            class="main-link"
+            @click="handleDonateLinkClick"
+            v-text="donateText"
+          />
+        </div>
 
-        <ContactSection />
+        <div class="link-section">
+          <strong
+            class="main-link"
+            @click="handleContactLinkClick"
+            v-text="contactText"
+          />
+        </div>
       </div>
     </div>
   </BaseSegmentContainer>
 </template>
 
 <script>
+import {
+  shell
+} from 'electron'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import ImageSection from './MainPage/ImageSection.vue'
-import NameSection from './MainPage/NameSection.vue'
-import VersionSection from './MainPage/VersionSection.vue'
-import CopyrightLicenseSection from './MainPage/CopyrightLicenseSection.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
-import HomepageSection from './MainPage/HomepageSection.vue'
-import DonateSection from './MainPage/DonateSection.vue'
-import ContactSection from './MainPage/ContactSection.vue'
+import logo from '@/assets/images/logo.png'
+import {
+  name,
+  version,
+  author,
+  license,
+  homepage
+} from '@/../package.json'
+import {
+  donate as donateLink
+} from '@/helpers/data/links'
 
 export default {
   name: 'MainPage',
   components: {
     BaseSegmentContainer,
-    ImageSection,
-    NameSection,
-    VersionSection,
-    CopyrightLicenseSection,
-    BaseDivider,
-    HomepageSection,
-    DonateSection,
-    ContactSection
+    BaseImage,
+    BaseHeader,
+    BaseDivider
+  },
+  computed: {
+    logo () {
+      return logo
+    },
+    name () {
+      return name
+    },
+    version () {
+      return version
+    },
+    copyrightText () {
+      return `Copyright (c) 2020-2023 ${this.authorName}`
+    },
+    authorName () {
+      return author.name
+    },
+    licenseText () {
+      return this.$t(
+        'about.license',
+        {
+          license
+        }
+      )
+    },
+    homepageText () {
+      return this.$t(
+        'about.homepage'
+      )
+    },
+    donateText () {
+      return this.$t(
+        'donate.header'
+      )
+    },
+    contactText () {
+      return this.$t(
+        'about.contact'
+      )
+    },
+    contactLink () {
+      return author.url
+    }
+  },
+  methods: {
+    handleHomepageLinkClick () {
+      this.openLink(
+        homepage
+      )
+    },
+    handleDonateLinkClick () {
+      this.openLink(
+        donateLink
+      )
+    },
+    handleContactLinkClick () {
+      this.openLink(
+        this.contactLink
+      )
+    },
+    openLink (
+      value
+    ) {
+      shell.openExternal(
+        value
+      )
+    }
   }
 }
 </script>
@@ -67,7 +179,14 @@ export default {
 .right-column
   @extend .flex-full
 
+.version-section
+  margin-top: 0.5em
+
+.copyright-license-section
+  margin-top: 0.5em
+
 .link-section
   @extend .d-inline-block
-  margin-right: 1em
+  margin-right: 1.25em
+  margin-bottom: 0.25em
 </style>
