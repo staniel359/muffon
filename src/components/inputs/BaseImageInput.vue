@@ -36,9 +36,16 @@ export default {
       const file = files[0]
 
       if (file) {
-        this.processImage(
-          file
-        )
+        const isImage =
+          file.type.startsWith(
+            'image/'
+          )
+
+        if (isImage) {
+          this.processImage(
+            file
+          )
+        }
       }
     },
     handleLoadEnd (
