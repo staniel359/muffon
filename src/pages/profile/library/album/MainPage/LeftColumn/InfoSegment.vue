@@ -10,6 +10,12 @@
       :album-data="albumData"
       :profile-id="profileId"
     />
+
+    <BaseSourceIcon
+      v-if="isRenderSource"
+      class="bottom"
+      :source="source"
+    />
   </BaseSegmentContainer>
 </template>
 
@@ -18,17 +24,34 @@ import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import AlbumSection from './InfoSegment/AlbumSection.vue'
 import ArtistSection from './InfoSegment/ArtistSection.vue'
+import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 
 export default {
   name: 'InfoSegment',
   components: {
     BaseSegmentContainer,
     AlbumSection,
-    ArtistSection
+    ArtistSection,
+    BaseSourceIcon
   },
   props: {
     albumData: Object,
     profileId: String
+  },
+  computed: {
+    isRenderSource () {
+      return (
+        this.source && (
+          this.source !== 'lastfm'
+        )
+      )
+    },
+    source () {
+      return this.sourceData?.name
+    },
+    sourceData () {
+      return this.albumData.source
+    }
   }
 }
 </script>

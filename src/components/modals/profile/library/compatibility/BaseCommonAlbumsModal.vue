@@ -16,6 +16,7 @@
         is-link-to-library
         is-compatibility
         is-with-library
+        is-with-source
         is-with-created
         is-with-page-option
         is-with-library-option

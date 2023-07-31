@@ -19,6 +19,7 @@
         :is-with-delete-option="isSelf"
         is-with-library
         is-link-to-library
+        is-with-source
         is-with-created
         is-with-page-option
         is-with-favorite-option

@@ -24,6 +24,7 @@
         :is-with-delete-option="isSelf"
         is-with-artist-name
         is-with-library
+        is-with-source
         is-with-created
         is-link-to-library
         is-with-page-option

@@ -24,6 +24,7 @@
         is-with-artist-name
         is-with-library
         is-link-to-library
+        is-with-source
         is-with-created
         is-with-page-option
         is-with-favorite-option

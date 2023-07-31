@@ -12,6 +12,7 @@ import BaseLinkOption from '@/components/popups/options/BaseLinkOption.vue'
 import {
   main as formatAlbumLink
 } from '@/helpers/formatters/links/album'
+import formatRequestAlbumData from '@/helpers/formatters/request/album/data'
 
 export default {
   name: 'PageOption',
@@ -32,7 +33,8 @@ export default {
       return formatAlbumLink(
         {
           artistName: this.artistName,
-          albumTitle: this.albumTitle
+          albumTitle: this.albumTitle,
+          sourceParams: this.sourceParams
         }
       )
     },
@@ -45,6 +47,14 @@ export default {
     pageText () {
       return this.$t(
         'actions.show.page'
+      )
+    },
+    sourceParams () {
+      return formatRequestAlbumData(
+        {
+          albumData: this.albumData,
+          artistName: this.artistName
+        }
       )
     }
   },

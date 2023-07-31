@@ -65,6 +65,15 @@
           :profile-id="profileId"
         />
 
+        <div
+          v-if="isRenderSource"
+          class="description"
+        >
+          <BaseSourceIcon
+            :source="source"
+          />
+        </div>
+
         <BaseAlbumReleaseDateSection
           class="description"
           :album-data="albumData"
@@ -121,6 +130,7 @@ import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseAlbumArtistsSection
   from '@/components/models/album/BaseAlbumArtistsSection.vue'
+import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseAlbumReleaseDateSection
   from '@/components/models/album/BaseAlbumReleaseDateSection.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
@@ -140,6 +150,7 @@ export default {
     BaseImage,
     BaseHeader,
     BaseAlbumArtistsSection,
+    BaseSourceIcon,
     BaseAlbumReleaseDateSection,
     BaseCreatedSection,
     BaseAlbumListenersCount,
@@ -176,7 +187,8 @@ export default {
     isWithDeleteOption: Boolean,
     isFavorite: Boolean,
     isBookmark: Boolean,
-    isWithCreated: Boolean
+    isWithCreated: Boolean,
+    isWithSource: Boolean
   },
   emits: [
     'linkClick'
@@ -220,6 +232,20 @@ export default {
     },
     isDeleted () {
       return !!this.albumData.isDeleted
+    },
+    isRenderSource () {
+      return (
+        this.isWithSource &&
+          this.source && (
+          this.source !== 'lastfm'
+        )
+      )
+    },
+    source () {
+      return this.sourceData?.name
+    },
+    sourceData () {
+      return this.albumData.source
     }
   },
   methods: {
