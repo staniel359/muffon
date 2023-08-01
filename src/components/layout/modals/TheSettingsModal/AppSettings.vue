@@ -37,6 +37,7 @@ import VideoOptions from './AppSettings/VideoOptions.vue'
 import RecommendationsOptions from './AppSettings/RecommendationsOptions.vue'
 import TopOptions from './AppSettings/TopOptions.vue'
 import LyricsOptions from './AppSettings/LyricsOptions.vue'
+import HistoryOptions from './AppSettings/HistoryOptions.vue'
 import OtherOptions from './AppSettings/OtherOptions.vue'
 
 export default {
@@ -55,6 +56,7 @@ export default {
     RecommendationsOptions,
     TopOptions,
     LyricsOptions,
+    HistoryOptions,
     OtherOptions
   },
   data () {
@@ -149,6 +151,13 @@ export default {
           icon: 'lyrics',
           scope: 'lyrics',
           component: 'LyricsOptions',
+          isAnonymous: true
+        },
+        {
+          nameCode: 'navigation.history',
+          icon: 'history',
+          scope: 'history',
+          component: 'HistoryOptions',
           isAnonymous: true
         },
         {

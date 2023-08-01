@@ -231,7 +231,12 @@
         "post": "Delete post",
         "community": "Delete community",
         "account": "Delete account",
-        "library": "Delete library"
+        "library": "Delete library",
+        "history": {
+          "activity": "Delete activity history",
+          "browser": "Delete browser history",
+          "player": "Delete player history"
+        }
       },
       "going": {
         "libraryModel": "You are going to delete {modelName} from your library.",
@@ -244,7 +249,12 @@
         "post": "You are going to delete this post.",
         "community": "You are going to delete this community.",
         "account": "You are going to delete your account.",
-        "library": "You are going to delete your library."
+        "library": "You are going to delete your library.",
+        "history": {
+          "activity": "You are going to delete your activity history.",
+          "browser": "You are going to delete your browser history.",
+          "player": "You are going to delete your player history."
+        }
       },
       "also": {
         "libraryModel": {
@@ -361,7 +371,12 @@
       "playlist": "Playlist {playlistTitle} has been deleted",
       "community": "Community {communityTitle} has been deleted",
       "account": "Your account has been deleted",
-      "library": "Your library has been deleted"
+      "library": "Your library has been deleted",
+      "history": {
+        "activity": "Activity history has been deleted",
+        "browser": "Browser history has been deleted",
+        "player": "Player history has been deleted"
+      }
     },
     "copied": "Link is copied to clipboard",
     "cleared": {
@@ -486,7 +501,10 @@
         },
         "search": {
           "source": "Source",
-          "scope": "Scope"
+          "scope": "Scope",
+          "history": {
+            "clear": "Clear search history"
+          }
         },
         "player": {
           "audioSources": "Audio sources (by priority)",
@@ -511,11 +529,19 @@
         "lyrics": {
           "annotations": "Show annotations"
         },
-        "data": {
-          "clear": {
-            "cache": "Clear cache",
-            "searchHistory": "Clear search history"
+        "history": {
+          "activity": {
+            "delete": "Delete activity history"
+          },
+          "player": {
+            "delete": "Delete player history"
+          },
+          "browser": {
+            "delete": "Delete browser history"
           }
+        },
+        "other": {
+          "clearCache": "Clear cache"
         }
       },
       "profile": {

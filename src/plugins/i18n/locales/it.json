@@ -231,7 +231,12 @@
         "post": "Elimina post",
         "community": "Elimina community",
         "account": "Elimina account",
-        "library": "Elimina libreria"
+        "library": "Elimina libreria",
+        "history": {
+          "activity": "Elimina la cronologia delle attività",
+          "browser": "Elimina la cronologia del browser",
+          "player": "Elimina la cronologia di riproduzione"
+        }
       },
       "going": {
         "libraryModel": "Stai per rimuovere {modelName} dalla libreria.",
@@ -244,7 +249,12 @@
         "post": "Stai per eliminare questo post.",
         "community": "Stai per eliminare questa community.",
         "account": "Stai per eliminare il tuo account.",
-        "library": "Stai per eliminare la tua libreria."
+        "library": "Stai per eliminare la tua libreria.",
+        "history": {
+          "activity": "Stai per eliminare la cronologia delle tue attività.",
+          "browser": "Stai per eliminare la cronologia del browser.",
+          "player": "Stai per eliminare la cronologia di riproduzione."
+        }
       },
       "also": {
         "libraryModel": {
@@ -361,7 +371,12 @@
       "playlist": "Playlist {playlistTitle} rimossa",
       "community": "Community {communityTitle} cancellata",
       "account": "Il tuo account è stato eliminato",
-      "library": "La tua libreria è stata eliminata"
+      "library": "La tua libreria è stata eliminata",
+      "history": {
+        "activity": "La cronologia delle attività è stata eliminata",
+        "browser": "La cronologia del browser è stata eliminata",
+        "player": "La cronologia di riproduzione è stata eliminata"
+      }
     },
     "copied": "Link copiato negli Appunti",
     "cleared": {
@@ -486,7 +501,10 @@
         },
         "search": {
           "source": "Fonte",
-          "scope": "Tipologia"
+          "scope": "Tipologia",
+          "history": {
+            "clear": "Cancella cronologia ricerche"
+          }
         },
         "player": {
           "audioSources": "Sorgente audio",
@@ -511,11 +529,19 @@
         "lyrics": {
           "annotations": "Mostra annotazioni"
         },
-        "data": {
-          "clear": {
-            "cache": "Svuota cache",
-            "searchHistory": "Cancella cronologia ricerche"
+        "history": {
+          "activity": {
+            "delete": "Elimina la cronologia delle attività"
+          },
+          "player": {
+            "delete": "Elimina la cronologia di riproduzione"
+          },
+          "browser": {
+            "delete": "Elimina la cronologia del browser"
           }
+        },
+        "other": {
+          "clearCache": "Svuota cache"
         }
       },
       "profile": {

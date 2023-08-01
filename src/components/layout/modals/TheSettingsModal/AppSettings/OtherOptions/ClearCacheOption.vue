@@ -39,7 +39,7 @@ export default {
   computed: {
     clearText () {
       return this.$t(
-        'settings.options.app.data.clear.cache'
+        'settings.options.app.other.clearCache'
       )
     },
     notificationSuccessMessage () {

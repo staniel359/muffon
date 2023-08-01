@@ -2,6 +2,7 @@
   <BaseModalContainer
     ref="modal"
     class="main-delete-modal"
+    is-multiple
   >
     <div
       class="header"

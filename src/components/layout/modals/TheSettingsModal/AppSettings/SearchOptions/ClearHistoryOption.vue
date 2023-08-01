@@ -24,7 +24,7 @@ import {
 } from '@/helpers/actions/store/global'
 
 export default {
-  name: 'ClearOption',
+  name: 'ClearHistoryOption',
   components: {
     BaseButton
   },
@@ -39,7 +39,7 @@ export default {
   computed: {
     clearText () {
       return this.$t(
-        'settings.options.app.data.clear.searchHistory'
+        'settings.options.app.search.history.clear'
       )
     },
     notificationSuccessMessage () {
