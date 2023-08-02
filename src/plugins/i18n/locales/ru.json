@@ -157,16 +157,16 @@
       "lyrics": "Искать текст"
     },
     "import": {
-      "lastfm": "Загрузить данные Last.FM",
-      "spotify": "Загрузить данные Spotify"
+      "lastfm": "Загрузить из Last.FM",
+      "spotify": "Загрузить из Spotify"
     },
     "folder": {
       "select": "Выбрать папку"
     },
-    "addModel": {
-      "playlist": "Добавить список",
-      "community": "Добавить сообщество",
-      "post": "Добавить публикацию"
+    "createModel": {
+      "playlist": "Создать список",
+      "community": "Создать сообщество",
+      "post": "Создать публикацию"
     },
     "addTo": {
       "library": "Добавить в библиотеку",
@@ -394,20 +394,23 @@
       "plays": "{count} воспроизведений | {count} воспроизведение | {count} воспроизведения",
       "followers": "{count} подписчиков | {count} подписчик | {count} подписчика",
       "following": "{count} подписок | {count} подписка | {count} подписки",
-      "members": "{count} участников | {count} участник | {count} участника"
+      "members": "{count} участников | {count} участник | {count} участника",
+      "playlists": "{count} списков | {count} список | {count} списка"
     },
     "genitive": {
       "artists": "{count} исполнителей | {count} исполнителя",
       "albums": "{count} альбомов | {count} альбома",
       "tracks": "{count} композиций | {count} композиции",
       "files": "{count} файлов | {count} файла",
-      "plays": "{count} воспроизведений | {count} воспроизведения"
+      "plays": "{count} воспроизведений | {count} воспроизведения",
+      "playlists": "{count} списков | {count} списка"
     },
     "accusative": {
       "artists": "{count} исполнителей | {count} исполнителя | {count} исполнителей",
       "albums": "{count} альбомов | {count} альбом | {count} альбома",
       "tracks": "{count} композиций | {count} композицию | {count} композиции",
-      "files": "{count} файлов | {count} файл | {count} файла"
+      "files": "{count} файлов | {count} файл | {count} файла",
+      "playlists": "{count} списков | {count} список | {count} списка"
     }
   },
   "select": {
@@ -655,6 +658,9 @@
         "artists": "{counter} было добавлено в список | {counter} был добавлен в список | {counter} было добавлено в список",
         "albums": "{counter} было добавлено в список | {counter} был добавлен в список | {counter} было добавлено в список",
         "tracks": "{counter} было добавлено в список | {counter} была добавлена в список | {counter} было добавлено в список"
+      },
+      "playlists": {
+        "playlists": "{counter} было добавлено в списки | {counter} был добавлен в списки | {counter} было добавлено в списки"
       }
     },
     "error": "{counter} не удалось добавить:"

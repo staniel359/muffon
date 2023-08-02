@@ -31,6 +31,12 @@
         :share-data="shareData"
       />
 
+      <BaseExternalLinkOption
+        v-if="isWithExternalLinkOption && slotProps.isVisible"
+        model="playlist"
+        :model-data="playlistData"
+      />
+
       <template
         v-if="isRenderEditOption"
       >
@@ -75,6 +81,8 @@ import BaseOptionsPopupContainer
   from '@/components/containers/popups/BaseOptionsPopupContainer.vue'
 import BaseShareOption
   from '@/components/popups/options/BaseShareOption.vue'
+import BaseExternalLinkOption
+  from '@/components/popups/options/BaseExternalLinkOption.vue'
 import BaseEditOption
   from '@/components/popups/options/BaseEditOption.vue'
 import BasePlaylistUpdateModal
@@ -108,6 +116,7 @@ export default {
     BasePlaylistSearchImportModal,
     BasePlaylistLibraryImportModal,
     BaseShareOption,
+    BaseExternalLinkOption,
     BaseEditOption,
     BasePlaylistUpdateModal,
     BaseDeleteOption,
@@ -117,6 +126,7 @@ export default {
     playlistData: Object,
     isWithAddOption: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
     isDeleteWithRedirect: Boolean
@@ -135,6 +145,7 @@ export default {
       return (
         this.isRenderAddOption ||
           this.isRenderShareOption ||
+          this.isWithExternalLinkOption ||
           this.isRenderEditOption ||
           this.isRenderDeleteOption
       )

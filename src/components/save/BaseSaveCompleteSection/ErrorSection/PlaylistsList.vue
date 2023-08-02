@@ -1,9 +1,9 @@
 <template>
   <BasePaginatedListContainer
-    :response-data="tracksData"
+    :response-data="playlistsData"
     :scope="scope"
     :limit="limit"
-    :response-page-limit="tracksCount"
+    :response-page-limit="playlistsCount"
     is-reset
     is-with-pagination
     @focus="handleFocus"
@@ -11,15 +11,13 @@
     <template
       #default="slotProps"
     >
-      <BaseTracksSimpleList
-        :tracks="slotProps[scope]"
-        is-with-artist-name
-        is-with-album-title
-        is-with-image
+      <BasePlaylistsSimpleList
+        :playlists="slotProps[scope]"
+        :is-link="false"
         is-with-source
-        is-with-created
+        is-with-external-link-option
         is-with-clear-button
-        @link-click="handleLinkClick"
+        is-with-tracks
         @clear-button-click="handleClearButtonClick"
       />
     </template>
@@ -29,24 +27,23 @@
 <script>
 import BasePaginatedListContainer
   from '@/components/containers/lists/paginated/BasePaginatedListContainer.vue'
-import BaseTracksSimpleList
-  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BasePlaylistsSimpleList
+  from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import {
-  tracks as tracksLimits
+  playlists as playlistsLimits
 } from '@/helpers/data/limits'
 
 export default {
-  name: 'TracksList',
+  name: 'PlaylistsList',
   components: {
     BasePaginatedListContainer,
-    BaseTracksSimpleList
+    BasePlaylistsSimpleList
   },
   inject: [
-    'hideModal',
     'deleteCollectionItem'
   ],
   props: {
-    tracks: {
+    playlists: {
       type: Array,
       default () {
         return []
@@ -59,20 +56,20 @@ export default {
   data () {
     return {
       limit:
-        tracksLimits.simple.large,
-      scope: 'tracks'
+        playlistsLimits.simple.large,
+      scope: 'playlists'
     }
   },
   computed: {
-    tracksData () {
+    playlistsData () {
       return {
         page: 1,
         total_pages: 1,
-        tracks: this.tracks
+        playlists: this.playlists
       }
     },
-    tracksCount () {
-      return this.tracks.length
+    playlistsCount () {
+      return this.playlists.length
     }
   },
   methods: {
@@ -81,9 +78,6 @@ export default {
         'focus'
       )
     },
-    handleLinkClick () {
-      this.hideModal()
-    },
     handleClearButtonClick (
       {
         uuid
@@ -91,7 +85,7 @@ export default {
     ) {
       this.deleteCollectionItem(
         {
-          collection: 'successTracks',
+          collection: 'successPlaylists',
           uuid
         }
       )

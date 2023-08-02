@@ -28,7 +28,7 @@ import getLibraryCompatibility
 import modalMixin from '@/mixins/modalMixin'
 
 export default {
-  name: 'BaseProfileLibraryCommonModalContainer',
+  name: 'BaseLibraryCommonModalContainer',
   components: {
     BasePaginatedSegmentModalContainer
   },

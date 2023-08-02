@@ -157,16 +157,16 @@
       "lyrics": "Шукаць тэкст"
     },
     "import": {
-      "lastfm": "Загрузіць дадзеныя Last.FM",
-      "spotify": "Загрузіць дадзеныя Spotify"
+      "lastfm": "Загрузіць з Last.FM",
+      "spotify": "Загрузіць з Spotify"
     },
     "folder": {
       "select": "Выбраць тэчку"
     },
-    "addModel": {
-      "playlist": "Дадаць спіс",
-      "community": "Дадаць суполку",
-      "post": "Дадаць публікацыю"
+    "createModel": {
+      "playlist": "Стварыць спіс",
+      "community": "Стварыць суполку",
+      "post": "Стварыць публікацыю"
     },
     "addTo": {
       "library": "Дадаць у бібліятэку",
@@ -394,20 +394,23 @@
       "plays": "{count} прайграванняў | {count} прайграванне | {count} прайграванні",
       "followers": "{count} падпісчыкаў | {count} падпісчык | {count} падпісчыкі",
       "following": "{count} падпісак | {count} падпіска | {count} падпіскі",
-      "members": "{count} удзельнікаў | {count} удзельнік | {count} удзельнікі"
+      "members": "{count} удзельнікаў | {count} удзельнік | {count} удзельнікі",
+      "playlists": "{count} спісаў | {count} спіс | {count} спісы"
     },
     "genitive": {
       "artists": "{count} выканаўцаў | {count} выканаўцы",
       "albums": "{count} альбомаў | {count} альбома",
       "tracks": "{count} кампазіцый | {count} кампазіцыі",
       "files": "{count} файлаў | {count} файла",
-      "plays": "{count} прайграванняў | {count} прайгравання"
+      "plays": "{count} прайграванняў | {count} прайгравання",
+      "playlists": "{count} спісаў | {count} спісу"
     },
     "accusative": {
       "artists": "{count} выканаўцаў | {count} выканаўца | {count} выканаўцаў",
       "albums": "{count} альбомаў | {count} альбом | {count} альбомы",
       "tracks": "{count} кампазіцый | {count} кампазіцыю | {count} кампазіцыі",
-      "files": "{count} файлаў | {count} файл | {count} файлы"
+      "files": "{count} файлаў | {count} файл | {count} файлы",
+      "playlists": "{count} спісаў | {count} спіс | {count} спісы"
     }
   },
   "select": {
@@ -655,6 +658,9 @@
         "artists": "{counter} было дададзена ў спіс | {counter} быў дадазены ў спіс | {counter} было дададзена ў спіс",
         "albums": "{counter} было дададзена ў спіс | {counter} быў дадазены ў спіс | {counter} было дададзена ў спіс",
         "tracks": "{counter} было дададзена ў спіс | {counter} была дададзена ў спіс | {counter} было дададзена ў спіс"
+      },
+      "playlists": {
+        "playlists": "{counter} было дададзена ў спісы | {counter} быў дадазены ў спісы | {counter} было дададзена ў спісы"
       }
     },
     "error": "{counter} не ўдалося дадаць:"

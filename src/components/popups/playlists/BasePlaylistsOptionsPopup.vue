@@ -5,28 +5,22 @@
     <template
       #default="slotProps"
     >
+      <CreateOption
+        v-if="isRenderCreateOption"
+      />
+
       <template
         v-if="isRenderAddOption"
       >
         <AddOption
           v-if="slotProps.isVisible"
           :is-connections="isConnections"
-          @search-option-click="handleAddSearchOptionClick"
           @account-option-click="handleAddAccountOptionClick"
-          @folder-option-click="handleAddFolderOptionClick"
         />
 
-        <BaseLibrarySearchImportModal
-          ref="searchModal"
-        />
-
-        <BaseLibraryAccountImportModal
+        <BasePlaylistsAccountImportModal
           v-if="isConnections"
           ref="accountModal"
-        />
-
-        <BaseLibraryFolderImportModal
-          ref="folderModal"
         />
       </template>
     </template>
@@ -40,24 +34,21 @@ import {
 import profileStore from '@/stores/profile'
 import BaseOptionsPopupContainer
   from '@/components/containers/popups/BaseOptionsPopupContainer.vue'
-import AddOption from './BaseProfileLibraryOptionsPopup/AddOption.vue'
-import BaseLibrarySearchImportModal
-  from '@/components/modals/library/import/BaseLibrarySearchImportModal.vue'
-import BaseLibraryAccountImportModal
-  from '@/components/modals/library/import/BaseLibraryAccountImportModal.vue'
-import BaseLibraryFolderImportModal
-  from '@/components/modals/library/import/BaseLibraryFolderImportModal.vue'
+import CreateOption from './BasePlaylistsOptionsPopup/CreateOption.vue'
+import AddOption from './BasePlaylistsOptionsPopup/AddOption.vue'
+import BasePlaylistsAccountImportModal
+  from '@/components/modals/playlists/import/BasePlaylistsAccountImportModal.vue'
 
 export default {
-  name: 'BaseProfileLibraryOptionsPopup',
+  name: 'BasePlaylistsOptionsPopup',
   components: {
     BaseOptionsPopupContainer,
+    CreateOption,
     AddOption,
-    BaseLibrarySearchImportModal,
-    BaseLibraryAccountImportModal,
-    BaseLibraryFolderImportModal
+    BasePlaylistsAccountImportModal
   },
   props: {
+    isWithCreateOption: Boolean,
     isWithAddOption: Boolean
   },
   computed: {
@@ -70,7 +61,14 @@ export default {
     ),
     isRender () {
       return (
-        this.isRenderAddOption
+        this.isRenderCreateOption ||
+          this.isRenderAddOption
+      )
+    },
+    isRenderCreateOption () {
+      return (
+        this.profileId &&
+          this.isWithCreateOption
       )
     },
     isRenderAddOption () {
@@ -93,28 +91,12 @@ export default {
     }
   },
   methods: {
-    handleAddSearchOptionClick () {
-      this.showAddSearchModal()
-    },
     handleAddAccountOptionClick () {
       this.showAddAccountModal()
-    },
-    handleAddFolderOptionClick () {
-      this.showAddFolderModal()
-    },
-    showAddSearchModal () {
-      this.$refs
-        .searchModal
-        .show()
     },
     showAddAccountModal () {
       this.$refs
         .accountModal
-        .show()
-    },
-    showAddFolderModal () {
-      this.$refs
-        .folderModal
         .show()
     }
   }

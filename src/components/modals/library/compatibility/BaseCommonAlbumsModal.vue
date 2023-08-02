@@ -1,5 +1,5 @@
 <template>
-  <BaseProfileLibraryCommonModalContainer
+  <BaseLibraryCommonModalContainer
     ref="modal"
     :profile-id="profileId"
     :scope="scope"
@@ -8,47 +8,43 @@
     <template
       #default="slotProps"
     >
-      <BaseTracksSimpleList
-        :tracks="slotProps[scope]"
+      <BaseAlbumsSimpleList
+        :albums="slotProps[scope]"
         :profile-id="profileId"
-        is-with-image
+        :top-tracks-count="slotProps.topTracksCount"
         is-with-artist-name
-        is-with-album-title
-        is-with-source
-        is-with-created
         is-link-to-library
         is-compatibility
+        is-with-library
+        is-with-source
+        is-with-created
         is-with-page-option
-        is-with-source-option
         is-with-library-option
-        is-with-playlist-option
         is-with-favorite-option
         is-with-bookmark-option
         is-with-listened-option
-        is-with-queue-option
-        is-with-save-option
         is-with-share-option
         is-with-external-link-option
         @link-click="handleLinkClick"
       />
     </template>
-  </BaseProfileLibraryCommonModalContainer>
+  </BaseLibraryCommonModalContainer>
 </template>
 
 <script>
-import BaseProfileLibraryCommonModalContainer
-  from '@/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
-import BaseTracksSimpleList
-  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseLibraryCommonModalContainer
+  from '@/components/containers/modals/library/BaseLibraryCommonModalContainer.vue'
+import BaseAlbumsSimpleList
+  from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
 import {
-  tracks as tracksLimits
+  albums as albumsLimits
 } from '@/helpers/data/limits'
 
 export default {
-  name: 'BaseCommonTracksModal',
+  name: 'BaseCommonAlbumsModal',
   components: {
-    BaseProfileLibraryCommonModalContainer,
-    BaseTracksSimpleList
+    BaseLibraryCommonModalContainer,
+    BaseAlbumsSimpleList
   },
   props: {
     profileId: String
@@ -56,8 +52,8 @@ export default {
   data () {
     return {
       limit:
-        tracksLimits.simple.large,
-      scope: 'tracks'
+        albumsLimits.simple.large,
+      scope: 'albums'
     }
   },
   methods: {

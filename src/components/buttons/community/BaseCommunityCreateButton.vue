@@ -1,5 +1,5 @@
 <template>
-  <BaseAddButton
+  <BaseCreateButton
     model="community"
     @click="handleButtonClick"
   />
@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import BaseAddButton from '@/components/buttons/BaseAddButton.vue'
+import BaseCreateButton from '@/components/buttons/BaseCreateButton.vue'
 import BaseCommunityCreateModal
   from '@/components/modals/community/BaseCommunityCreateModal.vue'
 
 export default {
   name: 'BaseCommunityCreateButton',
   components: {
-    BaseAddButton,
+    BaseCreateButton,
     BaseCommunityCreateModal
   },
   methods: {

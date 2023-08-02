@@ -19,7 +19,7 @@
         <div class="top-right-section">
           <BaseOrderSelect
             v-if="isWithOrderChange"
-            class="select-block"
+            class="top-right-section-block"
             :order="order"
             :model="model"
             @select="handleOrderSelect"
@@ -28,10 +28,19 @@
           <BaseViewSelect
             v-if="isWithViewChange"
             :key="viewSelectKey"
-            class="select-block"
+            class="top-right-section-block"
             :scope="scope"
             :view-id="viewId"
           />
+
+          <div
+            v-if="isWithOptions"
+            class="top-right-section-block"
+          >
+            <slot
+              name="options"
+            />
+          </div>
         </div>
       </div>
 
@@ -118,7 +127,8 @@ export default {
     isWithTopSegment: Boolean,
     isWithOrderChange: Boolean,
     isWithViewChange: Boolean,
-    viewId: String
+    viewId: String,
+    isWithOptions: Boolean
   },
   data () {
     return {
@@ -206,7 +216,7 @@ export default {
   @extend .d-flex, .align-items-center
   margin-left: 1em
 
-.select-block
+.top-right-section-block
   &:not(:first-child)
     margin-left: 0.75em
 </style>

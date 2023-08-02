@@ -2,12 +2,13 @@
   <ErrorSection
     v-if="isError"
     :collection="errorCollection"
-    :scope="scope"
+    :scope="textScope"
   />
   <SuccessSection
     v-else-if="isSuccess"
     :collection="successCollection"
     :scope="scope"
+    :text-scope="textScope"
   />
 </template>
 
@@ -34,7 +35,8 @@ export default {
         return []
       }
     },
-    scope: String
+    scope: String,
+    textScope: String
   },
   computed: {
     isError () {

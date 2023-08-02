@@ -1,5 +1,5 @@
 <template>
-  <BaseProfileLibraryCommonModalContainer
+  <BaseLibraryCommonModalContainer
     ref="modal"
     :profile-id="profileId"
     :scope="scope"
@@ -8,15 +8,14 @@
     <template
       #default="slotProps"
     >
-      <BaseAlbumsSimpleList
-        :albums="slotProps[scope]"
+      <BaseArtistsSimpleList
+        :artists="slotProps[scope]"
         :profile-id="profileId"
         :top-tracks-count="slotProps.topTracksCount"
-        is-with-artist-name
+        :top-albums-count="slotProps.topAlbumsCount"
         is-link-to-library
         is-compatibility
         is-with-library
-        is-with-source
         is-with-created
         is-with-page-option
         is-with-library-option
@@ -28,23 +27,23 @@
         @link-click="handleLinkClick"
       />
     </template>
-  </BaseProfileLibraryCommonModalContainer>
+  </BaseLibraryCommonModalContainer>
 </template>
 
 <script>
-import BaseProfileLibraryCommonModalContainer
-  from '@/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
-import BaseAlbumsSimpleList
-  from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
+import BaseLibraryCommonModalContainer
+  from '@/components/containers/modals/library/BaseLibraryCommonModalContainer.vue'
+import BaseArtistsSimpleList
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import {
-  albums as albumsLimits
+  artists as artistsLimits
 } from '@/helpers/data/limits'
 
 export default {
-  name: 'BaseCommonAlbumsModal',
+  name: 'BaseCommonArtistsModal',
   components: {
-    BaseProfileLibraryCommonModalContainer,
-    BaseAlbumsSimpleList
+    BaseLibraryCommonModalContainer,
+    BaseArtistsSimpleList
   },
   props: {
     profileId: String
@@ -52,8 +51,8 @@ export default {
   data () {
     return {
       limit:
-        albumsLimits.simple.large,
-      scope: 'albums'
+        artistsLimits.simple.large,
+      scope: 'artists'
     }
   },
   methods: {

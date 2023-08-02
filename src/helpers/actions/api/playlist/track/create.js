@@ -11,6 +11,7 @@ export default function (
     sourceData,
     audioData,
     albumSourceData,
+    created,
     isSelectable
   }
 ) {
@@ -27,7 +28,9 @@ export default function (
     image: imageUrl,
     source: sourceData,
     audio: audioData,
-    album_source: albumSourceData
+    album_source:
+      albumSourceData,
+    created
   }
 
   const handleSuccess = (

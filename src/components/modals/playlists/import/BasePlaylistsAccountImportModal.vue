@@ -5,16 +5,9 @@
   >
     <div class="content full-height">
       <BaseImportConnectSection
-        v-if="isRenderLastfmConnectSection"
-        source="lastfm"
-        scope="plays"
-        :is-with-info="isShow"
-      />
-
-      <BaseImportConnectSection
         v-if="isRenderSpotifyConnectSection"
         source="spotify"
-        scope="tracks"
+        :scope="scope"
       />
 
       <BaseDivider />
@@ -26,10 +19,9 @@
         :limit="limit"
         :total-count="totalCount"
       />
-      <BaseLibrarySaveSection
+      <SaveSection
         v-if="isSave"
-        scope="tracks"
-        :collection="tracks"
+        :playlists="playlists"
       />
     </div>
   </BaseModalContainer>
@@ -45,18 +37,19 @@ import BaseModalContainer
 import BaseImportConnectSection
   from '@/components/sections/import/BaseImportConnectSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
-import ImportSection from './BaseLibraryAccountImportModal/ImportSection.vue'
-import BaseLibrarySaveSection
-  from '@/components/save/library/BaseLibrarySaveSection.vue'
+import ImportSection
+  from './BasePlaylistsAccountImportModal/ImportSection.vue'
+import SaveSection
+  from './BasePlaylistsAccountImportModal/SaveSection.vue'
 
 export default {
-  name: 'BaseLibraryAccountImportModal',
+  name: 'BasePlaylistsAccountImportModal',
   components: {
     BaseModalContainer,
     BaseImportConnectSection,
     BaseDivider,
     ImportSection,
-    BaseLibrarySaveSection
+    SaveSection
   },
   provide () {
     return {
@@ -73,15 +66,9 @@ export default {
       source: null,
       userData: null,
       isShow: false,
-      tracks: [],
-      scopesData: {
-        lastfm: 'plays',
-        spotify: 'tracks'
-      },
-      limitsData: {
-        lastfm: 500,
-        spotify: 50
-      }
+      playlists: [],
+      scope: 'playlists',
+      limit: 1
     }
   },
   computed: {
@@ -106,27 +93,6 @@ export default {
         `${this.scope}_count`
       ]
     },
-    scope () {
-      return this.scopesData[
-        this.source
-      ]
-    },
-    isRenderLastfmConnectSection () {
-      return (
-        !!this.lastfmConnection && (
-          !this.source ||
-            this.isLastfmSource
-        )
-      )
-    },
-    lastfmConnection () {
-      return this.profileConnections.lastfm
-    },
-    isLastfmSource () {
-      return (
-        this.source === 'lastfm'
-      )
-    },
     isRenderSpotifyConnectSection () {
       return (
         !!this.spotifyConnection && (
@@ -142,11 +108,6 @@ export default {
       return (
         this.source === 'spotify'
       )
-    },
-    limit () {
-      return this.limitsData[
-        this.source
-      ]
     }
   },
   methods: {
@@ -171,14 +132,14 @@ export default {
     ) {
       this.status = 'save'
 
-      this.tracks = [
+      this.playlists = [
         ...value
       ]
     },
     retry (
       value
     ) {
-      this.tracks = [
+      this.playlists = [
         ...value
       ]
     },

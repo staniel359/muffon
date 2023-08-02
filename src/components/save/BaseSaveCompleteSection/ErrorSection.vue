@@ -25,6 +25,7 @@ import ErrorMessage from './ErrorSection/ErrorMessage.vue'
 import ArtistsList from './ErrorSection/ArtistsList.vue'
 import AlbumsList from './ErrorSection/AlbumsList.vue'
 import TracksList from './ErrorSection/TracksList.vue'
+import PlaylistsList from './ErrorSection/PlaylistsList.vue'
 import RetryButton from './ErrorSection/RetryButton.vue'
 
 export default {
@@ -34,6 +35,7 @@ export default {
     ArtistsList,
     AlbumsList,
     TracksList,
+    PlaylistsList,
     RetryButton
   },
   inject: [
@@ -56,7 +58,8 @@ export default {
       listComponents: {
         artists: 'ArtistsList',
         albums: 'AlbumsList',
-        tracks: 'TracksList'
+        tracks: 'TracksList',
+        playlists: 'PlaylistsList'
       }
     }
   },

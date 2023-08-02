@@ -6,18 +6,13 @@
     :scope="scope"
     :limit="limit"
     :order="order"
+    :is-with-options="isSelf"
     is-with-top-segment
     is-with-order-change
   >
     <template
       #top
     >
-      <BasePlaylistCreateButton
-        v-if="isSelf"
-        class="create-button"
-        is-with-redirect
-      />
-
       <BaseLinkContainer
         :link="playlistsLink"
       >
@@ -26,6 +21,15 @@
           :text="playlistsLinkText"
         />
       </BaseLinkContainer>
+    </template>
+
+    <template
+      #options
+    >
+      <BasePlaylistsOptionsPopup
+        is-with-create-option
+        is-with-add-option
+      />
     </template>
 
     <template
@@ -45,11 +49,11 @@
 <script>
 import BaseProfilePaginatedPageContainer
   from '@/components/containers/pages/profile/BaseProfilePaginatedPageContainer.vue'
-import BasePlaylistCreateButton
-  from '@/components/buttons/playlist/BasePlaylistCreateButton.vue'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
+import BasePlaylistsOptionsPopup
+  from '@/components/popups/playlists/BasePlaylistsOptionsPopup.vue'
 import BasePlaylistsSimpleList
   from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import {
@@ -68,9 +72,9 @@ export default {
   name: 'MainPage',
   components: {
     BaseProfilePaginatedPageContainer,
-    BasePlaylistCreateButton,
     BaseLinkContainer,
     BaseButton,
+    BasePlaylistsOptionsPopup,
     BasePlaylistsSimpleList
   },
   mixins: [
@@ -109,7 +113,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.create-button
-  margin-right: 0.75em !important
-</style>
+<style lang="sass" scoped></style>

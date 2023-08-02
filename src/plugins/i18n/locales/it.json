@@ -157,16 +157,16 @@
       "lyrics": "Cerca testo"
     },
     "import": {
-      "lastfm": "Importa dati da Last.FM",
-      "spotify": "Importa dati da Spotify"
+      "lastfm": "Importa da Last.FM",
+      "spotify": "Importa da Spotify"
     },
     "folder": {
       "select": "Seleziona cartella"
     },
-    "addModel": {
-      "playlist": "Aggiungi playlist",
-      "community": "Aggiungi community",
-      "post": "Aggiungi post"
+    "createModel": {
+      "playlist": "Crea playlist",
+      "community": "Crea community",
+      "post": "Crea post"
     },
     "addTo": {
       "library": "Aggiungi alla libreria",
@@ -394,20 +394,23 @@
       "plays": "{count} riproduzione | {count} riproduzioni",
       "followers": "{count} follower",
       "following": "{count} following",
-      "members": "{count} membro | {count} membri"
+      "members": "{count} membro | {count} membri",
+      "playlists": "{count} playlist"
     },
     "genitive": {
       "artists": "{count} artista | {count} artisti",
       "albums": "{count} album",
       "tracks": "{count} brano | {count} brani",
       "files": "{count} file",
-      "plays": "{count} ascolto | {count} ascolti"
+      "plays": "{count} ascolto | {count} ascolti",
+      "playlists": "{count} playlist"
     },
     "accusative": {
       "artists": "{count} artista | {count} artisti",
       "albums": "{count} album | {count} albumi",
       "tracks": "{count} brano | {count} brani",
-      "files": "{count} file"
+      "files": "{count} file",
+      "playlists": "{count} playlist"
     }
   },
   "select": {
@@ -652,9 +655,12 @@
         "tracks": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria"
       },
       "playlist": {
-        "artists": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria",
-        "albums": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria",
-        "tracks": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria"
+        "artists": "{counter} aggiunto alla playlist | {counter} aggiunti alla playlist",
+        "albums": "{counter} aggiunto alla playlist | {counter} aggiunti alla playlist",
+        "tracks": "{counter} aggiunto alla playlist | {counter} aggiunti alla playlist"
+      },
+      "playlists": {
+        "playlists": "{counter} aggiunto alla playlist | {counter} aggiunti alla playlist"
       }
     },
     "error": "{counter} non aggiunto:"

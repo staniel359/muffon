@@ -16,9 +16,9 @@
   />
   <BaseImportCompleteSection
     v-else
-    scope="tracks"
-    text-scope="tracks"
-    :success-collection="successTracks"
+    scope="playlists"
+    text-scope="playlists"
+    :success-collection="successPlaylists"
   />
 </template>
 
@@ -29,7 +29,6 @@ import BaseImportCompleteSection
   from '@/components/import/BaseImportCompleteSection.vue'
 import getUser from '@/helpers/actions/api/user/get'
 import {
-  playsToTracks as formatPlaysToTracks,
   collection as formatCollection
 } from '@/helpers/formatters'
 import collectionMixin from '@/mixins/collectionMixin'
@@ -70,7 +69,7 @@ export default {
       isProgress: true,
       isComplete: false,
       collection: [],
-      successTracks: []
+      successPlaylists: []
     }
   },
   computed: {
@@ -85,7 +84,8 @@ export default {
         source: this.source,
         scope: this.scope,
         page: this.page,
-        limit: this.limit
+        limit: this.limit,
+        isWithTracks: true
       }
     },
     isGetNextPageData () {
@@ -96,11 +96,6 @@ export default {
     },
     totalPagesCount () {
       return this.userData?.total_pages
-    },
-    isPlaysScope () {
-      return (
-        this.scope === 'plays'
-      )
     }
   },
   watch: {
@@ -137,8 +132,10 @@ export default {
 
         this.getData()
       } else {
-        this.successTracks =
-          this.formatSuccessTracks()
+        this.successPlaylists =
+          formatCollection(
+            this.collection
+          )
 
         this.isComplete = true
       }
@@ -174,17 +171,6 @@ export default {
         .setValue(
           value
         )
-    },
-    formatSuccessTracks () {
-      if (this.isPlaysScope) {
-        return formatPlaysToTracks(
-          this.collection
-        )
-      } else {
-        return formatCollection(
-          this.collection
-        )
-      }
     }
   }
 }

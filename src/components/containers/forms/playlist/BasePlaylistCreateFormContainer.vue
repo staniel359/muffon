@@ -118,7 +118,8 @@ export default {
         title,
         description,
         image,
-        isPrivate: fields.private
+        isPrivate: fields.private,
+        isForm: true
       }
     }
   }

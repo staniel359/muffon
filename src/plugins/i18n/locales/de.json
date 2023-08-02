@@ -157,16 +157,16 @@
       "lyrics": "Nach Lyrics suchen"
     },
     "import": {
-      "lastfm": "Last.FM Daten importieren",
-      "spotify": "Spotify Daten importieren"
+      "lastfm": "Von Last.FM importieren",
+      "spotify": "Von Spotify importieren"
     },
     "folder": {
       "select": "Ordner auswählen"
     },
-    "addModel": {
-      "playlist": "Playlist hinzufügen",
-      "community": "Community hinzufügen",
-      "post": "Post hinzufügen"
+    "createModel": {
+      "playlist": "Playlist erstellen",
+      "community": "Community erstellen",
+      "post": "Post erstellen"
     },
     "addTo": {
       "library": "Zur Bibliothek hinzufügen",
@@ -394,20 +394,23 @@
       "plays": "{count} Wiedergabe | {count} Wiedergaben",
       "followers": "{count} Follower | {count} Followers",
       "following": "{count} folgen",
-      "members": "{count} Mitglied | {count} Mitglieder"
+      "members": "{count} Mitglied | {count} Mitglieder",
+      "playlists": "{count} Playlisten"
     },
     "genitive": {
       "artists": "{count} Künstler",
       "albums": "{count} Album | {count} Alben",
       "tracks": "{count} Titel",
       "files": "{count} Datei | {count} Dateien",
-      "plays": "{count} Wiedergabe | {count} Wiedergaben"
+      "plays": "{count} Wiedergabe | {count} Wiedergaben",
+      "playlists": "{count} Playlisten"
     },
     "accusative": {
       "artists": "{count} Künstler",
       "albums": "{count} Album | {count} Alben",
       "tracks": "{count} Titel",
-      "files": "{count} Datei | {count} Dateien"
+      "files": "{count} Datei | {count} Dateien",
+      "playlists": "{count} Playlisten"
     }
   },
   "select": {
@@ -655,6 +658,9 @@
         "artists": "{counter} wurde zur Playlist hinzugefügt | {counter} wurden zur Playlist hinzugefügt",
         "albums": "{counter} wurde zur Playlist hinzugefügt | {counter} wurden zur Playlist hinzugefügt",
         "tracks": "{counter} wurde zur Playlist hinzugefügt | {counter} wurden zur Playlist hinzugefügt"
+      },
+      "playlists": {
+        "playlists": "{counter} wurde zur Playlisten hinzugefügt | {counter} wurden zur Playlisten hinzugefügt"
       }
     },
     "error": "{counter} konnte nicht hinzugefügt werden:"

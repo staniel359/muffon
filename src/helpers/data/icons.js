@@ -23,6 +23,7 @@ export default {
   communityJoined: 'left arrow',
   connection: 'plug',
   conversation: 'comments',
+  create: 'plus',
   data: 'database',
   date: 'calendar alternate outline',
   delete: 'trash alternate',

@@ -5,6 +5,8 @@ export default function (
   {
     source,
     scope = '',
+    counter,
+    isWithTracks,
     page,
     limit
   }
@@ -13,6 +15,15 @@ export default function (
 
   const url =
     `/${source}/users/${profileId}/${scope}`
+
+  const params = {
+    ...(counter && {
+      counter
+    }),
+    ...(isWithTracks && {
+      with_tracks: true
+    })
+  }
 
   const handleSuccess = (
     response
@@ -26,6 +37,7 @@ export default function (
   )(
     {
       url,
+      params,
       page,
       limit,
       isWithSelfToken: true,

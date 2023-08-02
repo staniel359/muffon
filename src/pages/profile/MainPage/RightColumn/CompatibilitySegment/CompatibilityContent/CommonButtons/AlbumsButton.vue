@@ -18,7 +18,7 @@
 <script>
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseCommonAlbumsModal
-  from '@/components/modals/profile/library/compatibility/BaseCommonAlbumsModal.vue'
+  from '@/components/modals/library/compatibility/BaseCommonAlbumsModal.vue'
 import {
   number as formatNumber
 } from '@/helpers/formatters'

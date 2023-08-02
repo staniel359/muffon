@@ -157,16 +157,16 @@
       "lyrics": "Search for lyrics"
     },
     "import": {
-      "lastfm": "Import Last.FM data",
-      "spotify": "Import Spotify data"
+      "lastfm": "Import from Last.FM",
+      "spotify": "Import from Spotify"
     },
     "folder": {
       "select": "Select folder"
     },
-    "addModel": {
-      "playlist": "Add playlist",
-      "community": "Add community",
-      "post": "Add post"
+    "createModel": {
+      "playlist": "Create playlist",
+      "community": "Create community",
+      "post": "Create post"
     },
     "addTo": {
       "library": "Add to library",
@@ -394,20 +394,23 @@
       "plays": "{count} play | {count} plays",
       "followers": "{count} follower | {count} followers",
       "following": "{count} following",
-      "members": "{count} member | {count} members"
+      "members": "{count} member | {count} members",
+      "playlists": "{count} playlist | {count} playlists"
     },
     "genitive": {
       "artists": "{count} artist | {count} artists",
       "albums": "{count} album | {count} albums",
       "tracks": "{count} track | {count} tracks",
       "files": "{count} file | {count} files",
-      "plays": "{count} play | {count} plays"
+      "plays": "{count} play | {count} plays",
+      "playlists": "{count} playlist | {count} playlists"
     },
     "accusative": {
       "artists": "{count} artist | {count} artists",
       "albums": "{count} album | {count} albums",
       "tracks": "{count} track | {count} tracks",
-      "files": "{count} file | {count} files"
+      "files": "{count} file | {count} files",
+      "playlists": "{count} playlist | {count} playlists"
     }
   },
   "select": {
@@ -655,6 +658,9 @@
         "artists": "{counter} has been added to playlist | {counter} have been added to playlist",
         "albums": "{counter} has been added to playlist | {counter} have been added to playlist",
         "tracks": "{counter} has been added to playlist | {counter} have been added to playlist"
+      },
+      "playlists": {
+        "playlists": "{counter} has been added to playlists | {counter} have been added to playlists"
       }
     },
     "error": "{counter} could not be added:"

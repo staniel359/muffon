@@ -4,7 +4,7 @@
   >
     <div />
 
-    <BaseProfileLibraryOptionsPopup
+    <BaseLibraryOptionsPopup
       :is-with-add-option="isSelf"
     />
   </BaseSegmentContainer>
@@ -13,8 +13,8 @@
 <script>
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseProfileLibraryOptionsPopup
-  from '@/components/popups/profile/library/BaseProfileLibraryOptionsPopup.vue'
+import BaseLibraryOptionsPopup
+  from '@/components/popups/library/BaseLibraryOptionsPopup.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -23,7 +23,7 @@ export default {
   name: 'ExtraSegment',
   components: {
     BaseSegmentContainer,
-    BaseProfileLibraryOptionsPopup
+    BaseLibraryOptionsPopup
   },
   props: {
     profileId: {

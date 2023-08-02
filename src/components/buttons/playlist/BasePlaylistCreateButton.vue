@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BaseAddButton
+    <BaseCreateButton
       model="playlist"
       @click="handleButtonClick"
     />
@@ -14,14 +14,14 @@
 </template>
 
 <script>
-import BaseAddButton from '@/components/buttons/BaseAddButton.vue'
+import BaseCreateButton from '@/components/buttons/BaseCreateButton.vue'
 import BasePlaylistCreateModal
   from '@/components/modals/playlist/BasePlaylistCreateModal.vue'
 
 export default {
   name: 'BasePlaylistCreateButton',
   components: {
-    BaseAddButton,
+    BaseCreateButton,
     BasePlaylistCreateModal
   },
   props: {

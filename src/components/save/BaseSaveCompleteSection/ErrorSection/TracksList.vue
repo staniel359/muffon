@@ -16,6 +16,7 @@
         is-with-artist-name
         is-with-album-title
         is-with-image
+        is-with-source
         is-with-created
         is-with-clear-button
         @link-click="handleLinkClick"

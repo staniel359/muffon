@@ -9,7 +9,8 @@ export default function (
     title,
     description,
     image,
-    isPrivate
+    isPrivate,
+    isForm
   }
 ) {
   const profileId = profileStore().id
@@ -52,8 +53,12 @@ export default function (
       url,
       params,
       isWithSelfToken: true,
-      onSuccess: handleSuccess,
-      onError: handleError
+      onSuccess: (
+        isForm && handleSuccess
+      ),
+      onError: (
+        isForm && handleError
+      )
     }
   )
 }

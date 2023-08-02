@@ -54,6 +54,10 @@ export default {
       type: String,
       required: true
     },
+    scope: {
+      type: String,
+      required: true
+    },
     isWithInfo: Boolean
   },
   data () {
@@ -69,7 +73,8 @@ export default {
   computed: {
     userArgs () {
       return {
-        source: this.source
+        source: this.source,
+        counter: this.scope
       }
     },
     infoComponent () {

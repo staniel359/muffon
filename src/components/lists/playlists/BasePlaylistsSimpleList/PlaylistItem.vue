@@ -5,7 +5,7 @@
       disabled: isDeleted
     }"
     :link="link"
-    @click="handleLinkClick"
+    @click="handleItemClick"
   >
     <BaseDeletedSection
       v-if="isDeleted"
@@ -31,7 +31,9 @@
           <BaseHeader
             tag="h4"
             :class="{
-              link: isMainLinkActive
+              link: (
+                isLink && isMainLinkActive
+              )
             }"
             :text="playlistTitle"
           />
@@ -66,6 +68,12 @@
         />
       </div>
 
+      <BaseSourceIcon
+        v-if="isWithSource"
+        class="right icon-item"
+        :source="source"
+      />
+
       <BaseCreatedSection
         v-if="isWithCreated"
         class="description right"
@@ -75,6 +83,7 @@
       <BasePlaylistOptionsPopup
         :playlist-data="playlistData"
         :is-with-share-option="isWithShareOption"
+        :is-with-external-link-option="isWithExternalLinkOption"
         :is-with-edit-option="isWithEditOption"
         :is-with-delete-option="isWithDeleteOption"
         @deleted="handleDeleted"
@@ -86,6 +95,25 @@
       />
     </template>
   </BaseLinkContainer>
+
+  <div
+    v-if="isRenderTracksList"
+    v-show="isClicked"
+    class="tracks-section"
+  >
+    <BaseTracksSimpleList
+      :tracks="tracks"
+      :is-with-self-icons="false"
+      is-with-image
+      is-with-artist-name
+      is-with-album-title
+      is-with-duration
+      is-with-source
+      is-with-created
+      is-with-clear-button
+      is-with-external-link-option
+    />
+  </div>
 </template>
 
 <script>
@@ -99,10 +127,13 @@ import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import ProfileNicknameSection from './PlaylistItem/ProfileNicknameSection.vue'
 import BaseListCounterSection
   from '@/components/sections/BaseListCounterSection.vue'
+import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BasePlaylistOptionsPopup
   from '@/components/popups/playlist/BasePlaylistOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import BaseTracksSimpleList
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
   main as formatProfileLink,
   playlist as formatProfilePlaylistLink
@@ -119,9 +150,11 @@ export default {
     BasePrivateIcon,
     ProfileNicknameSection,
     BaseListCounterSection,
+    BaseSourceIcon,
     BaseCreatedSection,
     BasePlaylistOptionsPopup,
-    BaseClearButton
+    BaseClearButton,
+    BaseTracksSimpleList
   },
   provide () {
     return {
@@ -138,13 +171,20 @@ export default {
       type: Object,
       required: true
     },
+    isLink: {
+      type: Boolean,
+      default: true
+    },
     isWithProfileNickname: Boolean,
     isWithCreated: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
     isWithClearButton: Boolean,
-    isWithModelIcon: Boolean
+    isWithModelIcon: Boolean,
+    isWithSource: Boolean,
+    isWithTracks: Boolean
   },
   emits: [
     'linkClick',
@@ -152,15 +192,20 @@ export default {
   ],
   data () {
     return {
-      isMainLinkActive: true
+      isMainLinkActive: true,
+      isClicked: false
     }
   },
   computed: {
     link () {
-      if (this.isMainLinkActive) {
-        return this.profilePlaylistLink
+      if (this.isLink) {
+        if (this.isMainLinkActive) {
+          return this.profilePlaylistLink
+        } else {
+          return this.profileLink
+        }
       } else {
-        return this.profileLink
+        return null
       }
     },
     profilePlaylistLink () {
@@ -214,9 +259,30 @@ export default {
     },
     description () {
       return this.playlistData.description
+    },
+    source () {
+      return this.playlistData.source?.name
+    },
+    isRenderTracksList () {
+      return (
+        this.isWithTracks &&
+          this.tracks.length
+      )
+    },
+    tracks () {
+      return this.playlistData.tracks
     }
   },
   methods: {
+    handleItemClick () {
+      if (this.isLink) {
+        this.$emit(
+          'linkClick'
+        )
+      } else {
+        this.toggleIsClicked()
+      }
+    },
     handleLinkClick () {
       this.$emit(
         'linkClick'
@@ -245,6 +311,9 @@ export default {
         this.paginationItem,
         value
       )
+    },
+    toggleIsClicked () {
+      this.isClicked = !this.isClicked
     }
   }
 }
@@ -253,4 +322,7 @@ export default {
 <style lang="sass" scoped>
 .title-container
   @extend .d-flex, .align-items-center
+
+.tracks-section
+  margin-bottom: 1em
 </style>

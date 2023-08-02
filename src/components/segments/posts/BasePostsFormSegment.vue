@@ -4,10 +4,10 @@
     ref="segment"
     :is-change-transparency="false"
   >
-    <BaseAddButton
+    <BaseCreateButton
       model="post"
       :is-active="isShowForm"
-      @click="handleAddButtonClick"
+      @click="handleCreateButtonClick"
     />
 
     <FormSection
@@ -29,14 +29,14 @@ import {
 import profileStore from '@/stores/profile'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseAddButton from '@/components/buttons/BaseAddButton.vue'
+import BaseCreateButton from '@/components/buttons/BaseCreateButton.vue'
 import FormSection from './BasePostsFormSegment/FormSection.vue'
 
 export default {
   name: 'BasePostsFormSegment',
   components: {
     BaseSegmentContainer,
-    BaseAddButton,
+    BaseCreateButton,
     FormSection
   },
   props: {
@@ -65,7 +65,7 @@ export default {
     isShowForm: 'handleIsShowFormChange'
   },
   methods: {
-    handleAddButtonClick () {
+    handleCreateButtonClick () {
       this.isShowForm = !this.isShowForm
     },
     handleIsShowFormChange (

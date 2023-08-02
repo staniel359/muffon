@@ -1,11 +1,11 @@
 <template>
   <BaseButton
     class="basic circular"
-    icon="add"
+    icon="create"
     :class="{
       active: isActive
     }"
-    :text="addText"
+    :text="createText"
     @click="handleClick"
   />
 </template>
@@ -14,7 +14,7 @@
 import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
-  name: 'BaseAddButton',
+  name: 'BaseCreateButton',
   components: {
     BaseButton
   },
@@ -29,9 +29,9 @@ export default {
     'click'
   ],
   computed: {
-    addText () {
+    createText () {
       return this.$t(
-        `actions.addModel.${this.model}`
+        `actions.createModel.${this.model}`
       )
     }
   },

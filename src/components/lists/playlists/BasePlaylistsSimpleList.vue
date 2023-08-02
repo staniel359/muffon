@@ -9,10 +9,14 @@
       :is-with-profile-nickname="isWithProfileNickname"
       :is-with-created="isWithCreated"
       :is-with-share-option="isWithShareOption"
+      :is-with-external-link-option="isWithExternalLinkOption"
       :is-with-edit-option="isWithEditOption"
       :is-with-delete-option="isWithDeleteOption"
       :is-with-clear-button="isWithClearButton"
       :is-with-model-icon="isWithModelIcon"
+      :is-link="isLink"
+      :is-with-source="isWithSource"
+      :is-with-tracks="isWithTracks"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -40,13 +44,20 @@ export default {
         return []
       }
     },
+    isLink: {
+      type: Boolean,
+      default: true
+    },
     isWithProfileNickname: Boolean,
     isWithCreated: Boolean,
     isWithShareOption: Boolean,
+    isWithExternalLinkOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
     isWithClearButton: Boolean,
-    isWithModelIcon: Boolean
+    isWithModelIcon: Boolean,
+    isWithSource: Boolean,
+    isWithTracks: Boolean
   },
   emits: [
     'linkClick',

@@ -5,11 +5,12 @@
   >
     <SuccessMessage
       :collection-count="collectionCount"
-      :scope="scope"
+      :scope="textScope"
     />
 
-    <TracksList
-      :tracks="collection"
+    <Component
+      :is="listComponent"
+      :[scope]="collection"
       @focus="handleFocus"
     />
   </div>
@@ -22,6 +23,7 @@
 <script>
 import SuccessMessage from './SuccessSection/SuccessMessage.vue'
 import TracksList from './SuccessSection/TracksList.vue'
+import PlaylistsList from './SuccessSection/PlaylistsList.vue'
 import BaseSaveButton from '@/components/buttons/BaseSaveButton.vue'
 
 export default {
@@ -29,21 +31,39 @@ export default {
   components: {
     SuccessMessage,
     TracksList,
+    PlaylistsList,
     BaseSaveButton
   },
   inject: [
     'save'
   ],
   props: {
+    scope: {
+      type: String,
+      required: true
+    },
     collection: {
       type: Array,
       default () {
         return []
       }
     },
-    scope: String
+    textScope: String
+  },
+  data () {
+    return {
+      listComponentsData: {
+        tracks: 'TracksList',
+        playlists: 'PlaylistsList'
+      }
+    }
   },
   computed: {
+    listComponent () {
+      return this.listComponentsData[
+        this.scope
+      ]
+    },
     collectionCount () {
       return this.collection.length
     }

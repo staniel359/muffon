@@ -20,12 +20,21 @@
         :model="model"
         :is-with-top-segment="isWithTopSegment"
         :is-with-order-change="isWithOrderChange"
+        :is-with-options="isWithOptions"
       >
         <template
           #top
         >
           <slot
             name="top"
+          />
+        </template>
+
+        <template
+          #options
+        >
+          <slot
+            name="options"
           />
         </template>
 
@@ -66,7 +75,8 @@ export default {
     order: String,
     model: String,
     isWithTopSegment: Boolean,
-    isWithOrderChange: Boolean
+    isWithOrderChange: Boolean,
+    isWithOptions: Boolean
   }
 }
 </script>

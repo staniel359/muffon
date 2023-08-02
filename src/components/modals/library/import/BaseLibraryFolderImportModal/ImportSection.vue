@@ -8,7 +8,8 @@
   />
   <BaseImportCompleteSection
     v-else
-    scope="files"
+    scope="tracks"
+    text-scope="files"
     :error-collection="errorTracks"
     :success-collection="successTracks"
   />
