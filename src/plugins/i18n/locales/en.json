@@ -505,6 +505,7 @@
         "search": {
           "source": "Source",
           "scope": "Scope",
+          "resultsFullSize": "Show results in full size",
           "history": {
             "clear": "Clear search history"
           }

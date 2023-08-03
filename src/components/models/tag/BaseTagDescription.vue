@@ -1,6 +1,6 @@
 <template>
   <BaseDescriptionSection
-    class="white tag-description"
+    class="tag-description"
     :description="description"
     :is-more="isMore"
     @more-click="handleMoreClick"
@@ -45,6 +45,5 @@ export default {
 
 <style lang="sass" scoped>
 .tag-description
-  &.white
-    @extend .text-color-white
+  @extend .text-color-white
 </style>

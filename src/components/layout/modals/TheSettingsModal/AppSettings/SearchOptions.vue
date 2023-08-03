@@ -4,6 +4,8 @@
 
     <ScopeOption />
 
+    <ResultsFullSizeOption />
+
     <ClearHistoryOption />
   </div>
 </template>
@@ -11,6 +13,7 @@
 <script>
 import SourceOption from './SearchOptions/SourceOption.vue'
 import ScopeOption from './SearchOptions/ScopeOption.vue'
+import ResultsFullSizeOption from './SearchOptions/ResultsFullSizeOption.vue'
 import ClearHistoryOption from './SearchOptions/ClearHistoryOption.vue'
 
 export default {
@@ -18,6 +21,7 @@ export default {
   components: {
     SourceOption,
     ScopeOption,
+    ResultsFullSizeOption,
     ClearHistoryOption
   }
 }

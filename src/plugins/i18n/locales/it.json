@@ -505,6 +505,7 @@
         "search": {
           "source": "Fonte",
           "scope": "Tipologia",
+          "resultsFullSize": "Mostra interamente i risultati",
           "history": {
             "clear": "Cancella cronologia ricerche"
           }

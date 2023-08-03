@@ -6,7 +6,8 @@ const data = {
   state () {
     return {
       source: null,
-      scope: null
+      scope: null,
+      isResultsFullSize: null
     }
   },
   actions: {
@@ -19,6 +20,11 @@ const data = {
       value
     ) {
       this.scope = value
+    },
+    setIsResultsFullSize (
+      value
+    ) {
+      this.isResultsFullSize = value
     }
   }
 }

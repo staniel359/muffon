@@ -1,53 +1,63 @@
 <template>
   <div class="ui container main-container">
-    <BasePaginatedSegmentContainer
-      ref="segment"
-      :class="[
-        'raised results-segment',
-        'main-paginated-segment-container'
-      ]"
-      :response-data="searchData"
-      :is-loading="isLoading"
-      :error="error"
-      :scope="searchScope"
-      :text-scope="scope"
-      :limit="limit"
-      :response-page-limit="responsePageLimit"
-      :is-pagination-simple="isPaginationSimple"
-      :is-with-infinite-scroll="isWithInfiniteScroll"
-      :scroll-context="scrollContext"
-      :is-change-transparency="false"
-      @focus="handleFocus"
-    >
-      <template
-        #default="slotProps"
+    <div class="results-container">
+      <BasePaginatedSegmentContainer
+        ref="segment"
+        :class="[
+          'raised results-segment',
+          'main-paginated-segment-container',
+          {
+            'full-size': isFullSize
+          }
+        ]"
+        :response-data="searchData"
+        :is-loading="isLoading"
+        :error="error"
+        :scope="searchScope"
+        :text-scope="scope"
+        :limit="limit"
+        :response-page-limit="responsePageLimit"
+        :is-pagination-simple="isPaginationSimple"
+        :is-with-infinite-scroll="isWithInfiniteScroll"
+        :scroll-context="scrollContext"
+        :is-change-transparency="false"
+        @focus="handleFocus"
       >
-        <Component
-          :is="component"
-          :[listScope]="slotProps[searchScope]"
-          :scope="searchScope"
-          :is-with-artist-image="isLastfmSource"
-          :is-with-image="!isLastfmSource"
-          :is-with-listeners-count="isWithListenersCount"
-          :is-with-source="isWithSource"
-          is-with-artist-name
-          is-with-album-title
-          is-with-channel-title
-          is-with-duration
-          is-with-library-option
-          is-with-playlist-option
-          is-with-favorite-option
-          is-with-bookmark-option
-          is-with-listened-option
-          is-with-watched-option
-          is-with-queue-option
-          is-with-save-option
-          is-with-share-option
-          is-with-external-link-option
-          @link-click="handleLinkClick"
-        />
-      </template>
-    </BasePaginatedSegmentContainer>
+        <template
+          #default="slotProps"
+        >
+          <Component
+            :is="component"
+            :[listScope]="slotProps[searchScope]"
+            :scope="searchScope"
+            :is-with-artist-image="isLastfmSource"
+            :is-with-image="!isLastfmSource"
+            :is-with-listeners-count="isWithListenersCount"
+            :is-with-source="isWithSource"
+            is-with-artist-name
+            is-with-album-title
+            is-with-channel-title
+            is-with-duration
+            is-with-library-option
+            is-with-playlist-option
+            is-with-favorite-option
+            is-with-bookmark-option
+            is-with-listened-option
+            is-with-watched-option
+            is-with-queue-option
+            is-with-save-option
+            is-with-share-option
+            is-with-external-link-option
+            @link-click="handleLinkClick"
+          />
+        </template>
+      </BasePaginatedSegmentContainer>
+
+      <FullSizeToggleButton
+        :is-full-size="isFullSize"
+        @click="handleFullSizeButtonClick"
+      />
+    </div>
   </div>
 </template>
 
@@ -57,6 +67,7 @@ import {
   mapActions
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+import searchStore from '@/stores/search'
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseArtistsSimpleList
@@ -74,6 +85,7 @@ import BaseVideoChannelsSimpleList
   from '@/components/lists/videoChannels/BaseVideoChannelsSimpleList.vue'
 import BaseVideoPlaylistsSimpleList
   from '@/components/lists/videoPlaylists/BaseVideoPlaylistsSimpleList.vue'
+import FullSizeToggleButton from './ResultsSegment/FullSizeToggleButton.vue'
 import getSearch from '@/helpers/actions/api/search/get'
 import {
   artists as artistsLimits,
@@ -97,7 +109,8 @@ export default {
     BaseLyricsSimpleList,
     BaseVideosSimpleList,
     BaseVideoChannelsSimpleList,
-    BaseVideoPlaylistsSimpleList
+    BaseVideoPlaylistsSimpleList,
+    FullSizeToggleButton
   },
   provide () {
     return {
@@ -123,6 +136,7 @@ export default {
       scrollContext: null,
       searchData: null,
       error: null,
+      isFullSize: null,
       isLoading: false
     }
   },
@@ -132,6 +146,12 @@ export default {
       [
         'isWithInfiniteScroll'
       ]
+    ),
+    ...mapState(
+      searchStore,
+      {
+        isSearchResultsFullSize: 'isResultsFullSize'
+      }
     ),
     searchArgs () {
       return {
@@ -380,6 +400,12 @@ export default {
       )
     }
   },
+  watch: {
+    isSearchResultsFullSize: {
+      immediate: true,
+      handler: 'handleIsSearchResultsFullSize'
+    }
+  },
   mounted () {
     this.getData()
 
@@ -394,6 +420,11 @@ export default {
       ]
     ),
     getSearch,
+    handleIsSearchResultsFullSize (
+      value
+    ) {
+      this.isFullSize = value
+    },
     handleFocus () {
       this.$refs
         .segment
@@ -401,6 +432,11 @@ export default {
     },
     handleLinkClick () {
       this.hideSearch()
+    },
+    handleFullSizeButtonClick (
+      value
+    ) {
+      this.isFullSize = !this.isFullSize
     },
     hideSearch () {
       this.setIsSearchPanelVisible(
@@ -424,18 +460,27 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.results-segment
-  @extend .fixed, .no-margin, .overflow-y-auto, .flex-column, .no-border
+.results-container
+  @extend .fixed
+  z-index: 1100
   top: $navbarHeight
+  &:hover
+    .full-size-toggle-button
+      @extend .d-block
+
+.results-segment
+  @extend .no-margin, .overflow-y-auto, .flex-column, .no-border
   max-height: 400px
   width: 500px
   border-top: $border !important
   border-top-left-radius: 0
   border-top-right-radius: 0
-  z-index: 1100
   &.inverted
     @extend .border-inverted
     border-top: none !important
   &:not(.loading)
     @extend .blurred
+  &.full-size
+    width: $containerWidth
+    max-height: calc(100vh - $navbarHeight - 20px)
 </style>

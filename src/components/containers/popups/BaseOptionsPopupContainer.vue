@@ -10,9 +10,9 @@
       class="compact basic circular options-button"
       icon="dotsVertical"
       :class="{
-        [buttonClass]: !isTransparent,
         visible: isMenuActive
       }"
+      :is-transparent="isTransparent"
       @click.prevent.stop
       @mouseenter="handleButtonMouseEnter"
     />
@@ -31,10 +31,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import layoutStore from '@/stores/layout'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseOptionsPopupMenuContainer from './BaseOptionsPopupMenuContainer.vue'
 import {
@@ -83,12 +79,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      layoutStore,
-      [
-        'isDarkMode'
-      ]
-    ),
     element () {
       return this.$refs.button.$el
     },
@@ -102,13 +92,6 @@ export default {
           onHidden: this.handleHidden
         }
       )
-    },
-    buttonClass () {
-      if (this.isDarkMode) {
-        return 'background-black'
-      } else {
-        return 'background-white'
-      }
     }
   },
   watch: {

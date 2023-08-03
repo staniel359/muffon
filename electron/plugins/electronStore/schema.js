@@ -329,6 +329,10 @@ export default {
     type: 'string',
     default: 'artists'
   },
+  'search.isResultsFullSize': {
+    type: 'boolean',
+    default: false
+  },
   'sidebar.isWithFeedItem': {
     type: 'boolean',
     default: true

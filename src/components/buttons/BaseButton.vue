@@ -43,6 +43,10 @@ export default {
       type: Boolean,
       default: true
     },
+    isTransparent: {
+      type: Boolean,
+      default: true
+    },
     icon: String,
     text: String,
     isReverse: Boolean
@@ -60,12 +64,20 @@ export default {
     buttonColorClass () {
       if (this.isDarkMode) {
         if (this.isInvertable) {
-          return 'inverted'
+          if (this.isTransparent) {
+            return 'inverted'
+          } else {
+            return 'inverted background-black'
+          }
         } else {
           return null
         }
       } else {
-        return null
+        if (this.isTransparent) {
+          return null
+        } else {
+          return 'background-white'
+        }
       }
     },
     buttonIconClass () {
