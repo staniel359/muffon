@@ -1,13 +1,14 @@
 <template>
+  <ErrorMessage
+    class="complete-message"
+    :scope="scope"
+    :error-collection-count="errorCollectionCount"
+  />
+
   <div
     ref="section"
     class="main-modal-import-section"
   >
-    <ErrorMessage
-      :scope="scope"
-      :error-collection-count="errorCollectionCount"
-    />
-
     <Component
       :is="listComponent"
       :[scope]="errorCollection"

@@ -5,7 +5,7 @@ export default function (
   {
     source,
     scope = '',
-    counter,
+    counters,
     isWithTracks,
     page,
     limit
@@ -17,8 +17,8 @@ export default function (
     `/${source}/users/${profileId}/${scope}`
 
   const params = {
-    ...(counter && {
-      counter
+    ...(counters && {
+      counters
     }),
     ...(isWithTracks && {
       with_tracks: true

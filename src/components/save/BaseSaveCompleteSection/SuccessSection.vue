@@ -1,6 +1,6 @@
 <template>
   <BaseMessage
-    class="success"
+    class="success complete-message"
     icon="success"
     :header="successText"
   />

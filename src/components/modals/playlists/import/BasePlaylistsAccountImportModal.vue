@@ -5,6 +5,12 @@
   >
     <div class="content full-height">
       <BaseImportConnectSection
+        v-if="isRenderLastfmConnectSection"
+        source="lastfm"
+        :scope="scope"
+      />
+
+      <BaseImportConnectSection
         v-if="isRenderSpotifyConnectSection"
         source="spotify"
         :scope="scope"
@@ -21,6 +27,7 @@
       />
       <SaveSection
         v-if="isSave"
+        :key="saveSectionKey"
         :playlists="playlists"
       />
     </div>
@@ -41,6 +48,9 @@ import ImportSection
   from './BasePlaylistsAccountImportModal/ImportSection.vue'
 import SaveSection
   from './BasePlaylistsAccountImportModal/SaveSection.vue'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePlaylistsAccountImportModal',
@@ -62,6 +72,7 @@ export default {
   },
   data () {
     return {
+      saveSectionKey: null,
       status: null,
       source: null,
       userData: null,
@@ -92,6 +103,22 @@ export default {
       return this.userData?.[
         `${this.scope}_count`
       ]
+    },
+    isRenderLastfmConnectSection () {
+      return (
+        !!this.lastfmConnection && (
+          !this.source ||
+            this.isLastfmSource
+        )
+      )
+    },
+    lastfmConnection () {
+      return this.profileConnections.lastfm
+    },
+    isLastfmSource () {
+      return (
+        this.source === 'lastfm'
+      )
     },
     isRenderSpotifyConnectSection () {
       return (
@@ -139,9 +166,14 @@ export default {
     retry (
       value
     ) {
+      this.resetSaveSection()
+
       this.playlists = [
         ...value
       ]
+    },
+    resetSaveSection () {
+      this.saveSectionKey = generateKey()
     },
     reset () {
       this.status = null

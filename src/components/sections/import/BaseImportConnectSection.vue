@@ -74,7 +74,9 @@ export default {
     userArgs () {
       return {
         source: this.source,
-        counter: this.scope
+        counters: [
+          this.scope
+        ]
       }
     },
     infoComponent () {

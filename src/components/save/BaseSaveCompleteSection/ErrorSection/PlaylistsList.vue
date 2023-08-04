@@ -85,7 +85,7 @@ export default {
     ) {
       this.deleteCollectionItem(
         {
-          collection: 'successPlaylists',
+          collection: 'errorPlaylists',
           uuid
         }
       )

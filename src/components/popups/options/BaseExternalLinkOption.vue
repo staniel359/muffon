@@ -163,7 +163,7 @@ export default {
     handleActivate () {
       if (!this.sourceLinksData) {
         this.getLinks()
-          .then(
+          ?.then(
             this.handleGetLinksSuccess
           )
       }

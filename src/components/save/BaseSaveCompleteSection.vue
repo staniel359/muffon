@@ -1,14 +1,15 @@
 <template>
+  <SuccessSection
+    v-if="isSuccess"
+    :model="model"
+    :scope="scope"
+    :success-collection-count="successCollectionCount"
+  />
+
   <ErrorSection
     v-if="isError"
     :scope="scope"
     :error-collection="errorCollection"
-  />
-  <SuccessSection
-    v-else-if="isSuccess"
-    :model="model"
-    :scope="scope"
-    :success-collection-count="successCollectionCount"
   />
 </template>
 
@@ -34,14 +35,17 @@ export default {
     successCollectionCount: Number
   },
   computed: {
-    isError () {
-      return !!this.errorCollection.length
-    },
     isSuccess () {
       return !!this.successCollectionCount
+    },
+    isError () {
+      return !!this.errorCollection.length
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.complete-message
+  margin-bottom: 1em !important
+</style>
