@@ -3,9 +3,9 @@
     ref="dropdown"
     :options="options"
     :selected="selected"
-    :is-selection="isSelection"
+    :is-bordered="isBordered"
     :is-only-icon="isOnlyIcon"
-    :menu-direction="menuDirection"
+    :is-menu-left="isMenuLeft"
     :header="header"
     :is-icon-colored="isIconColored"
     @select="handleSelect"
@@ -50,13 +50,13 @@ export default {
       type: Array,
       required: true
     },
-    isSelection: {
+    isBordered: {
       type: Boolean,
       default: true
     },
     selected: String,
     isOnlyIcon: Boolean,
-    menuDirection: String,
+    isMenuLeft: Boolean,
     header: String,
     isIconColored: Boolean,
     isFlagIcon: Boolean

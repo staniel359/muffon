@@ -50,8 +50,5 @@ export default {
 
 <style lang="sass" scoped>
 .scope-select
-  width: 200px !important
-
-::v-deep(.menu)
-  max-height: 200px !important
+  width: 200px
 </style>

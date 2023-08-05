@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui scrolling dropdown"
+    class="ui scrolling dropdown main-dropdown"
     :class="{
       inverted: isDarkMode
     }"
@@ -8,7 +8,7 @@
     @mouseleave="handleMouseLeave"
   >
     <div
-      class="left menu options-menu main-popup-content-container"
+      class="left menu main-popup-content-container"
       :class="[
         transparentClass,
         {
@@ -68,8 +68,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.options-menu
+.main-popup-content-container
   @extend .d-block, .relative
   margin-bottom: -4.75px !important
-  max-height: 200px !important
 </style>

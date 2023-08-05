@@ -1,15 +1,16 @@
 <template>
-  <BaseDropdown
-    :key="key"
-    class="floating scrolling source-select-container"
-    menu-direction="left"
-    :options="sources"
-    :selected="source"
-    :is-selection="false"
-    is-only-icon
-    is-icon-colored
-    @select="handleSelect"
-  />
+  <div class="main-source-select-container">
+    <BaseDropdown
+      :key="key"
+      :options="sources"
+      :selected="source"
+      :is-bordered="false"
+      is-only-icon
+      is-icon-colored
+      is-menu-left
+      @select="handleSelect"
+    />
+  </div>
 </template>
 
 <script>
@@ -52,8 +53,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.source-select-container
-  @extend .no-padding
-  margin-left: 1em
-</style>
+<style lang="sass" scoped></style>

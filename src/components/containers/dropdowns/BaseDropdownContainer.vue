@@ -1,11 +1,12 @@
 <template>
   <div
     ref="dropdown"
-    class="ui dropdown base-dropdown"
+    class="ui scrolling dropdown base-dropdown-container main-dropdown"
     :class="{
       inverted: isDarkMode,
       disabled: isDisabled,
-      selection: isSelection
+      selection: isBordered,
+      floating: !isBordered
     }"
   >
     <SelectedSection
@@ -32,8 +33,10 @@
     <div
       class="blurred menu"
       :class="[
-        menuDirection,
-        transparentClass
+        transparentClass,
+        {
+          left: isMenuLeft
+        }
       ]"
     >
       <slot />
@@ -68,7 +71,7 @@ export default {
     transparencyMixin
   ],
   props: {
-    isSelection: {
+    isBordered: {
       type: Boolean,
       default: true
     },
@@ -78,7 +81,7 @@ export default {
     isDisabled: Boolean,
     isLoading: Boolean,
     isError: Boolean,
-    menuDirection: String,
+    isMenuLeft: Boolean,
     isFormField: Boolean,
     inputType: String,
     inputName: String,
@@ -104,7 +107,6 @@ export default {
     dropdownOptions () {
       return mainDropdownOptions(
         {
-          isSelection: this.isSelection,
           onChange: this.handleSelect
         }
       )
@@ -185,16 +187,14 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.base-dropdown
+.base-dropdown-container
   @extend .d-flex, .align-items-center, .text-color-unset, .background-transparent
   min-width: unset !important
-  padding-right: 1em !important
   &.selection
+    padding-right: 1em !important
     &.active,
     .menu
       @extend .border-color-base-light
-  .menu
-    max-height: 200px !important
   & > .text
     @extend .flex-full
   & > .icon

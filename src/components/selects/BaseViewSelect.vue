@@ -1,11 +1,10 @@
 <template>
   <BaseDropdown
-    class="floating"
-    menu-direction="left"
     :options="scopeOptions"
     :selected="selected"
-    :is-selection="false"
+    :is-bordered="false"
     is-only-icon
+    is-menu-left
     @select="handleSelect"
   />
 </template>

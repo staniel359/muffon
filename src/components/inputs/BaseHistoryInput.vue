@@ -1,7 +1,6 @@
 <template>
   <BaseHistoryInputContainer
     :key="key"
-    class="scrolling fluid"
     :scope="scope"
     :item="query"
     :is-distinct="isInput"

@@ -1,9 +1,11 @@
 <template>
   <BaseDropdown
-    class="base-scope-select"
+    class="scope-select"
     :options="options"
     :selected="selected"
     :header="header"
+    :is-bordered="isBordered"
+    :is-menu-left="isMenuLeft"
     @select="handleSelect"
   />
 </template>
@@ -21,8 +23,13 @@ export default {
       type: Array,
       required: true
     },
+    isBordered: {
+      type: Boolean,
+      default: true
+    },
     selected: String,
-    header: String
+    header: String,
+    isMenuLeft: Boolean
   },
   emits: [
     'select'
@@ -67,6 +74,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.base-scope-select
-  min-width: 140px !important
+.scope-select
+  &.selection
+    min-width: 140px !important
 </style>

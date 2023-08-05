@@ -1,7 +1,7 @@
 <template>
   <div
     ref="search"
-    class="ui local search main-search"
+    class="ui local fluid scrolling search main-search"
     :class="{
       inverted: isDarkMode
     }"

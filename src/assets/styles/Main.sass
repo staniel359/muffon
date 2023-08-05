@@ -43,6 +43,15 @@ p
   &.inverted
     @extend .border-inverted
 
+.ui.dropdown
+  &.main-dropdown
+    .menu
+      z-index: 1100
+    &.scrolling
+      .menu
+        max-height: 200px !important
+        min-width: calc(100% + 2px) !important
+
 .main-segments
   & > .main-segment
     &.inverted
@@ -273,6 +282,10 @@ p
 .main-lastfm-import-info-popup
   max-width: 250px !important
 
+.main-page-select-popup
+  .main-popup-content-container
+    padding: 0.75em
+
 .main-header
   @extend .no-margin
   line-height: normal !important
@@ -320,7 +333,7 @@ p
   @extend .d-flex, .align-items-center, .flex-full
 
 .main-source-select
-  width: 210px
+  width: 220px
 
 .main-source-select-type-select
   width: 150px
@@ -556,3 +569,9 @@ p
 
 .main-paginated-list-container
   @extend .flex-full, .w-100, .d-flex, .flex-column
+
+.main-scope-select-container
+  margin-left: 1.5em
+
+.main-source-select-container
+  margin-left: 1.5em

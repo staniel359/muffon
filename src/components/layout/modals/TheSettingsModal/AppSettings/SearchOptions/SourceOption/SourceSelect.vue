@@ -1,6 +1,6 @@
 <template>
   <BaseDropdownContainer
-    class="main-source-select"
+    class="source-select"
     :selected="searchSource"
     @select="handleSelect"
   >
@@ -49,6 +49,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-source-select
+.source-select
   width: 200px
 </style>

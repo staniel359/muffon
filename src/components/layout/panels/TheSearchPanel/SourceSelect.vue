@@ -1,13 +1,12 @@
 <template>
-  <div class="source-select-container">
+  <div class="main-source-select-container">
     <BaseDropdown
       :key="key"
-      class="floating scrolling"
-      menu-direction="left"
       :options="sources"
       :selected="source"
-      :is-selection="false"
+      :is-bordered="false"
       is-icon-colored
+      is-menu-left
       @select="handleSelect"
     />
   </div>
@@ -53,7 +52,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.source-select-container
-  margin-left: 1em
-</style>
+<style lang="sass" scoped></style>

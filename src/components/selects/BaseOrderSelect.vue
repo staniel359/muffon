@@ -1,10 +1,9 @@
 <template>
   <BaseDropdown
-    class="floating scrolling"
-    menu-direction="left"
     :options="optionsFormatted"
     :selected="order"
-    :is-selection="false"
+    :is-bordered="false"
+    is-menu-left
     @select="handleSelect"
   />
 </template>

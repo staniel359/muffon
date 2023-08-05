@@ -3,7 +3,6 @@ import i18n from '@/plugins/i18n'
 
 export function main (
   {
-    isSelection,
     onChange
   } = {}
 ) {
@@ -21,19 +20,15 @@ export function main (
     )
   }
 
-  const transition = (
-    isSelection ? 'auto' : 'fade up'
-  )
-
   return {
     on: 'hover',
+    transition: 'fade down',
     delay: {
       show: 0,
       hide: 150
     },
     context,
     message,
-    transition,
     onChange
   }
 }

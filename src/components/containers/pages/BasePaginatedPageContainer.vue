@@ -17,25 +17,31 @@
         </div>
 
         <div class="top-right-section">
-          <BaseOrderSelect
+          <div
             v-if="isWithOrderChange"
-            class="top-right-section-block"
-            :order="order"
-            :model="model"
-            @select="handleOrderSelect"
-          />
+            class="top-right-section-item"
+          >
+            <BaseOrderSelect
+              :order="order"
+              :model="model"
+              @select="handleOrderSelect"
+            />
+          </div>
 
-          <BaseViewSelect
+          <div
             v-if="isWithViewChange"
-            :key="viewSelectKey"
-            class="top-right-section-block"
-            :scope="scope"
-            :view-id="viewId"
-          />
+            class="top-right-section-item"
+          >
+            <BaseViewSelect
+              :key="viewSelectKey"
+              :scope="scope"
+              :view-id="viewId"
+            />
+          </div>
 
           <div
             v-if="isWithOptions"
-            class="top-right-section-block"
+            class="top-right-section-item"
           >
             <slot
               name="options"
@@ -214,9 +220,7 @@ export default {
 
 .top-right-section
   @extend .d-flex, .align-items-center
-  margin-left: 1em
 
-.top-right-section-block
-  &:not(:first-child)
-    margin-left: 0.75em
+.top-right-section-item
+  margin-left: 1.5em
 </style>

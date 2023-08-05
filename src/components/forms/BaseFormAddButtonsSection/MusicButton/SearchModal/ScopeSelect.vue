@@ -1,10 +1,13 @@
 <template>
-  <BaseScopeSelect
-    class="scope-select-container"
-    :scopes="scopes"
-    :selected="scope"
-    @select="handleSelect"
-  />
+  <div class="main-scope-select-container">
+    <BaseScopeSelect
+      :scopes="scopes"
+      :selected="scope"
+      :is-bordered="false"
+      is-menu-left
+      @select="handleSelect"
+    />
+  </div>
 </template>
 
 <script>
@@ -55,7 +58,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.scope-select-container
-  margin-left: 1em !important
-</style>
+<style lang="sass" scoped></style>
