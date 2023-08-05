@@ -33,6 +33,7 @@ export default {
   &.selection
     & > ::v-deep(.item)
       border-radius: 0.75em
+      padding: 0.5em !important
   &.inverted
     & > ::v-deep(.item)
       & > .content
