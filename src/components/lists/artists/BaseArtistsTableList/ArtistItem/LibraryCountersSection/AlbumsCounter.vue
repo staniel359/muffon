@@ -1,5 +1,6 @@
 <template>
   <BaseLinkContainer
+    v-if="albumsCount"
     class="main-link"
     :link="link"
   >

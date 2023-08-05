@@ -1,5 +1,8 @@
 <template>
-  <div class="description main-counters-section">
+  <div
+    v-if="tracksCount"
+    class="description main-counters-section"
+  >
     <BaseLinkContainer
       class="main-link"
       :link="link"

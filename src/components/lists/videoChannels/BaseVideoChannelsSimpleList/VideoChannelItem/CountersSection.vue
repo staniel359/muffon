@@ -1,18 +1,20 @@
 <template>
   <div class="counters-section">
-    <BaseListCounterSection
-      v-if="videosCount >= 0"
-      class="counter-section"
-      icon="video"
-      :count="videosCount"
-    />
+    <div class="counter-section">
+      <BaseListCounterSection
+        v-if="videosCount"
+        icon="video"
+        :count="videosCount"
+      />
+    </div>
 
-    <BaseListCounterSection
-      v-if="subscribersCount >= 0"
-      class="counter-section"
-      icon="subscriber"
-      :count="subscribersCount"
-    />
+    <div class="counter-section">
+      <BaseListCounterSection
+        v-if="subscribersCount"
+        icon="subscriber"
+        :count="subscribersCount"
+      />
+    </div>
   </div>
 </template>
 

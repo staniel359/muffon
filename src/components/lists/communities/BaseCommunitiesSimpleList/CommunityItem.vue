@@ -33,6 +33,7 @@
       </div>
 
       <BaseListCounterSection
+        v-if="membersCount"
         class="description"
         icon="member"
         :count="membersCount"

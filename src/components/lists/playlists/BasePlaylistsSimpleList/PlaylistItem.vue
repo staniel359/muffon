@@ -62,6 +62,7 @@
         />
 
         <BaseListCounterSection
+          v-if="tracksCount"
           class="description"
           icon="track"
           :count="tracksCount"

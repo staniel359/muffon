@@ -4,7 +4,7 @@
     class="ui active mini inline loader"
   />
   <BaseListCounterSection
-    v-else
+    v-else-if="responseListenersCount"
     icon="listener"
     :count="responseListenersCount"
   />

@@ -57,6 +57,7 @@
       </div>
 
       <BaseListCounterSection
+        v-if="followersCount"
         class="description"
         icon="follower"
         :count="followersCount"

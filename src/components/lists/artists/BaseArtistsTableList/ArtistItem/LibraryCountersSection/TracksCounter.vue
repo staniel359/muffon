@@ -1,5 +1,6 @@
 <template>
   <BaseLinkContainer
+    v-if="tracksCount"
     class="main-link"
     :link="link"
   >

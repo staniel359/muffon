@@ -1,15 +1,18 @@
 <template>
   <div class="description main-counters-section">
-    <TracksCounter
-      class="tracks-link"
-      :artist-data="artistData"
-      :profile-id="profileId"
-    />
+    <div class="counter-section">
+      <TracksCounter
+        :artist-data="artistData"
+        :profile-id="profileId"
+      />
+    </div>
 
-    <AlbumsCounter
-      :artist-data="artistData"
-      :profile-id="profileId"
-    />
+    <div class="counter-section">
+      <AlbumsCounter
+        :artist-data="artistData"
+        :profile-id="profileId"
+      />
+    </div>
   </div>
 </template>
 
@@ -31,6 +34,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.tracks-link
-  margin-right: 0.75em
+.counter-section
+  &:not(:first-child)
+    margin-left: 0.75em
 </style>

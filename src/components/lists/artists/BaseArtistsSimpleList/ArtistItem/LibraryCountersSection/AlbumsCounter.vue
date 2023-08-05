@@ -1,5 +1,8 @@
 <template>
-  <div class="description main-counter-bar-container">
+  <div
+    v-if="albumsCount"
+    class="description main-counter-bar-container"
+  >
     <BaseCounterBar
       :count="albumsCount"
       :top-count="topAlbumsCount"
