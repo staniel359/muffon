@@ -1,6 +1,5 @@
 <template>
   <BaseDropdownContainer
-    class="main-source-select-item-select"
     :header="headerText"
     @select="handleSelect"
   >
@@ -84,9 +83,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-source-select-item-select
-  width: 220px
-  ::v-deep(.image)
-    width: 40px !important
-</style>
+<style lang="sass" scoped></style>

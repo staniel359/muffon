@@ -1,29 +1,35 @@
 <template>
   <div>
-    <div class="main-source-select-container">
-      <div class="main-source-select-content">
-        <SourceSelect
-          ref="select"
-          :query="query"
-        />
-
-        <template
-          v-if="selectedSourceData"
-        >
-          <TypeSelect
-            v-if="isSelectedSourceWithMultipleTypes"
-            :key="typeSelectKey"
-            :albums-data="selectedSourceAlbumsData"
-            :types="selectedSourceTypes"
+    <div class="main-model-source-select-container">
+      <div class="content">
+        <div>
+          <SourceSelect
+            ref="select"
+            :query="query"
           />
 
+          <div
+            v-if="isRenderTypeSelect"
+            class="type-section"
+          >
+            <TypeSelect
+              :key="typeSelectKey"
+              :albums-data="selectedSourceAlbumsData"
+              :types="selectedSourceTypes"
+            />
+          </div>
+        </div>
+
+        <div
+          class="right-section"
+          v-if="isRenderAlbumSelect"
+        >
           <AlbumSelect
-            v-if="selectedTypeId"
             :key="albumSelectKey"
             :albums="selectedTypeAlbums"
             :type-id="selectedTypeId"
           />
-        </template>
+        </div>
       </div>
 
       <BaseClearButton
@@ -115,6 +121,18 @@ export default {
       } else {
         return null
       }
+    },
+    isRenderTypeSelect () {
+      return (
+        this.selectedSourceData &&
+          this.isSelectedSourceWithMultipleTypes
+      )
+    },
+    isRenderAlbumSelect () {
+      return (
+        this.selectedSourceData &&
+          this.selectedTypeId
+      )
     }
   },
   watch: {

@@ -1,7 +1,7 @@
 <template>
   <BaseDropdownContainer
     ref="dropdown"
-    class="main-source-select"
+    class="source-select"
     :header="headerText"
   >
     <SourcesList
@@ -41,4 +41,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.source-select
+  width: 200px
+</style>

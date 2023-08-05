@@ -1,41 +1,40 @@
 <template>
-  <div class="source-select-container">
-    <SourceSelect
-      ref="select"
-      :query="query"
-    />
+  <div class="main-model-source-select-container">
+    <div class="content">
+      <div>
+        <SourceSelect
+          ref="select"
+          :query="query"
+        />
 
-    <template
+        <div
+          v-if="isRenderTypeSelect"
+          class="type-section"
+        >
+          <TypeSelect
+            :key="typeSelectKey"
+            :videos-data="selectedSourceVideosData"
+            :types="selectedSourceTypes"
+          />
+        </div>
+      </div>
+
+      <div
+        v-if="isRenderVideoSelect"
+        class="right-section"
+      >
+        <VideoSelect
+          :key="videoSelectKey"
+          :videos="selectedTypeVideos"
+          :type-id="selectedTypeId"
+        />
+      </div>
+    </div>
+
+    <BaseClearButton
       v-if="selectedSourceData"
-    >
-      <TypeSelect
-        v-if="isSelectedSourceWithMultipleTypes"
-        :key="typeSelectKey"
-        :videos-data="selectedSourceVideosData"
-        :types="selectedSourceTypes"
-      />
-
-      <VideoSelect
-        v-if="selectedTypeId"
-        :key="videoSelectKey"
-        :class="{
-          'video-select-top-margin':
-            isSelectedSourceWithMultipleTypes
-        }"
-        :videos="selectedTypeVideos"
-        :type-id="selectedTypeId"
-      />
-
-      <BaseClearButton
-        :class="{
-          'clear-button-top-margin': (
-            selectedTypeId &&
-            isSelectedSourceWithMultipleTypes
-          )
-        }"
-        @click="handleClearButtonClick"
-      />
-    </template>
+      @click="handleClearButtonClick"
+    />
   </div>
 </template>
 
@@ -116,6 +115,18 @@ export default {
       } else {
         return null
       }
+    },
+    isRenderTypeSelect () {
+      return (
+        this.selectedSourceData &&
+          this.isSelectedSourceWithMultipleTypes
+      )
+    },
+    isRenderVideoSelect () {
+      return (
+        this.selectedSourceData &&
+          this.selectedTypeId
+      )
     }
   },
   watch: {
@@ -168,15 +179,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.source-select-container
-  @extend .d-inline-flex, .align-items-center
-  flex-wrap: wrap
-
-.video-select-top-margin
-  @extend .no-margin
-  margin-top: 1em !important
-
-.clear-button-top-margin
-  margin-top: 1em !important
-</style>
+<style lang="sass" scoped></style>

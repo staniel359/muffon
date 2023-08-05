@@ -23,9 +23,11 @@
     >
       <BaseImage
         size="extrasmall"
+        class="dropdown-image"
         :class="{
           circular: isImageCircular,
-          'rounded-medium': !isImageCircular
+          'rounded-medium': !isImageCircular,
+          wide: isImageWide
         }"
         :model="model"
         :image="image"
@@ -70,9 +72,14 @@ export default {
     content: String,
     extra: String,
     value: String,
-    isImageContained: Boolean
+    isImageContained: Boolean,
+    isImageWide: Boolean
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.dropdown-image
+  &.wide
+    width: 40px !important
+</style>

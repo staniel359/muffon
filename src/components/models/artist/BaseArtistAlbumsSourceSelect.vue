@@ -1,26 +1,33 @@
 <template>
   <div>
-    <div class="main-source-select-container">
-      <div class="main-source-select-content">
-        <SourceSelect
-          ref="select"
-          :query="artistName"
-        />
+    <div class="main-model-source-select-container">
+      <div class="content">
+        <div>
+          <SourceSelect
+            ref="select"
+            :query="artistName"
+          />
+        </div>
 
-        <template
+        <div
           v-if="selectedSourceData"
+          class="right-section"
         >
           <ArtistSelect
             :key="artistSelectKey"
             :artists="selectedSourceArtists"
           />
 
-          <TypeSelect
+          <div
             v-if="selectedSourceData.types"
-            :key="typeSelectKey"
-            :types="selectedSourceData.types"
-          />
-        </template>
+            class="type-section"
+          >
+            <TypeSelect
+              :key="typeSelectKey"
+              :types="selectedSourceData.types"
+            />
+          </div>
+        </div>
       </div>
 
       <BaseClearButton

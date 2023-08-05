@@ -326,22 +326,18 @@ p
   .option-text
     @extend .flex-full, .text-align-center
 
-.main-source-select-container
+.main-model-source-select-container
   @extend .d-flex, .align-items-center
-
-.main-source-select-content
-  @extend .d-flex, .align-items-center, .flex-full
+  & > .content
+    @extend .d-flex, .align-items-center
+    .type-section
+      margin-top: 1em
+    .right-section
+      width: 230px
+      margin-left: 1em
 
 .main-source-select
   width: 220px
-
-.main-source-select-type-select
-  width: 150px
-  margin-left: 1em !important
-
-.main-source-select-item-select
-  width: 200px
-  margin-left: 1em !important
 
 .main-sidebar-item
   @extend .no-padding, .d-flex

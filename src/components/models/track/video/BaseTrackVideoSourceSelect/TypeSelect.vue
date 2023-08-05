@@ -1,6 +1,5 @@
 <template>
   <BaseDropdownContainer
-    class="main-source-select-type-select"
     :header="headerText"
     @select="handleSelect"
   >
