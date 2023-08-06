@@ -1,7 +1,5 @@
 <template>
-  <BaseInputContainer
-    class="fluid field"
-  >
+  <BaseFormInputContainer>
     <textarea
       type="text"
       name="description"
@@ -10,17 +8,17 @@
       :value="value"
       @keypress.ctrl.enter="handleCtrlEnter"
     />
-  </BaseInputContainer>
+  </BaseFormInputContainer>
 </template>
 
 <script>
-import BaseInputContainer
-  from '@/components/containers/inputs/BaseInputContainer.vue'
+import BaseFormInputContainer
+  from '@/components/containers/inputs/form/BaseFormInputContainer.vue'
 
 export default {
   name: 'BaseDescriptionField',
   components: {
-    BaseInputContainer
+    BaseFormInputContainer
   },
   props: {
     value: String

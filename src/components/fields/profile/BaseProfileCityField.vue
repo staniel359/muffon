@@ -1,24 +1,22 @@
 <template>
-  <BaseInputContainer
-    class="fluid field"
-  >
+  <BaseFormInputContainer>
     <input
       type="text"
       name="city"
       :placeholder="cityText"
       :value="city"
     >
-  </BaseInputContainer>
+  </BaseFormInputContainer>
 </template>
 
 <script>
-import BaseInputContainer
-  from '@/components/containers/inputs/BaseInputContainer.vue'
+import BaseFormInputContainer
+  from '@/components/containers/inputs/form/BaseFormInputContainer.vue'
 
 export default {
   name: 'BaseProfileCityField',
   components: {
-    BaseInputContainer
+    BaseFormInputContainer
   },
   props: {
     city: String
