@@ -12,9 +12,8 @@
 <script>
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
-import {
-  community as communityFormOptions
-} from '@/helpers/formatters/plugins/semantic/options/form'
+import communityFormOptions
+  from '@/helpers/formatters/plugins/semantic/options/form/community'
 import updateCommunity from '@/helpers/actions/api/community/update'
 import notificationMixin from '@/mixins/notificationMixin'
 

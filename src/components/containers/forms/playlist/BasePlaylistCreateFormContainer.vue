@@ -16,9 +16,8 @@ import {
 import profileStore from '@/stores/profile'
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
-import {
-  playlist as playlistFormOptions
-} from '@/helpers/formatters/plugins/semantic/options/form'
+import playlistFormOptions
+  from '@/helpers/formatters/plugins/semantic/options/form/playlist'
 import createPlaylist from '@/helpers/actions/api/playlist/create'
 import {
   playlist as formatProfilePlaylistLink

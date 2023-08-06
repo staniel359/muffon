@@ -12,9 +12,8 @@
 <script>
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
-import {
-  update as passwordUpdateFormOptions
-} from '@/helpers/formatters/plugins/semantic/options/form/password'
+import passwordUpdateFormOptions
+  from '@/helpers/formatters/plugins/semantic/options/form/password/update'
 import updatePassword from '@/helpers/actions/api/password/update'
 
 export default {

@@ -12,9 +12,8 @@
 <script>
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
-import {
-  playlist as playlistFormOptions
-} from '@/helpers/formatters/plugins/semantic/options/form'
+import playlistFormOptions
+  from '@/helpers/formatters/plugins/semantic/options/form/playlist'
 import updatePlaylist from '@/helpers/actions/api/playlist/update'
 import notificationMixin from '@/mixins/notificationMixin'
 

@@ -12,9 +12,8 @@
 <script>
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
-import {
-  update as profileUpdateFormOptions
-} from '@/helpers/formatters/plugins/semantic/options/form/profile'
+import profileUpdateFormOptions
+  from '@/helpers/formatters/plugins/semantic/options/form/profile/update'
 import {
   birthdate as formatBirthdate
 } from '@/helpers/formatters/dateTimeString'

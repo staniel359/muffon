@@ -16,9 +16,8 @@ import {
 import profileStore from '@/stores/profile'
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
-import {
-  login as loginFormOptions
-} from '@/helpers/formatters/plugins/semantic/options/form'
+import profileLoginFormOptions
+  from '@/helpers/formatters/plugins/semantic/options/form/profile/login'
 import createSession from '@/helpers/actions/api/session/create'
 import getProfile from '@/helpers/actions/api/profile/get'
 import {
@@ -52,7 +51,7 @@ export default {
       }
     ),
     options () {
-      return loginFormOptions(
+      return profileLoginFormOptions(
         {
           onSuccess: this.handleSuccess
         }
