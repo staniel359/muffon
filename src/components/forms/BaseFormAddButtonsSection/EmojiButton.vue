@@ -17,9 +17,8 @@
 <script>
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseEmojiPopup from '@/components/popups/BaseEmojiPopup.vue'
-import {
-  emoji as emojiPopupOptions
-} from '@/helpers/formatters/plugins/semantic/options/popup'
+import emojiPopupOptions
+  from '@/helpers/formatters/plugins/semantic/options/popup/emoji'
 import popupMixin from '@/mixins/popupMixin'
 import {
   reposition as repositionPopup

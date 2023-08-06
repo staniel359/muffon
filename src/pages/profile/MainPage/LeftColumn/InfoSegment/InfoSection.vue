@@ -18,9 +18,8 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseProfileInfoPopup
   from '@/components/popups/profile/BaseProfileInfoPopup.vue'
 import popupMixin from '@/mixins/popupMixin'
-import {
-  profileInfo as profileInfoPopupOptions
-} from '@/helpers/formatters/plugins/semantic/options/popup'
+import profileInfoPopupOptions
+  from '@/helpers/formatters/plugins/semantic/options/popup/profileInfo'
 
 export default {
   name: 'InfoSection',

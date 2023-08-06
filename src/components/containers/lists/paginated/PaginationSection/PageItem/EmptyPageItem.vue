@@ -24,9 +24,8 @@
 <script>
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BasePageSelectPopup from '@/components/popups/BasePageSelectPopup.vue'
-import {
-  pageSelect as pageSelectPopupOptions
-} from '@/helpers/formatters/plugins/semantic/options/popup'
+import pageSelectPopupOptions
+  from '@/helpers/formatters/plugins/semantic/options/popup/pageSelect'
 import popupMixin from '@/mixins/popupMixin'
 
 export default {

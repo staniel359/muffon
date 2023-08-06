@@ -23,9 +23,8 @@
 <script>
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseSourcePopup from '@/components/popups/BaseSourcePopup.vue'
-import {
-  source as sourcePopupOptions
-} from '@/helpers/formatters/plugins/semantic/options/popup'
+import sourcePopupOptions
+  from '@/helpers/formatters/plugins/semantic/options/popup/source'
 import popupMixin from '@/mixins/popupMixin'
 
 export default {

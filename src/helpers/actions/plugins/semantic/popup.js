@@ -1,3 +1,7 @@
+import {
+  changeClass
+} from '@/helpers/actions/plugins/jquery'
+
 export function set (
   element,
   options
@@ -50,5 +54,52 @@ export function destroy (
     element
   ).popup(
     'destroy'
+  )
+}
+
+export function handleFadeShow (
+  element,
+  direction
+) {
+  function changeShowClass () {
+    changeClass(
+      element,
+      'fade in',
+      `fade ${direction} in`
+    )
+  }
+
+  setTimeout(
+    changeShowClass,
+    0
+  )
+}
+
+export function handleFadeVisible (
+  element,
+  direction
+) {
+  changeClass(
+    element,
+    'center',
+    `${direction} center`
+  )
+}
+
+export function handleFadeHide (
+  element,
+  direction
+) {
+  function changeHideClass () {
+    changeClass(
+      element,
+      'fade out',
+      `fade ${direction} out`
+    )
+  }
+
+  setTimeout(
+    changeHideClass,
+    0
   )
 }

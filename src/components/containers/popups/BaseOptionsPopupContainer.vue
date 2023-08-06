@@ -33,9 +33,8 @@
 <script>
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseOptionsPopupMenuContainer from './BaseOptionsPopupMenuContainer.vue'
-import {
-  options as optionsPopupOptions
-} from '@/helpers/formatters/plugins/semantic/options/popup'
+import optionsPopupOptions
+  from '@/helpers/formatters/plugins/semantic/options/popup/options'
 import popupMixin from '@/mixins/popupMixin'
 import {
   show as showPopup,

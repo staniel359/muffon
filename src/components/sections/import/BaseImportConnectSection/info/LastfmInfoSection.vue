@@ -19,9 +19,8 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseLastfmImportInfoPopup
   from '@/components/popups/import/BaseLastfmImportInfoPopup.vue'
 import popupMixin from '@/mixins/popupMixin'
-import {
-  lastfmImportInfo as lastfmImportInfoPopupOptions
-} from '@/helpers/formatters/plugins/semantic/options/popup'
+import lastfmImportInfoPopupOptions
+  from '@/helpers/formatters/plugins/semantic/options/popup/lastfmImportInfo'
 
 export default {
   name: 'LastfmInfoSection',

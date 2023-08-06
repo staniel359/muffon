@@ -57,9 +57,8 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseOptionsPopupMenuContainer
   from '@/components/containers/popups/BaseOptionsPopupMenuContainer.vue'
 import popupMixin from '@/mixins/popupMixin'
-import {
-  optionsSubmenu as optionsSubmenuPopupOptions
-} from '@/helpers/formatters/plugins/semantic/options/popup'
+import optionsSubmenuPopupOptions
+  from '@/helpers/formatters/plugins/semantic/options/popup/optionsSubmenu'
 
 const OptionsMenu =
   defineAsyncComponent(

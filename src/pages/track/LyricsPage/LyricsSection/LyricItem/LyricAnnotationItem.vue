@@ -36,9 +36,8 @@ import {
   reposition as repositionPopup,
   destroy as destroyPopup
 } from '@/helpers/actions/plugins/semantic/popup'
-import {
-  lyricsAnnotation as lyricsAnnotationPopupOptions
-} from '@/helpers/formatters/plugins/semantic/options/popup'
+import lyricsAnnotationPopupOptions
+  from '@/helpers/formatters/plugins/semantic/options/popup/lyricsAnnotation'
 
 export default {
   name: 'LyricAnnotationItem',

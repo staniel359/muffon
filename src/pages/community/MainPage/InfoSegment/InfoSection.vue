@@ -18,9 +18,8 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseCommunityInfoPopup
   from '@/components/popups/community/BaseCommunityInfoPopup.vue'
 import popupMixin from '@/mixins/popupMixin'
-import {
-  communityInfo as communityInfoPopupOptions
-} from '@/helpers/formatters/plugins/semantic/options/popup'
+import communityInfoPopupOptions
+  from '@/helpers/formatters/plugins/semantic/options/popup/communityInfo'
 
 export default {
   name: 'InfoSection',

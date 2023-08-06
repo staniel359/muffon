@@ -9,9 +9,8 @@ import {
   hide as hidePopup,
   destroy as destroyPopup
 } from '@/helpers/actions/plugins/semantic/popup'
-import {
-  artist as artistPopupOptions
-} from '@/helpers/formatters/plugins/semantic/options/popup'
+import artistInfoPopupOptions
+  from '@/helpers/formatters/plugins/semantic/options/popup/artistInfo'
 
 export default {
   components: {
@@ -55,7 +54,7 @@ export default {
       return this.$refs.link.$el
     },
     popupOptions () {
-      return artistPopupOptions(
+      return artistInfoPopupOptions(
         {
           html: this.popup,
           onShow: this.handleShow,

@@ -23,9 +23,8 @@ import {
 import audioStore from '@/stores/audio'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseVolumePopup from '@/components/popups/BaseVolumePopup.vue'
-import {
-  volume as volumePopupOptions
-} from '@/helpers/formatters/plugins/semantic/options/popup'
+import volumePopupOptions
+  from '@/helpers/formatters/plugins/semantic/options/popup/volume'
 import popupMixin from '@/mixins/popupMixin'
 
 export default {

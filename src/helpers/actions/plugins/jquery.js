@@ -47,3 +47,25 @@ export function insertAfter (
     after
   )
 }
+
+export function changeClass (
+  element,
+  className,
+  value
+) {
+  const elementClassName =
+    element[0].className
+
+  const newClassName =
+    elementClassName.replace(
+      className,
+      value
+    )
+
+  $(
+    element
+  ).attr(
+    'class',
+    newClassName
+  )
+}
