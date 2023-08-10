@@ -1,7 +1,5 @@
 <template>
-  <BaseSegmentContainer
-    class="raised main-segment-container"
-  >
+  <BaseSegmentContainer>
     <BaseCountrySelectSection
       :country="country"
       @select="handleCountrySelect"

@@ -1,6 +1,7 @@
 <template>
   <BaseTabsSegmentContainer
     :tabs="tabs"
+    is-attached
   >
     <template
       #default="slotProps"

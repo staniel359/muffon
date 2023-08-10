@@ -3,15 +3,23 @@
     :key="refreshKey"
     :is-get-data="false"
   >
-    <TopSegment
-      :country="country"
-      @country-select="handleCountrySelect"
-    />
+    <div
+      :class="[
+        'ui raised segments main-segments',
+        'main-segment-container',
+        'main-page-segment-container'
+      ]"
+    >
+      <TopSegment
+        :country="country"
+        @country-select="handleCountrySelect"
+      />
 
-    <TabsSegment
-      :key="key"
-      :country="country"
-    />
+      <TabsSegment
+        :key="key"
+        :country="country"
+      />
+    </div>
   </BaseTopPageContainer>
 </template>
 
