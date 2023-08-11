@@ -662,6 +662,9 @@
       },
       "playlists": {
         "playlists": "{counter} wurde zur Playlisten hinzugefügt | {counter} wurden zur Playlisten hinzugefügt"
+      },
+      "favorites": {
+        "tracks": "{counter} wurde zu den Favoriten hinzugefügt | {counter} wurden zu den Favoriten hinzugefügt"
       }
     },
     "error": "{counter} konnte nicht hinzugefügt werden:"

@@ -662,6 +662,9 @@
       },
       "playlists": {
         "playlists": "{counter} aggiunto alla playlist | {counter} aggiunti alla playlist"
+      },
+      "favorites": {
+        "tracks": "{counter} aggiunto ai preferiti | {counter} aggiunti ai preferiti"
       }
     },
     "error": "{counter} non aggiunto:"

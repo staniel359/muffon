@@ -662,6 +662,9 @@
       },
       "playlists": {
         "playlists": "{counter} было дададзена ў спісы | {counter} быў дадазены ў спісы | {counter} было дададзена ў спісы"
+      },
+      "favorites": {
+        "tracks": "{counter} было дададзена ў абранае | {counter} была дададзена ў абранае | {counter} было дададзена ў абранае"
       }
     },
     "error": "{counter} не ўдалося дадаць:"

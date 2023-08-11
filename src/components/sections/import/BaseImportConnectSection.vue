@@ -30,6 +30,9 @@
 </template>
 
 <script>
+import {
+  snakeCase
+} from 'snake-case'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import ImportButton from './BaseImportConnectSection/ImportButton.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
@@ -75,9 +78,14 @@ export default {
       return {
         source: this.source,
         counters: [
-          this.scope
+          this.scopeFormatted
         ]
       }
+    },
+    scopeFormatted () {
+      return snakeCase(
+        this.scope
+      )
     },
     infoComponent () {
       return this.infoComponentsData[

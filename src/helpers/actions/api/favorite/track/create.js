@@ -7,6 +7,7 @@ export default function (
     artistName,
     albumTitle,
     imageUrl,
+    created,
     sourceData,
     audioData,
     albumSourceData
@@ -24,6 +25,7 @@ export default function (
     artist: artistName,
     album: albumTitle,
     image: imageUrl,
+    created,
     source: sourceData,
     audio: audioData,
     album_source: albumSourceData

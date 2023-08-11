@@ -9,17 +9,17 @@
     <BaseSegmentContainer
       v-if="isWithTopSegment"
     >
-      <div class="top-section">
-        <div class="top-left-section">
+      <div class="main-page-top-section">
+        <div class="section">
           <slot
             name="top"
           />
         </div>
 
-        <div class="top-right-section">
+        <div class="section">
           <div
             v-if="isWithOrderChange"
-            class="top-right-section-item"
+            class="section-item"
           >
             <BaseOrderSelect
               :order="order"
@@ -30,7 +30,7 @@
 
           <div
             v-if="isWithViewChange"
-            class="top-right-section-item"
+            class="section-item"
           >
             <BaseViewSelect
               :key="viewSelectKey"
@@ -41,7 +41,7 @@
 
           <div
             v-if="isWithOptions"
-            class="top-right-section-item"
+            class="section-item"
           >
             <slot
               name="options"
@@ -211,16 +211,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.top-section
-  @extend .d-flex, .align-items-center, .justify-content-space-between
-
-.top-left-section
-  @extend .d-flex, .align-items-center
-
-.top-right-section
-  @extend .d-flex, .align-items-center
-
-.top-right-section-item
-  margin-left: 1.5em
-</style>
+<style lang="sass" scoped></style>

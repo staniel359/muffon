@@ -3,71 +3,55 @@
     :key="refreshKey"
     :profile-id="profileId"
   >
-    <BaseTabsSegmentContainer
-      :tabs="tabs"
+    <div
+      :class="[
+        'ui raised segments main-segments',
+        'main-segment-container',
+        'main-page-segment-container'
+      ]"
     >
-      <template
-        #default="slotProps"
-      >
-        <Component
-          :is="slotProps.component"
-          :class="slotProps.class"
-          :is-active="slotProps.isActive"
-          :profile-id="profileId"
-          @focus="slotProps.handleFocus"
-        />
-      </template>
-    </BaseTabsSegmentContainer>
+      <TopSegment
+        v-if="isSelf"
+      />
+
+      <TabsSegment
+        :profile-id="profileId"
+      />
+    </div>
   </BaseProfileFavoritesPageContainer>
 </template>
 
 <script>
 import BaseProfileFavoritesPageContainer
   from '@/components/containers/pages/profile/favorites/BaseProfileFavoritesPageContainer.vue'
-import BaseTabsSegmentContainer
-  from '@/components/containers/segments/tabs/BaseTabsSegmentContainer.vue'
-import ArtistsTab from './MainPage/ArtistsTab.vue'
-import AlbumsTab from './MainPage/AlbumsTab.vue'
-import TracksTab from './MainPage/TracksTab.vue'
-import VideosTab from './MainPage/VideosTab.vue'
+import TopSegment from './MainPage/TopSegment.vue'
+import TabsSegment from './MainPage/TabsSegment.vue'
 import pageMixin from '@/mixins/pageMixin'
+import {
+  isCurrentProfile
+} from '@/helpers/utils'
 
 export default {
   name: 'MainPage',
   components: {
     BaseProfileFavoritesPageContainer,
-    BaseTabsSegmentContainer,
-    ArtistsTab,
-    AlbumsTab,
-    TracksTab,
-    VideosTab
+    TopSegment,
+    TabsSegment
   },
   mixins: [
     pageMixin
   ],
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
-  data () {
-    return {
-      tabs: [
-        {
-          nameCode: 'navigation.artists',
-          component: 'ArtistsTab'
-        },
-        {
-          nameCode: 'navigation.albums',
-          component: 'AlbumsTab'
-        },
-        {
-          nameCode: 'navigation.tracks',
-          component: 'TracksTab'
-        },
-        {
-          nameCode: 'navigation.videos',
-          component: 'VideosTab'
-        }
-      ]
+  computed: {
+    isSelf () {
+      return isCurrentProfile(
+        this.profileId
+      )
     }
   }
 }
