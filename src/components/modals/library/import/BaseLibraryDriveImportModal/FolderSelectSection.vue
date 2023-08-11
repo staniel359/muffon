@@ -54,7 +54,7 @@ export default {
   computed: {
     selectText () {
       return this.$t(
-        'actions.folder.select'
+        'actions.selectModel.folder'
       )
     }
   },

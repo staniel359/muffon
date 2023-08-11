@@ -8,16 +8,27 @@
       <template
         v-if="isRenderAddOption"
       >
-        <AddOption
+        <BaseAddOption
           v-if="slotProps.isVisible"
-          :is-connections="isConnections"
-          @search-option-click="handleAddSearchOptionClick"
-          @account-option-click="handleAddAccountOptionClick"
-          @folder-option-click="handleAddFolderOptionClick"
+          is-with-search-option
+          @search-option-click="handleSearchAddOptionClick"
         />
 
         <BaseLibrarySearchImportModal
           ref="searchModal"
+        />
+      </template>
+
+      <template
+        v-if="isRenderImportOption"
+      >
+        <BaseImportOption
+          v-if="slotProps.isVisible"
+          :is-connections="isConnections"
+          is-with-account-option
+          is-with-drive-option
+          @account-option-click="handleAccountImportOptionClick"
+          @drive-option-click="handleDriveImportOptionClick"
         />
 
         <BaseLibraryAccountImportModal
@@ -25,8 +36,8 @@
           ref="accountModal"
         />
 
-        <BaseLibraryFolderImportModal
-          ref="folderModal"
+        <BaseLibraryDriveImportModal
+          ref="driveModal"
         />
       </template>
     </template>
@@ -40,25 +51,28 @@ import {
 import profileStore from '@/stores/profile'
 import BaseOptionsPopupContainer
   from '@/components/containers/popups/BaseOptionsPopupContainer.vue'
-import AddOption from './BaseLibraryOptionsPopup/AddOption.vue'
+import BaseAddOption from '@/components/popups/options/BaseAddOption.vue'
 import BaseLibrarySearchImportModal
   from '@/components/modals/library/import/BaseLibrarySearchImportModal.vue'
+import BaseImportOption from '@/components/popups/options/BaseImportOption.vue'
 import BaseLibraryAccountImportModal
   from '@/components/modals/library/import/BaseLibraryAccountImportModal.vue'
-import BaseLibraryFolderImportModal
-  from '@/components/modals/library/import/BaseLibraryFolderImportModal.vue'
+import BaseLibraryDriveImportModal
+  from '@/components/modals/library/import/BaseLibraryDriveImportModal.vue'
 
 export default {
   name: 'BaseLibraryOptionsPopup',
   components: {
     BaseOptionsPopupContainer,
-    AddOption,
+    BaseAddOption,
     BaseLibrarySearchImportModal,
+    BaseImportOption,
     BaseLibraryAccountImportModal,
-    BaseLibraryFolderImportModal
+    BaseLibraryDriveImportModal
   },
   props: {
-    isWithAddOption: Boolean
+    isWithAddOption: Boolean,
+    isWithImportOption: Boolean
   },
   computed: {
     ...mapState(
@@ -70,13 +84,20 @@ export default {
     ),
     isRender () {
       return (
-        this.isRenderAddOption
+        this.isRenderAddOption ||
+          this.isRenderImportOption
       )
     },
     isRenderAddOption () {
       return (
         this.profileId &&
           this.isWithAddOption
+      )
+    },
+    isRenderImportOption () {
+      return (
+        this.profileId &&
+          this.isWithImportOption
       )
     },
     isConnections () {
@@ -93,28 +114,28 @@ export default {
     }
   },
   methods: {
-    handleAddSearchOptionClick () {
-      this.showAddSearchModal()
+    handleSearchAddOptionClick () {
+      this.showSearchAddModal()
     },
-    handleAddAccountOptionClick () {
-      this.showAddAccountModal()
+    handleAccountImportOptionClick () {
+      this.showAccountImportModal()
     },
-    handleAddFolderOptionClick () {
-      this.showAddFolderModal()
+    handleDriveImportOptionClick () {
+      this.showDriveImportModal()
     },
-    showAddSearchModal () {
+    showSearchAddModal () {
       this.$refs
         .searchModal
         .show()
     },
-    showAddAccountModal () {
+    showAccountImportModal () {
       this.$refs
         .accountModal
         .show()
     },
-    showAddFolderModal () {
+    showDriveImportModal () {
       this.$refs
-        .folderModal
+        .driveModal
         .show()
     }
   }

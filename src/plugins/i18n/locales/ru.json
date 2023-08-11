@@ -142,11 +142,14 @@
     "search": "Искать",
     "filter": "Отфильтровать",
     "confirm": "Подтвердить",
-    "from": {
+    "import": "Загрузить",
+    "addFrom": {
       "search": "Из поиска",
-      "folder": "Из папки",
-      "account": "Из учётной записи",
       "library": "Из библиотеки"
+    },
+    "importFrom": {
+      "drive": "С диска",
+      "account": "Из учётной записи"
     },
     "searchIn": {
       "source": "Искать в источнике",
@@ -156,12 +159,12 @@
       "video": "Искать видео",
       "lyrics": "Искать текст"
     },
-    "import": {
+    "importFromAccount": {
       "lastfm": "Загрузить из Last.FM",
       "spotify": "Загрузить из Spotify"
     },
-    "folder": {
-      "select": "Выбрать папку"
+    "selectModel": {
+      "folder": "Выбрать папку"
     },
     "createModel": {
       "playlist": "Создать список",

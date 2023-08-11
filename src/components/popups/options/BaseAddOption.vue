@@ -10,13 +10,17 @@
 import BaseOption from '@/components/popups/options/BaseOption.vue'
 
 export default {
-  name: 'AddOption',
+  name: 'BaseAddOption',
   components: {
     BaseOption
   },
   inject: [
     'hidePopup'
   ],
+  props: {
+    isWithSearchOption: Boolean,
+    isWithLibraryOption: Boolean
+  },
   emits: [
     'searchOptionClick',
     'libraryOptionClick'
@@ -29,23 +33,37 @@ export default {
     },
     options () {
       return [
-        {
-          icon: 'search',
-          text: this.$t(
-            'actions.from.search'
-          ),
-          onClick:
-            this.handleSearchOptionClick
-        },
-        {
-          icon: 'library',
-          text: this.$t(
-            'actions.from.library'
-          ),
-          onClick:
-            this.handleLibraryOptionClick
-        }
-      ]
+        (
+          this.isWithSearchOption &&
+            this.searchOptionData
+        ),
+        (
+          this.isWithLibraryOption &&
+            this.libraryOptionData
+        )
+      ].filter(
+        e => e
+      )
+    },
+    searchOptionData () {
+      return {
+        icon: 'search',
+        text: this.$t(
+          'actions.addFrom.search'
+        ),
+        onClick:
+          this.handleSearchOptionClick
+      }
+    },
+    libraryOptionData () {
+      return {
+        icon: 'library',
+        text: this.$t(
+          'actions.addFrom.library'
+        ),
+        onClick:
+          this.handleLibraryOptionClick
+      }
     }
   },
   methods: {

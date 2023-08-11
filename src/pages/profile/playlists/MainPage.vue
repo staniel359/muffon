@@ -28,7 +28,7 @@
     >
       <BasePlaylistsOptionsPopup
         is-with-create-option
-        is-with-add-option
+        is-with-import-option
       />
     </template>
 

@@ -8,11 +8,12 @@
       <template
         v-if="isRenderAddOption"
       >
-        <AddOption
+        <BaseAddOption
           v-if="slotProps.isVisible"
           :playlist-id="playlistId"
-          @search-option-click="handleAddSearchOptionClick"
-          @library-option-click="handleAddLibraryOptionClick"
+          is-with-search-option
+          @search-option-click="handleSearchAddOptionClick"
+          @library-option-click="handleLibraryAddOptionClick"
         />
 
         <BasePlaylistSearchImportModal
@@ -76,7 +77,7 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import AddOption from './BasePlaylistOptionsPopup/AddOption.vue'
+import BaseAddOption from '@/components/popups/options/BaseAddOption.vue'
 import BaseOptionsPopupContainer
   from '@/components/containers/popups/BaseOptionsPopupContainer.vue'
 import BaseShareOption
@@ -112,7 +113,7 @@ export default {
   name: 'BasePlaylistOptionsPopup',
   components: {
     BaseOptionsPopupContainer,
-    AddOption,
+    BaseAddOption,
     BasePlaylistSearchImportModal,
     BasePlaylistLibraryImportModal,
     BaseShareOption,
@@ -184,11 +185,11 @@ export default {
     }
   },
   methods: {
-    handleAddSearchOptionClick () {
-      this.showAddSearchModal()
+    handleSearchAddOptionClick () {
+      this.showSearchAddModal()
     },
-    handleAddLibraryOptionClick () {
-      this.showAddLibraryModal()
+    handleLibraryAddOptionClick () {
+      this.showLibraryAddModal()
     },
     handleEditOptionClick () {
       this.showEditModal()
@@ -201,12 +202,12 @@ export default {
         'deleted'
       )
     },
-    showAddSearchModal () {
+    showSearchAddModal () {
       this.$refs
         .searchModal
         .show()
     },
-    showAddLibraryModal () {
+    showLibraryAddModal () {
       this.$refs
         .libraryModal
         .show()

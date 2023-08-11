@@ -51,7 +51,7 @@ export default {
     },
     importText () {
       return this.$t(
-        `actions.import.${this.source}`
+        `actions.importFromAccount.${this.source}`
       )
     },
     color () {

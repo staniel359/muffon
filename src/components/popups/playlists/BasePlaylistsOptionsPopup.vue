@@ -10,12 +10,13 @@
       />
 
       <template
-        v-if="isRenderAddOption"
+        v-if="isRenderImportOption"
       >
-        <AddOption
+        <BaseImportOption
           v-if="slotProps.isVisible"
           :is-connections="isConnections"
-          @account-option-click="handleAddAccountOptionClick"
+          is-with-account-option
+          @account-option-click="handleAccountImportOptionClick"
         />
 
         <BasePlaylistsAccountImportModal
@@ -35,7 +36,7 @@ import profileStore from '@/stores/profile'
 import BaseOptionsPopupContainer
   from '@/components/containers/popups/BaseOptionsPopupContainer.vue'
 import CreateOption from './BasePlaylistsOptionsPopup/CreateOption.vue'
-import AddOption from './BasePlaylistsOptionsPopup/AddOption.vue'
+import BaseImportOption from '@/components/popups/options/BaseImportOption.vue'
 import BasePlaylistsAccountImportModal
   from '@/components/modals/playlists/import/BasePlaylistsAccountImportModal.vue'
 
@@ -44,12 +45,12 @@ export default {
   components: {
     BaseOptionsPopupContainer,
     CreateOption,
-    AddOption,
+    BaseImportOption,
     BasePlaylistsAccountImportModal
   },
   props: {
     isWithCreateOption: Boolean,
-    isWithAddOption: Boolean
+    isWithImportOption: Boolean
   },
   computed: {
     ...mapState(
@@ -62,7 +63,7 @@ export default {
     isRender () {
       return (
         this.isRenderCreateOption ||
-          this.isRenderAddOption
+          this.isRenderImportOption
       )
     },
     isRenderCreateOption () {
@@ -71,10 +72,10 @@ export default {
           this.isWithCreateOption
       )
     },
-    isRenderAddOption () {
+    isRenderImportOption () {
       return (
         this.profileId &&
-          this.isWithAddOption
+          this.isWithImportOption
       )
     },
     isConnections () {
@@ -91,10 +92,10 @@ export default {
     }
   },
   methods: {
-    handleAddAccountOptionClick () {
-      this.showAddAccountModal()
+    handleAccountImportOptionClick () {
+      this.showAccountImportModal()
     },
-    showAddAccountModal () {
+    showAccountImportModal () {
       this.$refs
         .accountModal
         .show()

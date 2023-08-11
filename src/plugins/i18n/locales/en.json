@@ -142,11 +142,14 @@
     "search": "Search",
     "filter": "Filter",
     "confirm": "Confirm",
-    "from": {
+    "import": "Import",
+    "addFrom": {
       "search": "From search",
-      "folder": "From folder",
-      "account": "From account",
       "library": "From library"
+    },
+    "importFrom": {
+      "drive": "From drive",
+      "account": "From account"
     },
     "searchIn": {
       "source": "Search in source",
@@ -156,12 +159,12 @@
       "video": "Search for video",
       "lyrics": "Search for lyrics"
     },
-    "import": {
+    "importFromAccount": {
       "lastfm": "Import from Last.FM",
       "spotify": "Import from Spotify"
     },
-    "folder": {
-      "select": "Select folder"
+    "selectModel": {
+      "folder": "Select folder"
     },
     "createModel": {
       "playlist": "Create playlist",

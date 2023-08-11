@@ -18,7 +18,6 @@
 
         <ExtraSegment
           v-if="isSelf"
-          :profile-id="profileId"
         />
       </div>
 

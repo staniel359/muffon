@@ -24,15 +24,15 @@
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import FolderSelectSection
-  from './BaseLibraryFolderImportModal/FolderSelectSection.vue'
+  from './BaseLibraryDriveImportModal/FolderSelectSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import ImportSection
-  from './BaseLibraryFolderImportModal/ImportSection.vue'
+  from './BaseLibraryDriveImportModal/ImportSection.vue'
 import BaseLibrarySaveSection
   from '@/components/save/library/BaseLibrarySaveSection.vue'
 
 export default {
-  name: 'BaseLibraryFolderImportModal',
+  name: 'BaseLibraryDriveImportModal',
   components: {
     BaseModalContainer,
     FolderSelectSection,

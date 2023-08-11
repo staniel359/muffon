@@ -142,11 +142,14 @@
     "search": "Шукаць",
     "filter": "Адфільтраваць",
     "confirm": "Пацвердзіць",
-    "from": {
+    "import": "Загрузіць",
+    "addFrom": {
       "search": "З пошуку",
-      "folder": "З тэчкі",
-      "account": "З уліковага запісу",
       "library": "З бібліятэкі"
+    },
+    "importFrom": {
+      "drive": "З дыска",
+      "account": "З уліковага запісу"
     },
     "searchIn": {
       "source": "Шукаць у крыніцы",
@@ -156,12 +159,12 @@
       "video": "Шукаць відэа",
       "lyrics": "Шукаць тэкст"
     },
-    "import": {
+    "importFromAccount": {
       "lastfm": "Загрузіць з Last.FM",
       "spotify": "Загрузіць з Spotify"
     },
-    "folder": {
-      "select": "Выбраць тэчку"
+    "selectModel": {
+      "folder": "Выбраць тэчку"
     },
     "createModel": {
       "playlist": "Стварыць спіс",

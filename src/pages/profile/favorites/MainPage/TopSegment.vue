@@ -6,7 +6,7 @@
       <div class="section">
         <div class="section-item">
           <BaseFavoritesOptionsPopup
-            is-with-add-option
+            is-with-import-option
           />
         </div>
       </div>
