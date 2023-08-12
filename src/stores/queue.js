@@ -12,7 +12,8 @@ const data = {
       isShuffle: null,
       tracks: null,
       tracksShuffled: null,
-      isClearOnPlayerClose: null
+      isClearOnPlayerClose: null,
+      isLoop: null
     }
   },
   getters: {
@@ -42,30 +43,67 @@ const data = {
         )
       }
 
-      return this.tracksComputed.findIndex(
-        isMatchedTrack
-      )
+      return this.tracksComputed
+        .findIndex(
+          isMatchedTrack
+        )
     },
     isStart () {
       return (
-        this.currentTrackIndex === 0
+        !this.isQueueTrack || (
+          this.currentTrackIndex ===
+            this.firstTrackIndex
+        )
       )
+    },
+    isQueueTrack () {
+      return (
+        this.currentTrackIndex >= 0
+      )
+    },
+    firstTrackIndex () {
+      return 0
     },
     isEnd () {
       return (
-        this.currentTrackIndex ===
-          this.tracksCount - 1
+        !this.isQueueTrack || (
+          this.currentTrackIndex ===
+            this.lastTrackIndex
+        )
+      )
+    },
+    lastTrackIndex () {
+      return (
+        this.tracksCount - 1
       )
     },
     previousTrack () {
       return this.tracksComputed[
-        this.currentTrackIndex - 1
+        this.previousTrackIndex
       ]
+    },
+    previousTrackIndex () {
+      if (this.isStart) {
+        return this.lastTrackIndex
+      } else {
+        return (
+          this.currentTrackIndex - 1
+        )
+      }
     },
     nextTrack () {
       return this.tracksComputed[
-        this.currentTrackIndex + 1
+        this.nextTrackIndex
       ]
+    },
+    nextTrackIndex () {
+      if (this.isEnd) {
+        return this.firstTrackIndex
+      } else {
+        return (
+          this.currentTrackIndex + 1
+        )
+      }
     }
   },
   actions: {
@@ -108,6 +146,11 @@ const data = {
       value
     ) {
       this.isClearOnPlayerClose = value
+    },
+    setIsLoop (
+      value
+    ) {
+      this.isLoop = value
     }
   }
 }

@@ -2,9 +2,17 @@
   <BaseSegmentContainer
     class="blurred header-section"
   >
-    <ShuffleButton
+    <div
       v-if="queueTracksCount"
-    />
+    >
+      <ShuffleButton
+        class="action-button"
+      />
+
+      <LoopButton
+        class="action-button"
+      />
+    </div>
 
     <h4
       class="ui header main-header tracks-count-block"
@@ -25,6 +33,7 @@ import queueStore from '@/stores/queue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import ShuffleButton from './HeaderSection/ShuffleButton.vue'
+import LoopButton from './HeaderSection/LoopButton.vue'
 import BaseQueueOptionsPopup
   from '@/components/popups/queue/BaseQueueOptionsPopup.vue'
 import {
@@ -36,6 +45,7 @@ export default {
   components: {
     BaseSegmentContainer,
     ShuffleButton,
+    LoopButton,
     BaseQueueOptionsPopup
   },
   computed: {
@@ -68,6 +78,10 @@ export default {
 .header-section
   @extend .d-flex, .align-items-center
   padding: calc(#{$navbarHeight} + 1em) 1em 1em 1em
+
+.action-button
+  &:not(:first-child)
+    margin-left: 0.75em !important
 
 .tracks-count-block
   @extend .flex-full, .text-align-center

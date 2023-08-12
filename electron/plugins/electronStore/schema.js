@@ -297,6 +297,10 @@ export default {
     type: 'boolean',
     default: false
   },
+  'queue.isLoop': {
+    type: 'boolean',
+    default: false
+  },
   'queue.isShuffle': {
     type: 'boolean',
     default: true

@@ -42,7 +42,8 @@ export default {
         isQueueGettingNext: 'isGettingNext',
         queueTracksCount: 'tracksCount',
         isQueueStart: 'isStart',
-        isQueueEnd: 'isEnd'
+        isQueueEnd: 'isEnd',
+        isQueueLoop: 'isLoop'
       }
     ),
     isDisabled () {
@@ -53,13 +54,17 @@ export default {
       )
     },
     isEdge () {
-      switch (this.position) {
-        case 'previous':
-          return this.isQueueStart
-        case 'next':
-          return this.isQueueEnd
-        default:
-          return false
+      if (this.isQueueLoop) {
+        return false
+      } else {
+        switch (this.position) {
+          case 'previous':
+            return this.isQueueStart
+          case 'next':
+            return this.isQueueEnd
+          default:
+            return false
+        }
       }
     },
     isGetting () {
