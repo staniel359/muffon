@@ -1,35 +1,39 @@
 <template>
-  <BaseDivider />
+  <div
+    v-show="!isLoading"
+  >
+    <BaseDivider />
 
-  <div class="pagination-container">
-    <BaseMenuContainer
-      class="small pagination"
-    >
-      <PreviousPageItem
-        :is-disabled="isPreviousPageDisabled"
-        @click="handlePreviousPageClick"
-      />
-
-      <template
-        v-if="!isPaginationSimple"
+    <div class="pagination-container">
+      <BaseMenuContainer
+        class="small pagination"
       >
-        <PageItem
-          v-for="page in totalPages"
-          :key="page"
-          :page="page"
-          :total-pages="totalPages"
-          :active-page="clientPage"
-          :is-disabled="isDisabled"
-          @click="handlePageClick"
-          @select="handlePageSelect"
+        <PreviousPageItem
+          :is-disabled="isPreviousPageDisabled"
+          @click="handlePreviousPageClick"
         />
-      </template>
 
-      <NextPageItem
-        :is-disabled="isNextPageDisabled"
-        @click="handleNextPageClick"
-      />
-    </BaseMenuContainer>
+        <template
+          v-if="!isPaginationSimple"
+        >
+          <PageItem
+            v-for="page in totalPages"
+            :key="page"
+            :page="page"
+            :total-pages="totalPages"
+            :active-page="clientPage"
+            :is-disabled="isDisabled"
+            @click="handlePageClick"
+            @select="handlePageSelect"
+          />
+        </template>
+
+        <NextPageItem
+          :is-disabled="isNextPageDisabled"
+          @click="handleNextPageClick"
+        />
+      </BaseMenuContainer>
+    </div>
   </div>
 </template>
 
