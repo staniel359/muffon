@@ -25,6 +25,11 @@ export const withTracks =
     isSourceWithTracks
   )
 
+export const withLyrics =
+  sources.filter(
+    isSourceWithLyrics
+  )
+
 export const albumAudio =
   audio.filter(
     isSourceWithAlbums
@@ -72,6 +77,12 @@ function isSourceWithTracks (
   sourceData
 ) {
   return sourceData.isWithTracks
+}
+
+function isSourceWithLyrics (
+  sourceData
+) {
+  return sourceData.isWithLyrics
 }
 
 function isNonAudioSource (

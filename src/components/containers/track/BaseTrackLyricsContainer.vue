@@ -11,6 +11,7 @@
       v-if="lyrics"
       :lyrics="lyrics"
       :track-id="trackId"
+      :source="source"
     />
   </BaseSegmentContainer>
 </template>
@@ -44,9 +45,12 @@ export default {
   computed: {
     trackArgs () {
       return {
-        source: 'genius',
+        source: this.source,
         trackId: this.trackId
       }
+    },
+    source () {
+      return this.selectedTrackData.source.name
     },
     trackId () {
       return this.selectedTrackData.source.id

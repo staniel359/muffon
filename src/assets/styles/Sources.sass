@@ -1,9 +1,10 @@
 $muffonIconUrl: url('@/assets/icons/muffon.png')
-$yandexMusicIconUrl: url('@/assets/icons/yandexmusic.png')
 $deezerIconUrl: url('@/assets/icons/deezer.png')
 $discogsIconUrl: url('@/assets/icons/discogs.png')
 $geniusIconUrl: url('@/assets/icons/genius.png')
 $musicBrainzIconUrl: url('@/assets/icons/musicbrainz.png')
+$musixMatchIconUrl: url('@/assets/icons/musixmatch.png')
+$yandexMusicIconUrl: url('@/assets/icons/yandexmusic.png')
 $youTubeMusicIconUrl: url('@/assets/icons/youtubemusic.png')
 
 .icon
@@ -29,12 +30,6 @@ $youTubeMusicIconUrl: url('@/assets/icons/youtubemusic.png')
   &:not(.colored)
     @extend .colorless
 
-.icon.yandexmusic
-  &:before
-    content: $yandexMusicIconUrl
-  &:not(.colored):before
-    @extend .colorless
-
 .icon.deezer
   &:before
     content: $deezerIconUrl !important
@@ -55,7 +50,19 @@ $youTubeMusicIconUrl: url('@/assets/icons/youtubemusic.png')
 
 .icon.musicbrainz
   &:before
-    content: $musicBrainzIconUrl !important
+    content: $musicBrainzIconUrl
+  &:not(.colored):before
+    @extend .colorless
+
+.icon.musixmatch
+  &:before
+    content: $musixMatchIconUrl
+  &:not(.colored):before
+    @extend .colorless
+
+.icon.yandexmusic
+  &:before
+    content: $yandexMusicIconUrl
   &:not(.colored):before
     @extend .colorless
 

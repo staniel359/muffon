@@ -21,8 +21,8 @@
         </div>
 
         <div
-          class="right-section"
           v-if="isRenderAlbumSelect"
+          class="right-section"
         >
           <AlbumSelect
             :key="albumSelectKey"

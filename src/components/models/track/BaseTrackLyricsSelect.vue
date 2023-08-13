@@ -1,8 +1,8 @@
 <template>
   <div>
-    <SelectSection
-      :scope="scope"
-      :query="query"
+    <BaseTrackLyricsSourceSelect
+      :track-data="trackData"
+      @reset="handleReset"
     />
 
     <LyricsSection
@@ -16,7 +16,8 @@
 </template>
 
 <script>
-import SelectSection from './BaseTrackLyricsSelect/SelectSection.vue'
+import BaseTrackLyricsSourceSelect
+  from '@/components/models/track/lyrics/BaseTrackLyricsSourceSelect.vue'
 import LyricsSection from './BaseTrackLyricsSelect/LyricsSection.vue'
 import {
   generateKey
@@ -25,7 +26,7 @@ import {
 export default {
   name: 'BaseTrackLyricsSelect',
   components: {
-    SelectSection,
+    BaseTrackLyricsSourceSelect,
     LyricsSection
   },
   provide () {
@@ -46,24 +47,7 @@ export default {
   data () {
     return {
       key: null,
-      selectedTrackData: null,
-      scope: 'tracks'
-    }
-  },
-  computed: {
-    query () {
-      return [
-        this.artistName,
-        this.trackTitle
-      ].join(
-        ' - '
-      )
-    },
-    artistName () {
-      return this.trackData.artist.name
-    },
-    trackTitle () {
-      return this.trackData.title
+      selectedTrackData: null
     }
   },
   watch: {
@@ -82,6 +66,9 @@ export default {
     },
     handleFocus () {
       this.focus()
+    },
+    handleReset () {
+      this.selectedTrackData = null
     },
     setSelectedTrackData (
       value

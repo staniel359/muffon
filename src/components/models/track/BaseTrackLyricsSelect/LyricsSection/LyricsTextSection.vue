@@ -34,6 +34,10 @@ export default {
     trackData: {
       type: Object,
       required: true
+    },
+    source: {
+      type: String,
+      required: true
     }
   },
   computed: {
@@ -54,7 +58,7 @@ export default {
     },
     sourceParams () {
       return {
-        source: 'genius',
+        source: this.source,
         trackId: this.trackId
       }
     }

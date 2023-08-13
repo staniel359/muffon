@@ -182,12 +182,29 @@ export default [
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
+    isWithLyrics: true,
     albumTypes: [
       'album'
     ],
     searchScopes: [
       'artists',
       'albums',
+      'tracks',
+      'lyrics'
+    ]
+  },
+  {
+    id: 'musixmatch',
+    icon: 'musixmatch',
+    name: 'MusixMatch',
+    isWithArtists: true,
+    isWithTracks: true,
+    isWithLyrics: true,
+    albumTypes: [
+      'album'
+    ],
+    searchScopes: [
+      'artists',
       'tracks',
       'lyrics'
     ]

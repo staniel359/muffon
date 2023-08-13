@@ -80,9 +80,12 @@ export default {
     },
     sourceParams () {
       return {
-        source: 'genius',
+        source: this.source,
         trackId: this.trackId
       }
+    },
+    source () {
+      return this.lyricsData.source.name
     },
     trackId () {
       return this.lyricsData.source.id
