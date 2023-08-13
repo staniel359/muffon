@@ -3,10 +3,13 @@
     :key="refreshKey"
     model="recommendation"
     :scope="scope"
+    :list-scope="listScope"
     :limit="limit"
     :order="order"
+    :view-id="viewId"
     is-with-top-segment
     is-with-order-change
+    is-with-view-change
   >
     <template
       #top
@@ -30,9 +33,10 @@
     <template
       #default="slotProps"
     >
-      <BaseArtistsExtendedList
+      <BaseArtistsList
         :artists="slotProps[scope]"
         :profile-id="profileId"
+        :view-id="viewId"
         is-with-library-option
         is-with-favorite-option
         is-with-bookmark-option
@@ -55,13 +59,11 @@ import BaseRecommendationsPaginatedPageContainer
   from '@/components/containers/pages/recommendations/BaseRecommendationsPaginatedPageContainer.vue'
 import BaseFilterButton from '@/components/buttons/BaseFilterButton.vue'
 import FilterSection from './MainPage/FilterSection.vue'
-import BaseArtistsExtendedList
-  from '@/components/lists/artists/BaseArtistsExtendedList.vue'
+import BaseArtistsList
+  from '@/components/lists/artists/BaseArtistsList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
 import pageMixin from '@/mixins/pageMixin'
-import {
-  artists as artistsLimits
-} from '@/helpers/data/limits'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'MainPage',
@@ -69,18 +71,18 @@ export default {
     BaseRecommendationsPaginatedPageContainer,
     BaseFilterButton,
     FilterSection,
-    BaseArtistsExtendedList
+    BaseArtistsList
   },
   mixins: [
     orderChangeMixin,
-    pageMixin
+    pageMixin,
+    viewChangeMixin
   ],
   data () {
     return {
       isShowFilter: false,
-      limit:
-        artistsLimits.extended.large,
       scope: 'recommendations',
+      listScope: 'artists',
       order: 'libraryArtistsCountDesc'
     }
   },

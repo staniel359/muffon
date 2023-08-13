@@ -59,6 +59,13 @@
           @link-active-change="handleCounterLinkActiveChange"
           @link-click="handleLinkClick"
         />
+
+        <RecommendationArtistsSection
+          v-if="isRecommendation"
+          class="description"
+          :recommendation-data="artistData"
+          @active-change="handleCounterLinkActiveChange"
+        />
       </div>
 
       <BaseSelfIcons
@@ -87,6 +94,7 @@
         :is-link-to-library="isLinkToLibrary"
         :is-bookmark="isBookmark"
         :is-favorite="isFavorite"
+        :is-recommendation="isRecommendation"
         :is-with-page-option="isWithPageOption"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
@@ -110,6 +118,9 @@
 </template>
 
 <script>
+import {
+  defineAsyncComponent
+} from 'vue'
 import BaseArtistLinkContainer
   from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
@@ -126,6 +137,13 @@ import BaseArtistOptionsPopup
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import selfMixin from '@/mixins/selfMixin'
 
+const RecommendationArtistsSection =
+  defineAsyncComponent(
+    () => import(
+      './ArtistItem/RecommendationArtistsSection.vue'
+    )
+  )
+
 export default {
   name: 'ArtistItem',
   components: {
@@ -137,6 +155,7 @@ export default {
     BaseArtistListenersCount,
     LibraryCountersSection,
     BaseSelfIcons,
+    RecommendationArtistsSection,
     BaseCreatedSection,
     BaseArtistOptionsPopup,
     BaseClearButton
@@ -173,6 +192,7 @@ export default {
     isImageSmall: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
+    isRecommendation: Boolean,
     isPaginated: Boolean,
     isWithCreated: Boolean,
     isWithModelIcon: Boolean

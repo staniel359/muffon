@@ -14,11 +14,14 @@
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
         :scope="scope"
+        :list-scope="listScope"
         :limit="limit"
         :order="order"
         :model="model"
         :is-with-top-segment="isWithTopSegment"
         :is-with-order-change="isWithOrderChange"
+        :is-with-view-change="isWithViewChange"
+        :view-id="viewId"
       >
         <template
           #top
@@ -69,11 +72,14 @@ export default {
       type: String,
       required: true
     },
+    listScope: String,
     limit: Number,
     order: String,
     model: String,
     isWithTopSegment: Boolean,
-    isWithOrderChange: Boolean
+    isWithOrderChange: Boolean,
+    isWithViewChange: Boolean,
+    viewId: String
   }
 }
 </script>

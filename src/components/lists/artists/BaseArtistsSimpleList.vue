@@ -26,6 +26,7 @@
       :is-image-small="isImageSmall"
       :is-bookmark="isBookmark"
       :is-favorite="isFavorite"
+      :is-recommendation="isRecommendation"
       :is-paginated="isPaginated"
       :is-with-created="isWithCreated"
       :is-with-model-icon="isWithModelIcon"
@@ -83,6 +84,7 @@ export default {
     isImageSmall: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
+    isRecommendation: Boolean,
     isWithCreated: Boolean,
     isWithModelIcon: Boolean
   },

@@ -1,9 +1,10 @@
 <template>
   <BaseHeaderContainer
-    class="main-link main-artist-name"
+    class="main-artist-name"
     tag="h2"
   >
     <BaseArtistLinkContainer
+      class="main-link"
       :artist-data="artistData"
       :is-link-to-library="isLinkToLibrary"
       :profile-id="profileId"

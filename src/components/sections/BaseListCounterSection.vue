@@ -1,5 +1,10 @@
 <template>
-  <div class="main-counter-section">
+  <div
+    class="main-counter-section"
+    @click="handleClick"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+  >
     <small>
       <BaseIcon
         :icon="icon"
@@ -33,10 +38,36 @@ export default {
       required: true
     }
   },
+  emits: [
+    'activeChange',
+    'click'
+  ],
   computed: {
     countFormatted () {
       return formatNumber(
         this.count
+      )
+    }
+  },
+  methods: {
+    handleMouseEnter () {
+      this.$emit(
+        'activeChange',
+        true
+      )
+    },
+    handleMouseLeave () {
+      this.$emit(
+        'activeChange',
+        false
+      )
+    },
+    handleClick (
+      event
+    ) {
+      this.$emit(
+        'click',
+        event
       )
     }
   }

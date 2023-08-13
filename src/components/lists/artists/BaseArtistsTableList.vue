@@ -24,6 +24,7 @@
         :is-with-delete-option="isWithDeleteOption"
         :is-favorite="isFavorite"
         :is-bookmark="isBookmark"
+        :is-recommendation="isRecommendation"
         :is-with-created="isWithCreated"
       />
     </div>
@@ -73,6 +74,7 @@ export default {
     isWithDeleteOption: Boolean,
     isFavorite: Boolean,
     isBookmark: Boolean,
+    isRecommendation: Boolean,
     isWithCreated: Boolean
   },
   computed: {

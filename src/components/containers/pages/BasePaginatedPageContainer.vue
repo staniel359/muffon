@@ -34,7 +34,7 @@
           >
             <BaseViewSelect
               :key="viewSelectKey"
-              :scope="scope"
+              :scope="viewScope"
               :view-id="viewId"
             />
           </div>
@@ -122,6 +122,7 @@ export default {
       type: Boolean,
       default: true
     },
+    listScope: String,
     responseData: Object,
     isLoading: Boolean,
     error: Error,
@@ -149,7 +150,13 @@ export default {
       [
         'isWithInfiniteScroll'
       ]
-    )
+    ),
+    viewScope () {
+      return (
+        this.listScope ||
+          this.scope
+      )
+    }
   },
   watch: {
     responseData: {

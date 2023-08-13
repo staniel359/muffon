@@ -20,6 +20,7 @@
     :is-with-delete-option="isWithDeleteOption"
     :is-bookmark="isBookmark"
     :is-favorite="isFavorite"
+    :is-recommendation="isRecommendation"
   />
 </template>
 
@@ -57,7 +58,8 @@ export default {
     isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
     isBookmark: Boolean,
-    isFavorite: Boolean
+    isFavorite: Boolean,
+    isRecommendation: Boolean
   },
   data () {
     return {

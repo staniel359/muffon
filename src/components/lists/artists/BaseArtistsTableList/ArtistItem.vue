@@ -30,6 +30,7 @@
         :is-with-delete-option="isWithDeleteOption"
         :is-bookmark="isBookmark"
         :is-favorite="isFavorite"
+        :is-recommendation="isRecommendation"
         :is-transparent="false"
         @deleted="handleDeleted"
       />
@@ -57,6 +58,12 @@
       </BaseArtistLinkContainer>
 
       <div class="center aligned content">
+        <RecommendationArtistsSection
+          v-if="isRecommendation"
+          class="description"
+          :recommendation-data="artistData"
+        />
+
         <BaseCreatedSection
           v-if="isWithCreated"
           class="description"
@@ -105,6 +112,8 @@ import BaseArtistOptionsPopup
   from '@/components/popups/artist/BaseArtistOptionsPopup.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import RecommendationArtistsSection
+  from './ArtistItem/RecommendationArtistsSection.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseArtistListenersCount
   from '@/components/models/artist/BaseArtistListenersCount.vue'
@@ -121,6 +130,7 @@ export default {
     BaseArtistOptionsPopup,
     BaseArtistImage,
     BaseHeader,
+    RecommendationArtistsSection,
     BaseCreatedSection,
     BaseArtistListenersCount,
     LibraryCountersSection,
@@ -154,6 +164,7 @@ export default {
     isWithDeleteOption: Boolean,
     isFavorite: Boolean,
     isBookmark: Boolean,
+    isRecommendation: Boolean,
     isWithCreated: Boolean
   },
   computed: {
