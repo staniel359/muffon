@@ -1,139 +1,142 @@
 <template>
   <div>
-    <div class="filter-top-section">
-      <ScopeSelect
-        :selected="scope"
-      />
-
-      <SearchBlock
-        ref="search"
-        :scope="scope"
-        :collection="collection"
-      />
-    </div>
-
-    <CollectionList
-      v-if="collection.length"
-      :collection="collection"
+    <FilterItem
+      v-for="(filterItemData, index) in filterItems"
+      :key="index"
+      ref="filterItem"
+      class="filter-item"
+      :filter-item-data="filterItemData"
+      :index="index"
+      :is-show="isShow"
     />
+
+    <div class="main-form-submit-button-container">
+      <div class="filter-action-button-section">
+        <BaseClearButton
+          v-if="isRenderClearButton"
+          @click="handleClearButtonClick"
+        />
+      </div>
+
+      <div class="filter-action-button-section">
+        <BaseButton
+          class="primary"
+          :text="submitButtonText"
+          :is-invertable="false"
+          @click="handleSubmitButtonClick"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import ScopeSelect from './FilterSection/ScopeSelect.vue'
-import SearchBlock from './FilterSection/SearchBlock.vue'
-import CollectionList from './FilterSection/CollectionList.vue'
-import collectionMixin from '@/mixins/collectionMixin'
-import {
-  isObjectChanged
-} from '@/helpers/utils'
+import FilterItem from './FilterSection/FilterItem.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'FilterSection',
   components: {
-    ScopeSelect,
-    SearchBlock,
-    CollectionList
+    FilterItem,
+    BaseClearButton,
+    BaseButton
   },
-  mixins: [
-    collectionMixin
-  ],
   provide () {
     return {
-      setScope: this.setScope,
-      clearCollection: this.clearCollection
+      updateFilterData:
+        this.updateFilterData
     }
   },
   inject: [
-    'setFilterScope',
-    'setFilterValue'
+    'setFilterArgs'
   ],
   props: {
     isShow: Boolean
   },
   data () {
     return {
-      scope: 'artists',
-      collection: []
+      filterData: {},
+      filterItems: [
+        {
+          action: 'include',
+          scope: 'artists',
+          model: 'artist'
+        },
+        {
+          action: 'exclude',
+          scope: 'artists',
+          model: 'artist'
+        },
+        {
+          action: 'include',
+          scope: 'tags',
+          model: 'tag'
+        },
+        {
+          action: 'exclude',
+          scope: 'tags',
+          model: 'tag'
+        }
+      ]
     }
   },
   computed: {
-    collectionFormatted () {
-      return this.collection.map(
-        this.formatCollectionItem
+    submitButtonText () {
+      return this.$t(
+        'actions.filter'
       )
+    },
+    isRenderClearButton () {
+      return this.isAnyCollections
+    },
+    isAnyCollections () {
+      return !!Object.values(
+        this.filterData
+      ).flat().length
     }
   },
-  watch: {
-    scope: {
-      immediate: true,
-      handler: 'handleScopeChange'
-    },
-    isShow: 'handleIsShowChange',
-    collection: 'handleCollectionChange'
-  },
   methods: {
-    async handleScopeChange (
-      value
-    ) {
-      this.setFilterScope(
-        value
+    handleSubmitButtonClick () {
+      this.setFilterArgs(
+        this.filterData
       )
-
-      this.clearCollection()
-
-      await this.$nextTick()
-
-      this.focusInput()
     },
-    async handleIsShowChange (
-      value
-    ) {
-      await this.$nextTick()
-
-      if (value) {
-        this.focusInput()
-      }
-    },
-    handleCollectionChange (
-      value,
-      oldValue
-    ) {
-      const isChanged =
-        isObjectChanged(
-          value,
-          oldValue
-        )
-
-      if (isChanged) {
-        this.setFilterValue(
-          this.collectionFormatted
-        )
-      }
-    },
-    setScope (
-      value
-    ) {
-      this.scope = value
-    },
-    formatCollectionItem (
-      collectionItemData
-    ) {
-      return collectionItemData.name
-    },
-    clearCollection () {
-      this.collection = []
-    },
-    focusInput () {
+    handleClearButtonClick () {
       this.$refs
-        .search
-        .focusInput()
+        .filterItem
+        .forEach(
+          this.clearFilterItemCollection
+        )
+
+      this.setFilterArgs(
+        {}
+      )
+    },
+    updateFilterData (
+      value
+    ) {
+      this.filterData = {
+        ...this.filterData,
+        ...value
+      }
+    },
+    clearFilterItemCollection (
+      filterItem
+    ) {
+      filterItem.clearCollection()
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.filter-top-section
+.filter-item
+  &:not(:first-child)
+    margin-top: 1.5em
+
+.filter-action-button-section
   @extend .d-flex, .align-items-center
+  &:not(:first-child)
+    margin-left: 1em
 </style>

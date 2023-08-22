@@ -53,6 +53,8 @@ export default {
   favorite: 'star',
   feed: 'newspaper outline',
   filter: 'filter',
+  filterInclude: 'green plus',
+  filterExclude: 'red minus',
   folder: 'folder',
   folderSelect: 'folder open',
   follower: 'user plus',

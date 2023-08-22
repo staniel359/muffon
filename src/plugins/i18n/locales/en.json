@@ -850,6 +850,16 @@
     "library": "In library since",
     "community": "Was created"
   },
+  "filter": {
+    "include": {
+      "artists": "With artists",
+      "tags": "With tags"
+    },
+    "exclude": {
+      "artists": "Without artists",
+      "tags": "Without tags"
+    }
+  },
   "online": "Online",
   "error": "Error",
   "more": "More...",

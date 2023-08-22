@@ -850,6 +850,16 @@
     "library": "Nella libreria da",
     "community": "Creata"
   },
+  "filter": {
+    "include": {
+      "artists": "Con artisti",
+      "tags": "Con tag"
+    },
+    "exclude": {
+      "artists": "Senza artisti",
+      "tags": "Senza tag"
+    }
+  },
   "online": "Online",
   "error": "Errore",
   "more": "Altro...",

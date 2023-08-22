@@ -1,4 +1,5 @@
 import profileStore from '@/stores/profile'
+import recommendationsStore from '@/stores/recommendations'
 import getRequest from '@/helpers/actions/api/request/get'
 
 export default function (
@@ -6,11 +7,10 @@ export default function (
     page,
     limit,
     order,
-    filterScope,
-    filterValue,
-    isHideLibraryArtists,
-    isHideListenedArtists,
-    tracksCount
+    tagsInclude,
+    tagsExclude,
+    artistsInclude,
+    artistsExclude
   }
 ) {
   const profileId = profileStore().id
@@ -18,28 +18,42 @@ export default function (
   const url =
     `/profiles/${profileId}/recommendations`
 
+  const {
+    isHideLibraryArtists,
+    tracksCount,
+    isHideListenedArtists
+  } = recommendationsStore()
+
   const params = {
     ...(
-      filterScope &&
-        filterValue?.length &&
-        {
-          filter: filterScope
-        }
-    ),
-    ...(
-      filterValue?.length && {
-        filter_value: filterValue
-      }
-    ),
-    ...(
       isHideLibraryArtists && {
-        hide_library_artists: 1,
-        tracks_count: tracksCount
+        hide_library: true,
+        hide_library_tracks_count: tracksCount
       }
     ),
     ...(
       isHideListenedArtists && {
-        hide_listened_artists: 1
+        hide_listened: true
+      }
+    ),
+    ...(
+      tagsInclude?.length && {
+        tags_include: tagsInclude
+      }
+    ),
+    ...(
+      tagsExclude?.length && {
+        tags_exclude: tagsExclude
+      }
+    ),
+    ...(
+      artistsInclude?.length && {
+        artists_include: artistsInclude
+      }
+    ),
+    ...(
+      artistsExclude?.length && {
+        artists_exclude: artistsExclude
       }
     )
   }

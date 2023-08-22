@@ -160,6 +160,11 @@ export default {
       this.$refs
         .segment
         .scrollToTop()
+    },
+    setFocusable () {
+      this.$refs
+        .pagination
+        .setFocusable()
     }
   }
 }

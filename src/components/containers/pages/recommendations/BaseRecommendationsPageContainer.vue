@@ -26,6 +26,9 @@ import {
 import formatRecommendationsPageTab
   from '@/helpers/formatters/tabs/recommendations'
 import getRecommendations from '@/helpers/actions/api/recommendations/get'
+import {
+  isObjectChanged
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseRecommendationsPageContainer',
@@ -37,8 +40,8 @@ export default {
   ],
   provide () {
     return {
-      setFilterScope: this.setFilterScope,
-      setFilterValue: this.setFilterValue
+      setFilterArgs:
+        this.setFilterArgs
     }
   },
   props: {
@@ -51,10 +54,9 @@ export default {
   data () {
     return {
       recommendationsData: null,
-      filterScope: null,
-      filterValue: null,
       error: null,
-      isLoading: false
+      isLoading: false,
+      filterArgs: {}
     }
   },
   computed: {
@@ -79,14 +81,7 @@ export default {
       return {
         limit: this.limit,
         order: this.order,
-        filterScope: this.filterScope,
-        filterValue: this.filterValue,
-        isHideLibraryArtists:
-          this.isRecommendationsHideLibraryArtists,
-        isHideListenedArtists:
-          this.isRecommendationsHideListenedArtists,
-        tracksCount:
-          this.recommendationsTracksCount
+        ...this.filterArgs
       }
     }
   },
@@ -97,25 +92,36 @@ export default {
     isRecommendationsHideListenedArtists:
       'handleIsRecommendationsHideListenedArtists',
     recommendationsTracksCount:
-      'handleRecommendationsTracksCount',
-    filterValue: 'handleFilterValueChange'
+      'handleRecommendationsTracksCountChange',
+    filterArgs: 'handleFilterArgsChange'
   },
   mounted () {
     this.getData()
   },
   methods: {
     getRecommendations,
-    handleFilterValueChange () {
-      this.refresh()
-    },
     handleIsRecommendationsHideLibraryArtists () {
       this.refresh()
     },
     handleIsRecommendationsHideListenedArtists () {
       this.refresh()
     },
-    handleRecommendationsTracksCount () {
+    handleRecommendationsTracksCountChange () {
       this.refresh()
+    },
+    handleFilterArgsChange (
+      value,
+      oldValue
+    ) {
+      const isChanged =
+        isObjectChanged(
+          value,
+          oldValue
+        )
+
+      if (isChanged) {
+        this.refresh()
+      }
     },
     refresh () {
       this.$emit(
@@ -134,15 +140,10 @@ export default {
         }
       )
     },
-    setFilterScope (
+    setFilterArgs (
       value
     ) {
-      this.filterScope = value
-    },
-    setFilterValue (
-      value
-    ) {
-      this.filterValue = value
+      this.filterArgs = value
     }
   }
 }

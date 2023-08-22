@@ -199,10 +199,14 @@ export default {
     handleFocus () {
       this.focus()
     },
-    refresh () {
+    async refresh () {
       this.reset()
 
       this.getData()
+
+      await this.$nextTick()
+
+      this.setFocusable()
     },
     reset () {
       this.responseDataComputed = null
@@ -213,6 +217,11 @@ export default {
       this.$refs
         .pagination
         .focus()
+    },
+    setFocusable () {
+      this.$refs
+        .pagination
+        .setFocusable()
     }
   }
 }
