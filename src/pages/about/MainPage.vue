@@ -77,7 +77,7 @@ import BaseSegmentContainer
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
-import logo from '@/assets/images/logo.png'
+import logo from '@/assets/images/logo_sm.png'
 import {
   name,
   version,

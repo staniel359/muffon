@@ -21,7 +21,7 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import BaseImage from '@/components/images/BaseImage.vue'
-import logo from '@/assets/images/logo.png'
+import logo from '@/assets/images/logo_xs.png'
 
 export default {
   name: 'RootItem',
