@@ -63,5 +63,5 @@ export default {
   height: 35px
 
 .content
-  margin-left: 0.5em
+  margin-left: 0.75em
 </style>
