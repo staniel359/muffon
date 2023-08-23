@@ -1,11 +1,13 @@
 <template>
   <div class="library-counters-container">
-    <TracksCounter
+    <TracksCounterSection
+      class="library-counter-section"
       :artist-data="artistData"
       :profile-id="profileId"
     />
 
-    <AlbumsCounter
+    <AlbumsCounterSection
+      class="library-counter-section"
       :artist-data="artistData"
       :profile-id="profileId"
     />
@@ -13,14 +15,16 @@
 </template>
 
 <script>
-import TracksCounter from './LibraryCountersSection/TracksCounter.vue'
-import AlbumsCounter from './LibraryCountersSection/AlbumsCounter.vue'
+import TracksCounterSection
+  from './LibraryCountersSection/TracksCounterSection.vue'
+import AlbumsCounterSection
+  from './LibraryCountersSection/AlbumsCounterSection.vue'
 
 export default {
   name: 'LibraryCountersSection',
   components: {
-    TracksCounter,
-    AlbumsCounter
+    TracksCounterSection,
+    AlbumsCounterSection
   },
   props: {
     artistData: Object,
@@ -32,5 +36,9 @@ export default {
 <style lang="sass" scoped>
 .library-counters-container
   @extend .d-flex, .justify-content-center
-  margin-top: 0.5em
+  margin-top: 0.75em
+
+.library-counter-section
+  &:not(:first-child)
+    margin-left: 1em
 </style>

@@ -1,18 +1,22 @@
 <template>
-  <BaseLinkContainer
-    class="tracks-counter"
-    :link="link"
+  <div
+    v-if="tracksCount"
   >
-    <div class="link">
-      <BaseIcon
-        icon="track"
-      />
+    <BaseLinkContainer
+      class="main-link"
+      :link="link"
+    >
+      <div class="link">
+        <BaseIcon
+          icon="track"
+        />
 
-      <span
-        v-text="tracksCount"
-      />
-    </div>
-  </BaseLinkContainer>
+        <span
+          v-text="tracksCount"
+        />
+      </div>
+    </BaseLinkContainer>
+  </div>
 </template>
 
 <script>
@@ -24,7 +28,7 @@ import {
 } from '@/helpers/formatters/links/profile/library/artist'
 
 export default {
-  name: 'TracksCounter',
+  name: 'TracksCounterSection',
   components: {
     BaseLinkContainer,
     BaseIcon
@@ -58,7 +62,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.tracks-counter
-  margin-right: 1em
-</style>
+<style lang="sass" scoped></style>

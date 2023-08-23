@@ -1,17 +1,22 @@
 <template>
-  <BaseLinkContainer
-    :link="link"
+  <div
+    v-if="albumsCount"
   >
-    <div class="link">
-      <BaseIcon
-        icon="album"
-      />
+    <BaseLinkContainer
+      class="main-link"
+      :link="link"
+    >
+      <div class="link">
+        <BaseIcon
+          icon="album"
+        />
 
-      <span
-        v-text="albumsCount"
-      />
-    </div>
-  </BaseLinkContainer>
+        <span
+          v-text="albumsCount"
+        />
+      </div>
+    </BaseLinkContainer>
+  </div>
 </template>
 
 <script>
@@ -23,7 +28,7 @@ import {
 } from '@/helpers/formatters/links/profile/library/artist'
 
 export default {
-  name: 'AlbumsCounter',
+  name: 'AlbumsCounterSection',
   components: {
     BaseLinkContainer,
     BaseIcon
