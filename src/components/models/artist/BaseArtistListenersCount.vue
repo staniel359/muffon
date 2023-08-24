@@ -1,7 +1,7 @@
 <template>
-  <div
+  <BaseIcon
     v-if="isLoading"
-    class="ui active mini inline loader"
+    is-loading
   />
   <BaseListCounterSection
     v-else-if="responseListenersCount"
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseListCounterSection
   from '@/components/sections/BaseListCounterSection.vue'
 import getArtist from '@/helpers/actions/api/artist/get'
@@ -18,6 +19,7 @@ import getArtist from '@/helpers/actions/api/artist/get'
 export default {
   name: 'BaseArtistListenersCount',
   components: {
+    BaseIcon,
     BaseListCounterSection
   },
   props: {

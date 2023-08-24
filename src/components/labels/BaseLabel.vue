@@ -15,9 +15,10 @@
     :link="link"
     @click="handleClick"
   >
-    <div
+    <BaseIcon
       v-if="isLoading"
-      class="ui mini active inline loader"
+      class="loading-icon"
+      is-loading
     />
     <template
       v-else
@@ -141,4 +142,7 @@ export default {
   &.circular
     &.with-text
       padding: 0.6em 1.2em !important
+
+.loading-icon
+  margin: 0 0.5em !important
 </style>

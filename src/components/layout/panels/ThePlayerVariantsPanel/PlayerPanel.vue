@@ -106,5 +106,5 @@ export default {
 
 .player-content-container
   @extend .d-flex, .align-items-center, .h-100
-  width: 720px !important
+  width: 730px !important
 </style>

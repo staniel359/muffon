@@ -5,9 +5,9 @@
     <div class="item">
       <div class="content">
         <div class="description">
-          <div
+          <BaseIcon
             v-if="isLoading"
-            class="ui mini active inline loader"
+            is-loading
           />
           <small
             v-else-if="bitrate"
@@ -30,11 +30,13 @@ import {
 import playerStore from '@/stores/player'
 import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 
 export default {
   name: 'BitrateSection',
   components: {
-    BaseListContainer
+    BaseListContainer,
+    BaseIcon
   },
   data () {
     return {
@@ -139,6 +141,5 @@ export default {
 
 <style lang="sass" scoped>
 .bitrate-section
-  @extend .flex-full, .text-align-center
-  margin: 0 0.5em
+  @extend .flex-full, .text-align-center, .no-margin
 </style>

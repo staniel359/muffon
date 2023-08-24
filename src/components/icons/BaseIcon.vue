@@ -3,7 +3,10 @@
     :class="[
       {
         flag: isFlag,
-        icon: !isFlag
+        icon: !isFlag,
+        red: (
+          isError && isIconRed
+        )
       },
       iconConditional
     ]"
@@ -27,7 +30,8 @@ export default {
     isFlag: Boolean,
     isLoading: Boolean,
     isError: Boolean,
-    icon: String
+    icon: String,
+    isIconRed: Boolean
   },
   emits: [
     'activeChange',
