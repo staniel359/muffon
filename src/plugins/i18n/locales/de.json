@@ -516,7 +516,8 @@
         "player": {
           "audioSources": "Audioquellen (nach Priorität)",
           "bitrate": "Audiobitrate anzeigen",
-          "album": "Album anzeigen"
+          "album": "Album anzeigen",
+          "equalizer": "Equalizer anzeigen"
         },
         "queue": {
           "autoplay": "Autoplay",

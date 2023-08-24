@@ -225,6 +225,10 @@ export default {
     type: 'boolean',
     default: false
   },
+  'player.isWithEqualizer': {
+    type: 'boolean',
+    default: true
+  },
   'player.playing': {
     type: [
       'null',

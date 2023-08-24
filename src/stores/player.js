@@ -15,7 +15,8 @@ const data = {
       scrobblePercent: null,
       variants: null,
       isWithAlbum: null,
-      audioSources: null
+      audioSources: null,
+      isWithEqualizer: null
     }
   },
   getters: {
@@ -80,6 +81,11 @@ const data = {
       value
     ) {
       this.isWithDiscordRichPresence = value
+    },
+    setIsWithEqualizer (
+      value
+    ) {
+      this.isWithEqualizer = value
     }
   }
 }

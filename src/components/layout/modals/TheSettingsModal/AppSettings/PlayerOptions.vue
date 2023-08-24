@@ -5,6 +5,8 @@
     <BitrateOption />
 
     <AlbumOption />
+
+    <EqualizerOption />
   </div>
 </template>
 
@@ -12,13 +14,15 @@
 import AudioSourcesOption from './PlayerOptions/AudioSourcesOption.vue'
 import BitrateOption from './PlayerOptions/BitrateOption.vue'
 import AlbumOption from './PlayerOptions/AlbumOption.vue'
+import EqualizerOption from './PlayerOptions/EqualizerOption.vue'
 
 export default {
   name: 'PlayerOptions',
   components: {
     AudioSourcesOption,
     BitrateOption,
-    AlbumOption
+    AlbumOption,
+    EqualizerOption
   }
 }
 </script>

@@ -2,11 +2,17 @@
   <div class="left-controls-section">
     <TimerSection />
 
-    <EqualizerButton />
+    <EqualizerButton
+      v-if="isPlayerWithEqualizer"
+    />
   </div>
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import playerStore from '@/stores/player'
 import TimerSection from './LeftControlsSection/TimerSection.vue'
 import EqualizerButton from './LeftControlsSection/EqualizerButton.vue'
 
@@ -15,6 +21,14 @@ export default {
   components: {
     TimerSection,
     EqualizerButton
+  },
+  computed: {
+    ...mapState(
+      playerStore,
+      {
+        isPlayerWithEqualizer: 'isWithEqualizer'
+      }
+    )
   }
 }
 </script>
