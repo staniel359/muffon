@@ -1,4 +1,7 @@
 import {
+  app
+} from 'electron'
+import {
   existsSync,
   mkdirSync
 } from 'fs'
@@ -24,6 +27,9 @@ export const isMac = (
 export const isLinux = (
   process.platform === 'linux'
 )
+
+export const isSingleInstance =
+  app.requestSingleInstanceLock()
 
 export function createFolderIfNotExists (
   path
