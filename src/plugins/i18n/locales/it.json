@@ -517,7 +517,8 @@
           "audioSources": "Sorgente audio",
           "bitrate": "Mostra bitrate audio",
           "album": "Mostra album",
-          "equalizer": "Mostra l'equalizzatore"
+          "equalizer": "Mostra l'equalizzatore",
+          "focusPlaying": "Mostra la traccia attuale"
         },
         "queue": {
           "autoplay": "Autoplay",

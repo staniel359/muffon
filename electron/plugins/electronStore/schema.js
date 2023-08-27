@@ -229,6 +229,10 @@ export default {
     type: 'boolean',
     default: true
   },
+  'player.isWithPlayingFocus': {
+    type: 'boolean',
+    default: true
+  },
   'player.playing': {
     type: [
       'null',

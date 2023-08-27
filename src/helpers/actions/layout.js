@@ -72,7 +72,7 @@ export function hideQueuePanel () {
   )
 }
 
-export function focusOnSegment (
+export function focusOnPageElement (
   element
 ) {
   const segmentTop = $(
@@ -82,8 +82,11 @@ export function focusOnSegment (
   const navbarHeight = 50
   const marginTop = 20
 
-  const offsetTop =
-    segmentTop - navbarHeight - marginTop
+  const offsetTop = (
+    segmentTop -
+      navbarHeight -
+      marginTop
+  )
 
   function scrollToSegmentTop () {
     window.scrollTo(
@@ -95,5 +98,25 @@ export function focusOnSegment (
   setTimeout(
     scrollToSegmentTop,
     0
+  )
+}
+
+export function focusOnListElement (
+  element,
+  list
+) {
+  const elementOffsetTop =
+    element.offsetTop
+
+  const paddingTop = 14
+
+  const offsetTop = (
+    elementOffsetTop -
+      paddingTop
+  )
+
+  list.scrollTo(
+    0,
+    offsetTop
   )
 }

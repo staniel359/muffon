@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="track"
     :class="{
       active: isActive,
       disabled: isDisabled
@@ -30,6 +31,10 @@ import {
 import {
   track as formatPlayerTrack
 } from '@/helpers/formatters/player/track'
+import {
+  focusOnListElement,
+  focusOnPageElement
+} from '@/helpers/actions/layout'
 
 export default {
   name: 'BaseTrackContainer',
@@ -47,7 +52,10 @@ export default {
     isWithActiveClass: Boolean,
     isDisabled: Boolean,
     isFromRadio: Boolean,
-    isExactTrack: Boolean
+    isExactTrack: Boolean,
+    isFocusable: Boolean,
+    isQueue: Boolean,
+    scrollable: HTMLDivElement
   },
   data () {
     return {
@@ -67,7 +75,9 @@ export default {
       playerStore,
       {
         playerCurrentTrackId: 'currentTrackId',
-        playerPlaying: 'playing'
+        playerPlaying: 'playing',
+        isPlayerWithPlayingFocus:
+          'isWithPlayingFocus'
       }
     ),
     isActive () {
@@ -119,6 +129,24 @@ export default {
     },
     uuid () {
       return this.trackData.uuid
+    },
+    isFocusActive () {
+      return (
+        this.isFocus &&
+          this.isActive
+      )
+    },
+    isFocus () {
+      return (
+        this.isFocusable &&
+          this.isPlayerWithPlayingFocus
+      )
+    }
+  },
+  watch: {
+    isFocusActive: {
+      immediate: true,
+      handler: 'handleIsFocusActiveChange'
     }
   },
   methods: {
@@ -130,6 +158,19 @@ export default {
         this.setAudio()
       } else if (!this.isLoading) {
         this.getAudio()
+      }
+
+      if (this.isFocus) {
+        this.focus()
+      }
+    },
+    async handleIsFocusActiveChange (
+      value
+    ) {
+      if (value) {
+        await this.$nextTick()
+
+        this.focus()
       }
     },
     callAudioAction () {
@@ -167,6 +208,24 @@ export default {
           source,
           ...this.playerTrackArgs
         }
+      )
+    },
+    focus () {
+      if (this.isQueue) {
+        this.focusList()
+      } else {
+        this.focusPage()
+      }
+    },
+    focusList () {
+      focusOnListElement(
+        this.$refs.track,
+        this.scrollable
+      )
+    },
+    focusPage () {
+      focusOnPageElement(
+        this.$refs.track
       )
     }
   }

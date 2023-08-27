@@ -7,6 +7,8 @@
     <AlbumOption />
 
     <EqualizerOption />
+
+    <PlayingFocusOption />
   </div>
 </template>
 
@@ -15,6 +17,7 @@ import AudioSourcesOption from './PlayerOptions/AudioSourcesOption.vue'
 import BitrateOption from './PlayerOptions/BitrateOption.vue'
 import AlbumOption from './PlayerOptions/AlbumOption.vue'
 import EqualizerOption from './PlayerOptions/EqualizerOption.vue'
+import PlayingFocusOption from './PlayerOptions/PlayingFocusOption.vue'
 
 export default {
   name: 'PlayerOptions',
@@ -22,7 +25,8 @@ export default {
     AudioSourcesOption,
     BitrateOption,
     AlbumOption,
-    EqualizerOption
+    EqualizerOption,
+    PlayingFocusOption
   }
 }
 </script>

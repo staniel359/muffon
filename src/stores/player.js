@@ -16,7 +16,8 @@ const data = {
       variants: null,
       isWithAlbum: null,
       audioSources: null,
-      isWithEqualizer: null
+      isWithEqualizer: null,
+      isWithPlayingFocus: null
     }
   },
   getters: {
@@ -86,6 +87,11 @@ const data = {
       value
     ) {
       this.isWithEqualizer = value
+    },
+    setIsWithPlayingFocus (
+      value
+    ) {
+      this.isWithPlayingFocus = value
     }
   }
 }

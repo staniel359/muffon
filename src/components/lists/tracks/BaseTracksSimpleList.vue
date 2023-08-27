@@ -1,5 +1,6 @@
 <template>
   <BaseListContainer
+    ref="list"
     class="selection"
   >
     <TrackItem
@@ -43,6 +44,8 @@
       :playlist-id="playlistId"
       :playlist-title="playlistTitle"
       :is-clearable="isClearable"
+      :is-queue="isQueue"
+      :scrollable="scrollable"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
       @delete-option-click="handleDeleteOptionClick"
@@ -114,19 +117,29 @@ export default {
     isPlaylistTrack: Boolean,
     playlistId: String,
     playlistTitle: String,
-    isClearable: Boolean
+    isClearable: Boolean,
+    isQueue: Boolean
   },
   emits: [
     'linkClick',
     'clearButtonClick',
     'deleteOptionClick'
   ],
+  data () {
+    return {
+      scrollable: null
+    }
+  },
   computed: {
     tracksCollection () {
       return formatCollection(
         this.formatTracks()
       )
     }
+  },
+  mounted () {
+    this.scrollable =
+      this.$refs.list.$el
   },
   methods: {
     handleLinkClick () {

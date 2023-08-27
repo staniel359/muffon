@@ -7,7 +7,7 @@
   >
     <BaseTracksSimpleList
       :key="key"
-      class="queue-tracks"
+      class="queue-tracks-list"
       :tracks="queueTracksComputed"
       :profile-id="profileId"
       :is-with-self-icons="false"
@@ -24,6 +24,7 @@
       is-with-external-link-option
       is-with-delete-option
       is-clearable
+      is-queue
       @delete-option-click="handleDeleteOptionClick"
     />
   </BaseSegmentContainer>
@@ -141,6 +142,7 @@ export default {
   transition: padding 0.5s
   &.player-panel-padded
     padding-bottom: calc(#{$playerPanelHeight} + 1em)
-.queue-tracks
-  @extend .h-100, .overflow-y-auto
+
+.queue-tracks-list
+  @extend .h-100, .overflow-y-auto, .scroll-smooth
 </style>

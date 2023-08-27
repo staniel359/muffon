@@ -26,7 +26,7 @@
 <script>
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import {
-  focusOnSegment
+  focusOnPageElement
 } from '@/helpers/actions/layout'
 import transparencyMixin from '@/mixins/transparencyMixin'
 
@@ -73,7 +73,7 @@ export default {
       )
     },
     focus () {
-      focusOnSegment(
+      focusOnPageElement(
         this.$refs.segment
       )
     },

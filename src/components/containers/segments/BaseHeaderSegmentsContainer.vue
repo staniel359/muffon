@@ -19,7 +19,7 @@
 <script>
 import HeaderSegment from './BaseHeaderSegmentsContainer/HeaderSegment.vue'
 import {
-  focusOnSegment
+  focusOnPageElement
 } from '@/helpers/actions/layout'
 
 export default {
@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     focus () {
-      focusOnSegment(
+      focusOnPageElement(
         this.$refs.segment
       )
     }

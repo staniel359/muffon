@@ -24,7 +24,7 @@ import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
 import BaseTrackVideoSelect
   from '@/components/models/track/BaseTrackVideoSelect.vue'
 import {
-  focusOnSegment
+  focusOnPageElement
 } from '@/helpers/actions/layout'
 
 export default {
@@ -64,7 +64,7 @@ export default {
       this.focus()
     },
     focus () {
-      focusOnSegment(
+      focusOnPageElement(
         this.$refs.section
       )
     }

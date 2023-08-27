@@ -6,7 +6,10 @@
     :queue-tracks="queueTracks"
     :is-disabled="isDeleted"
     :is-from-radio="isFromRadio"
+    :is-queue="isQueue"
+    :scrollable="scrollable"
     is-with-active-class
+    is-focusable
   >
     <template
       #default="slotProps"
@@ -118,7 +121,9 @@ export default {
     playlistId: String,
     playlistTitle: String,
     isClearable: Boolean,
-    isFromRadio: Boolean
+    isFromRadio: Boolean,
+    isQueue: Boolean,
+    scrollable: HTMLDivElement
   },
   emits: [
     'linkClick',
