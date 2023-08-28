@@ -1,0 +1,869 @@
+{
+  "navigation": {
+    "home": "Home page",
+    "artists": "Artistes",
+    "artist": "Artiste",
+    "albums": "Albums",
+    "albumGroups": "Groupe d'albums",
+    "tracks": "Titre",
+    "tags": "Tags",
+    "tag": "Tag",
+    "similar": "Similaire",
+    "images": "Images",
+    "lyrics": "Paroles",
+    "videos": "Vidéos",
+    "videoChannels": "Chaîne",
+    "videoMixes": "Mix de vidéos",
+    "videoPlaylists": "Playlists de vidéos",
+    "related": "Dans le même style",
+    "top": "Top",
+    "releases": "Dernière sortie",
+    "new": "Nouveauté",
+    "upcoming": "À venir",
+    "radio": "Radio",
+    "multitag": "Recherche multitags",
+    "profiles": "Profile",
+    "feed": "Flux",
+    "posts": "Postes",
+    "conversations": "Conversations",
+    "library": "Bibliothèque",
+    "recommendations": "Recommandations",
+    "savedTracks": "Sauvegarder le titre",
+    "playlists": "Playlists",
+    "favorites": "Favoris",
+    "bookmarks": "Signets",
+    "bookmarkModels": {
+      "artists": "Artistes en signet",
+      "albums": "Albums en signet",
+      "tracks": "Titres en signet",
+      "videos": "Vidéos en signet",
+      "videoChannels": "Chaîne en signet",
+      "videoPlaylists": "Playlists en signet"
+    },
+    "communities": "Communautés",
+    "history": "Historique",
+    "historyModels": {
+      "activity": "Historique d'activité",
+      "player": "Historique de titre",
+      "browser": "Historique de navigation"
+    },
+    "activity": "Activité",
+    "player": "Player",
+    "browser": "Navigateur",
+    "settings": "Paramètre",
+    "model": {
+      "artists": "{modelName} artiste",
+      "albums": "{modelName} albums",
+      "tracks": "{modelName} titres",
+      "tags": "{modelName} tags",
+      "similar": "{modelName} similaire",
+      "images": "{modelName} images",
+      "lyrics": "{modelName} paroles",
+      "videos": "{modelName} vidéos",
+      "related": "{modelName} related",
+      "posts": "{modelName} postes",
+      "library": "{modelName} bibliothèque",
+      "playlists": "{modelName} playlists",
+      "favorites": "{modelName} favoris",
+      "favoritesModels": {
+        "artists": "{modelName} artistes favoris",
+        "albums": "{modelName} albums favoris",
+        "tracks": "{modelName} titres favoris",
+        "videos": "{modelName} vidéos favorites"
+      },
+      "communities": "{modelName} communautés"
+    },
+    "topCollection": {
+      "artists": "Top des artistes",
+      "albums": "Top des albums",
+      "tracks": "Top des titres",
+      "tags": "Top des tags"
+    },
+    "releasesCollection": {
+      "new": "Dernière sortie",
+      "upcoming": "Prochaines sorties"
+    },
+    "search": "Rechercher",
+    "queue": "Liste de lecture"
+  },
+  "errors": {
+    "badRequest": {
+      "header": "Requête erronée",
+      "content": "Veuillez faire une demande avec des données valides"
+    },
+    "forbidden": {
+      "header": "Droits insuffisants",
+      "content": "Vous n'avez pas le droit d'effectuer cette action"
+    },
+    "notFound": {
+      "header": "Rien n'a été trouvé",
+      "content": "Essayez de chercher avec d'autres termes"
+    },
+    "internalServer": {
+      "header": "Erreur du serveur interne",
+      "content": "Contactez-nous pour plus d'informations"
+    },
+    "badGateway": {
+      "header": "Erreur du serveur distant",
+      "content": "Veuillez réessayer dans un moment"
+    },
+    "gatewayTimeout": {
+      "header": "Délai d'attente du serveur distant dépasser",
+      "content": "Veuillez réessayer dans un moment"
+    },
+    "connection": {
+      "header": "Connexion perdue",
+      "content": "Veuillez réessayer dans un moment"
+    },
+    "client": {
+      "header": "Erreur du client",
+      "content": "Contactez-nous pour plus d'informations"
+    }
+  },
+  "actions": {
+    "login": "Se connecter",
+    "logout": "Déconnexion",
+    "signup": "S'inscrire",
+    "add": "Ajouter",
+    "create": "Créer",
+    "edit": "Modifier",
+    "save": "Sauvgarder",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "clear": "Nettoyer",
+    "retry": "Réessayer",
+    "post": "Poster",
+    "send": "Evvoyer",
+    "next": "Suivant",
+    "upload": "Upload",
+    "back": "Retour",
+    "sendCode": "Envoyer le code",
+    "share": "Partager",
+    "search": "Rechercher",
+    "filter": "Filtré",
+    "confirm": "Confirmé",
+    "import": "Importé",
+    "addFrom": {
+      "search": "À partir de la recherche",
+      "library": "À partir de la bibliothèque"
+    },
+    "importFrom": {
+      "drive": "À partir du drive",
+      "account": "À partir du compte"
+    },
+    "searchIn": {
+      "source": "Rechercher dans la source",
+      "sources": "Recherche dans les sources"
+    },
+    "searchFor": {
+      "video": "Rechercher la vidéo",
+      "lyrics": "Rechercher les paroles"
+    },
+    "importFromAccount": {
+      "lastfm": "Importer depuis Last.FM",
+      "spotify": "Importer depuis Spotify"
+    },
+    "selectModel": {
+      "folder": "Séléctionner le fichier"
+    },
+    "createModel": {
+      "playlist": "Créer une playlist",
+      "community": "Créer une communauté",
+      "post": "Créer un poste"
+    },
+    "addTo": {
+      "library": "Ajouter à la bibliothèque",
+      "playlist": "Ajouter à la playlist",
+      "favorites": "Ajouter aux favoris",
+      "bookmarks": "Ajouter aux signets",
+      "listened": "Ajouter aux titres écouter",
+      "watched": "Ajouter aux vidéos vues",
+      "queue": "Ajouter à la liste de lecture",
+      "savedTracks": "Ajouter aux titres sauvgarder"
+    },
+    "show": {
+      "library": "Voir dans la bibliothèque",
+      "page": "Voir la page"
+    },
+    "deleteFrom": {
+      "favorites": "Supprimer des favoris",
+      "bookmarks": "Supprimer des signets",
+      "listened": "Supprimer de la liste de lecture",
+      "watched": "Supprimer des vidéos vues"
+    },
+    "externalLink": {
+      "open": "Ouvrir le lien externe",
+      "original": "Original",
+      "streaming": "Streaming"
+    }
+  },
+  "links": {
+    "playlists": "Toutes les playlists",
+    "communities": "Toutes les communautés"
+  },
+  "inputs": {
+    "search": "Rechercher...",
+    "content": "Écrivez quelque chose..."
+  },
+  "modals": {
+    "delete": {
+      "header": {
+        "libraryModel": {
+          "artist": "Supprimer l'artiste de la bibliothèque",
+          "album": "Supprimer l'album de la bibliothèque",
+          "track": "Supprimer le titre de la bibliothèque"
+        },
+        "recommendation": "Supprimer la recommandation",
+        "playlist": "Supprimer la playlist",
+        "playlistTrack": "Supprimer le titre de la playlist",
+        "savedTrack": "Supprimer le titre des titres sauvgarder",
+        "favorite": {
+          "artist": "Supprimer l'artiste des favoris",
+          "album": "Supprimer l'album des favoris",
+          "track": "Supprimer le titre des favoris",
+          "video": "Supprimer la vidéos des favoris"
+        },
+        "bookmark": {
+          "artist": "Supprimer l'artiste du signet",
+          "album": "Supprimer l'album du signet",
+          "track": "Supprimer le titre du signet",
+          "video": "Supprimer la vidéos du signet",
+          "videoChannel": "Supprimer la chaîne du signet",
+          "videoPlaylist": "Supprimer la playlist vidéo du signet"
+        },
+        "post": "Supprimer le poste",
+        "community": "Supprimer cette communauté",
+        "account": "Supprimer le compte",
+        "library": "Supprimer la bibliothèque",
+        "history": {
+          "activity": "Supprimer l'historique d'activité",
+          "browser": "Supprimer l'historique de navigation",
+          "player": "Supprimer l'historique du player"
+        }
+      },
+      "going": {
+        "libraryModel": "Vous allez supprimer {modelName} de votre bibliothèque.",
+        "recommendation": "Vous allez supprimer {modelName} de vos recommandations.",
+        "playlist": "Vous allez supprimer {modelName} de votre playlists.",
+        "playlistTrack": "Vous allez supprimer {modelName} de {parentModelName} playlist.",
+        "savedTrack": "Vous allez supprimer {modelName} de vos titres sauvgarder.",
+        "favorite": "Vous allez supprimer {modelName} de votre favoris.",
+        "bookmark": "Vous allez supprimer {modelName} de votre signet.",
+        "post": "Vous allez supprimer ce poste.",
+        "community": "Vous allez supprimer cette communauté.",
+        "account": "Vous allez supprimer votre compte.",
+        "library": "Vous allez supprimer votre bibliothèque.",
+        "history": {
+          "activity": "Vous allez supprimer votre historique d'activité.",
+          "browser": "Vous allez supprimer votre historique de navigation.",
+          "player": "Vous allez supprimer l'historique du player."
+        }
+      },
+      "also": {
+        "libraryModel": {
+          "artist": "Cette opération supprimera également tous les albums et toutes les pistes de cet artiste.",
+          "album": "Cette opération supprimera également toutes les pistes de cet album."
+        },
+        "playlist": "Cette opération supprimera également toutes les pistes de cette playlist.",
+        "community": "Cette opération supprimera également tous les messages de cette communauté.",
+        "account": [
+          "Les données suivantes seront également supprimées :",
+          "<strong>- bibliothèque\n- recommandations\n- playlists\n- favoris\n- signet\n- vos titre écouté\n- les posts de votre page\n- abonnements</strong>",
+          "Ces données seront conservées, mais votre pseudonyme ne sera pas affiché :",
+          "<strong>- poste créer\n- conversations avec vous\n- les communautés créées</strong>",
+          "Et ces données resteront inchangées :",
+          "<strong>- titres sauvgarder\n- images de fond\n- paramètre</strong>"
+        ],
+        "library": [
+          "Cette opération effacera les données suivantes :",
+          "<strong>- artistes\n- albums\n- titres\n- recommandations</strong>"
+        ]
+      },
+      "undo": "Vous ne pouvez pas revenir sur cette action !",
+      "sure": "Êtes-vous sûr ?"
+    }
+  },
+  "forms": {
+    "fields": {
+      "email": "Email",
+      "password": "Mot de passe",
+      "passwordConfirmation": "Confirmation du mot de passe",
+      "passwordResetCode": "Code de réinitialisation du mot de passe",
+      "nickname": "Pseudonyme",
+      "title": "Titre",
+      "description": "Description",
+      "gender": "Genre",
+      "birthdate": "Date de naissance",
+      "country": "Pays",
+      "city": "Ville",
+      "status": "Status",
+      "genders": {
+        "male": "Homme",
+        "female": "Femme",
+        "other": "Autres"
+      },
+      "legal": {
+        "header": "J'accepte la {privacyPolicy} est les {termsAndConditions}",
+        "privacyPolicy": "Politique de Confidentialité",
+        "termsAndConditions": "Termes et Conditions"
+      },
+      "remember": "Se souvenir de moi",
+      "asCommunity": "Pour la communauté"
+    },
+    "extra": "Informations complémentaires",
+    "errors": {
+      "notFound": "Le profil est introuvable",
+      "empty": {
+        "email": "L'email n'est pas renseigné",
+        "password": "Le mot de passe n'est pas renseigné",
+        "passwordConfirmation": "La confirmation du mot de passe n'est pas renseigné",
+        "passwordResetCode": "Le code de réinitialisation du mot de passe n'est pas renseigné",
+        "nickname": "Le pseudonyme n'est pas renseigné",
+        "title": "Le titre n'est pas renseigné",
+        "legal": "Vous devez accepter la politique de confidentialité et les conditions générales."
+      },
+      "invalid": {
+        "email": "L'email n'est pas valide"
+      },
+      "taken": {
+        "email": "L'email est déjà utilisé",
+        "nickname": "Le pseudonyme est déjà utilisé",
+        "title": "Le titre est déjà utilisé"
+      },
+      "tooShort": {
+        "password": "Le mot de passe et trop court"
+      },
+      "tooLong": {
+        "nickname": "Le pseudonyme est trop long"
+      },
+      "confirmation": {
+        "passwordConfirmation": "Le mot de passe et sa confirmation ne correspondent pas"
+      },
+      "wrong": {
+        "password": "Mot de passe erroné",
+        "passwordResetCode": "Code de réinitialisation du mot de passe erroné"
+      }
+    },
+    "confirm": {
+      "password": "Veuillez confirmer votre mot de passe :"
+    }
+  },
+  "notifications": {
+    "scrobbled": "Le titre {trackFullTitle} a bien été scrobblé",
+    "added": {
+      "queue": {
+        "track": "Le titre {trackFullTitle} a bien été ajouté à la liste de lecture",
+        "tracks": "{counter} titres ont bien était ajouté à la liste de lecture | {counter} titres ont bien était ajouté à la liste de lecture"
+      },
+      "savedTracks": {
+        "track": "Le titre {trackFullTitle} a bien été ajouté à la liste de lecture"
+      }
+    },
+    "updated": {
+      "profile": "Le profil a bien été mis à jour",
+      "post": "Le poste a bien été mis à jour",
+      "playlist": "La playlist {playlistTitle} a bien été mis à jour",
+      "community": "La communauté {communityTitle} a bien été mis à jour"
+    },
+    "deleted": {
+      "libraryModel": {
+        "artist": "L'artiste {modelName} a bien était supprimé de votre bibliothèque",
+        "album": "L'album {modelName} a bien était supprimé de votre bibliothèque",
+        "track": "Le titre {modelName} a bien était supprimé de votre bibliothèque"
+      },
+      "playlist": "La playlist {playlistTitle} a bien été supprimé",
+      "community": "La communauté {communityTitle} a bien été supprimé",
+      "account": "Votre compte a bien été supprimé",
+      "library": "Votre bibliothèque a bien été supprimé",
+      "history": {
+        "activity": "Votre historique d'activité a bien été supprimé",
+        "browser": "Votre historique de navigation a bien été supprimé",
+        "player": "L'historique du player a bien été supprimé"
+      }
+    },
+    "copied": "Le lien a bien été copié dans le presse-papier",
+    "cleared": {
+      "cache": "Le cache a bien été vider",
+      "searchHistory": "L'historique de recherche a bien été nettoyer"
+    }
+  },
+  "counters": {
+    "nominative": {
+      "artists": "{count} artiste | {count} artistes",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} titre | {count} titres",
+      "videos": "{count} vidéo | {count} vidéos",
+      "files": "{count} fichier | {count} fichiers",
+      "plays": "{count} play | {count} plays",
+      "followers": "{count} abonné | {count} abonnés",
+      "following": "{count} abonnement",
+      "members": "{count} membre | {count} membres",
+      "playlists": "{count} playlist | {count} playlists"
+    },
+    "genitive": {
+      "artists": "{count} artiste | {count} artistes",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} titre | {count} titres",
+      "files": "{count} fichier | {count} fichiers",
+      "plays": "{count} play | {count} plays",
+      "playlists": "{count} playlist | {count} playlists"
+    },
+    "accusative": {
+      "artists": "{count} artiste | {count} artistes",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} titre | {count} titres",
+      "files": "{count} fichier | {count} fichiers",
+      "playlists": "{count} playlist | {count} playlists"
+    }
+  },
+  "select": {
+    "source": "Sélectionner la source :",
+    "type": "Sélectionner le type :",
+    "album": "Sélectionner l'album :",
+    "group": "Sélectionner le groupe album :",
+    "artist": "Sélectionner l'artiste :",
+    "track": "Sélectionner le titre :",
+    "country": "Sélectionner le pays :",
+    "video": "Sélectionner la vidéo :",
+    "lyrics": "Sélectionner les paroles :"
+  },
+  "sources": {
+    "audio": "Audio",
+    "other": "Autres",
+    "albumTypes": {
+      "album": "Album",
+      "group": "Groupe d'album",
+      "track": "Titre"
+    },
+    "albumsTypes": {
+      "album": "Albums",
+      "single": "Chanteur",
+      "ep": "EPs",
+      "singleEp": "Chanteur / EPs",
+      "compilation": "Compilations",
+      "video": "Vidéos",
+      "misc": "Divers",
+      "appearance": "Apparitions",
+      "live": "Live"
+    },
+    "videoTypes": {
+      "video": "Vidéo",
+      "track": "Titre"
+    }
+  },
+  "player": {
+    "variants": "Variantes ({count})",
+    "audio": {
+      "bitrate": "{value} kbit/s",
+      "equalizer": {
+        "decibel": "{value} dB",
+        "hertz": "{value} Hz",
+        "kilohertz": "{value} kHz"
+      }
+    }
+  },
+  "settings": {
+    "tabs": {
+      "app": "App",
+      "profile": "Profile",
+      "connections": "Connexion"
+    },
+    "sections": {
+      "interface": "Interface",
+      "theme": "Thème",
+      "window": "Fenêtre",
+      "tabs": "Onglets",
+      "sidebar": "Sidebar",
+      "video": "Vidéo",
+      "data": "Data",
+      "info": "Info",
+      "account": "Compte",
+      "other": "Autres"
+    },
+    "options": {
+      "app": {
+        "interface": {
+          "language": "Langue",
+          "timezone": "Zone de temps",
+          "infiniteScroll": "Scroll infinie",
+          "artistPopup": "Afficher les informations sur l'artiste au survol du lien",
+          "innerCounters": "Afficher le compteur des auditeurs de muffon",
+          "cachePages": "Pages de cache",
+          "scale": "Échelle"
+        },
+        "theme": {
+          "dark": "Mode nuit",
+          "system": "Thème système",
+          "background": "Arrière-plan",
+          "transparency": "Transparence"
+        },
+        "window": {
+          "maximize": "Maximiser au démarrage",
+          "exit": "Fermer pour arrêter"
+        },
+        "tabs": {
+          "newTabSwitch": "Basculer vers un nouvel onglet",
+          "closeOnExit": "Fermer les onglets à la sortie"
+        },
+        "search": {
+          "source": "Source",
+          "scope": "Portée",
+          "resultsFullSize": "Afficher les résultats en taille réelle",
+          "history": {
+            "clear": "Effacer l'historique des recherches"
+          }
+        },
+        "player": {
+          "audioSources": "Sources audio (par priorité)",
+          "bitrate": "Afficher le bitrate audio",
+          "album": "Montrer l'album",
+          "equalizer": "Montrer l'égaliseur",
+          "focusPlaying": "Focus sur la piste actuelle"
+        },
+        "queue": {
+          "autoplay": "Autoplay",
+          "clear": "Nettoyer à la fermeture du player"
+        },
+        "video": {
+          "autoplay": "Autoplay"
+        },
+        "recommendations": {
+          "hideLibraryArtists": "Masquer les artistes présents dans la bibliothèque",
+          "tracksCount": "avec le nombre de titres",
+          "hideListenedArtists": "Masquer les artites déjà écouter"
+        },
+        "top": {
+          "country": "Pays par défaut"
+        },
+        "lyrics": {
+          "annotations": "Montrer les annotations"
+        },
+        "history": {
+          "activity": {
+            "delete": "Supprimer l'historique d'activité"
+          },
+          "player": {
+            "delete": "Supprimer l'historique d'activité"
+          },
+          "browser": {
+            "delete": "Supprimer l'historique de navigation"
+          }
+        },
+        "other": {
+          "clearCache": "Vider le cache"
+        }
+      },
+      "profile": {
+        "player": {
+          "playing": "Montrer le titre actuellement écouter sur le profil"
+        },
+        "data": {
+          "account": {
+            "delete": "Supprimer le compte"
+          },
+          "library": {
+            "delete": "Supprimer la bibliothèque"
+          }
+        }
+      },
+      "connections": {
+        "lastfm": {
+          "scrobbling": "Scrobbler",
+          "scrobbleNotifications": "Notifications de scrobble",
+          "scrobblePercent": "Scrobble après"
+        },
+        "discord": {
+          "richPresence": {
+            "header": "Activer la Rich Presence",
+            "client": "Avant de l'activer, assurez-vous que votre client de bureau Discord est en cours d'exécution"
+          }
+        }
+      }
+    }
+  },
+  "track": {
+    "source": "Via {source}"
+  },
+  "recommended": {
+    "header": "Recommander pour vous",
+    "based": "Basé sur vous :"
+  },
+  "signup": {
+    "text": "Vous n'avez pas de compte ?",
+    "link": "Inscrivez-vous"
+  },
+  "login": {
+    "text": "Déjà inscrit ?",
+    "link": "Se connecter"
+  },
+  "passwordReset": {
+    "text": "Mot de passe oublié ?",
+    "link": "Réinitialiser le mot de passe",
+    "code": {
+      "sent": "Le code de réinitialisation du mot de passe a été envoyé à votre adresse e-mail"
+    },
+    "updated": {
+      "header": "Votre mot de passe a été mis à jour",
+      "content": "Vous pouvez maintenant revenir en arrière et vous connecter"
+    }
+  },
+  "anonymous": {
+    "continue": "Continuer sans compte",
+    "nickname": "Anonymous"
+  },
+  "roles": {
+    "creator": "Créateur"
+  },
+  "relationships": {
+    "followed": "Vous suit",
+    "following": "Vous suivez",
+    "follow": "Suivre",
+    "unfollow": "Ne plus suivre"
+  },
+  "memberships": {
+    "joined": "Vous avez rejoint",
+    "join": "Rejoindre",
+    "leave": "Quitter"
+  },
+  "message": {
+    "send": "Envoyer un message",
+    "sent": {
+      "header": "Le message a été envoyé",
+      "content": "Aller à la conversation"
+    }
+  },
+  "compatibility": {
+    "header": "Votre niveau de compatibilité avec {profileNickname}",
+    "common": "Vous avez en commun :"
+  },
+  "recommendation": {
+    "similar": "Similaire à {counter}:"
+  },
+  "import": {
+    "lastfm": {
+      "historyVisible": "Avant de procéder à l'importation, assurez-vous que l'historique d'écoute de Last.FM est visible."
+    },
+    "active": "Importation de {count} sur {counter}...",
+    "success": {
+      "header": "{counter} on bien était importé | {counter} on bien était importé",
+      "content": "Vous pouvez vérifier les données avant de les enregistrer dans la bibliothèque."
+    },
+    "error": {
+      "files": "{counter} n'a pas pu être importé. Veuillez vous assurer que le format des métadonnées est valide :"
+    }
+  },
+  "save": {
+    "active": "Sauvgarde de {count} sur {counter}...",
+    "success": {
+      "library": {
+        "artists": "{counter} a été ajouté à la bibliothèque | {counter} ont été ajoutés à la bibliothèque",
+        "albums": "{counter} a été ajouté à la bibliothèque | {counter} ont été ajoutés à la bibliothèque",
+        "tracks": "{counter} a été ajouté à la bibliothèque | {counter} ont été ajoutés à la bibliothèque"
+      },
+      "playlist": {
+        "artists": "{counter} a été ajouté à la playlist | {counter} ont été ajoutés à la playlist",
+        "albums": "{counter} a été ajouté à la playlist | {counter} ont été ajoutés à la playlist",
+        "tracks": "{counter} a été ajouté à la playlist | {counter} ont été ajoutés à la playlist"
+      },
+      "playlists": {
+        "playlists": "{counter} a été ajouté à la playlists | {counter} ont été ajoutés à la playlists"
+      },
+      "favorites": {
+        "tracks": "{counter} a été ajouté aux favoris | {counter} ont été ajoutés aux favoris"
+      }
+    },
+    "error": "{counter} n'a pas pu être ajouté :"
+  },
+  "delete": {
+    "active": "Suppression de {count} sur {counter}..."
+  },
+  "connections": {
+    "connect": "Connecter un compte",
+    "confirm": {
+      "token": "Votre navigateur va maintenant s'ouvrir. Confirmez la connexion et cliquez à nouveau sur ce bouton.",
+      "code": "Votre navigateur va maintenant s'ouvrir. Confirmez la connexion, collez le code reçu et cliquez à nouveau sur ce bouton."
+    },
+    "disconnect": "Déconnecter le compte"
+  },
+  "accounts": {
+    "premium": "Premium"
+  },
+  "noCollection": {
+    "header": {
+      "artists": "Aucun artistes",
+      "albums": "Aucun albums",
+      "groups": "Aucun groupe d'album",
+      "tracks": "Aucun titres",
+      "similar": "Aucune similitude",
+      "tags": "Aucun tags",
+      "posts": "Aucun postes",
+      "feed": "Aucun postes",
+      "conversations": "Aucune conversations",
+      "messages": "Aucun messages",
+      "followers": "Aucun abonnés",
+      "following": "Aucun abonnement",
+      "recommendations": "Aucune recommandations",
+      "playlists": "Aucune playlists",
+      "communities": "Aucune communauté",
+      "members": "Aucun membre",
+      "videos": "Aucune vidéos",
+      "videoChannels": "Aucune chaîne",
+      "videoMixes": "Aucun mix de vidéos",
+      "videoPlaylists": "Aucune playlists vidéo",
+      "related": "Aucun apparenté",
+      "listeners": "Aucun auditeurs",
+      "images": "Aucune images",
+      "events": "Aucun événements",
+      "profiles": "Aucun profils"
+    },
+    "content": "Il semble qu'il n'y ait rien ici"
+  },
+  "deleted": {
+    "artist": "L'artiste a été supprimé",
+    "album": "L'album a été supprimé",
+    "track": "Le titre a été supprimé",
+    "recommendation": "La recommandation a été supprimé",
+    "playlist": "La playlist a été supprimé",
+    "post": "Le poste a été supprimé",
+    "video": "La vidéo a été supprimé",
+    "videoChannel": "La chaîne a été supprimé",
+    "videoPlaylist": "La playlist vidéo a été supprimé"
+  },
+  "messages": {
+    "welcome": "Bienvenue, {profileNickname}"
+  },
+  "profile": {
+    "wasOnline": "En ligne"
+  },
+  "feed": {
+    "global": "Flux globale"
+  },
+  "about": {
+    "license": "{license} licence",
+    "homepage": "Page d'accueil",
+    "contact": "Contact"
+  },
+  "private": {
+    "playlist": "Privé",
+    "profile": "Privé"
+  },
+  "donate": {
+    "header": "Faire un don",
+    "content": {
+      "nonProfit": "muffon est un projet à but non lucratif qui ne comporte ni publicité, ni fonctionnalité ou contenu payant.",
+      "funds": "Mais, naturellement, il ne peut exister sans les fonds nécessaires à son développement et à son infrastructure.",
+      "timeEffort": "Beaucoup de temps et d'efforts ont été consacrés à la création de ce projet, et il serait bon que tous les investissements portent leurs fruits.",
+      "help": "Je vous demande donc de m'aider à soutenir le muffon.",
+      "would": "Souhaitez-vous faire un don ?"
+    },
+    "decline": "Non, merci",
+    "later": "Peut-être plus tard",
+    "accept": "Oui, bien sûr"
+  },
+  "lists": {
+    "simple": "Simple list",
+    "table": "Table",
+    "extended": "Detailed list"
+  },
+  "orders": {
+    "createdDesc": "Plus récent",
+    "createdAsc": "Plus ancien",
+    "updatedDesc": "Les plus récents mis à jour",
+    "updatedAsc": "Les moins récents mis à jour",
+    "artistsCountDesc": "Principaux artistes",
+    "artistsCountAsc": "Artiste moins connu",
+    "albumsCountDesc": "Principaux albums",
+    "albumsCountAsc": "Albums moins connu",
+    "tracksCountDesc": "Principaux titre",
+    "tracksCountAsc": "Titre moins connu",
+    "followersCountDesc": "Plus grand nombre d'abonnés",
+    "followersCountAsc": "Faible nombre d'abonnés",
+    "joinedDesc": "A rejoint récemment",
+    "joinedAsc": "A rejoint moins récemment",
+    "membersCountDesc": "Avec le plus de members",
+    "membersCountAsc": "Avec le moins de membres"
+  },
+  "deletedModel": {
+    "profile": "Profile supprimer"
+  },
+  "events": {
+    "created": {
+      "profile": "Le profil a été créé",
+      "bookmarkAlbum": "L'album {modelName} a été ajouté aux signets",
+      "bookmarkArtist": "L'artiste {modelName} a été ajouté aux signets",
+      "bookmarkTrack": "Le titre {modelName} a été ajouté aux signets",
+      "bookmarkVideo": "La vidéo {modelName} a été ajouté aux signets",
+      "bookmarkVideoChannel": "La chaîne {modelName} a été ajouté aux signets",
+      "bookmarkVideoPlaylist": "La playlist vidéo {modelName} a été ajouté aux signets",
+      "favoriteAlbum": "L'album {modelName} a été ajouté aux favoris",
+      "favoriteArtist": "L'artiste {modelName} a été ajouté aux favoris",
+      "favoriteTrack": "Le titre {modelName} a été ajouté aux favoris",
+      "favoriteVideo": "La vidéo {modelName} a été ajouté aux favoris",
+      "libraryAlbum": "L'album {modelName} a été ajouté à la bibliothèque",
+      "libraryArtist": "L'artiste {modelName} a été ajouté à la bibliothèque",
+      "libraryTrack": "Le titre {modelName} a été ajouté à la bibliothèque",
+      "listenedAlbum": "L'album {modelName} a été ajouté à la liste de lecture",
+      "listenedArtist": "L'artiste {modelName} a été ajouté à la liste de lecture",
+      "listenedTrack": "Le titre {modelName} a été ajouté à la liste de lecture",
+      "watchedVideo": "La vidéo {modelName} a été ajouté aux vidéos vues",
+      "playlistTrack": "Le titre {modelName} a été ajouté à la playlist {playlistTitle}",
+      "community": "La communauté {modelName} a été créé",
+      "relationship": "Vous avez suivi {modelName}",
+      "post": "Le poste {modelName} a été créé",
+      "playlist": "La playlist {modelName} a été créé",
+      "conversation": "Vous débuter une conversation avec {modelName}",
+      "membership": "Vous avez rejoint la communauté {modelName}"
+    },
+    "updated": {
+      "profile": "Le profil a été mis a jour",
+      "community": "La communauté {modelName} a été mise à jour",
+      "post": "Le poste {modelName} a été mise à jour",
+      "playlist": "La playlist {modelName} a été mise à jour"
+    },
+    "deleted": {
+      "bookmarkAlbum": "Album {modelName} a été supprimé des signets",
+      "bookmarkArtist": "Artist {modelName} a été supprimé des signets",
+      "bookmarkTrack": "Track {modelName} a été supprimé des signets",
+      "bookmarkVideo": "Video {modelName} a été supprimé des signets",
+      "bookmarkVideoChannel": "Video channel {modelName} a été supprimé des signets",
+      "bookmarkVideoPlaylist": "Video playlist {modelName} a été supprimé des signets",
+      "favoriteAlbum": "Album {modelName} a été supprimé des favoris",
+      "favoriteArtist": "Artist {modelName} a été supprimé des favoris",
+      "favoriteTrack": "Track {modelName} a été supprimé des favoris",
+      "favoriteVideo": "Video {modelName} a été supprimé des favoris",
+      "libraryAlbum": "Album {modelName} a été supprimé de la bibliothèque",
+      "libraryArtist": "Artist {modelName} a été supprimé de la bibliothèque",
+      "libraryTrack": "Track {modelName} a été supprimé de la bibliothèque",
+      "listenedAlbum": "Album {modelName} a été supprimé de la liste de lecture",
+      "listenedArtist": "Artist {modelName} a été supprimé de la liste de lecture",
+      "listenedTrack": "Track {modelName} a été supprimé de la liste de lecture",
+      "watchedVideo": "Video {modelName} a été supprimé des vidéos vues",
+      "playlistTrack": "Track {modelName} a été supprimé de la playlist {playlistTitle}",
+      "community": "La communauté {modelName} a été supprimé",
+      "recommendation": "L'artiste {modelName} a été supprimé de vos recommandations",
+      "relationship": "Vous ne suivez plus {modelName}",
+      "post": "Le poste {modelName} a été supprimé",
+      "playlist": "La playlist {modelName} a été supprimé",
+      "membership": "Vous avez quitté  la communauté {modelName}"
+    }
+  },
+  "created": {
+    "profile": "Sur muffon depuis",
+    "library": "Dans la bibliothèque depuis",
+    "community": "A été créé"
+  },
+  "filter": {
+    "include": {
+      "artists": "Avec les artistes",
+      "tags": "Avec les tags"
+    },
+    "exclude": {
+      "artists": "Sans les artistes",
+      "tags": "Sans les tags"
+    }
+  },
+  "online": "En ligne",
+  "error": "Erreur",
+  "more": "Plus de...",
+  "loading": "Chargement..."
+}

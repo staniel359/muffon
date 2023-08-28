@@ -6,12 +6,16 @@ export default [
     name: 'Беларуская'
   },
   {
+    id: 'de',
+    name: 'Deutsch'
+  },
+  {
     id: 'en',
     name: 'English'
   },
   {
-    id: 'de',
-    name: 'Deutsch'
+    id: 'fr',
+    name: 'Français'
   },
   {
     id: 'it',

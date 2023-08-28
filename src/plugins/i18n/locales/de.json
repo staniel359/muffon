@@ -320,7 +320,7 @@
         "passwordResetCode": "Passwortzurücksetzungscode ist leer",
         "nickname": "Nickname ist leer",
         "title": "Titel ist leer",
-        "legal": "Du musst der Datenschutzrichtlinie und den Geschäftsbedingungen zustimmen!"
+        "legal": "Du musst der Datenschutzrichtlinie und den Geschäftsbedingungen zustimmen"
       },
       "invalid": {
         "email": "Email ist ungültig"
