@@ -6,6 +6,9 @@ import {
 import {
   electronStoreKey
 } from '#/helpers/env'
+import {
+  userDataPath
+} from '#/helpers/paths'
 
 const encryptionKey = (
   isDevelopment ? null : electronStoreKey
@@ -13,6 +16,7 @@ const encryptionKey = (
 
 const options = {
   accessPropertiesByDotNotation: false,
+  cwd: userDataPath,
   encryptionKey,
   schema
 }

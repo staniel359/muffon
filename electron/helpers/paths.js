@@ -11,10 +11,17 @@ import {
   fileRootPath as formatFileRootPath
 } from '#/helpers/formatters'
 
-export const developmentUserDataPath =
+const developmentUserDataPath =
   formatFileRootPath(
     'electron_data'
   )
+
+if (isDevelopment) {
+  app.setPath(
+    'userData',
+    developmentUserDataPath
+  )
+}
 
 export const productionPath =
   formatFileRootPath(
@@ -36,7 +43,7 @@ export const iconPath =
     iconPublicPath
   )
 
-const userDataPath =
+export const userDataPath =
   app.getPath(
     'userData'
   )
