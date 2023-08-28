@@ -61,5 +61,14 @@
       "from": "./build",
       "to": "./"
     }
+  ],
+  "protocols": [
+    {
+      "name": "muffon",
+      "schemes": [
+        "muffon"
+      ],
+      "role": "Viewer"
+    }
   ]
 }

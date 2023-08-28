@@ -9,6 +9,7 @@ import {
   handleLogout,
   handleAccountDelete,
   handleNavigate,
+  handleCallOpenDeepLink,
   handleExit
 } from '#/handlers/ipc/app'
 
@@ -46,6 +47,11 @@ export default function () {
   ipcMain.on(
     'navigate',
     handleNavigate
+  )
+
+  ipcMain.on(
+    'call-open-deep-link',
+    handleCallOpenDeepLink
   )
 
   ipcMain.on(

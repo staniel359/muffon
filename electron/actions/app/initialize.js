@@ -1,6 +1,7 @@
 import {
   app
 } from 'electron'
+import setProtocols from './setProtocols'
 import setupI18n from '#/plugins/i18n'
 import setupDayjs from '#/plugins/dayjs'
 import setFlags from './setFlags'
@@ -32,6 +33,8 @@ export default function () {
   setFlags()
 
   setGlobalVariables()
+
+  setProtocols()
 
   setEvents()
 

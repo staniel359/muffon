@@ -33,6 +33,7 @@ import {
 import {
   home as formatHomeLink
 } from '@/helpers/formatters/links'
+import newTabMixin from '@/mixins/newTabMixin'
 
 export default {
   name: 'TheBrowserTabs',
@@ -41,6 +42,9 @@ export default {
     BaseButton,
     BrowserTab
   },
+  mixins: [
+    newTabMixin
+  ],
   computed: {
     ...mapState(
       layoutStore,
@@ -106,27 +110,6 @@ export default {
 
       this.setActiveTab(
         tabData.uuid
-      )
-    },
-    addTab (
-      value
-    ) {
-      const tabDataFormatted =
-        JSON.stringify(
-          value
-        )
-
-      ipcRenderer.send(
-        'add-tab',
-        tabDataFormatted
-      )
-    },
-    setActiveTab (
-      tabId
-    ) {
-      ipcRenderer.send(
-        'set-active-tab',
-        tabId
       )
     },
     clearTabs () {

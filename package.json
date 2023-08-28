@@ -17,6 +17,8 @@
     "build": "vite build",
     "build:electron": "electron-builder --dir",
     "build:all": "yarn build && yarn build:electron",
+    "package:electron": "electron-builder",
+    "package:all": "yarn build && yarn package:electron",
     "release:electron": "electron-builder --publish always",
     "release": "yarn build && yarn release:electron",
     "postinstall": "electron-builder install-app-deps",

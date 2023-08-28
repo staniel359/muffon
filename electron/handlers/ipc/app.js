@@ -5,6 +5,7 @@ import checkTheme from '#/actions/app/checkTheme'
 import callLogout from '#/actions/app/callLogout'
 import callAccountDelete from '#/actions/app/callAccountDelete'
 import callNavigate from '#/actions/app/callNavigate'
+import callOpenDeepLink from '#/actions/app/callOpenDeepLink'
 import exit from '#/actions/app/exit'
 
 export function handleSetTitle (
@@ -53,6 +54,10 @@ export function handleNavigate (
   callNavigate(
     dataFormatted
   )
+}
+
+export function handleCallOpenDeepLink () {
+  callOpenDeepLink()
 }
 
 export function handleExit () {

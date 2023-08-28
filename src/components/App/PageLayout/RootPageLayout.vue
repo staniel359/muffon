@@ -39,6 +39,8 @@
     v-if="isRenderBrowserTabsObserver"
   />
 
+  <TheDeepLinksObserver />
+
   <TheExitObserver />
 
   <TheRootBackground />
@@ -67,6 +69,8 @@ import TheBackgroundObserver
   from '@/components/layout/observers/TheBackgroundObserver.vue'
 import TheExternalUrlsObserver
   from '@/components/layout/observers/TheExternalUrlsObserver.vue'
+import TheDeepLinksObserver
+  from '@/components/layout/observers/TheDeepLinksObserver.vue'
 import TheExitObserver
   from '@/components/layout/observers/TheExitObserver.vue'
 import TheRootBackground from '@/components/layout/TheRootBackground.vue'
@@ -136,6 +140,7 @@ export default {
     TheDiscordObserver,
     TheExternalUrlsObserver,
     TheBrowserTabsObserver,
+    TheDeepLinksObserver,
     TheExitObserver,
     TheRootBackground
   },

@@ -28,8 +28,14 @@ export const isLinux = (
   process.platform === 'linux'
 )
 
+export const isWindows = (
+  process.platform === 'win32'
+)
+
 export const isSingleInstance =
   app.requestSingleInstanceLock()
+
+export const deepLinksProtocol = `${appName}://`
 
 export function createFolderIfNotExists (
   path
