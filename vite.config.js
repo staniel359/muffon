@@ -8,6 +8,7 @@ import eslint from 'vite-plugin-eslint'
 import electron from 'vite-electron-plugin'
 import {
   alias as electronAlias,
+  copy as electronCopy,
   customStart as electronCustomStart,
   loadViteEnv as electronLoadViteEnv
 } from 'vite-electron-plugin/plugin'
@@ -41,6 +42,14 @@ export default defineConfig(
                     __dirname,
                     'electron'
                   )
+                }
+              ]
+            ),
+            electronCopy(
+              [
+                {
+                  from: 'electron/plugins/i18n/locales/*.json',
+                  to: 'build_electron/plugins/i18n/locales'
                 }
               ]
             ),
