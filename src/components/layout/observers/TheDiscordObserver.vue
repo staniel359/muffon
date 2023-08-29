@@ -11,26 +11,71 @@ import {
 import {
   mapState
 } from 'pinia'
+import i18n from '@/plugins/i18n'
+import discordStore from '@/stores/discord'
 import playerStore from '@/stores/player'
+import profileStore from '@/stores/profile'
+import {
+  homepage
+} from '@/../package.json'
 
 export default {
   name: 'TheDiscordObserver',
   data () {
     return {
-      isConnected: false
+      isConnected: false,
+      buttonsTextData: (
+        i18n
+          .global
+          .messages
+          .en
+          .settings
+          .options
+          .connections
+          .discord
+          .richPresence
+          .buttons
+          .options
+      )
     }
   },
   computed: {
+    ...mapState(
+      discordStore,
+      {
+        discordRichPresenceButtons:
+          'richPresenceButtons'
+      }
+    ),
     ...mapState(
       playerStore,
       {
         playerPlaying: 'playing'
       }
     ),
-    playingDataFormatted () {
+    ...mapState(
+      profileStore,
+      {
+        profileConnections: 'connections',
+        profileId: 'id'
+      }
+    ),
+    activityDataFormatted () {
       return JSON.stringify(
-        this.playingData
+        this.activityData
       )
+    },
+    activityData () {
+      if (this.playerPlaying) {
+        return {
+          playingData:
+            this.playingData,
+          buttons:
+            this.buttonsFiltered
+        }
+      } else {
+        return null
+      }
     },
     playingData () {
       return {
@@ -55,11 +100,101 @@ export default {
     },
     duration () {
       return this.playerPlaying.duration
+    },
+    buttonsFiltered () {
+      return this.buttonsFormatted.filter(
+        e => e
+      )
+    },
+    buttonsFormatted () {
+      return this.discordRichPresenceButtons.map(
+        this.formatButton
+      )
+    },
+    buttons () {
+      return [
+        {
+          id: 'downloadApp',
+          link: homepage
+        },
+        {
+          id: 'listenTrack',
+          link:
+            this.playingExternalLink
+        },
+        {
+          id: 'lastfmProfile',
+          isDisabled:
+            !this.lastfmConnection,
+          link:
+            this.lastfmProfileLink
+        },
+        {
+          id: 'spotifyProfile',
+          isDisabled:
+            !this.spotifyConnection,
+          link:
+            this.spotifyProfileLink
+        },
+        {
+          id: 'muffonProfile',
+          link:
+            this.muffonProfileLink
+        }
+      ]
+    },
+    playingExternalLink () {
+      return (
+        this.playingStreamingLink ||
+          this.playingOriginalLink
+      )
+    },
+    playingStreamingLink () {
+      return this.playingSourceLinks.streaming
+    },
+    playingSourceLinks () {
+      return this.playerPlaying.source.links
+    },
+    playingOriginalLink () {
+      return this.playingSourceLinks.original
+    },
+    lastfmConnection () {
+      return this.profileConnections.lastfm
+    },
+    lastfmProfileLink () {
+      if (this.lastfmConnection) {
+        return (
+          `https://www.last.fm/user/${this.lastfmNickname}`
+        )
+      } else {
+        return null
+      }
+    },
+    lastfmNickname () {
+      return this.lastfmConnection.nickname
+    },
+    spotifyConnection () {
+      return this.profileConnections.spotify
+    },
+    spotifyProfileLink () {
+      if (this.spotifyConnection) {
+        return (
+          `https://open.spotify.com/user/${this.spotifyId}`
+        )
+      } else {
+        return null
+      }
+    },
+    spotifyId () {
+      return this.spotifyConnection.spotify_id
+    },
+    muffonProfileLink () {
+      return `muffon://profiles/${this.profileId}`
     }
   },
   watch: {
-    playerPlaying:
-      'handlePlayerPlayingChange'
+    activityData:
+      'handleActivityDataChange'
   },
   mounted () {
     this.connect()
@@ -78,7 +213,7 @@ export default {
     handleError () {
       return null
     },
-    handlePlayerPlayingChange () {
+    handleActivityDataChange () {
       if (this.isConnected) {
         this.updateActivity()
       }
@@ -102,7 +237,7 @@ export default {
     setActivity () {
       ipcRenderer.invoke(
         'set-discord-activity',
-        this.playingDataFormatted
+        this.activityDataFormatted
       ).catch(
         this.handleError
       )
@@ -113,6 +248,40 @@ export default {
       ).catch(
         this.handleError
       )
+    },
+    formatButton (
+      id
+    ) {
+      function isMatchedButton (
+        buttonData
+      ) {
+        return (
+          buttonData.id === id
+        )
+      }
+
+      const matchedButtonData =
+        this.buttons.find(
+          isMatchedButton
+        )
+
+      if (matchedButtonData) {
+        const {
+          id,
+          link,
+          isDisabled
+        } = matchedButtonData
+
+        if (!isDisabled) {
+          const label =
+            this.buttonsTextData[id]
+
+          return {
+            label,
+            url: link
+          }
+        }
+      }
     }
   }
 }

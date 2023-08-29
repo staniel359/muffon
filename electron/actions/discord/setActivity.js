@@ -1,34 +1,27 @@
 import {
   appName
 } from '#/helpers/utils'
-import {
-  homepageUrl
-} from '#/helpers/urls'
 
 export default function (
   {
+    playingData,
+    buttons
+  }
+) {
+  const {
     trackTitle,
     artistName,
     albumTitle,
     image,
     duration
-  }
-) {
+  } = playingData
+
   const startTimestamp = Date.now()
 
   const endTimestamp = (
     startTimestamp +
       duration * 1000
   )
-
-  const downloadButtonData = {
-    label: appName,
-    url: homepageUrl
-  }
-
-  const buttons = [
-    downloadButtonData
-  ]
 
   const activity = {
     details: trackTitle,
@@ -39,7 +32,9 @@ export default function (
     smallImageKey: 'logo',
     startTimestamp,
     endTimestamp,
-    buttons
+    ...(buttons.length && {
+      buttons
+    })
   }
 
   return discordClient.setActivity(

@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import audioStore from '@/stores/audio'
+import discordStore from '@/stores/discord'
 import historyStore from '@/stores/history'
 import layoutStore from '@/stores/layout'
 import lyricsStore from '@/stores/lyrics'
@@ -21,6 +22,7 @@ import {
 
 const stores = {
   audio: audioStore,
+  discord: discordStore,
   history: historyStore,
   layout: layoutStore,
   lyrics: lyricsStore,

@@ -575,7 +575,21 @@
         "discord": {
           "richPresence": {
             "header": "Rich Presence aktivieren",
-            "client": "Stellen Sie vor der Aktivierung sicher, dass Ihr Discord Client läuft"
+            "client": "Stellen Sie vor der Aktivierung sicher, dass Ihr Discord Client läuft",
+            "buttons": {
+              "header": "Knöpfe",
+              "select": {
+                "first": "Ersten auswählen:",
+                "second": "Zweiten auswählen:"
+              },
+              "options": {
+                "downloadApp": "muffon herunterladen",
+                "listenTrack": "Titel anhören",
+                "lastfmProfile": "Meine Last.FM Seite",
+                "spotifyProfile": "Meine Spotify Seite",
+                "muffonProfile": "Meine muffon Seite"
+              }
+            }
           }
         }
       }

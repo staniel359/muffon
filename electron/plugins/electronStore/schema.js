@@ -72,6 +72,13 @@ export default {
       }
     ]
   },
+  'discord.richPresenceButtons': {
+    type: 'array',
+    default: [
+      '',
+      ''
+    ]
+  },
   'layout.activeTabId': {
     type: [
       'null',

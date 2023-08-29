@@ -14,6 +14,9 @@
       v-for="optionData in optionsCollection"
       :key="optionData.uuid"
       class="item main-dropdown-item"
+      :class="{
+        disabled: optionData.isDisabled
+      }"
       :data-value="optionData.id"
     >
       <BaseIcon

@@ -575,7 +575,21 @@
         "discord": {
           "richPresence": {
             "header": "Activer la Rich Presence",
-            "client": "Avant de l'activer, assurez-vous que votre client de bureau Discord est en cours d'exécution"
+            "client": "Avant de l'activer, assurez-vous que votre client de bureau Discord est en cours d'exécution",
+            "buttons": {
+              "header": "Boutons",
+              "select": {
+                "first": "Sélectionner en premier :",
+                "second": "Sélectionner en deuxième :"
+              },
+              "options": {
+                "downloadApp": "Télécharger muffon",
+                "listenTrack": "Écouter le titre",
+                "lastfmProfile": "Ma page Last.FM",
+                "spotifyProfile": "Ma page Spotify",
+                "muffonProfile": "Ma page muffon"
+              }
+            }
           }
         }
       }

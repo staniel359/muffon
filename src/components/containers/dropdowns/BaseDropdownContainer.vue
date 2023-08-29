@@ -131,9 +131,13 @@ export default {
     handleSelectedChange (
       value
     ) {
-      this.setValue(
-        value
-      )
+      if (value) {
+        this.setValue(
+          value
+        )
+      } else {
+        this.reset()
+      }
     },
     handleSelect (
       value

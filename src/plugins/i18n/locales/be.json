@@ -575,7 +575,21 @@
         "discord": {
           "richPresence": {
             "header": "Уключыць Rich Presence",
-            "client": "Перад уключэннем пераканайцеся, што Ваш настольны кліент Discord запушчаны"
+            "client": "Перад уключэннем пераканайцеся, што Ваш настольны кліент Discord запушчаны",
+            "buttons": {
+              "header": "Кнопкі",
+              "select": {
+                "first": "Выбраць першую:",
+                "second": "Выбраць другую:"
+              },
+              "options": {
+                "downloadApp": "Спампаваць muffon",
+                "listenTrack": "Праслухаць кампазіцыю",
+                "lastfmProfile": "Мая старонка на Last.FM",
+                "spotifyProfile": "Мая старонка на Spotify",
+                "muffonProfile": "Мая старонка на muffon"
+              }
+            }
           }
         }
       }
