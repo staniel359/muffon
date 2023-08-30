@@ -29,9 +29,7 @@
     v-else-if="profileId"
   />
 
-  <TheDiscordObserver
-    v-if="isPlayerWithDiscordRichPresence"
-  />
+  <TheDiscordObserver />
 
   <TheExternalUrlsObserver />
 
@@ -67,6 +65,8 @@ import TheNativeThemeObserver
   from '@/components/layout/observers/TheNativeThemeObserver.vue'
 import TheBackgroundObserver
   from '@/components/layout/observers/TheBackgroundObserver.vue'
+import TheDiscordObserver
+  from '@/components/layout/observers/TheDiscordObserver.vue'
 import TheExternalUrlsObserver
   from '@/components/layout/observers/TheExternalUrlsObserver.vue'
 import TheDeepLinksObserver
@@ -111,12 +111,6 @@ const TheBrowserObserver =
       '@/components/layout/observers/TheBrowserObserver.vue'
     )
   )
-const TheDiscordObserver =
-  defineAsyncComponent(
-    () => import(
-      '@/components/layout/observers/TheDiscordObserver.vue'
-    )
-  )
 const TheBrowserTabsObserver =
   defineAsyncComponent(
     () => import(
@@ -149,8 +143,6 @@ export default {
       playerStore,
       {
         playerPlaying: 'playing',
-        isPlayerWithDiscordRichPresence:
-          'isWithDiscordRichPresence',
         isPlayerWithScrobbling:
           'isWithScrobbling'
       }

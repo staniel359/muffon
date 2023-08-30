@@ -1,3 +1,3 @@
 export default function () {
-  return discordClient.clearActivity()
+  discordClient.clearActivity()
 }

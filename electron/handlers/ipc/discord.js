@@ -1,9 +1,10 @@
 import connectDiscord from '#/actions/discord/connect'
 import setDiscordActivity from '#/actions/discord/setActivity'
 import resetDiscordActivity from '#/actions/discord/resetActivity'
+import disconnectDiscord from '#/actions/discord/disconnect'
 
 export function handleConnectDiscord () {
-  return connectDiscord()
+  connectDiscord()
 }
 
 export function handleSetDiscordActivity (
@@ -15,11 +16,15 @@ export function handleSetDiscordActivity (
       data
     )
 
-  return setDiscordActivity(
+  setDiscordActivity(
     dataFormatted
   )
 }
 
 export function handleResetDiscordActivity () {
-  return resetDiscordActivity()
+  resetDiscordActivity()
+}
+
+export function handleDisconnectDiscord () {
+  disconnectDiscord()
 }

@@ -30,14 +30,13 @@ export default function (
     smallImageText: appName,
     largeImageKey: image,
     smallImageKey: 'logo',
-    startTimestamp,
     endTimestamp,
     ...(buttons.length && {
       buttons
     })
   }
 
-  return discordClient.setActivity(
+  discordClient.setActivity(
     activity
   )
 }

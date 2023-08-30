@@ -4,22 +4,28 @@ import {
 import {
   handleConnectDiscord,
   handleSetDiscordActivity,
-  handleResetDiscordActivity
+  handleResetDiscordActivity,
+  handleDisconnectDiscord
 } from '#/handlers/ipc/discord'
 
 export default function () {
-  ipcMain.handle(
+  ipcMain.on(
     'connect-discord',
     handleConnectDiscord
   )
 
-  ipcMain.handle(
+  ipcMain.on(
     'set-discord-activity',
     handleSetDiscordActivity
   )
 
-  ipcMain.handle(
+  ipcMain.on(
     'reset-discord-activity',
     handleResetDiscordActivity
+  )
+
+  ipcMain.on(
+    'disconnect-discord',
+    handleDisconnectDiscord
   )
 }

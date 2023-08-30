@@ -50,7 +50,9 @@ export default {
     ...mapState(
       playerStore,
       {
-        playerPlaying: 'playing'
+        playerPlaying: 'playing',
+        isPlayerWithDiscordRichPresence:
+          'isWithDiscordRichPresence'
       }
     ),
     ...mapState(
@@ -193,25 +195,48 @@ export default {
     }
   },
   watch: {
+    isPlayerWithDiscordRichPresence: {
+      immediate: true,
+      handler:
+        'handleIsPlayerWithDiscordRichPresenceChange'
+    },
+    isConnected: 'handleIsConnectedChange',
     activityData:
       'handleActivityDataChange'
   },
   mounted () {
-    this.connect()
-  },
-  beforeUnmount () {
-    if (this.isConnected) {
-      this.resetActivity()
-    }
+    ipcRenderer.on(
+      'discord-connected',
+      this.handleDiscordConnected
+    )
+
+    ipcRenderer.on(
+      'discord-disconnected',
+      this.handleDiscordDisconnected
+    )
   },
   methods: {
-    handleLoginSuccess () {
+    handleDiscordConnected () {
       this.isConnected = true
-
-      this.updateActivity()
     },
-    handleError () {
-      return null
+    handleDiscordDisconnected () {
+      this.isConnected = false
+    },
+    handleIsPlayerWithDiscordRichPresenceChange (
+      value
+    ) {
+      if (value) {
+        this.connect()
+      } else {
+        this.disconnect()
+      }
+    },
+    handleIsConnectedChange (
+      value
+    ) {
+      if (value) {
+        this.updateActivity()
+      }
     },
     handleActivityDataChange () {
       if (this.isConnected) {
@@ -219,13 +244,20 @@ export default {
       }
     },
     connect () {
-      return ipcRenderer.invoke(
-        'connect-discord'
-      ).then(
-        this.handleLoginSuccess
-      ).catch(
-        this.handleError
-      )
+      if (!this.isConnected) {
+        ipcRenderer.send(
+          'connect-discord'
+        )
+      }
+    },
+    disconnect () {
+      if (this.isConnected) {
+        this.resetActivity()
+
+        ipcRenderer.send(
+          'disconnect-discord'
+        )
+      }
     },
     updateActivity () {
       if (this.playerPlaying) {
@@ -235,18 +267,14 @@ export default {
       }
     },
     setActivity () {
-      ipcRenderer.invoke(
+      ipcRenderer.send(
         'set-discord-activity',
         this.activityDataFormatted
-      ).catch(
-        this.handleError
       )
     },
     resetActivity () {
-      ipcRenderer.invoke(
+      ipcRenderer.send(
         'reset-discord-activity'
-      ).catch(
-        this.handleError
       )
     },
     formatButton (

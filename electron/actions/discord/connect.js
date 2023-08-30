@@ -5,7 +5,7 @@ import {
   discordClientId
 } from '#/helpers/env'
 
-export default async function () {
+export default function () {
   const options = {
     transport: 'ipc'
   }
@@ -20,12 +20,33 @@ export default async function () {
   }
 
   function handleSuccess () {
-    return true
+    mainWindow
+      .webContents
+      .send(
+        'discord-connected'
+      )
   }
 
-  return discordClient.login(
+  function handleError (
+    error
+  ) {
+    const isClientNotRunning = (
+      error.message ===
+        'Could not connect'
+    )
+
+    if (!isClientNotRunning) {
+      console.log(
+        error.message
+      )
+    }
+  }
+
+  discordClient.login(
     loginOptions
   ).then(
     handleSuccess
+  ).catch(
+    handleError
   )
 }
