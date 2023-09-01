@@ -1,19 +1,27 @@
 import {
   nativeTheme
 } from 'electron'
+import getElectronStoreKey from '#/actions/electronStore/getKey'
 
 export default function () {
-  const isDarkMode =
-    nativeTheme.shouldUseDarkColors
-
-  const data = {
-    isDarkMode
-  }
-
-  mainWindow
-    .webContents
-    .send(
-      'update-native-theme',
-      data
+  const isWithSystemTheme =
+    getElectronStoreKey(
+      'layout.isWithSystemTheme'
     )
+
+  if (isWithSystemTheme) {
+    const isDarkMode =
+      nativeTheme.shouldUseDarkColors
+
+    const data = {
+      isDarkMode
+    }
+
+    mainWindow
+      .webContents
+      .send(
+        'native-theme-updated',
+        data
+      )
+  }
 }

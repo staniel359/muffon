@@ -32,8 +32,8 @@ export default {
   },
   mounted () {
     ipcRenderer.on(
-      'update-native-theme',
-      this.handleUpdateNativeTheme
+      'native-theme-updated',
+      this.handleNativeThemeUpdated
     )
   },
   methods: {
@@ -41,15 +41,19 @@ export default {
       value
     ) {
       if (value) {
-        const data =
+        const nativeThemeData =
           await this.checkNativeTheme()
 
+        const {
+          isDarkMode
+        } = nativeThemeData
+
         this.updateIsDarkMode(
-          data.isDarkMode
+          isDarkMode
         )
       }
     },
-    handleUpdateNativeTheme (
+    handleNativeThemeUpdated (
       _,
       {
         isDarkMode
