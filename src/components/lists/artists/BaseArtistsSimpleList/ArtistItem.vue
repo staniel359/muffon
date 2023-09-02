@@ -12,7 +12,7 @@
   >
     <BaseDeletedSection
       v-if="isDeleted"
-      model="artist"
+      :model="model"
     />
     <template
       v-else
@@ -243,6 +243,13 @@ export default {
           this.isOptionsActive ||
           this.isClearButtonActive
       )
+    },
+    model () {
+      if (this.isRecommendation) {
+        return 'recommendation'
+      } else {
+        return 'artist'
+      }
     }
   },
   methods: {

@@ -1,6 +1,7 @@
 <template>
   <BaseRecommendationsPageContainer
     ref="page"
+    :scope="scope"
     :limit="limit"
     :order="order"
     @refresh="handleRefresh"
@@ -14,7 +15,6 @@
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
         :scope="scope"
-        :list-scope="listScope"
         :limit="limit"
         :order="order"
         :model="model"
@@ -72,7 +72,6 @@ export default {
       type: String,
       required: true
     },
-    listScope: String,
     limit: Number,
     order: String,
     model: String,

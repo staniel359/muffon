@@ -1,5 +1,6 @@
 <template>
   <div
+    class="base-error-message"
     :class="{
       'base-page-error-message': isPage
     }"
@@ -124,6 +125,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.base-error-message
+  @extend .w-100
+
 .base-page-error-message
   @extend .flex-full, .d-flex, .flex-column, .justify-content-center
 </style>

@@ -4,6 +4,7 @@ import getRequest from '@/helpers/actions/api/request/get'
 
 export default function (
   {
+    scope,
     page,
     limit,
     order,
@@ -15,8 +16,10 @@ export default function (
 ) {
   const profileId = profileStore().id
 
-  const url =
-    `/profiles/${profileId}/recommendations`
+  const url = (
+    `/profiles/${profileId}` +
+    `/recommendations/${scope}`
+  )
 
   const {
     isHideLibraryArtists,
@@ -62,7 +65,10 @@ export default function (
     response
   ) => {
     this.recommendationsData =
-      response.data.profile
+      response
+        .data
+        .profile
+        .recommendations
   }
 
   return getRequest.bind(

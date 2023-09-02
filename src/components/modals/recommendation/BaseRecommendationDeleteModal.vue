@@ -11,7 +11,8 @@
 
 <script>
 import BaseDeleteModal from '@/components/modals/BaseDeleteModal.vue'
-import deleteRecommendation from '@/helpers/actions/api/recommendation/delete'
+import deleteRecommendationArtist from
+  '@/helpers/actions/api/recommendation/artist/delete'
 
 export default {
   name: 'BaseRecommendationDeleteModal',
@@ -21,6 +22,10 @@ export default {
   props: {
     recommendationData: {
       type: Object,
+      required: true
+    },
+    model: {
+      type: String,
       required: true
     }
   },
@@ -43,7 +48,8 @@ export default {
     },
     deleteArgs () {
       return {
-        recommendationId: this.recommendationId
+        recommendationId:
+          this.recommendationId
       }
     }
   },
@@ -51,11 +57,9 @@ export default {
     isSuccess: 'handleIsSuccessChange'
   },
   methods: {
-    deleteRecommendation,
+    deleteRecommendationArtist,
     handleDeleteButtonClick () {
-      this.deleteRecommendation(
-        this.deleteArgs
-      )
+      this.deleteRecommendation()
     },
     handleIsSuccessChange (
       value
@@ -66,6 +70,16 @@ export default {
         this.$emit(
           'success'
         )
+      }
+    },
+    deleteRecommendation () {
+      switch (this.model) {
+        case 'artist':
+          return this.deleteRecommendationArtist(
+            this.deleteArgs
+          )
+        default:
+          return null
       }
     },
     show () {

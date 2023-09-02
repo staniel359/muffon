@@ -19,10 +19,8 @@
       </div>
 
       <div class="filter-action-button-section">
-        <BaseButton
-          class="primary"
-          :text="submitButtonText"
-          :is-invertable="false"
+        <BaseSubmitButton
+          action-key="filter"
           @click="handleSubmitButtonClick"
         />
       </div>
@@ -33,14 +31,14 @@
 <script>
 import FilterItem from './FilterSection/FilterItem.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'FilterSection',
   components: {
     FilterItem,
     BaseClearButton,
-    BaseButton
+    BaseSubmitButton
   },
   provide () {
     return {
@@ -82,11 +80,6 @@ export default {
     }
   },
   computed: {
-    submitButtonText () {
-      return this.$t(
-        'actions.filter'
-      )
-    },
     isRenderClearButton () {
       return this.isAnyCollections
     },

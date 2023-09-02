@@ -40,7 +40,7 @@ export default {
 
 <style lang="sass" scoped>
 .base-deleted-section
-  @extend .d-flex, .align-items-center, .justify-content-center, .flex-full, .text-align-center
+  @extend .d-flex, .align-items-center, .justify-content-center, .flex-full, .text-align-center, .word-break-break-word
   .deleted-icon
     @extend .d-inline
     margin-right: 0.75em

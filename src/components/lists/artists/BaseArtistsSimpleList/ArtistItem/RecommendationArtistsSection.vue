@@ -10,7 +10,7 @@
       @click="handleCounterClick"
     />
 
-    <BaseRecommendationArtistsModal
+    <BaseRecommendationArtistArtistsModal
       ref="modal"
       :recommendation-id="recommendationId"
     />
@@ -22,15 +22,15 @@ import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseListCounterSection
   from '@/components/sections/BaseListCounterSection.vue'
-import BaseRecommendationArtistsModal
-  from '@/components/modals/recommendation/BaseRecommendationArtistsModal.vue'
+import BaseRecommendationArtistArtistsModal
+  from '@/components/modals/recommendation/artist/BaseRecommendationArtistArtistsModal.vue'
 
 export default {
   name: 'RecommendationArtistsSection',
   components: {
     BaseLinkContainer,
     BaseListCounterSection,
-    BaseRecommendationArtistsModal
+    BaseRecommendationArtistArtistsModal
   },
   props: {
     recommendationData: {

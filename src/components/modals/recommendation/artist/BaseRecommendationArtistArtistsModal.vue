@@ -40,14 +40,15 @@ import BasePaginatedSegmentModalContainer
   from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BaseArtistsSimpleList
   from '@/components/lists/artists/BaseArtistsSimpleList.vue'
-import getRecommendation from '@/helpers/actions/api/recommendation/get'
+import getRecommendationArtist
+  from '@/helpers/actions/api/recommendation/artist/get'
 import modalMixin from '@/mixins/modalMixin'
 import {
   artists as artistsLimits
 } from '@/helpers/data/limits'
 
 export default {
-  name: 'BaseRecommendationArtistsModal',
+  name: 'BaseRecommendationArtistArtistsModal',
   components: {
     BasePaginatedSegmentModalContainer,
     BaseArtistsSimpleList
@@ -93,13 +94,13 @@ export default {
     }
   },
   methods: {
-    getRecommendation,
+    getRecommendationArtist,
     getData (
       {
         page
       } = {}
     ) {
-      this.getRecommendation(
+      this.getRecommendationArtist(
         {
           ...this.recommendationArgs,
           page

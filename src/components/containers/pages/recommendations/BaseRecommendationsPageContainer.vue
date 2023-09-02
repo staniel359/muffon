@@ -45,6 +45,10 @@ export default {
     }
   },
   props: {
+    scope: {
+      type: String,
+      required: true
+    },
     limit: Number,
     order: String
   },
@@ -79,6 +83,7 @@ export default {
     },
     recommendationsArgs () {
       return {
+        scope: this.scope,
         limit: this.limit,
         order: this.order,
         ...this.filterArgs

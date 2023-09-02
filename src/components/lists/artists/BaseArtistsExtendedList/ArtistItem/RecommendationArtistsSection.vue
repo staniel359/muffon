@@ -22,7 +22,7 @@
     @click="handleMoreButtonClick"
   />
 
-  <BaseRecommendationArtistsModal
+  <BaseRecommendationArtistArtistsModal
     ref="modal"
     :recommendation-id="recommendationId"
   />
@@ -38,8 +38,8 @@ import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistsSimpleList
   from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import BaseMoreButton from '@/components/buttons/BaseMoreButton.vue'
-import BaseRecommendationArtistsModal
-  from '@/components/modals/recommendation/BaseRecommendationArtistsModal.vue'
+import BaseRecommendationArtistArtistsModal
+  from '@/components/modals/recommendation/artist/BaseRecommendationArtistArtistsModal.vue'
 import {
   number as formatNumber
 } from '@/helpers/formatters'
@@ -54,7 +54,7 @@ export default {
     BaseHeader,
     BaseArtistsSimpleList,
     BaseMoreButton,
-    BaseRecommendationArtistsModal
+    BaseRecommendationArtistArtistsModal
   },
   props: {
     recommendationData: {

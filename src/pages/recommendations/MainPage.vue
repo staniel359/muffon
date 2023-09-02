@@ -3,7 +3,6 @@
     :key="refreshKey"
     model="recommendation"
     :scope="scope"
-    :list-scope="listScope"
     :limit="limit"
     :order="order"
     :view-id="viewId"
@@ -81,8 +80,7 @@ export default {
   data () {
     return {
       isShowFilter: false,
-      scope: 'recommendations',
-      listScope: 'artists',
+      scope: 'artists',
       order: 'libraryArtistsCountDesc'
     }
   },

@@ -13,14 +13,17 @@ export default function (
 
   const url = (
     `/profiles/${profileId}/recommendations` +
-    `/${recommendationId}/${scope}`
+    `/artists/${recommendationId}/${scope}`
   )
 
   const handleSuccess = (
     response
   ) => {
     this.recommendationData =
-      response.data.recommendation
+      response
+        .data
+        .profile
+        .recommendation
   }
 
   return getRequest.bind(

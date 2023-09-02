@@ -82,6 +82,7 @@
         <BaseRecommendationDeleteModal
           v-else-if="isRecommendation"
           ref="deleteModal"
+          model="artist"
           :recommendation-data="artistData"
           @success="handleDeleted"
         />
