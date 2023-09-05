@@ -1,5 +1,6 @@
 import queueStore from '@/stores/queue'
 import getPlayerTrackAudio from '@/helpers/actions/player/track/audio/get'
+import getLocalAudio from '@/helpers/actions/local/audio/get'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
@@ -17,7 +18,22 @@ export default function getQueueTrack (
       `${position}Track`
     ]
 
+  const isAudioLocal =
+    followingTrackData.audio?.local
+
   function setFollowingTrackPlaying () {
+    if (isAudioLocal) {
+      getLocalAudio(
+        {
+          trackData: followingTrackData
+        }
+      )
+    } else {
+      setPlayerPlaying(
+        followingTrackData
+      )
+    }
+
     updateGlobalStore(
       {
         'player.currentTrackId':
@@ -26,10 +42,6 @@ export default function getQueueTrack (
         'queue.currentTrackId':
           followingTrackData.uuid
       }
-    )
-
-    setPlayerPlaying(
-      followingTrackData
     )
   }
 
@@ -98,9 +110,6 @@ export default function getQueueTrack (
   if (followingTrackData) {
     const isAudioLink =
       followingTrackData.audio?.link
-
-    const isAudioLocal =
-      followingTrackData.audio?.local
 
     if (
       isAudioLink ||
