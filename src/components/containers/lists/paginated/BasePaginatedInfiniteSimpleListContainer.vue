@@ -22,7 +22,7 @@
       :is-loading="isLoading"
       :error="error"
       :is-last-page="isLastResponsePage"
-      :scroll-context="scrollContext"
+      :scrollable="scrollable"
       @bottom-scroll="handleBottomScroll"
       @refresh="handleRefresh"
     />

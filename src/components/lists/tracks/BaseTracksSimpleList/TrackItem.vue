@@ -6,7 +6,7 @@
     :queue-tracks="queueTracks"
     :is-disabled="isDeleted"
     :is-from-radio="isFromRadio"
-    :is-queue="isQueue"
+    :is-segment="isSegment"
     :scrollable="scrollable"
     is-with-active-class
     is-focusable
@@ -123,7 +123,7 @@ export default {
     playlistTitle: String,
     isClearable: Boolean,
     isFromRadio: Boolean,
-    isQueue: Boolean,
+    isSegment: Boolean,
     scrollable: HTMLDivElement,
     isRecommendation: Boolean
   },

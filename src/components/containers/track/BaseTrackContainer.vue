@@ -54,7 +54,7 @@ export default {
     isFromRadio: Boolean,
     isExactTrack: Boolean,
     isFocusable: Boolean,
-    isQueue: Boolean,
+    isSegment: Boolean,
     scrollable: HTMLDivElement
   },
   data () {
@@ -144,10 +144,8 @@ export default {
     }
   },
   watch: {
-    isFocusActive: {
-      immediate: true,
-      handler: 'handleIsFocusActiveChange'
-    }
+    isFocusActive:
+      'handleIsFocusActiveChange'
   },
   methods: {
     getPlayerTrack,
@@ -211,7 +209,7 @@ export default {
       )
     },
     focus () {
-      if (this.isQueue) {
+      if (this.isSegment) {
         this.focusList()
       } else {
         this.focusPage()

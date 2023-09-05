@@ -44,8 +44,8 @@
       :playlist-id="playlistId"
       :playlist-title="playlistTitle"
       :is-clearable="isClearable"
-      :is-queue="isQueue"
-      :scrollable="scrollable"
+      :is-segment="isSegment"
+      :scrollable="scrollableComputed"
       :is-recommendation="isRecommendation"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
@@ -119,8 +119,9 @@ export default {
     playlistId: String,
     playlistTitle: String,
     isClearable: Boolean,
-    isQueue: Boolean,
-    isRecommendation: Boolean
+    isSegment: Boolean,
+    isRecommendation: Boolean,
+    scrollable: HTMLDivElement
   },
   emits: [
     'linkClick',
@@ -129,7 +130,7 @@ export default {
   ],
   data () {
     return {
-      scrollable: null
+      scrollableComputed: null
     }
   },
   computed: {
@@ -140,8 +141,10 @@ export default {
     }
   },
   mounted () {
-    this.scrollable =
-      this.$refs.list.$el
+    this.scrollableComputed = (
+      this.scrollable ||
+        this.$refs.list.$el
+    )
   },
   methods: {
     handleLinkClick () {

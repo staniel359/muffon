@@ -35,7 +35,7 @@ export default {
     isLoading: Boolean,
     error: Error,
     isLastPage: Boolean,
-    scrollContext: HTMLDivElement
+    scrollable: HTMLDivElement
   },
   emits: [
     'bottomScroll',
@@ -50,8 +50,7 @@ export default {
     visibilityOptions () {
       return infiniteScrollObserverVisibilityOptions(
         {
-          context:
-            this.scrollContext,
+          context: this.scrollable,
           onTopVisible:
             this.handleTopVisible,
           onUpdate:
@@ -87,7 +86,7 @@ export default {
       value
     ) {
       if (
-        this.scrollContext &&
+        this.scrollable &&
           value
       ) {
         this.scrollToBottom()
@@ -97,12 +96,12 @@ export default {
       this.scrollToBottom()
     },
     handleUpdate () {
-      if (this.scrollContext) {
+      if (this.scrollable) {
         const contextOffsetHeight =
-          this.scrollContext.offsetHeight
+          this.scrollable.offsetHeight
 
         const contextScrollTop =
-          this.scrollContext.scrollTop
+          this.scrollable.scrollTop
 
         const observerOffsetTop =
           this.$refs.observer.offsetTop

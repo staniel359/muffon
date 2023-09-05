@@ -24,7 +24,7 @@
       is-with-external-link-option
       is-with-delete-option
       is-clearable
-      is-queue
+      is-segment
       @delete-option-click="handleDeleteOptionClick"
     />
   </BaseSegmentContainer>

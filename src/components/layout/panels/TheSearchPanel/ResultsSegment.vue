@@ -19,7 +19,7 @@
         :response-page-limit="responsePageLimit"
         :is-pagination-simple="isPaginationSimple"
         :is-with-infinite-scroll="isWithInfiniteScroll"
-        :scroll-context="scrollContext"
+        :scrollable="scrollable"
         :is-change-transparency="false"
         @focus="handleFocus"
       >
@@ -34,6 +34,7 @@
             :is-with-image="!isLastfmSource"
             :is-with-listeners-count="isWithListenersCount"
             :is-with-source="isWithSource"
+            :scrollable="scrollable"
             is-with-artist-name
             is-with-album-title
             is-with-channel-title
@@ -48,6 +49,7 @@
             is-with-save-option
             is-with-share-option
             is-with-external-link-option
+            is-segment
             @link-click="handleLinkClick"
           />
         </template>
@@ -133,7 +135,7 @@ export default {
   },
   data () {
     return {
-      scrollContext: null,
+      scrollable: null,
       searchData: null,
       error: null,
       isFullSize: null,
@@ -409,7 +411,7 @@ export default {
   mounted () {
     this.getData()
 
-    this.scrollContext =
+    this.scrollable =
       this.$refs.segment.$el
   },
   methods: {

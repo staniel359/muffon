@@ -22,7 +22,7 @@
       :response-page-limit="responsePageLimit"
       :is-loading="isLoading"
       :error="error"
-      :scroll-context="scrollContext"
+      :scrollable="scrollable"
       @focus="handleFocus"
     >
       <template
@@ -74,7 +74,7 @@ export default {
     responsePageLimit: Number,
     isPaginationSimple: Boolean,
     isWithInfiniteScroll: Boolean,
-    scrollContext: HTMLDivElement
+    scrollable: HTMLDivElement
   },
   emits: [
     'focus'

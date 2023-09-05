@@ -17,7 +17,7 @@
       :text-scope="textScope"
       :limit="limit"
       :is-with-infinite-scroll="isWithInfiniteScroll"
-      :scroll-context="scrollContext"
+      :scrollable="scrollable"
       @focus="handleFocus"
     >
       <template
@@ -69,7 +69,7 @@ export default {
   ],
   data () {
     return {
-      scrollContext: null
+      scrollable: null
     }
   },
   computed: {
@@ -86,7 +86,7 @@ export default {
         'call'
       )
 
-      this.scrollContext =
+      this.scrollable =
         this.$refs.segment.$el
     },
     handleFocus () {

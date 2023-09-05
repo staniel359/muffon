@@ -38,7 +38,7 @@ export default {
     isLoading: Boolean,
     error: Error,
     responseData: Object,
-    scrollContext: HTMLDivElement,
+    scrollable: HTMLDivElement,
     isWithPagination: Boolean
   },
   emits: [
