@@ -31,6 +31,7 @@ export default {
   directionLeft: 'chevron left',
   directionRight: 'chevron right',
   directionUp: 'chevron up',
+  donate: 'dollar sign',
   dotsHorizontal: 'ellipsis horizontal',
   dotsVertical: 'ellipsis vertical',
   drive: 'hdd outline',

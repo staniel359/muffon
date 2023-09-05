@@ -88,7 +88,9 @@
       "communities": "Суполкі {modelName}"
     },
     "search": "Пошук",
-    "queue": "Чарга"
+    "queue": "Чарга",
+    "whatsNew": "Што новага",
+    "listenedRecently": "Нядаўна праслуханыя"
   },
   "errors": {
     "badRequest": {

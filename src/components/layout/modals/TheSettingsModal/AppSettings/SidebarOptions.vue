@@ -1,44 +1,100 @@
 <template>
   <div class="main-settings-options-block">
-    <FeedOption
-      v-if="profileId"
+    <OptionItem
+      action-key="isWithHomePageItem"
+      text-key="home"
+      :is-checked="isSidebarWithHomePageItem"
     />
 
-    <ConversationsOption
+    <OptionItem
       v-if="profileId"
+      action-key="isWithFeedItem"
+      text-key="feed"
+      :is-checked="isSidebarWithFeedItem"
     />
 
-    <LibraryOption
+    <OptionItem
       v-if="profileId"
+      action-key="isWithConversationsItem"
+      text-key="conversations"
+      :is-checked="isSidebarWithConversationsItem"
     />
 
-    <RecommendationsOption
+    <OptionItem
       v-if="profileId"
+      action-key="isWithLibraryItem"
+      text-key="library"
+      :is-checked="isSidebarWithLibraryItem"
     />
 
-    <SavedTracksOption />
-
-    <PlaylistsOption />
-
-    <FavoritesOption
+    <OptionItem
       v-if="profileId"
+      action-key="isWithRecommendationsItem"
+      text-key="recommendations"
+      :is-checked="isSidebarWithRecommendationsItem"
     />
 
-    <BookmarksOption
-      v-if="profileId"
+    <OptionItem
+      action-key="isWithSavedTracksItem"
+      text-key="savedTracks"
+      :is-checked="isSidebarWithSavedTracksItem"
     />
 
-    <TopOption />
+    <OptionItem
+      action-key="isWithPlaylistsItem"
+      text-key="playlists"
+      :is-checked="isSidebarWithPlaylistsItem"
+    />
 
-    <ReleasesOption />
+    <OptionItem
+      v-if="profileId"
+      action-key="isWithFavoritesItem"
+      text-key="favorites"
+      :is-checked="isSidebarWithFavoritesItem"
+    />
 
-    <RadioOption />
+    <OptionItem
+      v-if="profileId"
+      action-key="isWithBookmarksItem"
+      text-key="bookmarks"
+      :is-checked="isSidebarWithBookmarksItem"
+    />
 
-    <MultitagOption />
+    <OptionItem
+      action-key="isWithTopItem"
+      text-key="top"
+      :is-checked="isSidebarWithTopItem"
+    />
 
-    <CommunitiesOption />
+    <OptionItem
+      action-key="isWithReleasesItem"
+      text-key="releases"
+      :is-checked="isSidebarWithReleasesItem"
+    />
 
-    <HistoryOption />
+    <OptionItem
+      action-key="isWithRadioItem"
+      text-key="radio"
+      :is-checked="isSidebarWithRadioItem"
+    />
+
+    <OptionItem
+      action-key="isWithMultitagItem"
+      text-key="multitag"
+      :is-checked="isSidebarWithMultitagItem"
+    />
+
+    <OptionItem
+      action-key="isWithCommunitiesItem"
+      text-key="communities"
+      :is-checked="isSidebarWithCommunitiesItem"
+    />
+
+    <OptionItem
+      action-key="isWithHistoryItem"
+      text-key="history"
+      :is-checked="isSidebarWithHistoryItem"
+    />
   </div>
 </template>
 
@@ -47,38 +103,13 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import FeedOption from './SidebarOptions/FeedOption.vue'
-import ConversationsOption from './SidebarOptions/ConversationsOption.vue'
-import LibraryOption from './SidebarOptions/LibraryOption.vue'
-import RecommendationsOption from './SidebarOptions/RecommendationsOption.vue'
-import SavedTracksOption from './SidebarOptions/SavedTracksOption.vue'
-import PlaylistsOption from './SidebarOptions/PlaylistsOption.vue'
-import FavoritesOption from './SidebarOptions/FavoritesOption.vue'
-import BookmarksOption from './SidebarOptions/BookmarksOption.vue'
-import TopOption from './SidebarOptions/TopOption.vue'
-import ReleasesOption from './SidebarOptions/ReleasesOption.vue'
-import RadioOption from './SidebarOptions/RadioOption.vue'
-import MultitagOption from './SidebarOptions/MultitagOption.vue'
-import CommunitiesOption from './SidebarOptions/CommunitiesOption.vue'
-import HistoryOption from './SidebarOptions/HistoryOption.vue'
+import sidebarStore from '@/stores/sidebar'
+import OptionItem from './SidebarOptions/OptionItem.vue'
 
 export default {
   name: 'SidebarOptions',
   components: {
-    FeedOption,
-    ConversationsOption,
-    LibraryOption,
-    RecommendationsOption,
-    SavedTracksOption,
-    PlaylistsOption,
-    FavoritesOption,
-    BookmarksOption,
-    TopOption,
-    ReleasesOption,
-    RadioOption,
-    MultitagOption,
-    CommunitiesOption,
-    HistoryOption
+    OptionItem
   },
   computed: {
     ...mapState(
@@ -86,12 +117,44 @@ export default {
       {
         profileId: 'id'
       }
+    ),
+    ...mapState(
+      sidebarStore,
+      {
+        isSidebarWithHomePageItem:
+          'isWithHomePageItem',
+        isSidebarWithFeedItem:
+          'isWithFeedItem',
+        isSidebarWithConversationsItem:
+          'isWithConversationsItem',
+        isSidebarWithLibraryItem:
+          'isWithLibraryItem',
+        isSidebarWithRecommendationsItem:
+          'isWithRecommendationsItem',
+        isSidebarWithSavedTracksItem:
+          'isWithSavedTracksItem',
+        isSidebarWithPlaylistsItem:
+          'isWithPlaylistsItem',
+        isSidebarWithFavoritesItem:
+          'isWithFavoritesItem',
+        isSidebarWithBookmarksItem:
+          'isWithBookmarksItem',
+        isSidebarWithTopItem:
+          'isWithTopItem',
+        isSidebarWithReleasesItem:
+          'isWithReleasesItem',
+        isSidebarWithRadioItem:
+          'isWithRadioItem',
+        isSidebarWithMultitagItem:
+          'isWithMultitagItem',
+        isSidebarWithCommunitiesItem:
+          'isWithCommunitiesItem',
+        isSidebarWithHistoryItem:
+          'isWithHistoryItem'
+      }
     )
   }
 }
 </script>
 
-<style lang="sass" scoped>
-::v-deep(.icon)
-  margin-right: 0.5em
-</style>
+<style lang="sass" scoped></style>

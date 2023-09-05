@@ -88,7 +88,9 @@
       "communities": "{modelName} Communities"
     },
     "search": "Suche",
-    "queue": "Queue"
+    "queue": "Queue",
+    "whatsNew": "Was ist neu",
+    "listenedRecently": "Zuletzt angehört"
   },
   "errors": {
     "badRequest": {

@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import audioStore from '@/stores/audio'
 import discordStore from '@/stores/discord'
 import historyStore from '@/stores/history'
+import homePageStore from '@/stores/homePage'
 import layoutStore from '@/stores/layout'
 import lyricsStore from '@/stores/lyrics'
 import playerStore from '@/stores/player'
@@ -25,6 +26,7 @@ const stores = {
   audio: audioStore,
   discord: discordStore,
   history: historyStore,
+  homePage: homePageStore,
   layout: layoutStore,
   lyrics: lyricsStore,
   player: playerStore,

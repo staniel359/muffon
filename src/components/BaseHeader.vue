@@ -6,6 +6,7 @@
       inverted: isDarkMode,
       'base-page-header': isPage
     }"
+    @click="handleClick"
   >
     <BaseIcon
       v-if="icon"
@@ -58,6 +59,9 @@ export default {
     isPage: Boolean,
     subheader: String
   },
+  emits: [
+    'click'
+  ],
   computed: {
     ...mapState(
       layoutStore,
@@ -65,6 +69,16 @@ export default {
         'isDarkMode'
       ]
     )
+  },
+  methods: {
+    handleClick (
+      event
+    ) {
+      this.$emit(
+        'click',
+        event
+      )
+    }
   }
 }
 </script>

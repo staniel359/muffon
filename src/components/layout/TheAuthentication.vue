@@ -1,6 +1,8 @@
 <template>
   <div class="the-authentication">
-    <BaseLogoSection />
+    <div class="main-transition-item">
+      <BaseLogoSection />
+    </div>
 
     <div class="form-segment-container">
       <BaseProfileLoginForm
@@ -28,6 +30,12 @@ import BaseProfilePasswordResetForm
   from '@/components/forms/profile/BaseProfilePasswordResetForm.vue'
 import BaseProfileCreateForm
   from '@/components/forms/profile/BaseProfileCreateForm.vue'
+import {
+  set as setTransition
+} from '@/helpers/actions/plugins/semantic/transition'
+import {
+  main as formatMainTransitionOptions
+} from '@/helpers/formatters/plugins/semantic/options/transition'
 
 export default {
   name: 'TheAuthentication',
@@ -60,7 +68,16 @@ export default {
         this.activeForm ===
           'signup'
       )
+    },
+    transitionOptions () {
+      return formatMainTransitionOptions()
     }
+  },
+  mounted () {
+    setTransition(
+      '.main-transition-item',
+      this.transitionOptions
+    )
   },
   methods: {
     handleSignupLinkClick () {

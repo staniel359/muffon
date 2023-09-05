@@ -30,6 +30,7 @@ import ThemeOptions from './AppSettings/ThemeOptions.vue'
 import WindowOptions from './AppSettings/WindowOptions.vue'
 import TabsOptions from './AppSettings/TabsOptions.vue'
 import SidebarOptions from './AppSettings/SidebarOptions.vue'
+import HomePageOptions from './AppSettings/HomePageOptions.vue'
 import SearchOptions from './AppSettings/SearchOptions.vue'
 import PlayerOptions from './AppSettings/PlayerOptions.vue'
 import QueueOptions from './AppSettings/QueueOptions.vue'
@@ -49,6 +50,7 @@ export default {
     WindowOptions,
     TabsOptions,
     SidebarOptions,
+    HomePageOptions,
     SearchOptions,
     PlayerOptions,
     QueueOptions,
@@ -100,6 +102,13 @@ export default {
           icon: 'sidebar',
           scope: 'sidebar',
           component: 'SidebarOptions',
+          isAnonymous: true
+        },
+        {
+          nameCode: 'navigation.home',
+          icon: 'home',
+          scope: 'home',
+          component: 'HomePageOptions',
           isAnonymous: true
         },
         {

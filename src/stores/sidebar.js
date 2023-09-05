@@ -5,6 +5,7 @@ import {
 const data = {
   state () {
     return {
+      isWithHomePageItem: null,
       isWithFeedItem: null,
       isWithConversationsItem: null,
       isWithLibraryItem: null,
@@ -22,6 +23,11 @@ const data = {
     }
   },
   actions: {
+    setIsWithHomePageItem (
+      value
+    ) {
+      this.isWithHomePageItem = value
+    },
     setIsWithFeedItem (
       value
     ) {

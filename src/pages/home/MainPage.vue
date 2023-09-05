@@ -1,13 +1,19 @@
 <template>
-  <div
+  <BasePageContainer
     :key="refreshKey"
-    class="home-page-container main-page-segment-container"
+    class="home-page-container"
+    :response-data="responseData"
   >
+    <TopSection />
+
     <ContentSection />
-  </div>
+  </BasePageContainer>
 </template>
 
 <script>
+import BasePageContainer
+  from '@/components/containers/pages/BasePageContainer.vue'
+import TopSection from './MainPage/TopSection.vue'
 import ContentSection from './MainPage/ContentSection.vue'
 import {
   home as formatHomePageNavigation
@@ -19,6 +25,8 @@ import pageMixin from '@/mixins/pageMixin'
 export default {
   name: 'MainPage',
   components: {
+    BasePageContainer,
+    TopSection,
     ContentSection
   },
   mixins: [
@@ -27,7 +35,8 @@ export default {
   ],
   data () {
     return {
-      isPageLoaded: true
+      isPageLoaded: true,
+      responseData: {}
     }
   },
   computed: {
@@ -43,7 +52,5 @@ export default {
 
 <style lang="sass" scoped>
 .home-page-container
-  @extend .d-flex, .flex-column, .align-items-center
-  padding-top: 5vh
-  height: 70vh
+  margin-top: 2em
 </style>

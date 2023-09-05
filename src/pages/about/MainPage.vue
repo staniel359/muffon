@@ -87,7 +87,7 @@ import {
 } from '@/../package.json'
 import {
   donate as donateLink
-} from '@/helpers/data/links'
+} from '@/helpers/data/externalLinks'
 
 export default {
   name: 'MainPage',

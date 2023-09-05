@@ -88,7 +88,9 @@
       "communities": "{modelName} community"
     },
     "search": "Ricerca",
-    "queue": "Coda"
+    "queue": "Coda",
+    "whatsNew": "Novità",
+    "listenedRecently": "Ascoltati di recente"
   },
   "errors": {
     "badRequest": {

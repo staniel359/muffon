@@ -1,10 +1,13 @@
 <template>
-  <BaseButton
-    class="primary circular cancel action-button"
-    :text="acceptText"
-    :is-invertable="false"
-    @click="handleClick"
-  />
+  <div class="action-button-container">
+    <BaseButton
+      class="green circular"
+      icon="donate"
+      :text="donateText"
+      :is-invertable="false"
+      @click="handleClick"
+    />
+  </div>
 </template>
 
 <script>
@@ -17,27 +20,19 @@ import {
 } from '@/helpers/data/externalLinks'
 
 export default {
-  name: 'AcceptButton',
+  name: 'DonateButtonSection',
   components: {
     BaseButton
   },
-  inject: [
-    'setModalHidden'
-  ],
   computed: {
-    acceptText () {
+    donateText () {
       return this.$t(
-        'donate.accept'
+        'donate.header'
       )
     }
   },
   methods: {
     handleClick () {
-      this.setModalHidden()
-
-      this.openDonateLink()
-    },
-    openDonateLink () {
       shell.openExternal(
         donateLink
       )

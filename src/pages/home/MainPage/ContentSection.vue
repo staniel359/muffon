@@ -1,63 +1,101 @@
 <template>
-  <BaseLogoSection />
+  <div class="content-section">
+    <ActionsSegment />
 
-  <BaseHeader
-    class="welcome-message"
-    tag="h1"
-    :text="welcomeText"
-  />
+    <RecentTracksSegment
+      v-if="isHomePageWithRecentTracksSegment"
+    />
+
+    <template
+      v-if="profileId"
+    >
+      <RecommendationArtistsSegment
+        v-if="isHomePageWithRecommendationArtistsSegment"
+      />
+
+      <RecommendationTracksSegment
+        v-if="isHomePageWithRecommendationTracksSegment"
+      />
+    </template>
+
+    <TopArtistsSegment
+      v-if="isHomePageWithTopArtistsSegment"
+    />
+
+    <TopAlbumsSegment
+      v-if="isHomePageWithTopAlbumsSegment"
+    />
+
+    <TopTracksSegment
+      v-if="isHomePageWithTopTracksSegment"
+    />
+
+    <NewReleasesSegment
+      v-if="isHomePageWithNewReleasesSegment"
+    />
+  </div>
 </template>
 
 <script>
 import {
   mapState
 } from 'pinia'
+import homePageStore from '@/stores/homePage'
 import profileStore from '@/stores/profile'
-import BaseLogoSection from '@/components/sections/BaseLogoSection.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import ActionsSegment from './ContentSection/ActionsSegment.vue'
+import RecentTracksSegment from './ContentSection/RecentTracksSegment.vue'
+import RecommendationArtistsSegment
+  from './ContentSection/RecommendationArtistsSegment.vue'
+import RecommendationTracksSegment
+  from './ContentSection/RecommendationTracksSegment.vue'
+import TopArtistsSegment from './ContentSection/TopArtistsSegment.vue'
+import TopAlbumsSegment from './ContentSection/TopAlbumsSegment.vue'
+import TopTracksSegment from './ContentSection/TopTracksSegment.vue'
+import NewReleasesSegment from './ContentSection/NewReleasesSegment.vue'
 
 export default {
   name: 'ContentSection',
   components: {
-    BaseLogoSection,
-    BaseHeader
+    ActionsSegment,
+    RecentTracksSegment,
+    RecommendationArtistsSegment,
+    RecommendationTracksSegment,
+    TopArtistsSegment,
+    TopAlbumsSegment,
+    TopTracksSegment,
+    NewReleasesSegment
   },
   computed: {
     ...mapState(
-      profileStore,
+      homePageStore,
       {
-        profileInfo: 'info'
+        isHomePageWithRecentTracksSegment:
+          'isWithRecentTracksSegment',
+        isHomePageWithRecommendationArtistsSegment:
+          'isWithRecommendationArtistsSegment',
+        isHomePageWithRecommendationTracksSegment:
+          'isWithRecommendationTracksSegment',
+        isHomePageWithTopArtistsSegment:
+          'isWithTopArtistsSegment',
+        isHomePageWithTopAlbumsSegment:
+          'isWithTopAlbumsSegment',
+        isHomePageWithTopTracksSegment:
+          'isWithTopTracksSegment',
+        isHomePageWithNewReleasesSegment:
+          'isWithNewReleasesSegment'
       }
     ),
-    welcomeText () {
-      return this.$t(
-        'messages.welcome',
-        {
-          profileNickname:
-            this.profileNicknameConditional
-        }
-      )
-    },
-    profileNicknameConditional () {
-      return (
-        this.profileNickname ||
-          this.anonymousNickname
-      )
-    },
-    profileNickname () {
-      return this.profileInfo?.nickname
-    },
-    anonymousNickname () {
-      return this.$t(
-        'anonymous.nickname'
-      )
-    }
+    ...mapState(
+      profileStore,
+      {
+        profileId: 'id'
+      }
+    )
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.welcome-message
-  @extend .text-color-white
-  margin-top: 0.25em !important
+.content-section
+  margin-top: 2em
 </style>

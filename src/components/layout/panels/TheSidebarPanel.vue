@@ -12,6 +12,10 @@
       />
 
       <div class="sidebar-top">
+        <HomeItem
+          v-if="isSidebarWithHomePageItem"
+        />
+
         <FeedItem
           v-if="isRenderFeedItem"
         />
@@ -96,6 +100,7 @@ import sidebarStore from '@/stores/sidebar'
 import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
 import RootItem from './TheSidebarPanel/RootItem.vue'
+import HomeItem from './TheSidebarPanel/HomeItem.vue'
 import FeedItem from './TheSidebarPanel/FeedItem.vue'
 import ConversationsItem from './TheSidebarPanel/ConversationsItem.vue'
 import LibraryItem from './TheSidebarPanel/LibraryItem.vue'
@@ -121,6 +126,7 @@ export default {
     BaseMenuContainer,
     ProfileItem,
     RootItem,
+    HomeItem,
     FeedItem,
     ConversationsItem,
     LibraryItem,
@@ -152,6 +158,8 @@ export default {
     ...mapState(
       sidebarStore,
       {
+        isSidebarWithHomePageItem:
+          'isWithHomePageItem',
         isSidebarWithFeedItem:
           'isWithFeedItem',
         isSidebarWithConversationsItem:

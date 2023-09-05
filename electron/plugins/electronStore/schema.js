@@ -192,6 +192,34 @@ export default {
     type: 'array',
     default: []
   },
+  'homePage.isWithRecentTracksSegment': {
+    type: 'boolean',
+    default: true
+  },
+  'homePage.isWithRecommendationArtistsSegment': {
+    type: 'boolean',
+    default: true
+  },
+  'homePage.isWithRecommendationTracksSegment': {
+    type: 'boolean',
+    default: true
+  },
+  'homePage.isWithTopArtistsSegment': {
+    type: 'boolean',
+    default: true
+  },
+  'homePage.isWithTopAlbumsSegment': {
+    type: 'boolean',
+    default: true
+  },
+  'homePage.isWithTopTracksSegment': {
+    type: 'boolean',
+    default: true
+  },
+  'homePage.isWithNewReleasesSegment': {
+    type: 'boolean',
+    default: true
+  },
   'player.currentTrackId': {
     type: [
       'null',
@@ -371,6 +399,10 @@ export default {
   'search.isResultsFullSize': {
     type: 'boolean',
     default: false
+  },
+  'sidebar.isWithHomePageItem': {
+    type: 'boolean',
+    default: true
   },
   'sidebar.isWithFeedItem': {
     type: 'boolean',
