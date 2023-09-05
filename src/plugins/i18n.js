@@ -35,4 +35,66 @@ const i18n =
     }
   )
 
+if (import.meta.hot) {
+  import.meta.hot.accept(
+    './i18n/locales/be.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'be',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/de.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'de',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/en.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'en',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/fr.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'fr',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/it.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'it',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/ru.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'ru',
+        fileImport.default
+      )
+    }
+  )
+}
+
 export default i18n
