@@ -3,6 +3,7 @@ import postRequest from '@/helpers/actions/api/request/post'
 
 export default function (
   {
+    action,
     title,
     artistName,
     albumTitle,
@@ -11,13 +12,15 @@ export default function (
 ) {
   const profileId = profileStore().id
 
-  const url =
-    `/profiles/${profileId}/lastfm/scrobbler/play`
+  const url = (
+    `/profiles/${profileId}` +
+    `/lastfm/scrobbler/${action}`
+  )
 
   const params = {
-    title,
-    artist: artistName,
-    album: albumTitle,
+    track_title: title,
+    artist_name: artistName,
+    album_title: albumTitle,
     duration
   }
 

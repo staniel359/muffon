@@ -9,7 +9,7 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import createScrobblerPlay from '@/helpers/actions/api/scrobbler/play/create'
+import createScrobble from '@/helpers/actions/api/scrobbler/create'
 import {
   track as formatScrobblerTrack
 } from '@/helpers/formatters/scrobbler'
@@ -23,6 +23,12 @@ export default {
         playerPlaying: 'playing'
       }
     ),
+    scrobbleArgs () {
+      return {
+        action: 'play',
+        ...this.trackData
+      }
+    },
     trackData () {
       return formatScrobblerTrack(
         {
@@ -42,8 +48,8 @@ export default {
       this.playScrobble()
     },
     playScrobble () {
-      createScrobblerPlay(
-        this.trackData
+      createScrobble(
+        this.scrobbleArgs
       )
     }
   }

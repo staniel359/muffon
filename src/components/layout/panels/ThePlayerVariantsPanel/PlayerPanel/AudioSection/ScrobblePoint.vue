@@ -22,7 +22,7 @@ import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
-import createScrobblerSave from '@/helpers/actions/api/scrobbler/save/create'
+import createScrobble from '@/helpers/actions/api/scrobbler/create'
 import notificationMixin from '@/mixins/notificationMixin'
 import {
   track as formatScrobblerTrack
@@ -128,6 +128,12 @@ export default {
       } = this.trackData
 
       return `${artistName} - ${title}`
+    },
+    scrobbleArgs () {
+      return {
+        action: 'save',
+        ...this.trackData
+      }
     }
   },
   watch: {
@@ -179,8 +185,8 @@ export default {
       }
     },
     saveScrobble () {
-      createScrobblerSave(
-        this.trackData
+      createScrobble(
+        this.scrobbleArgs
       ).then(
         this.handleSaveScrobbleSuccess
       )
