@@ -17,7 +17,7 @@ export default function (
   function formatTitle () {
     if (scope) {
       return i18n.global.t(
-        `navigation.model.favoritesModels.${scope}`,
+        `navigation.model.favoritesCollection.${scope}`,
         {
           modelName: profileNickname
         }

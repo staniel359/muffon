@@ -17,7 +17,17 @@
     "videoPlaylists": "Video playlists",
     "related": "Related",
     "top": "Top",
+    "topCollection": {
+      "artists": "Top artists",
+      "albums": "Top albums",
+      "tracks": "Top tracks",
+      "tags": "Top tags"
+    },
     "releases": "Releases",
+    "releasesCollection": {
+      "new": "New releases",
+      "upcoming": "Upcoming releases"
+    },
     "new": "New",
     "upcoming": "Upcoming",
     "radio": "Radio",
@@ -28,21 +38,25 @@
     "conversations": "Conversations",
     "library": "Library",
     "recommendations": "Recommendations",
+    "recommendationsCollection": {
+      "artists": "Recommended artists",
+      "tracks": "Recommended tracks"
+    },
     "savedTracks": "Saved tracks",
     "playlists": "Playlists",
     "favorites": "Favorites",
     "bookmarks": "Bookmarks",
-    "bookmarkModels": {
-      "artists": "Bookmark artists",
-      "albums": "Bookmark albums",
-      "tracks": "Bookmark tracks",
-      "videos": "Bookmark videos",
-      "videoChannels": "Bookmark video channels",
-      "videoPlaylists": "Bookmark video playlists"
+    "bookmarksCollection": {
+      "artists": "Bookmarked artists",
+      "albums": "Bookmarked albums",
+      "tracks": "Bookmarked tracks",
+      "videos": "Bookmarked videos",
+      "videoChannels": "Bookmarked video channels",
+      "videoPlaylists": "Bookmarked video playlists"
     },
     "communities": "Communities",
     "history": "History",
-    "historyModels": {
+    "historyCollection": {
       "activity": "Activity history",
       "player": "Player history",
       "browser": "Browser history"
@@ -65,23 +79,13 @@
       "library": "{modelName} library",
       "playlists": "{modelName} playlists",
       "favorites": "{modelName} favorites",
-      "favoritesModels": {
+      "favoritesCollection": {
         "artists": "{modelName} favorite artists",
         "albums": "{modelName} favorite albums",
         "tracks": "{modelName} favorite tracks",
         "videos": "{modelName} favorite videos"
       },
       "communities": "{modelName} communities"
-    },
-    "topCollection": {
-      "artists": "Top artists",
-      "albums": "Top albums",
-      "tracks": "Top tracks",
-      "tags": "Top tags"
-    },
-    "releasesCollection": {
-      "new": "New releases",
-      "upcoming": "Upcoming releases"
     },
     "search": "Search",
     "queue": "Queue"
@@ -213,7 +217,10 @@
           "album": "Delete album from library",
           "track": "Delete track from library"
         },
-        "recommendation": "Delete recommendation",
+        "recommendationModel": {
+          "artist": "Delete artist recommendation",
+          "track": "Delete track recommendation"
+        },
         "playlist": "Delete playlist",
         "playlistTrack": "Delete track from playlist",
         "savedTrack": "Delete track from saved tracks",
@@ -243,7 +250,7 @@
       },
       "going": {
         "libraryModel": "You are going to delete {modelName} from your library.",
-        "recommendation": "You are going to delete {modelName} from your recommendations.",
+        "recommendationModel": "You are going to delete {modelName} from your recommendations.",
         "playlist": "You are going to delete {modelName} from your playlists.",
         "playlistTrack": "You are going to delete {modelName} from {parentModelName} playlist.",
         "savedTrack": "You are going to delete {modelName} from your saved tracks.",
@@ -530,7 +537,9 @@
         "recommendations": {
           "hideLibraryArtists": "Hide library artists",
           "tracksCount": "with tracks count",
-          "hideListenedArtists": "Hide listened artists"
+          "hideListenedArtists": "Hide listened artists",
+          "hideLibraryTracks": "Hide library tracks",
+          "hideListenedTracks": "Hide listened tracks"
         },
         "top": {
           "country": "Default country"
@@ -854,7 +863,8 @@
       "watchedVideo": "Video {modelName} is deleted from watched",
       "playlistTrack": "Track {modelName} is deleted from playlist {playlistTitle}",
       "community": "Community {modelName} is deleted",
-      "recommendation": "Artist {modelName} is deleted from recommendations",
+      "recommendationArtist": "Artist {modelName} is deleted from recommendations",
+      "recommendationTrack": "Track {modelName} is deleted from recommendations",
       "relationship": "You unfollowed {modelName}",
       "post": "Post {modelName} is deleted",
       "playlist": "Playlist {modelName} is deleted",

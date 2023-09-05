@@ -17,7 +17,17 @@
     "videoPlaylists": "Спісы відэа",
     "related": "Звязаныя",
     "top": "Папулярнае",
+    "topCollection": {
+      "artists": "Папулярныя выканаўцы",
+      "albums": "Папулярныя альбомы",
+      "tracks": "Папулярныя кампазіцыі",
+      "tags": "Папулярныя меткі"
+    },
     "releases": "Рэлізы",
+    "releasesCollection": {
+      "new": "Новыя рэлізы",
+      "upcoming": "Чаканыя рэлізы"
+    },
     "new": "Новыя",
     "upcoming": "Чаканыя",
     "radio": "Радыё",
@@ -28,11 +38,15 @@
     "conversations": "Перапіскі",
     "library": "Бібліятэка",
     "recommendations": "Рэкамендацыі",
+    "recommendationsCollection": {
+      "artists": "Рэкамендаваныя выканаўцы",
+      "tracks": "Рэкамендаваныя кампазіцыі"
+    },
     "savedTracks": "Захаваныя кампазіцыі",
     "playlists": "Спісы",
     "favorites": "Абранае",
     "bookmarks": "Закладкі",
-    "bookmarkModels": {
+    "bookmarksCollection": {
       "artists": "Закладкі выканаўцаў",
       "albums": "Закладкі альбомаў",
       "tracks": "Закладкі кампазіцый",
@@ -42,7 +56,7 @@
     },
     "communities": "Суполкі",
     "history": "Гісторыя",
-    "historyModels": {
+    "historyCollection": {
       "activity": "Гісторыя актыўнасці",
       "player": "Гісторыя прайгравальніка",
       "browser": "Гісторыя браўзера"
@@ -65,23 +79,13 @@
       "library": "Бібліятэка {modelName}",
       "playlists": "Спісы {modelName}",
       "favorites": "Абранае {modelName}",
-      "favoritesModels": {
+      "favoritesCollection": {
         "artists": "Абраныя выканаўцы {modelName}",
         "albums": "Абраныя альбомы {modelName}",
         "tracks": "Абраныя кампазіцыі {modelName}",
         "videos": "Абраныя відэа {modelName}"
       },
       "communities": "Суполкі {modelName}"
-    },
-    "topCollection": {
-      "artists": "Папулярныя выканаўцы",
-      "albums": "Папулярныя альбомы",
-      "tracks": "Папулярныя кампазіцыі",
-      "tags": "Папулярныя меткі"
-    },
-    "releasesCollection": {
-      "new": "Новыя рэлізы",
-      "upcoming": "Чаканыя рэлізы"
     },
     "search": "Пошук",
     "queue": "Чарга"
@@ -213,7 +217,10 @@
           "album": "Выдаліць альбом з бібліятэкі",
           "track": "Выдаліць кампазіцыю з бібліятэкі"
         },
-        "recommendation": "Выдаліць рэкамендацыю",
+        "recommendationModel": {
+          "artist": "Выдаліць рэкамендаванага выканаўцу",
+          "track": "Выдаліць рэкамендаваную кампазіцыю"
+        },
         "playlist": "Выдаліць спіс",
         "playlistTrack": "Выдаліць кампазіцыю са спісу",
         "savedTrack": "Выдаліць кампазіцыю з захаваных кампазіцый",
@@ -243,7 +250,7 @@
       },
       "going": {
         "libraryModel": "Вы збіраецеся выдаліць {modelName} са сваёй бібліятэкі.",
-        "recommendation": "Вы збіраецеся выдаліць {modelName} са сваіх рэкамендацый.",
+        "recommendationModel": "Вы збіраецеся выдаліць {modelName} са сваіх рэкамендацый.",
         "playlist": "Вы збіраецеся выдаліць {modelName} са сваіх спісаў.",
         "playlistTrack": "Вы збіраецеся выдаліць {modelName} са спісу {parentModelName}.",
         "savedTrack": "Вы збіраецеся выдаліць {modelName} са сваіх захаваных кампазіцый.",
@@ -530,7 +537,9 @@
         "recommendations": {
           "hideLibraryArtists": "Схоўваць выканаўцаў з бібліятэкі",
           "tracksCount": "з колькасцю кампазіцый",
-          "hideListenedArtists": "Схоўваць праслуханых выканаўцаў"
+          "hideListenedArtists": "Схоўваць праслуханых выканаўцаў",
+          "hideLibraryTracks": "Схоўваць кампазіцыі з бібліятэкі",
+          "hideListenedTracks": "Схоўваць праслуханыя кампазіцыі"
         },
         "top": {
           "country": "Краіна па змоўчванні"
@@ -854,7 +863,8 @@
       "watchedVideo": "Відэа {modelName} выдалена з прагледжанага",
       "playlistTrack": "Кампазіцыя {modelName} выдалена са спісу {playlistTitle}",
       "community": "Выдалена суполка {modelName}",
-      "recommendation": "Выканаўца {modelName} выдалены з рэкамендацый",
+      "recommendationArtist": "Выканаўца {modelName} выдалены з рэкамендацый",
+      "recommendationTrack": "Кампазіцыя {modelName} выдалена з рэкамендацый",
       "relationship": "Вы адпісаліся ад {modelName}",
       "post": "Выдалена публікацыя {modelName}",
       "playlist": "Выдалены спіс {modelName}",

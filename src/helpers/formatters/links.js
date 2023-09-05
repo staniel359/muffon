@@ -22,14 +22,6 @@ export function profiles () {
   }
 }
 
-export function recommendations () {
-  return {
-    name: 'RecommendationsPage',
-    params: {},
-    path: 'recommendations'
-  }
-}
-
 export function savedTracks () {
   return {
     name: 'SavedTracksPage',

@@ -56,6 +56,7 @@
         :playlist-title="playlistTitle"
         :is-deleted="isDeleted"
         :is-clearable="isClearable"
+        :is-recommendation="isRecommendation"
         @link-click="handleLinkClick"
         @source-click="handleSourceClick"
         @clear-button-click="handleClearButtonClick"
@@ -123,7 +124,8 @@ export default {
     isClearable: Boolean,
     isFromRadio: Boolean,
     isQueue: Boolean,
-    scrollable: HTMLDivElement
+    scrollable: HTMLDivElement,
+    isRecommendation: Boolean
   },
   emits: [
     'linkClick',

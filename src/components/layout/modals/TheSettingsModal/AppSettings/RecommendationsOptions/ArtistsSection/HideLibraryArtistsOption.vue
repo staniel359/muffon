@@ -7,8 +7,8 @@
     />
 
     <BaseToggle
-      store-key="recommendations.isHideLibraryArtists"
-      :is-checked="isRecommendationsHideLibraryArtists"
+      store-key="recommendationArtists.isHideLibraryArtists"
+      :is-checked="isRecommendationArtistsHideLibraryArtists"
     />
   </div>
 </template>
@@ -17,7 +17,7 @@
 import {
   mapState
 } from 'pinia'
-import recommendationsStore from '@/stores/recommendations'
+import recommendationArtistsStore from '@/stores/recommendationArtists'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
@@ -29,9 +29,9 @@ export default {
   },
   computed: {
     ...mapState(
-      recommendationsStore,
+      recommendationArtistsStore,
       {
-        isRecommendationsHideLibraryArtists:
+        isRecommendationArtistsHideLibraryArtists:
           'isHideLibraryArtists'
       }
     ),

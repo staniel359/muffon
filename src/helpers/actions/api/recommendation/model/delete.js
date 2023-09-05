@@ -3,6 +3,7 @@ import deleteRequest from '@/helpers/actions/api/request/delete'
 
 export default function (
   {
+    model,
     recommendationId
   }
 ) {
@@ -10,7 +11,7 @@ export default function (
 
   const url = (
     `/profiles/${profileId}/recommendations` +
-    `/artists/${recommendationId}`
+    `/${model}s/${recommendationId}`
   )
 
   return deleteRequest.bind(

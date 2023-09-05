@@ -7,7 +7,8 @@ import lyricsStore from '@/stores/lyrics'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
 import queueStore from '@/stores/queue'
-import recommendationsStore from '@/stores/recommendations'
+import recommendationArtistsStore from '@/stores/recommendationArtists'
+import recommendationTracksStore from '@/stores/recommendationTracks'
 import searchStore from '@/stores/search'
 import sidebarStore from '@/stores/sidebar'
 import topStore from '@/stores/top'
@@ -29,8 +30,10 @@ const stores = {
   player: playerStore,
   profile: profileStore,
   queue: queueStore,
-  recommendations:
-    recommendationsStore,
+  recommendationArtists:
+    recommendationArtistsStore,
+  recommendationTracks:
+    recommendationTracksStore,
   search: searchStore,
   sidebar: sidebarStore,
   top: topStore,

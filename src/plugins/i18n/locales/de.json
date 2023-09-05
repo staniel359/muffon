@@ -17,7 +17,17 @@
     "videoPlaylists": "Videoplaylisten",
     "related": "Verwandt",
     "top": "Top",
+    "topCollection": {
+      "artists": "Top Künstler",
+      "albums": "Top Alben",
+      "tracks": "Top Titel",
+      "tags": "Top Tags"
+    },
     "releases": "Neuveröffentlichungen",
+    "releasesCollection": {
+      "new": "Neuveröffentlichungen",
+      "upcoming": "Zukünftige veröffentlichungen"
+    },
     "new": "Neu",
     "upcoming": "Bevorstehend",
     "radio": "Radio",
@@ -28,21 +38,25 @@
     "conversations": "Konversationen",
     "library": "Bibliothek",
     "recommendations": "Vorschläge",
+    "recommendationsCollection": {
+      "artists": "Empfohlene Künstler",
+      "tracks": "Empfohlene Titel"
+    },
     "savedTracks": "Gespeicherte Titel",
     "playlists": "Playlisten",
     "favorites": "Favoriten",
-    "bookmarks": "Lesezeichem",
-    "bookmarkModels": {
-      "artists": "Künstler Lesezeichen",
-      "albums": "Albums Lesezeichen",
-      "tracks": "Titel Lesezeichen",
-      "videos": "Videos Lesezeichen",
-      "videoChannels": "Videokanäle Lesezeichen",
-      "videoPlaylists": "Videoplaylisten Lesezeichen"
+    "bookmarks": "Lesezeichen",
+    "bookmarksCollection": {
+      "artists": "Künstler mit Lesezeichen",
+      "albums": "Alben mit Lesezeichen",
+      "tracks": "Titel mit Lesezeichen",
+      "videos": "Videos mit Lesezeichen",
+      "videoChannels": "Videokanäle mit Lesezeichen",
+      "videoPlaylists": "Video-Playlists mit Lesezeichen"
     },
     "communities": "Communities",
     "history": "Verlauf",
-    "historyModels": {
+    "historyCollection": {
       "activity": "Aktivitätenverlauf",
       "player": "Musikspielerverlauf",
       "browser": "Browserverlauf"
@@ -65,23 +79,13 @@
       "library": "{modelName} Bibliothek",
       "playlists": "{modelName} Playlisten",
       "favorites": "{modelName} Favoriten",
-      "favoritesModels": {
+      "favoritesCollection": {
         "artists": "{modelName} Lieblingskünstler",
         "albums": "{modelName} Lieblingsalben",
         "tracks": "{modelName} Lieblingstitel",
         "videos": "{modelName} Lieblingsvideos"
       },
       "communities": "{modelName} Communities"
-    },
-    "topCollection": {
-      "artists": "Top Künstler",
-      "albums": "Top Alben",
-      "tracks": "Top Titel",
-      "tags": "Top Tags"
-    },
-    "releasesCollection": {
-      "new": "Neuveröffentlichungen",
-      "upcoming": "Zukünftige veröffentlichungen"
     },
     "search": "Suche",
     "queue": "Queue"
@@ -213,7 +217,10 @@
           "album": "Album aus der Bibliothek löschen",
           "track": "Titel aus der Bibliothek löschen"
         },
-        "recommendation": "Vorschlag löschen",
+        "recommendationModel": {
+          "artist": "Künstlerempfehlung löschen",
+          "track": "Titelempfehlung löschen"
+        },
         "playlist": "Playlist löschen",
         "playlistTrack": "Titel von Playlist löschen",
         "savedTrack": "Titel von gespeicherten Titeln löschen",
@@ -243,7 +250,7 @@
       },
       "going": {
         "libraryModel": "Sie sind dabei, {modelName} aus Ihrer Bibliothek löschen.",
-        "recommendation": "Sie sind dabei, {modelName} aus Ihren Vorschlägen löschen.",
+        "recommendationModel": "Sie sind dabei, {modelName} aus Ihren Vorschlägen löschen.",
         "playlist": "Sie sind dabei, {modelName} von Ihrer Playlist löschen.",
         "playlistTrack": "Sie sind dabei, {modelName} von der Playlist {parentModelName} löschen.",
         "savedTrack": "Sie sind dabei, {modelName} aus Ihren gespeicherten Titeln löschen.",
@@ -303,7 +310,7 @@
         "other": "Andere"
       },
       "legal": {
-        "header": "Ich stimme folgendem zu {privacyPolicy} und {termsAndConditions}",
+        "header": "Ich stimme der {privacyPolicy} und den {termsAndConditions} zu",
         "privacyPolicy": "Datenschutzrichtlinie",
         "termsAndConditions": "Geschäftsbedingungen"
       },
@@ -530,7 +537,9 @@
         "recommendations": {
           "hideLibraryArtists": "Bibliothekskünstler ausblenden",
           "tracksCount": "Mit Titeln zählen",
-          "hideListenedArtists": "Angehörte Künstler ausblenden"
+          "hideListenedArtists": "Angehörte Künstler ausblenden",
+          "hideLibraryTracks": "Bibliothekstitel ausblenden",
+          "hideListenedTracks": "Abgehörte Titel ausblenden"
         },
         "top": {
           "country": "Standardmäßiges Land"
@@ -835,26 +844,27 @@
       "playlist": "Playlist {modelName} wurde aktualisiert"
     },
     "deleted": {
-      "bookmarkAlbum": "Album {modelName} wurde von Lesezeichen gelöscht",
-      "bookmarkArtist": "Künstler {modelName} wurde von Lesezeichen gelöscht",
-      "bookmarkTrack": "Titel {modelName} wurde von Lesezeichen gelöscht",
-      "bookmarkVideo": "Video {modelName} wurde von Lesezeichen gelöscht",
-      "bookmarkVideoChannel": "Videokanal {modelName} wurde von Lesezeichen gelöscht",
-      "bookmarkVideoPlaylist": "Videoplaylist {modelName} wurde von Lesezeichen gelöscht",
-      "favoriteAlbum": "Album {modelName} wurde von den Favoriten gelöscht",
-      "favoriteArtist": "Künstler {modelName} wurde von den Favoriten gelöscht",
-      "favoriteTrack": "Titel {modelName} wurde von den Favoriten gelöscht",
-      "favoriteVideo": "Video {modelName} wurde von den Favoriten gelöscht",
-      "libraryAlbum": "Album {modelName} wurde von der Bibliothek gelöscht",
-      "libraryArtist": "Künstler {modelName} wurde von der Bibliothek gelöscht",
-      "libraryTrack": "Titel {modelName} wurde von der Bibliothek gelöscht",
-      "listenedAlbum": "Album {modelName} wurde von Angehörten gelöscht",
-      "listenedArtist": "Künstler {modelName} wurde von Angehörten gelöscht",
-      "listenedTrack": "Titel {modelName} wurde von Angehörten gelöscht",
-      "watchedVideo": "Video {modelName} wurde von Angesehenen gelöscht",
-      "playlistTrack": "Titel {modelName} wurde von Playlist {playlistTitle} gelöscht",
-      "community": "Community {modelName} wurde gelöscht",
-      "recommendation": "Künstler {modelName} wird aus den Empfehlungen gelöscht",
+      "bookmarkAlbum": "Album {modelName} ist von Lesezeichen gelöscht",
+      "bookmarkArtist": "Künstler {modelName} ist von Lesezeichen gelöscht",
+      "bookmarkTrack": "Titel {modelName} ist von Lesezeichen gelöscht",
+      "bookmarkVideo": "Video {modelName} ist von Lesezeichen gelöscht",
+      "bookmarkVideoChannel": "Videokanal {modelName} ist von Lesezeichen gelöscht",
+      "bookmarkVideoPlaylist": "Videoplaylist {modelName} ist von Lesezeichen gelöscht",
+      "favoriteAlbum": "Album {modelName} ist von den Favoriten gelöscht",
+      "favoriteArtist": "Künstler {modelName} ist von den Favoriten gelöscht",
+      "favoriteTrack": "Titel {modelName} ist von den Favoriten gelöscht",
+      "favoriteVideo": "Video {modelName} ist von den Favoriten gelöscht",
+      "libraryAlbum": "Album {modelName} ist von der Bibliothek gelöscht",
+      "libraryArtist": "Künstler {modelName} ist von der Bibliothek gelöscht",
+      "libraryTrack": "Titel {modelName} ist von der Bibliothek gelöscht",
+      "listenedAlbum": "Album {modelName} ist von Angehörten gelöscht",
+      "listenedArtist": "Künstler {modelName} ist von Angehörten gelöscht",
+      "listenedTrack": "Titel {modelName} ist von Angehörten gelöscht",
+      "watchedVideo": "Video {modelName} ist von Angesehenen gelöscht",
+      "playlistTrack": "Titel {modelName} ist von Playlist {playlistTitle} gelöscht",
+      "community": "Community {modelName} ist gelöscht",
+      "recommendationArtist": "Künstler {modelName} ist aus den Empfehlungen gelöscht",
+      "recommendationTrack": "Titel {modelName} ist von den Empfehlungen gelöscht",
       "relationship": "Sie sind {modelName} entfolgt",
       "post": "Beitrag {modelName} wurde gelöscht",
       "playlist": "Playlist {modelName} wurde gelöscht",

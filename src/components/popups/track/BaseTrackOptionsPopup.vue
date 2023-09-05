@@ -122,6 +122,13 @@
           :track-data="trackData"
           @success="handleDeleted"
         />
+        <BaseRecommendationDeleteModal
+          v-else-if="isRecommendation"
+          ref="deleteModal"
+          model="track"
+          :model-data="trackData"
+          @success="handleDeleted"
+        />
       </template>
     </template>
   </BaseOptionsPopupContainer>
@@ -162,6 +169,8 @@ import BasePlaylistTrackDeleteModal
   from '@/components/modals/playlist/track/BasePlaylistTrackDeleteModal.vue'
 import BaseSavedTrackDeleteModal
   from '@/components/modals/savedTracks/BaseSavedTrackDeleteModal.vue'
+import BaseRecommendationDeleteModal
+  from '@/components/modals/recommendation/BaseRecommendationDeleteModal.vue'
 import {
   track as formatTrackShareData
 } from '@/helpers/formatters/share'
@@ -187,7 +196,8 @@ export default {
     BaseBookmarkDeleteModal,
     BaseFavoriteDeleteModal,
     BasePlaylistTrackDeleteModal,
-    BaseSavedTrackDeleteModal
+    BaseSavedTrackDeleteModal,
+    BaseRecommendationDeleteModal
   },
   props: {
     trackData: {
@@ -202,6 +212,7 @@ export default {
     isBookmark: Boolean,
     isFavorite: Boolean,
     isPlaylistTrack: Boolean,
+    isRecommendation: Boolean,
     playlistId: String,
     playlistTitle: String,
     isWithPageOption: Boolean,

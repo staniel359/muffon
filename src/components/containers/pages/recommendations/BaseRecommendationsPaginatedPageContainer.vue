@@ -4,7 +4,7 @@
     :scope="scope"
     :limit="limit"
     :order="order"
-    @refresh="handleRefresh"
+    :filter-args="filterArgs"
   >
     <template
       #default="pageSlotProps"
@@ -78,7 +78,8 @@ export default {
     isWithTopSegment: Boolean,
     isWithOrderChange: Boolean,
     isWithViewChange: Boolean,
-    viewId: String
+    viewId: String,
+    filterArgs: Object
   }
 }
 </script>

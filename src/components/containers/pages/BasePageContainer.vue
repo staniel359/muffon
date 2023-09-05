@@ -66,8 +66,10 @@ export default {
     }
   },
   watch: {
-    isPageLoading: 'handleIsPageLoadingChange',
-    isPageError: 'handleIsPageErrorChange'
+    isPageLoading:
+      'handleIsPageLoadingChange',
+    isPageError:
+      'handleIsPageErrorChange'
   },
   mounted () {
     this.scrollToTop()

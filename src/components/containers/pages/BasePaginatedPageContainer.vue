@@ -59,7 +59,7 @@
 
     <BasePaginatedSegmentContainer
       ref="pagination"
-      :key="paginationKey"
+      :key="refreshKey"
       class="main-paginated-page-segment-container"
       :response-data="responseDataComputed"
       :is-loading="isLoading"
@@ -93,6 +93,7 @@ import BaseOrderSelect from '@/components/selects/BaseOrderSelect.vue'
 import BaseViewSelect from '@/components/selects/BaseViewSelect.vue'
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import refreshableMixin from '@/mixins/refreshableMixin'
 import {
   generateKey
 } from '@/helpers/utils'
@@ -105,11 +106,11 @@ export default {
     BaseViewSelect,
     BasePaginatedSegmentContainer
   },
+  mixins: [
+    refreshableMixin
+  ],
   inject: {
     setOrder: {
-      default: () => false
-    },
-    getData: {
       default: () => false
     }
   },
@@ -139,9 +140,7 @@ export default {
   },
   data () {
     return {
-      viewSelectKey: null,
-      paginationKey: null,
-      responseDataComputed: null
+      viewSelectKey: null
     }
   },
   computed: {
@@ -159,10 +158,6 @@ export default {
     }
   },
   watch: {
-    responseData: {
-      immediate: true,
-      handler: 'handleResponseDataChange'
-    },
     order: 'handleOrderChange',
     viewId: 'handleViewIdChange',
     isWithInfiniteScroll:
@@ -170,11 +165,6 @@ export default {
     scope: 'handleScopeChange'
   },
   methods: {
-    handleResponseDataChange (
-      value
-    ) {
-      this.responseDataComputed = value
-    },
     handleOrderSelect (
       value
     ) {
@@ -199,29 +189,10 @@ export default {
     handleFocus () {
       this.focus()
     },
-    async refresh () {
-      this.reset()
-
-      this.getData()
-
-      await this.$nextTick()
-
-      this.setFocusable()
-    },
-    reset () {
-      this.responseDataComputed = null
-
-      this.paginationKey = generateKey()
-    },
     focus () {
       this.$refs
         .pagination
         .focus()
-    },
-    setFocusable () {
-      this.$refs
-        .pagination
-        .setFocusable()
     }
   }
 }

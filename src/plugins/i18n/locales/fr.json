@@ -17,7 +17,17 @@
     "videoPlaylists": "Playlists de vidéos",
     "related": "Dans le même style",
     "top": "Top",
+    "topCollection": {
+      "artists": "Top des artistes",
+      "albums": "Top des albums",
+      "tracks": "Top des titres",
+      "tags": "Top des tags"
+    },
     "releases": "Dernière sortie",
+    "releasesCollection": {
+      "new": "Dernière sortie",
+      "upcoming": "Prochaines sorties"
+    },
     "new": "Nouveauté",
     "upcoming": "À venir",
     "radio": "Radio",
@@ -28,21 +38,25 @@
     "conversations": "Conversations",
     "library": "Bibliothèque",
     "recommendations": "Recommandations",
+    "recommendationsCollection": {
+      "artists": "Artistes recommander",
+      "tracks": "Titres recommander"
+    },
     "savedTracks": "Sauvegarder le titre",
     "playlists": "Playlists",
     "favorites": "Favoris",
     "bookmarks": "Signets",
-    "bookmarkModels": {
-      "artists": "Artistes en signet",
-      "albums": "Albums en signet",
-      "tracks": "Titres en signet",
-      "videos": "Vidéos en signet",
-      "videoChannels": "Chaîne en signet",
-      "videoPlaylists": "Playlists en signet"
+    "bookmarksCollection": {
+      "artists": "Artistes mis en signet",
+      "albums": "Albums mis en signet",
+      "tracks": "Titres mis en signet",
+      "videos": "Vidéos mis en signet",
+      "videoChannels": "Chaîne mis en signet",
+      "videoPlaylists": "Playlists mis en signet"
     },
     "communities": "Communautés",
     "history": "Historique",
-    "historyModels": {
+    "historyCollection": {
       "activity": "Historique d'activité",
       "player": "Historique de titre",
       "browser": "Historique de navigation"
@@ -65,23 +79,13 @@
       "library": "{modelName} bibliothèque",
       "playlists": "{modelName} playlists",
       "favorites": "{modelName} favoris",
-      "favoritesModels": {
+      "favoritesCollection": {
         "artists": "{modelName} artistes favoris",
         "albums": "{modelName} albums favoris",
         "tracks": "{modelName} titres favoris",
         "videos": "{modelName} vidéos favorites"
       },
       "communities": "{modelName} communautés"
-    },
-    "topCollection": {
-      "artists": "Top des artistes",
-      "albums": "Top des albums",
-      "tracks": "Top des titres",
-      "tags": "Top des tags"
-    },
-    "releasesCollection": {
-      "new": "Dernière sortie",
-      "upcoming": "Prochaines sorties"
     },
     "search": "Rechercher",
     "queue": "Liste de lecture"
@@ -213,7 +217,10 @@
           "album": "Supprimer l'album de la bibliothèque",
           "track": "Supprimer le titre de la bibliothèque"
         },
-        "recommendation": "Supprimer la recommandation",
+        "recommendationModel": {
+          "artist": "Supprimer cette artiste de vos recommandations",
+          "track": "Supprimer ce titre dde vos recommandations"
+        },
         "playlist": "Supprimer la playlist",
         "playlistTrack": "Supprimer le titre de la playlist",
         "savedTrack": "Supprimer le titre des titres sauvgarder",
@@ -243,7 +250,7 @@
       },
       "going": {
         "libraryModel": "Vous allez supprimer {modelName} de votre bibliothèque.",
-        "recommendation": "Vous allez supprimer {modelName} de vos recommandations.",
+        "recommendationModel": "Vous allez supprimer {modelName} de vos recommandations.",
         "playlist": "Vous allez supprimer {modelName} de votre playlists.",
         "playlistTrack": "Vous allez supprimer {modelName} de {parentModelName} playlist.",
         "savedTrack": "Vous allez supprimer {modelName} de vos titres sauvgarder.",
@@ -530,7 +537,9 @@
         "recommendations": {
           "hideLibraryArtists": "Masquer les artistes présents dans la bibliothèque",
           "tracksCount": "avec le nombre de titres",
-          "hideListenedArtists": "Masquer les artites déjà écouter"
+          "hideListenedArtists": "Masquer les artites déjà écouter",
+          "hideLibraryTracks": "Masquer les titres de la bibliothèque",
+          "hideListenedTracks": "Masquer les titres écouter de la bibliothèque"
         },
         "top": {
           "country": "Pays par défaut"
@@ -854,7 +863,8 @@
       "watchedVideo": "Video {modelName} a été supprimé des vidéos vues",
       "playlistTrack": "Track {modelName} a été supprimé de la playlist {playlistTitle}",
       "community": "La communauté {modelName} a été supprimé",
-      "recommendation": "L'artiste {modelName} a été supprimé de vos recommandations",
+      "recommendationArtist": "L'artiste {modelName} a été supprimé de vos recommandations",
+      "recommendationTrack": "Le titre {modelName} à était supprimer de vos recommandations",
       "relationship": "Vous ne suivez plus {modelName}",
       "post": "Le poste {modelName} a été supprimé",
       "playlist": "La playlist {modelName} a été supprimé",

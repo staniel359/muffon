@@ -83,7 +83,7 @@
           v-else-if="isRecommendation"
           ref="deleteModal"
           model="artist"
-          :recommendation-data="artistData"
+          :model-data="artistData"
           @success="handleDeleted"
         />
       </template>

@@ -1,8 +1,9 @@
 <template>
   <BaseDeleteModal
     ref="modal"
-    model-type="recommendation"
-    :model-name="artistName"
+    model-type="recommendationModel"
+    :model="model"
+    :model-name="modelName"
     :is-loading="isLoading"
     :error="error"
     @delete-button-click="handleDeleteButtonClick"
@@ -11,8 +12,8 @@
 
 <script>
 import BaseDeleteModal from '@/components/modals/BaseDeleteModal.vue'
-import deleteRecommendationArtist from
-  '@/helpers/actions/api/recommendation/artist/delete'
+import deleteRecommendation from
+  '@/helpers/actions/api/recommendation/model/delete'
 
 export default {
   name: 'BaseRecommendationDeleteModal',
@@ -20,7 +21,7 @@ export default {
     BaseDeleteModal
   },
   props: {
-    recommendationData: {
+    modelData: {
       type: Object,
       required: true
     },
@@ -40,14 +41,27 @@ export default {
     }
   },
   computed: {
-    artistName () {
-      return this.recommendationData.name
+    modelName () {
+      switch (this.model) {
+        case 'artist':
+          return this.modelData.name
+        case 'track' :
+          return [
+            this.modelData.artist.name,
+            this.modelData.title
+          ].join(
+            ' - '
+          )
+        default:
+          return null
+      }
     },
     recommendationId () {
-      return this.recommendationData.id
+      return this.modelData.id
     },
     deleteArgs () {
       return {
+        model: this.model,
         recommendationId:
           this.recommendationId
       }
@@ -57,9 +71,11 @@ export default {
     isSuccess: 'handleIsSuccessChange'
   },
   methods: {
-    deleteRecommendationArtist,
+    deleteRecommendation,
     handleDeleteButtonClick () {
-      this.deleteRecommendation()
+      this.deleteRecommendation(
+        this.deleteArgs
+      )
     },
     handleIsSuccessChange (
       value
@@ -70,16 +86,6 @@ export default {
         this.$emit(
           'success'
         )
-      }
-    },
-    deleteRecommendation () {
-      switch (this.model) {
-        case 'artist':
-          return this.deleteRecommendationArtist(
-            this.deleteArgs
-          )
-        default:
-          return null
       }
     },
     show () {

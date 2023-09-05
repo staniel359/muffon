@@ -1,26 +1,20 @@
 <template>
   <div class="main-settings-options-block">
-    <HideLibraryArtistsOption />
+    <ArtistsSection />
 
-    <TracksCountOption />
-
-    <HideListenedArtistsOption />
+    <TracksSection />
   </div>
 </template>
 
 <script>
-import HideLibraryArtistsOption
-  from './RecommendationsOptions/HideLibraryArtistsOption.vue'
-import TracksCountOption from './RecommendationsOptions/TracksCountOption.vue'
-import HideListenedArtistsOption
-  from './RecommendationsOptions/HideListenedArtistsOption.vue'
+import ArtistsSection from './RecommendationsOptions/ArtistsSection.vue'
+import TracksSection from './RecommendationsOptions/TracksSection.vue'
 
 export default {
   name: 'RecommendationsOptions',
   components: {
-    HideLibraryArtistsOption,
-    TracksCountOption,
-    HideListenedArtistsOption
+    ArtistsSection,
+    TracksSection
   }
 }
 </script>

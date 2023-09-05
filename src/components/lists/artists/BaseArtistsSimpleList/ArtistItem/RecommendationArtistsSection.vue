@@ -3,7 +3,7 @@
     :link="{}"
   >
     <BaseListCounterSection
-      class="main-link recommendation-artists-section"
+      class="main-link"
       icon="artist"
       :count="recommendationArtistsCount"
       @active-change="handleActiveChange"
@@ -18,12 +18,20 @@
 </template>
 
 <script>
+import {
+  defineAsyncComponent
+} from 'vue'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseListCounterSection
   from '@/components/sections/BaseListCounterSection.vue'
-import BaseRecommendationArtistArtistsModal
-  from '@/components/modals/recommendation/artist/BaseRecommendationArtistArtistsModal.vue'
+
+const BaseRecommendationArtistArtistsModal =
+  defineAsyncComponent(
+    () => import(
+      '@/components/modals/recommendation/artist/BaseRecommendationArtistArtistsModal.vue'
+    )
+  )
 
 export default {
   name: 'RecommendationArtistsSection',
@@ -64,7 +72,7 @@ export default {
     showModal () {
       this.$refs
         .modal
-        .show()
+        ?.show()
     }
   }
 }

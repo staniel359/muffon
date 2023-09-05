@@ -81,7 +81,8 @@ export default {
     ),
     recommendationArgs () {
       return {
-        recommendationId: this.recommendationId,
+        recommendationId:
+          this.recommendationId,
         scope: this.scope,
         limit: this.limit
       }

@@ -9,8 +9,8 @@
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  recommendations as formatRecommendationsLink
-} from '@/helpers/formatters/links'
+  main as formatRecommendationsLink
+} from '@/helpers/formatters/links/recommendations'
 
 export default {
   name: 'RecommendationsItem',

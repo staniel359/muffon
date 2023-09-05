@@ -14,7 +14,7 @@ export default function (
   function formatTitle () {
     if (scope) {
       return i18n.global.t(
-        `navigation.historyModels.${scope}`
+        `navigation.historyCollection.${scope}`
       )
     } else {
       return i18n.global.t(

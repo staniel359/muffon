@@ -1,7 +1,7 @@
 <template>
   <BaseDeletedSection
     v-if="isDeleted"
-    model="track"
+    :model="model"
   />
   <template
     v-else
@@ -81,6 +81,12 @@
       :is-with-bookmark-icon="isWithBookmarkIcon"
     />
 
+    <RecommendationTracksSection
+      v-if="isRecommendation"
+      class="description recommendation-tracks-section"
+      :recommendation-data="trackData"
+    />
+
     <BaseDurationSection
       v-if="isRenderDuration"
       class="description track-duration"
@@ -116,6 +122,7 @@
       :is-bookmark="isBookmark"
       :is-favorite="isFavorite"
       :is-playlist-track="isPlaylistTrack"
+      :is-recommendation="isRecommendation"
       :playlist-id="playlistId"
       :playlist-title="playlistTitle"
       :is-with-page-option="isWithPageOption"
@@ -156,10 +163,13 @@ import ArtistsSection from './BaseTrackContent/ArtistsSection.vue'
 import AlbumSection from './BaseTrackContent/AlbumSection.vue'
 import ListenersCountSection
   from './BaseTrackContent/ListenersCountSection.vue'
-import BaseDurationSection from '@/components/sections/BaseDurationSection.vue'
+import BaseDurationSection
+  from '@/components/sections/BaseDurationSection.vue'
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseSavedIcon from '@/components/icons/BaseSavedIcon.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
+import RecommendationTracksSection
+  from './BaseTrackContent/RecommendationTracksSection.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseTrackOptionsPopup
   from '@/components/popups/track/BaseTrackOptionsPopup.vue'
@@ -178,6 +188,7 @@ export default {
     ArtistsSection,
     AlbumSection,
     ListenersCountSection,
+    RecommendationTracksSection,
     BaseDurationSection,
     BaseSourceIcon,
     BaseSavedIcon,
@@ -240,7 +251,8 @@ export default {
     playlistId: String,
     playlistTitle: String,
     isDeleted: Boolean,
-    isClearable: Boolean
+    isClearable: Boolean,
+    isRecommendation: Boolean
   },
   emits: [
     'linkClick',
@@ -355,6 +367,13 @@ export default {
         this.isWithSavedIcon &&
           this.audioData?.local
       )
+    },
+    model () {
+      if (this.isRecommendation) {
+        return 'recommendation'
+      } else {
+        return 'track'
+      }
     }
   },
   methods: {
@@ -408,6 +427,9 @@ export default {
   @extend .no-padding
   min-width: unset !important
   margin: 0 1em 0 0.5em !important
+
+.recommendation-tracks-section
+  margin-left: 0.75em
 
 .track-duration
   margin-left: 0.75em

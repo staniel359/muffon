@@ -17,7 +17,17 @@
     "videoPlaylists": "Списки видео",
     "related": "Связанные",
     "top": "Популярное",
+    "topCollection": {
+      "artists": "Популярные исполнители",
+      "albums": "Популярные альбомы",
+      "tracks": "Популярные композиции",
+      "tags": "Популярные метки"
+    },
     "releases": "Релизы",
+    "releasesCollection": {
+      "new": "Новые релизы",
+      "upcoming": "Ожидаемые релизы"
+    },
     "new": "Новые",
     "upcoming": "Ожидаемые",
     "radio": "Радио",
@@ -28,11 +38,15 @@
     "conversations": "Переписки",
     "library": "Библиотека",
     "recommendations": "Рекомендации",
+    "recommendationsCollection": {
+      "artists": "Рекомендованные исполнители",
+      "tracks": "Рекомендованные композиции"
+    },
     "savedTracks": "Сохранённые композиции",
     "playlists": "Списки",
     "favorites": "Избранное",
     "bookmarks": "Закладки",
-    "bookmarkModels": {
+    "bookmarksCollection": {
       "artists": "Закладки исполнителей",
       "albums": "Закладки альбомов",
       "tracks": "Закладки композиций",
@@ -42,7 +56,7 @@
     },
     "communities": "Сообщества",
     "history": "История",
-    "historyModels": {
+    "historyCollection": {
       "activity": "История активности",
       "player": "История проигрывателя",
       "browser": "История браузера"
@@ -65,23 +79,13 @@
       "library": "Библиотека {modelName}",
       "playlists": "Списки {modelName}",
       "favorites": "Избранное {modelName}",
-      "favoritesModels": {
+      "favoritesCollection": {
         "artists": "Избранные исполнители {modelName}",
         "albums": "Избранные альбомы {modelName}",
         "tracks": "Избранные композиции {modelName}",
         "videos": "Избранные видео {modelName}"
       },
       "communities": "Сообщества {modelName}"
-    },
-    "topCollection": {
-      "artists": "Популярные исполнители",
-      "albums": "Популярные альбомы",
-      "tracks": "Популярные композиции",
-      "tags": "Популярные метки"
-    },
-    "releasesCollection": {
-      "new": "Новые релизы",
-      "upcoming": "Ожидаемые релизы"
     },
     "search": "Поиск",
     "queue": "Очередь"
@@ -213,7 +217,10 @@
           "album": "Удалить альбом из библиотеки",
           "track": "Удалить композицию из библиотеки"
         },
-        "recommendation": "Удалить рекомендацию",
+        "recommendationModel": {
+          "artist": "Удалить рекомендованного исполнителя",
+          "track": "Удалить рекомендованную композицию"
+        },
         "playlist": "Удалить список",
         "playlistTrack": "Удалить композицию из списка",
         "savedTrack": "Удалить композицию из сохранённых композиций",
@@ -243,7 +250,7 @@
       },
       "going": {
         "libraryModel": "Вы собираетесь удалить {modelName} из своей библиотеки.",
-        "recommendation": "Вы собираетесь удалить {modelName} из своих рекомендаций.",
+        "recommendationModel": "Вы собираетесь удалить {modelName} из своих рекомендаций.",
         "playlist": "Вы собираетесь удалить {modelName} из своих списков.",
         "playlistTrack": "Вы собираетесь удалить {modelName} из списка {parentModelName}.",
         "savedTrack": "Вы собираетесь удалить {modelName} из своих сохранённых композиций.",
@@ -530,7 +537,9 @@
         "recommendations": {
           "hideLibraryArtists": "Скрывать исполнителей из библиотеки",
           "tracksCount": "с количеством композиций",
-          "hideListenedArtists": "Скрывать прослушанных исполнителей"
+          "hideListenedArtists": "Скрывать прослушанных исполнителей",
+          "hideLibraryTracks": "Скрывать композиции из библиотеки",
+          "hideListenedTracks": "Скрывать прослушанные композиции"
         },
         "top": {
           "country": "Страна по умолчанию"
@@ -854,7 +863,8 @@
       "watchedVideo": "Видео {modelName} удалено из просмотренного",
       "playlistTrack": "Композиция {modelName} удалена из списка {playlistTitle}",
       "community": "Удалено сообщество {modelName}",
-      "recommendation": "Исполнитель {modelName} удалён из рекомендаций",
+      "recommendationArtist": "Исполнитель {modelName} удалён из рекомендаций",
+      "recommendationTrack": "Композиция {modelName} удалена из рекомендаций",
       "relationship": "Вы отписались от {modelName}",
       "post": "Удалена публикация {modelName}",
       "playlist": "Удалён список {modelName}",

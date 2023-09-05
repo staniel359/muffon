@@ -6,8 +6,8 @@ const data = {
   state () {
     return {
       isHideLibraryArtists: null,
-      isHideListenedArtists: null,
-      tracksCount: null
+      hideLibraryArtistsTracksCount: null,
+      isHideListenedArtists: null
     }
   },
   actions: {
@@ -16,20 +16,20 @@ const data = {
     ) {
       this.isHideLibraryArtists = value
     },
+    setHideLibraryArtistsTracksCount (
+      value
+    ) {
+      this.hideLibraryArtistsTracksCount = value
+    },
     setIsHideListenedArtists (
       value
     ) {
       this.isHideListenedArtists = value
-    },
-    setTracksCount (
-      value
-    ) {
-      this.tracksCount = value
     }
   }
 }
 
 export default defineStore(
-  'recommendations',
+  'recommendationArtists',
   data
 )

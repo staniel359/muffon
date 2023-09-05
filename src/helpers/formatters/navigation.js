@@ -8,8 +8,6 @@ import formatFeedSection
   from '@/helpers/formatters/navigation/sections/feed'
 import formatProfilesSection
   from '@/helpers/formatters/navigation/sections/profiles'
-import formatRecomendationsSection
-  from '@/helpers/formatters/navigation/sections/recommendations'
 import formatSavedTracksSection
   from '@/helpers/formatters/navigation/sections/savedTracks'
 import formatRadioSection
@@ -58,16 +56,6 @@ export function feed () {
 export function profiles () {
   return [
     formatProfilesSection(
-      {
-        isActive: true
-      }
-    )
-  ]
-}
-
-export function recommendations () {
-  return [
-    formatRecomendationsSection(
       {
         isActive: true
       }

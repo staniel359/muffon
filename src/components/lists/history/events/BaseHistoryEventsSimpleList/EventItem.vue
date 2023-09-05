@@ -73,7 +73,8 @@ export default {
         playlistTrack: 'playlist',
         post: 'post',
         profile: 'profile',
-        recommendation: 'recommendation',
+        recommendationArtist: 'recommendation',
+        recommendationTrack: 'recommendation',
         relationship: 'follower',
         watchedVideo: 'watched'
       }

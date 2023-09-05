@@ -11,7 +11,7 @@
       :class="{
         disabled: isNumberInputDisabled
       }"
-      :value="recommendationsTracksCount"
+      :value="recommendationArtistsHideLibraryArtistsTracksCount"
       @change="handleTracksCountChange"
     />
   </div>
@@ -21,7 +21,7 @@
 import {
   mapState
 } from 'pinia'
-import recommendationsStore from '@/stores/recommendations'
+import recommendationArtistsStore from '@/stores/recommendationArtists'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseNumberInput from '@/components/inputs/BaseNumberInput.vue'
 import {
@@ -29,18 +29,19 @@ import {
 } from '@/helpers/actions/store/global'
 
 export default {
-  name: 'TracksCountOption',
+  name: 'HideLibraryArtistsTracksCountOption',
   components: {
     BaseHeader,
     BaseNumberInput
   },
   computed: {
     ...mapState(
-      recommendationsStore,
+      recommendationArtistsStore,
       {
-        isRecommendationsHideLibraryArtists:
+        isRecommendationArtistsHideLibraryArtists:
           'isHideLibraryArtists',
-        recommendationsTracksCount: 'tracksCount'
+        recommendationArtistsHideLibraryArtistsTracksCount:
+          'hideLibraryArtistsTracksCount'
       }
     ),
     tracksCountTextFormatted () {
@@ -52,7 +53,7 @@ export default {
       )
     },
     isNumberInputDisabled () {
-      return !this.isRecommendationsHideLibraryArtists
+      return !this.isRecommendationArtistsHideLibraryArtists
     }
   },
   methods: {
@@ -61,7 +62,7 @@ export default {
     ) {
       updateGlobalStore(
         {
-          'recommendations.tracksCount': value
+          'recommendationArtists.hideLibraryArtistsTracksCount': value
         }
       )
     }

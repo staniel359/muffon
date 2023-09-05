@@ -10,6 +10,11 @@ export default {
       this.$emit(
         'focus'
       )
+    },
+    refresh () {
+      this.$refs
+        .tab
+        .refresh()
     }
   }
 }

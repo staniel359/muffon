@@ -2,8 +2,12 @@
   <div
     class="ui divider"
     :class="{
-      inverted: isInverted || isDarkMode,
-      horizontal: isHorizontal
+      inverted: (
+        isInverted || isDarkMode
+      ),
+      horizontal: (
+        isHorizontal || text
+      )
     }"
   >
     {{ text }}

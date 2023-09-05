@@ -23,9 +23,13 @@ export default {
     'createdDesc',
     'createdAsc'
   ],
-  recommendation: [
+  recommendationArtist: [
     'libraryArtistsCountDesc',
     'libraryArtistsCountAsc'
+  ],
+  recommendationTrack: [
+    'libraryTracksCountDesc',
+    'libraryTracksCountAsc'
   ],
   playlist: [
     'createdDesc',

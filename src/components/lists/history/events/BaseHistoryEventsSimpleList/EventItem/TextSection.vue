@@ -107,7 +107,10 @@ export default {
         playlistTrack: 'playlistTrack',
         post: 'post',
         profile: 'profile',
-        recommendation: 'recommendation',
+        recommendationArtist:
+          'recommendationArtist',
+        recommendationTrack:
+          'recommendationTrack',
         relationship: 'relationship',
         watchedVideo: 'video'
       }
@@ -183,11 +186,20 @@ export default {
               communityId: this.id
             }
           )
-        case 'recommendation':
+        case 'recommendationArtist':
           return formatArtistLink(
             {
               artistName:
                 this.artistName
+            }
+          )
+        case 'recommendationTrack':
+          return formatTrackLink(
+            {
+              trackTitle:
+                this.trackTitle,
+              artistName:
+                this.trackArtistName
             }
           )
         case 'relationship':
@@ -307,8 +319,15 @@ export default {
           return this.videoPlaylistTitle
         case 'community':
           return this.title
-        case 'recommendation':
+        case 'recommendationArtist':
           return this.artistName
+        case 'recommendationTrack':
+          return [
+            this.trackArtistName,
+            this.trackTitle
+          ].join(
+            ' - '
+          )
         case 'relationship':
           return this.otherProfileNickname
         case 'post':

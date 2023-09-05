@@ -13,22 +13,14 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import recommendationsStore from '@/stores/recommendations'
 import BasePageContainer
   from '@/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '@/mixins/navigationMixin'
-import {
-  recommendations as formatRecommendationsPageNavigation
-} from '@/helpers/formatters/navigation'
+import formatRecommendationsPageNavigation
+  from '@/helpers/formatters/navigation/recommendations'
 import formatRecommendationsPageTab
   from '@/helpers/formatters/tabs/recommendations'
 import getRecommendations from '@/helpers/actions/api/recommendations/get'
-import {
-  isObjectChanged
-} from '@/helpers/utils'
 
 export default {
   name: 'BaseRecommendationsPageContainer',
@@ -38,48 +30,38 @@ export default {
   mixins: [
     navigationMixin
   ],
-  provide () {
-    return {
-      setFilterArgs:
-        this.setFilterArgs
-    }
-  },
   props: {
-    scope: {
-      type: String,
-      required: true
+    isGetData: {
+      type: Boolean,
+      default: true
     },
+    scope: String,
     limit: Number,
-    order: String
+    order: String,
+    filterArgs: Object
   },
-  emits: [
-    'refresh'
-  ],
   data () {
     return {
       recommendationsData: null,
       error: null,
-      isLoading: false,
-      filterArgs: {}
+      isLoading: false
     }
   },
   computed: {
-    ...mapState(
-      recommendationsStore,
-      {
-        isRecommendationsHideLibraryArtists:
-          'isHideLibraryArtists',
-        isRecommendationsHideListenedArtists:
-          'isHideListenedArtists',
-        recommendationsTracksCount:
-          'tracksCount'
-      }
-    ),
     navigationSections () {
-      return formatRecommendationsPageNavigation()
+      return formatRecommendationsPageNavigation(
+        this.navigationData
+      )
+    },
+    navigationData () {
+      return {
+        scope: this.scope
+      }
     },
     tabData () {
-      return formatRecommendationsPageTab()
+      return formatRecommendationsPageTab(
+        this.navigationData
+      )
     },
     recommendationsArgs () {
       return {
@@ -91,48 +73,18 @@ export default {
     }
   },
   watch: {
-    recommendationsData: 'handleNavigationDataChange',
-    isRecommendationsHideLibraryArtists:
-      'handleIsRecommendationsHideLibraryArtists',
-    isRecommendationsHideListenedArtists:
-      'handleIsRecommendationsHideListenedArtists',
-    recommendationsTracksCount:
-      'handleRecommendationsTracksCountChange',
-    filterArgs: 'handleFilterArgsChange'
+    recommendationsData:
+      'handleNavigationDataChange'
   },
   mounted () {
-    this.getData()
+    if (this.isGetData) {
+      this.getData()
+    } else {
+      this.recommendationsData = {}
+    }
   },
   methods: {
     getRecommendations,
-    handleIsRecommendationsHideLibraryArtists () {
-      this.refresh()
-    },
-    handleIsRecommendationsHideListenedArtists () {
-      this.refresh()
-    },
-    handleRecommendationsTracksCountChange () {
-      this.refresh()
-    },
-    handleFilterArgsChange (
-      value,
-      oldValue
-    ) {
-      const isChanged =
-        isObjectChanged(
-          value,
-          oldValue
-        )
-
-      if (isChanged) {
-        this.refresh()
-      }
-    },
-    refresh () {
-      this.$emit(
-        'refresh'
-      )
-    },
     getData (
       {
         page
@@ -144,11 +96,6 @@ export default {
           page
         }
       )
-    },
-    setFilterArgs (
-      value
-    ) {
-      this.filterArgs = value
     }
   }
 }

@@ -14,7 +14,7 @@
     <Component
       :is="listComponent"
       ref="pagination"
-      :key="key"
+      :key="refreshKey"
       :response-data="responseDataComputed"
       :scope="scope"
       :text-scope="textScope"
@@ -47,9 +47,7 @@ import BasePaginatedSimpleListContainer
   from '@/components/containers/lists/paginated/BasePaginatedSimpleListContainer.vue'
 import BasePaginatedListContainer
   from '@/components/containers/lists/paginated/BasePaginatedListContainer.vue'
-import {
-  generateKey
-} from '@/helpers/utils'
+import refreshableMixin from '@/mixins/refreshableMixin'
 
 export default {
   name: 'BasePaginatedSegmentContainer',
@@ -60,11 +58,9 @@ export default {
     BasePaginatedSimpleListContainer,
     BasePaginatedListContainer
   },
-  inject: {
-    getData: {
-      default: () => false
-    }
-  },
+  mixins: [
+    refreshableMixin
+  ],
   props: {
     scope: {
       type: String,
@@ -83,12 +79,6 @@ export default {
   emits: [
     'focus'
   ],
-  data () {
-    return {
-      key: null,
-      responseDataComputed: null
-    }
-  },
   computed: {
     listComponent () {
       if (this.isWithInfiniteScroll) {
@@ -117,19 +107,10 @@ export default {
     }
   },
   watch: {
-    responseData: {
-      immediate: true,
-      handler: 'handleResponseDataChange'
-    },
     isWithInfiniteScroll:
       'handleIsWithInfiniteScrollChange'
   },
   methods: {
-    handleResponseDataChange (
-      value
-    ) {
-      this.responseDataComputed = value
-    },
     handleRefresh () {
       this.getData()
     },
@@ -140,16 +121,6 @@ export default {
     },
     handleIsWithInfiniteScrollChange () {
       this.refresh()
-    },
-    refresh () {
-      this.reset()
-
-      this.getData()
-    },
-    reset () {
-      this.responseDataComputed = null
-
-      this.key = generateKey()
     },
     focus () {
       this.$refs

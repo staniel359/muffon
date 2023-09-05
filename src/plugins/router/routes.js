@@ -179,6 +179,12 @@ const ProfileLibraryTagArtistsPage = () => import(
 const RecommendationsPage = () => import(
   '@/pages/recommendations/MainPage.vue'
 )
+const RecommendationsArtistsPage = () => import(
+  '@/pages/recommendations/ArtistsPage.vue'
+)
+const RecommendationsTracksPage = () => import(
+  '@/pages/recommendations/TracksPage.vue'
+)
 const BookmarksPage = () => import(
   '@/pages/bookmarks/MainPage.vue'
 )
@@ -774,6 +780,28 @@ export default [
     exact: true,
     name: 'RecommendationsPage',
     component: RecommendationsPage,
+    props: true,
+    meta: {
+      formatter:
+        formatRecommendationsPageLinkData
+    }
+  },
+  {
+    path: '/recommendations/artists',
+    exact: true,
+    name: 'RecommendationsArtistsPage',
+    component: RecommendationsArtistsPage,
+    props: true,
+    meta: {
+      formatter:
+        formatRecommendationsPageLinkData
+    }
+  },
+  {
+    path: '/recommendations/tracks',
+    exact: true,
+    name: 'RecommendationsTracksPage',
+    component: RecommendationsTracksPage,
     props: true,
     meta: {
       formatter:

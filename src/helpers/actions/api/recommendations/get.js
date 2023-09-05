@@ -1,5 +1,8 @@
 import profileStore from '@/stores/profile'
-import recommendationsStore from '@/stores/recommendations'
+import formatRecommendationArtistsRequestParams
+  from '@/helpers/formatters/request/recommendations/params/artists'
+import formatRecommendationTracksRequestParams
+  from '@/helpers/formatters/request/recommendations/params/tracks'
 import getRequest from '@/helpers/actions/api/request/get'
 
 export default function (
@@ -21,45 +24,25 @@ export default function (
     `/recommendations/${scope}`
   )
 
-  const {
-    isHideLibraryArtists,
-    tracksCount,
-    isHideListenedArtists
-  } = recommendationsStore()
-
-  const params = {
-    ...(
-      isHideLibraryArtists && {
-        hide_library: true,
-        hide_library_tracks_count: tracksCount
-      }
-    ),
-    ...(
-      isHideListenedArtists && {
-        hide_listened: true
-      }
-    ),
-    ...(
-      tagsInclude?.length && {
-        tags_include: tagsInclude
-      }
-    ),
-    ...(
-      tagsExclude?.length && {
-        tags_exclude: tagsExclude
-      }
-    ),
-    ...(
-      artistsInclude?.length && {
-        artists_include: artistsInclude
-      }
-    ),
-    ...(
-      artistsExclude?.length && {
-        artists_exclude: artistsExclude
-      }
-    )
+  function formatParams () {
+    switch (scope) {
+      case 'artists':
+        return formatRecommendationArtistsRequestParams(
+          {
+            tagsInclude,
+            tagsExclude,
+            artistsInclude,
+            artistsExclude
+          }
+        )
+      case 'tracks':
+        return formatRecommendationTracksRequestParams()
+      default:
+        return {}
+    }
   }
+
+  const params = formatParams()
 
   const handleSuccess = (
     response

@@ -1,107 +1,60 @@
 <template>
-  <BaseRecommendationsPaginatedPageContainer
+  <BaseRecommendationsPageContainer
     :key="refreshKey"
-    model="recommendation"
-    :scope="scope"
-    :limit="limit"
-    :order="order"
-    :view-id="viewId"
-    is-with-top-segment
-    is-with-order-change
-    is-with-view-change
+    :is-get-data="false"
   >
-    <template
-      #top
+    <BaseTabsSegmentContainer
+      :tabs="tabs"
     >
-      <BaseFilterButton
-        :is-active="isShowFilter"
-        @click="handleFilterButtonClick"
-      />
-    </template>
-
-    <template
-      #topExtra
-    >
-      <FilterSection
-        v-show="isShowFilter"
-        class="filter-section"
-        :is-show="isShowFilter"
-      />
-    </template>
-
-    <template
-      #default="slotProps"
-    >
-      <BaseArtistsList
-        :artists="slotProps[scope]"
-        :profile-id="profileId"
-        :view-id="viewId"
-        is-with-library-option
-        is-with-favorite-option
-        is-with-bookmark-option
-        is-with-listened-option
-        is-with-share-option
-        is-with-external-link-option
-        is-with-delete-option
-        is-recommendation
-      />
-    </template>
-  </BaseRecommendationsPaginatedPageContainer>
+      <template
+        #default="slotProps"
+      >
+        <Component
+          :is="slotProps.component"
+          :class="slotProps.class"
+          :is-active="slotProps.isActive"
+          @focus="slotProps.handleFocus"
+        />
+      </template>
+    </BaseTabsSegmentContainer>
+  </BaseRecommendationsPageContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
-import BaseRecommendationsPaginatedPageContainer
-  from '@/components/containers/pages/recommendations/BaseRecommendationsPaginatedPageContainer.vue'
-import BaseFilterButton from '@/components/buttons/BaseFilterButton.vue'
-import FilterSection from './MainPage/FilterSection.vue'
-import BaseArtistsList
-  from '@/components/lists/artists/BaseArtistsList.vue'
-import orderChangeMixin from '@/mixins/orderChangeMixin'
+import BaseRecommendationsPageContainer
+  from '@/components/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
+import BaseTabsSegmentContainer
+  from '@/components/containers/segments/tabs/BaseTabsSegmentContainer.vue'
+import ArtistsTab from './MainPage/ArtistsTab.vue'
+import TracksTab from './MainPage/TracksTab.vue'
 import pageMixin from '@/mixins/pageMixin'
-import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'MainPage',
   components: {
-    BaseRecommendationsPaginatedPageContainer,
-    BaseFilterButton,
-    FilterSection,
-    BaseArtistsList
+    BaseRecommendationsPageContainer,
+    BaseTabsSegmentContainer,
+    ArtistsTab,
+    TracksTab
   },
   mixins: [
-    orderChangeMixin,
-    pageMixin,
-    viewChangeMixin
+    pageMixin
   ],
   data () {
     return {
-      isShowFilter: false,
-      scope: 'artists',
-      order: 'libraryArtistsCountDesc'
-    }
-  },
-  computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    )
-  },
-  methods: {
-    handleFilterButtonClick () {
-      this.isShowFilter =
-        !this.isShowFilter
+      tabs: [
+        {
+          nameCode: 'navigation.artists',
+          component: 'ArtistsTab'
+        },
+        {
+          nameCode: 'navigation.tracks',
+          component: 'TracksTab'
+        }
+      ]
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.filter-section
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

@@ -17,7 +17,17 @@
     "videoPlaylists": "Playlist di video",
     "related": "Correlati",
     "top": "Top",
+    "topCollection": {
+      "artists": "Top artisti",
+      "albums": "Top album",
+      "tracks": "Top brani",
+      "tags": "Top tag"
+    },
     "releases": "Rilasci",
+    "releasesCollection": {
+      "new": "Novità",
+      "upcoming": "In arrivo"
+    },
     "new": "Novità",
     "upcoming": "In arrivo",
     "radio": "Radio",
@@ -28,21 +38,25 @@
     "conversations": "Conversazioni",
     "library": "Libreria",
     "recommendations": "Suggerimenti",
+    "recommendationsCollection": {
+      "artists": "Artisti suggeriti",
+      "tracks": "Brani suggeriti"
+    },
     "savedTracks": "Brani salvati",
     "playlists": "Playlist",
     "favorites": "Preferiti",
     "bookmarks": "Segnalibri",
-    "bookmarkModels": {
-      "artists": "Artisti dei segnalibri",
-      "albums": "Album dei segnalibri",
-      "tracks": "Brani dei segnalibri",
-      "videos": "Video dei segnalibri",
-      "videoChannels": "Canali video dei segnalibri",
-      "videoPlaylists": "Playlist video dei segnalibri"
+    "bookmarksCollection": {
+      "artists": "Artisti salvati",
+      "albums": "Album salvati",
+      "tracks": "Brani salvati",
+      "videos": "Video salvati",
+      "videoChannels": "Canali video salvati",
+      "videoPlaylists": "Playlist di video salvate"
     },
     "communities": "Community",
     "history": "Cronologia",
-    "historyModels": {
+    "historyCollection": {
       "activity": "Cronologia Attività",
       "player": "Cronologia riproduttore",
       "browser": "Cronologia del browser"
@@ -65,23 +79,13 @@
       "library": "{modelName} library",
       "playlists": "{modelName} playlist",
       "favorites": "{modelName} preferiti",
-      "favoritesModels": {
+      "favoritesCollection": {
         "artists": "{modelName} artisti preferiti",
         "albums": "{modelName} album preferiti",
         "tracks": "{modelName} brani preferiti",
         "videos": "{modelName} video preferiti"
       },
       "communities": "{modelName} community"
-    },
-    "topCollection": {
-      "artists": "Top artisti",
-      "albums": "Top album",
-      "tracks": "Top brani",
-      "tags": "Top tag"
-    },
-    "releasesCollection": {
-      "new": "Novità",
-      "upcoming": "In arrivo"
     },
     "search": "Ricerca",
     "queue": "Coda"
@@ -213,7 +217,10 @@
           "album": "Rimuovi album dalla libreria",
           "track": "Rimuovi brano dalla libreria"
         },
-        "recommendation": "Rimuovi suggerimento",
+        "recommendationModel": {
+          "artist": "Elimina artista dai suggeriti",
+          "track": "Elimina brano dai suggeriti"
+        },
         "playlist": "Rimuovi playlist",
         "playlistTrack": "Rimuovi brano dalla playlist",
         "savedTrack": "Rimuovi brano dai brani salvati",
@@ -243,7 +250,7 @@
       },
       "going": {
         "libraryModel": "Stai per rimuovere {modelName} dalla libreria.",
-        "recommendation": "Stai per rimuovere {modelName} dai suggerimenti.",
+        "recommendationModel": "Stai per rimuovere {modelName} dai suggerimenti.",
         "playlist": "Stai per rimuovere {modelName} dalle tue playlist.",
         "playlistTrack": "Stai per rimuovere {modelName} dalla playlist {parentModelName}.",
         "savedTrack": "Stai per rimuovere {modelName} dai tuoi brani salvati.",
@@ -530,7 +537,9 @@
         "recommendations": {
           "hideLibraryArtists": "Nascondi artisti della libreria",
           "tracksCount": "con conteggio brani",
-          "hideListenedArtists": "Nascondi artisti già ascoltati"
+          "hideListenedArtists": "Nascondi artisti già ascoltati",
+          "hideLibraryTracks": "Nascondi i brani della libreria",
+          "hideListenedTracks": "Nascondi i brani ascoltati"
         },
         "top": {
           "country": "Paese predefinito"
@@ -854,7 +863,8 @@
       "watchedVideo": "Il video {modelName} è stato rimosso dai guardati",
       "playlistTrack": "Il brano {modelName} è stato rimosso dalla playlist {playlistTitle}",
       "community": "La community {modelName} è stata eliminata",
-      "recommendation": "L'artista {modelName} è stato rimosso dai raccomandati",
+      "recommendationArtist": "L'artista {modelName} è stato rimosso dai raccomandati",
+      "recommendationTrack": "Brano {modelName} eliminato dai suggeriti",
       "relationship": "Hai smesso di seguire {modelName}",
       "post": "Il post {modelName} è stato eliminato",
       "playlist": "La playlist {modelName} è stata eliminata",

@@ -15,7 +15,8 @@
     <Component
       :is="listComponent"
       ref="pagination"
-      :response-data="responseData"
+      :key="refreshKey"
+      :response-data="responseDataComputed"
       :scope="scope"
       :limit="limit"
       :response-page-limit="responsePageLimit"
@@ -52,6 +53,7 @@ import BasePaginatedListContainer
   from '@/components/containers/lists/paginated/BasePaginatedListContainer.vue'
 import BaseMoreLinkButton
   from '@/components/buttons/BaseMoreLinkButton.vue'
+import refreshableMixin from '@/mixins/refreshableMixin'
 
 export default {
   name: 'BasePaginatedTabContainer',
@@ -60,6 +62,9 @@ export default {
     BasePaginatedListContainer,
     BaseMoreLinkButton
   },
+  mixins: [
+    refreshableMixin
+  ],
   props: {
     scope: {
       type: String,
@@ -131,11 +136,6 @@ export default {
       this.$emit(
         'focus'
       )
-    },
-    setFocusable () {
-      this.$refs
-        .pagination
-        .setFocusable()
     }
   }
 }

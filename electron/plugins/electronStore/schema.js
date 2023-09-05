@@ -328,17 +328,37 @@ export default {
     type: 'array',
     default: []
   },
-  'recommendations.isHideLibraryArtists': {
+  'recommendationArtists.isHideLibraryArtists': {
     type: 'boolean',
     default: false
   },
-  'recommendations.isHideListenedArtists': {
-    type: 'boolean',
-    default: false
-  },
-  'recommendations.tracksCount': {
+  'recommendationArtists.hideLibraryArtistsTracksCount': {
     type: 'number',
     default: 0
+  },
+  'recommendationArtists.isHideListenedArtists': {
+    type: 'boolean',
+    default: false
+  },
+  'recommendationTracks.isHideLibraryTracks': {
+    type: 'boolean',
+    default: false
+  },
+  'recommendationTracks.isHideLibraryArtists': {
+    type: 'boolean',
+    default: false
+  },
+  'recommendationTracks.hideLibraryArtistsTracksCount': {
+    type: 'number',
+    default: 0
+  },
+  'recommendationTracks.isHideListenedTracks': {
+    type: 'boolean',
+    default: false
+  },
+  'recommendationTracks.isHideListenedArtists': {
+    type: 'boolean',
+    default: false
   },
   'search.source': {
     type: 'string',

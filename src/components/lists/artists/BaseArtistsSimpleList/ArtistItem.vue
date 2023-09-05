@@ -59,13 +59,6 @@
           @link-active-change="handleCounterLinkActiveChange"
           @link-click="handleLinkClick"
         />
-
-        <RecommendationArtistsSection
-          v-if="isRecommendation"
-          class="description"
-          :recommendation-data="artistData"
-          @active-change="handleCounterLinkActiveChange"
-        />
       </div>
 
       <BaseSelfIcons
@@ -77,6 +70,13 @@
         :is-with-library-icon="isWithLibraryIcon"
         :is-with-favorite-icon="isWithFavoriteIcon"
         :is-with-bookmark-icon="isWithBookmarkIcon"
+      />
+
+      <RecommendationArtistsSection
+        v-if="isRecommendation"
+        class="description recommendation-artists-section"
+        :recommendation-data="artistData"
+        @active-change="handleCounterLinkActiveChange"
       />
 
       <BaseCreatedSection
@@ -118,9 +118,6 @@
 </template>
 
 <script>
-import {
-  defineAsyncComponent
-} from 'vue'
 import BaseArtistLinkContainer
   from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
@@ -131,18 +128,13 @@ import BaseArtistListenersCount
   from '@/components/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
+import RecommendationArtistsSection
+  from './ArtistItem/RecommendationArtistsSection.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseArtistOptionsPopup
   from '@/components/popups/artist/BaseArtistOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import selfMixin from '@/mixins/selfMixin'
-
-const RecommendationArtistsSection =
-  defineAsyncComponent(
-    () => import(
-      './ArtistItem/RecommendationArtistsSection.vue'
-    )
-  )
 
 export default {
   name: 'ArtistItem',
@@ -307,4 +299,7 @@ export default {
 <style lang="sass" scoped>
 .listeners-count
   margin-top: 0.15em
+
+.recommendation-artists-section
+  margin-left: 0.75em
 </style>

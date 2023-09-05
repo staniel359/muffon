@@ -46,6 +46,7 @@
       :is-clearable="isClearable"
       :is-queue="isQueue"
       :scrollable="scrollable"
+      :is-recommendation="isRecommendation"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
       @delete-option-click="handleDeleteOptionClick"
@@ -118,7 +119,8 @@ export default {
     playlistId: String,
     playlistTitle: String,
     isClearable: Boolean,
-    isQueue: Boolean
+    isQueue: Boolean,
+    isRecommendation: Boolean
   },
   emits: [
     'linkClick',

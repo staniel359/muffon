@@ -17,7 +17,7 @@ export default function (
   function formatTitle () {
     if (scope) {
       return i18n.global.t(
-        `navigation.bookmarkModels.${scope}`
+        `navigation.bookmarksCollection.${scope}`
       )
     } else {
       return i18n.global.t(

@@ -8,6 +8,9 @@ export default {
     handleFocus () {
       this.focus()
     },
+    handleRefresh () {
+      this.refresh()
+    },
     getData (
       {
         page
@@ -25,6 +28,11 @@ export default {
       this.$refs
         .segment
         .focus()
+    },
+    refresh () {
+      this.$refs
+        .segment
+        ?.refresh()
     }
   }
 }
