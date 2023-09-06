@@ -19,7 +19,9 @@ import {
 } from 'pinia'
 import profileStore from '@/stores/profile'
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
-import countries from 'i18n-iso-countries'
+import {
+  getNames as getCountriesNames
+} from 'i18n-iso-countries'
 
 export default {
   name: 'BaseCountrySelect',
@@ -48,7 +50,7 @@ export default {
       )
     },
     countriesList () {
-      return countries.getNames(
+      return getCountriesNames(
         this.profileLanguage,
         {
           select: 'all'

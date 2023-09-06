@@ -20,7 +20,9 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import countries from 'i18n-iso-countries'
+import {
+  getName as getCountryName
+} from 'i18n-iso-countries'
 
 export default {
   name: 'BaseProfileCityCountry',
@@ -59,7 +61,7 @@ export default {
       )
     },
     countryNames () {
-      return countries.getName(
+      return getCountryName(
         this.country,
         this.profileLanguage,
         {

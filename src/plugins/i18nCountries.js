@@ -1,4 +1,6 @@
-import countries from 'i18n-iso-countries'
+import {
+  registerLocale
+} from 'i18n-iso-countries'
 import be from 'i18n-iso-countries/langs/be.json'
 import de from 'i18n-iso-countries/langs/de.json'
 import en from 'i18n-iso-countries/langs/en.json'
@@ -20,7 +22,7 @@ const locales = [
 function addLocale (
   locale
 ) {
-  countries.registerLocale(
+  registerLocale(
     locale
   )
 }
