@@ -3,6 +3,7 @@
     :response-data="artistData"
     :scope="scope"
     :limit="limit"
+    :response-page-limit="responsePageLimit"
     :is-loading="isLoading"
     :error="error"
     :is-active="isActive"
@@ -28,7 +29,8 @@ import getArtist from '@/helpers/actions/api/artist/get'
 import {
   tracks as formatArtistTracksLink,
   albums as formatArtistAlbumsLink,
-  similar as formatArtistSimilarLink
+  similar as formatArtistSimilarLink,
+  shows as formatArtistShowsLink
 } from '@/helpers/formatters/links/artist'
 
 export default {
@@ -40,7 +42,8 @@ export default {
     artistName: {
       type: String,
       required: true
-    }
+    },
+    responsePageLimit: Number
   },
   data () {
     return {
@@ -75,6 +78,12 @@ export default {
           )
         case 'similar':
           return formatArtistSimilarLink(
+            {
+              artistName: this.artistName
+            }
+          )
+        case 'shows':
+          return formatArtistShowsLink(
             {
               artistName: this.artistName
             }

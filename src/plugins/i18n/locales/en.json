@@ -85,12 +85,14 @@
         "tracks": "{modelName} favorite tracks",
         "videos": "{modelName} favorite videos"
       },
-      "communities": "{modelName} communities"
+      "communities": "{modelName} communities",
+      "shows": "{modelName} shows"
     },
     "search": "Search",
     "queue": "Queue",
     "whatsNew": "What's new",
-    "listenedRecently": "Listened recently"
+    "listenedRecently": "Listened recently",
+    "shows": "Shows"
   },
   "errors": {
     "badRequest": {
@@ -739,7 +741,8 @@
       "listeners": "No listeners",
       "images": "No images",
       "events": "No events",
-      "profiles": "No profiles"
+      "profiles": "No profiles",
+      "shows": "No shows"
     },
     "content": "Looks like there is nothing here"
   },

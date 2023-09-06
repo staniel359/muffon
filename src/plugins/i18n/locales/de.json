@@ -85,12 +85,14 @@
         "tracks": "{modelName} Lieblingstitel",
         "videos": "{modelName} Lieblingsvideos"
       },
-      "communities": "{modelName} Communities"
+      "communities": "{modelName} Communities",
+      "shows": "{modelName} Aufführungen"
     },
     "search": "Suche",
     "queue": "Queue",
     "whatsNew": "Was ist neu",
-    "listenedRecently": "Zuletzt angehört"
+    "listenedRecently": "Zuletzt angehört",
+    "shows": "Aufführungen"
   },
   "errors": {
     "badRequest": {
@@ -739,7 +741,8 @@
       "listeners": "Keine Zuhörer",
       "images": "Keine Bilder",
       "events": "Keine Events",
-      "profiles": "Keine Profile"
+      "profiles": "Keine Profile",
+      "shows": "Keine Aufführungen"
     },
     "content": "Hier scheint nichts zu sein."
   },

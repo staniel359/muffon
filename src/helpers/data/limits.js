@@ -144,3 +144,10 @@ export const events = {
     large: 50
   }
 }
+
+export const shows = {
+  simple: {
+    small: 10,
+    large: 50
+  }
+}

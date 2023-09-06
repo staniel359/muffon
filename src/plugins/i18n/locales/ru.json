@@ -85,12 +85,14 @@
         "tracks": "Избранные композиции {modelName}",
         "videos": "Избранные видео {modelName}"
       },
-      "communities": "Сообщества {modelName}"
+      "communities": "Сообщества {modelName}",
+      "shows": "Выступления {modelName}"
     },
     "search": "Поиск",
     "queue": "Очередь",
     "whatsNew": "Что нового",
-    "listenedRecently": "Недавно прослушанные"
+    "listenedRecently": "Недавно прослушанные",
+    "shows": "Выступления"
   },
   "errors": {
     "badRequest": {
@@ -739,7 +741,8 @@
       "listeners": "Нет слушателей",
       "images": "Нет изображений",
       "events": "Нет событий",
-      "profiles": "Нет профилей"
+      "profiles": "Нет профилей",
+      "shows": "Нет выступлений"
     },
     "content": "Похоже, здесь ничего нет"
   },

@@ -122,3 +122,28 @@ export function similar (
     path
   }
 }
+
+export function shows (
+  {
+    artistName
+  }
+) {
+  const artistNameEncoded =
+    encodeURIComponent(
+      artistName
+    )
+
+  const params = {
+    artistName:
+      artistNameEncoded
+  }
+
+  const path =
+    `artists/${artistNameEncoded}/shows`
+
+  return {
+    name: 'ArtistShowsPage',
+    params,
+    path
+  }
+}

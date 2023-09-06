@@ -22,6 +22,7 @@ import BaseTabsSegmentContainer
 import TracksTab from './TabsSegment/TracksTab.vue'
 import AlbumsTab from './TabsSegment/AlbumsTab.vue'
 import SimilarTab from './TabsSegment/SimilarTab.vue'
+import ShowsTab from './TabsSegment/ShowsTab.vue'
 
 export default {
   name: 'TabsSegment',
@@ -29,7 +30,8 @@ export default {
     BaseTabsSegmentContainer,
     TracksTab,
     AlbumsTab,
-    SimilarTab
+    SimilarTab,
+    ShowsTab
   },
   props: {
     artistData: {
@@ -51,6 +53,10 @@ export default {
         {
           nameCode: 'navigation.similar',
           component: 'SimilarTab'
+        },
+        {
+          nameCode: 'navigation.shows',
+          component: 'ShowsTab'
         }
       ]
     }

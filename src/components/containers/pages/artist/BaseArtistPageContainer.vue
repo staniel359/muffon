@@ -92,6 +92,8 @@ export default {
     responsePageLimit () {
       if (this.isImagesScope) {
         return 40
+      } else if (this.isShowsScope) {
+        return 30
       } else {
         return null
       }
@@ -99,6 +101,11 @@ export default {
     isImagesScope () {
       return (
         this.scope === 'images'
+      )
+    },
+    isShowsScope () {
+      return (
+        this.scope === 'shows'
       )
     },
     sourceParams () {

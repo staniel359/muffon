@@ -83,6 +83,7 @@ export default {
   navigationRight: 'right chevron divider',
   noCollection: 'question',
   other: 'hamburger',
+  place: 'map marker alternate',
   play: 'play',
   player: 'play',
   playlist: 'file audio outline',

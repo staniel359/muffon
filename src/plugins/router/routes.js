@@ -74,6 +74,9 @@ const ArtistAlbumsPage = () => import(
 const ArtistSimilarPage = () => import(
   '@/pages/artist/SimilarPage.vue'
 )
+const ArtistShowsPage = () => import(
+  '@/pages/artist/ShowsPage.vue'
+)
 const AlbumPage = () => import(
   '@/pages/album/MainPage.vue'
 )
@@ -395,6 +398,17 @@ export default [
     exact: true,
     name: 'ArtistSimilarPage',
     component: ArtistSimilarPage,
+    props: true,
+    meta: {
+      formatter:
+        formatArtistPageLinkData
+    }
+  },
+  {
+    path: '/artists/:artistName/shows',
+    exact: true,
+    name: 'ArtistShowsPage',
+    component: ArtistShowsPage,
     props: true,
     meta: {
       formatter:

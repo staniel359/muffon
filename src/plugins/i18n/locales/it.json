@@ -85,12 +85,14 @@
         "tracks": "{modelName} brani preferiti",
         "videos": "{modelName} video preferiti"
       },
-      "communities": "{modelName} community"
+      "communities": "{modelName} community",
+      "shows": "Show di {modelName}"
     },
     "search": "Ricerca",
     "queue": "Coda",
     "whatsNew": "Novità",
-    "listenedRecently": "Ascoltati di recente"
+    "listenedRecently": "Ascoltati di recente",
+    "shows": "Show"
   },
   "errors": {
     "badRequest": {
@@ -739,7 +741,8 @@
       "listeners": "Nessun ascoltatore",
       "images": "Nessuna immagine",
       "events": "Nessun evento",
-      "profiles": "Nessun profili"
+      "profiles": "Nessun profili",
+      "shows": "Nessuno show"
     },
     "content": "Sembra che qui non ci sia alcunché"
   },

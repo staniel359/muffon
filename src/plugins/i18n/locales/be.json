@@ -85,12 +85,14 @@
         "tracks": "Абраныя кампазіцыі {modelName}",
         "videos": "Абраныя відэа {modelName}"
       },
-      "communities": "Суполкі {modelName}"
+      "communities": "Суполкі {modelName}",
+      "shows": "Выступы {modelName}"
     },
     "search": "Пошук",
     "queue": "Чарга",
     "whatsNew": "Што новага",
-    "listenedRecently": "Нядаўна праслуханыя"
+    "listenedRecently": "Нядаўна праслуханыя",
+    "shows": "Выступы"
   },
   "errors": {
     "badRequest": {
@@ -453,7 +455,7 @@
       "video": "Відэа",
       "misc": "Рознае",
       "appearance": "З удзелам",
-      "live": "Жывыя выступленні"
+      "live": "Жывыя выступы"
     },
     "videoTypes": {
       "video": "Відэа",
@@ -739,7 +741,8 @@
       "listeners": "Няма слухачоў",
       "images": "Няма выяваў",
       "events": "Няма падзей",
-      "profiles": "Няма профіляў"
+      "profiles": "Няма профіляў",
+      "shows": "Няма выступаў"
     },
     "content": "Здаецца, тут нічога няма"
   },
