@@ -222,8 +222,8 @@
           "track": "Titel aus der Bibliothek löschen"
         },
         "recommendationModel": {
-          "artist": "Künstlerempfehlung löschen",
-          "track": "Titelempfehlung löschen"
+          "artist": "Künstler von Empfehlungen löschen",
+          "track": "Titel von Empfehlungen löschen"
         },
         "playlist": "Playlist löschen",
         "playlistTrack": "Titel von Playlist löschen",

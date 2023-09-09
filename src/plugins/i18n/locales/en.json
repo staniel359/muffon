@@ -222,8 +222,8 @@
           "track": "Delete track from library"
         },
         "recommendationModel": {
-          "artist": "Delete artist recommendation",
-          "track": "Delete track recommendation"
+          "artist": "Delete artist from recommendations",
+          "track": "Delete track from recommendations"
         },
         "playlist": "Delete playlist",
         "playlistTrack": "Delete track from playlist",

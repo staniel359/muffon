@@ -1,0 +1,898 @@
+{
+  "navigation": {
+    "home": "דף הבית",
+    "artists": "אמנים",
+    "artist": "אמן",
+    "albums": "אלבומים",
+    "albumGroups": "קבוצת אלבומים",
+    "tracks": "שירים",
+    "tags": "תגיות",
+    "tag": "תג",
+    "similar": "דומים",
+    "images": "תמונות",
+    "lyrics": "מילים לשירים",
+    "videos": "סרטונים",
+    "videoChannels": "ערוצי וידאו",
+    "videoMixes": "מיקס סרטונים",
+    "videoPlaylists": "פלייליסט סרטונים",
+    "related": "דומה",
+    "top": "מובילים",
+    "topCollection": {
+      "artists": "אמנים מובילים",
+      "albums": "אלבומים מובילים",
+      "tracks": "שירים מובילים",
+      "tags": "תגיות מובילות"
+    },
+    "releases": "חדשים",
+    "releasesCollection": {
+      "new": "מוזיקה חדשה",
+      "upcoming": "מוזיקה שתגיע בקרוב"
+    },
+    "new": "חדש",
+    "upcoming": "בקרוב",
+    "radio": "רדיו",
+    "multitag": "חיפוש תגיות",
+    "profiles": "פרופילים",
+    "feed": "פיד",
+    "posts": "פוסטים",
+    "conversations": "צ'אטים",
+    "library": "ספרייה",
+    "recommendations": "מומלצים",
+    "recommendationsCollection": {
+      "artists": "אמנים מומלצים",
+      "tracks": "שירים מומלצים"
+    },
+    "savedTracks": "שירים שמורים",
+    "playlists": "פלייליסטים",
+    "favorites": "האהובים עליך",
+    "bookmarks": "סימניות",
+    "bookmarksCollection": {
+      "artists": "אמנים שנשמרו בסימניות",
+      "albums": "אלבומים שנשמרו בסימניות",
+      "tracks": "שירים שנשמרו בסימניות",
+      "videos": "סרטונים שנשמרו בסימניות",
+      "videoChannels": "ערוצי סרטונים שנשמרו בסימניות",
+      "videoPlaylists": "פלייליסטים של סרטונים שנשמרו בסימניות"
+    },
+    "communities": "קהילות",
+    "history": "היסטוריה",
+    "historyCollection": {
+      "activity": "היסטוריית פעילות",
+      "player": "היסטוריית הנגן",
+      "browser": "היסטוריית דפדוף"
+    },
+    "activity": "פעילות",
+    "player": "נגן",
+    "browser": "דפדוף",
+    "settings": "הגדרות",
+    "model": {
+      "artists": "{modelName} אמנים",
+      "albums": "{modelName} אלבומים",
+      "tracks": "{modelName} שירים",
+      "tags": "{modelName} תגיות",
+      "similar": "{modelName} דומים",
+      "images": "{modelName} תמונות",
+      "lyrics": "{modelName} מילים",
+      "videos": "{modelName} סרטונים",
+      "related": "{modelName} דומה",
+      "posts": "{modelName} פוסטים",
+      "library": "{modelName} ספרייה",
+      "playlists": "{modelName} פלייליסטים",
+      "favorites": "{modelName} אהובים עליך",
+      "favoritesCollection": {
+        "artists": "{modelName} אמנים אהובים",
+        "albums": "{modelName} אלבומים אהובים",
+        "tracks": "{modelName} שירים אהובים",
+        "videos": "{modelName} סרטונים אהובים"
+      },
+      "communities": "{modelName} קהילות",
+      "shows": "{modelName} הופעות"
+    },
+    "search": "חיפוש",
+    "queue": "תור",
+    "whatsNew": "מה חדש",
+    "listenedRecently": "האזנת לאחרונה",
+    "shows": "הופעות"
+  },
+  "errors": {
+    "badRequest": {
+      "header": "בקשה לא תקינה",
+      "content": "אנא שלח בקשה עם נתונים תקינים"
+    },
+    "forbidden": {
+      "header": "אסור",
+      "content": "אין לך הרשאות לבצע פעולה זו"
+    },
+    "notFound": {
+      "header": "לא נמצאו תוצאות",
+      "content": "אנא נסה לחפש משהו אחר"
+    },
+    "internalServer": {
+      "header": "שגיאת שרת פנימית",
+      "content": "אנא צור קשר איתנו בשביל מידע"
+    },
+    "badGateway": {
+      "header": "שגיאת שרת מרוחק",
+      "content": "אנא נסה שוב בעוד רגע"
+    },
+    "gatewayTimeout": {
+      "header": "פסק זמן שרת מרוחק",
+      "content": "אנא נסה שוב בעוד רגע"
+    },
+    "connection": {
+      "header": "חיבור אבד",
+      "content": "אנא נסה שוב בעוד רגע"
+    },
+    "client": {
+      "header": "שגיאת לקוח",
+      "content": "אנא צור איתנו קשר למידע"
+    }
+  },
+  "actions": {
+    "login": "התחבר",
+    "logout": "התנתק",
+    "signup": "הירשם",
+    "add": "הוסף",
+    "create": "צור",
+    "edit": "ערוך",
+    "save": "שמור",
+    "cancel": "בטל",
+    "delete": "מחק",
+    "clear": "נקה",
+    "retry": "נסה שוב",
+    "post": "פרסם",
+    "send": "שלח",
+    "next": "הבא",
+    "upload": "העלאה",
+    "back": "חזור אחורה",
+    "sendCode": "שלח קוד",
+    "share": "שתף",
+    "search": "חפש",
+    "filter": "סנן",
+    "confirm": "אישור",
+    "import": "ייבוא",
+    "addFrom": {
+      "search": "מהחיפוש",
+      "library": "מהספרייה"
+    },
+    "importFrom": {
+      "drive": "מהכונן",
+      "account": "מהמשתמש"
+    },
+    "searchIn": {
+      "source": "חפש במקור",
+      "sources": "חפש במקורות"
+    },
+    "searchFor": {
+      "video": "חפש בשביל סרטון",
+      "lyrics": "חפש בשביל מילים לשיר"
+    },
+    "importFromAccount": {
+      "lastfm": "ייבוא מ Last.FM",
+      "spotify": "ייבוא מ Spotify"
+    },
+    "selectModel": {
+      "folder": "בחר תיקייה"
+    },
+    "createModel": {
+      "playlist": "צור פלייליסט",
+      "community": "צור קהילה",
+      "post": "צור פוסט"
+    },
+    "addTo": {
+      "library": "הוסף לספרייה",
+      "playlist": "הוסף לפלייליסט",
+      "favorites": "הוסף לאהובים",
+      "bookmarks": "הוסף לסימניות",
+      "listened": "שמעתי כבר",
+      "watched": "צפיתי כבר",
+      "queue": "הוסף לתור",
+      "savedTracks": "הוסף לשירים שמורים"
+    },
+    "show": {
+      "library": "הצג בספרייה",
+      "page": "הצג עמוד"
+    },
+    "deleteFrom": {
+      "favorites": "מחק מהאהובים",
+      "bookmarks": "מחק מהסימניות",
+      "listened": "מחק מ-שמעתי כבר",
+      "watched": "מחק מ-צפיתי כבר"
+    },
+    "externalLink": {
+      "open": "פתח קישור חיצוני",
+      "original": "מקורי",
+      "streaming": "זרימה"
+    }
+  },
+  "links": {
+    "playlists": "כל הפלייליסטים",
+    "communities": "כל הקהילות"
+  },
+  "inputs": {
+    "search": "חפש...",
+    "content": "כתוב משהו..."
+  },
+  "modals": {
+    "delete": {
+      "header": {
+        "libraryModel": {
+          "artist": "מחק אמן מהספרייה",
+          "album": "מחק אלבום מהספרייה",
+          "track": "מחק שיר מהספרייה"
+        },
+        "recommendationModel": {
+          "artist": "מחק אמן מהמומלצים",
+          "track": "מחק שיר מהמומלצים"
+        },
+        "playlist": "מחק פלייליסט",
+        "playlistTrack": "מחק שיר מהפלייליסט",
+        "savedTrack": "מחק שיר מהשירים השמורים",
+        "favorite": {
+          "artist": "מחק אמן מהאהובים",
+          "album": "מחק אלבום מהאהובים",
+          "track": "מחק שיר מהאהובים",
+          "video": "מחק סרטון מהאהובים"
+        },
+        "bookmark": {
+          "artist": "מחק אמן מהסימניות",
+          "album": "מחק אלבום מהסימניות",
+          "track": "מחק שיר מהסימניות",
+          "video": "מחק סרטון מהסימניות",
+          "videoChannel": "מחק ערוץ וידאו מסימניות",
+          "videoPlaylist": "מחק פלייליסט של סרטונים"
+        },
+        "post": "מחק פוסט",
+        "community": "מחק קהילה",
+        "account": "מחק משתמש",
+        "library": "מחק ספרייה",
+        "history": {
+          "activity": "מחק היסטוריית פעילות",
+          "browser": "מחק היסטוריית דפדוף",
+          "player": "מחק היסטוריית נגן"
+        }
+      },
+      "going": {
+        "libraryModel": "אתה הולך למחוק את {modelName} מהספרייה שלך.",
+        "recommendationModel": "אתה הולך למחוק את {modelName} מההמלצות שלך.",
+        "playlist": "אתה הולך למחוק את {modelName} מהפלייליסטים שלך.",
+        "playlistTrack": "אתה הולך למחוק את {modelName} מהפלייליסט של {parentModelName}.",
+        "savedTrack": "אתה הולך למחוק את {modelName} מהשירים ששמרת.",
+        "favorite": "אתה הולך למחוק את {modelName} מהמועדפים שלך.",
+        "bookmark": "אתה הולך למחוק את {modelName} מהסימניות שלך.",
+        "post": "אתה הולך למחוק את הפוסט הזה.",
+        "community": "אתה הולך למחוק את הקהילה הזו.",
+        "account": "אתה הולך למחוק את החשבון שלך.",
+        "library": "אתה הולך למחוק את הספרייה שלך.",
+        "history": {
+          "activity": "אתה הולך למחוק את ההיסטוריה של הפעילות שלך.",
+          "browser": "אתה הולך למחוק את ההיסטוריה של הדפדפן שלך.",
+          "player": "אתה הולך למחוק את ההיסטוריה של הנגן שלך."
+        }
+      },
+      "also": {
+        "libraryModel": {
+          "artist": "זה גם ימחוק את כל האלבומים והשירים של האמן הזה.",
+          "album": "זה גם ימחוק את כל השירים של האלבום הזה."
+        },
+        "playlist": "זה גם ימחוק את כל השירים של הרשימה הזו.",
+        "community": "זה גם ימחוק את כל הפוסטים של הקהילה הזו.",
+        "account": [
+          "זה גם ימחוק את הנתונים הבאים:",
+          "<strong>- הספרייה\n- המלצות\n- רשימות\n- מועדפים\n- סימניות\n- השמעה\n- פוסטים של העמוד שלך\n- מינויים</strong>",
+          "הנתונים האלו יישארו, אך הכינוי שלך לא יוצג:",
+          "<strong>- פוסטים שיצרת\n- שיחות איתך\n- קהילות שיצרת</strong>",
+          "והנתונים הבאים יישארו ללא שינוי:",
+          "<strong>- שירים ששמרת\n- תמונות רקע\n- הגדרות</strong>"
+        ],
+        "library": [
+          "זה ימחוק את הנתונים הבאים:",
+          "<strong>- אמנים\n- אלבומים\n- שירים\n- המלצות</strong>"
+        ]
+      },
+      "undo": "אתה לא תוכל לבטל פעולה זו!",
+      "sure": "האם אתה בטוח?"
+    }
+  },
+  "forms": {
+    "fields": {
+      "email": "אימייל",
+      "password": "סיסמה",
+      "passwordConfirmation": "אימות סיסמה",
+      "passwordResetCode": "קוד איפוס סיסמה",
+      "nickname": "כינוי",
+      "title": "כותרת",
+      "description": "תיאור",
+      "gender": "מגדר",
+      "birthdate": "תאריך לידה",
+      "country": "מדינה",
+      "city": "עיר",
+      "status": "סטטוס",
+      "genders": {
+        "male": "זכר",
+        "female": "נקבה",
+        "other": "אחר"
+      },
+      "legal": {
+        "header": "אני מסכים ל {privacyPolicy} ול {termsAndConditions}",
+        "privacyPolicy": "מדיניות פרטיות",
+        "termsAndConditions": "תנאים והגבלות"
+      },
+      "remember": "זכור אותי",
+      "asCommunity": "כקהילה"
+    },
+    "extra": "מידע נוסף",
+    "errors": {
+      "notFound": "הפרופיל לא נמצא",
+      "empty": {
+        "email": "האימייל ריק",
+        "password": "הסיסמה ריקה",
+        "passwordConfirmation": "אימות הסיסמה ריק",
+        "passwordResetCode": "קוד איפוס הסיסמה ריק",
+        "nickname": "הכינוי ריק",
+        "title": "הכותרת ריקה",
+        "legal": "עליך להסכים למדיניות הפרטיות ולתנאי השימוש"
+      },
+      "invalid": {
+        "email": "האימייל אינו תקף"
+      },
+      "taken": {
+        "email": "האימייל נתפס",
+        "nickname": "הכינוי נתפס",
+        "title": "הכותרת נתפסה"
+      },
+      "tooShort": {
+        "password": "הסיסמה קצרה מדי"
+      },
+      "tooLong": {
+        "nickname": "הכינוי ארוך מדי"
+      },
+      "confirmation": {
+        "passwordConfirmation": "הסיסמה ואימות הסיסמה לא תואמים"
+      },
+      "wrong": {
+        "password": "סיסמה שגויה",
+        "passwordResetCode": "קוד איפוס הסיסמה שגוי"
+      }
+    },
+    "confirm": {
+      "password": "אנא אשר את הסיסמה שלך:"
+    }
+  },
+  "notifications": {
+    "scrobbled": "השיר {trackFullTitle} הוזן בהצלחה",
+    "added": {
+      "queue": {
+        "track": "השיר {trackFullTitle} הוסף לתור",
+        "tracks": "{counter} הוספו לתור | {counter} הוספו לתור"
+      },
+      "savedTracks": {
+        "track": "השיר {trackFullTitle} הוסף לשירים ששמרת"
+      }
+    },
+    "updated": {
+      "profile": "הפרופיל עודכן",
+      "post": "הפוסט עודכן",
+      "playlist": "הרשימת ההשמעה {playlistTitle} עודכנה",
+      "community": "הקהילה {communityTitle} עודכנה"
+    },
+    "deleted": {
+      "libraryModel": {
+        "artist": "האמן {modelName} נמחק מהספרייה שלך",
+        "album": "האלבום {modelName} נמחק מהספרייה שלך",
+        "track": "השיר {modelName} נמחק מהספרייה שלך"
+      },
+      "playlist": "הרשימת ההשמעה {playlistTitle} נמחקה",
+      "community": "הקהילה {communityTitle} נמחקה",
+      "account": "חשבונך נמחק",
+      "library": "הספרייה שלך נמחקה",
+      "history": {
+        "activity": "ההיסטוריה של הפעילות נמחקה",
+        "browser": "ההיסטוריה של הדפדפן נמחקה",
+        "player": "ההיסטוריה של הנגן נמחקה"
+      }
+    },
+    "copied": "הקישור הועתק ללוח הגזירים",
+    "cleared": {
+      "cache": "המטמון נוקה",
+      "searchHistory": "ההיסטוריה של החיפושים נוקה"
+    }
+  },
+  "counters": {
+    "nominative": {
+      "artists": "{count} אמן | {count} אמנים",
+      "albums": "{count} אלבום | {count} אלבומים",
+      "tracks": "{count} שיר | {count} שירים",
+      "videos": "{count} סרטון | {count} סרטונים",
+      "files": "{count} קובץ | {count} קבצים",
+      "plays": "{count} השמעה | {count} השמעות",
+      "followers": "{count} עוקב | {count} עוקבים",
+      "following": "{count} עוקבים",
+      "members": "{count} מצורף | {count} מצורפים",
+      "playlists": "{count} פלייליסט | {count} פלייליסטים"
+    },
+    "genitive": {
+      "artists": "{count} אמן | {count} אמנים",
+      "albums": "{count} אלבום | {count} אלבומים",
+      "tracks": "{count} שיר | {count} שירים",
+      "files": "{count} קובץ | {count} קבצים",
+      "plays": "{count} השמעה | {count} השמעות",
+      "playlists": "{count} פלייליסט | {count} פלייליסטים"
+    },
+    "accusative": {
+      "artists": "{count} אמן | {count} אמנים",
+      "albums": "{count} אלבום | {count} אלבומים",
+      "tracks": "{count} שיר | {count} שירים",
+      "files": "{count} קובץ | {count} קבצים",
+      "playlists": "{count} פלייליסט | {count} פלייליסטים"
+    }
+  },
+  "select": {
+    "source": "בחר מקור:",
+    "type": "בחר סוג:",
+    "album": "בחר אלבום:",
+    "group": "בחר קבוצת אלבום:",
+    "artist": "בחר אמן:",
+    "track": "בחר שיר:",
+    "country": "בחר מדינה:",
+    "video": "בחר סרטון:",
+    "lyrics": "בחר מילים:"
+  },
+  "sources": {
+    "audio": "שמע",
+    "other": "אחר",
+    "albumTypes": {
+      "album": "אלבום",
+      "group": "קבוצת אלבום",
+      "track": "שיר"
+    },
+    "albumsTypes": {
+      "album": "אלבומים",
+      "single": "סינגלים",
+      "ep": "EPs",
+      "singleEp": "סינגלים / EPs",
+      "compilation": "אוספים",
+      "video": "סרטונים",
+      "misc": "שונות",
+      "appearance": "הופעות",
+      "live": "הופעות חיות"
+    },
+    "videoTypes": {
+      "video": "סרטון",
+      "track": "שיר"
+    }
+  },
+  "player": {
+    "variants": "גרסאות ({count})",
+    "audio": {
+      "bitrate": "{value} קילוביט/שניה",
+      "equalizer": {
+        "decibel": "{value} דציבלים",
+        "hertz": "{value} הרץ",
+        "kilohertz": "{value} קילוהרץ"
+      }
+    }
+  },
+  "settings": {
+    "tabs": {
+      "app": "אפליקציה",
+      "profile": "פרופיל",
+      "connections": "חיבורים"
+    },
+    "sections": {
+      "interface": "ממשק",
+      "theme": "ערכת נושא",
+      "window": "חלון",
+      "tabs": "כרטיסיות",
+      "sidebar": "סרגל צד",
+      "video": "סרטון",
+      "data": "נתונים",
+      "info": "מידע",
+      "account": "משתמש",
+      "other": "אחר"
+    },
+    "options": {
+      "app": {
+        "interface": {
+          "language": "שפה",
+          "timezone": "אזור זמן",
+          "infiniteScroll": "גלילה אין סופית",
+          "artistPopup": "הצג מידע על האמן בעת ריחוף על הקישור",
+          "innerCounters": "הצג מונים של משתמשי muffon",
+          "cachePages": "אחסן דפים במטמון",
+          "scale": "גודל"
+        },
+        "theme": {
+          "dark": "מצב כהה",
+          "system": "ערכת הנושא של המערכת",
+          "background": "רקע",
+          "transparency": "שקיפות"
+        },
+        "window": {
+          "maximize": "הפעל במסך מלא בהפעלה",
+          "exit": "יציאה בסגירה"
+        },
+        "tabs": {
+          "newTabSwitch": "החלף לכרטיסייה חדשה",
+          "closeOnExit": "סגור כרטיסיות ביציאה"
+        },
+        "search": {
+          "source": "מקור",
+          "scope": "תחום",
+          "resultsFullSize": "הצג תוצאות בגודל מלא",
+          "history": {
+            "clear": "נקה היסטוריית חיפושים"
+          }
+        },
+        "player": {
+          "audioSources": "מקורות שמע (לפי עדיפות)",
+          "bitrate": "הצג ביטרייט שמע",
+          "album": "הצג אלבום",
+          "equalizer": "הצג אקולייזר",
+          "focusPlaying": "התמקד בשיר הנוכחי"
+        },
+        "queue": {
+          "autoplay": "ניגון אוטומטי",
+          "clear": "נקה נגן ביציאה"
+        },
+        "video": {
+          "autoplay": "ניגון אוטומטי"
+        },
+        "recommendations": {
+          "hideLibraryArtists": "הסתר אמנים בספרייה",
+          "tracksCount": "עם מספר השירים",
+          "hideListenedArtists": "הסתר אמנים ששמעת להם",
+          "hideLibraryTracks": "מחק שירים מהספרייה",
+          "hideListenedTracks": "מחק שירים ששמעת להם"
+        },
+        "top": {
+          "country": "מדינה ברירת מחדל"
+        },
+        "lyrics": {
+          "annotations": "הצג הערות"
+        },
+        "history": {
+          "activity": {
+            "delete": "מחק היסטוריית פעילות"
+          },
+          "player": {
+            "delete": "מחק היסטוריית נגן"
+          },
+          "browser": {
+            "delete": "מחק היסטוריית דפדוף"
+          }
+        },
+        "other": {
+          "clearCache": "נקה מטמון"
+        }
+      },
+      "profile": {
+        "player": {
+          "playing": "הצג את השיר הנוכחי בעמוד"
+        },
+        "data": {
+          "account": {
+            "delete": "מחק משתמש"
+          },
+          "library": {
+            "delete": "מחק ספרייה"
+          }
+        }
+      },
+      "connections": {
+        "lastfm": {
+          "scrobbling": "סקרבלינג",
+          "scrobbleNotifications": "הודעות סקרבלינג",
+          "scrobblePercent": "סקרבל אחרי"
+        },
+        "discord": {
+          "richPresence": {
+            "header": "הפעל נוכחות מועשרת",
+            "client": "לפני הפעלה, ודא שלקוח הדסקטופ של Discord פועל",
+            "buttons": {
+              "header": "כפתורים",
+              "select": {
+                "first": "בחר ראשון:",
+                "second": "בחר שני:"
+              },
+              "options": {
+                "downloadApp": "הורד muffon",
+                "listenTrack": "האזן לשיר",
+                "lastfmProfile": "עמוד ה Last.FM שלי",
+                "spotifyProfile": "עמוד ה Spotify שלי",
+                "muffonProfile": "עמוד ה muffon שלי"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "track": {
+    "source": "דרך {source}"
+  },
+  "recommended": {
+    "header": "מומלץ עבורך",
+    "based": "בהתבסס על:"
+  },
+  "signup": {
+    "text": "לא נרשמת עדיין?",
+    "link": "הירשם"
+  },
+  "login": {
+    "text": "כבר נרשמת?",
+    "link": "התחבר"
+  },
+  "passwordReset": {
+    "text": "שכחת סיסמה?",
+    "link": "אפס",
+    "code": {
+      "sent": "קוד לאיפוס הסיסמה נשלח לך במייל"
+    },
+    "updated": {
+      "header": "הסיסמה שלך עודכנה",
+      "content": "כעת, תוכל לחזור ולהתחבר"
+    }
+  },
+  "anonymous": {
+    "continue": "המשך באנונימיות",
+    "nickname": "אנונימי"
+  },
+  "roles": {
+    "creator": "יוצר"
+  },
+  "relationships": {
+    "followed": "עוקב אחריך",
+    "following": "אתה עוקב",
+    "follow": "עקוב",
+    "unfollow": "הפסק לעקוב"
+  },
+  "memberships": {
+    "joined": "הצטרפת",
+    "join": "הצטרף",
+    "leave": "עזוב"
+  },
+  "message": {
+    "send": "שלח הודעה",
+    "sent": {
+      "header": "הודעה נשלחה",
+      "content": "לך לשיחה"
+    }
+  },
+  "compatibility": {
+    "header": "רמת התאמה שלך עם {profileNickname}",
+    "common": "יש לכם במשותף:"
+  },
+  "recommendation": {
+    "similar": "דומה ל {counter}:"
+  },
+  "import": {
+    "lastfm": {
+      "historyVisible": "לפני הייבוא, וודא שהיסטוריית ההאזנה שלך ב-Last.FM גלויה."
+    },
+    "active": "מייבא {count} מתוך {counter}...",
+    "success": {
+      "header": "יובאו {counter} | יובאו {counter}",
+      "content": "יתכן שתרצה לבדוק את הנתונים לפני השמירה בספרייה"
+    },
+    "error": {
+      "files": "{counter} לא ניתן לייבוא. אנא וודא שפורמט המטאדאטה תקין:"
+    }
+  },
+  "save": {
+    "active": "שומר {count} מתוך {counter}...",
+    "success": {
+      "library": {
+        "artists": "נוסף לספרייה {counter} | נוסף לספרייה {counter}",
+        "albums": "נוסף לספרייה {counter} | נוסף לספרייה {counter}",
+        "tracks": "נוסף לספרייה {counter} | נוסף לספרייה {counter}"
+      },
+      "playlist": {
+        "artists": "נוסף לרשימת ההשמעה {counter} | נוסף לרשימת ההשמעה {counter}",
+        "albums": "נוסף לרשימת ההשמעה {counter} | נוסף לרשימת ההשמעה {counter}",
+        "tracks": "נוסף לרשימת ההשמעה {counter} | נוסף לרשימת ההשמעה {counter}"
+      },
+      "playlists": {
+        "playlists": "נוסף לרשימות ההשמעה {counter} | נוסף לרשימות ההשמעה {counter}"
+      },
+      "favorites": {
+        "tracks": "נוסף למועדפים {counter} | נוסף למועדפים {counter}"
+      }
+    },
+    "error": "{counter} לא ניתן להוספה:"
+  },
+  "delete": {
+    "active": "מוחק {count} מתוך {counter}..."
+  },
+  "connections": {
+    "connect": "חבר את החשבון",
+    "confirm": {
+      "token": "הדפדפן שלך יפתח כעת. אשר את החיבור שם ולחץ שוב על הכפתור הזה.",
+      "code": "הדפדפן שלך יפתח כעת. אשר את החיבור שם, הדבק את הקוד שקיבלת ולחץ שוב על הכפתור הזה."
+    },
+    "disconnect": "נתק את החשבון"
+  },
+  "accounts": {
+    "premium": "פרימיום"
+  },
+  "noCollection": {
+    "header": {
+      "artists": "אין אמנים",
+      "albums": "אין אלבומים",
+      "groups": "אין קבוצות אלבומים",
+      "tracks": "אין שירים",
+      "similar": "אין דומים",
+      "tags": "אין תגיות",
+      "posts": "אין פוסטים",
+      "feed": "אין פוסטים",
+      "conversations": "אין שיחות",
+      "messages": "אין הודעות",
+      "followers": "אין עוקבים",
+      "following": "אין עוקבים",
+      "recommendations": "אין המלצות",
+      "playlists": "אין פלייליסטים",
+      "communities": "אין קהילות",
+      "members": "אין מצורפים",
+      "videos": "אין סרטונים",
+      "videoChannels": "אין ערוצי סרטונים",
+      "videoMixes": "אין מיקסים של סרטונים",
+      "videoPlaylists": "אין פלייליסטים של סרטונים",
+      "related": "אין דומים",
+      "listeners": "אין מאזינים",
+      "images": "אין תמונות",
+      "events": "אין אירועים",
+      "profiles": "אין פרופילים",
+      "shows": "לא נמצאו הופעות"
+    },
+    "content": "נראה שאין כאן שום דבר"
+  },
+  "deleted": {
+    "artist": "האמן נמחק",
+    "album": "האלבום נמחק",
+    "track": "השיר נמחק",
+    "recommendation": "ההמלצה נמחקה",
+    "playlist": "הרשימת ההשמעה נמחקה",
+    "post": "הפוסט נמחק",
+    "video": "הסרטון נמחק",
+    "videoChannel": "ערוץ הסרטונים נמחק",
+    "videoPlaylist": "הפלייליסט של הסרטונים נמחק"
+  },
+  "messages": {
+    "welcome": "ברוך הבא, {profileNickname}"
+  },
+  "profile": {
+    "wasOnline": "היה מחובר"
+  },
+  "feed": {
+    "global": "פיד גלובלי"
+  },
+  "about": {
+    "license": "{license} רישיון",
+    "homepage": "דף הבית",
+    "contact": "צור קשר"
+  },
+  "private": {
+    "playlist": "פרטי",
+    "profile": "פרטי"
+  },
+  "donate": {
+    "header": "תרומה",
+    "content": {
+      "nonProfit": "muffon הוא פרויקט ללא מטרת רווח שאין לו מודעות וגם אין בו תכנים או תכניות בתשלום.",
+      "funds": "אך, כמובן, הוא לא יכול להתקיים בלעדי תרומות, שנדרשות לפיתוח והתשתיות שלו.",
+      "timeEffort": "נחשבה הרבה זמן ומאמץ ליצירת הפרויקט הזה, והיה טוב אם כל ההשקעה הזו תשתלב.",
+      "help": "אז אני מבקש את העזרה שלך לתמיכה ב-muffon.",
+      "would": "האם תרצה לתרום?"
+    },
+    "decline": "לא, תודה",
+    "later": "אולי מאוחר יותר",
+    "accept": "כן, בוודאי"
+  },
+  "lists": {
+    "simple": "רשימה פשוטה",
+    "table": "טבלה",
+    "extended": "רשימה מורחבת"
+  },
+  "orders": {
+    "createdDesc": "הכי חדש",
+    "createdAsc": "הכי ישן",
+    "updatedDesc": "הכי עודכן לאחרונה",
+    "updatedAsc": "הכי עודכן לאחרונה",
+    "artistsCountDesc": "הכי הרבה אמנים",
+    "artistsCountAsc": "פחות אמנים",
+    "albumsCountDesc": "הכי הרבה אלבומים",
+    "albumsCountAsc": "פחות אלבומים",
+    "tracksCountDesc": "הכי הרבה שירים",
+    "tracksCountAsc": "פחות שירים",
+    "followersCountDesc": "הכי הרבה עוקבים",
+    "followersCountAsc": "פחות עוקבים",
+    "joinedDesc": "ההצטרפות ההכי אחרונה",
+    "joinedAsc": "ההצטרפות ההכי פחות אחרונה",
+    "membersCountDesc": "הכי הרבה מצורפים",
+    "membersCountAsc": "פחות מצורפים"
+  },
+  "deletedModel": {
+    "profile": "פרופיל נמחק"
+  },
+  "events": {
+    "created": {
+      "profile": "נוצר פרופיל",
+      "bookmarkAlbum": "האלבום {modelName} הוסר לסימניות",
+      "bookmarkArtist": "האמן {modelName} הוסר לסימניות",
+      "bookmarkTrack": "השיר {modelName} הוסר לסימניות",
+      "bookmarkVideo": "הסרטון {modelName} הוסר לסימניות",
+      "bookmarkVideoChannel": "ערוץ הסרטונים {modelName} הוסר לסימניות",
+      "bookmarkVideoPlaylist": "פלייליסט הסרטונים {modelName} הוסר לסימניות",
+      "favoriteAlbum": "האלבום {modelName} הוסר למועדפים",
+      "favoriteArtist": "האמן {modelName} הוסר למועדפים",
+      "favoriteTrack": "השיר {modelName} הוסר למועדפים",
+      "favoriteVideo": "הסרטון {modelName} הוסר למועדפים",
+      "libraryAlbum": "האלבום {modelName} הוסר לספרייה",
+      "libraryArtist": "האמן {modelName} הוסר לספרייה",
+      "libraryTrack": "השיר {modelName} הוסר לספרייה",
+      "listenedAlbum": "האלבום {modelName} הוסר להאזנה",
+      "listenedArtist": "האמן {modelName} הוסר להאזנה",
+      "listenedTrack": "השיר {modelName} הוסר להאזנה",
+      "watchedVideo": "הסרטון {modelName} הוסר לצפייה",
+      "playlistTrack": "השיר {modelName} הוסר מהפלייליסט {playlistTitle}",
+      "community": "הקהילה {modelName} נוצרה",
+      "relationship": "עקבת אחרי {modelName}",
+      "post": "הפוסט {modelName} נוצר",
+      "playlist": "הפלייליסט {modelName} נוצר",
+      "conversation": "התחלת שיחה עם {modelName}",
+      "membership": "הצטרפת לקהילה {modelName}"
+    },
+    "updated": {
+      "profile": "פרופיל עודכן",
+      "community": "הקהילה {modelName} עודכנה",
+      "post": "הפוסט {modelName} עודכן",
+      "playlist": "הפלייליסט {modelName} עודכן"
+    },
+    "deleted": {
+      "bookmarkAlbum": "האלבום {modelName} נמחק מהסימניות",
+      "bookmarkArtist": "האמן {modelName} נמחק מהסימניות",
+      "bookmarkTrack": "השיר {modelName} נמחק מהסימניות",
+      "bookmarkVideo": "הסרטון {modelName} נמחק מהסימניות",
+      "bookmarkVideoChannel": "ערוץ הסרטונים {modelName} נמחק מהסימניות",
+      "bookmarkVideoPlaylist": "רשימת הסרטונים {modelName} נמחקה מהסימניות",
+      "favoriteAlbum": "האלבום {modelName} נמחק מהמועדפים",
+      "favoriteArtist": "האמן {modelName} נמחק מהמועדפים",
+      "favoriteTrack": "השיר {modelName} נמחק מהמועדפים",
+      "favoriteVideo": "הסרטון {modelName} נמחק מהמועדפים",
+      "libraryAlbum": "האלבום {modelName} נמחק מהספרייה",
+      "libraryArtist": "האמן {modelName} נמחק מהספרייה",
+      "libraryTrack": "השיר {modelName} נמחק מהספרייה",
+      "listenedAlbum": "האלבום {modelName} נמחק מההאזנה",
+      "listenedArtist": "האמן {modelName} נמחק מההאזנה",
+      "listenedTrack": "השיר {modelName} נמחק מההאזנה",
+      "watchedVideo": "הסרטון {modelName} נמחק מהצפייה",
+      "playlistTrack": "השיר {modelName} נמחק מהפלייליסט {playlistTitle}",
+      "community": "הקהילה {modelName} נמחקה",
+      "recommendationArtist": "האמן {modelName} נמחק מהמומלצים",
+      "recommendationTrack": "נמחק מהמומלצים {modelName} השיר",
+      "relationship": "הפסקת לעקוב אחרי {modelName}",
+      "post": "הפוסט {modelName} נמחק",
+      "playlist": "הפלייליסט {modelName} נמחק",
+      "membership": "עזבת את הקהילה {modelName}"
+    }
+  },
+  "created": {
+    "profile": "ב muffon מאז",
+    "library": "בספרייה מאז",
+    "community": "נוצר ב"
+  },
+  "filter": {
+    "include": {
+      "artists": "עם אמנים",
+      "tags": "עם תגיות"
+    },
+    "exclude": {
+      "artists": "בלי אמנים",
+      "tags": "בלי תגיות"
+    }
+  },
+  "online": "מחובר",
+  "error": "שגיאה",
+  "more": "עוד...",
+  "loading": "טוען..."
+}

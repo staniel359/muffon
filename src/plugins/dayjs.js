@@ -7,6 +7,7 @@ import localeData from 'dayjs/plugin/localeData'
 import 'dayjs/locale/be'
 import 'dayjs/locale/de'
 import 'dayjs/locale/fr'
+import 'dayjs/locale/he'
 import 'dayjs/locale/it'
 import 'dayjs/locale/ru'
 

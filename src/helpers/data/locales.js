@@ -18,6 +18,10 @@ export default [
     name: 'Français'
   },
   {
+    id: 'he',
+    name: 'עברית'
+  },
+  {
     id: 'it',
     name: 'Italiano'
   },
