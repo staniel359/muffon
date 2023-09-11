@@ -9,16 +9,17 @@
 /semantic/src/definitions
 /semantic/src/themes
 
-/semantic/src/site/collections
+/semantic/src/site/collections/**
 /semantic/src/site/elements/**
 /semantic/src/site/globals/**
 /semantic/src/site/modules/**
-/semantic/src/site/views
+/semantic/src/site/views/**
 
 !/semantic/src/site/elements/button.variables
 !/semantic/src/site/globals/site.variables
 !/semantic/src/site/modules/checkbox.variables
 
+/semantic/src/overrides.less
 /semantic/src/semantic.less
 /semantic/src/theme.config
 /semantic/src/theme.less

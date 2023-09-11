@@ -40,6 +40,7 @@ export default {
 .base-image-modal
   @extend .no-margin, .no-shadow, .no-border, .no-border-radius, .width-fit-content, .background-transparent
   &.scrolling
+    top: unset !important
     &:after
       @extend .d-none
 </style>
