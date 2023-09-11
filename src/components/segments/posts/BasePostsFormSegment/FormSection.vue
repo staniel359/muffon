@@ -23,7 +23,7 @@
     />
 
     <div class="as-community-container">
-      <BasePostAsCommunityField
+      <BaseAsCommunityField
         v-if="isWithAsCommunityOption"
       />
     </div>
@@ -51,8 +51,7 @@ import BaseSendableFormContentSection
   from '@/components/forms/sendable/BaseSendableFormContentSection.vue'
 import BaseFormAddButtonsSection
   from '@/components/forms/BaseFormAddButtonsSection.vue'
-import BasePostAsCommunityField
-  from '@/components/fields/post/BasePostAsCommunityField.vue'
+import BaseAsCommunityField from '@/components/fields/BaseAsCommunityField.vue'
 import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 import sendableFormMixin from '@/mixins/sendableFormMixin'
 
@@ -63,7 +62,7 @@ export default {
     BaseContentField,
     BaseSendableFormContentSection,
     BaseFormAddButtonsSection,
-    BasePostAsCommunityField,
+    BaseAsCommunityField,
     BaseSubmitButton
   },
   mixins: [
@@ -73,15 +72,25 @@ export default {
     postType: String,
     profileId: String,
     communityId: String,
-    isWithAsCommunityOption: Boolean
+    isWithAsCommunityOption: Boolean,
+    isShow: Boolean
   },
   emits: [
     'success'
   ],
-  mounted () {
-    this.focusContent()
+  watch: {
+    isShow: 'handleIsShowChange'
   },
   methods: {
+    async handleIsShowChange (
+      value
+    ) {
+      if (value) {
+        await this.$nextTick()
+
+        this.focusContent()
+      }
+    },
     handleSuccess () {
       this.$emit(
         'success'

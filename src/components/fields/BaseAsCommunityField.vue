@@ -11,7 +11,7 @@
 import BaseCheckbox from '@/components/BaseCheckbox.vue'
 
 export default {
-  name: 'BasePostAsCommunityField',
+  name: 'BaseAsCommunityField',
   components: {
     BaseCheckbox
   },

@@ -2,6 +2,10 @@
   <BaseSegmentContainer
     v-if="currentProfileId"
     ref="segment"
+    :class="[
+      'main-segment-container',
+      'main-nested-segment-container'
+    ]"
     :is-change-transparency="false"
   >
     <BaseCreateButton
@@ -11,12 +15,13 @@
     />
 
     <FormSection
-      v-if="isShowForm"
+      v-show="isShowForm"
       class="form-section"
       :post-type="postType"
       :profile-id="profileId"
       :community-id="communityId"
       :is-with-as-community-option="isWithAsCommunityOption"
+      :is-show="isShowForm"
       @success="handleSuccess"
     />
   </BaseSegmentContainer>

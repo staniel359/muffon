@@ -14,10 +14,6 @@
       <div>
         <BasePostsFormSegment
           post-type="community"
-          :class="[
-            'main-segment-container',
-            'main-nested-segment-container'
-          ]"
           :community-id="communityId"
           :is-with-as-community-option="isCommunityCreator"
           @success="handlePostCreateSuccess"

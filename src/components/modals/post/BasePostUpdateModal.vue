@@ -38,7 +38,7 @@
         />
 
         <div class="as-community-container">
-          <BasePostAsCommunityField
+          <BaseAsCommunityField
             v-if="isWithAsCommunityOption"
             :is-checked="isByCommunity"
           />
@@ -72,8 +72,7 @@ import BaseSendableFormContentSection
   from '@/components/forms/sendable/BaseSendableFormContentSection.vue'
 import BaseFormAddButtonsSection
   from '@/components/forms/BaseFormAddButtonsSection.vue'
-import BasePostAsCommunityField
-  from '@/components/fields/post/BasePostAsCommunityField.vue'
+import BaseAsCommunityField from '@/components/fields/BaseAsCommunityField.vue'
 import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 import sendableFormMixin from '@/mixins/sendableFormMixin'
 import {
@@ -91,7 +90,7 @@ export default {
     BaseContentField,
     BaseSendableFormContentSection,
     BaseFormAddButtonsSection,
-    BasePostAsCommunityField,
+    BaseAsCommunityField,
     BaseSubmitButton
   },
   mixins: [

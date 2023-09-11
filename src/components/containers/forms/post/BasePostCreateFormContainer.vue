@@ -85,6 +85,8 @@ export default {
     isSuccess: 'handleIsSuccessChange'
   },
   methods: {
+    createProfilePost,
+    createCommunityPost,
     handleSuccess (
       event,
       fields
@@ -119,8 +121,6 @@ export default {
         )
       }
     },
-    createProfilePost,
-    createCommunityPost,
     createPost (
       args
     ) {

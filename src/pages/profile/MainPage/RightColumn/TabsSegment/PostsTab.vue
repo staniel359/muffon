@@ -14,10 +14,6 @@
       <div>
         <BasePostsFormSegment
           post-type="profile"
-          :class="[
-            'main-segment-container',
-            'main-nested-segment-container'
-          ]"
           :profile-id="profileId"
           @success="handlePostCreateSuccess"
         />
