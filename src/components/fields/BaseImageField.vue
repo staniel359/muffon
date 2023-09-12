@@ -90,7 +90,7 @@ export default {
 
       this.changeImage(
         {
-          data: 'DELETED'
+          data: null
         }
       )
     },
