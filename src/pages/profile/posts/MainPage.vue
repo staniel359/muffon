@@ -14,7 +14,6 @@
     >
       <BasePostsSimpleList
         :posts="slotProps[scope]"
-        :profile-id="profileId"
       />
     </template>
   </BaseProfilePaginatedPageContainer>

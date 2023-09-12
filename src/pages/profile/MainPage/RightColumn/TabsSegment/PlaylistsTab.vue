@@ -1,5 +1,5 @@
 <template>
-  <BaseProfileTabContainer
+  <BaseProfilePaginatedTabContainer
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
@@ -17,12 +17,12 @@
         is-with-delete-option
       />
     </template>
-  </BaseProfileTabContainer>
+  </BaseProfilePaginatedTabContainer>
 </template>
 
 <script>
-import BaseProfileTabContainer
-  from '@/components/containers/tabs/profile/BaseProfileTabContainer.vue'
+import BaseProfilePaginatedTabContainer
+  from '@/components/containers/tabs/profile/BaseProfilePaginatedTabContainer.vue'
 import BasePlaylistsSimpleList
   from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import {
@@ -33,7 +33,7 @@ import tabMixin from '@/mixins/tabMixin'
 export default {
   name: 'PlaylistsTab',
   components: {
-    BaseProfileTabContainer,
+    BaseProfilePaginatedTabContainer,
     BasePlaylistsSimpleList
   },
   mixins: [

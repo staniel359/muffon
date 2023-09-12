@@ -179,6 +179,9 @@
       "community": "Crea community",
       "post": "Crea post"
     },
+    "addModel": {
+      "comment": "Aggiungi commento"
+    },
     "addTo": {
       "library": "Aggiungi alla libreria",
       "playlist": "Aggiungi alla playlist",
@@ -243,6 +246,7 @@
           "videoPlaylist": "Rimuovi la playlist di video dai segnalibri"
         },
         "post": "Elimina post",
+        "comment": "Elimina commento",
         "community": "Elimina community",
         "account": "Elimina account",
         "library": "Elimina libreria",
@@ -261,6 +265,7 @@
         "favorite": "Stai per rimuovere {modelName} dai tuoi preferiti.",
         "bookmark": "Stai per rimuovere {modelName} dai tuoi segnalibri.",
         "post": "Stai per eliminare questo post.",
+        "comment": "Stai per eliminare questo commento.",
         "community": "Stai per eliminare questa community.",
         "account": "Stai per eliminare il tuo account.",
         "library": "Stai per eliminare la tua libreria.",
@@ -373,6 +378,7 @@
     "updated": {
       "profile": "Profilo aggiornato",
       "post": "Post aggiornato",
+      "comment": "Il commento è stato aggiornato",
       "playlist": "Playlist {playlistTitle} aggiornata",
       "community": "Community {communityTitle} aggiornata"
     },
@@ -753,6 +759,7 @@
     "recommendation": "Suggerimento rimosso",
     "playlist": "Playlist rimossa",
     "post": "Post rimosso",
+    "comment": "Il commento è stato eliminato",
     "video": "Video rimosso",
     "videoChannel": "Il canale video è stato eliminato",
     "videoPlaylist": "La playlist video è stata eliminata"
@@ -838,6 +845,7 @@
       "community": "La community {modelName} è stata creata",
       "relationship": "Hai iniziato a seguire {modelName}",
       "post": "Il post {modelName} è stato creato",
+      "postComment": "Commento {modelName} creato",
       "playlist": "La playlist {modelName} è stata creata",
       "conversation": "Hai avviato una conversazione con {modelName}",
       "membership": "Ti sei unito alla community {modelName}"
@@ -846,6 +854,7 @@
       "profile": "Il profilo è stato aggiornato",
       "community": "La community {modelName} è stata aggiornata",
       "post": "Il post {modelName} è stato aggiornato",
+      "postComment": "Commento {modelName} aggiornato",
       "playlist": "La playlist {modelName} è stata aggiornata"
     },
     "deleted": {
@@ -872,6 +881,7 @@
       "recommendationTrack": "Brano {modelName} eliminato dai suggeriti",
       "relationship": "Hai smesso di seguire {modelName}",
       "post": "Il post {modelName} è stato eliminato",
+      "postComment": "Commento {modelName} eliminato",
       "playlist": "La playlist {modelName} è stata eliminata",
       "membership": "Hai lasciato la community {modelName}"
     }

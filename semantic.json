@@ -58,7 +58,8 @@
     "visibility",
     "grid",
     "api",
-    "table"
+    "table",
+    "comment"
   ],
   "version": "2.9.3"
 }

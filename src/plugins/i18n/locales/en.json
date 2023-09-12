@@ -179,6 +179,9 @@
       "community": "Create community",
       "post": "Create post"
     },
+    "addModel": {
+      "comment": "Add comment"
+    },
     "addTo": {
       "library": "Add to library",
       "playlist": "Add to playlist",
@@ -243,6 +246,7 @@
           "videoPlaylist": "Delete video playlist from bookmarks"
         },
         "post": "Delete post",
+        "comment": "Delete comment",
         "community": "Delete community",
         "account": "Delete account",
         "library": "Delete library",
@@ -261,6 +265,7 @@
         "favorite": "You are going to delete {modelName} from your favorites.",
         "bookmark": "You are going to delete {modelName} from your bookmarks.",
         "post": "You are going to delete this post.",
+        "comment": "You are going to delete this comment.",
         "community": "You are going to delete this community.",
         "account": "You are going to delete your account.",
         "library": "You are going to delete your library.",
@@ -373,6 +378,7 @@
     "updated": {
       "profile": "Profile has been updated",
       "post": "Post has been updated",
+      "comment": "Comment has been updated",
       "playlist": "Playlist {playlistTitle} has been updated",
       "community": "Community {communityTitle} has been updated"
     },
@@ -753,6 +759,7 @@
     "recommendation": "Recommendation has been deleted",
     "playlist": "Playlist has been deleted",
     "post": "Post has been deleted",
+    "comment": "Comment has been deleted",
     "video": "Video has been deleted",
     "videoChannel": "Video channel has been deleted",
     "videoPlaylist": "Video playlist has been deleted"
@@ -838,6 +845,7 @@
       "community": "Community {modelName} is created",
       "relationship": "You followed {modelName}",
       "post": "Post {modelName} is created",
+      "postComment": "Comment {modelName} is created",
       "playlist": "Playlist {modelName} is created",
       "conversation": "You started conversation with {modelName}",
       "membership": "You joined community {modelName}"
@@ -846,6 +854,7 @@
       "profile": "Profile is updated",
       "community": "Community {modelName} is updated",
       "post": "Post {modelName} is updated",
+      "postComment": "Comment {modelName} is updated",
       "playlist": "Playlist {modelName} is updated"
     },
     "deleted": {
@@ -872,6 +881,7 @@
       "recommendationTrack": "Track {modelName} is deleted from recommendations",
       "relationship": "You unfollowed {modelName}",
       "post": "Post {modelName} is deleted",
+      "postComment": "Comment {modelName} is deleted",
       "playlist": "Playlist {modelName} is deleted",
       "membership": "You left community {modelName}"
     }

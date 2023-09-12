@@ -179,6 +179,9 @@
       "community": "Créer une communauté",
       "post": "Créer un poste"
     },
+    "addModel": {
+      "comment": "Ajouter un commentaire"
+    },
     "addTo": {
       "library": "Ajouter à la bibliothèque",
       "playlist": "Ajouter à la playlist",
@@ -243,6 +246,7 @@
           "videoPlaylist": "Supprimer la playlist vidéo du signet"
         },
         "post": "Supprimer le poste",
+        "comment": "Supprimer le commentaire",
         "community": "Supprimer cette communauté",
         "account": "Supprimer le compte",
         "library": "Supprimer la bibliothèque",
@@ -261,6 +265,7 @@
         "favorite": "Vous allez supprimer {modelName} de votre favoris.",
         "bookmark": "Vous allez supprimer {modelName} de votre signet.",
         "post": "Vous allez supprimer ce poste.",
+        "comment": "Vous êtes sur le point de supprimer le commentaire",
         "community": "Vous allez supprimer cette communauté.",
         "account": "Vous allez supprimer votre compte.",
         "library": "Vous allez supprimer votre bibliothèque.",
@@ -373,6 +378,7 @@
     "updated": {
       "profile": "Le profil a bien été mis à jour",
       "post": "Le poste a bien été mis à jour",
+      "comment": "Le commentaire à bien était mis à jour",
       "playlist": "La playlist {playlistTitle} a bien été mis à jour",
       "community": "La communauté {communityTitle} a bien été mis à jour"
     },
@@ -753,6 +759,7 @@
     "recommendation": "La recommandation a été supprimé",
     "playlist": "La playlist a été supprimé",
     "post": "Le poste a été supprimé",
+    "comment": "Le commentaire à bien était supprimer",
     "video": "La vidéo a été supprimé",
     "videoChannel": "La chaîne a été supprimé",
     "videoPlaylist": "La playlist vidéo a été supprimé"
@@ -838,6 +845,7 @@
       "community": "La communauté {modelName} a été créé",
       "relationship": "Vous avez suivi {modelName}",
       "post": "Le poste {modelName} a été créé",
+      "postComment": "Le commentaire {modelName} à était créé",
       "playlist": "La playlist {modelName} a été créé",
       "conversation": "Vous débuter une conversation avec {modelName}",
       "membership": "Vous avez rejoint la communauté {modelName}"
@@ -846,6 +854,7 @@
       "profile": "Le profil a été mis a jour",
       "community": "La communauté {modelName} a été mise à jour",
       "post": "Le poste {modelName} a été mise à jour",
+      "postComment": "Le commentaire {modelName} à était mis à jour",
       "playlist": "La playlist {modelName} a été mise à jour"
     },
     "deleted": {
@@ -872,6 +881,7 @@
       "recommendationTrack": "Le titre {modelName} à était supprimer de vos recommandations",
       "relationship": "Vous ne suivez plus {modelName}",
       "post": "Le poste {modelName} a été supprimé",
+      "postComment": "Le commentaire {modelName} à était supprimer",
       "playlist": "La playlist {modelName} a été supprimé",
       "membership": "Vous avez quitté  la communauté {modelName}"
     }

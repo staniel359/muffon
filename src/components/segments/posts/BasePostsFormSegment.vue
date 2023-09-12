@@ -20,7 +20,7 @@
       :post-type="postType"
       :profile-id="profileId"
       :community-id="communityId"
-      :is-with-as-community-option="isWithAsCommunityOption"
+      :is-with-as-community-option="isCommunityCreator"
       :is-show="isShowForm"
       @success="handleSuccess"
     />
@@ -48,7 +48,7 @@ export default {
     postType: String,
     profileId: String,
     communityId: String,
-    isWithAsCommunityOption: Boolean
+    isCommunityCreator: Boolean
   },
   emits: [
     'success'
@@ -71,7 +71,8 @@ export default {
   },
   methods: {
     handleCreateButtonClick () {
-      this.isShowForm = !this.isShowForm
+      this.isShowForm =
+        !this.isShowForm
     },
     handleIsShowFormChange (
       value
@@ -80,9 +81,12 @@ export default {
         this.focus()
       }
     },
-    handleSuccess () {
+    handleSuccess (
+      value
+    ) {
       this.$emit(
-        'success'
+        'success',
+        value
       )
     },
     focus () {

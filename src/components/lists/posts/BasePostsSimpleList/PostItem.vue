@@ -13,7 +13,7 @@
       v-else
     >
       <BaseImage
-        class="small"
+        class="medium"
         :class="imageClass"
         :model="imageModel"
         :image="imageData?.extrasmall"
@@ -26,14 +26,14 @@
         />
         <div
           v-else
-          class="profile-nickname-container"
+          class="profile-nickname-private-container"
         >
           <BaseProfileNickname
             :profile-data="profileData"
           />
 
           <BasePrivateIcon
-            v-if="isPrivate"
+            v-if="isProfilePrivate"
           />
         </div>
 
@@ -44,6 +44,11 @@
 
         <BaseSendableContentSection
           :model-data="postData"
+        />
+
+        <CommentsSection
+          :post-data="postData"
+          :is-community-creator="isCommunityCreator"
         />
       </div>
 
@@ -78,6 +83,7 @@ import BaseSendableContentSection
   from '@/components/models/sendable/BaseSendableContentSection.vue'
 import BasePostOptionsPopup
   from '@/components/popups/post/BasePostOptionsPopup.vue'
+import CommentsSection from './PostItem/CommentsSection.vue'
 import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
@@ -90,7 +96,8 @@ export default {
     BasePrivateIcon,
     BaseTimestampSection,
     BaseSendableContentSection,
-    BasePostOptionsPopup
+    BasePostOptionsPopup,
+    CommentsSection
   },
   mixins: [
     notificationMixin
@@ -107,15 +114,13 @@ export default {
     postData: {
       type: Object,
       required: true
-    },
-    profileId: String,
-    isCommunityCreator: Boolean
+    }
   },
   computed: {
     ...mapState(
       profileStore,
       {
-        currentProfileId: 'id'
+        profileId: 'id'
       }
     ),
     imageData () {
@@ -140,18 +145,42 @@ export default {
     },
     isPostCreator () {
       return (
-        this.currentProfileId ===
+        this.profileId ===
           this.postProfileId
       )
     },
     postProfileId () {
-      return this.profileData.id?.toString()
+      return this.profileData
+        .id
+        ?.toString()
     },
     isPageOwner () {
       return (
-        this.currentProfileId ===
-          this.profileId
+        this.profileId ===
+          this.pageProfileId
       )
+    },
+    pageProfileId () {
+      return this.otherProfileData
+        ?.id
+        ?.toString()
+    },
+    otherProfileData () {
+      return this.postData.other_profile
+    },
+    isCommunityCreator () {
+      return (
+        this.profileId ===
+          this.communityCreatorId
+      )
+    },
+    communityCreatorId () {
+      return this.communityCreatorData
+        ?.id
+        ?.toString()
+    },
+    communityCreatorData () {
+      return this.communityData?.creator
     },
     notificationSuccessMessage () {
       return this.$t(
@@ -194,7 +223,7 @@ export default {
         return 'profile'
       }
     },
-    isPrivate () {
+    isProfilePrivate () {
       return this.profileData.private
     }
   },
@@ -223,6 +252,6 @@ export default {
   @extend .align-items-start
   padding: 1.5em 1em !important
 
-.profile-nickname-container
+.profile-nickname-private-container
   @extend .d-flex, .align-items-center
 </style>

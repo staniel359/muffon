@@ -14,7 +14,6 @@
     >
       <BasePostsSimpleList
         :posts="slotProps[scope]"
-        :is-community-creator="slotProps.isCommunityCreator"
       />
     </template>
   </BaseCommunityPaginatedPageContainer>

@@ -72,6 +72,7 @@ export default {
         playlist: 'playlist',
         playlistTrack: 'playlist',
         post: 'post',
+        postComment: 'comment',
         profile: 'profile',
         recommendationArtist: 'recommendation',
         recommendationTrack: 'recommendation',

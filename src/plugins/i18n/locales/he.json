@@ -179,6 +179,9 @@
       "community": "צור קהילה",
       "post": "צור פוסט"
     },
+    "addModel": {
+      "comment": "הוסף תגובה"
+    },
     "addTo": {
       "library": "הוסף לספרייה",
       "playlist": "הוסף לפלייליסט",
@@ -243,6 +246,7 @@
           "videoPlaylist": "מחק פלייליסט של סרטונים"
         },
         "post": "מחק פוסט",
+        "comment": "מחק תגובה",
         "community": "מחק קהילה",
         "account": "מחק משתמש",
         "library": "מחק ספרייה",
@@ -261,6 +265,7 @@
         "favorite": "אתה הולך למחוק את {modelName} מהמועדפים שלך.",
         "bookmark": "אתה הולך למחוק את {modelName} מהסימניות שלך.",
         "post": "אתה הולך למחוק את הפוסט הזה.",
+        "comment": "אתה הולך למחוק את התגובה הזו.",
         "community": "אתה הולך למחוק את הקהילה הזו.",
         "account": "אתה הולך למחוק את החשבון שלך.",
         "library": "אתה הולך למחוק את הספרייה שלך.",
@@ -373,6 +378,7 @@
     "updated": {
       "profile": "הפרופיל עודכן",
       "post": "הפוסט עודכן",
+      "comment": "התגובה התעדכנה",
       "playlist": "הרשימת ההשמעה {playlistTitle} עודכנה",
       "community": "הקהילה {communityTitle} עודכנה"
     },
@@ -753,6 +759,7 @@
     "recommendation": "ההמלצה נמחקה",
     "playlist": "הרשימת ההשמעה נמחקה",
     "post": "הפוסט נמחק",
+    "comment": "התגובה נמחקה",
     "video": "הסרטון נמחק",
     "videoChannel": "ערוץ הסרטונים נמחק",
     "videoPlaylist": "הפלייליסט של הסרטונים נמחק"
@@ -838,6 +845,7 @@
       "community": "הקהילה {modelName} נוצרה",
       "relationship": "עקבת אחרי {modelName}",
       "post": "הפוסט {modelName} נוצר",
+      "postComment": "נוצרה {modelName} התגובה",
       "playlist": "הפלייליסט {modelName} נוצר",
       "conversation": "התחלת שיחה עם {modelName}",
       "membership": "הצטרפת לקהילה {modelName}"
@@ -846,6 +854,7 @@
       "profile": "פרופיל עודכן",
       "community": "הקהילה {modelName} עודכנה",
       "post": "הפוסט {modelName} עודכן",
+      "postComment": "התעדכנה {modelName} התגובה",
       "playlist": "הפלייליסט {modelName} עודכן"
     },
     "deleted": {
@@ -872,6 +881,7 @@
       "recommendationTrack": "נמחק מהמומלצים {modelName} השיר",
       "relationship": "הפסקת לעקוב אחרי {modelName}",
       "post": "הפוסט {modelName} נמחק",
+      "postComment": "נמחקה {modelName} התגובה",
       "playlist": "הפלייליסט {modelName} נמחק",
       "membership": "עזבת את הקהילה {modelName}"
     }

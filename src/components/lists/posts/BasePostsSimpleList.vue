@@ -6,8 +6,6 @@
       v-for="postData in posts"
       :key="postData.uuid"
       :post-data="postData"
-      :profile-id="profileId"
-      :is-community-creator="isCommunityCreator"
     />
   </BaseListContainer>
 </template>
@@ -23,15 +21,25 @@ export default {
     BaseListContainer,
     PostItem
   },
+  inject: [
+    'prependItemToPaginatedList'
+  ],
   props: {
     posts: {
       type: Array,
       default () {
         return []
       }
-    },
-    profileId: String,
-    isCommunityCreator: Boolean
+    }
+  },
+  methods: {
+    addPostToPosts (
+      value
+    ) {
+      this.prependItemToPaginatedList(
+        value
+      )
+    }
   }
 }
 </script>

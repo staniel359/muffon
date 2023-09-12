@@ -1,5 +1,5 @@
 <template>
-  <BaseProfileTabContainer
+  <BaseProfilePaginatedTabContainer
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
@@ -16,12 +16,12 @@
         is-with-share-option
       />
     </template>
-  </BaseProfileTabContainer>
+  </BaseProfilePaginatedTabContainer>
 </template>
 
 <script>
-import BaseProfileTabContainer
-  from '@/components/containers/tabs/profile/BaseProfileTabContainer.vue'
+import BaseProfilePaginatedTabContainer
+  from '@/components/containers/tabs/profile/BaseProfilePaginatedTabContainer.vue'
 import BaseCommunitiesSimpleList
   from '@/components/lists/communities/BaseCommunitiesSimpleList.vue'
 import {
@@ -32,7 +32,7 @@ import tabMixin from '@/mixins/tabMixin'
 export default {
   name: 'CommunitiesTab',
   components: {
-    BaseProfileTabContainer,
+    BaseProfilePaginatedTabContainer,
     BaseCommunitiesSimpleList
   },
   mixins: [

@@ -106,6 +106,7 @@ export default {
         playlist: 'playlist',
         playlistTrack: 'playlistTrack',
         post: 'post',
+        postComment: 'comment',
         profile: 'profile',
         recommendationArtist:
           'recommendationArtist',
@@ -331,6 +332,8 @@ export default {
         case 'relationship':
           return this.otherProfileNickname
         case 'post':
+          return this.text
+        case 'comment':
           return this.text
         case 'playlist':
           return this.title

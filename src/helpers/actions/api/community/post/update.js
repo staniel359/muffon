@@ -19,23 +19,43 @@ export default function (
 ) {
   this.newPostData = null
 
-  const url =
-    `/communities/${communityId}/posts/${postId}`
+  const url = (
+    `/communities/${communityId}` +
+    `/posts/${postId}`
+  )
 
   const params = {
     text,
     by_community: byCommunity,
-    images,
-    artists,
-    albums,
-    tracks,
-    videos,
-    video_channels:
-      videoChannels,
-    video_playlists:
-      videoPlaylists,
-    playlists,
-    communities
+    ...(images.length && {
+      images
+    }),
+    ...(artists.length && {
+      artists
+    }),
+    ...(albums.length && {
+      albums
+    }),
+    ...(tracks.length && {
+      tracks
+    }),
+    ...(videos.length && {
+      videos
+    }),
+    ...(videoChannels.length && {
+      video_channels:
+        videoChannels
+    }),
+    ...(videoPlaylists.length && {
+      video_playlists:
+        videoPlaylists
+    }),
+    ...(playlists.length && {
+      playlists
+    }),
+    ...(communities.length && {
+      communities
+    })
   }
 
   const handleSuccess = (

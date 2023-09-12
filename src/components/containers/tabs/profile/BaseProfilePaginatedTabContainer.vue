@@ -39,7 +39,7 @@ import {
 } from '@/helpers/formatters/links/profile'
 
 export default {
-  name: 'BaseProfileTabContainer',
+  name: 'BaseProfilePaginatedTabContainer',
   mixins: [
     tabContainerMixin
   ],

@@ -62,6 +62,7 @@ export default {
   ],
   data () {
     return {
+      postData: null,
       error: null,
       isLoading: false,
       isSuccess: false
@@ -117,7 +118,8 @@ export default {
     ) {
       if (value) {
         this.$emit(
-          'success'
+          'success',
+          this.postData
         )
       }
     },

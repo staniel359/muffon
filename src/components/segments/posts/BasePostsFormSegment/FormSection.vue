@@ -91,9 +91,12 @@ export default {
         this.focusContent()
       }
     },
-    handleSuccess () {
+    handleSuccess (
+      value
+    ) {
       this.$emit(
-        'success'
+        'success',
+        value
       )
     },
     handleSubmit () {

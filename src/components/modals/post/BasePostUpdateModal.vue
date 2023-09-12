@@ -122,7 +122,9 @@ export default {
     },
     postImages () {
       return (
-        this.postData.attachments?.images || []
+        this.postData
+          .attachments
+          ?.images || []
       )
     },
     postVideosFormatted () {
@@ -132,7 +134,9 @@ export default {
     },
     postVideos () {
       return (
-        this.postData.attachments?.videos || []
+        this.postData
+          .attachments
+          ?.videos || []
       )
     },
     postVideoChannelsFormatted () {
@@ -142,7 +146,9 @@ export default {
     },
     postVideoChannels () {
       return (
-        this.postData.attachments?.video_channels || []
+        this.postData
+          .attachments
+          ?.video_channels || []
       )
     },
     postVideoPlaylistsFormatted () {
@@ -152,7 +158,9 @@ export default {
     },
     postVideoPlaylists () {
       return (
-        this.postData.attachments?.video_playlists || []
+        this.postData
+          .attachments
+          ?.video_playlists || []
       )
     },
     postArtistsFormatted () {
@@ -162,7 +170,9 @@ export default {
     },
     postArtists () {
       return (
-        this.postData.attachments?.artists || []
+        this.postData
+          .attachments
+          ?.artists || []
       )
     },
     postAlbumsFormatted () {
@@ -172,7 +182,9 @@ export default {
     },
     postAlbums () {
       return (
-        this.postData.attachments?.albums || []
+        this.postData
+          .attachments
+          ?.albums || []
       )
     },
     postTracksFormatted () {
@@ -182,7 +194,9 @@ export default {
     },
     postTracks () {
       return (
-        this.postData.attachments?.tracks || []
+        this.postData
+          .attachments
+          ?.tracks || []
       )
     },
     postPlaylistsFormatted () {
@@ -192,7 +206,9 @@ export default {
     },
     postPlaylists () {
       return (
-        this.postData.attachments?.playlists || []
+        this.postData
+          .attachments
+          ?.playlists || []
       )
     },
     postCommunitiesFormatted () {
@@ -202,7 +218,9 @@ export default {
     },
     postCommunities () {
       return (
-        this.postData.attachments?.communities || []
+        this.postData
+          .attachments
+          ?.communities || []
       )
     },
     isByCommunity () {
@@ -216,18 +234,25 @@ export default {
 
     this.artists =
       this.postArtistsFormatted
+
     this.albums =
       this.postAlbumsFormatted
+
     this.tracks =
       this.postTracksFormatted
+
     this.videos =
       this.postVideosFormatted
+
     this.videoChannels =
       this.postVideoChannelsFormatted
+
     this.videoPlaylists =
       this.postVideoPlaylistsFormatted
+
     this.playlists =
       this.postPlaylistsFormatted
+
     this.communities =
       this.postCommunitiesFormatted
   },
@@ -275,15 +300,18 @@ export default {
     async processImage (
       imageData
     ) {
-      const data = await fetch(
-        imageData.original
-      )
+      const data =
+        await fetch(
+          imageData.original
+        )
 
-      const file = await data.blob()
+      const file =
+        await data.blob()
 
-      const reader = new FileReader()
+      const reader =
+        new FileReader()
 
-      reader.onloadend = () => {
+      const handleLoadEnd = () => {
         this.handleImageLoadEnd(
           {
             reader,
@@ -291,6 +319,9 @@ export default {
           }
         )
       }
+
+      reader.onloadend =
+        handleLoadEnd
 
       reader.readAsDataURL(
         file

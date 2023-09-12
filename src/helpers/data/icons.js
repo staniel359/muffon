@@ -17,6 +17,7 @@ export default {
   audioShuffle: 'random',
   bookmark: 'bookmark',
   clear: 'close',
+  comment: 'comment',
   community: 'users',
   communityLeave: 'minus',
   communityJoin: 'plus',

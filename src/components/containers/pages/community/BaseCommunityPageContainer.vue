@@ -37,9 +37,12 @@ export default {
   ],
   provide () {
     return {
-      setCommunityData: this.setCommunityData,
-      setIsMember: this.setIsMember,
-      setMembersCount: this.setMembersCount
+      setCommunityData:
+        this.setCommunityData,
+      setIsMember:
+        this.setIsMember,
+      setMembersCount:
+        this.setMembersCount
     }
   },
   props: {
@@ -103,7 +106,10 @@ export default {
       )
     },
     communityCreatorId () {
-      return this.communityData?.creator?.id?.toString()
+      return this.communityData
+        ?.creator
+        ?.id
+        ?.toString()
     }
   },
   watch: {

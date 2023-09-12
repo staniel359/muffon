@@ -8,8 +8,10 @@ export default function (
 ) {
   const profileId = profileStore().id
 
-  const url =
-    `/profiles/${profileId}/posts/${postId}`
+  const url = (
+    `/profiles/${profileId}` +
+    `/posts/${postId}`
+  )
 
   return deleteRequest.bind(
     this

@@ -11,18 +11,38 @@ export default function (
     tracks
   }
 ) {
+  this.postData = null
+
   const profileId = profileStore().id
 
   const url =
     `/profiles/${profileId}/posts`
 
   const params = {
-    other_profile_id: otherProfileId,
+    other_profile_id:
+      otherProfileId,
     text,
-    images,
-    artists,
-    albums,
-    tracks
+    ...(images.length && {
+      images
+    }),
+    ...(artists.length && {
+      artists
+    }),
+    ...(albums.length && {
+      albums
+    }),
+    ...(tracks.length && {
+      tracks
+    })
+  }
+
+  const handleSuccess = (
+    response
+  ) => {
+    this.postData =
+      response
+        .data
+        .post
   }
 
   return postRequest.bind(
@@ -32,7 +52,8 @@ export default function (
       url,
       params,
       isWithSelfToken: true,
-      isSaveError: true
+      isSaveError: true,
+      onSuccess: handleSuccess
     }
   )
 }

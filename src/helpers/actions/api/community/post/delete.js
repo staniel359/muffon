@@ -6,8 +6,10 @@ export default function (
     postId
   }
 ) {
-  const url =
-    `/communities/${communityId}/posts/${postId}`
+  const url = (
+    `/communities/${communityId}` +
+    `/posts/${postId}`
+  )
 
   return deleteRequest.bind(
     this

@@ -8,6 +8,16 @@ export function post (
   }
 }
 
+export function postComment (
+  {
+    onSuccess
+  }
+) {
+  return {
+    onSuccess
+  }
+}
+
 export function message (
   {
     onSuccess

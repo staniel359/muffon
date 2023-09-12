@@ -11,14 +11,13 @@
     <template
       #top
     >
-      <div>
-        <BasePostsFormSegment
-          post-type="community"
-          :community-id="communityId"
-          :is-with-as-community-option="isCommunityCreator"
-          @success="handlePostCreateSuccess"
-        />
-      </div>
+      <BasePostsFormSegment
+        :key="formKey"
+        post-type="community"
+        :community-id="communityId"
+        :is-community-creator="isCommunityCreator"
+        @success="handlePostCreateSuccess"
+      />
 
       <BaseDivider />
     </template>
@@ -27,8 +26,8 @@
       #default="slotProps"
     >
       <BasePostsSimpleList
+        ref="list"
         :posts="slotProps[scope]"
-        :is-community-creator="isCommunityCreator"
       />
     </template>
   </BaseCommunityTabContainer>
@@ -42,13 +41,8 @@ import BasePostsFormSegment
 import BaseDivider from '@/components/BaseDivider.vue'
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
-import {
-  generateKey
-} from '@/helpers/utils'
-import {
-  posts as postsLimits
-} from '@/helpers/data/limits'
 import tabMixin from '@/mixins/tabMixin'
+import postsTabMixin from '@/mixins/postsTabMixin'
 
 export default {
   name: 'PostsTab',
@@ -59,24 +53,12 @@ export default {
     BasePostsSimpleList
   },
   mixins: [
-    tabMixin
+    tabMixin,
+    postsTabMixin
   ],
   props: {
     communityId: String,
     isCommunityCreator: Boolean
-  },
-  data () {
-    return {
-      key: null,
-      limit:
-        postsLimits.simple.small,
-      scope: 'posts'
-    }
-  },
-  methods: {
-    handlePostCreateSuccess () {
-      this.key = generateKey()
-    }
   }
 }
 </script>

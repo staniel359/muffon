@@ -1,5 +1,5 @@
 <template>
-  <BaseProfileTabContainer
+  <BaseProfilePaginatedTabContainer
     :key="key"
     :profile-id="profileId"
     :scope="scope"
@@ -11,13 +11,12 @@
     <template
       #top
     >
-      <div>
-        <BasePostsFormSegment
-          post-type="profile"
-          :profile-id="profileId"
-          @success="handlePostCreateSuccess"
-        />
-      </div>
+      <BasePostsFormSegment
+        :key="formKey"
+        post-type="profile"
+        :profile-id="profileId"
+        @success="handlePostCreateSuccess"
+      />
 
       <BaseDivider />
     </template>
@@ -26,55 +25,38 @@
       #default="slotProps"
     >
       <BasePostsSimpleList
+        ref="list"
         :posts="slotProps[scope]"
-        :profile-id="profileId"
       />
     </template>
-  </BaseProfileTabContainer>
+  </BaseProfilePaginatedTabContainer>
 </template>
 
 <script>
-import BaseProfileTabContainer
-  from '@/components/containers/tabs/profile/BaseProfileTabContainer.vue'
+import BaseProfilePaginatedTabContainer
+  from '@/components/containers/tabs/profile/BaseProfilePaginatedTabContainer.vue'
 import BasePostsFormSegment
   from '@/components/segments/posts/BasePostsFormSegment.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
-import {
-  generateKey
-} from '@/helpers/utils'
-import {
-  posts as postsLimits
-} from '@/helpers/data/limits'
 import tabMixin from '@/mixins/tabMixin'
+import postsTabMixin from '@/mixins/postsTabMixin'
 
 export default {
   name: 'PostsTab',
   components: {
-    BaseProfileTabContainer,
+    BaseProfilePaginatedTabContainer,
     BasePostsFormSegment,
     BaseDivider,
     BasePostsSimpleList
   },
   mixins: [
-    tabMixin
+    tabMixin,
+    postsTabMixin
   ],
   props: {
     profileId: String
-  },
-  data () {
-    return {
-      key: null,
-      limit:
-        postsLimits.simple.small,
-      scope: 'posts'
-    }
-  },
-  methods: {
-    handlePostCreateSuccess () {
-      this.key = generateKey()
-    }
   }
 }
 </script>

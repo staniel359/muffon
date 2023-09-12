@@ -179,6 +179,9 @@
       "community": "Community erstellen",
       "post": "Post erstellen"
     },
+    "addModel": {
+      "comment": "Kommentar hinzufügen"
+    },
     "addTo": {
       "library": "Zur Bibliothek hinzufügen",
       "playlist": "Zu Playlist hinzufügen",
@@ -243,6 +246,7 @@
           "videoPlaylist": "Videoplaylist aus Lesezeichen löschen"
         },
         "post": "Post löschen",
+        "comment": "Kommentar löschen",
         "community": "Community löschen",
         "account": "Account löschen",
         "library": "Bibliothek löschen",
@@ -261,6 +265,7 @@
         "favorite": "Sie sind dabei, {modelName} aus Ihren Favoriten löschen.",
         "bookmark": "Sie sind dabei, {modelName} aus Ihren Lesezeichen löschen.",
         "post": "Sie sind dabei, diesen Post löschen.",
+        "comment": "Sie sind dabei, diesen Kommentar zu löschen.",
         "community": "Sie sind dabei, diese Community löschen.",
         "account": "Sie sind dabei, Ihren Account löschen.",
         "library": "Sie sind dabei, Ihre Bibliothek zu löschen.",
@@ -373,6 +378,7 @@
     "updated": {
       "profile": "Profil wurde aktualisiert",
       "post": "Post wurde aktualisiert",
+      "comment": "Kommentar wurde aktualisiert",
       "playlist": "Playlist {playlistTitle} wurde aktualisiert",
       "community": "Community {communityTitle} wurde aktualisiert"
     },
@@ -753,6 +759,7 @@
     "recommendation": "Empfehlung wurde gelöscht",
     "playlist": "Playlist wurde gelöscht",
     "post": "Post wurde gelöscht",
+    "comment": "Kommentar wurde gelöscht",
     "video": "Video wurde gelöscht",
     "videoChannel": "Videokanal wurde gelöscht",
     "videoPlaylist": "Videoplaylist wurde gelöscht"
@@ -816,37 +823,39 @@
   },
   "events": {
     "created": {
-      "profile": "Profil wurde erstellt",
-      "bookmarkAlbum": "Album {modelName} wurde zu Lesezeichen hinzugefügt",
-      "bookmarkArtist": "Künstler {modelName} wurde zu Lesezeichen hinzugefügt",
-      "bookmarkTrack": "Titel {modelName} wurde zu Lesezeichen hinzugefügt",
-      "bookmarkVideo": "Video {modelName} wurde zu Lesezeichen hinzugefügt",
-      "bookmarkVideoChannel": "Videokanal {modelName} wurde zu Lesezeichen hinzugefügt",
-      "bookmarkVideoPlaylist": "Videoplaylist {modelName} wurde zu Lesezeichen hinzugefügt",
-      "favoriteAlbum": "Album {modelName} wurde zu den Favoriten hinzugefügt",
-      "favoriteArtist": "Künstler {modelName} wurde zu den Favoriten hinzugefügt",
-      "favoriteTrack": "Titel {modelName} wurde zu den Favoriten hinzugefügt",
-      "favoriteVideo": "Video {modelName} wurde zu den Favoriten hinzugefügt",
-      "libraryAlbum": "Album {modelName} wurde zur Bibliothek hinzugefügt",
-      "libraryArtist": "Künstler {modelName} wurde zur Bibliothek hinzugefügt",
-      "libraryTrack": "Titel {modelName} wurde zur Bibliothek hinzugefügt",
-      "listenedAlbum": "Album {modelName} wurde zu Angehörten hinzugefügt",
-      "listenedArtist": "Künstler {modelName} wurde zu Angehörten hinzugefügt",
-      "listenedTrack": "Titel {modelName} wurde zu Angehörten hinzugefügt",
-      "watchedVideo": "Video {modelName} wurde zu Angesehenen hinzugefügt",
-      "playlistTrack": "Titel {modelName} wurde zur Playlist {playlistTitle} hinzugefügt",
-      "community": "Community {modelName} wurde erstellt",
+      "profile": "Profil ist erstellt",
+      "bookmarkAlbum": "Album {modelName} ist zu Lesezeichen hinzugefügt",
+      "bookmarkArtist": "Künstler {modelName} ist zu Lesezeichen hinzugefügt",
+      "bookmarkTrack": "Titel {modelName} ist zu Lesezeichen hinzugefügt",
+      "bookmarkVideo": "Video {modelName} ist zu Lesezeichen hinzugefügt",
+      "bookmarkVideoChannel": "Videokanal {modelName} ist zu Lesezeichen hinzugefügt",
+      "bookmarkVideoPlaylist": "Videoplaylist {modelName} ist zu Lesezeichen hinzugefügt",
+      "favoriteAlbum": "Album {modelName} ist zu den Favoriten hinzugefügt",
+      "favoriteArtist": "Künstler {modelName} ist zu den Favoriten hinzugefügt",
+      "favoriteTrack": "Titel {modelName} ist zu den Favoriten hinzugefügt",
+      "favoriteVideo": "Video {modelName} ist zu den Favoriten hinzugefügt",
+      "libraryAlbum": "Album {modelName} ist zur Bibliothek hinzugefügt",
+      "libraryArtist": "Künstler {modelName} ist zur Bibliothek hinzugefügt",
+      "libraryTrack": "Titel {modelName} ist zur Bibliothek hinzugefügt",
+      "listenedAlbum": "Album {modelName} ist zu Angehörten hinzugefügt",
+      "listenedArtist": "Künstler {modelName} ist zu Angehörten hinzugefügt",
+      "listenedTrack": "Titel {modelName} ist zu Angehörten hinzugefügt",
+      "watchedVideo": "Video {modelName} ist zu Angesehenen hinzugefügt",
+      "playlistTrack": "Titel {modelName} ist zur Playlist {playlistTitle} hinzugefügt",
+      "community": "Community {modelName} ist erstellt",
       "relationship": "Sie sind {modelName} gefolgt",
-      "post": "Beitrag {modelName} wurde erstellt",
-      "playlist": "Playlist {modelName} wurde erstellt",
+      "post": "Beitrag {modelName} ist erstellt",
+      "postComment": "Kommentar {modelName} ist erstellt",
+      "playlist": "Playlist {modelName} ist erstellt",
       "conversation": "Sie haben eine Konversation mit {modelName} gestartet",
       "membership": "Sie sind der Community {modelName} beigetreten"
     },
     "updated": {
-      "profile": "Profil wurde aktualisiert",
-      "community": "Community {modelName} wurde aktualisiert",
-      "post": "Post {modelName} wurde aktualisiert",
-      "playlist": "Playlist {modelName} wurde aktualisiert"
+      "profile": "Profil ist aktualisiert",
+      "community": "Community {modelName} ist aktualisiert",
+      "post": "Post {modelName} ist aktualisiert",
+      "postComment": "Kommentar {modelName} ist aktualisiert",
+      "playlist": "Playlist {modelName} ist aktualisiert"
     },
     "deleted": {
       "bookmarkAlbum": "Album {modelName} ist von Lesezeichen gelöscht",
@@ -871,8 +880,9 @@
       "recommendationArtist": "Künstler {modelName} ist aus den Empfehlungen gelöscht",
       "recommendationTrack": "Titel {modelName} ist von den Empfehlungen gelöscht",
       "relationship": "Sie sind {modelName} entfolgt",
-      "post": "Beitrag {modelName} wurde gelöscht",
-      "playlist": "Playlist {modelName} wurde gelöscht",
+      "post": "Beitrag {modelName} ist gelöscht",
+      "postComment": "Kommentar {modelName} ist gelöscht",
+      "playlist": "Playlist {modelName} ist gelöscht",
       "membership": "Sie haben die Community {modelName} verlassen"
     }
   },

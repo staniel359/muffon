@@ -17,7 +17,9 @@ export default {
       updatePaginationItem:
         this.updatePaginationItem,
       resetInfiniteScrollObserver:
-        this.resetInfiniteScrollObserver
+        this.resetInfiniteScrollObserver,
+      prependItemToPaginatedList:
+        this.prependItemToPaginatedList
     }
   },
   inject: {
@@ -407,6 +409,24 @@ export default {
       await this.$nextTick()
 
       this.scrollObserverKey = generateKey()
+    },
+    prependItemToPaginatedList (
+      value
+    ) {
+      const newItemFormatted = {
+        uuid: generateKey(),
+        ...value
+      }
+
+      this.clientCollectionPaginated[1] = [
+        newItemFormatted,
+        ...this.clientCollectionPaginated[1]
+      ]
+
+      this.clientPageCollection = [
+        newItemFormatted,
+        ...this.clientPageCollection
+      ]
     }
   }
 }
