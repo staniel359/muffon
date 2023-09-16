@@ -13,6 +13,7 @@
       <BaseIcon
         class="continue-icon"
         icon="arrowRight"
+        is-with-rtl
       />
     </span>
   </BaseSegmentContainer>
@@ -55,6 +56,10 @@ export default {
 .anonymous-segment
   @extend .text-align-center
 
-.continue-icon
-  margin-left: 0.4em
+[dir="ltr"]
+  .continue-icon
+    margin-left: 0.4em
+[dir="rtl"]
+  .continue-icon
+    margin-right: 0.4em
 </style>

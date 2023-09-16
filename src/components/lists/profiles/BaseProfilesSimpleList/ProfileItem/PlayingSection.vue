@@ -52,6 +52,10 @@ export default {
   @extend .d-flex, .align-items-center
   margin-top: 0.5em !important
 
-.playing-section-content
-  margin-left: 0.2em
+[dir="ltr"]
+  .playing-section-content
+    margin-left: 0.2em
+[dir="rtl"]
+  .playing-section-content
+    margin-right: 0.2em
 </style>

@@ -114,9 +114,16 @@ export default {
     font-size: 1.2em
   & > .content
     @extend .flex-full
-    margin-left: 0.5em !important
     .based-text
       margin-top: 0.25em
     .artists-button
       margin-top: 0.5em !important
+[dir="ltr"]
+  .recommended-block
+    & > .content
+      margin-left: 0.5em !important
+[dir="rtl"]
+  .recommended-block
+    & > .content
+      margin-right: 0.5em !important
 </style>

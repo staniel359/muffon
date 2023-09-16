@@ -2,6 +2,7 @@
   <BaseIcon
     v-if="!isFirstSection"
     icon="navigationRight"
+    is-with-rtl
   />
 
   <BaseLink

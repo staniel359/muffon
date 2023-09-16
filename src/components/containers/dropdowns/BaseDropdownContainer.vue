@@ -195,7 +195,6 @@ export default {
   @extend .d-flex, .align-items-center, .text-color-unset, .background-transparent
   min-width: unset !important
   &.selection
-    padding-right: 1em !important
     &.active,
     .menu
       @extend .border-color-base-light
@@ -205,6 +204,20 @@ export default {
     &.dropdown
       @extend .relative, .no-padding, .no-margin
       top: 0 !important
-      right: 0 !important
-      margin-left: 0.75em !important
+[dir="ltr"]
+  .base-dropdown-container
+    &.selection
+      padding-right: 1em !important
+    & > .icon
+      &.dropdown
+        right: 0 !important
+        margin-left: 0.75em !important
+[dir="rtl"]
+  .base-dropdown-container
+    &.selection
+      padding-left: 1em !important
+    & > .icon
+      &.dropdown
+        left: 0 !important
+        margin-right: 0.75em !important
 </style>

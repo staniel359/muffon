@@ -33,9 +33,18 @@ export default {
   @extend .d-flex, .justify-content-center
 
 .action-button-container
-  &:not(:first-child)
-    margin-left: 0.75em
-  ::v-deep(.icon)
+  :deep(.icon)
     @extend .width-fit-content
-    margin-right: 0.65em !important
+[dir="ltr"]
+  .action-button-container
+    &:not(:first-child)
+      margin-left: 0.75em
+    :deep(.icon)
+      margin-right: 0.65em !important
+[dir="rtl"]
+  .action-button-container
+    &:not(:first-child)
+      margin-right: 0.75em
+    :deep(.icon)
+      margin-left: 0.65em !important
 </style>

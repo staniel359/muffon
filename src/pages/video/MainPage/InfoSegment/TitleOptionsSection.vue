@@ -78,9 +78,17 @@ export default {
 .title-section
   @extend .flex-full
 
-.video-options
-  margin-left: 1em
+[dir="ltr"]
+  .video-options
+    margin-left: 1em
+[dir="rtl"]
+  .video-options
+    margin-right: 1em
 
-.self-icons
-  margin-left: 1em
+[dir="ltr"]
+  .self-icons
+    margin-left: 1em
+[dir="rtl"]
+  .self-icons
+    margin-right: 1em
 </style>

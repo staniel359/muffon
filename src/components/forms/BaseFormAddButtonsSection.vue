@@ -34,7 +34,14 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-::v-deep(.add-button)
-  &:not(:first-child)
-    margin-left: 0.5em !important
+[dir="ltr"]
+  .add-buttons-container
+    :deep(.add-button)
+      &:not(:first-child)
+        margin-left: 0.5em !important
+[dir="rtl"]
+  .add-buttons-container
+    :deep(.add-button)
+      &:not(:first-child)
+        margin-right: 0.5em !important
 </style>

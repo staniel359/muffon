@@ -178,8 +178,18 @@ export default {
   @extend .d-flex, .align-items-center
 
 .filter-icon
-  margin-right: 0.75em
+  @extend .no-margin
+[dir="ltr"]
+  .filter-icon
+    margin-right: 0.75em !important
+[dir="rtl"]
+  .filter-icon
+    margin-left: 0.75em !important
 
-.filter-text-section
-  margin-right: 1.25em
+[dir="ltr"]
+  .filter-text-section
+    margin-right: 1.25em
+[dir="rtl"]
+  .filter-text-section
+    margin-left: 1.25em
 </style>

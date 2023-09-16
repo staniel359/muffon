@@ -34,6 +34,6 @@ export default {
 
 .tag-header
   font-size: 2.5rem !important
-  ::v-deep(.icon)
+  :deep(.icon)
     font-size: 0.75em !important
 </style>

@@ -300,6 +300,10 @@ export default {
 .listeners-count
   margin-top: 0.15em
 
-.recommendation-artists-section
-  margin-left: 0.75em
+[dir="ltr"]
+  .recommendation-artists-section
+    margin-left: 0.75em
+[dir="rtl"]
+  .recommendation-artists-section
+    margin-right: 0.75em
 </style>

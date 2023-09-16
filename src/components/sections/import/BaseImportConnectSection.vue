@@ -127,12 +127,20 @@ export default {
 .base-import-connect-section
   &:not(:first-child)
     margin-top: 1em
-  .error-section
-    margin-bottom: 1em !important
-  .top-section
-    @extend .d-flex, .align-items-center
-  .button-info-section
-    @extend .d-flex, .align-items-center, .flex-full
+
+.error-section
+  margin-bottom: 1em !important
+
+.top-section
+  @extend .d-flex, .align-items-center
+
+.button-info-section
+  @extend .d-flex, .align-items-center, .flex-full
+
+[dir="ltr"]
   .info-section
     margin-left: 0.5em
+[dir="rtl"]
+  .info-section
+    margin-right: 0.5em
 </style>

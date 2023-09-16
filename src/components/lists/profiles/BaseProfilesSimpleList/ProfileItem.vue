@@ -263,30 +263,55 @@ export default {
 
 .online-label
   @extend .absolute
-  right: 0
   z-index: 1
+[dir="ltr"]
+  .online-label
+    right: 0
+[dir="rtl"]
+  .online-label
+    left: 0
 
 .nickname-label-container
   @extend .d-flex, .align-items-center
 
-.role-label
-  margin-left: 0.75em
+[dir="ltr"]
+  .role-label
+    margin-left: 0.75em
+[dir="rtl"]
+  .role-label
+    margin-right: 0.75em
 
 .follow-counters
   @extend .d-flex
-  ::v-deep(.following)
-    margin-left: 0.75em
+[dir="ltr"]
+  .follow-counters
+    :deep(.following)
+      margin-left: 0.75em
+[dir="rtl"]
+  .follow-counters
+    :deep(.following)
+      margin-right: 0.75em
 
 .following-message
   @extend .align-self-center
-  margin-left: 0.75em
+[dir="ltr"]
+  .following-message
+    margin-left: 0.75em
+[dir="rtl"]
+  .following-message
+    margin-right: 0.75em
 
 .extra-data-section
   @extend .d-flex, .align-items-center
 
-.extra-data-item
-  &:not(:first-child)
-    margin-left: 0.5em
+[dir="ltr"]
+  .extra-data-item
+    &:not(:first-child)
+      margin-left: 0.5em
+[dir="rtl"]
+  .extra-data-item
+    &:not(:first-child)
+      margin-right: 0.5em
 
 .city-country-item
   @extend .d-flex, .align-items-center

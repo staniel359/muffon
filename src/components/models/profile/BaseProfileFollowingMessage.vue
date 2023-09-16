@@ -11,6 +11,7 @@
       <BaseIcon
         class="green"
         icon="profileFollowing"
+        is-with-rtl
       />
 
       <div
@@ -25,6 +26,7 @@
       <BaseIcon
         class="green"
         icon="profileFollowed"
+        is-with-rtl
       />
 
       <div

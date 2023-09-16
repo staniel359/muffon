@@ -103,8 +103,13 @@ export default {
   flex: 0.425
 
 .place-location-section
-  margin-left: 1.5em
   flex: 0.575
+[dir="ltr"]
+  .place-location-section
+    margin-left: 1.5em
+[dir="rtl"]
+  .place-location-section
+    margin-right: 1.5em
 
 .place-section
   @extend .d-flex, .align-items-center
@@ -115,7 +120,12 @@ export default {
 
 .place
   @extend .flex-full
-  margin-left: 0.25em
+[dir="ltr"]
+  .place
+    margin-left: 0.25em
+[dir="rtl"]
+  .place
+    margin-right: 0.25em
 
 .location-section
   @extend .d-flex, .align-items-center
@@ -127,10 +137,20 @@ export default {
 
 .location
   @extend .flex-full
-  margin-left: 0.25em
+[dir="ltr"]
+  .location
+    margin-left: 0.25em
+[dir="rtl"]
+  .location
+    margin-right: 0.25em
 
 .date-section
   @extend .text-align-right
-  margin-left: 1.5em
   flex: 0.3
+[dir="ltr"]
+  .date-section
+    margin-left: 1.5em
+[dir="rtl"]
+  .date-section
+    margin-right: 1.5em
 </style>

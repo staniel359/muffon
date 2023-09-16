@@ -70,10 +70,10 @@ export default {
 .track-player-panel
   @extend .d-flex
   height: $trackPagePlayerPanelHeight
-  ::v-deep(.track-section)
+  :deep(.track-section)
     border-left: $border
   &.inverted
-    ::v-deep(.track-section)
+    :deep(.track-section)
       border-left: $borderInverted !important
 
 .track-duration

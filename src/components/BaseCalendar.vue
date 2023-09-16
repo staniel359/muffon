@@ -93,6 +93,6 @@ export default {
 <style lang="sass" scoped>
 .base-calendar
   &.inverted
-    ::v-deep(.popup)
+    :deep(.popup)
       @extend .border-inverted
 </style>

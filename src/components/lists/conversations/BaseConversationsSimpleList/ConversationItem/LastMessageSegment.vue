@@ -109,6 +109,11 @@ export default {
 
 <style lang="sass" scoped>
 .main-message-item
-  margin-left: 45px
   margin-top: 0.5em
+[dir="ltr"]
+  .main-message-item
+    margin-left: 45px
+[dir="rtl"]
+  .main-message-item
+    margin-right: 45px
 </style>

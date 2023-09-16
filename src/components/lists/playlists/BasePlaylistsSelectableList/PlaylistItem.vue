@@ -118,9 +118,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-::v-deep(.progress)
+:deep(.progress)
   margin-top: 1em !important
 
-::v-deep(.error-message)
+:deep(.error-message)
   margin-top: 1em !important
 </style>

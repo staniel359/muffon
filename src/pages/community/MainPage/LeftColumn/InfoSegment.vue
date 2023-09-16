@@ -62,6 +62,10 @@ export default {
   width: 35px
   height: 35px
 
-.content
-  margin-left: 0.75em
+[dir="ltr"]
+  .content
+    margin-left: 0.75em
+[dir="rtl"]
+  .content
+    margin-right: 0.75em
 </style>

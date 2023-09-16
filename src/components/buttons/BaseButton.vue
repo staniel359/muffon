@@ -11,6 +11,7 @@
     <BaseIcon
       v-if="icon && !isReverse"
       :icon="icon"
+      :is-with-rtl="isIconWithRtl"
     />
 
     <span
@@ -22,6 +23,7 @@
       v-if="icon && isReverse"
       class="right"
       :icon="icon"
+      :is-with-rtl="isIconWithRtl"
     />
   </div>
 </template>
@@ -49,7 +51,8 @@ export default {
     },
     icon: String,
     text: String,
-    isReverse: Boolean
+    isReverse: Boolean,
+    isIconWithRtl: Boolean
   },
   emits: [
     'click'

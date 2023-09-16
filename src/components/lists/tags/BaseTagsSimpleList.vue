@@ -92,6 +92,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.tags-icon
-  margin-right: 0.75em
+[dir="ltr"]
+  .tags-icon
+    margin-right: 0.5em
+[dir="rtl"]
+  .tags-icon
+    margin-left: 0.5em
 </style>

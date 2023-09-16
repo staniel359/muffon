@@ -54,8 +54,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.compatibility-content
-  margin-left: 1em
+[dir="ltr"]
+  .compatibility-content
+    margin-left: 1em
+[dir="rtl"]
+  .compatibility-content
+    margin-right: 1em
 
 .compatibility-common-text
   margin-top: 0.25em

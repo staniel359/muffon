@@ -298,8 +298,12 @@ export default {
   &.inverted
     @extend .border-inverted
 
-.artist-left-column
-  margin-right: 1em
+[dir="ltr"]
+  .artist-left-column
+    margin-right: 1em
+[dir="rtl"]
+  .artist-left-column
+    margin-left: 1em
 
 .artist-image
   width: 130px

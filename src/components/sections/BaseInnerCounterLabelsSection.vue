@@ -68,9 +68,21 @@ export default {
 <style lang="sass" scoped>
 .base-inner-counter-labels-section
   @extend .d-flex, .align-items-center
-  &.inline
-    &:not(:first-child)
-      margin-left: 1em
   & > .icon
-    margin: 0 0.5em 0.5em 0
+    @extend .no-margin
+    margin-bottom: 0.5em !important
+[dir="ltr"]
+  .base-inner-counter-labels-section
+    &.inline
+      &:not(:first-child)
+        margin-left: 1em
+    & > .icon
+      margin-right: 0.5em !important
+[dir="rtl"]
+  .base-inner-counter-labels-section
+    &.inline
+      &:not(:first-child)
+        margin-right: 1em
+    & > .icon
+      margin-left: 0.5em !important
 </style>

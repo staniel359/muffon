@@ -52,6 +52,6 @@ export default {
 .base-tabs
   &.secondary
     &:not(.pointing)
-      ::v-deep(.item)
+      :deep(.item)
         padding: 0.8em 1.6em
 </style>

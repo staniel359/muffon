@@ -130,6 +130,12 @@ export default {
 
 .filter-action-button-section
   @extend .d-flex, .align-items-center
-  &:not(:first-child)
-    margin-left: 1em
+[dir="ltr"]
+  .filter-action-button-section
+    &:not(:first-child)
+      margin-left: 1em
+[dir="rtl"]
+  .filter-action-button-section
+    &:not(:first-child)
+      margin-right: 1em
 </style>

@@ -33,6 +33,7 @@
         is-with-share-option
         is-with-external-link-option
         is-inline
+        is-show-to-top
         @source-click="handleSourceClick"
       />
     </template>
@@ -118,6 +119,10 @@ export default {
 .options-container
   @extend .d-flex, .align-items-center
 
-.options-icon
-  margin-right: 0.5em !important
+[dir="ltr"]
+  .options-icon
+    margin-right: 0.5em !important
+[dir="rtl"]
+  .options-icon
+    margin-left: 0.5em !important
 </style>

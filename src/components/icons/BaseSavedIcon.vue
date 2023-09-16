@@ -18,7 +18,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.base-saved-icon
-  &.right
-    margin-left: 0.75em
+[dir="ltr"]
+  .base-saved-icon
+    &.right
+      margin-left: 0.75em
+[dir="rtl"]
+  .base-saved-icon
+    &.right
+      margin-right: 0.75em
 </style>

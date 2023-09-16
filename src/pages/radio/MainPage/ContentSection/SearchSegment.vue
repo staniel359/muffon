@@ -156,9 +156,17 @@ export default {
 .scope-select-container
   @extend .d-flex, .align-items-center
 
-.search-container
-  margin-left: 1em
+[dir="ltr"]
+  .search-container
+    margin-left: 1em
+[dir="rtl"]
+  .search-container
+    margin-right: 1em
 
-.model-scope-select-container
-  margin-left: 1em
+[dir="ltr"]
+  .model-scope-select-container
+    margin-left: 1em
+[dir="rtl"]
+  .model-scope-select-container
+    margin-right: 1em
 </style>

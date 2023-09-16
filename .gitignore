@@ -28,6 +28,7 @@
 
 /semantic/dist/components
 /semantic/dist/semantic.css
+/semantic/dist/semantic.rtl.css
 /semantic/dist/semantic.js
 
 /semantic/gulpfile.js

@@ -241,7 +241,7 @@ export default {
 <style lang="sass" scoped>
 .equalizer-item
   @extend .d-flex, .flex-column, .align-items-center
-  width: 60px
+  padding: 0 10px
   &.disabled
     .gain-text
       color: $colorGrey

@@ -5,7 +5,8 @@
       hidden: isHidden
     }"
     :style="{
-      left: offsetPercentFormatted
+      [offsetDirection]:
+        offsetPercentFormatted
     }"
   >
     <BaseIcon
@@ -21,6 +22,7 @@ import {
 import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
+import layoutStore from '@/stores/layout'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import createScrobble from '@/helpers/actions/api/scrobbler/create'
 import notificationMixin from '@/mixins/notificationMixin'
@@ -65,6 +67,12 @@ export default {
       {
         profileId: 'id'
       }
+    ),
+    ...mapState(
+      layoutStore,
+      [
+        'isRtl'
+      ]
     ),
     isHidden () {
       return (
@@ -134,6 +142,11 @@ export default {
         action: 'save',
         ...this.trackData
       }
+    },
+    offsetDirection () {
+      return (
+        this.isRtl ? 'right' : 'left'
+      )
     }
   },
   watch: {

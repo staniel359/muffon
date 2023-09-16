@@ -145,24 +145,44 @@ export default {
 .browser-tab
   @extend .d-flex, .align-items-center
   padding: 0.5em
-  margin-right: 0.5em !important
   &:hover
     .browser-tab-name
       max-width: unset
+[dir="ltr"]
+  .browser-tab
+    margin-right: 0.5em !important
+[dir="rtl"]
+  .browser-tab
+    margin-left: 0.5em !important
 
 .browser-tab-icon
   @extend .no-margin
-  margin-left: 0.5em !important
+[dir="ltr"]
+  .browser-tab-icon
+    margin-left: 0.5em !important
+[dir="rtl"]
+  .browser-tab-icon
+    margin-right: 0.5em !important
 
 .browser-tab-name
   @extend .white-space-no-wrap, .overflow-hidden
   max-width: 150px
-  margin-left: 0.75em
   &.active
     @extend .text-bold
+[dir="ltr"]
+  .browser-tab-name
+    margin-left: 0.75em
+[dir="rtl"]
+  .browser-tab-name
+    margin-right: 0.75em
 
 .browser-tab-close-button
-  margin-left: 0.75em !important
   padding: 4px !important
   width: unset !important
+[dir="ltr"]
+  .browser-tab-close-button
+    margin-left: 0.75em !important
+[dir="rtl"]
+  .browser-tab-close-button
+    margin-right: 0.75em !important
 </style>

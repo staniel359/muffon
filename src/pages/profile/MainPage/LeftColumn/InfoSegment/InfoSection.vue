@@ -52,5 +52,10 @@ export default {
 .main-popup-icon
   @extend .absolute
   bottom: 0
-  right: 0
+[dir="ltr"]
+  .main-popup-icon
+    right: 0
+[dir="rtl"]
+  .main-popup-icon
+    left: 0
 </style>

@@ -62,9 +62,16 @@ export default {
 <style lang="sass" scoped>
 .base-account-section
   @extend .d-flex, .align-items-center
+
+.nickname-premium-section
+  @extend .flex-full, .word-break-break-word
+[dir="ltr"]
   .nickname-premium-section
-    @extend .flex-full, .word-break-break-word
     margin-left: 0.75em
-  .premium-label
-    margin-top: 0.5em
+[dir="rtl"]
+  .nickname-premium-section
+    margin-right: 0.75em
+
+.premium-label
+  margin-top: 0.5em
 </style>

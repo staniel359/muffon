@@ -57,7 +57,6 @@ export default {
 .variants-label
   @extend .d-flex, .align-items-center, .justify-content-center, .width-fit-content, .pointer-events-auto
   padding: 0.5em 1.5em !important
-  left: 30px !important
   height: 30px
   border-bottom: 0 !important
   border-top-left-radius: $borderRadiusMedium !important
@@ -65,4 +64,10 @@ export default {
   &.inverted
     @extend .border-inverted
     border-bottom: 0 !important
+[dir="ltr"]
+  .variants-label
+    left: 30px !important
+[dir="rtl"]
+  .variants-label
+    right: 30px !important
 </style>

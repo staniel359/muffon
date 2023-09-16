@@ -173,8 +173,13 @@ export default {
   padding: 2em 3em
 
 .left-column
-  margin-right: 1.5em
   width: 80px
+[dir="ltr"]
+  .left-column
+    margin-right: 1.5em
+[dir="rtl"]
+  .left-column
+    margin-left: 1.5em
 
 .right-column
   @extend .flex-full
@@ -187,6 +192,11 @@ export default {
 
 .link-section
   @extend .d-inline-block
-  margin-right: 1.25em
   margin-bottom: 0.25em
+[dir="ltr"]
+  .link-section
+    margin-right: 1.25em
+[dir="rtl"]
+  .link-section
+    margin-left: 1.25em
 </style>

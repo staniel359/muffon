@@ -79,9 +79,14 @@ export default {
   @extend .d-flex, .align-items-center
   padding: calc(#{$navbarHeight} + 1em) 1em 1em 1em
 
-.action-button
-  &:not(:first-child)
-    margin-left: 0.75em !important
+[dir="ltr"]
+  .action-button
+    &:not(:first-child)
+      margin-left: 0.75em !important
+[dir="rtl"]
+  .action-button
+    &:not(:first-child)
+      margin-right: 0.75em !important
 
 .tracks-count-block
   @extend .flex-full, .text-align-center

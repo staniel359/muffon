@@ -140,7 +140,12 @@ export default {
 <style lang="sass" scoped>
 .audio-section
   @extend .flex-full, .d-flex, .flex-column, .align-items-center, .justify-content-center
-  margin-left: 1em
+[dir="ltr"]
+  .audio-section
+    margin-left: 1em
+[dir="rtl"]
+  .audio-section
+    margin-right: 1em
 
 .top-section
   @extend .d-flex, .align-items-center, .w-100

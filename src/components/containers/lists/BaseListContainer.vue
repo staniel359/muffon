@@ -31,21 +31,21 @@ export default {
 <style lang="sass" scoped>
 .base-list
   &.selection
-    & > ::v-deep(.item)
+    & > :deep(.item)
       border-radius: 0.75em
       padding: 0.5em !important
   &.inverted
-    & > ::v-deep(.item)
+    & > :deep(.item)
       & > .content
         @extend .text-color-white
       &.disabled
         @extend .text-color-white
     &.selection
-      & > ::v-deep(.item)
+      & > :deep(.item)
         &:hover
           .left-icon
             @extend .text-color-white
-  & > ::v-deep(.item)
+  & > :deep(.item)
     &.disabled
       @extend .text-color-black
       opacity: 0.45

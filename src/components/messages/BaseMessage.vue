@@ -109,5 +109,5 @@ export default {
 
 .icons
   font-size: 2.25em !important
-  margin-right: 0.5em !important
+  margin: 0 0.5em !important
 </style>

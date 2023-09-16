@@ -35,13 +35,15 @@ export default {
   },
   props: {
     images: Array,
-    syncSlider: HTMLDivElement
+    syncSlider: HTMLDivElement,
+    isRtl: Boolean
   },
   computed: {
     sliderOptions () {
       return artistImagesModalThumbsSliderOptions(
         {
-          syncSlider: this.syncSlider
+          syncSlider: this.syncSlider,
+          isRtl: this.isRtl
         }
       )
     }

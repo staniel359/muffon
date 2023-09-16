@@ -43,6 +43,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.labels-icon
-  margin-right: 0.5em
+[dir="ltr"]
+  .labels-icon
+    margin-right: 0.5em
+[dir="rtl"]
+  .labels-icon
+    margin-left: 0.5em
 </style>

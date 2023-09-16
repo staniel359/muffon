@@ -13,18 +13,24 @@
         ref="mainSlider"
         :images="images"
         :sync-slider="thumbsSlider"
+        :is-rtl="isRtl"
       />
 
       <ThumbsSlider
         ref="thumbsSlider"
         :images="images"
         :sync-slider="mainSlider"
+        :is-rtl="isRtl"
       />
     </div>
   </BaseImageModalContainer>
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseImageModalContainer
   from '@/components/containers/modals/BaseImageModalContainer.vue'
 import MainSlider from './BaseArtistImagesModal/MainSlider.vue'
@@ -50,6 +56,14 @@ export default {
       mainSlider: null,
       thumbsSlider: null
     }
+  },
+  computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isRtl'
+      ]
+    )
   },
   mounted () {
     this.mainSlider =

@@ -84,6 +84,10 @@ export default {
 .route-icon
   @extend .no-padding
 
-.content
-  margin-left: 0.75em
+[dir="ltr"]
+  .content
+    margin-left: 0.75em
+[dir="rtl"]
+  .content
+    margin-right: 0.75em
 </style>

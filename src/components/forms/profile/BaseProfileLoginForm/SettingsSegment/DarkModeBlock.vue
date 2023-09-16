@@ -31,6 +31,10 @@ export default {
 .dark-mode-block
   @extend .d-flex, .align-items-center
 
-.dark-mode-text
-  margin-right: 0.5em
+[dir="ltr"]
+  .dark-mode-text
+    margin-right: 0.5em
+[dir="rtl"]
+  .dark-mode-text
+    margin-left: 0.5em
 </style>

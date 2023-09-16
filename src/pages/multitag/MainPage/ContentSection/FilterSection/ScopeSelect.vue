@@ -51,6 +51,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.scope-select-container
-  margin-left: 1em
+[dir="ltr"]
+  .scope-select-container
+    margin-left: 1em
+[dir="rtl"]
+  .scope-select-container
+    margin-right: 1em
 </style>

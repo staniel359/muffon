@@ -3,6 +3,7 @@
     <BaseButton
       class="basic large main-navbar-button"
       :icon="icon"
+      is-icon-with-rtl
       @click="handleClick"
     />
   </div>
@@ -20,22 +21,8 @@ export default {
     direction: {
       type: String,
       required: true
-    }
-  },
-  data () {
-    return {
-      directionIcons: {
-        back: 'arrowLeft',
-        forward: 'arrowRight'
-      }
-    }
-  },
-  computed: {
-    icon () {
-      return this.directionIcons[
-        this.direction
-      ]
-    }
+    },
+    icon: String
   },
   methods: {
     handleClick () {

@@ -35,9 +35,16 @@ p
   &.top.right
     @extend .absolute, .no-margin
     top: 10px
-    right: 10px
   .toast-box
     @extend .blurred
+[dir="ltr"]
+  .ui.toast-container
+    &.top.right
+      right: 10px
+[dir="rtl"]
+  .ui.toast-container
+    &.top.right
+      left: 10px
 
 .ui.toast
   &.inverted
@@ -76,7 +83,6 @@ p
     @extend .d-flex, .align-items-center
     .image
       @extend .border, .image-medium
-      margin-right: 0.75em
     .content
       @extend .no-margin, .flex-full, .word-break-break-word
       .description
@@ -118,6 +124,16 @@ p
         @extend .image-small
         img
           @extend .object-fit-cover
+[dir="ltr"]
+  .main-search-results
+    .result
+      .image
+        margin-right: 0.75em
+[dir="rtl"]
+  .main-search-results
+    .result
+      .image
+        margin-left: 0.75em
 
 .main-input
   & > input,
@@ -200,9 +216,6 @@ p
       @extend .image-medium
     &.small
       @extend .image-small
-  & > .image,
-  & > .image-container
-    margin-right: 1em !important
   & > .content
     @extend .flex-full, .no-padding
     .text
@@ -217,11 +230,9 @@ p
       margin-top: 0.2em
   & > .main-options-popup-container
     @extend .visibility-hidden
-    margin-left: 0.75em
   .main-self-icons
     @extend .text-align-center
     width: 50px
-    margin-left: 0.75em
   &:hover
     .link-active
       @extend .text-color-base
@@ -242,11 +253,34 @@ p
       margin-top: 0.25em !important
     .main-options-popup-container
       @extend .visibility-visible
+[dir="ltr"]
+  .main-simple-list-item
+    & > .image,
+    & > .image-container
+      margin-right: 1em !important
+    & > .main-options-popup-container
+      margin-left: 0.75em
+    .main-self-icons
+      margin-left: 0.75em
+[dir="rtl"]
+  .main-simple-list-item
+    & > .image,
+    & > .image-container
+      margin-left: 1em !important
+    & > .main-options-popup-container
+      margin-right: 0.75em
+    .main-self-icons
+      margin-right: 0.75em
 
 .main-simple-list-item-model-icon
   @extend .no-padding
-  margin-right: 0.75em !important
   min-width: unset !important
+[dir="ltr"]
+  .main-simple-list-item-model-icon
+    margin-right: 0.75em !important
+[dir="rtl"]
+  .main-simple-list-item-model-icon
+    margin-left: 0.75em !important
 
 .main-popup
   @extend .no-border, .no-padding, .background-transparent, .blurred
@@ -304,18 +338,30 @@ p
   line-height: 1.2em !important
   &.selected
     font-weight: unset !important
-  & > .icon
-    margin-right: 0.75em !important
   & > .image-container
-    margin-right: 0.75em
     .image
       @extend .object-fit-cover, .image-small
   & > .content
     @extend .flex-full, .word-break-break-word
     white-space: normal
   & > .extra
-    margin-left: 0.75em !important
     font-size: 0.8em
+[dir="ltr"]
+  .main-dropdown-item
+    & > .icon
+      margin-right: 0.75em !important
+    & > .image-container
+      margin-right: 0.75em
+    & > .extra
+      margin-left: 0.75em !important
+[dir="rtl"]
+  .main-dropdown-item
+    & > .icon
+      margin-left: 0.75em !important
+    & > .image-container
+      margin-left: 0.75em
+    & > .extra
+      margin-right: 0.75em !important
 
 .main-dropdown-icon
   @extend .d-flex, .align-items-center, .justify-content-center
@@ -328,9 +374,16 @@ p
     margin-top: 1.5em
   .option-header
     @extend .flex-full
-    margin-right: 1.5em !important
   .option-text
     @extend .flex-full, .text-align-center
+[dir="ltr"]
+  .main-settings-option
+    .option-header
+      margin-right: 1.5em !important
+[dir="rtl"]
+  .main-settings-option
+    .option-header
+      margin-left: 1.5em !important
 
 .main-model-source-select-container
   @extend .d-flex, .align-items-center
@@ -340,7 +393,16 @@ p
       margin-top: 1em
     .right-section
       width: 230px
-      margin-left: 1em
+[dir="ltr"]
+  .main-model-source-select-container
+    & > .content
+      .right-section
+        margin-left: 1em
+[dir="rtl"]
+  .main-model-source-select-container
+    & > .content
+      .right-section
+        margin-right: 1em
 
 .main-source-select
   width: 220px
@@ -396,7 +458,12 @@ p
 
 .main-right-column
   @extend .d-flex, .flex-column, .flex-full
-  margin-left: 1.5em
+[dir="ltr"]
+  .main-right-column
+    margin-left: 1.5em
+[dir="rtl"]
+  .main-right-column
+    margin-right: 1.5em
 
 .main-sticky-container
   @extend .sticky
@@ -415,7 +482,14 @@ p
   margin-top: 0.5em
   .main-options-popup-container
     @extend .absolute
-    right: 0
+[dir="ltr"]
+  .main-self-container
+    .main-options-popup-container
+      right: 0
+[dir="rtl"]
+  .main-self-container
+    .main-options-popup-container
+      left: 0
 
 .main-simple-button
   @extend .no-margin
@@ -427,10 +501,20 @@ p
   & > .fields-container
     @extend .d-flex
     & > .image-field
+      @extend .no-margin
       width: 120px
-      margin: 0 1em 0 0 !important
     & > .fields-right-column
       @extend .flex-full
+[dir="ltr"]
+  .main-creatable-form
+    & > .fields-container
+      & > .image-field
+        margin-right: 1em !important
+[dir="rtl"]
+  .main-creatable-form
+    & > .fields-container
+      & > .image-field
+        margin-left: 1em !important
 
 .main-sendable-form
   & > .as-community-container
@@ -450,9 +534,14 @@ p
 .main-paginated-segment-container
   @extend .d-flex
 
-.main-compatibility-common-button
-  &:not(:first-child)
-    margin-left: 0.5em !important
+[dir="ltr"]
+  .main-compatibility-common-button
+    &:not(:first-child)
+      margin-left: 0.5em !important
+[dir="rtl"]
+  .main-compatibility-common-button
+    &:not(:first-child)
+      margin-right: 0.5em !important
 
 .main-content-container
   margin-top: 1em
@@ -482,8 +571,13 @@ p
 
 .main-image-clear-button
   @extend .no-margin, .absolute, .d-none
-  top: 1em,
-  right: 1em
+  top: 1em
+[dir="ltr"]
+  .main-image-clear-button
+    right: 1em
+[dir="rtl"]
+  .main-image-clear-button
+    left: 1em
 
 .main-labels-section
   @extend .d-flex, .align-items-center
@@ -498,9 +592,16 @@ p
   min-width: 75px
   &.right
     @extend .text-align-right
-    margin-left: 0.75em
   &.centered
     @extend .text-align-center
+[dir="ltr"]
+  .main-date-section
+    &.right
+      margin-left: 0.75em
+[dir="rtl"]
+  .main-date-section
+    &.right
+      margin-right: 0.75em
 
 .main-menu-item
   @extend .d-flex, .align-items-center, .word-break-break-word
@@ -513,9 +614,16 @@ p
   & > .icon
     @extend .no-margin
     float: none !important
-    margin-right: 0.75em !important
   &:last-child
     @extend .no-border
+[dir="ltr"]
+  .main-menu-item
+    & > .icon
+      margin-right: 0.75em !important
+[dir="rtl"]
+  .main-menu-item
+    & > .icon
+      margin-left: 0.75em !important
 
 .main-field
   @extend .d-flex, .align-items-center
@@ -539,8 +647,6 @@ p
 
 .main-counter-section
   @extend .width-fit-content
-  &.right
-    margin-left: 0.75em
 
 .main-background
   @extend .fixed, .w-100, .h-100
@@ -572,18 +678,32 @@ p
 .main-paginated-list-container
   @extend .flex-full, .w-100, .d-flex, .flex-column
 
-.main-scope-select-container
-  margin-left: 1.5em
+[dir="ltr"]
+  .main-scope-select-container
+    margin-left: 1.5em
+[dir="rtl"]
+  .main-scope-select-container
+    margin-right: 1.5em
 
-.main-source-select-container
-  margin-left: 1.5em
+[dir="ltr"]
+  .main-source-select-container
+    margin-left: 1.5em
+[dir="rtl"]
+  .main-source-select-container
+    margin-right: 1.5em
 
 .main-page-top-section
   @extend .d-flex, .align-items-center, .justify-content-space-between
   .section
     @extend .d-flex, .align-items-center
+[dir="ltr"]
+  .main-page-top-section
     .section-item
       margin-left: 1.5em
+[dir="rtl"]
+  .main-page-top-section
+    .section-item
+      margin-right: 1.5em
 
 .main-transition-item
   @extend .visibility-hidden

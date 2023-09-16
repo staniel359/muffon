@@ -8,12 +8,14 @@
 
       <NavbarHistoryButton
         direction="back"
+        icon="arrowLeft"
       />
 
       <NavbarNavigation />
 
       <NavbarHistoryButton
         direction="forward"
+        icon="arrowRight"
       />
 
       <NavbarRefreshButton />
@@ -25,8 +27,8 @@
 
 <script>
 import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
-import NavbarHistoryButton from './TheNavbarPanel/NavbarHistoryButton.vue'
 import NavbarSearchButton from './TheNavbarPanel/NavbarSearchButton.vue'
+import NavbarHistoryButton from './TheNavbarPanel/NavbarHistoryButton.vue'
 import NavbarNavigation from './TheNavbarPanel/NavbarNavigation.vue'
 import NavbarRefreshButton from './TheNavbarPanel/NavbarRefreshButton.vue'
 import NavbarQueueButton from './TheNavbarPanel/NavbarQueueButton.vue'
@@ -36,8 +38,8 @@ export default {
   name: 'TheNavbarPanel',
   components: {
     BaseMenuContainer,
-    NavbarHistoryButton,
     NavbarSearchButton,
+    NavbarHistoryButton,
     NavbarNavigation,
     NavbarRefreshButton,
     NavbarQueueButton

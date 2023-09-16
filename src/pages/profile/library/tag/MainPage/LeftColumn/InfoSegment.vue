@@ -62,7 +62,14 @@ export default {
 
 <style lang="sass" scoped>
 .tag-header
-  ::v-deep(.icon)
+  :deep(.icon)
     font-size: 0.75em !important
-    margin-right: 0.5em !important
+[dir="ltr"]
+  .tag-header
+    :deep(.icon)
+      margin-right: 0.5em !important
+[dir="rtl"]
+  .tag-header
+    :deep(.icon)
+      margin-left: 0.5em !important
 </style>

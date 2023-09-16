@@ -66,6 +66,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-::v-deep(.error-message)
+:deep(.error-message)
   margin-bottom: 1em !important
 </style>

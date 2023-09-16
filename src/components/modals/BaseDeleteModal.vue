@@ -125,6 +125,10 @@ export default {
 .error-message
   margin-bottom: 1em !important
 
-.cancel-button
-  margin-right: 1em !important
+[dir="ltr"]
+  .cancel-button
+    margin-right: 1em !important
+[dir="rtl"]
+  .cancel-button
+    margin-left: 1em !important
 </style>

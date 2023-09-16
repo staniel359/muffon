@@ -77,6 +77,10 @@ export default {
   @extend .d-flex, .align-items-center, .justify-content-space-between
   margin-top: 0.5em !important
 
-.video-options
-  margin-left: 0.75em
+[dir="ltr"]
+  .video-options
+    margin-left: 0.75em
+[dir="rtl"]
+  .video-options
+    margin-right: 0.75em
 </style>

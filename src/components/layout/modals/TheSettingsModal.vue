@@ -109,15 +109,24 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-::v-deep(.settings-group-tabs-container)
+:deep(.settings-group-tabs-container)
   .base-tabs
     @extend .no-margin, .overflow-y-auto
     flex: 0.3
-    margin-right: 1em !important
   .base-tab-container
     flex: 0.7 !important
+[dir="ltr"]
+  .content
+    :deep(.settings-group-tabs-container)
+      .base-tabs
+        margin-right: 1em !important
+[dir="rtl"]
+  .content
+    :deep(.settings-group-tabs-container)
+      .base-tabs
+        margin-left: 1em !important
 
-::v-deep(.settings-group-tab)
+:deep(.settings-group-tab)
   @extend .d-flex, .flex-column
   &:not(.active)
     @extend .visibility-hidden

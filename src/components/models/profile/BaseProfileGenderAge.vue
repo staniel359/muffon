@@ -64,7 +64,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.gender-age-item
-  &:not(:first-child)
-    margin-left: 0.3em
+[dir="ltr"]
+  .gender-age-item
+    &:not(:first-child)
+      margin-left: 0.3em
+[dir="rtl"]
+  .gender-age-item
+    &:not(:first-child)
+      margin-right: 0.3em
 </style>

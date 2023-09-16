@@ -52,6 +52,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.base-clear-button
-  margin-left: 1em !important
+[dir="ltr"]
+  .base-clear-button
+    margin-left: 1em !important
+[dir="rtl"]
+  .base-clear-button
+    margin-right: 1em !important
 </style>

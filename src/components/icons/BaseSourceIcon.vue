@@ -74,12 +74,20 @@ export default {
 .base-source-icon
   @extend .no-padding, .no-margin
   min-width: unset !important
-  &.left
-    margin-right: 0.75em !important
-  &.right
-    margin-left: 0.75em !important
   &.bottom
     margin-top: 0.75em !important
+[dir="ltr"]
+  .base-source-icon
+    &.left
+      margin-right: 0.75em !important
+    &.right
+      margin-left: 0.75em !important
+[dir="rtl"]
+  .base-source-icon
+    &.left
+      margin-left: 0.75em !important
+    &.right
+      margin-right: 0.75em !important
 
 .source-icon
   @extend .no-padding, .no-margin

@@ -23,6 +23,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.track-index
-  margin-right: 0.5em
+[dir="ltr"]
+  .track-index
+    margin-right: 0.5em
+[dir="rtl"]
+  .track-index
+    margin-left: 0.5em
 </style>

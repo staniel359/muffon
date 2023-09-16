@@ -99,7 +99,12 @@ export default {
 
 .image-field
   width: 120px
-  margin-right: 1em !important
+[dir="ltr"]
+  .image-field
+    margin-right: 1em !important
+[dir="rtl"]
+  .image-field
+    margin-left: 1em !important
 
 .extra-fields
   @extend .flex-full

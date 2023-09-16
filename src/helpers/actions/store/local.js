@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 import audioStore from '@/stores/audio'
 import discordStore from '@/stores/discord'
 import historyStore from '@/stores/history'
@@ -14,13 +13,15 @@ import searchStore from '@/stores/search'
 import sidebarStore from '@/stores/sidebar'
 import topStore from '@/stores/top'
 import videoStore from '@/stores/video'
-import i18n from '@/plugins/i18n'
 import {
   snakeCase
 } from 'snake-case'
 import {
   camelCase
 } from 'camel-case'
+import {
+  change as changeLanguage
+} from '@/helpers/actions/language'
 
 const stores = {
   audio: audioStore,
@@ -114,9 +115,7 @@ export function update (
   )
 
   if (isChangeLanguage) {
-    i18n.global.locale = value
-
-    dayjs.locale(
+    changeLanguage(
       value
     )
   }

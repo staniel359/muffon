@@ -108,11 +108,20 @@ export default {
 .base-event-item
   padding: 0.5em 0.75em !important
 
-.content
-  margin-left: 0.75em
+[dir="ltr"]
+  .content
+    margin-left: 0.75em
+[dir="rtl"]
+  .content
+    margin-right: 0.75em
 
 .event-type-icon
   @extend .no-padding
-  margin-left: 0.75em !important
   min-width: unset !important
+[dir="ltr"]
+  .event-type-icon
+    margin-left: 0.75em !important
+[dir="rtl"]
+  .event-type-icon
+    margin-right: 0.75em !important
 </style>

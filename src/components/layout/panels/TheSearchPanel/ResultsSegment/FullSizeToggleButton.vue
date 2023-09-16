@@ -52,5 +52,10 @@ export default {
 .full-size-toggle-button
   @extend .absolute, .d-none
   bottom: 1em
-  right: 1em
+[dir="ltr"]
+  .full-size-toggle-button
+    right: 1em
+[dir="rtl"]
+  .full-size-toggle-button
+    left: 1em
 </style>

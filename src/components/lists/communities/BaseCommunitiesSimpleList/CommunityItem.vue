@@ -189,6 +189,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.joined-message
-  margin-left: 0.75em
+[dir="ltr"]
+  .joined-message
+    margin-left: 0.75em
+[dir="rtl"]
+  .joined-message
+    margin-right: 0.75em
 </style>

@@ -39,6 +39,11 @@ export default {
 .more-link-button
   @extend .absolute
   bottom: 10px
-  right: 10px
   z-index: 1
+[dir="ltr"]
+  .more-link-button
+    right: 10px
+[dir="rtl"]
+  .more-link-button
+    left: 10px
 </style>

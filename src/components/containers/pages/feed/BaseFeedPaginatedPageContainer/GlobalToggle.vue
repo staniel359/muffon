@@ -56,6 +56,10 @@ export default {
 .global-toggle
   @extend .d-flex, .align-items-center
 
-.global-text
-  margin-right: 0.75em
+[dir="ltr"]
+  .global-text
+    margin-right: 0.75em
+[dir="rtl"]
+  .global-text
+    margin-left: 0.75em
 </style>

@@ -424,15 +424,30 @@ export default {
 
 <style lang="sass" scoped>
 .track-play-button
-  @extend .no-padding
+  @extend .no-padding, .no-margin
   min-width: unset !important
-  margin: 0 1em 0 0.5em !important
+[dir="ltr"]
+  .track-play-button
+    margin-right: 1em !important
+    margin-left: 0.5em !important
+[dir="rtl"]
+  .track-play-button
+    margin-right: 0.5em !important
+    margin-left: 1em !important
 
-.recommendation-tracks-section
-  margin-left: 0.75em
+[dir="ltr"]
+  .recommendation-tracks-section
+    margin-left: 0.75em
+[dir="rtl"]
+  .recommendation-tracks-section
+    margin-right: 0.75em
 
-.track-duration
-  margin-left: 0.75em
+[dir="ltr"]
+  .track-duration
+    margin-left: 0.75em
+[dir="rtl"]
+  .track-duration
+    margin-right: 0.75em
 
 .icons-section
   @extend .d-flex, .flex-column

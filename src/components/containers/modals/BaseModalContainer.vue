@@ -130,7 +130,7 @@ export default {
 
 <style lang="sass" scoped>
 .base-modal
-  & > ::v-deep(.content)
+  & > :deep(.content)
     @extend .no-margin
     &.full-height
       @extend .d-flex, .flex-column
@@ -140,17 +140,17 @@ export default {
     &.scrolling
       @extend .scroll-smooth
   &:not(.main-delete-modal)
-    & > ::v-deep(.content)
+    & > :deep(.content)
       max-height: $mainModalHeight !important
   &.inverted
     &:not(.base-image-modal)
       @extend .background-black, .border-inverted
-    & > ::v-deep(.header),
-    & > ::v-deep(.content),
-    & > ::v-deep(.actions)
+    & > :deep(.header),
+    & > :deep(.content),
+    & > :deep(.actions)
       @extend .background-black
-    & > ::v-deep(.header)
+    & > :deep(.header)
       border-bottom: $borderInverted
-    & > ::v-deep(.actions)
+    & > :deep(.actions)
       border-top: $borderInverted
 </style>

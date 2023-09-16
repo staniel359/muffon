@@ -77,9 +77,14 @@ export default {
 .the-scroll-to-top-button
   @extend .fixed
   bottom: 15px
-  right: 15px
   z-index: 10
   transition: bottom 0.5s
   &.player-panel-bottom
     bottom: calc(#{$playerPanelHeight} + 15px)
+[dir="ltr"]
+  .the-scroll-to-top-button
+    right: 15px
+[dir="rtl"]
+  .the-scroll-to-top-button
+    left: 15px
 </style>

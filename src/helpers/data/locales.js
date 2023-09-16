@@ -19,7 +19,8 @@ export default [
   },
   {
     id: 'he',
-    name: 'עברית'
+    name: 'עברית',
+    rtl: true
   },
   {
     id: 'it',

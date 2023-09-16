@@ -38,7 +38,12 @@ export default {
   @extend .d-flex, .justify-content-center
   margin-top: 0.75em
 
-.library-counter-section
-  &:not(:first-child)
-    margin-left: 1em
+[dir="ltr"]
+  .library-counter-section
+    &:not(:first-child)
+      margin-left: 1em
+[dir="rtl"]
+  .library-counter-section
+    &:not(:first-child)
+      margin-right: 1em
 </style>

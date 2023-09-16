@@ -120,7 +120,7 @@ export default {
 .base-tab-container
   @extend .flex-full, .d-flex, .flex-column, .relative
 
-::v-deep(.base-tab)
+:deep(.base-tab)
   @extend .no-shadow, .no-border, .no-margin, .h-100, .w-100, .d-flex, .flex-full, .background-transparent
   &:not(.main-settings-options-block)
     @extend .no-padding

@@ -134,6 +134,6 @@ export default {
       border-bottom-right-radius: inherit
       &:before
         width: 0
-    & > ::v-deep(.direction-icon)
+    & > :deep(.direction-icon)
       @extend .no-margin
 </style>

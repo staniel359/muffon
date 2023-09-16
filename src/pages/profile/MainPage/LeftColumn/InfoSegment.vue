@@ -118,7 +118,12 @@ export default {
 .online-label
   @extend .absolute
   top: 0.15em
-  right: 0.15em
+[dir="ltr"]
+  .online-label
+    right: 0.15em
+[dir="rtl"]
+  .online-label
+    left: 0.15em
 
 .status
   margin-top: 0.25em

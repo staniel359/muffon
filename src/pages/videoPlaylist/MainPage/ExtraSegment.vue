@@ -34,6 +34,10 @@ export default {
 .extra-segment
   @extend .d-flex, .align-items-center, .justify-content-space-between
 
-.view-select-block
-  margin-left: 0.75em
+[dir="ltr"]
+  .view-select-block
+    margin-left: 0.75em
+[dir="rtl"]
+  .view-select-block
+    margin-right: 0.75em
 </style>

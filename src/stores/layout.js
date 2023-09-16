@@ -31,7 +31,8 @@ const data = {
       tabs: null,
       activeTabId: null,
       isSearchPanelVisible: false,
-      isWithInnerCounters: null
+      isWithInnerCounters: null,
+      isRtl: null
     }
   },
   actions: {
@@ -169,6 +170,11 @@ const data = {
       value
     ) {
       this.isWithInnerCounters = value
+    },
+    setIsRtl (
+      value
+    ) {
+      this.isRtl = value
     }
   }
 }

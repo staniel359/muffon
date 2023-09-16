@@ -85,19 +85,24 @@ export default {
 
 <style lang="sass" scoped>
 .base-image-modal-slider-container
-  ::v-deep(.slick-prev)
-    left: 25px
+  :deep(.slick-prev)
     z-index: 1
-  ::v-deep(.slick-next)
-    right: 25px
-  ::v-deep(.slick-arrow)
+  :deep(.slick-arrow)
     width: 25px
     height: 25px
     &:before
       @extend .text-color-black
       font-size: 25px
-  &.inverted
-    ::v-deep(.slick-arrow)
-      &:before
-        @extend .text-color-white
+[dir="ltr"]
+  .base-image-modal-slider-container
+    :deep(.slick-prev)
+      left: 25px
+    :deep(.slick-next)
+      right: 25px
+[dir="rtl"]
+  .base-image-modal-slider-container
+    :deep(.slick-prev)
+      right: 25px
+    :deep(.slick-next)
+      left: 25px
 </style>

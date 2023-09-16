@@ -4,7 +4,8 @@
     class="ui small slider base-seeker"
     :class="{
       disabled: isDisabled,
-      inverted: isDarkMode
+      inverted: isDarkMode,
+      reversed: isRtl
     }"
     @mousedown.capture="handleMouseDown"
   />
@@ -46,7 +47,8 @@ export default {
     ...mapState(
       layoutStore,
       [
-        'isDarkMode'
+        'isDarkMode',
+        'isRtl'
       ]
     ),
     seekerOptions () {
@@ -59,7 +61,8 @@ export default {
   },
   watch: {
     isDisabled: 'handleIsDisabledChange',
-    isMouseUp: 'handleIsMouseUpChange'
+    isMouseUp: 'handleIsMouseUpChange',
+    isRtl: 'handleIsRtlChange'
   },
   mounted () {
     this.initialize()
@@ -73,6 +76,11 @@ export default {
 
         this.initialize()
       }
+    },
+    async handleIsRtlChange () {
+      await this.$nextTick()
+
+      this.initialize()
     },
     handleMouseDown () {
       this.isMouseUp = false
@@ -144,7 +152,7 @@ export default {
 <style lang="sass" scoped>
 .base-seeker
   @extend .no-padding
-  & > ::v-deep(.inner)
+  & > :deep(.inner)
     @extend .cursor-pointer
     & > .track-fill
       @extend .background-base
@@ -158,33 +166,30 @@ export default {
   &:not(.disabled)
     &:hover,
     &:active
-      & > ::v-deep(.inner)
+      & > :deep(.inner)
         & > .thumb
           @extend .d-block
   &:not(.vertical)
     &.small
-      & > ::v-deep(.inner)
+      & > :deep(.inner)
         & > .track,
         & > .track-fill
           height: 0.35em
-    & > ::v-deep(.inner)
+    & > :deep(.inner)
       & > .thumb
         top: 1px !important
   &.vertical
     &.small
-      & > ::v-deep(.inner)
+      & > :deep(.inner)
         & > .track,
         & > .track-fill
           width: 0.35em
-    & > ::v-deep(.inner)
-      & > .thumb
-        left: 1px !important
   &.inverted
-    & > ::v-deep(.inner)
+    & > :deep(.inner)
       & > .track-progress
         @extend .background-grey-inverted
   &.with-thumb
-    & > ::v-deep(.inner)
+    & > :deep(.inner)
       & > .thumb
         @extend .d-block
 </style>

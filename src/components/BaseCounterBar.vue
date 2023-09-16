@@ -59,7 +59,12 @@ export default {
   @extend .background-grey
   height: 4px
   border-radius: 2px
-  margin-right: 0.5em
   &.inverted
     @extend .background-grey-inverted
+[dir="ltr"]
+  .base-counter-bar
+    margin-right: 0.5em
+[dir="rtl"]
+  .base-counter-bar
+    margin-left: 0.5em
 </style>

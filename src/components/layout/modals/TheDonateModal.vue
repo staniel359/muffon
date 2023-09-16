@@ -90,7 +90,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.action-button
-  &:not(:first-child)
-    margin-left: 1em !important
+[dir="ltr"]
+  .action-button
+    &:not(:first-child)
+      margin-left: 1em !important
+[dir="rtl"]
+  .action-button
+    &:not(:first-child)
+      margin-right: 1em !important
 </style>

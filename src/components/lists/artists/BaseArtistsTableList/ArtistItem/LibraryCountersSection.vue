@@ -34,7 +34,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.counter-section
-  &:not(:first-child)
-    margin-left: 0.75em
+[dir="ltr"]
+  .counter-section
+    &:not(:first-child)
+      margin-left: 0.75em
+[dir="rtl"]
+  .counter-section
+    &:not(:first-child)
+      margin-right: 0.75em
 </style>

@@ -52,7 +52,7 @@ export default {
   @extend .no-margin
   padding: 0.75em
 
-::v-deep(.image-content)
+:deep(.image-content)
   @extend .h-100, .w-100
 
 .artist-name

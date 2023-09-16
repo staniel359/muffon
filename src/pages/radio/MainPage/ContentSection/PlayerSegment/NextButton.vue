@@ -6,6 +6,7 @@
       icon="audioNext"
       :text="nextText"
       is-reverse
+      is-icon-with-rtl
       @click="handleClick"
     />
   </div>

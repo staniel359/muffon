@@ -172,6 +172,10 @@ export default {
     type: 'number',
     default: 1
   },
+  'layout.isRtl': {
+    type: 'boolean',
+    default: false
+  },
   'lyrics.isWithAnnotations': {
     type: 'boolean',
     default: true

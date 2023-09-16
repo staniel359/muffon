@@ -56,6 +56,10 @@ export default {
 .online-toggle
   @extend .d-flex, .align-items-center
 
-.online-text
-  margin-right: 0.75em
+[dir="ltr"]
+  .online-text
+    margin-right: 0.75em
+[dir="rtl"]
+  .online-text
+    margin-left: 0.75em
 </style>

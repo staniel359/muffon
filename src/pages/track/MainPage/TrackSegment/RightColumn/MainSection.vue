@@ -31,6 +31,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-::v-deep(.content)
+:deep(.content)
   @extend .no-padding, .flex-column
 </style>

@@ -6,6 +6,9 @@
         icon: !isFlag,
         red: (
           isError && isIconRed
+        ),
+        'horizontally flipped': (
+          isWithRtl && isRtl
         )
       },
       iconConditional
@@ -22,6 +25,10 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import icons from '@/helpers/data/icons'
 
 export default {
@@ -31,13 +38,20 @@ export default {
     isLoading: Boolean,
     isError: Boolean,
     icon: String,
-    isIconRed: Boolean
+    isIconRed: Boolean,
+    isWithRtl: Boolean
   },
   emits: [
     'activeChange',
     'click'
   ],
   computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isRtl'
+      ]
+    ),
     iconConditional () {
       if (this.isLoading) {
         return null

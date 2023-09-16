@@ -160,7 +160,12 @@ export default {
   @extend .d-flex, .align-items-center, .justify-content-center
   width: 20px
   height: 20px
-  margin-left: 0.75em
   &.icon
     @extend .no-padding
+[dir="ltr"]
+  .icon-container
+    margin-left: 0.75em
+[dir="rtl"]
+  .icon-container
+    margin-right: 0.75em
 </style>

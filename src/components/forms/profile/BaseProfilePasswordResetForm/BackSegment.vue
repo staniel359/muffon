@@ -6,6 +6,7 @@
     >
       <BaseIcon
         icon="arrowLeft"
+        is-with-rtl
       />
 
       {{ backText }}

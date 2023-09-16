@@ -147,6 +147,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.dropdown-icon
-  margin-right: 1em !important
+[dir="ltr"]
+  .dropdown-icon
+    margin-right: 1em !important
+[dir="rtl"]
+  .dropdown-icon
+    margin-left: 1em !important
 </style>

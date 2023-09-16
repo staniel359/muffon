@@ -120,10 +120,16 @@ export default {
   .image
     @extend .w-100, .h-100
 
-.clear-button
-  @extend .absolute, .no-margin, .d-none
-  top: 5px
-  right: 5px
+.ui.button
+  &.clear-button
+    @extend .absolute, .no-margin, .d-none
+    top: 5px
+[dir="ltr"]
+  .clear-button
+    right: 5px
+[dir="rtl"]
+  .clear-button
+    left: 5px
 
 .upload-button
   margin-top: 1em !important

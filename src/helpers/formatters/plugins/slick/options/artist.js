@@ -1,20 +1,23 @@
 export function main (
   {
-    syncSlider
-  } = {}
+    syncSlider,
+    isRtl
+  }
 ) {
   return {
     asNavFor: syncSlider,
     draggable: false,
     infinite: false,
-    fade: true
+    fade: true,
+    rtl: isRtl
   }
 }
 
 export function thumbs (
   {
-    syncSlider
-  } = {}
+    syncSlider,
+    isRtl
+  }
 ) {
   return {
     arrows: false,
@@ -23,6 +26,7 @@ export function thumbs (
     draggable: false,
     focusOnSelect: true,
     infinite: false,
-    slidesToShow: 5
+    slidesToShow: 5,
+    rtl: isRtl
   }
 }

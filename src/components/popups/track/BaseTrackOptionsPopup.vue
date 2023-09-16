@@ -2,6 +2,7 @@
   <BaseOptionsPopupContainer
     v-if="isRender"
     :is-inline="isInline"
+    :is-show-to-top="isShowToTop"
   >
     <template
       #default="slotProps"
@@ -229,7 +230,8 @@ export default {
     isWithDeleteOption: Boolean,
     isDeleteWithRedirect: Boolean,
     isClearable: Boolean,
-    isInline: Boolean
+    isInline: Boolean,
+    isShowToTop: Boolean
   },
   emits: [
     'linkClick',

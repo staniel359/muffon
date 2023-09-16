@@ -47,5 +47,10 @@ export default {
 <style lang="sass" scoped>
 .right-column
   @extend .flex-full
-  margin-left: 1em
+[dir="ltr"]
+  .right-column
+    margin-left: 1em
+[dir="rtl"]
+  .right-column
+    margin-right: 1em
 </style>

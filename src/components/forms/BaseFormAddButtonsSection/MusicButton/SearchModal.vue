@@ -122,6 +122,6 @@ export default {
 .top-section-container
   @extend .d-flex, .align-items-center
 
-::v-deep(.search-input)
+:deep(.search-input)
   @extend .flex-full
 </style>

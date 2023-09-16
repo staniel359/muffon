@@ -9,6 +9,7 @@
     <BaseIcon
       class="direction-icon"
       icon="directionLeft"
+      is-with-rtl
     />
   </a>
 </template>

@@ -2,11 +2,17 @@
   <div class="center-controls-section">
     <LoopButton />
 
-    <BackwardButton />
+    <BaseQueueDirectionButtonContainer
+      position="previous"
+      icon="audioPrevious"
+    />
 
     <PlayButton />
 
-    <ForwardButton />
+    <BaseQueueDirectionButtonContainer
+      position="next"
+      icon="audioNext"
+    />
 
     <VolumeButton />
   </div>
@@ -14,18 +20,17 @@
 
 <script>
 import LoopButton from './CenterControlsSection/LoopButton.vue'
-import BackwardButton from './CenterControlsSection/BackwardButton.vue'
+import BaseQueueDirectionButtonContainer
+  from '@/components/containers/BaseQueueDirectionButtonContainer.vue'
 import PlayButton from './CenterControlsSection/PlayButton.vue'
-import ForwardButton from './CenterControlsSection/ForwardButton.vue'
 import VolumeButton from './CenterControlsSection/VolumeButton.vue'
 
 export default {
   name: 'CenterControlsSection',
   components: {
     LoopButton,
-    BackwardButton,
+    BaseQueueDirectionButtonContainer,
     PlayButton,
-    ForwardButton,
     VolumeButton
   }
 }
@@ -35,7 +40,15 @@ export default {
 .center-controls-section
   @extend .d-flex, .align-items-center, .justify-content-center
   flex: 0.4
-  .button
-    &:not(:last-child)
-      margin-right: 0.5em !important
+
+[dir="ltr"]
+  .center-controls-section
+    .button
+      &:not(:last-child)
+        margin-right: 0.5em !important
+[dir="rtl"]
+  .center-controls-section
+    .button
+      &:not(:last-child)
+        margin-left: 0.5em !important
 </style>

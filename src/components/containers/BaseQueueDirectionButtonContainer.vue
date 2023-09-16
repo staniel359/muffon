@@ -7,6 +7,7 @@
       loading: isGetting,
       basic: !isGetting
     }"
+    is-icon-with-rtl
     @click="handleClick"
   />
 </template>

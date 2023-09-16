@@ -63,7 +63,8 @@ export default {
       type: Boolean,
       default: true
     },
-    isInline: Boolean
+    isInline: Boolean,
+    isShowToTop: Boolean
   },
   emits: [
     'activeChange',
@@ -85,7 +86,8 @@ export default {
       return optionsPopupOptions(
         {
           html: this.popup,
-          inline: this.isInline,
+          isInline: this.isInline,
+          isShowToTop: this.isShowToTop,
           onShow: this.handleShow,
           onHide: this.handleHide,
           onHidden: this.handleHidden

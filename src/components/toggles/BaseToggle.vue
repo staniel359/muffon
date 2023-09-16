@@ -110,17 +110,23 @@ export default {
 
 <style lang="sass" scoped>
 .base-toggle
-  ::v-deep(label)
-    padding-left: 3em !important
-  ::v-deep(input)
+  :deep(input)
     &:not(:checked)
       & ~ label
         &:before
           @extend .background-grey
   &.inverted
-    ::v-deep(input)
+    :deep(input)
       &:not(:checked)
         & ~ label
           &:before
             @extend .background-grey-inverted
+[dir="ltr"]
+  .base-toggle
+    :deep(label)
+      padding-left: 3em !important
+[dir="rtl"]
+  .base-toggle
+    :deep(label)
+      padding-right: 3em !important
 </style>

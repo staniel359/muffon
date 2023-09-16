@@ -19,5 +19,10 @@ export default {
 <style lang="sass" scoped>
 .base-private-icon
   @extend .no-margin
-  margin-left: 0.5em !important
+[dir="ltr"]
+  .base-private-icon
+    margin-left: 0.5em !important
+[dir="rtl"]
+  .base-private-icon
+    margin-right: 0.5em !important
 </style>

@@ -1,7 +1,8 @@
 export default function (
   {
     html,
-    inline,
+    isShowToTop,
+    isInline,
     onShow,
     onHide,
     onHidden
@@ -9,12 +10,20 @@ export default function (
 ) {
   const className = 'ui popup main-popup'
 
+  const position = (
+    isShowToTop ? 'top right' : 'bottom right'
+  )
+
+  const transition = (
+    isShowToTop ? 'fade up' : 'fade down'
+  )
+
   return {
-    position: 'bottom right',
-    transition: 'fade down',
     variation: 'basic',
     closable: false,
     hoverable: true,
+    lastResort: true,
+    inline: isInline,
     className: {
       popup: className
     },
@@ -22,8 +31,9 @@ export default function (
       show: 0,
       hide: 150
     },
+    position,
+    transition,
     html,
-    inline,
     onShow,
     onHide,
     onHidden

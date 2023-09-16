@@ -8,6 +8,7 @@
       <BaseIcon
         class="green"
         icon="communityJoined"
+        is-with-rtl
       />
 
       <div

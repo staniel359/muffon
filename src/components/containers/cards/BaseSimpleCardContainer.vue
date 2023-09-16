@@ -35,15 +35,14 @@ export default {
     @extend .text-color-black
     &.inverted
       @extend .text-color-white
-  ::v-deep(.main-options-popup-container)
+  :deep(.main-options-popup-container)
     @extend .absolute, .visibility-hidden
     z-index: 10
     top: 10px
-    right: 10px
   &:hover
-    ::v-deep(.main-options-popup-container)
+    :deep(.main-options-popup-container)
       @extend .visibility-visible
-  ::v-deep(.content)
+  :deep(.content)
     @extend .no-padding, .no-border
     .extra
       line-height: 1.2em
@@ -57,8 +56,14 @@ export default {
       &.star
         opacity: 1 !important
         cursor: unset !important
-  ::v-deep(.main-image-container)
+  :deep(.main-image-container)
     margin-bottom: 0.5em
-    & > .placeholder
-      left: 0
+[dir="ltr"]
+  .base-simple-card
+    :deep(.main-options-popup-container)
+      right: 10px
+[dir="rtl"]
+  .base-simple-card
+    :deep(.main-options-popup-container)
+      left: 10px
 </style>

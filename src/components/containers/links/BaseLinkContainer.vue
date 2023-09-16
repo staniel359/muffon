@@ -81,6 +81,6 @@ export default {
 .base-link-container
   @extend .cursor-pointer
   &:hover
-    ::v-deep(.link)
+    :deep(.link)
       @extend .text-color-base
 </style>
