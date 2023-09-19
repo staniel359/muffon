@@ -39,10 +39,18 @@ export default {
   },
   computed: {
     isRenderSource () {
-      return this.source !== 'lastfm'
+      return !this.isLastfmSource
+    },
+    isLastfmSource () {
+      return (
+        this.source === 'lastfm'
+      )
     },
     source () {
-      return this.albumData.source.name
+      return this.sourceData.name
+    },
+    sourceData () {
+      return this.albumData.source
     }
   }
 }

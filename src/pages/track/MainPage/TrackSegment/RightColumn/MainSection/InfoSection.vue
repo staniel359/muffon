@@ -63,10 +63,18 @@ export default {
       return this.trackData.album
     },
     isRenderSource () {
-      return this.source !== 'lastfm'
+      return !this.isLastfmSource
+    },
+    isLastfmSource () {
+      return (
+        this.source === 'lastfm'
+      )
     },
     source () {
-      return this.trackData.source.name
+      return this.sourceData.name
+    },
+    sourceData () {
+      return this.trackData.source
     }
   }
 }

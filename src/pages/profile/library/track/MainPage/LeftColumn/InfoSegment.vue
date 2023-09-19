@@ -51,9 +51,8 @@ export default {
   computed: {
     isRenderSource () {
       return (
-        this.source && (
-          this.source !== 'lastfm'
-        )
+        this.source &&
+          !this.isLastfmSource
       )
     },
     source () {
@@ -61,6 +60,11 @@ export default {
     },
     sourceData () {
       return this.trackData.source
+    },
+    isLastfmSource () {
+      return (
+        this.source === 'lastfm'
+      )
     }
   }
 }

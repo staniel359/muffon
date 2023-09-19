@@ -327,7 +327,20 @@ export default {
     isRenderSource () {
       return (
         this.isWithSource &&
+          this.source &&
+          !this.isLastfmSource &&
           this.isAudioPresent
+      )
+    },
+    source () {
+      return this.sourceData?.name
+    },
+    sourceData () {
+      return this.trackData.source
+    },
+    isLastfmSource () {
+      return (
+        this.source === 'lastfm'
       )
     },
     isAudioPresent () {
@@ -335,9 +348,6 @@ export default {
     },
     audioData () {
       return this.trackData.audio
-    },
-    source () {
-      return this.trackData.source?.name
     },
     uuid () {
       return this.trackData.uuid
