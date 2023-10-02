@@ -27,6 +27,10 @@ export default [
     name: 'Italiano'
   },
   {
+    id: 'ja',
+    name: '日本語'
+  },
+  {
     id: 'ru',
     name: 'Русский'
   }

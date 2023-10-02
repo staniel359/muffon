@@ -7,6 +7,7 @@ import en from 'i18n-iso-countries/langs/en.json'
 import fr from 'i18n-iso-countries/langs/fr.json'
 import he from 'i18n-iso-countries/langs/he.json'
 import it from 'i18n-iso-countries/langs/it.json'
+import ja from 'i18n-iso-countries/langs/ja.json'
 import ru from 'i18n-iso-countries/langs/ru.json'
 
 // i18n
@@ -18,6 +19,7 @@ const locales = [
   fr,
   he,
   it,
+  ja,
   ru
 ]
 

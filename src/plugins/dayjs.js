@@ -9,6 +9,7 @@ import 'dayjs/locale/de'
 import 'dayjs/locale/fr'
 import 'dayjs/locale/he'
 import 'dayjs/locale/it'
+import 'dayjs/locale/ja'
 import 'dayjs/locale/ru'
 
 // i18n

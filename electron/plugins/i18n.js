@@ -6,6 +6,7 @@ import en from './i18n/locales/en.json'
 import fr from './i18n/locales/fr.json'
 import he from './i18n/locales/he.json'
 import it from './i18n/locales/it.json'
+import ja from './i18n/locales/ja.json'
 import ru from './i18n/locales/ru.json'
 
 // i18n
@@ -22,6 +23,7 @@ const localesData = {
   fr,
   he,
   it,
+  ja,
   ru
 }
 
