@@ -5,7 +5,9 @@
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
-    <small>
+    <Component
+      :is="component"
+    >
       <BaseIcon
         :icon="icon"
       />
@@ -13,7 +15,7 @@
       <span
         v-html="countFormatted"
       />
-    </small>
+    </Component>
   </div>
 </template>
 
@@ -36,6 +38,10 @@ export default {
     count: {
       type: Number,
       required: true
+    },
+    isSmall: {
+      type: Boolean,
+      default: true
     }
   },
   emits: [
@@ -43,6 +49,13 @@ export default {
     'click'
   ],
   computed: {
+    component () {
+      if (this.isSmall) {
+        return 'small'
+      } else {
+        return 'div'
+      }
+    },
     countFormatted () {
       return formatNumber(
         this.count

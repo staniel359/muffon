@@ -52,5 +52,5 @@ export default {
 
 <style lang="sass" scoped>
 .home-page-container
-  margin-top: 2em
+  margin-top: 7vh
 </style>

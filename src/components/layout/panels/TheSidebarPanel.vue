@@ -1,9 +1,9 @@
 <template>
   <BaseMenuContainer
-    class="vertical left overlay visible blurred sidebar the-sidebar-panel"
+    class="vertical left overlay visible blurred sidebar the-sidebar-panel overflow-x-hidden"
     :class="transparentClass"
   >
-    <div class="sidebar-panel-content">
+    <div class="height-100 full-column">
       <ProfileItem
         v-if="profileId"
       />
@@ -11,7 +11,12 @@
         v-else
       />
 
-      <div class="sidebar-top">
+      <div
+        class="ui top-section flex-full overflow-y-auto overflow-x-hidden"
+        :class="{
+          inverted: isDarkMode
+        }"
+      >
         <HomeItem
           v-if="isSidebarWithHomePageItem"
         />
@@ -77,7 +82,7 @@
         />
       </div>
 
-      <div class="sidebar-bottom">
+      <div class="bottom-section border-top">
         <SettingsItem />
 
         <LogoutItem
@@ -95,6 +100,7 @@
 import {
   mapState
 } from 'pinia'
+import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
 import sidebarStore from '@/stores/sidebar'
 import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
@@ -149,6 +155,12 @@ export default {
     transparencyMixin
   ],
   computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isDarkMode'
+      ]
+    ),
     ...mapState(
       profileStore,
       {
@@ -230,33 +242,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.the-sidebar-panel
-  @extend .no-border
-  z-index: 300 !important
-  width: 40px !important
-  overflow-x: hidden
-  transition: width 0.35s !important
-  &:hover
-    width: 240px !important
-    .sidebar-top
-      @extend .overflow-y-auto
-      &::-webkit-scrollbar
-        @extend .d-block
-  &.inverted
-    border-right: $borderInverted !important
-    .sidebar-bottom
-      border-top: $borderInverted
-
-.sidebar-panel-content
-  @extend .h-100, .d-flex, .flex-column
-
-.sidebar-top
-  @extend .flex-full, .overflow-y-auto
-  overflow-x: hidden
-  &::-webkit-scrollbar
-    @extend .d-none
-
-.sidebar-bottom
-  border-top: $border
-</style>
+<style lang="sass" scoped></style>

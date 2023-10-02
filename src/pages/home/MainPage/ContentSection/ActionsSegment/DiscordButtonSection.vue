@@ -1,12 +1,11 @@
 <template>
-  <div class="action-button-container">
-    <BaseButton
-      class="basic circular"
-      icon="discord"
-      text="Discord"
-      @click="handleClick"
-    />
-  </div>
+  <BaseButton
+    class="basic circular"
+    left-icon="discord"
+    text="Discord"
+    is-left-icon-colored
+    @click="handleClick"
+  />
 </template>
 
 <script>

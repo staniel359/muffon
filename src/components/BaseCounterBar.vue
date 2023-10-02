@@ -1,6 +1,6 @@
 <template>
   <div
-    class="base-counter-bar"
+    class="base-counter-bar main-left-mini-section background-grey"
     :class="{
       inverted: isDarkMode
     }"
@@ -30,7 +30,7 @@ export default {
   },
   data () {
     return {
-      widthMaxPercent: 70
+      widthMaxPercent: 65
     }
   },
   computed: {
@@ -54,17 +54,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-counter-bar
-  @extend .background-grey
-  height: 4px
-  border-radius: 2px
-  &.inverted
-    @extend .background-grey-inverted
-[dir="ltr"]
-  .base-counter-bar
-    margin-right: 0.5em
-[dir="rtl"]
-  .base-counter-bar
-    margin-left: 0.5em
-</style>
+<style lang="sass" scoped></style>

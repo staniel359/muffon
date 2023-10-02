@@ -9,18 +9,15 @@
     />
 
     <div>
-      <div
+      <BaseCounterLabelsSection
         class="main-labels-section"
-      >
-        <BaseCounterLabelsSection
-          :counters="counters"
-        />
+        :counters="counters"
+      />
 
-        <BaseArtistInnerCounterLabelsSection
-          class="inline"
-          :artist-data="artistData"
-        />
-      </div>
+      <BaseArtistInnerCounterLabelsSection
+        class="main-labels-section"
+        :artist-data="artistData"
+      />
 
       <BaseArtistTags
         class="main-labels-section"

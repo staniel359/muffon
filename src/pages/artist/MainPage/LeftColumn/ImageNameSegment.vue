@@ -1,10 +1,10 @@
 <template>
   <BaseSegmentContainer
-    class="image-segment"
+    class="image-segment no-margin"
   >
     <div class="main-image-container">
       <BaseArtistImage
-        class="image-content"
+        class="image-content height-100 width-100"
         size="medium"
         :artist-name="artistName"
         :is-circular="false"
@@ -15,11 +15,13 @@
     <BaseTransitionContainer
       :scrollable="scrollable"
     >
-      <BaseHeader
-        class="artist-name"
-        tag="h3"
-        :text="artistName"
-      />
+      <div class="main-bottom-small-section">
+        <BaseHeader
+          class="text-align-center"
+          tag="h3"
+          :text="artistName"
+        />
+      </div>
     </BaseTransitionContainer>
   </BaseSegmentContainer>
 </template>
@@ -49,13 +51,5 @@ export default {
 
 <style lang="sass" scoped>
 .image-segment
-  @extend .no-margin
-  padding: 0.75em
-
-:deep(.image-content)
-  @extend .h-100, .w-100
-
-.artist-name
-  @extend .text-align-center
-  margin-top: 0.5em !important
+  padding: 1rem !important
 </style>

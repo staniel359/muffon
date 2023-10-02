@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="clearText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="clearText"
+      />
 
-    <BaseToggle
-      store-key="queue.isClearOnPlayerClose"
-      :is-checked="isClearQueueOnPlayerClose"
-    />
+      <BaseToggle
+        store-key="queue.isClearOnPlayerClose"
+        :is-checked="isClearQueueOnPlayerClose"
+      />
+    </div>
   </div>
 </template>
 

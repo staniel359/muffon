@@ -1,9 +1,9 @@
 <template>
   <BaseSegmentContainer
-    class="main-simple-list-item main-message-item"
+    class="main-simple-list-item main-message-item main-bottom-section"
   >
     <BaseImage
-      class="small circular"
+      class="circular image-30"
       model="profile"
       :image="imageData?.extrasmall"
     />
@@ -20,11 +20,14 @@
 
       <div
         v-if="text"
-        class="text main-content-section"
+        class="text main-sendable-content-section"
         v-text="text"
       />
 
-      <div class="main-content-section">
+      <div
+        v-if="isAnyAttachments"
+        class="main-sendable-content-section"
+      >
         <BaseIcon
           v-if="isWithImages"
           class="grey"
@@ -91,29 +94,35 @@ export default {
     text () {
       return this.lastMessageData.text
     },
+    isAnyAttachments () {
+      return Object.keys(
+        this.attachments
+      ).length
+    },
+    attachments () {
+      return this.lastMessageData.attachments
+    },
     isWithImages () {
-      return this.lastMessageData.attachments.with_images
+      return this.attachments.with_images
     },
     isWithArtists () {
-      return this.lastMessageData.attachments.with_artists
+      return this.attachments.with_artists
     },
     isWithAlbums () {
-      return this.lastMessageData.attachments.with_albums
+      return this.attachments.with_albums
     },
     isWithTracks () {
-      return this.lastMessageData.attachments.with_tracks
+      return this.attachments.with_tracks
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.main-message-item
-  margin-top: 0.5em
 [dir="ltr"]
   .main-message-item
-    margin-left: 45px
+    margin-left: 4rem
 [dir="rtl"]
   .main-message-item
-    margin-right: 45px
+    margin-right: 4rem
 </style>

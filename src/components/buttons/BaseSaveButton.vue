@@ -1,11 +1,13 @@
 <template>
-  <BaseButton
-    class="primary circular fluid base-save-button"
-    icon="save"
-    :text="saveText"
-    :is-invertable="false"
-    @click="handleClick"
-  />
+  <div class="main-bottom-section">
+    <BaseButton
+      class="primary circular fluid"
+      left-icon="save"
+      :text="saveText"
+      :is-invertable="false"
+      @click="handleClick"
+    />
+  </div>
 </template>
 
 <script>
@@ -36,7 +38,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-save-button
-  margin-top: 1em !important
-</style>
+<style lang="sass" scoped></style>

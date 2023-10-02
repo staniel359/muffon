@@ -1,16 +1,13 @@
 <template>
   <div
-    :class="[
-      'ui top segment sidebar the-search-panel',
-      'main-segment-container',
-      {
-        inverted: isDarkMode,
-        visible: isSearchPanelVisible
-      }
-    ]"
+    class="ui top segment sidebar the-search-panel no-padding"
+    :class="{
+      inverted: isDarkMode,
+      visible: isSearchPanelVisible
+    }"
   >
-    <div class="ui container main-container content-container">
-      <div class="inputs-section">
+    <div class="ui container main-container height-100">
+      <div class="main-search-container width-100 height-100">
         <SearchInput
           :query="query"
           :is-with-clear-button="isWithClearButton"
@@ -33,12 +30,14 @@
     </div>
   </div>
 
-  <ResultsSegment
-    v-if="isRenderResultsSegment"
+  <ResultsPanel
+    v-if="isRenderResultsPanel"
     v-show="isSearchPanelVisible"
     :query="query"
     :source="source"
     :scope="scope"
+    :is-full-size="isFullSize"
+    @full-size-button-click="handleFullSizeButtonClick"
   />
 
   <BaseDimmer
@@ -58,8 +57,11 @@ import searchStore from '@/stores/search'
 import SearchInput from './TheSearchPanel/SearchInput.vue'
 import ScopeSelect from './TheSearchPanel/ScopeSelect.vue'
 import SourceSelect from './TheSearchPanel/SourceSelect.vue'
-import ResultsSegment from './TheSearchPanel/ResultsSegment.vue'
+import ResultsPanel from './TheSearchPanel/ResultsPanel.vue'
 import BaseDimmer from '@/components/BaseDimmer.vue'
+import {
+  toggleClass
+} from '@/helpers/actions/plugins/jquery'
 
 export default {
   name: 'TheSearchPanel',
@@ -67,11 +69,12 @@ export default {
     SearchInput,
     ScopeSelect,
     SourceSelect,
-    ResultsSegment,
+    ResultsPanel,
     BaseDimmer
   },
   data () {
     return {
+      isFullSize: null,
       isGetData: false,
       source: '',
       scope: '',
@@ -90,13 +93,15 @@ export default {
       searchStore,
       {
         searchSource: 'source',
-        searchScope: 'scope'
+        searchScope: 'scope',
+        isSearchResultsFullSize:
+          'isResultsFullSize'
       }
     ),
     isWithClearButton () {
       return !!this.query.length
     },
-    isRenderResultsSegment () {
+    isRenderResultsPanel () {
       return (
         this.isGetData &&
           this.query &&
@@ -106,6 +111,10 @@ export default {
     }
   },
   watch: {
+    isSearchResultsFullSize: {
+      immediate: true,
+      handler: 'handleIsSearchResultsFullSize'
+    },
     searchSource: {
       immediate: true,
       handler: 'handleSearchSourceChange'
@@ -130,6 +139,11 @@ export default {
         'setIsSearchPanelVisible'
       ]
     ),
+    handleIsSearchResultsFullSize (
+      value
+    ) {
+      this.isFullSize = value
+    },
     handleIsSearchPanelVisibleChange (
       value
     ) {
@@ -138,6 +152,12 @@ export default {
         .toggle(
           value
         )
+
+      toggleClass(
+        '#app',
+        'overflow-hidden',
+        value
+      )
     },
     handlePressEscape () {
       this.setIsSearchPanelVisible(
@@ -213,24 +233,13 @@ export default {
       this.setIsSearchPanelVisible(
         false
       )
+    },
+    handleFullSizeButtonClick () {
+      this.isFullSize =
+        !this.isFullSize
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.ui.sidebar
-  &.the-search-panel
-    @extend .overflow-visible, .text-color-black
-    height: $navbarHeight !important
-    z-index: 1200
-    &.inverted
-      @extend .text-color-white
-      border-bottom: $borderInverted !important
-
-.content-container
-  @extend .h-100
-
-.inputs-section
-  @extend .d-flex, .align-items-center, .w-100, .h-100
-</style>
+<style lang="sass" scoped></style>

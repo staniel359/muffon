@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned main-visibility-container"
     :class="{
       disabled: isDeleted
     }"
@@ -21,7 +21,7 @@
       />
 
       <BaseImage
-        class="rounded-medium"
+        class="rounded-medium image-50"
         model="videoPlaylist"
         :image="imageData?.extrasmall"
       />
@@ -45,7 +45,7 @@
 
         <div
           v-if="description"
-          class="description main-small-container"
+          class="description"
         >
           <small
             v-html="description"
@@ -78,6 +78,7 @@
       />
 
       <BaseVideoPlaylistOptionsPopup
+        class="invisible-item"
         :playlist-data="playlistData"
         :bookmark-id="bookmarkId"
         :is-bookmark="isBookmark"

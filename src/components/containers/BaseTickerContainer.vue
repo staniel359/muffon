@@ -1,12 +1,12 @@
 <template>
   <div
-    class="ticker-container"
+    class="white-space-no-wrap"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
     <div
       ref="ticker"
-      class="ticker"
+      class="ticker d-flex"
     >
       <div
         ref="content"
@@ -150,10 +150,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.ticker-container
-  @extend .white-space-no-wrap
-
 .ticker
-  @extend .d-flex
   will-change: transform
 </style>

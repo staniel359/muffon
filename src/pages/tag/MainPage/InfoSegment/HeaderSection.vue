@@ -1,9 +1,10 @@
 <template>
-  <div class="tag-header-container">
+  <div class="main-top-large-section">
     <BaseHeaderContainer
-      class="inverted tag-header"
+      class="inverted massive"
       tag="h1"
       icon="tag"
+      is-icon-small
     >
       {{ tagName }}
     </BaseHeaderContainer>
@@ -28,12 +29,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.tag-header-container
-  margin-bottom: 1.5em
-
-.tag-header
-  font-size: 2.5rem !important
-  :deep(.icon)
-    font-size: 0.75em !important
-</style>
+<style lang="sass" scoped></style>

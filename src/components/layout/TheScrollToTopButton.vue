@@ -1,11 +1,11 @@
 <template>
   <div
     ref="scrollable"
-    class="scrollable"
+    class="scrollable absolute"
   />
 
   <div
-    class="the-scroll-to-top-button"
+    class="the-scroll-to-top-button fixed main-bottom-right-small-button"
     :class="{
       'player-panel-bottom': playerPlaying
     }"
@@ -71,20 +71,9 @@ export default {
 
 <style lang="sass" scoped>
 .scrollable
-  @extend .absolute
   top: 20px
 
 .the-scroll-to-top-button
-  @extend .fixed
-  bottom: 15px
   z-index: 10
   transition: bottom 0.5s
-  &.player-panel-bottom
-    bottom: calc(#{$playerPanelHeight} + 15px)
-[dir="ltr"]
-  .the-scroll-to-top-button
-    right: 15px
-[dir="rtl"]
-  .the-scroll-to-top-button
-    left: 15px
 </style>

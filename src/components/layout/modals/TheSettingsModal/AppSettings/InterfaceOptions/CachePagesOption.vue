@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="cachePagesText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="cachePagesText"
+      />
 
-    <BaseToggle
-      store-key="layout.isCachePages"
-      :is-checked="isCachePages"
-    />
+      <BaseToggle
+        store-key="layout.isCachePages"
+        :is-checked="isCachePages"
+      />
+    </div>
   </div>
 </template>
 

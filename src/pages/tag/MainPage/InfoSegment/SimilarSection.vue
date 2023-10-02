@@ -14,7 +14,7 @@
       />
 
       <BaseTagsSimpleList
-        class="similar-list"
+        class="d-inline"
         :tags="similar"
       />
     </template>
@@ -78,7 +78,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.similar-list
-  @extend .d-inline
-</style>
+<style lang="sass" scoped></style>

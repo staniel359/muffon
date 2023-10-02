@@ -1,24 +1,23 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned main-visibility-container"
     :link="profileLink"
     @click="handleLinkClick"
   >
-    <div class="image-container">
+    <div class="relative">
       <BaseProfileOnlineLabel
-        class="online-label"
         :profile-data="profileData"
       />
 
       <BaseImage
-        class="circular"
+        class="circular image-50"
         model="profile"
         :image="imageData?.extrasmall"
       />
     </div>
 
     <div class="content">
-      <div class="nickname-label-container">
+      <div class="middle-aligned">
         <BaseHeader
           tag="h4"
           class="link"
@@ -27,11 +26,12 @@
 
         <BasePrivateIcon
           v-if="isPrivate"
+          class="right small"
         />
 
         <BaseLabel
-          v-if="isStaff"
-          class="primary circular small role-label"
+          v-if="isCreator"
+          class="primary circular small main-right-small-section"
           :text="roleText"
           :is-invertable="false"
         />
@@ -39,18 +39,16 @@
 
       <div
         v-if="isRenderExtraData"
-        class="description main-small-container"
+        class="description"
       >
-        <small
-          class="extra-data-section"
-        >
+        <small class="middle-aligned">
           <BaseProfileGenderAge
-            class="extra-data-item"
+            class="main-list-right-small-section"
             :profile-data="profileData"
           />
 
           <BaseProfileCityCountry
-            class="extra-data-item city-country-item"
+            class="main-list-right-small-section"
             :profile-data="profileData"
           />
         </small>
@@ -71,7 +69,7 @@
 
     <BaseProfileFollowingMessage
       v-if="otherProfileData"
-      class="following-message"
+      class="description right main-right-small-section align-self-center"
       :other-profile-data="otherProfileData"
       is-small
     />
@@ -83,10 +81,10 @@
     />
 
     <BaseProfileOptionsPopup
-      v-if="!isSelf"
+      class="invisible-item"
       :profile-data="profileData"
-      is-with-follow-option
-      is-with-message-option
+      :is-with-follow-option="!isSelf"
+      :is-with-message-option="!isSelf"
     />
   </BaseLinkContainer>
 </template>
@@ -176,8 +174,10 @@ export default {
     nickname () {
       return this.profileData.nickname
     },
-    isStaff () {
-      return this.role === 'creator'
+    isCreator () {
+      return (
+        this.role === 'creator'
+      )
     },
     role () {
       return this.profileData.role
@@ -257,62 +257,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.image-container
-  @extend .relative
-
-.online-label
-  @extend .absolute
-  z-index: 1
-[dir="ltr"]
-  .online-label
-    right: 0
-[dir="rtl"]
-  .online-label
-    left: 0
-
-.nickname-label-container
-  @extend .d-flex, .align-items-center
-
-[dir="ltr"]
-  .role-label
-    margin-left: 0.75em
-[dir="rtl"]
-  .role-label
-    margin-right: 0.75em
-
-.follow-counters
-  @extend .d-flex
-[dir="ltr"]
-  .follow-counters
-    :deep(.following)
-      margin-left: 0.75em
-[dir="rtl"]
-  .follow-counters
-    :deep(.following)
-      margin-right: 0.75em
-
-.following-message
-  @extend .align-self-center
-[dir="ltr"]
-  .following-message
-    margin-left: 0.75em
-[dir="rtl"]
-  .following-message
-    margin-right: 0.75em
-
-.extra-data-section
-  @extend .d-flex, .align-items-center
-
-[dir="ltr"]
-  .extra-data-item
-    &:not(:first-child)
-      margin-left: 0.5em
-[dir="rtl"]
-  .extra-data-item
-    &:not(:first-child)
-      margin-right: 0.5em
-
-.city-country-item
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

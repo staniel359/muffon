@@ -1,7 +1,7 @@
 <template>
   <BaseTrackContainer
     ref="track"
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned main-visibility-container"
     :track-data="trackData"
     :queue-tracks="queueTracks"
     :is-disabled="isDeleted"

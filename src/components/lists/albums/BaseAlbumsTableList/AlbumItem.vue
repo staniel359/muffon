@@ -20,6 +20,7 @@
         @link-click="handleLinkClick"
       >
         <BaseAlbumOptionsPopup
+          class="hidden-item"
           :album-data="albumData"
           :library-id="libraryId"
           :favorite-id="favoriteId"

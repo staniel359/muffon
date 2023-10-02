@@ -1,6 +1,6 @@
 <template>
   <BaseDropdown
-    class="base-language-select"
+    class="main-small-select"
     :options="locales"
     :selected="profileLanguage"
     @select="handleSelect"
@@ -56,7 +56,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-language-select
-  width: 125px
-</style>
+<style lang="sass" scoped></style>

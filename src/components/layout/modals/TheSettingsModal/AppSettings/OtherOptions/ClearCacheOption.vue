@@ -1,17 +1,19 @@
 <template>
-  <div class="main-settings-option">
-    <div class="option-header">
-      <BaseButton
-        class="red circular option-button"
-        icon="delete"
-        :class="{
-          loading: isLoading,
-          disabled: isLoading
-        }"
-        :text="clearText"
-        :is-invertable="false"
-        @click="handleClick"
-      />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <div class="option-header">
+        <BaseButton
+          class="red circular option-button"
+          left-icon="delete"
+          :class="{
+            loading: isLoading,
+            disabled: isLoading
+          }"
+          :text="clearText"
+          :is-invertable="false"
+          @click="handleClick"
+        />
+      </div>
     </div>
   </div>
 </template>

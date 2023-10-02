@@ -9,7 +9,7 @@
 
     <ContentSection />
 
-    <div class="actions">
+    <div class="actions main-buttons-container">
       <DeclineButton />
 
       <LaterButton />
@@ -89,13 +89,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-[dir="ltr"]
-  .action-button
-    &:not(:first-child)
-      margin-left: 1em !important
-[dir="rtl"]
-  .action-button
-    &:not(:first-child)
-      margin-right: 1em !important
-</style>
+<style lang="sass" scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="anonymous-segment"
+    class="text-align-center"
   >
     <span
       class="main-link"
@@ -11,7 +11,7 @@
       />
 
       <BaseIcon
-        class="continue-icon"
+        class="main-icon main-right-extrasmall-section"
         icon="arrowRight"
         is-with-rtl
       />
@@ -52,14 +52,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.anonymous-segment
-  @extend .text-align-center
-
-[dir="ltr"]
-  .continue-icon
-    margin-left: 0.4em
-[dir="rtl"]
-  .continue-icon
-    margin-right: 0.4em
-</style>
+<style lang="sass" scoped></style>

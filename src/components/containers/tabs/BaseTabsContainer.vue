@@ -1,6 +1,6 @@
 <template>
   <div
-    class="base-tabs-container"
+    class="base-tabs-container plain-full"
     :class="{
       vertical: isVertical
     }"
@@ -16,10 +16,10 @@
       @tab-click="handleTabClick"
     />
 
-    <div class="base-tab-container">
+    <div class="base-tab-container full-column relative">
       <slot
         v-for="(tabData, index) in tabs"
-        class="ui segment base-tab main-segment"
+        class="ui segment base-tab main-segment no-shadow no-border no-margin height-100 width-100 plain-full background-transparent"
         :name="index"
         :class="{
           active: isActive(index)
@@ -109,23 +109,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-tabs-container
-  @extend .flex-full, .d-flex
-  &:not(.vertical)
-    @extend .flex-column
-    .base-tabs
-      overflow-x: auto
-
-.base-tab-container
-  @extend .flex-full, .d-flex, .flex-column, .relative
-
-:deep(.base-tab)
-  @extend .no-shadow, .no-border, .no-margin, .h-100, .w-100, .d-flex, .flex-full, .background-transparent
-  &:not(.main-settings-options-block)
-    @extend .no-padding
-  &:not(.active)
-    @extend .d-none
-  &.with-top-segment
-    @extend .flex-column
-</style>
+<style lang="sass" scoped></style>

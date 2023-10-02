@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <p
-      class="text-section"
+      class="main-text-section main-text-container"
       v-html="goingText"
     />
 
@@ -14,19 +14,19 @@
         <p
           v-for="(alsoTextItem, index) in alsoText"
           :key="index"
-          class="text-section main-text-container"
+          class="main-text-section main-formatted-text-container"
           v-html="alsoTextItem"
         />
       </template>
       <p
         v-else
-        class="text-section"
+        class="main-text-section main-text-container"
         v-text="alsoText"
       />
     </template>
 
     <p
-      class="text-section"
+      class="main-text-section main-text-container"
     >
       <strong
         v-text="undoText"
@@ -34,6 +34,7 @@
     </p>
 
     <p
+      class="main-text-section main-text-container"
       v-text="sureText"
     />
   </div>
@@ -106,7 +107,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.text-section
-  margin-bottom: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

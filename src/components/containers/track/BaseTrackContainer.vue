@@ -49,6 +49,10 @@ export default {
         return []
       }
     },
+    isClickable: {
+      type: Boolean,
+      default: true
+    },
     isWithActiveClass: Boolean,
     isDisabled: Boolean,
     isFromRadio: Boolean,
@@ -150,16 +154,18 @@ export default {
   methods: {
     getPlayerTrack,
     handleClick () {
-      if (this.isCurrent) {
-        this.callAudioAction()
-      } else if (this.audioLink) {
-        this.setAudio()
-      } else if (!this.isLoading) {
-        this.getAudio()
-      }
+      if (this.isClickable) {
+        if (this.isCurrent) {
+          this.callAudioAction()
+        } else if (this.audioLink) {
+          this.setAudio()
+        } else if (!this.isLoading) {
+          this.getAudio()
+        }
 
-      if (this.isFocus) {
-        this.focus()
+        if (this.isFocus) {
+          this.focus()
+        }
       }
     },
     async handleIsFocusActiveChange (

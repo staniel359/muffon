@@ -1,7 +1,7 @@
 <template>
-  <div class="main-simple-list-item">
+  <div class="main-simple-list-item middle-aligned not-padded main-top-section">
     <BaseImage
-      class="small circular"
+      class="circular image-40"
       model="profile"
       :image="imageData?.extrasmall"
     />
@@ -42,7 +42,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-simple-list-item
-  margin-bottom: 1em
-</style>
+<style lang="sass" scoped></style>

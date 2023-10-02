@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="red circular cancel action-button"
+    class="red circular cancel"
     :text="declineText"
     @click="handleClick"
   />
@@ -20,7 +20,7 @@ export default {
   computed: {
     declineText () {
       return this.$t(
-        'donate.decline'
+        'donate.actions.decline'
       )
     }
   },

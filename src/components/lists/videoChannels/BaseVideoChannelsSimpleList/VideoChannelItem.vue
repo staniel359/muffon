@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned main-visibility-container"
     :class="{
       disabled: isDeleted
     }"
@@ -21,7 +21,7 @@
       />
 
       <BaseImage
-        class="circular"
+        class="circular image-50"
         model="videoChannel"
         :image="imageData?.extrasmall"
       />
@@ -57,6 +57,7 @@
       />
 
       <BaseVideoChannelOptionsPopup
+        class="invisible-item"
         :channel-data="channelData"
         :bookmark-id="bookmarkId"
         :is-bookmark="isBookmark"

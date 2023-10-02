@@ -1,7 +1,7 @@
 <template>
   <BaseSegmentContainer
     ref="player"
-    class="bottom overlay blurred sidebar player-panel"
+    class="bottom overlay blurred sidebar the-player-panel no-padding"
     :class="{
       visible: playerPlaying
     }"
@@ -10,13 +10,11 @@
 
     <div
       v-if="playerPlaying"
-      class="ui container main-container player-content-container"
+      class="ui container main-container player-content-container middle-aligned height-100"
     >
       <PlayingSection />
 
       <AudioSection />
-
-      <CloseButton />
     </div>
   </BaseSegmentContainer>
 </template>
@@ -31,7 +29,6 @@ import BaseSegmentContainer
 import AudioElement from './PlayerPanel/AudioElement.vue'
 import PlayingSection from './PlayerPanel/PlayingSection.vue'
 import AudioSection from './PlayerPanel/AudioSection.vue'
-import CloseButton from './PlayerPanel/CloseButton.vue'
 import {
   setPlayerPanel
 } from '@/helpers/actions/layout'
@@ -48,8 +45,7 @@ export default {
     BaseSegmentContainer,
     AudioElement,
     PlayingSection,
-    AudioSection,
-    CloseButton
+    AudioSection
   },
   computed: {
     ...mapState(
@@ -93,18 +89,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.ui.sidebar
-  &.player-panel
-    @extend .no-padding, .no-border, .visibility-visible
-    height: $playerPanelHeight !important
-    overflow: visible !important
-    z-index: 200 !important
-    transition: transform 0.5s ease
-    &.inverted
-      border-top: $borderInverted !important
-
-.player-content-container
-  @extend .d-flex, .align-items-center, .h-100
-  width: 730px !important
-</style>
+<style lang="sass" scoped></style>

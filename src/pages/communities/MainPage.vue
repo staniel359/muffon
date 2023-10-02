@@ -5,14 +5,15 @@
     :scope="scope"
     :limit="limit"
     :order="order"
+    :is-with-options="!!profileId"
     is-with-top-segment
     is-with-order-change
   >
     <template
-      #top
+      #options
     >
-      <BaseCommunityCreateButton
-        v-if="profileId"
+      <BaseCommunitiesOptionsPopup
+        is-with-create-option
       />
     </template>
 
@@ -36,8 +37,8 @@ import {
 import profileStore from '@/stores/profile'
 import BaseCommunitiesPaginatedPageContainer
   from '@/components/containers/pages/communities/BaseCommunitiesPaginatedPageContainer.vue'
-import BaseCommunityCreateButton
-  from '@/components/buttons/community/BaseCommunityCreateButton.vue'
+import BaseCommunitiesOptionsPopup
+  from '@/components/popups/communities/BaseCommunitiesOptionsPopup.vue'
 import BaseCommunitiesSimpleList
   from '@/components/lists/communities/BaseCommunitiesSimpleList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
@@ -50,7 +51,7 @@ export default {
   name: 'MainPage',
   components: {
     BaseCommunitiesPaginatedPageContainer,
-    BaseCommunityCreateButton,
+    BaseCommunitiesOptionsPopup,
     BaseCommunitiesSimpleList
   },
   mixins: [

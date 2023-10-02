@@ -1,11 +1,10 @@
 <template>
-  <div class="next-button-container">
+  <div class="main-bottom-section end-aligned">
     <BaseButton
       ref="button"
       class="basic circular compact"
-      icon="audioNext"
+      right-icon="audioNext"
       :text="nextText"
-      is-reverse
       is-icon-with-rtl
       @click="handleClick"
     />
@@ -45,7 +44,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.next-button-container
-  @extend .d-flex, .justify-content-flex-end
-</style>
+<style lang="sass" scoped></style>

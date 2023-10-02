@@ -1,39 +1,45 @@
 <template>
-  <BaseErrorMessage
-    v-if="error"
-    class="error-message"
-    :error="error"
-  />
-
-  <div class="main-settings-option">
-    <div class="option-header">
-      <BaseButton
-        class="green circular option-button"
-        icon="spotify"
-        :class="{
-          loading: isLoading,
-          disabled: isLoading
-        }"
-        :text="connectText"
-        :is-invertable="false"
-        @click="handleClick"
+  <div class="main-settings-option-container">
+    <div
+      v-if="error"
+      class="main-top-section"
+    >
+      <BaseErrorMessage
+        :error="error"
       />
     </div>
 
-    <BaseClearButton
-      @click="handleClearButtonClick"
+    <div class="main-settings-option">
+      <div class="option-header">
+        <BaseButton
+          class="green circular option-button"
+          left-icon="spotify"
+          :class="{
+            loading: isLoading,
+            disabled: isLoading
+          }"
+          :text="connectText"
+          :is-invertable="false"
+          @click="handleClick"
+        />
+      </div>
+
+      <BaseClearButton
+        @click="handleClearButtonClick"
+      />
+    </div>
+
+    <div class="main-bottom-section">
+      <BaseMessage
+        :content="confirmText"
+      />
+    </div>
+
+    <BaseInput
+      v-model.trim="code"
+      class="fluid main-bottom-section"
     />
   </div>
-
-  <div
-    class="confirm-text"
-    v-text="confirmText"
-  />
-
-  <BaseInput
-    v-model.trim="code"
-    class="code-input"
-  />
 </template>
 
 <script>
@@ -41,6 +47,7 @@ import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseInput from '@/components/inputs/BaseInput.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import BaseMessage from '@/components/messages/BaseMessage.vue'
 import createConnection from '@/helpers/actions/api/connection/create'
 import {
   update as updateGlobalStore
@@ -52,7 +59,8 @@ export default {
     BaseErrorMessage,
     BaseButton,
     BaseInput,
-    BaseClearButton
+    BaseClearButton,
+    BaseMessage
   },
   emits: [
     'clearButtonClick'
@@ -114,10 +122,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.confirm-text
-  margin-top: 0.75em
-
-.code-input
-  margin-top: 0.75em
-</style>
+<style lang="sass" scoped></style>

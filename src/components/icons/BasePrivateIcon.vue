@@ -1,6 +1,6 @@
 <template>
   <BaseIcon
-    class="small grey base-private-icon"
+    class="base-private-icon grey main-icon height-fit-content"
     icon="private"
   />
 </template>
@@ -16,13 +16,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-private-icon
-  @extend .no-margin
-[dir="ltr"]
-  .base-private-icon
-    margin-left: 0.5em !important
-[dir="rtl"]
-  .base-private-icon
-    margin-right: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

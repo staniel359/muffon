@@ -1,9 +1,11 @@
 <template>
-  <BaseMessage
-    class="success complete-message"
-    icon="success"
-    :header="successText"
-  />
+  <div class="main-top-section">
+    <BaseMessage
+      class="success"
+      icon="success"
+      :header="successText"
+    />
+  </div>
 </template>
 
 <script>

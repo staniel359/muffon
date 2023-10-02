@@ -1,6 +1,6 @@
 <template>
   <BaseMenuContainer
-    class="top fixed the-browser-tabs"
+    class="top fixed the-browser-tabs middle-aligned no-shadow overflow-y-auto"
   >
     <BrowserTab
       v-for="tabData in tabs"
@@ -9,7 +9,7 @@
     />
 
     <BaseButton
-      class="mini basic circular compact"
+      class="basic circular compact simple"
       icon="add"
       @click="handleAddTabButtonClick"
     />
@@ -121,13 +121,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.the-browser-tabs
-  @extend .no-shadow, .d-flex, .align-items-center, .overflow-y-auto
-  height: 45px
-  padding: 0 0.5em
-  &.inverted
-    border-bottom: $borderInverted !important
-  &::-webkit-scrollbar
-    @extend .d-none
-</style>
+<style lang="sass" scoped></style>

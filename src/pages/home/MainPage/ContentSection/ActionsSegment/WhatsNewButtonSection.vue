@@ -1,16 +1,14 @@
 <template>
-  <div class="action-button-container">
-    <BaseButton
-      class="basic circular"
-      icon="listSimple"
-      :text="whatsNewText"
-      @click="handleClick"
-    />
+  <BaseButton
+    class="basic circular"
+    left-icon="whatsNew"
+    :text="whatsNewText"
+    @click="handleClick"
+  />
 
-    <BaseAppReleasesModal
-      ref="modal"
-    />
-  </div>
+  <BaseAppReleasesModal
+    ref="modal"
+  />
 </template>
 
 <script>

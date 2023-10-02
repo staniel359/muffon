@@ -1,6 +1,6 @@
 <template>
   <BaseAlbumLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned main-visibility-container"
     :class="{
       disabled: isDeleted
     }"
@@ -23,7 +23,7 @@
       />
 
       <BaseImage
-        class="rounded-medium"
+        class="rounded-medium image-50"
         model="album"
         :image="imageData?.extrasmall"
       />
@@ -95,6 +95,7 @@
       />
 
       <BaseAlbumOptionsPopup
+        class="invisible-item"
         :album-data="albumData"
         :library-id="libraryId"
         :favorite-id="favoriteId"

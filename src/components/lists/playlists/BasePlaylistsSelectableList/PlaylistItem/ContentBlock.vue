@@ -1,12 +1,12 @@
 <template>
   <BaseImage
-    class="rounded-medium"
+    class="rounded-medium image-50"
     model="playlist"
     :image="imageData?.extrasmall"
   />
 
   <div class="content">
-    <div class="title-section">
+    <div class="middle-aligned">
       <BaseHeader
         class="link"
         tag="h4"
@@ -15,12 +15,13 @@
 
       <BasePrivateIcon
         v-if="isPrivate"
+        class="right small"
       />
     </div>
 
     <div
       v-if="description"
-      class="description main-small-container"
+      class="description"
     >
       <small
         v-text="description"
@@ -35,8 +36,9 @@
     />
   </div>
 
-  <div class="icon-container">
+  <div class="icon-container main-right-small-icon middle-center-aligned">
     <BaseIcon
+      class="main-icon"
       :class="iconClass"
       :is-loading="isLoading"
       :icon="icon"
@@ -44,6 +46,7 @@
   </div>
 
   <BasePlaylistOptionsPopup
+    class="invisible-item"
     :playlist-data="playlistData"
     is-with-edit-option
     is-with-delete-option
@@ -153,19 +156,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.title-section
-  @extend .d-flex, .align-items-center
-
 .icon-container
-  @extend .d-flex, .align-items-center, .justify-content-center
   width: 20px
   height: 20px
-  &.icon
-    @extend .no-padding
-[dir="ltr"]
-  .icon-container
-    margin-left: 0.75em
-[dir="rtl"]
-  .icon-container
-    margin-right: 0.75em
 </style>

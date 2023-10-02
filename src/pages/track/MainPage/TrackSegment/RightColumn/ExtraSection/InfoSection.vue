@@ -1,17 +1,14 @@
 <template>
   <div>
-    <div
+    <BaseCounterLabelsSection
       class="main-labels-section"
-    >
-      <BaseCounterLabelsSection
-        :counters="counters"
-      />
+      :counters="counters"
+    />
 
-      <BaseTrackInnerCounterLabelsSection
-        class="inline"
-        :track-data="trackData"
-      />
-    </div>
+    <BaseTrackInnerCounterLabelsSection
+      class="main-labels-section"
+      :track-data="trackData"
+    />
 
     <BaseTrackTags
       class="main-labels-section"

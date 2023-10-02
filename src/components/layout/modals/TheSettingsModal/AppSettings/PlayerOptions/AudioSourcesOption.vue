@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="audioSourcesText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="audioSourcesText"
+      />
 
-    <div class="sources-list-container">
-      <SourcesList />
+      <div>
+        <SourcesList />
 
-      <AddButton />
+        <AddButton />
+      </div>
     </div>
   </div>
 </template>
@@ -36,7 +38,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.sources-list-container
-  @extend .d-flex, .flex-column
-</style>
+<style lang="sass" scoped></style>

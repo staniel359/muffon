@@ -3,14 +3,12 @@
     :scrollable="scrollable"
   >
     <BaseSegmentContainer>
-      <div class="main-simple-list-item">
-        <div class="community-image-container">
-          <BaseImage
-            class="rounded-medium"
-            model="community"
-            :image="imageData?.extrasmall"
-          />
-        </div>
+      <div class="main-simple-list-item middle-aligned not-padded">
+        <BaseImage
+          class="rounded-medium image-40"
+          model="community"
+          :image="imageData?.extrasmall"
+        />
 
         <div class="content">
           <BaseHeader
@@ -57,15 +55,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.community-image-container
-  width: 35px
-  height: 35px
-
-[dir="ltr"]
-  .content
-    margin-left: 0.75em
-[dir="rtl"]
-  .content
-    margin-right: 0.75em
-</style>
+<style lang="sass" scoped></style>

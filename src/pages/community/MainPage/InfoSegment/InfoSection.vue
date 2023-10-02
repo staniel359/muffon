@@ -1,15 +1,17 @@
 <template>
-  <BaseIcon
-    ref="icon"
-    class="grey main-popup-icon"
-    icon="infoCircle"
-  />
-
-  <div class="main-popup-container">
-    <BaseCommunityInfoPopup
-      ref="popup"
-      :community-data="communityData"
+  <div class="main-bottom-extrasmall-section">
+    <BaseIcon
+      ref="icon"
+      class="grey main-popup-icon"
+      icon="infoCircle"
     />
+
+    <div class="main-popup-container">
+      <BaseCommunityInfoPopup
+        ref="popup"
+        :community-data="communityData"
+      />
+    </div>
   </div>
 </template>
 
@@ -48,7 +50,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-popup-icon
-  margin-top: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

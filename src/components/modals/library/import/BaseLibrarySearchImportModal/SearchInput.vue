@@ -2,7 +2,7 @@
   <Component
     :is="component"
     ref="input"
-    class="search-input"
+    class="main-simple-search-input"
     :source="source"
     :[scope]="collection"
     @select="handleSelect"
@@ -81,7 +81,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-input
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

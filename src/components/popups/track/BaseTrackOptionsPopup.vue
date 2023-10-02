@@ -79,6 +79,10 @@
         :model-data="trackData"
       />
 
+      <CloseOption
+        v-if="isWithCloseOption"
+      />
+
       <template
         v-if="isWithDeleteOption"
       >
@@ -158,6 +162,7 @@ import BaseShareOption
   from '@/components/popups/options/BaseShareOption.vue'
 import BaseExternalLinkOption
   from '@/components/popups/options/BaseExternalLinkOption.vue'
+import CloseOption from './BaseTrackOptionsPopup/CloseOption.vue'
 import BaseDeleteOption
   from '@/components/popups/options/BaseDeleteOption.vue'
 import BaseLibraryDeleteModal
@@ -191,6 +196,7 @@ export default {
     SaveOption,
     BaseShareOption,
     BaseExternalLinkOption,
+    CloseOption,
     BaseDeleteOption,
     BasePlaylistsModal,
     BaseLibraryDeleteModal,
@@ -227,6 +233,7 @@ export default {
     isWithSaveOption: Boolean,
     isWithShareOption: Boolean,
     isWithExternalLinkOption: Boolean,
+    isWithCloseOption: Boolean,
     isWithDeleteOption: Boolean,
     isDeleteWithRedirect: Boolean,
     isClearable: Boolean,
@@ -259,6 +266,7 @@ export default {
           this.isRenderSaveOption ||
           this.isRenderShareOption ||
           this.isWithExternalLinkOption ||
+          this.isWithCloseOption ||
           this.isWithDeleteOption
       )
     },

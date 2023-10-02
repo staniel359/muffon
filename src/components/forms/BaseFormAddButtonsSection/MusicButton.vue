@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="small basic circular add-button"
+    class="small basic circular"
     icon="music"
     @click="handleClick"
   />

@@ -1,7 +1,7 @@
 <template>
   <div
     ref="button"
-    class="ui button main-simple-button"
+    class="ui button main-button"
     :class="[
       buttonColorClass,
       buttonIconClass
@@ -9,8 +9,19 @@
     @click="handleClick"
   >
     <BaseIcon
-      v-if="icon && !isReverse"
+      v-if="icon"
+      class="main-icon"
       :icon="icon"
+      :is-with-rtl="isIconWithRtl"
+    />
+
+    <BaseIcon
+      v-if="leftIcon"
+      class="main-list-left-small-icon"
+      :class="{
+        colored: isLeftIconColored
+      }"
+      :icon="leftIcon"
       :is-with-rtl="isIconWithRtl"
     />
 
@@ -20,9 +31,9 @@
     />
 
     <BaseIcon
-      v-if="icon && isReverse"
-      class="right"
-      :icon="icon"
+      v-if="rightIcon"
+      class="main-list-right-small-icon"
+      :icon="rightIcon"
       :is-with-rtl="isIconWithRtl"
     />
   </div>
@@ -50,9 +61,11 @@ export default {
       default: true
     },
     icon: String,
+    leftIcon: String,
+    rightIcon: String,
     text: String,
-    isReverse: Boolean,
-    isIconWithRtl: Boolean
+    isIconWithRtl: Boolean,
+    isLeftIconColored: Boolean
   },
   emits: [
     'click'

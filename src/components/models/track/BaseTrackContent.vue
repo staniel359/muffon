@@ -23,13 +23,13 @@
     >
       <BaseImage
         v-if="isWithImage"
-        class="rounded-medium small"
+        class="rounded-medium image-35"
         model="track"
         :image="imageData?.extrasmall"
       />
       <BaseArtistImage
         v-else-if="isWithArtistImage"
-        class="small"
+        class="image-35"
         size="extrasmall"
         :artist-name="artistName"
         :image-data="artistImageData"
@@ -83,26 +83,30 @@
 
     <RecommendationTracksSection
       v-if="isRecommendation"
-      class="description recommendation-tracks-section"
+      class="description right main-right-small-section"
       :recommendation-data="trackData"
     />
 
     <BaseDurationSection
       v-if="isRenderDuration"
-      class="description track-duration"
+      class="description right main-right-small-section"
       :duration="duration"
     />
 
-    <div class="icons-section">
+    <div
+      v-if="isRenderSource || isRenderSavedIcon"
+      class="middle-aligned-column main-right-small-section"
+    >
       <BaseSourceIcon
         v-if="isRenderSource"
-        class="right icon-item"
+        class="main-list-bottom-mini-icon"
         :source="source"
       />
 
-      <BaseSavedIcon
+      <BaseIcon
         v-if="isRenderSavedIcon"
-        class="right icon-item"
+        class="main-list-bottom-mini-icon"
+        icon="savedTrack"
       />
     </div>
 
@@ -113,6 +117,7 @@
     />
 
     <BaseTrackOptionsPopup
+      class="invisible-item"
       :track-data="trackData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
@@ -166,7 +171,7 @@ import ListenersCountSection
 import BaseDurationSection
   from '@/components/sections/BaseDurationSection.vue'
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
-import BaseSavedIcon from '@/components/icons/BaseSavedIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import RecommendationTracksSection
   from './BaseTrackContent/RecommendationTracksSection.vue'
@@ -191,7 +196,7 @@ export default {
     RecommendationTracksSection,
     BaseDurationSection,
     BaseSourceIcon,
-    BaseSavedIcon,
+    BaseIcon,
     BaseSelfIcons,
     BaseCreatedSection,
     BaseTrackOptionsPopup,
@@ -434,34 +439,5 @@ export default {
 
 <style lang="sass" scoped>
 .track-play-button
-  @extend .no-padding, .no-margin
-  min-width: unset !important
-[dir="ltr"]
-  .track-play-button
-    margin-right: 1em !important
-    margin-left: 0.5em !important
-[dir="rtl"]
-  .track-play-button
-    margin-right: 0.5em !important
-    margin-left: 1em !important
-
-[dir="ltr"]
-  .recommendation-tracks-section
-    margin-left: 0.75em
-[dir="rtl"]
-  .recommendation-tracks-section
-    margin-right: 0.75em
-
-[dir="ltr"]
-  .track-duration
-    margin-left: 0.75em
-[dir="rtl"]
-  .track-duration
-    margin-right: 0.75em
-
-.icons-section
-  @extend .d-flex, .flex-column
-  .icon-item
-    &:not(:first-child)
-      margin-top: 0.5em !important
+  margin: 0 0.5rem !important
 </style>

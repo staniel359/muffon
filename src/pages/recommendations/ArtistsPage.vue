@@ -26,7 +26,7 @@
     >
       <FilterSection
         v-show="isShowFilter"
-        class="filter-section"
+        class="main-bottom-section"
         :is-show="isShowFilter"
       />
     </template>
@@ -54,7 +54,7 @@
 import BaseRecommendationsPaginatedPageContainer
   from '@/components/containers/pages/recommendations/BaseRecommendationsPaginatedPageContainer.vue'
 import BaseFilterButton from '@/components/buttons/BaseFilterButton.vue'
-import FilterSection from './MainPage/FilterSection.vue'
+import FilterSection from './ArtistsPage/FilterSection.vue'
 import BaseArtistsList
   from '@/components/lists/artists/BaseArtistsList.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
@@ -123,12 +123,14 @@ export default {
       value
     ) {
       this.filterArgs = value
+    },
+    refreshPagination () {
+      this.$refs
+        .page
+        .refresh()
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.filter-section
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

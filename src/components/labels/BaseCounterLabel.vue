@@ -3,7 +3,7 @@
     v-if="count"
     class="basic circular"
     :class="size"
-    :icon="iconFormatted"
+    :left-icon="iconFormatted"
     :text="countFormatted"
     :is-clickable="isClickable"
     @click="handleClick"

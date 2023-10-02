@@ -65,7 +65,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-:deep(.error-message)
-  margin-bottom: 1em !important
-</style>
+<style lang="sass" scoped></style>

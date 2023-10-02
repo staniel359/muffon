@@ -1,5 +1,5 @@
 <template>
-  <i class="icon base-source-icon">
+  <i class="icon base-source-icon main-icon min-width-unset">
     <BaseIcon
       ref="icon"
       class="source-icon main-popup-icon"
@@ -70,26 +70,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-source-icon
-  @extend .no-padding, .no-margin
-  min-width: unset !important
-  &.bottom
-    margin-top: 0.75em !important
-[dir="ltr"]
-  .base-source-icon
-    &.left
-      margin-right: 0.75em !important
-    &.right
-      margin-left: 0.75em !important
-[dir="rtl"]
-  .base-source-icon
-    &.left
-      margin-left: 0.75em !important
-    &.right
-      margin-right: 0.75em !important
-
-.source-icon
-  @extend .no-padding, .no-margin
-  min-width: unset !important
-</style>
+<style lang="sass" scoped></style>

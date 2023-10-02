@@ -9,7 +9,7 @@
 
         <div
           v-if="isRenderTypeSelect"
-          class="type-section"
+          class="bottom-section"
         >
           <TypeSelect
             :key="typeSelectKey"
@@ -17,17 +17,17 @@
             :types="selectedSourceTypes"
           />
         </div>
-      </div>
 
-      <div
-        v-if="isRenderVideoSelect"
-        class="right-section"
-      >
-        <VideoSelect
-          :key="videoSelectKey"
-          :videos="selectedTypeVideos"
-          :type-id="selectedTypeId"
-        />
+        <div
+          v-if="isRenderVideoSelect"
+          class="bottom-section"
+        >
+          <VideoSelect
+            :key="videoSelectKey"
+            :videos="selectedTypeVideos"
+            :type-id="selectedTypeId"
+          />
+        </div>
       </div>
     </div>
 

@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic circular cancel action-button"
+    class="basic circular cancel"
     :text="laterText"
     @click="handleClick"
   />
@@ -20,7 +20,7 @@ export default {
   computed: {
     laterText () {
       return this.$t(
-        'donate.later'
+        'donate.actions.later'
       )
     }
   },

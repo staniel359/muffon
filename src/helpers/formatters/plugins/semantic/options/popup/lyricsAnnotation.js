@@ -1,3 +1,9 @@
+import {
+  handleFadeShow,
+  handleFadeVisible,
+  handleFadeHide
+} from '@/helpers/actions/plugins/semantic/popup'
+
 export default function (
   {
     html,
@@ -8,8 +14,8 @@ export default function (
     'ui popup main-popup main-annotation-popup'
 
   return {
-    position: 'top center',
-    transition: 'fade up',
+    position: 'right center',
+    transition: 'fade right',
     variation: 'basic',
     exclusive: true,
     hoverable: true,
@@ -22,6 +28,25 @@ export default function (
       hide: 150
     },
     html,
-    onShow
+    onShow () {
+      onShow()
+
+      handleFadeShow(
+        this,
+        'right'
+      )
+    },
+    onVisible () {
+      handleFadeVisible(
+        this,
+        'right'
+      )
+    },
+    onHide () {
+      handleFadeHide(
+        this,
+        'right'
+      )
+    }
   }
 }

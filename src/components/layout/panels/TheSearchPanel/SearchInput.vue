@@ -1,8 +1,8 @@
 <template>
-  <div class="search-input-container">
+  <div class="middle-aligned-full search-input">
     <BaseHistoryInput
       ref="input"
-      class="search-input"
+      class="main-simple-search-input"
       scope="search"
       :query="query"
       @submit="handleSubmit"
@@ -88,10 +88,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-input-container
-  @extend .d-flex, .align-items-center, .flex-full
-
-.search-input
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="source-select-container">
+  <div class="main-list-bottom-section middle-aligned">
     <BaseDropdownContainer
       class="main-source-select"
       :selected="source"
@@ -102,8 +102,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.source-select-container
-  @extend .d-flex, .align-items-center
-  margin-bottom: 1em
-</style>
+<style lang="sass" scoped></style>

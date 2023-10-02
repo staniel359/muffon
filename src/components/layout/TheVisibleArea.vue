@@ -1,13 +1,13 @@
 <template>
   <div
-    class="the-visible-area-container"
+    class="the-visible-area-container width-100 fixed pointer-events-none top-navbar"
     :class="{
       'player-panel-height': playerPlaying
     }"
   >
     <div
       ref="visible"
-      class="the-visible-area"
+      class="width-100 height-100 relative"
     />
   </div>
 </template>
@@ -46,15 +46,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.the-visible-area-container
-  @extend .w-100, .fixed, .pointer-events-none
-  height: calc(100vh - #{$navbarHeight})
-  top: $navbarHeight
-  z-index: 10000
-  &.player-panel-height
-    height: calc(100vh - #{$navbarHeight} - #{$playerPanelHeight})
-
-.the-visible-area
-  @extend .w-100, .h-100, .relative
-</style>
+<style lang="sass" scoped></style>

@@ -1,7 +1,7 @@
 <template>
   <div class="main-right-column">
     <BaseHeader
-      class="channel-title"
+      class="main-top-small-section"
       tag="h2"
       :text="channelTitle"
     />
@@ -53,7 +53,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.channel-title
-  margin-bottom: 0.4em !important
-</style>
+<style lang="sass" scoped></style>

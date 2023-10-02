@@ -9,13 +9,13 @@ export function main (
     autofocus: false,
     blurring: true,
     allowMultiple: isMultiple,
-    duration: 200,
-    transition: 'fade',
+    duration: 300,
+    transition: 'scale',
     className: {
       innerDimmer: 'ui dimmer'
     },
     dimmerSettings: {
-      duration: 200
+      duration: 300
     },
     onShow,
     onVisible

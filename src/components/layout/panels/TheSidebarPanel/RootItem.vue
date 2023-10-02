@@ -6,10 +6,8 @@
     }"
   >
     <div class="main-sidebar-item-icon-image-container">
-      <BaseImage
-        class="main-logo-image"
-        :image="logo"
-        is-plain
+      <BaseLogoImage
+        is-small
       />
     </div>
   </div>
@@ -20,13 +18,12 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import BaseImage from '@/components/images/BaseImage.vue'
-import logo from '@/assets/images/logo_xs.png'
+import BaseLogoImage from '@/components/images/BaseLogoImage.vue'
 
 export default {
   name: 'RootItem',
   components: {
-    BaseImage
+    BaseLogoImage
   },
   computed: {
     ...mapState(
@@ -34,10 +31,7 @@ export default {
       [
         'isDarkMode'
       ]
-    ),
-    logo () {
-      return logo
-    }
+    )
   }
 }
 </script>

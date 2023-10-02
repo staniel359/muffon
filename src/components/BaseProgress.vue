@@ -11,7 +11,7 @@
     </div>
 
     <div
-      class="label text-label"
+      class="label main-bottom-small-section"
       v-text="activeTextConditional"
     />
   </div>
@@ -165,11 +165,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-progress
-  .text-label
-    margin-top: 0.75em
-  &:not(.success, .error)
-    .progress-bar
-      @extend .background-base
-</style>
+<style lang="sass" scoped></style>

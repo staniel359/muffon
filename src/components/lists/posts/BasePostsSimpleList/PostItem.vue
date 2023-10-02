@@ -1,6 +1,6 @@
 <template>
   <div
-    class="item main-simple-list-item base-post-item"
+    class="item main-simple-list-item"
     :class="{
       disabled: isDeleted
     }"
@@ -13,36 +13,39 @@
       v-else
     >
       <BaseImage
-        class="medium"
+        class="image-40"
         :class="imageClass"
         :model="imageModel"
         :image="imageData?.extrasmall"
       />
 
       <div class="content">
-        <BaseCommunityTitle
-          v-if="isByCommunity"
-          :community-data="communityData"
-        />
-        <div
-          v-else
-          class="profile-nickname-private-container"
-        >
-          <BaseProfileNickname
-            :profile-data="profileData"
-          />
+        <div class="middle-aligned main-visibility-container">
+          <div class="flex-full">
+            <CreatorSection
+              :post-data="postData"
+            />
 
-          <BasePrivateIcon
-            v-if="isProfilePrivate"
+            <BaseTimestampSection
+              class="description"
+              :created="created"
+            />
+          </div>
+
+          <BasePostOptionsPopup
+            v-if="isWithOptions"
+            class="invisible-item"
+            :post-data="postData"
+            :is-with-edit-option="isWithEditOption"
+            :is-community-creator="isCommunityCreator"
+            is-with-delete-option
+            @updated="handleUpdated"
+            @deleted="handleDeleted"
           />
         </div>
 
-        <BaseTimestampSection
-          class="description"
-          :created="created"
-        />
-
         <BaseSendableContentSection
+          class="sendable-content-section"
           :model-data="postData"
         />
 
@@ -51,16 +54,6 @@
           :is-community-creator="isCommunityCreator"
         />
       </div>
-
-      <BasePostOptionsPopup
-        v-if="isWithOptions"
-        :post-data="postData"
-        :is-with-edit-option="isWithEditOption"
-        :is-community-creator="isCommunityCreator"
-        is-with-delete-option
-        @updated="handleUpdated"
-        @deleted="handleDeleted"
-      />
     </template>
   </div>
 </template>
@@ -72,11 +65,7 @@ import {
 import profileStore from '@/stores/profile'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
-import BaseCommunityTitle
-  from '@/components/models/community/BaseCommunityTitle.vue'
-import BaseProfileNickname
-  from '@/components/models/profile/BaseProfileNickname.vue'
-import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
+import CreatorSection from './PostItem/CreatorSection.vue'
 import BaseTimestampSection
   from '@/components/sections/BaseTimestampSection.vue'
 import BaseSendableContentSection
@@ -91,9 +80,7 @@ export default {
   components: {
     BaseDeletedSection,
     BaseImage,
-    BaseCommunityTitle,
-    BaseProfileNickname,
-    BasePrivateIcon,
+    CreatorSection,
     BaseTimestampSection,
     BaseSendableContentSection,
     BasePostOptionsPopup,
@@ -222,9 +209,6 @@ export default {
       } else {
         return 'profile'
       }
-    },
-    isProfilePrivate () {
-      return this.profileData.private
     }
   },
   methods: {
@@ -248,10 +232,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.base-post-item
-  @extend .align-items-start
-  padding: 1.5em 1em !important
+.main-simple-list-item
+  padding: 2rem 1.5rem !important
 
-.profile-nickname-private-container
-  @extend .d-flex, .align-items-center
+.sendable-content-section
+  :deep(.media-item)
+    max-width: 450px
 </style>

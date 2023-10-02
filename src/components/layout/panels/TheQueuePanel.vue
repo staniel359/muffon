@@ -3,16 +3,19 @@
     ref="queuePanel"
     class="ui right overlay sidebar the-queue-panel"
   >
-    <div
-      :class="[
-        'ui raised segments main-segments',
-        'main-segment-container'
-      ]"
+    <BaseSegmentsContainer
+      class="d-flex height-100"
     >
-      <HeaderSection />
+      <HeaderSegment
+        class="section-segment"
+      />
 
-      <TracksSection />
-    </div>
+      <TracksSegment
+        class="section-segment"
+      />
+
+      <PlaceholderSection />
+    </BaseSegmentsContainer>
   </div>
 </template>
 
@@ -23,8 +26,11 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import queueStore from '@/stores/queue'
-import HeaderSection from './TheQueuePanel/HeaderSection.vue'
-import TracksSection from './TheQueuePanel/TracksSection.vue'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
+import HeaderSegment from './TheQueuePanel/HeaderSegment.vue'
+import TracksSegment from './TheQueuePanel/TracksSegment.vue'
+import PlaceholderSection from './TheQueuePanel/PlaceholderSection.vue'
 import {
   main as mainSidebarOptions
 } from '@/helpers/formatters/plugins/semantic/options/sidebar'
@@ -36,8 +42,10 @@ import {
 export default {
   name: 'TheQueuePanel',
   components: {
-    HeaderSection,
-    TracksSection
+    BaseSegmentsContainer,
+    HeaderSegment,
+    TracksSegment,
+    PlaceholderSection
   },
   computed: {
     ...mapState(
@@ -93,14 +101,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.the-queue-panel
-  width: 360px !important
-
-.main-segment-container
-  @extend .d-flex, .h-100
-  .segment
-    @extend .no-border-radius
-    &.inverted
-      border-left: $borderInverted
-</style>
+<style lang="sass" scoped></style>

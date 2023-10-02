@@ -4,7 +4,7 @@
       class="main-simple-list-item main-message-item"
     >
       <BaseImage
-        class="small circular"
+        class="circular image-30"
         model="profile"
         :image="imageData?.extrasmall"
       />
@@ -20,6 +20,7 @@
         />
 
         <BaseSendableContentSection
+          class="sendable-content-section"
           :model-data="messageData"
         />
       </div>
@@ -67,4 +68,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.sendable-content-section
+  :deep(.media-item)
+    max-width: 450px
+</style>

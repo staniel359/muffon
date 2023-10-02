@@ -1,5 +1,5 @@
 <template>
-  <div class="field remember-field">
+  <div class="field no-margin">
     <BaseCheckbox
       name="remember"
       :text="rememberText"
@@ -25,7 +25,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.remember-field
-  @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

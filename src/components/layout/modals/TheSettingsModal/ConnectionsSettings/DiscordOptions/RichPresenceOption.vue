@@ -1,22 +1,26 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="headerText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="headerText"
+      />
 
-    <BaseToggle
-      store-key="player.isWithDiscordRichPresence"
-      :is-checked="isPlayerWithDiscordRichPresence"
-    />
+      <BaseToggle
+        store-key="player.isWithDiscordRichPresence"
+        :is-checked="isPlayerWithDiscordRichPresence"
+      />
+    </div>
+
+    <div class="main-bottom-section">
+      <BaseMessage
+        icon="infoCircle"
+        :content="messageText"
+        is-icon-small
+      />
+    </div>
   </div>
-
-  <BaseMessage
-    class="client-message"
-    icon="infoCircle"
-    :content="messageText"
-  />
 </template>
 
 <script>
@@ -57,7 +61,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.client-message
-  margin-top: 1.5em !important
-</style>
+<style lang="sass" scoped></style>

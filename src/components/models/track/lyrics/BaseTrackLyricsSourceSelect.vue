@@ -6,16 +6,16 @@
           ref="select"
           :query="query"
         />
-      </div>
 
-      <div
-        v-if="isRenderTrackSelect"
-        class="right-section"
-      >
-        <TrackSelect
-          :key="key"
-          :tracks="selectedSourceTracks"
-        />
+        <div
+          v-if="isRenderTrackSelect"
+          class="bottom-section"
+        >
+          <TrackSelect
+            :key="key"
+            :tracks="selectedSourceTracks"
+          />
+        </div>
       </div>
     </div>
 

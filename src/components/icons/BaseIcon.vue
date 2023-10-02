@@ -1,5 +1,6 @@
 <template>
   <i
+    class="no-padding min-width-unset"
     :class="[
       {
         flag: isFlag,
@@ -19,7 +20,7 @@
   >
     <div
       v-if="isLoading"
-      class="ui mini active inline loader"
+      class="ui mini active inline loader loading-icon"
     />
   </i>
 </template>
@@ -80,13 +81,19 @@ export default {
         false
       )
     },
-    handleClick () {
+    handleClick (
+      event
+    ) {
       this.$emit(
-        'click'
+        'click',
+        event
       )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.loading-icon
+  z-index: 10
+</style>

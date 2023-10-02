@@ -1,14 +1,14 @@
 <template>
   <div class="base-audio-equalizer">
-    <div class="actions">
-      <div class="actions-section">
+    <div class="middle-aligned-space-between">
+      <div class="middle-aligned">
         <BaseToggle
           :is-checked="isAudioEqualizerEnabled"
           store-key="audio.isEqualizerEnabled"
         />
       </div>
 
-      <div class="actions-section">
+      <div class="middle-aligned">
         <BaseClearButton
           v-if="isAudioEqualizerEnabled"
           @click="handleClearButtonClick"
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="equalizers">
+    <div class="d-flex main-bottom-section">
       <EqualizerItem
         v-for="(equalizerData, index) in audioEqualizers"
         :ref="equalizerData.key"
@@ -211,13 +211,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-audio-equalizer
-  .actions
-    @extend .d-flex, .align-items-center, .justify-content-space-between
-    margin-bottom: 1em
-  .actions-section
-    @extend .d-flex, .align-items-center
-  .equalizers
-    @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

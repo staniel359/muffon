@@ -1,43 +1,3 @@
-$colorBase: #804fb3
-$colorBaseLight: #b589d6
-$colorGrey: #22242626
-$colorGreyInverted: #ffffff26
-$colorWhite: #ffffff
-$colorWhiteInverted: #ffffffb3
-$colorWhiteTransparent: #ffffff80
-$colorBlack: #202122
-$colorBlackTransparent: #202122cc
-
-$colorLastfm: #d51007
-$colorVk: #2787F5
-$colorOdnoklassniki: #ee8208
-$colorBandcamp: #629aa9
-$colorSoundCloud: #ff5500
-$colorSpotify: #1DB954
-$colorYouTube: #FF0000
-
-$border: 1px solid $colorGrey
-$borderBaseLight: 1px solid $colorBaseLight
-$borderInverted: 1px solid $colorGreyInverted
-$borderTransparent: 1px solid transparent
-$borderWhite: 1px solid $colorWhite
-$borderBlack: 1px solid $colorBlack
-$borderGreyInverted: 1px solid $colorGreyInverted
-
-$borderRadius: 0.75em
-$borderRadiusMedium: 0.5em
-$borderRadiusSmall: 0.25em
-
-$containerWidth: 670px
-$navbarHeight: 50px
-$playerPanelHeight: 70px
-$mainContainerTopPadding: $navbarHeight + 20px
-$mainContainerBottomPadding: $playerPanelHeight + 20px
-$mainModalHeight: 80vh
-$imageModalHeight: 90vh
-$imageModalThumbHeight: 120px
-$trackPagePlayerPanelHeight: 40px
-
 .text-color-initial
   color: initial !important
 .text-color-unset
@@ -50,6 +10,10 @@ $trackPagePlayerPanelHeight: 40px
   color: $colorBase !important
 .text-color-black
   color: $colorBlack !important
+.text-color-grey
+  color: $colorGrey !important
+.text-color-grey-inverted
+  color: $colorGreyInverted !important
 
 .text-medium-light
   font-weight: 400 !important
@@ -58,6 +22,8 @@ $trackPagePlayerPanelHeight: 40px
 
 .background-base
   background: $colorBase !important
+.background-base-light
+  background: $colorBaseLight !important
 .background-white
   background: $colorWhite !important
 .background-grey
@@ -70,6 +36,8 @@ $trackPagePlayerPanelHeight: 40px
   background: $colorBlackTransparent !important
 .background-transparent
   background: transparent !important
+.background-plain-black
+  background: black !important
 
 .absolute
   position: absolute !important
@@ -80,10 +48,27 @@ $trackPagePlayerPanelHeight: 40px
 .sticky
   position: sticky !important
 
-.w-100
-  width: 100% !important
-.h-100
+@for $i from 1 through 20
+  $width: $i * 5
+  $widthPercent: $width * 1%
+
+  .width-#{$width}
+    width: $widthPercent !important
+
+.width-fit-content
+  width: fit-content !important
+
+.height-100
   height: 100% !important
+.height-navbar
+  height: $navbarHeight !important
+.height-player-panel
+  height: $playerPanelHeight !important
+.height-fit-content
+  height: fit-content !important
+
+.top-navbar
+  top: $navbarHeight !important
 
 .no-margin
   margin: 0 !important
@@ -91,10 +76,35 @@ $trackPagePlayerPanelHeight: 40px
   padding: 0 !important
 .no-border-radius
   border-radius: 0 !important
+.no-border-top-radius
+  border-top-left-radius: 0 !important
+  border-top-right-radius: 0 !important
 .no-border
   border: none !important
+.no-border-bottom
+  border-bottom: none !important
 .no-shadow
   box-shadow: none !important
+.no-top
+  top: 0 !important
+.no-bottom
+  bottom: 0 !important
+.no-dragging
+  -webkit-user-drag: none !important
+
+[dir="ltr"]
+  .no-right
+    right: 0 !important
+[dir="rtl"]
+  .no-right
+    left: 0 !important
+
+[dir="ltr"]
+  .no-left
+    left: 0 !important
+[dir="rtl"]
+  .no-left
+    right: 0 !important
 
 .d-none
   display: none !important
@@ -140,8 +150,12 @@ $trackPagePlayerPanelHeight: 40px
 .cursor-zoom-in
   cursor: zoom-in
 
+.overflow-x-auto
+  overflow-x: auto !important
 .overflow-y-auto
   overflow-y: auto !important
+.overflow-x-hidden
+  overflow-x: hidden !important
 .overflow-hidden
   overflow: hidden !important
 .overflow-visible
@@ -155,8 +169,8 @@ $trackPagePlayerPanelHeight: 40px
 .text-align-right
   text-align: right
 
-.width-fit-content
-  width: fit-content !important
+.min-width-unset
+  min-width: unset !important
 
 .object-fit-cover
   object-fit: cover
@@ -183,15 +197,40 @@ $trackPagePlayerPanelHeight: 40px
   border: $border !important
 .border-inverted
   border: $borderInverted !important
+.border-inverted-no-bottom
+  @extend .border-inverted
+  border-bottom: none !important
+.border-inverted-no-top
+  @extend .border-inverted
+  border-top: none !important
+.border-top
+  border-top: $border !important
+.border-top-inverted
+  border-top: $borderInverted !important
+.border-bottom
+  border-bottom: $border !important
+.border-bottom-inverted
+  border-bottom: $borderInverted !important
+.border-left
+  border-left: $border !important
+.border-left-inverted
+  border-left: $borderInverted !important
+.border-right-inverted
+  border-right: $borderInverted !important
+
 .border-white
   border: $borderWhite !important
 .border-black
   border: $borderBlack !important
-.border-grey-inverted
-  border: $borderGreyInverted !important
 
+.border-radius-large
+  border-radius: $borderRadiusLarge !important
 .border-radius
   border-radius: $borderRadius !important
+.border-radius-no-bottom
+  @extend .border-radius
+  border-bottom-left-radius: 0 !important
+  border-bottom-right-radius: 0 !important
 .border-radius-medium
   border-radius: $borderRadiusMedium !important
 .border-radius-small
@@ -209,21 +248,78 @@ $trackPagePlayerPanelHeight: 40px
 .border-inner-inverted
   outline: $borderInverted !important
 
-.image-big
-  width: 70px !important
-  height: 70px !important
-.image-large
+.image-120
+  width: 120px !important
+  height: 120px !important
+.image-100
+  width: 100px !important
+  height: 100px !important
+.image-80
+  width: 80px !important
+  height: 80px !important
+.image-50
   width: 50px !important
   height: 50px !important
-.image-medium
+.image-45
+  width: 45px !important
+  height: 45px !important
+.image-40
   width: 40px !important
   height: 40px !important
-.image-small
+.image-35
+  width: 35px !important
+  height: 35px !important
+.image-30
   width: 30px !important
   height: 30px !important
-.image-extrasmall
-  width: 20px !important
-  height: 20px !important
+.image-25
+  width: 25px !important
+  height: 25px !important
+
+.video-image-110
+  width: 110px !important
+  height: calc(110px / 16 * 9) !important
+
+.rounded
+  @extend .border-radius
+.rounded-medium
+  @extend .border-radius-medium
+.rounded-small
+  @extend .border-radius-small
+
+.middle-aligned
+  @extend .d-flex, .align-items-center
+.middle-aligned-column
+  @extend .middle-aligned, .flex-column
+.middle-aligned-full
+  @extend .middle-aligned, .flex-full
+.middle-aligned-space-between
+  @extend .middle-aligned, .justify-content-space-between
+.middle-center-aligned
+  @extend .middle-aligned, .justify-content-center
+.middle-end-aligned
+  @extend .middle-aligned, .justify-content-flex-end
+.middle-center-aligned-full
+  @extend .middle-aligned, .justify-content-center, .flex-full
+.middle-center-aligned-full-column
+  @extend .middle-center-aligned-full, .flex-column
+.center-aligned
+  @extend .d-flex, .justify-content-center
+.center-aligned-column
+  @extend .center-aligned, .flex-column
+.end-aligned
+  @extend .d-flex, .justify-content-flex-end
+.plain-column
+  @extend .d-flex, .flex-column
+.plain-full
+  @extend .d-flex, .flex-full
+.full-column
+  @extend .plain-column, .flex-full
+.center-aligned-full-column
+  @extend .full-column, .justify-content-center
+
+.text-overflow-hidden
+  @extend .white-space-no-wrap, .overflow-hidden
 
 .colorless
   filter: grayscale(1)
@@ -231,7 +327,7 @@ $trackPagePlayerPanelHeight: 40px
 .blurred
   backdrop-filter: blur(7.5px)
 
-.shadow
+.shadowed
   box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15) !important
 
 @for $i from 0 through 10
@@ -243,3 +339,210 @@ $trackPagePlayerPanelHeight: 40px
 
   .transparent-dark-#{$transparency}
     background: rgb(32 33 34 / #{$opacity}) !important
+
+//
+
+.main-top-large-section
+  margin-bottom: 2rem !important
+
+.main-top-section
+  margin-bottom: 1.5rem !important
+
+.main-top-small-section
+  margin-bottom: 1rem !important
+
+.main-top-mini-section
+  margin-bottom: 0.75rem !important
+
+.main-top-extrasmall-section
+  margin-bottom: 0.5rem !important
+
+//
+
+.main-bottom-large-section
+  margin-top: 2rem !important
+
+.main-list-bottom-large-section
+  &:not(:first-child)
+    @extend .main-bottom-large-section
+
+.main-bottom-section
+  margin-top: 1.5rem !important
+
+.main-list-bottom-section
+  &:not(:first-child)
+    @extend .main-bottom-section
+
+.main-bottom-small-section
+  margin-top: 1rem !important
+
+.main-list-bottom-small-section
+  &:not(:first-child)
+    @extend .main-bottom-small-section
+
+.main-bottom-mini-section
+  margin-top: 0.75rem !important
+
+.main-list-bottom-mini-section
+  &:not(:first-child)
+    @extend .main-bottom-mini-section
+
+.main-bottom-extrasmall-section
+  margin-top: 0.5rem !important
+
+//
+
+[dir="ltr"]
+  .main-left-large-section
+    margin-right: 2rem !important
+[dir="rtl"]
+  .main-left-large-section
+    margin-left: 2rem !important
+
+.main-list-left-large-section
+  &:not(:last-child)
+    @extend .main-left-large-section
+
+[dir="ltr"]
+  .main-left-section
+    margin-right: 1.5rem !important
+[dir="rtl"]
+  .main-left-section
+    margin-left: 1.5rem !important
+
+[dir="ltr"]
+  .main-left-medium-section
+    margin-right: 1.25rem !important
+[dir="rtl"]
+  .main-left-medium-section
+    margin-left: 1.25rem !important
+
+[dir="ltr"]
+  .main-left-small-section
+    margin-right: 1rem !important
+[dir="rtl"]
+  .main-left-small-section
+    margin-left: 1rem !important
+
+.main-list-left-small-section
+  &:not(:last-child)
+    @extend .main-left-small-section
+
+[dir="ltr"]
+  .main-left-mini-section
+    margin-right: 0.75rem !important
+[dir="rtl"]
+  .main-left-mini-section
+    margin-left: 0.75rem !important
+
+.main-list-left-mini-section
+  &:not(:last-child)
+    @extend .main-left-mini-section
+
+[dir="ltr"]
+  .main-left-extrasmall-section
+    margin-right: 0.5rem !important
+[dir="rtl"]
+  .main-left-extrasmall-section
+    margin-left: 0.5rem !important
+
+.main-list-left-extrasmall-section
+  &:not(:last-child)
+    @extend .main-left-extrasmall-section
+
+//
+
+[dir="ltr"]
+  .main-right-large-section
+    margin-left: 2rem !important
+[dir="rtl"]
+  .main-right-large-section
+    margin-right: 2rem !important
+
+[dir="ltr"]
+  .main-right-section
+    margin-left: 1.5rem !important
+[dir="rtl"]
+  .main-right-section
+    margin-right: 1.5rem !important
+
+[dir="ltr"]
+  .main-right-medium-section
+    margin-left: 1.25rem !important
+[dir="rtl"]
+  .main-right-medium-section
+    margin-right: 1.25rem !important
+
+.main-list-right-medium-section
+  &:not(:first-child)
+    @extend .main-right-medium-section
+
+[dir="ltr"]
+  .main-right-small-section
+    margin-left: 1rem !important
+[dir="rtl"]
+  .main-right-small-section
+    margin-right: 1rem !important
+
+.main-list-right-small-section
+  &:not(:first-child)
+    @extend .main-right-small-section
+
+[dir="ltr"]
+  .main-right-mini-section
+    margin-left: 0.75rem !important
+[dir="rtl"]
+  .main-right-mini-section
+    margin-right: 0.75rem !important
+
+.main-list-right-mini-section
+  &:not(:first-child)
+    @extend .main-right-mini-section
+
+[dir="ltr"]
+  .main-right-extrasmall-section
+    margin-left: 0.5rem !important
+[dir="rtl"]
+  .main-right-extrasmall-section
+    margin-right: 0.5rem !important
+
+.main-list-right-extrasmall-section
+  &:not(:first-child)
+    @extend .main-right-extrasmall-section
+
+//
+
+.main-icon
+  @extend .no-margin
+
+//
+
+.main-left-small-icon
+  @extend .main-icon, .main-left-small-section
+
+.main-list-left-small-icon
+  @extend .main-icon, .main-list-left-small-section
+
+.main-left-mini-icon
+  @extend .main-icon, .main-left-mini-section
+
+.main-left-extrasmall-icon
+  @extend .main-icon, .main-left-extrasmall-section
+
+.main-right-small-icon
+  @extend .main-icon, .main-right-small-section
+
+.main-list-right-small-icon
+  @extend .main-icon, .main-list-right-small-section
+
+.main-right-extrasmall-icon
+  @extend .main-icon, .main-right-extrasmall-section
+
+.main-bottom-small-icon
+  @extend .main-icon, .main-bottom-small-section
+
+.main-bottom-mini-icon
+  @extend .main-icon, .main-bottom-mini-section
+
+.main-list-bottom-mini-icon
+  @extend .main-icon, .main-list-bottom-mini-section

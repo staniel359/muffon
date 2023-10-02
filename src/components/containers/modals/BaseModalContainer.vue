@@ -128,29 +128,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-modal
-  & > :deep(.content)
-    @extend .no-margin
-    &.full-height
-      @extend .d-flex, .flex-column
-      height: $mainModalHeight
-      .base-tab
-        @extend .absolute, .overflow-y-auto
-    &.scrolling
-      @extend .scroll-smooth
-  &:not(.main-delete-modal)
-    & > :deep(.content)
-      max-height: $mainModalHeight !important
-  &.inverted
-    &:not(.base-image-modal)
-      @extend .background-black, .border-inverted
-    & > :deep(.header),
-    & > :deep(.content),
-    & > :deep(.actions)
-      @extend .background-black
-    & > :deep(.header)
-      border-bottom: $borderInverted
-    & > :deep(.actions)
-      border-top: $borderInverted
-</style>
+<style lang="sass" scoped></style>

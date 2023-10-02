@@ -1,40 +1,36 @@
 <template>
-  <div class="audio-section">
-    <div class="top-section">
-      <LeftControlsSection />
+  <div class="main-right-section middle-center-aligned-full-column">
+    <div class="middle-aligned width-100">
+      <LeftControlsSection
+        :key="key"
+      />
 
       <CenterControlsSection />
 
-      <RightControlsSection />
-    </div>
-
-    <div class="bottom-section">
-      <ScrobblePoint
-        v-if="isRenderScrobblePoint"
-      />
-
-      <SeekerPanel
-        @audio-end="handleAudioEnd"
+      <RightControlsSection
+        :key="key"
       />
     </div>
+
+    <BottomSection />
   </div>
 </template>
 
 <script>
-import hotkeys from 'hotkeys-js'
 import {
   mapState
 } from 'pinia'
-import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
-import profileStore from '@/stores/profile'
 import queueStore from '@/stores/queue'
+import audioStore from '@/stores/audio'
 import LeftControlsSection from './AudioSection/LeftControlsSection.vue'
 import CenterControlsSection from './AudioSection/CenterControlsSection.vue'
 import RightControlsSection from './AudioSection/RightControlsSection.vue'
-import ScrobblePoint from './AudioSection/ScrobblePoint.vue'
-import SeekerPanel from './AudioSection/SeekerPanel.vue'
+import BottomSection from './AudioSection/BottomSection.vue'
 import getQueueTrack from '@/helpers/actions/queue/track/get'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'AudioSection',
@@ -42,29 +38,18 @@ export default {
     LeftControlsSection,
     CenterControlsSection,
     RightControlsSection,
-    ScrobblePoint,
-    SeekerPanel
+    BottomSection
+  },
+  data () {
+    return {
+      key: null
+    }
   },
   computed: {
     ...mapState(
-      audioStore,
-      {
-        audioElement: 'element',
-        isAudioLoop: 'isLoop'
-      }
-    ),
-    ...mapState(
       playerStore,
       {
-        playerPlaying: 'playing',
-        isPlayerWithScrobbling:
-          'isWithScrobbling'
-      }
-    ),
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
+        playerPlaying: 'playing'
       }
     ),
     ...mapState(
@@ -72,6 +57,12 @@ export default {
       {
         isQueueAutoplay: 'isAutoplay',
         isQueueEnd: 'isEnd'
+      }
+    ),
+    ...mapState(
+      audioStore,
+      {
+        audioElement: 'element'
       }
     ),
     isGetQueueNextTrack () {
@@ -84,42 +75,26 @@ export default {
       return {
         position: 'next'
       }
-    },
-    isRenderScrobblePoint () {
-      return (
-        this.profileId &&
-          this.playerPlaying &&
-          this.isPlayerWithScrobbling
-      )
-    },
-    isGetRadioNextTrack () {
-      return (
-        this.isPlayingFromRadio &&
-          !this.isAudioLoop
-      )
-    },
-    isPlayingFromRadio () {
-      return this.playerPlaying.from_radio
     }
   },
   watch: {
+    playerPlaying:
+      'handlePlayerPlayingChange',
     isQueueAutoplay:
       'handleIsQueueAutoplayChange'
   },
   methods: {
     getQueueTrack,
-    handleAudioEnd () {
-      if (this.isGetQueueNextTrack) {
-        this.getQueueNextTrack()
-      } else if (this.isGetRadioNextTrack) {
-        this.getRadioNextTrack()
-      }
+    handlePlayerPlayingChange () {
+      this.key = generateKey()
     },
     handleIsQueueAutoplayChange () {
-      if (
+      const isGetQueueNextTrack = (
         this.isGetQueueNextTrack &&
           this.audioElement.ended
-      ) {
+      )
+
+      if (isGetQueueNextTrack) {
         this.getQueueNextTrack()
       }
     },
@@ -127,30 +102,9 @@ export default {
       this.getQueueTrack(
         this.queueTrackArgs
       )
-    },
-    getRadioNextTrack () {
-      hotkeys.trigger(
-        'shift+right'
-      )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.audio-section
-  @extend .flex-full, .d-flex, .flex-column, .align-items-center, .justify-content-center
-[dir="ltr"]
-  .audio-section
-    margin-left: 1em
-[dir="rtl"]
-  .audio-section
-    margin-right: 1em
-
-.top-section
-  @extend .d-flex, .align-items-center, .w-100
-
-.bottom-section
-  @extend .w-100, .relative
-  margin-top: 0.5em
-</style>
+<style lang="sass" scoped></style>

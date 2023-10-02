@@ -22,12 +22,15 @@
     <template
       #topExtra="topExtraSlotProps"
     >
-      <BaseArtistAlbumsSourceSelect
+      <div
         v-if="isSourceSelectCalled"
         v-show="isShowSourceSelect"
-        class="source-select"
-        :artist-name="topExtraSlotProps.artistName"
-      />
+        class="main-bottom-section"
+      >
+        <BaseArtistAlbumsSourceSelect
+          :artist-name="topExtraSlotProps.artistName"
+        />
+      </div>
     </template>
 
     <template
@@ -93,7 +96,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.source-select
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

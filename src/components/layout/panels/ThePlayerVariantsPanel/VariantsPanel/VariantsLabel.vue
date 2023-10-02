@@ -1,10 +1,8 @@
 <template>
   <BaseLabel
-    class="basic top attached blurred variants-label"
-    :class="transparentClass"
-    :icon="icon"
+    class="basic top attached blurred variants-label middle-center-aligned width-fit-content pointer-events-auto cursor-pointer border-radius-no-bottom"
+    :right-icon="icon"
     :text="variantsText"
-    is-reverse
   />
 </template>
 
@@ -14,16 +12,12 @@ import {
 } from 'pinia'
 import playerStore from '@/stores/player'
 import BaseLabel from '@/components/labels/BaseLabel.vue'
-import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'VariantsLabel',
   components: {
     BaseLabel
   },
-  mixins: [
-    transparencyMixin
-  ],
   props: {
     isPanelVisible: Boolean
   },
@@ -38,7 +32,8 @@ export default {
       return this.$t(
         'player.variants',
         {
-          count: this.playerVariantsCount
+          count:
+            this.playerVariantsCount
         }
       )
     },
@@ -53,21 +48,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.variants-label
-  @extend .d-flex, .align-items-center, .justify-content-center, .width-fit-content, .pointer-events-auto
-  padding: 0.5em 1.5em !important
-  height: 30px
-  border-bottom: 0 !important
-  border-top-left-radius: $borderRadiusMedium !important
-  border-top-right-radius: $borderRadiusMedium !important
-  &.inverted
-    @extend .border-inverted
-    border-bottom: 0 !important
-[dir="ltr"]
-  .variants-label
-    left: 30px !important
-[dir="rtl"]
-  .variants-label
-    right: 30px !important
-</style>
+<style lang="sass" scoped></style>

@@ -1,20 +1,22 @@
 <template>
-  <BaseListContainer
-    class="selection"
-  >
-    <TrackItem
-      ref="track"
-      :track-data="firstTrackData"
-      :queue-tracks="tracksCollection"
-      is-with-artist-image
-      is-with-artist-name
-      is-from-radio
-      is-with-source-option
-      is-with-playlist-option
-      is-with-share-option
-      is-with-queue-option
-    />
-  </BaseListContainer>
+  <div>
+    <BaseListContainer
+      class="selection"
+    >
+      <TrackItem
+        ref="track"
+        :track-data="firstTrackData"
+        :queue-tracks="tracksCollection"
+        is-with-artist-image
+        is-with-artist-name
+        is-from-radio
+        is-with-source-option
+        is-with-playlist-option
+        is-with-share-option
+        is-with-queue-option
+      />
+    </BaseListContainer>
+  </div>
 </template>
 
 <script>

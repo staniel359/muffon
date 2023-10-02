@@ -3,12 +3,8 @@
     :key="refreshKey"
     :profile-id="profileId"
   >
-    <div
-      :class="[
-        'ui raised segments main-segments',
-        'main-segment-container',
-        'main-page-segment-container'
-      ]"
+    <BaseSegmentsContainer
+      class="main-page-segment-container"
     >
       <TopSegment
         v-if="isSelf"
@@ -17,13 +13,15 @@
       <TabsSegment
         :profile-id="profileId"
       />
-    </div>
+    </BaseSegmentsContainer>
   </BaseProfileFavoritesPageContainer>
 </template>
 
 <script>
 import BaseProfileFavoritesPageContainer
   from '@/components/containers/pages/profile/favorites/BaseProfileFavoritesPageContainer.vue'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import TopSegment from './MainPage/TopSegment.vue'
 import TabsSegment from './MainPage/TabsSegment.vue'
 import pageMixin from '@/mixins/pageMixin'
@@ -35,6 +33,7 @@ export default {
   name: 'MainPage',
   components: {
     BaseProfileFavoritesPageContainer,
+    BaseSegmentsContainer,
     TopSegment,
     TabsSegment
   },

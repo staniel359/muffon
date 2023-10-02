@@ -1,5 +1,6 @@
 <template>
   <BaseTrackContainer
+    class="track-section"
     :track-data="firstTrackData"
     :queue-tracks="tracksCollection"
     is-exact-track
@@ -8,9 +9,10 @@
       #default="slotProps"
     >
       <BaseButtonContainer
-        class="basic main-button track-play-button"
+        class="basic main-simple-button play-button height-100 background-transparent"
       >
         <BaseTrackAudioIcon
+          class="main-icon"
           :is-loading="slotProps.isLoading"
           :is-error="slotProps.isError"
           :is-current="slotProps.isCurrent"
@@ -59,11 +61,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.track-play-button
-  @extend .h-100
-  width: $trackPagePlayerPanelHeight
-  background: transparent !important
-  .icon
-    @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

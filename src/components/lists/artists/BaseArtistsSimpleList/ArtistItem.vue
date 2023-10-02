@@ -1,6 +1,6 @@
 <template>
   <BaseArtistLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned main-visibility-container"
     :class="{
       disabled: isDeleted
     }"
@@ -25,9 +25,7 @@
 
       <BaseArtistImage
         size="extrasmall"
-        :class="{
-          small: isImageSmall
-        }"
+        :class="imageClass"
         :image-data="imageData"
         :artist-name="artistName"
         @load-end="handleImageLoadEnd"
@@ -44,7 +42,7 @@
 
         <BaseArtistListenersCount
           v-if="isWithListenersCount"
-          class="description listeners-count"
+          class="description"
           :artist-name="artistName"
           :listeners-count="listenersCount"
           @load-end="handleListenersCountLoadEnd"
@@ -74,7 +72,7 @@
 
       <RecommendationArtistsSection
         v-if="isRecommendation"
-        class="description recommendation-artists-section"
+        class="description right main-right-small-section"
         :recommendation-data="artistData"
         @active-change="handleCounterLinkActiveChange"
       />
@@ -86,6 +84,7 @@
       />
 
       <BaseArtistOptionsPopup
+        class="invisible-item"
         :artist-data="artistData"
         :library-id="libraryId"
         :favorite-id="favoriteId"
@@ -242,6 +241,13 @@ export default {
       } else {
         return 'artist'
       }
+    },
+    imageClass () {
+      if (this.isImageSmall) {
+        return 'image-35'
+      } else {
+        return 'image-50'
+      }
     }
   },
   methods: {
@@ -296,14 +302,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.listeners-count
-  margin-top: 0.15em
-
-[dir="ltr"]
-  .recommendation-artists-section
-    margin-left: 0.75em
-[dir="rtl"]
-  .recommendation-artists-section
-    margin-right: 0.75em
-</style>
+<style lang="sass" scoped></style>

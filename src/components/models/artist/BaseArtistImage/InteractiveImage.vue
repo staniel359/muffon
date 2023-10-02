@@ -1,9 +1,5 @@
 <template>
-  <div class="image-container">
-    <MoreLinkButton
-      :artist-name="artistName"
-    />
-
+  <div class="image-container main-visibility-container">
     <BaseImage
       v-bind="$attrs"
       class="main-zoomable-image"
@@ -15,6 +11,10 @@
       ref="modal"
       :images="images"
       is-reset
+    />
+
+    <MoreLinkButton
+      :artist-name="artistName"
     />
   </div>
 </template>
@@ -53,11 +53,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.image-container
-  .more-link-button
-    @extend .d-none
-  &:hover
-    .more-link-button
-      @extend .d-block
-</style>
+<style lang="sass" scoped></style>

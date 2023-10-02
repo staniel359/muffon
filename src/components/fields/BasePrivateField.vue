@@ -1,9 +1,11 @@
 <template>
-  <BaseCheckbox
-    name="private"
-    :text="privateText"
-    :is-checked="isChecked"
-  />
+  <div class="field">
+    <BaseCheckbox
+      name="private"
+      :text="privateText"
+      :is-checked="isChecked"
+    />
+  </div>
 </template>
 
 <script>

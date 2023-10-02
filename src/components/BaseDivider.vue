@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui divider"
+    class="ui divider base-divider"
     :class="{
       inverted: (
         isInverted || isDarkMode
@@ -38,4 +38,11 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.base-divider
+  margin: 1.5rem 0
+  &.small
+    margin: 1rem 0
+  &.large
+    margin: 2.5rem 0
+</style>

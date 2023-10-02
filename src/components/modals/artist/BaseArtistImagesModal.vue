@@ -1,14 +1,11 @@
 <template>
   <BaseImageModalContainer
     ref="modal"
+    class="base-artist-images-modal"
+    size="small"
     @show="handleShow"
   >
-    <div
-      :class="[
-        'ui container main-container',
-        'main-image-modal-content'
-      ]"
-    >
+    <div class="main-image-modal-content">
       <MainSlider
         ref="mainSlider"
         :images="images"

@@ -1,7 +1,7 @@
 <template>
   <BaseSegmentContainer
     ref="segment"
-    class="raised top attached blurred variants-list"
+    class="raised top attached blurred main-segment no-margin variants-list height-100 overflow-y-auto pointer-events-auto"
   >
     <BaseListContainer
       class="selection"
@@ -9,7 +9,7 @@
       <BaseTrackVariantContainer
         v-for="variantData in variantsCollection"
         :key="variantData.uuid"
-        class="item main-simple-list-item"
+        class="item main-simple-list-item middle-aligned"
         :variant-data="variantData"
         :is-from-radio="isFromRadio"
       >
@@ -90,10 +90,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.variants-list
-  @extend .no-margin, .h-100, .overflow-y-auto, .pointer-events-auto
-  &.inverted
-    @extend .border-color-grey-inverted
-    border-bottom: none !important
-</style>
+<style lang="sass" scoped></style>

@@ -22,10 +22,9 @@
       class="blurred results main-search-results"
       :class="[
         transparentClass,
+        scopeClass,
         {
-          inverted: isDarkMode,
-          'artists-results': isArtistsInput,
-          'tracks-results': isTracksInput
+          inverted: isDarkMode
         }
       ]"
     />
@@ -75,8 +74,7 @@ export default {
       type: Function,
       required: true
     },
-    isArtistsInput: Boolean,
-    isTracksInput: Boolean
+    scope: String
   },
   emits: [
     'select'
@@ -117,6 +115,13 @@ export default {
         this.profileToken ||
           anonymousToken
       )
+    },
+    scopeClass () {
+      if (this.scope) {
+        return `${this.scope}-results`
+      } else {
+        return null
+      }
     }
   },
   watch: {

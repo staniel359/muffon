@@ -5,7 +5,7 @@
     <div class="ui labels">
       <BaseLabel
         class="basic circular large"
-        icon="date"
+        left-icon="date"
         :text="dateFormatted"
       />
     </div>

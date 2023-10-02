@@ -19,9 +19,8 @@ export default function (
   )
 
   return {
+    on: 'click',
     variation: 'basic',
-    closable: false,
-    hoverable: true,
     lastResort: true,
     inline: isInline,
     className: {

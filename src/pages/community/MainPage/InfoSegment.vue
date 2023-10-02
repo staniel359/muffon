@@ -1,66 +1,61 @@
 <template>
   <BaseSegmentContainer
-    class="raised main-segment-container info-segment"
+    class="raised main-segment-container"
   >
-    <BaseListContainer>
-      <div class="item main-simple-list-item main-info-item">
-        <div class="image-container">
-          <BaseZoomableImage
-            model="community"
-            size="small"
-            :image-data="imageData"
-          />
-        </div>
+    <BaseItemContainer>
+      <BaseZoomableImage
+        class="image image-80"
+        model="community"
+        size="small"
+        :image-data="imageData"
+      />
 
-        <div class="content">
-          <BaseHeader
-            tag="h3"
-            :text="communityTitle"
-          />
+      <div class="content">
+        <div
+          class="header"
+          v-text="communityTitle"
+        />
 
-          <div
-            v-if="description"
-            class="description main-text-container"
-            v-text="description"
-          />
+        <p
+          v-if="description"
+          class="description main-formatted-text-container"
+          v-text="description"
+        />
 
-          <InfoSection
-            :community-data="communityData"
-          />
-        </div>
-
-        <BaseCommunityOptionsPopup
+        <InfoSection
           :community-data="communityData"
-          :is-with-edit-option="isCommunityCreator"
-          :is-with-delete-option="isCommunityCreator"
-          is-with-join-option
-          is-with-share-option
         />
       </div>
-    </BaseListContainer>
+
+      <BaseCommunityOptionsPopup
+        :community-data="communityData"
+        :is-with-edit-option="isCommunityCreator"
+        :is-with-delete-option="isCommunityCreator"
+        is-with-join-option
+        is-with-share-option
+      />
+    </BaseItemContainer>
   </BaseSegmentContainer>
 </template>
 
 <script>
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseListContainer
-  from '@/components/containers/lists/BaseListContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
 import InfoSection from './InfoSegment/InfoSection.vue'
 import BaseCommunityOptionsPopup
   from '@/components/popups/community/BaseCommunityOptionsPopup.vue'
+import BaseItemContainer
+  from '@/components/containers/item/BaseItemContainer.vue'
 
 export default {
   name: 'InfoSegment',
   components: {
     BaseSegmentContainer,
-    BaseListContainer,
     BaseZoomableImage,
-    BaseHeader,
     InfoSection,
-    BaseCommunityOptionsPopup
+    BaseCommunityOptionsPopup,
+    BaseItemContainer
   },
   props: {
     communityData: {
@@ -83,7 +78,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.info-segment
-  margin-bottom: 1.5em !important
-</style>
+<style lang="sass" scoped></style>

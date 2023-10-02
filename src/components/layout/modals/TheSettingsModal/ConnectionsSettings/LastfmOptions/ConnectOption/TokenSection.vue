@@ -1,23 +1,28 @@
 <template>
-  <BaseErrorMessage
-    v-if="error"
-    class="error-message"
-    :error="error"
-  />
-
-  <div class="main-settings-option">
-    <div class="option-header">
-      <BaseButton
-        class="red circular option-button"
-        icon="lastfm"
-        :class="{
-          loading: isLoading,
-          disabled: isLoading
-        }"
-        :text="connectText"
-        :is-invertable="false"
-        @click="handleClick"
+  <div class="main-settings-option-container">
+    <div
+      v-if="error"
+      class="main-top-section"
+    >
+      <BaseErrorMessage
+        :error="error"
       />
+    </div>
+
+    <div class="main-settings-option">
+      <div class="option-header">
+        <BaseButton
+          class="red circular option-button"
+          left-icon="lastfm"
+          :class="{
+            loading: isLoading,
+            disabled: isLoading
+          }"
+          :text="connectText"
+          :is-invertable="false"
+          @click="handleClick"
+        />
+      </div>
     </div>
   </div>
 </template>

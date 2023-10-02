@@ -75,15 +75,6 @@ export default defineConfig(
     server: {
       port: 3000
     },
-    css: {
-      preprocessorOptions: {
-        sass: {
-          additionalData: `
-            @import './src/assets/styles/Shared.sass'
-          `
-        }
-      }
-    },
     build: {
       outDir: 'build',
       target: 'esnext'

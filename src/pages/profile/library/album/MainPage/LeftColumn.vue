@@ -1,11 +1,6 @@
 <template>
-  <div
-    :class="[
-      'ui raised segments main-segments',
-      'main-segment-container',
-      'main-profile-page-left-column',
-      'main-sticky-container'
-    ]"
+  <BaseSegmentsContainer
+    class="main-profile-page-left-column main-sticky-container"
   >
     <InfoSegment
       :album-data="albumData"
@@ -23,7 +18,7 @@
       model="library"
       :model-data="albumData"
     />
-  </div>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
@@ -31,6 +26,8 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import SelfSegment from './LeftColumn/SelfSegment.vue'
 import BaseCreatedSegment from '@/components/segments/BaseCreatedSegment.vue'
@@ -38,6 +35,7 @@ import BaseCreatedSegment from '@/components/segments/BaseCreatedSegment.vue'
 export default {
   name: 'LeftColumn',
   components: {
+    BaseSegmentsContainer,
     InfoSegment,
     SelfSegment,
     BaseCreatedSegment

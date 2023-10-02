@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="autoplayText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="autoplayText"
+      />
 
-    <BaseToggle
-      store-key="video.isAutoplay"
-      :is-checked="isVideoAutoplay"
-    />
+      <BaseToggle
+        store-key="video.isAutoplay"
+        :is-checked="isVideoAutoplay"
+      />
+    </div>
   </div>
 </template>
 

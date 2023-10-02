@@ -1,12 +1,12 @@
 <template>
-  <div class="base-account-section">
+  <div class="main-simple-list-item middle-aligned not-padded">
     <BaseImage
-      class="circular image-medium"
+      class="circular image-40"
       model="profile"
       :image="image"
     />
 
-    <div class="nickname-premium-section">
+    <div class="content">
       <BaseHeader
         tag="h4"
         :text="nickname"
@@ -14,7 +14,7 @@
 
       <BaseLabel
         v-if="isPremium"
-        class="primary tiny circular premium-label"
+        class="primary tiny circular main-bottom-mini-section"
         :text="premiumText"
         :is-invertable="false"
       />
@@ -59,19 +59,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-account-section
-  @extend .d-flex, .align-items-center
-
-.nickname-premium-section
-  @extend .flex-full, .word-break-break-word
-[dir="ltr"]
-  .nickname-premium-section
-    margin-left: 0.75em
-[dir="rtl"]
-  .nickname-premium-section
-    margin-right: 0.75em
-
-.premium-label
-  margin-top: 0.5em
-</style>
+<style lang="sass" scoped></style>

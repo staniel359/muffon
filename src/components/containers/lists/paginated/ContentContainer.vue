@@ -1,5 +1,5 @@
 <template>
-  <div class="content-container">
+  <div class="full-column">
     <BaseErrorMessage
       v-if="error"
       :error="error"
@@ -80,8 +80,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.content-container
-  @extend .flex-full, .flex-column
-  display: flex
-</style>
+<style lang="sass" scoped></style>

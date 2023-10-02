@@ -1,6 +1,7 @@
 <template>
   <BaseImageModalSliderContainer
     ref="slider"
+    class="images-thumbs-slider"
     size="small"
     :images="images"
     :options="sliderOptions"
@@ -8,7 +9,7 @@
     <template
       #default="slotProps"
     >
-      <div class="main-image-container">
+      <div class="main-image-container cursor-pointer">
         <BaseImage
           :image="slotProps.image"
           is-lazy
@@ -51,17 +52,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-image-container
-  @extend .cursor-pointer
-
-.slick-slide
-  .ui.image
-    &.base-image
-      border-width: 2px !important
-
-.slick-current
-  .ui.image
-    &.base-image
-      @extend .border-color-base
-</style>
+<style lang="sass" scoped></style>

@@ -56,8 +56,13 @@ export default {
     }
   },
   mounted () {
-    new Picker(
-      this.pickerOptions
+    const picker =
+      new Picker(
+        this.pickerOptions
+      )
+
+    this.addStyle(
+      picker
     )
   },
   methods: {
@@ -68,16 +73,25 @@ export default {
         'select',
         value
       )
+    },
+    addStyle (
+      picker
+    ) {
+      const style = new CSSStyleSheet()
+
+      style.replaceSync(
+        '#root { --sidebar-width: 10px }'
+      )
+
+      picker
+        .shadowRoot
+        .adoptedStyleSheets
+        .push(
+          style
+        )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.base-emoji-picker
-  :deep(em-emoji-picker)
-    @extend .border-radius
-    max-height: 300px
-    --font-family: inherit
-    --rgb-background: transparent !important
-</style>
+<style lang="sass" scoped></style>

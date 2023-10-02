@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui message base-message"
+    class="ui message base-message no-margin background-transparent"
     :class="{
       inverted: isDarkMode,
       icon: icon || icons
@@ -8,15 +8,22 @@
   >
     <IconBlock
       v-if="icon"
+      :class="{
+        large: isIconSmall
+      }"
       :icon="icon"
     />
     <IconsBlock
       v-else-if="icons"
+      :class="{
+        large: isIconSmall
+      }"
       :icons="icons"
     />
 
-    <div class="content">
+    <div class="content main-list-right-small-section">
       <div
+        v-if="header"
         class="header"
         v-text="header"
       />
@@ -72,7 +79,8 @@ export default {
     isContentLink: Boolean,
     link: Object,
     listItems: Array,
-    isWithRefreshButton: Boolean
+    isWithRefreshButton: Boolean,
+    isIconSmall: Boolean
   },
   emits: [
     'refreshButtonClick',
@@ -101,13 +109,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-message
-  @extend .no-shadow, .no-margin, .border, .background-transparent
-  &.inverted
-    @extend .border-inverted
-
-.icons
-  font-size: 2.25em !important
-  margin: 0 0.5em !important
-</style>
+<style lang="sass" scoped></style>

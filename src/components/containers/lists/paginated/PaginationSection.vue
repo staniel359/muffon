@@ -2,11 +2,9 @@
   <div
     v-show="!isLoading"
   >
-    <BaseDivider />
-
-    <div class="pagination-container">
+    <div class="center-aligned main-bottom-large-section">
       <BaseMenuContainer
-        class="small pagination"
+        class="background-transparent secondary"
       >
         <PreviousPageItem
           :is-disabled="isPreviousPageDisabled"
@@ -38,7 +36,6 @@
 </template>
 
 <script>
-import BaseDivider from '@/components/BaseDivider.vue'
 import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import PreviousPageItem from './PaginationSection/PreviousPageItem.vue'
 import PageItem from './PaginationSection/PageItem.vue'
@@ -47,7 +44,6 @@ import NextPageItem from './PaginationSection/NextPageItem.vue'
 export default {
   name: 'PaginationSection',
   components: {
-    BaseDivider,
     BaseMenuContainer,
     PreviousPageItem,
     PageItem,
@@ -119,21 +115,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.pagination-container
-  @extend .d-flex, .justify-content-center
-  padding: 5px
-
-.pagination
-  @extend .background-transparent
-  &.inverted
-    @extend .border-inverted
-  & > .item
-    &:last-child
-      border-top-right-radius: inherit
-      border-bottom-right-radius: inherit
-      &:before
-        width: 0
-    & > :deep(.direction-icon)
-      @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

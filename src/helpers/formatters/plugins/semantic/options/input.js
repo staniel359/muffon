@@ -8,9 +8,9 @@ export function history (
   }
 ) {
   return {
+    transition: 'fade down',
     maxResults: 20,
     minCharacters: 0,
-    duration: 0,
     searchDelay: 0,
     cache: false,
     showNoResults: false,
@@ -59,6 +59,7 @@ export function search (
   }
 
   return {
+    transition: 'fade down',
     cache: false,
     searchOnFocus: false,
     showNoResults: true,

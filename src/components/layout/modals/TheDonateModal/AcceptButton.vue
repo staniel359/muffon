@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="primary circular cancel action-button"
+    class="primary circular cancel"
     :text="acceptText"
     :is-invertable="false"
     @click="handleClick"
@@ -27,7 +27,7 @@ export default {
   computed: {
     acceptText () {
       return this.$t(
-        'donate.accept'
+        'donate.actions.accept'
       )
     }
   },

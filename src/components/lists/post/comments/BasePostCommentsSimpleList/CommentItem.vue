@@ -1,6 +1,6 @@
 <template>
   <div
-    class="comment main-simple-list-item base-comment-item"
+    class="comment main-simple-list-item not-padded main-list-bottom-section"
     :class="{
       disabled: isDeleted
     }"
@@ -13,51 +13,42 @@
       v-else
     >
       <BaseImage
-        class="small"
+        class="image-30"
         :class="imageClass"
         :model="imageModel"
         :image="imageData?.extrasmall"
       />
 
       <div class="content">
-        <div class="author">
-          <BaseCommunityTitle
-            v-if="isByCommunity"
-            :community-data="communityData"
-          />
-          <div
-            v-else
-            class="profile-nickname-private-container"
-          >
-            <BaseProfileNickname
-              :profile-data="profileData"
+        <div class="middle-aligned main-visibility-container">
+          <div class="flex-full">
+            <CreatorSection
+              :comment-data="commentData"
             />
 
-            <BasePrivateIcon
-              v-if="isProfilePrivate"
+            <BaseTimestampSection
+              class="description"
+              :created="created"
             />
           </div>
+
+          <BasePostCommentOptionsPopup
+            v-if="isWithOptions"
+            class="invisible-item"
+            :comment-data="commentData"
+            :is-with-edit-option="isWithEditOption"
+            :is-community-creator="isCommunityCreator"
+            is-with-delete-option
+            @updated="handleUpdated"
+            @deleted="handleDeleted"
+          />
         </div>
 
-        <BaseTimestampSection
-          class="description"
-          :created="created"
-        />
-
         <BaseSendableContentSection
+          class="sendable-content-section main-bottom-small-section"
           :model-data="commentData"
         />
       </div>
-
-      <BasePostCommentOptionsPopup
-        v-if="isWithOptions"
-        :comment-data="commentData"
-        :is-with-edit-option="isWithEditOption"
-        :is-community-creator="isCommunityCreator"
-        is-with-delete-option
-        @updated="handleUpdated"
-        @deleted="handleDeleted"
-      />
     </template>
   </div>
 </template>
@@ -69,11 +60,7 @@ import {
 import profileStore from '@/stores/profile'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
-import BaseCommunityTitle
-  from '@/components/models/community/BaseCommunityTitle.vue'
-import BaseProfileNickname
-  from '@/components/models/profile/BaseProfileNickname.vue'
-import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
+import CreatorSection from './CommentItem/CreatorSection.vue'
 import BaseTimestampSection
   from '@/components/sections/BaseTimestampSection.vue'
 import BaseSendableContentSection
@@ -87,9 +74,7 @@ export default {
   components: {
     BaseDeletedSection,
     BaseImage,
-    BaseCommunityTitle,
-    BaseProfileNickname,
-    BasePrivateIcon,
+    CreatorSection,
     BaseTimestampSection,
     BaseSendableContentSection,
     BasePostCommentOptionsPopup
@@ -158,9 +143,6 @@ export default {
     },
     profileData () {
       return this.commentData.profile
-    },
-    isProfilePrivate () {
-      return this.profileData.private
     },
     created () {
       return this.commentData.created
@@ -261,19 +243,18 @@ export default {
     updateItem (
       value
     ) {
+      const updateArgs = {
+        uuid: this.uuid,
+        value
+      }
+
       if (this.isPaginated) {
         this.updatePaginationItem(
-          {
-            uuid: this.uuid,
-            value
-          }
+          updateArgs
         )
       } else {
         this.updateListItem(
-          {
-            uuid: this.uuid,
-            value
-          }
+          updateArgs
         )
       }
     }
@@ -282,11 +263,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.base-comment-item
-  @extend .align-items-start, .no-padding, .no-margin
-  &:not(:first-child)
-    margin-top: 1.5em !important
-
-.profile-nickname-private-container
-  @extend .d-flex, .align-items-center
+.sendable-content-section
+  :deep(.media-item)
+    max-width: 250px
 </style>

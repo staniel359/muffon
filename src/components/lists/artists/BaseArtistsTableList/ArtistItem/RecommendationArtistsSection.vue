@@ -1,7 +1,7 @@
 <template>
-  <div class="recommendation-artists-section-container">
+  <div class="center-aligned">
     <BaseListCounterSection
-      class="main-link recommendation-artists-section"
+      class="main-link width-fit-content"
       icon="artist"
       :count="recommendationArtistsCount"
       @click="handleCounterClick"
@@ -53,10 +53,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.recommendation-artists-section-container
-  @extend .d-flex, .justify-content-center
-
-.recommendation-artists-section
-  @extend .width-fit-content
-</style>
+<style lang="sass" scoped></style>

@@ -1,8 +1,6 @@
 <template>
-  <div
-    v-if="albumTitle"
-  >
-    <small>
+  <div class="description">
+    <div class="meta">
       <BaseAlbumLinkContainer
         class="main-link"
         :album-data="albumData"
@@ -10,7 +8,7 @@
       >
         {{ albumTitle }}
       </BaseAlbumLinkContainer>
-    </small>
+    </div>
   </div>
 </template>
 

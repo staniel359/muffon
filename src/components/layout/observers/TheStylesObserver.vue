@@ -27,9 +27,11 @@ export default {
       )[0]
     },
     style () {
-      return (
-        this.isRtl ? rtlStyle : ltrStyle
-      )
+      if (this.isRtl) {
+        return rtlStyle
+      } else {
+        return ltrStyle
+      }
     }
   },
   watch: {

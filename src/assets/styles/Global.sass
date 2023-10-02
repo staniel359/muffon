@@ -1,0 +1,692 @@
+html
+  @extend .scroll-smooth
+
+body
+  &.pushable
+    @extend .background-transparent
+    .pusher
+      @extend .overflow-visible, .background-transparent
+      &:after
+        @extend .background-transparent
+  &.dimmable
+    &.scrolling
+      & > .dimmer
+        @extend .justify-content-center
+  &::-webkit-scrollbar
+    @extend .background-white
+  &.inverted
+    &::-webkit-scrollbar
+      @extend .background-black
+
+a
+  @extend .no-dragging
+  outline: none
+  user-select: text
+
+p
+  @extend .no-margin
+
+// 
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px)
+  .main-container
+    width: 700px !important
+@media only screen and (min-width: 992px) and (max-width: 1199.98px)
+  .main-container
+    width: 800px !important
+@media only screen and (min-width: 1200px)
+  .main-container
+    width: 900px !important
+
+//
+
+.ui.modals
+  @extend .no-padding
+  z-index: 2000
+
+.ui.toast-container
+  @extend .pointer-events-auto
+  &.top.right
+    @extend .absolute, .no-margin
+    top: 10px
+  .toast-box
+    @extend .blurred
+[dir="ltr"]
+  .ui.toast-container
+    &.top.right
+      right: 10px
+[dir="rtl"]
+  .ui.toast-container
+    &.top.right
+      left: 10px
+
+.ui.toast
+  &.inverted
+    @extend .border-inverted
+
+.ui.comments
+  .comment
+    .text
+      font-size: 16px
+
+//
+
+.ui.segment
+  &.main-segment
+    padding: 1.5rem
+
+.ui.dropdown
+  &.main-dropdown
+    .menu
+      z-index: 1100
+    &.scrolling
+      .menu
+        min-width: calc(100% + 2px) !important
+
+//
+
+.main-segments-container
+  @extend .main-segment-container
+  & > .main-segment
+    @extend .no-shadow
+  &:not(.simple)
+    &.inverted
+      & > .main-segment
+        &:not(:first-child)
+          @extend .border-top-inverted
+  &.simple
+    & > .main-segment
+      &:not(:first-child)
+        @extend .no-border
+        padding-top: 0.5rem !important
+        &.not-top-padded
+          padding-top: 0 !important
+
+.main-search
+  &.scrolling
+    .main-search-results
+      max-height: 200px !important
+  .prompt
+    @extend .border-radius
+
+.main-search-results
+  @extend .no-border, .width-100
+  .result
+    @extend .middle-aligned
+    .image
+      @extend .shadowed
+      img
+        @extend .object-fit-cover
+    .content
+      @extend .no-margin, .flex-full, .word-break-break-word, .main-list-right-small-section
+      .description
+        .artist-name
+          @extend .text-color-black
+          margin-top: 0.1rem
+        .album-title
+          margin-top: 0.1rem
+          line-height: 0.8rem
+          font-size: 1rem
+    &:only-child
+      &:hover
+        border-radius: inherit !important
+  &.inverted
+    @extend .border-inverted
+    .result
+      @extend .border-bottom-inverted
+      .image
+        @extend .border-inverted
+      .content
+        .title
+          @extend .text-color-white
+        .description
+          .artist-name
+            @extend .text-color-white
+          .album-title
+            @extend .text-color-white-inverted
+      &:hover,
+      &.active
+        @extend .background-grey-inverted
+    .message
+      .header,
+      .description
+        @extend .text-color-white
+  &.artists-results
+    .result
+      .image
+        @extend .image-40
+        border-radius: 50% !important
+  &.albums-results
+    .result
+      .image
+        @extend .image-40, .rounded-medium
+  &.tracks-results
+    .result
+      .image
+        @extend .image-35, .rounded-medium
+
+.main-input
+  & > input,
+  & > textarea
+    @extend .background-transparent
+  &.inverted
+    & > input,
+    & > textarea
+      @extend .background-transparent, .text-color-white, .border-inverted
+      &:focus
+        @extend .border-color-base-light
+    & > .icon
+      @extend .text-color-white
+
+.main-simple-button
+  @extend .no-padding, .no-shadow, .no-border-radius, .middle-center-aligned
+
+.main-navbar-button
+  @extend .main-simple-button, .height-navbar
+  width: $navbarHeight
+
+.main-segment-container
+  @extend .no-border, .no-margin, .main-list-bottom-large-section
+  &.inverted
+    @extend .no-shadow
+    &.nested
+      @extend .border-inverted
+
+.main-segment
+  @extend .scroll-smooth
+  &.loading
+    min-height: 150px !important
+    z-index: 1
+    &:before
+      @extend .background-transparent, .blurred
+  &.inverted
+    @extend .no-shadow
+  &.disabled
+    @extend .text-color-black
+    &.inverted
+      @extend .text-color-white
+
+.main-paginated-page-segment-container
+  @extend .full-column
+
+.main-image-modal-content
+  @extend .center-aligned-column
+
+.main-image-container
+  @extend .relative
+  padding-bottom: 100%
+  &.video
+    padding-bottom: calc(100% / 16 * 9)
+  & > .image,
+  & > .image-content
+    @extend .absolute, .width-100, .height-100
+  &:hover
+    .main-image-clear-button
+      @extend .d-block
+
+.main-link
+  @extend .text-color-unset, .cursor-pointer
+  &:hover,
+  &.active
+    @extend .text-color-base
+  &.bold
+    @extend .text-bold
+
+.main-text-section
+  @extend .main-list-bottom-mini-section
+
+.main-small-text-container
+  @extend .word-break-break-word
+
+.main-text-container
+  @extend .word-break-break-word
+  line-height: 1.55rem
+
+.main-formatted-text-container
+  @extend .main-text-container
+  white-space: pre-wrap
+
+.main-lyrics-container
+  @extend .main-formatted-text-container
+  padding: 1.5rem 2.5rem
+  & > .lyrics
+    font-size: 16px
+
+.main-simple-list-item
+  @extend .d-flex, .word-break-break-word
+  padding: 0.9rem 1.25rem !important
+  &.not-padded
+    @extend .no-padding
+  & > .image
+    @extend .main-list-right-small-section
+  & > .content
+    @extend .flex-full, .no-padding, .main-list-right-small-section
+    .text
+      font-size: 20px
+  .extra
+    line-height: 1.1rem
+    margin-top: 0.25rem
+  .description
+    &:not(.right, .left)
+      line-height: 1rem
+      margin-top: 0.25rem
+  & > .base-options-popup-container
+    @extend .main-list-right-small-section
+  .main-self-icons
+    @extend .text-align-center, .main-list-right-small-section
+    width: 50px
+  &:hover
+    .link-active
+      @extend .text-color-base
+
+.main-simple-list-item-model-icon
+  @extend .main-left-small-section
+
+.main-popup
+  @extend .no-border, .no-padding, .background-transparent, .blurred
+  max-width: unset !important
+  z-index: 2000 !important
+  &.inverted
+    @extend .border-inverted
+  &.animating
+    @extend .pointer-events-none
+  &.small
+    .main-popup-content-container
+      padding: 1rem 1.25rem !important
+  &.extrasmall
+    .main-popup-content-container
+      padding: 0.75rem 1rem !important
+
+.main-popup-container
+  @extend .d-none
+
+.main-popup-content-container
+  @extend .no-border
+  &.inverted
+    @extend .border-inverted
+  .info-section
+    @extend .main-list-bottom-mini-section
+    line-height: 1.5rem !important
+
+.main-artist-popup
+  width: 460px
+
+.main-annotation-popup
+  width: 375px
+  .main-popup-content-container
+    @extend .overflow-y-auto
+    max-height: 250px
+    img
+      width: unset !important
+      height: unset !important
+      max-width: 100%
+
+.main-volume-popup
+  @extend .text-align-center
+  width: 70px !important
+
+.main-lastfm-import-info-popup
+  max-width: 250px !important
+
+.main-header
+  @extend .no-margin
+  line-height: normal !important
+  .header-icon
+    &.small
+      @extend .main-left-extrasmall-section
+      font-size: 1.2rem !important
+  &.massive
+    .header-icon
+      &.small
+        @extend .main-left-medium-section
+        font-size: 2rem !important
+
+.main-artist-name
+  @extend .main-top-small-section
+
+.main-dropdown-item
+  @extend .middle-aligned, .word-break-break-word
+  line-height: 1.2rem !important
+  &.selected
+    font-weight: unset !important
+  & > .icon,
+  & > .flag
+    @extend .main-left-small-section
+  & > .image-container
+    @extend .main-left-small-section
+    .image
+      @extend .object-fit-cover, .image-30
+  & > .content
+    @extend .flex-full, .word-break-break-word
+    white-space: normal
+  & > .extra
+    @extend .main-right-small-section
+    font-size: 0.8rem
+
+.main-dropdown-icon
+  @extend .middle-center-aligned, .no-margin
+  height: 18px !important
+  width: 18px !important
+
+.main-settings-section-container
+  @extend .main-list-bottom-large-section
+
+.main-settings-option-container
+  @extend .main-list-bottom-large-section
+
+.main-settings-option
+  @extend .middle-aligned
+  .option-header
+    @extend .flex-full, .main-list-left-large-section
+  .option-text
+    @extend .flex-full, .text-align-center
+
+.main-model-source-select-container
+  @extend .middle-aligned
+  & > .content
+    @extend .middle-aligned
+    .right-section
+      @extend .main-right-section, .main-select
+    .bottom-section
+      @extend .main-bottom-section, .main-select
+
+.main-source-select
+  @extend .main-select
+
+.main-sidebar-item
+  @extend .no-padding, .d-flex
+  &.top-item
+    @extend .align-items-center, .border-bottom, .height-navbar
+    &.inverted
+      @extend .border-bottom-inverted
+    .image
+      @extend .image-25
+  &:before
+    background: none !important
+  &:hover
+    &:not(.active.primary)
+      .icon
+        @extend .text-color-black
+      &.inverted
+        .icon
+          @extend .text-color-white
+
+.main-sidebar-item-icon-image-container
+  @extend .middle-center-aligned, .image-40
+  flex-shrink: 0
+  .icon
+    font-size: 16px
+
+.main-columns-container
+  @extend .plain-full
+
+.main-profile-page-left-column
+  @extend .no-margin, .width-25
+  .main-profile-page-info
+    @extend .middle-aligned-column, .text-align-center, .word-break-break-word
+    .main-self-icons
+      max-width: 75px
+  .main-profile-page-image-container
+    @extend .relative, .image-120, .main-top-mini-section
+
+.main-right-column
+  @extend .full-column, .main-right-large-section
+  &.small
+    @extend .main-right-section
+
+.main-sticky-container
+  @extend .sticky, .height-fit-content
+  top: $mainContainerTopPadding
+
+.main-modal-import-section
+  @extend .full-column, .overflow-y-auto, .scroll-smooth
+
+.main-self-container
+  @extend .middle-center-aligned, .width-100, .relative
+  min-height: 30px
+  .base-options-popup-container
+    @extend .absolute, .no-right
+
+.main-button
+  @extend .no-margin
+  &.simple
+    @extend .no-shadow
+
+.main-form-extra-section
+  @extend .d-flex
+
+.main-form-image-field
+  @extend .middle-aligned-column, .width-35
+  padding: 0 10px
+  max-width: 150px
+  .main-image-container
+    @extend .width-100
+
+.main-form-extra-section-fields-section
+  @extend .main-right-small-section, .flex-full
+
+.main-sendable-form
+  & > .as-community-container
+    @extend .main-bottom-section
+  & > .buttons-container
+    @extend .middle-aligned, .main-bottom-section
+
+.main-message-item
+  padding: 1.5rem !important
+  &.inverted
+    @extend .border-inverted
+
+.main-paginated-segment-container
+  @extend .d-flex
+
+.main-compatibility-common-button
+  @extend .main-list-right-small-section
+
+.main-sendable-content-section
+  @extend .no-padding, .no-margin, .main-list-bottom-section
+
+.main-zoomable-image
+  @extend .cursor-zoom-in
+
+.main-image-list-item
+  @extend .relative, .align-self-center
+  &.selectable
+    &.active
+      @extend .border-radius-medium
+      border: $borderBaseLight
+    .image
+      @extend .cursor-pointer
+  &:hover
+    .main-image-clear-button
+      @extend .d-block
+
+.main-image-clear-button
+  @extend .main-button, .absolute, .d-none
+  top: 0.5rem
+[dir="ltr"]
+  .main-image-clear-button
+    right: 0.5rem
+[dir="rtl"]
+  .main-image-clear-button
+    left: 0.5rem
+
+.main-labels-section
+  @extend .middle-aligned
+  &:not(:last-child)
+    @extend .main-top-extrasmall-section
+
+.main-date-section
+  min-width: 75px
+  &.right
+    @extend .text-align-right, .main-right-small-section
+  &.centered
+    @extend .text-align-center
+
+.main-menu-item
+  @extend .middle-aligned, .word-break-break-word
+  &.active
+    @extend .text-bold
+    &.primary
+      @extend .background-base, .text-color-white
+      .icon
+        @extend .text-color-white
+  .icon
+    @extend .main-list-left-small-icon
+    float: none !important
+  &:last-child
+    @extend .no-border
+
+.main-field
+  @extend .middle-aligned
+
+.main-counter-bar-container
+  @extend .middle-aligned
+
+.main-more-container
+  @extend .end-aligned, .main-bottom-section
+
+.main-page-container
+  @extend .plain-column
+  min-height: calc(100vh - #{$mainContainerTopPadding} - #{$mainContainerBottomPadding}) !important
+
+.main-page-segment-container
+  @extend .plain-full
+
+.main-counters-section
+  @extend .center-aligned
+
+.main-counter-section
+  @extend .width-fit-content
+  .icon
+    @extend .main-left-extrasmall-icon, .width-fit-content
+
+.main-inline-counter-section
+  @extend .main-list-left-small-section, .d-inline-block
+  margin-bottom: 0.25rem
+
+.main-background
+  @extend .fixed, .width-100, .height-100
+  transition: background 0.25s ease
+  &.dark
+    filter: brightness(0.4) grayscale(20%)
+
+.main-view
+  padding-top: $mainContainerTopPadding
+  padding-bottom: $mainContainerBottomPadding
+
+.main-popup-icon
+  @extend .main-icon, .cursor-pointer
+
+.main-form-submit-button-container
+  @extend .end-aligned, .main-bottom-section
+
+.main-form-remember-submit-button-container
+  @extend .middle-aligned-space-between, .main-bottom-section
+
+.main-small-artist-name
+  margin-top: 0.3rem
+  line-height: 1.2rem
+
+.main-small-album-title
+  margin-top: 0.2rem
+  line-height: 1rem
+
+.main-paginated-list-container
+  @extend .full-column, .width-100
+
+.main-page-top-section
+  @extend .middle-aligned-space-between
+  .section
+    @extend .middle-aligned
+  .section-item
+    @extend .main-right-section
+
+.main-transition-item
+  @extend .visibility-hidden
+
+.main-settings-options-block
+  padding: 1rem 1.5rem !important
+
+.main-seeker-container
+  margin: 1.5rem 0
+  padding: 0 1.5rem
+
+.main-buttons-container
+  .button
+    @extend .main-list-right-small-section
+
+.main-small-buttons-container
+  .button
+    @extend .main-list-right-mini-section
+
+.main-options-option
+  padding: 0.9rem 1.25rem !important
+
+.main-options-option-icon
+  @extend .main-left-small-icon
+
+.main-toggle-container
+  @extend .middle-aligned
+  .text-section
+    @extend .main-left-medium-section
+
+.main-self-icons
+  &.centered
+    @extend .text-align-center
+
+.main-simple-search-input
+  @extend .flex-full
+
+.main-system-input
+  @extend .d-none
+
+.main-search-container
+  @extend .middle-aligned
+
+.main-search-input
+  width: 240px
+
+.main-select
+  width: 230px
+
+.main-small-select
+  width: 150px
+
+.main-bottom-right-button
+  bottom: 1.5rem
+[dir="ltr"]
+  .main-bottom-right-button
+    right: 1.5rem
+[dir="rtl"]
+  .main-bottom-right-button
+    left: 1rem
+
+.main-bottom-right-small-button
+  bottom: 1rem
+  &.player-panel-bottom
+    bottom: calc(#{$playerPanelHeight} + 1rem) !important
+[dir="ltr"]
+  .main-bottom-right-small-button
+    right: 1rem
+[dir="rtl"]
+  .main-bottom-right-small-button
+    left: 1rem
+
+.main-visibility-container
+  .invisible-item
+    @extend .visibility-hidden
+  .hidden-item
+    @extend .d-none
+  &:hover
+    .invisible-item
+      @extend .visibility-visible
+    .hidden-item
+      @extend .d-block
+
+.main-simple-self-icon
+  @extend .main-icon, .d-inline-block
+  margin: 0.25rem !important
+
+.main-link-section
+  @extend .d-inline-block, .main-left-medium-section
+  margin-bottom: 0.25rem

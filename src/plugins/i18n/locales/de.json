@@ -92,7 +92,8 @@
     "queue": "Queue",
     "whatsNew": "Was ist neu",
     "listenedRecently": "Zuletzt angehört",
-    "shows": "Aufführungen"
+    "shows": "Aufführungen",
+    "listeningNow": "Jetzt läuft"
   },
   "errors": {
     "badRequest": {
@@ -151,6 +152,7 @@
     "filter": "Filter",
     "confirm": "Bestätigen",
     "import": "Importieren",
+    "close": "Schließen",
     "addFrom": {
       "search": "Von der Suche",
       "library": "Von der Bibliothek"
@@ -784,16 +786,18 @@
   },
   "donate": {
     "header": "Spenden",
-    "content": {
-      "nonProfit": "muffon ist ein gemeinnütziges Projekt, das weder Werbung noch kostenpflichtige Funktionen oder Inhalte hat.",
-      "funds": "Aber natürlich kann es ohne Gelder, die für seine Entwicklung und Infrastruktur benötigt werden, nicht existieren.",
-      "timeEffort": "Es wurde viel Zeit und Mühe in die Erstellung dieses Projekts gesteckt, und es wäre gut, wenn sich alle Investitionen auszahlen würden.",
-      "help": "Deshalb bitte ich um Ihre Hilfe bei der Unterstützung von muffon.",
-      "would": "Möchten Sie Spenden?"
-    },
-    "decline": "Nein, danke",
-    "later": "Vielleicht später",
-    "accept": "Ja, bitte"
+    "content": [
+      "muffon ist ein gemeinnütziges Projekt, das weder Werbung noch kostenpflichtige Funktionen oder Inhalte hat.",
+      "Aber natürlich kann es ohne Gelder, die für seine Entwicklung und Infrastruktur benötigt werden, nicht existieren.",
+      "Es wurde viel Zeit und Mühe in die Erstellung dieses Projekts gesteckt, und es wäre gut, wenn sich alle Investitionen auszahlen würden.",
+      "Deshalb bitte ich um Ihre Hilfe bei der Unterstützung von muffon.",
+      "<strong>Möchten Sie Spenden?</strong>"
+    ],
+    "actions": {
+      "decline": "Nein, danke",
+      "later": "Vielleicht später",
+      "accept": "Ja, bitte"
+    }
   },
   "lists": {
     "simple": "Simple Liste",

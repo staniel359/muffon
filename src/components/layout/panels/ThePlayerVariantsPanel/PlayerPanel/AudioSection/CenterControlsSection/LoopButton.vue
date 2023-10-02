@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="tiny circular compact"
+    class="circular compact simple"
     icon="audioLoop"
     :class="isActive ? 'primary' : 'basic'"
     :is-invertable="!isActive"

@@ -1,18 +1,20 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="scrobbleNotificationsText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="scrobbleNotificationsText"
+      />
 
-    <BaseToggle
-      store-key="player.isWithScrobbleNotifications"
-      :class="{
-        disabled: isDisabled
-      }"
-      :is-checked="isChecked"
-    />
+      <BaseToggle
+        store-key="player.isWithScrobbleNotifications"
+        :class="{
+          disabled: isDisabled
+        }"
+        :is-checked="isChecked"
+      />
+    </div>
   </div>
 </template>
 

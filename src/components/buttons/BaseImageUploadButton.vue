@@ -1,7 +1,7 @@
 <template>
   <BaseButtonContainer
     class="basic circular"
-    icon="image"
+    left-icon="image"
     :text="uploadText"
     @click="handleClick"
   >

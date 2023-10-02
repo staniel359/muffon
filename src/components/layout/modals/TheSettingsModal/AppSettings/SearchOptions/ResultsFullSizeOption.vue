@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="resultsFullSizeText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="resultsFullSizeText"
+      />
 
-    <BaseToggle
-      store-key="search.isResultsFullSize"
-      :is-checked="isSearchResultsFullSize"
-    />
+      <BaseToggle
+        store-key="search.isResultsFullSize"
+        :is-checked="isSearchResultsFullSize"
+      />
+    </div>
   </div>
 </template>
 

@@ -6,20 +6,19 @@
   >
     <div class="content">
       <BasePlaylistUpdateFormContainer
-        class="main-creatable-form"
         :playlist-id="playlistId"
         :image="image"
         @success="handleSuccess"
       >
-        <div class="fields-container">
+        <div class="main-form-extra-section">
           <BaseImageField
-            class="image-field"
+            class="main-form-image-field"
             model="playlist"
             :value="imageData?.medium"
             @change="handleImageChange"
           />
 
-          <div class="fields-right-column">
+          <div class="main-form-extra-section-fields-section">
             <BaseTitleField
               ref="title"
               :value="playlistTitle"

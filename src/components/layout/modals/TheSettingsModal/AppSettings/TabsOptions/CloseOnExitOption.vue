@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="closeTabsText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="closeTabsText"
+      />
 
-    <BaseToggle
-      store-key="layout.isCloseTabsOnExit"
-      :is-checked="isCloseTabsOnExit"
-    />
+      <BaseToggle
+        store-key="layout.isCloseTabsOnExit"
+        :is-checked="isCloseTabsOnExit"
+      />
+    </div>
   </div>
 </template>
 

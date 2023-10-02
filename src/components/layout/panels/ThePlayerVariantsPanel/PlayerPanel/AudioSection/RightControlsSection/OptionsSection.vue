@@ -1,43 +1,45 @@
 <template>
-  <BaseTrackContainer
-    :key="key"
-    ref="track"
-    class="options-container"
-    :track-data="playerPlaying"
-  >
-    <template
-      #default="slotProps"
+  <div class="middle-aligned">
+    <BaseTrackContainer
+      ref="track"
+      :track-data="playerPlaying"
+      :is-clickable="false"
     >
-      <BaseIcon
-        v-if="slotProps.isLoading || slotProps.isError"
-        class="options-icon"
-        :is-loading="slotProps.isLoading"
-        :is-error="slotProps.isError"
-        is-icon-red
-      />
+      <template
+        #default="slotProps"
+      >
+        <BaseIcon
+          v-if="slotProps.isLoading || slotProps.isError"
+          class="main-left-mini-icon"
+          :is-loading="slotProps.isLoading"
+          :is-error="slotProps.isError"
+          is-icon-red
+        />
+      </template>
+    </BaseTrackContainer>
 
-      <BaseTrackOptionsPopup
-        :track-data="playerPlaying"
-        :library-id="libraryId"
-        :favorite-id="favoriteId"
-        :bookmark-id="bookmarkId"
-        :listened-id="listenedId"
-        is-with-library-option
-        is-with-favorite-option
-        is-with-bookmark-option
-        is-with-listened-option
-        is-with-playlist-option
-        is-with-source-option
-        is-with-queue-option
-        is-with-save-option
-        is-with-share-option
-        is-with-external-link-option
-        is-inline
-        is-show-to-top
-        @source-click="handleSourceClick"
-      />
-    </template>
-  </BaseTrackContainer>
+    <BaseTrackOptionsPopup
+      :track-data="playerPlaying"
+      :library-id="libraryId"
+      :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
+      is-with-library-option
+      is-with-favorite-option
+      is-with-bookmark-option
+      is-with-listened-option
+      is-with-playlist-option
+      is-with-source-option
+      is-with-queue-option
+      is-with-save-option
+      is-with-share-option
+      is-with-external-link-option
+      is-with-close-option
+      is-inline
+      is-show-to-top
+      @source-click="handleSourceClick"
+    />
+  </div>
 </template>
 
 <script>
@@ -51,9 +53,6 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseTrackOptionsPopup
   from '@/components/popups/track/BaseTrackOptionsPopup.vue'
 import selfMixin from '@/mixins/selfMixin'
-import {
-  generateKey
-} from '@/helpers/utils'
 
 export default {
   name: 'OptionsSection',
@@ -65,11 +64,6 @@ export default {
   mixins: [
     selfMixin
   ],
-  data () {
-    return {
-      key: null
-    }
-  },
   computed: {
     ...mapState(
       playerStore,
@@ -81,14 +75,7 @@ export default {
       return this.playerPlaying
     }
   },
-  watch: {
-    playerPlaying:
-      'handlePlayerPlayingChange'
-  },
   methods: {
-    handlePlayerPlayingChange () {
-      this.key = generateKey()
-    },
     handleSourceClick (
       value
     ) {
@@ -115,14 +102,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.options-container
-  @extend .d-flex, .align-items-center
-
-[dir="ltr"]
-  .options-icon
-    margin-right: 0.5em !important
-[dir="rtl"]
-  .options-icon
-    margin-left: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

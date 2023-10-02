@@ -7,12 +7,8 @@
     <template
       #default="slotProps"
     >
-      <div
-        :class="[
-          'ui raised segments main-segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
+      <BaseSegmentsContainer
+        class="main-page-segment-container"
       >
         <InfoSegment
           :playlist-data="slotProps.playlistData"
@@ -30,7 +26,7 @@
           :playlist-title="slotProps.playlistTitle"
           :order="order"
         />
-      </div>
+      </BaseSegmentsContainer>
     </template>
   </BaseProfilePlaylistPageContainer>
 </template>
@@ -38,6 +34,8 @@
 <script>
 import BaseProfilePlaylistPageContainer
   from '@/components/containers/pages/profile/playlist/BaseProfilePlaylistPageContainer.vue'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import ExtraSegment from './MainPage/ExtraSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
@@ -51,6 +49,7 @@ export default {
   name: 'MainPage',
   components: {
     BaseProfilePlaylistPageContainer,
+    BaseSegmentsContainer,
     InfoSegment,
     ExtraSegment,
     TracksSegment

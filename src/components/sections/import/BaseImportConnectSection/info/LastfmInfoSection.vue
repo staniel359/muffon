@@ -1,5 +1,5 @@
 <template>
-  <div class="info-section">
+  <div class="main-right-small-section">
     <BaseIcon
       ref="icon"
       class="grey main-popup-icon"

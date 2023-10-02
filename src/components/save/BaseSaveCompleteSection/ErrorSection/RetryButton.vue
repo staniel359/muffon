@@ -1,10 +1,12 @@
 <template>
-  <BaseButton
-    class="basic circular fluid retry-button"
-    icon="retry"
-    :text="retryText"
-    @click="handleClick"
-  />
+  <div class="main-bottom-section">
+    <BaseButton
+      class="basic circular fluid"
+      left-icon="retry"
+      :text="retryText"
+      @click="handleClick"
+    />
+  </div>
 </template>
 
 <script>
@@ -35,7 +37,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.retry-button
-  margin-top: 1em !important
-</style>
+<style lang="sass" scoped></style>

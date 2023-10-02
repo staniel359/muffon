@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="player-segment"
+    class="flex-full"
     :response-data="radioData"
     :is-loading="isLoading"
     :error="error"
@@ -85,7 +85,9 @@ export default {
       }
     },
     isTopScope () {
-      return this.scope === 'top'
+      return (
+        this.scope === 'top'
+      )
     }
   },
   watch: {
@@ -143,7 +145,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.player-segment
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

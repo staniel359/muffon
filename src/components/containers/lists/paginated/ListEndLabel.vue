@@ -1,7 +1,7 @@
 <template>
-  <div class="list-end-label-container">
+  <div class="main-bottom-section width-100 text-align-center">
     <BaseLabel
-      class="mini empty circular list-end-label"
+      class="mini empty circular base-paginated-infinite-list-end-label"
       :is-change-transparency="false"
     />
   </div>
@@ -18,13 +18,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.list-end-label-container
-  @extend .w-100, .text-align-center
-  margin-top: 1em
-
-.list-end-label
-  @extend .background-grey
-  &.inverted
-    @extend .background-grey-inverted
-</style>
+<style lang="sass" scoped></style>

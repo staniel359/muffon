@@ -1,6 +1,6 @@
 <template>
   <BaseLabel
-    class="basic circular large more-link-button"
+    class="basic circular large absolute main-bottom-right-small-button hidden-item"
     icon="dotsHorizontal"
     :link="artistImagesLink"
   />
@@ -35,15 +35,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.more-link-button
-  @extend .absolute
-  bottom: 10px
-  z-index: 1
-[dir="ltr"]
-  .more-link-button
-    right: 10px
-[dir="rtl"]
-  .more-link-button
-    left: 10px
-</style>
+<style lang="sass" scoped></style>

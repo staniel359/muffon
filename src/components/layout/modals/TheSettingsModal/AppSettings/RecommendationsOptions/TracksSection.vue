@@ -1,17 +1,21 @@
 <template>
-  <BaseDivider
-    :text="headerText"
-  />
+  <div class="main-settings-section-container">
+    <BaseDivider
+      :text="headerText"
+    />
 
-  <HideLibraryTracksOption />
+    <div>
+      <HideLibraryTracksOption />
 
-  <HideLibraryArtistsOption />
+      <HideLibraryArtistsOption />
 
-  <HideLibraryArtistsTracksCountOption />
+      <HideLibraryArtistsTracksCountOption />
 
-  <HideListenedTracksOption />
+      <HideListenedTracksOption />
 
-  <HideListenedArtistsOption />
+      <HideListenedArtistsOption />
+    </div>
+  </div>
 </template>
 
 <script>

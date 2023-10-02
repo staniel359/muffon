@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="bitrateText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="bitrateText"
+      />
 
-    <BaseToggle
-      store-key="player.isWithBitrate"
-      :is-checked="isPlayerWithBitrate"
-    />
+      <BaseToggle
+        store-key="player.isWithBitrate"
+        :is-checked="isPlayerWithBitrate"
+      />
+    </div>
   </div>
 </template>
 

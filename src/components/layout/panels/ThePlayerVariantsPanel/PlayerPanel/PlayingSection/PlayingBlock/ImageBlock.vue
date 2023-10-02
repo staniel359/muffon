@@ -2,13 +2,13 @@
   <BaseImage
     v-if="isWithAlbum"
     model="track"
-    class="rounded-medium medium"
+    class="rounded-medium image-45"
     :image="imageData?.[size]"
   />
   <BaseArtistImage
     v-else
     :key="key"
-    class="medium"
+    class="image-45"
     :image-data="artistImageData"
     :artist-name="artistName"
     :size="size"

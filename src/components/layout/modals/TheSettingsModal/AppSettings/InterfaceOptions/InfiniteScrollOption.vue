@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="infiniteScrollText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="infiniteScrollText"
+      />
 
-    <BaseToggle
-      store-key="layout.isWithInfiniteScroll"
-      :is-checked="isWithInfiniteScroll"
-    />
+      <BaseToggle
+        store-key="layout.isWithInfiniteScroll"
+        :is-checked="isWithInfiniteScroll"
+      />
+    </div>
   </div>
 </template>
 

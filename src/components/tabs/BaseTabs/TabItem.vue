@@ -11,7 +11,9 @@
       :icon="icon"
     />
 
-    {{ tabName }}
+    <span
+      v-text="tabName"
+    />
   </a>
 </template>
 

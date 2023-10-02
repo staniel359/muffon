@@ -1,10 +1,5 @@
 <template>
-  <div
-    :class="[
-      'ui raised segments main-segments',
-      'main-segment-container'
-    ]"
-  >
+  <BaseSegmentsContainer>
     <BaseSegmentContainer
       class="main-profile-page-info"
     >
@@ -12,17 +7,20 @@
         :link="tagLink"
       >
         <BaseHeader
-          class="link tag-header"
+          class="link"
           tag="h3"
           icon="tag"
           :text="tagName"
+          is-icon-small
         />
       </BaseLinkContainer>
     </BaseSegmentContainer>
-  </div>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLinkContainer
@@ -35,6 +33,7 @@ import {
 export default {
   name: 'InfoSegment',
   components: {
+    BaseSegmentsContainer,
     BaseSegmentContainer,
     BaseLinkContainer,
     BaseHeader
@@ -60,16 +59,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.tag-header
-  :deep(.icon)
-    font-size: 0.75em !important
-[dir="ltr"]
-  .tag-header
-    :deep(.icon)
-      margin-right: 0.5em !important
-[dir="rtl"]
-  .tag-header
-    :deep(.icon)
-      margin-left: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

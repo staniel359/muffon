@@ -8,7 +8,7 @@
     @mouseleave="handleMouseLeave"
   >
     <div
-      class="left menu main-popup-content-container"
+      class="left menu main-popup-content-container d-block relative"
       :class="[
         transparentClass,
         {
@@ -69,6 +69,5 @@ export default {
 
 <style lang="sass" scoped>
 .main-popup-content-container
-  @extend .d-block, .relative
   margin-bottom: -4.75px !important
 </style>

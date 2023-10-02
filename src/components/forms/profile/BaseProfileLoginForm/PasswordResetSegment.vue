@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="password-reset-segment"
+    class="text-align-center"
   >
     {{ passwordResetText }}
 
@@ -49,7 +49,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.password-reset-segment
-  @extend .text-align-center
-</style>
+<style lang="sass" scoped></style>

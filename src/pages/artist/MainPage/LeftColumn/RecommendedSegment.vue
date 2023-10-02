@@ -1,26 +1,27 @@
 <template>
   <BaseSegmentContainer>
     <div
-      class="recommended-block"
+      class="recommended-block d-flex"
     >
       <BaseIcon
+        class="main-icon"
         icon="recommendation"
       />
 
-      <div class="content">
+      <div class="content flex-full main-right-small-section">
         <BaseHeader
           tag="h5"
           :text="headerText"
         />
 
         <div
-          class="based-text"
+          class="main-bottom-mini-section"
           v-text="basedText"
         />
 
         <BaseButton
-          class="basic circular compact fluid artists-button"
-          icon="artist"
+          class="basic circular compact fluid main-bottom-mini-section"
+          left-icon="artist"
           :text="artistsText"
           @click="handleArtistsButtonClick"
         />
@@ -108,22 +109,6 @@ export default {
 
 <style lang="sass" scoped>
 .recommended-block
-  @extend .d-flex
   & > .icon
-    @extend .no-margin
-    font-size: 1.2em
-  & > .content
-    @extend .flex-full
-    .based-text
-      margin-top: 0.25em
-    .artists-button
-      margin-top: 0.5em !important
-[dir="ltr"]
-  .recommended-block
-    & > .content
-      margin-left: 0.5em !important
-[dir="rtl"]
-  .recommended-block
-    & > .content
-      margin-right: 0.5em !important
+    font-size: 1.2rem
 </style>

@@ -1,0 +1,593 @@
+.ui.sidebar
+  &.the-search-panel
+    @extend .no-border, .text-color-black, .height-navbar, .overflow-visible
+    z-index: 1200 !important
+    &.inverted
+      @extend .border-bottom-inverted, .text-color-white
+    .search-input
+      max-width: 420px
+
+.the-search-results-panel
+  .results-container
+    width: 500px
+    max-height: 400px
+    z-index: 1100 !important
+    &:hover
+      .full-size-toggle-button
+        @extend .d-block
+    &.full-size
+      width: inherit
+      max-height: calc(100vh - $navbarHeight - 20px)
+  .results-segment
+    @extend .border-top, .no-border-top-radius
+    max-height: inherit
+    &.inverted
+      @extend .border-inverted-no-top
+    &:not(.loading)
+      @extend .blurred
+
+.ui.modal
+  &.the-settings-modal
+    & > .content
+      &.full-height
+        height: $settingsModalHeight
+        max-height: $settingsModalHeight !important
+    .settings-group-tabs-container
+      .base-tabs
+        @extend .no-margin, .width-30
+      .base-tab-container
+        @extend .width-70, .main-right-section
+    .settings-group-tab
+      @extend .plain-column
+      &:not(.active)
+        @extend .visibility-hidden
+
+.ui.sidebar
+  &.the-player-panel
+    @extend .no-border, .height-player-panel, .overflow-visible, .visibility-visible
+    z-index: 200 !important
+    transition: transform 0.5s ease
+    &.inverted
+      @extend .border-top-inverted
+    .player-content-container
+      min-width: 750px !important
+
+// 
+
+.the-browser-tabs
+  height: $tabsPanelHeight
+  padding: 0 0.75rem
+  &.inverted
+    @extend .border-bottom-inverted
+  &::-webkit-scrollbar
+    @extend .d-none
+
+.the-visible-area-container
+  height: calc(100vh - #{$navbarHeight})
+  z-index: 10000 !important
+  &.player-panel-height
+    height: calc(100vh - #{$navbarHeight} - #{$playerPanelHeight})
+
+.the-navbar-panel
+  @extend .no-border
+  z-index: 200 !important
+  &.inverted
+    @extend .border-bottom-inverted
+
+.the-queue-panel
+  width: 400px !important
+  .header-segment
+    margin-top: $navbarHeight !important
+  .section-segment
+    @extend .no-border-radius
+    &.inverted
+      @extend .border-left-inverted
+
+.the-sidebar-panel
+  @extend .no-border
+  z-index: 300 !important
+  width: 40px !important
+  transition: width 0.35s !important
+  &:hover
+    width: 240px !important
+    .top-section
+      @extend .overflow-y-auto
+      &::-webkit-scrollbar
+        @extend .d-block
+  &.inverted
+    @extend .border-right-inverted
+    .bottom-section
+      @extend .border-top-inverted
+  .top-section
+    &::-webkit-scrollbar
+      @extend .d-none
+
+.the-variants-panel
+  bottom: $playerPanelHeight
+  z-index: 200
+  .variants-content-container
+    width: 400px
+    height: 400px !important
+    padding-top: 30px
+    top: 370px
+    transition: top 0.35s
+    &.visible
+      top: 10px
+  .variants-label
+    @extend .no-border, .shadowed
+    padding: 0 1.5rem !important
+    height: 35px
+    top: -5px !important
+    &.inverted
+      @extend .no-shadow, .border-inverted-no-bottom
+  .variants-list
+    @extend .no-border
+    &.inverted
+      @extend .border-inverted-no-bottom
+[dir="ltr"]
+  .the-variants-panel
+    .variants-label
+      left: 30px !important
+[dir="rtl"]
+  .the-variants-panel
+    .variants-label
+      right: 30px !important
+
+.the-player-scrobble-point
+  width: 25px
+  border-left: 1px solid $colorLastfm
+  z-index: 10
+
+//
+
+.ui.labels
+  .base-label
+    margin: 0 0.75rem 0.75rem 0 !important
+    &.large
+      margin: 0 1rem 1rem 0 !important
+
+//
+
+.base-calendar
+  &.inverted
+    .popup
+      @extend .border-inverted
+
+.base-counter-bar
+  height: 4px
+  border-radius: 2px
+  &.inverted
+    @extend .background-grey-inverted
+
+.base-emoji-picker
+  em-emoji-picker
+    @extend .border-radius
+    max-height: 300px
+    --font-family: inherit
+    --rgb-background: transparent
+    --rgb-input: transparent
+    --rgb-accent: 128, 79, 179
+
+.base-percent-circle
+  & > path
+    fill: none
+    &.background
+      stroke: $colorGrey
+      &.inverted
+        stroke: $colorGreyInverted
+    &.main
+      stroke: $colorBase
+  & > text
+    text-anchor: middle
+    font-size: 1rem
+    &.inverted
+      fill: $colorWhite
+
+.base-progress
+  &:not(.success, .error)
+    .progress-bar
+      @extend .background-base
+
+.base-seeker
+  & > .inner
+    @extend .cursor-pointer
+    & > .track-fill
+      @extend .background-base
+    & > .track-progress
+      @extend .background-grey
+      transition: width 0.3s
+    & > .thumb
+      @extend .d-none, .no-shadow, .background-base
+      width: 13px !important
+      height: 13px !important
+  &:not(.disabled)
+    &:hover,
+    &:active
+      & > .inner
+        & > .thumb
+          @extend .d-block
+  &:not(.vertical)
+    &.small
+      & > .inner
+        & > .track,
+        & > .track-fill
+          height: 0.35rem !important
+    & > .inner
+      & > .thumb
+        top: 1px !important
+  &.vertical
+    &.small
+      & > .inner
+        & > .track,
+        & > .track-fill
+          width: 0.35rem !important
+  &.inverted
+    & > .inner
+      & > .track-progress
+        @extend .background-grey-inverted
+  &.with-thumb
+    & > .inner
+      & > .thumb
+        @extend .d-block
+
+.base-video
+  &.inverted
+    @extend .border-inner-inverted
+
+.base-audio-equalizer
+  .equalizer-item
+    padding: 0 10px
+    &.disabled
+      .gain-text
+        @extend .text-color-grey
+      &.inverted
+        .gain-text
+          @extend .text-color-grey-inverted
+  .gain-text
+    height: 20px
+  .audio-equalizer-seeker
+    height: 200px !important
+    width: 0 !important
+
+.base-info-item
+  & > .content
+    @extend .no-padding, .main-list-right-medium-section
+    .extra
+      @extend .text-color-unset
+      font-size: 1.1rem !important
+      margin-top: 0.3rem !important
+      & > *
+        @extend .no-margin
+    .description
+      margin-top: 0.35rem !important
+    .meta
+      @extend .no-margin
+  .main-self-icons
+    @extend .main-right-medium-section
+  .base-options-popup-container
+    @extend .main-right-medium-section
+
+.base-image-modal-slider-container
+  .slick-arrow
+    width: 25px
+    height: 25px
+    &:before
+      @extend .text-color-black
+      font-size: 25px
+  &.inverted
+    .slick-arrow
+      &:before
+        @extend .text-color-white
+[dir="ltr"]
+  .base-image-modal-slider-container
+    .slick-prev
+      left: -40px
+    .slick-next
+      right: -40px
+[dir="rtl"]
+  .base-image-modal-slider-container
+    .slick-prev
+      right: -40px
+    .slick-next
+      left: -40px
+
+.base-simple-card
+  &.disabled
+    @extend .text-color-black
+    &.inverted
+      @extend .text-color-white
+  .base-options-popup-container
+    @extend .absolute
+    z-index: 10
+    top: 0.5rem
+  .content
+    @extend .no-padding, .no-border
+    .extra
+      line-height: 1.3rem
+      margin-top: 0.25rem
+    .description
+      line-height: 1rem
+      margin-top: 0.4rem
+    .main-self-icons
+      margin-top: 0.4rem
+    .icon
+      &.star
+        opacity: 1 !important
+        cursor: unset !important
+  .main-image-container
+    @extend .main-top-mini-section
+[dir="ltr"]
+  .base-simple-card
+    .base-options-popup-container
+      right: 0.5rem
+[dir="rtl"]
+  .base-simple-card
+    .base-options-popup-container
+      left: 0.5rem
+
+.base-dropdown-container
+  &.selection
+    &.active,
+    .menu
+      @extend .border-color-base-light
+[dir="ltr"]
+  .base-dropdown-container
+    &.selection
+      padding-right: 1rem !important
+[dir="rtl"]
+  .base-dropdown-container
+    &.selection
+      padding-left: 1rem !important
+
+.base-form-container
+  &.loading
+    &:before
+      @extend .background-transparent, .blurred
+  .field
+    @extend .no-margin, .main-list-bottom-section
+
+.base-link-container
+  &:hover
+    .link
+      @extend .text-color-base
+
+.base-list
+  &.selection
+    & > .item
+      @extend .border-radius-large
+  &.inverted
+    & > .item
+      & > .content
+        @extend .text-color-white
+      &.disabled
+        @extend .text-color-white
+    &.selection
+      & > .item
+        &:hover
+          .left-icon
+            @extend .text-color-white
+  & > .item
+    &.disabled
+      @extend .text-color-black
+      opacity: 0.45
+
+.base-paginated-infinite-list-end-label
+  @extend .background-grey
+  &.inverted
+    @extend .background-grey-inverted
+
+.base-image-modal
+  &:not(.base-artist-images-modal)
+    @extend .width-fit-content
+
+.base-modal
+  & > .main-segment
+    padding: 2.5rem !important
+  &.scrolling
+    top: unset !important
+    &:after
+      @extend .d-none
+  & > .content
+    @extend .no-margin
+    &.full-height
+      @extend .d-flex, .flex-column
+      height: $mainModalHeight
+      .base-tab
+        @extend .absolute, .overflow-y-auto
+    &.scrolling
+      @extend .scroll-smooth
+  &:not(.main-delete-modal)
+    & > .content
+      max-height: $mainModalHeight !important
+  &.inverted
+    &:not(.base-image-modal)
+      @extend .background-black, .border-inverted
+    & > .header
+      @extend .background-black, .border-bottom-inverted
+    & > .content
+      @extend .background-black
+    & > .actions
+      @extend .background-black, .border-top-inverted
+
+.base-tabs-container
+  &:not(.vertical)
+    @extend .flex-column
+    .base-tabs
+      @extend .overflow-x-auto
+
+.base-tab
+  &:not(.main-settings-options-block)
+    @extend .no-padding
+  &:not(.active)
+    @extend .d-none
+  &.with-top-segment
+    @extend .flex-column
+
+.base-private-icon
+  &.right
+    @extend .main-right-small-section
+    &.small
+      @extend .main-right-mini-section
+  &.bottom
+    @extend .main-bottom-small-section
+
+.base-source-icon
+  &.bottom
+    @extend .main-bottom-small-icon
+  &.left
+    @extend .main-left-small-icon
+  &.right
+    @extend .main-right-small-icon
+
+.base-image
+  &:not(.contained)
+    @extend .object-fit-cover
+    &.bordered
+      @extend .border
+      &.inverted
+        &:not(.default)
+          @extend .border-inverted
+  &.contained
+    @extend .object-fit-contain, .no-border, .border-inner, .background-plain-black
+    &.inverted
+      @extend .border-inner-inverted
+  &.raised
+    &:not(.main-logo-image)
+      @extend .shadowed
+  &.default
+    &.inverted
+      filter: invert(1) contrast(0.75)
+
+.base-label
+  @extend .no-margin
+  &:not(.clickable)
+    @extend .cursor-default
+    &.basic
+      &.inverted
+        @extend .text-color-white
+  &.clickable
+    @extend .cursor-pointer
+    &:not(.primary)
+      &:hover
+        @extend .text-color-base
+  &.circular
+    &.with-text
+      padding: 0.6rem 1.2rem !important
+      &.small
+        padding: 0.5rem 1rem !important
+
+.base-browser-tab
+  padding: 0.75rem 1rem !important
+  &:hover
+    .tab-name
+      max-width: unset
+  .tab-name
+    @extend .text-medium-light
+    max-width: 150px
+    &.active
+      @extend .text-bold
+  .close-icon
+    &:hover
+      opacity: 1 !important
+
+.base-message
+  padding: 1.5rem !important
+  &:not(.success, .error)
+    @extend .no-shadow, .border
+    &.inverted
+      @extend .border-inverted
+  .icons
+    &:not(.large)
+      font-size: 2.5rem !important
+    margin: 0 0.5rem !important
+
+.base-image-modal
+  .base-image
+    max-height: $imageModalHeight
+
+.base-artist-images-modal
+  .images-main-slider
+    .image-container
+      height: calc(#{$imageModalHeight} - #{$imageModalThumbHeight} - 2.5rem)
+      margin-bottom: 2.5rem
+      .image
+        max-height: 100%
+  .images-thumbs-slider
+    .slick-slide
+      .ui.image
+        &.base-image
+          border-width: 2px !important
+    .slick-current
+      .ui.image
+        &.base-image
+          @extend .border-color-base
+
+.base-profile-online-label
+  @extend .border-white
+  z-index: 1
+  &.inverted
+    @extend .border-black
+
+.base-track-player-panel
+  height: $trackPagePlayerPanelHeight
+  .track-section
+    &.padded
+      padding: 0 1rem
+    &:not(:first-child)
+      @extend .border-left
+  .play-button
+    width: $trackPagePlayerPanelHeight
+  &.inverted
+    .track-section
+      &:not(:first-child)
+        @extend .border-left-inverted
+
+.base-tabs
+  &.secondary
+    &:not(.pointing)
+      .item
+        padding: 0.9rem 1.8rem
+    &:not(.vertical)
+      @extend .main-top-section
+
+.base-toggle
+  input
+    &:not(:checked)
+      & ~ label
+        &:before
+          @extend .background-grey
+  &.inverted
+    input
+      &:not(:checked)
+        & ~ label
+          &:before
+            @extend .background-grey-inverted
+[dir="ltr"]
+  .base-toggle
+    label
+      padding-left: 3rem !important
+[dir="rtl"]
+  .base-toggle
+    label
+      padding-right: 3rem !important
+
+.base-logo-image
+  @extend .image-100, .no-dragging
+
+.base-lyric-annotation-item
+  @extend .background-grey, .cursor-pointer
+  &.inverted
+    @extend .background-grey-inverted
+  &:hover
+    @extend .background-base-light, .text-color-white
+    &.inverted
+      @extend .background-base
+
+.base-options-popup-container
+  .options-button
+    &.visible
+      @extend .visibility-visible
+
+.base-accordion
+  & > .content
+    @extend .no-padding, .main-bottom-section

@@ -1,7 +1,7 @@
 <template>
-  <div class="track-section">
+  <div class="track-section padded middle-aligned">
     <BaseIcon
-      class="audio-icon"
+      class="main-icon"
       icon="audio"
     />
   </div>
@@ -18,11 +18,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.track-section
-  @extend .d-flex, .align-items-center
-  padding: 0 1em
-
-.audio-icon
-  @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

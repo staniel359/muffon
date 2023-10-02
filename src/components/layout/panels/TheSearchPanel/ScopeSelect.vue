@@ -1,5 +1,5 @@
 <template>
-  <div class="main-scope-select-container">
+  <div class="main-right-large-section">
     <BaseScopeSelect
       :selected="scope"
       :scopes="scopes"

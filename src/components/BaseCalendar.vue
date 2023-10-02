@@ -12,7 +12,7 @@
     >
       <input
         v-if="isFormField"
-        class="input"
+        class="input width-100"
         type="text"
         :name="inputName"
         :placeholder="inputText"
@@ -90,9 +90,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-calendar
-  &.inverted
-    :deep(.popup)
-      @extend .border-inverted
-</style>
+<style lang="sass" scoped></style>

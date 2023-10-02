@@ -1,7 +1,7 @@
 <template>
-  <div class="main-self-container">
+  <div class="main-self-container main-bottom-small-section">
     <BaseSelfIcons
-      class="self-icons"
+      class="self-icons centered"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
@@ -12,7 +12,6 @@
     />
 
     <BaseArtistOptionsPopup
-      class="options-dropdown"
       :artist-data="artistData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
@@ -24,7 +23,7 @@
       is-with-listened-option
       is-with-share-option
       is-with-external-link-option
-      @menu-active-change="handleOptionsActiveChange"
+      @active-change="handleOptionsActiveChange"
     />
   </div>
 </template>
@@ -72,9 +71,5 @@ export default {
 
 <style lang="sass" scoped>
 .self-icons
-  @extend .text-align-center
-  width: 50px
-
-.options-dropdown
-  @extend .visibility-visible
+  max-width: 50px
 </style>

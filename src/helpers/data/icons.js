@@ -17,6 +17,7 @@ export default {
   audioShuffle: 'random',
   bookmark: 'bookmark',
   clear: 'close',
+  close: 'close',
   comment: 'comment',
   community: 'users',
   communityLeave: 'minus',
@@ -129,5 +130,6 @@ export default {
   volumeUp: 'volume up',
   watch: 'eye',
   watched: 'check',
+  whatsNew: 'bell',
   window: 'window maximize outline'
 }

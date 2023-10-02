@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="login-segment"
+    class="text-align-center"
   >
     {{ loginText }}
 
@@ -49,7 +49,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.login-segment
-  @extend .text-align-center
-</style>
+<style lang="sass" scoped></style>

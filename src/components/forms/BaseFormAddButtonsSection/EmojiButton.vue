@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     ref="button"
-    class="small basic circular add-button"
+    class="small basic circular"
     icon="emoji"
   />
 

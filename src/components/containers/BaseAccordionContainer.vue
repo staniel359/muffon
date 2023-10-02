@@ -1,7 +1,7 @@
 <template>
   <div
     ref="accordion"
-    class="ui accordion"
+    class="ui accordion base-accordion"
     :class="{
       inverted: isDarkMode
     }"

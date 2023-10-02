@@ -8,6 +8,7 @@
     <LyricsSection
       v-if="selectedTrackData"
       :key="key"
+      class="main-bottom-section"
       :track-data="trackData"
       :selected-track-data="selectedTrackData"
       @focus="handleFocus"

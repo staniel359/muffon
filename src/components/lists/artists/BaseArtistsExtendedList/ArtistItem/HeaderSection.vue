@@ -1,6 +1,6 @@
 <template>
   <BaseHeaderContainer
-    class="main-artist-name"
+    class="main-artist-name width-fit-content"
     tag="h2"
   >
     <BaseArtistLinkContainer
@@ -43,7 +43,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-artist-name
-  @extend .width-fit-content
-</style>
+<style lang="sass" scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="main-source-select-container">
+  <div class="main-right-large-section">
     <BaseDropdown
       :key="key"
       :options="sources"

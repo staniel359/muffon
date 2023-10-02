@@ -1,11 +1,8 @@
 <template>
-  <div
-    :class="[
-      'ui raised segments main-segments',
-      'main-segment-container'
-    ]"
-  >
+  <BaseSegmentsContainer>
     <FormSegment />
+
+    <AnonymousSegment />
 
     <PasswordResetSegment
       @password-reset-link-click="handlePasswordResetLinkClick"
@@ -15,13 +12,13 @@
       @signup-link-click="handleSignupLinkClick"
     />
 
-    <AnonymousSegment />
-
     <SettingsSegment />
-  </div>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import FormSegment from './BaseProfileLoginForm/FormSegment.vue'
 import PasswordResetSegment
   from './BaseProfileLoginForm/PasswordResetSegment.vue'
@@ -32,6 +29,7 @@ import AnonymousSegment from './BaseProfileLoginForm/AnonymousSegment.vue'
 export default {
   name: 'BaseProfileLoginForm',
   components: {
+    BaseSegmentsContainer,
     FormSegment,
     PasswordResetSegment,
     SignupSegment,

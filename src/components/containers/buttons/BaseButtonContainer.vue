@@ -1,17 +1,22 @@
 <template>
   <div
-    class="ui button main-simple-button"
-    :class="[
-      buttonColorClass,
-      buttonIconClass
-    ]"
+    class="ui button main-button"
+    :class="{
+      inverted: (
+        isInvertable && isDarkMode
+      ),
+      icon: (
+        leftIcon && !text
+      )
+    }"
     @click="handleClick"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
     <BaseIcon
-      v-if="icon"
-      :icon="icon"
+      v-if="leftIcon"
+      class="main-list-left-small-icon"
+      :icon="leftIcon"
     />
 
     <span
@@ -40,7 +45,7 @@ export default {
       type: Boolean,
       default: true
     },
-    icon: String,
+    leftIcon: String,
     text: String
   },
   emits: [
@@ -53,28 +58,7 @@ export default {
       [
         'isDarkMode'
       ]
-    ),
-    buttonColorClass () {
-      if (this.isDarkMode) {
-        if (this.isInvertable) {
-          return 'inverted'
-        } else {
-          return null
-        }
-      } else {
-        return null
-      }
-    },
-    buttonIconClass () {
-      if (
-        !!this.icon &&
-          !this.text
-      ) {
-        return 'icon'
-      } else {
-        return null
-      }
-    }
+    )
   },
   methods: {
     handleClick (

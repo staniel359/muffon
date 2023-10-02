@@ -2,11 +2,11 @@
   <Component
     :is="component"
     v-if="isRender"
-    class="base-following-message-container"
+    class="middle-aligned-column"
   >
     <div
       v-if="isFollowing"
-      class="base-following-message"
+      class="middle-aligned"
     >
       <BaseIcon
         class="green"
@@ -21,7 +21,7 @@
 
     <div
       v-if="isFollowed"
-      class="base-following-message"
+      class="middle-aligned"
     >
       <BaseIcon
         class="green"
@@ -85,10 +85,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-following-message-container
-  @extend .d-flex, .flex-column, .align-items-center
-
-.base-following-message
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

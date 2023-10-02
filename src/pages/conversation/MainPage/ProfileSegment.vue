@@ -1,19 +1,19 @@
 <template>
   <BaseSegmentContainer>
-    <div class="main-simple-list-item">
+    <BaseItemContainer>
       <BaseImage
-        class="circular"
+        class="circular image-50"
         model="profile"
         :image="imageData?.small"
       />
 
-      <div class="content">
+      <div class="middle aligned content">
         <BaseProfileNickname
           tag="h3"
           :profile-data="profileData"
         />
       </div>
-    </div>
+    </BaseItemContainer>
   </BaseSegmentContainer>
 </template>
 
@@ -23,13 +23,16 @@ import BaseSegmentContainer
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseProfileNickname
   from '@/components/models/profile/BaseProfileNickname.vue'
+import BaseItemContainer
+  from '@/components/containers/item/BaseItemContainer.vue'
 
 export default {
   name: 'ProfileSegment',
   components: {
     BaseSegmentContainer,
     BaseImage,
-    BaseProfileNickname
+    BaseProfileNickname,
+    BaseItemContainer
   },
   props: {
     conversationData: {

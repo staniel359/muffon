@@ -1,7 +1,7 @@
 <template>
   <audio
     ref="audio"
-    class="audio-element"
+    class="d-none"
     crossorigin="anonymous"
     controls
     :autoplay="isAudioAutoplay"
@@ -260,7 +260,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.audio-element
-  @extend .d-none
-</style>
+<style lang="sass" scoped></style>

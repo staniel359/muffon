@@ -1,28 +1,33 @@
 <template>
-  <BaseErrorMessage
-    v-if="error"
-    class="error-message"
-    :error="error"
-  />
-
-  <div class="main-settings-option">
-    <div class="option-header">
-      <BaseButton
-        class="green basic circular option-button"
-        icon="spotify"
-        :class="{
-          loading: isLoading,
-          disabled: isLoading
-        }"
-        :text="disconnectText"
-        :is-invertable="false"
-        @click="handleClick"
+  <div class="main-settings-option-container">
+    <div
+      v-if="error"
+      class="main-top-section"
+    >
+      <BaseErrorMessage
+        :error="error"
       />
     </div>
 
-    <BaseAccountSection
-      :account-data="spotifyAccountData"
-    />
+    <div class="main-settings-option">
+      <div class="option-header">
+        <BaseButton
+          class="green basic circular option-button"
+          left-icon="spotify"
+          :class="{
+            loading: isLoading,
+            disabled: isLoading
+          }"
+          :text="disconnectText"
+          :is-invertable="false"
+          @click="handleClick"
+        />
+      </div>
+
+      <BaseAccountSection
+        :account-data="spotifyAccountData"
+      />
+    </div>
   </div>
 </template>
 

@@ -16,6 +16,7 @@
 /semantic/src/site/views/**
 
 !/semantic/src/site/elements/button.variables
+!/semantic/src/site/globals/site.overrides
 !/semantic/src/site/globals/site.variables
 !/semantic/src/site/modules/checkbox.variables
 

@@ -3,10 +3,7 @@
     :is="component"
   >
     <p
-      class="base-description"
-      :class="{
-        'main-text-container': isModal
-      }"
+      :class="textClass"
     >
       {{ description }}
 
@@ -43,6 +40,15 @@ export default {
         return 'div'
       }
     },
+    textClass () {
+      if (this.isSmall) {
+        return 'main-small-text-container'
+      } else if (this.isModal) {
+        return 'main-formatted-text-container'
+      } else {
+        return 'main-text-container'
+      }
+    },
     moreText () {
       return this.$t(
         'more'
@@ -59,7 +65,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-description
-  @extend .word-break-break-word
-</style>
+<style lang="sass" scoped></style>

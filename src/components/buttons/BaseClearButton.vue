@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic mini compact circular base-clear-button"
+    class="basic mini compact circular main-right-small-section"
     icon="clear"
     :class="{
       red: isRed
@@ -51,11 +51,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-[dir="ltr"]
-  .base-clear-button
-    margin-left: 1em !important
-[dir="rtl"]
-  .base-clear-button
-    margin-right: 1em !important
-</style>
+<style lang="sass" scoped></style>

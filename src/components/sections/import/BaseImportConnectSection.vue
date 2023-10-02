@@ -1,13 +1,16 @@
 <template>
-  <div class="base-import-connect-section">
-    <BaseErrorMessage
+  <div class="main-list-bottom-section">
+    <div
       v-if="error"
-      class="error-section"
-      :error="error"
-    />
+      class="main-top-section"
+    >
+      <BaseErrorMessage
+        :error="error"
+      />
+    </div>
 
-    <div class="top-section">
-      <div class="button-info-section">
+    <div class="middle-aligned">
+      <div class="middle-aligned-full">
         <ImportButton
           :source="source"
           :is-loading="isLoading"
@@ -123,24 +126,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-import-connect-section
-  &:not(:first-child)
-    margin-top: 1em
-
-.error-section
-  margin-bottom: 1em !important
-
-.top-section
-  @extend .d-flex, .align-items-center
-
-.button-info-section
-  @extend .d-flex, .align-items-center, .flex-full
-
-[dir="ltr"]
-  .info-section
-    margin-left: 0.5em
-[dir="rtl"]
-  .info-section
-    margin-right: 0.5em
-</style>
+<style lang="sass" scoped></style>

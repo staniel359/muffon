@@ -1,11 +1,10 @@
 <template>
   <BaseLabel
     class="primary circular large"
-    icon="clear"
     :text="name"
     :is-invertable="false"
-    is-reverse
-    @icon-click="handleDeleteIconClick"
+    is-clearable
+    @clear-icon-click="handleClearIconClick"
   />
 </template>
 
@@ -24,7 +23,7 @@ export default {
     }
   },
   emits: [
-    'deleteIconClick'
+    'clearIconClick'
   ],
   computed: {
     name () {
@@ -35,9 +34,9 @@ export default {
     }
   },
   methods: {
-    handleDeleteIconClick () {
+    handleClearIconClick () {
       this.$emit(
-        'deleteIconClick',
+        'clearIconClick',
         {
           uuid: this.uuid
         }

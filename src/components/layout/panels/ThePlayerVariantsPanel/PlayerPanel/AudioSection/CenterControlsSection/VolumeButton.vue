@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     ref="button"
-    class="tiny circular compact"
+    class="circular compact simple"
     :class="isActive ? 'primary' : 'basic'"
     :icon="icon"
     :is-invertable="!isActive"

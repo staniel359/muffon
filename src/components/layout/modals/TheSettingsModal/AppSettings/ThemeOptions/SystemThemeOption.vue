@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="systemThemeText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="systemThemeText"
+      />
 
-    <BaseToggle
-      store-key="layout.isWithSystemTheme"
-      :is-checked="isWithSystemTheme"
-    />
+      <BaseToggle
+        store-key="layout.isWithSystemTheme"
+        :is-checked="isWithSystemTheme"
+      />
+    </div>
   </div>
 </template>
 

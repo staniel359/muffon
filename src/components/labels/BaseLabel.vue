@@ -3,13 +3,17 @@
     :is="component"
     class="ui label base-label"
     :class="{
-      inverted: isInvertable && isDarkMode,
-      icon: icon && !text,
-      'right icon': icon && text && isReverse,
+      inverted: (
+        isInvertable && isDarkMode
+      ),
+      icon,
       'with-text': text,
-      clickable: isClickable || link,
+      clickable: (
+        isClickable || link
+      ),
       [transparentClass]: (
-        isChangeTransparency && isInvertable
+        isChangeTransparency &&
+        isInvertable
       )
     }"
     :link="link"
@@ -17,16 +21,22 @@
   >
     <BaseIcon
       v-if="isLoading"
-      class="loading-icon"
+      class="main-icon"
       is-loading
     />
     <template
       v-else
     >
       <BaseIcon
-        v-if="icon && !isReverse"
+        v-if="icon"
+        class="main-icon"
         :icon="icon"
-        @click="handleIconClick"
+      />
+
+      <BaseIcon
+        v-if="leftIcon"
+        class="main-list-left-small-icon"
+        :icon="leftIcon"
       />
 
       <span
@@ -35,9 +45,16 @@
       />
 
       <BaseIcon
-        v-if="icon && isReverse"
-        :icon="icon"
-        @click="handleIconClick"
+        v-if="rightIcon"
+        class="main-list-right-small-icon"
+        :icon="rightIcon"
+      />
+
+      <BaseIcon
+        v-if="isClearable"
+        class="main-list-right-small-icon"
+        icon="clear"
+        @click="handleClearIconClick"
       />
 
       <div
@@ -85,17 +102,19 @@ export default {
       default: true
     },
     icon: String,
+    leftIcon: String,
+    rightIcon: String,
     text: String,
-    isReverse: Boolean,
     isLoading: Boolean,
     link: Object,
     isClickable: Boolean,
     isWithArtistsCount: Boolean,
-    counter: Number
+    counter: Number,
+    isClearable: Boolean
   },
   emits: [
     'click',
-    'iconClick'
+    'clearIconClick'
   ],
   computed: {
     ...mapState(
@@ -118,31 +137,13 @@ export default {
         'click'
       )
     },
-    handleIconClick () {
+    handleClearIconClick () {
       this.$emit(
-        'iconClick'
+        'clearIconClick'
       )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.base-label
-  &:not(.clickable)
-    @extend .cursor-default
-    &.basic
-      &.inverted
-        @extend .text-color-white
-  &.clickable
-    @extend .cursor-pointer
-    &:not(.primary)
-      &:hover
-        @extend .text-color-base
-  &.circular
-    &.with-text
-      padding: 0.6em 1.2em !important
-
-.loading-icon
-  margin: 0 0.5em !important
-</style>
+<style lang="sass" scoped></style>

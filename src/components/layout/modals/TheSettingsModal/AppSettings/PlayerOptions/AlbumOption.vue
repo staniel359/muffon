@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="albumText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="albumText"
+      />
 
-    <BaseToggle
-      store-key="player.isWithAlbum"
-      :is-checked="isPlayerWithAlbum"
-    />
+      <BaseToggle
+        store-key="player.isWithAlbum"
+        :is-checked="isPlayerWithAlbum"
+      />
+    </div>
   </div>
 </template>
 

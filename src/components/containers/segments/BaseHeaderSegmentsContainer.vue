@@ -1,42 +1,41 @@
 <template>
-  <div
+  <BaseSegmentsContainer
     ref="segment"
-    class="ui segments main-segments main-segment-container"
-    :class="{
-      basic: isBasic,
-      raised: !isBasic
-    }"
+    class="simple"
   >
-    <HeaderSegment
-      :scope="scope"
-      :link="headerLink"
-    />
+    <template
+      #default
+    >
+      <HeaderSegment
+        :scope="scope"
+        :link="headerLink"
+      />
 
-    <slot />
-  </div>
+      <slot />
+    </template>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import HeaderSegment from './BaseHeaderSegmentsContainer/HeaderSegment.vue'
-import {
-  focusOnPageElement
-} from '@/helpers/actions/layout'
 
 export default {
   name: 'BaseHeaderSegmentsContainer',
   components: {
+    BaseSegmentsContainer,
     HeaderSegment
   },
   props: {
     scope: String,
-    headerLink: Object,
-    isBasic: Boolean
+    headerLink: Object
   },
   methods: {
     focus () {
-      focusOnPageElement(
-        this.$refs.segment
-      )
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

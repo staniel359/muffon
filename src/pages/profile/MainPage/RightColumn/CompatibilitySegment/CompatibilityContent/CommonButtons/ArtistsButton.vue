@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     class="basic circular compact main-compatibility-common-button"
-    icon="artist"
+    left-icon="artist"
     :class="{
       disabled: isDisabled
     }"

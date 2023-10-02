@@ -1,14 +1,13 @@
 <template>
-  <div class="extra-section">
+  <div class="main-form-extra-section">
     <BaseImageField
-      class="image-field"
       model="profile"
       :value="imageData?.medium"
       is-circular
       @change="handleImageChange"
     />
 
-    <div class="extra-fields">
+    <div class="main-form-extra-section-fields-section">
       <BaseProfileGenderField
         :gender="gender"
       />
@@ -118,19 +117,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.extra-section
-  @extend .d-flex
-
-.image-field
-  width: 120px
-[dir="ltr"]
-  .image-field
-    margin-right: 1em !important
-[dir="rtl"]
-  .image-field
-    margin-left: 1em !important
-
-.extra-fields
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

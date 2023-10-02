@@ -1,20 +1,20 @@
 <template>
-  <div class="counters-section">
-    <div class="counter-section">
-      <BaseListCounterSection
-        v-if="videosCount"
-        icon="video"
-        :count="videosCount"
-      />
-    </div>
+  <div
+    v-if="isRender"
+  >
+    <BaseListCounterSection
+      v-if="videosCount"
+      class="main-inline-counter-section"
+      icon="video"
+      :count="videosCount"
+    />
 
-    <div class="counter-section">
-      <BaseListCounterSection
-        v-if="subscribersCount"
-        icon="subscriber"
-        :count="subscribersCount"
-      />
-    </div>
+    <BaseListCounterSection
+      v-if="subscribersCount"
+      class="main-inline-counter-section"
+      icon="subscriber"
+      :count="subscribersCount"
+    />
   </div>
 </template>
 
@@ -34,6 +34,12 @@ export default {
     }
   },
   computed: {
+    isRender () {
+      return (
+        this.videosCount ||
+          this.subscribersCount
+      )
+    },
     videosCount () {
       return this.channelData.videos_count
     },
@@ -44,16 +50,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.counters-section
-  @extend .d-flex
-
-[dir="ltr"]
-  .counter-section
-    &:not(:first-child)
-      margin-left: 0.75em
-[dir="rtl"]
-  .counter-section
-    &:not(:first-child)
-      margin-right: 0.75em
-</style>
+<style lang="sass" scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="ui four column grid">
+  <div class="ui four column relaxed grid">
     <div
       v-for="videoData in videosCollection"
       :key="videoData.uuid"

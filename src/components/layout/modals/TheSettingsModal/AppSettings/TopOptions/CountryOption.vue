@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="countryText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="countryText"
+      />
 
-    <BaseCountrySelectSection
-      :country="topCountry"
-      @select="handleCountrySelect"
-    />
+      <BaseCountrySelectSection
+        :country="topCountry"
+        @select="handleCountrySelect"
+      />
+    </div>
   </div>
 </template>
 

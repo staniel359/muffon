@@ -4,12 +4,17 @@
     :url="url"
     :fields="fields"
     :format-response="formatResponse"
+    :scope="scope"
     @select="handleSelect"
   />
 </template>
 
 <script>
 import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
+import {
+  fields as artistFields,
+  format as formatArtist
+} from '@/helpers/formatters/search/artist'
 
 export default {
   name: 'ArtistsSearchInput',
@@ -19,19 +24,20 @@ export default {
   emits: [
     'select'
   ],
+  data () {
+    return {
+      scope: 'artists'
+    }
+  },
   computed: {
     url () {
       return (
-        'lastfm/search/artists' +
+        `lastfm/search/${this.scope}` +
         '?query={query}&limit=5'
       )
     },
     fields () {
-      return {
-        results: 'artists',
-        title: 'name',
-        image: null
-      }
+      return artistFields
     }
   },
   methods: {
@@ -48,7 +54,13 @@ export default {
     formatResponse (
       response
     ) {
-      return response.search.artists
+      const {
+        artists
+      } = response.search
+
+      return artists.map(
+        formatArtist
+      )
     },
     focus () {
       this.$refs

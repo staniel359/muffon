@@ -1,11 +1,14 @@
 <template>
-  <BaseErrorMessage
+  <div
     v-if="error"
-    class="error-message"
-    :error="error"
-    is-with-refresh-button
-    @refresh="handleRefresh"
-  />
+    class="main-top-section"
+  >
+    <BaseErrorMessage
+      :error="error"
+      is-with-refresh-button
+      @refresh="handleRefresh"
+    />
+  </div>
 
   <BaseProgress
     v-if="isShowProgress"
@@ -176,7 +179,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.error-message
-  margin-bottom: 1em !important
-</style>
+<style lang="sass" scoped></style>

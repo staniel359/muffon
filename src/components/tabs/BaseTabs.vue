@@ -48,10 +48,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-tabs
-  &.secondary
-    &:not(.pointing)
-      :deep(.item)
-        padding: 0.8em 1.6em
-</style>
+<style lang="sass" scoped></style>

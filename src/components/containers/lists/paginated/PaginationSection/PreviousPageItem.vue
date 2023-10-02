@@ -7,7 +7,7 @@
     @click="handleClick"
   >
     <BaseIcon
-      class="direction-icon"
+      class="main-icon"
       icon="directionLeft"
       is-with-rtl
     />

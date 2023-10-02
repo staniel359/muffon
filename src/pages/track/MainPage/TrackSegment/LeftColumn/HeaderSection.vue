@@ -2,7 +2,7 @@
   <BaseTransitionContainer
     :scrollable="scrollable"
   >
-    <div class="track-full-title">
+    <div class="main-bottom-mini-section text-align-center word-break-break-word">
       <BaseHeader
         tag="h4"
         :text="trackTitle"
@@ -16,7 +16,7 @@
 
       <div
         v-if="albumData"
-        class="main-small-container main-small-album-title"
+        class="main-small-album-title"
       >
         <small>
           <BaseAlbumLinkContainer
@@ -79,8 +79,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.track-full-title
-  @extend .text-align-center, .word-break-break-word
-  margin-top: 0.5em
-</style>
+<style lang="sass" scoped></style>

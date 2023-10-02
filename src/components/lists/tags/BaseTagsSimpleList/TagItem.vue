@@ -3,10 +3,10 @@
     class="primary circular"
     :class="size"
     :text="tagName"
+    :is-with-artists-count="isWithArtistsCount"
     :counter="tagCount"
     :link="link"
     :is-invertable="false"
-    :is-with-artists-count="isWithArtistsCount"
   />
 </template>
 

@@ -8,7 +8,7 @@
       #default="slotProps"
     >
       <BaseSegmentContainer
-        class="raised main-segment-container artist-segment"
+        class="raised nested main-segment-container d-flex"
         :class="{
           disabled: isDeleted
         }"
@@ -26,7 +26,7 @@
           <template
             v-else
           >
-            <div class="artist-left-column">
+            <div class="left-column">
               <BaseArtistImage
                 class="artist-image"
                 size="medium"
@@ -36,21 +36,23 @@
                 @load-end="handleImageLoadEnd"
               />
 
-              <LibraryCountersSection
-                v-if="isWithLibrary"
-                :artist-data="artistData"
-                :profile-id="profileId"
-              />
-
               <BaseCreatedSection
-                class="created-section"
+                class="text-align-center main-bottom-small-section"
                 :model-data="artistData"
                 :is-small="false"
               />
 
-              <div class="main-self-container">
+              <BaseLibraryArtistCountersSection
+                v-if="isWithLibrary"
+                class="main-bottom-small-section"
+                :artist-data="artistData"
+                :profile-id="profileId"
+              />
+
+              <div class="main-self-container main-bottom-small-section">
                 <BaseSelfIcons
                   v-if="isWithSelfIcons"
+                  class="self-icons centered"
                   :library-id="libraryId"
                   :favorite-id="favoriteId"
                   :bookmark-id="bookmarkId"
@@ -83,7 +85,7 @@
               </div>
             </div>
 
-            <div class="artist-info">
+            <div class="main-right-column">
               <HeaderSection
                 :artist-data="artistData"
                 :profile-id="profileId"
@@ -91,18 +93,15 @@
               />
 
               <div>
-                <div
+                <BaseCounterLabelsSection
                   class="main-labels-section"
-                >
-                  <BaseCounterLabelsSection
-                    :counters="counters"
-                  />
+                  :counters="counters"
+                />
 
-                  <BaseArtistInnerCounterLabelsSection
-                    class="inline"
-                    :artist-data="artistData"
-                  />
-                </div>
+                <BaseArtistInnerCounterLabelsSection
+                  class="main-labels-section"
+                  :artist-data="artistData"
+                />
 
                 <BaseArtistTags
                   class="main-labels-section"
@@ -139,7 +138,8 @@ import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
-import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
+import BaseLibraryArtistCountersSection
+  from '@/components/sections/library/artist/BaseLibraryArtistCountersSection.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseArtistOptionsPopup
@@ -164,7 +164,7 @@ export default {
     BaseSegmentContainer,
     BaseDeletedSection,
     BaseArtistImage,
-    LibraryCountersSection,
+    BaseLibraryArtistCountersSection,
     BaseCreatedSection,
     BaseSelfIcons,
     BaseArtistOptionsPopup,
@@ -293,30 +293,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.artist-segment
-  @extend .d-flex
-  &.inverted
-    @extend .border-inverted
+.left-column
+  width: 135px
 
-[dir="ltr"]
-  .artist-left-column
-    margin-right: 1em
-[dir="rtl"]
-  .artist-left-column
-    margin-left: 1em
-
-.artist-image
-  width: 130px
-  height: 130px
-
-.main-self-icons
-  @extend .text-align-center
-  max-width: 80px
-
-.artist-info
-  @extend .flex-full
-
-.created-section
-  @extend .text-align-center
-  margin-top: 0.5em
+.self-icons
+  max-width: 70px
 </style>

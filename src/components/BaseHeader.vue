@@ -4,28 +4,33 @@
     class="ui header main-header"
     :class="{
       inverted: isDarkMode,
-      'base-page-header': isPage
+      'middle-aligned-column': isPage
     }"
     @click="handleClick"
   >
     <BaseIcon
       v-if="icon"
+      class="header-icon"
       :class="{
-        big: isPage
+        'big page-icon main-icon': isPage,
+        small: isIconSmall
       }"
       :icon="icon"
     />
     <IconsSection
       v-else-if="icons"
+      class="header-icon"
+      :class="{
+        'big page-icon main-icon': isPage
+      }"
       :icons="icons"
-      :is-page="isPage"
     />
 
     {{ text }}
 
     <div
       v-if="isPage"
-      class="sub header"
+      class="sub header page-subheader"
       v-text="subheader"
     />
   </Component>
@@ -57,7 +62,8 @@ export default {
     icon: String,
     icons: Array,
     isPage: Boolean,
-    subheader: String
+    subheader: String,
+    isIconSmall: Boolean
   },
   emits: [
     'click'
@@ -84,10 +90,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.base-page-header
-  @extend .d-flex, .flex-column, .align-items-center
-  & > .icon,
-  & > .icons
-    @extend .no-margin
-    margin-bottom: 0.2em !important
+.page-icon
+  margin-bottom: 0.2rem !important
+
+.page-subheader
+  margin-top: 0.25rem !important
 </style>

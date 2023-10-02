@@ -1,6 +1,6 @@
 <template>
   <BaseImageUploadButton
-    class="small add-button"
+    class="small"
     :is-with-text="false"
     @change="handleUploadChange"
   />

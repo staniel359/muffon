@@ -1,10 +1,12 @@
 <template>
   <BaseSegmentContainer>
-    <BaseMessage
-      class="success code-sent-message"
-      icon="success"
-      :header="codeSentText"
-    />
+    <div class="main-top-section">
+      <BaseMessage
+        class="success"
+        icon="success"
+        :header="codeSentText"
+      />
+    </div>
 
     <BaseProfilePasswordUpdateFormContainer
       :email="email"
@@ -74,7 +76,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.code-sent-message
-  margin-bottom: 1em !important
-</style>
+<style lang="sass" scoped></style>

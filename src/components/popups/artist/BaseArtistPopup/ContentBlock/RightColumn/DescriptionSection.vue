@@ -2,7 +2,9 @@
   <template
     v-if="description"
   >
-    <BaseDivider />
+    <BaseDivider
+      class="small"
+    />
 
     <BaseArtistDescription
       :artist-data="artistData"

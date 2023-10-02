@@ -1,7 +1,7 @@
 <template>
-  <div class="top-section">
+  <div class="middle-aligned-column width-100">
     <div class="main-transition-item">
-      <BaseLogoSection />
+      <BaseLogoImage />
     </div>
 
     <div class="main-transition-item">
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import BaseLogoSection from '@/components/sections/BaseLogoSection.vue'
+import BaseLogoImage from '@/components/images/BaseLogoImage.vue'
 import WelcomeMessageSection from './TopSection/WelcomeMessageSection.vue'
 import {
   set as setTransition
@@ -23,7 +23,7 @@ import {
 export default {
   name: 'TopSection',
   components: {
-    BaseLogoSection,
+    BaseLogoImage,
     WelcomeMessageSection
   },
   computed: {
@@ -40,7 +40,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.top-section
-  @extend .w-100, .d-flex, .flex-column, .align-items-center
-</style>
+<style lang="sass" scoped></style>

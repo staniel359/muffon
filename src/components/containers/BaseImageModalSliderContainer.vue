@@ -83,26 +83,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-image-modal-slider-container
-  :deep(.slick-prev)
-    z-index: 1
-  :deep(.slick-arrow)
-    width: 25px
-    height: 25px
-    &:before
-      @extend .text-color-black
-      font-size: 25px
-[dir="ltr"]
-  .base-image-modal-slider-container
-    :deep(.slick-prev)
-      left: 25px
-    :deep(.slick-next)
-      right: 25px
-[dir="rtl"]
-  .base-image-modal-slider-container
-    :deep(.slick-prev)
-      right: 25px
-    :deep(.slick-next)
-      left: 25px
-</style>
+<style lang="sass" scoped></style>

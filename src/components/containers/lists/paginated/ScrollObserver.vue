@@ -3,11 +3,12 @@
     ref="observer"
     class="scroll-observer"
     :class="{
-      loading: isLoading
+      loading: isLoading,
+      'main-bottom-section': !isLastPage
     }"
   >
     <BaseSegmentContainer
-      class="basic scroll-segment"
+      class="basic scroll-segment no-padding no-margin"
       :is-loading="isLoading"
       :error="error"
       :is-change-transparency="false"
@@ -131,11 +132,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.scroll-observer
-  margin-top: 1em
-
 .scroll-segment
-  @extend .no-padding, .no-margin
   &.loading
     min-height: 100px !important
 </style>

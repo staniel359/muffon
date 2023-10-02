@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="isLoading"
-    class="ui image placeholder base-image"
+    class="ui image placeholder base-image object-fit-cover"
     :class="[
       {
         inverted: isDarkMode,
@@ -17,7 +17,8 @@
       {
         inverted: isDarkMode,
         contained: isContained,
-        [borderedRaisedClass]: !isPlain
+        [borderedRaisedClass]: !isPlain,
+        default: !isImagePresent
       }
     ]"
     :[attribute]="imageConditional"
@@ -67,9 +68,21 @@ export default {
       }
     },
     imageConditional () {
+      if (this.isImagePresent) {
+        return this.image
+      } else {
+        return this.defaultImage
+      }
+    },
+    isImagePresent () {
       return (
-        this.image ||
-          this.defaultImage
+        this.image &&
+          !this.isImageMissing
+      )
+    },
+    isImageMissing () {
+      return (
+        this.image === 'MISSING'
       )
     },
     defaultImage () {
@@ -110,26 +123,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-image
-  @extend .object-fit-cover
-  &:not(.contained)
-    &.bordered
-      @extend .border
-      &.inverted
-        @extend .border-inverted
-  &.contained
-    @extend .object-fit-contain, .no-border, .border-inner
-    background-color: black !important
-    &.inverted
-      @extend .border-inner-inverted
-  &.raised
-    &:not(.main-logo-image)
-      @extend .shadow
-  &.rounded
-    @extend .border-radius
-  &.rounded-medium
-    @extend .border-radius-medium
-  &.rounded-small
-    @extend .border-radius-small
-</style>
+<style lang="sass" scoped></style>

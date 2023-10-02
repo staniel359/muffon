@@ -1,5 +1,5 @@
 <template>
-  <div class="legal-section">
+  <div class="main-bottom-section">
     <LegalField />
   </div>
 </template>
@@ -15,7 +15,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.legal-section
-  margin-bottom: 1em
-</style>
+<style lang="sass" scoped></style>

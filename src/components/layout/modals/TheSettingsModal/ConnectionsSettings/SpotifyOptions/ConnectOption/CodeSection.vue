@@ -1,13 +1,15 @@
 <template>
-  <div class="main-settings-option">
-    <div class="option-header">
-      <BaseButton
-        class="green circular option-button"
-        icon="spotify"
-        :text="connectText"
-        :is-invertable="false"
-        @click="handleClick"
-      />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <div class="option-header">
+        <BaseButton
+          class="green circular option-button"
+          left-icon="spotify"
+          :text="connectText"
+          :is-invertable="false"
+          @click="handleClick"
+        />
+      </div>
     </div>
   </div>
 </template>

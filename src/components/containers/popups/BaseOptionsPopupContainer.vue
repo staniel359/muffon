@@ -1,20 +1,14 @@
 <template>
-  <div
-    class="main-options-popup-container"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
-  >
+  <div class="base-options-popup-container">
     <BaseButton
       ref="button"
-      v-bind="$attrs"
-      class="compact basic circular options-button"
+      class="large compact basic circular options-button"
       icon="dotsVertical"
       :class="{
-        visible: isMenuActive
+        simple: isTransparent
       }"
       :is-transparent="isTransparent"
       @click.prevent.stop
-      @mouseenter="handleButtonMouseEnter"
     />
 
     <div class="main-popup-container">
@@ -37,7 +31,6 @@ import optionsPopupOptions
   from '@/helpers/formatters/plugins/semantic/options/popup/options'
 import popupMixin from '@/mixins/popupMixin'
 import {
-  show as showPopup,
   hide as hidePopup,
   reposition as repositionPopup
 } from '@/helpers/actions/plugins/semantic/popup'
@@ -67,8 +60,7 @@ export default {
     isShowToTop: Boolean
   },
   emits: [
-    'activeChange',
-    'menuActiveChange'
+    'activeChange'
   ],
   data () {
     return {
@@ -96,6 +88,7 @@ export default {
     }
   },
   watch: {
+    isVisible: 'handleIsVisibleChange',
     isSubmenuActive:
       'handleIsSubmenuActiveChange'
   },
@@ -115,25 +108,17 @@ export default {
     handleHidden () {
       this.isVisible = false
     },
-    handleMouseEnter () {
+    handleIsVisibleChange (
+      value
+    ) {
       this.changeActive(
-        true
-      )
-    },
-    handleMouseLeave () {
-      this.changeActive(
-        false
+        value
       )
     },
     handleMenuActiveChange (
       value
     ) {
       this.isMenuActive = value
-
-      this.$emit(
-        'menuActiveChange',
-        value
-      )
     },
     handleIsSubmenuActiveChange (
       value
@@ -144,13 +129,6 @@ export default {
           this.transitionDuration
         )
       }
-    },
-    handleButtonMouseEnter () {
-      this.initialize()
-
-      showPopup(
-        this.element
-      )
     },
     changeActive (
       value
@@ -181,8 +159,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.options-button
-  &.visible
-    @extend .visibility-visible
-</style>
+<style lang="sass" scoped></style>

@@ -1,13 +1,11 @@
 <template>
-  <div class="action-button-container">
-    <BaseButton
-      class="green circular"
-      icon="donate"
-      :text="donateText"
-      :is-invertable="false"
-      @click="handleClick"
-    />
-  </div>
+  <BaseButton
+    class="green circular"
+    left-icon="donate"
+    :text="donateText"
+    :is-invertable="false"
+    @click="handleClick"
+  />
 </template>
 
 <script>

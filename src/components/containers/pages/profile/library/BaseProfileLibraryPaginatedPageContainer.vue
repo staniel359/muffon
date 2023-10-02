@@ -40,7 +40,7 @@
           <BaseProfileLibrarySearchInput
             v-if="isWithSearch"
             v-show="isShowSearch"
-            class="search-section"
+            class="main-bottom-section"
             :is-show="isShowSearch"
             :query="query"
             :is-with-clear-button="isWithClearButton"
@@ -132,7 +132,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-section
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

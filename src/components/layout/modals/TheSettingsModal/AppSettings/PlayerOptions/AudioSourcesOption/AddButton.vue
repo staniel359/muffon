@@ -1,11 +1,15 @@
 <template>
-  <BaseButton
+  <div
     v-if="isRender"
-    class="basic circular compact add-button"
-    icon="add"
-    :text="addText"
-    @click="handleClick"
-  />
+    class="main-bottom-section end-aligned"
+  >
+    <BaseButton
+      class="basic circular compact"
+      left-icon="add"
+      :text="addText"
+      @click="handleClick"
+    />
+  </div>
 </template>
 
 <script>
@@ -73,7 +77,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.add-button
-  align-self: flex-end
-</style>
+<style lang="sass" scoped></style>

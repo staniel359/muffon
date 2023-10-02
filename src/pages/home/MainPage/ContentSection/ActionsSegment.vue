@@ -1,12 +1,14 @@
 <template>
   <BaseSegmentContainer
-    class="raised main-segment-container actions-segment"
+    class="raised main-segment-container center-aligned"
   >
-    <WhatsNewButtonSection />
+    <div class="main-buttons-container">
+      <WhatsNewButtonSection />
 
-    <DonateButtonSection />
+      <DonateButtonSection />
 
-    <DiscordButtonSection />
+      <DiscordButtonSection />
+    </div>
   </BaseSegmentContainer>
 </template>
 
@@ -28,23 +30,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.actions-segment
-  @extend .d-flex, .justify-content-center
-
-.action-button-container
-  :deep(.icon)
-    @extend .width-fit-content
-[dir="ltr"]
-  .action-button-container
-    &:not(:first-child)
-      margin-left: 0.75em
-    :deep(.icon)
-      margin-right: 0.65em !important
-[dir="rtl"]
-  .action-button-container
-    &:not(:first-child)
-      margin-right: 0.75em
-    :deep(.icon)
-      margin-left: 0.65em !important
-</style>
+<style lang="sass" scoped></style>

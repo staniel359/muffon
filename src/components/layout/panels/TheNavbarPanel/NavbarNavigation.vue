@@ -1,7 +1,7 @@
 <template>
-  <div class="item navigation-container">
+  <div class="item navigation-container flex-full text-overflow-hidden">
     <div
-      class="ui large breadcrumb navigation"
+      class="ui large breadcrumb navigation absolute no-right"
       :class="{
         inverted: isDarkMode
       }"
@@ -50,13 +50,10 @@ export default {
 
 <style lang="sass" scoped>
 .navigation-container
-  @extend .flex-full, .overflow-hidden, .white-space-no-wrap
   padding-right: 0 !important
   padding-left: 0 !important
-  margin: 0 1em
+  margin: 0 1rem
 
 .navigation
-  @extend .absolute
   min-width: 100%
-  right: 0
 </style>

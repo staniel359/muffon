@@ -5,31 +5,31 @@
   >
     <BaseIcon
       v-if="isRenderLibraryIcon"
-      class="primary base-simple-self-icon"
+      class="primary main-simple-self-icon"
       icon="library"
     />
 
     <BaseIcon
       v-if="isRenderFavoriteIcon"
-      class="primary base-simple-self-icon"
+      class="primary main-simple-self-icon"
       icon="favorite"
     />
 
     <BaseIcon
       v-if="isRenderBookmarkIcon"
-      class="primary base-simple-self-icon"
+      class="primary main-simple-self-icon"
       icon="bookmark"
     />
 
     <BaseIcon
       v-if="listenedId"
-      class="primary base-simple-self-icon"
+      class="primary main-simple-self-icon"
       icon="listened"
     />
 
     <BaseIcon
       v-if="watchedId"
-      class="primary base-simple-self-icon"
+      class="primary main-simple-self-icon"
       icon="watched"
     />
   </div>
@@ -74,7 +74,9 @@ export default {
       }
     ),
     isRender () {
-      return this.profileId
+      return (
+        this.profileId
+      )
     },
     isRenderLibraryIcon () {
       return (
@@ -98,8 +100,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-simple-self-icon
-  @extend .no-margin, .d-inline-block
-  margin: 0.25em !important
-</style>
+<style lang="sass" scoped></style>

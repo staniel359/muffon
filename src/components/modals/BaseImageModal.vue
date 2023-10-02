@@ -1,10 +1,10 @@
 <template>
   <BaseImageModalContainer
     ref="modal"
+    class="base-image-modal"
   >
     <div class="main-image-modal-content">
       <BaseImage
-        class="image-item"
         :image="image"
         is-bordered
       />
@@ -36,7 +36,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.image-item
-  max-height: $imageModalHeight
-</style>
+<style lang="sass" scoped></style>

@@ -1,7 +1,7 @@
 <template>
-  <div class="online-toggle">
+  <div class="main-toggle-container">
     <div
-      class="online-text"
+      class="text-section"
       v-text="onlineText"
     />
 
@@ -52,14 +52,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.online-toggle
-  @extend .d-flex, .align-items-center
-
-[dir="ltr"]
-  .online-text
-    margin-right: 0.75em
-[dir="rtl"]
-  .online-text
-    margin-left: 0.75em
-</style>
+<style lang="sass" scoped></style>

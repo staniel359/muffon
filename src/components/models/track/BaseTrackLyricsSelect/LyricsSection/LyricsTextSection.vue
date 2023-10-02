@@ -1,14 +1,14 @@
 <template>
-  <div class="main-lyrics-container">
+  <div class="main-lyrics-container no-padding">
     <p
       class="lyrics"
       v-text="lyrics"
     />
-
-    <BaseMoreLinkButton
-      :link="link"
-    />
   </div>
+
+  <BaseMoreLinkButton
+    :link="link"
+  />
 </template>
 
 <script>

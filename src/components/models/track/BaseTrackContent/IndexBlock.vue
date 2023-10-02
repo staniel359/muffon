@@ -1,6 +1,6 @@
 <template>
   <div
-    class="description track-index"
+    class="description left main-right-small-section"
     v-text="indexText"
   />
 </template>
@@ -22,11 +22,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-[dir="ltr"]
-  .track-index
-    margin-right: 0.5em
-[dir="rtl"]
-  .track-index
-    margin-left: 0.5em
-</style>
+<style lang="sass" scoped></style>

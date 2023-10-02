@@ -2,10 +2,7 @@
   <BaseSegmentContainer
     v-if="currentProfileId"
     ref="segment"
-    :class="[
-      'main-segment-container',
-      'main-nested-segment-container'
-    ]"
+    class="main-segment-container basic no-padding"
     :is-change-transparency="false"
   >
     <BaseCreateButton
@@ -16,7 +13,6 @@
 
     <FormSection
       v-show="isShowForm"
-      class="form-section"
       :post-type="postType"
       :profile-id="profileId"
       :community-id="communityId"
@@ -98,7 +94,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.form-section
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

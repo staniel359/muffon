@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned main-visibility-container"
     :class="{
       disabled: isDeleted
     }"
@@ -15,7 +15,7 @@
       v-else
     >
       <BaseImage
-        class="rounded-medium video-image"
+        class="rounded-medium video-image-110"
         model="video"
         :image="imageData?.extrasmall"
         :is-contained="isTracksScope"
@@ -54,11 +54,12 @@
       />
       <BasePublishDateSection
         v-else
-        class="description"
+        class="description right"
         :model-data="videoData"
       />
 
       <BaseVideoOptionsPopup
+        class="invisible-item"
         :video-data="videoData"
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
@@ -220,11 +221,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.video-image
-  width: 100px !important
-  height: calc(100px / 16 * 9) !important
-
-.content
-  @extend .no-padding
-</style>
+<style lang="sass" scoped></style>

@@ -108,25 +108,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-toggle
-  :deep(input)
-    &:not(:checked)
-      & ~ label
-        &:before
-          @extend .background-grey
-  &.inverted
-    :deep(input)
-      &:not(:checked)
-        & ~ label
-          &:before
-            @extend .background-grey-inverted
-[dir="ltr"]
-  .base-toggle
-    :deep(label)
-      padding-left: 3em !important
-[dir="rtl"]
-  .base-toggle
-    :deep(label)
-      padding-right: 3em !important
-</style>
+<style lang="sass" scoped></style>

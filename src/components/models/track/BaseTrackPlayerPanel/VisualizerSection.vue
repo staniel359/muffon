@@ -1,8 +1,8 @@
 <template>
-  <div class="track-section">
+  <div class="track-section flex-full">
     <BaseAudioVisualiser
       v-if="isCurrent"
-      class="track-visualiser"
+      class="width-100 height-100"
     />
   </div>
 </template>
@@ -45,10 +45,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.track-section
-  @extend .flex-full
-
-.track-visualiser
-  @extend .w-100, .h-100
-</style>
+<style lang="sass" scoped></style>

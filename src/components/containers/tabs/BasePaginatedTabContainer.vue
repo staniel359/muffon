@@ -28,7 +28,7 @@
       <template
         #default="slotProps"
       >
-        <div class="page-list-container">
+        <div class="full-column">
           <slot
             :[scope]="slotProps[scope]"
           />
@@ -141,7 +141,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.page-list-container
-  @extend .d-flex, .flex-column, .flex-full
-</style>
+<style lang="sass" scoped></style>

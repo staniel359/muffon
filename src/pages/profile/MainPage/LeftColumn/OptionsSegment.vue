@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="options-segment"
+    class="end-aligned"
   >
     <BaseProfileOptionsPopup
       :profile-data="profileData"
@@ -28,7 +28,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.options-segment
-  @extend .d-flex, .justify-content-flex-end
-</style>
+<style lang="sass" scoped></style>

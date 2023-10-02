@@ -1,6 +1,6 @@
 <template>
   <BaseButtonContainer
-    class="circular browser-tab"
+    class="circular base-browser-tab middle-aligned main-left-mini-section"
     :class="{
       primary: isActive,
       basic: !isActive
@@ -9,27 +9,23 @@
     @click="handleClick"
   >
     <BaseIcon
-      class="browser-tab-icon"
+      class="main-right-extrasmall-icon main-left-small-icon"
       :is-loading="isLoading"
       :is-error="isError"
       :icon="icon"
     />
 
     <span
-      class="browser-tab-name"
+      class="tab-name text-overflow-hidden"
       :class="{
         active: isActive
       }"
       v-text="tabTitle"
     />
 
-    <BaseClearButton
-      class="browser-tab-close-button"
-      :class="{
-        inverted: isActive
-      }"
-      :is-red="false"
-      :is-invertable="!isActive"
+    <BaseIcon
+      class="close-icon main-right-small-icon"
+      icon="close"
       @click.stop="handleCloseButtonClick"
     />
   </BaseButtonContainer>
@@ -46,14 +42,12 @@ import {
 import BaseButtonContainer
   from '@/components/containers/buttons/BaseButtonContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
-import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'BrowserTab',
   components: {
     BaseButtonContainer,
-    BaseIcon,
-    BaseClearButton
+    BaseIcon
   },
   props: {
     tabData: {
@@ -71,7 +65,6 @@ export default {
     ...mapState(
       layoutStore,
       [
-        'isDarkMode',
         'activeTabId'
       ]
     ),
@@ -141,48 +134,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.browser-tab
-  @extend .d-flex, .align-items-center
-  padding: 0.5em
-  &:hover
-    .browser-tab-name
-      max-width: unset
-[dir="ltr"]
-  .browser-tab
-    margin-right: 0.5em !important
-[dir="rtl"]
-  .browser-tab
-    margin-left: 0.5em !important
-
-.browser-tab-icon
-  @extend .no-margin
-[dir="ltr"]
-  .browser-tab-icon
-    margin-left: 0.5em !important
-[dir="rtl"]
-  .browser-tab-icon
-    margin-right: 0.5em !important
-
-.browser-tab-name
-  @extend .white-space-no-wrap, .overflow-hidden
-  max-width: 150px
-  &.active
-    @extend .text-bold
-[dir="ltr"]
-  .browser-tab-name
-    margin-left: 0.75em
-[dir="rtl"]
-  .browser-tab-name
-    margin-right: 0.75em
-
-.browser-tab-close-button
-  padding: 4px !important
-  width: unset !important
-[dir="ltr"]
-  .browser-tab-close-button
-    margin-left: 0.75em !important
-[dir="rtl"]
-  .browser-tab-close-button
-    margin-right: 0.75em !important
-</style>
+<style lang="sass" scoped></style>

@@ -1,25 +1,27 @@
 <template>
-  <div class="main-settings-option">
-    <div class="option-header">
-      <BaseButton
-        class="red circular option-button"
-        icon="delete"
-        :class="{
-          loading: isLoading,
-          disabled: isLoading
-        }"
-        :text="deleteText"
-        :is-invertable="false"
-        @click="handleClick"
-      />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <div class="option-header">
+        <BaseButton
+          class="red circular option-button"
+          left-icon="delete"
+          :class="{
+            loading: isLoading,
+            disabled: isLoading
+          }"
+          :text="deleteText"
+          :is-invertable="false"
+          @click="handleClick"
+        />
 
-      <BaseDeleteModal
-        ref="modal"
-        :model-type="modelType"
-        :is-loading="isLoading"
-        :error="error"
-        @delete-button-click="handleDeleteButtonClick"
-      />
+        <BaseDeleteModal
+          ref="modal"
+          :model-type="modelType"
+          :is-loading="isLoading"
+          :error="error"
+          @delete-button-click="handleDeleteButtonClick"
+        />
+      </div>
     </div>
   </div>
 </template>

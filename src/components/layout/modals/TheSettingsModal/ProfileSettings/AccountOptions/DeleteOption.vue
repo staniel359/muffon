@@ -1,18 +1,20 @@
 <template>
-  <div class="main-settings-option">
-    <div class="option-header">
-      <BaseButton
-        class="red circular option-button"
-        icon="delete"
-        :text="deleteAccountText"
-        :is-invertable="false"
-        @click="handleDeleteButtonClick"
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <div class="option-header">
+        <BaseButton
+          class="red circular option-button"
+          left-icon="delete"
+          :text="deleteAccountText"
+          :is-invertable="false"
+          @click="handleDeleteButtonClick"
+        />
+      </div>
+
+      <DeleteModal
+        ref="modal"
       />
     </div>
-
-    <DeleteModal
-      ref="modal"
-    />
   </div>
 </template>
 

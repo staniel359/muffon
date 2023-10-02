@@ -1,7 +1,7 @@
 <template>
-  <div class="button-select-section">
+  <div class="middle-end-aligned main-list-bottom-section">
     <BaseDropdown
-      class="button-select"
+      class="main-select"
       :header="header"
       :options="optionsFiltered"
       :selected="selected"
@@ -110,12 +110,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.button-select-section
-  @extend .d-flex, .align-items-center
-  &:not(:first-child)
-    margin-top: 1em
-
-.button-select
-  width: 200px
-</style>
+<style lang="sass" scoped></style>

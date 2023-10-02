@@ -1,12 +1,14 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="scopeText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="scopeText"
+      />
 
-    <ScopeSelect />
+      <ScopeSelect />
+    </div>
   </div>
 </template>
 

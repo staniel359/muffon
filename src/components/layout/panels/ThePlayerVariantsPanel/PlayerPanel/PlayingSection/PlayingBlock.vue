@@ -1,5 +1,5 @@
 <template>
-  <div class="item main-simple-list-item">
+  <div class="item main-simple-list-item middle-aligned not-padded">
     <ImageBlock />
 
     <InfoBlock

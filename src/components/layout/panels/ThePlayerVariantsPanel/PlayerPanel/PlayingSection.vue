@@ -1,7 +1,7 @@
 <template>
-  <div class="track-panel">
+  <div class="playing-section middle-aligned">
     <BaseListContainer
-      class="track-container"
+      class="width-100"
     >
       <PlayingBlock />
     </BaseListContainer>
@@ -23,10 +23,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.track-panel
-  @extend .d-flex, .align-items-center
-  width: 230px
-
-.track-container
-  @extend .w-100
+.playing-section
+  width: 260px
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="main-library-modal-message-container">
+  <div class="main-top-section">
     <BaseMessage
       class="success"
       icon="success"

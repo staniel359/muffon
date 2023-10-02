@@ -1,5 +1,5 @@
 <template>
-  <div class="right-column">
+  <div class="main-right-column small">
     <HeaderSection
       :artist-data="artistData"
       @link-click="handleLinkClick"
@@ -44,13 +44,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.right-column
-  @extend .flex-full
-[dir="ltr"]
-  .right-column
-    margin-left: 1em
-[dir="rtl"]
-  .right-column
-    margin-right: 1em
-</style>
+<style lang="sass" scoped></style>

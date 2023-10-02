@@ -7,7 +7,7 @@ export default function () {
 
   global.isMaximized = false
 
-  global.tabsPanelHeight = 45
+  global.tabsPanelHeight = 50
 
   global.topOffset = null
 

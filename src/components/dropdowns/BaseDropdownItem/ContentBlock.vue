@@ -8,7 +8,6 @@
 
     <div
       v-if="content"
-      class="main-small-container"
     >
       <small
         v-text="content"

@@ -8,10 +8,7 @@
       #default="slotProps"
     >
       <BaseSegmentContainer
-        :class="[
-          'raised main-segment-container',
-          'main-page-segment-container'
-        ]"
+        class="raised main-segment-container main-page-segment-container"
       >
         <LyricsSection
           :lyrics="slotProps.trackData.lyrics"

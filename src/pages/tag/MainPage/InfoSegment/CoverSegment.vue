@@ -1,18 +1,19 @@
 <template>
   <BaseSegmentContainer
-    class="cover-segment-container"
+    class="cover-segment-container no-padding absolute width-100"
     :is-loading="isLoading"
   >
-    <template
+    <div
       v-if="images"
+      class="ui five column grid"
     >
       <BaseImage
         v-for="imageData in imagesCollection"
         :key="imageData.uuid"
-        class="artist-image"
+        class="column no-padding"
         :image="imageData.name"
       />
-    </template>
+    </div>
   </BaseSegmentContainer>
 </template>
 
@@ -76,17 +77,5 @@ export default {
 
 <style lang="sass" scoped>
 .cover-segment-container
-  @extend .no-padding, .absolute, .w-100
   z-index: -1
-  width: 700px !important
-[dir="ltr"]
-  .cover-segment-container
-    margin-left: -15px !important
-[dir="rtl"]
-  .cover-segment-container
-    margin-right: -15px !important
-
-.artist-image
-  @extend .d-inline
-  width: 140px
 </style>

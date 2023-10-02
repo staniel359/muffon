@@ -4,8 +4,13 @@
       tag="h3"
     >
       <BaseLink
+        v-if="link"
         :link="link"
         :text="headerText"
+      />
+      <span
+        v-else
+        v-text="headerText"
       />
     </BaseHeaderContainer>
   </BaseSegmentContainer>
@@ -26,14 +31,11 @@ export default {
     BaseLink
   },
   props: {
-    link: {
-      type: Object,
-      required: true
-    },
     scope: {
       type: String,
       required: true
-    }
+    },
+    link: Object
   },
   computed: {
     headerText () {

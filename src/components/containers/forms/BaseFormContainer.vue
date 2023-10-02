@@ -7,11 +7,14 @@
       inverted: isDarkMode
     }"
   >
-    <BaseErrorMessage
+    <div
       v-if="error"
-      class="form-error"
-      :error="error"
-    />
+      class="main-top-section"
+    >
+      <BaseErrorMessage
+        :error="error"
+      />
+    </div>
 
     <slot />
   </form>
@@ -62,12 +65,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-form-container
-  &.loading
-    &:before
-      @extend .background-transparent, .blurred
-
-.form-error
-  margin-bottom: 1em !important
-</style>
+<style lang="sass" scoped></style>

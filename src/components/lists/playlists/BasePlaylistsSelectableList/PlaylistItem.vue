@@ -1,6 +1,7 @@
 <template>
   <Component
     :is="component"
+    class="no-padding"
     :class="{
       disabled: isDeleted
     }"
@@ -14,17 +15,19 @@
     <template
       #default="slotProps"
     >
-      <BaseDeletedSection
-        v-if="isDeleted"
-        model="playlist"
-      />
-      <ContentBlock
-        v-else
-        :playlist-data="playlistData"
-        :is-loading="slotProps.isLoading"
-        :is-success="isSuccess"
-        :is-error="isError"
-      />
+      <div class="main-simple-list-item middle-aligned main-visibility-container">
+        <BaseDeletedSection
+          v-if="isDeleted"
+          model="playlist"
+        />
+        <ContentBlock
+          v-else
+          :playlist-data="playlistData"
+          :is-loading="slotProps.isLoading"
+          :is-success="isSuccess"
+          :is-error="isError"
+        />
+      </div>
     </template>
   </Component>
 </template>
@@ -119,8 +122,6 @@ export default {
 
 <style lang="sass" scoped>
 :deep(.progress)
-  margin-top: 1em !important
-
-:deep(.error-message)
-  margin-top: 1em !important
+  margin-top: 1.5rem !important
+  margin-bottom: 3rem !important
 </style>

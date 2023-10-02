@@ -8,7 +8,7 @@
         disabled: isDisabled
       }
     ]"
-    :icon="source"
+    :left-icon="source"
     :text="importText"
     :is-invertable="false"
     @click="handleClick"

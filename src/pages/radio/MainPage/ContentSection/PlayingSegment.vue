@@ -2,12 +2,12 @@
   <BaseSegmentContainer
     v-if="isPlayingFromRadio"
   >
-    <div class="playing-segment">
-      <InfoBlock
+    <div class="relative overflow-hidden border-inverted border-radius-large">
+      <ImageBlock
         :track-data="playerPlaying"
       />
 
-      <ImageBlock
+      <InfoBlock
         :track-data="playerPlaying"
       />
     </div>
@@ -21,15 +21,15 @@ import {
 import playerStore from '@/stores/player'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import InfoBlock from './PlayingSegment/InfoBlock.vue'
 import ImageBlock from './PlayingSegment/ImageBlock.vue'
+import InfoBlock from './PlayingSegment/InfoBlock.vue'
 
 export default {
   name: 'PlayingSegment',
   components: {
     BaseSegmentContainer,
-    InfoBlock,
-    ImageBlock
+    ImageBlock,
+    InfoBlock
   },
   computed: {
     ...mapState(
@@ -45,7 +45,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.playing-segment
-  @extend .relative, .overflow-hidden, .border-inverted, .border-radius
-</style>
+<style lang="sass" scoped></style>

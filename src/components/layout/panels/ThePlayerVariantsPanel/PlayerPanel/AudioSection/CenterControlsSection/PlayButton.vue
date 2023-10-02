@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic circular"
+    class="big basic circular compact simple"
     :class="{
       disabled: !isAudioPlayable
     }"

@@ -1,9 +1,14 @@
 <template>
   <div
-    class="item main-simple-list-item base-event-item"
+    class="item main-simple-list-item middle-aligned"
   >
     <BaseIcon
-      class="grey"
+      class="main-icon"
+      :icon="eventTypeIcon"
+    />
+
+    <BaseIcon
+      class="grey main-right-small-icon"
       :icon="modelIcon"
     />
 
@@ -14,11 +19,6 @@
         :event-data="eventData"
       />
     </div>
-
-    <BaseIcon
-      class="event-type-icon"
-      :icon="eventTypeIcon"
-    />
 
     <BaseCreatedSection
       class="description right"
@@ -104,24 +104,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-event-item
-  padding: 0.5em 0.75em !important
-
-[dir="ltr"]
-  .content
-    margin-left: 0.75em
-[dir="rtl"]
-  .content
-    margin-right: 0.75em
-
-.event-type-icon
-  @extend .no-padding
-  min-width: unset !important
-[dir="ltr"]
-  .event-type-icon
-    margin-left: 0.75em !important
-[dir="rtl"]
-  .event-type-icon
-    margin-right: 0.75em !important
-</style>
+<style lang="sass" scoped></style>

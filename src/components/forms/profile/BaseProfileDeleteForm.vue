@@ -1,10 +1,11 @@
 <template>
   <BaseProfileDeleteFormContainer>
-    <BaseHeader
-      class="confirm-header"
-      tag="h5"
-      :text="confirmText"
-    />
+    <div class="main-top-small-section">
+      <BaseHeader
+        tag="h5"
+        :text="confirmText"
+      />
+    </div>
 
     <BaseProfilePasswordField
       ref="password"
@@ -51,7 +52,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.confirm-header
-  margin-bottom: 0.75em !important
-</style>
+<style lang="sass" scoped></style>

@@ -1,67 +1,65 @@
 <template>
   <BaseSegmentContainer
-    class="main-segment-container"
+    class="middle-aligned height-100 no-margin no-border-radius about-page-segment"
     :is-change-transparency="false"
   >
-    <div class="left-column">
-      <BaseImage
-        class="main-logo-image"
-        :image="logo"
-        is-plain
-      />
-    </div>
-
-    <div class="right-column">
-      <BaseHeader
-        tag="h2"
-        :text="name"
-      />
-
-      <div class="version-section">
-        <strong
-          v-text="version"
-        />
-      </div>
-
-      <div class="copyright-license-section">
-        <div>
-          <small
-            v-text="copyrightText"
-          />
-        </div>
-
-        <div>
-          <small
-            v-text="licenseText"
-          />
-        </div>
-      </div>
-
-      <BaseDivider />
-
+    <div class="d-flex">
       <div>
-        <div class="link-section">
+        <BaseLogoImage />
+      </div>
+
+      <div class="main-right-column">
+        <BaseHeader
+          tag="h2"
+          :text="name"
+        />
+
+        <div class="main-bottom-extrasmall-section">
           <strong
-            class="main-link"
-            @click="handleHomepageLinkClick"
-            v-text="homepageText"
+            v-text="version"
           />
         </div>
 
-        <div class="link-section">
-          <strong
-            class="main-link"
-            @click="handleDonateLinkClick"
-            v-text="donateText"
-          />
+        <div class="main-bottom-extrasmall-section">
+          <div>
+            <small
+              v-text="copyrightText"
+            />
+          </div>
+
+          <div>
+            <small
+              v-text="licenseText"
+            />
+          </div>
         </div>
 
-        <div class="link-section">
-          <strong
-            class="main-link"
-            @click="handleContactLinkClick"
-            v-text="contactText"
-          />
+        <BaseDivider />
+
+        <div>
+          <div class="main-link-section">
+            <strong
+              class="main-link"
+              @click="handleHomepageLinkClick"
+              v-text="homepageText"
+            />
+          </div>
+
+          <div class="main-link-section">
+            <strong
+              class="main-link"
+              @click="handleDonateLinkClick"
+              v-text="donateText"
+            />
+          </div>
+
+          <div class="main-link-section">
+            <strong
+              class="main-link"
+              @click="handleContactLinkClick"
+              v-text="contactText"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -74,7 +72,7 @@ import {
 } from 'electron'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseImage from '@/components/images/BaseImage.vue'
+import BaseLogoImage from '@/components/images/BaseLogoImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import logo from '@/assets/images/logo_sm.png'
@@ -93,7 +91,7 @@ export default {
   name: 'MainPage',
   components: {
     BaseSegmentContainer,
-    BaseImage,
+    BaseLogoImage,
     BaseHeader,
     BaseDivider
   },
@@ -168,35 +166,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-segment-container
-  @extend .d-flex, .h-100, .no-margin, .no-border-radius
-  padding: 2em 3em
-
-.left-column
-  width: 80px
-[dir="ltr"]
-  .left-column
-    margin-right: 1.5em
-[dir="rtl"]
-  .left-column
-    margin-left: 1.5em
-
-.right-column
-  @extend .flex-full
-
-.version-section
-  margin-top: 0.5em
-
-.copyright-license-section
-  margin-top: 0.5em
-
-.link-section
-  @extend .d-inline-block
-  margin-bottom: 0.25em
-[dir="ltr"]
-  .link-section
-    margin-right: 1.25em
-[dir="rtl"]
-  .link-section
-    margin-left: 1.25em
+.about-page-segment
+  padding: 0 4rem !important
 </style>

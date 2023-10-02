@@ -3,7 +3,7 @@
     <BaseZoomableImage
       v-for="imageData in imagesCollection"
       :key="imageData.uuid"
-      class="image-item"
+      class="main-list-bottom-section media-item"
       size="original"
       :image-data="imageData"
       :is-square-fit="false"
@@ -38,9 +38,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.image-item
-  max-width: 420px
-  &:not(:first-child)
-    margin-top: 0.75em
-</style>
+<style lang="sass" scoped></style>

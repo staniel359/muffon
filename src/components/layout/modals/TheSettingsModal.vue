@@ -1,7 +1,8 @@
 <template>
   <BaseModalContainer
     ref="modal"
-    size="small"
+    class="the-settings-modal"
+    size=""
     is-render
     is-multiple
   >
@@ -108,26 +109,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-:deep(.settings-group-tabs-container)
-  .base-tabs
-    @extend .no-margin, .overflow-y-auto
-    flex: 0.3
-  .base-tab-container
-    flex: 0.7 !important
-[dir="ltr"]
-  .content
-    :deep(.settings-group-tabs-container)
-      .base-tabs
-        margin-right: 1em !important
-[dir="rtl"]
-  .content
-    :deep(.settings-group-tabs-container)
-      .base-tabs
-        margin-left: 1em !important
-
-:deep(.settings-group-tab)
-  @extend .d-flex, .flex-column
-  &:not(.active)
-    @extend .visibility-hidden
-</style>
+<style lang="sass" scoped></style>

@@ -1,6 +1,7 @@
 <template>
   <BaseIcon
     v-if="!isFirstSection"
+    class="navigation-icon"
     icon="navigationRight"
     is-with-rtl
   />
@@ -61,4 +62,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.navigation-icon
+  margin: 0 0.5rem !important
+</style>

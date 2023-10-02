@@ -1,27 +1,29 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="buttonsText"
-    />
-
-    <div>
-      <ButtonSelectSection
-        index-text="first"
-        :options="optionsFormatted"
-        :buttons-text-key="buttonsTextKey"
-        :index="0"
-        :other-select-index="1"
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="buttonsText"
       />
 
-      <ButtonSelectSection
-        index-text="second"
-        :options="optionsFormatted"
-        :buttons-text-key="buttonsTextKey"
-        :index="1"
-        :other-select-index="0"
-      />
+      <div>
+        <ButtonSelectSection
+          index-text="first"
+          :options="optionsFormatted"
+          :buttons-text-key="buttonsTextKey"
+          :index="0"
+          :other-select-index="1"
+        />
+
+        <ButtonSelectSection
+          index-text="second"
+          :options="optionsFormatted"
+          :buttons-text-key="buttonsTextKey"
+          :index="1"
+          :other-select-index="0"
+        />
+      </div>
     </div>
   </div>
 </template>

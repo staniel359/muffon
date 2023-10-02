@@ -8,4 +8,4 @@
 @lightPrimaryColor: #9969c7;
 @focusedFormBorderColor: #b589d6;
 
-@absoluteBorderRadius: 0.75em;
+@absoluteBorderRadius: 1rem;

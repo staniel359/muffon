@@ -12,7 +12,7 @@
     <div class="main-sidebar-item-icon-image-container">
       <BaseIcon
         v-if="icon"
-        class="grey"
+        class="grey main-icon"
         :icon="icon"
       />
       <BaseImage
@@ -23,7 +23,7 @@
       />
     </div>
 
-    <div class="content-container">
+    <div class="content middle-aligned main-right-extrasmall-section">
       <strong
         v-if="isTextStrong"
         v-text="text"
@@ -122,8 +122,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.content-container
-  @extend .d-flex, .align-items-center
+.content
   width: 200px
   flex-shrink: 0
 </style>

@@ -1,6 +1,6 @@
 <template>
   <BaseScopeSelect
-    class="scope-select"
+    class="main-select"
     :scopes="scopes"
     :selected="searchScope"
     @select="handleSelect"
@@ -48,7 +48,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.scope-select
-  width: 200px
-</style>
+<style lang="sass" scoped></style>

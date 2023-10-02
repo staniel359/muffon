@@ -1,17 +1,14 @@
 <template>
   <div>
-    <div
+    <BaseCounterLabelsSection
       class="main-labels-section"
-    >
-      <BaseCounterLabelsSection
-        :counters="counters"
-      />
+      :counters="counters"
+    />
 
-      <BaseAlbumInnerCounterLabelsSection
-        class="inline"
-        :album-data="albumData"
-      />
-    </div>
+    <BaseAlbumInnerCounterLabelsSection
+      class="main-labels-section"
+      :album-data="albumData"
+    />
 
     <BaseDateLabelSection
       class="main-labels-section"

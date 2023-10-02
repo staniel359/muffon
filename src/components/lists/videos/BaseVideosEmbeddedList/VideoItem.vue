@@ -1,10 +1,10 @@
 <template>
-  <div class="video-item">
+  <div class="main-list-bottom-section media-item main-visibility-container">
     <BaseVideo
       :video-data="videoData"
     />
 
-    <div class="title-options-container">
+    <div class="middle-aligned-space-between main-bottom-mini-section">
       <BaseLinkContainer
         :link="link"
       >
@@ -16,7 +16,7 @@
       </BaseLinkContainer>
 
       <BaseVideoOptionsPopup
-        class="video-options"
+        class="main-right-small-section invisible-item"
         :video-data="videoData"
         is-with-share-option
         is-with-external-link-option
@@ -68,19 +68,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.video-item
-  &:not(:first-child)
-    margin-top: 0.75em
-
-.title-options-container
-  @extend .d-flex, .align-items-center, .justify-content-space-between
-  margin-top: 0.5em !important
-
-[dir="ltr"]
-  .video-options
-    margin-left: 0.75em
-[dir="rtl"]
-  .video-options
-    margin-right: 0.75em
-</style>
+<style lang="sass" scoped></style>

@@ -1,7 +1,7 @@
 <template>
   <Component
     :is="component"
-    class="ui base-link-container"
+    class="ui base-link-container cursor-pointer"
     :to="link"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
@@ -77,10 +77,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-link-container
-  @extend .cursor-pointer
-  &:hover
-    :deep(.link)
-      @extend .text-color-base
-</style>
+<style lang="sass" scoped></style>

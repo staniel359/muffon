@@ -1,11 +1,11 @@
 <template>
-  <div class="tags-section">
+  <div class="main-bottom-section">
     <div class="ui labels">
       <BaseFilterItemLabel
         v-for="tagData in tags"
         :key="tagData.uuid"
         :filter-item-data="tagData"
-        @delete-icon-click="handleDeleteIconClick"
+        @clear-icon-click="handleTagClearIconClick"
       />
     </div>
   </div>
@@ -31,7 +31,7 @@ export default {
     }
   },
   methods: {
-    handleDeleteIconClick (
+    handleTagClearIconClick (
       {
         uuid
       }
@@ -47,7 +47,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.tags-section
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

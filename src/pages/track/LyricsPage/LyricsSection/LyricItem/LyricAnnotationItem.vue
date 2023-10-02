@@ -2,7 +2,7 @@
   <span
     ref="annotation"
     :class="{
-      'lyric-annotation-item':
+      'base-lyric-annotation-item':
         isLyricsWithAnnotations,
       inverted: isDarkMode
     }"
@@ -153,15 +153,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.lyric-annotation-item
-  @extend .cursor-pointer
-  background: $colorGrey
-  &.inverted
-    background: $colorGreyInverted
-  &:hover
-    @extend .text-color-white
-    background: $colorBaseLight
-    &.inverted
-      background: $colorBase
-</style>
+<style lang="sass" scoped></style>

@@ -1,10 +1,6 @@
 <template>
-  <div
-    :class="[
-      'ui raised segments main-segments',
-      'main-segment-container',
-      'main-page-segment-container'
-    ]"
+  <BaseSegmentsContainer
+    class="main-page-segment-container"
   >
     <BaseSegmentContainer
       v-if="isWithTopSegment"
@@ -79,7 +75,7 @@
         />
       </template>
     </BasePaginatedSegmentContainer>
-  </div>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
@@ -87,6 +83,8 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseOrderSelect from '@/components/selects/BaseOrderSelect.vue'
@@ -101,6 +99,7 @@ import {
 export default {
   name: 'BasePaginatedPageContainer',
   components: {
+    BaseSegmentsContainer,
     BaseSegmentContainer,
     BaseOrderSelect,
     BaseViewSelect,

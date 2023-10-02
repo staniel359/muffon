@@ -1,7 +1,7 @@
 <template>
   <div
     ref="item"
-    class="item"
+    class="item main-options-option"
     :class="{
       disabled: (
         isDisabled || isLoading
@@ -12,6 +12,7 @@
   >
     <BaseIcon
       v-if="icon"
+      class="main-options-option-icon"
       :class="{
         red: (
           isIconRed || isError
@@ -27,25 +28,25 @@
       v-text="text"
     />
 
-    <BaseIcon
+    <template
       v-if="options"
-      class="dropdown-icon"
-      icon="dropdown"
-    />
-
-    <div
-      v-if="options"
-      class="main-popup-container"
     >
-      <BaseOptionsPopupMenuContainer
-        ref="popup"
-        @active-change="handleSubmenuActiveChange"
-      >
-        <OptionsMenu
-          :options="options"
-        />
-      </BaseOptionsPopupMenuContainer>
-    </div>
+      <BaseIcon
+        class="main-left-small-icon"
+        icon="dropdown"
+      />
+
+      <div class="main-popup-container">
+        <BaseOptionsPopupMenuContainer
+          ref="popup"
+          @active-change="handleSubmenuActiveChange"
+        >
+          <OptionsMenu
+            :options="options"
+          />
+        </BaseOptionsPopupMenuContainer>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -146,11 +147,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-[dir="ltr"]
-  .dropdown-icon
-    margin-right: 1em !important
-[dir="rtl"]
-  .dropdown-icon
-    margin-left: 1em !important
-</style>
+<style lang="sass" scoped></style>

@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="exitText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="exitText"
+      />
 
-    <BaseToggle
-      store-key="layout.isExitOnClose"
-      :is-checked="isExitOnClose"
-    />
+      <BaseToggle
+        store-key="layout.isExitOnClose"
+        :is-checked="isExitOnClose"
+      />
+    </div>
   </div>
 </template>
 

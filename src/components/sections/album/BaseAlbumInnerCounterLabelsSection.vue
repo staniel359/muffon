@@ -1,5 +1,5 @@
 <template>
-  <template
+  <div
     v-if="isRender"
   >
     <BaseInnerCounterLabelsSection
@@ -15,7 +15,7 @@
       ref="modal"
       :request-album-data="requestAlbumData"
     />
-  </template>
+  </div>
 </template>
 
 <script>

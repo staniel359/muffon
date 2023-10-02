@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="raised main-segment-container player-segment"
+    class="raised main-segment-container no-padding"
   >
     <BaseTrackPlayerPanel
       :track-data="trackData"
@@ -26,7 +26,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.player-segment
-  @extend .no-padding
-</style>
+<style lang="sass" scoped></style>

@@ -5,18 +5,17 @@
   >
     <div class="content">
       <BaseCommunityCreateFormContainer
-        class="main-creatable-form"
         :image="image"
         @success="handleSuccess"
       >
-        <div class="fields-container">
+        <div class="main-form-extra-section">
           <BaseImageField
             class="image-field"
             model="community"
             @change="handleImageChange"
           />
 
-          <div class="fields-right-column">
+          <div class="main-form-extra-section-fields-section">
             <BaseTitleField
               ref="title"
             />

@@ -10,6 +10,10 @@
   >
     <BaseIcon
       v-if="icon"
+      class="header-icon"
+      :class="{
+        small: isIconSmall
+      }"
       :icon="icon"
     />
 
@@ -35,7 +39,8 @@ export default {
       required: true
     },
     icon: String,
-    isInverted: Boolean
+    isInverted: Boolean,
+    isIconSmall: Boolean
   },
   computed: {
     ...mapState(

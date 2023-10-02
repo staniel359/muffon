@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="newTabSwitchText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="newTabSwitchText"
+      />
 
-    <BaseToggle
-      store-key="layout.isSwitchToNewTab"
-      :is-checked="isSwitchToNewTab"
-    />
+      <BaseToggle
+        store-key="layout.isSwitchToNewTab"
+        :is-checked="isSwitchToNewTab"
+      />
+    </div>
   </div>
 </template>
 

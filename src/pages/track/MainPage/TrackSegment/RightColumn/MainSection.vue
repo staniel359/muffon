@@ -1,28 +1,29 @@
 <template>
-  <BaseHorizontalCardContainer>
-    <InfoSection
+  <BaseSegmentsContainer
+    class="nested"
+  >
+    <InfoSegment
       :track-data="trackData"
     />
 
-    <BaseTrackPlayerPanel
+    <PlayerSegment
       :track-data="trackData"
     />
-  </BaseHorizontalCardContainer>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
-import BaseHorizontalCardContainer
-  from '@/components/containers/cards/BaseHorizontalCardContainer.vue'
-import InfoSection from './MainSection/InfoSection.vue'
-import BaseTrackPlayerPanel
-  from '@/components/models/track/BaseTrackPlayerPanel.vue'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
+import InfoSegment from './MainSection/InfoSegment.vue'
+import PlayerSegment from './MainSection/PlayerSegment.vue'
 
 export default {
   name: 'MainSection',
   components: {
-    BaseHorizontalCardContainer,
-    InfoSection,
-    BaseTrackPlayerPanel
+    BaseSegmentsContainer,
+    InfoSegment,
+    PlayerSegment
   },
   props: {
     trackData: Object
@@ -30,7 +31,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-:deep(.content)
-  @extend .no-padding, .flex-column
-</style>
+<style lang="sass" scoped></style>

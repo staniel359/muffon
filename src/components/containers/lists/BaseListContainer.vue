@@ -28,25 +28,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-list
-  &.selection
-    & > :deep(.item)
-      border-radius: 0.75em
-      padding: 0.5em !important
-  &.inverted
-    & > :deep(.item)
-      & > .content
-        @extend .text-color-white
-      &.disabled
-        @extend .text-color-white
-    &.selection
-      & > :deep(.item)
-        &:hover
-          .left-icon
-            @extend .text-color-white
-  & > :deep(.item)
-    &.disabled
-      @extend .text-color-black
-      opacity: 0.45
-</style>
+<style lang="sass" scoped></style>

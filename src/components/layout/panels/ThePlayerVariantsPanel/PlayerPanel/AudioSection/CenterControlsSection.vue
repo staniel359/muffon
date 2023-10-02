@@ -1,24 +1,35 @@
 <template>
-  <div class="center-controls-section">
-    <LoopButton />
+  <div class="center-aligned width-60">
+    <div class="main-small-buttons-container middle-aligned">
+      <EqualizerButton
+        v-if="isPlayerWithEqualizer"
+      />
 
-    <BaseQueueDirectionButtonContainer
-      position="previous"
-      icon="audioPrevious"
-    />
+      <LoopButton />
 
-    <PlayButton />
+      <BaseQueueDirectionButtonContainer
+        position="previous"
+        icon="audioPrevious"
+      />
 
-    <BaseQueueDirectionButtonContainer
-      position="next"
-      icon="audioNext"
-    />
+      <PlayButton />
 
-    <VolumeButton />
+      <BaseQueueDirectionButtonContainer
+        position="next"
+        icon="audioNext"
+      />
+
+      <VolumeButton />
+    </div>
   </div>
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import playerStore from '@/stores/player'
+import EqualizerButton from './CenterControlsSection/EqualizerButton.vue'
 import LoopButton from './CenterControlsSection/LoopButton.vue'
 import BaseQueueDirectionButtonContainer
   from '@/components/containers/BaseQueueDirectionButtonContainer.vue'
@@ -28,27 +39,21 @@ import VolumeButton from './CenterControlsSection/VolumeButton.vue'
 export default {
   name: 'CenterControlsSection',
   components: {
+    EqualizerButton,
     LoopButton,
     BaseQueueDirectionButtonContainer,
     PlayButton,
     VolumeButton
+  },
+  computed: {
+    ...mapState(
+      playerStore,
+      {
+        isPlayerWithEqualizer: 'isWithEqualizer'
+      }
+    )
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.center-controls-section
-  @extend .d-flex, .align-items-center, .justify-content-center
-  flex: 0.4
-
-[dir="ltr"]
-  .center-controls-section
-    .button
-      &:not(:last-child)
-        margin-right: 0.5em !important
-[dir="rtl"]
-  .center-controls-section
-    .button
-      &:not(:last-child)
-        margin-left: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

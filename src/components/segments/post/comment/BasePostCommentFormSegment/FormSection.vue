@@ -1,6 +1,6 @@
 <template>
   <BasePostCommentCreateFormContainer
-    class="main-sendable-form"
+    class="main-sendable-form main-bottom-section"
     :model="model"
     :profile-id="profileId"
     :community-id="communityId"

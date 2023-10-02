@@ -1,10 +1,10 @@
 <template>
-  <div class="the-authentication">
+  <div class="the-authentication middle-aligned-column">
     <div class="main-transition-item">
-      <BaseLogoSection />
+      <BaseLogoImage />
     </div>
 
-    <div class="form-segment-container">
+    <div class="form-segment-container width-60">
       <BaseProfileLoginForm
         v-if="isLogin"
         @signup-link-click="handleSignupLinkClick"
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import BaseLogoSection from '@/components/sections/BaseLogoSection.vue'
+import BaseLogoImage from '@/components/images/BaseLogoImage.vue'
 import BaseProfileLoginForm
   from '@/components/forms/profile/BaseProfileLoginForm.vue'
 import BaseProfilePasswordResetForm
@@ -40,7 +40,7 @@ import {
 export default {
   name: 'TheAuthentication',
   components: {
-    BaseLogoSection,
+    BaseLogoImage,
     BaseProfileLoginForm,
     BaseProfilePasswordResetForm,
     BaseProfileCreateForm
@@ -98,10 +98,9 @@ export default {
 
 <style lang="sass" scoped>
 .the-authentication
-  @extend .d-flex, .flex-column, .align-items-center
-  margin-top: 5vh
+  margin-top: 8vh
 
 .form-segment-container
-  width: 400px
-  margin-top: 1.5em
+  max-width: 450px !important
+  margin-top: 2.5rem
 </style>

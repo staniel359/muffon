@@ -4,6 +4,7 @@
     :url="url"
     :fields="fields"
     :format-response="formatResponse"
+    :scope="scope"
     @select="handleSelect"
   />
 </template>
@@ -35,10 +36,15 @@ export default {
   emits: [
     'select'
   ],
+  data () {
+    return {
+      scope: 'albums'
+    }
+  },
   computed: {
     url () {
       return (
-        `${this.source}/search/albums` +
+        `${this.source}/search/${this.scope}` +
         '?query={query}&limit=5'
       )
     },
@@ -82,7 +88,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-albums-input
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

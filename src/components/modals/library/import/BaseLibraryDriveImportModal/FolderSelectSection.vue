@@ -1,9 +1,9 @@
 <template>
-  <div class="folder-select-container">
-    <div class="folder-select-input-container">
+  <div class="middle-aligned">
+    <div class="flex-full">
       <BaseButton
         class="basic circular"
-        icon="folderSelect"
+        left-icon="folderSelect"
         :class="{
           disabled: !isReset
         }"
@@ -14,7 +14,7 @@
       <input
         ref="input"
         :key="key"
-        class="folder-select-input"
+        class="main-system-input"
         type="file"
         webkitdirectory
         @change="handleChange"
@@ -102,13 +102,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.folder-select-container
-  @extend .d-flex, .align-items-center
-
-.folder-select-input-container
-  @extend .flex-full
-
-.folder-select-input
-  @extend .d-none
-</style>
+<style lang="sass" scoped></style>

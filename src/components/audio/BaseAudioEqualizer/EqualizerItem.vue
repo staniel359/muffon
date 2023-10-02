@@ -1,13 +1,13 @@
 <template>
   <div
-    class="equalizer-item"
+    class="equalizer-item middle-aligned-column"
     :class="{
       inverted: isDarkMode,
       disabled: isDisabled
     }"
   >
     <small
-      class="gain-text gain-top-text"
+      class="gain-text main-top-extrasmall-section pointer-events-none"
       v-text="gainTopTextFormatted"
     />
 
@@ -21,11 +21,11 @@
     />
 
     <small
-      class="gain-text gain-bottom-text"
+      class="gain-text main-bottom-extrasmall-section pointer-events-none"
       v-text="gainBottomTextFormatted"
     />
 
-    <div class="frequency-header-container">
+    <div class="main-bottom-extrasmall-section pointer-events-none">
       <BaseHeader
         tag="h5"
         :text="frequencyTextFormatted"
@@ -238,32 +238,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.equalizer-item
-  @extend .d-flex, .flex-column, .align-items-center
-  padding: 0 10px
-  &.disabled
-    .gain-text
-      color: $colorGrey
-    &.inverted
-      .gain-text
-        color: $colorGreyInverted
-
-.gain-text
-  @extend .pointer-events-none
-  height: 20px
-
-.gain-top-text
-  margin-bottom: 0.5em
-
-.gain-bottom-text
-  margin-top: 0.5em
-
-.frequency-header-container
-  @extend .pointer-events-none
-  margin-top: 0.25em
-
-.audio-equalizer-seeker
-  height: 200px !important
-  width: 1em !important
-</style>
+<style lang="sass" scoped></style>

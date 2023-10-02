@@ -1,6 +1,7 @@
 <template>
   <BaseHeaderContainer
     v-if="profileId"
+    class="width-fit-content"
     :tag="tag"
   >
     <BaseLink
@@ -61,7 +62,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.header
-  @extend .width-fit-content
-</style>
+<style lang="sass" scoped></style>

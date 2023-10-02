@@ -10,11 +10,14 @@
     />
 
     <div class="scrolling content">
-      <BaseErrorMessage
+      <div
         v-if="error"
-        class="error-message"
-        :error="error"
-      />
+        class="main-top-section"
+      >
+        <BaseErrorMessage
+          :error="error"
+        />
+      </div>
 
       <TextSection
         :model-type="modelType"
@@ -25,15 +28,15 @@
       />
     </div>
 
-    <div class="actions">
+    <div class="actions main-buttons-container">
       <BaseButton
-        class="basic cancel circular cancel-button"
+        class="basic cancel circular"
         :text="cancelText"
       />
 
       <BaseButton
         class="red circular"
-        icon="delete"
+        left-icon="delete"
         :text="deleteText"
         :class="{
           loading: isLoading,
@@ -121,14 +124,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.error-message
-  margin-bottom: 1em !important
-
-[dir="ltr"]
-  .cancel-button
-    margin-right: 1em !important
-[dir="rtl"]
-  .cancel-button
-    margin-left: 1em !important
-</style>
+<style lang="sass" scoped></style>

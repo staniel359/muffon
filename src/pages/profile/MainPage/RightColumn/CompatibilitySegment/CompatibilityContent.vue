@@ -1,12 +1,12 @@
 <template>
-  <div class="compatibility-content">
+  <div class="main-right-section">
     <BaseHeader
       tag="h4"
       :text="headerText"
     />
 
-    <div
-      class="compatibility-common-text"
+    <p
+      class="main-text-section main-text-container"
       v-text="commonText"
     />
 
@@ -53,14 +53,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-[dir="ltr"]
-  .compatibility-content
-    margin-left: 1em
-[dir="rtl"]
-  .compatibility-content
-    margin-right: 1em
-
-.compatibility-common-text
-  margin-top: 0.25em
-</style>
+<style lang="sass" scoped></style>

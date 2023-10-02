@@ -4,13 +4,13 @@
   >
     <span
       v-if="gender"
-      class="ui mini empty circular label gender-age-item"
+      class="ui mini empty circular label main-list-right-extrasmall-section"
       :class="genderLabelColor"
     />
 
     <span
       v-if="age"
-      class="gender-age-item"
+      class="main-list-right-extrasmall-section"
       v-text="age"
     />
   </div>
@@ -63,13 +63,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-[dir="ltr"]
-  .gender-age-item
-    &:not(:first-child)
-      margin-left: 0.3em
-[dir="rtl"]
-  .gender-age-item
-    &:not(:first-child)
-      margin-right: 0.3em
-</style>
+<style lang="sass" scoped></style>

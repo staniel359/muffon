@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned main-visibility-container"
     :link="communityLink"
     @click="handleLinkClick"
   >
@@ -11,7 +11,7 @@
     />
 
     <BaseImage
-      class="rounded-medium"
+      class="rounded-medium image-50"
       model="community"
       :image="imageData?.small"
     />
@@ -25,7 +25,7 @@
 
       <div
         v-if="description"
-        class="description main-small-container"
+        class="description"
       >
         <small
           v-text="description"
@@ -42,7 +42,7 @@
 
     <BaseCommunityJoinedMessage
       v-if="isWithJoinOption"
-      class="joined-message"
+      class="description right main-right-small-section"
       :community-data="communityData"
       is-small
     />
@@ -54,6 +54,7 @@
     />
 
     <BaseCommunityOptionsPopup
+      class="invisible-item"
       :community-data="communityData"
       :is-with-join-option="isWithJoinOption"
       :is-with-share-option="isWithShareOption"
@@ -188,11 +189,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-[dir="ltr"]
-  .joined-message
-    margin-left: 0.75em
-[dir="rtl"]
-  .joined-message
-    margin-right: 0.75em
-</style>
+<style lang="sass" scoped></style>

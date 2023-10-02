@@ -92,7 +92,8 @@
     "queue": "Queue",
     "whatsNew": "What's new",
     "listenedRecently": "Listened recently",
-    "shows": "Shows"
+    "shows": "Shows",
+    "listeningNow": "Listening now"
   },
   "errors": {
     "badRequest": {
@@ -151,6 +152,7 @@
     "filter": "Filter",
     "confirm": "Confirm",
     "import": "Import",
+    "close": "Close",
     "addFrom": {
       "search": "From search",
       "library": "From library"
@@ -784,16 +786,18 @@
   },
   "donate": {
     "header": "Donate",
-    "content": {
-      "nonProfit": "muffon is a non-profit project that has nor ads, neither any paid features or content.",
-      "funds": "But, of course, it cannot exist without funds, that are needed for its development and infrastructure.",
-      "timeEffort": "A lot of time and effort were put into creating this project, and it would be good if all of the invested would pay off.",
-      "help": "So I ask for your help in muffon support.",
-      "would": "Would you like to make a donation?"
-    },
-    "decline": "No, thanks",
-    "later": "Maybe later",
-    "accept": "Yeah, sure"
+    "content": [
+      "muffon is a non-profit project that has nor ads, neither any paid features or content.",
+      "But, of course, it cannot exist without funds, that are needed for its development and infrastructure.",
+      "A lot of time and effort were put into creating this project, and it would be good if all of the invested would pay off.",
+      "So I ask for your help in muffon support.",
+      "<strong>Would you like to make a donation?</strong>"
+    ],
+    "actions": {
+      "decline": "No, thanks",
+      "later": "Maybe later",
+      "accept": "Yeah, sure"
+    }
   },
   "lists": {
     "simple": "Simple list",

@@ -58,5 +58,5 @@ export default {
 
 <style lang="sass" scoped>
 .main-artist-name
-  font-size: 1.5em !important
+  font-size: 1.5rem !important
 </style>
