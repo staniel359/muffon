@@ -7,6 +7,7 @@ import en from './i18n/locales/en.json'
 import fr from './i18n/locales/fr.json'
 import he from './i18n/locales/he.json'
 import it from './i18n/locales/it.json'
+import ja from './i18n/locales/ja.json'
 import ru from './i18n/locales/ru.json'
 import belarusianRussianPluralizationRule
   from './i18n/rules/pluralization/beRu.js'
@@ -20,6 +21,7 @@ const localesData = {
   fr,
   he,
   it,
+  ja,
   ru
 }
 
@@ -93,6 +95,16 @@ if (import.meta.hot) {
     fileImport => {
       i18n.global.setLocaleMessage(
         'it',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/ja.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'ja',
         fileImport.default
       )
     }

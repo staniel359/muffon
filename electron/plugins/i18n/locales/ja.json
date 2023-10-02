@@ -1,0 +1,13 @@
+{
+  "show": "表示",
+  "hide": "非表示",
+  "about": "情報",
+  "exit": "終了",
+  "update": {
+    "message": "新しいバージョンが利用可能です",
+    "buttons": {
+      "download": "ダウンロード",
+      "close": "閉じる"
+    }
+  }
+}
