@@ -1,15 +1,14 @@
 <template>
   <div class="ui container main-container">
-    <div class="results-container">
+    <div
+      class="results-container fixed top-navbar"
+      :class="{
+        'full-size': isFullSize
+      }"
+    >
       <BasePaginatedSegmentContainer
         ref="segment"
-        :class="[
-          'raised results-segment',
-          'main-paginated-segment-container',
-          {
-            'full-size': isFullSize
-          }
-        ]"
+        class="raised results-segment no-margin overflow-y-auto flex-column no-border height-100 border-top"
         :response-data="searchData"
         :is-loading="isLoading"
         :error="error"
@@ -69,7 +68,6 @@ import {
   mapActions
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import searchStore from '@/stores/search'
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseArtistsSimpleList
@@ -131,14 +129,17 @@ export default {
     scope: {
       type: String,
       required: true
-    }
+    },
+    isFullSize: Boolean
   },
+  emits: [
+    'fullSizeButtonClick'
+  ],
   data () {
     return {
       scrollable: null,
       searchData: null,
       error: null,
-      isFullSize: null,
       isLoading: false
     }
   },
@@ -148,12 +149,6 @@ export default {
       [
         'isWithInfiniteScroll'
       ]
-    ),
-    ...mapState(
-      searchStore,
-      {
-        isSearchResultsFullSize: 'isResultsFullSize'
-      }
     ),
     searchArgs () {
       return {
@@ -402,12 +397,6 @@ export default {
       )
     }
   },
-  watch: {
-    isSearchResultsFullSize: {
-      immediate: true,
-      handler: 'handleIsSearchResultsFullSize'
-    }
-  },
   mounted () {
     this.getData()
 
@@ -422,11 +411,6 @@ export default {
       ]
     ),
     getSearch,
-    handleIsSearchResultsFullSize (
-      value
-    ) {
-      this.isFullSize = value
-    },
     handleFocus () {
       this.$refs
         .segment
@@ -435,10 +419,10 @@ export default {
     handleLinkClick () {
       this.hideSearch()
     },
-    handleFullSizeButtonClick (
-      value
-    ) {
-      this.isFullSize = !this.isFullSize
+    handleFullSizeButtonClick () {
+      this.$emit(
+        'fullSizeButtonClick'
+      )
     },
     hideSearch () {
       this.setIsSearchPanelVisible(
@@ -462,27 +446,25 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .results-container
-  @extend .fixed
+  width: 500px
+  max-height: 400px
   z-index: 1100
-  top: $navbarHeight
   &:hover
     .full-size-toggle-button
       @extend .d-block
+  &.full-size
+    width: inherit
+    max-height: calc(100vh - $navbarHeight - 20px)
 
 .results-segment
-  @extend .no-margin, .overflow-y-auto, .flex-column, .no-border
-  max-height: 400px
-  width: 500px
-  border-top: $border !important
+  max-height: inherit
   border-top-left-radius: 0
   border-top-right-radius: 0
   &.inverted
-    @extend .border-inverted
-    border-top: none !important
+    @extend .border-inverted, .no-border-top
   &:not(.loading)
     @extend .blurred
-  &.full-size
-    width: $containerWidth
-    max-height: calc(100vh - $navbarHeight - 20px)
 </style>

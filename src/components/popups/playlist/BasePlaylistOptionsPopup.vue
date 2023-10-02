@@ -12,6 +12,7 @@
           v-if="slotProps.isVisible"
           :playlist-id="playlistId"
           is-with-search-option
+          is-with-library-option
           @search-option-click="handleSearchAddOptionClick"
           @library-option-click="handleLibraryAddOptionClick"
         />

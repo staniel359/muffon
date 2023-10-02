@@ -4,9 +4,9 @@
   >
     <BaseDivider />
 
-    <div class="pagination-container">
+    <div class="pagination-container center-aligned">
       <BaseMenuContainer
-        class="small pagination"
+        class="small pagination-menu background-transparent"
       >
         <PreviousPageItem
           :is-disabled="isPreviousPageDisabled"
@@ -120,12 +120,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .pagination-container
-  @extend .d-flex, .justify-content-center
   padding: 5px
 
-.pagination
-  @extend .background-transparent
+.pagination-menu
   &.inverted
     @extend .border-inverted
   & > .item

@@ -1,5 +1,5 @@
 <template>
-  <div class="search-block">
+  <div class="middle-aligned">
     <Component
       :is="inputComponent"
       ref="input"
@@ -77,7 +77,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-block
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

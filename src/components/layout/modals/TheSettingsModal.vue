@@ -1,7 +1,7 @@
 <template>
   <BaseModalContainer
     ref="modal"
-    size="small"
+    size=""
     is-render
     is-multiple
   >
@@ -109,25 +109,21 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
+.ui.modal
+  & > .content
+    height: $settingsModalHeight
+    max-height: $settingsModalHeight !important
+
 :deep(.settings-group-tabs-container)
   .base-tabs
-    @extend .no-margin, .overflow-y-auto
-    flex: 0.3
+    @extend .no-margin, .overflow-y-auto, .width-30, .main-left-section
   .base-tab-container
-    flex: 0.7 !important
-[dir="ltr"]
-  .content
-    :deep(.settings-group-tabs-container)
-      .base-tabs
-        margin-right: 1em !important
-[dir="rtl"]
-  .content
-    :deep(.settings-group-tabs-container)
-      .base-tabs
-        margin-left: 1em !important
+    @extend .width-70
 
 :deep(.settings-group-tab)
-  @extend .d-flex, .flex-column
+  @extend .plain-column
   &:not(.active)
     @extend .visibility-hidden
 </style>

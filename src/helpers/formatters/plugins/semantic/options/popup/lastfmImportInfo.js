@@ -10,7 +10,7 @@ export default function (
   }
 ) {
   const className =
-    'ui popup main-popup main-lastfm-import-info-popup'
+    'ui popup main-popup main-lastfm-import-info-popup small'
 
   return {
     position: 'right center',

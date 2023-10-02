@@ -1,10 +1,11 @@
 <template>
   <BaseSearchInput
     ref="input"
-    class="search-input"
+    class="main-simple-search-input"
     :url="url"
     :fields="fields"
     :format-response="formatResponse"
+    :scope="scope"
     @select="handleSelect"
   />
 
@@ -44,10 +45,15 @@ export default {
       }
     }
   },
+  data () {
+    return {
+      scope: 'albums'
+    }
+  },
   computed: {
     url () {
       return (
-        `${this.source}/search/albums` +
+        `${this.source}/search/${this.scope}` +
         '?query={query}&limit=5'
       )
     },
@@ -86,7 +92,7 @@ export default {
       if (!isPresent) {
         this.addCollectionItem(
           {
-            collection: 'albums',
+            collection: this.scope,
             item: album
           }
         )
@@ -96,7 +102,7 @@ export default {
     },
     handleClearButtonClick () {
       this.resetCollection(
-        'albums'
+        this.scope
       )
 
       this.clear()

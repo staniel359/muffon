@@ -6,12 +6,8 @@
     <template
       #default="slotProps"
     >
-      <div
-        :class="[
-          'ui raised segments main-segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
+      <BaseSegmentsContainer
+        class="main-page-segment-container"
       >
         <ProfileSegment
           :conversation-data="slotProps.conversationData"
@@ -28,7 +24,7 @@
           :key="key"
           :conversation-id="conversationId"
         />
-      </div>
+      </BaseSegmentsContainer>
     </template>
   </BaseConversationPageContainer>
 </template>
@@ -36,6 +32,8 @@
 <script>
 import BaseConversationPageContainer
   from '@/components/containers/pages/conversation/BaseConversationPageContainer.vue'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import ProfileSegment from './MainPage/ProfileSegment.vue'
 import FormSegment from './MainPage/FormSegment.vue'
 import MessagesSegment from './MainPage/MessagesSegment.vue'
@@ -48,6 +46,7 @@ export default {
   name: 'MainPage',
   components: {
     BaseConversationPageContainer,
+    BaseSegmentsContainer,
     ProfileSegment,
     FormSegment,
     MessagesSegment

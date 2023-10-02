@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="blurred main-popup-content-container"
+    class="blurred main-popup-content-container no-padding"
   >
     <BaseEmojiPicker
       v-if="isCalled"
@@ -79,7 +79,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-popup-content-container
-  @extend .no-padding
-</style>
+<style lang="sass" scoped></style>

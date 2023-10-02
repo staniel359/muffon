@@ -2,9 +2,9 @@
   <Component
     :is="component"
     v-if="isRender"
-    class="base-joined-message-container"
+    class="middle-aligned-column"
   >
-    <div class="base-joined-message">
+    <div class="middle-aligned">
       <BaseIcon
         class="green"
         icon="communityJoined"
@@ -71,10 +71,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-joined-message-container
-  @extend .d-flex, .flex-column, .align-items-center
-
-.base-joined-message
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

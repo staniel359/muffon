@@ -17,7 +17,7 @@
         v-text="creatorText"
       />
 
-      <div class="creator-section">
+      <div class="main-bottom-extrasmall-section">
         <BaseProfilesSimpleList
           :profiles="profiles"
           is-minimal
@@ -79,7 +79,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.creator-section
-  margin-top: 0.25em
-</style>
+<style lang="sass" scoped></style>

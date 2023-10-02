@@ -1,31 +1,35 @@
 <template>
   <BaseSegmentContainer
-    class="blurred queue-tracks-container"
-    :class="{
-      'player-panel-padded': playerPlaying
-    }"
+    class="blurred overflow-hidden flex-full scroll-smooth"
   >
-    <BaseTracksSimpleList
-      :key="key"
-      class="queue-tracks-list"
-      :tracks="queueTracksComputed"
-      :profile-id="profileId"
-      :is-with-self-icons="false"
-      is-with-index
-      is-with-image
-      is-with-artist-name
-      is-with-album-title
-      is-with-source
-      is-with-saved-icon
-      is-with-source-option
-      is-with-playlist-option
-      is-with-save-option
-      is-with-share-option
-      is-with-external-link-option
-      is-with-delete-option
-      is-clearable
-      is-segment
-      @delete-option-click="handleDeleteOptionClick"
+    <div>
+      <BaseTracksSimpleList
+        :key="key"
+        :tracks="queueTracksComputed"
+        :profile-id="profileId"
+        :is-with-self-icons="false"
+        is-with-index
+        is-with-image
+        is-with-artist-name
+        is-with-album-title
+        is-with-source
+        is-with-saved-icon
+        is-with-source-option
+        is-with-playlist-option
+        is-with-save-option
+        is-with-share-option
+        is-with-external-link-option
+        is-with-clear-button
+        is-segment
+        @clear-button-click="handleClearButtonClick"
+      />
+    </div>
+
+    <div
+      class="placeholder"
+      :class="{
+        'height-player-panel': playerPlaying
+      }"
     />
   </BaseSegmentContainer>
 </template>
@@ -101,7 +105,7 @@ export default {
         this.key = generateKey()
       }
     },
-    handleDeleteOptionClick (
+    handleClearButtonClick (
       {
         uuid
       }
@@ -135,14 +139,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.queue-tracks-container
-  @extend .overflow-hidden, .flex-full
-  padding: 1em
-  transition: padding 0.5s
-  &.player-panel-padded
-    padding-bottom: calc(#{$playerPanelHeight} + 1em)
-
-.queue-tracks-list
-  @extend .h-100, .overflow-y-auto, .scroll-smooth
-</style>
+<style lang="sass" scoped></style>

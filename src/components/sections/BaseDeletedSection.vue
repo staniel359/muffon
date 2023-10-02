@@ -1,13 +1,12 @@
 <template>
-  <div class="base-deleted-section">
-    <div>
+  <div class="middle-center-aligned-full word-break-break-word">
+    <div class="middle-aligned">
       <BaseIcon
-        class="deleted-icon"
+        class="main-left-small-icon"
         icon="delete"
       />
 
       <span
-        class="deleted-text"
         v-text="deletedText"
       />
     </div>
@@ -38,19 +37,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-deleted-section
-  @extend .d-flex, .align-items-center, .justify-content-center, .flex-full, .text-align-center, .word-break-break-word
-
-.deleted-icon
-  @extend .d-inline
-[dir="ltr"]
-  .deleted-icon
-    margin-right: 0.75em
-[dir="rtl"]
-  .deleted-icon
-    margin-left: 0.75em
-
-.deleted-text
-  @extend .d-inline
-</style>
+<style lang="sass" scoped></style>

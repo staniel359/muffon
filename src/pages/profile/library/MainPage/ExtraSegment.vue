@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="import-segment"
+    class="middle-aligned-space-between"
   >
     <div />
 
@@ -26,7 +26,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.import-segment
-  @extend .d-flex, .align-items-center, .justify-content-space-between
-</style>
+<style lang="sass" scoped></style>

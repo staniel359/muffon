@@ -1,7 +1,7 @@
 <template>
-  <div class="release-item">
+  <div class="full-column">
     <BaseHeader
-      class="main-link"
+      class="main-link width-fit-content"
       tag="h2"
       :text="version"
       @click="handleVersionClick"
@@ -13,15 +13,15 @@
 
     <BaseDivider />
 
-    <div
-      class="main-text-container"
+    <p
+      class="main-formatted-text-container"
       v-text="description"
     />
   </div>
 
   <BaseDivider
     v-if="!isLastItem"
-    class="section"
+    class="large"
   />
 </template>
 
@@ -90,13 +90,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.release-item
-  @extend .d-flex, .flex-column, .flex-full
-
-.main-link
-  @extend .width-fit-content
-
-.main-text-container
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

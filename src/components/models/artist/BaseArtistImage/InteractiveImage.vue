@@ -54,9 +54,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .image-container
-  .more-link-button
-    @extend .d-none
   &:hover
     .more-link-button
       @extend .d-block

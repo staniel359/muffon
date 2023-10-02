@@ -1,20 +1,20 @@
 <template>
-  <div class="main-content-container">
-    <div
+  <div class="main-bottom-section">
+    <p
       v-if="text"
-      class="text main-text-container main-content-section"
+      class="text main-sendable-content-section main-formatted-text-container"
       v-text="text"
     />
 
     <BaseImagesSimpleList
       v-if="images?.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :images="images"
     />
 
     <BaseArtistsSimpleList
       v-if="artists?.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :artists="artists"
       :is-with-self-icons="false"
       :is-paginated="false"
@@ -26,7 +26,7 @@
 
     <BaseAlbumsSimpleList
       v-if="albums?.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :albums="albums"
       :is-with-self-icons="false"
       is-with-artist-name
@@ -39,7 +39,7 @@
 
     <BaseTracksSimpleList
       v-if="tracks?.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :tracks="tracks"
       :is-with-self-icons="false"
       is-with-image
@@ -56,13 +56,13 @@
 
     <BaseVideosEmbeddedList
       v-if="videos?.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :videos="videos"
     />
 
     <BaseVideoChannelsSimpleList
       v-if="videoChannels?.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :channels="videoChannels"
       :is-with-self-icons="false"
       is-with-share-option
@@ -72,7 +72,7 @@
 
     <BaseVideoPlaylistsSimpleList
       v-if="videoPlaylists?.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :playlists="videoPlaylists"
       :is-with-self-icons="false"
       is-with-channel-title
@@ -83,7 +83,7 @@
 
     <BasePlaylistsSimpleList
       v-if="playlists?.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :playlists="playlists"
       is-with-profile-nickname
       is-with-share-option
@@ -92,7 +92,7 @@
 
     <BaseCommunitiesSimpleList
       v-if="communities?.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :communities="communities"
       is-with-share-option
       is-with-model-icon

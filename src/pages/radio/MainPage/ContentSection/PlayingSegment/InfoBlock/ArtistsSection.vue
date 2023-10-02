@@ -1,24 +1,17 @@
 <template>
-  <BaseHeaderContainer
-    class="artists-section"
-    tag="h4"
-    is-inverted
-  >
+  <div class="description extra">
     <BaseArtistLinks
       :artists="artists"
     />
-  </BaseHeaderContainer>
+  </div>
 </template>
 
 <script>
-import BaseHeaderContainer
-  from '@/components/containers/BaseHeaderContainer.vue'
 import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
 
 export default {
   name: 'ArtistsSection',
   components: {
-    BaseHeaderContainer,
     BaseArtistLinks
   },
   props: {
@@ -35,7 +28,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.artists-section
-  @extend .text-medium-light
-</style>
+<style lang="sass" scoped></style>

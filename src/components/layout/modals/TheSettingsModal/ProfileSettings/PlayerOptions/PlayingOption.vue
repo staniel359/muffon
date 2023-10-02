@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="playingText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="playingText"
+      />
 
-    <BaseToggle
-      store-key="profile.isShowPlaying"
-      :is-checked="isShowProfilePlaying"
-    />
+      <BaseToggle
+        store-key="profile.isShowPlaying"
+        :is-checked="isShowProfilePlaying"
+      />
+    </div>
   </div>
 </template>
 

@@ -4,7 +4,7 @@ export default function (
   }
 ) {
   const className =
-    'ui popup main-popup main-volume-popup'
+    'ui popup main-popup main-volume-popup small'
 
   return {
     position: 'top center',

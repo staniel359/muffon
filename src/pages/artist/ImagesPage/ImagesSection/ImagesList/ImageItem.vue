@@ -42,7 +42,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.artist-image
-  @extend .cursor-zoom-in
-</style>
+<style lang="sass" scoped></style>

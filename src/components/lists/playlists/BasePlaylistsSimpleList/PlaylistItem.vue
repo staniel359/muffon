@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned"
     :class="{
       disabled: isDeleted
     }"
@@ -21,13 +21,13 @@
       />
 
       <BaseImage
-        class="rounded-medium"
+        class="rounded-medium image-50"
         model="playlist"
         :image="imageData?.extrasmall"
       />
 
       <div class="content">
-        <div class="title-container">
+        <div class="middle-aligned">
           <BaseHeader
             tag="h4"
             :class="{
@@ -45,7 +45,7 @@
 
         <div
           v-if="description"
-          class="description main-small-container"
+          class="description"
         >
           <small
             v-text="description"
@@ -103,6 +103,7 @@
     class="tracks-section"
   >
     <BaseTracksSimpleList
+      class="no-padding"
       :tracks="tracks"
       :is-with-self-icons="false"
       is-with-image
@@ -321,9 +322,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.title-container
-  @extend .d-flex, .align-items-center
-
 .tracks-section
-  margin-bottom: 1em
+  margin: 1rem 0
 </style>

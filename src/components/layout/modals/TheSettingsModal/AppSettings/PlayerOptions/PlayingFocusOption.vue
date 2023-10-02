@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="playingFocusText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="playingFocusText"
+      />
 
-    <BaseToggle
-      store-key="player.isWithPlayingFocus"
-      :is-checked="isPlayerWithPlayingFocus"
-    />
+      <BaseToggle
+        store-key="player.isWithPlayingFocus"
+        :is-checked="isPlayerWithPlayingFocus"
+      />
+    </div>
   </div>
 </template>
 

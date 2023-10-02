@@ -5,7 +5,6 @@
   >
     <div
       v-if="isSmall"
-      class="main-small-container"
     >
       <small
         v-text="createdDateFormatted"
@@ -19,7 +18,6 @@
 
     <div
       v-if="isSmall"
-      class="main-small-container"
     >
       <small
         v-text="createdTimeFormatted"

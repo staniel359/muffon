@@ -1,8 +1,8 @@
 <template>
   <div
-    class="scrobble-point"
+    class="scrobble-point absolute height-100 middle-center-aligned"
     :class="{
-      hidden: isHidden
+      'd-none': isHidden
     }"
     :style="{
       [offsetDirection]:
@@ -10,6 +10,7 @@
     }"
   >
     <BaseIcon
+      class="main-icon colored"
       icon="lastfm"
     />
   </div>
@@ -235,14 +236,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .scrobble-point
-  @extend .absolute, .h-100, .d-flex, .align-items-center, .justify-content-center
   width: 25px
   border-left: 1px solid $colorLastfm
   z-index: 10
-  .icon
-    @extend .no-margin
-    color: $colorLastfm
-  &.hidden
-    @extend .d-none
 </style>

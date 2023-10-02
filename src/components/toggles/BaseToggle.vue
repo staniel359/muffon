@@ -109,6 +109,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .base-toggle
   :deep(input)
     &:not(:checked)
@@ -124,9 +126,9 @@ export default {
 [dir="ltr"]
   .base-toggle
     :deep(label)
-      padding-left: 3em !important
+      padding-left: 3rem !important
 [dir="rtl"]
   .base-toggle
     :deep(label)
-      padding-right: 3em !important
+      padding-right: 3rem !important
 </style>

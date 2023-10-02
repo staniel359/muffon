@@ -1,7 +1,7 @@
 <template>
   <BaseIcon
     ref="icon"
-    class="grey main-popup-icon"
+    class="grey main-popup-icon absolute no-right no-bottom"
     icon="infoCircle"
   />
 
@@ -48,14 +48,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-popup-icon
-  @extend .absolute
-  bottom: 0
-[dir="ltr"]
-  .main-popup-icon
-    right: 0
-[dir="rtl"]
-  .main-popup-icon
-    left: 0
-</style>
+<style lang="sass" scoped></style>

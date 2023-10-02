@@ -2,7 +2,7 @@
   <BaseSegmentContainer
     class="blurred main-popup-content-container"
   >
-    <div class="volume-header-container">
+    <div class="main-top-extrasmall-section">
       <BaseHeader
         tag="h4"
         :text="volumeText"
@@ -11,7 +11,7 @@
 
     <BaseSeeker
       ref="seeker"
-      class="vertical reversed base-volume-seeker"
+      class="vertical reversed base-volume-seeker width-100 center-aligned"
       :options="seekerOptions"
       @move="handleMove"
       @mouse-up="handleMouseUp"
@@ -118,11 +118,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.volume-header-container
-  margin-bottom: 0.35em
-
 .base-volume-seeker
-  @extend .w-100, .d-flex, .justify-content-center
-  height: 120px !important
+  height: 130px !important
   padding: 5px 0 !important
 </style>

@@ -6,12 +6,7 @@
     <template
       #default="slotProps"
     >
-      <div
-        :class="[
-          'ui raised segments main-segments',
-          'main-segment-container'
-        ]"
-      >
+      <BaseSegmentsContainer>
         <StatisticsSegment
           :library-data="slotProps.libraryData"
         />
@@ -19,7 +14,7 @@
         <ExtraSegment
           v-if="isSelf"
         />
-      </div>
+      </BaseSegmentsContainer>
 
       <TabsSegment
         :profile-id="profileId"
@@ -32,6 +27,8 @@
 <script>
 import BaseProfileLibraryPageContainer
   from '@/components/containers/pages/profile/library/BaseProfileLibraryPageContainer.vue'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import ExtraSegment from './MainPage/ExtraSegment.vue'
 import TabsSegment from './MainPage/TabsSegment.vue'
@@ -44,6 +41,7 @@ export default {
   name: 'MainPage',
   components: {
     BaseProfileLibraryPageContainer,
+    BaseSegmentsContainer,
     StatisticsSegment,
     ExtraSegment,
     TabsSegment

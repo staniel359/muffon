@@ -1,6 +1,6 @@
 <template>
   <BaseAlbumLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned"
     :class="{
       disabled: isDeleted
     }"
@@ -23,7 +23,7 @@
       />
 
       <BaseImage
-        class="rounded-medium"
+        class="rounded-medium image-50"
         model="album"
         :image="imageData?.extrasmall"
       />

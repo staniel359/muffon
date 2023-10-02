@@ -1,6 +1,5 @@
 <template>
   <ErrorMessage
-    class="complete-message"
     :scope="scope"
     :error-collection-count="errorCollectionCount"
   />

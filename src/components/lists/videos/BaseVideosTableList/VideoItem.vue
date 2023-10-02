@@ -33,7 +33,7 @@
           @deleted="handleDeleted"
         />
 
-        <div class="main-image-container">
+        <div class="main-image-container video">
           <BaseImage
             class="rounded-medium"
             model="video"
@@ -186,7 +186,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-image-container
-  padding-bottom: 75px
-</style>
+<style lang="sass" scoped></style>

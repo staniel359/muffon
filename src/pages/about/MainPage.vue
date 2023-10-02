@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="main-segment-container"
+    class="main-segment-container d-flex height-100 no-margin no-border-radius"
     :is-change-transparency="false"
   >
     <div class="left-column">
@@ -11,19 +11,19 @@
       />
     </div>
 
-    <div class="right-column">
+    <div class="main-right-column">
       <BaseHeader
         tag="h2"
         :text="name"
       />
 
-      <div class="version-section">
+      <div class="main-bottom-extrasmall-section">
         <strong
           v-text="version"
         />
       </div>
 
-      <div class="copyright-license-section">
+      <div class="main-bottom-extrasmall-section">
         <div>
           <small
             v-text="copyrightText"
@@ -168,35 +168,15 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .main-segment-container
-  @extend .d-flex, .h-100, .no-margin, .no-border-radius
-  padding: 2em 3em
+  padding: 2rem 3rem
 
 .left-column
   width: 80px
-[dir="ltr"]
-  .left-column
-    margin-right: 1.5em
-[dir="rtl"]
-  .left-column
-    margin-left: 1.5em
-
-.right-column
-  @extend .flex-full
-
-.version-section
-  margin-top: 0.5em
-
-.copyright-license-section
-  margin-top: 0.5em
 
 .link-section
-  @extend .d-inline-block
-  margin-bottom: 0.25em
-[dir="ltr"]
-  .link-section
-    margin-right: 1.25em
-[dir="rtl"]
-  .link-section
-    margin-left: 1.25em
+  @extend .d-inline-block, .main-left-medium-section
+  margin-bottom: 0.25rem
 </style>

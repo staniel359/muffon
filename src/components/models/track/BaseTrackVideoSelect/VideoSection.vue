@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div class="main-bottom-large-section">
     <BaseVideo
-      class="video-section"
       :video-data="videoData"
       is-with-autoplay
     />
@@ -46,7 +45,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.video-section
-  margin: 1em 0
-</style>
+<style lang="sass" scoped></style>

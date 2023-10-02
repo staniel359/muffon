@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="maximizeText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="maximizeText"
+      />
 
-    <BaseToggle
-      store-key="layout.isMaximizeOnStart"
-      :is-checked="isMaximizeOnStart"
-    />
+      <BaseToggle
+        store-key="layout.isMaximizeOnStart"
+        :is-checked="isMaximizeOnStart"
+      />
+    </div>
   </div>
 </template>
 

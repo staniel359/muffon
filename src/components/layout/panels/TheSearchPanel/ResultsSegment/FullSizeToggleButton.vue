@@ -1,5 +1,5 @@
 <template>
-  <div class="full-size-toggle-button">
+  <div class="full-size-toggle-button absolute d-none">
     <BaseButton
       class="basic compact circular"
       :icon="icon"
@@ -50,12 +50,11 @@ export default {
 
 <style lang="sass" scoped>
 .full-size-toggle-button
-  @extend .absolute, .d-none
-  bottom: 1em
+  bottom: 1.5rem
 [dir="ltr"]
   .full-size-toggle-button
-    right: 1em
+    right: 1.5rem
 [dir="rtl"]
   .full-size-toggle-button
-    left: 1em
+    left: 1.5rem
 </style>

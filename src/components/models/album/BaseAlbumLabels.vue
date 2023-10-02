@@ -4,7 +4,7 @@
   >
     <div class="ui labels">
       <BaseIcon
-        class="labels-icon"
+        class="main-left-small-icon"
         icon="label"
       />
 
@@ -42,11 +42,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-[dir="ltr"]
-  .labels-icon
-    margin-right: 0.5em
-[dir="rtl"]
-  .labels-icon
-    margin-left: 0.5em
-</style>
+<style lang="sass" scoped></style>

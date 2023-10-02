@@ -1,6 +1,6 @@
 <template>
   <BaseTrackLyricsContainer
-    class="lyrics-data-segment"
+    class="no-padding"
     :selected-track-data="selectedTrackData"
     @focus="handleFocus"
   >
@@ -45,7 +45,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.lyrics-data-segment
-  @extend .no-padding
-</style>
+<style lang="sass" scoped></style>

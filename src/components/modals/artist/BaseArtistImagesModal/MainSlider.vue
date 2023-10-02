@@ -8,7 +8,7 @@
     <template
       #default="slotProps"
     >
-      <div class="image-container">
+      <div class="image-container middle-center-aligned">
         <BaseImage
           :image="slotProps.image"
           is-lazy
@@ -52,10 +52,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .image-container
-  @extend .d-flex, .align-items-center, .justify-content-center
-  height: calc(#{$imageModalHeight} - #{$imageModalThumbHeight} - 1.5em)
-  margin-bottom: 1.5em
+  height: calc(#{$imageModalHeight} - #{$imageModalThumbHeight} - 2.5rem)
+  margin-bottom: 2.5rem
   .image
     max-height: 100%
 </style>

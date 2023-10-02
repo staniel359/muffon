@@ -1,10 +1,11 @@
 <template>
-  <BaseScopeSelect
-    class="scope-select-container"
-    :scopes="scopes"
-    :selected="selected"
-    @select="handleSelect"
-  />
+  <div class="main-right-section">
+    <BaseScopeSelect
+      :scopes="scopes"
+      :selected="selected"
+      @select="handleSelect"
+    />
+  </div>
 </template>
 
 <script>
@@ -50,11 +51,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-[dir="ltr"]
-  .scope-select-container
-    margin-left: 1em
-[dir="rtl"]
-  .scope-select-container
-    margin-right: 1em
-</style>
+<style lang="sass" scoped></style>

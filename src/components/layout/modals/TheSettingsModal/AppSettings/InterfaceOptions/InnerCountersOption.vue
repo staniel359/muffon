@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="innerCountersText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="innerCountersText"
+      />
 
-    <BaseToggle
-      store-key="layout.isWithInnerCounters"
-      :is-checked="isWithInnerCounters"
-    />
+      <BaseToggle
+        store-key="layout.isWithInnerCounters"
+        :is-checked="isWithInnerCounters"
+      />
+    </div>
   </div>
 </template>
 

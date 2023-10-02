@@ -81,10 +81,12 @@
           />
         </div>
 
-        <LibraryCountersSection
+        <BaseLibraryArtistCountersSection
           v-if="isWithLibrary"
+          class="description"
           :artist-data="artistData"
           :profile-id="profileId"
+          is-small
         />
 
         <BaseSelfIcons
@@ -117,7 +119,8 @@ import RecommendationArtistsSection
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BaseArtistListenersCount
   from '@/components/models/artist/BaseArtistListenersCount.vue'
-import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
+import BaseLibraryArtistCountersSection
+  from '@/components/sections/library/artist/BaseLibraryArtistCountersSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import selfMixin from '@/mixins/selfMixin'
 
@@ -133,7 +136,7 @@ export default {
     RecommendationArtistsSection,
     BaseCreatedSection,
     BaseArtistListenersCount,
-    LibraryCountersSection,
+    BaseLibraryArtistCountersSection,
     BaseSelfIcons
   },
   mixins: [

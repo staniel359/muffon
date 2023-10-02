@@ -1,5 +1,5 @@
 <template>
-  <div class="search-section">
+  <div class="main-search-container">
     <SearchInput
       ref="input"
       :tags="tags"
@@ -55,7 +55,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-section
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="hideLibraryArtistsText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="hideLibraryArtistsText"
+      />
 
-    <BaseToggle
-      store-key="recommendationTracks.isHideLibraryArtists"
-      :is-checked="isRecommendationTracksHideLibraryArtists"
-    />
+      <BaseToggle
+        store-key="recommendationTracks.isHideLibraryArtists"
+        :is-checked="isRecommendationTracksHideLibraryArtists"
+      />
+    </div>
   </div>
 </template>
 

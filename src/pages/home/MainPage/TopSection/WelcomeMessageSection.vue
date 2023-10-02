@@ -1,6 +1,6 @@
 <template>
   <BaseHeader
-    class="welcome-message"
+    class="main-bottom-extrasmall-section text-color-white"
     tag="h1"
     :text="welcomeText"
   />
@@ -52,8 +52,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.welcome-message
-  @extend .text-color-white
-  margin-top: 0.25em !important
-</style>
+<style lang="sass" scoped></style>

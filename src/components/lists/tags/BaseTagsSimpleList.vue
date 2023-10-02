@@ -5,7 +5,7 @@
   >
     <BaseIcon
       v-if="isWithIcon"
-      class="tags-icon"
+      class="main-left-small-icon"
       icon="tags"
     />
 
@@ -91,11 +91,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-[dir="ltr"]
-  .tags-icon
-    margin-right: 0.5em
-[dir="rtl"]
-  .tags-icon
-    margin-left: 0.5em
-</style>
+<style lang="sass" scoped></style>

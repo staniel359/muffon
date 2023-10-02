@@ -1,19 +1,21 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="scaleText"
-    />
-  </div>
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="scaleText"
+      />
+    </div>
 
-  <div class="scale-seeker-container">
-    <BaseSeeker
-      ref="seeker"
-      class="bottom aligned labeled ticked with-thumb"
-      :options="seekerOptions"
-      @mouse-up="handleMouseUp"
-    />
+    <div class="main-seeker-container">
+      <BaseSeeker
+        ref="seeker"
+        class="bottom aligned labeled ticked with-thumb"
+        :options="seekerOptions"
+        @mouse-up="handleMouseUp"
+      />
+    </div>
   </div>
 </template>
 
@@ -90,8 +92,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.scale-seeker-container
-  margin: 1em 0
-  padding: 0 1.5em
-</style>
+<style lang="sass" scoped></style>

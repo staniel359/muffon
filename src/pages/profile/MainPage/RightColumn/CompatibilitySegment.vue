@@ -8,7 +8,7 @@
   >
     <div
       v-if="compatibilityData"
-      class="compatibility-container"
+      class="d-flex"
     >
       <BasePercentCircle
         class="compatibility-percent"
@@ -81,9 +81,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.compatibility-container
-  @extend .d-flex
-
 .compatibility-percent
   width: 70px
   height: 70px

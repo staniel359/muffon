@@ -57,7 +57,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-self-container
-  @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

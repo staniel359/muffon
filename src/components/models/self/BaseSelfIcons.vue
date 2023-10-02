@@ -74,7 +74,19 @@ export default {
       }
     ),
     isRender () {
-      return this.profileId
+      return (
+        this.profileId &&
+          this.isIcons
+      )
+    },
+    isIcons () {
+      return (
+        this.isRenderLibraryIcon ||
+          this.isRenderFavoriteIcon ||
+          this.isRenderBookmarkIcon ||
+          this.listenedId ||
+          this.watchedId
+      )
     },
     isRenderLibraryIcon () {
       return (
@@ -99,7 +111,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .base-simple-self-icon
   @extend .no-margin, .d-inline-block
-  margin: 0.25em !important
+  margin: 0.25rem !important
 </style>

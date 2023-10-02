@@ -59,7 +59,8 @@
     "grid",
     "api",
     "table",
-    "comment"
+    "comment",
+    "item"
   ],
   "version": "2.9.3"
 }

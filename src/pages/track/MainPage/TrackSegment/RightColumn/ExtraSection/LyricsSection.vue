@@ -11,7 +11,7 @@
     <BaseTrackLyricsSelect
       v-if="isLyricsSelectCalled"
       v-show="isShowLyricsSelect"
-      class="lyrics-select"
+      class="main-bottom-section"
       :track-data="trackData"
       @focus="handleFocus"
     />
@@ -71,7 +71,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.lyrics-select
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

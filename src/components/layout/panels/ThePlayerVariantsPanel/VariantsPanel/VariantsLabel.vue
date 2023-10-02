@@ -1,6 +1,6 @@
 <template>
   <BaseLabel
-    class="basic top attached blurred variants-label"
+    class="basic top attached blurred variants-label middle-center-aligned width-fit-content pointer-events-auto no-margin cursor-pointer no-border-bottom"
     :class="transparentClass"
     :icon="icon"
     :text="variantsText"
@@ -54,16 +54,16 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .variants-label
-  @extend .d-flex, .align-items-center, .justify-content-center, .width-fit-content, .pointer-events-auto
-  padding: 0.5em 1.5em !important
-  height: 30px
-  border-bottom: 0 !important
-  border-top-left-radius: $borderRadiusMedium !important
-  border-top-right-radius: $borderRadiusMedium !important
+  padding: 0 1.5rem !important
+  height: 35px
+  border-top-left-radius: $borderRadius !important
+  border-top-right-radius: $borderRadius !important
+  top: -5px !important
   &.inverted
-    @extend .border-inverted
-    border-bottom: 0 !important
+    @extend .border-inverted, .no-border-bottom
 [dir="ltr"]
   .variants-label
     left: 30px !important

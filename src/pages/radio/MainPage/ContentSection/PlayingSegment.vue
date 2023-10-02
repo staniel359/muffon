@@ -2,7 +2,7 @@
   <BaseSegmentContainer
     v-if="isPlayingFromRadio"
   >
-    <div class="playing-segment">
+    <div class="relative overflow-hidden border-inverted border-radius">
       <InfoBlock
         :track-data="playerPlaying"
       />
@@ -45,7 +45,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.playing-segment
-  @extend .relative, .overflow-hidden, .border-inverted, .border-radius
-</style>
+<style lang="sass" scoped></style>

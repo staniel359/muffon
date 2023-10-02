@@ -98,7 +98,7 @@ export default {
       stroke: $colorBase
   & > text
     text-anchor: middle
-    font-size: 1em
+    font-size: 1rem
     &.inverted
       fill: $colorWhite
 </style>

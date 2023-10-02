@@ -29,11 +29,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .base-list
   &.selection
     & > :deep(.item)
-      border-radius: 0.75em
-      padding: 0.5em !important
+      border-radius: 1rem
   &.inverted
     & > :deep(.item)
       & > .content

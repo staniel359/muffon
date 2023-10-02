@@ -1,12 +1,12 @@
 <template>
-  <div class="header-block">
+  <div class="main-top-small-section flex-full">
     <BaseHeader
       tag="h2"
       :text="albumTitle"
     />
 
     <BaseHeaderContainer
-      class="album-artist-name"
+      class="album-artist-name text-medium-light"
       tag="h3"
     >
       <BaseArtistLinks
@@ -47,10 +47,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.header-block
-  @extend .flex-full
-  margin-bottom: 0.75em
-
 .album-artist-name
-  @extend .text-medium-light
+  margin-top: 0.2rem !important
 </style>

@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="signup-segment"
+    class="text-align-center"
   >
     {{ signupText }}
 
@@ -49,7 +49,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.signup-segment
-  @extend .text-align-center
-</style>
+<style lang="sass" scoped></style>

@@ -1,7 +1,8 @@
 <template>
   <BaseIcon
-    class="small grey base-private-icon"
+    class="grey main-icon height-fit-content"
     icon="private"
+    :class="iconClass"
   />
 </template>
 
@@ -12,17 +13,23 @@ export default {
   name: 'BasePrivateIcon',
   components: {
     BaseIcon
+  },
+  props: {
+    isSmall: {
+      type: Boolean,
+      default: true
+    }
+  },
+  computed: {
+    iconClass () {
+      if (this.isSmall) {
+        return 'small main-right-extrasmall-section'
+      } else {
+        return 'main-right-mini-section'
+      }
+    }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.base-private-icon
-  @extend .no-margin
-[dir="ltr"]
-  .base-private-icon
-    margin-left: 0.5em !important
-[dir="rtl"]
-  .base-private-icon
-    margin-right: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

@@ -1,8 +1,7 @@
 <template>
   <div
+    class="ui tiny empty circular label base-profile-online-label main-label border-white absolute no-right"
     :class="[
-      'ui tiny empty circular label',
-      'base-profile-online-label',
       onlineLabelColor,
       {
         inverted: isDarkMode
@@ -47,10 +46,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .base-profile-online-label
-  @extend .no-margin
-  &:not(.inverted)
-    @extend .border-white
+  z-index: 1
   &.inverted
     @extend .border-black
 </style>

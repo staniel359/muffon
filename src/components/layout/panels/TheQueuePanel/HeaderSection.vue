@@ -1,21 +1,18 @@
 <template>
   <BaseSegmentContainer
-    class="blurred header-section"
+    class="blurred header-section middle-aligned"
   >
     <div
       v-if="queueTracksCount"
+      class="main-buttons-container"
     >
-      <ShuffleButton
-        class="action-button"
-      />
+      <ShuffleButton />
 
-      <LoopButton
-        class="action-button"
-      />
+      <LoopButton />
     </div>
 
     <h4
-      class="ui header main-header tracks-count-block"
+      class="ui header main-header flex-full text-align-center"
       v-text="tracksCountText"
     />
 
@@ -75,19 +72,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .header-section
-  @extend .d-flex, .align-items-center
-  padding: calc(#{$navbarHeight} + 1em) 1em 1em 1em
-
-[dir="ltr"]
-  .action-button
-    &:not(:first-child)
-      margin-left: 0.75em !important
-[dir="rtl"]
-  .action-button
-    &:not(:first-child)
-      margin-right: 0.75em !important
-
-.tracks-count-block
-  @extend .flex-full, .text-align-center
+  margin-top: $navbarHeight !important
 </style>

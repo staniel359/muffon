@@ -1,26 +1,28 @@
 <template>
-  <BaseTracksSimpleList
+  <div
     v-if="tracks?.length"
-    class="tracks-list"
-    :tracks="tracks"
-    :album-artist-name="artistName"
-    :album-data="albumData"
-    :image-data="imageData"
-    :is-with-source="isWithSource"
-    is-with-index
-    is-with-artist-name
-    is-with-duration
-    is-with-source-option
-    is-with-library-option
-    is-with-favorite-option
-    is-with-bookmark-option
-    is-with-listened-option
-    is-with-playlist-option
-    is-with-queue-option
-    is-with-save-option
-    is-with-share-option
-    is-with-external-link-option
-  />
+  >
+    <BaseTracksSimpleList
+      :tracks="tracks"
+      :album-artist-name="artistName"
+      :album-data="albumData"
+      :image-data="imageData"
+      :is-with-source="isWithSource"
+      is-with-index
+      is-with-artist-name
+      is-with-duration
+      is-with-source-option
+      is-with-library-option
+      is-with-favorite-option
+      is-with-bookmark-option
+      is-with-listened-option
+      is-with-playlist-option
+      is-with-queue-option
+      is-with-save-option
+      is-with-share-option
+      is-with-external-link-option
+    />
+  </div>
   <BaseNoCollectionMessage
     v-else
     scope="tracks"
@@ -81,7 +83,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.tracks-list
-  @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

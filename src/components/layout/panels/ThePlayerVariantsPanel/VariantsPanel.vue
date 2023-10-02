@@ -1,8 +1,8 @@
 <template>
-  <div class="variants-panel">
+  <div class="variants-panel fixed width-100 pointer-events-none overflow-hidden">
     <div class="ui container main-container">
       <div
-        class="variants-block"
+        class="variants-block relative"
         :class="{
           visible: isVisible
         }"
@@ -49,18 +49,18 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .variants-panel
-  @extend .fixed, .w-100, .pointer-events-none, .overflow-hidden
   bottom: $playerPanelHeight
   z-index: 200
 
 .variants-block
-  @extend .relative
-  width: 300px
-  height: 300px
+  width: 350px
+  height: 330px
   padding-top: 30px
-  top: 270px
-  transition: top 0.3s
+  top: 300px
+  transition: top 0.35s
   &.visible
-    top: 0
+    top: 5px
 </style>

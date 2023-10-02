@@ -3,7 +3,7 @@
     v-if="comments.length"
   >
     <BaseDivider
-      class="section"
+      class="large"
     />
 
     <BasePostCommentsSimpleList
@@ -13,7 +13,7 @@
     />
   </template>
 
-  <div class="form-section">
+  <div class="main-bottom-large-section">
     <BasePostCommentFormSegment
       :key="key"
       :model="model"
@@ -121,7 +121,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.form-section
-  margin-top: 1.5em
-</style>
+<style lang="sass" scoped></style>

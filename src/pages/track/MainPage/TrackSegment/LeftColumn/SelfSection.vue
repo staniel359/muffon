@@ -1,7 +1,7 @@
 <template>
-  <div class="main-self-container">
+  <div class="main-self-container main-bottom-small-section">
     <BaseSelfIcons
-      class="track-self-icons"
+      class="self-icons centered"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
@@ -49,10 +49,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-self-container
-  margin-top: 1em
-
-.track-self-icons
-  @extend .text-align-center
+.self-icons
   max-width: 75px
 </style>

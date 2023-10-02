@@ -1,5 +1,5 @@
 <template>
-  <p>
+  <p class="content-block">
     <BaseLink
       v-if="isContentLink"
       :link="link"
@@ -43,4 +43,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.content-block
+  &:not(:first-child)
+    margin-top: 0.2rem !important
+</style>

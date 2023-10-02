@@ -1,3 +1,6 @@
+@import './Shared.sass'
+
+// 
 
 html
   @extend .scroll-smooth
@@ -22,9 +25,19 @@ a
 p
   @extend .no-margin
 
-@media only screen and (min-width: 768px)
+// 
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px)
   .main-container
-    width: $containerWidth !important
+    width: 700px !important
+@media only screen and (min-width: 992px) and (max-width: 1199.98px)
+  .main-container
+    width: 800px !important
+@media only screen and (min-width: 1200px)
+  .main-container
+    width: 900px !important
+
+// 
 
 .ui.modals
   @extend .no-padding
@@ -64,11 +77,18 @@ p
     .text
       font-size: 16px
 
-.main-segments
+.ui.segment
+  &.main-segment
+    padding: 1.5rem
+
+// 
+
+.main-segments-container
+  @extend .main-segment-container
   & > .main-segment
     &.inverted
       &:not(:first-child)
-        border-top: $borderInverted
+        @extend .border-top-inverted
 
 .main-search
   &.scrolling
@@ -78,23 +98,30 @@ p
     @extend .border-radius
 
 .main-search-results
-  @extend .no-border
+  @extend .no-border, .width-100
   .result
-    @extend .d-flex, .align-items-center
+    @extend .middle-aligned
     .image
-      @extend .border, .image-medium
+      @extend .shadowed
+      img
+        @extend .object-fit-cover
     .content
-      @extend .no-margin, .flex-full, .word-break-break-word
+      @extend .no-margin, .flex-full, .word-break-break-word, .main-list-right-small-section
       .description
         .artist-name
           @extend .text-color-black
+          margin-top: 0.1rem
+        .album-title
+          margin-top: 0.1rem
+          line-height: 0.8rem
+          font-size: 1rem
     &:only-child
       &:hover
         border-radius: inherit !important
   &.inverted
     @extend .border-inverted
     .result
-      border-bottom: $borderInverted !important
+      @extend .border-bottom-inverted
       .image
         @extend .border-inverted
       .content
@@ -115,25 +142,16 @@ p
   &.artists-results
     .result
       .image
+        @extend .image-40
         border-radius: 50% !important
-        img
-          @extend .object-fit-cover
+  &.albums-results
+    .result
+      .image
+        @extend .image-40, .rounded-medium
   &.tracks-results
     .result
       .image
-        @extend .image-small
-        img
-          @extend .object-fit-cover
-[dir="ltr"]
-  .main-search-results
-    .result
-      .image
-        margin-right: 0.75em
-[dir="rtl"]
-  .main-search-results
-    .result
-      .image
-        margin-left: 0.75em
+        @extend .image-35, .rounded-medium
 
 .main-input
   & > input,
@@ -148,20 +166,18 @@ p
     & > .icon
       @extend .text-color-white
 
-.main-button
-  @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
+.main-simple-button
+  @extend .no-padding, .no-shadow, .no-border-radius, .middle-center-aligned
 
 .main-navbar-button
-  @extend .main-button
+  @extend .main-simple-button, .height-navbar
   width: $navbarHeight
-  height: $navbarHeight
 
 .main-segment-container
-  @extend .no-border
-  &:first-child
-    @extend .no-margin
-  &:not(:first-child)
-    margin: 1.5em 0 0 0
+  @extend .no-border, .no-margin, .main-list-section
+  &.nested
+    &.inverted
+      @extend .no-shadow, .border-inverted
 
 .main-segment
   @extend .scroll-smooth
@@ -174,19 +190,28 @@ p
     @extend .text-color-black
     &.inverted
       @extend .text-color-white
+  &.inverted
+    @extend .border-grey-inverted
+    &.raised
+      @extend .no-shadow
 
 .main-paginated-page-segment-container
-  @extend .flex-full, .d-flex, .flex-column
+  @extend .full-column
 
 .main-image-modal-content
-  @extend .d-flex, .flex-column, .justify-content-center
+  @extend .center-aligned-column
 
 .main-image-container
   @extend .relative
   padding-bottom: 100%
+  &.video
+    padding-bottom: calc(100% / 16 * 9)
   & > .image,
   & > .image-content
-    @extend .absolute, .w-100, .h-100
+    @extend .absolute, .width-100, .height-100
+  &:hover
+    .main-image-clear-button
+      @extend .d-block
 
 .main-link
   @extend .text-color-unset, .cursor-pointer
@@ -196,91 +221,70 @@ p
   &.bold
     @extend .text-bold
 
+.main-text-section
+  @extend .main-list-bottom-mini-section
+
 .main-text-container
   @extend .word-break-break-word
+  line-height: 1.5rem
+
+.main-formatted-text-container
+  @extend .main-text-container
   white-space: pre-wrap
 
 .main-lyrics-container
-  @extend .main-text-container
-  padding: 1.25em 2.5em
+  @extend .main-formatted-text-container
+  padding: 1.25rem 2.5rem
   & > .lyrics
-    @extend .no-margin
     font-size: 16px
 
 .main-simple-list-item
-  @extend .d-flex, .align-items-center, .word-break-break-word
-  & > .image,
-  & > .image-container
-    @extend .image-large
-    &.medium
-      @extend .image-medium
-    &.small
-      @extend .image-small
+  @extend .d-flex, .word-break-break-word
+  padding: 0.75rem 1rem !important
+  & > .image
+    @extend .main-list-right-small-section
   & > .content
-    @extend .flex-full, .no-padding
+    @extend .flex-full, .no-padding, .main-list-right-small-section
     .text
       font-size: 20px
-      line-height: 1.2em
-    .description
-      &:not(.right)
-        line-height: 1em
-        margin-top: 0.2em
-    .extra
-      line-height: 1.1em
-      margin-top: 0.2em
+      line-height: 1.2rem
+  .extra
+    line-height: 1.1rem
+    margin-top: 0.25rem
+  .description
+    &:not(.right, .left)
+      line-height: 1rem
+      margin-top: 0.25rem
   & > .main-options-popup-container
-    @extend .visibility-hidden
+    @extend .visibility-hidden, .main-list-right-small-section
   .main-self-icons
-    @extend .text-align-center
+    @extend .text-align-center, .main-list-right-small-section
     width: 50px
   &:hover
     .link-active
       @extend .text-color-base
     & > .main-options-popup-container
       @extend .visibility-visible
-  &.main-message-item
-    @extend .align-items-start
-    padding: 1.5em
-  &.main-info-item
-    @extend .align-items-start
-    & > .image,
-    & > .image-container
-      @extend .image-big
-    .description
-      margin-top: 0.25em !important
-      line-height: initial !important
+
+.main-info-item
+  & > .content
+    @extend .no-padding, .main-list-right-medium-section
     .extra
-      margin-top: 0.25em !important
-    .main-options-popup-container
-      @extend .visibility-visible
-[dir="ltr"]
-  .main-simple-list-item
-    & > .image,
-    & > .image-container
-      margin-right: 1em !important
-    & > .main-options-popup-container
-      margin-left: 0.75em
-    .main-self-icons
-      margin-left: 0.75em
-[dir="rtl"]
-  .main-simple-list-item
-    & > .image,
-    & > .image-container
-      margin-left: 1em !important
-    & > .main-options-popup-container
-      margin-right: 0.75em
-    .main-self-icons
-      margin-right: 0.75em
+      font-size: 1.1rem !important
+      line-height: 1.2rem !important
+    .description
+      @extend .no-margin
+      margin-top: 0.25rem !important
+    .meta
+      @extend .no-margin
+      margin-top: 0.25rem !important
+  .main-self-icons
+    @extend .main-right-medium-section
+  .main-options-popup-container
+    @extend .main-right-medium-section
 
 .main-simple-list-item-model-icon
-  @extend .no-padding
-  min-width: unset !important
-[dir="ltr"]
-  .main-simple-list-item-model-icon
-    margin-right: 0.75em !important
-[dir="rtl"]
-  .main-simple-list-item-model-icon
-    margin-left: 0.75em !important
+  @extend .main-left-small-section
 
 .main-popup
   @extend .no-border, .no-padding, .background-transparent, .blurred
@@ -290,6 +294,12 @@ p
     @extend .border-inverted
   &.animating
     @extend .pointer-events-none
+  &.small
+    .main-popup-content-container
+      padding: 1rem 1.5rem !important
+  &.extrasmall
+    .main-popup-content-container
+      padding: 0.75rem 1rem !important
 
 .main-popup-container
   @extend .d-none
@@ -299,11 +309,11 @@ p
   &.inverted
     @extend .border-inverted
   .info-section
-    &:not(:first-child)
-      margin-top: 0.5em
+    @extend .main-list-bottom-mini-section
+    line-height: 1.5rem !important
 
 .main-artist-popup
-  width: 420px
+  width: 450px
 
 .main-annotation-popup
   width: 375px
@@ -317,107 +327,76 @@ p
 
 .main-volume-popup
   @extend .text-align-center
-  min-width: 60px !important
+  width: 70px !important
 
 .main-lastfm-import-info-popup
   max-width: 250px !important
-
-.main-page-select-popup
-  .main-popup-content-container
-    padding: 0.75em
 
 .main-header
   @extend .no-margin
   line-height: normal !important
 
 .main-artist-name
-  margin-bottom: 0.4em !important
+  @extend .main-top-small-section
 
 .main-dropdown-item
-  @extend .d-flex, .align-items-center
-  line-height: 1.2em !important
+  @extend .middle-aligned, .word-break-break-word
+  line-height: 1.2rem !important
   &.selected
     font-weight: unset !important
+  & > .icon,
+  & > .flag
+    @extend .main-left-small-section
   & > .image-container
+    @extend .main-left-small-section
     .image
-      @extend .object-fit-cover, .image-small
+      @extend .object-fit-cover, .image-30
   & > .content
     @extend .flex-full, .word-break-break-word
     white-space: normal
   & > .extra
-    font-size: 0.8em
-[dir="ltr"]
-  .main-dropdown-item
-    & > .icon
-      margin-right: 0.75em !important
-    & > .image-container
-      margin-right: 0.75em
-    & > .extra
-      margin-left: 0.75em !important
-[dir="rtl"]
-  .main-dropdown-item
-    & > .icon
-      margin-left: 0.75em !important
-    & > .image-container
-      margin-left: 0.75em
-    & > .extra
-      margin-right: 0.75em !important
+    @extend .main-right-small-section
+    font-size: 0.8rem
 
 .main-dropdown-icon
-  @extend .d-flex, .align-items-center, .justify-content-center
+  @extend .middle-center-aligned, .no-margin
   height: 18px !important
   width: 18px !important
 
+.main-settings-section-container
+  @extend .main-list-bottom-large-section
+
+.main-settings-option-container
+  @extend .main-list-bottom-large-section
+
 .main-settings-option
-  @extend .d-flex, .align-items-center
-  &:not(:first-child)
-    margin-top: 1.5em
+  @extend .middle-aligned
   .option-header
-    @extend .flex-full
+    @extend .flex-full, .main-list-left-large-section
   .option-text
     @extend .flex-full, .text-align-center
-[dir="ltr"]
-  .main-settings-option
-    .option-header
-      margin-right: 1.5em !important
-[dir="rtl"]
-  .main-settings-option
-    .option-header
-      margin-left: 1.5em !important
 
 .main-model-source-select-container
-  @extend .d-flex, .align-items-center
+  @extend .middle-aligned
   & > .content
-    @extend .d-flex, .align-items-center
+    @extend .middle-aligned
     .type-section
-      margin-top: 1em
+      @extend .main-bottom-section
     .right-section
-      width: 230px
-[dir="ltr"]
-  .main-model-source-select-container
-    & > .content
-      .right-section
-        margin-left: 1em
-[dir="rtl"]
-  .main-model-source-select-container
-    & > .content
-      .right-section
-        margin-right: 1em
+      @extend .main-right-section
+      width: 250px
 
 .main-source-select
-  width: 220px
+  @extend .main-select
 
 .main-sidebar-item
   @extend .no-padding, .d-flex
   &.top-item
-    @extend .align-items-center
-    height: $navbarHeight
-    border-bottom: $border
+    @extend .align-items-center, .border-bottom, .height-navbar
     &.inverted
-      border-bottom: $borderInverted
+      @extend .border-bottom-inverted
     .image
-      width: 25px
-      height: 25px
+      @extend .image-25
   &:before
     background: none !important
   &:hover
@@ -429,73 +408,43 @@ p
           @extend .text-color-white
 
 .main-sidebar-item-icon-image-container
-  @extend .d-flex, .align-items-center, .justify-content-center, .image-medium
+  @extend .middle-center-aligned, .image-40
   flex-shrink: 0
   .icon
-    @extend .no-margin
     font-size: 16px
 
-.main-small-container
-  line-height: 0.9em !important
-
 .main-columns-container
-  @extend .d-flex, .flex-full
+  @extend .plain-full
 
 .main-profile-page-left-column
-  @extend .no-margin
-  width: 170px
+  @extend .no-margin, .width-25
   .main-profile-page-info
-    @extend .d-flex, .flex-column, .align-items-center, .text-align-center, .word-break-break-word
+    @extend .middle-aligned-column, .text-align-center, .word-break-break-word
     .main-self-icons
       max-width: 75px
   .main-profile-page-image-container
-    @extend .relative
-    margin-bottom: 0.5em
-    width: 120px
-    height: 120px
-    & > .image
-      @extend .w-100, .h-100
+    @extend .relative, .image-120, .main-top-mini-section
 
 .main-right-column
-  @extend .d-flex, .flex-column, .flex-full
-[dir="ltr"]
-  .main-right-column
-    margin-left: 1.5em
-[dir="rtl"]
-  .main-right-column
-    margin-right: 1.5em
+  @extend .full-column, .main-right-section
+  &.nested
+    @extend .main-right-large-section
 
 .main-sticky-container
-  @extend .sticky
+  @extend .sticky, .height-fit-content
   top: $mainContainerTopPadding
-  height: fit-content
 
 .main-modal-import-section
-  @extend .d-flex, .flex-column, .flex-full, .overflow-y-auto, .scroll-smooth
-
-.main-library-modal-message-container
-  margin-bottom: 1em
+  @extend .full-column, .overflow-y-auto, .scroll-smooth
 
 .main-self-container
-  @extend .d-flex, .w-100, .justify-content-center, .align-items-center, .relative
+  @extend .middle-center-aligned, .width-100, .relative
   min-height: 30px
-  margin-top: 0.5em
   .main-options-popup-container
-    @extend .absolute
-[dir="ltr"]
-  .main-self-container
-    .main-options-popup-container
-      right: 0
-[dir="rtl"]
-  .main-self-container
-    .main-options-popup-container
-      left: 0
+    @extend .absolute, .no-right
 
-.main-simple-button
+.main-button
   @extend .no-margin
-
-.main-search-input
-  width: 230px
 
 .main-creatable-form
   & > .fields-container
@@ -505,51 +454,38 @@ p
       width: 120px
     & > .fields-right-column
       @extend .flex-full
-[dir="ltr"]
-  .main-creatable-form
-    & > .fields-container
-      & > .image-field
-        margin-right: 1em !important
-[dir="rtl"]
-  .main-creatable-form
-    & > .fields-container
-      & > .image-field
-        margin-left: 1em !important
+
+.main-form-extra-section
+  @extend .d-flex
+
+.main-form-image-field
+  @extend .middle-aligned-column, .main-left-small-section, .width-30
+  padding: 0 10px
+  .main-image-container
+    @extend .width-100
+
+.main-form-extra-section-fields-section
+  @extend .width-70
 
 .main-sendable-form
   & > .as-community-container
-    margin-top: 1em
+    @extend .main-bottom-section
   & > .buttons-container
-    @extend .d-flex, .align-items-center
-    margin-top: 1em
-    & > .add-buttons-container
-      @extend .flex-full
-    & > .main-as-community-checkbox
-      margin: 0 1em
+    @extend .middle-aligned, .main-bottom-section
 
 .main-message-item
+  padding: 1.5rem !important
   &.inverted
     @extend .border-inverted
 
 .main-paginated-segment-container
   @extend .d-flex
 
-[dir="ltr"]
-  .main-compatibility-common-button
-    &:not(:first-child)
-      margin-left: 0.5em !important
-[dir="rtl"]
-  .main-compatibility-common-button
-    &:not(:first-child)
-      margin-right: 0.5em !important
+.main-compatibility-common-button
+  @extend .main-list-right-small-section
 
-.main-content-container
-  margin-top: 1em
-
-.main-content-section
-  @extend .no-padding, .no-margin
-  &:not(:first-child)
-    margin-top: 1em !important
+.main-sendable-content-section
+  @extend .no-padding, .no-margin, .main-list-bottom-small-section
 
 .main-zoomable-image
   @extend .cursor-zoom-in
@@ -570,41 +506,33 @@ p
       @extend .d-block
 
 .main-image-clear-button
-  @extend .no-margin, .absolute, .d-none
-  top: 1em
+  @extend .main-button, .absolute, .d-none
+  top: 1rem
 [dir="ltr"]
   .main-image-clear-button
-    right: 1em
+    right: 1rem
 [dir="rtl"]
   .main-image-clear-button
-    left: 1em
+    left: 1rem
 
 .main-labels-section
-  @extend .d-flex, .align-items-center
+  @extend .middle-aligned
   &:not(:last-child)
-    margin-bottom: 0.25em
+    @extend .main-top-extrasmall-section
 
 .main-logo-image
-  width: 100px
+  @extend .image-100
   -webkit-user-drag: none
 
 .main-date-section
   min-width: 75px
   &.right
-    @extend .text-align-right
+    @extend .text-align-right, .main-right-small-section
   &.centered
     @extend .text-align-center
-[dir="ltr"]
-  .main-date-section
-    &.right
-      margin-left: 0.75em
-[dir="rtl"]
-  .main-date-section
-    &.right
-      margin-right: 0.75em
 
 .main-menu-item
-  @extend .d-flex, .align-items-center, .word-break-break-word
+  @extend .middle-aligned, .word-break-break-word
   &.active
     @extend .text-bold
     &.primary
@@ -612,98 +540,127 @@ p
       .icon
         @extend .text-color-white
   & > .icon
-    @extend .no-margin
+    @extend .main-left-small-icon
     float: none !important
   &:last-child
     @extend .no-border
-[dir="ltr"]
-  .main-menu-item
-    & > .icon
-      margin-right: 0.75em !important
-[dir="rtl"]
-  .main-menu-item
-    & > .icon
-      margin-left: 0.75em !important
 
 .main-field
-  @extend .d-flex, .align-items-center
+  @extend .middle-aligned
 
 .main-counter-bar-container
-  @extend .d-flex, .align-items-center
+  @extend .middle-aligned
 
 .main-more-container
-  @extend .text-align-right
-  margin-top: 1em
+  @extend .end-aligned
 
 .main-page-container
-  @extend .d-flex, .flex-column
+  @extend .plain-column
   min-height: calc(100vh - #{$mainContainerTopPadding} - #{$mainContainerBottomPadding}) !important
 
 .main-page-segment-container
-  @extend .d-flex, .flex-full
+  @extend .plain-full
 
 .main-counters-section
-  @extend .d-flex, .justify-content-center
+  @extend .center-aligned
 
 .main-counter-section
   @extend .width-fit-content
+  .icon
+    @extend .main-left-extrasmall-icon, .width-fit-content
 
 .main-background
-  @extend .fixed, .w-100, .h-100
+  @extend .fixed, .width-100, .height-100
   transition: background 0.25s ease
   &.dark
-    filter: brightness(0.4)
+    filter: brightness(0.4) grayscale(20%)
 
 .main-view
   padding-top: $mainContainerTopPadding
   padding-bottom: $mainContainerBottomPadding
 
 .main-popup-icon
-  @extend .cursor-pointer, .no-margin
+  @extend .main-icon, .cursor-pointer
 
 .main-form-submit-button-container
-  @extend .d-flex, .justify-content-flex-end
-  margin-top: 1em
+  @extend .end-aligned, .main-bottom-section
 
 .main-form-remember-submit-button-container
-  @extend .d-flex, .align-items-center, .justify-content-space-between
+  @extend .middle-aligned-space-between, .main-bottom-section
 
 .main-small-artist-name
-  margin-top: 0.3em
-  line-height: 1.2em
+  margin-top: 0.3rem
+  line-height: 1.2rem
 
 .main-small-album-title
-  margin-top: 0.2em
+  margin-top: 0.2rem
+  line-height: 1rem
 
 .main-paginated-list-container
-  @extend .flex-full, .w-100, .d-flex, .flex-column
-
-[dir="ltr"]
-  .main-scope-select-container
-    margin-left: 1.5em
-[dir="rtl"]
-  .main-scope-select-container
-    margin-right: 1.5em
-
-[dir="ltr"]
-  .main-source-select-container
-    margin-left: 1.5em
-[dir="rtl"]
-  .main-source-select-container
-    margin-right: 1.5em
+  @extend .full-column, .width-100
 
 .main-page-top-section
-  @extend .d-flex, .align-items-center, .justify-content-space-between
+  @extend .middle-aligned-space-between
   .section
-    @extend .d-flex, .align-items-center
-[dir="ltr"]
-  .main-page-top-section
-    .section-item
-      margin-left: 1.5em
-[dir="rtl"]
-  .main-page-top-section
-    .section-item
-      margin-right: 1.5em
+    @extend .middle-aligned
+  .section-item
+    @extend .main-right-section
 
 .main-transition-item
   @extend .visibility-hidden
+
+.main-settings-options-block
+  padding: 1rem 1.5rem !important
+
+.main-seeker-container
+  margin: 1.5rem 0
+  padding: 0 1.5rem
+
+.main-buttons-container
+  .button
+    @extend .main-list-right-small-section
+
+.main-small-buttons-container
+  .button
+    @extend .main-list-right-mini-section
+
+.main-options-option
+  padding: 0.9rem 1.25rem !important
+
+.main-options-option-icon
+  @extend .main-left-small-icon
+
+.main-toggle-container
+  @extend .middle-aligned
+  .text-section
+    @extend .main-left-medium-section
+
+.main-self-icons
+  &.centered
+    @extend .text-align-center
+
+.main-simple-search-input
+  @extend .flex-full
+
+.main-system-input
+  @extend .d-none
+
+.main-search-container
+  @extend .middle-aligned
+
+.main-search-input
+  width: 240px
+
+.main-select
+  width: 230px
+
+.main-bottom-right-button
+  bottom: 1rem
+  &.player-panel-bottom
+    bottom: calc(#{$playerPanelHeight} + 1rem) !important
+[dir="ltr"]
+  .main-bottom-right-button
+    right: 1rem
+[dir="rtl"]
+  .main-bottom-right-button
+    left: 1rem

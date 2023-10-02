@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="listenersCount"
-    class="main-counter-bar-container"
+    class="description middle-aligned"
   >
     <BaseCounterBar
       :count="listenersCount"
@@ -9,7 +9,6 @@
     />
 
     <BaseListCounterSection
-      class="description"
       icon="listener"
       :count="listenersCount"
     />

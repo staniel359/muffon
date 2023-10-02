@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="albumData"
-    class="main-small-container main-small-album-title"
+    class="main-small-album-title"
   >
     <small>
       <BaseAlbumLinkContainer

@@ -1,5 +1,5 @@
 <template>
-  <div class="item main-simple-list-item">
+  <div class="item main-simple-list-item middle-aligned no-padding">
     <ImageBlock />
 
     <InfoBlock
@@ -53,4 +53,10 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.main-simple-list-item
+  :deep(.extra)
+    margin-top: 0.2rem !important
+  :deep(.description)
+    margin-top: 0.2rem !important
+</style>

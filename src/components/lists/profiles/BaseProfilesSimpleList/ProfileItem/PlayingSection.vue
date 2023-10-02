@@ -1,16 +1,17 @@
 <template>
   <div
-    class="description playing-section"
+    class="description right middle-aligned"
   >
     <BaseIcon
-      class="small"
+      class="small main-icon"
       icon="play"
     />
 
-    <small
-      class="playing-section-content"
-      v-text="playingFormatted"
-    />
+    <div class="main-right-extrasmall-section">
+      <small
+        v-text="playingFormatted"
+      />
+    </div>
   </div>
 </template>
 
@@ -49,13 +50,5 @@ export default {
 
 <style lang="sass" scoped>
 .playing-section
-  @extend .d-flex, .align-items-center
-  margin-top: 0.5em !important
-
-[dir="ltr"]
-  .playing-section-content
-    margin-left: 0.2em
-[dir="rtl"]
-  .playing-section-content
-    margin-right: 0.2em
+  margin: 0 1rem !important
 </style>

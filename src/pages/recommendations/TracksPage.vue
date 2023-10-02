@@ -69,7 +69,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.filter-section
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

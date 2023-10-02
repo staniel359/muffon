@@ -1,5 +1,10 @@
 <template>
-  <div class="ui comments base-comments-list">
+  <div
+    class="ui comments no-margin"
+    :class="{
+      inverted: isDarkMode
+    }"
+  >
     <CommentItem
       v-for="commentData in commentsCollection"
       :key="commentData.uuid"
@@ -11,6 +16,10 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import CommentItem from './BasePostCommentsSimpleList/CommentItem.vue'
 import {
   collection as formatCollection
@@ -46,6 +55,14 @@ export default {
     return {
       commentsCollection: null
     }
+  },
+  computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isDarkMode'
+      ]
+    )
   },
   watch: {
     comments: 'handleCommentsChange'
@@ -112,7 +129,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-comments-list
-  @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

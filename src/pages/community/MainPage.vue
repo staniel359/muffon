@@ -12,7 +12,7 @@
         :is-community-creator="slotProps.isCommunityCreator"
       />
 
-      <div class="main-columns-container">
+      <div class="main-columns-container main-bottom-section">
         <LeftColumn
           :community-data="slotProps.communityData"
           :scrollable="scrollable"

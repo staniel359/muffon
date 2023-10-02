@@ -4,6 +4,7 @@
     :url="url"
     :fields="fields"
     :format-response="formatResponse"
+    :scope="scope"
     @select="handleSelect"
   />
 </template>
@@ -14,6 +15,10 @@ import {
 } from 'pinia'
 import profileStore from '@/stores/profile'
 import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
+import {
+  fields as artistFields,
+  format as formatArtist
+} from '@/helpers/formatters/search/artist'
 
 export default {
   name: 'ArtistsInput',
@@ -31,6 +36,11 @@ export default {
       }
     }
   },
+  data () {
+    return {
+      scope: 'artists'
+    }
+  },
   computed: {
     ...mapState(
       profileStore,
@@ -41,16 +51,12 @@ export default {
     url () {
       return (
         `profiles/${this.profileId}` +
-        '/library/search/artists' +
+        `/library/search/${this.scope}` +
         '?query={query}&limit=5&minimal=true'
       )
     },
     fields () {
-      return {
-        results: 'artists',
-        title: 'name',
-        image: null
-      }
+      return artistFields
     }
   },
   methods: {
@@ -85,10 +91,13 @@ export default {
     formatResponse (
       response
     ) {
-      return response
-        .profile
-        .library
-        .artists
+      const {
+        artists
+      } = response.profile.library
+
+      return artists.map(
+        formatArtist
+      )
     },
     focus () {
       this.$refs

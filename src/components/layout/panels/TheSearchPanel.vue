@@ -1,16 +1,13 @@
 <template>
   <div
-    :class="[
-      'ui top segment sidebar the-search-panel',
-      'main-segment-container',
-      {
-        inverted: isDarkMode,
-        visible: isSearchPanelVisible
-      }
-    ]"
+    class="ui top segment sidebar the-search-panel overflow-visible text-color-black no-border height-navbar"
+    :class="{
+      inverted: isDarkMode,
+      visible: isSearchPanelVisible
+    }"
   >
-    <div class="ui container main-container content-container">
-      <div class="inputs-section">
+    <div class="ui container main-container height-100">
+      <div class="main-search-container width-100 height-100">
         <SearchInput
           :query="query"
           :is-with-clear-button="isWithClearButton"
@@ -39,6 +36,8 @@
     :query="query"
     :source="source"
     :scope="scope"
+    :is-full-size="isFullSize"
+    @full-size-button-click="handleFullSizeButtonClick"
   />
 
   <BaseDimmer
@@ -72,6 +71,7 @@ export default {
   },
   data () {
     return {
+      isFullSize: null,
       isGetData: false,
       source: '',
       scope: '',
@@ -90,7 +90,9 @@ export default {
       searchStore,
       {
         searchSource: 'source',
-        searchScope: 'scope'
+        searchScope: 'scope',
+        isSearchResultsFullSize:
+          'isResultsFullSize'
       }
     ),
     isWithClearButton () {
@@ -106,6 +108,10 @@ export default {
     }
   },
   watch: {
+    isSearchResultsFullSize: {
+      immediate: true,
+      handler: 'handleIsSearchResultsFullSize'
+    },
     searchSource: {
       immediate: true,
       handler: 'handleSearchSourceChange'
@@ -130,6 +136,11 @@ export default {
         'setIsSearchPanelVisible'
       ]
     ),
+    handleIsSearchResultsFullSize (
+      value
+    ) {
+      this.isFullSize = value
+    },
     handleIsSearchPanelVisibleChange (
       value
     ) {
@@ -213,24 +224,20 @@ export default {
       this.setIsSearchPanelVisible(
         false
       )
+    },
+    handleFullSizeButtonClick () {
+      this.isFullSize =
+        !this.isFullSize
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.ui.sidebar
-  &.the-search-panel
-    @extend .overflow-visible, .text-color-black
-    height: $navbarHeight !important
-    z-index: 1200
-    &.inverted
-      @extend .text-color-white
-      border-bottom: $borderInverted !important
+@import '@/assets/styles/Shared.sass'
 
-.content-container
-  @extend .h-100
-
-.inputs-section
-  @extend .d-flex, .align-items-center, .w-100, .h-100
+.the-search-panel
+  z-index: 1200
+  &.inverted
+    @extend .text-color-white, .border-bottom-inverted
 </style>

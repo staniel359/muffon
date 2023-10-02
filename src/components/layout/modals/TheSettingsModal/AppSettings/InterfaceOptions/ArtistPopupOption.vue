@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="artistPopupText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="artistPopupText"
+      />
 
-    <BaseToggle
-      store-key="layout.isWithArtistPopup"
-      :is-checked="isWithArtistPopup"
-    />
+      <BaseToggle
+        store-key="layout.isWithArtistPopup"
+        :is-checked="isWithArtistPopup"
+      />
+    </div>
   </div>
 </template>
 

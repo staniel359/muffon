@@ -1,6 +1,6 @@
 <template>
   <div
-    class="track-player-panel"
+    class="track-player-panel d-flex"
     :class="{
       inverted: isDarkMode
     }"
@@ -15,7 +15,7 @@
 
     <BaseDurationSection
       v-if="duration"
-      class="track-section track-duration"
+      class="track-section track-duration middle-aligned"
       :duration="duration"
     />
 
@@ -67,8 +67,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .track-player-panel
-  @extend .d-flex
   height: $trackPagePlayerPanelHeight
   :deep(.track-section)
     border-left: $border
@@ -77,6 +78,5 @@ export default {
       border-left: $borderInverted !important
 
 .track-duration
-  @extend .d-flex, .align-items-center
-  padding: 0 1em
+  padding: 0 1rem
 </style>

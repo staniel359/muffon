@@ -1,8 +1,8 @@
 <template>
-  <div class="base-country-select-section">
+  <div class="middle-aligned">
     <BaseCountrySelect
       :key="key"
-      class="country-select"
+      class="main-select"
       :selected="country"
       :is-form-field="isFormField"
       @select="handleCountrySelect"
@@ -92,10 +92,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-country-select-section
-  @extend .d-flex, .align-items-center
-
-.country-select
-  width: 220px
-</style>
+<style lang="sass" scoped></style>

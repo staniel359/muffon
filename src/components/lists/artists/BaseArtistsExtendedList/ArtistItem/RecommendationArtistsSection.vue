@@ -6,17 +6,18 @@
     :text="similarText"
   />
 
-  <BaseArtistsSimpleList
-    class="artists-list"
-    :artists="artists"
-    :profile-id="profileId"
-    :is-paginated="false"
-    is-image-small
-    is-link-to-library
-    is-with-page-option
-    is-with-share-option
-    is-with-external-link-option
-  />
+  <div class="main-bottom-small-section">
+    <BaseArtistsSimpleList
+      :artists="artists"
+      :profile-id="profileId"
+      :is-paginated="false"
+      is-image-small
+      is-link-to-library
+      is-with-page-option
+      is-with-share-option
+      is-with-external-link-option
+    />
+  </div>
 
   <BaseMoreButton
     @click="handleMoreButtonClick"
@@ -121,7 +122,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.artists-list
-  margin: 0.5em 0
-</style>
+<style lang="sass" scoped></style>

@@ -1,23 +1,17 @@
 <template>
-  <BaseHeaderContainer
-    class="artists-section"
-    tag="h4"
-  >
+  <div class="description extra">
     <BaseArtistLinks
       :artists="artists"
     />
-  </BaseHeaderContainer>
+  </div>
 </template>
 
 <script>
-import BaseHeaderContainer
-  from '@/components/containers/BaseHeaderContainer.vue'
 import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
 
 export default {
   name: 'ArtistsSection',
   components: {
-    BaseHeaderContainer,
     BaseArtistLinks
   },
   props: {
@@ -34,8 +28,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.artists-section
-  @extend .text-medium-light
-  margin-top: 0.15em !important
-</style>
+<style lang="sass" scoped></style>

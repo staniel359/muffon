@@ -1,10 +1,5 @@
 <template>
-  <i
-    class="icons"
-    :class="{
-      big: isPage
-    }"
-  >
+  <i class="icons">
     <BaseIcon
       v-for="(icon, index) in icons"
       :key="index"
@@ -22,8 +17,7 @@ export default {
     BaseIcon
   },
   props: {
-    icons: Array,
-    isPage: Boolean
+    icons: Array
   }
 }
 </script>

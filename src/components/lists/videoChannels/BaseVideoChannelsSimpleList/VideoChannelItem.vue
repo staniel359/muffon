@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned"
     :class="{
       disabled: isDeleted
     }"
@@ -21,7 +21,7 @@
       />
 
       <BaseImage
-        class="circular"
+        class="circular image-50"
         model="videoChannel"
         :image="imageData?.extrasmall"
       />

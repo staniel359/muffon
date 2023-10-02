@@ -1,7 +1,7 @@
 <template>
-  <div class="dark-mode-block">
+  <div class="main-toggle-container">
     <div
-      class="dark-mode-text"
+      class="text-section"
       v-text="darkModeText"
     />
 
@@ -27,14 +27,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.dark-mode-block
-  @extend .d-flex, .align-items-center
-
-[dir="ltr"]
-  .dark-mode-text
-    margin-right: 0.5em
-[dir="rtl"]
-  .dark-mode-text
-    margin-left: 0.5em
-</style>
+<style lang="sass" scoped></style>

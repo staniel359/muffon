@@ -1,5 +1,5 @@
 <template>
-  <div class="left-column">
+  <div class="left-column width-17">
     <BaseZoomableImage
       model="profile"
       size="medium"
@@ -7,7 +7,7 @@
       is-circular
     />
 
-    <div class="main-self-container">
+    <div class="main-self-container main-bottom-small-section">
       <BaseSelfIcons
         :bookmark-id="bookmarkId"
       />
@@ -59,8 +59,5 @@ export default {
 
 <style lang="sass" scoped>
 .left-column
-  width: 120px
-
-.main-self-container
-  margin-top: 0.5em
+  min-width: 120px
 </style>

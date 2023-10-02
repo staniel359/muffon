@@ -1,7 +1,7 @@
 <template>
-  <div class="global-toggle">
+  <div class="main-toggle-container">
     <div
-      class="global-text"
+      class="text-section"
       v-text="globalText"
     />
 
@@ -52,14 +52,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.global-toggle
-  @extend .d-flex, .align-items-center
-
-[dir="ltr"]
-  .global-text
-    margin-right: 0.75em
-[dir="rtl"]
-  .global-text
-    margin-left: 0.75em
-</style>
+<style lang="sass" scoped></style>

@@ -1,12 +1,11 @@
 <template>
-  <div
-    class="base-inner-counter-labels-section"
-  >
-    <BaseIcon
-      icon="colored muffon"
-    />
-
+  <div class="middle-aligned">
     <div class="ui labels">
+      <BaseIcon
+        class="colored main-left-small-icon"
+        icon="muffon"
+      />
+
       <BaseCounterLabelsSection
         :counters="counters"
         :size="size"
@@ -65,24 +64,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-inner-counter-labels-section
-  @extend .d-flex, .align-items-center
-  & > .icon
-    @extend .no-margin
-    margin-bottom: 0.5em !important
-[dir="ltr"]
-  .base-inner-counter-labels-section
-    &.inline
-      &:not(:first-child)
-        margin-left: 1em
-    & > .icon
-      margin-right: 0.5em !important
-[dir="rtl"]
-  .base-inner-counter-labels-section
-    &.inline
-      &:not(:first-child)
-        margin-right: 1em
-    & > .icon
-      margin-left: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

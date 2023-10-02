@@ -1,6 +1,6 @@
 <template>
   <BaseMenuContainer
-    class="top fixed the-browser-tabs"
+    class="top fixed the-browser-tabs middle-aligned no-shadow overflow-y-auto"
   >
     <BrowserTab
       v-for="tabData in tabs"
@@ -122,12 +122,13 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .the-browser-tabs
-  @extend .no-shadow, .d-flex, .align-items-center, .overflow-y-auto
-  height: 45px
-  padding: 0 0.5em
+  height: $tabsPanelHeight
+  padding: 0 0.75rem
   &.inverted
-    border-bottom: $borderInverted !important
+    @extend .border-bottom-inverted
   &::-webkit-scrollbar
     @extend .d-none
 </style>

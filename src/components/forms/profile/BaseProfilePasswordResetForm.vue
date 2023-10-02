@@ -1,10 +1,5 @@
 <template>
-  <div
-    :class="[
-      'ui raised segments main-segments',
-      'main-segment-container'
-    ]"
-  >
+  <BaseSegmentsContainer>
     <BackSegment
       @back-link-click="handleBackLinkClick"
     />
@@ -19,10 +14,12 @@
       v-else-if="isUpdate"
       :email="email"
     />
-  </div>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import BackSegment from './BaseProfilePasswordResetForm/BackSegment.vue'
 import SuccessSegment from './BaseProfilePasswordResetForm/SuccessSegment.vue'
 import ResetFormSegment
@@ -33,6 +30,7 @@ import UpdateFormSegment
 export default {
   name: 'BaseProfilePasswordResetForm',
   components: {
+    BaseSegmentsContainer,
     BackSegment,
     SuccessSegment,
     ResetFormSegment,

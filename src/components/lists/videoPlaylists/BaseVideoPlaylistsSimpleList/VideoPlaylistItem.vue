@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned"
     :class="{
       disabled: isDeleted
     }"
@@ -21,7 +21,7 @@
       />
 
       <BaseImage
-        class="rounded-medium"
+        class="rounded-medium image-50"
         model="videoPlaylist"
         :image="imageData?.extrasmall"
       />
@@ -45,7 +45,7 @@
 
         <div
           v-if="description"
-          class="description main-small-container"
+          class="description"
         >
           <small
             v-html="description"

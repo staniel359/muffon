@@ -4,7 +4,7 @@
     :url="url"
     :fields="fields"
     :format-response="formatResponse"
-    is-tracks-input
+    :scope="scope"
     @select="handleSelect"
   />
 </template>
@@ -36,10 +36,15 @@ export default {
   emits: [
     'select'
   ],
+  data () {
+    return {
+      scope: 'tracks'
+    }
+  },
   computed: {
     url () {
       return (
-        `${this.source}/search/tracks` +
+        `${this.source}/search/${this.scope}` +
         '?query={query}&limit=5'
       )
     },

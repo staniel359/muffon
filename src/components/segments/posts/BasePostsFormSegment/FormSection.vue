@@ -1,6 +1,6 @@
 <template>
   <BasePostCreateFormContainer
-    class="main-sendable-form"
+    class="main-sendable-form main-bottom-section"
     :post-type="postType"
     :profile-id="profileId"
     :community-id="communityId"

@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="annotationsText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="annotationsText"
+      />
 
-    <BaseToggle
-      store-key="lyrics.isWithAnnotations"
-      :is-checked="isLyricsWithAnnotations"
-    />
+      <BaseToggle
+        store-key="lyrics.isWithAnnotations"
+        :is-checked="isLyricsWithAnnotations"
+      />
+    </div>
   </div>
 </template>
 

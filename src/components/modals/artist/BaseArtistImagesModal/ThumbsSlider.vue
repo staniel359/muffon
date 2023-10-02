@@ -8,7 +8,7 @@
     <template
       #default="slotProps"
     >
-      <div class="main-image-container">
+      <div class="main-image-container cursor-pointer">
         <BaseImage
           :image="slotProps.image"
           is-lazy
@@ -52,16 +52,13 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-image-container
-  @extend .cursor-pointer
+@import '@/assets/styles/Shared.sass'
 
 .slick-slide
   .ui.image
-    &.base-image
-      border-width: 2px !important
+    border-width: 2px !important
 
 .slick-current
   .ui.image
-    &.base-image
-      @extend .border-color-base
+    @extend .border-color-base
 </style>

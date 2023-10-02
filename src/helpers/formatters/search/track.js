@@ -27,7 +27,7 @@ export function format (
 
   const albumTitleFormatted = (
     albumTitle &&
-      `<div class="album-title main-small-container">
+      `<div class="album-title">
         <small>
           ${albumTitle}
         </small>

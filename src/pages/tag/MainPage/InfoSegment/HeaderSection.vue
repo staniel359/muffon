@@ -30,10 +30,11 @@ export default {
 
 <style lang="sass" scoped>
 .tag-header-container
-  margin-bottom: 1.5em
+  margin-bottom: 2rem
 
 .tag-header
   font-size: 2.5rem !important
   :deep(.icon)
-    font-size: 0.75em !important
+    @extend .main-left-icon
+    font-size: 2rem !important
 </style>

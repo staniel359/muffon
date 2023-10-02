@@ -6,11 +6,9 @@
     }"
     @click="handleClick"
   >
-    <div class="main-simple-list-item">
-      <slot
-        :is-loading="isLoading"
-      />
-    </div>
+    <slot
+      :is-loading="isLoading"
+    />
 
     <BaseProgress
       v-if="isShowProgress"
@@ -21,11 +19,14 @@
       @complete="handleProgressComplete"
     />
 
-    <BaseErrorMessage
+    <div
       v-if="error"
-      class="error-message"
-      :error="error"
-    />
+      class="main-top-section main-bottom-section"
+    >
+      <BaseErrorMessage
+        :error="error"
+      />
+    </div>
   </div>
 </template>
 

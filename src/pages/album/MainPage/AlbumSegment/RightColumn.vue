@@ -1,5 +1,5 @@
 <template>
-  <div class="main-right-column">
+  <div class="main-right-column nested">
     <InfoSection
       :album-data="albumData"
       :request-album-data="requestAlbumData"

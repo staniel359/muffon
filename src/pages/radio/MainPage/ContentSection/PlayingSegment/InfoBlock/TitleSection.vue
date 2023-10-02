@@ -1,27 +1,21 @@
 <template>
-  <BaseHeaderContainer
-    tag="h3"
-    is-inverted
-  >
+  <div class="header">
     <BaseTrackLinkContainer
       class="main-link"
       :track-data="trackData"
     >
       {{ trackTitle }}
     </BaseTrackLinkContainer>
-  </BaseHeaderContainer>
+  </div>
 </template>
 
 <script>
-import BaseHeaderContainer
-  from '@/components/containers/BaseHeaderContainer.vue'
 import BaseTrackLinkContainer
   from '@/components/containers/links/track/BaseTrackLinkContainer.vue'
 
 export default {
   name: 'TitleSection',
   components: {
-    BaseHeaderContainer,
     BaseTrackLinkContainer
   },
   props: {

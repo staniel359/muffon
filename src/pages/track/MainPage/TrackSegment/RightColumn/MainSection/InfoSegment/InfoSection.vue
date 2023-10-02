@@ -1,13 +1,9 @@
 <template>
-  <div
-    class="info-section"
-    :class="{
-      inverted: isDarkMode
-    }"
-  >
-    <div class="track-info-block">
-      <TitleSection
-        :track-data="trackData"
+  <BaseItemContainer>
+    <div class="content">
+      <div
+        class="header"
+        v-text="trackTitle"
       />
 
       <ArtistsSection
@@ -25,15 +21,12 @@
       class="right"
       :source="source"
     />
-  </div>
+  </BaseItemContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import layoutStore from '@/stores/layout'
-import TitleSection from './InfoSection/TitleSection.vue'
+import BaseItemContainer
+  from '@/components/containers/item/BaseItemContainer.vue'
 import ArtistsSection from './InfoSection/ArtistsSection.vue'
 import AlbumSection from './InfoSection/AlbumSection.vue'
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
@@ -41,7 +34,7 @@ import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 export default {
   name: 'InfoSection',
   components: {
-    TitleSection,
+    BaseItemContainer,
     ArtistsSection,
     AlbumSection,
     BaseSourceIcon
@@ -53,12 +46,9 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      layoutStore,
-      [
-        'isDarkMode'
-      ]
-    ),
+    trackTitle () {
+      return this.trackData.title
+    },
     albumData () {
       return this.trackData.album
     },
@@ -80,14 +70,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.info-section
-  @extend .d-flex
-  border-bottom: $border
-  padding: 1em
-  &.inverted
-    border-bottom: $borderInverted
-
-.track-info-block
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

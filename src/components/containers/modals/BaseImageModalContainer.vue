@@ -1,7 +1,8 @@
 <template>
   <BaseModalContainer
     ref="modal"
-    class="base-image-modal"
+    class="base-image-modal no-margin no-shadow no-border no-border-radius background-transparent"
+    :size="size"
     is-render
     @show="handleShow"
   >
@@ -17,6 +18,9 @@ export default {
   name: 'BaseImageModalContainer',
   components: {
     BaseModalContainer
+  },
+  props: {
+    size: String
   },
   emits: [
     'show'
@@ -37,10 +41,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .base-image-modal
-  @extend .no-margin, .no-shadow, .no-border, .no-border-radius, .width-fit-content, .background-transparent
-  &.scrolling
-    top: unset !important
-    &:after
-      @extend .d-none
+  &:not(.main-artist-images-modal)
+    @extend .width-fit-content
 </style>

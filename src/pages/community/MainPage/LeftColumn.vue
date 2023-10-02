@@ -1,11 +1,6 @@
 <template>
-  <div
-    :class="[
-      'ui raised segments main-segments',
-      'main-segment-container',
-      'main-sticky-container',
-      'left-column'
-    ]"
+  <BaseSegmentsContainer
+    class="main-sticky-container left-column width-25"
   >
     <InfoSegment
       :community-data="communityData"
@@ -19,10 +14,12 @@
     <MembersSegment
       :community-data="communityData"
     />
-  </div>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import JoinedSegment from './LeftColumn/JoinedSegment.vue'
 import MembersSegment from './LeftColumn/MembersSegment.vue'
@@ -30,6 +27,7 @@ import MembersSegment from './LeftColumn/MembersSegment.vue'
 export default {
   name: 'LeftColumn',
   components: {
+    BaseSegmentsContainer,
     InfoSegment,
     JoinedSegment,
     MembersSegment
@@ -43,6 +41,5 @@ export default {
 
 <style lang="sass" scoped>
 .left-column
-  @extend .no-margin
-  width: 180px
+  min-width: 190px
 </style>

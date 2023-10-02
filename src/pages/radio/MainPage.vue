@@ -1,17 +1,15 @@
 <template>
-  <div
+  <BaseSegmentsContainer
     :key="refreshKey"
-    :class="[
-      'ui raised segments main-segments',
-      'main-segment-container',
-      'main-page-container'
-    ]"
+    class="main-page-container"
   >
     <ContentSection />
-  </div>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import ContentSection from './MainPage/ContentSection.vue'
 import navigationMixin from '@/mixins/navigationMixin'
 import pageMixin from '@/mixins/pageMixin'
@@ -23,6 +21,7 @@ import formatRadioPageTab from '@/helpers/formatters/tabs/radio'
 export default {
   name: 'MainPage',
   components: {
+    BaseSegmentsContainer,
     ContentSection
   },
   mixins: [

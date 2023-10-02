@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="settings-segment"
+    class="middle-aligned-space-between"
   >
     <BaseLanguageSelect />
 
@@ -24,7 +24,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.settings-segment
-  @extend .d-flex, .align-items-center, .justify-content-space-between
-</style>
+<style lang="sass" scoped></style>

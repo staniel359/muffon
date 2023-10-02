@@ -1,16 +1,18 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="backgroundText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="backgroundText"
+      />
 
-    <UploadButton />
-  </div>
+      <UploadButton />
+    </div>
 
-  <div class="images-section">
-    <BaseBackgroundImagesTableList />
+    <div class="main-bottom-section">
+      <BaseBackgroundImagesTableList />
+    </div>
   </div>
 </template>
 
@@ -37,7 +39,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.images-section
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

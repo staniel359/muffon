@@ -1,11 +1,11 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned"
     :link="link"
     @click="handleLinkClick"
   >
     <BaseImage
-      class="rounded-medium small"
+      class="rounded-medium image-35"
       model="track"
       :image="imageData?.extrasmall"
     />

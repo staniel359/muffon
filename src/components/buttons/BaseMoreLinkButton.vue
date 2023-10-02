@@ -4,7 +4,7 @@
       :link="link"
     >
       <BaseButton
-        class="primary compact"
+        class="primary compact circular"
         :text="moreText"
         :is-invertable="false"
       />

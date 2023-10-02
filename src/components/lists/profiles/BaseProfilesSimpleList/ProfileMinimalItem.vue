@@ -1,19 +1,19 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned"
     :class="{
       disabled: !profileId
     }"
     :link="profileLink"
   >
     <BaseImage
-      class="small circular"
+      class="circular image-30"
       model="profile"
       :image="imageData?.extrasmall"
     />
 
     <div class="content">
-      <div class="nickname-label-container">
+      <div class="middle-aligned">
         <NicknameSection
           :profile-data="profileData"
         />
@@ -75,7 +75,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.nickname-label-container
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

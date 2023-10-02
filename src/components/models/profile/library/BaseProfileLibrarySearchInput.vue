@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="search-container">
+    <div class="main-search-container">
       <BaseHistoryInput
         ref="input"
         class="main-search-input"
@@ -78,7 +78,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-container
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

@@ -1,6 +1,6 @@
 <template>
-  <div
-    class="timer-section"
+  <strong
+    class="cursor-default"
     v-text="audioTime"
   />
 </template>
@@ -46,7 +46,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.timer-section
-  @extend .cursor-default
-</style>
+<style lang="sass" scoped></style>

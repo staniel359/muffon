@@ -1,14 +1,16 @@
 <template>
   <BaseSegmentContainer
-    class="extra-segment"
+    class="main-page-top-section"
   >
-    <div />
+    <div class="section" />
 
-    <BaseViewSelect
-      class="view-select-block"
-      :scope="scope"
-      :view-id="viewId"
-    />
+    <div class="section">
+      <BaseViewSelect
+        class="section-item"
+        :scope="scope"
+        :view-id="viewId"
+      />
+    </div>
   </BaseSegmentContainer>
 </template>
 
@@ -30,14 +32,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.extra-segment
-  @extend .d-flex, .align-items-center, .justify-content-space-between
-
-[dir="ltr"]
-  .view-select-block
-    margin-left: 0.75em
-[dir="rtl"]
-  .view-select-block
-    margin-right: 0.75em
-</style>
+<style lang="sass" scoped></style>

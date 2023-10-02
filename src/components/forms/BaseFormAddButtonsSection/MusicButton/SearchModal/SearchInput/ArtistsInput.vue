@@ -1,11 +1,11 @@
 <template>
   <BaseSearchInput
     ref="input"
-    class="search-input"
+    class="main-simple-search-input"
     :url="url"
     :fields="fields"
     :format-response="formatResponse"
-    is-artists-input
+    :scope="scope"
     @select="handleSelect"
   />
 
@@ -45,10 +45,15 @@ export default {
       }
     }
   },
+  data () {
+    return {
+      scope: 'artists'
+    }
+  },
   computed: {
     url () {
       return (
-        `${this.source}/search/artists` +
+        `${this.source}/search/${this.scope}` +
         '?query={query}&limit=5'
       )
     },
@@ -77,7 +82,7 @@ export default {
       if (!isPresent) {
         this.addCollectionItem(
           {
-            collection: 'artists',
+            collection: this.scope,
             item: artist
           }
         )
@@ -87,7 +92,7 @@ export default {
     },
     handleClearButtonClick () {
       this.resetCollection(
-        'artists'
+        this.scope
       )
 
       this.clear()

@@ -3,13 +3,15 @@
     class="item conversation-item"
     :link="conversationLink"
   >
-    <OtherProfileSection
-      :other-profile-data="otherProfileData"
-    />
+    <div class="content">
+      <OtherProfileSection
+        :other-profile-data="otherProfileData"
+      />
 
-    <LastMessageSegment
-      :last-message-data="lastMessageData"
-    />
+      <LastMessageSegment
+        :last-message-data="lastMessageData"
+      />
+    </div>
   </BaseLinkContainer>
 </template>
 
@@ -57,7 +59,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.ui.selection.list
-  & > .item.conversation-item
-    padding: 1em !important
+.conversation-item
+  padding: 2rem !important
 </style>

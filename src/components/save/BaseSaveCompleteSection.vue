@@ -45,7 +45,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.complete-message
-  margin-bottom: 1em !important
-</style>
+<style lang="sass" scoped></style>

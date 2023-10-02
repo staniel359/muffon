@@ -9,7 +9,7 @@
   />
   <div
     v-else
-    class="text main-dropdown-item"
+    class="text main-dropdown-item flex-full"
     :class="{
       inverted: isDarkMode,
       default: (

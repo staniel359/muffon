@@ -1,25 +1,26 @@
 <template>
-  <div class="title-options-section">
-    <div class="title-section">
+  <div class="middle-aligned main-bottom-section">
+    <div class="flex-full">
       <BaseHeader
         tag="h3"
         :text="videoTitle"
       />
 
       <BaseVideoChannelLinkSection
+        class="channel-link-section"
         :model-data="videoData"
       />
     </div>
 
     <BaseSelfIcons
-      class="self-icons"
+      class="main-right-section"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
       :watched-id="watchedId"
     />
 
     <BaseVideoOptionsPopup
-      class="video-options"
+      class="main-right-section"
       :video-data="videoData"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
@@ -71,24 +72,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.title-options-section
-  @extend .d-flex, .align-items-center
-  margin-top: 0.75em
-
-.title-section
-  @extend .flex-full
-
-[dir="ltr"]
-  .video-options
-    margin-left: 1em
-[dir="rtl"]
-  .video-options
-    margin-right: 1em
-
-[dir="ltr"]
-  .self-icons
-    margin-left: 1em
-[dir="rtl"]
-  .self-icons
-    margin-right: 1em
+.channel-link-section
+  margin-top: 0.25rem
 </style>

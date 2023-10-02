@@ -2,14 +2,17 @@
   <button
     ref="button"
     type="submit"
-    class="ui primary circular button main-simple-button"
+    class="ui primary circular button main-button"
   >
     <BaseIcon
       v-if="isWithIcon"
+      class="main-left-small-icon"
       icon="submit"
     />
 
-    {{ actionText }}
+    <span
+      v-text="actionText"
+    />
   </button>
 </template>
 

@@ -47,4 +47,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.main-segment-container
+  padding: 1rem !important
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="item main-simple-list-item base-post-item"
+    class="item main-simple-list-item"
     :class="{
       disabled: isDeleted
     }"
@@ -13,7 +13,7 @@
       v-else
     >
       <BaseImage
-        class="medium"
+        class="image-40"
         :class="imageClass"
         :model="imageModel"
         :image="imageData?.extrasmall"
@@ -26,7 +26,7 @@
         />
         <div
           v-else
-          class="profile-nickname-private-container"
+          class="middle-aligned"
         >
           <BaseProfileNickname
             :profile-data="profileData"
@@ -43,6 +43,7 @@
         />
 
         <BaseSendableContentSection
+          class="sendable-content-section"
           :model-data="postData"
         />
 
@@ -248,10 +249,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.base-post-item
-  @extend .align-items-start
-  padding: 1.5em 1em !important
+.main-simple-list-item
+  padding: 2rem 1.5rem !important
 
-.profile-nickname-private-container
-  @extend .d-flex, .align-items-center
+.sendable-content-section
+  :deep(.media-item)
+    max-width: 450px
 </style>

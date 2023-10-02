@@ -1,12 +1,10 @@
 <template>
-  <div class="action-button-container">
-    <BaseButton
-      class="basic circular"
-      icon="discord"
-      text="Discord"
-      @click="handleClick"
-    />
-  </div>
+  <BaseButton
+    class="basic circular"
+    icon="discord"
+    text="Discord"
+    @click="handleClick"
+  />
 </template>
 
 <script>

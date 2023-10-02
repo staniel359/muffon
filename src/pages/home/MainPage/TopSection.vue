@@ -1,5 +1,5 @@
 <template>
-  <div class="top-section">
+  <div class="middle-aligned-column width-100">
     <div class="main-transition-item">
       <BaseLogoSection />
     </div>
@@ -40,7 +40,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.top-section
-  @extend .w-100, .d-flex, .flex-column, .align-items-center
-</style>
+<style lang="sass" scoped></style>

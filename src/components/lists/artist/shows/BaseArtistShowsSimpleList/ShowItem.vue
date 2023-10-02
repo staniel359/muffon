@@ -1,34 +1,34 @@
 <template>
-  <div class="item main-simple-list-item base-show-item">
-    <div class="content">
-      <div class="title-section">
+  <div class="item main-simple-list-item middle-aligned">
+    <div class="content middle-aligned no-margin">
+      <div class="width-35">
         <strong
           v-text="title"
         />
       </div>
 
-      <div class="place-location-section">
-        <div class="place-section">
+      <div class="width-65 main-right-section">
+        <div class="middle-aligned">
           <BaseIcon
-            class="grey place-icon"
+            class="grey place-icon main-icon"
             icon="place"
           />
 
           <div
-            class="place"
+            class="flex-full main-right-extrasmall-section"
             v-text="place"
           />
         </div>
 
-        <div class="location-section">
+        <div class="main-bottom-mini-section middle-aligned">
           <BaseIcon
-            class="location-icon"
+            class="location-icon main-icon text-align-center"
             :icon="countryIcon"
             is-flag
           />
 
           <strong
-            class="location"
+            class="flex-full main-right-extrasmall-section"
             v-text="location"
           />
         </div>
@@ -36,7 +36,7 @@
     </div>
 
     <BaseTimestampSection
-      class="description date-section"
+      class="description right main-right-section"
       :created="date"
       is-only-date
     />
@@ -93,64 +93,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.base-show-item
-  padding: 1.5em 0.75em !important
-
-.content
-  @extend .d-flex, .align-items-center
-
-.title-section
-  flex: 0.425
-
-.place-location-section
-  flex: 0.575
-[dir="ltr"]
-  .place-location-section
-    margin-left: 1.5em
-[dir="rtl"]
-  .place-location-section
-    margin-right: 1.5em
-
-.place-section
-  @extend .d-flex, .align-items-center
+.main-simple-list-item
+  padding: 1.5rem 1rem !important
 
 .place-icon
-  @extend .no-margin
   width: 25px
-
-.place
-  @extend .flex-full
-[dir="ltr"]
-  .place
-    margin-left: 0.25em
-[dir="rtl"]
-  .place
-    margin-right: 0.25em
-
-.location-section
-  @extend .d-flex, .align-items-center
-  margin-top: 0.75em
 
 .location-icon
-  @extend .text-align-center
   width: 25px
-
-.location
-  @extend .flex-full
-[dir="ltr"]
-  .location
-    margin-left: 0.25em
-[dir="rtl"]
-  .location
-    margin-right: 0.25em
-
-.date-section
-  @extend .text-align-right
-  flex: 0.3
-[dir="ltr"]
-  .date-section
-    margin-left: 1.5em
-[dir="rtl"]
-  .date-section
-    margin-right: 1.5em
 </style>

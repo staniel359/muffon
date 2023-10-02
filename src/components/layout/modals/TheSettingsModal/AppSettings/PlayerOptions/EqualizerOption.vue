@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="equalizerText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="equalizerText"
+      />
 
-    <BaseToggle
-      store-key="player.isWithEqualizer"
-      :is-checked="isPlayerWithEqualizer"
-    />
+      <BaseToggle
+        store-key="player.isWithEqualizer"
+        :is-checked="isPlayerWithEqualizer"
+      />
+    </div>
   </div>
 </template>
 

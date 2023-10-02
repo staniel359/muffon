@@ -3,6 +3,7 @@
     <div>
       <BaseMessage
         class="error"
+        icon="error"
         :header="errorText"
         :list-items="collection"
       />

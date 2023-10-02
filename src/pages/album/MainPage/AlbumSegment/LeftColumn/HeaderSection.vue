@@ -2,7 +2,7 @@
   <BaseTransitionContainer
     :scrollable="scrollable"
   >
-    <div class="album-full-title">
+    <div class="text-align-center word-break-break-word main-bottom-small-section">
       <BaseHeader
         tag="h3"
         :text="albumTitle"
@@ -77,8 +77,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.album-full-title
-  @extend .text-align-center, .word-break-break-word
-  margin-top: 0.75em
-</style>
+<style lang="sass" scoped></style>

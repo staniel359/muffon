@@ -1,5 +1,5 @@
 <template>
-  <div class="main-self-container">
+  <div class="main-self-container main-bottom-small-section">
     <BaseSelfIcons
       :library-id="libraryId"
       :favorite-id="favoriteId"
@@ -46,7 +46,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-self-container
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

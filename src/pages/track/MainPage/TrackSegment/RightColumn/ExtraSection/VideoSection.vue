@@ -11,7 +11,7 @@
     <BaseTrackVideoSelect
       v-if="isVideoSelectCalled"
       v-show="isShowVideoSelect"
-      class="video-select"
+      class="main-bottom-section"
       :track-data="trackData"
       :is-show="isShowVideoSelect"
       @focus="handleFocus"
@@ -72,7 +72,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.video-select
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

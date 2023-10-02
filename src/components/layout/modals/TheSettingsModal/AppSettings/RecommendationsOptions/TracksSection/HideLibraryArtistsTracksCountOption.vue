@@ -1,19 +1,21 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="tracksCountTextFormatted"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="tracksCountTextFormatted"
+      />
 
-    <BaseNumberInput
-      class="tracks-count-input"
-      :class="{
-        disabled: isNumberInputDisabled
-      }"
-      :value="recommendationTracksHideLibraryArtistsTracksCount"
-      @change="handleTracksCountChange"
-    />
+      <BaseNumberInput
+        class="tracks-count-input"
+        :class="{
+          disabled: isNumberInputDisabled
+        }"
+        :value="recommendationTracksHideLibraryArtistsTracksCount"
+        @change="handleTracksCountChange"
+      />
+    </div>
   </div>
 </template>
 

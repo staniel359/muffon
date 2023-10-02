@@ -1,6 +1,6 @@
 <template>
-  <div class="field image-field">
-    <div class="image-container">
+  <div class="field main-form-image-field">
+    <div class="main-image-container">
       <BaseImage
         :class="imageClass"
         :model="model"
@@ -9,15 +9,17 @@
 
       <BaseClearButton
         v-if="imageUrl"
-        class="clear-button"
+        class="main-image-clear-button"
         @click="handleClearButtonClick"
       />
     </div>
 
-    <BaseImageUploadButton
-      class="compact upload-button"
-      @change="handleUploadChange"
-    />
+    <div class="main-bottom-section">
+      <BaseImageUploadButton
+        class="compact"
+        @change="handleUploadChange"
+      />
+    </div>
   </div>
 </template>
 
@@ -106,31 +108,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.image-field
-  @extend .d-flex, .flex-column, .align-items-center
-
-.image-container
-  @extend .relative
-  width: 100px
-  height: 100px
-  &:hover
-    .clear-button
-      @extend .d-block
-  .image
-    @extend .w-100, .h-100
-
-.ui.button
-  &.clear-button
-    @extend .absolute, .no-margin, .d-none
-    top: 5px
-[dir="ltr"]
-  .clear-button
-    right: 5px
-[dir="rtl"]
-  .clear-button
-    left: 5px
-
-.upload-button
-  margin-top: 1em !important
-</style>
+<style lang="sass" scoped></style>

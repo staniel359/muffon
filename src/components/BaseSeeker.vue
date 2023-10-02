@@ -1,7 +1,7 @@
 <template>
   <div
     ref="seeker"
-    class="ui small slider base-seeker"
+    class="ui small slider base-seeker no-padding"
     :class="{
       disabled: isDisabled,
       inverted: isDarkMode,
@@ -150,8 +150,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .base-seeker
-  @extend .no-padding
   & > :deep(.inner)
     @extend .cursor-pointer
     & > .track-fill
@@ -174,7 +175,7 @@ export default {
       & > :deep(.inner)
         & > .track,
         & > .track-fill
-          height: 0.35em
+          height: 0.35rem
     & > :deep(.inner)
       & > .thumb
         top: 1px !important
@@ -183,7 +184,7 @@ export default {
       & > :deep(.inner)
         & > .track,
         & > .track-fill
-          width: 0.35em
+          width: 0.35rem
   &.inverted
     & > :deep(.inner)
       & > .track-progress

@@ -1,11 +1,11 @@
 <template>
   <BaseLinkContainer
-    class="item main-option-link"
+    class="item main-option-link main-options-option"
     :link="link"
     @click="handleClick"
   >
     <BaseIcon
-      class="link"
+      class="link main-options-option-icon"
       :icon="icon"
     />
 

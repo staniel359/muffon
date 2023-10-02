@@ -74,6 +74,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .base-emoji-picker
   :deep(em-emoji-picker)
     @extend .border-radius

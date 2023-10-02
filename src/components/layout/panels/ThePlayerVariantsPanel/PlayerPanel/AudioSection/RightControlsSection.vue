@@ -1,5 +1,5 @@
 <template>
-  <div class="right-controls-section">
+  <div class="width-25 middle-end-aligned">
     <BitrateSection
       v-if="isPlayerWithBitrate"
     />
@@ -33,8 +33,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.right-controls-section
-  @extend .d-flex, .align-items-center, .justify-content-flex-end
-  flex: 0.3
-</style>
+<style lang="sass" scoped></style>

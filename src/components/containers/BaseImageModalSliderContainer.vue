@@ -84,6 +84,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .base-image-modal-slider-container
   :deep(.slick-prev)
     z-index: 1
@@ -93,16 +95,20 @@ export default {
     &:before
       @extend .text-color-black
       font-size: 25px
+  &.inverted
+    :deep(.slick-arrow)
+      &:before
+        @extend .text-color-white
 [dir="ltr"]
   .base-image-modal-slider-container
     :deep(.slick-prev)
-      left: 25px
+      left: -40px
     :deep(.slick-next)
-      right: 25px
+      right: -40px
 [dir="rtl"]
   .base-image-modal-slider-container
     :deep(.slick-prev)
-      right: 25px
+      right: -40px
     :deep(.slick-next)
-      left: 25px
+      left: -40px
 </style>

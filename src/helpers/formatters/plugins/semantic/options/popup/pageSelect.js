@@ -4,7 +4,7 @@ export default function (
   }
 ) {
   const className =
-    'ui popup main-popup main-page-select-popup'
+    'ui popup main-popup extrasmall'
 
   return {
     position: 'top center',

@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="members-segment"
+    class="center-aligned"
   >
     <BaseCounterSection
       class="main-link"
@@ -57,7 +57,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.members-segment
-  @extend .d-flex, .justify-content-center
-</style>
+<style lang="sass" scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer>
-    <div class="scope-select-container">
+    <div class="main-search-container">
       <ScopeSelect
         :scope="scope"
         @select="handleScopeSelect"
@@ -9,24 +9,28 @@
       <template
         v-if="scope"
       >
-        <Component
-          :is="searchComponent"
+        <div
           v-if="!isTopScope"
-          ref="input"
-          class="search-container"
-          @select="handleSearchSelect"
-        />
+          class="main-right-section"
+        >
+          <Component
+            :is="searchComponent"
+            ref="input"
+            @select="handleSearchSelect"
+          />
+        </div>
 
         <BaseClearButton
           v-if="modelName"
           @click="handleClearButtonClick"
         />
 
-        <Component
-          :is="modelScopeSelectComponent"
-          class="model-scope-select-container"
-          @select="handleModelScopeSelect"
-        />
+        <div class="main-right-section">
+          <Component
+            :is="modelScopeSelectComponent"
+            @select="handleModelScopeSelect"
+          />
+        </div>
       </template>
     </div>
   </BaseSegmentContainer>
@@ -152,21 +156,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.scope-select-container
-  @extend .d-flex, .align-items-center
-
-[dir="ltr"]
-  .search-container
-    margin-left: 1em
-[dir="rtl"]
-  .search-container
-    margin-right: 1em
-
-[dir="ltr"]
-  .model-scope-select-container
-    margin-left: 1em
-[dir="rtl"]
-  .model-scope-select-container
-    margin-right: 1em
-</style>
+<style lang="sass" scoped></style>

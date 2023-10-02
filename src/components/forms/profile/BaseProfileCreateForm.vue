@@ -1,25 +1,23 @@
 <template>
-  <div
-    :class="[
-      'ui raised segments main-segments',
-      'main-segment-container'
-    ]"
-  >
+  <BaseSegmentsContainer>
     <FormSegment />
 
     <LoginSegment
       @login-link-click="handleLoginLinkClick"
     />
-  </div>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import FormSegment from './BaseProfileCreateForm/FormSegment.vue'
 import LoginSegment from './BaseProfileCreateForm/LoginSegment.vue'
 
 export default {
   name: 'BaseProfileCreateForm',
   components: {
+    BaseSegmentsContainer,
     FormSegment,
     LoginSegment
   },

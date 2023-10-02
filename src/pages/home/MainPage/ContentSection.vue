@@ -97,5 +97,5 @@ export default {
 
 <style lang="sass" scoped>
 .content-section
-  margin-top: 2em
+  margin-top: 3.5rem
 </style>

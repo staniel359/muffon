@@ -1,11 +1,6 @@
 <template>
-  <div
-    :class="[
-      'ui raised segments main-segments',
-      'artist-page-left-column',
-      'main-segment-container',
-      'main-sticky-container'
-    ]"
+  <BaseSegmentsContainer
+    class="main-sticky-container left-column width-25"
   >
     <ImageNameSegment
       :artist-name="artistName"
@@ -21,7 +16,7 @@
       v-if="recommendationData"
       :recommendation-data="recommendationData"
     />
-  </div>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
@@ -29,6 +24,8 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import ImageNameSegment from './LeftColumn/ImageNameSegment.vue'
 import SelfSegment from './LeftColumn/SelfSegment.vue'
 import RecommendedSegment from './LeftColumn/RecommendedSegment.vue'
@@ -36,6 +33,7 @@ import RecommendedSegment from './LeftColumn/RecommendedSegment.vue'
 export default {
   name: 'LeftColumn',
   components: {
+    BaseSegmentsContainer,
     ImageNameSegment,
     SelfSegment,
     RecommendedSegment
@@ -65,7 +63,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.artist-page-left-column
-  @extend .no-margin
-  width: 200px
+.left-column
+  min-width: 210px
 </style>

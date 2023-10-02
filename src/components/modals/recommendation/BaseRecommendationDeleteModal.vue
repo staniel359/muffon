@@ -102,7 +102,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.error-message
-  margin-top: 1em !important
-</style>
+<style lang="sass" scoped></style>

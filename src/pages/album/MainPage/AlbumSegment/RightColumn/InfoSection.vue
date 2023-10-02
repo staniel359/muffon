@@ -1,7 +1,6 @@
 <template>
-  <div class="header-source-section">
+  <div class="d-flex">
     <HeaderBlock
-      class="album-header-block"
       :album-data="albumData"
     />
 
@@ -56,7 +55,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.header-source-section
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

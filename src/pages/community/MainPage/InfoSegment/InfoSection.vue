@@ -1,7 +1,7 @@
 <template>
   <BaseIcon
     ref="icon"
-    class="grey main-popup-icon"
+    class="grey main-popup-icon main-bottom-mini-icon"
     icon="infoCircle"
   />
 
@@ -48,7 +48,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-popup-icon
-  margin-top: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

@@ -1,20 +1,17 @@
 <template>
   <div
     v-if="tracksCount"
+    class="main-list-right-small-section"
   >
     <BaseLinkContainer
       class="main-link"
       :link="link"
     >
-      <div class="link">
-        <BaseIcon
-          icon="track"
-        />
-
-        <span
-          v-text="tracksCount"
-        />
-      </div>
+      <BaseListCounterSection
+        icon="track"
+        :count="tracksCount"
+        :is-small="isSmall"
+      />
     </BaseLinkContainer>
   </div>
 </template>
@@ -22,7 +19,8 @@
 <script>
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 import {
   tracks as formatProfileLibraryArtistTracksLink
 } from '@/helpers/formatters/links/profile/library/artist'
@@ -31,7 +29,7 @@ export default {
   name: 'TracksCounterSection',
   components: {
     BaseLinkContainer,
-    BaseIcon
+    BaseListCounterSection
   },
   props: {
     artistData: {
@@ -41,7 +39,8 @@ export default {
     profileId: {
       type: String,
       required: true
-    }
+    },
+    isSmall: Boolean
   },
   computed: {
     link () {

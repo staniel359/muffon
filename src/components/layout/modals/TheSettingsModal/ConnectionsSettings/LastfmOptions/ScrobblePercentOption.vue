@@ -1,19 +1,21 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="percentText"
-    />
-
-    <div class="seeker-container">
-      <BaseSeeker
-        ref="seeker"
-        class="bottom aligned labeled ticked with-thumb"
-        :options="seekerOptions"
-        :is-disabled="isDisabled"
-        @mouse-up="handleMouseUp"
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="percentText"
       />
+
+      <div class="seeker-container">
+        <BaseSeeker
+          ref="seeker"
+          class="bottom aligned labeled ticked with-thumb"
+          :options="seekerOptions"
+          :is-disabled="isDisabled"
+          @mouse-up="handleMouseUp"
+        />
+      </div>
     </div>
   </div>
 </template>

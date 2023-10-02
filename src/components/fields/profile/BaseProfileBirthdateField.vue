@@ -3,7 +3,7 @@
     <BaseCalendar
       ref="calendar"
       :key="key"
-      class="calendar"
+      class="flex-full"
       input-name="birthdate"
       :date="birthdate"
       :input-text="birthdateText"
@@ -98,7 +98,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.calendar
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

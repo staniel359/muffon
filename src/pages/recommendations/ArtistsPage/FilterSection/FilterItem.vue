@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div class="filter-top-section">
+    <div class="middle-aligned">
       <BaseIcon
-        class="filter-icon"
+        class="main-left-small-icon"
         :icon="actionIcon"
       />
 
       <BaseIcon
-        class="filter-icon"
+        class="main-left-small-icon"
         :icon="model"
       />
 
       <div
-        class="filter-text-section"
+        class="main-left-section"
         v-text="filterTextFormatted"
       />
 
@@ -173,23 +173,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.filter-top-section
-  @extend .d-flex, .align-items-center
-
-.filter-icon
-  @extend .no-margin
-[dir="ltr"]
-  .filter-icon
-    margin-right: 0.75em !important
-[dir="rtl"]
-  .filter-icon
-    margin-left: 0.75em !important
-
-[dir="ltr"]
-  .filter-text-section
-    margin-right: 1.25em
-[dir="rtl"]
-  .filter-text-section
-    margin-left: 1.25em
-</style>
+<style lang="sass" scoped></style>

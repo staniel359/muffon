@@ -3,16 +3,17 @@
     ref="queuePanel"
     class="ui right overlay sidebar the-queue-panel"
   >
-    <div
-      :class="[
-        'ui raised segments main-segments',
-        'main-segment-container'
-      ]"
+    <BaseSegmentsContainer
+      class="d-flex height-100"
     >
-      <HeaderSection />
+      <HeaderSection
+        class="section-segment"
+      />
 
-      <TracksSection />
-    </div>
+      <TracksSection
+        class="section-segment"
+      />
+    </BaseSegmentsContainer>
   </div>
 </template>
 
@@ -23,6 +24,8 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import queueStore from '@/stores/queue'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
 import {
@@ -36,6 +39,7 @@ import {
 export default {
   name: 'TheQueuePanel',
   components: {
+    BaseSegmentsContainer,
     HeaderSection,
     TracksSection
   },
@@ -94,13 +98,13 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.the-queue-panel
-  width: 360px !important
+@import '@/assets/styles/Shared.sass'
 
-.main-segment-container
-  @extend .d-flex, .h-100
-  .segment
-    @extend .no-border-radius
-    &.inverted
-      border-left: $borderInverted
+.the-queue-panel
+  width: 400px !important
+
+.section-segment
+  @extend .no-border-radius
+  &.inverted
+    border-left: $borderInverted
 </style>

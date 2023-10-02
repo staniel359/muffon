@@ -9,7 +9,7 @@
     <BaseTrackSourceSelect
       v-if="isSourceSelectCalled"
       v-show="isShowSourceSelect"
-      class="source-select"
+      class="main-bottom-section"
       :track-data="trackData"
     />
   </BaseSegmentContainer>
@@ -49,7 +49,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.source-select
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

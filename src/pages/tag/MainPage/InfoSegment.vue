@@ -1,16 +1,13 @@
 <template>
-  <div
-    :class="[
-      'ui raised segments main-segments',
-      'main-segment-container'
-    ]"
+  <BaseSegmentsContainer
+    class="relative overflow-hidden"
   >
     <CoverSegment
       :tag-name="tagName"
     />
 
     <BaseSegmentContainer
-      class="tag-info-segment"
+      class="tag-info-segment height-100 overflow-y-auto"
       :is-change-transparency="false"
     >
       <HeaderSection
@@ -29,10 +26,12 @@
         :tag-data="tagData"
       />
     </BaseSegmentContainer>
-  </div>
+  </BaseSegmentsContainer>
 </template>
 
 <script>
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import CoverSegment from './InfoSegment/CoverSegment.vue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
@@ -44,6 +43,7 @@ import DescriptionSection from './InfoSegment/DescriptionSection.vue'
 export default {
   name: 'InfoSegment',
   components: {
+    BaseSegmentsContainer,
     CoverSegment,
     BaseSegmentContainer,
     HeaderSection,
@@ -66,13 +66,13 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .main-segment-container
-  @extend .relative, .overflow-hidden
-  height: 420px
+  height: 450px
 
 .tag-info-segment
-  @extend .h-100, .overflow-y-auto
-  padding: 50px 80px 30px 80px
+  padding: 60px 80px 30px 80px !important
   &:not(.loading)
     @extend .background-black-transparent
 </style>

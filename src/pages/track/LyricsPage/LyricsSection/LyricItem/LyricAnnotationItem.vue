@@ -154,14 +154,14 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .lyric-annotation-item
-  @extend .cursor-pointer
-  background: $colorGrey
+  @extend .background-grey, .cursor-pointer
   &.inverted
-    background: $colorGreyInverted
+    @extend .background-grey-inverted
   &:hover
-    @extend .text-color-white
-    background: $colorBaseLight
+    @extend .background-base-light, .text-color-white
     &.inverted
-      background: $colorBase
+      @extend .background-base
 </style>

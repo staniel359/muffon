@@ -84,7 +84,7 @@ export default {
   },
   computed: {
     tableClass () {
-      return `ui ${this.columnWidth} column grid`
+      return `ui ${this.columnWidth} column relaxed grid`
     },
     columnWidth () {
       return numberToColumnWidth(

@@ -3,11 +3,19 @@
     :is="component"
     class="ui label base-label"
     :class="{
-      inverted: isInvertable && isDarkMode,
-      icon: icon && !text,
-      'right icon': icon && text && isReverse,
+      inverted: (
+        isInvertable && isDarkMode
+      ),
+      icon: (
+        icon && !text
+      ),
+      'right icon': (
+        icon && text && isReverse
+      ),
       'with-text': text,
-      clickable: isClickable || link,
+      clickable: (
+        isClickable || link
+      ),
       [transparentClass]: (
         isChangeTransparency && isInvertable
       )
@@ -17,7 +25,7 @@
   >
     <BaseIcon
       v-if="isLoading"
-      class="loading-icon"
+      class="main-icon"
       is-loading
     />
     <template
@@ -25,6 +33,7 @@
     >
       <BaseIcon
         v-if="icon && !isReverse"
+        class="main-left-small-icon"
         :icon="icon"
         @click="handleIconClick"
       />
@@ -36,6 +45,7 @@
 
       <BaseIcon
         v-if="icon && isReverse"
+        class="main-right-small-icon"
         :icon="icon"
         @click="handleIconClick"
       />
@@ -128,7 +138,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .base-label
+  margin: 0 0.75rem 0.75rem 0 !important
+  &.large
+    margin: 0 1rem 1rem 0 !important
   &:not(.clickable)
     @extend .cursor-default
     &.basic
@@ -141,8 +156,5 @@ export default {
         @extend .text-color-base
   &.circular
     &.with-text
-      padding: 0.6em 1.2em !important
-
-.loading-icon
-  margin: 0 0.5em !important
+      padding: 0.6rem 1.2rem !important
 </style>

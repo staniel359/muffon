@@ -1,6 +1,7 @@
 <template>
   <div
     v-if="city || country"
+    class="middle-aligned"
   >
     <i
       v-if="country"
@@ -73,4 +74,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.main-header
+  margin-left: 0.25rem !important
+</style>

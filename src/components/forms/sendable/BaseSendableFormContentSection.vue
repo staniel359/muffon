@@ -1,66 +1,66 @@
 <template>
   <div
     v-if="isRender"
-    class="main-content-container"
+    class="main-bottom-section"
   >
     <BaseImagesTableList
       v-if="images.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :images="images"
     />
 
     <ArtistsSection
       v-if="artists.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :artists="artists"
       @link-click="handleLinkClick"
     />
 
     <AlbumsSection
       v-if="albums.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :albums="albums"
       @link-click="handleLinkClick"
     />
 
     <TracksSection
       v-if="tracks.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :tracks="tracks"
       @link-click="handleLinkClick"
     />
 
     <VideosSection
       v-if="videos.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :videos="videos"
       @link-click="handleLinkClick"
     />
 
     <VideoChannelsSection
       v-if="videoChannels.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :video-channels="videoChannels"
       @link-click="handleLinkClick"
     />
 
     <VideoPlaylistsSection
       v-if="videoPlaylists.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :video-playlists="videoPlaylists"
       @link-click="handleLinkClick"
     />
 
     <PlaylistsSection
       v-if="playlists.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :playlists="playlists"
       @link-click="handleLinkClick"
     />
 
     <CommunitiesSection
       v-if="communities.length"
-      class="main-content-section"
+      class="main-sendable-content-section"
       :communities="communities"
       @link-click="handleLinkClick"
     />

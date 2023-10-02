@@ -7,12 +7,7 @@
     <template
       #default="slotProps"
     >
-      <div
-        :class="[
-          'ui raised segments main-segments',
-          'main-segment-container'
-        ]"
-      >
+      <BaseSegmentsContainer>
         <SourceSelectSegment
           :track-data="slotProps.trackData"
         />
@@ -24,7 +19,7 @@
           :error="slotProps.error"
           @refresh="handleRefresh"
         />
-      </div>
+      </BaseSegmentsContainer>
 
       <TabsSegment
         :track-data="slotProps.trackData"
@@ -37,6 +32,8 @@
 <script>
 import BaseTrackPageContainer
   from '@/components/containers/pages/track/BaseTrackPageContainer.vue'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import SourceSelectSegment from './MainPage/SourceSelectSegment.vue'
 import TrackSegment from './MainPage/TrackSegment.vue'
 import TabsSegment from './MainPage/TabsSegment.vue'
@@ -45,6 +42,7 @@ import pageMixin from '@/mixins/pageMixin'
 export default {
   name: 'MainPage',
   components: {
+    BaseSegmentsContainer,
     BaseTrackPageContainer,
     SourceSelectSegment,
     TrackSegment,

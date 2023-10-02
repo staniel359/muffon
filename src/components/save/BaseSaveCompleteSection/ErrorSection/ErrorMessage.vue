@@ -1,7 +1,8 @@
 <template>
-  <div class="main-library-modal-message-container">
+  <div class="main-top-section">
     <BaseMessage
       class="error"
+      icon="error"
       :header="errorText"
     />
   </div>

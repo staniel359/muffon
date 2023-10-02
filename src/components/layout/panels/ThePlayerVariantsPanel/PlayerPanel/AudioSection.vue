@@ -1,14 +1,16 @@
 <template>
-  <div class="audio-section">
-    <div class="top-section">
+  <div class="main-right-section middle-center-aligned-full-column">
+    <div class="middle-aligned width-100">
       <LeftControlsSection />
 
       <CenterControlsSection />
 
-      <RightControlsSection />
+      <RightControlsSection
+        :key="key"
+      />
     </div>
 
-    <div class="bottom-section">
+    <div class="main-bottom-extrasmall-section width-100 relative">
       <ScrobblePoint
         v-if="isRenderScrobblePoint"
       />
@@ -35,6 +37,9 @@ import RightControlsSection from './AudioSection/RightControlsSection.vue'
 import ScrobblePoint from './AudioSection/ScrobblePoint.vue'
 import SeekerPanel from './AudioSection/SeekerPanel.vue'
 import getQueueTrack from '@/helpers/actions/queue/track/get'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'AudioSection',
@@ -44,6 +49,11 @@ export default {
     RightControlsSection,
     ScrobblePoint,
     SeekerPanel
+  },
+  data () {
+    return {
+      key: null
+    }
   },
   computed: {
     ...mapState(
@@ -103,11 +113,16 @@ export default {
     }
   },
   watch: {
+    playerPlaying:
+      'handlePlayerPlayingChange',
     isQueueAutoplay:
       'handleIsQueueAutoplayChange'
   },
   methods: {
     getQueueTrack,
+    handlePlayerPlayingChange () {
+      this.key = generateKey()
+    },
     handleAudioEnd () {
       if (this.isGetQueueNextTrack) {
         this.getQueueNextTrack()
@@ -137,20 +152,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.audio-section
-  @extend .flex-full, .d-flex, .flex-column, .align-items-center, .justify-content-center
-[dir="ltr"]
-  .audio-section
-    margin-left: 1em
-[dir="rtl"]
-  .audio-section
-    margin-right: 1em
-
-.top-section
-  @extend .d-flex, .align-items-center, .w-100
-
-.bottom-section
-  @extend .w-100, .relative
-  margin-top: 0.5em
-</style>
+<style lang="sass" scoped></style>

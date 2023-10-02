@@ -4,7 +4,7 @@
     @visible="handleVisible"
   >
     <div class="content full-height">
-      <div class="top-section-container">
+      <div class="main-search-container">
         <SearchInput
           ref="input"
           :tracks="collection"
@@ -153,7 +153,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.top-section-container
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

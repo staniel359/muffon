@@ -1,12 +1,14 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="timezoneText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="timezoneText"
+      />
 
-    <BaseTimezoneSelect />
+      <BaseTimezoneSelect />
+    </div>
   </div>
 </template>
 

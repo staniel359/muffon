@@ -129,7 +129,13 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .base-modal
+  &.scrolling
+    top: unset !important
+    &:after
+      @extend .d-none
   & > :deep(.content)
     @extend .no-margin
     &.full-height
@@ -145,12 +151,10 @@ export default {
   &.inverted
     &:not(.base-image-modal)
       @extend .background-black, .border-inverted
-    & > :deep(.header),
-    & > :deep(.content),
-    & > :deep(.actions)
-      @extend .background-black
     & > :deep(.header)
-      border-bottom: $borderInverted
+      @extend .background-black, .border-bottom-inverted
+    & > :deep(.content)
+      @extend .background-black
     & > :deep(.actions)
-      border-top: $borderInverted
+      @extend .background-black, .border-top-inverted
 </style>

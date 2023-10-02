@@ -1,6 +1,6 @@
 <template>
   <BaseMenuContainer
-    class="secondary base-tabs"
+    class="secondary base-tabs main-top-section"
   >
     <TabItem
       v-for="(tabData, index) in tabs"
@@ -53,5 +53,5 @@ export default {
   &.secondary
     &:not(.pointing)
       :deep(.item)
-        padding: 0.8em 1.6em
+        padding: 0.9rem 1.8rem
 </style>

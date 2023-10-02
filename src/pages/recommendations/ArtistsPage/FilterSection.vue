@@ -4,26 +4,22 @@
       v-for="(filterItemData, index) in filterItems"
       :key="index"
       ref="filterItem"
-      class="filter-item"
+      class="main-list-section"
       :filter-item-data="filterItemData"
       :index="index"
       :is-show="isShow"
     />
 
-    <div class="main-form-submit-button-container">
-      <div class="filter-action-button-section">
-        <BaseClearButton
-          v-if="isRenderClearButton"
-          @click="handleClearButtonClick"
-        />
-      </div>
+    <div class="main-form-submit-button-container main-buttons-container middle-aligned">
+      <BaseClearButton
+        v-if="isRenderClearButton"
+        @click="handleClearButtonClick"
+      />
 
-      <div class="filter-action-button-section">
-        <BaseSubmitButton
-          action-key="filter"
-          @click="handleSubmitButtonClick"
-        />
-      </div>
+      <BaseSubmitButton
+        action-key="filter"
+        @click="handleSubmitButtonClick"
+      />
     </div>
   </div>
 </template>
@@ -123,19 +119,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.filter-item
-  &:not(:first-child)
-    margin-top: 1.5em
-
-.filter-action-button-section
-  @extend .d-flex, .align-items-center
-[dir="ltr"]
-  .filter-action-button-section
-    &:not(:first-child)
-      margin-left: 1em
-[dir="rtl"]
-  .filter-action-button-section
-    &:not(:first-child)
-      margin-right: 1em
-</style>
+<style lang="sass" scoped></style>

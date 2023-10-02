@@ -1,20 +1,22 @@
 <template>
-  <InfoSection
-    :track-data="trackData"
-    :request-track-data="requestTrackData"
-  />
+  <div class="main-bottom-section">
+    <InfoSection
+      :track-data="trackData"
+      :request-track-data="requestTrackData"
+    />
 
-  <BaseDivider />
+    <BaseDivider />
 
-  <VideoSection
-    :track-data="trackData"
-  />
+    <VideoSection
+      :track-data="trackData"
+    />
 
-  <BaseDivider />
+    <BaseDivider />
 
-  <LyricsSection
-    :track-data="trackData"
-  />
+    <LyricsSection
+      :track-data="trackData"
+    />
+  </div>
 </template>
 
 <script>

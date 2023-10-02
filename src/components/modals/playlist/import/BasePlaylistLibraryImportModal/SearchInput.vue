@@ -1,10 +1,11 @@
 <template>
   <BaseSearchInput
     ref="input"
-    class="search-input"
+    class="main-simple-search-input"
     :url="url"
     :fields="fields"
     :format-response="formatResponse"
+    :scope="scope"
     @select="handleSelect"
   />
 </template>
@@ -38,6 +39,11 @@ export default {
     },
     isSave: Boolean
   },
+  data () {
+    return {
+      scope: 'tracks'
+    }
+  },
   computed: {
     ...mapState(
       profileStore,
@@ -48,7 +54,7 @@ export default {
     url () {
       return (
         `profiles/${this.profileId}` +
-        '/library/search/tracks' +
+        `/library/search/${this.scope}` +
         '?query={query}&limit=5'
       )
     },
@@ -98,7 +104,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-input
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

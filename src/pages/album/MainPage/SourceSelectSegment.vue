@@ -6,12 +6,15 @@
       @click="handleSearchButtonClick"
     />
 
-    <BaseAlbumSourceSelect
+    <div
       v-if="isSourceSelectCalled"
       v-show="isShowSourceSelect"
-      class="source-select"
-      :album-data="albumData"
-    />
+      class="main-bottom-section"
+    >
+      <BaseAlbumSourceSelect
+        :album-data="albumData"
+      />
+    </div>
   </BaseSegmentContainer>
 </template>
 
@@ -49,7 +52,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.source-select
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

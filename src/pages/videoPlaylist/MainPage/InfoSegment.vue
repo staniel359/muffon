@@ -1,68 +1,62 @@
 <template>
   <BaseSegmentContainer>
-    <BaseListContainer>
-      <div class="item main-simple-list-item main-info-item">
-        <div class="image-container">
-          <BaseZoomableImage
-            model="videoPlaylist"
-            size="extrasmall"
-            :image-data="imageData"
-          />
-        </div>
+    <BaseItemContainer>
+      <BaseZoomableImage
+        class="image image-80"
+        model="videoPlaylist"
+        size="extrasmall"
+        :image-data="imageData"
+      />
 
-        <div class="content">
-          <BaseHeader
-            tag="h3"
-            :text="playlistTitle"
-          />
+      <div class="content">
+        <div
+          class="header"
+          v-text="playlistTitle"
+        />
 
-          <BaseVideoChannelLinkSection
-            class="extra"
-            :model-data="playlistData"
-          />
+        <BaseVideoChannelLinkSection
+          class="description"
+          :model-data="playlistData"
+        />
 
-          <DescriptionSection
-            class="description"
-            :playlist-data="playlistData"
-          />
+        <DescriptionSection
+          class="description"
+          :playlist-data="playlistData"
+        />
 
-          <BaseCounterSection
-            class="description"
-            scope="videos"
-            :count="videosCount"
-          />
+        <BaseCounterSection
+          class="description"
+          scope="videos"
+          :count="videosCount"
+        />
 
-          <BasePublishDateSection
-            class="description"
-            :model-data="playlistData"
-          />
-        </div>
-
-        <div class="self-options-section">
-          <BaseSelfIcons
-            :bookmark-id="bookmarkId"
-          />
-
-          <BaseVideoPlaylistOptionsPopup
-            :playlist-data="playlistData"
-            :bookmark-id="bookmarkId"
-            is-with-bookmark-option
-            is-with-share-option
-            is-with-external-link-option
-          />
-        </div>
+        <BasePublishDateSection
+          class="meta"
+          :model-data="playlistData"
+        />
       </div>
-    </BaseListContainer>
+
+      <div class="middle-aligned">
+        <BaseSelfIcons
+          :bookmark-id="bookmarkId"
+        />
+
+        <BaseVideoPlaylistOptionsPopup
+          :playlist-data="playlistData"
+          :bookmark-id="bookmarkId"
+          is-with-bookmark-option
+          is-with-share-option
+          is-with-external-link-option
+        />
+      </div>
+    </BaseItemContainer>
   </BaseSegmentContainer>
 </template>
 
 <script>
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseListContainer
-  from '@/components/containers/lists/BaseListContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
 import BaseVideoChannelLinkSection
   from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
 import DescriptionSection from './InfoSegment/DescriptionSection.vue'
@@ -72,21 +66,22 @@ import BasePublishDateSection
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseVideoPlaylistOptionsPopup
   from '@/components/popups/videoPlaylist/BaseVideoPlaylistOptionsPopup.vue'
+import BaseItemContainer
+  from '@/components/containers/item/BaseItemContainer.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'InfoSegment',
   components: {
     BaseSegmentContainer,
-    BaseListContainer,
     BaseZoomableImage,
-    BaseHeader,
     BaseVideoChannelLinkSection,
     DescriptionSection,
     BaseCounterSection,
     BasePublishDateSection,
     BaseSelfIcons,
-    BaseVideoPlaylistOptionsPopup
+    BaseVideoPlaylistOptionsPopup,
+    BaseItemContainer
   },
   mixins: [
     selfMixin
@@ -114,7 +109,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.self-options-section
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

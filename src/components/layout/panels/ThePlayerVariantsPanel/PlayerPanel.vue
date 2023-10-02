@@ -1,7 +1,7 @@
 <template>
   <BaseSegmentContainer
     ref="player"
-    class="bottom overlay blurred sidebar player-panel"
+    class="bottom overlay blurred sidebar player-panel no-padding no-border visibility-visible overflow-visible height-player-panel"
     :class="{
       visible: playerPlaying
     }"
@@ -10,7 +10,7 @@
 
     <div
       v-if="playerPlaying"
-      class="ui container main-container player-content-container"
+      class="ui container main-container player-content-container middle-aligned height-100"
     >
       <PlayingSection />
 
@@ -94,17 +94,14 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.ui.sidebar
-  &.player-panel
-    @extend .no-padding, .no-border, .visibility-visible
-    height: $playerPanelHeight !important
-    overflow: visible !important
-    z-index: 200 !important
-    transition: transform 0.5s ease
-    &.inverted
-      border-top: $borderInverted !important
+@import '@/assets/styles/Shared.sass'
+
+.player-panel
+  z-index: 200 !important
+  transition: transform 0.5s ease
+  &.inverted
+    @extend .border-top-inverted
 
 .player-content-container
-  @extend .d-flex, .align-items-center, .h-100
-  width: 730px !important
+  min-width: 750px !important
 </style>

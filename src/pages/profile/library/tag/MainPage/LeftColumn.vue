@@ -1,9 +1,6 @@
 <template>
   <div
-    :class="[
-      'main-profile-page-left-column',
-      'main-sticky-container'
-    ]"
+    class="main-profile-page-left-column main-sticky-container"
   >
     <InfoSegment
       :tag-data="tagData"

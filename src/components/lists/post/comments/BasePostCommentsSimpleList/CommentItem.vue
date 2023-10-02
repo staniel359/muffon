@@ -1,6 +1,6 @@
 <template>
   <div
-    class="comment main-simple-list-item base-comment-item"
+    class="comment main-simple-list-item no-padding main-list-section"
     :class="{
       disabled: isDeleted
     }"
@@ -13,7 +13,7 @@
       v-else
     >
       <BaseImage
-        class="small"
+        class="image-30"
         :class="imageClass"
         :model="imageModel"
         :image="imageData?.extrasmall"
@@ -27,7 +27,7 @@
           />
           <div
             v-else
-            class="profile-nickname-private-container"
+            class="middle-aligned"
           >
             <BaseProfileNickname
               :profile-data="profileData"
@@ -45,6 +45,7 @@
         />
 
         <BaseSendableContentSection
+          class="sendable-content-section"
           :model-data="commentData"
         />
       </div>
@@ -282,11 +283,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.base-comment-item
-  @extend .align-items-start, .no-padding, .no-margin
-  &:not(:first-child)
-    margin-top: 1.5em !important
-
-.profile-nickname-private-container
-  @extend .d-flex, .align-items-center
+.sendable-content-section
+  :deep(.media-item)
+    max-width: 250px
 </style>

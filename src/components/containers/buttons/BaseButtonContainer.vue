@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui button main-simple-button"
+    class="ui button main-button"
     :class="[
       buttonColorClass,
       buttonIconClass
@@ -11,6 +11,7 @@
   >
     <BaseIcon
       v-if="icon"
+      class="main-left-small-icon"
       :icon="icon"
     />
 

@@ -7,12 +7,8 @@
     <template
       #default="slotProps"
     >
-      <div
-        :class="[
-          'ui raised segments main-segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
+      <BaseSegmentsContainer
+        class="main-page-segment-container"
       >
         <SourceSelectSegment
           :album-data="slotProps.albumData"
@@ -25,7 +21,7 @@
           :error="slotProps.error"
           @refresh="handleRefresh"
         />
-      </div>
+      </BaseSegmentsContainer>
     </template>
   </BaseAlbumPageContainer>
 </template>
@@ -33,6 +29,8 @@
 <script>
 import BaseAlbumPageContainer
   from '@/components/containers/pages/album/BaseAlbumPageContainer.vue'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import SourceSelectSegment from './MainPage/SourceSelectSegment.vue'
 import AlbumSegment from './MainPage/AlbumSegment.vue'
 import pageMixin from '@/mixins/pageMixin'
@@ -41,6 +39,7 @@ export default {
   name: 'MainPage',
   components: {
     BaseAlbumPageContainer,
+    BaseSegmentsContainer,
     SourceSelectSegment,
     AlbumSegment
   },

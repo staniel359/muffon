@@ -1,15 +1,17 @@
 <template>
-  <div class="main-settings-option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="autoplayText"
-    />
+  <div class="main-settings-option-container">
+    <div class="main-settings-option">
+      <BaseHeader
+        class="option-header"
+        tag="h4"
+        :text="autoplayText"
+      />
 
-    <BaseToggle
-      store-key="queue.isAutoplay"
-      :is-checked="isQueueAutoplay"
-    />
+      <BaseToggle
+        store-key="queue.isAutoplay"
+        :is-checked="isQueueAutoplay"
+      />
+    </div>
   </div>
 </template>
 

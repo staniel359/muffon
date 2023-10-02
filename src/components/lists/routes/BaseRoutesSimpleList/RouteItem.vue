@@ -1,10 +1,10 @@
 <template>
   <RouterLink
-    class="item main-simple-list-item"
+    class="item main-simple-list-item middle-aligned"
     :to="link"
   >
     <BaseIcon
-      class="left-icon route-icon"
+      class="left-icon main-icon"
       :icon="icon"
     />
 
@@ -80,14 +80,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.route-icon
-  @extend .no-padding
-
-[dir="ltr"]
-  .content
-    margin-left: 0.75em
-[dir="rtl"]
-  .content
-    margin-right: 0.75em
-</style>
+<style lang="sass" scoped></style>

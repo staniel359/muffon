@@ -1,6 +1,6 @@
 <template>
   <BaseButtonContainer
-    class="circular browser-tab"
+    class="circular browser-tab middle-aligned main-left-mini-section"
     :class="{
       primary: isActive,
       basic: !isActive
@@ -9,14 +9,14 @@
     @click="handleClick"
   >
     <BaseIcon
-      class="browser-tab-icon"
+      class="main-icon main-right-mini-section"
       :is-loading="isLoading"
       :is-error="isError"
       :icon="icon"
     />
 
     <span
-      class="browser-tab-name"
+      class="browser-tab-name text-overflow-hidden main-right-small-section"
       :class="{
         active: isActive
       }"
@@ -24,7 +24,7 @@
     />
 
     <BaseClearButton
-      class="browser-tab-close-button"
+      class="browser-tab-close-button main-right-small-icon"
       :class="{
         inverted: isActive
       }"
@@ -142,47 +142,20 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .browser-tab
-  @extend .d-flex, .align-items-center
-  padding: 0.5em
+  padding: 0.55rem
   &:hover
     .browser-tab-name
       max-width: unset
-[dir="ltr"]
-  .browser-tab
-    margin-right: 0.5em !important
-[dir="rtl"]
-  .browser-tab
-    margin-left: 0.5em !important
-
-.browser-tab-icon
-  @extend .no-margin
-[dir="ltr"]
-  .browser-tab-icon
-    margin-left: 0.5em !important
-[dir="rtl"]
-  .browser-tab-icon
-    margin-right: 0.5em !important
 
 .browser-tab-name
-  @extend .white-space-no-wrap, .overflow-hidden
   max-width: 150px
   &.active
     @extend .text-bold
-[dir="ltr"]
-  .browser-tab-name
-    margin-left: 0.75em
-[dir="rtl"]
-  .browser-tab-name
-    margin-right: 0.75em
 
 .browser-tab-close-button
   padding: 4px !important
   width: unset !important
-[dir="ltr"]
-  .browser-tab-close-button
-    margin-left: 0.75em !important
-[dir="rtl"]
-  .browser-tab-close-button
-    margin-right: 0.75em !important
 </style>

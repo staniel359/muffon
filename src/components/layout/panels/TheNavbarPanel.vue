@@ -1,6 +1,6 @@
 <template>
   <BaseMenuContainer
-    class="top fixed borderless blurred the-navbar-panel"
+    class="top fixed borderless blurred the-navbar-panel no-border height-navbar"
     :class="transparentClass"
   >
     <div class="ui container main-container">
@@ -51,10 +51,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .the-navbar-panel
-  @extend .no-border
-  height: $navbarHeight
   z-index: 200 !important
   &.inverted
-    border-bottom: $borderInverted !important
+    @extend .border-bottom-inverted
 </style>

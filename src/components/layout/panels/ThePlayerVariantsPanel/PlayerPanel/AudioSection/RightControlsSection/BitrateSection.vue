@@ -1,6 +1,6 @@
 <template>
   <BaseListContainer
-    class="bitrate-section"
+    class="flex-full text-align-center no-margin"
   >
     <div class="item">
       <div class="content">
@@ -11,8 +11,11 @@
           />
           <small
             v-else-if="bitrate"
-            v-text="bitrateText"
-          />
+          >
+            <strong
+              v-text="bitrateText"
+            />
+          </small>
         </div>
       </div>
     </div>
@@ -80,24 +83,12 @@ export default {
     }
   },
   watch: {
-    playerPlaying: {
-      immediate: true,
-      handler: 'handlePlayerPlayingChange'
-    },
     audioSize: 'handleAudioSizeChange'
   },
+  mounted () {
+    this.getAudioBitrate()
+  },
   methods: {
-    handlePlayerPlayingChange (
-      value
-    ) {
-      if (value) {
-        if (this.audioLocal) {
-          this.getLocalAudioBitrate()
-        } else {
-          this.getRemoteAudioBitrate()
-        }
-      }
-    },
     handleAudioSizeChange () {
       this.isLoading = false
     },
@@ -111,6 +102,13 @@ export default {
     },
     handleRemoteAudioError () {
       this.audioSize = 0
+    },
+    getAudioBitrate () {
+      if (this.audioLocal) {
+        this.getLocalAudioBitrate()
+      } else {
+        this.getRemoteAudioBitrate()
+      }
     },
     async getLocalAudioBitrate () {
       const details =
@@ -139,7 +137,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.bitrate-section
-  @extend .flex-full, .text-align-center, .no-margin
-</style>
+<style lang="sass" scoped></style>

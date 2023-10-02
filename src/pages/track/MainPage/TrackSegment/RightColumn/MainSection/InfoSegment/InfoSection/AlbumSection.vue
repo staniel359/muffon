@@ -1,5 +1,5 @@
 <template>
-  <div class="main-header">
+  <div class="meta">
     <small>
       <BaseAlbumLinkContainer
         class="main-link"

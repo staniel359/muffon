@@ -1,5 +1,5 @@
 <template>
-  <div class="content-block">
+  <div class="d-flex">
     <LeftColumn
       :artist-data="artistData"
     />
@@ -37,7 +37,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.content-block
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

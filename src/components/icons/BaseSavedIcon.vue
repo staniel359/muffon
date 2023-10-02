@@ -1,5 +1,5 @@
 <template>
-  <div class="base-saved-icon">
+  <div class="base-saved-icon main-icon">
     <BaseIcon
       icon="savedTrack"
     />
@@ -18,12 +18,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-[dir="ltr"]
-  .base-saved-icon
-    &.right
-      margin-left: 0.75em
-[dir="rtl"]
-  .base-saved-icon
-    &.right
-      margin-right: 0.75em
+@import '@/assets/styles/Shared.sass'
+
+.base-saved-icon
+  &.right
+    @extend .main-right-small-icon
 </style>

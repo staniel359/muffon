@@ -1,8 +1,8 @@
 <template>
   <div
-    class="base-error-message"
+    class="width-100"
     :class="{
-      'base-page-error-message': isPage
+      'center-aligned-full-column': isPage
     }"
   >
     <BaseHeader
@@ -124,10 +124,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.base-error-message
-  @extend .w-100
-
-.base-page-error-message
-  @extend .flex-full, .d-flex, .flex-column, .justify-content-center
-</style>
+<style lang="sass" scoped></style>

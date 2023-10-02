@@ -1,7 +1,7 @@
 <template>
   <div
     ref="item"
-    class="item empty-page-item"
+    class="item cursor-pointer"
     :class="{
       disabled: isDisabled
     }"
@@ -69,7 +69,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.empty-page-item
-  @extend .cursor-pointer
-</style>
+<style lang="sass" scoped></style>

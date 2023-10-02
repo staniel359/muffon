@@ -1,17 +1,16 @@
 <template>
-  <div class="extra-section">
+  <div class="main-bottom-section">
     <BaseAccordionContainer
       :title="extraText"
     >
-      <div class="extra-section-content">
+      <div class="main-form-extra-section">
         <BaseImageField
-          class="image-field"
           model="profile"
           is-circular
           @change="handleImageChange"
         />
 
-        <div class="extra-fields">
+        <div class="main-form-extra-section-fields-section">
           <BaseProfileGenderField />
 
           <BaseProfileBirthdateField />
@@ -90,22 +89,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.extra-section
-  margin-bottom: 1em
-
-.extra-section-content
-  @extend .d-flex
-
-.image-field
-  width: 120px
-[dir="ltr"]
-  .image-field
-    margin-right: 1em !important
-[dir="rtl"]
-  .image-field
-    margin-left: 1em !important
-
-.extra-fields
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

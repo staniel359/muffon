@@ -9,15 +9,14 @@
     />
 
     <div>
-      <div
-        class="main-labels-section"
-      >
+      <div class="main-labels-section">
         <BaseCounterLabelsSection
           :counters="counters"
         />
+      </div>
 
+      <div class="main-labels-section">
         <BaseArtistInnerCounterLabelsSection
-          class="inline"
           :artist-data="artistData"
         />
       </div>

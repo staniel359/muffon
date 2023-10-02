@@ -91,6 +91,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '@/assets/styles/Shared.sass'
+
 .base-calendar
   &.inverted
     :deep(.popup)

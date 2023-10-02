@@ -1,5 +1,5 @@
 <template>
-  <div class="main-section">
+  <div>
     <BaseProfileEmailField
       ref="email"
     />
@@ -43,7 +43,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-section
-  margin-bottom: 1em
-</style>
+<style lang="sass" scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="main-source-select-container">
+  <div class="main-right-section">
     <BaseDropdown
       :options="sources"
       :selected="source"

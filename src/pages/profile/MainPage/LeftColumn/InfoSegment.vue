@@ -4,7 +4,7 @@
   >
     <div class="main-profile-page-image-container">
       <BaseProfileOnlineLabel
-        class="online-label"
+        class="no-top"
         :profile-data="profileData"
       />
 
@@ -25,19 +25,18 @@
       :text="nickname"
     />
 
-    <div
+    <BasePrivateIcon
       v-if="isPrivate"
-      class="private-icon-container"
-    >
-      <BasePrivateIcon />
-    </div>
+      class="main-bottom-mini-section"
+      :is-small="false"
+    />
 
     <div
-      v-if="isStaff"
-      class="role-label-container"
+      v-if="isCreator"
+      class="main-bottom-mini-section"
     >
       <BaseLabel
-        class="primary circular"
+        class="primary circular main-label"
         :is-invertable="false"
         :text="roleText"
       />
@@ -45,7 +44,7 @@
 
     <i
       v-if="status"
-      class="status main-text-container"
+      class="main-text-section main-formatted-text-container"
       v-html="status"
     />
   </BaseSegmentContainer>
@@ -86,8 +85,10 @@ export default {
     nickname () {
       return this.profileData.nickname
     },
-    isStaff () {
-      return this.role === 'creator'
+    isCreator () {
+      return (
+        this.role === 'creator'
+      )
     },
     role () {
       return this.profileData.role
@@ -107,24 +108,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.private-icon-container
-  .icon
-    @extend .no-margin
-
-.role-label-container
-  margin-top: 0.25em
-
-.online-label
-  @extend .absolute
-  top: 0.15em
-[dir="ltr"]
-  .online-label
-    right: 0.15em
-[dir="rtl"]
-  .online-label
-    left: 0.15em
-
-.status
-  margin-top: 0.25em
-</style>
+<style lang="sass" scoped></style>

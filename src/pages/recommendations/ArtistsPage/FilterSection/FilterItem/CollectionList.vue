@@ -1,5 +1,5 @@
 <template>
-  <div class="collection-list">
+  <div class="main-bottom-section">
     <div class="ui labels">
       <BaseFilterItemLabel
         v-for="collectionItemData in collection"
@@ -47,7 +47,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.collection-list
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

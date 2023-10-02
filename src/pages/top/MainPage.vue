@@ -3,12 +3,8 @@
     :key="refreshKey"
     :is-get-data="false"
   >
-    <div
-      :class="[
-        'ui raised segments main-segments',
-        'main-segment-container',
-        'main-page-segment-container'
-      ]"
+    <BaseSegmentsContainer
+      class="main-page-segment-container"
     >
       <TopSegment
         :country="country"
@@ -19,7 +15,7 @@
         :key="key"
         :country="country"
       />
-    </div>
+    </BaseSegmentsContainer>
   </BaseTopPageContainer>
 </template>
 
@@ -30,6 +26,8 @@ import {
 import topStore from '@/stores/top'
 import BaseTopPageContainer
   from '@/components/containers/pages/top/BaseTopPageContainer.vue'
+import BaseSegmentsContainer
+  from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import TopSegment from './MainPage/TopSegment.vue'
 import TabsSegment from './MainPage/TabsSegment.vue'
 import {
@@ -41,6 +39,7 @@ export default {
   name: 'MainPage',
   components: {
     BaseTopPageContainer,
+    BaseSegmentsContainer,
     TopSegment,
     TabsSegment
   },

@@ -1,26 +1,21 @@
 <template>
-  <div>
-    <BaseCounterLabelsSection
-      class="main-labels-section"
-      size=""
-      :counters="counters"
-    />
+  <BaseCounterLabelsSection
+    size=""
+    :counters="counters"
+  />
 
-    <BaseArtistInnerCounterLabelsSection
-      class="main-labels-section"
-      size=""
-      :artist-data="artistData"
-      :is-clickable="false"
-    />
+  <BaseArtistInnerCounterLabelsSection
+    size=""
+    :artist-data="artistData"
+    :is-clickable="false"
+  />
 
-    <BaseArtistTags
-      class="main-labels-section"
-      size=""
-      :artist-data="artistData"
-      :is-with-more="false"
-      @link-click="handleLinkClick"
-    />
-  </div>
+  <BaseArtistTags
+    size=""
+    :artist-data="artistData"
+    :is-with-more="false"
+    @link-click="handleLinkClick"
+  />
 </template>
 
 <script>

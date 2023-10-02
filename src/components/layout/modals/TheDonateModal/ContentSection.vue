@@ -1,30 +1,11 @@
 <template>
   <div class="content">
     <p
-      class="text-section"
-      v-text="nonProfitText"
+      v-for="(textItem, index) in donateText"
+      :key="index"
+      class="main-text-section main-text-container"
+      v-html="textItem"
     />
-
-    <p
-      class="text-section"
-      v-text="fundsText"
-    />
-
-    <p
-      class="text-section"
-      v-text="timeEffortText"
-    />
-
-    <p
-      class="text-section"
-      v-text="helpText"
-    />
-
-    <p>
-      <strong
-        v-text="wouldText"
-      />
-    </p>
   </div>
 </template>
 
@@ -32,36 +13,13 @@
 export default {
   name: 'ContentSection',
   computed: {
-    nonProfitText () {
-      return this.$t(
-        'donate.content.nonProfit'
-      )
-    },
-    fundsText () {
-      return this.$t(
-        'donate.content.funds'
-      )
-    },
-    timeEffortText () {
-      return this.$t(
-        'donate.content.timeEffort'
-      )
-    },
-    helpText () {
-      return this.$t(
-        'donate.content.help'
-      )
-    },
-    wouldText () {
-      return this.$t(
-        'donate.content.would'
+    donateText () {
+      return this.$tm(
+        'donate.content'
       )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.text-section
-  margin-bottom: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

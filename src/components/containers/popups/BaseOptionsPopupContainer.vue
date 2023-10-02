@@ -7,10 +7,10 @@
     <BaseButton
       ref="button"
       v-bind="$attrs"
-      class="compact basic circular options-button"
+      class="small compact basic circular"
       icon="dotsVertical"
       :class="{
-        visible: isMenuActive
+        'visibility-visible': isMenuActive
       }"
       :is-transparent="isTransparent"
       @click.prevent.stop
@@ -181,8 +181,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.options-button
-  &.visible
-    @extend .visibility-visible
-</style>
+<style lang="sass" scoped></style>
