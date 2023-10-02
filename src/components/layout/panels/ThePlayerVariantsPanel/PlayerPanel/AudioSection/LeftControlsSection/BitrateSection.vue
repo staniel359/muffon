@@ -27,6 +27,7 @@ import axios from 'axios'
 import {
   mapState
 } from 'pinia'
+import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
 import BaseItemContainer
   from '@/components/containers/item/BaseItemContainer.vue'
@@ -46,6 +47,12 @@ export default {
   },
   computed: {
     ...mapState(
+      audioStore,
+      {
+        audioDuration: 'duration'
+      }
+    ),
+    ...mapState(
       playerStore,
       {
         playerPlaying: 'playing'
@@ -60,14 +67,21 @@ export default {
       )
     },
     bitrate () {
-      return Math.round(
-        this.audioSize /
-          128 /
+      if (this.isCalculateBitrate) {
+        return Math.round(
+          this.audioSize /
+            128 /
+            this.audioDuration
+        )
+      } else {
+        return null
+      }
+    },
+    isCalculateBitrate () {
+      return (
+        this.audioSize &&
           this.audioDuration
       )
-    },
-    audioDuration () {
-      return this.playerPlaying.duration
     },
     audioLocal () {
       return this.playerPlaying.audio.local
