@@ -14,11 +14,9 @@ import sidebarStore from '@/stores/sidebar'
 import topStore from '@/stores/top'
 import videoStore from '@/stores/video'
 import {
-  snakeCase
-} from 'snake-case'
-import {
+  snakeCase,
   camelCase
-} from 'camel-case'
+} from 'change-case'
 import {
   change as changeLanguage
 } from '@/helpers/actions/language'

@@ -2,7 +2,7 @@ import getRequest from '@/helpers/actions/api/request/get'
 import formatArtistRequestUrl from '@/helpers/formatters/request/artist/url'
 import {
   snakeCase
-} from 'snake-case'
+} from 'change-case'
 
 export default function (
   {

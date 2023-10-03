@@ -1,7 +1,7 @@
 import deepmerge from 'deepmerge'
 import {
   snakeCase
-} from 'snake-case'
+} from 'change-case'
 import {
   collection as formatCollection
 } from '@/helpers/formatters'

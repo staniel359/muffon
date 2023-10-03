@@ -1,10 +1,8 @@
 import i18n from '@/plugins/i18n'
 import {
-  camelCase
-} from 'camel-case'
-import {
+  camelCase,
   snakeCase
-} from 'snake-case'
+} from 'change-case'
 import {
   addFieldError as addFormFieldError
 } from '@/helpers/actions/plugins/semantic/form'

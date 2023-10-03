@@ -2,7 +2,7 @@ import profileStore from '@/stores/profile'
 import axios from 'axios'
 import {
   snakeCase
-} from 'snake-case'
+} from 'change-case'
 import {
   anonymousToken
 } from '@/helpers/data/env'

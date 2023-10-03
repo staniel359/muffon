@@ -33,7 +33,7 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import {
   camelCase
-} from 'camel-case'
+} from 'change-case'
 
 export default {
   name: 'EventItem',

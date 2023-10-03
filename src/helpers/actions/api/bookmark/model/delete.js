@@ -1,6 +1,6 @@
 import {
   snakeCase
-} from 'snake-case'
+} from 'change-case'
 import profileStore from '@/stores/profile'
 import deleteRequest from '@/helpers/actions/api/request/delete'
 

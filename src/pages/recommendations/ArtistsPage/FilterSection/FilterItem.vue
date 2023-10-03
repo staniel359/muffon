@@ -33,7 +33,7 @@
 <script>
 import {
   camelCase
-} from 'camel-case'
+} from 'change-case'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import SearchBlock from './FilterItem/SearchBlock.vue'
 import CollectionList from './FilterItem/CollectionList.vue'

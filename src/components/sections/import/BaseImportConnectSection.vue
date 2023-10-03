@@ -35,7 +35,7 @@
 <script>
 import {
   snakeCase
-} from 'snake-case'
+} from 'change-case'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import ImportButton from './BaseImportConnectSection/ImportButton.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
