@@ -66,7 +66,9 @@ export default {
     topCountry: 'handleTopCountryChange'
   },
   methods: {
-    handleTopCountryChange () {
+    async handleTopCountryChange () {
+      await this.$nextTick()
+
       this.refresh()
     }
   }
