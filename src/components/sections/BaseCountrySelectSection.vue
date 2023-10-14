@@ -3,13 +3,13 @@
     <BaseCountrySelect
       :key="key"
       class="main-select"
-      :selected="country"
+      :selected="selected"
       :is-form-field="isFormField"
       @select="handleCountrySelect"
     />
 
     <BaseClearButton
-      v-if="country"
+      v-if="selected"
       @click="handleClearButtonClick"
     />
   </div>
@@ -41,7 +41,8 @@ export default {
   ],
   data () {
     return {
-      key: null
+      key: null,
+      selected: null
     }
   },
   computed: {
@@ -56,6 +57,9 @@ export default {
     profileLanguage:
       'handleProfileLanguageChange',
     country: 'handleCountryChange'
+  },
+  beforeMount () {
+    this.selected = this.country
   },
   methods: {
     handleProfileLanguageChange () {
@@ -76,6 +80,8 @@ export default {
     handleCountryChange (
       value
     ) {
+      this.selected = value
+
       if (!value) {
         this.key = generateKey()
       }
@@ -83,6 +89,8 @@ export default {
     select (
       value
     ) {
+      this.selected = value
+
       this.$emit(
         'select',
         value
