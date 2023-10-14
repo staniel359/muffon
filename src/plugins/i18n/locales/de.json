@@ -286,9 +286,9 @@
         "community": "Dadurch werden auch alle Beiträge dieser Community gelöscht.",
         "account": [
           "Dadurch werden auch folgende Daten von Ihnen gelöscht:",
-          "<strong>- Bibliothek\n- Vorschläge\n- Playlists\n- Lesezeichen\n- Angehörte Titel\n- Beiträge auf Ihrer Seite\n- Abonnements</strong>",
+          "<strong>- Bibliothek\n- Vorschläge\n- Playlists\n- Lesezeichen\n- Angehörte Titel\n- Beiträge auf Ihrer Seite\n- Abonnements\n- Verlauf</strong>",
           "Diese Daten werden bleiben, aber Ihr Nickname wird nicht mehr angezeigt werden:",
-          "<strong>- erstellte Beiträge\n- Konversationen mit Ihnen\n- erstellte Communities</strong>",
+          "<strong>- erstellte Beiträge\n- erstellte Kommentare\n- Konversationen mit Ihnen\n- erstellte Communities</strong>",
           "Diese Daten werden nicht geändert werden:",
           "<strong>- gespeicherte Titel\n- Hintergrundbilder\n- Einstellungen</strong>"
         ],

@@ -286,9 +286,9 @@
         "community": "Cette opération supprimera également tous les messages de cette communauté.",
         "account": [
           "Les données suivantes seront également supprimées :",
-          "<strong>- bibliothèque\n- recommandations\n- playlists\n- favoris\n- signet\n- vos titre écouté\n- les posts de votre page\n- abonnements</strong>",
+          "<strong>- bibliothèque\n- recommandations\n- playlists\n- favoris\n- signet\n- vos titre écouté\n- les posts de votre page\n- abonnements\n- historique</strong>",
           "Ces données seront conservées, mais votre pseudonyme ne sera pas affiché :",
-          "<strong>- poste créer\n- conversations avec vous\n- les communautés créées</strong>",
+          "<strong>- postes créé\n- commentaire poster\n- conversations avec vous\n- les communautés créées</strong>",
           "Et ces données resteront inchangées :",
           "<strong>- titres sauvgarder\n- images de fond\n- paramètre</strong>"
         ],

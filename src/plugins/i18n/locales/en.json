@@ -286,9 +286,9 @@
         "community": "This will also delete all this community's posts.",
         "account": [
           "This will also delete your following data:",
-          "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- your page posts\n- subscriptions</strong>",
+          "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- your page posts\n- subscriptions\n- history</strong>",
           "This data will remain, but your nickname won't be displayed:",
-          "<strong>- created posts\n- conversations with you\n- created communities</strong>",
+          "<strong>- created posts\n- created comments\n- conversations with you\n- created communities</strong>",
           "And this data will remain unchanged:",
           "<strong>- saved tracks\n- background images\n- settings</strong>"
         ],

@@ -286,9 +286,9 @@
         "community": "Saranno cancellati anche tutti i post di questa community.",
         "account": [
           "Questo eliminerà anche i seguenti dati:",
-          "<strong>- libreria\n- suggeriti\n- playlist\n- preferiti\n- salvati\n- ascoltati\n- i tuoi post\n- sottoscrizioni</strong>",
+          "<strong>- libreria\n- suggeriti\n- playlist\n- preferiti\n- salvati\n- ascoltati\n- i tuoi post\n- sottoscrizioni\n- cronologia</strong>",
           "Questi dati saranno conservati, ma il tuo nome utente non sarà mostrato:",
-          "<strong>- post creati\n- conversazioni con te\n- community create</strong>",
+          "<strong>- post creati\n- commenti creati\n- conversazioni con te\n- community create</strong>",
           "E questi dati non saranno influenzati:",
           "<strong>- brani salvate\n- immagini di sfondo\n- impostazioni</strong>"
         ],
