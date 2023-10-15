@@ -10,6 +10,7 @@
 
     <SelfSection
       :artist-data="artistData"
+      :is-visible="isVisible"
     />
   </div>
 </template>
@@ -31,7 +32,8 @@ export default {
     artistData: {
       type: Object,
       required: true
-    }
+    },
+    isVisible: Boolean
   },
   computed: {
     imageData () {

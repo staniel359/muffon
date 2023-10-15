@@ -9,8 +9,8 @@
   >
     <ContentBlock
       v-if="artistData"
-      :key="key"
       :artist-data="artistData"
+      :is-visible="isVisible"
       @link-click="handleLinkClick"
     />
   </BaseSegmentContainer>
@@ -21,9 +21,6 @@ import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import ContentBlock from './BaseArtistPopup/ContentBlock.vue'
 import getArtist from '@/helpers/actions/api/artist/get'
-import {
-  generateKey
-} from '@/helpers/utils'
 
 export default {
   name: 'BaseArtistPopup',
@@ -51,7 +48,6 @@ export default {
   ],
   data () {
     return {
-      key: null,
       artistData: null,
       error: null,
       isLoading: false
@@ -66,8 +62,7 @@ export default {
   },
   watch: {
     isCalled: 'handleIsCalledChange',
-    artistData: 'handleArtistDataChange',
-    isVisible: 'handleIsVisibleChange'
+    artistData: 'handleArtistDataChange'
   },
   methods: {
     getArtist,
@@ -78,19 +73,10 @@ export default {
         this.getData()
       }
     },
-    handleArtistDataChange (
-      value
-    ) {
+    handleArtistDataChange () {
       this.$emit(
         'artistDataChange'
       )
-    },
-    handleIsVisibleChange (
-      value
-    ) {
-      if (value) {
-        this.key = generateKey()
-      }
     },
     handleRefresh () {
       this.getData()

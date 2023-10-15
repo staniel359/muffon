@@ -2,6 +2,7 @@
   <div class="d-flex">
     <LeftColumn
       :artist-data="artistData"
+      :is-visible="isVisible"
     />
 
     <RightColumn
@@ -22,7 +23,8 @@ export default {
     RightColumn
   },
   props: {
-    artistData: Object
+    artistData: Object,
+    isVisible: Boolean
   },
   emits: [
     'linkClick'

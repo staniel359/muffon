@@ -5,11 +5,16 @@ import {
 export default {
   provide () {
     return {
-      setLibraryId: this.setLibraryId,
-      setFavoriteId: this.setFavoriteId,
-      setBookmarkId: this.setBookmarkId,
-      setListenedId: this.setListenedId,
-      setWatchedId: this.setWatchedId
+      setLibraryId:
+        this.setLibraryId,
+      setFavoriteId:
+        this.setFavoriteId,
+      setBookmarkId:
+        this.setBookmarkId,
+      setListenedId:
+        this.setListenedId,
+      setWatchedId:
+        this.setWatchedId
     }
   },
   props: {

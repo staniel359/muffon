@@ -12,6 +12,7 @@
     />
 
     <BaseArtistOptionsPopup
+      :key="key"
       :artist-data="artistData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
@@ -33,6 +34,9 @@ import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseArtistOptionsPopup
   from '@/components/popups/artist/BaseArtistOptionsPopup.vue'
 import selfMixin from '@/mixins/selfMixin'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'SelfSection',
@@ -50,12 +54,21 @@ export default {
     artistData: {
       type: Object,
       required: true
+    },
+    isVisible: Boolean
+  },
+  data () {
+    return {
+      key: null
     }
   },
   computed: {
     modelData () {
       return this.artistData
     }
+  },
+  watch: {
+    isVisible: 'handleIsVisibleChange'
   },
   methods: {
     handleOptionsActiveChange (
@@ -64,6 +77,13 @@ export default {
       this.setIsOptionsActive(
         value
       )
+    },
+    handleIsVisibleChange (
+      value
+    ) {
+      if (value) {
+        this.key = generateKey()
+      }
     }
   }
 }
