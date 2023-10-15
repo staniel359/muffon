@@ -118,7 +118,6 @@ If you're using Windows 10 and during the installation you see this window:
 ## Contribute
 
 - **Translators** wanted for localization
-- **Python + Ruby developers** wanted for [Spotify library](https://github.com/kokarare1212/librespot-python) reverse engineering
 
 ## Donate
 
