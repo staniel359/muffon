@@ -1,28 +1,27 @@
-import i18n from '@/plugins/i18n'
+import {
+  field as formatFormField
+} from '@/helpers/formatters/form'
 
 export default function (
   {
     onSuccess
   }
 ) {
-  const emptyEmailPrompt =
-    i18n.global.t(
-      'forms.errors.empty.email'
+  const emailFieldData =
+    formatFormField(
+      {
+        id: 'email',
+        rules: [
+          'empty'
+        ]
+      }
     )
 
   return {
     inline: true,
     keyboardShortcuts: false,
     fields: {
-      email: {
-        identifier: 'email',
-        rules: [
-          {
-            type: 'empty',
-            prompt: emptyEmailPrompt
-          }
-        ]
-      }
+      email: emailFieldData
     },
     onSuccess
   }

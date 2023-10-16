@@ -1,28 +1,27 @@
-import i18n from '@/plugins/i18n'
+import {
+  field as formatFormField
+} from '@/helpers/formatters/form'
 
 export default function (
   {
     onSuccess
   }
 ) {
-  const emptyTitlePrompt =
-    i18n.global.t(
-      'forms.errors.empty.title'
+  const titleFieldData =
+    formatFormField(
+      {
+        id: 'title',
+        rules: [
+          'empty'
+        ]
+      }
     )
 
   return {
     inline: true,
     keyboardShortcuts: false,
     fields: {
-      title: {
-        identifier: 'title',
-        rules: [
-          {
-            type: 'empty',
-            prompt: emptyTitlePrompt
-          }
-        ]
-      }
+      title: titleFieldData
     },
     onSuccess
   }

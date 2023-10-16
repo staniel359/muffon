@@ -1,61 +1,57 @@
-import i18n from '@/plugins/i18n'
+import {
+  field as formatFormField
+} from '@/helpers/formatters/form'
 
 export default function (
   {
     onSuccess
   }
 ) {
-  const emptyEmailPrompt =
-    i18n.global.t(
-      'forms.errors.empty.email'
+  const emailFieldData =
+    formatFormField(
+      {
+        id: 'email',
+        rules: [
+          'empty'
+        ]
+      }
     )
 
-  const emptyPasswordConfirmationPrompt =
-    i18n.global.t(
-      'forms.errors.empty.passwordConfirmation'
+  const passwordFieldData = {
+    identifier: 'password',
+    optional: true
+  }
+
+  const passwordConfirmationFieldData =
+    formatFormField(
+      {
+        id: 'password-confirmation',
+        dependentId: 'password',
+        rules: [
+          'empty'
+        ]
+      }
     )
 
-  const emptyNicknamePrompt =
-    i18n.global.t(
-      'forms.errors.empty.nickname'
+  const nicknameFieldData =
+    formatFormField(
+      {
+        id: 'nickname',
+        rules: [
+          'empty'
+        ]
+      }
     )
 
   return {
     inline: true,
     keyboardShortcuts: false,
     fields: {
-      email: {
-        identifier: 'email',
-        rules: [
-          {
-            type: 'empty',
-            prompt: emptyEmailPrompt
-          }
-        ]
-      },
-      password: {
-        identifier: 'password',
-        optional: true
-      },
-      passwordConfirmation: {
-        identifier: 'password-confirmation',
-        depends: 'password',
-        rules: [
-          {
-            type: 'empty',
-            prompt: emptyPasswordConfirmationPrompt
-          }
-        ]
-      },
-      nickname: {
-        identifier: 'nickname',
-        rules: [
-          {
-            type: 'empty',
-            prompt: emptyNicknamePrompt
-          }
-        ]
-      }
+      email: emailFieldData,
+      password: passwordFieldData,
+      passwordConfirmation:
+        passwordConfirmationFieldData,
+      nickname: nicknameFieldData
     },
     onSuccess
   }

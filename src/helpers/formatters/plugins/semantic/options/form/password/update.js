@@ -1,56 +1,52 @@
-import i18n from '@/plugins/i18n'
+import {
+  field as formatFormField
+} from '@/helpers/formatters/form'
 
 export default function (
   {
     onSuccess
   }
 ) {
-  const emptyPasswordResetCodePrompt =
-    i18n.global.t(
-      'forms.errors.empty.passwordResetCode'
+  const passwordResetCodeFieldData =
+    formatFormField(
+      {
+        id: 'password-reset-code',
+        rules: [
+          'empty'
+        ]
+      }
     )
 
-  const emptyPasswordPrompt =
-    i18n.global.t(
-      'forms.errors.empty.password'
+  const passwordFieldData =
+    formatFormField(
+      {
+        id: 'password',
+        rules: [
+          'empty'
+        ]
+      }
     )
 
-  const emptyPasswordConfirmationPrompt =
-    i18n.global.t(
-      'forms.errors.empty.passwordConfirmation'
+  const passwordConfirmationFieldData =
+    formatFormField(
+      {
+        id: 'password-confirmation',
+        rules: [
+          'empty'
+        ]
+      }
     )
 
   return {
     inline: true,
     keyboardShortcuts: false,
     fields: {
-      passwordResetCode: {
-        identifier: 'password-reset-code',
-        rules: [
-          {
-            type: 'empty',
-            prompt: emptyPasswordResetCodePrompt
-          }
-        ]
-      },
-      password: {
-        identifier: 'password',
-        rules: [
-          {
-            type: 'empty',
-            prompt: emptyPasswordPrompt
-          }
-        ]
-      },
-      passwordConfirmation: {
-        identifier: 'password-confirmation',
-        rules: [
-          {
-            type: 'empty',
-            prompt: emptyPasswordConfirmationPrompt
-          }
-        ]
-      }
+      passwordResetCode:
+        passwordResetCodeFieldData,
+      password:
+        passwordFieldData,
+      passwordConfirmation:
+        passwordConfirmationFieldData
     },
     onSuccess
   }
