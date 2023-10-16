@@ -21,8 +21,8 @@ export default function (
     )
 
   return {
-    duration: 0,
     inline: true,
+    keyboardShortcuts: false,
     fields: {
       passwordResetCode: {
         identifier: 'password-reset-code',

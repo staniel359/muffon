@@ -31,8 +31,8 @@ export default function (
     )
 
   return {
-    duration: 0,
     inline: true,
+    keyboardShortcuts: false,
     fields: {
       email: {
         identifier: 'email',
