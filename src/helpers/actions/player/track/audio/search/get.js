@@ -8,7 +8,8 @@ import {
 export default function (
   {
     source,
-    trackData
+    trackData,
+    queueTracks
   }
 ) {
   let variantIndex = 0
@@ -47,11 +48,18 @@ export default function (
     updateGlobalStore(
       {
         'player.currentTrackId':
-          trackData.player_id,
-        'queue.currentTrackId':
-          trackData.uuid
+          trackData.player_id
       }
     )
+
+    if (queueTracks) {
+      updateGlobalStore(
+        {
+          'queue.currentTrackId':
+            trackData.uuid
+        }
+      )
+    }
   }
 
   function handleVariantSuccess () {

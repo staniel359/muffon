@@ -4,6 +4,7 @@
       ref="track"
       :track-data="playerPlaying"
       :is-clickable="false"
+      :queue-tracks="null"
     >
       <template
         #default="slotProps"
