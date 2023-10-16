@@ -33,10 +33,6 @@
 
   <TheExternalUrlsObserver />
 
-  <TheBrowserTabsObserver
-    v-if="isRenderBrowserTabsObserver"
-  />
-
   <TheDeepLinksObserver />
 
   <TheExitObserver />
@@ -111,12 +107,6 @@ const TheBrowserObserver =
       '@/components/layout/observers/TheBrowserObserver.vue'
     )
   )
-const TheBrowserTabsObserver =
-  defineAsyncComponent(
-    () => import(
-      '@/components/layout/observers/TheBrowserTabsObserver.vue'
-    )
-  )
 
 export default {
   name: 'RootPageLayout',
@@ -133,7 +123,6 @@ export default {
     TheBrowserObserver,
     TheDiscordObserver,
     TheExternalUrlsObserver,
-    TheBrowserTabsObserver,
     TheDeepLinksObserver,
     TheExitObserver,
     TheRootBackground
@@ -154,12 +143,6 @@ export default {
         isProfileAnonymous: 'isAnonymous'
       }
     ),
-    isRenderBrowserTabsObserver () {
-      return (
-        this.isProfileAnonymous ||
-          this.profileId
-      )
-    },
     isRenderScrobbleObserver () {
       return (
         this.profileId &&

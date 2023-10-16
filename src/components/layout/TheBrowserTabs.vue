@@ -34,6 +34,9 @@ import {
   home as formatHomeLink
 } from '@/helpers/formatters/links'
 import newTabMixin from '@/mixins/newTabMixin'
+import {
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'TheBrowserTabs',
@@ -45,11 +48,15 @@ export default {
   mixins: [
     newTabMixin
   ],
+  data () {
+    return {
+      tabs: []
+    }
+  },
   computed: {
     ...mapState(
       layoutStore,
       [
-        'tabs',
         'activeTabId'
       ]
     ),
@@ -64,6 +71,26 @@ export default {
     tabsCount: 'handleTabsCountChange'
   },
   mounted () {
+    ipcRenderer.on(
+      'add-tab',
+      this.handleAddTab
+    )
+
+    ipcRenderer.on(
+      'set-active-tab',
+      this.handleSetActiveTab
+    )
+
+    ipcRenderer.on(
+      'update-tab',
+      this.handleUpdateTab
+    )
+
+    ipcRenderer.on(
+      'delete-tab',
+      this.handleDeleteTab
+    )
+
     if (this.tabsCount) {
       this.setupTabs()
 
@@ -76,6 +103,104 @@ export default {
     this.clearTabs()
   },
   methods: {
+    handleAddTab (
+      _,
+      value
+    ) {
+      function isMatchedTab (
+        tabData
+      ) {
+        return (
+          tabData.uuid ===
+            value.uuid
+        )
+      }
+
+      const isTabPresent =
+        this.tabs.find(
+          isMatchedTab
+        )
+
+      if (!isTabPresent) {
+        const tabs = [
+          ...this.tabs,
+          value
+        ]
+
+        this.tabs = tabs
+      }
+    },
+    handleSetActiveTab (
+      _,
+      value
+    ) {
+      updateGlobalStore(
+        {
+          'layout.activeTabId': value
+        }
+      )
+    },
+    handleUpdateTab (
+      _,
+      {
+        tabId,
+        data
+      }
+    ) {
+      const tabs = [
+        ...this.tabs
+      ]
+
+      function isMatchedTab (
+        tabData
+      ) {
+        return (
+          tabData.uuid === tabId
+        )
+      }
+
+      const tab =
+        tabs.find(
+          isMatchedTab
+        )
+
+      const isUpdateTab = (
+        tab && data
+      )
+
+      function updateTab () {
+        Object.assign(
+          tab,
+          data
+        )
+      }
+
+      if (isUpdateTab) {
+        updateTab()
+
+        this.tabs = tabs
+      }
+    },
+    handleDeleteTab (
+      _,
+      tabId
+    ) {
+      function isMatchedTab (
+        tabData
+      ) {
+        return (
+          tabData.uuid !== tabId
+        )
+      }
+
+      const tabs = [
+        ...this.tabs.filter(
+          isMatchedTab
+        )
+      ]
+
+      this.tabs = tabs
+    },
     handleTabsCountChange (
       value
     ) {

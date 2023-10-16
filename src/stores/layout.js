@@ -28,7 +28,6 @@ const data = {
       scale: null,
       isShowDonateModal: null,
       isShowDonateModalLater: null,
-      tabs: null,
       activeTabId: null,
       isSearchPanelVisible: false,
       isWithInnerCounters: null,
@@ -150,11 +149,6 @@ const data = {
       value
     ) {
       this.isShowDonateModalLater = value
-    },
-    setTabs (
-      value
-    ) {
-      this.tabs = value
     },
     setActiveTabId (
       value
