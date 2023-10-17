@@ -1,15 +1,17 @@
 <template>
-  <BaseIcon
-    ref="icon"
-    class="grey main-popup-icon absolute no-right no-bottom"
-    icon="infoCircle"
-  />
-
-  <div class="main-popup-container">
-    <BaseProfileInfoPopup
-      ref="popup"
-      :profile-data="profileData"
+  <div>
+    <BaseIcon
+      ref="icon"
+      class="grey main-popup-icon absolute no-right no-bottom"
+      icon="infoCircle"
     />
+
+    <div class="main-popup-container">
+      <BaseProfileInfoPopup
+        ref="popup"
+        :profile-data="profileData"
+      />
+    </div>
   </div>
 </template>
 
@@ -40,7 +42,8 @@ export default {
     popupOptions () {
       return profileInfoPopupOptions(
         {
-          html: this.popup
+          html: this.popup,
+          isFixed: true
         }
       )
     }

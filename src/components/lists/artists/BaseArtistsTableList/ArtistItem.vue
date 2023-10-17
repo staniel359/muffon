@@ -11,8 +11,6 @@
     <template
       v-else
     >
-      <div />
-
       <BaseArtistOptionsPopup
         class="hidden-item"
         :artist-data="artistData"

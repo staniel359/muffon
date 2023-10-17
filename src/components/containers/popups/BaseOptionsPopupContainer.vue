@@ -14,7 +14,6 @@
     <div class="main-popup-container">
       <BaseOptionsPopupMenuContainer
         ref="popup"
-        @active-change="handleMenuActiveChange"
       >
         <slot
           :is-visible="isVisible"
@@ -46,8 +45,6 @@ export default {
   ],
   provide () {
     return {
-      changeSubmenuActive:
-        this.changeSubmenuActive,
       hidePopup: this.hide
     }
   },
@@ -64,10 +61,7 @@ export default {
   ],
   data () {
     return {
-      isVisible: false,
-      isMenuActive: false,
-      isSubmenuActive: false,
-      transitionDuration: 150
+      isVisible: false
     }
   },
   computed: {
@@ -81,16 +75,13 @@ export default {
           isInline: this.isInline,
           isShowToTop: this.isShowToTop,
           onShow: this.handleShow,
-          onHide: this.handleHide,
           onHidden: this.handleHidden
         }
       )
     }
   },
   watch: {
-    isVisible: 'handleIsVisibleChange',
-    isSubmenuActive:
-      'handleIsSubmenuActiveChange'
+    isVisible: 'handleIsVisibleChange'
   },
   methods: {
     async handleShow () {
@@ -102,9 +93,6 @@ export default {
         this.element
       )
     },
-    handleHide () {
-      return !this.isSubmenuActive
-    },
     handleHidden () {
       this.isVisible = false
     },
@@ -115,21 +103,6 @@ export default {
         value
       )
     },
-    handleMenuActiveChange (
-      value
-    ) {
-      this.isMenuActive = value
-    },
-    handleIsSubmenuActiveChange (
-      value
-    ) {
-      if (!value) {
-        setTimeout(
-          this.hideIfInactive,
-          this.transitionDuration
-        )
-      }
-    },
     changeActive (
       value
     ) {
@@ -138,22 +111,10 @@ export default {
         value
       )
     },
-    changeSubmenuActive (
-      value
-    ) {
-      this.isSubmenuActive = value
-    },
     hide () {
-      this.isSubmenuActive = false
-
       hidePopup(
         this.element
       )
-    },
-    hideIfInactive () {
-      if (!this.isMenuActive) {
-        this.hide()
-      }
     }
   }
 }

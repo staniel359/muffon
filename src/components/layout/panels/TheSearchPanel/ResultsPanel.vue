@@ -97,6 +97,7 @@ import {
   videoChannels as videoChannelsLimits,
   videoPlaylists as videoPlaylistsLimits
 } from '@/helpers/data/limits'
+import scrollMixin from '@/mixins/scrollMixin'
 
 export default {
   name: 'ResultsPanel',
@@ -112,6 +113,9 @@ export default {
     BaseVideoPlaylistsSimpleList,
     FullSizeToggleButton
   },
+  mixins: [
+    scrollMixin
+  ],
   provide () {
     return {
       getData: this.getData

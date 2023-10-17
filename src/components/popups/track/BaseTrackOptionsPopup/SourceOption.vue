@@ -3,6 +3,7 @@
     icon="search"
     :text="sourceText"
     :options="options"
+    is-options-middle-aligned
   />
 </template>
 

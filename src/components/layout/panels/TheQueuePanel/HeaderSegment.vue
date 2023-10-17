@@ -18,6 +18,7 @@
 
     <BaseQueueOptionsPopup
       v-if="queueTracksCount"
+      is-inline
     />
   </BaseSegmentContainer>
 </template>

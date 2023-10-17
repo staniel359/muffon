@@ -4,8 +4,6 @@
     :class="{
       inverted: isDarkMode
     }"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
   >
     <div
       class="left menu main-popup-content-container d-block relative"
@@ -33,9 +31,6 @@ export default {
   mixins: [
     transparencyMixin
   ],
-  emits: [
-    'activeChange'
-  ],
   computed: {
     ...mapState(
       layoutStore,
@@ -43,26 +38,6 @@ export default {
         'isDarkMode'
       ]
     )
-  },
-  methods: {
-    handleMouseEnter () {
-      this.changeActive(
-        true
-      )
-    },
-    handleMouseLeave () {
-      this.changeActive(
-        false
-      )
-    },
-    changeActive (
-      value
-    ) {
-      this.$emit(
-        'activeChange',
-        value
-      )
-    }
   }
 }
 </script>

@@ -78,6 +78,7 @@
   width: 400px !important
   .header-segment
     margin-top: $navbarHeight !important
+    z-index: 1
   .section-segment
     @extend .no-border-radius
     &.inverted
@@ -523,7 +524,7 @@
           @extend .border-color-base
 
 .base-profile-online-label
-  @extend .border-white
+  @extend .border-white, .no-margin
   z-index: 1
   &.inverted
     @extend .border-black

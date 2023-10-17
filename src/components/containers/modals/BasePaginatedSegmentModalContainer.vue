@@ -48,6 +48,7 @@ import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import scrollMixin from '@/mixins/scrollMixin'
 
 export default {
   name: 'BasePaginatedSegmentModalContainer',
@@ -55,6 +56,9 @@ export default {
     BaseModalContainer,
     BasePaginatedSegmentContainer
   },
+  mixins: [
+    scrollMixin
+  ],
   props: {
     responseData: Object,
     isLoading: Boolean,

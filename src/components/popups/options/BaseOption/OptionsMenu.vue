@@ -3,7 +3,9 @@
     v-for="(optionData, index) in options"
     :key="index"
     :class="{
-      disabled: optionData.isDisabled
+      disabled: optionData.isDisabled,
+      'middle-aligned':
+        isOptionsMiddleAligned
     }"
     :icon="optionData.icon"
     :text="optionData.text"
@@ -24,7 +26,8 @@ export default {
     options: {
       type: Array,
       required: true
-    }
+    },
+    isOptionsMiddleAligned: Boolean
   }
 }
 </script>

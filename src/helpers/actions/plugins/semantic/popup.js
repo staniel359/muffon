@@ -93,3 +93,11 @@ export function handleFadeHide (
     0
   )
 }
+
+export function hideAll () {
+  $(
+    'body'
+  ).popup(
+    'hide all'
+  )
+}

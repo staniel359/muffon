@@ -4,7 +4,6 @@ export default function (
     isShowToTop,
     isInline,
     onShow,
-    onHide,
     onHidden
   }
 ) {
@@ -21,6 +20,7 @@ export default function (
   return {
     on: 'click',
     variation: 'basic',
+    exclusive: true,
     lastResort: true,
     inline: isInline,
     className: {
@@ -34,7 +34,6 @@ export default function (
     transition,
     html,
     onShow,
-    onHide,
     onHidden
   }
 }

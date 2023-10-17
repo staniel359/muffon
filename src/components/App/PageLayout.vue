@@ -1,6 +1,8 @@
 <template>
   <TheDarkModeObserver />
 
+  <TheScrollObserver />
+
   <template
     v-if="currentRouteName"
   >
@@ -22,6 +24,8 @@ import {
 } from 'vue'
 import TheDarkModeObserver
   from '@/components/layout/observers/TheDarkModeObserver.vue'
+import TheScrollObserver
+  from '@/components/layout/observers/TheScrollObserver.vue'
 
 const RootPageLayout =
   defineAsyncComponent(
@@ -46,6 +50,7 @@ export default {
   name: 'PageLayout',
   components: {
     TheDarkModeObserver,
+    TheScrollObserver,
     RootPageLayout,
     AboutPageLayout,
     DefaultPageLayout

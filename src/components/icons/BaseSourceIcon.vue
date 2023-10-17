@@ -1,10 +1,9 @@
 <template>
-  <i class="icon base-source-icon main-icon min-width-unset">
+  <div class="base-source-icon">
     <BaseIcon
       ref="icon"
-      class="source-icon main-popup-icon"
+      class="main-popup-icon"
       :class="{
-        size,
         colored: isActive
       }"
       :icon="source"
@@ -17,7 +16,7 @@
         :source="source"
       />
     </div>
-  </i>
+  </div>
 </template>
 
 <script>
@@ -41,7 +40,7 @@ export default {
       type: String,
       required: true
     },
-    size: String
+    isInline: Boolean
   },
   data () {
     return {
@@ -55,7 +54,8 @@ export default {
     popupOptions () {
       return sourcePopupOptions(
         {
-          html: this.popup
+          html: this.popup,
+          isInline: this.isInline
         }
       )
     }

@@ -6,17 +6,32 @@ import {
 
 export default function (
   {
+    isFixed,
     html
   }
 ) {
-  const className = 'ui popup main-popup small'
+  const className = [
+    'ui popup main-popup small',
+    (
+      isFixed &&
+        'main-fixed-popup'
+    )
+  ].filter(
+    e => e
+  ).join(
+    ' '
+  )
 
   return {
     position: 'right center',
     transition: 'fade right',
     variation: 'basic',
     exclusive: true,
-    delay: 0,
+    hoverable: true,
+    delay: {
+      show: 0,
+      hide: 150
+    },
     className: {
       popup: className
     },

@@ -39,10 +39,10 @@
       <div class="main-popup-container">
         <BaseOptionsPopupMenuContainer
           ref="popup"
-          @active-change="handleSubmenuActiveChange"
         >
           <OptionsMenu
             :options="options"
+            :is-options-middle-aligned="isOptionsMiddleAligned"
           />
         </BaseOptionsPopupMenuContainer>
       </div>
@@ -78,9 +78,6 @@ export default {
   mixins: [
     popupMixin
   ],
-  inject: [
-    'changeSubmenuActive'
-  ],
   props: {
     text: {
       type: String,
@@ -92,7 +89,8 @@ export default {
     options: Array,
     isIconRed: Boolean,
     isIconColored: Boolean,
-    isDisabled: Boolean
+    isDisabled: Boolean,
+    isOptionsMiddleAligned: Boolean
   },
   emits: [
     'click',
@@ -122,13 +120,6 @@ export default {
     handleClick () {
       this.$emit(
         'click'
-      )
-    },
-    handleSubmenuActiveChange (
-      value
-    ) {
-      this.changeSubmenuActive(
-        value
       )
     },
     handleMouseEnter () {

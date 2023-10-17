@@ -1,5 +1,6 @@
 <template>
   <BaseSegmentContainer
+    ref="segment"
     class="blurred overflow-y-auto flex-full scroll-smooth"
   >
     <BaseTracksSimpleList
@@ -43,6 +44,7 @@ import {
   generateKey,
   isObjectChanged
 } from '@/helpers/utils'
+import scrollMixin from '@/mixins/scrollMixin'
 
 export default {
   name: 'TracksSegment',
@@ -50,9 +52,13 @@ export default {
     BaseSegmentContainer,
     BaseTracksSimpleList
   },
+  mixins: [
+    scrollMixin
+  ],
   data () {
     return {
-      key: null
+      key: null,
+      scrollable: null
     }
   },
   computed: {
@@ -74,6 +80,10 @@ export default {
   watch: {
     queueTracksComputed:
       'handleQueueTracksComputedChange'
+  },
+  mounted () {
+    this.scrollable =
+      this.$refs.segment.$el
   },
   methods: {
     handleQueueTracksComputedChange (
