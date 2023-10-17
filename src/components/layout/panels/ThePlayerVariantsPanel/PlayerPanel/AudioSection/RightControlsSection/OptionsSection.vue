@@ -5,6 +5,7 @@
       :track-data="playerPlaying"
       :is-clickable="false"
       :queue-tracks="null"
+      :is-from-radio="isPlayingFromRadio"
     >
       <template
         #default="slotProps"
@@ -74,6 +75,9 @@ export default {
     ),
     modelData () {
       return this.playerPlaying
+    },
+    isPlayingFromRadio () {
+      return this.playerPlaying.from_radio
     }
   },
   methods: {
