@@ -49,6 +49,7 @@ jobs:
           echo VITE_APP_ANONYMOUS_TOKEN=${{ secrets.ANONYMOUS_TOKEN }} >> .env
           echo VITE_APP_DISCORD_CLIENT_ID=${{ secrets.DISCORD_CLIENT_ID }} >> .env
           echo VITE_APP_SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }} >> .env
+          echo VITE_APP_RECAPTCHA_KEY=${{ secrets.RECAPTCHA_KEY }} >> .env
           cat .env
 
       - name: Release

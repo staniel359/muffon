@@ -338,10 +338,12 @@
         "passwordResetCode": "Passwortzurücksetzungscode ist leer",
         "nickname": "Nickname ist leer",
         "title": "Titel ist leer",
-        "legal": "Du musst der Datenschutzrichtlinie und den Geschäftsbedingungen zustimmen"
+        "legal": "Du musst der Datenschutzrichtlinie und den Geschäftsbedingungen zustimmen",
+        "recaptcha": "reCAPTCHA ist nicht gelöst"
       },
       "invalid": {
-        "email": "Email ist ungültig"
+        "email": "Email ist ungültig",
+        "recaptcha": "Ungültiges reCAPTCHA"
       },
       "taken": {
         "email": "Diese Email wurde bereits verwendet",

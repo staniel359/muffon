@@ -338,10 +338,12 @@
         "passwordResetCode": "Password reset code is empty",
         "nickname": "Nickname is empty",
         "title": "Title is empty",
-        "legal": "You must agree to the Privacy Policy and the Terms And Conditions"
+        "legal": "You must agree to the Privacy Policy and the Terms And Conditions",
+        "recaptcha": "reCAPTCHA is not checked"
       },
       "invalid": {
-        "email": "Email is invalid"
+        "email": "Email is invalid",
+        "recaptcha": "Invalid reCAPTCHA"
       },
       "taken": {
         "email": "Email is taken",

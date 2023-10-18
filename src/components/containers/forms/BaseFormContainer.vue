@@ -27,7 +27,8 @@ import {
 import layoutStore from '@/stores/layout'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import {
-  set as setForm
+  set as setForm,
+  validateField as validateFormField
 } from '@/helpers/actions/plugins/semantic/form'
 
 export default {
@@ -61,6 +62,16 @@ export default {
       this.$refs.form,
       this.options
     )
+  },
+  methods: {
+    validateField (
+      value
+    ) {
+      validateFormField(
+        this.$refs.form,
+        value
+      )
+    }
   }
 }
 </script>

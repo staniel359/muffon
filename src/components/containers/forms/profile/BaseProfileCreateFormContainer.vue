@@ -47,7 +47,8 @@ export default {
         'email',
         'password',
         'password-confirmation',
-        'nickname'
+        'nickname',
+        'recaptcha'
       ]
     }
   },
@@ -130,7 +131,8 @@ export default {
         birthdate,
         country,
         city,
-        status
+        status,
+        recaptcha
       } = fields
 
       const passwordConfirmation =
@@ -161,7 +163,8 @@ export default {
         status,
         isPrivate:
           fields.private,
-        isRemember
+        isRemember,
+        recaptcha
       }
     },
     setSessionData () {
@@ -171,6 +174,15 @@ export default {
           'profile.isRemember': this.isRemember
         }
       )
+    },
+    validateField (
+      value
+    ) {
+      this.$refs
+        .form
+        .validateField(
+          value
+        )
     }
   }
 }

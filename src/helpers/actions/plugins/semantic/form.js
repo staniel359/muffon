@@ -22,3 +22,15 @@ export function addFieldError (
     error
   )
 }
+
+export function validateField (
+  element,
+  field
+) {
+  $(
+    element
+  ).form(
+    'validate field',
+    field
+  )
+}
