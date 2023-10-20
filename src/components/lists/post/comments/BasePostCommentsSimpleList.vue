@@ -24,6 +24,9 @@ import CommentItem from './BasePostCommentsSimpleList/CommentItem.vue'
 import {
   collection as formatCollection
 } from '@/helpers/formatters'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePostCommentsSimpleList',
@@ -124,6 +127,19 @@ export default {
           )
 
       return item
+    },
+    addCommentToComments (
+      value
+    ) {
+      const commentDataFormatted = {
+        uuid: generateKey(),
+        ...value
+      }
+
+      this.commentsCollection = [
+        ...this.commentsCollection,
+        commentDataFormatted
+      ]
     }
   }
 }

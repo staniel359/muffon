@@ -7,6 +7,7 @@
     />
 
     <BasePostCommentsSimpleList
+      ref="list"
       :comments="comments"
       :is-community-creator="isCommunityCreator"
       :is-paginated="false"
@@ -52,11 +53,13 @@ export default {
   },
   data () {
     return {
-      key: null,
-      comments: null
+      key: null
     }
   },
   computed: {
+    comments () {
+      return this.postData.comments
+    },
     model () {
       if (this.isCommunityPost) {
         return 'community'
@@ -92,10 +95,6 @@ export default {
       return this.postData.id.toString()
     }
   },
-  beforeMount () {
-    this.comments =
-      this.postData.comments
-  },
   methods: {
     handlePostCommentSuccess (
       value
@@ -109,10 +108,11 @@ export default {
     addCommentToComments (
       value
     ) {
-      this.comments = [
-        ...this.comments,
-        value
-      ]
+      this.$refs
+        .list
+        .addCommentToComments(
+          value
+        )
     },
     refreshForm () {
       this.key = generateKey()
