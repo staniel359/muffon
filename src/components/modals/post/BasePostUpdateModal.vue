@@ -81,6 +81,9 @@ import {
 import {
   collection as formatCollection
 } from '@/helpers/formatters'
+import {
+  convertLinkToData as convertImageLinkToData
+} from '@/helpers/actions/image'
 
 export default {
   name: 'BasePostUpdateModal',
@@ -276,55 +279,18 @@ export default {
         value
       )
     },
-    handleImageLoadEnd (
-      {
-        reader,
-        file
-      }
-    ) {
-      const url =
-        URL.createObjectURL(
-          file
-        )
-
-      const imageData = {
-        uuid: generateKey(),
-        url,
-        data: reader.result
-      }
-
-      this.images.push(
-        imageData
-      )
-    },
     async processImage (
       imageData
     ) {
-      const data =
-        await fetch(
-          imageData.original
-        )
-
-      const file =
-        await data.blob()
-
-      const reader =
-        new FileReader()
-
-      const handleLoadEnd = () => {
-        this.handleImageLoadEnd(
+      const image =
+        await convertImageLinkToData(
           {
-            reader,
-            file
+            link: imageData.original
           }
         )
-      }
 
-      reader.onloadend =
-        handleLoadEnd
-
-      reader.readAsDataURL(
-        file
+      this.images.push(
+        image
       )
     },
     show () {

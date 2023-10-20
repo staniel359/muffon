@@ -14,6 +14,9 @@
 import {
   generateKey
 } from '@/helpers/utils'
+import {
+  convertBlobToData as convertImageBlobToData
+} from '@/helpers/actions/image'
 
 export default {
   name: 'BaseImageInput',
@@ -48,51 +51,26 @@ export default {
         }
       }
     },
-    handleLoadEnd (
-      {
-        reader,
-        file
-      }
+    show () {
+      this.$refs
+        .input
+        .click()
+    },
+    async processImage (
+      blob
     ) {
-      const url =
-        URL.createObjectURL(
-          file
+      const image =
+        await convertImageBlobToData(
+          {
+            blob
+          }
         )
-
-      const image = {
-        uuid: generateKey(),
-        url,
-        data: reader.result
-      }
 
       this.key = generateKey()
 
       this.$emit(
         'change',
         image
-      )
-    },
-    show () {
-      this.$refs
-        .input
-        .click()
-    },
-    processImage (
-      file
-    ) {
-      const reader = new FileReader()
-
-      reader.onloadend = () => {
-        this.handleLoadEnd(
-          {
-            reader,
-            file
-          }
-        )
-      }
-
-      reader.readAsDataURL(
-        file
       )
     }
   }
