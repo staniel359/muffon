@@ -28,6 +28,9 @@ import BaseImage from '@/components/images/BaseImage.vue'
 import BaseImageUploadButton
   from '@/components/buttons/BaseImageUploadButton.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import {
+  convertLinkToData as convertImageLinkToData
+} from '@/helpers/actions/image'
 
 export default {
   name: 'BaseImageField',
@@ -82,10 +85,21 @@ export default {
         value
       )
     },
-    handleValueChange (
+    async handleValueChange (
       value
     ) {
-      this.imageUrl = this.value
+      this.imageUrl = value
+
+      const image =
+        await convertImageLinkToData(
+          {
+            link: value
+          }
+        )
+
+      this.changeImage(
+        image
+      )
     },
     handleClearButtonClick () {
       this.imageUrl = null
