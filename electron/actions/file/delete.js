@@ -15,7 +15,5 @@ export default function (
     return unlinkSync(
       filePath
     )
-  } else {
-    return () => {}
   }
 }

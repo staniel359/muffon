@@ -1,11 +1,19 @@
 import {
+  existsSync,
   statSync
 } from 'fs'
 
 export default function (
   filePath
 ) {
-  return statSync(
-    filePath
-  )
+  const isFileExist =
+    existsSync(
+      filePath
+    )
+
+  if (isFileExist) {
+    return statSync(
+      filePath
+    )
+  }
 }

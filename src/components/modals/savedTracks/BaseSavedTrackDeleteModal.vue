@@ -56,11 +56,18 @@ export default {
     async handleDeleteButtonClick () {
       this.isLoading = true
 
+      const deleteData = {
+        fileName: this.uuid
+      }
+
+      const deleteDataFormatted =
+        JSON.stringify(
+          deleteData
+        )
+
       await ipcRenderer.invoke(
         'delete-audio',
-        {
-          fileName: this.uuid
-        }
+        deleteDataFormatted
       )
 
       await ipcRenderer.invoke(

@@ -1,11 +1,19 @@
 import {
+  existsSync,
   readFileSync
 } from 'fs'
 
 export default function (
   filePath
 ) {
-  return readFileSync(
-    filePath
-  )
+  const isFileExist =
+    existsSync(
+      filePath
+    )
+
+  if (isFileExist) {
+    return readFileSync(
+      filePath
+    )
+  }
 }

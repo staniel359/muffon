@@ -22,10 +22,17 @@ export function handleSaveAudio (
 
 export function handleDeleteAudio (
   _,
-  {
-    fileName
-  }
+  data
 ) {
+  const dataFormatted =
+    JSON.parse(
+      data
+    )
+
+  const {
+    fileName
+  } = dataFormatted
+
   return deleteAudio(
     fileName
   )

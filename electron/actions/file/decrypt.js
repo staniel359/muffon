@@ -13,19 +13,21 @@ export default function (
       filePath
     )
 
-  const decipher =
-    crypto.createDecipheriv(
-      'aes-256-cbc',
-      key,
-      iv
-    )
+  if (file) {
+    const decipher =
+      crypto.createDecipheriv(
+        'aes-256-cbc',
+        key,
+        iv
+      )
 
-  return Buffer.concat(
-    [
-      decipher.update(
-        file
-      ),
-      decipher.final()
-    ]
-  )
+    return Buffer.concat(
+      [
+        decipher.update(
+          file
+        ),
+        decipher.final()
+      ]
+    )
+  }
 }

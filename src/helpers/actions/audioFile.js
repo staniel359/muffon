@@ -25,13 +25,17 @@ export async function decrypt (
   const result =
     await getDecryptedFile()
 
-  const blob = new Blob(
-    [
-      result
-    ]
-  )
+  if (result) {
+    const blob = new Blob(
+      [
+        result
+      ]
+    )
 
-  return URL.createObjectURL(
-    blob
-  )
+    return URL.createObjectURL(
+      blob
+    )
+  } else {
+    throw new Error()
+  }
 }
