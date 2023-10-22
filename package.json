@@ -1,8 +1,9 @@
 {
   "name": "muffon",
-  "version": "1.6.0",
-  "description": "Music streaming browser",
-  "homepage": "https://github.com/staniel359/muffon",
+  "version": "2.0.0",
+  "description": "Advanced multi-source music streaming + discovery client",
+  "homepage": "https://muffon.netlify.app",
+  "repository": "https://github.com/staniel359/muffon",
   "license": "AGPL-3.0",
   "author": {
     "name": "Aleksey Shpakovsky",
