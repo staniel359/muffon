@@ -87,7 +87,7 @@ export default {
   },
   data () {
     return {
-      isPage: true,
+      isRecommendationsPage: true,
       isShowFilter: false,
       scope: 'artists',
       order:

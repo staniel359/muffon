@@ -53,6 +53,7 @@ export default {
   ],
   data () {
     return {
+      isRecommendationsTab: true,
       limit:
         tracksLimits.simple.small,
       scope: 'tracks'

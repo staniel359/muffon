@@ -58,7 +58,7 @@ export default {
   ],
   data () {
     return {
-      isPage: true,
+      isRecommendationsPage: true,
       scope: 'tracks',
       limit:
         tracksLimits.simple.large,

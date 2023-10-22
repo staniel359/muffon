@@ -60,6 +60,7 @@ export default {
   ],
   data () {
     return {
+      isRecommendationsSegment: true,
       headerScope:
         'recommendationsCollection.tracks',
       scope: 'tracks',

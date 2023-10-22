@@ -50,12 +50,18 @@ export default {
       this.refreshContent()
     },
     refreshContent () {
-      if (this.isPage) {
+      if (this.isRecommendationsPage) {
         this.$refs
           .page
           .refresh()
-      } else {
-        this.refresh()
+      } else if (this.isRecommendationsSegment) {
+        this.$refs
+          .segment
+          .refresh()
+      } else if (this.isRecommendationsTab) {
+        this.$refs
+          .tab
+          .refresh()
       }
     }
   }

@@ -55,6 +55,7 @@ export default {
   ],
   data () {
     return {
+      isRecommendationsSegment: true,
       headerScope:
         'recommendationsCollection.artists',
       scope: 'artists',

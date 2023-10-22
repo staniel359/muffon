@@ -48,6 +48,7 @@ export default {
   ],
   data () {
     return {
+      isRecommendationsTab: true,
       limit:
         artistsLimits.table.small,
       itemsInRow: (
