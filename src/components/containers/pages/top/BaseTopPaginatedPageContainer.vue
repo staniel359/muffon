@@ -69,7 +69,8 @@ export default {
   },
   data () {
     return {
-      country: this.$route.query?.country
+      country:
+        this.$route.query?.country
     }
   },
   watch: {
@@ -81,7 +82,9 @@ export default {
     ) {
       this.country = value
     },
-    handleCountryChange () {
+    async handleCountryChange () {
+      await this.$nextTick()
+
       this.$refs
         .pagination
         .refresh()
