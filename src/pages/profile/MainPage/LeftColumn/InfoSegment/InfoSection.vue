@@ -42,8 +42,7 @@ export default {
     popupOptions () {
       return profileInfoPopupOptions(
         {
-          html: this.popup,
-          isFixed: true
+          html: this.popup
         }
       )
     }

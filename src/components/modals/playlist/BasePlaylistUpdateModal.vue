@@ -4,46 +4,55 @@
     is-multiple
     @visible="handleVisible"
   >
-    <div class="content">
-      <BasePlaylistUpdateFormContainer
-        :playlist-id="playlistId"
-        :image="image"
-        @success="handleSuccess"
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="content large-padded"
+        :class="[
+          slotProps.class
+        ]"
       >
-        <div class="main-form-extra-section">
-          <BaseImageField
-            class="main-form-image-field"
-            model="playlist"
-            :value="imageData?.medium"
-            @change="handleImageChange"
-          />
-
-          <div class="main-form-extra-section-fields-section">
-            <BaseTitleField
-              ref="title"
-              :value="playlistTitle"
-            />
-
-            <BaseDescriptionField
-              :value="description"
-              @submit="handleSubmit"
-            />
-
-            <BasePrivateField
+        <BasePlaylistUpdateFormContainer
+          :playlist-id="playlistId"
+          :image="image"
+          @success="handleSuccess"
+        >
+          <div class="main-form-extra-section">
+            <BaseImageField
+              class="main-form-image-field"
               model="playlist"
-              :is-checked="isPrivate"
+              :value="imageData?.medium"
+              @change="handleImageChange"
+            />
+
+            <div class="main-form-extra-section-fields-section">
+              <BaseTitleField
+                ref="title"
+                :value="playlistTitle"
+              />
+
+              <BaseDescriptionField
+                :value="description"
+                @submit="handleSubmit"
+              />
+
+              <BasePrivateField
+                model="playlist"
+                :is-checked="isPrivate"
+              />
+            </div>
+          </div>
+
+          <div class="main-form-submit-button-container">
+            <BaseSubmitButton
+              ref="submit"
+              action-key="save"
             />
           </div>
-        </div>
-
-        <div class="main-form-submit-button-container">
-          <BaseSubmitButton
-            ref="submit"
-            action-key="save"
-          />
-        </div>
-      </BasePlaylistUpdateFormContainer>
-    </div>
+        </BasePlaylistUpdateFormContainer>
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="blurred header-segment middle-aligned"
+    class="header-segment middle-aligned"
   >
     <div
       v-if="queueTracksCount"
@@ -18,7 +18,6 @@
 
     <BaseQueueOptionsPopup
       v-if="queueTracksCount"
-      is-inline
     />
   </BaseSegmentContainer>
 </template>

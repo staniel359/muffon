@@ -11,7 +11,7 @@
     <template
       #top
     >
-      <BasePostsFormSegment
+      <BasePostsFormSection
         :key="formKey"
         post-type="profile"
         :profile-id="profileId"
@@ -35,8 +35,8 @@
 <script>
 import BaseProfilePaginatedTabContainer
   from '@/components/containers/tabs/profile/BaseProfilePaginatedTabContainer.vue'
-import BasePostsFormSegment
-  from '@/components/segments/posts/BasePostsFormSegment.vue'
+import BasePostsFormSection
+  from '@/components/sections/posts/BasePostsFormSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
@@ -47,7 +47,7 @@ export default {
   name: 'PostsTab',
   components: {
     BaseProfilePaginatedTabContainer,
-    BasePostsFormSegment,
+    BasePostsFormSection,
     BaseDivider,
     BasePostsSimpleList
   },

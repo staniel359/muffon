@@ -2,7 +2,6 @@
   <BaseModalContainer
     ref="modal"
     class="base-image-modal no-margin no-shadow no-border no-border-radius background-transparent"
-    :size="size"
     is-render
     @show="handleShow"
   >
@@ -18,9 +17,6 @@ export default {
   name: 'BaseImageModalContainer',
   components: {
     BaseModalContainer
-  },
-  props: {
-    size: String
   },
   emits: [
     'show'

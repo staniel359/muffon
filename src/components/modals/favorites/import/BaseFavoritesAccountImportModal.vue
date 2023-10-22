@@ -2,28 +2,37 @@
   <BaseModalContainer
     ref="modal"
   >
-    <div class="content full-height">
-      <BaseImportConnectSection
-        v-if="isRenderLastfmConnectSection"
-        source="lastfm"
-        scope="favoriteTracks"
-      />
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="content full-height large-padded"
+        :class="[
+          slotProps.class
+        ]"
+      >
+        <BaseImportConnectSection
+          v-if="isRenderLastfmConnectSection"
+          source="lastfm"
+          scope="favoriteTracks"
+        />
 
-      <BaseDivider />
+        <BaseDivider />
 
-      <ImportSection
-        v-if="isImport"
-        :source="source"
-        :scope="scope"
-        :limit="limit"
-        :total-count="totalCount"
-      />
-      <SaveSection
-        v-if="isSave"
-        :scope="scope"
-        :collection="collection"
-      />
-    </div>
+        <ImportSection
+          v-if="isImport"
+          :source="source"
+          :scope="scope"
+          :limit="limit"
+          :total-count="totalCount"
+        />
+        <SaveSection
+          v-if="isSave"
+          :scope="scope"
+          :collection="collection"
+        />
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

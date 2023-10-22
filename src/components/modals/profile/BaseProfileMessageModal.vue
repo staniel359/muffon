@@ -1,60 +1,70 @@
 <template>
   <BaseModalContainer
     ref="modal"
+    size="tiny"
     is-multiple
     @visible="handleVisible"
   >
-    <div class="scrolling content">
-      <SuccessMessage
-        v-if="conversationId"
-        :conversation-id="conversationId"
-        @link-click="handleLinkClick"
-      />
-      <template
-        v-else
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="scrolling content large-padded"
+        :class="[
+          slotProps.class
+        ]"
       >
-        <OtherProfileSection
-          :profile-data="profileData"
+        <SuccessMessage
+          v-if="conversationId"
+          :conversation-id="conversationId"
+          @link-click="handleLinkClick"
         />
-
-        <BaseMessageCreateFormContainer
-          class="main-sendable-form"
-          :profile-id="profileId"
-          :images="images"
-          :artists="artists"
-          :albums="albums"
-          :tracks="tracks"
-          @success="handleSuccess"
+        <template
+          v-else
         >
-          <BaseContentField
-            ref="content"
-            @submit="handleSubmit"
+          <OtherProfileSection
+            :profile-data="profileData"
           />
 
-          <BaseSendableFormContentSection
+          <BaseMessageCreateFormContainer
+            class="main-sendable-form"
+            :profile-id="profileId"
             :images="images"
             :artists="artists"
             :albums="albums"
             :tracks="tracks"
-            @link-click="handleLinkClick"
-          />
+            @success="handleSuccess"
+          >
+            <BaseContentField
+              ref="content"
+              @submit="handleSubmit"
+            />
 
-          <div class="buttons-container">
-            <BaseFormAddButtonsSection
-              :key="key"
+            <BaseSendableFormContentSection
+              :images="images"
               :artists="artists"
               :albums="albums"
               :tracks="tracks"
+              @link-click="handleLinkClick"
             />
 
-            <BaseSubmitButton
-              ref="submit"
-              action-key="send"
-            />
-          </div>
-        </BaseMessageCreateFormContainer>
-      </template>
-    </div>
+            <div class="buttons-container">
+              <BaseFormAddButtonsSection
+                :key="key"
+                :artists="artists"
+                :albums="albums"
+                :tracks="tracks"
+              />
+
+              <BaseSubmitButton
+                ref="submit"
+                action-key="send"
+              />
+            </div>
+          </BaseMessageCreateFormContainer>
+        </template>
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

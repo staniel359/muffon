@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui tiny empty circular label base-profile-online-label absolute no-right"
+    class="ui mini empty circular label base-profile-online-label absolute no-right"
     :class="[
       onlineLabelColor,
       {

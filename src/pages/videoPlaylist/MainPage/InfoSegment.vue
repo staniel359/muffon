@@ -14,11 +14,6 @@
           v-text="playlistTitle"
         />
 
-        <BaseVideoChannelLinkSection
-          class="description"
-          :model-data="playlistData"
-        />
-
         <DescriptionSection
           class="description"
           :playlist-data="playlistData"
@@ -59,8 +54,6 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
-import BaseVideoChannelLinkSection
-  from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
 import DescriptionSection from './InfoSegment/DescriptionSection.vue'
 import BaseCounterSection from '@/components/sections/BaseCounterSection.vue'
 import BasePublishDateSection
@@ -77,7 +70,6 @@ export default {
   components: {
     BaseSegmentContainer,
     BaseZoomableImage,
-    BaseVideoChannelLinkSection,
     DescriptionSection,
     BaseCounterSection,
     BasePublishDateSection,

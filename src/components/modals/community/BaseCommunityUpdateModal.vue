@@ -3,41 +3,50 @@
     ref="modal"
     @visible="handleVisible"
   >
-    <div class="content">
-      <BaseCommunityUpdateFormContainer
-        :community-id="communityId"
-        :image="image"
-        @success="handleSuccess"
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="content large-padded"
+        :class="[
+          slotProps.class
+        ]"
       >
-        <div class="main-form-extra-section">
-          <BaseImageField
-            class="main-form-image-field"
-            model="community"
-            :value="imageData?.medium"
-            @change="handleImageChange"
-          />
-
-          <div class="main-form-extra-section-fields-section">
-            <BaseTitleField
-              ref="title"
-              :value="communityTitle"
+        <BaseCommunityUpdateFormContainer
+          :community-id="communityId"
+          :image="image"
+          @success="handleSuccess"
+        >
+          <div class="main-form-extra-section">
+            <BaseImageField
+              class="main-form-image-field"
+              model="community"
+              :value="imageData?.medium"
+              @change="handleImageChange"
             />
 
-            <BaseDescriptionField
-              :value="description"
-              @submit="handleSubmit"
+            <div class="main-form-extra-section-fields-section">
+              <BaseTitleField
+                ref="title"
+                :value="communityTitle"
+              />
+
+              <BaseDescriptionField
+                :value="description"
+                @submit="handleSubmit"
+              />
+            </div>
+          </div>
+
+          <div class="main-form-submit-button-container">
+            <BaseSubmitButton
+              ref="submit"
+              action-key="save"
             />
           </div>
-        </div>
-
-        <div class="main-form-submit-button-container">
-          <BaseSubmitButton
-            ref="submit"
-            action-key="save"
-          />
-        </div>
-      </BaseCommunityUpdateFormContainer>
-    </div>
+        </BaseCommunityUpdateFormContainer>
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

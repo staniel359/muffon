@@ -37,7 +37,6 @@
       is-with-share-option
       is-with-external-link-option
       is-with-close-option
-      is-inline
       is-show-to-top
       @source-click="handleSourceClick"
     />

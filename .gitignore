@@ -19,6 +19,7 @@
 !/semantic/src/site/globals/site.overrides
 !/semantic/src/site/globals/site.variables
 !/semantic/src/site/modules/checkbox.variables
+!/semantic/src/site/modules/dropdown.variables
 
 /semantic/src/overrides.less
 /semantic/src/semantic.less

@@ -1,5 +1,10 @@
 <template>
-  <div class="base-options-popup-container">
+  <div
+    class="base-options-popup-container"
+    :class="{
+      visible: isVisible
+    }"
+  >
     <BaseButton
       ref="button"
       class="large compact basic circular options-button"
@@ -53,8 +58,8 @@ export default {
       type: Boolean,
       default: true
     },
-    isInline: Boolean,
-    isShowToTop: Boolean
+    isShowToTop: Boolean,
+    isNested: Boolean
   },
   emits: [
     'activeChange'
@@ -72,8 +77,8 @@ export default {
       return optionsPopupOptions(
         {
           html: this.popup,
-          isInline: this.isInline,
           isShowToTop: this.isShowToTop,
+          isNested: this.isNested,
           onShow: this.handleShow,
           onHidden: this.handleHidden
         }

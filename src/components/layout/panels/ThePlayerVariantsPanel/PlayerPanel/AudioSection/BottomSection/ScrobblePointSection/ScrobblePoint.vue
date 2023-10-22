@@ -2,7 +2,7 @@
   <div
     class="the-player-scrobble-point absolute height-100 middle-center-aligned"
     :class="{
-      'd-none': isHidden
+      'visibility-hidden': isHidden
     }"
     :style="{
       [offsetDirection]:

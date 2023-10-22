@@ -66,7 +66,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.info-segment
-  min-height: 450px
-  padding: 70px 80px 50px 80px !important
+.ui.segment
+  &.main-segment
+    &.info-segment
+      min-height: 450px
+      padding: 70px 80px 50px 80px !important
+      border: none !important
 </style>

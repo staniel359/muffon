@@ -43,6 +43,10 @@ export default {
       type: String,
       default: 'plain'
     },
+    isInvertable: {
+      type: Boolean,
+      default: true
+    },
     image: String,
     isLazy: Boolean,
     isContained: Boolean,
@@ -99,9 +103,9 @@ export default {
     },
     isWithBorder () {
       return (
-        this.isDarkMode ||
-          this.isBordered
-      )
+        this.isInvertable &&
+          this.isDarkMode
+      ) || this.isBordered
     }
   },
   methods: {

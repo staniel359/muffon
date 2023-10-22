@@ -166,8 +166,12 @@
 
 .text-align-center
   text-align: center
-.text-align-right
-  text-align: right
+[dir="ltr"]
+  .text-align-right
+    text-align: right
+[dir="rtl"]
+  .text-align-right
+    text-align: left
 
 .min-width-unset
   min-width: unset !important
@@ -211,17 +215,20 @@
   border-bottom: $border !important
 .border-bottom-inverted
   border-bottom: $borderInverted !important
-.border-left
-  border-left: $border !important
-.border-left-inverted
-  border-left: $borderInverted !important
-.border-right-inverted
-  border-right: $borderInverted !important
-
-.border-white
-  border: $borderWhite !important
-.border-black
-  border: $borderBlack !important
+[dir="ltr"]
+  .border-left
+    border-left: $border !important
+  .border-left-inverted
+    border-left: $borderInverted !important
+  .border-right-inverted
+    border-right: $borderInverted !important
+[dir="rtl"]
+  .border-left
+    border-right: $border !important
+  .border-left-inverted
+    border-right: $borderInverted !important
+  .border-right-inverted
+    border-left: $borderInverted !important
 
 .border-radius-large
   border-radius: $borderRadiusLarge !important
@@ -389,6 +396,10 @@
 
 .main-bottom-extrasmall-section
   margin-top: 0.5rem !important
+
+.main-list-bottom-extrasmall-section
+  &:not(:first-child)
+    @extend .main-bottom-extrasmall-section
 
 //
 

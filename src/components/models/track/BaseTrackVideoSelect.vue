@@ -7,6 +7,7 @@
 
     <VideoSection
       v-if="selectedVideoData"
+      ref="video"
       :key="key"
       :video-data="selectedVideoData"
     />
@@ -20,6 +21,9 @@ import VideoSection from './BaseTrackVideoSelect/VideoSection.vue'
 import {
   generateKey
 } from '@/helpers/utils'
+import {
+  focusOnPageElement
+} from '@/helpers/actions/layout'
 
 export default {
   name: 'BaseTrackVideoSelect',
@@ -37,9 +41,6 @@ export default {
     trackData: Object,
     isShow: Boolean
   },
-  emits: [
-    'focus'
-  ],
   data () {
     return {
       key: null,
@@ -52,11 +53,13 @@ export default {
     isShow: 'handleIsShowChange'
   },
   methods: {
-    handleSelectedVideoDataChange (
+    async handleSelectedVideoDataChange (
       value
     ) {
       if (value) {
         this.key = generateKey()
+
+        await this.$nextTick()
 
         this.focus()
       }
@@ -79,8 +82,8 @@ export default {
       }
     },
     focus () {
-      this.$emit(
-        'focus'
+      focusOnPageElement(
+        this.$refs.video.$el
       )
     }
   }

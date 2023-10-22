@@ -29,7 +29,7 @@
     background: @thumbHoverBackground;
   }
 
-  /* Inverted UI */
+  /* Inverted body */
 
   body.inverted::-webkit-scrollbar-track {
     background: @trackInvertedBackground;
@@ -44,6 +44,42 @@
   }
 
   body.inverted::-webkit-scrollbar-thumb:hover {
+    background: @thumbInvertedHoverBackground;
+  }
+
+  /* Inverted elements */
+
+  body .inverted:not(.dimmer)::-webkit-scrollbar-track {
+    background: @trackInvertedBackground;
+  }
+
+  body .inverted:not(.dimmer)::-webkit-scrollbar-thumb {
+    background: @thumbInvertedBackground;
+  }
+
+  body .inverted:not(.dimmer)::-webkit-scrollbar-thumb:window-inactive {
+    background: @thumbInvertedInactiveBackground;
+  }
+
+  body .inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
+    background: @thumbInvertedHoverBackground;
+  }
+
+  /* Inverted children */
+
+  body .inverted:not(.dimmer) ::-webkit-scrollbar-track {
+    background: @trackInvertedBackground;
+  }
+
+  body .inverted:not(.dimmer) ::-webkit-scrollbar-thumb {
+    background: @thumbInvertedBackground;
+  }
+
+  body .inverted:not(.dimmer) ::-webkit-scrollbar-thumb:window-inactive {
+    background: @thumbInvertedInactiveBackground;
+  }
+
+  body .inverted:not(.dimmer) ::-webkit-scrollbar-thumb:hover {
     background: @thumbInvertedHoverBackground;
   }
 }

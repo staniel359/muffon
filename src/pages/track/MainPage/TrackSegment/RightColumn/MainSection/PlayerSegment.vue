@@ -1,6 +1,7 @@
 <template>
   <BaseSegmentContainer
-    class="no-padding"
+    class="no-padding background-transparent"
+    :is-change-transparency="false"
   >
     <BaseTrackPlayerPanel
       :track-data="trackData"

@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="green circular"
+    class="basic green circular"
     left-icon="donate"
     :text="donateText"
     :is-invertable="false"

@@ -6,7 +6,7 @@
   >
     <BasePaginatedSegmentContainer
       ref="segment"
-      class="basic scrolling content"
+      class="basic scrolling content large-padded"
       :class="{
         'full-height': responseData
       }"

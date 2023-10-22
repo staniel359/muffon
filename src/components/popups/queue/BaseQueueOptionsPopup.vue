@@ -1,7 +1,5 @@
 <template>
-  <BaseOptionsPopupContainer
-    :is-inline="isInline"
-  >
+  <BaseOptionsPopupContainer>
     <template
       v-if="isRenderPlaylistOption"
     >
@@ -40,9 +38,6 @@ export default {
     BasePlaylistOption,
     BasePlaylistsModal,
     ClearOption
-  },
-  props: {
-    isInline: Boolean
   },
   computed: {
     ...mapState(

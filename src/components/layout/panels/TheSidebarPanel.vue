@@ -12,7 +12,7 @@
       />
 
       <div
-        class="ui top-section flex-full overflow-y-auto overflow-x-hidden"
+        class="top-section flex-full overflow-y-auto overflow-x-hidden"
         :class="{
           inverted: isDarkMode
         }"

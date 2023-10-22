@@ -1,26 +1,26 @@
 <template>
-  <BaseSegmentContainer
+  <div
     v-if="currentProfileId"
-    ref="segment"
-    class="main-segment-container basic no-padding"
-    :is-change-transparency="false"
+    ref="section"
   >
-    <BaseCreateButton
-      model="post"
+    <BaseAddButton
+      class="compact"
+      model="comment"
       :is-active="isShowForm"
       @click="handleCreateButtonClick"
     />
 
     <FormSection
       v-show="isShowForm"
-      :post-type="postType"
+      :model="model"
       :profile-id="profileId"
       :community-id="communityId"
-      :is-with-as-community-option="isCommunityCreator"
+      :post-id="postId"
+      :is-with-as-community-option="isWithAsCommunityOption"
       :is-show="isShowForm"
       @success="handleSuccess"
     />
-  </BaseSegmentContainer>
+  </div>
 </template>
 
 <script>
@@ -28,23 +28,24 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import BaseSegmentContainer
-  from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseCreateButton from '@/components/buttons/BaseCreateButton.vue'
-import FormSection from './BasePostsFormSegment/FormSection.vue'
+import BaseAddButton from '@/components/buttons/BaseAddButton.vue'
+import FormSection from './BasePostCommentFormSection/FormSection.vue'
+import {
+  focusOnPageElement
+} from '@/helpers/actions/layout'
 
 export default {
-  name: 'BasePostsFormSegment',
+  name: 'BasePostCommentFormSection',
   components: {
-    BaseSegmentContainer,
-    BaseCreateButton,
+    BaseAddButton,
     FormSection
   },
   props: {
-    postType: String,
+    model: String,
     profileId: String,
     communityId: String,
-    isCommunityCreator: Boolean
+    postId: String,
+    isWithAsCommunityOption: Boolean
   },
   emits: [
     'success'
@@ -70,13 +71,6 @@ export default {
       this.isShowForm =
         !this.isShowForm
     },
-    handleIsShowFormChange (
-      value
-    ) {
-      if (value) {
-        this.focus()
-      }
-    },
     handleSuccess (
       value
     ) {
@@ -85,10 +79,17 @@ export default {
         value
       )
     },
+    handleIsShowFormChange (
+      value
+    ) {
+      if (value) {
+        this.focus()
+      }
+    },
     focus () {
-      this.$refs
-        .segment
-        .focus()
+      focusOnPageElement(
+        this.$refs.section
+      )
     }
   }
 }

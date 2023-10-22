@@ -4,34 +4,43 @@
     is-multiple
     @visible="handleVisible"
   >
-    <div class="content full-height">
-      <div class="main-search-container">
-        <SearchInput
-          ref="input"
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="content full-height large-padded"
+        :class="[
+          slotProps.class
+        ]"
+      >
+        <div class="main-search-container">
+          <SearchInput
+            ref="input"
+            :scope="scope"
+            :source="source"
+            :collection="this[scope]"
+          />
+
+          <ScopeSelect
+            :scope="scope"
+            @select="handleScopeSelect"
+          />
+
+          <SourceSelect
+            :scope="scope"
+            :source="source"
+            @select="handleSourceSelect"
+          />
+        </div>
+
+        <BaseDivider />
+
+        <SearchList
           :scope="scope"
-          :source="source"
           :collection="this[scope]"
         />
-
-        <ScopeSelect
-          :scope="scope"
-          @select="handleScopeSelect"
-        />
-
-        <SourceSelect
-          :scope="scope"
-          :source="source"
-          @select="handleSourceSelect"
-        />
       </div>
-
-      <BaseDivider />
-
-      <SearchList
-        :scope="scope"
-        :collection="this[scope]"
-      />
-    </div>
+    </template>
   </BaseModalContainer>
 </template>
 

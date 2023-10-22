@@ -1,10 +1,20 @@
 <template>
   <BaseModalContainer
     ref="modal"
+    size="tiny"
   >
-    <div class="scrolling content">
-      <KeyboardShortcutsSection />
-    </div>
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="scrolling content large-padded"
+        :class="[
+          slotProps.class
+        ]"
+      >
+        <KeyboardShortcutsSection />
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

@@ -19,7 +19,6 @@
         :is-pagination-simple="isPaginationSimple"
         :is-with-infinite-scroll="isWithInfiniteScroll"
         :scrollable="scrollable"
-        :is-change-transparency="false"
         @focus="handleFocus"
       >
         <template

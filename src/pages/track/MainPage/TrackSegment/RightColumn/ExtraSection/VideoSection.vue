@@ -14,7 +14,6 @@
       class="main-bottom-section"
       :track-data="trackData"
       :is-show="isShowVideoSelect"
-      @focus="handleFocus"
     />
   </div>
 </template>
@@ -59,9 +58,6 @@ export default {
 
       this.isShowVideoSelect =
         !this.isShowVideoSelect
-    },
-    handleFocus () {
-      this.focus()
     },
     focus () {
       focusOnPageElement(

@@ -3,6 +3,7 @@
     class="basic circular large absolute main-bottom-right-small-button hidden-item"
     icon="dotsHorizontal"
     :link="artistImagesLink"
+    :is-change-transparency="false"
   />
 </template>
 

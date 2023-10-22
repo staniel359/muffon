@@ -6,21 +6,11 @@ import {
 
 export default function (
   {
-    isFixed,
     html
   }
 ) {
-  const className = [
-    'ui popup main-popup small',
-    (
-      isFixed &&
-        'main-fixed-popup'
-    )
-  ].filter(
-    e => e
-  ).join(
-    ' '
-  )
+  const className =
+    'ui popup main-popup small'
 
   return {
     position: 'right center',

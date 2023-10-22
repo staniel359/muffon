@@ -8,6 +8,7 @@
     <LyricsSection
       v-if="selectedTrackData"
       :key="key"
+      ref="lyrics"
       class="main-bottom-section"
       :track-data="trackData"
       :selected-track-data="selectedTrackData"
@@ -23,6 +24,9 @@ import LyricsSection from './BaseTrackLyricsSelect/LyricsSection.vue'
 import {
   generateKey
 } from '@/helpers/utils'
+import {
+  focusOnPageElement
+} from '@/helpers/actions/layout'
 
 export default {
   name: 'BaseTrackLyricsSelect',
@@ -42,9 +46,6 @@ export default {
       required: true
     }
   },
-  emits: [
-    'focus'
-  ],
   data () {
     return {
       key: null,
@@ -56,11 +57,13 @@ export default {
       'handleSelectedTrackDataChange'
   },
   methods: {
-    handleSelectedTrackDataChange (
+    async handleSelectedTrackDataChange (
       value
     ) {
       if (value) {
         this.key = generateKey()
+
+        await this.$nextTick()
 
         this.focus()
       }
@@ -79,8 +82,8 @@ export default {
       }
     },
     focus () {
-      this.$emit(
-        'focus'
+      focusOnPageElement(
+        this.$refs.lyrics.$el
       )
     }
   }

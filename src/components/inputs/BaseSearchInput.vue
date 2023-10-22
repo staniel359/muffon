@@ -19,7 +19,7 @@
     </BaseInputContainer>
 
     <div
-      class="blurred results main-search-results"
+      class="results main-search-results"
       :class="[
         transparentClass,
         scopeClass,

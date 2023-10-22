@@ -1,38 +1,29 @@
 <template>
-  <template
-    v-if="comments.length"
-  >
-    <BaseDivider
-      class="large"
-    />
+  <BasePostCommentsSimpleList
+    ref="list"
+    :comments="comments"
+    :is-community-creator="isCommunityCreator"
+    :is-paginated="false"
+    is-with-top-divider
+  />
 
-    <BasePostCommentsSimpleList
-      ref="list"
-      :comments="comments"
-      :is-community-creator="isCommunityCreator"
-      :is-paginated="false"
-    />
-  </template>
-
-  <div class="main-bottom-large-section">
-    <BasePostCommentFormSegment
-      :key="key"
-      :model="model"
-      :profile-id="otherProfileId"
-      :community-id="communityId"
-      :post-id="postId"
-      :is-with-as-community-option="isCommunityCreator"
-      @success="handlePostCommentSuccess"
-    />
-  </div>
+  <BasePostCommentFormSection
+    :key="key"
+    class="main-bottom-large-section"
+    :model="model"
+    :profile-id="otherProfileId"
+    :community-id="communityId"
+    :post-id="postId"
+    :is-with-as-community-option="isCommunityCreator"
+    @success="handlePostCommentSuccess"
+  />
 </template>
 
 <script>
-import BaseDivider from '@/components/BaseDivider.vue'
 import BasePostCommentsSimpleList
   from '@/components/lists/post/comments/BasePostCommentsSimpleList.vue'
-import BasePostCommentFormSegment
-  from '@/components/segments/post/comment/BasePostCommentFormSegment.vue'
+import BasePostCommentFormSection
+  from '@/components/sections/post/comment/BasePostCommentFormSection.vue'
 import {
   generateKey
 } from '@/helpers/utils'
@@ -40,9 +31,8 @@ import {
 export default {
   name: 'CommentsSection',
   components: {
-    BaseDivider,
     BasePostCommentsSimpleList,
-    BasePostCommentFormSegment
+    BasePostCommentFormSection
   },
   props: {
     postData: {

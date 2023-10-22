@@ -1,4 +1,9 @@
 <template>
+  <BaseDivider
+    v-if="isRenderTopDivider"
+    class="large"
+  />
+
   <div
     class="ui comments no-margin"
     :class="{
@@ -20,6 +25,7 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+import BaseDivider from '@/components/BaseDivider.vue'
 import CommentItem from './BasePostCommentsSimpleList/CommentItem.vue'
 import {
   collection as formatCollection
@@ -31,6 +37,7 @@ import {
 export default {
   name: 'BasePostCommentsSimpleList',
   components: {
+    BaseDivider,
     CommentItem
   },
   provide () {
@@ -52,7 +59,8 @@ export default {
       type: Boolean,
       default: true
     },
-    isCommunityCreator: Boolean
+    isCommunityCreator: Boolean,
+    isWithTopDivider: Boolean
   },
   data () {
     return {
@@ -65,7 +73,13 @@ export default {
       [
         'isDarkMode'
       ]
-    )
+    ),
+    isRenderTopDivider () {
+      return (
+        this.isWithTopDivider &&
+          this.commentsCollection.length
+      )
+    }
   },
   watch: {
     comments: 'handleCommentsChange'

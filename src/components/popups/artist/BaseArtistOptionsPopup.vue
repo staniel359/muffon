@@ -2,6 +2,7 @@
   <BaseOptionsPopupContainer
     v-if="isRender"
     :is-transparent="isTransparent"
+    :is-nested="isNested"
     @active-change="handleActiveChange"
   >
     <template
@@ -163,7 +164,8 @@ export default {
     isWithShareOption: Boolean,
     isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
-    isDeleteWithRedirect: Boolean
+    isDeleteWithRedirect: Boolean,
+    isNested: Boolean
   },
   emits: [
     'activeChange',

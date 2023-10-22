@@ -2,50 +2,68 @@
   <BaseModalContainer
     ref="modal"
     class="main-delete-modal"
+    size="tiny"
     is-multiple
   >
-    <div
-      class="header"
-      v-text="headerText"
-    />
-
-    <div class="scrolling content">
+    <template
+      #default="slotProps"
+    >
       <div
-        v-if="error"
-        class="main-top-section"
+        class="header section medium-padded"
+        :class="[
+          slotProps.class
+        ]"
+        v-text="headerText"
+      />
+
+      <div
+        class="scrolling content section medium-padded"
+        :class="[
+          slotProps.class
+        ]"
       >
-        <BaseErrorMessage
-          :error="error"
+        <div
+          v-if="error"
+          class="main-top-section"
+        >
+          <BaseErrorMessage
+            :error="error"
+          />
+        </div>
+
+        <TextSection
+          :model-type="modelType"
+          :model="model"
+          :model-name="modelName"
+          :parent-model-name="parentModelName"
+          :is-with-also-text="isWithAlsoText"
         />
       </div>
 
-      <TextSection
-        :model-type="modelType"
-        :model="model"
-        :model-name="modelName"
-        :parent-model-name="parentModelName"
-        :is-with-also-text="isWithAlsoText"
-      />
-    </div>
+      <div
+        class="actions main-buttons-container section medium-padded"
+        :class="[
+          slotProps.class
+        ]"
+      >
+        <BaseButton
+          class="basic cancel circular"
+          :text="cancelText"
+        />
 
-    <div class="actions main-buttons-container">
-      <BaseButton
-        class="basic cancel circular"
-        :text="cancelText"
-      />
-
-      <BaseButton
-        class="red circular"
-        left-icon="delete"
-        :text="deleteText"
-        :class="{
-          loading: isLoading,
-          disabled: isLoading
-        }"
-        :is-invertable="false"
-        @click="handleDeleteButtonClick"
-      />
-    </div>
+        <BaseButton
+          class="red circular"
+          left-icon="delete"
+          :text="deleteText"
+          :class="{
+            loading: isLoading,
+            disabled: isLoading
+          }"
+          :is-invertable="false"
+          @click="handleDeleteButtonClick"
+        />
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

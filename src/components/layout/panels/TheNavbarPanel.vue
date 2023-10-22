@@ -7,14 +7,14 @@
       <NavbarSearchButton />
 
       <NavbarHistoryButton
-        direction="back"
+        :direction="leftButtonDirection"
         icon="arrowLeft"
       />
 
       <NavbarNavigation />
 
       <NavbarHistoryButton
-        direction="forward"
+        :direction="rightButtonDirection"
         icon="arrowRight"
       />
 
@@ -26,6 +26,10 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
 import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import NavbarSearchButton from './TheNavbarPanel/NavbarSearchButton.vue'
 import NavbarHistoryButton from './TheNavbarPanel/NavbarHistoryButton.vue'
@@ -46,7 +50,25 @@ export default {
   },
   mixins: [
     transparencyMixin
-  ]
+  ],
+  computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isRtl'
+      ]
+    ),
+    leftButtonDirection () {
+      return (
+        this.isRtl ? 'forward' : 'back'
+      )
+    },
+    rightButtonDirection () {
+      return (
+        this.isRtl ? 'back' : 'forward'
+      )
+    }
+  }
 }
 </script>
 

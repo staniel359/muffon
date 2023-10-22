@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="blurred main-popup-content-container"
+    class="main-popup-content-container"
   >
     <div class="main-top-extrasmall-section">
       <BaseHeader

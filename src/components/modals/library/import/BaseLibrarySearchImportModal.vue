@@ -3,45 +3,54 @@
     ref="modal"
     @visible="handleVisible"
   >
-    <div class="content full-height">
-      <div class="main-search-container">
-        <SearchInput
-          ref="input"
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="content full-height large-padded"
+        :class="[
+          slotProps.class
+        ]"
+      >
+        <div class="main-search-container">
+          <SearchInput
+            ref="input"
+            :scope="scope"
+            :collection="collection"
+            :source="source"
+            :is-save="isSave"
+          />
+
+          <BaseClearButton
+            v-if="collection.length"
+            @click="handleClearButtonClick"
+          />
+
+          <ScopeSelect
+            :selected="scope"
+          />
+
+          <SourceSelect
+            :scope="scope"
+            :source="source"
+            @select="handleSourceSelect"
+          />
+        </div>
+
+        <BaseDivider />
+
+        <BaseImportSection
+          v-if="isImport"
           :scope="scope"
           :collection="collection"
-          :source="source"
-          :is-save="isSave"
         />
-
-        <BaseClearButton
-          v-if="collection.length"
-          @click="handleClearButtonClick"
-        />
-
-        <ScopeSelect
-          :selected="scope"
-        />
-
-        <SourceSelect
+        <BaseLibrarySaveSection
+          v-else-if="isSave"
           :scope="scope"
-          :source="source"
-          @select="handleSourceSelect"
+          :collection="collection"
         />
       </div>
-
-      <BaseDivider />
-
-      <BaseImportSection
-        v-if="isImport"
-        :scope="scope"
-        :collection="collection"
-      />
-      <BaseLibrarySaveSection
-        v-else-if="isSave"
-        :scope="scope"
-        :collection="collection"
-      />
-    </div>
+    </template>
   </BaseModalContainer>
 </template>
 

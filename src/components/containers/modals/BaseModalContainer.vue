@@ -2,10 +2,17 @@
   <div
     v-if="isRender || isCalled"
     ref="modal"
-    class="ui page modal base-modal"
+    class="ui page modal base-modal background-transparent blurred"
     :class="size"
   >
-    <slot />
+    <slot
+      :class="[
+        transparentClass,
+        {
+          inverted: isDarkMode
+        }
+      ]"
+    />
   </div>
 </template>
 
@@ -25,13 +32,17 @@ import {
 import {
   toggleClass
 } from '@/helpers/actions/plugins/jquery'
+import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'BaseModalContainer',
+  mixins: [
+    transparencyMixin
+  ],
   props: {
     size: {
       type: String,
-      default: 'tiny'
+      default: 'small'
     },
     isRender: Boolean,
     isMultiple: Boolean

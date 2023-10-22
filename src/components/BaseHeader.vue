@@ -12,7 +12,7 @@
       v-if="icon"
       class="header-icon"
       :class="{
-        'big page-icon main-icon': isPage,
+        'big main-top-small-section main-icon': isPage,
         small: isIconSmall
       }"
       :icon="icon"
@@ -21,7 +21,7 @@
       v-else-if="icons"
       class="header-icon"
       :class="{
-        'big page-icon main-icon': isPage
+        'big main-top-small-section main-icon': isPage
       }"
       :icons="icons"
     />
@@ -90,9 +90,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.page-icon
-  margin-bottom: 0.2rem !important
-
 .page-subheader
   margin-top: 0.25rem !important
 </style>

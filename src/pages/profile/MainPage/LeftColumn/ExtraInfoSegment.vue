@@ -8,6 +8,7 @@
     />
 
     <BaseProfileCityCountry
+      class="main-list-bottom-extrasmall-section"
       :profile-data="profileData"
     />
   </BaseSegmentContainer>

@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="city || country"
-    class="middle-aligned"
+    class="flex-full"
   >
     <i
       v-if="country"

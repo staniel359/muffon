@@ -4,42 +4,51 @@
     is-multiple
     @visible="handleVisible"
   >
-    <div class="content">
-      <BasePlaylistCreateFormContainer
-        :image="image"
-        :is-with-redirect="isWithRedirect"
-        @success="handleSuccess"
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="content large-padded"
+        :class="[
+          slotProps.class
+        ]"
       >
-        <div class="main-form-extra-section">
-          <BaseImageField
-            class="main-form-image-field"
-            model="playlist"
-            @change="handleImageChange"
-          />
-
-          <div class="main-form-extra-section-fields-section">
-            <BaseTitleField
-              ref="title"
-            />
-
-            <BaseDescriptionField
-              @submit="handleSubmit"
-            />
-
-            <BasePrivateField
+        <BasePlaylistCreateFormContainer
+          :image="image"
+          :is-with-redirect="isWithRedirect"
+          @success="handleSuccess"
+        >
+          <div class="main-form-extra-section">
+            <BaseImageField
+              class="main-form-image-field"
               model="playlist"
+              @change="handleImageChange"
+            />
+
+            <div class="main-form-extra-section-fields-section">
+              <BaseTitleField
+                ref="title"
+              />
+
+              <BaseDescriptionField
+                @submit="handleSubmit"
+              />
+
+              <BasePrivateField
+                model="playlist"
+              />
+            </div>
+          </div>
+
+          <div class="main-form-submit-button-container">
+            <BaseSubmitButton
+              ref="submit"
+              action-key="create"
             />
           </div>
-        </div>
-
-        <div class="main-form-submit-button-container">
-          <BaseSubmitButton
-            ref="submit"
-            action-key="create"
-          />
-        </div>
-      </BasePlaylistCreateFormContainer>
-    </div>
+        </BasePlaylistCreateFormContainer>
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

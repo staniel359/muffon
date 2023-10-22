@@ -7,10 +7,10 @@
         />
       </div>
 
-      <div class="width-65 main-right-section">
+      <div class="width-65 main-right-section main-text-container">
         <div class="middle-aligned">
           <BaseIcon
-            class="grey place-icon main-icon"
+            class="grey main-icon"
             icon="place"
           />
 
@@ -20,9 +20,9 @@
           />
         </div>
 
-        <div class="main-bottom-mini-section middle-aligned">
+        <div class="main-bottom-extrasmall-section">
           <BaseIcon
-            class="location-icon main-icon text-align-center"
+            class="main-icon"
             :icon="countryIcon"
             is-flag
           />
@@ -95,10 +95,4 @@ export default {
 <style lang="sass" scoped>
 .main-simple-list-item
   padding: 1.5rem 1rem !important
-
-.place-icon
-  width: 25px
-
-.location-icon
-  width: 25px
 </style>

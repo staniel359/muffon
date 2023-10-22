@@ -3,39 +3,48 @@
     ref="modal"
     @visible="handleVisible"
   >
-    <div class="content full-height">
-      <div class="main-search-container">
-        <SearchInput
-          ref="input"
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="content full-height large-padded"
+        :class="[
+          slotProps.class
+        ]"
+      >
+        <div class="main-search-container">
+          <SearchInput
+            ref="input"
+            :tracks="collection"
+            :source="source"
+            :is-save="isSave"
+          />
+
+          <SourceSelect
+            :source="source"
+            @select="handleSourceSelect"
+          />
+
+          <BaseClearButton
+            v-if="collection.length"
+            @click="handleClearButtonClick"
+          />
+        </div>
+
+        <BaseDivider />
+
+        <BaseImportSection
+          v-if="isImport"
+          scope="tracks"
+          :collection="collection"
+        />
+        <BasePlaylistSaveSection
+          v-else-if="isSave"
+          :playlist-id="playlistId"
           :tracks="collection"
-          :source="source"
-          :is-save="isSave"
-        />
-
-        <SourceSelect
-          :source="source"
-          @select="handleSourceSelect"
-        />
-
-        <BaseClearButton
-          v-if="collection.length"
-          @click="handleClearButtonClick"
         />
       </div>
-
-      <BaseDivider />
-
-      <BaseImportSection
-        v-if="isImport"
-        scope="tracks"
-        :collection="collection"
-      />
-      <BasePlaylistSaveSection
-        v-else-if="isSave"
-        :playlist-id="playlistId"
-        :tracks="collection"
-      />
-    </div>
+    </template>
   </BaseModalContainer>
 </template>
 

@@ -2,7 +2,7 @@ export default function (
   {
     html,
     isShowToTop,
-    isInline,
+    isNested,
     onShow,
     onHidden
   }
@@ -20,9 +20,8 @@ export default function (
   return {
     on: 'click',
     variation: 'basic',
-    exclusive: true,
+    exclusive: !isNested,
     lastResort: true,
-    inline: isInline,
     className: {
       popup: className
     },

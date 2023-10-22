@@ -23,8 +23,6 @@
     max-height: inherit
     &.inverted
       @extend .border-inverted-no-top
-    &:not(.loading)
-      @extend .blurred
 
 .ui.modal
   &.the-settings-modal
@@ -331,6 +329,21 @@
     &.active,
     .menu
       @extend .border-color-base-light
+  .menu
+    .main-dropdown-item
+      &.selected
+        @extend .background-grey
+      &:hover
+        &:not(.selected)
+          background: #0000000d !important
+  &.inverted
+    .menu
+      .main-dropdown-item
+        &.selected
+          @extend .background-grey-inverted
+        &:hover
+          &:not(.selected)
+            background: #ffffff14 !important
 [dir="ltr"]
   .base-dropdown-container
     &.selection
@@ -382,8 +395,6 @@
     @extend .width-fit-content
 
 .base-modal
-  & > .main-segment
-    padding: 2.5rem !important
   &.scrolling
     top: unset !important
     &:after
@@ -397,18 +408,21 @@
         @extend .absolute, .overflow-y-auto
     &.scrolling
       @extend .scroll-smooth
+    &.large-padded
+      padding: 2.5rem !important
+  & > .section
+    &.medium-padded
+      padding: 1.5rem 2rem !important
   &:not(.main-delete-modal)
     & > .content
       max-height: $mainModalHeight !important
   &.inverted
     &:not(.base-image-modal)
-      @extend .background-black, .border-inverted
+      @extend .border-inverted
     & > .header
-      @extend .background-black, .border-bottom-inverted
-    & > .content
-      @extend .background-black
+      @extend .border-bottom-inverted
     & > .actions
-      @extend .background-black, .border-top-inverted
+      @extend .border-top-inverted
 
 .base-tabs-container
   &:not(.vertical)
@@ -524,10 +538,10 @@
           @extend .border-color-base
 
 .base-profile-online-label
-  @extend .border-white, .no-margin
+  @extend .border, .no-margin
   z-index: 1
   &.inverted
-    @extend .border-black
+    @extend .border-inverted
 
 .base-track-player-panel
   height: $trackPagePlayerPanelHeight

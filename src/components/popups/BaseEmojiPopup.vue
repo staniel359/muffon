@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="blurred main-popup-content-container no-padding"
+    class="main-popup-content-container no-padding"
   >
     <BaseEmojiPicker
       v-if="isCalled"

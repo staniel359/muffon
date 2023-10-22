@@ -13,7 +13,6 @@
       v-show="isShowLyricsSelect"
       class="main-bottom-section"
       :track-data="trackData"
-      @focus="handleFocus"
     />
   </div>
 </template>
@@ -58,9 +57,6 @@ export default {
 
       this.isShowLyricsSelect =
         !this.isShowLyricsSelect
-    },
-    handleFocus () {
-      this.focus()
     },
     focus () {
       focusOnPageElement(

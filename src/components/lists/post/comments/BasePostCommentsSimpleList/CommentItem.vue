@@ -1,6 +1,6 @@
 <template>
   <div
-    class="comment main-simple-list-item not-padded main-list-bottom-section"
+    class="comment main-simple-list-item not-padded main-list-bottom-section background-transparent"
     :class="{
       disabled: isDeleted
     }"

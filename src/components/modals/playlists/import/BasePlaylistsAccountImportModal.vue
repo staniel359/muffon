@@ -3,34 +3,43 @@
     ref="modal"
     @show="handleShow"
   >
-    <div class="content full-height">
-      <BaseImportConnectSection
-        v-if="isRenderLastfmConnectSection"
-        source="lastfm"
-        :scope="scope"
-      />
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="content full-height large-padded"
+        :class="[
+          slotProps.class
+        ]"
+      >
+        <BaseImportConnectSection
+          v-if="isRenderLastfmConnectSection"
+          source="lastfm"
+          :scope="scope"
+        />
 
-      <BaseImportConnectSection
-        v-if="isRenderSpotifyConnectSection"
-        source="spotify"
-        :scope="scope"
-      />
+        <BaseImportConnectSection
+          v-if="isRenderSpotifyConnectSection"
+          source="spotify"
+          :scope="scope"
+        />
 
-      <BaseDivider />
+        <BaseDivider />
 
-      <ImportSection
-        v-if="isImport"
-        :source="source"
-        :scope="scope"
-        :limit="limit"
-        :total-count="totalCount"
-      />
-      <SaveSection
-        v-if="isSave"
-        :key="saveSectionKey"
-        :playlists="playlists"
-      />
-    </div>
+        <ImportSection
+          v-if="isImport"
+          :source="source"
+          :scope="scope"
+          :limit="limit"
+          :total-count="totalCount"
+        />
+        <SaveSection
+          v-if="isSave"
+          :key="saveSectionKey"
+          :playlists="playlists"
+        />
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

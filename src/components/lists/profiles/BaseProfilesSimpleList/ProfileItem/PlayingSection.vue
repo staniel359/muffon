@@ -1,6 +1,6 @@
 <template>
   <div
-    class="description middle-aligned main-bottom-small-section"
+    class="description middle-aligned main-bottom-mini-section"
   >
     <BaseIcon
       class="small main-icon"

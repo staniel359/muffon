@@ -11,7 +11,7 @@
     <template
       #top
     >
-      <BasePostsFormSegment
+      <BasePostsFormSection
         :key="formKey"
         post-type="community"
         :community-id="communityId"
@@ -36,8 +36,8 @@
 <script>
 import BaseCommunityTabContainer
   from '@/components/containers/tabs/community/BaseCommunityTabContainer.vue'
-import BasePostsFormSegment
-  from '@/components/segments/posts/BasePostsFormSegment.vue'
+import BasePostsFormSection
+  from '@/components/sections/posts/BasePostsFormSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
@@ -48,7 +48,7 @@ export default {
   name: 'PostsTab',
   components: {
     BaseCommunityTabContainer,
-    BasePostsFormSegment,
+    BasePostsFormSection,
     BaseDivider,
     BasePostsSimpleList
   },

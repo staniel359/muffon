@@ -1,7 +1,6 @@
 export default function (
   {
-    html,
-    isInline
+    html
   }
 ) {
   const className = 'ui popup main-popup small'
@@ -10,7 +9,6 @@ export default function (
     position: 'top center',
     transition: 'fade up',
     variation: 'basic',
-    inline: isInline,
     exclusive: true,
     delay: 0,
     className: {

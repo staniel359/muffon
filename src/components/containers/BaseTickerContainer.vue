@@ -11,8 +11,7 @@
       <div
         ref="content"
         :style="{
-          [`padding-${paddingDirection}`]:
-            `${gapWidth}px`
+          'padding-right': `${gapWidth}px`
         }"
       >
         <slot />
@@ -22,11 +21,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import layoutStore from '@/stores/layout'
-
 export default {
   name: 'BaseTickerContainer',
   data () {
@@ -41,12 +35,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      layoutStore,
-      [
-        'isRtl'
-      ]
-    ),
     isTickable () {
       return this.contentWidth > (
         this.tickerWidth +
@@ -65,21 +53,9 @@ export default {
       )
     },
     isLoopEnd () {
-      if (this.isRtl) {
-        return (
-          this.progress >=
-            this.contentWidth
-        )
-      } else {
-        return (
-          this.progress <=
-            this.contentWidth * -1
-        )
-      }
-    },
-    paddingDirection () {
       return (
-        this.isRtl ? 'left' : 'right'
+        this.progress <=
+          this.contentWidth * -1
       )
     }
   },
@@ -122,11 +98,7 @@ export default {
       this.animate()
     },
     animate () {
-      if (this.isRtl) {
-        this.progress += this.speed
-      } else {
-        this.progress -= this.speed
-      }
+      this.progress -= this.speed
 
       this.transformTicker()
 

@@ -3,37 +3,46 @@
     ref="modal"
     @visible="handleVisible"
   >
-    <div class="content">
-      <BaseCommunityCreateFormContainer
-        :image="image"
-        @success="handleSuccess"
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="content large-padded"
+        :class="[
+          slotProps.class
+        ]"
       >
-        <div class="main-form-extra-section">
-          <BaseImageField
-            class="image-field"
-            model="community"
-            @change="handleImageChange"
-          />
-
-          <div class="main-form-extra-section-fields-section">
-            <BaseTitleField
-              ref="title"
+        <BaseCommunityCreateFormContainer
+          :image="image"
+          @success="handleSuccess"
+        >
+          <div class="main-form-extra-section">
+            <BaseImageField
+              class="image-field"
+              model="community"
+              @change="handleImageChange"
             />
 
-            <BaseDescriptionField
-              @submit="handleSubmit"
+            <div class="main-form-extra-section-fields-section">
+              <BaseTitleField
+                ref="title"
+              />
+
+              <BaseDescriptionField
+                @submit="handleSubmit"
+              />
+            </div>
+          </div>
+
+          <div class="main-form-submit-button-container">
+            <BaseSubmitButton
+              ref="submit"
+              action-key="create"
             />
           </div>
-        </div>
-
-        <div class="main-form-submit-button-container">
-          <BaseSubmitButton
-            ref="submit"
-            action-key="create"
-          />
-        </div>
-      </BaseCommunityCreateFormContainer>
-    </div>
+        </BaseCommunityCreateFormContainer>
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

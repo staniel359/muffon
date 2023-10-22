@@ -5,11 +5,20 @@
     is-multiple
     @visible="handleVisible"
   >
-    <div class="content">
-      <BaseProfileDeleteForm
-        ref="form"
-      />
-    </div>
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="content large-padded"
+        :class="[
+          slotProps.class
+        ]"
+      >
+        <BaseProfileDeleteForm
+          ref="form"
+        />
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

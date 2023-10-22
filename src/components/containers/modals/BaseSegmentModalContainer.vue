@@ -5,7 +5,7 @@
   >
     <BaseSegmentContainer
       ref="segment"
-      class="basic scrolling content"
+      class="basic scrolling content large-padded"
       :is-loading="isLoading"
       :error="error"
       @refresh="handleRefresh"

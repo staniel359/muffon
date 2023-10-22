@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="raised main-segment-container"
+    class="raised main-segment-container medium-padded"
   >
     <BaseHeader
       class="main-artist-name"

@@ -1,4 +1,8 @@
 import {
+  mapState
+} from 'pinia'
+import layoutStore from '@/stores/layout'
+import {
   recaptchaKey
 } from '@/helpers/data/env'
 
@@ -9,12 +13,24 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isDarkMode'
+      ]
+    ),
     recaptchaOptions () {
       return {
         sitekey: recaptchaKey,
         callback:
-          this.handleRecaptchaSuccess
+          this.handleRecaptchaSuccess,
+        theme: this.theme
       }
+    },
+    theme () {
+      return (
+        this.isDarkMode ? 'dark' : 'light'
+      )
     }
   },
   mounted () {
@@ -24,7 +40,13 @@ export default {
         this.handleRecaptchaReady
       )
   },
+  watch: {
+    isDarkMode: 'handleIsDarkModeChange'
+  },
   methods: {
+    handleIsDarkModeChange () {
+      this.reset()
+    },
     handleRecaptchaReady () {
       window
         .grecaptcha
@@ -46,6 +68,9 @@ export default {
         )
     },
     handleRefreshButtonClick () {
+      this.reset()
+    },
+    reset () {
       window
         .grecaptcha
         .reset()

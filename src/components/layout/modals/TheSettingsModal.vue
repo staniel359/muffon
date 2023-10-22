@@ -6,22 +6,31 @@
     is-render
     is-multiple
   >
-    <div class="content full-height">
-      <BaseTabsContainer
-        :tabs="tabsFormatted"
+    <template
+      #default="modalSlotProps"
+    >
+      <div
+        class="content full-height large-padded"
+        :class="[
+          modalSlotProps.class
+        ]"
       >
-        <template
-          v-for="(tabData, index) in tabsFormatted"
-          :key="index"
-          #[index]="slotProps"
+        <BaseTabsContainer
+          :tabs="tabsFormatted"
         >
-          <Component
-            :is="tabData.component"
-            :class="slotProps.class"
-          />
-        </template>
-      </BaseTabsContainer>
-    </div>
+          <template
+            v-for="(tabData, index) in tabsFormatted"
+            :key="index"
+            #[index]="slotProps"
+          >
+            <Component
+              :is="tabData.component"
+              :class="slotProps.class"
+            />
+          </template>
+        </BaseTabsContainer>
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

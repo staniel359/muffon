@@ -1,7 +1,7 @@
 <template>
   <BaseSegmentContainer
     ref="segment"
-    class="blurred overflow-y-auto flex-full scroll-smooth"
+    class="overflow-y-auto flex-full scroll-smooth"
   >
     <BaseTracksSimpleList
       :key="key"

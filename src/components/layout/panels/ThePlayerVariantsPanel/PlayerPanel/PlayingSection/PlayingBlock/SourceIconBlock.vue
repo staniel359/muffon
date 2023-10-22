@@ -2,7 +2,6 @@
   <BaseSourceIcon
     class="description right"
     :source="source"
-    is-inline
   />
 </template>
 

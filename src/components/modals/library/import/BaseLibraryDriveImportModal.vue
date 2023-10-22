@@ -2,21 +2,30 @@
   <BaseModalContainer
     ref="modal"
   >
-    <div class="content full-height">
-      <FolderSelectSection />
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="content full-height large-padded"
+        :class="[
+          slotProps.class
+        ]"
+      >
+        <FolderSelectSection />
 
-      <BaseDivider />
+        <BaseDivider />
 
-      <ImportSection
-        v-if="isImport"
-        :files="files"
-      />
-      <BaseLibrarySaveSection
-        v-else-if="isSave"
-        scope="tracks"
-        :tracks="tracks"
-      />
-    </div>
+        <ImportSection
+          v-if="isImport"
+          :files="files"
+        />
+        <BaseLibrarySaveSection
+          v-else-if="isSave"
+          scope="tracks"
+          :tracks="tracks"
+        />
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

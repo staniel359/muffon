@@ -2,7 +2,6 @@
   <BaseImageModalContainer
     ref="modal"
     class="base-artist-images-modal"
-    size="small"
     @show="handleShow"
   >
     <div class="main-image-modal-content">

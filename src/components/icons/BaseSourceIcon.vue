@@ -39,8 +39,7 @@ export default {
     source: {
       type: String,
       required: true
-    },
-    isInline: Boolean
+    }
   },
   data () {
     return {
@@ -54,8 +53,7 @@ export default {
     popupOptions () {
       return sourcePopupOptions(
         {
-          html: this.popup,
-          isInline: this.isInline
+          html: this.popup
         }
       )
     }

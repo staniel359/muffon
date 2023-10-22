@@ -2,6 +2,7 @@
   <BaseSegmentContainer
     ref="player"
     class="bottom overlay blurred sidebar the-player-panel no-padding"
+    dir="ltr"
     :class="{
       visible: playerPlaying
     }"

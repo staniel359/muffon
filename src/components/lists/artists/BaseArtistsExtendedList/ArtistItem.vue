@@ -8,12 +8,13 @@
       #default="slotProps"
     >
       <BaseSegmentContainer
-        class="raised nested main-segment-container d-flex"
+        class="raised nested main-segment-container d-flex medium-padded background-transparent"
         :class="{
           disabled: isDeleted
         }"
         :is-loading="slotProps.isLoading"
         :error="slotProps.error"
+        :is-change-transparency="false"
         @refresh="handleRefresh"
       >
         <template

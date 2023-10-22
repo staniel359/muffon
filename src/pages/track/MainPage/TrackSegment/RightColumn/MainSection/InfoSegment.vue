@@ -1,6 +1,7 @@
 <template>
   <BaseSegmentContainer
-    class="info-segment"
+    class="info-segment background-transparent"
+    :is-change-transparency="false"
   >
     <InfoSection
       :track-data="trackData"

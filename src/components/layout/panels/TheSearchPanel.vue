@@ -1,10 +1,13 @@
 <template>
   <div
-    class="ui top segment sidebar the-search-panel no-padding"
-    :class="{
-      inverted: isDarkMode,
-      visible: isSearchPanelVisible
-    }"
+    class="ui top segment sidebar the-search-panel no-padding blurred"
+    :class="[
+      transparentClass,
+      {
+        inverted: isDarkMode,
+        visible: isSearchPanelVisible
+      }
+    ]"
   >
     <div class="ui container main-container height-100">
       <div class="main-search-container width-100 height-100">
@@ -62,6 +65,7 @@ import BaseDimmer from '@/components/BaseDimmer.vue'
 import {
   toggleClass
 } from '@/helpers/actions/plugins/jquery'
+import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
   name: 'TheSearchPanel',
@@ -72,6 +76,9 @@ export default {
     ResultsPanel,
     BaseDimmer
   },
+  mixins: [
+    transparencyMixin
+  ],
   data () {
     return {
       isFullSize: null,

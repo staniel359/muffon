@@ -13,7 +13,6 @@ export default function (
     closable: false,
     exclusive: true,
     hoverable: true,
-    inline: true,
     preserve: true,
     className: {
       popup: className

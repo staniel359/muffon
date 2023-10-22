@@ -12,6 +12,7 @@
         :key="imageData.uuid"
         class="column no-padding"
         :image="imageData.name"
+        :is-invertable="false"
       />
     </div>
   </BaseSegmentContainer>

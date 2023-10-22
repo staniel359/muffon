@@ -74,6 +74,8 @@ p
 .ui.segment
   &.main-segment
     padding: 1.5rem
+    &.medium-padded
+      padding: 2rem
 
 .ui.dropdown
   &.main-dropdown
@@ -110,7 +112,7 @@ p
     @extend .border-radius
 
 .main-search-results
-  @extend .no-border, .width-100
+  @extend .no-border, .width-100, .blurred
   .result
     @extend .middle-aligned
     .image
@@ -188,9 +190,11 @@ p
 .main-segment-container
   @extend .no-border, .no-margin, .main-list-bottom-large-section
   &.inverted
-    @extend .no-shadow
+    @extend .shadowed
     &.nested
-      @extend .border-inverted
+      @extend .border-inverted, .no-shadow
+  &:not(.loading)
+    @extend .blurred
 
 .main-segment
   @extend .scroll-smooth
@@ -199,6 +203,7 @@ p
     z-index: 1
     &:before
       @extend .background-transparent, .blurred
+      border-radius: inherit !important
   &.inverted
     @extend .no-shadow
   &.disabled
@@ -304,9 +309,15 @@ p
   @extend .no-border
   &.inverted
     @extend .border-inverted
+    .main-options-option
+      &:hover
+        background: #ffffff14 !important
   .info-section
     @extend .main-list-bottom-mini-section
     line-height: 1.5rem !important
+  .main-options-option
+    &:hover
+      background: #0000000d !important
 
 .main-artist-popup
   width: 460px
@@ -677,9 +688,11 @@ p
 
 .main-visibility-container
   .invisible-item
-    @extend .visibility-hidden
+    &:not(.visible)
+      @extend .visibility-hidden
   .hidden-item
-    @extend .d-none
+    &:not(.visible)
+      @extend .d-none
   &:hover
     .invisible-item
       @extend .visibility-visible

@@ -1,7 +1,6 @@
 <template>
   <BaseOptionsPopupContainer
     v-if="isRender"
-    :is-inline="isInline"
     :is-show-to-top="isShowToTop"
   >
     <template
@@ -237,7 +236,6 @@ export default {
     isWithDeleteOption: Boolean,
     isDeleteWithRedirect: Boolean,
     isClearable: Boolean,
-    isInline: Boolean,
     isShowToTop: Boolean
   },
   emits: [

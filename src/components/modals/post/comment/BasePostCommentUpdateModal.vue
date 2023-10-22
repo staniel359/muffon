@@ -1,30 +1,21 @@
 <template>
   <BaseModalContainer
     ref="modal"
+    size="tiny"
     @visible="handleVisible"
   >
-    <div class="scrolling content">
-      <BasePostCommentUpdateFormContainer
-        class="main-sendable-form"
-        :comment-data="commentData"
-        :images="images"
-        :artists="artists"
-        :albums="albums"
-        :tracks="tracks"
-        :videos="videos"
-        :video-channels="videoChannels"
-        :video-playlists="videoPlaylists"
-        :playlists="playlists"
-        :communities="communities"
-        @success="handleSuccess"
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="scrolling content large-padded"
+        :class="[
+          slotProps.class
+        ]"
       >
-        <BaseContentField
-          ref="content"
-          :value="text"
-          @submit="handleSubmit"
-        />
-
-        <BaseSendableFormContentSection
+        <BasePostCommentUpdateFormContainer
+          class="main-sendable-form"
+          :comment-data="commentData"
           :images="images"
           :artists="artists"
           :albums="albums"
@@ -34,31 +25,50 @@
           :video-playlists="videoPlaylists"
           :playlists="playlists"
           :communities="communities"
-          @link-click="handleLinkClick"
-        />
-
-        <div class="as-community-container">
-          <BaseAsCommunityField
-            v-if="isWithAsCommunityOption"
-            :is-checked="isByCommunity"
+          @success="handleSuccess"
+        >
+          <BaseContentField
+            ref="content"
+            :value="text"
+            @submit="handleSubmit"
           />
-        </div>
 
-        <div class="buttons-container">
-          <BaseFormAddButtonsSection
-            :key="key"
+          <BaseSendableFormContentSection
+            :images="images"
             :artists="artists"
             :albums="albums"
             :tracks="tracks"
+            :videos="videos"
+            :video-channels="videoChannels"
+            :video-playlists="videoPlaylists"
+            :playlists="playlists"
+            :communities="communities"
+            @link-click="handleLinkClick"
           />
 
-          <BaseSubmitButton
-            ref="submit"
-            action-key="save"
-          />
-        </div>
-      </BasePostCommentUpdateFormContainer>
-    </div>
+          <div class="as-community-container">
+            <BaseAsCommunityField
+              v-if="isWithAsCommunityOption"
+              :is-checked="isByCommunity"
+            />
+          </div>
+
+          <div class="buttons-container">
+            <BaseFormAddButtonsSection
+              :key="key"
+              :artists="artists"
+              :albums="albums"
+              :tracks="tracks"
+            />
+
+            <BaseSubmitButton
+              ref="submit"
+              action-key="save"
+            />
+          </div>
+        </BasePostCommentUpdateFormContainer>
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 

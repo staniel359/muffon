@@ -1,21 +1,39 @@
 <template>
   <BaseModalContainer
     ref="modal"
+    size="tiny"
   >
-    <div
-      class="header"
-      v-text="headerText"
-    />
+    <template
+      #default="slotProps"
+    >
+      <div
+        class="header section medium-padded"
+        :class="[
+          slotProps.class
+        ]"
+        v-text="headerText"
+      />
 
-    <ContentSection />
+      <ContentSection
+        class="section medium-padded"
+        :class="[
+          slotProps.class
+        ]"
+      />
 
-    <div class="actions main-buttons-container">
-      <DeclineButton />
+      <div
+        class="actions main-buttons-container section medium-padded"
+        :class="[
+          slotProps.class
+        ]"
+      >
+        <DeclineButton />
 
-      <LaterButton />
+        <LaterButton />
 
-      <AcceptButton />
-    </div>
+        <AcceptButton />
+      </div>
+    </template>
   </BaseModalContainer>
 </template>
 
