@@ -128,6 +128,11 @@ export default {
   },
   mounted () {
     hotkeys(
+      'ctrl+f, command+f',
+      this.handlePressCtrlF
+    )
+
+    hotkeys(
       'esc',
       this.handlePressEscape
     )
@@ -157,6 +162,11 @@ export default {
         '#app',
         'overflow-hidden',
         value
+      )
+    },
+    handlePressCtrlF () {
+      this.setIsSearchPanelVisible(
+        true
       )
     },
     handlePressEscape () {
