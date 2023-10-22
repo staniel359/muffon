@@ -70,26 +70,11 @@ export default {
   watch: {
     tabsCount: 'handleTabsCountChange'
   },
-  mounted () {
-    ipcRenderer.on(
-      'add-tab',
-      this.handleAddTab
-    )
+  async mounted () {
+    this.setupHandlers()
 
-    ipcRenderer.on(
-      'set-active-tab',
-      this.handleSetActiveTab
-    )
-
-    ipcRenderer.on(
-      'update-tab',
-      this.handleUpdateTab
-    )
-
-    ipcRenderer.on(
-      'delete-tab',
-      this.handleDeleteTab
-    )
+    this.tabs =
+      await this.getElectronStoreTabs()
 
     if (this.tabsCount) {
       this.setupTabs()
@@ -127,7 +112,9 @@ export default {
           value
         ]
 
-        this.tabs = tabs
+        this.setTabs(
+          tabs
+        )
       }
     },
     handleSetActiveTab (
@@ -178,7 +165,9 @@ export default {
       if (isUpdateTab) {
         updateTab()
 
-        this.tabs = tabs
+        this.setTabs(
+          tabs
+        )
       }
     },
     handleDeleteTab (
@@ -199,7 +188,9 @@ export default {
         )
       ]
 
-      this.tabs = tabs
+      this.setTabs(
+        tabs
+      )
     },
     handleTabsCountChange (
       value
@@ -210,6 +201,33 @@ export default {
     },
     handleAddTabButtonClick () {
       this.addNewTab()
+    },
+    setupHandlers () {
+      ipcRenderer.on(
+        'add-tab',
+        this.handleAddTab
+      )
+
+      ipcRenderer.on(
+        'set-active-tab',
+        this.handleSetActiveTab
+      )
+
+      ipcRenderer.on(
+        'update-tab',
+        this.handleUpdateTab
+      )
+
+      ipcRenderer.on(
+        'delete-tab',
+        this.handleDeleteTab
+      )
+    },
+    getElectronStoreTabs () {
+      return ipcRenderer.invoke(
+        'get-electron-store-key',
+        'layout.tabs'
+      )
     },
     setupTabs () {
       this.tabs.forEach(
@@ -240,6 +258,17 @@ export default {
     clearTabs () {
       ipcRenderer.send(
         'clear-tabs'
+      )
+    },
+    setTabs (
+      value
+    ) {
+      this.tabs = value
+
+      updateGlobalStore(
+        {
+          'layout.tabs': value
+        }
       )
     }
   }
