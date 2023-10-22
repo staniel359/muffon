@@ -25,7 +25,8 @@ export default {
       queueStore,
       {
         isQueueAutoplay: 'isAutoplay',
-        isQueueEnd: 'isEnd'
+        isQueueEnd: 'isEnd',
+        isQueueLoop: 'isLoop'
       }
     ),
     ...mapState(
@@ -42,8 +43,10 @@ export default {
     ),
     isGetQueueNextTrack () {
       return (
-        this.isQueueAutoplay &&
-          !this.isQueueEnd
+        this.isQueueAutoplay && (
+          this.isQueueLoop ||
+            !this.isQueueEnd
+        )
       )
     },
     queueTrackArgs () {

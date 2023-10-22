@@ -56,7 +56,8 @@ export default {
       queueStore,
       {
         isQueueAutoplay: 'isAutoplay',
-        isQueueEnd: 'isEnd'
+        isQueueEnd: 'isEnd',
+        isQueueLoop: 'isLoop'
       }
     ),
     ...mapState(
@@ -67,8 +68,10 @@ export default {
     ),
     isGetQueueNextTrack () {
       return (
-        this.isQueueAutoplay &&
-          !this.isQueueEnd
+        this.isQueueAutoplay && (
+          this.isQueueLoop ||
+            !this.isQueueEnd
+        )
       )
     },
     queueTrackArgs () {
@@ -81,7 +84,9 @@ export default {
     playerPlaying:
       'handlePlayerPlayingChange',
     isQueueAutoplay:
-      'handleIsQueueAutoplayChange'
+      'handleIsQueueAutoplayChange',
+    isQueueLoop:
+      'handleIsQueueLoopChange'
   },
   methods: {
     getQueueTrack,
@@ -89,6 +94,16 @@ export default {
       this.key = generateKey()
     },
     handleIsQueueAutoplayChange () {
+      const isGetQueueNextTrack = (
+        this.isGetQueueNextTrack &&
+          this.audioElement.ended
+      )
+
+      if (isGetQueueNextTrack) {
+        this.getQueueNextTrack()
+      }
+    },
+    handleIsQueueLoopChange () {
       const isGetQueueNextTrack = (
         this.isGetQueueNextTrack &&
           this.audioElement.ended
