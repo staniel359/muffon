@@ -22,9 +22,9 @@ export default function (
     `/profiles/${profileId}/library/tracks`
 
   const params = {
-    title: trackTitle,
-    artist: artistName,
-    album: albumTitle,
+    track_title: trackTitle,
+    artist_name: artistName,
+    album_title: albumTitle,
     image: (
       image || imageUrl
     ),

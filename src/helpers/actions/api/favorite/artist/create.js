@@ -14,7 +14,7 @@ export default function (
     `/profiles/${profileId}/favorites/artists`
 
   const params = {
-    name: artistName
+    artist_name: artistName
   }
 
   const handleSuccess = (

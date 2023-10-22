@@ -15,8 +15,8 @@ export default function (
     `/profiles/${profileId}/listened/albums`
 
   const params = {
-    title: albumTitle,
-    artist: artistName
+    album_title: albumTitle,
+    artist_name: artistName
   }
 
   const handleSuccess = (

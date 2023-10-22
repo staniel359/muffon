@@ -17,8 +17,8 @@ export default function (
     `/profiles/${profileId}/library/albums`
 
   const params = {
-    title: albumTitle,
-    artist: artistName,
+    album_title: albumTitle,
+    artist_name: artistName,
     image: imageUrl,
     source: sourceData
   }

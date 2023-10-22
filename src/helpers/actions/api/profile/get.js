@@ -18,8 +18,8 @@ export default function (
   const playlistsModelDataParams =
     playlistsModelData && {
       model: playlistsModelData.model,
-      title: playlistsModelData.title,
-      artist: playlistsModelData.artistName
+      track_title: playlistsModelData.title,
+      artist_name: playlistsModelData.artistName
     }
 
   const params = {

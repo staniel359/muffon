@@ -17,8 +17,8 @@ export default function (
     `/profiles/${profileId}/bookmarks/albums`
 
   const params = {
-    title: albumTitle,
-    artist: artistName,
+    album_title: albumTitle,
+    artist_name: artistName,
     image: imageUrl,
     source: sourceData
   }

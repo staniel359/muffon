@@ -20,9 +20,9 @@ export default function (
     `/profiles/${profileId}/bookmarks/tracks`
 
   const params = {
-    title: trackTitle,
-    artist: artistName,
-    album: albumTitle,
+    track_title: trackTitle,
+    artist_name: artistName,
+    album_title: albumTitle,
     image: imageUrl,
     source: sourceData,
     audio: audioData,

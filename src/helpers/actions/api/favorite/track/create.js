@@ -21,14 +21,15 @@ export default function (
     `/profiles/${profileId}/favorites/tracks`
 
   const params = {
-    title: trackTitle,
-    artist: artistName,
-    album: albumTitle,
+    track_title: trackTitle,
+    artist_name: artistName,
+    album_title: albumTitle,
     image: imageUrl,
     created,
     source: sourceData,
     audio: audioData,
-    album_source: albumSourceData
+    album_source:
+      albumSourceData
   }
 
   const handleSuccess = (
