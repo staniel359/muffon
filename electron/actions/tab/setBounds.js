@@ -10,7 +10,7 @@ export default function (
 
   const topOffsetScaled =
     Math.round(
-      topOffset * scale
+      tabsPanelHeight * scale
     )
 
   const [

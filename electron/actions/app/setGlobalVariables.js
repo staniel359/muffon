@@ -9,7 +9,5 @@ export default function () {
 
   global.tabsPanelHeight = 50
 
-  global.topOffset = null
-
   global.discordClient = null
 }

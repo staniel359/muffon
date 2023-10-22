@@ -17,7 +17,6 @@ import getElectronStoreKey from '#/actions/electronStore/getKey'
 import show from './show'
 import hide from './hide'
 import checkForUpdates from '#/actions/app/checkForUpdates'
-import setTopOffset from '#/actions/app/setTopOffset'
 import setScale from './setScale'
 import callExit from '#/actions/app/callExit'
 import {
@@ -40,8 +39,6 @@ function handleReadyToShow () {
   show()
 
   checkForUpdates()
-
-  setTopOffset()
 
   const scale =
     getElectronStoreKey(
