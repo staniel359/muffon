@@ -2,8 +2,14 @@ name: main
 on: workflow_dispatch
 
 jobs:
-  CD:
-    runs-on: macos-latest
+  build:
+    strategy:
+      matrix:
+        os:
+          - macos-latest
+          - ubuntu-latest
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Set up checkout
@@ -57,7 +63,14 @@ jobs:
           ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
           ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: yarn release
+        run: |
+          if [ ${{ runner.os }} == 'macOS' ]; then
+            yarn release --win --mac
+          elif [ ${{ runner.os }} == 'Linux' ]; then
+            sudo apt install flatpak flatpak-builder libarchive-tools rpm -y
+            flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+            yarn release --linux
+          fi
 
       - name: Clear Wine cache
         run: rm -rf ${{ github.workspace }}/.cache/electron-builder/wine
