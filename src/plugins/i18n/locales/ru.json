@@ -93,7 +93,8 @@
     "whatsNew": "Что нового",
     "listenedRecently": "Недавно прослушанные",
     "shows": "Выступления",
-    "listeningNow": "Слушает сейчас"
+    "listeningNow": "Слушает сейчас",
+    "help": "Помощь"
   },
   "errors": {
     "badRequest": {
@@ -906,6 +907,13 @@
       "artists": "Без исполнителей",
       "tags": "Без меток"
     }
+  },
+  "keyboardShortcuts": {
+    "header": "Комбинации клавиш",
+    "search": "Показать панель поиска",
+    "audioBackward": "Промотать аудио назад",
+    "audioForward": "Промотать аудио вперёд",
+    "radioNextTrack": "Следующая композиция радио"
   },
   "online": "В сети",
   "error": "Ошибка",

@@ -93,7 +93,8 @@
     "whatsNew": "Quoi de neuf ?",
     "listenedRecently": "Récemment écouté",
     "shows": "Regarder",
-    "listeningNow": "Écoute en cours"
+    "listeningNow": "Écoute en cours",
+    "help": "Aide"
   },
   "errors": {
     "badRequest": {
@@ -906,6 +907,13 @@
       "artists": "Sans les artistes",
       "tags": "Sans les tags"
     }
+  },
+  "keyboardShortcuts": {
+    "header": "Raccourci clavier",
+    "search": "Afficher le panneau de recherche",
+    "audioBackward": "Reculer dans l'audio",
+    "audioForward": "Avancer dans l'audio",
+    "radioNextTrack": "Passer au titre radio suivant"
   },
   "online": "En ligne",
   "error": "Erreur",

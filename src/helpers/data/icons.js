@@ -61,6 +61,7 @@ export default {
   folder: 'folder',
   folderSelect: 'folder open',
   follower: 'user plus',
+  help: 'question circle outline',
   history: 'history',
   home: 'home',
   image: 'image outline',

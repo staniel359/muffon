@@ -93,7 +93,8 @@
     "whatsNew": "Што новага",
     "listenedRecently": "Нядаўна праслуханыя",
     "shows": "Выступы",
-    "listeningNow": "Слухае зараз"
+    "listeningNow": "Слухае зараз",
+    "help": "Дапамога"
   },
   "errors": {
     "badRequest": {
@@ -906,6 +907,13 @@
       "artists": "Без выканаўцаў",
       "tags": "Без метак"
     }
+  },
+  "keyboardShortcuts": {
+    "header": "Камбінацыі клавіш",
+    "search": "Паказаць панэль пошуку",
+    "audioBackward": "Праматаць аўдыё назад",
+    "audioForward": "Праматаць аўдыё наперад",
+    "radioNextTrack": "Наступная кампазіцыя радыё"
   },
   "online": "У сеціве",
   "error": "Памылка",

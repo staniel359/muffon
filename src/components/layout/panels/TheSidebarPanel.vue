@@ -85,6 +85,8 @@
       <div class="bottom-section border-top">
         <SettingsItem />
 
+        <HelpItem />
+
         <LogoutItem
           v-if="profileId"
         />
@@ -122,6 +124,7 @@ import MultitagItem from './TheSidebarPanel/MultitagItem.vue'
 import CommunitiesItem from './TheSidebarPanel/CommunitiesItem.vue'
 import HistoryItem from './TheSidebarPanel/HistoryItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
+import HelpItem from './TheSidebarPanel/HelpItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
 import LoginItem from './TheSidebarPanel/LoginItem.vue'
 import transparencyMixin from '@/mixins/transparencyMixin'
@@ -148,6 +151,7 @@ export default {
     CommunitiesItem,
     HistoryItem,
     SettingsItem,
+    HelpItem,
     LogoutItem,
     LoginItem
   },

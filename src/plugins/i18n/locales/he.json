@@ -93,7 +93,8 @@
     "whatsNew": "מה חדש",
     "listenedRecently": "האזנת לאחרונה",
     "shows": "הופעות",
-    "listeningNow": "מאזין כעת"
+    "listeningNow": "מאזין כעת",
+    "help": "עזרה"
   },
   "errors": {
     "badRequest": {
@@ -906,6 +907,13 @@
       "artists": "בלי אמנים",
       "tags": "בלי תגיות"
     }
+  },
+  "keyboardShortcuts": {
+    "header": "קיצורי מקלדת",
+    "search": "הצג לוח חיפוש",
+    "audioBackward": "חפש אודיו לאחור",
+    "audioForward": "חפש אודיו קדימה",
+    "radioNextTrack": "שיר רדיו הבא"
   },
   "online": "מחובר",
   "error": "שגיאה",

@@ -5,7 +5,7 @@ export function main (
   }
 ) {
   return {
-    duration: 0,
+    duration: 200,
     onOpen,
     onClose
   }

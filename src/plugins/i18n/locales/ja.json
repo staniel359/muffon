@@ -93,7 +93,8 @@
     "whatsNew": "新着情報",
     "listenedRecently": "最近聴いた",
     "shows": "番組",
-    "listeningNow": "再生中"
+    "listeningNow": "再生中",
+    "help": "ヘルプ"
   },
   "errors": {
     "badRequest": {
@@ -906,6 +907,13 @@
       "artists": "アーティストを除外",
       "tags": "タグを除外"
     }
+  },
+  "keyboardShortcuts": {
+    "header": "キーボードショートカット",
+    "search": "検索パネルを表示",
+    "audioBackward": "音声を巻き戻し",
+    "audioForward": "音声を進める",
+    "radioNextTrack": "次のラジオトラック"
   },
   "online": "オンライン",
   "error": "エラー",

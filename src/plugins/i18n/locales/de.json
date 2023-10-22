@@ -93,7 +93,8 @@
     "whatsNew": "Was ist neu",
     "listenedRecently": "Zuletzt angehört",
     "shows": "Aufführungen",
-    "listeningNow": "Jetzt läuft"
+    "listeningNow": "Jetzt läuft",
+    "help": "Hilfe"
   },
   "errors": {
     "badRequest": {
@@ -906,6 +907,13 @@
       "artists": "Ohne Künstlern",
       "tags": "Ohne Tag"
     }
+  },
+  "keyboardShortcuts": {
+    "header": "Tastaturkurzbefehle",
+    "search": "Suchpanel anzeigen",
+    "audioBackward": "Audio zurückspielen",
+    "audioForward": "Audio vorspielen",
+    "radioNextTrack": "Nächsten Radiotitel"
   },
   "online": "Online",
   "error": "Fehler",

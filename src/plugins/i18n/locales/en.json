@@ -93,7 +93,8 @@
     "whatsNew": "What's new",
     "listenedRecently": "Listened recently",
     "shows": "Shows",
-    "listeningNow": "Listening now"
+    "listeningNow": "Listening now",
+    "help": "Help"
   },
   "errors": {
     "badRequest": {
@@ -906,6 +907,13 @@
       "artists": "Without artists",
       "tags": "Without tags"
     }
+  },
+  "keyboardShortcuts": {
+    "header": "Keyboard shortcuts",
+    "search": "Show search panel",
+    "audioBackward": "Seek audio backward",
+    "audioForward": "Seek audio forward",
+    "radioNextTrack": "Next radio track"
   },
   "online": "Online",
   "error": "Error",
