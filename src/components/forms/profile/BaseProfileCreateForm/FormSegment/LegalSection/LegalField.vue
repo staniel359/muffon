@@ -8,18 +8,23 @@
       >
         <i18n-t
           tag="span"
+          scope="global"
           keypath="forms.fields.legal.header"
         >
           <template
             #privacyPolicy
           >
-            <PrivacyPolicyText />
+            <LegalTextSection
+              scope="privacyPolicy"
+            />
           </template>
 
           <template
             #termsAndConditions
           >
-            <TermsAndConditionsText />
+            <LegalTextSection
+              scope="termsAndConditions"
+            />
           </template>
         </i18n-t>
       </template>
@@ -29,15 +34,13 @@
 
 <script>
 import BaseCheckbox from '@/components/BaseCheckbox.vue'
-import PrivacyPolicyText from './LegalField/PrivacyPolicyText.vue'
-import TermsAndConditionsText from './LegalField/TermsAndConditionsText.vue'
+import LegalTextSection from './LegalField/LegalTextSection.vue'
 
 export default {
   name: 'LegalField',
   components: {
     BaseCheckbox,
-    PrivacyPolicyText,
-    TermsAndConditionsText
+    LegalTextSection
   }
 }
 </script>

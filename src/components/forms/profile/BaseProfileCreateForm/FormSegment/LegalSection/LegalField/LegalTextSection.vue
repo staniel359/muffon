@@ -2,27 +2,33 @@
   <strong
     class="main-link"
     @click.stop="handleClick"
-    v-text="termsAndConditionsText"
+    v-text="legalText"
   />
 
-  <TermsAndConditionsModal
+  <BaseLegalModal
     ref="modal"
+    :scope="scope"
   />
 </template>
 
 <script>
-import TermsAndConditionsModal
-  from './TermsAndConditionsText/TermsAndConditionsModal.vue'
+import BaseLegalModal from '@/components/modals/legal/BaseLegalModal.vue'
 
 export default {
-  name: 'TermsAndConditionsText',
+  name: 'LegalTextSection',
   components: {
-    TermsAndConditionsModal
+    BaseLegalModal
+  },
+  props: {
+    scope: {
+      type: String,
+      required: true
+    }
   },
   computed: {
-    termsAndConditionsText () {
+    legalText () {
       return this.$t(
-        'forms.fields.legal.termsAndConditions'
+        `forms.fields.legal.${this.scope}`
       )
     }
   },
