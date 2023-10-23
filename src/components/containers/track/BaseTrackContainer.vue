@@ -53,6 +53,10 @@ export default {
       type: Boolean,
       default: true
     },
+    isQueue: {
+      type: Boolean,
+      default: true
+    },
     isWithActiveClass: Boolean,
     isDisabled: Boolean,
     isFromRadio: Boolean,
@@ -110,6 +114,7 @@ export default {
     playerTrackArgs () {
       return {
         trackData: this.trackFormatted,
+        isQueue: this.isQueue,
         queueTracks: this.queueTracks
       }
     },

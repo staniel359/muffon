@@ -68,7 +68,8 @@ export default function getQueueTrack (
     )
 
     const playerTrackAudioArgs = {
-      trackData: followingTrackData
+      trackData: followingTrackData,
+      isQueue: true
     }
 
     function handleSuccess () {

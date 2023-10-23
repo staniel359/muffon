@@ -7,6 +7,7 @@ export default function (
   {
     source,
     trackData,
+    isQueue,
     queueTracks
   }
 ) {
@@ -16,7 +17,7 @@ export default function (
   const playerTrackAudioArgs = {
     source,
     trackData,
-    queueTracks
+    isQueue
   }
 
   const handleError = (

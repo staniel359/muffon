@@ -9,7 +9,7 @@ export default function (
   {
     source,
     trackData,
-    queueTracks
+    isQueue
   }
 ) {
   let variantIndex = 0
@@ -52,7 +52,7 @@ export default function (
       }
     )
 
-    if (queueTracks) {
+    if (isQueue) {
       updateGlobalStore(
         {
           'queue.currentTrackId':

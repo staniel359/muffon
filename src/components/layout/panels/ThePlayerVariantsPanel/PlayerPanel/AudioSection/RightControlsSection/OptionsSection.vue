@@ -4,7 +4,7 @@
       ref="track"
       :track-data="playerPlaying"
       :is-clickable="false"
-      :queue-tracks="null"
+      :is-queue="false"
       :is-from-radio="isPlayingFromRadio"
     >
       <template
