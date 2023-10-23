@@ -88,13 +88,15 @@ export default {
       return (
         this.scope === 'top'
       )
+    },
+    isTrackDataPresent () {
+      return !!this.trackData
     }
   },
   watch: {
-    trackData: {
-      immediate: true,
-      handler: 'handleTrackDataChange'
-    }
+    trackData: 'handleTrackDataChange',
+    isTrackDataPresent:
+      'handleIsTrackDataPresentChange'
   },
   mounted () {
     if (this.isGetData) {
@@ -114,7 +116,12 @@ export default {
     ) {
       if (value) {
         this.key = generateKey()
-
+      }
+    },
+    handleIsTrackDataPresentChange (
+      value
+    ) {
+      if (value) {
         this.bindNextKeys()
       } else {
         this.unbindNextKeys()
@@ -134,7 +141,7 @@ export default {
     clickNextButton () {
       this.$refs
         .nextButton
-        .click()
+        ?.click()
     },
     unbindNextKeys () {
       hotkeys.unbind(
