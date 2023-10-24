@@ -1,6 +1,6 @@
 <template>
   <BaseHeaderContainer
-    v-if="profileId"
+    v-if="profileNickname"
     class="width-fit-content"
     :tag="tag"
   >

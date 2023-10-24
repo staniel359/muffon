@@ -177,8 +177,8 @@ export default {
     },
     postProfileId () {
       return this.postProfileData
-        .id
-        .toString()
+        ?.id
+        ?.toString()
     },
     postProfileData () {
       return this.postData.profile

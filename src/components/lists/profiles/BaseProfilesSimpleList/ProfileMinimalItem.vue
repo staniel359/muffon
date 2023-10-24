@@ -2,7 +2,7 @@
   <BaseLinkContainer
     class="item main-simple-list-item middle-aligned"
     :class="{
-      disabled: !profileId
+      disabled: !profileNickname
     }"
     :link="profileLink"
   >
@@ -53,7 +53,7 @@ export default {
   },
   computed: {
     profileLink () {
-      if (this.profileId) {
+      if (this.profileNickname) {
         return formatProfileLink(
           {
             profileId: this.profileId
@@ -62,6 +62,9 @@ export default {
       } else {
         return {}
       }
+    },
+    profileNickname () {
+      return this.profileData.nickname
     },
     profileId () {
       return this.profileData.id
