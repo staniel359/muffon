@@ -8,4 +8,10 @@ export default function () {
     .appendSwitch(
       'try-supported-channel-layouts'
     )
+
+  app
+    .commandLine
+    .appendSwitch(
+      'disable-http-cache'
+    )
 }
