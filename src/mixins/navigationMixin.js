@@ -7,6 +7,9 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
+import {
+  isObjectChanged
+} from '@/helpers/utils'
 
 export default {
   data () {
@@ -63,15 +66,23 @@ export default {
       ]
     ),
     handleNavigationDataChange (
-      _,
+      value,
       oldValue
     ) {
-      this.setNavigation()
+      const isChanged =
+        isObjectChanged(
+          value,
+          oldValue
+        )
 
-      this.isRefreshNavigation = true
+      if (isChanged) {
+        this.setNavigation()
 
-      if (!oldValue) {
-        this.addRouteToHistory()
+        this.isRefreshNavigation = true
+
+        if (!oldValue) {
+          this.addRouteToHistory()
+        }
       }
     },
     handleProfileLanguageChange () {
