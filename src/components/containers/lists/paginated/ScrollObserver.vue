@@ -44,6 +44,7 @@ export default {
   ],
   data () {
     return {
+      isActivated: false,
       isTopVisible: false
     }
   },
@@ -71,16 +72,23 @@ export default {
       'handleIsTopVisibleChange'
   },
   mounted () {
+    if (this.isActivated) {
+      setVisibility(
+        this.$refs.observer,
+        this.visibilityOptions
+      )
+    }
+  },
+  activated () {
+    this.isActivated = true
+
     setVisibility(
       this.$refs.observer,
       this.visibilityOptions
     )
   },
-  activated () {
-    setVisibility(
-      this.$refs.observer,
-      this.visibilityOptions
-    )
+  deactivated () {
+    this.isActivated = false
   },
   methods: {
     handleIsTopVisibleChange (
