@@ -85,7 +85,25 @@ export default {
         value
       )
     },
-    async handleValueChange (
+    handleValueChange (
+      value
+    ) {
+      if (value) {
+        this.processImage(
+          value
+        )
+      }
+    },
+    handleClearButtonClick () {
+      this.imageUrl = null
+
+      this.changeImage(
+        {
+          data: null
+        }
+      )
+    },
+    async processImage (
       value
     ) {
       this.imageUrl = value
@@ -99,15 +117,6 @@ export default {
 
       this.changeImage(
         image
-      )
-    },
-    handleClearButtonClick () {
-      this.imageUrl = null
-
-      this.changeImage(
-        {
-          data: null
-        }
       )
     },
     changeImage (
