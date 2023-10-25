@@ -73,6 +73,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       onSuccess: handleSuccess,
       onError: handleError
     }

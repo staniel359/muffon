@@ -39,6 +39,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       onError: handleError
     }
   )

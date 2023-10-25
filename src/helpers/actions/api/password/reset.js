@@ -38,6 +38,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       isWithSelfLanguage: true,
       onSuccess: handleSuccess,
       onError: handleError
