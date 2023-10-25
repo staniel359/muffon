@@ -339,12 +339,10 @@
         "passwordResetCode": "Il codice reset password è vuoto",
         "nickname": "Il nome utente è vuoto",
         "title": "Il titolo è vuoto",
-        "legal": "Devi sottoscrivere la Privacy Policy e i Termini e Condizioni d’uso",
-        "recaptcha": "reCAPTCHA non è selezionato"
+        "legal": "Devi sottoscrivere la Privacy Policy e i Termini e Condizioni d’uso"
       },
       "invalid": {
-        "email": "L’email non è valida",
-        "recaptcha": "reCAPTCHA non valido"
+        "email": "L’email non è valida"
       },
       "taken": {
         "email": "Indirizzo email già in uso",

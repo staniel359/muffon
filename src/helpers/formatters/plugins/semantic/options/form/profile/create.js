@@ -57,16 +57,6 @@ export default function (
       }
     )
 
-  const recaptchaFieldData =
-    formatFormField(
-      {
-        id: 'recaptcha',
-        rules: [
-          'empty'
-        ]
-      }
-    )
-
   return {
     inline: true,
     keyboardShortcuts: false,
@@ -76,8 +66,7 @@ export default function (
       passwordConfirmation:
         passwordConfirmationFieldData,
       nickname: nicknameFieldData,
-      legal: legalFieldData,
-      recaptcha: recaptchaFieldData
+      legal: legalFieldData
     },
     onSuccess
   }

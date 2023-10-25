@@ -339,12 +339,10 @@
         "passwordResetCode": "Le code de réinitialisation du mot de passe n'est pas renseigné",
         "nickname": "Le pseudonyme n'est pas renseigné",
         "title": "Le titre n'est pas renseigné",
-        "legal": "Vous devez accepter la politique de confidentialité et les conditions générales.",
-        "recaptcha": "Veuillez complète le reCAPTCHA"
+        "legal": "Vous devez accepter la politique de confidentialité et les conditions générales."
       },
       "invalid": {
-        "email": "L'email n'est pas valide",
-        "recaptcha": "reCAPTCHA invalide"
+        "email": "L'email n'est pas valide"
       },
       "taken": {
         "email": "L'email est déjà utilisé",

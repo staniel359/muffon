@@ -16,8 +16,7 @@ export default function (
     city,
     status,
     isPrivate,
-    isRemember,
-    recaptcha
+    isRemember
   }
 ) {
   const url = '/profiles'
@@ -36,8 +35,7 @@ export default function (
     status,
     private: (
       isPrivate ? 1 : 0
-    ),
-    recaptcha
+    )
   }
 
   const handleSuccess = (

@@ -6,6 +6,3 @@ export const shareEncryptionKey =
 
 export const spotifyClientId =
   import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID
-
-export const recaptchaKey =
-  import.meta.env.VITE_APP_RECAPTCHA_KEY

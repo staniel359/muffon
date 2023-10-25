@@ -13,13 +13,6 @@
 
       <LegalSection />
 
-      <BaseRecaptchaField
-        :id="recaptchaId"
-        :value="recaptchaValue"
-        @change="handleRecaptchaFieldChange"
-        @refresh-button-click="handleRefreshButtonClick"
-      />
-
       <div class="main-form-remember-submit-button-container">
         <BaseProfileRememberField />
 
@@ -40,11 +33,9 @@ import BaseProfileCreateFormContainer
 import MainSection from './FormSegment/MainSection.vue'
 import ExtraSection from './FormSegment/ExtraSection.vue'
 import LegalSection from './FormSegment/LegalSection.vue'
-import BaseRecaptchaField from '@/components/fields/BaseRecaptchaField.vue'
 import BaseProfileRememberField
   from '@/components/fields/profile/BaseProfileRememberField.vue'
 import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
-import recaptchaMixin from '@/mixins/recaptchaMixin'
 
 export default {
   name: 'FormSegment',
@@ -54,17 +45,11 @@ export default {
     MainSection,
     ExtraSection,
     LegalSection,
-    BaseRecaptchaField,
     BaseProfileRememberField,
     BaseSubmitButton
   },
-  mixins: [
-    recaptchaMixin
-  ],
   data () {
     return {
-      recaptchaId:
-        'profile-create-form-recaptcha-container',
       image: {}
     }
   },
