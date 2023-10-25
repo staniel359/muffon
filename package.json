@@ -3,7 +3,7 @@
   "version": "1.6.0",
   "description": "Music streaming browser",
   "homepage": "https://github.com/staniel359/muffon",
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "author": {
     "name": "Aleksey Shpakovsky",
     "email": "staniel359@gmail.com",
