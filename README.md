@@ -16,11 +16,13 @@
 
 #
 
-<img src="https://i.ibb.co/rFMdxt2/preview.png" alt="screenshot">
+<img src="https://i.ibb.co/0tHYZS7/preview-light.png" alt="screenshot">
+
+<img src="https://i.ibb.co/jg3vZv8/preview-dark.png" alt="screenshot">
 
 ## Description
 
-[**muffon**](https://www.howtopronounce.com/muffon) is a music streaming browser for desktop.
+[**muffon**](https://www.howtopronounce.com/muffon) is a cross-platform music streaming client for desktop, which helps you listen to, discover and organize music in an advanced way.
 
 It retrieves audio, video and metadata from various Internet sources, such as:
 
@@ -36,35 +38,39 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - <img src="https://www.youtube.com/s/desktop/271dfaff/img/favicon.ico" height="16"> **YouTube**
 - <img src="https://st.discogs.com/94414fa553c3f284a04c3da67024dd6574b8ab6f/images/favicon.ico" height="16"> **Discogs**
 - <img src="https://assets.genius.com/images/apple-touch-icon.png" height="16"> **Genius**
+- <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch**
 - <img src="https://musicbrainz.org/static/images/favicons/favicon-16x16.png" height="16"> **MusicBrainz**
 
 ### Features
 
 - **absolutely free**
 - **no ads**
-- **no login** (but login is required for certain features)
+- **no login** (but required for certain features)
 - **listening** (artists / albums / tracks) (+ offline) (+ equalizer)
-- **queue** (+ albums adding)
-- **music library** (+ compatibility with others)
-- **music services integration** (Last.FM)
-- **recommendations** (based on your library)
+- **artists** (tracks / albums / similar / shows)
+- **albums**
+- **tracks** (similar / albums)
+- **tags** (artists / albums / tracks)
+- **queue** (+ shuffle / loop) (+ albums adding)
+- **music library** (+ import from account) (+ compatibility)
+- **music services integration** (Last.FM, Spotify)
+- **recommendations** (artists / tracks) (based on your library) (+ filters)
 - **search** (artists / albums / album groups / tracks / lyrics / tags / videos / video channels / video playlists) (through all of the sources above)
 - **radio** (tags / artists / top)
 - **scrobbling** (Last.FM)
-- **Discord Rich Presence**
+- **Discord Rich Presence** (+ buttons customization)
 - **videos** (+ related / channels / playlists) (YouTube, YouTube Music)
-- **lyrics** (+ annotations) (Genius)
-- **tags** (artists / albums / tracks)
+- **lyrics** (+ annotations) (Genius, MusixMatch)
 - **top** (artists / albums / tracks / tags) (+ country select)
 - **new / upcoming releases**
 - **multitag search** (artists / albums)
 - **external links** (artists / albums / tracks / videos / video channels / video playlists)
-- **playlists** (+ album / queue adding)
-- **favorites** (artists / albums / tracks / videos)
+- **playlists** (+ import from account) (+ album / queue adding)
+- **favorites** (artists / albums / tracks / videos) (+ import from account)
 - **bookmarks** (artists / albums / tracks / videos / video channels / video playlists)
 - **listened** (artists / albums / tracks)
 - **watched** (videos)
-- **posting**
+- **posting** (+ comments)
 - **following**
 - **messaging**
 - **feed** (+ global)
@@ -75,11 +81,14 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ### Languages
 
-- Беларуская
+- Беларуская ([@staniel359](https://github.com/staniel359))
 - Deutsch ([@gamersi](https://github.com/gamersi))
-- English
-- Italian ([@ZinRicky](https://github.com/ZinRicky), [@filipporomani](https://github.com/filipporomani))
-- Русский
+- English ([@staniel359](https://github.com/staniel359))
+- Français ([@TheFlomax](https://github.com/TheFlomax))
+- עברית ([@EthanPZ1](https://github.com/EthanPZ1))
+- Italiano ([@ZinRicky](https://github.com/ZinRicky), [@filipporomani](https://github.com/filipporomani))
+- 日本語 ([@xyloflake](https://github.com/xyloflake))
+- Русский ([@staniel359](https://github.com/staniel359))
 
 ### Technical stack
 
@@ -88,13 +97,13 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ### Available platforms
 
-- Windows
+- Windows (10, 11)
 - MacOS
 - Linux
 
 ## Download
 
-[Latest (v1.6.0)](https://github.com/staniel359/muffon/releases/tag/v1.6.0)
+[Latest (v2.0.0)](https://github.com/staniel359/muffon/releases/tag/v2.0.0)
 
 ## Troubleshooting
 
@@ -105,15 +114,13 @@ If you're using Windows 10 and during the installation you see this window:
 1. Click **"More info"**
 2. Click **"Run anyway"**
 
+That's because Windows blocks unsigned apps.
+
 ## Support
 
-#### Have a question?
+#### Have a question / suggestion / bug report?
 
-[Join Discord chat](https://discord.gg/kpWsA5NBmJ)
-
-#### Have a suggestion / bug report?
-
-[Create an issue](https://github.com/staniel359/muffon/issues/new)
+[Create an issue](https://github.com/staniel359/muffon/issues/new) or [Join Discord chat](https://discord.gg/kpWsA5NBmJ)
 
 ## Contribute
 
