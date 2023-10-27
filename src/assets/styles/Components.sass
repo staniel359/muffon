@@ -399,6 +399,13 @@
     top: unset !important
     &:after
       @extend .d-none
+  &.inverted
+    &:not(.base-image-modal)
+      @extend .border-inverted
+    & > .header
+      @extend .border-bottom-inverted
+    & > .actions
+      @extend .border-top-inverted
   & > .content
     @extend .no-margin
     &.full-height
@@ -416,13 +423,8 @@
   &:not(.main-delete-modal)
     & > .content
       max-height: $mainModalHeight !important
-  &.inverted
-    &:not(.base-image-modal)
-      @extend .border-inverted
-    & > .header
-      @extend .border-bottom-inverted
-    & > .actions
-      @extend .border-top-inverted
+  &:not(.base-image-modal)
+    @extend .blurred
 
 .base-tabs-container
   &:not(.vertical)
