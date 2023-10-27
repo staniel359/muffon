@@ -96,17 +96,24 @@ export default {
       )
     },
     isCurrent () {
-      return (
-        this.trackId ===
-          this.currentTrackId
-      )
-    },
-    currentTrackId () {
       if (this.isExactTrack) {
-        return this.playerPlaying?.player_id
+        return this.playerPlayingId?.includes(
+          this.trackId
+        )
       } else {
-        return this.playerCurrentTrackId
+        return (
+          this.playerCurrentTrackId?.includes(
+            this.trackId
+          )
+        ) || (
+          this.playerPlayingId?.includes(
+            this.trackId
+          )
+        )
       }
+    },
+    playerPlayingId () {
+      return this.playerPlaying?.player_id
     },
     trackId () {
       return this.trackData.player_id
