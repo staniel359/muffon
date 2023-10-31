@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@emoji-mart/data": "^1.1.2",
-    "axios": "^1.5.1",
+    "axios": "^1.6.0",
     "change-case": "^5.1.2",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.10",
@@ -46,7 +46,7 @@
     "slick-carousel": "^1.8.1",
     "uuid": "^9.0.1",
     "vue": "^3.3.7",
-    "vue-i18n": "^9.5.0",
+    "vue-i18n": "^9.6.2",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
@@ -59,8 +59,8 @@
     "electron": "^27.0.2",
     "electron-builder": "^24.6.4",
     "eslint": "^8.52.0",
-    "eslint-plugin-vue": "^9.18.0",
-    "sass": "^1.69.4",
+    "eslint-plugin-vue": "^9.18.1",
+    "sass": "^1.69.5",
     "vite": "^4.5.0",
     "vite-electron-plugin": "^0.8.2",
     "vite-plugin-electron-renderer": "^0.14.5",
