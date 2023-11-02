@@ -72,6 +72,7 @@
           :favorite-id="favoriteId"
           :bookmark-id="bookmarkId"
           :watched-id="watchedId"
+          :is-with-bookmark-icon="isWithBookmarkIcon"
         />
       </div>
     </template>
