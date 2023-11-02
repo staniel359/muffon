@@ -22,12 +22,7 @@
     v-if="isRenderScrobbleObserver"
   />
 
-  <TheAnonymousBrowserObserver
-    v-if="isProfileAnonymous"
-  />
-  <TheBrowserObserver
-    v-else-if="profileId"
-  />
+  <TheBrowserObserver />
 
   <TheDiscordObserver />
 
@@ -95,12 +90,6 @@ const TheScrobbleObserver =
       '@/components/layout/observers/TheScrobbleObserver.vue'
     )
   )
-const TheAnonymousBrowserObserver =
-  defineAsyncComponent(
-    () => import(
-      '@/components/layout/observers/TheAnonymousBrowserObserver.vue'
-    )
-  )
 const TheBrowserObserver =
   defineAsyncComponent(
     () => import(
@@ -119,7 +108,6 @@ export default {
     TheAnonymousPlayingObserver,
     ThePlayingObserver,
     TheScrobbleObserver,
-    TheAnonymousBrowserObserver,
     TheBrowserObserver,
     TheDiscordObserver,
     TheExternalUrlsObserver,
