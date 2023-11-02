@@ -2,6 +2,7 @@
   <Component
     :is="listComponent"
     :videos="videos"
+    :profile-id="profileId"
     :is-with-channel-title="isWithChannelTitle"
     :is-with-favorite-option="isWithFavoriteOption"
     :is-with-bookmark-option="isWithBookmarkOption"
@@ -30,6 +31,7 @@ export default {
       type: String,
       required: true
     },
+    profileId: String,
     videos: Array,
     isWithChannelTitle: Boolean,
     isWithFavoriteOption: Boolean,

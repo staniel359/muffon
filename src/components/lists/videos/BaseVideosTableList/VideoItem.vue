@@ -72,6 +72,7 @@
           :favorite-id="favoriteId"
           :bookmark-id="bookmarkId"
           :watched-id="watchedId"
+          :is-with-favorite-icon="isWithFavoriteIcon"
           :is-with-bookmark-icon="isWithBookmarkIcon"
         />
       </div>
@@ -127,6 +128,7 @@ export default {
       type: Object,
       required: true
     },
+    profileId: String,
     isWithChannelTitle: Boolean,
     isWithCreated: Boolean,
     isWithFavoriteOption: Boolean,

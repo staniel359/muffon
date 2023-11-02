@@ -7,6 +7,7 @@
     >
       <VideoItem
         :video-data="videoData"
+        :profile-id="profileId"
         :is-with-channel-title="isWithChannelTitle"
         :is-with-created="isWithCreated"
         :is-with-favorite-option="isWithFavoriteOption"
@@ -41,6 +42,7 @@ export default {
         return []
       }
     },
+    profileId: String,
     isWithChannelTitle: Boolean,
     isWithCreated: Boolean,
     isWithFavoriteOption: Boolean,
