@@ -120,7 +120,7 @@ p
       img
         @extend .object-fit-cover
     .content
-      @extend .no-margin, .flex-full, .word-break-break-word, .main-list-right-small-section
+      @extend .no-margin, .flex-full, .word-break-break-word, .main-list-right-small-section, .main-text-container
       .description
         .artist-name
           @extend .text-color-black
@@ -245,7 +245,7 @@ p
 
 .main-text-container
   @extend .word-break-break-word
-  line-height: 1.55rem
+  line-height: 1.6em !important
 
 .main-formatted-text-container
   @extend .main-text-container
@@ -265,7 +265,7 @@ p
   & > .image
     @extend .main-list-right-small-section
   & > .content
-    @extend .flex-full, .no-padding, .main-list-right-small-section
+    @extend .flex-full, .no-padding, .main-list-right-small-section, .main-text-container
     .text
       font-size: 20px
   .extra
@@ -371,7 +371,7 @@ p
     .image
       @extend .object-fit-cover, .image-30
   & > .content
-    @extend .flex-full, .word-break-break-word
+    @extend .flex-full, .word-break-break-word, .main-text-container
     white-space: normal
   & > .extra
     @extend .main-right-small-section
@@ -398,7 +398,7 @@ p
 .main-model-source-select-container
   @extend .middle-aligned
   & > .content
-    @extend .middle-aligned
+    @extend .middle-aligned, .main-text-container
     .right-section
       @extend .main-right-section, .main-select
     .bottom-section

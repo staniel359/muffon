@@ -8,11 +8,9 @@
 
     <div
       v-if="content"
-    >
-      <small
-        v-text="content"
-      />
-    </div>
+      class="subheader main-text-container"
+      v-text="content"
+    />
   </div>
 
   <div
@@ -33,4 +31,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.subheader
+  margin-top: 0.2rem
+  font-size: 80%
+</style>
