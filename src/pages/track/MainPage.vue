@@ -7,7 +7,9 @@
     <template
       #default="slotProps"
     >
-      <BaseSegmentsContainer>
+      <BaseSegmentsContainer
+        class="top-segment"
+      >
         <SourceSelectSegment
           :track-data="slotProps.trackData"
         />
@@ -91,4 +93,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.top-segment
+  z-index: 1
+</style>
