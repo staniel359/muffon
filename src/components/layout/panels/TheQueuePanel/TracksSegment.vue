@@ -8,6 +8,7 @@
       :tracks="queueTracksComputed"
       :profile-id="profileId"
       :is-with-self-icons="false"
+      :scrollable="scrollable"
       is-with-index
       is-with-image
       is-with-artist-name
