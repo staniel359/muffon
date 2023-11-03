@@ -21,13 +21,11 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import axios from 'axios'
+  fetchFromUrl
+} from 'music-metadata-browser'
 import {
   mapState
 } from 'pinia'
-import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
 import BaseItemContainer
   from '@/components/containers/item/BaseItemContainer.vue'
@@ -41,17 +39,11 @@ export default {
   },
   data () {
     return {
-      audioSize: null,
+      bitrate: null,
       isLoading: true
     }
   },
   computed: {
-    ...mapState(
-      audioStore,
-      {
-        audioDuration: 'duration'
-      }
-    ),
     ...mapState(
       playerStore,
       {
@@ -66,84 +58,47 @@ export default {
         }
       )
     },
-    bitrate () {
-      if (this.isCalculateBitrate) {
-        return Math.round(
-          this.audioSize /
-            128 /
-            this.audioDuration
-        )
-      } else {
-        return null
-      }
-    },
-    isCalculateBitrate () {
-      return (
-        this.audioSize &&
-          this.audioDuration
-      )
-    },
-    audioLocal () {
-      return this.playerPlaying.audio.local
-    },
-    audioPath () {
-      return this.audioLocal.path
-    },
     audioLink () {
       return this.playerPlaying.audio.link
+    },
+    audioOptions () {
+      return {
+        skipCovers: true,
+        skipPostHeaders: true
+      }
     }
   },
-  watch: {
-    audioSize: 'handleAudioSizeChange'
-  },
-  async mounted () {
-    await this.$nextTick()
-
+  mounted () {
     this.getAudioBitrate()
   },
   methods: {
-    handleAudioSizeChange () {
-      this.isLoading = false
-    },
-    handleRemoteAudioSuccess (
+    handleAudioSuccess (
       response
     ) {
-      this.audioSize =
-        response.headers[
-          'content-length'
-        ]
+      const bitrateFormatted = (
+        response
+          .format
+          .bitrate / 1000
+      )
+
+      this.bitrate = bitrateFormatted
     },
-    handleRemoteAudioError () {
-      this.audioSize = 0
+    handleAudioError () {
+      return null
+    },
+    handleAudioFinish () {
+      this.isLoading = false
     },
     getAudioBitrate () {
-      if (this.audioLocal) {
-        this.getLocalAudioBitrate()
-      } else {
-        this.getRemoteAudioBitrate()
-      }
-    },
-    async getLocalAudioBitrate () {
-      const details =
-        await this.getLocalFileDetails()
-
-      this.audioSize = details.size
-    },
-    getLocalFileDetails () {
-      return ipcRenderer.invoke(
-        'read-file-details',
-        {
-          filePath: this.audioPath
-        }
-      )
-    },
-    getRemoteAudioBitrate () {
-      axios.get(
-        this.audioLink
+      fetchFromUrl(
+        this.audioLink,
+        this.audioOptions
       ).then(
-        this.handleRemoteAudioSuccess
+        this.handleAudioSuccess
       ).catch(
-        this.handleRemoteAudioError
+        this.handleAudioError
+      ).finally(
+        this.handleAudioFinish
       )
     }
   }
