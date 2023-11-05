@@ -23,7 +23,6 @@ import {
   handleNewWindow
 } from '#/handlers/app'
 import setTrayMenu from '#/actions/tray/setMenu'
-import resetTabsBounds from '#/actions/tabs/resetBounds'
 import setTabsBounds from '#/actions/tabs/setBounds'
 
 function handleReadyToShow () {
@@ -100,7 +99,7 @@ function handleUnmaximizeChange () {
 }
 
 function handleEnterFullScreen () {
-  resetTabsBounds()
+  setTabsBounds()
 }
 
 function handleLeaveFullScreen () {
