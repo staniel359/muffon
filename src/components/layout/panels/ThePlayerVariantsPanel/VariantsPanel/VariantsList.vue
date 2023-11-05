@@ -12,6 +12,9 @@
         class="item main-simple-list-item middle-aligned"
         :variant-data="variantData"
         :is-from-radio="isFromRadio"
+        :scrollable="scrollable"
+        is-focusable
+        is-segment
       >
         <template
           #default="slotProps"
@@ -57,6 +60,11 @@ export default {
     BaseTrackVariantContainer,
     BaseTrackContent
   },
+  data () {
+    return {
+      scrollable: null
+    }
+  },
   computed: {
     ...mapState(
       playerStore,
@@ -76,6 +84,10 @@ export default {
   },
   watch: {
     playerVariants: 'handleVariantsChange'
+  },
+  mounted () {
+    this.scrollable =
+      this.$refs.segment.$el
   },
   methods: {
     handleVariantsChange () {

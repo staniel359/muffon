@@ -1,7 +1,8 @@
 <template>
   <div
+    ref="track"
     :class="{
-      active: isCurrent
+      active: isActive
     }"
     @click="handleClick"
   >
@@ -20,6 +21,9 @@ import {
 import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
 import getPlayerVariant from '@/helpers/actions/player/variant/get'
+import {
+  focusOnListElement
+} from '@/helpers/actions/layout'
 
 export default {
   name: 'BaseTrackVariantContainer',
@@ -28,7 +32,10 @@ export default {
       type: Object,
       required: true
     },
-    isFromRadio: Boolean
+    isFromRadio: Boolean,
+    isFocusable: Boolean,
+    isSegment: Boolean,
+    scrollable: HTMLDivElement
   },
   data () {
     return {
@@ -47,9 +54,15 @@ export default {
     ...mapState(
       playerStore,
       {
-        playerCurrentVariantId: 'currentVariantId'
+        playerCurrentVariantId:
+          'currentVariantId',
+        isPlayerWithPlayingFocus:
+          'isWithPlayingFocus'
       }
     ),
+    isActive () {
+      return this.isCurrent
+    },
     isCurrent () {
       return (
         this.variantId ===
@@ -64,14 +77,44 @@ export default {
         variantId: this.variantId,
         isFromRadio: this.isFromRadio
       }
+    },
+    isFocusActive () {
+      return (
+        this.isFocus &&
+          this.isActive
+      )
+    },
+    isFocus () {
+      return (
+        this.isFocusable &&
+          this.isPlayerWithPlayingFocus
+      )
     }
   },
+  watch: {
+    isFocusActive:
+      'handleIsFocusActiveChange'
+  },
   methods: {
+    getPlayerVariant,
+    async handleIsFocusActiveChange (
+      value
+    ) {
+      if (value) {
+        await this.$nextTick()
+
+        this.focus()
+      }
+    },
     handleClick () {
       if (this.isCurrent) {
         this.callAudioAction()
       } else if (!this.isLoading) {
         this.getAudio()
+      }
+
+      if (this.isFocus) {
+        this.focus()
       }
     },
     callAudioAction () {
@@ -79,10 +122,20 @@ export default {
         this.audioAction
       ]()
     },
-    getPlayerVariant,
     getAudio () {
       this.getPlayerVariant(
         this.playerVariantArgs
+      )
+    },
+    focus () {
+      if (this.isSegment) {
+        this.focusList()
+      }
+    },
+    focusList () {
+      focusOnListElement(
+        this.$refs.track,
+        this.scrollable
       )
     }
   }
