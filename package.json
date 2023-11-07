@@ -45,8 +45,8 @@
     "pinia": "^2.1.7",
     "slick-carousel": "^1.8.1",
     "uuid": "^9.0.1",
-    "vue": "^3.3.7",
-    "vue-i18n": "^9.6.2",
+    "vue": "^3.3.8",
+    "vue-i18n": "^9.6.5",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
@@ -56,9 +56,9 @@
     "@rollup/plugin-inject": "^5.0.5",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vue/eslint-config-standard": "^8.0.1",
-    "electron": "^27.0.2",
+    "electron": "^27.0.3",
     "electron-builder": "^24.6.4",
-    "eslint": "^8.52.0",
+    "eslint": "^8.53.0",
     "eslint-plugin-vue": "^9.18.1",
     "sass": "^1.69.5",
     "vite": "^4.5.0",
