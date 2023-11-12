@@ -97,8 +97,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.the-authentication
-  margin-top: 8vh
 
 .form-segment-container
   max-width: 450px !important
