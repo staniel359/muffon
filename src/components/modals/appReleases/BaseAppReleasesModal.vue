@@ -44,7 +44,7 @@ export default {
       error: null,
       isLoading: false,
       scope: 'releases',
-      limit: 10
+      limit: 5
     }
   },
   computed: {
