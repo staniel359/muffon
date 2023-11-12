@@ -105,14 +105,12 @@ p
           padding-top: 0 !important
 
 .main-search
-  &.scrolling
-    .main-search-results
-      max-height: 200px !important
   .prompt
     @extend .border-radius
 
 .main-search-results
   @extend .no-border, .width-100, .blurred
+  height: unset !important
   .result
     @extend .middle-aligned
     .image
