@@ -14,6 +14,7 @@
     >
       <BaseProfilesSimpleList
         :profiles="slotProps[scope]"
+        is-with-created
         @link-click="handleLinkClick"
       />
     </template>
