@@ -3,6 +3,7 @@
     <PlayingSegment
       v-if="playing"
       :playing="playing"
+      :profile-id="profileId"
     />
 
     <CompatibilitySegment

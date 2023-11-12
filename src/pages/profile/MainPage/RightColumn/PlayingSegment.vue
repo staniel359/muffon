@@ -7,6 +7,7 @@
     >
       <BaseTracksSimpleList
         :tracks="tracks"
+        :profile-id="profileId"
         is-with-image
         is-with-artist-name
         is-with-album-title
@@ -42,7 +43,8 @@ export default {
     playing: {
       type: Object,
       required: true
-    }
+    },
+    profileId: String
   },
   computed: {
     tracks () {
