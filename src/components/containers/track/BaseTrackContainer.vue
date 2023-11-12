@@ -67,6 +67,7 @@ export default {
   },
   data () {
     return {
+      isActivated: true,
       isLoading: false,
       error: null
     }
@@ -163,6 +164,12 @@ export default {
     isFocusActive:
       'handleIsFocusActiveChange'
   },
+  activated () {
+    this.isActivated = true
+  },
+  deactivated () {
+    this.isActivated = false
+  },
   methods: {
     getPlayerTrack,
     handleClick () {
@@ -227,10 +234,12 @@ export default {
       )
     },
     focus () {
-      if (this.isSegment) {
-        this.focusList()
-      } else {
-        this.focusPage()
+      if (this.isActivated) {
+        if (this.isSegment) {
+          this.focusList()
+        } else {
+          this.focusPage()
+        }
       }
     },
     focusList () {
