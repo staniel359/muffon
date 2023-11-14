@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@emoji-mart/data": "^1.1.2",
-    "axios": "^1.6.0",
+    "axios": "^1.6.1",
     "change-case": "^5.1.2",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.10",
@@ -50,13 +50,13 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.2",
-    "@babel/eslint-parser": "^7.22.15",
-    "@babel/plugin-syntax-import-assertions": "^7.22.5",
+    "@babel/core": "^7.23.3",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/plugin-syntax-import-assertions": "^7.23.3",
     "@rollup/plugin-inject": "^5.0.5",
-    "@vitejs/plugin-vue": "^4.4.0",
+    "@vitejs/plugin-vue": "^4.4.1",
     "@vue/eslint-config-standard": "^8.0.1",
-    "electron": "^27.0.3",
+    "electron": "^27.0.4",
     "electron-builder": "^24.6.4",
     "eslint": "^8.53.0",
     "eslint-plugin-vue": "^9.18.1",
