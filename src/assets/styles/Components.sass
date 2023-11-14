@@ -529,15 +529,14 @@
       margin-bottom: 2.5rem
       .image
         max-height: 100%
+        max-width: calc(100% - 2px)
   .images-thumbs-slider
     .slick-slide
-      .ui.image
-        &.base-image
-          border-width: 2px !important
+      margin: 0 0.5rem
     .slick-current
-      .ui.image
-        &.base-image
-          @extend .border-color-base
+      .image
+        @extend .border-color-base
+        border-width: 2px !important
 
 .base-profile-online-label
   @extend .border, .no-margin
