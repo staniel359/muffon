@@ -9,14 +9,14 @@
 
       <BaseQueueDirectionButtonContainer
         position="previous"
-        icon="audioPrevious"
+        :icon="leftButtonIcon"
       />
 
       <PlayButton />
 
       <BaseQueueDirectionButtonContainer
         position="next"
-        icon="audioNext"
+        :icon="rightButtonIcon"
       />
 
       <VolumeButton />
@@ -28,6 +28,7 @@
 import {
   mapState
 } from 'pinia'
+import layoutStore from '@/stores/layout'
 import playerStore from '@/stores/player'
 import EqualizerButton from './CenterControlsSection/EqualizerButton.vue'
 import LoopButton from './CenterControlsSection/LoopButton.vue'
@@ -47,11 +48,27 @@ export default {
   },
   computed: {
     ...mapState(
+      layoutStore,
+      [
+        'isRtl'
+      ]
+    ),
+    ...mapState(
       playerStore,
       {
         isPlayerWithEqualizer: 'isWithEqualizer'
       }
-    )
+    ),
+    leftButtonIcon () {
+      return (
+        this.isRtl ? 'audioNext' : 'audioPrevious'
+      )
+    },
+    rightButtonIcon () {
+      return (
+        this.isRtl ? 'audioPrevious' : 'audioNext'
+      )
+    }
   }
 }
 </script>
