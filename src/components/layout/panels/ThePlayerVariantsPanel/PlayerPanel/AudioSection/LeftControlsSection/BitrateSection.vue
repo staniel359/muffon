@@ -75,11 +75,14 @@ export default {
     handleAudioSuccess (
       response
     ) {
-      const bitrateFormatted = (
-        response
-          .format
-          .bitrate / 1000
-      )
+      const {
+        bitrate
+      } = response.format
+
+      const bitrateFormatted =
+        Math.round(
+          bitrate / 1000
+        )
 
       this.bitrate = bitrateFormatted
     },
