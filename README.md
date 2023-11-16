@@ -119,7 +119,8 @@ That's because Windows blocks unsigned apps.
 ## Support
 
 #### Have a question / suggestion / bug report?
-
+- If you have a suggestion: Please check [planned features](https://emphasized-friend-e32.notion.site/Planned-35e985a3524e48f6a69732cce0d0b5e6) and [coming soon in next release](https://emphasized-friend-e32.notion.site/New-version-0aebcf9fcbd8474aa514feffa8b42703) to make sure you don't make a duplicate suggestion!
+ 
 [Create an issue](https://github.com/staniel359/muffon/issues/new) or [Join Discord chat](https://discord.gg/kpWsA5NBmJ)
 
 ## Contribute
