@@ -42,7 +42,7 @@ export default {
     BaseClearButton
   },
   inject: [
-    'import',
+    'importData',
     'reset'
   ],
   data () {
@@ -77,7 +77,7 @@ export default {
           this.isAudioFile
         )
 
-      this.import(
+      this.importData(
         audioFiles
       )
     },

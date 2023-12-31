@@ -52,7 +52,7 @@ export default {
     LastfmInfoSection
   },
   inject: [
-    'import',
+    'importData',
     'reset'
   ],
   props: {
@@ -109,7 +109,7 @@ export default {
     handleUserDataChange (
       value
     ) {
-      this.import(
+      this.importData(
         {
           userData: value,
           source: this.source

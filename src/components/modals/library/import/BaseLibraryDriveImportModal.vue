@@ -51,7 +51,7 @@ export default {
   },
   provide () {
     return {
-      import: this.import,
+      importData: this.importData,
       save: this.save,
       retry: this.retry,
       reset: this.reset,
@@ -78,7 +78,7 @@ export default {
     }
   },
   methods: {
-    import (
+    importData (
       value
     ) {
       this.status = 'import'
