@@ -61,7 +61,7 @@
     "eslint": "^8.56.0",
     "eslint-plugin-vue": "^9.19.2",
     "sass": "^1.69.5",
-    "vite": "4.5.1",
+    "vite": "^5.0.10",
     "vite-electron-plugin": "^0.8.3",
     "vite-plugin-electron-renderer": "^0.14.5",
     "vite-plugin-eslint": "^1.8.1"
