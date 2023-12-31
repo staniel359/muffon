@@ -10,7 +10,25 @@ export {
   v4 as generateKey
 } from 'uuid'
 
+const harmfulSwitches = [
+  'remote-debugging-port',
+  'inspect'
+]
+
+function checkHarmfulSwitchPresence () {
+  for (harmfulSwitch of harmfulSwitches) {
+    if (app.commandLine.hasSwitch(
+      harmfulSwitch
+    )) {
+      return true
+    }
+  }
+  return false
+}
+
 export const appName = 'muffon'
+
+export const isHarmfulSwitchPresent = checkHarmfulSwitchPresence()
 
 export const isDevelopment = (
   process.env.NODE_ENV === 'development'
