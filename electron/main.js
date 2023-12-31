@@ -2,7 +2,8 @@ import {
   app
 } from 'electron'
 import {
-  isSingleInstance
+  isSingleInstance,
+  handleHarmfulSwitches
 } from '#/helpers/utils'
 import initialize from './actions/app/initialize'
 
