@@ -17,9 +17,11 @@ const harmfulSwitches = [
 
 function checkHarmfulSwitchPresence () {
   for (harmfulSwitch of harmfulSwitches) {
-    if (app.commandLine.hasSwitch(
-      harmfulSwitch
-    )) {
+    if (
+      app.commandLine.hasSwitch(
+        harmfulSwitch
+      )
+    ) {
       return true
     }
   }
