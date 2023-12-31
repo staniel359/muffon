@@ -1,5 +1,6 @@
 import {
-  app
+  app,
+  dialog
 } from 'electron'
 import {
   existsSync,
