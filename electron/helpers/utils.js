@@ -35,7 +35,7 @@ export const handleHarmfulSwitches = () => {
   if (
     checkHarmfulSwitchPresence()
   ) {
-    app.dialog.showErrorBox(
+    dialog.showErrorBox(
       'Error',
       'Harmful switches detected'
     )
