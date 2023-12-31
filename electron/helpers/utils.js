@@ -28,7 +28,17 @@ function checkHarmfulSwitchPresence () {
 
 export const appName = 'muffon'
 
-export const isHarmfulSwitchPresent = checkHarmfulSwitchPresence()
+export const handleHarmfulSwitches = () => {
+  if (
+    checkHarmfulSwitchPresence()
+  ) {
+    app.dialog.showErrorBox(
+      'Error',
+      'Harmful switches detected'
+    )
+    process.exit() // Do not call app.exit, ask @xyloflake why
+  }
+}
 
 export const isDevelopment = (
   process.env.NODE_ENV === 'development'
