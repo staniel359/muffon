@@ -36,7 +36,7 @@ export const handleHarmfulSwitches = () => {
       'Error',
       'Harmful switches detected'
     )
-    process.exit() // Do not call app.exit, ask @xyloflake why
+    process.exit() // Do not call app.exit(), ask @xyloflake why
   }
 }
 
