@@ -7,6 +7,8 @@ import {
 } from '#/helpers/utils'
 import initialize from './actions/app/initialize'
 
+handleHarmfulSwitches()
+
 if (isSingleInstance) {
   initialize()
 } else {
