@@ -13,7 +13,8 @@ export {
 
 const harmfulSwitches = [
   'remote-debugging-port',
-  'inspect'
+  'inspect',
+  'inspect-brk'
 ]
 
 function checkHarmfulSwitchPresence () {
