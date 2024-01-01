@@ -16,7 +16,8 @@ const harmfulSwitches = [
   'inspect',
   'inspect-brk'
   'inspect-brk-node',
-  'inspect-port'
+  'inspect-port',
+  'inspect-publish-uid'
 ]
 
 function checkHarmfulSwitchPresence () {
