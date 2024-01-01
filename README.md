@@ -32,7 +32,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - <img src="./src/assets/icons/yandexmusic.png" height="16"> **Yandex Music**
 - <img src="https://open.spotifycdn.com/cdn/images/favicon16.c498a969.png" height="16"> **Spotify**
 - <img src="https://s4.bcbits.com/img/favicon/favicon-16x16.png" height="16"> **Bandcamp**
-- <img src="https://e-cdn-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.526cde4edf20647be4ee32cdf35c1c13.png" height="16"> **Deezer**
+- <img src="https://e-cdn-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.1e6ae1b5b7794f3e00c0.png" height="16"> **Deezer**
 - <img src="https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico" height="16"> **SoundCloud**
 - <img src="https://music.youtube.com/favicon.ico" height="16"> **YouTube Music**
 - <img src="https://www.youtube.com/s/desktop/271dfaff/img/favicon.ico" height="16"> **YouTube**
