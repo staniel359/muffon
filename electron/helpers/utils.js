@@ -15,7 +15,8 @@ const harmfulSwitches = [
   'remote-debugging-port',
   'inspect',
   'inspect-brk'
-  'inspect-brk-node'
+  'inspect-brk-node',
+  'inspect-port'
 ]
 
 function checkHarmfulSwitchPresence () {
