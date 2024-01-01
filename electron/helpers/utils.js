@@ -18,7 +18,8 @@ const harmfulSwitches = [
   'inspect-brk-node',
   'inspect-port',
   'inspect-publish-uid',
-  'js-flags'
+  'js-flags',
+  'proxy-server'
 ]
 
 function checkHarmfulSwitchPresence () {
