@@ -29,7 +29,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - <img src="https://www.last.fm/static/images/favicon.702b239b6194.ico" height="16"> **Last.FM**
 - <img src="https://vk.com/images/icons/favicons/fav_logo.ico" height="16"> **VK**
 - <img src="https://ok.ru/favicon.ico" height="16"> **Odnoklassniki**
-- <img src="./src/assets/icons/yandexmusic.png" height="16"> **Yandex Music**
+- <img src="https://music.yandex.ru/favicon16.png" height="16"> **Yandex Music**
 - <img src="https://open.spotifycdn.com/cdn/images/favicon16.c498a969.png" height="16"> **Spotify**
 - <img src="https://s4.bcbits.com/img/favicon/favicon-16x16.png" height="16"> **Bandcamp**
 - <img src="https://e-cdn-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.1e6ae1b5b7794f3e00c0.png" height="16"> **Deezer**
