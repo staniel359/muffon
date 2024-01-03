@@ -6,12 +6,15 @@
   <a href="https://github.com/staniel359/muffon/actions/workflows/main.yml">
     <img src="https://img.shields.io/github/actions/workflow/status/staniel359/muffon/main.yml?branch=main">
   </a>
-<a>
-  <img src="https://img.shields.io/github/downloads/staniel359/muffon/total">
-</a>
+  <a>
+    <img src="https://img.shields.io/github/downloads/staniel359/muffon/total">
+  </a>
+</p>
+
+<p align="center">
   <a href="https://github.com/staniel359/muffon/commits/main">
     <img src="https://img.shields.io/github/last-commit/staniel359/muffon" alt="last update" />
-  </a
+  </a>
   <a href="https://discord.gg/kpWsA5NBmJ">
     <img src="https://img.shields.io/discord/1023883455504850974?logo=discord&label=Discord&logoColor=white">
   </a>
