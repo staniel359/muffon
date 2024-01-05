@@ -8,7 +8,7 @@ import {
 } from 'fs'
 import { 
   harmfulSwitches 
-} from './data'
+} from '#/helpers/data'
 
 export {
   v4 as generateKey
