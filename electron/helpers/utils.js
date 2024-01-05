@@ -6,24 +6,15 @@ import {
   existsSync,
   mkdirSync
 } from 'fs'
+import { 
+  harmfulSwitches 
+} from './data'
 
 export {
   v4 as generateKey
 } from 'uuid'
 
-const harmfulSwitches = [
-  'remote-debugging-port',
-  'inspect',
-  'inspect-brk',
-  'inspect-brk-node',
-  'inspect-port',
-  'inspect-publish-uid',
-  'js-flags',
-  'proxy-server',
-  'host-rules'
-]
-
-function checkHarmfulSwitchPresence () {
+function areHarmfulSwitchesPresent () {
   for (harmfulSwitch of harmfulSwitches) {
     if (
       app.commandLine.hasSwitch(
@@ -39,13 +30,12 @@ function checkHarmfulSwitchPresence () {
 export const appName = 'muffon'
 
 export const handleHarmfulSwitches = () => {
-  if (
-    checkHarmfulSwitchPresence()
-  ) {
+  if (areHarmfulSwitchesPresent()) {
     dialog.showErrorBox(
       'Error',
       'Harmful switches detected'
     )
+
     process.exit() // Do not call app.exit(), ask @xyloflake why
   }
 }
