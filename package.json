@@ -44,12 +44,12 @@
     "music-metadata-browser": "^2.5.10",
     "pinia": "^2.1.7",
     "slick-carousel": "^1.8.1",
-    "uuid": "^9.0.1",
-    "vue": "^3.4.1",
-    "vue-i18n": "^9.8.0",
-    "vue-router": "^4.2.5"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "vue": "^3.4.1",
+    "vue-i18n": "^9.8.0",
+    "vue-router": "^4.2.5",
     "@babel/core": "^7.23.7",
     "@babel/eslint-parser": "^7.23.3",
     "@babel/plugin-syntax-import-assertions": "^7.23.3",
