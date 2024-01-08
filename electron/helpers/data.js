@@ -7,5 +7,6 @@ export const harmfulSwitches = [
     'inspect-publish-uid',
     'js-flags',
     'proxy-server',
+    'proxy-bypass-list',
     'host-rules'
 ]
