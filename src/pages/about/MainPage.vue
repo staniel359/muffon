@@ -106,7 +106,7 @@ export default {
       return version
     },
     copyrightText () {
-      return `Copyright (c) 2020-2023 ${this.authorName}`
+      return `Copyright (c) 2020-2024 ${this.authorName}`
     },
     authorName () {
       return author.name
