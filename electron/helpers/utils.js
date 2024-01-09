@@ -6,8 +6,8 @@ import {
   existsSync,
   mkdirSync
 } from 'fs'
-import { 
-  harmfulSwitches 
+import {
+  harmfulSwitches
 } from '#/helpers/data'
 
 export {
