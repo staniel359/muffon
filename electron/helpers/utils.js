@@ -14,7 +14,7 @@ export {
   v4 as generateKey
 } from 'uuid'
 
-function areHarmfulSwitchesPresent () {
+function isHarmfulSwitchesPresent () {
   for (harmfulSwitch of harmfulSwitches) {
     if (
       app.commandLine.hasSwitch(
@@ -30,7 +30,7 @@ function areHarmfulSwitchesPresent () {
 export const appName = 'muffon'
 
 export const handleHarmfulSwitches = () => {
-  if (areHarmfulSwitchesPresent()) {
+  if (isHarmfulSwitchesPresent()) {
     dialog.showErrorBox(
       'Error',
       'Harmful switches detected'
