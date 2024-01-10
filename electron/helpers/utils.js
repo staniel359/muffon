@@ -1,16 +1,44 @@
 import {
-  app
+  app,
+  dialog
 } from 'electron'
 import {
   existsSync,
   mkdirSync
 } from 'fs'
+import {
+  harmfulSwitches
+} from '#/helpers/data'
 
 export {
   v4 as generateKey
 } from 'uuid'
 
+function isHarmfulSwitchesPresent () {
+  for (harmfulSwitch of harmfulSwitches) {
+    if (
+      app.commandLine.hasSwitch(
+        harmfulSwitch
+      )
+    ) {
+      return true
+    }
+  }
+  return false
+}
+
 export const appName = 'muffon'
+
+export const handleHarmfulSwitches = () => {
+  if (isHarmfulSwitchesPresent()) {
+    dialog.showErrorBox(
+      'Error',
+      'Harmful switches detected'
+    )
+
+    process.exit() // Do not call app.exit(), ask @xyloflake why
+  }
+}
 
 export const isDevelopment = (
   process.env.NODE_ENV === 'development'
