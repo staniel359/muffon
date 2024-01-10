@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://i.ibb.co/3pnjZMf/preview.png" alt="preview" width="350">
 </p>
-<p align="center"><a href="https://github.com/staniel359/muffon/actions/workflows/main.yml"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/staniel359/muffon/main.yml"></a>&nbsp;<a href="https://github.com/staniel359/muffon/releases"><img alt="GitHub all releases" src="https://img.shields.io/github/downloads/staniel359/muffon/total?style=flat&logo=github&color=a76eb"></a>&nbsp;<a href="https://github.com/staniel359/muffon/commits/main/"><img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/staniel359/muffon/main?&color=a767eb"></a>&nbsp;<a href="https://discord.gg/QAmJq5EpEb"><img alt="Discord" src="https://img.shields.io/discord/1023883455504850974?style=flat&logo=discord&label=%20&labelColor=222&color=333"></a></p>
+<p align="center"><a href="https://github.com/staniel359/muffon/actions/workflows/main.yml"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/staniel359/muffon/main.yml"></a>&nbsp;<a href="https://github.com/staniel359/muffon/releases"><img alt="GitHub all releases" src="https://img.shields.io/github/downloads/staniel359/muffon/total?style=flat&logo=github&color=a767eb"></a>&nbsp;<a href="https://github.com/staniel359/muffon/commits/main/"><img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/staniel359/muffon/main?&color=a767eb"></a>&nbsp;<a href="https://discord.gg/QAmJq5EpEb"><img alt="Discord" src="https://img.shields.io/discord/1023883455504850974?style=flat&logo=discord&label=%20&labelColor=222&color=333"></a></p>
 
 #
 
