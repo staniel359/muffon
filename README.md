@@ -96,7 +96,13 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=staniel359/muffon&type=Date)](https://star-history.com/#staniel359/muffon&Date)
+<a href="https://star-history.com/#staniel359/muffon&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date" />
+  </picture>
+</a>
 
 ## Troubleshooting
 
