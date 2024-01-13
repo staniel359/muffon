@@ -94,6 +94,10 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 [Latest (v2.0.1)](https://github.com/staniel359/muffon/releases/latest)
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=staniel359/muffon&type=Date)](https://star-history.com/#staniel359/muffon&Date)
+
 ## Troubleshooting
 
 If you're using Windows 10 and during the installation you see this window:
