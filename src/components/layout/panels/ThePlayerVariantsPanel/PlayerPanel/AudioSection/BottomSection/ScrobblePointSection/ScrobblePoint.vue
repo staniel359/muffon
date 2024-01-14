@@ -1,6 +1,6 @@
 <template>
   <div
-    class="the-player-scrobble-point absolute height-100 middle-center-aligned"
+    class="the-player-scrobble-point absolute height-100 middle-center-aligned pointer-events-none"
     :class="{
       'visibility-hidden': isHidden
     }"
