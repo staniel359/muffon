@@ -5,7 +5,7 @@
     class="middle-aligned-column"
   >
     <div
-      v-if="isFollowing"
+      v-if="isRenderFollowing"
       class="middle-aligned"
     >
       <BaseIcon
@@ -20,7 +20,7 @@
     </div>
 
     <div
-      v-if="isFollowed"
+      v-if="isRenderFollowed"
       class="middle-aligned"
     >
       <BaseIcon
@@ -38,6 +38,9 @@
 
 <script>
 import BaseIcon from '@/components/icons/BaseIcon.vue'
+import {
+  isCurrentProfile
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseProfileFollowingMessage',
@@ -49,7 +52,9 @@ export default {
       type: Object,
       required: true
     },
-    isSmall: Boolean
+    isSmall: Boolean,
+    scope: String,
+    pageProfileId: String
   },
   computed: {
     component () {
@@ -61,20 +66,61 @@ export default {
     },
     isRender () {
       return (
-        this.isFollowing ||
-          this.isFollowed
+        this.isRenderFollowing ||
+          this.isRenderFollowed
+      )
+    },
+    isRenderFollowing () {
+      return (
+        this.isOtherProfileFollowing &&
+          this.isFollowing
+      )
+    },
+    isOtherProfileFollowing () {
+      return !(
+        this.isFollowingScope &&
+          this.isSelf
+      )
+    },
+    isFollowingScope () {
+      return (
+        this.scope === 'following'
+      )
+    },
+    isSelf () {
+      return isCurrentProfile(
+        this.pageProfileId
       )
     },
     isFollowing () {
-      return this.otherProfileData.follower_of_profile
+      return this.otherProfileData
+        .follower_of_profile
+    },
+    isRenderFollowed () {
+      return (
+        this.isOtherProfileFollowers &&
+          this.isFollowed
+      )
+    },
+    isOtherProfileFollowers () {
+      return !(
+        this.isFollowersScope &&
+          this.isSelf
+      )
+    },
+    isFollowersScope () {
+      return (
+        this.scope === 'followers'
+      )
+    },
+    isFollowed () {
+      return this.otherProfileData
+        .followed_by_profile
     },
     followingText () {
       return this.$t(
         'relationships.following'
       )
-    },
-    isFollowed () {
-      return this.otherProfileData.followed_by_profile
     },
     followedText () {
       return this.$t(

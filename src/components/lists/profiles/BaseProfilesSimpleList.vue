@@ -8,6 +8,8 @@
       :key="profileData.uuid"
       :profile-data="profileData"
       :is-with-created="isWithCreated"
+      :scope="scope"
+      :page-profile-id="profileId"
       @link-click="handleLinkClick"
     />
   </BaseListContainer>
@@ -38,7 +40,9 @@ export default {
       }
     },
     isMinimal: Boolean,
-    isWithCreated: Boolean
+    isWithCreated: Boolean,
+    scope: String,
+    profileId: String
   },
   emits: [
     'linkClick'

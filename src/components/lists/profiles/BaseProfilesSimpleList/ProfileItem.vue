@@ -71,6 +71,8 @@
       v-if="otherProfileData"
       class="description right main-right-small-section align-self-center"
       :other-profile-data="otherProfileData"
+      :scope="scope"
+      :page-profile-id="pageProfileId"
       is-small
     />
 
@@ -152,7 +154,9 @@ export default {
       type: Object,
       required: true
     },
-    isWithCreated: Boolean
+    isWithCreated: Boolean,
+    scope: String,
+    pageProfileId: String
   },
   emits: [
     'linkClick'

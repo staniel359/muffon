@@ -14,6 +14,8 @@
     >
       <BaseProfilesSimpleList
         :profiles="slotProps[scope]"
+        :scope="scope"
+        :profile-id="profileId"
         is-with-created
         @link-click="handleLinkClick"
       />
