@@ -18,15 +18,15 @@ export default function (
     height
   ] = mainWindow.getContentSize()
 
-  const heightComputed = (
-    height - tabsPanelHeight
+  const heightScaled = (
+    height - topOffsetScaled
   )
 
   const options = {
     x: 0,
     y: topOffsetScaled,
     width,
-    height: heightComputed
+    height: heightScaled
   }
 
   tab.setBounds(
