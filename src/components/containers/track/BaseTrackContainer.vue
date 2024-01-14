@@ -98,8 +98,9 @@ export default {
     },
     isCurrent () {
       if (this.isExactTrack) {
-        return this.playerPlayingId?.includes(
-          this.trackId
+        return (
+          this.playerPlayingId ===
+            this.trackId
         )
       } else {
         return (
@@ -107,9 +108,8 @@ export default {
             this.trackId
           )
         ) || (
-          this.playerPlayingId?.includes(
+          this.playerPlayingId ===
             this.trackId
-          )
         )
       }
     },
