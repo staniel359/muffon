@@ -11,7 +11,7 @@
     >
       <div class="main-image-container cursor-pointer">
         <BaseImage
-          class="rounded"
+          class="rounded thumb"
           :image="slotProps.image"
           is-lazy
           is-bordered
