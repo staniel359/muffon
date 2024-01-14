@@ -15,13 +15,15 @@
       :icon="icon"
     />
 
-    <span
+    <BaseTickerContainer
+      :key="key"
       class="tab-name text-overflow-hidden"
       :class="{
         active: isActive
       }"
-      v-text="tabTitle"
-    />
+    >
+      {{ tabTitle }}
+    </BaseTickerContainer>
 
     <BaseIcon
       class="close-icon main-right-small-icon"
@@ -42,12 +44,18 @@ import {
 import BaseButtonContainer
   from '@/components/containers/buttons/BaseButtonContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseTickerContainer
+  from '@/components/containers/BaseTickerContainer.vue'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BrowserTab',
   components: {
     BaseButtonContainer,
-    BaseIcon
+    BaseIcon,
+    BaseTickerContainer
   },
   props: {
     tabData: {
@@ -57,6 +65,7 @@ export default {
   },
   data () {
     return {
+      key: null,
       isLoading: true,
       isError: false
     }
@@ -94,6 +103,9 @@ export default {
       return this.tabData.icon
     }
   },
+  watch: {
+    tabTitle: 'handleTabTitleChange'
+  },
   mounted () {
     ipcRenderer.on(
       'update-tab',
@@ -101,6 +113,9 @@ export default {
     )
   },
   methods: {
+    handleTabTitleChange () {
+      this.key = generateKey()
+    },
     handleUpdateTab (
       _,
       {
