@@ -10,9 +10,7 @@
     >
       <div
         ref="content"
-        :style="{
-          'padding-right': `${gapWidth}px`
-        }"
+        :style="contentStyle"
       >
         <slot />
       </div>
@@ -35,6 +33,16 @@ export default {
     }
   },
   computed: {
+    contentStyle () {
+      if (this.isTickable) {
+        return {
+          'padding-right':
+            `${this.gapWidth}px`
+        }
+      } else {
+        return null
+      }
+    },
     isTickable () {
       return this.contentWidth > (
         this.tickerWidth +
@@ -42,10 +50,14 @@ export default {
       )
     },
     contentWidth () {
-      return this.content.offsetWidth
+      return (
+        this.content?.offsetWidth || 0
+      )
     },
     tickerWidth () {
-      return this.ticker.offsetWidth
+      return (
+        this.ticker?.offsetWidth || 0
+      )
     },
     contentClone () {
       return this.content.cloneNode(

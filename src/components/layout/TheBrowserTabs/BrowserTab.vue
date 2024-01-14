@@ -15,13 +15,14 @@
       :icon="icon"
     />
 
-    <span
+    <BaseTickerContainer
       class="tab-name text-overflow-hidden"
       :class="{
         active: isActive
       }"
-      v-text="tabTitle"
-    />
+    >
+      {{ tabTitle }}
+    </BaseTickerContainer>
 
     <BaseIcon
       class="close-icon main-right-small-icon"
@@ -42,12 +43,15 @@ import {
 import BaseButtonContainer
   from '@/components/containers/buttons/BaseButtonContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseTickerContainer
+  from '@/components/containers/BaseTickerContainer.vue'
 
 export default {
   name: 'BrowserTab',
   components: {
     BaseButtonContainer,
-    BaseIcon
+    BaseIcon,
+    BaseTickerContainer
   },
   props: {
     tabData: {
