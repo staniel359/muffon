@@ -15,7 +15,9 @@
       />
     </div>
 
-    <BottomSection />
+    <BottomSection
+      :key="key"
+    />
   </div>
 </template>
 

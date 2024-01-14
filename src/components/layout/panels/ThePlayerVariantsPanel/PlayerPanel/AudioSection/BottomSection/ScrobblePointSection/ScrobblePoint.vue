@@ -2,7 +2,8 @@
   <div
     class="the-player-scrobble-point absolute height-100 middle-center-aligned pointer-events-none"
     :class="{
-      'visibility-hidden': isHidden
+      'visibility-hidden': isHidden,
+      scrobbled: isScrobbled
     }"
     :style="{
       [offsetDirection]:
@@ -41,6 +42,7 @@ export default {
   ],
   data () {
     return {
+      isScrobbled: false,
       audioCurrentTime: 0,
       seekedTime: 0
     }
@@ -92,8 +94,10 @@ export default {
     },
     isToSaveScrobble () {
       return (
-        this.audioCurrentPercent >=
-          this.scrobblePercent
+        !this.isScrobbled && (
+          this.audioCurrentPercent >=
+            this.scrobblePercent
+        )
       )
     },
     audioCurrentPercent () {
@@ -146,18 +150,18 @@ export default {
       }
     },
     offsetDirection () {
-      if (this.isRtl) {
-        return 'right'
-      } else {
-        return 'left'
-      }
+      return (
+        this.isRtl ? 'right' : 'left'
+      )
     }
   },
   watch: {
     isPlayerWithScrobbling:
       'handleIsPlayerWithScrobblingChange',
     isToSaveScrobble:
-      'handleIsToSaveScrobbleChange'
+      'handleIsToSaveScrobbleChange',
+    audioCurrentTime:
+      'handleAudioCurrentTimeChange'
   },
   mounted () {
     this.audioElement
@@ -188,7 +192,9 @@ export default {
       }
     },
     handleAudioSeeking () {
-      this.setSeekingTime()
+      if (!this.isScrobbled) {
+        this.setSeekingTime()
+      }
     },
     handleAudioTimeUpdate () {
       setTimeout(
@@ -198,7 +204,16 @@ export default {
     },
     handleSaveScrobbleSuccess () {
       if (this.isPlayerWithScrobbleNotifications) {
+        this.isScrobbled = true
+
         this.notifySuccess()
+      }
+    },
+    handleAudioCurrentTimeChange (
+      value
+    ) {
+      if (!value) {
+        this.isScrobbled = false
       }
     },
     saveScrobble () {
