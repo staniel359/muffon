@@ -75,7 +75,6 @@ import BaseSegmentContainer
 import BaseLogoImage from '@/components/images/BaseLogoImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
-import logo from '@/assets/images/logo_sm.png'
 import {
   name,
   version,
@@ -96,9 +95,6 @@ export default {
     BaseDivider
   },
   computed: {
-    logo () {
-      return logo
-    },
     name () {
       return name
     },

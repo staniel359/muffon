@@ -8,8 +8,8 @@
 
 <script>
 import BaseImage from '@/components/images/BaseImage.vue'
-import logoMedium from '@/assets/images/logo_sm.png'
-import logoSmall from '@/assets/images/logo_xs.png'
+import logo from '@/assets/images/logo.png'
+import logoExtraSmall from '@/assets/images/logo_xs.png'
 
 export default {
   name: 'BaseLogoImage',
@@ -17,14 +17,14 @@ export default {
     BaseImage
   },
   props: {
-    isSmall: Boolean
+    isExtraSmall: Boolean
   },
   computed: {
     logo () {
-      if (this.isSmall) {
-        return logoSmall
+      if (this.isExtraSmall) {
+        return logoExtraSmall
       } else {
-        return logoMedium
+        return logo
       }
     }
   }

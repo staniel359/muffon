@@ -7,7 +7,7 @@
   >
     <div class="main-sidebar-item-icon-image-container">
       <BaseLogoImage
-        is-small
+        is-extra-small
       />
     </div>
   </div>
