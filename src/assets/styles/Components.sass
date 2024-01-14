@@ -139,11 +139,18 @@
 
 //
 
-.ui.labels
-  .base-label
-    margin: 0 0.75rem 0.75rem 0 !important
-    &.large
-      margin: 0 1rem 1rem 0 !important
+[dir="ltr"]
+  .ui.labels
+    .base-label
+      margin: 0 0.75rem 0.75rem 0 !important
+      &.large
+        margin: 0 1rem 1rem 0 !important
+[dir="rtl"]
+  .ui.labels
+    .base-label
+      margin: 0 0 0.75rem 0.75rem !important
+      &.large
+        margin: 0 0 1rem 1rem !important
 
 //
 

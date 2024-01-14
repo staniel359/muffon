@@ -1,6 +1,9 @@
 <template>
   <div class="main-right-section middle-center-aligned-full-column">
-    <div class="middle-aligned width-100">
+    <div
+      class="middle-aligned width-100"
+      :dir="controlsDirection"
+    >
       <LeftControlsSection
         :key="key"
       />
@@ -20,6 +23,7 @@
 import {
   mapState
 } from 'pinia'
+import layoutStore from '@/stores/layout'
 import playerStore from '@/stores/player'
 import queueStore from '@/stores/queue'
 import audioStore from '@/stores/audio'
@@ -46,6 +50,12 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      layoutStore,
+      [
+        'isRtl'
+      ]
+    ),
     ...mapState(
       playerStore,
       {
@@ -78,6 +88,11 @@ export default {
       return {
         position: 'next'
       }
+    },
+    controlsDirection () {
+      return (
+        this.isRtl ? 'rtl' : 'ltr'
+      )
     }
   },
   watch: {

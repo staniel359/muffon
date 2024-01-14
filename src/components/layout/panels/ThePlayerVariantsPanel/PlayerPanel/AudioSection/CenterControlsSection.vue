@@ -1,5 +1,8 @@
 <template>
-  <div class="center-aligned width-60">
+  <div
+    class="center-aligned width-60"
+    dir="ltr"
+  >
     <div class="main-small-buttons-container middle-aligned">
       <EqualizerButton
         v-if="isPlayerWithEqualizer"

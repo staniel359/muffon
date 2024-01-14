@@ -4,8 +4,7 @@
     class="ui small slider base-seeker no-padding"
     :class="{
       disabled: isDisabled,
-      inverted: isDarkMode,
-      reversed: isRtl
+      inverted: isDarkMode
     }"
     @mousedown.capture="handleMouseDown"
   />
@@ -47,8 +46,7 @@ export default {
     ...mapState(
       layoutStore,
       [
-        'isDarkMode',
-        'isRtl'
+        'isDarkMode'
       ]
     ),
     seekerOptions () {
@@ -61,8 +59,7 @@ export default {
   },
   watch: {
     isDisabled: 'handleIsDisabledChange',
-    isMouseUp: 'handleIsMouseUpChange',
-    isRtl: 'handleIsRtlChange'
+    isMouseUp: 'handleIsMouseUpChange'
   },
   mounted () {
     this.initialize()
@@ -76,11 +73,6 @@ export default {
 
         this.initialize()
       }
-    },
-    async handleIsRtlChange () {
-      await this.$nextTick()
-
-      this.initialize()
     },
     handleMouseDown () {
       this.isMouseUp = false
