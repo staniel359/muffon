@@ -80,7 +80,7 @@ export default {
       } = response.format
 
       const bitrateFormatted =
-        Math.round(
+        Math.floor(
           bitrate / 1000
         )
 
