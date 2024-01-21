@@ -83,6 +83,18 @@ export default {
         this.isAudioEnded &&
           !this.isSeeking
       )
+    },
+    seekingAudioStatusComputed () {
+      if (this.isStop) {
+        return 'pause'
+      } else {
+        return this.audioStatus
+      }
+    },
+    isStop () {
+      return (
+        this.audioStatus === 'stop'
+      )
     }
   },
   watch: {
@@ -130,7 +142,8 @@ export default {
         this.isSeeking = true
 
         if (!this.isAudioEnded) {
-          this.seekingAudioStatus = this.audioStatus
+          this.seekingAudioStatus =
+            this.seekingAudioStatusComputed
         }
 
         this.audioElement.pause()
