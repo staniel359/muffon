@@ -27,7 +27,6 @@ export default {
     ...mapState(
       audioStore,
       {
-        audioElement: 'element',
         audioContext: 'context',
         audioSource: 'source',
         audioStatus: 'status'

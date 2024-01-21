@@ -60,7 +60,6 @@ export default {
       {
         isPlayerWithScrobbleNotifications:
           'isWithScrobbleNotifications',
-        isPlayerWithScrobbling: 'isWithScrobbling',
         playerPlaying: 'playing',
         playerScrobblePercent: 'scrobblePercent'
       }
@@ -156,8 +155,6 @@ export default {
     }
   },
   watch: {
-    isPlayerWithScrobbling:
-      'handleIsPlayerWithScrobblingChange',
     isToSaveScrobble:
       'handleIsToSaveScrobbleChange',
     audioCurrentTime:
@@ -175,15 +172,10 @@ export default {
         'timeupdate',
         this.handleAudioTimeUpdate
       )
+
+    this.setScrobblingEnabledTime()
   },
   methods: {
-    handleIsPlayerWithScrobblingChange (
-      value
-    ) {
-      if (value) {
-        this.setScrobblingEnabledTime()
-      }
-    },
     handleIsToSaveScrobbleChange (
       value
     ) {
