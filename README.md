@@ -43,6 +43,8 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **queue** (+ shuffle / loop) (+ albums adding)
 - **music library** (+ import from account) (+ compatibility)
 - **music services integration** (Last.FM, Spotify - Coming soon)
+> [!NOTE]
+> We are aware that Spotify Integration doesn't work right now. We are trying to fix it. The issue is tracked in [#134](https://github.com/staniel359/muffon/issues/134)
 - **recommendations** (artists / tracks) (based on your library) (+ filters)
 - **search** (artists / albums / album groups / tracks / lyrics / tags / videos / video channels / video playlists) (through all of the sources above)
 - **radio** (tags / artists / top)
