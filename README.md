@@ -94,7 +94,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Download
 
-[Latest (v2.0.1)](https://github.com/staniel359/muffon/releases/latest)
+[Latest (v2.0.2)](https://github.com/staniel359/muffon/releases/latest)
 
 ## Star History
 
