@@ -15,7 +15,7 @@
         />
 
         <div
-          class="main-bottom-mini-section"
+          class="main-bottom-extrasmall-section"
           v-text="basedText"
         />
 
