@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="tags"
+    v-if="tags?.length"
     class="main-labels-section"
   >
     <BaseTagsSimpleList

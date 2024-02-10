@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="tags"
+    v-if="tags?.length"
   >
     <BaseTagsSimpleList
       :tags="tags"
