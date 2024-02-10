@@ -8,10 +8,7 @@
       ref="ticker"
       class="ticker d-flex"
     >
-      <div
-        ref="content"
-        :style="contentStyle"
-      >
+      <div ref="content">
         <slot />
       </div>
     </div>
@@ -33,16 +30,6 @@ export default {
     }
   },
   computed: {
-    contentStyle () {
-      if (this.isTickable) {
-        return {
-          'padding-right':
-            `${this.gapWidth}px`
-        }
-      } else {
-        return null
-      }
-    },
     isTickable () {
       return this.contentWidth > (
         this.tickerWidth +
@@ -80,9 +67,17 @@ export default {
     this.ticker = ticker
     this.content = content
 
+    this.setContentPaddingRight(
+      this.gapWidth
+    )
+
     if (this.isTickable) {
       this.ticker.appendChild(
         this.contentClone
+      )
+    } else {
+      this.setContentPaddingRight(
+        0
       )
     }
   },
@@ -128,6 +123,13 @@ export default {
         .style
         .transform =
           `translateX(${this.progress}px)`
+    },
+    setContentPaddingRight (
+      value
+    ) {
+      this.content
+        .style
+        .paddingRight = `${value}px`
     }
   }
 }
