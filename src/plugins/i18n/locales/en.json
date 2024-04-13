@@ -155,6 +155,7 @@
     "import": "Import",
     "close": "Close",
     "openLink": "Open link",
+    "openLink": "Open link",
     "addFrom": {
       "search": "From search",
       "library": "From library"
@@ -317,6 +318,8 @@
       "country": "Country",
       "city": "City",
       "status": "Status",
+      "clientId": "Client ID",
+      "clientSecret": "Client secret",
       "clientId": "Client ID",
       "clientSecret": "Client secret",
       "genders": {
@@ -598,6 +601,11 @@
           "scrobbling": "Scrobbling",
           "scrobbleNotifications": "Scrobble notifications",
           "scrobblePercent": "Scrobble after"
+        },
+        "spotify": {
+          "link": {
+            "description": "To connect your Spotify account you need to create an application first. Please follow <a target='_blank' class='main-link active bold underlined' href='{instructionsLink}'>this guide</a>.\n\nAfter the app is created, go to its settings and paste <strong>{redirectLink}</strong> in <strong>Redirect URIs</strong> field.\n\nThen copy <strong>Client ID</strong> and <strong>Client secret</strong> from there, paste them in the fields below and click <strong>Open link</strong>."
+          }
         },
         "spotify": {
           "link": {
