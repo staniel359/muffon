@@ -44,7 +44,7 @@ export default {
   ],
   data () {
     return {
-      isActivated: false,
+      isActivated: true,
       isTopVisible: false
     }
   },
