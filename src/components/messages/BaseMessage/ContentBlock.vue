@@ -9,7 +9,9 @@
     <template
       v-else
     >
-      {{ content }}
+      <div
+        v-html="content"
+      />
     </template>
   </p>
 </template>

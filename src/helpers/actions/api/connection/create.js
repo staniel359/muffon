@@ -4,19 +4,26 @@ import postRequest from '@/helpers/actions/api/request/post'
 export default function (
   {
     source,
-    lastfmToken,
-    spotifyCode
+    token,
+    code,
+    clientId,
+    clientSecret
   }
 ) {
   const url = `/${source}/connections`
 
-  const params = {
-    ...(lastfmToken && {
-      lastfm_token: lastfmToken
-    }),
-    ...(spotifyCode && {
-      spotify_code: spotifyCode
-    })
+  let params = {}
+
+  if (source === 'lastfm') {
+    params = {
+      lastfm_token: token
+    }
+  } else if (source === 'spotify') {
+    params = {
+      code,
+      client_id: clientId,
+      client_secret: clientSecret
+    }
   }
 
   const handleSuccess = (

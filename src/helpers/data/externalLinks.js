@@ -3,3 +3,6 @@ export const donate =
 
 export const discord =
   'https://discord.gg/kpWsA5NBmJ'
+
+export const spotifyConnectionInstructionsLink =
+  'https://developer.spotify.com/documentation/web-api/concepts/apps'

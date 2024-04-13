@@ -1,16 +1,22 @@
 <template>
-  <ConnectedSection
-    v-if="isConnected"
-    :spotify-account-data="spotifyAccountData"
-    @success="handleDisconnect"
-  />
   <ConnectSection
-    v-else-if="isCodeCalled"
-    @clear-button-click="handleCodeClearButtonClick"
+    v-if="status === 'connect'"
+    @connect-button-click="handleConnectButtonClick"
+  />
+  <LinkSection
+    v-else-if="status === 'link'"
+    @open-link-button-click="handleOpenLinkButtonClick"
+    @clear-button-click="handleClearButtonClick"
   />
   <CodeSection
-    v-else
-    @code-called="handleCodeCalled"
+    v-else-if="status === 'code'"
+    :client-id="clientId"
+    :client-secret="clientSecret"
+    @clear-button-click="handleClearButtonClick"
+  />
+  <ConnectedSection
+    v-else-if="status === 'connected'"
+    :spotify-account-data="spotifyAccountData"
   />
 </template>
 
@@ -19,20 +25,24 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import ConnectedSection from './ConnectOption/ConnectedSection.vue'
 import ConnectSection from './ConnectOption/ConnectSection.vue'
+import LinkSection from './ConnectOption/LinkSection.vue'
 import CodeSection from './ConnectOption/CodeSection.vue'
+import ConnectedSection from './ConnectOption/ConnectedSection.vue'
 
 export default {
   name: 'ConnectOption',
   components: {
-    ConnectedSection,
     ConnectSection,
-    CodeSection
+    LinkSection,
+    CodeSection,
+    ConnectedSection
   },
   data () {
     return {
-      isCodeCalled: false
+      clientId: null,
+      clientSecret: null,
+      status: 'connect'
     }
   },
   computed: {
@@ -42,24 +52,42 @@ export default {
         profileConnections: 'connections'
       }
     ),
-    isConnected () {
-      return !!this.spotifyAccountData
-    },
     spotifyAccountData () {
       return this.profileConnections.spotify
     }
   },
+  watch: {
+    spotifyAccountData: {
+      immediate: true,
+      handler: 'handleSpotifyAccountDataChange'
+    }
+  },
   methods: {
-    handleCodeCalled (
+    handleConnectButtonClick () {
+      this.status = 'link'
+    },
+    handleOpenLinkButtonClick (
+      {
+        clientId,
+        clientSecret
+      }
+    ) {
+      this.clientId = clientId
+      this.clientSecret = clientSecret
+
+      this.status = 'code'
+    },
+    handleClearButtonClick () {
+      this.status = 'connect'
+    },
+    handleSpotifyAccountDataChange (
       value
     ) {
-      this.isCodeCalled = true
-    },
-    handleDisconnect () {
-      this.isCodeCalled = false
-    },
-    handleCodeClearButtonClick () {
-      this.isCodeCalled = false
+      if (value) {
+        this.status = 'connected'
+      } else {
+        this.status = 'connect'
+      }
     }
   }
 }

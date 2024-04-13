@@ -1,96 +1,132 @@
 <template>
   <div class="main-settings-option-container">
-    <div class="main-settings-option">
+    <div
+      v-if="error"
+      class="main-top-section"
+    >
+      <BaseErrorMessage
+        :error="error"
+      />
+    </div>
+
+    <BaseMessage
+      :content="confirmText"
+    />
+
+    <BaseInput
+      v-model.trim="code"
+      class="fluid main-bottom-section"
+    />
+
+    <div class="main-settings-option main-bottom-section">
       <div class="option-header">
         <BaseButton
           class="green circular option-button"
           left-icon="spotify"
+          :class="{
+            loading: isLoading,
+            disabled: isLoading
+          }"
           :text="connectText"
           :is-invertable="false"
           @click="handleClick"
         />
       </div>
+
+      <BaseClearButton
+        @click="handleClearButtonClick"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import {
-  shell
-} from 'electron'
-import axios from 'axios'
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseInput from '@/components/inputs/BaseInput.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import BaseMessage from '@/components/messages/BaseMessage.vue'
+import createConnection from '@/helpers/actions/api/connection/create'
 import {
-  spotifyClientId
-} from '@/helpers/data/env'
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'CodeSection',
   components: {
-    BaseButton
+    BaseErrorMessage,
+    BaseButton,
+    BaseInput,
+    BaseClearButton,
+    BaseMessage
+  },
+  props: {
+    clientId: {
+      type: String,
+      required: true
+    },
+    clientSecret: {
+      type: String,
+      required: true
+    }
   },
   emits: [
-    'codeCalled'
+    'clearButtonClick'
   ],
   data () {
     return {
-      scopes: [
-        'user-read-private',
-        'user-library-read',
-        'playlist-read-private'
-      ]
+      connectionsData: null,
+      error: null,
+      isLoading: false,
+      code: ''
     }
   },
   computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileLanguage: 'language'
-      }
-    ),
     connectText () {
       return this.$t(
         'connections.connect'
       )
     },
-    codeLink () {
-      return (
-        'https://accounts.spotify.com' +
-          `/${this.profileLanguage}/authorize` +
-          `?client_id=${spotifyClientId}` +
-          `&redirect_uri=${this.redirectLink}` +
-          '&response_type=code' +
-          `&scope=${this.scope}`
+    confirmText () {
+      return this.$t(
+        'connections.confirm.code'
       )
     },
-    redirectLink () {
-      return axios
-        .defaults
-        .baseURL
-        .replace(
-          '/api/',
-          '/code'
-        )
-    },
-    scope () {
-      return this.scopes.join(
-        ','
-      )
+    connectionArgs () {
+      return {
+        source: 'spotify',
+        code: this.code,
+        clientId: this.clientId,
+        clientSecret: this.clientSecret
+      }
     }
   },
+  watch: {
+    connectionsData:
+      'handleConnectionsDataChange'
+  },
   methods: {
+    createConnection,
     handleClick () {
-      shell.openExternal(
-        this.codeLink
+      this.createConnection(
+        this.connectionArgs
       )
-
+    },
+    handleClearButtonClick () {
       this.$emit(
-        'codeCalled'
+        'clearButtonClick'
       )
+    },
+    handleConnectionsDataChange (
+      value
+    ) {
+      if (value) {
+        updateGlobalStore(
+          {
+            'profile.connections': value
+          }
+        )
+      }
     }
   }
 }

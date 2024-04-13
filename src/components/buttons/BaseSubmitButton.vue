@@ -2,7 +2,14 @@
   <button
     ref="button"
     type="submit"
-    class="ui primary circular button main-button"
+    class="ui circular button main-button"
+    :class="[
+      buttonColorClass,
+      {
+        basic: isBasic,
+        primary: !isBasic
+      }
+    ]"
   >
     <BaseIcon
       v-if="isWithIcon"
@@ -18,12 +25,16 @@
 
 <script>
 import BaseIcon from '@/components/icons/BaseIcon.vue'
+import buttonMixin from '@/mixins/buttonMixin'
 
 export default {
   name: 'BaseSubmitButton',
   components: {
     BaseIcon
   },
+  mixins: [
+    buttonMixin
+  ],
   props: {
     actionKey: {
       type: String,
@@ -32,7 +43,8 @@ export default {
     isWithIcon: {
       type: Boolean,
       default: true
-    }
+    },
+    isInvertable: Boolean
   },
   computed: {
     actionText () {

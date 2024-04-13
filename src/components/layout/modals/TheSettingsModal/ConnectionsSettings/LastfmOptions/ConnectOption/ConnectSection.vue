@@ -85,7 +85,7 @@ export default {
     connectionArgs () {
       return {
         source: 'lastfm',
-        lastfmToken: this.token
+        token: this.token
       }
     }
   },

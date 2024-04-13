@@ -50,9 +50,6 @@ export default {
   props: {
     spotifyAccountData: Object
   },
-  emits: [
-    'success'
-  ],
   data () {
     return {
       connectionsData: null,
@@ -92,10 +89,6 @@ export default {
           {
             'profile.connections': value
           }
-        )
-
-        this.$emit(
-          'success'
         )
       }
     }

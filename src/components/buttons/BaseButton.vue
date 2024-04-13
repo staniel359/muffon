@@ -40,26 +40,18 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import layoutStore from '@/stores/layout'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
+import buttonMixin from '@/mixins/buttonMixin'
 
 export default {
   name: 'BaseButton',
   components: {
     BaseIcon
   },
+  mixins: [
+    buttonMixin
+  ],
   props: {
-    isInvertable: {
-      type: Boolean,
-      default: true
-    },
-    isTransparent: {
-      type: Boolean,
-      default: true
-    },
     icon: String,
     leftIcon: String,
     rightIcon: String,
@@ -71,31 +63,6 @@ export default {
     'click'
   ],
   computed: {
-    ...mapState(
-      layoutStore,
-      [
-        'isDarkMode'
-      ]
-    ),
-    buttonColorClass () {
-      if (this.isDarkMode) {
-        if (this.isInvertable) {
-          if (this.isTransparent) {
-            return 'inverted'
-          } else {
-            return 'inverted background-black'
-          }
-        } else {
-          return null
-        }
-      } else {
-        if (this.isTransparent) {
-          return null
-        } else {
-          return 'background-white'
-        }
-      }
-    },
     buttonIconClass () {
       if (
         !!this.icon &&
