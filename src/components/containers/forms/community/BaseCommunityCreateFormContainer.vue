@@ -61,6 +61,7 @@ export default {
     communityId: 'handleCommunityIdChange'
   },
   methods: {
+    createCommunity,
     handleSuccess (
       event,
       fields
@@ -83,7 +84,6 @@ export default {
         'success'
       )
     },
-    createCommunity,
     redirect () {
       this.$router.push(
         this.communityUrl

@@ -3,7 +3,7 @@
  * https://github.com/fomantic/Fomantic-UI
  * https://fomantic-ui.com/
  *
- * Copyright 2023 Contributors
+ * Copyright 2024 Contributors
  * Released under the MIT license
  * https://opensource.org/licenses/MIT
  *
