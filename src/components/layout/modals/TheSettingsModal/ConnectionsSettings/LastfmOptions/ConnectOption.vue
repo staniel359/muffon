@@ -1,51 +1,80 @@
 <template>
-  <ConnectedSection
-    v-if="isConnected"
-    :lastfm-account-data="lastfmAccountData"
-    @success="handleDisconnect"
+  <GetTokenSection
+    v-if="status === 'getToken'"
+    @token-get="handleTokenGet"
   />
-  <ConnectSection
-    v-else-if="token"
+  <ConnectTokenSection
+    v-else-if="status === 'connectToken' && token"
     :token="token"
-    @clear-button-click="handleTokenClearButtonClick"
+    @clear-button-click="handleClearButtonClick"
   />
-  <TokenSection
-    v-else
-    @token-change="handleTokenChange"
+  <ConnectedSection
+    v-else-if="status === 'connected'"
   />
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
+import GetTokenSection from './ConnectOption/GetTokenSection.vue'
+import ConnectTokenSection from './ConnectOption/ConnectTokenSection.vue'
 import ConnectedSection from './ConnectOption/ConnectedSection.vue'
-import ConnectSection from './ConnectOption/ConnectSection.vue'
-import TokenSection from './ConnectOption/TokenSection.vue'
 
 export default {
   name: 'ConnectOption',
   components: {
+    GetTokenSection,
     ConnectedSection,
-    ConnectSection,
-    TokenSection
-  },
-  props: {
-    isConnected: Boolean,
-    lastfmAccountData: Object
+    ConnectTokenSection
   },
   data () {
     return {
-      token: null
+      token: null,
+      status: 'getToken'
+    }
+  },
+  computed: {
+    ...mapState(
+      profileStore,
+      {
+        profileConnections: 'connections'
+      }
+    ),
+    lastfmAccountData () {
+      return this.profileConnections.lastfm
+    }
+  },
+  watch: {
+    lastfmAccountData: {
+      immediate: true,
+      handler: 'handleLastfmAccountDataChange'
     }
   },
   methods: {
-    handleTokenChange (
+    handleLastfmAccountDataChange (
+      value
+    ) {
+      if (value) {
+        this.status = 'connected'
+      } else {
+        this.reset()
+      }
+    },
+    handleTokenGet (
       value
     ) {
       this.token = value
+
+      this.status = 'connectToken'
     },
-    handleDisconnect () {
-      this.token = null
+    handleClearButtonClick () {
+      this.reset()
     },
-    handleTokenClearButtonClick () {
+    reset () {
+      this.status = 'getToken'
+
       this.token = null
     }
   }

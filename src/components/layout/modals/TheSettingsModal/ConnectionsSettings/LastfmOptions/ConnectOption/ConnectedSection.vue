@@ -32,6 +32,10 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseAccountSection from '@/components/sections/BaseAccountSection.vue'
@@ -47,9 +51,6 @@ export default {
     BaseButton,
     BaseAccountSection
   },
-  props: {
-    lastfmAccountData: Object
-  },
   emits: [
     'success'
   ],
@@ -62,6 +63,15 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      profileStore,
+      {
+        profileConnections: 'connections'
+      }
+    ),
+    lastfmAccountData () {
+      return this.profileConnections.lastfm
+    },
     disconnectText () {
       return this.$t(
         'connections.disconnect'

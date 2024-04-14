@@ -40,15 +40,12 @@ export default {
     BaseHeader,
     BaseSeeker
   },
-  props: {
-    isConnected: Boolean,
-    isPlayerWithScrobbling: Boolean
-  },
   computed: {
     ...mapState(
       playerStore,
       {
-        playerScrobblePercent: 'scrobblePercent'
+        playerScrobblePercent: 'scrobblePercent',
+        isPlayerWithScrobbling: 'isWithScrobbling'
       }
     ),
     percentText () {
@@ -64,10 +61,7 @@ export default {
       )
     },
     isDisabled () {
-      return !(
-        this.isConnected &&
-          this.isPlayerWithScrobbling
-      )
+      return !this.isPlayerWithScrobbling
     }
   },
   watch: {

@@ -1,24 +1,16 @@
 <template>
   <div class="main-settings-options-block">
-    <ConnectOption
-      :is-connected="isConnected"
-      :lastfm-account-data="lastfmAccountData"
-    />
+    <ConnectOption />
 
-    <ScrobbleOption
-      :is-connected="isConnected"
-      :is-player-with-scrobbling="isPlayerWithScrobbling"
-    />
+    <template
+      v-if="isConnected"
+    >
+      <ScrobbleOption />
 
-    <ScrobbleNotificationsOption
-      :is-connected="isConnected"
-      :is-player-with-scrobbling="isPlayerWithScrobbling"
-    />
+      <ScrobbleNotificationsOption />
 
-    <ScrobblePercentOption
-      :is-connected="isConnected"
-      :is-player-with-scrobbling="isPlayerWithScrobbling"
-    />
+      <ScrobblePercentOption />
+    </template>
   </div>
 </template>
 
@@ -26,7 +18,6 @@
 import {
   mapState
 } from 'pinia'
-import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
 import ConnectOption from './LastfmOptions/ConnectOption.vue'
 import ScrobbleOption from './LastfmOptions/ScrobbleOption.vue'
@@ -43,12 +34,6 @@ export default {
     ScrobblePercentOption
   },
   computed: {
-    ...mapState(
-      playerStore,
-      {
-        isPlayerWithScrobbling: 'isWithScrobbling'
-      }
-    ),
     ...mapState(
       profileStore,
       {

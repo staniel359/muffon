@@ -12,7 +12,7 @@
         :class="{
           disabled: isDisabled
         }"
-        :is-checked="isChecked"
+        :is-checked="isPlayerWithScrobbleNotifications"
       />
     </div>
   </div>
@@ -32,16 +32,13 @@ export default {
     BaseHeader,
     BaseToggle
   },
-  props: {
-    isConnected: Boolean,
-    isPlayerWithScrobbling: Boolean
-  },
   computed: {
     ...mapState(
       playerStore,
       {
         isPlayerWithScrobbleNotifications:
-        'isWithScrobbleNotifications'
+          'isWithScrobbleNotifications',
+        isPlayerWithScrobbling: 'isWithScrobbling'
       }
     ),
     scrobbleNotificationsText () {
@@ -50,16 +47,10 @@ export default {
       )
     },
     isChecked () {
-      return (
-        this.isConnected &&
-          this.isPlayerWithScrobbleNotifications
-      )
+      return this.isPlayerWithScrobbleNotifications
     },
     isDisabled () {
-      return !(
-        this.isConnected &&
-          this.isPlayerWithScrobbling
-      )
+      return !this.isPlayerWithScrobbling
     }
   }
 }

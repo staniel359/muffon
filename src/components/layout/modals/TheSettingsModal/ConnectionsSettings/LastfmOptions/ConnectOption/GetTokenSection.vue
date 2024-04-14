@@ -36,13 +36,13 @@ import BaseButton from '@/components/buttons/BaseButton.vue'
 import getToken from '@/helpers/actions/api/connection/token/get'
 
 export default {
-  name: 'TokenSection',
+  name: 'GetTokenSection',
   components: {
     BaseErrorMessage,
     BaseButton
   },
   emits: [
-    'tokenChange'
+    'tokenGet'
   ],
   data () {
     return {
@@ -76,13 +76,18 @@ export default {
     handleConnectDataChange (
       value
     ) {
+      const {
+        link,
+        token
+      } = value
+
       shell.openExternal(
-        value.link
+        link
       )
 
       this.$emit(
-        'tokenChange',
-        value.token
+        'tokenGet',
+        token
       )
     }
   }

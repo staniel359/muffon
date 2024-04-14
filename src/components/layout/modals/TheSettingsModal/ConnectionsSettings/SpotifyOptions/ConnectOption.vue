@@ -78,7 +78,7 @@ export default {
       this.status = 'code'
     },
     handleClearButtonClick () {
-      this.status = 'connect'
+      this.reset()
     },
     handleSpotifyAccountDataChange (
       value
@@ -86,8 +86,14 @@ export default {
       if (value) {
         this.status = 'connected'
       } else {
-        this.status = 'connect'
+        this.reset()
       }
+    },
+    reset () {
+      this.status = 'connect'
+
+      this.clientId = null
+      this.clientSecret = null
     }
   }
 }

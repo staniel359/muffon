@@ -9,7 +9,11 @@
       />
     </div>
 
-    <div class="main-settings-option">
+    <BaseMessage
+      :content="confirmText"
+    />
+
+    <div class="main-settings-option main-bottom-section">
       <div class="option-header">
         <BaseButton
           class="red circular option-button"
@@ -28,12 +32,6 @@
         @click="handleClearButtonClick"
       />
     </div>
-
-    <div class="main-bottom-section">
-      <BaseMessage
-        :content="confirmText"
-      />
-    </div>
   </div>
 </template>
 
@@ -48,7 +46,7 @@ import {
 } from '@/helpers/actions/store/global'
 
 export default {
-  name: 'ConnectSection',
+  name: 'ConnectTokenSection',
   components: {
     BaseErrorMessage,
     BaseButton,

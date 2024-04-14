@@ -9,9 +9,6 @@
 
       <BaseToggle
         store-key="player.isWithScrobbling"
-        :class="{
-          disabled: isDisabled
-        }"
         :is-checked="isChecked"
       />
     </div>
@@ -19,6 +16,10 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import playerStore from '@/stores/player'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
@@ -28,24 +29,20 @@ export default {
     BaseHeader,
     BaseToggle
   },
-  props: {
-    isConnected: Boolean,
-    isPlayerWithScrobbling: Boolean
-  },
   computed: {
+    ...mapState(
+      playerStore,
+      {
+        isPlayerWithScrobbling: 'isWithScrobbling'
+      }
+    ),
     scrobblingText () {
       return this.$t(
         'settings.options.connections.lastfm.scrobbling'
       )
     },
     isChecked () {
-      return (
-        this.isConnected &&
-          this.isPlayerWithScrobbling
-      )
-    },
-    isDisabled () {
-      return !this.isConnected
+      return this.isPlayerWithScrobbling
     }
   }
 }
