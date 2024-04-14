@@ -29,7 +29,7 @@ export default {
           id: 'youtube.playlistId',
           regex:
             /https:\/\/www.youtube.com\/watch\?.*v=.+&list=([\w_-]+)/,
-          formatPath: id => {
+          formatPath: () => {
             return null
           }
         },

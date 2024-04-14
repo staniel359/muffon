@@ -72,9 +72,7 @@ export default {
         this.getData()
       }
     },
-    handleAnnotationDataChange (
-      value
-    ) {
+    handleAnnotationDataChange () {
       this.$emit(
         'annotationDataChange'
       )

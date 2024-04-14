@@ -11,9 +11,7 @@ export default function (
   const url =
     `/${source}/connections/${profileId}`
 
-  const handleSuccess = (
-    response
-  ) => {
+  const handleSuccess = () => {
     const connectionsData = {
       ...profileStore().connections
     }

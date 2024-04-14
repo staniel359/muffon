@@ -9,8 +9,7 @@ import {
 
 export function handleError (
   {
-    error,
-    fields
+    error
   }
 ) {
   const isForbidden =

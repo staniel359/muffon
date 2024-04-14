@@ -72,9 +72,7 @@ export default {
     order: 'handleOrderChange'
   },
   methods: {
-    handleOrderChange (
-      value
-    ) {
+    handleOrderChange () {
       this.key = generateKey()
     }
   }

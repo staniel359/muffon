@@ -135,9 +135,7 @@ export default {
 
       this.audioCurrentTime = currentTime
     },
-    handleMouseDown (
-      event
-    ) {
+    handleMouseDown () {
       if (this.isAudioPlayable) {
         this.isSeeking = true
 

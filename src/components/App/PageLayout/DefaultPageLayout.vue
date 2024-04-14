@@ -126,9 +126,7 @@ export default {
     $route: 'handleRouteChange'
   },
   methods: {
-    handleRouteChange (
-      value
-    ) {
+    handleRouteChange () {
       this.key = generateKey()
     },
     refreshPage () {

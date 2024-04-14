@@ -45,10 +45,11 @@ export function track (
     audio
   } = trackData
 
-  const {
-    image: artistImage,
-    ...artistData
-  } = artist
+  const artistData = {
+    ...artist
+  }
+
+  delete artistData.image
 
   const audioData = audio && {
     present: audio.present

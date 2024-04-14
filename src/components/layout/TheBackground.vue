@@ -47,9 +47,7 @@ export default {
     }
   },
   methods: {
-    async handleBackgroundImagePathChange (
-      value
-    ) {
+    async handleBackgroundImagePathChange () {
       this.imageLink =
         await this.getImageLink()
     },

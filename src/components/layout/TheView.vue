@@ -60,9 +60,7 @@ export default {
     }
   },
   methods: {
-    handleRouteChange (
-      value
-    ) {
+    handleRouteChange () {
       this.key =
         this.fullPathDecoded
     },
