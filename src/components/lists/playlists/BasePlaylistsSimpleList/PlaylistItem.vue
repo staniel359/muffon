@@ -49,7 +49,8 @@
           class="description"
         >
           <small
-            v-text="description"
+            @click.stop
+            v-html="descriptionFormatted"
           />
         </div>
 
@@ -142,6 +143,8 @@ import {
   main as formatProfileLink,
   playlist as formatProfilePlaylistLink
 } from '@/helpers/formatters/links/profile'
+import formatTextWithExternalLink
+  from '@/helpers/formatters/textWithExternalLink'
 
 export default {
   name: 'PlaylistItem',
@@ -263,6 +266,14 @@ export default {
     },
     description () {
       return this.playlistData.description
+    },
+    descriptionFormatted () {
+      return formatTextWithExternalLink(
+        {
+          text: this.description,
+          className: 'bold'
+        }
+      )
     },
     source () {
       return this.playlistData.source?.name
