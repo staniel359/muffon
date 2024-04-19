@@ -49,7 +49,8 @@
           class="description"
         >
           <small
-            v-text="description"
+            @click.stop
+            v-html="description"
           />
         </div>
 
