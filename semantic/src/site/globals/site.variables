@@ -9,3 +9,4 @@
 @focusedFormBorderColor: #b589d6;
 
 @absoluteBorderRadius: 1rem;
+@supportIE: false;

@@ -6,20 +6,38 @@
 
 /node_modules
 
-/semantic/src/definitions
+/semantic/src/definitions/behaviors
+
+/semantic/src/definitions/collections/**
+!/semantic/src/definitions/collections/table.less
+
+/semantic/src/definitions/elements
+
+/semantic/src/definitions/globals/**
+!/semantic/src/definitions/globals/site.less
+
+/semantic/src/definitions/modules/**
+!/semantic/src/definitions/modules/dimmer.less
+!/semantic/src/definitions/modules/dropdown.less
+
+/semantic/src/definitions/views
+
 /semantic/src/themes
 
-/semantic/src/site/collections/**
-/semantic/src/site/elements/**
-/semantic/src/site/globals/**
-/semantic/src/site/modules/**
-/semantic/src/site/views/**
+/semantic/src/site/collections
 
+/semantic/src/site/elements
 !/semantic/src/site/elements/button.variables
+
+/semantic/src/site/globals
 !/semantic/src/site/globals/site.overrides
 !/semantic/src/site/globals/site.variables
+
+/semantic/src/site/modules
 !/semantic/src/site/modules/checkbox.variables
 !/semantic/src/site/modules/dropdown.variables
+
+/semantic/src/site/views
 
 /semantic/src/overrides.less
 /semantic/src/semantic.less
@@ -28,10 +46,10 @@
 
 /semantic/tasks
 
-/semantic/dist/components
-/semantic/dist/semantic.css
-/semantic/dist/semantic.rtl.css
-/semantic/dist/semantic.js
+/semantic/dist
+!/semantic/dist/semantic.min.css
+!/semantic/dist/semantic.min.js
+!/semantic/dist/semantic.rtl.min.css
 
 /semantic/gulpfile.js
 
