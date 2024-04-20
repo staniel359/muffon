@@ -25,7 +25,7 @@ This section describes how to generate them.
     You will now see this:
 
     ![alt text](images/spotify/spimg2.png)
-3. **Fill the details.** We use a random name for "App Name" field, a random description. here I'm using the name "muf" for the "App Name" and the description "Some desc" for the description.
+3. **Fill the details.** We use a random name for "App Name" field, a random description. Here, I'm using the name "muf" for the "App Name" and the description "Some desc" for the description.
 
     You should now end up with this
 
