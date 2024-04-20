@@ -4,5 +4,5 @@ export const donate =
 export const discord =
   'https://discord.gg/kpWsA5NBmJ'
 
-export const spotifyConnectionInstructionsLink =
-  'https://developer.spotify.com/documentation/web-api/concepts/apps'
+export const spotifyConnectionGuideLink =
+  'https://github.com/staniel359/muffon/blob/main/instructions/spotify-connection.md'

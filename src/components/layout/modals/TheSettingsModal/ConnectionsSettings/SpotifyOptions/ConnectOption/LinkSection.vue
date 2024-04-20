@@ -2,7 +2,7 @@
   <div class="main-settings-option-container">
     <BaseMessage
       class="main-top-section main-formatted-text-container"
-      :content="descriptionText"
+      :content="noticeTextFormatted"
     />
 
     <BaseFormContainer
@@ -66,8 +66,10 @@ import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import spotifyLinkFormOptions
   from '@/helpers/formatters/plugins/semantic/options/form/spotifyLink'
 import {
-  spotifyConnectionInstructionsLink
+  spotifyConnectionGuideLink
 } from '@/helpers/data/externalLinks'
+import formatI18nTextWithExternalLink
+  from '@/helpers/formatters/i18n/textWithExternalLink'
 
 export default {
   name: 'LinkSection',
@@ -131,15 +133,22 @@ export default {
         ','
       )
     },
-    descriptionText () {
-      return this.$t(
-        'settings.options.connections.spotify.link.description',
+    noticeTextFormatted () {
+      return formatI18nTextWithExternalLink(
         {
-          instructionsLink:
-            spotifyConnectionInstructionsLink,
-          redirectLink:
-            this.redirectLink
+          text: this.noticeText,
+          linksData: {
+            guide:
+              spotifyConnectionGuideLink,
+          },
+          className:
+            'active bold underlined'
         }
+      )
+    },
+    noticeText () {
+      return this.$t(
+        'settings.options.connections.spotify.link.description'
       )
     },
     clientIdText () {

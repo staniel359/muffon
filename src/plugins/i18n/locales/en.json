@@ -601,7 +601,7 @@
         },
         "spotify": {
           "link": {
-            "description": "To connect your Spotify account you need to create an application first. Please follow <a target='_blank' class='main-link active bold underlined' href='{instructionsLink}'>this guide</a>."
+            "description": "To connect your Spotify account please follow [a link=guide]this guide[/a]."
           }
         },
         "discord": {
