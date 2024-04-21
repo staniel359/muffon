@@ -154,6 +154,7 @@
     "confirm": "確認",
     "import": "インポート",
     "close": "閉じる",
+    "openLink": "リンクを開く",
     "addFrom": {
       "search": "検索から追加",
       "library": "ライブラリから追加"
@@ -316,6 +317,8 @@
       "country": "国",
       "city": "都市",
       "status": "ステータス",
+      "clientId": "Client ID",
+      "clientSecret": "Client Secret",
       "genders": {
         "male": "男性",
         "female": "女性",
@@ -339,6 +342,8 @@
         "passwordResetCode": "パスワードリセットコードが未入力です",
         "nickname": "ニックネームが未入力です",
         "title": "タイトルが未入力です",
+        "clientId": "Client IDが空です",
+        "clientSecret": "Client Secretが空です",
         "legal": "プライバシーポリシーと利用規約に同意する必要があります"
       },
       "invalid": {
@@ -593,6 +598,11 @@
           "scrobbling": "スクロブリング",
           "scrobbleNotifications": "スクロブル通知",
           "scrobblePercent": "スクロブル後"
+        },
+        "spotify": {
+          "link": {
+            "description": "Spotify アカウントを接続するには、この[a link=guide]ガイド[/a]に従ってください。"
+          }
         },
         "discord": {
           "richPresence": {

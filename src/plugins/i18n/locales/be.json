@@ -154,6 +154,7 @@
     "confirm": "Пацвердзіць",
     "import": "Загрузіць",
     "close": "Закрыць",
+    "openLink": "Адкрыць спасылку",
     "addFrom": {
       "search": "З пошуку",
       "library": "З бібліятэкі"
@@ -316,6 +317,8 @@
       "country": "Краіна",
       "city": "Горад",
       "status": "Статус",
+      "clientId": "Client ID",
+      "clientSecret": "Client secret",
       "genders": {
         "male": "Мужчынскі",
         "female": "Жаночы",
@@ -339,6 +342,8 @@
         "passwordResetCode": "Код для скіду пароля пусты",
         "nickname": "Нік пусты",
         "title": "Назва пустая",
+        "clientId": "Client ID пусты",
+        "clientSecret": "Client secret пусты",
         "legal": "Вы павінны згадзіцца с Палітыкай Канфідэнцыяльнасці і Ўмовамі Выкарыстання"
       },
       "invalid": {
@@ -593,6 +598,11 @@
           "scrobbling": "Скроблінг",
           "scrobbleNotifications": "Апавяшченні аб скроблах",
           "scrobblePercent": "Скробліць пасля"
+        },
+        "spotify": {
+          "link": {
+            "description": "Каб падключыць Ваш уліковы запіс Spotify, калі ласка, скарыстайцеся [a link=guide]гэтай інструкцыяй[/a]."
+          }
         },
         "discord": {
           "richPresence": {

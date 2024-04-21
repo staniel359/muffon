@@ -154,6 +154,7 @@
     "confirm": "Подтвердить",
     "import": "Загрузить",
     "close": "Закрыть",
+    "openLink": "Открыть ссылку",
     "addFrom": {
       "search": "Из поиска",
       "library": "Из библиотеки"
@@ -316,6 +317,8 @@
       "country": "Страна",
       "city": "Город",
       "status": "Статус",
+      "clientId": "Client ID",
+      "clientSecret": "Client secret",
       "genders": {
         "male": "Мужской",
         "female": "Женский",
@@ -339,6 +342,8 @@
         "passwordResetCode": "Код для сброса пароля пуст",
         "nickname": "Ник пуст",
         "title": "Название пусто",
+        "clientId": "Client ID пуст",
+        "clientSecret": "Client secret пуст",
         "legal": "Вы должны согласиться с Политикой Конфиденциальности и Условиями Использования"
       },
       "invalid": {
@@ -593,6 +598,11 @@
           "scrobbling": "Скробблинг",
           "scrobbleNotifications": "Уведомления о скробблах",
           "scrobblePercent": "Скробблить после"
+        },
+        "spotify": {
+          "link": {
+            "description": "Чтобы подключить Вашу учётную запись Spotify, пожалуйста, воспользуйтесь [a link=guide]этой инструкцией[/a]."
+          }
         },
         "discord": {
           "richPresence": {

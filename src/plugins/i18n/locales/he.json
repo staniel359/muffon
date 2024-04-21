@@ -154,6 +154,7 @@
     "confirm": "אישור",
     "import": "ייבוא",
     "close": "סגור",
+    "openLink": "פתח קישור",
     "addFrom": {
       "search": "מהחיפוש",
       "library": "מהספרייה"
@@ -316,6 +317,8 @@
       "country": "מדינה",
       "city": "עיר",
       "status": "סטטוס",
+      "clientId": "Client ID",
+      "clientSecret": "Client secret",
       "genders": {
         "male": "זכר",
         "female": "נקבה",
@@ -339,6 +342,8 @@
         "passwordResetCode": "קוד איפוס הסיסמה ריק",
         "nickname": "הכינוי ריק",
         "title": "הכותרת ריקה",
+        "clientId": "Client ID ריק",
+        "clientSecret": "Client secret ריק",
         "legal": "עליך להסכים למדיניות הפרטיות ולתנאי השימוש"
       },
       "invalid": {
@@ -593,6 +598,11 @@
           "scrobbling": "סקרבלינג",
           "scrobbleNotifications": "הודעות סקרבלינג",
           "scrobblePercent": "סקרבל אחרי"
+        },
+        "spotify": {
+          "link": {
+            "description": "כדי לחבר את חשבון ה-Spotify שלך, אנא עקוב אחר [a link=guide]המדריך הזה[/a]."
+          }
         },
         "discord": {
           "richPresence": {

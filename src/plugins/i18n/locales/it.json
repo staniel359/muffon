@@ -154,6 +154,7 @@
     "confirm": "Conferma",
     "import": "Importa",
     "close": "Chiudi",
+    "openLink": "Apri il link",
     "addFrom": {
       "search": "Da ricerca",
       "library": "Da libreria"
@@ -316,6 +317,8 @@
       "country": "Nazione",
       "city": "Città",
       "status": "Stato",
+      "clientId": "Client ID",
+      "clientSecret": "Client secret",
       "genders": {
         "male": "Maschio",
         "female": "Femmina",
@@ -339,6 +342,8 @@
         "passwordResetCode": "Il codice reset password è vuoto",
         "nickname": "Il nome utente è vuoto",
         "title": "Il titolo è vuoto",
+        "clientId": "Client ID è vuoto",
+        "clientSecret": "Client Secret è vuoto",
         "legal": "Devi sottoscrivere la Privacy Policy e i Termini e Condizioni d’uso"
       },
       "invalid": {
@@ -593,6 +598,11 @@
           "scrobbling": "Scrobbling",
           "scrobbleNotifications": "Notifiche di scrobble",
           "scrobblePercent": "Fai scroblle dopo"
+        },
+        "spotify": {
+          "link": {
+            "description": "Per collegare il tuo account Spotify, segui per favore [a link=guide]questa guida[/a]."
+          }
         },
         "discord": {
           "richPresence": {

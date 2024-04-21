@@ -154,6 +154,7 @@
     "confirm": "Confirmé",
     "import": "Importé",
     "close": "Fermer",
+    "openLink": "Ouvrir le lien",
     "addFrom": {
       "search": "À partir de la recherche",
       "library": "À partir de la bibliothèque"
@@ -316,6 +317,8 @@
       "country": "Pays",
       "city": "Ville",
       "status": "Status",
+      "clientId": "Client ID",
+      "clientSecret": "Client secret",
       "genders": {
         "male": "Homme",
         "female": "Femme",
@@ -339,6 +342,8 @@
         "passwordResetCode": "Le code de réinitialisation du mot de passe n'est pas renseigné",
         "nickname": "Le pseudonyme n'est pas renseigné",
         "title": "Le titre n'est pas renseigné",
+        "clientId": "Le Client ID est vide",
+        "clientSecret": "Client secret est vide",
         "legal": "Vous devez accepter la politique de confidentialité et les conditions générales."
       },
       "invalid": {
@@ -593,6 +598,11 @@
           "scrobbling": "Scrobbler",
           "scrobbleNotifications": "Notifications de scrobble",
           "scrobblePercent": "Scrobble après"
+        },
+        "spotify": {
+          "link": {
+            "description": "Pour vous connecter à votre compte Spotify, merci de suivre [a link=guide]ce guide[/a]."
+          }
         },
         "discord": {
           "richPresence": {
