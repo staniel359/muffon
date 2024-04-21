@@ -11,6 +11,7 @@
 
     <BaseProgress
       ref="tracksProgress"
+      class="main-list-bottom-section"
       status="save"
       scope="tracks"
       @complete="handleProgressComplete"
