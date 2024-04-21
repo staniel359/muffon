@@ -24,7 +24,7 @@
         <p
           v-if="description"
           class="description main-formatted-text-container"
-          v-text="description"
+          v-html="descriptionFormatted"
         />
 
         <BaseCounterSection
@@ -69,6 +69,8 @@ import BaseItemContainer
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import formatTextWithExternalLink
+  from '@/helpers/formatters/textWithExternalLink'
 
 export default {
   name: 'InfoSegment',
@@ -115,6 +117,14 @@ export default {
     },
     description () {
       return this.playlistData.description
+    },
+    descriptionFormatted () {
+      return formatTextWithExternalLink(
+        {
+          text: this.description,
+          className: 'bold'
+        }
+      )
     }
   }
 }
