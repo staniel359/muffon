@@ -6,6 +6,7 @@ jobs:
     strategy:
       matrix:
         os:
+          - windows-latest
           - macos-latest
           - ubuntu-latest
 
@@ -56,19 +57,15 @@ jobs:
           echo VITE_APP_DISCORD_CLIENT_ID=${{ secrets.DISCORD_CLIENT_ID }} >> .env
           cat .env
 
+      - name: Prepare archives (Linux-only)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt install flatpak flatpak-builder libarchive-tools rpm -y
+          flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+
       - name: Release
         env:
           ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
           ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          if [ ${{ runner.os }} == 'macOS' ]; then
-            yarn release --win --mac
-          elif [ ${{ runner.os }} == 'Linux' ]; then
-            sudo apt install flatpak flatpak-builder libarchive-tools rpm -y
-            flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-            yarn release --linux
-          fi
-
-      - name: Clear Wine cache
-        run: rm -rf ${{ github.workspace }}/.cache/electron-builder/wine
+        run: yarn release
