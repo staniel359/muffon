@@ -1,6 +1,6 @@
 import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
-// import standard from '@vue/eslint-config-standard'
+// import standard from 'eslint-config-standard'
 
 export default [
   js.configs.recommended,
@@ -16,104 +16,107 @@ export default [
   {
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: "module"
+      sourceType: 'module'
     },
     files: [
-      "**/*.js",
-      "**/*.vue"
+      '**/*.js',
+      '**/*.vue'
     ],
     rules: {
-      "array-bracket-newline": [
-        "error",
+      'array-bracket-newline': [
+        'error',
         {
-          "minItems": 1
+          'minItems': 1
         }
       ],
-      "array-element-newline": [
-        "error",
+      'array-element-newline': [
+        'error',
         {
-          "minItems": 1
+          'minItems': 1
         }
       ],
-      "function-call-argument-newline": "error",
-      "function-paren-newline": [
-        "error",
+      'function-call-argument-newline': 'error',
+      'function-paren-newline': [
+        'error',
         {
-          "minItems": 1
+          'minItems': 1
         }
       ],
-      "no-new": "off",
-      "no-undef": 'off',
-      "object-curly-newline": [
-        "error",
+      'no-new': 'off',
+      'no-undef': 'off',
+      'object-curly-newline': [
+        'error',
         {
-          "ObjectExpression": {
-            "minProperties": 1
+          'ObjectExpression': {
+            'minProperties': 1
           },
-          "ObjectPattern": "always",
-          "ImportDeclaration": "always"
+          'ObjectPattern': 'always',
+          'ImportDeclaration': 'always'
         }
       ],
-      "object-property-newline": [
-        "error",
+      'object-property-newline': [
+        'error',
         {
-          "allowAllPropertiesOnSameLine": false
+          'allowAllPropertiesOnSameLine': false
         }
       ],
-      "vue/array-bracket-newline": [
-        "error",
+      'vue/array-bracket-newline': [
+        'error',
         {
-          "minItems": 1
+          'minItems': 1
         }
       ],
-      "vue/custom-event-name-casing": [
-        "error",
-        "camelCase"
+      'vue/custom-event-name-casing': [
+        'error',
+        'camelCase'
       ],
-      "vue/key-spacing": "error",
-      "vue/match-component-file-name": [
-        "error",
+      'vue/key-spacing': 'error',
+      'vue/match-component-file-name': [
+        'error',
         {
-          "extensions": ["vue"],
-          "shouldMatchCase": true
-        }
-      ],
-      "vue/no-unused-properties": [
-        "off",
-        {
-          "groups": [
-            "props",
-            "data"
+          'extensions': [
+            'vue'
           ],
-          "deepData": true
+          'shouldMatchCase': true
         }
       ],
-      "vue/no-v-html": "off",
-      "vue/object-curly-newline": [
-        "error",
+      'vue/no-unused-properties': [
+        'off',
         {
-          "minProperties": 1
+          'groups': [
+            'props',
+            'data'
+          ],
+          'deepData': true
         }
       ],
-      "vue/object-property-newline": [
-        "error",
+      'vue/no-v-html': 'off',
+      'vue/object-curly-newline': [
+        'error',
         {
-          "allowAllPropertiesOnSameLine": false
+          'minProperties': 1
         }
       ],
-      "vue/require-default-prop": "off",
-      "vue/v-on-event-hyphenation": [
-        "error",
-        "always"
+      'vue/object-property-newline': [
+        'error',
+        {
+          'allowAllPropertiesOnSameLine': false
+        }
+      ],
+      'vue/require-default-prop': 'off',
+      'vue/v-on-event-hyphenation': [
+        'error',
+        'always'
       ]
     }
   },
   {
     files: [
-      "electron/**/*"
+      'electron/**/*',
+      'vite.config.mjs'
     ],
     rules: {
-      "no-undef": "off"
+      'no-undef': 'off'
     }
   }
 ]
