@@ -57,7 +57,7 @@ jobs:
           echo VITE_APP_DISCORD_CLIENT_ID=${{ secrets.DISCORD_CLIENT_ID }} >> .env
           cat .env
 
-      - name: Prepare archives (Linux-only)
+      - name: Install packages (Linux-only)
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt install flatpak flatpak-builder libarchive-tools rpm -y

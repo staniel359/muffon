@@ -1,6 +1,7 @@
 <p align="center">
   <img src="https://i.ibb.co/3pnjZMf/preview.png" alt="preview" width="350">
 </p>
+
 <p align="center"><a href="https://github.com/staniel359/muffon/actions/workflows/main.yml"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/staniel359/muffon/main.yml?&labelColor=334"></a>&nbsp;<a href="https://github.com/staniel359/muffon/releases"><img alt="GitHub all releases" src="https://img.shields.io/github/downloads/staniel359/muffon/total?style=flat&logo=github&labelColor=334&color=a767eb"></a>&nbsp;<a href="https://github.com/staniel359/muffon/commits/main/"><img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/staniel359/muffon/main?&labelColor=334&color=a767eb"></a>&nbsp;<a href="https://discord.gg/QAmJq5EpEb"><img alt="Discord" src="https://img.shields.io/discord/1023883455504850974?style=flat&logo=discord&label=%20&labelColor=334&color=445"></a></p>
 
 #
@@ -42,9 +43,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **tags** (artists / albums / tracks)
 - **queue** (+ shuffle / loop) (+ albums adding)
 - **music library** (+ import from account) (+ compatibility)
-- **music services integration** (Last.FM, Spotify - Coming soon)
-> [!NOTE]
-> We are aware that Spotify Integration doesn't work right now. We are trying to fix it. The issue is tracked in [#134](https://github.com/staniel359/muffon/issues/134)
+- **music services integration** (Last.FM, Spotify)
 - **recommendations** (artists / tracks) (based on your library) (+ filters)
 - **search** (artists / albums / album groups / tracks / lyrics / tags / videos / video channels / video playlists) (through all of the sources above)
 - **radio** (tags / artists / top)
@@ -94,7 +93,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Download
 
-[Latest (v2.0.2)](https://github.com/staniel359/muffon/releases/latest)
+[Latest (v2.0.3)](https://github.com/staniel359/muffon/releases/latest)
 
 ## Star History
 
