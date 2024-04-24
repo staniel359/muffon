@@ -62,5 +62,6 @@
     "vue": "^3.4.23",
     "vue-i18n": "^9.13.0",
     "vue-router": "^4.3.2"
-  }
+  },
+  "packageManager": "yarn@4.1.1"
 }
