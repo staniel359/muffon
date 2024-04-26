@@ -17,8 +17,8 @@
 
 <script>
 import {
-  parseFile
-} from 'music-metadata'
+  ipcRenderer
+} from 'electron'
 import BaseProgress from '@/components/BaseProgress.vue'
 import BaseImportCompleteSection
   from '@/components/import/BaseImportCompleteSection.vue'
@@ -129,8 +129,11 @@ export default {
         this.incrementProgress()
       }
 
-      await parseFile(
-        filePath
+      await ipcRenderer.invoke(
+        'read-audio-file-metadata',
+        {
+          filePath
+        }
       ).then(
         handleSuccess
       ).catch(

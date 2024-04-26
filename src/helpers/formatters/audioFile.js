@@ -3,18 +3,21 @@ import {
 } from 'electron'
 import {
   selectCover
-} from 'music-metadata'
+} from 'music-metadata-browser'
 
 function formatCover (
   cover
 ) {
   if (cover) {
     const {
-      format
+      format,
+      data: imageBytes
     } = cover
 
     const base64 =
-      cover.data.toString(
+      Buffer.from(
+        imageBytes
+      ).toString(
         'base64'
       )
 
