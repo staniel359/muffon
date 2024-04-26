@@ -16,25 +16,25 @@ jobs:
       - name: Set up checkout
         uses: actions/checkout@v4
 
-      - name: Set up Yarn cache
+      - name: Set up pnpm cache
         uses: actions/cache@v4
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-cache-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-node-modules-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-node-modules-cache-
 
       - name: Set up Electron cache
         uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/.cache/electron
-          key: ${{ runner.os }}-electron-cache-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-electron-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-electron-cache-
 
       - name: Set up Electron Builder cache
         uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/.cache/electron-builder
-          key: ${{ runner.os }}-electron-builder-cache-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-electron-builder-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-electron-builder-cache-
 
       - name: Set up Node.js
@@ -43,10 +43,10 @@ jobs:
           node-version: '20.x'
 
       - name: Set up dependencies
-        run: yarn --ignore-scripts
+        run: pnpm install --ignore-scripts
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Create .env file
         run: |
@@ -68,4 +68,4 @@ jobs:
           ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
           ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: yarn release
+        run: pnpm release

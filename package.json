@@ -17,11 +17,12 @@
     "lint": "eslint",
     "build": "vite build",
     "build:electron": "electron-builder --dir",
-    "build:all": "yarn build && yarn build:electron",
+    "build:all": "pnpm build && pnpm build:electron",
     "package:electron": "electron-builder",
-    "package:all": "yarn build && yarn package:electron",
+    "package:all": "pnpm build && pnpm package:electron",
     "release:electron": "electron-builder --publish always",
-    "release": "yarn build && yarn release:electron",
+    "release": "pnpm build && pnpm release:electron",
+    "preinstall": "npx only-allow pnpm",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
   },
@@ -62,6 +63,5 @@
     "vue": "^3.4.23",
     "vue-i18n": "^9.13.0",
     "vue-router": "^4.3.2"
-  },
-  "packageManager": "yarn@4.1.1"
+  }
 }
