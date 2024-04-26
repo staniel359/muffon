@@ -8,24 +8,12 @@ importers:
 
   .:
     dependencies:
-      '@emoji-mart/data':
-        specifier: ^1.1.2
-        version: 1.2.1
       axios:
         specifier: ^1.6.8
         version: 1.6.8
-      change-case:
-        specifier: ^5.4.4
-        version: 5.4.4
-      crypto-js:
-        specifier: ^4.2.0
-        version: 4.2.0
       dayjs:
         specifier: ^1.11.10
         version: 1.11.10
-      deepmerge:
-        specifier: ^4.3.1
-        version: 4.3.1
       discord-rpc:
         specifier: ^4.0.1
         version: 4.0.1
@@ -35,40 +23,19 @@ importers:
       electron-store:
         specifier: ^8.2.0
         version: 8.2.0
-      emoji-mart:
-        specifier: ^5.5.2
-        version: 5.6.0
-      fomantic-ui:
-        specifier: ^2.9.3
-        version: 2.9.3
-      hotkeys-js:
-        specifier: ^3.13.7
-        version: 3.13.7
       i18n:
         specifier: ^0.15.1
         version: 0.15.1
-      i18n-iso-countries:
-        specifier: ^7.11.0
-        version: 7.11.1
-      jquery:
-        specifier: ^3.7.1
-        version: 3.7.1
       music-metadata:
         specifier: ^7.14.0
         version: 7.14.0
-      music-metadata-browser:
-        specifier: ^2.5.10
-        version: 2.5.10
-      pinia:
-        specifier: ^2.1.7
-        version: 2.1.7(typescript@5.4.5)(vue@3.4.25(typescript@5.4.5))
-      slick-carousel:
-        specifier: ^1.8.1
-        version: 1.8.1(jquery@3.7.1)
       uuid:
         specifier: ^9.0.1
         version: 9.0.1
     devDependencies:
+      '@emoji-mart/data':
+        specifier: ^1.1.2
+        version: 1.2.1
       '@rollup/plugin-inject':
         specifier: ^5.0.5
         version: 5.0.5(rollup@4.16.4)
@@ -78,21 +45,54 @@ importers:
       '@vue/eslint-config-standard':
         specifier: ^8.0.1
         version: 8.0.1(eslint-plugin-vue@9.25.0(eslint@9.1.1))(eslint@9.1.1)
+      change-case:
+        specifier: ^5.4.4
+        version: 5.4.4
+      crypto-js:
+        specifier: ^4.2.0
+        version: 4.2.0
+      deepmerge:
+        specifier: ^4.3.1
+        version: 4.3.1
       electron:
         specifier: ^29.3.0
         version: 29.3.1
       electron-builder:
         specifier: ^24.13.3
         version: 24.13.3(electron-builder-squirrel-windows@24.13.3(dmg-builder@24.13.3))
+      emoji-mart:
+        specifier: ^5.5.2
+        version: 5.6.0
       eslint:
         specifier: ^9.0.0
         version: 9.1.1
       eslint-plugin-vue:
         specifier: ^9.25.0
         version: 9.25.0(eslint@9.1.1)
+      fomantic-ui:
+        specifier: ^2.9.3
+        version: 2.9.3
+      hotkeys-js:
+        specifier: ^3.13.7
+        version: 3.13.7
+      i18n-iso-countries:
+        specifier: ^7.11.0
+        version: 7.11.1
+      jquery:
+        specifier: ^3.7.1
+        version: 3.7.1
+      music-metadata-browser:
+        specifier: ^2.5.10
+        version: 2.5.10
+      pinia:
+        specifier: ^2.1.7
+        version: 2.1.7(typescript@5.4.5)(vue@3.4.25(typescript@5.4.5))
       sass:
         specifier: ^1.75.0
         version: 1.75.0
+      slick-carousel:
+        specifier: ^1.8.1
+        version: 1.8.1(jquery@3.7.1)
       vite:
         specifier: ^5.2.9
         version: 5.2.10(@types/node@20.12.7)(less@4.2.0)(sass@1.75.0)
