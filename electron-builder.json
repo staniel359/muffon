@@ -13,12 +13,8 @@
     "category": "public.app-category.music",
     "icon": "build/icons/icon.icns",
     "target": [
-      {
-        "target": "dmg"
-      },
-      {
-        "target": "pkg"
-      }
+      "dmg",
+      "pkg"
     ]
   },
   "linux": {
