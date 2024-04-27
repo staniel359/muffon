@@ -15,13 +15,9 @@ jobs:
     steps:
       - name: Set up checkout
         uses: actions/checkout@v4
-
-      - name: Set up pnpm cache
-        uses: actions/cache@v4
+      - uses: pnpm/action-setup@v3
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: ${{ runner.os }}-node-modules-cache-
+          version: latest
 
       - name: Set up Electron cache
         uses: actions/cache@v4
