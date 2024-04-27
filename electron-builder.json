@@ -14,18 +14,10 @@
     "icon": "build/icons/icon.icns",
     "target": [
       {
-        "target": "dmg",
-        "arch": [
-          "x64",
-          "arm64"
-        ]
+        "target": "dmg"
       },
       {
-        "target": "pkg",
-        "arch": [
-          "x64",
-          "arm64"
-        ]
+        "target": "pkg"
       }
     ]
   },
