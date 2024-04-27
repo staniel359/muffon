@@ -6,6 +6,7 @@ jobs:
     strategy:
       matrix:
         os:
+          - macos-latest
           - windows-latest
           - ubuntu-latest
 
@@ -79,15 +80,7 @@ jobs:
           sudo apt install flatpak flatpak-builder libarchive-tools rpm -y
           flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 
-      - name: Release Windows and MacOS
-        if: matrix.os == 'windows-latest'
-        env:
-          ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
-          ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: pnpm release --win --mac
-      - name: Release Linux
-        if: matrix.os == 'ubuntu-latest'
+      - name: Release
         env:
           ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
           ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
