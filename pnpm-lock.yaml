@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      axios:
-        specifier: ^1.6.8
-        version: 1.6.8
       dayjs:
         specifier: ^1.11.10
         version: 1.11.10
@@ -45,6 +42,9 @@ importers:
       '@vue/eslint-config-standard':
         specifier: ^8.0.1
         version: 8.0.1(eslint-plugin-vue@9.25.0(eslint@9.1.1))(eslint@9.1.1)
+      axios:
+        specifier: ^1.6.8
+        version: 1.6.8
       change-case:
         specifier: ^5.4.4
         version: 5.4.4

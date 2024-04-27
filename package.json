@@ -27,7 +27,6 @@
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "axios": "^1.6.8",
     "dayjs": "^1.11.10",
     "discord-rpc": "^4.0.1",
     "electron-dl": "^3.5.2",
@@ -41,6 +40,7 @@
     "@rollup/plugin-inject": "^5.0.5",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/eslint-config-standard": "^8.0.1",
+    "axios": "^1.6.8",
     "change-case": "^5.4.4",
     "crypto-js": "^4.2.0",
     "deepmerge": "^4.3.1",

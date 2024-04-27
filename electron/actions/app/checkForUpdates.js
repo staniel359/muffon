@@ -1,9 +1,9 @@
 import {
   app,
   dialog,
-  shell
+  shell,
+  net
 } from 'electron'
-import axios from 'axios'
 import i18n from 'i18n'
 
 let latestRelease
@@ -63,10 +63,14 @@ function showNotification () {
   )
 }
 
-function handleSuccess (
+async function handleSuccess (
   response
 ) {
-  latestRelease = response.data
+  const responseData =
+    await response.json()
+
+  latestRelease = responseData
+
   latestVersion = latestRelease.name
 
   const currentVersion = app.getVersion()
@@ -92,7 +96,7 @@ export default function checkForUpdates () {
   const releasesUrl =
     'https://api.github.com/repos/staniel359/muffon/releases/latest'
 
-  axios.get(
+  net.fetch(
     releasesUrl
   ).then(
     handleSuccess
