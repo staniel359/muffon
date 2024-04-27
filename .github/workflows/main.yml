@@ -6,8 +6,8 @@ jobs:
     strategy:
       matrix:
         os:
-          - windows-latest
           - macos-latest
+          - windows-latest
           - ubuntu-latest
 
     runs-on: ${{ matrix.os }}
@@ -15,13 +15,29 @@ jobs:
     steps:
       - name: Set up checkout
         uses: actions/checkout@v4
-
-      - name: Set up pnpm cache
-        uses: actions/cache@v4
+      - uses: pnpm/action-setup@v3
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-modules-cache-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: ${{ runner.os }}-node-modules-cache-
+          version: latest
+
+      - name: Fix pnpm bug # https://github.com/electron-userland/electron-builder/issues/6933#issuecomment-1213438889
+        if: matrix.os == 'windows-latest'
+        run: |
+          # Get the version of pnpm
+          $pnpmVersion = pnpm -v
+          
+          # Construct the file path with the pnpm version
+          $file = "C:\Users\runneradmin\setup-pnpm\node_modules\.pnpm\pnpm@$pnpmVersion\node_modules\pnpm\bin\pnpm.cjs"
+
+          # Read the content of the file
+          $content = Get-Content $file
+
+          # Replace the target string
+          $content = $content -replace "#!/usr/bin/env node", "#!node"
+
+          # Write the modified content back to the file
+          $content | Set-Content $file
+
+          Write-Host "Replacement complete."
 
       - name: Set up Electron cache
         uses: actions/cache@v4
@@ -40,10 +56,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: 20
+          cache: pnpm
 
       - name: Set up dependencies
-        run: pnpm install --ignore-scripts
+        run: pnpm install
 
       - name: Lint
         run: pnpm lint
@@ -69,3 +86,12 @@ jobs:
           ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: pnpm release
+
+      - name: Release macos x64 # We do it separately without defining in electron-builder.json to prevent the distribution.xml not found error
+        if: matrix.os == 'macos-latest'
+        env:
+          ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
+          ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: pnpm release --x64
+        

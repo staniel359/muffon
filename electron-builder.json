@@ -13,20 +13,8 @@
     "category": "public.app-category.music",
     "icon": "build/icons/icon.icns",
     "target": [
-      {
-        "target": "dmg",
-        "arch": [
-          "x64",
-          "arm64"
-        ]
-      },
-      {
-        "target": "pkg",
-        "arch": [
-          "x64",
-          "arm64"
-        ]
-      }
+      "dmg",
+      "pkg"
     ]
   },
   "linux": {
