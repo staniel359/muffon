@@ -89,4 +89,9 @@ jobs:
 
       - name: Release macos x64 # We do it separately without defining in electron-builder.json to prevent the distribution.xml not found error
         if: matrix.os == 'macos-latest'
+        env:
+          ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
+          ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: pnpm release --x64
+        
