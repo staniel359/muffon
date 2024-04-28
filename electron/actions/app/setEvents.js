@@ -1,4 +1,5 @@
 import setAppEvents from '#/events/app'
+import setElectronStoreEvents from '#/events/electronStore'
 import setNativeThemeEvents from '#/events/nativeTheme'
 import setIpcAppEvents from '#/events/ipc/app'
 import setIpcTrayEvents from '#/events/ipc/tray'
@@ -14,6 +15,8 @@ import setIpcAudioFileEvents from '#/events/ipc/audioFile'
 
 export default function () {
   setAppEvents()
+
+  setElectronStoreEvents()
 
   setNativeThemeEvents()
 

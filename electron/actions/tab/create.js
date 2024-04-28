@@ -15,6 +15,8 @@ import {
 import {
   handleNewWindow
 } from '#/handlers/app'
+import changeViewBackgroundColor
+  from '#/actions/view/changeBackgroundColor'
 
 export default function (
   data
@@ -39,6 +41,10 @@ export default function (
   tab.uuid = uuid
 
   mainWindow.addBrowserView(
+    tab
+  )
+
+  changeViewBackgroundColor(
     tab
   )
 

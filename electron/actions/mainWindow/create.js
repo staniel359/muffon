@@ -24,6 +24,8 @@ import {
 } from '#/handlers/app'
 import setTrayMenu from '#/actions/tray/setMenu'
 import setTabsBounds from '#/actions/tabs/setBounds'
+import changeViewBackgroundColor
+  from '#/actions/view/changeBackgroundColor'
 
 function handleReadyToShow () {
   const isMaximizeOnStart =
@@ -138,6 +140,10 @@ export default function () {
 
   mainWindow.setMenu(
     null
+  )
+
+  changeViewBackgroundColor(
+    mainWindow
   )
 
   if (isShowDevTools) {
