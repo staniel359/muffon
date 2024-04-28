@@ -20,16 +20,16 @@ This section describes how to generate them.
 1. **Navigate to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)**
 2. **Click on "Create App" button.** The button to be clicked is surrounded by a red box.
 
-    ![alt text](images/img_1.png)
+    ![alt text](images/img_01.png)
 
     You will now see this:
 
-    ![alt text](images/img_2.png)
+    ![alt text](images/img_02.png)
 3. **Fill the details.** We use a random name for "App Name" field, a random description. Here, I'm using the name "muf" for the "App Name" and the description "Some desc" for the description.
 
     You should now end up with this
 
-    ![alt text](images/img_3.png)
+    ![alt text](images/img_03.png)
 4. **This is a very important step.**
 
     In the Redirect URI field, paste the following:
@@ -37,28 +37,28 @@ This section describes how to generate them.
     https://178-79-138-81.ip.linodeusercontent.com/code
     ```
 
-    ![alt text](images/img_4.png)
+    ![alt text](images/img_04.png)
 
     You will finally end up with 
 
-    ![alt text](images/img_5.png)
+    ![alt text](images/img_05.png)
 5. **Check "I understand and agree with Spotify's Developer Terms of Service and Design Guidelines," then click "Save".** Congratulations! You have now created your Spotify App.
 
 ## Connecting your Spotify App to muffon
 1. In muffon, go the sidebar and click on "Settings"\
-    ![alt text](images/img_6.png)
+    ![alt text](images/img_06.png)
 2. Click on "Connections", then on "Spotify" and finally on "Connect account"
 
-    ![alt text](images/img_7.png)
+    ![alt text](images/img_07.png)
 
     You will now see
 
-    ![alt text](images/img_9.png)
+    ![alt text](images/img_09.png)
 3. Go to your spotify app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) and navigate to settings.
 
-    ![alt text](images/img_8.png)
+    ![alt text](images/img_08.png)
 4. Click on "View **ClientSecret**"
-    ![alt text](images/img_10.png)
+    ![alt text](images/img_010.png)
 5. Copy both the ClientID and ClientSecret separately and paste them into the respective fields in muffon.
     You will now have
    
