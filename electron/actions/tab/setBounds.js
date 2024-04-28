@@ -16,7 +16,7 @@ export default function (
   const [
     width,
     height
-  ] = mainWindow.getContentSize()
+  ] = mainWindow.getSize()
 
   const heightScaled = (
     height - topOffsetScaled

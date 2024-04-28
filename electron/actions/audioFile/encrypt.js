@@ -1,7 +1,7 @@
-import open from './open'
+import openAudioFile from './open'
 import encryptFile from '#/actions/file/encrypt'
-import create from './create'
-import deleteAudio from './delete'
+import createAudioFile from './create'
+import deleteAudioFile from './delete'
 
 export default function (
   {
@@ -10,7 +10,7 @@ export default function (
   }
 ) {
   const file =
-    open(
+    openAudioFile(
       tempFileName
     )
 
@@ -25,12 +25,12 @@ export default function (
     encryptedFile
   } = encryptedFileData
 
-  create(
+  createAudioFile(
     fileName,
     encryptedFile
   )
 
-  deleteAudio(
+  deleteAudioFile(
     tempFileName
   )
 

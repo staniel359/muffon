@@ -5,12 +5,11 @@ import setIpcTrayEvents from '#/events/ipc/tray'
 import setIpcTabEvents from '#/events/ipc/tab'
 import setIpcTabsEvents from '#/events/ipc/tabs'
 import setIpcStoreEvents from '#/events/ipc/store'
-import setIpcAudioEvents from '#/events/ipc/audio'
+import setIpcAudioFileEvents from '#/events/ipc/audioFile'
 import setIpcBackgroundImageEvents from '#/events/ipc/backgroundImage'
 import setIpcFileEvents from '#/events/ipc/file'
 import setIpcElectronStoreEvents from '#/events/ipc/electronStore'
 import setIpcDiscordEvents from '#/events/ipc/discord'
-import setIpcAudioFileEvents from '#/events/ipc/audioFile'
 
 export default function () {
   setAppEvents()
@@ -27,7 +26,7 @@ export default function () {
 
   setIpcStoreEvents()
 
-  setIpcAudioEvents()
+  setIpcAudioFileEvents()
 
   setIpcBackgroundImageEvents()
 
@@ -36,6 +35,4 @@ export default function () {
   setIpcElectronStoreEvents()
 
   setIpcDiscordEvents()
-
-  setIpcAudioFileEvents()
 }

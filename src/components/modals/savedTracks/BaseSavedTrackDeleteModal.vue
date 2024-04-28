@@ -66,7 +66,7 @@ export default {
         )
 
       await ipcRenderer.invoke(
-        'delete-audio',
+        'delete-audio-file',
         deleteDataFormatted
       )
 

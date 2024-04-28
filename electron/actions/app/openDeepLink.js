@@ -34,7 +34,7 @@ export default function (
     )?.[1]
 
   if (deepLink) {
-    mainWindow
+    mainView
       .webContents
       .send(
         'open-deep-link',

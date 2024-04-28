@@ -96,7 +96,7 @@ export default {
           )
 
         ipcRenderer.invoke(
-          'save-audio',
+          'save-audio-file',
           {
             trackData:
               trackDataFormatted

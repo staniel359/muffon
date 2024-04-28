@@ -1,3 +1,14 @@
 export default function () {
-  return mainWindow.getBrowserViews()
+  function isTab (
+    view
+  ) {
+    return view.isTab
+  }
+
+  return mainWindow
+    .contentView
+    .children
+    .filter(
+      isTab
+    )
 }

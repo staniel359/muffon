@@ -1,17 +1,19 @@
-import find from './find'
+import findTab from './find'
 
 export default function (
   tabId
 ) {
   const tab =
-    find(
+    findTab(
       tabId
     )
 
   if (tab) {
-    mainWindow.removeBrowserView(
-      tab
-    )
+    mainWindow
+      .contentView
+      .removeChildView(
+        tab
+      )
 
     tab
       .webContents

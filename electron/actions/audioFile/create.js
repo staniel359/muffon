@@ -1,4 +1,4 @@
-import getPath from './getPath'
+import getAudioFilePath from './getPath'
 import {
   writeFileSync
 } from 'fs'
@@ -8,7 +8,7 @@ export default function (
   data
 ) {
   const filePath =
-    getPath(
+    getAudioFilePath(
       fileName
     )
 

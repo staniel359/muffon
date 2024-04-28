@@ -1,5 +1,6 @@
 import {
-  BrowserWindow
+  BaseWindow,
+  WebContentsView
 } from 'electron'
 import {
   windowIcon
@@ -7,6 +8,7 @@ import {
 import {
   baseUrl
 } from '#/helpers/urls'
+import setAboutViewBounds from '#/actions/aboutView/setBounds'
 
 function handleClose (
   event
@@ -20,9 +22,11 @@ export default function () {
   const aboutWindowWidth = 500
   const aboutWindowHeight = 275
 
-  const options = {
+  const aboutWindowOptions = {
     width: aboutWindowWidth,
     height: aboutWindowHeight,
+    minWidth: aboutWindowWidth,
+    minHeight: aboutWindowHeight,
     icon: windowIcon,
     show: false,
     resizable: false,
@@ -35,22 +39,37 @@ export default function () {
   }
 
   aboutWindow =
-    new BrowserWindow(
-      options
+    new BaseWindow(
+      aboutWindowOptions
     )
 
-  aboutWindow.setMinimumSize(
-    aboutWindowWidth,
-    aboutWindowHeight
-  )
+  aboutWindow.removeMenu()
 
-  aboutWindow.setMenu(
-    null
-  )
+  const aboutViewOptions = {
+    webPreferences: {
+      contextIsolation: false,
+      nodeIntegration: true
+    }
+  }
 
-  aboutWindow.loadURL(
-    `${baseUrl}#/about`
-  )
+  aboutView =
+    new WebContentsView(
+      aboutViewOptions
+    )
+
+  setAboutViewBounds()
+
+  aboutWindow
+    .contentView
+    .addChildView(
+      aboutView
+    )
+
+  aboutView
+    .webContents
+    .loadURL(
+      `${baseUrl}#/about`
+    )
 
   aboutWindow.on(
     'close',

@@ -1,4 +1,4 @@
-import get from './get'
+import getTabs from './get'
 import clearTab from '#/actions/tab/clear'
 
 function getTabId (
@@ -9,7 +9,7 @@ function getTabId (
 
 export default function () {
   const tabIds =
-    get().map(
+    getTabs().map(
       getTabId
     )
 

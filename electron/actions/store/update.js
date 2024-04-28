@@ -20,8 +20,8 @@ export default function (
   }
 
   const views = [
-    mainWindow,
-    aboutWindow,
+    mainView,
+    aboutView,
     ...getTabs()
   ]
 

@@ -8,7 +8,8 @@ function handleBeforeSendHeaders (
 ) {
   details
     .requestHeaders
-    .Referer = 'https://www.youtube.com'
+    .Referer =
+      'https://www.youtube.com'
 
   const {
     requestHeaders

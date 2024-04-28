@@ -1,6 +1,7 @@
 import {
-  BrowserWindow,
-  screen
+  BaseWindow,
+  screen,
+  WebContentsView
 } from 'electron'
 import {
   windowIcon
@@ -14,16 +15,17 @@ import {
   baseUrl
 } from '#/helpers/urls'
 import getElectronStoreKey from '#/actions/electronStore/getKey'
-import show from './show'
-import hide from './hide'
+import showMainWindow from './show'
+import hideMainWindow from './hide'
 import checkForUpdates from '#/actions/app/checkForUpdates'
-import setScale from './setScale'
+import setMainWindowScale from './setScale'
 import callExit from '#/actions/app/callExit'
 import {
   handleNewWindow
 } from '#/handlers/app'
 import setTrayMenu from '#/actions/tray/setMenu'
 import setTabsBounds from '#/actions/tabs/setBounds'
+import setMainViewBounds from '#/actions/mainView/setBounds'
 
 function handleReadyToShow () {
   const isMaximizeOnStart =
@@ -35,7 +37,7 @@ function handleReadyToShow () {
     mainWindow.maximize()
   }
 
-  show()
+  showMainWindow()
 
   checkForUpdates()
 
@@ -44,13 +46,19 @@ function handleReadyToShow () {
       'layout.scale'
     )
 
-  setScale(
+  setMainWindowScale(
     scale
   )
 }
 
 function handleShow () {
   setTrayMenu()
+}
+
+function handleResize () {
+  setMainViewBounds()
+
+  setTabsBounds()
 }
 
 function handleHide () {
@@ -70,49 +78,19 @@ function handleClose (
   if (isExitOnClose) {
     callExit()
   } else {
-    hide()
+    hideMainWindow()
   }
-}
-
-function maximize () {
-  const {
-    width,
-    height
-  } = screen.getPrimaryDisplay().size
-
-  mainWindow.setSize(
-    width,
-    height
-  )
-}
-
-function handleMaximizeChange () {
-  if (!isMaximized) {
-    isMaximized = true
-
-    maximize()
-  }
-}
-
-function handleUnmaximizeChange () {
-  isMaximized = false
-}
-
-function handleEnterFullScreen () {
-  setTabsBounds()
-}
-
-function handleLeaveFullScreen () {
-  setTabsBounds()
 }
 
 export default function () {
   const mainWindowWidth = 900
   const mainWindowHeight = 600
 
-  const options = {
+  const mainWindowOptions = {
     width: mainWindowWidth,
     height: mainWindowHeight,
+    minWidth: mainWindowWidth,
+    minHeight: mainWindowHeight,
     icon: windowIcon,
     show: false,
     webPreferences: {
@@ -123,43 +101,66 @@ export default function () {
   }
 
   mainWindow =
-    new BrowserWindow(
-      options
+    new BaseWindow(
+      mainWindowOptions
     )
 
-  mainWindow.loadURL(
-    baseUrl
-  )
+  mainWindow.removeMenu()
 
-  mainWindow.setMinimumSize(
-    mainWindowWidth,
-    mainWindowHeight
-  )
+  const mainViewOptions = {
+    webPreferences: {
+      contextIsolation: false,
+      devTools: isDevelopment,
+      nodeIntegration: true
+    }
+  }
 
-  mainWindow.setMenu(
-    null
-  )
+  mainView =
+    new WebContentsView(
+      mainViewOptions
+    )
+
+  setMainViewBounds()
+
+  mainWindow
+    .contentView
+    .addChildView(
+      mainView
+    )
+
+  mainView
+    .webContents
+    .loadURL(
+      baseUrl
+    )
+
+  handleReadyToShow()
 
   if (isShowDevTools) {
     const devToolsData = {
       mode: 'detach'
     }
 
-    mainWindow
+    mainView
       .webContents
       .openDevTools(
         devToolsData
       )
   }
 
-  mainWindow.once(
-    'ready-to-show',
-    handleReadyToShow
-  )
+  // mainWindow.once(
+  //   'ready-to-show',
+  //   handleReadyToShow
+  // )
 
   mainWindow.on(
     'show',
     handleShow
+  )
+
+  mainWindow.on(
+    'resize',
+    handleResize
   )
 
   mainWindow.on(
@@ -172,31 +173,9 @@ export default function () {
     handleClose
   )
 
-  mainWindow
+  mainView
     .webContents
     .setWindowOpenHandler(
       handleNewWindow
     )
-
-  if (isLinux) {
-    mainWindow.on(
-      'maximize',
-      handleMaximizeChange
-    )
-
-    mainWindow.on(
-      'unmaximize',
-      handleUnmaximizeChange
-    )
-  }
-
-  mainWindow.on(
-    'enter-full-screen',
-    handleEnterFullScreen
-  )
-
-  mainWindow.on(
-    'leave-full-screen',
-    handleLeaveFullScreen
-  )
 }

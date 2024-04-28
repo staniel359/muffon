@@ -1,7 +1,7 @@
 export default function (
   value
 ) {
-  mainWindow
+  mainView
     .webContents
     .setZoomFactor(
       value

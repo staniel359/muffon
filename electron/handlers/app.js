@@ -20,7 +20,7 @@ export function handleNewWindow (
     url
   }
 
-  mainWindow
+  mainView
     .webContents
     .send(
       'open-external-url',

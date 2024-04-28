@@ -1,11 +1,11 @@
-import getPath from './getPath'
+import getAudioFilePath from './getPath'
 import readFile from '#/actions/file/read'
 
 export default function (
   fileName
 ) {
   const filePath =
-    getPath(
+    getAudioFilePath(
       fileName
     )
 

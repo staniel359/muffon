@@ -1,11 +1,11 @@
 import {
-  BrowserView
+  WebContentsView
 } from 'electron'
 import getElectronStoreKey from '#/actions/electronStore/getKey'
-import getActiveId from './getActiveId'
-import setActive from './setActive'
-import setBounds from './setBounds'
-import setScale from './setScale'
+import getActiveTabId from './getActiveId'
+import setActiveTab from './setActive'
+import setTabBounds from './setBounds'
+import setTabScale from './setScale'
 import {
   baseUrl
 } from '#/helpers/urls'
@@ -32,15 +32,18 @@ export default function (
   }
 
   const tab =
-    new BrowserView(
+    new WebContentsView(
       options
     )
 
   tab.uuid = uuid
+  tab.isTab = true
 
-  mainWindow.addBrowserView(
-    tab
-  )
+  mainWindow
+    .contentView
+    .addChildView(
+      tab
+    )
 
   const isSwitchToNewTab =
     getElectronStoreKey(
@@ -48,25 +51,17 @@ export default function (
     )
 
   if (!isSwitchToNewTab) {
-    setActive(
-      getActiveId()
+    setActiveTab(
+      getActiveTabId()
     )
   }
 
-  setBounds(
+  setTabBounds(
     tab
   )
 
-  const autoResizeOptions = {
-    width: true,
-    height: true
-  }
-
-  tab.setAutoResize(
-    autoResizeOptions
-  )
-
-  const url = `${baseUrl}#/${path}`
+  const url =
+    `${baseUrl}#/${path}`
 
   tab
     .webContents
@@ -86,7 +81,7 @@ export default function (
       )
   }
 
-  mainWindow
+  mainView
     .webContents
     .send(
       'add-tab',
@@ -112,7 +107,7 @@ export default function (
         'layout.scale'
       )
 
-    setScale(
+    setTabScale(
       tab,
       scale
     )

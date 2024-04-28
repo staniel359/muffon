@@ -1,11 +1,13 @@
 export default function () {
   global.mainWindow = null
 
+  global.mainView = null
+
   global.aboutWindow = null
 
-  global.tray = null
+  global.aboutView = null
 
-  global.isMaximized = false
+  global.tray = null
 
   global.tabsPanelHeight = 50
 

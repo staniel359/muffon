@@ -1,18 +1,25 @@
-import find from './find'
+import findTab from './find'
+import hideInactiveTabs from '../tabs/hideInactive'
 
 export default function (
   tabId
 ) {
   const tab =
-    find(
+    findTab(
       tabId
     )
 
-  mainWindow.setTopBrowserView(
-    tab
+  tab.setVisible(
+    true
   )
 
-  mainWindow
+  hideInactiveTabs(
+    {
+      tabId
+    }
+  )
+
+  mainView
     .webContents
     .send(
       'set-active-tab',
