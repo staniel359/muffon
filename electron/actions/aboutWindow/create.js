@@ -1,5 +1,6 @@
 import {
-  BrowserWindow
+  BaseWindow,
+  WebContentsView
 } from 'electron'
 import {
   windowIcon
@@ -10,6 +11,7 @@ import {
 import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
 import setViewScale from '../view/setScale.js'
+import setAboutViewBounds from '../aboutView/setBounds.js'
 
 function handleClose (
   event
@@ -21,7 +23,7 @@ function handleClose (
 
 function handleDomReady () {
   setViewScale(
-    aboutWindow
+    aboutView
   )
 }
 
@@ -29,9 +31,11 @@ export default function () {
   const aboutWindowWidth = 500
   const aboutWindowHeight = 275
 
-  const options = {
+  const aboutWindowOptions = {
     width: aboutWindowWidth,
     height: aboutWindowHeight,
+    minWidth: aboutWindowWidth,
+    minHeight: aboutWindowHeight,
     icon: windowIcon,
     show: false,
     resizable: false,
@@ -44,26 +48,47 @@ export default function () {
   }
 
   aboutWindow =
-    new BrowserWindow(
-      options
+    new BaseWindow(
+      aboutWindowOptions
     )
-
-  changeViewBackgroundColor(
-    aboutWindow
-  )
-
-  aboutWindow.setMinimumSize(
-    aboutWindowWidth,
-    aboutWindowHeight
-  )
 
   aboutWindow.removeMenu()
 
-  aboutWindow.loadURL(
-    `${baseUrl}#/about`
+  const aboutViewOptions = {
+    webPreferences: {
+      contextIsolation: false,
+      nodeIntegration: true
+    }
+  }
+
+  aboutView =
+    new WebContentsView(
+      aboutViewOptions
+    )
+
+  setAboutViewBounds()
+
+  setViewScale(
+    aboutView
+  )
+
+  changeViewBackgroundColor(
+    aboutView
   )
 
   aboutWindow
+    .contentView
+    .addChildView(
+      aboutView
+    )
+
+  aboutView
+    .webContents
+    .loadURL(
+      `${baseUrl}#/about`
+    )
+
+  aboutView
     .webContents
     .on(
       'dom-ready',

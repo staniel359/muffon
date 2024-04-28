@@ -9,9 +9,11 @@ export default function (
     )
 
   if (tab) {
-    mainWindow.removeBrowserView(
-      tab
-    )
+    mainWindow
+      .contentView
+      .removeChildView(
+        tab
+      )
 
     tab
       .webContents

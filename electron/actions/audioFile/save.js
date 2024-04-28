@@ -67,7 +67,7 @@ export default function (
   }
 
   return download(
-    mainWindow,
+    mainView,
     url,
     options
   ).then(

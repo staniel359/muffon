@@ -1,5 +1,6 @@
 import {
-  BrowserWindow
+  BaseWindow,
+  WebContentsView
 } from 'electron'
 import {
   windowIcon
@@ -20,39 +21,12 @@ import callQuit from '../app/callQuit.js'
 import setTrayMenu from '../tray/setMenu.js'
 import setTabsBounds from '../tabs/setBounds.js'
 import getTopTab from '../tab/getTop.js'
+import setMainViewBounds from '../mainView/setBounds.js'
 import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
-
-function handleReadyToShow () {
-  const isMaximizeOnStart =
-    getElectronStoreKey(
-      'window.isMaximizeOnStart'
-    )
-
-  if (isMaximizeOnStart) {
-    mainWindow.maximize()
-  }
-
-  showMainWindow()
-
-  const isCheckForNewVersions =
-    getElectronStoreKey(
-      'updates.isCheckForNewVersions'
-    )
-
-  const isCheckForUpdates = (
-    !isDevelopment &&
-      isCheckForNewVersions
-  )
-
-  if (isCheckForUpdates) {
-    checkForUpdates()
-  }
-
-  setViewScale(
-    mainWindow
-  )
-}
+import {
+  handleNewWindow
+} from '../../handlers/app.js'
 
 function handleShow () {
   setTrayMenu()
@@ -80,6 +54,8 @@ function handleClose (
 }
 
 function handleResize () {
+  setMainViewBounds()
+
   setTabsBounds()
 }
 
@@ -95,9 +71,11 @@ export default function () {
   const mainWindowWidth = 900
   const mainWindowHeight = 600
 
-  const options = {
+  const mainWindowOptions = {
     width: mainWindowWidth,
     height: mainWindowHeight,
+    minWidth: mainWindowWidth,
+    minHeight: mainWindowHeight,
     icon: windowIcon,
     show: false,
     webPreferences: {
@@ -108,41 +86,83 @@ export default function () {
   }
 
   mainWindow =
-    new BrowserWindow(
-      options
+    new BaseWindow(
+      mainWindowOptions
     )
 
-  changeViewBackgroundColor(
-    mainWindow
-  )
-
-  mainWindow.loadURL(
-    baseUrl
-  )
-
-  mainWindow.setMinimumSize(
-    mainWindowWidth,
-    mainWindowHeight
-  )
-
   mainWindow.removeMenu()
+
+  const mainViewOptions = {
+    webPreferences: {
+      contextIsolation: false,
+      devTools: isDevelopment,
+      nodeIntegration: true
+    }
+  }
+
+  mainView =
+    new WebContentsView(
+      mainViewOptions
+    )
+
+  setMainViewBounds()
+
+  setViewScale(
+    mainView
+  )
+
+  changeViewBackgroundColor(
+    mainView
+  )
+
+  mainWindow
+    .contentView
+    .addChildView(
+      mainView
+    )
+
+  mainView
+    .webContents
+    .loadURL(
+      baseUrl
+    )
+
+  const isMaximizeOnStart =
+    getElectronStoreKey(
+      'window.isMaximizeOnStart'
+    )
+
+  if (isMaximizeOnStart) {
+    mainWindow.maximize()
+  }
+
+  showMainWindow()
+
+  const isCheckForNewVersions =
+    getElectronStoreKey(
+      'updates.isCheckForNewVersions'
+    )
+
+  const isCheckForUpdates = (
+    !isDevelopment &&
+      isCheckForNewVersions
+  )
+
+  if (isCheckForUpdates) {
+    checkForUpdates()
+  }
 
   if (isShowDevTools) {
     const devToolsData = {
       mode: 'detach'
     }
 
-    mainWindow
+    mainView
       .webContents
       .openDevTools(
         devToolsData
       )
   }
-
-  mainWindow.once(
-    'ready-to-show',
-    handleReadyToShow
-  )
 
   mainWindow.on(
     'show',
@@ -168,4 +188,10 @@ export default function () {
     'focus',
     handleFocus
   )
+
+  mainView
+    .webContents
+    .setWindowOpenHandler(
+      handleNewWindow
+    )
 }

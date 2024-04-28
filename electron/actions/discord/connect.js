@@ -20,7 +20,7 @@ export default function () {
   }
 
   function handleSuccess () {
-    mainWindow
+    mainView
       .webContents
       .send(
         'discord-connected'
