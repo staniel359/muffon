@@ -6,13 +6,28 @@ import {
   existsSync,
   mkdirSync
 } from 'fs'
-import {
-  harmfulSwitches
-} from '#/helpers/data'
 
 export {
   v4 as generateKey
 } from 'uuid'
+
+export const colors = {
+  white: '#ffffff',
+  black: '#202122'
+}
+
+const harmfulSwitches = [
+  'remote-debugging-port',
+  'inspect',
+  'inspect-brk',
+  'inspect-brk-node',
+  'inspect-port',
+  'inspect-publish-uid',
+  'js-flags',
+  'proxy-server',
+  'proxy-bypass-list',
+  'host-rules'
+]
 
 function isHarmfulSwitchesPresent () {
   for (harmfulSwitch of harmfulSwitches) {

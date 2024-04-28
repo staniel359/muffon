@@ -18,7 +18,8 @@ const options = {
   accessPropertiesByDotNotation: false,
   cwd: userDataPath,
   encryptionKey,
-  schema
+  schema,
+  watch: true
 }
 
 const electronStore =

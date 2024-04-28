@@ -9,6 +9,8 @@ import {
   baseUrl
 } from '#/helpers/urls'
 import setAboutViewBounds from '#/actions/aboutView/setBounds'
+import changeViewBackgroundColor
+  from '#/actions/view/changeBackgroundColor'
 
 function handleClose (
   event
@@ -44,6 +46,10 @@ export default function () {
     )
 
   aboutWindow.removeMenu()
+
+  changeViewBackgroundColor(
+    aboutWindow
+  )
 
   const aboutViewOptions = {
     webPreferences: {

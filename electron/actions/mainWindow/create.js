@@ -26,6 +26,8 @@ import {
 import setTrayMenu from '#/actions/tray/setMenu'
 import setTabsBounds from '#/actions/tabs/setBounds'
 import setMainViewBounds from '#/actions/mainView/setBounds'
+import changeViewBackgroundColor
+  from '#/actions/view/changeBackgroundColor'
 
 function handleReadyToShow () {
   const isMaximizeOnStart =
@@ -107,6 +109,10 @@ export default function () {
 
   mainWindow.removeMenu()
 
+  changeViewBackgroundColor(
+    mainWindow
+  )
+
   const mainViewOptions = {
     webPreferences: {
       contextIsolation: false,
@@ -119,6 +125,10 @@ export default function () {
     new WebContentsView(
       mainViewOptions
     )
+
+  changeViewBackgroundColor(
+    mainWindow
+  )
 
   setMainViewBounds()
 
