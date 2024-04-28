@@ -11,6 +11,20 @@ export {
   v4 as generateKey
 } from 'uuid'
 
+const platforms = {
+  windows: [
+    'win32'
+  ],
+  macos: [
+    'darwin'
+  ],
+  linux: [
+    'linux',
+    'freebsd',
+    'openbsd'
+  ]
+}
+
 export const colors = {
   white: '#ffffff',
   black: '#202122'
@@ -51,29 +65,44 @@ export const handleHarmfulSwitches = () => {
       'Harmful switches detected'
     )
 
-    process.exit() // Do not call app.exit(), ask @xyloflake why
+    // Do not call app.exit(), ask @xyloflake why
+    process.exit()
   }
 }
 
+const {
+  env,
+  platform
+} = process
+
 export const isDevelopment = (
-  process.env.NODE_ENV === 'development'
+  env.NODE_ENV === 'development'
 )
 
 export const isShowDevTools = (
-  process.env.DEV_TOOLS === 'true'
+  env.DEV_TOOLS === 'true'
 )
 
-export const isMac = (
-  process.platform === 'darwin'
-)
+export const isMac =
+  platforms
+  .macos
+  .includes(
+    platform
+  )
 
-export const isLinux = (
-  process.platform === 'linux'
-)
+export const isLinux =
+  platforms
+  .linux
+  .includes(
+    platform
+  )
 
-export const isWindows = (
-  process.platform === 'win32'
-)
+export const isWindows =
+  platforms
+  .windows
+  .includes(
+    platform
+  )
 
 export const isSingleInstance =
   app.requestSingleInstanceLock()
