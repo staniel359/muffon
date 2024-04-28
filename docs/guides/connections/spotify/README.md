@@ -58,7 +58,7 @@ This section describes how to generate them.
 
     ![alt text](images/img_08.png)
 4. Click on "View **ClientSecret**"
-    ![alt text](images/img_010.png)
+    ![alt text](images/img_10.png)
 5. Copy both the ClientID and ClientSecret separately and paste them into the respective fields in muffon.
     You will now have
    
