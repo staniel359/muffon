@@ -79,6 +79,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - Italiano ([@ZinRicky](https://github.com/ZinRicky), [@filipporomani](https://github.com/filipporomani))
 - 日本語 ([@xyloflake](https://github.com/xyloflake))
 - Русский ([@staniel359](https://github.com/staniel359))
+- Gen Z ([@xyloflake](https://github.com/xyloflake), [@gamersi](https://github.com/gamersi))
 
 ### Technical stack
 

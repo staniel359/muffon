@@ -33,5 +33,9 @@ export default [
   {
     id: 'ru',
     name: 'Русский'
+  },
+  {
+    id: 'genz',
+    name: 'Gen Z'
   }
 ]
