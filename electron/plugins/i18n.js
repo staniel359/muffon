@@ -8,6 +8,7 @@ import he from './i18n/locales/he.json'
 import it from './i18n/locales/it.json'
 import ja from './i18n/locales/ja.json'
 import ru from './i18n/locales/ru.json'
+import genz from './i18n/locales/genz.json'
 
 // i18n
 
@@ -24,7 +25,8 @@ const localesData = {
   he,
   it,
   ja,
-  ru
+  ru,
+  genz
 }
 
 const options = {

@@ -55,6 +55,12 @@ export function number (
     language
   } = profileStore()
 
+  if (language === 'genz') {
+    return value.toLocaleString(
+      'en'
+    )
+  }
+
   return value.toLocaleString(
     language
   )
