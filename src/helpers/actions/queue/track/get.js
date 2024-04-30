@@ -10,12 +10,21 @@ import {
 
 export default function getQueueTrack (
   {
-    position
+    direction
   }
 ) {
+  const storeData = queueStore()
+
+  const isDirectionAvailable =
+    storeData.isDirectionAvailable[
+      direction
+    ]
+
+  if (!isDirectionAvailable) { return }
+
   const followingTrackData =
-    queueStore()[
-      `${position}Track`
+    storeData.directionFollowingTrack[
+      direction
     ]
 
   const isAudioLocal =
@@ -48,13 +57,13 @@ export default function getQueueTrack (
   function setIsQueueGetting (
     value
   ) {
-    switch (position) {
+    switch (direction) {
       case 'previous':
-        return queueStore().setIsGettingPrevious(
+        return storeData.setIsGettingPrevious(
           value
         )
       case 'next':
-        return queueStore().setIsGettingNext(
+        return storeData.setIsGettingNext(
           value
         )
       default:
@@ -84,7 +93,7 @@ export default function getQueueTrack (
 
     function retry () {
       const queueTrackArgs = {
-        position
+        direction
       }
 
       updateGlobalStore(

@@ -11,14 +11,14 @@
       <LoopButton />
 
       <BaseQueueDirectionButtonContainer
-        position="previous"
+        direction="previous"
         :icon="leftButtonIcon"
       />
 
       <PlayButton />
 
       <BaseQueueDirectionButtonContainer
-        position="next"
+        direction="next"
         :icon="rightButtonIcon"
       />
 

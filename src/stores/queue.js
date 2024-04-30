@@ -77,6 +77,13 @@ const data = {
         this.tracksCount - 1
       )
     },
+    directionFollowingTrack () {
+      return {
+        previous:
+          this.previousTrack,
+        next: this.nextTrack
+      }
+    },
     previousTrack () {
       return this.tracksComputed[
         this.previousTrackIndex
@@ -103,6 +110,47 @@ const data = {
         return (
           this.currentTrackIndex + 1
         )
+      }
+    },
+    isDirectionAvailable (
+      state
+    ) {
+      return {
+        previous: (
+          state.tracksCount &&
+            !this.isDirectionEdge.previous &&
+            !this.isGettingDirection.previous
+        ),
+        next: (
+          state.tracksCount &&
+            !this.isDirectionEdge.next &&
+            !this.isGettingDirection.next
+        )
+      }
+    },
+    isGettingDirection (
+      state
+    ) {
+      return {
+        previous:
+          state.isGettingPrevious,
+        next:
+          state.isGettingNext
+      }
+    },
+    isDirectionEdge (
+      state
+    ) {
+      if (state.isLoop) {
+        return {
+          previous: false,
+          next: false
+        }
+      } else {
+        return {
+          previous: this.isStart,
+          next: this.isEnd
+        }
       }
     }
   },
