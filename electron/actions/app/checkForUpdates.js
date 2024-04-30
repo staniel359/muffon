@@ -8,7 +8,8 @@ import {
   autoUpdater
 } from 'electron-updater'
 import {
-  isMac
+  isMac,
+  releasesUrl
 } from '#/helpers/utils'
 import i18n from 'i18n'
 
@@ -98,20 +99,25 @@ function handleError () {
   )
 }
 
+function checkWithoutUpdate () {
+  net.fetch(
+    releasesUrl
+  ).then(
+    handleSuccess
+  ).catch(
+    handleError
+  )
+}
+
+function checkWithUpdate () {
+  autoUpdater
+    .checkForUpdatesAndNotify()
+}
+
 export default function checkForUpdates () {
   if (isMac) {
-    const releasesUrl =
-      'https://api.github.com/repos/staniel359/muffon/releases/latest'
-
-    net.fetch(
-      releasesUrl
-    ).then(
-      handleSuccess
-    ).catch(
-      handleError
-    )
+    checkWithoutUpdate()
   } else {
-    autoUpdater.checkForUpdatesAndNotify()
+    checkWithUpdate()
   }
-  
 }

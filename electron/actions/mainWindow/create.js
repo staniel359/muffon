@@ -39,7 +39,9 @@ function handleReadyToShow () {
 
   show()
 
-  checkForUpdates()
+  if (!isDevelopment) {
+    checkForUpdates()
+  }
 
   const scale =
     getElectronStoreKey(

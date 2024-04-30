@@ -109,6 +109,9 @@ export const isSingleInstance =
 
 export const deepLinksProtocol = `${appName}://`
 
+export const releasesUrl =
+  'https://api.github.com/repos/staniel359/muffon/releases/latest'
+
 export function createFolderIfNotExists (
   path
 ) {
