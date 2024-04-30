@@ -99,7 +99,7 @@ function handleError () {
 }
 
 export default function checkForUpdates () {
-  if(isMac) {
+  if (isMac) {
     const releasesUrl =
       'https://api.github.com/repos/staniel359/muffon/releases/latest'
 
