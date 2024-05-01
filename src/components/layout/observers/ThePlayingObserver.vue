@@ -42,7 +42,7 @@ export default {
     },
     publicPlayingFormatted () {
       if (this.isShowProfilePlaying) {
-        return this.playerPlaying
+        return this.playingFormatted
       } else {
         return null
       }
