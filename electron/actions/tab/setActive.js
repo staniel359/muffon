@@ -8,6 +8,8 @@ export default function (
       tabId
     )
 
+  if (!tab) { return }
+
   mainWindow.setTopBrowserView(
     tab
   )
