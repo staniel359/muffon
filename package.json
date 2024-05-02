@@ -65,5 +65,10 @@
     "vue": "^3.4.25",
     "vue-i18n": "^9.13.1",
     "vue-router": "^4.3.2"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "app-builder-lib@24.13.3": "patches/app-builder-lib@24.13.3.patch"
+    }
   }
 }
