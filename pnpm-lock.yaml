@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  app-builder-lib@24.13.3:
+    hash: bubyqrpqlq2lr5n5cxwtzf7azu
+    path: patches/app-builder-lib@24.13.3.patch
+
 importers:
 
   .:
@@ -5385,7 +5390,7 @@ snapshots:
 
   app-builder-bin@4.0.0: {}
 
-  app-builder-lib@24.13.3(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3)))(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3)):
+  app-builder-lib@24.13.3(patch_hash=bubyqrpqlq2lr5n5cxwtzf7azu)(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3)))(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3)):
     dependencies:
       '@develar/schema-utils': 2.6.5
       '@electron/notarize': 2.2.1
@@ -6312,7 +6317,7 @@ snapshots:
 
   dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3)):
     dependencies:
-      app-builder-lib: 24.13.3(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3)))(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3))
+      app-builder-lib: 24.13.3(patch_hash=bubyqrpqlq2lr5n5cxwtzf7azu)(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3)))(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3))
       builder-util: 24.13.1
       builder-util-runtime: 9.2.4
       fs-extra: 10.1.0
@@ -6390,7 +6395,7 @@ snapshots:
 
   electron-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3)):
     dependencies:
-      app-builder-lib: 24.13.3(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3)))(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3))
+      app-builder-lib: 24.13.3(patch_hash=bubyqrpqlq2lr5n5cxwtzf7azu)(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3)))(electron-builder-squirrel-windows@25.0.0-alpha.6(dmg-builder@24.13.3))
       builder-util: 24.13.1
       builder-util-runtime: 9.2.4
       chalk: 4.1.2
