@@ -1,0 +1,14 @@
+{
+    "show": "Spill the tea",
+    "hide": "Yeet it",
+    "about": "Abt",
+    "exit": "Dip",
+    "update": {
+      "message": "New update droppin', no cap",
+      "buttons": {
+        "download": "Cop that",
+        "close": "Cancel that"
+      }
+    }
+  }
+  

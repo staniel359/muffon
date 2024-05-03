@@ -9,6 +9,8 @@ import he from 'i18n-iso-countries/langs/he.json'
 import it from 'i18n-iso-countries/langs/it.json'
 import ja from 'i18n-iso-countries/langs/ja.json'
 import ru from 'i18n-iso-countries/langs/ru.json'
+import genz from 'i18n-iso-countries/langs/en.json'
+genz.locale = 'genz'
 
 // i18n
 
@@ -20,7 +22,8 @@ const locales = [
   he,
   it,
   ja,
-  ru
+  ru,
+  genz
 ]
 
 function addLocale (

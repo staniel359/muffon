@@ -9,6 +9,7 @@ import he from './i18n/locales/he.json'
 import it from './i18n/locales/it.json'
 import ja from './i18n/locales/ja.json'
 import ru from './i18n/locales/ru.json'
+import genz from './i18n/locales/genz.json'
 import belarusianRussianPluralizationRule
   from './i18n/rules/pluralization/beRu.js'
 
@@ -22,7 +23,8 @@ const localesData = {
   he,
   it,
   ja,
-  ru
+  ru,
+  genz
 }
 
 const pluralizationRules = {
@@ -115,6 +117,16 @@ if (import.meta.hot) {
     fileImport => {
       i18n.global.setLocaleMessage(
         'ru',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/genz.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'genz',
         fileImport.default
       )
     }
