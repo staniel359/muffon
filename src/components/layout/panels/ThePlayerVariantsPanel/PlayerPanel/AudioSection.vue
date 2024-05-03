@@ -68,8 +68,9 @@ export default {
       queueStore,
       {
         isQueueAutoplay: 'isAutoplay',
-        isQueueEnd: 'isEnd',
-        isQueueLoop: 'isLoop'
+        isQueueLoop: 'isLoop',
+        isQueueDirectionAvailable:
+          'isDirectionAvailable'
       }
     ),
     ...mapState(
@@ -80,15 +81,13 @@ export default {
     ),
     isGetQueueNextTrack () {
       return (
-        this.isQueueAutoplay && (
-          this.isQueueLoop ||
-            !this.isQueueEnd
-        )
+        this.isQueueAutoplay &&
+          this.isQueueDirectionAvailable.next
       )
     },
     queueTrackArgs () {
       return {
-        position: 'next'
+        direction: 'next'
       }
     },
     controlsDirection () {

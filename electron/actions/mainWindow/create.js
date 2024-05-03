@@ -1,6 +1,5 @@
 import {
   BaseWindow,
-  screen,
   WebContentsView
 } from 'electron'
 import {
@@ -8,7 +7,6 @@ import {
 } from '#/helpers/icons'
 import {
   isDevelopment,
-  isLinux,
   isShowDevTools
 } from '#/helpers/utils'
 import {
@@ -41,7 +39,9 @@ function handleReadyToShow () {
 
   showMainWindow()
 
-  checkForUpdates()
+  if (!isDevelopment) {
+    checkForUpdates()
+  }
 
   const scale =
     getElectronStoreKey(

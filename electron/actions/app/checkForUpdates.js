@@ -4,6 +4,13 @@ import {
   shell,
   net
 } from 'electron'
+import {
+  autoUpdater
+} from 'electron-updater'
+import {
+  isMac,
+  releasesUrl
+} from '#/helpers/utils'
 import i18n from 'i18n'
 
 let latestRelease
@@ -92,10 +99,7 @@ function handleError () {
   )
 }
 
-export default function checkForUpdates () {
-  const releasesUrl =
-    'https://api.github.com/repos/staniel359/muffon/releases/latest'
-
+function checkWithoutUpdate () {
   net.fetch(
     releasesUrl
   ).then(
@@ -103,4 +107,17 @@ export default function checkForUpdates () {
   ).catch(
     handleError
   )
+}
+
+function checkWithUpdate () {
+  autoUpdater
+    .checkForUpdatesAndNotify()
+}
+
+export default function checkForUpdates () {
+  if (isMac) {
+    checkWithoutUpdate()
+  } else {
+    checkWithUpdate()
+  }
 }

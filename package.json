@@ -31,6 +31,7 @@
     "discord-rpc": "^4.0.1",
     "electron-dl": "^3.5.2",
     "electron-store": "^8.2.0",
+    "electron-updater": "^6.1.8",
     "i18n": "^0.15.1",
     "music-metadata": "^7.14.0",
     "uuid": "^9.0.1"
@@ -64,5 +65,10 @@
     "vue": "^3.4.25",
     "vue-i18n": "^9.13.1",
     "vue-router": "^4.3.2"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "app-builder-lib@24.13.3": "patches/app-builder-lib@24.13.3.patch"
+    }
   }
 }

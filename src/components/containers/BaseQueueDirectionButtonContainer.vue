@@ -26,7 +26,7 @@ export default {
     BaseButton
   },
   props: {
-    position: {
+    direction: {
       type: String,
       required: true
     },
@@ -39,48 +39,25 @@ export default {
     ...mapState(
       queueStore,
       {
-        isQueueGettingPrevious: 'isGettingPrevious',
-        isQueueGettingNext: 'isGettingNext',
-        queueTracksCount: 'tracksCount',
-        isQueueStart: 'isStart',
-        isQueueEnd: 'isEnd',
-        isQueueLoop: 'isLoop'
+        isQueueDirectionAvailable:
+          'isDirectionAvailable',
+        isQueueGettingDirection:
+          'isGettingDirection'
       }
     ),
     isDisabled () {
-      return (
-        !this.queueTracksCount ||
-          this.isEdge ||
-          this.isGetting
-      )
-    },
-    isEdge () {
-      if (this.isQueueLoop) {
-        return false
-      } else {
-        switch (this.position) {
-          case 'previous':
-            return this.isQueueStart
-          case 'next':
-            return this.isQueueEnd
-          default:
-            return false
-        }
-      }
+      return !this.isQueueDirectionAvailable[
+        this.direction
+      ]
     },
     isGetting () {
-      switch (this.position) {
-        case 'previous':
-          return this.isQueueGettingPrevious
-        case 'next':
-          return this.isQueueGettingNext
-        default:
-          return false
-      }
+      return this.isQueueGettingDirection[
+        this.direction
+      ]
     },
     queueTrackArgs () {
       return {
-        position: this.position
+        direction: this.direction
       }
     }
   },

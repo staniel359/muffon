@@ -9,6 +9,8 @@ export default function (
       tabId
     )
 
+  if (!tab) { return }
+
   tab.setVisible(
     true
   )

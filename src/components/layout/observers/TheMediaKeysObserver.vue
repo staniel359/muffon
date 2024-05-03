@@ -33,6 +33,18 @@ export default {
       ]
     }
   },
+  computed: {
+    queuePreviousTrackArgs () {
+      return {
+        direction: 'previous'
+      }
+    },
+    queueNextTrackArgs () {
+      return {
+        direction: 'next'
+      }
+    }
+  },
   mounted () {
     this.mediaActionsHandlers
       .forEach(
@@ -42,16 +54,12 @@ export default {
   methods: {
     handlePressPrevious () {
       getQueueTrack(
-        {
-          position: 'previous'
-        }
+        this.queuePreviousTrackArgs
       )
     },
     handlePressNext () {
       getQueueTrack(
-        {
-          position: 'next'
-        }
+        this.queueNextTrackArgs
       )
     },
     handlePressStop () {
