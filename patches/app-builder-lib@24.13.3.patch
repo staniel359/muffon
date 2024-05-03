@@ -31,7 +31,7 @@ index 2b09620a68f66d4740c6f055e2dad68eaedc0344..34207d82537a71887095ee02967ad57a
 -    const wantedLanguages = (0, builder_util_1.asArray)(platformSpecificBuildOptions.electronLanguages || config.electronLanguages);
 +    let wantedLanguages = (0, builder_util_1.asArray)(platformSpecificBuildOptions.electronLanguages || config.electronLanguages);
 +    if (!wantedLanguages.includes("force")) {
-+        wantedLanguages = ["en-us"];
++        wantedLanguages = ["en-US"];
 +    }
      if (!wantedLanguages.length) {
          return;
