@@ -29,7 +29,7 @@
     ]
   },
   "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
-  "compression": "store",
+  "compression": "ultra",
   "nsis": {
     "allowToChangeInstallationDirectory": true,
     "deleteAppDataOnUninstall": true,

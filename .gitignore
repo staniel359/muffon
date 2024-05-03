@@ -54,3 +54,7 @@
 /semantic/gulpfile.js
 
 .env
+
+# yalc is used for developing and testing electron-builder but we don't need the files
+.yalc
+yalc.lock
