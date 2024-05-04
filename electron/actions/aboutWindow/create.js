@@ -46,9 +46,7 @@ export default function () {
     aboutWindowHeight
   )
 
-  aboutWindow.setMenu(
-    null
-  )
+  aboutWindow.removeMenu()
 
   changeViewBackgroundColor(
     aboutWindow

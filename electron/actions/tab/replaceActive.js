@@ -1,12 +1,12 @@
-import findIndex from './findIndex'
+import findTabIndex from './findIndex'
 import getTabs from '#/actions/tabs/get'
-import setActive from './setActive'
+import setActiveTab from './setActive'
 
 export default function (
   tabId
 ) {
   const tabIndex =
-    findIndex(
+    findTabIndex(
       tabId
     )
 
@@ -18,7 +18,7 @@ export default function (
       newActiveTabIndex
     ].uuid
 
-  setActive(
+  setActiveTab(
     newActiveTabId
   )
 }

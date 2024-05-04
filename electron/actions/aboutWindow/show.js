@@ -1,7 +1,7 @@
-import setTitle from './setTitle'
+import setAboutWindowTitle from './setTitle'
 
 export default function () {
-  setTitle()
+  setAboutWindowTitle()
 
   aboutWindow.show()
 }

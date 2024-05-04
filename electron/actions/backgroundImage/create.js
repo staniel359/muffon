@@ -1,7 +1,7 @@
 import {
   generateKey
 } from '#/helpers/utils'
-import getPath from './getPath'
+import getBackgroundImagePath from './getPath'
 import {
   writeFile
 } from 'fs'
@@ -21,7 +21,7 @@ export default function (
   const fileName = generateKey()
 
   const filePath =
-    getPath(
+    getBackgroundImagePath(
       fileName
     )
 

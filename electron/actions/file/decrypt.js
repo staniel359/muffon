@@ -1,5 +1,5 @@
 import crypto from 'crypto'
-import read from './read'
+import readFile from './read'
 
 export default function (
   {
@@ -9,7 +9,7 @@ export default function (
   }
 ) {
   const file =
-    read(
+    readFile(
       filePath
     )
 

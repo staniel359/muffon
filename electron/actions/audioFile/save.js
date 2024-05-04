@@ -7,8 +7,8 @@ import {
 import {
   download
 } from 'electron-dl'
-import encrypt from './encrypt'
-import getPath from './getPath'
+import encryptAudioFile from './encrypt'
+import getAudioFilePath from './getPath'
 import {
   currentTime as formatCurrentTime
 } from '#/helpers/formatters'
@@ -31,12 +31,12 @@ export default function (
 
   function handleSuccess () {
     const filePath =
-      getPath(
+      getAudioFilePath(
         fileName
       )
 
     const encryptedData =
-      encrypt(
+      encryptAudioFile(
         {
           tempFileName,
           fileName

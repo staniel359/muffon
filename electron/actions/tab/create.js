@@ -2,10 +2,10 @@ import {
   BrowserView
 } from 'electron'
 import getElectronStoreKey from '#/actions/electronStore/getKey'
-import getActiveId from './getActiveId'
-import setActive from './setActive'
-import setBounds from './setBounds'
-import setScale from './setScale'
+import getActiveTabId from './getActiveId'
+import setActiveTab from './setActive'
+import setTabBounds from './setBounds'
+import setTabScale from './setScale'
 import {
   baseUrl
 } from '#/helpers/urls'
@@ -54,12 +54,12 @@ export default function (
     )
 
   if (!isSwitchToNewTab) {
-    setActive(
-      getActiveId()
+    setActiveTab(
+      getActiveTabId()
     )
   }
 
-  setBounds(
+  setTabBounds(
     tab
   )
 
@@ -118,7 +118,7 @@ export default function (
         'layout.scale'
       )
 
-    setScale(
+    setTabScale(
       tab,
       scale
     )

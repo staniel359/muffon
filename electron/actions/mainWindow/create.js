@@ -12,10 +12,10 @@ import {
   baseUrl
 } from '#/helpers/urls'
 import getElectronStoreKey from '#/actions/electronStore/getKey'
-import show from './show'
-import hide from './hide'
+import showMainWindow from './show'
+import hideMainWindow from './hide'
 import checkForUpdates from '#/actions/app/checkForUpdates'
-import setScale from './setScale'
+import setMainWindowScale from './setScale'
 import callExit from '#/actions/app/callExit'
 import {
   handleNewWindow
@@ -35,7 +35,7 @@ function handleReadyToShow () {
     mainWindow.maximize()
   }
 
-  show()
+  showMainWindow()
 
   if (!isDevelopment) {
     checkForUpdates()
@@ -46,7 +46,7 @@ function handleReadyToShow () {
       'layout.scale'
     )
 
-  setScale(
+  setMainWindowScale(
     scale
   )
 }
@@ -72,7 +72,7 @@ function handleClose (
   if (isExitOnClose) {
     callExit()
   } else {
-    hide()
+    hideMainWindow()
   }
 }
 
@@ -114,9 +114,7 @@ export default function () {
     mainWindowHeight
   )
 
-  mainWindow.setMenu(
-    null
-  )
+  mainWindow.removeMenu()
 
   changeViewBackgroundColor(
     mainWindow

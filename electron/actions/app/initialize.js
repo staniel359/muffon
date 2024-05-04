@@ -1,13 +1,13 @@
 import {
   app
 } from 'electron'
-import setProtocols from './setProtocols'
+import setAppProtocols from './setProtocols'
 import setupI18n from '#/plugins/i18n'
 import setupDayjs from '#/plugins/dayjs'
-import setFlags from './setFlags'
-import setGlobalVariables from './setGlobalVariables'
-import setEvents from './setEvents'
-import setup from './setup'
+import setAppFlags from './setFlags'
+import setAppGlobalVariables from './setGlobalVariables'
+import setAppEvents from './setEvents'
+import setupApp from './setup'
 import {
   appName,
   createFolderIfNotExists
@@ -30,18 +30,18 @@ export default function () {
 
   setupDayjs()
 
-  setFlags()
+  setAppFlags()
 
-  setGlobalVariables()
+  setAppGlobalVariables()
 
-  setProtocols()
+  setAppProtocols()
 
-  setEvents()
+  setAppEvents()
 
   app
     .whenReady()
     .then(
-      setup
+      setupApp
     )
 
   app.setAppUserModelId(

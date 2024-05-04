@@ -1,12 +1,12 @@
-import getKey from './getKey'
-import setData from './setData'
+import getElectronStoreKey from './getKey'
+import setElectronStoreData from './setData'
 
 export default function (
   key,
   uuid
 ) {
   const oldValue =
-    getKey(
+    getElectronStoreKey(
       key
     )
 
@@ -24,7 +24,7 @@ export default function (
     )
   ]
 
-  return setData(
+  return setElectronStoreData(
     {
       [key]: newValue
     }

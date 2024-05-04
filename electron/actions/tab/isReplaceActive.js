@@ -1,5 +1,5 @@
 import getTabs from '#/actions/tabs/get'
-import getActiveId from './getActiveId'
+import getActiveTabId from './getActiveId'
 
 export default function (
   tabId
@@ -8,7 +8,7 @@ export default function (
     getTabs().length > 1
 
   const isActive = (
-    tabId === getActiveId()
+    tabId === getActiveTabId()
   )
 
   return (

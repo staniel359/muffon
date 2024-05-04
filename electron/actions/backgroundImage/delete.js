@@ -1,4 +1,4 @@
-import getPath from './getPath'
+import getBackgroundImagePath from './getPath'
 import deleteFile from '#/actions/file/delete'
 
 export default function (
@@ -10,7 +10,7 @@ export default function (
     imageId.toString()
 
   const filePath =
-    getPath(
+    getBackgroundImagePath(
       fileName
     )
 

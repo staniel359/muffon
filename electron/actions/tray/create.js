@@ -4,8 +4,8 @@ import {
 import {
   trayIcon
 } from '#/helpers/icons'
-import setMenu from './setMenu'
-import setTooltip from './setTooltip'
+import setTrayMenu from './setMenu'
+import setTrayTooltip from './setTooltip'
 
 function handleClick () {
   mainWindow.show()
@@ -16,9 +16,9 @@ export default function () {
     trayIcon
   )
 
-  setMenu()
+  setTrayMenu()
 
-  setTooltip()
+  setTrayTooltip()
 
   tray.on(
     'click',

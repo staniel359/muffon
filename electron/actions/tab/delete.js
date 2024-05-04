@@ -1,9 +1,9 @@
-import clear from './clear'
+import clearTab from './clear'
 
 export default function (
   tabId
 ) {
-  clear(
+  clearTab(
     tabId
   )
 
