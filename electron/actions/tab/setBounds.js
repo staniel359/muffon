@@ -8,10 +8,17 @@ export default function (
       'layout.scale'
     )
 
+  const isFullScreen =
+    mainWindow.isFullScreen()
+
   const topOffsetScaled =
     Math.round(
       tabsPanelHeight * scale
     )
+
+  const topOffsetComputed = (
+    isFullScreen ? 0 : topOffsetScaled
+  )
 
   const [
     width,
@@ -19,12 +26,12 @@ export default function (
   ] = mainWindow.getContentSize()
 
   const heightScaled = (
-    height - topOffsetScaled
+    height - topOffsetComputed
   )
 
   const options = {
     x: 0,
-    y: topOffsetScaled,
+    y: topOffsetComputed,
     width,
     height: heightScaled
   }

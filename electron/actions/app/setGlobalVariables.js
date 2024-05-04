@@ -5,8 +5,6 @@ export default function () {
 
   global.tray = null
 
-  global.isMaximized = false
-
   global.tabsPanelHeight = 50
 
   global.discordClient = null

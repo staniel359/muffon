@@ -1,13 +1,11 @@
 import {
-  BrowserWindow,
-  screen
+  BrowserWindow
 } from 'electron'
 import {
   windowIcon
 } from '#/helpers/icons'
 import {
   isDevelopment,
-  isLinux,
   isShowDevTools
 } from '#/helpers/utils'
 import {
@@ -76,30 +74,6 @@ function handleClose (
   } else {
     hide()
   }
-}
-
-function maximize () {
-  const {
-    width,
-    height
-  } = screen.getPrimaryDisplay().size
-
-  mainWindow.setSize(
-    width,
-    height
-  )
-}
-
-function handleMaximizeChange () {
-  if (!isMaximized) {
-    isMaximized = true
-
-    maximize()
-  }
-}
-
-function handleUnmaximizeChange () {
-  isMaximized = false
 }
 
 function handleEnterFullScreen () {
@@ -185,18 +159,6 @@ export default function () {
     .setWindowOpenHandler(
       handleNewWindow
     )
-
-  if (isLinux) {
-    mainWindow.on(
-      'maximize',
-      handleMaximizeChange
-    )
-
-    mainWindow.on(
-      'unmaximize',
-      handleUnmaximizeChange
-    )
-  }
 
   mainWindow.on(
     'enter-full-screen',
