@@ -1,7 +1,7 @@
-import connectDiscord from '#/actions/discord/connect'
-import setDiscordActivity from '#/actions/discord/setActivity'
-import resetDiscordActivity from '#/actions/discord/resetActivity'
-import disconnectDiscord from '#/actions/discord/disconnect'
+import connectDiscord from '../../actions/discord/connect.js'
+import setDiscordActivity from '../../actions/discord/setActivity.js'
+import resetDiscordActivity from '../../actions/discord/resetActivity.js'
+import disconnectDiscord from '../../actions/discord/disconnect.js'
 
 export function handleConnectDiscord () {
   connectDiscord()

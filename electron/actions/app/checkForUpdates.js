@@ -4,14 +4,16 @@ import {
   shell,
   net
 } from 'electron'
-import {
-  autoUpdater
-} from 'electron-updater'
+import electronUpdater from 'electron-updater'
 import {
   isMac,
   releasesUrl
-} from '#/helpers/utils'
+} from '../../helpers/utils.js'
 import i18n from 'i18n'
+
+const {
+  autoUpdater
+} = electronUpdater
 
 let latestRelease
 let latestVersion

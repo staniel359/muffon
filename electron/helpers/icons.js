@@ -3,7 +3,7 @@ import {
 } from 'electron'
 import {
   iconPath
-} from '#/helpers/paths'
+} from './paths.js'
 
 const icon =
   nativeImage.createFromPath(

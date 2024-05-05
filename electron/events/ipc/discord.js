@@ -6,7 +6,7 @@ import {
   handleSetDiscordActivity,
   handleResetDiscordActivity,
   handleDisconnectDiscord
-} from '#/handlers/ipc/discord'
+} from '../../handlers/ipc/discord.js'
 
 export default function () {
   ipcMain.on(

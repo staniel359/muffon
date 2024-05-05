@@ -1,6 +1,6 @@
 import {
   deepLinksProtocol
-} from '#/helpers/utils'
+} from '../../helpers/utils.js'
 
 export default function (
   {

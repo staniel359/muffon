@@ -1,4 +1,4 @@
-import clearTab from './clear'
+import clearTab from './clear.js'
 
 export default function (
   tabId

@@ -3,27 +3,27 @@ import {
 } from 'electron'
 import {
   windowIcon
-} from '#/helpers/icons'
+} from '../../helpers/icons.js'
 import {
   isDevelopment,
   isShowDevTools
-} from '#/helpers/utils'
+} from '../../helpers/utils.js'
 import {
   baseUrl
-} from '#/helpers/urls'
-import getElectronStoreKey from '#/actions/electronStore/getKey'
-import showMainWindow from './show'
-import hideMainWindow from './hide'
-import checkForUpdates from '#/actions/app/checkForUpdates'
-import setMainWindowScale from './setScale'
-import callExit from '#/actions/app/callExit'
+} from '../../helpers/urls.js'
+import getElectronStoreKey from '../electronStore/getKey.js'
+import showMainWindow from './show.js'
+import hideMainWindow from './hide.js'
+import checkForUpdates from '../app/checkForUpdates.js'
+import setMainWindowScale from './setScale.js'
+import callExit from '../app/callExit.js'
 import {
   handleNewWindow
-} from '#/handlers/app'
-import setTrayMenu from '#/actions/tray/setMenu'
-import setTabsBounds from '#/actions/tabs/setBounds'
+} from '../../handlers/app.js'
+import setTrayMenu from '../tray/setMenu.js'
+import setTabsBounds from '../tabs/setBounds.js'
 import changeViewBackgroundColor
-  from '#/actions/view/changeBackgroundColor'
+  from '../view/changeBackgroundColor.js'
 
 function handleReadyToShow () {
   const isMaximizeOnStart =

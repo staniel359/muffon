@@ -1,5 +1,5 @@
-import getBackgroundImagePath from './getPath'
-import deleteFile from '#/actions/file/delete'
+import getBackgroundImagePath from './getPath.js'
+import deleteFile from '../file/delete.js'
 
 export default function (
   {

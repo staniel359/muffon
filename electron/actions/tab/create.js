@@ -1,22 +1,22 @@
 import {
   BrowserView
 } from 'electron'
-import getElectronStoreKey from '#/actions/electronStore/getKey'
-import getActiveTabId from './getActiveId'
-import setActiveTab from './setActive'
-import setTabBounds from './setBounds'
-import setTabScale from './setScale'
+import getElectronStoreKey from '../electronStore/getKey.js'
+import getActiveTabId from './getActiveId.js'
+import setActiveTab from './setActive.js'
+import setTabBounds from './setBounds.js'
+import setTabScale from './setScale.js'
 import {
   baseUrl
-} from '#/helpers/urls'
+} from '../../helpers/urls.js'
 import {
   isDevelopment
-} from '#/helpers/utils'
+} from '../../helpers/utils.js'
 import {
   handleNewWindow
-} from '#/handlers/app'
+} from '../../handlers/app.js'
 import changeViewBackgroundColor
-  from '#/actions/view/changeBackgroundColor'
+  from '../view/changeBackgroundColor.js'
 
 export default function (
   data

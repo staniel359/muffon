@@ -1,5 +1,5 @@
-import getAudioFilePath from './getPath'
-import readFile from '#/actions/file/read'
+import getAudioFilePath from './getPath.js'
+import readFile from '../file/read.js'
 
 export default function (
   fileName

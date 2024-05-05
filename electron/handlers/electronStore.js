@@ -1,6 +1,6 @@
-import getTabs from '../actions/tabs/get'
+import getTabs from '../actions/tabs/get.js'
 import changeViewBackgroundColor
-  from '../actions/view/changeBackgroundColor'
+  from '../actions/view/changeBackgroundColor.js'
 
 export function handleIsDarkModeChange () {
   const views = [

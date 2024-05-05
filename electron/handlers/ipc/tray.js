@@ -1,4 +1,4 @@
-import setTrayTooltip from '#/actions/tray/setTooltip'
+import setTrayTooltip from '../../actions/tray/setTooltip.js'
 
 export function handleSetTrayTooltip (
   _,

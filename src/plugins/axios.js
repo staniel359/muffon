@@ -1,7 +1,12 @@
 import axios from 'axios'
+import {
+  ipcRenderer
+} from 'electron'
 
 const isDevelopment =
-  process.env.NODE_ENV === 'development'
+  await ipcRenderer.invoke(
+    'check-if-is-development'
+  )
 
 const developmentBaseUrl =
   'http://localhost:4000'

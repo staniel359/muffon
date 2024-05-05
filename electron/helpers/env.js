@@ -1,5 +1,16 @@
+import dotenv from 'dotenv'
+import {
+  envFilePath
+} from './paths.js'
+
+dotenv.config(
+  {
+    path: envFilePath
+  }
+)
+
 export const electronStoreKey =
-  import.meta.env.VITE_APP_ELECTRON_STORE_KEY
+  process.env.VITE_APP_ELECTRON_STORE_KEY
 
 export const discordClientId =
-  import.meta.env.VITE_APP_DISCORD_CLIENT_ID
+  process.env.VITE_APP_DISCORD_CLIENT_ID

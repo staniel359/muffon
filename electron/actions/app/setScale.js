@@ -1,5 +1,5 @@
-import setMainWindowScale from '#/actions/mainWindow/setScale'
-import setTabsScale from '#/actions/tabs/setScale'
+import setMainWindowScale from '../mainWindow/setScale.js'
+import setTabsScale from '../tabs/setScale.js'
 
 export default function (
   value

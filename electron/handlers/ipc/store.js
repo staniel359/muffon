@@ -1,4 +1,4 @@
-import updateStore from '#/actions/store/update'
+import updateStore from '../../actions/store/update.js'
 
 export function handleUpdateStore (
   _,

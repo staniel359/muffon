@@ -1,5 +1,5 @@
-import getElectronStoreKey from './getKey'
-import setElectronStoreData from './setData'
+import getElectronStoreKey from './getKey.js'
+import setElectronStoreData from './setData.js'
 
 export default function (
   key,
