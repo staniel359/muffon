@@ -17,6 +17,7 @@
         :limit="limit"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
+        :is-with-reload-button="isWithReloadButton"
         :view-id="viewId"
       >
         <template
@@ -65,6 +66,7 @@ export default {
     isWithTopSegment: Boolean,
     isWithCountrySelect: Boolean,
     isWithViewChange: Boolean,
+    isWithReloadButton: Boolean,
     viewId: String
   },
   data () {

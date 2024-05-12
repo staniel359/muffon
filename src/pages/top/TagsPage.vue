@@ -5,6 +5,7 @@
     :limit="limit"
     is-with-top-segment
     is-with-country-select
+    is-with-reload-button
   >
     <template
       #default="slotProps"

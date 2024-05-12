@@ -102,6 +102,7 @@ export default {
   recommendation: 'bullhorn',
   refresh: 'redo alternate',
   release: 'compact disc',
+  reload: 'redo alternate',
   retry: 'redo alternate',
   queue: 'ul list',
   save: 'check',

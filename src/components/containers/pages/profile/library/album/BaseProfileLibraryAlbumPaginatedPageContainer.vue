@@ -20,6 +20,7 @@
         :model="model"
         :is-with-top-segment="isWithTopSegment"
         :is-with-order-change="isWithOrderChange"
+        :is-with-reload-button="isWithReloadButton"
       >
         <template
           #default="slotProps"
@@ -58,7 +59,8 @@ export default {
     order: String,
     model: String,
     isWithTopSegment: Boolean,
-    isWithOrderChange: Boolean
+    isWithOrderChange: Boolean,
+    isWithReloadButton: Boolean
   }
 }
 </script>

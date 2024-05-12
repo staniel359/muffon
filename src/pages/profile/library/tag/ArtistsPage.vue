@@ -12,6 +12,7 @@
     is-with-search
     is-with-view-change
     is-with-order-change
+    is-with-reload-button
   >
     <template
       #default="slotProps"

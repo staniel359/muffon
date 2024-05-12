@@ -9,6 +9,7 @@
     :order="order"
     is-with-top-segment
     is-with-order-change
+    is-with-reload-button
   >
     <template
       #default="slotProps"

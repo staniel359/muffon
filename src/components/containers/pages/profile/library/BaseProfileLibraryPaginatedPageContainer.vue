@@ -22,6 +22,7 @@
         :is-with-top-segment="isWithTopSegment"
         :is-with-order-change="isWithOrderChange"
         :is-with-view-change="isWithViewChange"
+        :is-with-reload-button="isWithReloadButton"
         :view-id="viewId"
       >
         <template
@@ -94,6 +95,7 @@ export default {
     isWithSearch: Boolean,
     isWithOrderChange: Boolean,
     isWithViewChange: Boolean,
+    isWithReloadButton: Boolean,
     viewId: String
   },
   data () {

@@ -19,6 +19,7 @@
         :is-with-top-segment="isWithTopSegment"
         :is-with-order-change="isWithOrderChange"
         :is-with-options="isWithOptions"
+        :is-with-reload-button="isWithReloadButton"
       >
         <template
           #top
@@ -73,7 +74,8 @@ export default {
     model: String,
     isWithTopSegment: Boolean,
     isWithOrderChange: Boolean,
-    isWithOptions: Boolean
+    isWithOptions: Boolean,
+    isWithReloadButton: Boolean
   }
 }
 </script>

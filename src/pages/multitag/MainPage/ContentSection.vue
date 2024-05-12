@@ -8,6 +8,7 @@
     :limit="limit"
     :view-id="viewId"
     :is-with-view-change="isWithViewChange"
+    :is-with-reload-button="isAnyTags"
     is-with-top-segment
   >
     <template
@@ -23,7 +24,7 @@
       #topExtra
     >
       <FilterTagsSection
-        v-if="tags.length"
+        v-if="isAnyTags"
         :tags="tags"
       />
     </template>
@@ -114,6 +115,9 @@ export default {
       return this.listComponentsData[
         this.scope
       ]
+    },
+    isAnyTags () {
+      return !!this.tags.length
     }
   },
   watch: {
@@ -134,7 +138,7 @@ export default {
       }
     },
     handleScopeChange () {
-      if (this.tags.length) {
+      if (this.isAnyTags) {
         this.multitagData = null
 
         this.resetViewId()

@@ -11,6 +11,7 @@
     is-with-top-segment
     is-with-view-change
     is-with-order-change
+    is-with-reload-button
   >
     <template
       #default="slotProps"

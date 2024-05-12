@@ -9,6 +9,7 @@
     is-with-top-segment
     is-with-order-change
     is-with-view-change
+    is-with-reload-button
   >
     <template
       #default="slotProps"

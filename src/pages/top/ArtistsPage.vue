@@ -7,6 +7,7 @@
     is-with-top-segment
     is-with-country-select
     is-with-view-change
+    is-with-reload-button
   >
     <template
       #default="slotProps"

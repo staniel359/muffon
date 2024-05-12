@@ -9,6 +9,7 @@
     :is-with-options="isSelf"
     is-with-top-segment
     is-with-order-change
+    is-with-reload-button
   >
     <template
       #top

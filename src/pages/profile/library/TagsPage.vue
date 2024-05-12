@@ -6,6 +6,7 @@
     :limit="limit"
     is-with-top-segment
     is-with-search
+    is-with-reload-button
   >
     <template
       #default="slotProps"

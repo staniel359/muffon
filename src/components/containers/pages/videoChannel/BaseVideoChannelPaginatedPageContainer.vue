@@ -16,6 +16,7 @@
         :limit="limit"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
+        :is-with-reload-button="isWithReloadButton"
         :view-id="viewId"
         is-pagination-simple
       >
@@ -52,6 +53,7 @@ export default {
     limit: Number,
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
+    isWithReloadButton: Boolean,
     viewId: String
   }
 }

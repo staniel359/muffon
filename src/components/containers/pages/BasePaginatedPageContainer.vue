@@ -35,6 +35,13 @@
             />
           </div>
 
+          <BaseButton
+            v-if="isWithReloadButton"
+            class="basic circular section-item"
+            icon="reload"
+            @click="handleReloadButtonClick"
+          />
+
           <div
             v-if="isWithOptions"
             class="section-item"
@@ -91,6 +98,7 @@ import BaseOrderSelect from '@/components/selects/BaseOrderSelect.vue'
 import BaseViewSelect from '@/components/selects/BaseViewSelect.vue'
 import BasePaginatedSegmentContainer
   from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import refreshableMixin from '@/mixins/refreshableMixin'
 import {
   generateKey
@@ -103,7 +111,8 @@ export default {
     BaseSegmentContainer,
     BaseOrderSelect,
     BaseViewSelect,
-    BasePaginatedSegmentContainer
+    BasePaginatedSegmentContainer,
+    BaseButton
   },
   mixins: [
     refreshableMixin
@@ -135,7 +144,8 @@ export default {
     isWithOrderChange: Boolean,
     isWithViewChange: Boolean,
     viewId: String,
-    isWithOptions: Boolean
+    isWithOptions: Boolean,
+    isWithReloadButton: Boolean
   },
   data () {
     return {
@@ -187,6 +197,9 @@ export default {
     },
     handleFocus () {
       this.focus()
+    },
+    handleReloadButtonClick () {
+      this.refresh()
     },
     focus () {
       this.$refs

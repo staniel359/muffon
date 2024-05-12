@@ -20,6 +20,7 @@
         :model="model"
         :is-with-top-segment="isWithTopSegment"
         :is-with-order-change="isWithOrderChange"
+        :is-with-reload-button="isWithReloadButton"
         :response-page-limit="pageSlotProps.responsePageLimit"
       >
         <template
@@ -56,7 +57,8 @@ export default {
     order: String,
     model: String,
     isWithTopSegment: Boolean,
-    isWithOrderChange: Boolean
+    isWithOrderChange: Boolean,
+    isWithReloadButton: Boolean
   },
   watch: {
     order: 'handleOrderChange'

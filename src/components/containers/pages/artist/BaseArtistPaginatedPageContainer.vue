@@ -17,6 +17,7 @@
         :artist-name="pageSlotProps.artistName"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
+        :is-with-reload-button="isWithReloadButton"
         :view-id="viewId"
         :scope="scope"
         :limit="limit"
@@ -74,7 +75,8 @@ export default {
     limit: Number,
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
-    viewId: String
+    viewId: String,
+    isWithReloadButton: Boolean
   }
 }
 </script>
