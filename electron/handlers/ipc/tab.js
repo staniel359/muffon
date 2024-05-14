@@ -1,9 +1,9 @@
-import createTab from '#/actions/tab/create'
-import setActiveTab from '#/actions/tab/setActive'
-import updateTab from '#/actions/tab/update'
-import isReplaceActiveTab from '#/actions/tab/isReplaceActive'
-import replaceActiveTab from '#/actions/tab/replaceActive'
-import deleteTab from '#/actions/tab/delete'
+import createTab from '../../actions/tab/create.js'
+import setActiveTab from '../../actions/tab/setActive.js'
+import updateTab from '../../actions/tab/update.js'
+import isReplaceActiveTab from '../../actions/tab/isReplaceActive.js'
+import replaceActiveTab from '../../actions/tab/replaceActive.js'
+import deleteTab from '../../actions/tab/delete.js'
 
 export function handleAddTab (
   _,

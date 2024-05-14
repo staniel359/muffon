@@ -7,7 +7,7 @@ import {
   handleAddElectronStoreValue,
   handleDeleteElectronStoreValue,
   handleSetElectronStoreData
-} from '#/handlers/ipc/electronStore'
+} from '../../handlers/ipc/electronStore.js'
 
 export default function () {
   ipcMain.handle(

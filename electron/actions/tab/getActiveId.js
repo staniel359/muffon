@@ -1,4 +1,4 @@
-import getElectronStoreKey from '#/actions/electronStore/getKey'
+import getElectronStoreKey from '../electronStore/getKey.js'
 
 export default function () {
   return getElectronStoreKey(

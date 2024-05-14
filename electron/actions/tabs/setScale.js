@@ -1,6 +1,6 @@
-import getTabs from './get'
-import setTabBounds from '#/actions/tab/setBounds'
-import setTabScale from '#/actions/tab/setScale'
+import getTabs from './get.js'
+import setTabBounds from '../tab/setBounds.js'
+import setTabScale from '../tab/setScale.js'
 
 export default function (
   value

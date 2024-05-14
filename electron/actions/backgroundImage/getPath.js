@@ -3,7 +3,7 @@ import {
 } from 'path'
 import {
   backgroundImagesFolderPath
-} from '#/helpers/paths'
+} from '../../helpers/paths.js'
 
 export default function (
   fileName

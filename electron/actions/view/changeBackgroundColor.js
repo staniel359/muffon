@@ -1,7 +1,7 @@
-import getElectronStoreKey from '#/actions/electronStore/getKey'
+import getElectronStoreKey from '../electronStore/getKey.js'
 import {
   colors
-} from '#/helpers/utils'
+} from '../../helpers/utils.js'
 
 export default function (
   view

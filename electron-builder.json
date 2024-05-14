@@ -41,11 +41,11 @@
   },
   "directories": {
     "buildResources": "build",
-    "output": "package_electron"
+    "output": "build_electron"
   },
   "files": [
     "./.env",
-    "./build_electron/**/*",
+    "./electron/**/*",
     "./index.html",
     {
       "from": "./build",

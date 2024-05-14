@@ -1,6 +1,6 @@
-import saveAudioFile from '#/actions/audioFile/save'
-import deleteAudioFile from '#/actions/audioFile/delete'
-import readAudioFileMetadata from '#/actions/audioFile/readMetadata'
+import saveAudioFile from '../../actions/audioFile/save.js'
+import deleteAudioFile from '../../actions/audioFile/delete.js'
+import readAudioFileMetadata from '../../actions/audioFile/readMetadata.js'
 
 export function handleSaveAudioFile (
   _,

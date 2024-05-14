@@ -2,14 +2,14 @@ import {
   app,
   Menu
 } from 'electron'
-import showMainWindow from '#/actions/mainWindow/show'
-import hideMainWindow from '#/actions/mainWindow/hide'
-import showAboutWindow from '#/actions/aboutWindow/show'
-import callExit from '#/actions/app/callExit'
+import showMainWindow from '../mainWindow/show.js'
+import hideMainWindow from '../mainWindow/hide.js'
+import showAboutWindow from '../aboutWindow/show.js'
+import callExit from '../app/callExit.js'
 import i18n from 'i18n'
 import {
   isMac
-} from '#/helpers/utils'
+} from '../../helpers/utils.js'
 
 export default function () {
   const isVisible =

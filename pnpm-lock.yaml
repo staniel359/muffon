@@ -19,6 +19,9 @@ importers:
       discord-rpc:
         specifier: ^4.0.1
         version: 4.0.1(encoding@0.1.13)
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
       electron-dl:
         specifier: ^3.5.2
         version: 3.5.2
@@ -104,9 +107,6 @@ importers:
       vite:
         specifier: ^5.2.11
         version: 5.2.11(@types/node@20.12.8)(less@4.2.0)(sass@1.76.0)
-      vite-electron-plugin:
-        specifier: ^0.8.3
-        version: 0.8.3(acorn@8.11.3)(esbuild@0.20.2)(vite-plugin-electron-renderer@0.14.5)
       vite-plugin-electron-renderer:
         specifier: ^0.14.5
         version: 0.14.5
@@ -1571,6 +1571,10 @@ packages:
 
   dotenv-expand@5.1.0:
     resolution: {integrity: sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==}
+
+  dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+    engines: {node: '>=12'}
 
   dotenv@9.0.2:
     resolution: {integrity: sha512-I9OvvrHp4pIARv4+x9iuewrWycX6CcZtoAu1XrzPxc5UygMJXJZYmBsynku8IkrJwgypE5DGNjDPmPRhDCptUg==}
@@ -3302,14 +3306,6 @@ packages:
     resolution: {integrity: sha512-DlL+XwOy3NxAQ8xuC0okPgK46iuVNAK01YN7RueYBqqFeGsBjV9XmCAzAdgt+667bCl5kPh9EqKKDwnaPG1I7A==}
     engines: {node: '>=10'}
 
-  notbundle@0.4.0:
-    resolution: {integrity: sha512-fstkCyAyt5nqHch1GESWqkW9i/D2p80SacBEAoPNoRS0U6qBT6ZSUp2BayS+dbEWTHqheSzwxQwEEK/jpPObHw==}
-    peerDependencies:
-      '@swc/core': '*'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-
   now-and-later@2.0.1:
     resolution: {integrity: sha512-KGvQ0cB70AQfg107Xvs/Fbu+dGmZoTRJp2TaPwcwQm3/7PteUyN2BCgk8KBMPGBUXZdVwyWS8fDCGFygBm19UQ==}
     engines: {node: '>= 0.10'}
@@ -4451,27 +4447,8 @@ packages:
     resolution: {integrity: sha512-LII3bXRFBZLlezoG5FfZVcXflZgWP/4dCwKtxd5ky9+LOtM4CS3bIRQsmR1KMnMW07jpE8fqR2lcxPZ+8sJIcw==}
     engines: {node: '>= 0.10'}
 
-  vite-electron-plugin@0.8.3:
-    resolution: {integrity: sha512-3F0xdYO0oIOTNUduV1Lows6P+tq2dtnjN0d/AwCnzbL8MynSzDX9HQpilur7C2VP6zRA3Gu/Uxdhg/IKZP3blA==}
-    peerDependencies:
-      acorn: '*'
-      esbuild: '*'
-    peerDependenciesMeta:
-      acorn:
-        optional: true
-      esbuild:
-        optional: true
-
   vite-plugin-electron-renderer@0.14.5:
     resolution: {integrity: sha512-EQ7ORuPp8vFPCqfuGnVo7d36fXS0IFH4/RUlKb1drseix3TQEPcgwEuFADdXBxRgqMp70njz/1m0kdf5lEsm8w==}
-
-  vite-plugin-electron@0.14.1:
-    resolution: {integrity: sha512-QGQ2nJ4wjMf1FaDSkdoC/UskQGiYGcAToATJqJXvqrL4Jmt0CFaZqoDjh1xLicUWEo/X7urHYjhKTqwEeP7F7g==}
-    peerDependencies:
-      vite-plugin-electron-renderer: '*'
-    peerDependenciesMeta:
-      vite-plugin-electron-renderer:
-        optional: true
 
   vite-plugin-eslint@1.8.1:
     resolution: {integrity: sha512-PqdMf3Y2fLO9FsNPmMX+//2BF5SF8nEWspZdgl4kSt7UvHDRHVVfHvxsD7ULYzZrJDGRxR81Nq7TOFgwMnUang==}
@@ -6350,6 +6327,8 @@ snapshots:
       is-obj: 2.0.0
 
   dotenv-expand@5.1.0: {}
+
+  dotenv@16.4.5: {}
 
   dotenv@9.0.2: {}
 
@@ -8562,11 +8541,6 @@ snapshots:
 
   normalize-url@6.1.0: {}
 
-  notbundle@0.4.0:
-    dependencies:
-      chokidar: 3.6.0
-      fast-glob: 3.3.2
-
   now-and-later@2.0.1:
     dependencies:
       once: 1.4.0
@@ -9820,23 +9794,7 @@ snapshots:
       remove-trailing-separator: 1.1.0
       replace-ext: 1.0.1
 
-  vite-electron-plugin@0.8.3(acorn@8.11.3)(esbuild@0.20.2)(vite-plugin-electron-renderer@0.14.5):
-    dependencies:
-      fast-glob: 3.3.2
-      notbundle: 0.4.0
-      vite-plugin-electron: 0.14.1(vite-plugin-electron-renderer@0.14.5)
-    optionalDependencies:
-      acorn: 8.11.3
-      esbuild: 0.20.2
-    transitivePeerDependencies:
-      - '@swc/core'
-      - vite-plugin-electron-renderer
-
   vite-plugin-electron-renderer@0.14.5: {}
-
-  vite-plugin-electron@0.14.1(vite-plugin-electron-renderer@0.14.5):
-    optionalDependencies:
-      vite-plugin-electron-renderer: 0.14.5
 
   vite-plugin-eslint@1.8.1(eslint@9.2.0)(vite@5.2.11(@types/node@20.12.8)(less@4.2.0)(sass@1.76.0)):
     dependencies:

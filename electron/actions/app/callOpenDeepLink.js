@@ -1,8 +1,8 @@
 import {
   isWindows,
   isLinux
-} from '#/helpers/utils'
-import openDeepLink from '#/actions/app/openDeepLink'
+} from '../../helpers/utils.js'
+import openDeepLink from '../app/openDeepLink.js'
 
 export default function () {
   if (isWindows || isLinux) {

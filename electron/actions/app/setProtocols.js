@@ -3,7 +3,7 @@ import {
 } from 'electron'
 import {
   appName
-} from '#/helpers/utils'
+} from '../../helpers/utils.js'
 import {
   resolve as resolvePath
 } from 'path'

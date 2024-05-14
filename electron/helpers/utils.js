@@ -44,7 +44,7 @@ const harmfulSwitches = [
 ]
 
 function isHarmfulSwitchesPresent () {
-  for (harmfulSwitch of harmfulSwitches) {
+  for (let harmfulSwitch of harmfulSwitches) {
     if (
       app.commandLine.hasSwitch(
         harmfulSwitch
@@ -75,9 +75,7 @@ const {
   platform
 } = process
 
-export const isDevelopment = (
-  env.NODE_ENV === 'development'
-)
+export const isDevelopment = !app.isPackaged
 
 export const isShowDevTools = (
   env.DEV_TOOLS === 'true'

@@ -1,5 +1,5 @@
-import getAudioFilePath from './getPath'
-import deleteFile from '#/actions/file/delete'
+import getAudioFilePath from './getPath.js'
+import deleteFile from '../file/delete.js'
 
 export default function (
   fileName

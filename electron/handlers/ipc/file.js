@@ -1,6 +1,6 @@
-import readFile from '#/actions/file/read'
-import readFileDetails from '#/actions/file/readDetails'
-import decryptFile from '#/actions/file/decrypt'
+import readFile from '../../actions/file/read.js'
+import readFileDetails from '../../actions/file/readDetails.js'
+import decryptFile from '../../actions/file/decrypt.js'
 
 export function handleReadFile (
   _,

@@ -6,12 +6,13 @@ import {
   handleClearCache,
   handleSetLanguage,
   handleCheckNativeTheme,
+  handleCheckIfIsDevelopment,
   handleLogout,
   handleAccountDelete,
   handleNavigate,
   handleCallOpenDeepLink,
   handleExit
-} from '#/handlers/ipc/app'
+} from '../../handlers/ipc/app.js'
 
 export default function () {
   ipcMain.on(
@@ -32,6 +33,11 @@ export default function () {
   ipcMain.handle(
     'check-native-theme',
     handleCheckNativeTheme
+  )
+
+  ipcMain.handle(
+    'check-if-is-development',
+    handleCheckIfIsDevelopment
   )
 
   ipcMain.on(

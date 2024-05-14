@@ -1,12 +1,13 @@
-import setTitle from '#/actions/app/setTitle'
-import clearCache from '#/actions/app/clearCache'
-import setLanguage from '#/actions/app/setLanguage'
-import checkTheme from '#/actions/app/checkTheme'
-import callLogout from '#/actions/app/callLogout'
-import callAccountDelete from '#/actions/app/callAccountDelete'
-import callNavigate from '#/actions/app/callNavigate'
-import callOpenDeepLink from '#/actions/app/callOpenDeepLink'
-import exit from '#/actions/app/exit'
+import setTitle from '../../actions/app/setTitle.js'
+import clearCache from '../../actions/app/clearCache.js'
+import setLanguage from '../../actions/app/setLanguage.js'
+import checkTheme from '../../actions/app/checkTheme.js'
+import checkIfIsDevelopment from '../../actions/app/checkIfIsDevelopment.js'
+import callLogout from '../../actions/app/callLogout.js'
+import callAccountDelete from '../../actions/app/callAccountDelete.js'
+import callNavigate from '../../actions/app/callNavigate.js'
+import callOpenDeepLink from '../../actions/app/callOpenDeepLink.js'
+import exit from '../../actions/app/exit.js'
 
 export function handleSetTitle (
   _,
@@ -32,6 +33,10 @@ export function handleSetLanguage (
 
 export function handleCheckNativeTheme () {
   return checkTheme()
+}
+
+export function handleCheckIfIsDevelopment () {
+  return checkIfIsDevelopment()
 }
 
 export function handleLogout () {

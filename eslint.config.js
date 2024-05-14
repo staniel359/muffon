@@ -10,6 +10,7 @@ export default [
     ignores: [
       'build/',
       'build_electron/',
+      'electron/plugins/i18n.js',
       'semantic/'
     ]
   },

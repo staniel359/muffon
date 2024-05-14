@@ -1,4 +1,4 @@
-import getAudioFilePath from './getPath'
+import getAudioFilePath from './getPath.js'
 import {
   writeFileSync
 } from 'fs'

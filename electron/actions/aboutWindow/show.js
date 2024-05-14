@@ -1,4 +1,4 @@
-import setAboutWindowTitle from './setTitle'
+import setAboutWindowTitle from './setTitle.js'
 
 export default function () {
   setAboutWindowTitle()

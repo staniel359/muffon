@@ -1,14 +1,14 @@
 import ElectronStore from 'electron-store'
-import schema from './electronStore/schema'
+import schema from './electronStore/schema.js'
 import {
   isDevelopment
-} from '#/helpers/utils'
+} from '../helpers/utils.js'
 import {
   electronStoreKey
-} from '#/helpers/env'
+} from '../helpers/env.js'
 import {
   userDataPath
-} from '#/helpers/paths'
+} from '../helpers/paths.js'
 
 const encryptionKey = (
   isDevelopment ? null : electronStoreKey

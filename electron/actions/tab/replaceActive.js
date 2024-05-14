@@ -1,6 +1,6 @@
-import findTabIndex from './findIndex'
-import getTabs from '#/actions/tabs/get'
-import setActiveTab from './setActive'
+import findTabIndex from './findIndex.js'
+import getTabs from '../tabs/get.js'
+import setActiveTab from './setActive.js'
 
 export default function (
   tabId

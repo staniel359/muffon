@@ -2,8 +2,8 @@ import {
   isWindows,
   isLinux,
   isMac
-} from '#/helpers/utils'
-import openDeepLink from '#/actions/app/openDeepLink'
+} from '../helpers/utils.js'
+import openDeepLink from '../actions/app/openDeepLink.js'
 
 export function handleAllWindowsClosed (
   event

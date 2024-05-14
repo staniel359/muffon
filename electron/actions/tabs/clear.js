@@ -1,5 +1,5 @@
-import getTabs from './get'
-import clearTab from '#/actions/tab/clear'
+import getTabs from './get.js'
+import clearTab from '../tab/clear.js'
 
 function getTabId (
   tabData

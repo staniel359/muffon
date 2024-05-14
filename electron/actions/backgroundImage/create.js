@@ -1,11 +1,11 @@
 import {
   generateKey
-} from '#/helpers/utils'
-import getBackgroundImagePath from './getPath'
+} from '../../helpers/utils.js'
+import getBackgroundImagePath from './getPath.js'
 import {
   writeFile
 } from 'fs'
-import findTab from '#/actions/tab/find'
+import findTab from '../tab/find.js'
 
 export default function (
   {

@@ -1,4 +1,4 @@
-import electronStore from '#/plugins/electronStore'
+import electronStore from '../../plugins/electronStore.js'
 
 export default function (
   key

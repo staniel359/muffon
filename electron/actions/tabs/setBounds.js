@@ -1,5 +1,5 @@
-import getTabs from './get'
-import setTabBounds from '#/actions/tab/setBounds'
+import getTabs from './get.js'
+import setTabBounds from '../tab/setBounds.js'
 
 export default function () {
   getTabs().forEach(

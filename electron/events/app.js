@@ -5,7 +5,7 @@ import {
   handleAllWindowsClosed,
   handleSecondInstance,
   handleOpenUrl
-} from '#/handlers/app'
+} from '../handlers/app.js'
 
 export default function () {
   app.on(

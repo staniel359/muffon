@@ -3,12 +3,12 @@ import {
 } from 'electron'
 import {
   windowIcon
-} from '#/helpers/icons'
+} from '../../helpers/icons.js'
 import {
   baseUrl
-} from '#/helpers/urls'
+} from '../../helpers/urls.js'
 import changeViewBackgroundColor
-  from '#/actions/view/changeBackgroundColor'
+  from '../view/changeBackgroundColor.js'
 
 function handleClose (
   event
