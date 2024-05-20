@@ -1,6 +1,5 @@
 import {
-  defineConfig,
-  splitVendorChunkPlugin
+  defineConfig
 } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import inject from '@rollup/plugin-inject'
@@ -9,6 +8,9 @@ import electronRenderer from 'vite-plugin-electron-renderer'
 import {
   resolve as resolvePath
 } from 'path'
+import {
+  viteSingleFile
+} from 'vite-plugin-singlefile'
 
 export default defineConfig(
   {
@@ -22,7 +24,7 @@ export default defineConfig(
       ),
       eslint(),
       electronRenderer(),
-      splitVendorChunkPlugin()
+      viteSingleFile()
     ],
     resolve: {
       alias: {
