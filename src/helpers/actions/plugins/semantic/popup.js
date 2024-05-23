@@ -27,6 +27,16 @@ export function reposition (
   }
 }
 
+export function show (
+  element
+) {
+  $(
+    element
+  ).popup(
+    'show'
+  )
+}
+
 export function hide (
   element
 ) {

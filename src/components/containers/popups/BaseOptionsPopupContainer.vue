@@ -13,10 +13,13 @@
         simple: isTransparent
       }"
       :is-transparent="isTransparent"
-      @click.prevent.stop
+      @click.prevent.stop="handleButtonClick"
     />
 
-    <div class="main-popup-container">
+    <div
+      v-if="isCalled"
+      class="main-popup-container"
+    >
       <BaseOptionsPopupMenuContainer
         ref="popup"
       >
@@ -66,7 +69,8 @@ export default {
   ],
   data () {
     return {
-      isVisible: false
+      isVisible: false,
+      isLazy: true
     }
   },
   computed: {
@@ -107,6 +111,9 @@ export default {
       this.changeActive(
         value
       )
+    },
+    handleButtonClick () {
+      this.isCalled = true
     },
     changeActive (
       value
