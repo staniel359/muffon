@@ -34,6 +34,12 @@ export default {
       value
     ) {
       toggleClass(
+        'html',
+        'inverted',
+        value
+      )
+
+      toggleClass(
         'body',
         'inverted',
         value
