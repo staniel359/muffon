@@ -36,6 +36,10 @@
     "oneClick": false,
     "perMachine": true
   },
+  "flatpak": {
+    "runtimeVersion": "23.08",
+    "baseVersion": "23.08"
+  },
   "portable": {
     "artifactName": "${productName}-${version}-${os}-${arch}-portable.${ext}",
   },
