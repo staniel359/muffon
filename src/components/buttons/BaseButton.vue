@@ -4,7 +4,11 @@
     class="ui button main-button"
     :class="[
       buttonColorClass,
-      buttonIconClass
+      buttonIconClass,
+      {
+        loading: isLoading,
+        disabled: isLoading
+      }
     ]"
     @click="handleClick"
   >
@@ -21,7 +25,7 @@
       :class="{
         colored: isLeftIconColored
       }"
-      :icon="leftIcon"
+      :icon="leftIconComputed"
       :is-with-rtl="isIconWithRtl"
     />
 
@@ -57,7 +61,9 @@ export default {
     rightIcon: String,
     text: String,
     isIconWithRtl: Boolean,
-    isLeftIconColored: Boolean
+    isLeftIconColored: Boolean,
+    isLoading: Boolean,
+    isError: Boolean
   },
   emits: [
     'click'
@@ -71,6 +77,13 @@ export default {
         return 'icon'
       } else {
         return null
+      }
+    },
+    leftIconComputed () {
+      if (this.isError) {
+        return 'error'
+      } else {
+        return this.leftIcon
       }
     }
   },

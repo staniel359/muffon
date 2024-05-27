@@ -117,12 +117,12 @@ const data = {
     ) {
       return {
         previous: (
-          state.tracksCount &&
+          !!state.tracksCount &&
             !this.isDirectionEdge.previous &&
             !this.isGettingDirection.previous
         ),
         next: (
-          state.tracksCount &&
+          !!state.tracksCount &&
             !this.isDirectionEdge.next &&
             !this.isGettingDirection.next
         )

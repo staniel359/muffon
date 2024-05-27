@@ -16,6 +16,8 @@
         />
 
         <ExtraSegment
+          :profile-id="profileId"
+          :playlist-data="slotProps.playlistData"
           :order="order"
         />
 

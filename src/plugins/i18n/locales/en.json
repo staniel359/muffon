@@ -155,6 +155,7 @@
     "import": "Import",
     "close": "Close",
     "openLink": "Open link",
+    "play": "Play",
     "addFrom": {
       "search": "From search",
       "library": "From library"

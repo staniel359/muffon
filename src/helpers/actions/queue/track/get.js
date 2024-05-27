@@ -13,6 +13,11 @@ export default function getQueueTrack (
     direction
   }
 ) {
+  if (this) {
+    this.error = null
+    this.isLoading = true
+  }
+
   const storeData = queueStore()
 
   const isDirectionAvailable =
@@ -20,7 +25,13 @@ export default function getQueueTrack (
       direction
     ]
 
-  if (!isDirectionAvailable) { return }
+  if (!isDirectionAvailable) {
+    if (this) {
+      this.isLoading = false
+    }
+
+    return
+  }
 
   const followingTrackData =
     storeData.directionFollowingTrack[
@@ -28,7 +39,7 @@ export default function getQueueTrack (
     ]
 
   const isAudioLocal =
-    followingTrackData.audio?.local
+    !!followingTrackData.audio?.local
 
   function setFollowingTrackPlaying () {
     if (isAudioLocal) {
@@ -71,7 +82,7 @@ export default function getQueueTrack (
     }
   }
 
-  function getFollowingTrackAudioData () {
+  const getFollowingTrackAudioData = () => {
     setIsQueueGetting(
       true
     )
@@ -81,29 +92,35 @@ export default function getQueueTrack (
       isQueue: true
     }
 
-    function handleSuccess () {
+    const handleSuccess = () => {
       setIsQueueGetting(
         false
       )
     }
 
-    function handleError () {
-      retry()
+    const handleError = () => {
+      return retry()
     }
 
-    function retry () {
-      const queueTrackArgs = {
-        direction
-      }
+    const retry = async () => {
+      setIsQueueGetting(
+        false
+      )
 
-      updateGlobalStore(
+      await updateGlobalStore(
         {
           'queue.currentTrackId':
             followingTrackData.uuid
         }
       )
 
-      getQueueTrack(
+      const queueTrackArgs = {
+        direction
+      }
+
+      return getQueueTrack.bind(
+        this
+      )(
         queueTrackArgs
       )
     }
@@ -119,7 +136,7 @@ export default function getQueueTrack (
 
   if (followingTrackData) {
     const isAudioLink =
-      followingTrackData.audio?.link
+      !!followingTrackData.audio?.link
 
     if (
       isAudioLink ||
@@ -127,7 +144,7 @@ export default function getQueueTrack (
     ) {
       setFollowingTrackPlaying()
     } else {
-      getFollowingTrackAudioData()
+      return getFollowingTrackAudioData()
     }
   } else {
     setIsQueueGetting(
