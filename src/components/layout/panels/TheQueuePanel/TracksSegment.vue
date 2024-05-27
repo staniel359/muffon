@@ -5,7 +5,7 @@
   >
     <BaseTracksSimpleList
       :key="key"
-      :tracks="queueTracksComputed"
+      :tracks="queueTracksCollection"
       :profile-id="profileId"
       :is-with-self-icons="false"
       :scrollable="scrollable"
@@ -59,7 +59,8 @@ export default {
   data () {
     return {
       key: null,
-      scrollable: null
+      scrollable: null,
+      queueTracksCollection: []
     }
   },
   computed: {
@@ -79,18 +80,23 @@ export default {
     )
   },
   watch: {
-    queueTracksComputed:
-      'handleQueueTracksComputedChange'
+    queueTracksComputed: {
+      immediate: true,
+      handler:
+        'handleQueueTracksComputedChange'
+    }
   },
   mounted () {
     this.scrollable =
       this.$refs.segment.$el
   },
   methods: {
-    handleQueueTracksComputedChange (
+    async handleQueueTracksComputedChange (
       value,
       oldValue
     ) {
+      await this.$nextTick()
+
       const isChanged =
         isObjectChanged(
           value,
@@ -99,6 +105,9 @@ export default {
 
       if (isChanged) {
         this.key = generateKey()
+        this.queueTracksCollection = value
+
+        this.scrollToTop()
       }
     },
     handleDeleteOptionClick (
@@ -130,6 +139,11 @@ export default {
           'queue.tracksShuffled': tracksShuffled
         }
       )
+    },
+    scrollToTop () {
+      this.$refs
+        .segment
+        .scrollToTop()
     }
   }
 }
