@@ -155,6 +155,7 @@
     "import": "インポート",
     "close": "閉じる",
     "openLink": "リンクを開く",
+    "play": "再生",
     "addFrom": {
       "search": "検索から追加",
       "library": "ライブラリから追加"
