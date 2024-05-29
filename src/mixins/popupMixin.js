@@ -30,11 +30,15 @@ export default {
     isCalled: 'handleIsCalledChange'
   },
   mounted () {
+    this.isCalled = false
+
     if (this.isLazy) { return }
 
     this.initialize()
   },
   activated () {
+    this.isCalled = false
+
     if (this.isLazy) { return }
 
     this.initialize()
