@@ -12,6 +12,7 @@ import playerStore from '@/stores/player'
 import {
   ipcRenderer
 } from 'electron'
+import imagesSizes from '@/helpers/data/imagesSizes'
 
 export default {
   name: 'ThePlayerObserver',
@@ -46,23 +47,21 @@ export default {
         title: this.trackTitle,
         artist: this.artistName,
         album: this.albumTitle,
-        artwork: [
-          this.artworkData
-        ]
+        artwork: this.images
       }
     },
     albumTitle () {
       return this.playerPlaying.album?.title
     },
-    playerImage () {
-      return this.playerPlaying.image?.small
+    imageData () {
+      return this.playerPlaying.image
     },
-    artworkData () {
-      return {
-        src: (
-          this.playerImage || ''
-        )
-      }
+    images () {
+      if (!this.imageData) { return [] }
+
+      return imagesSizes.map(
+        this.formatImage
+      )
     }
   },
   watch: {
@@ -109,6 +108,20 @@ export default {
         'set-tray-tooltip',
         value
       )
+    },
+    formatImage (
+      {
+        name,
+        value
+      }
+    ) {
+      return {
+        src: this.imageData[
+          name
+        ],
+        sizes:
+          `${value}x${value}`
+      }
     }
   }
 }
