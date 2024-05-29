@@ -24,7 +24,8 @@
       class="description"
     >
       <small
-        v-text="description"
+        @click.stop
+        v-html="descriptionFormatted"
       />
     </div>
 
@@ -63,6 +64,8 @@ import BaseListCounterSection
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BasePlaylistOptionsPopup
   from '@/components/popups/playlist/BasePlaylistOptionsPopup.vue'
+import formatTextWithExternalLink
+  from '@/helpers/formatters/textWithExternalLink'
 
 export default {
   name: 'ContentBlock',
@@ -137,6 +140,14 @@ export default {
     },
     description () {
       return this.playlistData.description
+    },
+    descriptionFormatted () {
+      return formatTextWithExternalLink(
+        {
+          text: this.description,
+          className: 'bold'
+        }
+      )
     }
   },
   methods: {
