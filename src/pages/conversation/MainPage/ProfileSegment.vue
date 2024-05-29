@@ -4,7 +4,7 @@
       <BaseImage
         class="circular image-50"
         model="profile"
-        :image="imageData?.small"
+        :image="imageData?.extrasmall"
       />
 
       <div class="middle aligned content">

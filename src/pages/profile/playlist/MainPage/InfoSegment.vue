@@ -2,7 +2,7 @@
   <BaseSegmentContainer>
     <BaseItemContainer>
       <BaseZoomableImage
-        class="image image-80"
+        class="image image-90"
         model="playlist"
         size="small"
         :image-data="imageData"

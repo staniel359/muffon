@@ -5,7 +5,7 @@
     @click="handleLinkClick"
   >
     <BaseImage
-      class="rounded-medium image-35"
+      class="rounded-medium image-40"
       model="track"
       :image="imageData?.extrasmall"
     />

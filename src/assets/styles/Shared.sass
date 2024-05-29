@@ -261,31 +261,28 @@
 .image-100
   width: 100px !important
   height: 100px !important
-.image-80
-  width: 80px !important
-  height: 80px !important
+.image-90
+  width: 90px !important
+  height: 90px !important
+.image-60
+  width: 60px !important
+  height: 60px !important
 .image-50
   width: 50px !important
   height: 50px !important
-.image-45
-  width: 45px !important
-  height: 45px !important
 .image-40
   width: 40px !important
   height: 40px !important
 .image-35
   width: 35px !important
   height: 35px !important
-.image-30
-  width: 30px !important
-  height: 30px !important
 .image-25
   width: 25px !important
   height: 25px !important
 
-.video-image-110
-  width: 110px !important
-  height: calc(110px / 16 * 9) !important
+.video-image-120
+  width: 120px !important
+  height: calc(120px / 16 * 9) !important
 
 .rounded
   @extend .border-radius
@@ -476,6 +473,10 @@
 [dir="rtl"]
   .main-right-section
     margin-right: 1.5rem !important
+
+.main-list-right-section
+  &:not(:first-child)
+    @extend .main-right-section
 
 [dir="ltr"]
   .main-right-medium-section

@@ -21,9 +21,9 @@
       />
 
       <BaseImage
-        class="circular image-50"
+        class="circular image-60"
         model="videoChannel"
-        :image="imageData?.extrasmall"
+        :image="imageData?.small"
       />
 
       <div class="content">

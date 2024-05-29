@@ -1,8 +1,8 @@
 <template>
   <BaseImage
-    class="rounded-medium image-50"
+    class="rounded-medium image-60"
     model="playlist"
-    :image="imageData?.extrasmall"
+    :image="imageData?.small"
   />
 
   <div class="content">

@@ -7,7 +7,7 @@
     :link="profileLink"
   >
     <BaseImage
-      class="circular image-30"
+      class="circular image-40"
       model="profile"
       :image="imageData?.extrasmall"
     />

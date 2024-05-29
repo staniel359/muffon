@@ -24,8 +24,8 @@
       />
 
       <BaseArtistImage
-        size="extrasmall"
         :class="imageClass"
+        :size="imageSize"
         :image-data="imageData"
         :artist-name="artistName"
         @load-end="handleImageLoadEnd"
@@ -242,11 +242,18 @@ export default {
         return 'artist'
       }
     },
+    imageSize () {
+      if (this.isImageSmall) {
+        return 'extrasmall'
+      } else {
+        return 'small'
+      }
+    },
     imageClass () {
       if (this.isImageSmall) {
-        return 'image-35'
+        return 'image-40'
       } else {
-        return 'image-50'
+        return 'image-60'
       }
     }
   },

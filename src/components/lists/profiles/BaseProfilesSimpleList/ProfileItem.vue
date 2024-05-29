@@ -10,9 +10,9 @@
       />
 
       <BaseImage
-        class="circular image-50"
+        class="circular image-60"
         model="profile"
-        :image="imageData?.extrasmall"
+        :image="imageData?.small"
       />
     </div>
 

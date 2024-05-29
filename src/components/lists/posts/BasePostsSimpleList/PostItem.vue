@@ -13,7 +13,7 @@
       v-else
     >
       <BaseImage
-        class="image-40"
+        class="image-50"
         :class="imageClass"
         :model="imageModel"
         :image="imageData?.extrasmall"

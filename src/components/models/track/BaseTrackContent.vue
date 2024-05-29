@@ -23,13 +23,13 @@
     >
       <BaseImage
         v-if="isWithImage"
-        class="rounded-medium image-35"
+        class="rounded-medium image-40"
         model="track"
         :image="imageData?.extrasmall"
       />
       <BaseArtistImage
         v-else-if="isWithArtistImage"
-        class="image-35"
+        class="image-40"
         size="extrasmall"
         :artist-name="artistName"
         :image-data="artistImageData"

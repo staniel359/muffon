@@ -4,7 +4,7 @@
   >
     <BaseItemContainer>
       <BaseZoomableImage
-        class="image image-80"
+        class="image image-90"
         model="community"
         size="small"
         :image-data="imageData"

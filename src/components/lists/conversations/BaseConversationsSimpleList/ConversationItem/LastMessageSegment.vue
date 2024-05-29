@@ -3,7 +3,7 @@
     class="main-simple-list-item main-message-item main-bottom-section"
   >
     <BaseImage
-      class="circular image-30"
+      class="circular image-40"
       model="profile"
       :image="imageData?.extrasmall"
     />

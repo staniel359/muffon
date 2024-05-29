@@ -1,7 +1,7 @@
 <template>
   <div class="main-simple-list-item middle-aligned not-padded">
     <BaseImage
-      class="circular image-40"
+      class="circular image-50"
       model="profile"
       :image="imageData?.extrasmall"
     />
