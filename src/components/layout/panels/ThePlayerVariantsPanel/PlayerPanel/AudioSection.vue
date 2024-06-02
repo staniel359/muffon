@@ -81,7 +81,8 @@ export default {
     ),
     isGetQueueNextTrack () {
       return (
-        this.isQueueAutoplay &&
+        !this.isPlayingFromRadio &&
+          this.isQueueAutoplay &&
           this.isQueueDirectionAvailable.next
       )
     },
@@ -94,6 +95,9 @@ export default {
       return (
         this.isRtl ? 'rtl' : 'ltr'
       )
+    },
+    isPlayingFromRadio () {
+      return this.playerPlaying.from_radio
     }
   },
   watch: {

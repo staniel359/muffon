@@ -43,7 +43,8 @@ export default {
     ),
     isGetQueueNextTrack () {
       return (
-        this.isQueueAutoplay &&
+        !this.isPlayingFromRadio &&
+          this.isQueueAutoplay &&
           this.isQueueDirectionAvailable.next
       )
     },
