@@ -13,6 +13,7 @@
 import {
   mapState
 } from 'pinia'
+import hotkeys from 'hotkeys-js'
 import audioStore from '@/stores/audio'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 
@@ -44,8 +45,26 @@ export default {
       ]
     }
   },
+  mounted () {
+    hotkeys(
+      'space',
+      this.handleSpacePress
+    )
+  },
+  unmounted () {
+    hotkeys.unbind(
+      'space'
+    )
+  },
   methods: {
     handleClick () {
+      this.callAudioAction()
+    },
+    handleSpacePress (
+      event
+    ) {
+      event.preventDefault()
+
       this.callAudioAction()
     },
     callAudioAction () {
