@@ -6,7 +6,7 @@
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
     @click.exact.stop="handleClick"
-    @click.ctrl.exact.stop="handleCtrlClick"
+    @click.ctrl.exact.prevent.stop="handleCtrlClick"
     @auxclick.exact.stop="handleAuxClick"
   >
     <span
