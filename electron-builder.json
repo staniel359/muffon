@@ -18,7 +18,7 @@
     ]
   },
   "linux": {
-    "category": "Audio",
+    "category": "Audio;AudioVideo",
     "icon": "build/icons/icon.icns",
     "target": [
       "AppImage",
@@ -38,7 +38,20 @@
   },
   "flatpak": {
     "runtimeVersion": "23.08",
-    "baseVersion": "23.08"
+    "baseVersion": "23.08",
+    "finishArgs": [
+      "--socket=wayland",
+      "--socket=fallback-x11",
+      "--device=dri",
+      "--socket=pulseaudio",
+      "--share=network",
+      "--system-talk-name=com.electron.muffon",
+      "--system-talk-name=org.mpris.MediaPlayer2.com.electron.muffon",
+      "--talk-name=org.kde.StatusNotifierWatcher",
+      "--talk-name=org.freedesktop.Notifications",
+      "--own-name=org.mpris.MediaPlayer2.chromium.instance3"
+    ],
+    "useWaylandFlags": "true"
   },
   "portable": {
     "artifactName": "${productName}-${version}-${os}-${arch}-portable.${ext}",
