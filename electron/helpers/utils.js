@@ -43,32 +43,7 @@ const harmfulSwitches = [
   'host-rules'
 ]
 
-function isHarmfulSwitchesPresent () {
-  for (harmfulSwitch of harmfulSwitches) {
-    if (
-      app.commandLine.hasSwitch(
-        harmfulSwitch
-      )
-    ) {
-      return true
-    }
-  }
-  return false
-}
-
 export const appName = 'muffon'
-
-export const handleHarmfulSwitches = () => {
-  if (isHarmfulSwitchesPresent()) {
-    dialog.showErrorBox(
-      'Error',
-      'Harmful switches detected'
-    )
-
-    // Do not call app.exit(), ask @xyloflake why
-    process.exit()
-  }
-}
 
 const {
   env,
@@ -122,5 +97,32 @@ export function createFolderIfNotExists (
     mkdirSync(
       path
     )
+  }
+}
+
+function isHarmfulSwitchPresent (
+  harmfulSwitch
+) {
+  return app
+    .commandLine
+    .hasSwitch(
+      harmfulSwitch
+    )
+}
+
+export function handleHarmfulSwitches () {
+  const isAnyHarmfulSwitches =
+    !!harmfulSwitches.find(
+      isHarmfulSwitchPresent
+    )
+
+  if (isAnyHarmfulSwitches) {
+    dialog.showErrorBox(
+      'Error',
+      'Harmful switches detected'
+    )
+
+    // Do not call app.exit(), ask @xyloflake why
+    process.exit()
   }
 }
