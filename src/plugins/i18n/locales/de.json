@@ -544,14 +544,16 @@
           "bitrate": "Audiobitrate anzeigen",
           "album": "Album anzeigen",
           "equalizer": "Equalizer anzeigen",
-          "focusPlaying": "Fokus auf aktuellen Titel"
+          "focusPlaying": "Fokus auf aktuellen Titel",
+          "pauseOnVideoPlay": "Beim Abspielen von Video pausieren"
         },
         "queue": {
           "autoplay": "Autoplay",
           "clear": "Leeren, wenn Player geschlossen wird"
         },
         "video": {
-          "autoplay": "Autoplay"
+          "autoplay": "Autoplay",
+          "pauseOnAudioPlay": "Beim Abspielen von Audio pausieren"
         },
         "recommendations": {
           "hideLibraryArtists": "Bibliothekskünstler ausblenden",

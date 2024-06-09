@@ -544,14 +544,16 @@
           "bitrate": "הצג ביטרייט שמע",
           "album": "הצג אלבום",
           "equalizer": "הצג אקולייזר",
-          "focusPlaying": "התמקד בשיר הנוכחי"
+          "focusPlaying": "התמקד בשיר הנוכחי",
+          "pauseOnVideoPlay": "עצור בעת השמעת וידאו"
         },
         "queue": {
           "autoplay": "ניגון אוטומטי",
           "clear": "נקה נגן ביציאה"
         },
         "video": {
-          "autoplay": "ניגון אוטומטי"
+          "autoplay": "ניגון אוטומטי",
+          "pauseOnAudioPlay": "עצור בעת השמעת שמע"
         },
         "recommendations": {
           "hideLibraryArtists": "הסתר אמנים בספרייה",

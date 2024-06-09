@@ -287,6 +287,10 @@ export default {
     type: 'array',
     default: []
   },
+  'player.isPauseOnVideoPlay': {
+    type: 'boolean',
+    default: true
+  },
   'profile.connections': {
     type: 'object',
     default: {}
@@ -474,5 +478,9 @@ export default {
   'video.isAutoplay': {
     type: 'boolean',
     default: false
+  },
+  'video.isPauseOnAudioPlay': {
+    type: 'boolean',
+    default: true
   }
 }

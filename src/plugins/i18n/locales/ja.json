@@ -544,14 +544,16 @@
           "bitrate": "オーディオビットレートを表示",
           "album": "アルバムを表示",
           "equalizer": "イコライザを表示",
-          "focusPlaying": "現在のトラックにフォーカス"
+          "focusPlaying": "現在のトラックにフォーカス",
+          "pauseOnVideoPlay": "ビデオ再生時に一時停止"
         },
         "queue": {
           "autoplay": "自動再生",
           "clear": "プレイヤーを閉じた際にクリア"
         },
         "video": {
-          "autoplay": "自動再生"
+          "autoplay": "自動再生",
+          "pauseOnAudioPlay": "オーディオ再生時に一時停止"
         },
         "recommendations": {
           "hideLibraryArtists": "ライブラリアーティストを非表示",

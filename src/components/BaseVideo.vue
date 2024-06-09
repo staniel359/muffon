@@ -6,24 +6,29 @@
     }"
   >
     <div
-      ref="video"
+      :key="key"
       class="ui embed"
-    />
+    >
+      <div
+        :id="playerId"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import 'https://www.youtube.com/iframe_api'
 import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import videoStore from '@/stores/video'
+import audioStore from '@/stores/audio'
+import profileStore from '@/stores/profile'
+import playerStore from '@/stores/player'
 import {
-  set as setVideo
-} from '@/helpers/actions/plugins/semantic/video'
-import {
-  main as mainVideoOptions
-} from '@/helpers/formatters/plugins/semantic/options/video'
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseVideo',
@@ -33,6 +38,18 @@ export default {
       required: true
     },
     isWithAutoplay: Boolean
+  },
+  data () {
+    return {
+      player: null,
+      status: null,
+      key: null,
+      playerId: 'player',
+      playingStatuses: [
+        'UNSTARTED',
+        'PLAYING'
+      ]
+    }
   },
   computed: {
     ...mapState(
@@ -44,42 +61,165 @@ export default {
     ...mapState(
       videoStore,
       {
-        isVideoAutoplay: 'isAutoplay'
+        isVideoAutoplay: 'isAutoplay',
+        isPauseVideoOnAudioPlay: 'isPauseOnAudioPlay'
       }
     ),
-    videoOptions () {
-      return mainVideoOptions(
-        {
-          videoId: this.videoId,
-          isAutoplay: this.isAutoplay
-        }
-      )
-    },
-    videoId () {
-      return this.videoData.source.id
-    },
+    ...mapState(
+      audioStore,
+      {
+        audioElement: 'element',
+        audioStatus: 'status'
+      }
+    ),
+    ...mapState(
+      profileStore,
+      {
+        profileLanguage: 'language'
+      }
+    ),
+    ...mapState(
+      playerStore,
+      {
+        isPauseAudioOnVideoPlay: 'isPauseOnVideoPlay'
+      }
+    ),
     isAutoplay () {
       return (
         this.isWithAutoplay &&
           this.isVideoAutoplay
       )
+    },
+    playerStates () {
+      return Object.fromEntries(
+        Object.entries(
+          YT.PlayerState
+        ).map(
+          e => e.reverse()
+        )
+      )
+    },
+    playerOptions () {
+      return {
+        videoId: this.videoId,
+        playerVars: this.playerArgs,
+        events: this.playerEvents
+      }
+    },
+    videoId () {
+      return this.videoData.source.id
+    },
+    playerArgs () {
+      return {
+        autoplay: this.autoplayOption,
+        hl: this.profileLanguage
+      }
+    },
+    autoplayOption () {
+      return (
+        this.isAutoplay ? 1 : 0
+      )
+    },
+    playerEvents () {
+      return {
+        onStateChange:
+          this.handlePlayerStateChange
+      }
+    },
+    isPlaying () {
+      return this.playingStatuses.includes(
+        this.status
+      )
+    },
+    isAudioPlaying () {
+      return (
+        this.audioStatus === 'play'
+      )
+    },
+    isPauseOnAudioPlay () {
+      return (
+        this.isPauseVideoOnAudioPlay &&
+          this.isAudioPlaying
+      )
+    },
+    isPauseAudioOnPlay () {
+      return (
+        this.isPauseAudioOnVideoPlay &&
+          this.isPlaying
+      )
     }
   },
   watch: {
-    isAutoplay: 'handleIsAutoplayChange'
+    isPlaying:
+      'handleIsPlayingChange',
+    audioStatus:
+      'handleAudioStatusChange',
+    playerArgs:
+      'handlePlayerArgsChange',
+    isPauseOnAudioPlay:
+      'handleIsPauseOnAudioPlayChange',
+    isPauseAudioOnPlay:
+      'handleIsPauseAudioOnPlayChange'
   },
   mounted () {
     this.initialize()
   },
   methods: {
-    handleIsAutoplayChange () {
-      this.initialize()
+    handleIsPlayingChange () {
+      this.pauseAudioIfPlaying()
+    },
+    handleAudioStatusChange () {
+      this.pauseIfAudioPlaying()
+    },
+    handlePlayerArgsChange () {
+      this.reload()
+    },
+    handlePlayerStateChange (
+      event
+    ) {
+      this.status =
+        this.playerStates[
+          event.data
+        ]
+    },
+    handleIsPauseOnAudioPlayChange () {
+      this.pauseIfAudioPlaying()
+    },
+    handleIsPauseAudioOnPlayChange () {
+      this.pauseAudioIfPlaying()
     },
     initialize () {
-      setVideo(
-        this.$refs.video,
-        this.videoOptions
-      )
+      this.player =
+        new YT.Player(
+          this.playerId,
+          this.playerOptions
+        )
+    },
+    pauseIfAudioPlaying () {
+      if (this.isPauseOnAudioPlay) {
+        this.pauseVideo()
+      }
+    },
+    pauseAudioIfPlaying () {
+      if (this.isPauseAudioOnPlay) {
+        this.pauseAudio()
+      }
+    },
+    playVideo () {
+      this.player.playVideo()
+    },
+    pauseVideo () {
+      this.player.pauseVideo()
+    },
+    pauseAudio () {
+      this.audioElement.pause()
+    },
+    async reload () {
+      this.key = generateKey()
+
+      await this.$nextTick()
+
+      this.initialize()
     }
   }
 }
