@@ -139,7 +139,7 @@ export default {
           text: this.noticeText,
           linksData: {
             guide:
-              spotifyConnectionGuideLink,
+              spotifyConnectionGuideLink
           },
           className:
             'active bold underlined'

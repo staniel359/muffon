@@ -6,7 +6,7 @@ export function handleIsDarkModeChange () {
   const views = [
     mainWindow,
     aboutWindow,
-    ...getTabs(),
+    ...getTabs()
   ]
 
   views.forEach(

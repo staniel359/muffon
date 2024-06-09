@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@emoji-mart/data": "^1.2.1",
+    "@eslint/compat": "^1.0.3",
     "@rollup/plugin-inject": "^5.0.5",
     "@vitejs/plugin-vue": "^5.0.5",
     "axios": "^1.7.2",

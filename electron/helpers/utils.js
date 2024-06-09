@@ -44,7 +44,7 @@ const harmfulSwitches = [
 ]
 
 function isHarmfulSwitchesPresent () {
-  for (let harmfulSwitch of harmfulSwitches) {
+  for (harmfulSwitch of harmfulSwitches) {
     if (
       app.commandLine.hasSwitch(
         harmfulSwitch
@@ -83,24 +83,24 @@ export const isShowDevTools = (
 
 export const isMac =
   platforms
-  .macos
-  .includes(
-    platform
-  )
+    .macos
+    .includes(
+      platform
+    )
 
 export const isLinux =
   platforms
-  .linux
-  .includes(
-    platform
-  )
+    .linux
+    .includes(
+      platform
+    )
 
 export const isWindows =
   platforms
-  .windows
-  .includes(
-    platform
-  )
+    .windows
+    .includes(
+      platform
+    )
 
 export const isSingleInstance =
   app.requestSingleInstanceLock()
