@@ -76,11 +76,7 @@ function handleClose (
   }
 }
 
-function handleEnterFullScreen () {
-  setTabsBounds()
-}
-
-function handleLeaveFullScreen () {
+function handleResize () {
   setTabsBounds()
 }
 
@@ -152,19 +148,14 @@ export default function () {
     handleClose
   )
 
+  mainWindow.on(
+    'resize',
+    handleResize
+  )
+
   mainWindow
     .webContents
     .setWindowOpenHandler(
       handleNewWindow
     )
-
-  mainWindow.on(
-    'enter-full-screen',
-    handleEnterFullScreen
-  )
-
-  mainWindow.on(
-    'leave-full-screen',
-    handleLeaveFullScreen
-  )
 }

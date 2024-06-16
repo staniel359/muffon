@@ -63,15 +63,6 @@ export default function (
     tab
   )
 
-  const autoResizeOptions = {
-    width: true,
-    height: true
-  }
-
-  tab.setAutoResize(
-    autoResizeOptions
-  )
-
   const url = `${baseUrl}#/${path}`
 
   tab
