@@ -5,7 +5,7 @@ import getElectronStoreKey from '../electronStore/getKey.js'
 import getActiveTabId from './getActiveId.js'
 import setActiveTab from './setActive.js'
 import setTabBounds from './setBounds.js'
-import setTabScale from './setScale.js'
+import setViewScale from '../view/setScale.js'
 import {
   baseUrl
 } from '../../helpers/urls.js'
@@ -104,14 +104,8 @@ export default function (
   }
 
   function handleDomReady () {
-    const scale =
-      getElectronStoreKey(
-        'layout.scale'
-      )
-
-    setTabScale(
-      tab,
-      scale
+    setViewScale(
+      tab
     )
   }
 

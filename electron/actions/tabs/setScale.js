@@ -1,10 +1,8 @@
 import getTabs from './get.js'
 import setTabBounds from '../tab/setBounds.js'
-import setTabScale from '../tab/setScale.js'
+import setViewScale from '../view/setScale.js'
 
-export default function (
-  value
-) {
+export default function () {
   function setTabBoundsAndScale (
     tab
   ) {
@@ -12,9 +10,8 @@ export default function (
       tab
     )
 
-    setTabScale(
-      tab,
-      value
+    setViewScale(
+      tab
     )
   }
 

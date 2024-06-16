@@ -15,7 +15,7 @@ import getElectronStoreKey from '../electronStore/getKey.js'
 import showMainWindow from './show.js'
 import hideMainWindow from './hide.js'
 import checkForUpdates from '../app/checkForUpdates.js'
-import setMainWindowScale from './setScale.js'
+import setViewScale from '../view/setScale.js'
 import callExit from '../app/callExit.js'
 import {
   handleNewWindow
@@ -41,13 +41,8 @@ function handleReadyToShow () {
     checkForUpdates()
   }
 
-  const scale =
-    getElectronStoreKey(
-      'layout.scale'
-    )
-
-  setMainWindowScale(
-    scale
+  setViewScale(
+    mainWindow
   )
 }
 

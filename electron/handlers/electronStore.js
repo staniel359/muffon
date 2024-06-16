@@ -1,15 +1,10 @@
-import getTabs from '../actions/tabs/get.js'
-import changeViewBackgroundColor
-  from '../actions/view/changeBackgroundColor.js'
+import setViewsDarkMode from '../actions/views/setDarkMode.js'
+import setViewsScale from '../actions/views/setScale.js'
 
 export function handleIsDarkModeChange () {
-  const views = [
-    mainWindow,
-    aboutWindow,
-    ...getTabs()
-  ]
+  setViewsDarkMode()
+}
 
-  views.forEach(
-    changeViewBackgroundColor
-  )
+export function handleScaleChange () {
+  setViewsScale()
 }

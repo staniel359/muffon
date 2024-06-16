@@ -1,6 +1,5 @@
-import getTabs from '../tabs/get.js'
+import getViews from '../views/get.js'
 import setElectronStoreData from '../electronStore/setData.js'
-import setScale from '../app/setScale.js'
 
 export default function (
   data,
@@ -19,13 +18,7 @@ export default function (
       )
   }
 
-  const views = [
-    mainWindow,
-    aboutWindow,
-    ...getTabs()
-  ]
-
-  views.forEach(
+  getViews().forEach(
     updateViewStore
   )
 
@@ -33,20 +26,5 @@ export default function (
     setElectronStoreData(
       data
     )
-
-    const scale =
-      data[
-        'layout.scale'
-      ]
-
-    const isChangeScale = (
-      scale >= 0
-    )
-
-    if (isChangeScale) {
-      setScale(
-        scale
-      )
-    }
   }
 }

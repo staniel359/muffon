@@ -9,6 +9,7 @@ import {
 } from '../../helpers/urls.js'
 import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
+import setViewScale from '../view/setScale.js'
 
 function handleClose (
   event
@@ -49,6 +50,10 @@ export default function () {
   aboutWindow.removeMenu()
 
   changeViewBackgroundColor(
+    aboutWindow
+  )
+
+  setViewScale(
     aboutWindow
   )
 
