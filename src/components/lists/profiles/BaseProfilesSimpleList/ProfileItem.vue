@@ -10,7 +10,7 @@
       />
 
       <BaseImage
-        class="circular image-60"
+        class="circular image-50"
         model="profile"
         :image="imageData?.small"
       />

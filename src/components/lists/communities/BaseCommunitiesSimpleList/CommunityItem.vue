@@ -11,7 +11,7 @@
     />
 
     <BaseImage
-      class="rounded-medium image-60"
+      class="rounded-medium image-50"
       model="community"
       :image="imageData?.small"
     />
