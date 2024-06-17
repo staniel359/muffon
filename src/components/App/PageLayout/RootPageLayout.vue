@@ -26,8 +26,6 @@
 
   <TheDiscordObserver />
 
-  <TheExternalUrlsObserver />
-
   <TheDeepLinksObserver />
 
   <TheExitObserver />
@@ -58,8 +56,6 @@ import TheBackgroundObserver
   from '@/components/layout/observers/TheBackgroundObserver.vue'
 import TheDiscordObserver
   from '@/components/layout/observers/TheDiscordObserver.vue'
-import TheExternalUrlsObserver
-  from '@/components/layout/observers/TheExternalUrlsObserver.vue'
 import TheDeepLinksObserver
   from '@/components/layout/observers/TheDeepLinksObserver.vue'
 import TheExitObserver
@@ -110,7 +106,6 @@ export default {
     TheScrobbleObserver,
     TheBrowserObserver,
     TheDiscordObserver,
-    TheExternalUrlsObserver,
     TheDeepLinksObserver,
     TheExitObserver,
     TheRootBackground

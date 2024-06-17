@@ -109,10 +109,21 @@ export default function (
     )
   }
 
+  function addNewWindowHandler (
+    details
+  ) {
+    return handleNewWindow(
+      {
+        url: details.url,
+        tabId: tab.uuid
+      }
+    )
+  }
+
   tab
     .webContents
     .setWindowOpenHandler(
-      handleNewWindow
+      addNewWindowHandler
     )
 
   tab

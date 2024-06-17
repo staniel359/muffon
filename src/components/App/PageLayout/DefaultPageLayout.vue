@@ -5,6 +5,8 @@
     v-if="isRenderPlayerObserver"
   />
 
+  <TheExternalUrlsObserver />
+
   <TheBackground />
 
   <TheNavbarPanel />
@@ -45,6 +47,8 @@ import profileStore from '@/stores/profile'
 import playerStore from '@/stores/player'
 import TheMediaKeysObserver
   from '@/components/layout/observers/TheMediaKeysObserver.vue'
+import TheExternalUrlsObserver
+  from '@/components/layout/observers/TheExternalUrlsObserver.vue'
 import TheBackground from '@/components/layout/TheBackground.vue'
 import TheNavbarPanel from '@/components/layout/panels/TheNavbarPanel.vue'
 import TheSearchPanel from '@/components/layout/panels/TheSearchPanel.vue'
@@ -73,6 +77,7 @@ export default {
   components: {
     TheMediaKeysObserver,
     ThePlayerObserver,
+    TheExternalUrlsObserver,
     TheBackground,
     TheNavbarPanel,
     TheSearchPanel,

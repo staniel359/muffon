@@ -147,10 +147,4 @@ export default function () {
     'resize',
     handleResize
   )
-
-  mainWindow
-    .webContents
-    .setWindowOpenHandler(
-      handleNewWindow
-    )
 }
