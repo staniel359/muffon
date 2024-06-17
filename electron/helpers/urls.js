@@ -16,3 +16,6 @@ export const baseUrl = (
     ? developmentUrl
     : productionUrl
 )
+
+export const releasesUrl =
+  'https://api.github.com/repos/staniel359/muffon/releases/latest'

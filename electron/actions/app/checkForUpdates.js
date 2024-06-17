@@ -6,9 +6,11 @@ import {
 } from 'electron'
 import electronUpdater from 'electron-updater'
 import {
-  isMac,
-  releasesUrl
+  isMac
 } from '../../helpers/utils.js'
+import {
+  releasesUrl
+} from '../../helpers/urls.js'
 import i18n from 'i18n'
 
 const {
