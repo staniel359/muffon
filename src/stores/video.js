@@ -6,7 +6,8 @@ const data = {
   state () {
     return {
       isAutoplay: null,
-      isPauseOnAudioPlay: null
+      isPauseOnAudioPlay: null,
+      isOpenLinksInNewTab: null
     }
   },
   actions: {
@@ -19,6 +20,11 @@ const data = {
       value
     ) {
       this.isPauseOnAudioPlay = value
+    },
+    setIsOpenLinksInNewTab (
+      value
+    ) {
+      this.isOpenLinksInNewTab = value
     }
   }
 }

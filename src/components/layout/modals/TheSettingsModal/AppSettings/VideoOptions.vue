@@ -3,18 +3,24 @@
     <AutoplayOption />
 
     <PauseOnAudioPlayOption />
+
+    <OpenLinksInNewTabOption />
   </div>
 </template>
 
 <script>
 import AutoplayOption from './VideoOptions/AutoplayOption.vue'
-import PauseOnAudioPlayOption from './VideoOptions/PauseOnAudioPlayOption.vue'
+import PauseOnAudioPlayOption
+  from './VideoOptions/PauseOnAudioPlayOption.vue'
+import OpenLinksInNewTabOption
+  from './VideoOptions/OpenLinksInNewTabOption.vue'
 
 export default {
   name: 'VideoOptions',
   components: {
     AutoplayOption,
-    PauseOnAudioPlayOption
+    PauseOnAudioPlayOption,
+    OpenLinksInNewTabOption
   }
 }
 </script>

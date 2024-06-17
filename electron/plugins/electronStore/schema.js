@@ -482,5 +482,9 @@ export default {
   'video.isPauseOnAudioPlay': {
     type: 'boolean',
     default: true
+  },
+  'video.isOpenLinksInNewTab': {
+    type: 'boolean',
+    default: false
   }
 }

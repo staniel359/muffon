@@ -553,7 +553,8 @@
         },
         "video": {
           "autoplay": "自動再生",
-          "pauseOnAudioPlay": "オーディオ再生時に一時停止"
+          "pauseOnAudioPlay": "オーディオ再生時に一時停止",
+          "openLinksInNewTab": "リンクを新しいタブで開く"
         },
         "recommendations": {
           "hideLibraryArtists": "ライブラリアーティストを非表示",

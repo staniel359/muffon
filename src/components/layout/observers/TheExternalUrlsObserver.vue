@@ -6,59 +6,30 @@
 
 <script>
 import {
+  mapState
+} from 'pinia'
+import {
   ipcRenderer,
   shell
 } from 'electron'
-import {
-  main as formatVideoLink
-} from '@/helpers/formatters/links/video'
-import {
-  main as formatVideoChannelLink
-} from '@/helpers/formatters/links/videoChannel'
+import videoStore from '@/stores/video'
 import newTabMixin from '@/mixins/newTabMixin'
+import formatPathFromExternalLink
+  from '@/helpers/formatters/pathFromExternalLink'
 
 export default {
   name: 'TheExternalUrlsObserver',
   mixins: [
     newTabMixin
   ],
-  data () {
-    return {
-      formatters: [
-        {
-          id: 'youtube.playlistId',
-          regex:
-            /https:\/\/www.youtube.com\/watch\?.*v=.+&list=([\w_-]+)/,
-          formatPath: () => {
-            return null
-          }
-        },
-        {
-          id: 'youtube.videoId',
-          regex:
-            /https:\/\/www.youtube.com\/watch\?.*v=([\w_-]+)/,
-          formatPath: id => {
-            return formatVideoLink(
-              {
-                videoId: id
-              }
-            ).path
-          }
-        },
-        {
-          id: 'youtube.channelId',
-          regex:
-            /https:\/\/www.youtube.com\/channel\/([\w_-]+)/,
-          formatPath: id => {
-            return formatVideoChannelLink(
-              {
-                channelId: id
-              }
-            ).path
-          }
-        }
-      ]
-    }
+  computed: {
+    ...mapState(
+      videoStore,
+      {
+        isOpenVideoLinksInNewTab:
+          'isOpenLinksInNewTab'
+      }
+    )
   },
   mounted () {
     ipcRenderer.on(
@@ -73,87 +44,52 @@ export default {
         url
       }
     ) {
+      this.openLink(
+        {
+          link: url
+        }
+      )
+    },
+    openLink (
+      {
+        link
+      }
+    ) {
       const path =
-        this.formatPath(
+        formatPathFromExternalLink(
           {
-            url
+            link
           }
         )
 
       if (path) {
-        this.openNewTab(
+        this.openInternalPage(
           {
             path
           }
         )
       } else {
         shell.openExternal(
-          url
+          link
         )
       }
     },
-    formatPath (
+    openInternalPage (
       {
-        url
+        path
       }
     ) {
-      const formatterData =
-        this.getFormatterData(
+      if (this.isOpenVideoLinksInNewTab) {
+        this.openNewTab(
           {
-            url
+            path
           }
         )
-
-      if (formatterData) {
-        const {
-          regex,
-          formatPath
-        } = formatterData
-
-        const id =
-          this.getMatch(
-            {
-              url,
-              regex
-            }
-          )
-
-        return formatPath(
-          id
+      } else {
+        this.$router.push(
+          `/${path}`
         )
       }
-    },
-    getFormatterData (
-      {
-        url
-      }
-    ) {
-      const isMatchedFormatter = (
-        {
-          regex
-        }
-      ) => {
-        return this.getMatch(
-          {
-            url,
-            regex
-          }
-        )
-      }
-
-      return this.formatters.find(
-        isMatchedFormatter
-      )
-    },
-    getMatch (
-      {
-        url,
-        regex
-      }
-    ) {
-      return url.match(
-        regex
-      )?.[1]
     }
   }
 }

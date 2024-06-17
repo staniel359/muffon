@@ -553,7 +553,8 @@
         },
         "video": {
           "autoplay": "Autoplay",
-          "pauseOnAudioPlay": "Mettre en pause la vidéo à la lecture de l'audio"
+          "pauseOnAudioPlay": "Mettre en pause la vidéo à la lecture de l'audio",
+          "openLinksInNewTab": "Ouvrir le lien dans une nouvelle fenêtre"
         },
         "recommendations": {
           "hideLibraryArtists": "Masquer les artistes présents dans la bibliothèque",

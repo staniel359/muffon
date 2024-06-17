@@ -553,7 +553,8 @@
         },
         "video": {
           "autoplay": "Автовоспроизведение",
-          "pauseOnAudioPlay": "Приостанавливать при воспроизведении аудио"
+          "pauseOnAudioPlay": "Приостанавливать при воспроизведении аудио",
+          "openLinksInNewTab": "Открывать ссылки в новой вкладке"
         },
         "recommendations": {
           "hideLibraryArtists": "Скрывать исполнителей из библиотеки",

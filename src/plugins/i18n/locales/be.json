@@ -553,7 +553,8 @@
         },
         "video": {
           "autoplay": "Аўтапрайграванне",
-          "pauseOnAudioPlay": "Прыпыняць пры прайграванні аудыё"
+          "pauseOnAudioPlay": "Прыпыняць пры прайграванні аудыё",
+          "openLinksInNewTab": "Адкрываць спасылкі у новай укладцы"
         },
         "recommendations": {
           "hideLibraryArtists": "Схоўваць выканаўцаў з бібліятэкі",
