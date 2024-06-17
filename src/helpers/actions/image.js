@@ -52,10 +52,18 @@ export async function convertLinkToData (
     link
   }
 ) {
+  function handleError () {
+    return null
+  }
+
   const image =
     await fetch(
       link
+    ).catch(
+      handleError
     )
+
+  if (!image) { return }
 
   const blob =
     await image.blob()
