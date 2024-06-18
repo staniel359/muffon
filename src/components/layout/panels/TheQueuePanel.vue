@@ -17,6 +17,12 @@
       <PlaceholderSection />
     </BaseSegmentsContainer>
   </div>
+
+  <BaseDimmer
+    ref="dimmer"
+    class="queue-panel-dimmer"
+    @click="handleDimmerClick"
+  />
 </template>
 
 <script>
@@ -31,6 +37,7 @@ import BaseSegmentsContainer
 import HeaderSegment from './TheQueuePanel/HeaderSegment.vue'
 import TracksSegment from './TheQueuePanel/TracksSegment.vue'
 import PlaceholderSection from './TheQueuePanel/PlaceholderSection.vue'
+import BaseDimmer from '@/components/BaseDimmer.vue'
 import {
   main as mainSidebarOptions
 } from '@/helpers/formatters/plugins/semantic/options/sidebar'
@@ -45,7 +52,8 @@ export default {
     BaseSegmentsContainer,
     HeaderSegment,
     TracksSegment,
-    PlaceholderSection
+    PlaceholderSection,
+    BaseDimmer
   },
   computed: {
     ...mapState(
@@ -81,12 +89,12 @@ export default {
       ]
     ),
     handleShow () {
-      this.setIsQueuePanelVisible(
+      this.setVisible(
         true
       )
     },
     handleHide () {
-      this.setIsQueuePanelVisible(
+      this.setVisible(
         false
       )
     },
@@ -96,9 +104,35 @@ export default {
       if (!value) {
         hideQueuePanel()
       }
+    },
+    handleDimmerClick () {
+      hideQueuePanel()
+    },
+    setVisible (
+      value
+    ) {
+      this.setIsQueuePanelVisible(
+        value
+      )
+
+      this.toggleDimmer(
+        value
+      )
+    },
+    toggleDimmer (
+      value
+    ) {
+      this.$refs
+        .dimmer
+        .toggle(
+          value
+        )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.queue-panel-dimmer
+  z-index: 100
+</style>
