@@ -31,6 +31,7 @@ export default {
     playerTrackArgs () {
       return {
         trackData: this.trackData,
+        isQueue: true,
         isPlayableList: true,
         queueTracks:
           this.queueTracksFormatted,

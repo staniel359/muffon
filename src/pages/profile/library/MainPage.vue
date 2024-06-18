@@ -6,13 +6,17 @@
     <template
       #default="slotProps"
     >
-      <BaseSegmentsContainer>
+      <BaseSegmentsContainer
+        class="library-top-segment"
+      >
         <StatisticsSegment
           :library-data="slotProps.libraryData"
         />
 
         <ExtraSegment
-          v-if="isSelf"
+          :library-data="slotProps.libraryData"
+          :profile-id="profileId"
+          :is-self="isSelf"
         />
       </BaseSegmentsContainer>
 
@@ -65,4 +69,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.library-top-segment
+  z-index: 1
+</style>
