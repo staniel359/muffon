@@ -16,25 +16,24 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import {
-  main as mainCheckboxOptions
-} from '@/helpers/formatters/plugins/semantic/options/checkbox'
-import {
-  set as setCheckbox,
   check as checkCheckbox
 } from '@/helpers/actions/plugins/semantic/checkbox'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
+import checkboxMixin from '@/mixins/checkboxMixin'
 
 export default {
   name: 'BaseToggle',
+  mixins: [
+    checkboxMixin
+  ],
   props: {
     isUpdateGlobalStore: {
       type: Boolean,
       default: true
     },
-    storeKey: String,
-    isChecked: Boolean
+    storeKey: String
   },
   emits: [
     'isCheckedChange'
@@ -45,27 +44,13 @@ export default {
       [
         'isDarkMode'
       ]
-    ),
-    checkboxOptions () {
-      return mainCheckboxOptions(
-        {
-          onChecked: this.handleOn,
-          onUnchecked: this.handleOff
-        }
-      )
-    }
+    )
   },
   watch: {
     isChecked: {
       immediate: true,
       handler: 'handleIsChecked'
     }
-  },
-  mounted () {
-    setCheckbox(
-      this.$refs.checkbox,
-      this.checkboxOptions
-    )
   },
   methods: {
     async handleIsChecked (
@@ -78,17 +63,7 @@ export default {
         value
       )
     },
-    handleOn () {
-      this.handleChange(
-        true
-      )
-    },
-    handleOff () {
-      this.handleChange(
-        false
-      )
-    },
-    handleChange (
+    change (
       value
     ) {
       if (this.isUpdateGlobalStore) {

@@ -5,26 +5,58 @@ import {
 import {
   collection as formatCollection
 } from '@/helpers/formatters'
+import {
+  shuffleArray
+} from '@/helpers/utils'
 
 export default {
+  provide () {
+    return {
+      changeCheckableOption:
+        this.changeCheckableOption
+    }
+  },
   data () {
     return {
       error: null,
       isLoading: false,
-      scope: 'tracks'
+      scope: 'tracks',
+      checkableOptions: {
+        shuffle: false,
+        loop: false
+      }
     }
   },
   computed: {
     playerTrackArgs () {
       return {
         trackData: this.trackData,
+        isPlayableList: true,
         queueTracks:
           this.queueTracksFormatted,
-        isSkipOnError: true
+        queueTracksShuffled:
+          this.queueTracksFormattedShuffled,
+        isQueueShuffle: this.isQueueShuffle,
+        isQueueLoop: this.isQueueLoop
       }
     },
     trackData () {
-      return this.queueTracksFormatted[0]
+      return this.queueTracksComputed[0]
+    },
+    queueTracksComputed () {
+      if (this.isQueueShuffle) {
+        return this.queueTracksFormattedShuffled
+      } else {
+        return this.queueTracksFormatted
+      }
+    },
+    isQueueShuffle () {
+      return this.checkableOptions.shuffle
+    },
+    queueTracksFormattedShuffled () {
+      return shuffleArray(
+        this.queueTracksFormatted
+      )
     },
     queueTracksFormatted () {
       return formatCollection(
@@ -32,6 +64,9 @@ export default {
       ).map(
         this.formatTrack
       )
+    },
+    isQueueLoop () {
+      return this.checkableOptions.loop
     }
   },
   methods: {
@@ -58,6 +93,14 @@ export default {
           isFromSource
         }
       )
+    },
+    changeCheckableOption (
+      {
+        key,
+        value
+      }
+    ) {
+      this.checkableOptions[key] = value
     }
   }
 }

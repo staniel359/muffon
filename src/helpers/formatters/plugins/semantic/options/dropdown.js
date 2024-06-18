@@ -23,6 +23,7 @@ export function main (
   return {
     on: 'hover',
     transition: 'fade down',
+    collapseOnActionable: false,
     delay: {
       show: 0,
       hide: 150

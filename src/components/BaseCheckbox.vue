@@ -28,20 +28,36 @@
 
 <script>
 import {
-  set as setCheckbox
+  toggle as toggleCheckbox
 } from '@/helpers/actions/plugins/semantic/checkbox'
+import checkboxMixin from '@/mixins/checkboxMixin'
 
 export default {
   name: 'BaseCheckbox',
+  mixins: [
+    checkboxMixin
+  ],
   props: {
     name: String,
-    isChecked: Boolean,
     text: String
   },
-  mounted () {
-    setCheckbox(
-      this.$refs.checkbox
-    )
+  emits: [
+    'isCheckedChange'
+  ],
+  methods: {
+    change (
+      value
+    ) {
+      this.$emit(
+        'isCheckedChange',
+        value
+      )
+    },
+    toggle () {
+      toggleCheckbox(
+        this.$refs.checkbox
+      )
+    }
   }
 }
 </script>

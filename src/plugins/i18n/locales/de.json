@@ -156,6 +156,8 @@
     "close": "Schließen",
     "openLink": "Link öffnen",
     "play": "Abspielen",
+    "shuffle": "Zufallswiedergabe",
+    "loop": "Schleife",
     "addFrom": {
       "search": "Von der Suche",
       "library": "Von der Bibliothek"

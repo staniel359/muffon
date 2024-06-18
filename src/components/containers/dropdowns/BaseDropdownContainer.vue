@@ -1,15 +1,23 @@
 <template>
   <div
     ref="dropdown"
-    class="ui scrolling dropdown base-dropdown-container main-dropdown middle-aligned text-color-unset background-transparent min-width-unset"
+    class="ui scrolling dropdown base-dropdown-container main-dropdown middle-aligned text-color-unset min-width-unset"
     :class="{
-      inverted: isDarkMode,
+      inverted: (
+        isInvertable && isDarkMode
+      ),
       disabled: isDisabled,
-      selection: isBordered,
-      floating: !isBordered
+      selection: (
+        !isButtonExtra && isBordered
+      ),
+      floating: (
+        isButtonExtra || !isBordered
+      ),
+      'background-transparent': !isButtonExtra
     }"
   >
     <SelectedSection
+      v-if="!isButtonExtra"
       :is-only-icon="isOnlyIcon"
       :is-icon-colored="isIconColored"
       :icon="icon"
@@ -19,6 +27,12 @@
     />
 
     <BaseIcon
+      v-if="isButtonExtra"
+      class="no-margin"
+      icon="dropdown"
+    />
+    <BaseIcon
+      v-else
       class="main-right-small-icon relative no-right no-top"
       icon="dropdown"
       :is-loading="isLoading"
@@ -36,7 +50,8 @@
       :class="[
         transparentClass,
         {
-          left: isMenuLeft
+          left: isMenuLeft,
+          inverted: isDarkMode
         }
       ]"
     >
@@ -76,6 +91,10 @@ export default {
       type: Boolean,
       default: true
     },
+    isInvertable: {
+      type: Boolean,
+      default: true
+    },
     selected: String,
     isOnlyIcon: Boolean,
     header: String,
@@ -87,7 +106,9 @@ export default {
     inputType: String,
     inputName: String,
     isIconColored: Boolean,
-    options: Object
+    options: Object,
+    isButtonExtra: Boolean,
+    isCheckboxes: Boolean
   },
   emits: [
     'select'

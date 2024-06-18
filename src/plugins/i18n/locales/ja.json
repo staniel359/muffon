@@ -156,6 +156,8 @@
     "close": "閉じる",
     "openLink": "リンクを開く",
     "play": "再生",
+    "shuffle": "シャッフル",
+    "loop": "ループ",
     "addFrom": {
       "search": "検索から追加",
       "library": "ライブラリから追加"

@@ -156,6 +156,8 @@
     "close": "Fermer",
     "openLink": "Ouvrir le lien",
     "play": "Lire",
+    "shuffle": "Aléatoire",
+    "loop": "Lire en boucle",
     "addFrom": {
       "search": "À partir de la recherche",
       "library": "À partir de la bibliothèque"

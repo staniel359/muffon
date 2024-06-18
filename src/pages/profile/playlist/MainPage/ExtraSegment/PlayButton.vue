@@ -1,23 +1,28 @@
 <template>
-  <BaseQueuePlayButton
+  <BasePlayableListPlayButton
     :is-loading="isLoading"
     :error="error"
+    :checked-options="checkedOptions"
     @click="handleClick"
   />
 </template>
 
 <script>
-import BaseQueuePlayButton from '@/components/buttons/BaseQueuePlayButton.vue'
+import BasePlayableListPlayButton
+  from '@/components/buttons/BasePlayableListPlayButton.vue'
 import getProfilePlaylist from '@/helpers/actions/api/profile/playlist/get'
-import queuePlayMixin from '@/mixins/queuePlayMixin'
+import playableListMixin from '@/mixins/playableListMixin'
+import {
+  getObjectKeysWithTrueValues
+} from '@/helpers/utils'
 
 export default {
   name: 'PlayButton',
   components: {
-    BaseQueuePlayButton
+    BasePlayableListPlayButton
   },
   mixins: [
-    queuePlayMixin
+    playableListMixin
   ],
   props: {
     profileId: {
@@ -51,6 +56,11 @@ export default {
     },
     queueTracks () {
       return this.profileData?.playlist?.tracks
+    },
+    checkedOptions () {
+      return getObjectKeysWithTrueValues(
+        this.checkableOptions
+      )
     }
   },
   methods: {
