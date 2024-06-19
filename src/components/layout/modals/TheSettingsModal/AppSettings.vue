@@ -39,7 +39,7 @@ import RecommendationsOptions from './AppSettings/RecommendationsOptions.vue'
 import TopOptions from './AppSettings/TopOptions.vue'
 import LyricsOptions from './AppSettings/LyricsOptions.vue'
 import HistoryOptions from './AppSettings/HistoryOptions.vue'
-import OtherOptions from './AppSettings/OtherOptions.vue'
+import SystemOptions from './AppSettings/SystemOptions.vue'
 
 export default {
   name: 'AppSettings',
@@ -59,7 +59,7 @@ export default {
     TopOptions,
     LyricsOptions,
     HistoryOptions,
-    OtherOptions
+    SystemOptions
   },
   data () {
     return {
@@ -171,10 +171,10 @@ export default {
         },
         {
           nameCode:
-            'settings.sections.other',
-          icon: 'other',
-          scope: 'other',
-          component: 'OtherOptions',
+            'settings.sections.system',
+          icon: 'system',
+          scope: 'system',
+          component: 'SystemOptions',
           isAnonymous: true
         }
       ]

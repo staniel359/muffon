@@ -506,7 +506,7 @@
       "data": "Daten",
       "info": "Info",
       "account": "Konto",
-      "other": "Andere"
+      "system": "System"
     },
     "options": {
       "app": {
@@ -582,8 +582,11 @@
             "delete": "Browserverlauf löschen"
           }
         },
-        "other": {
-          "clearCache": "Zwischenspeicher leeren"
+        "system": {
+          "cache": {
+            "enable": "Cache aktivieren",
+            "clear": "Zwischenspeicher leeren"
+          }
         }
       },
       "profile": {
@@ -784,7 +787,8 @@
     "videoPlaylist": "Videoplaylist wurde gelöscht"
   },
   "messages": {
-    "welcome": "Willkommen, {profileNickname}"
+    "welcome": "Willkommen, {profileNickname}",
+    "restartToApply": "Die Einstellung wurde gespeichert und wird beim nächsten Start der Anwendung übernommen."
   },
   "profile": {
     "wasOnline": "War online"

@@ -8,7 +8,7 @@ import showAboutWindow from '../aboutWindow/show.js'
 import callExit from '../app/callExit.js'
 import i18n from 'i18n'
 import {
-  isMac
+  isMacos
 } from '../../helpers/utils.js'
 
 export default function () {
@@ -77,7 +77,7 @@ export default function () {
     menu
   )
 
-  if (isMac) {
+  if (isMacos) {
     app.dock.setMenu(
       menu
     )

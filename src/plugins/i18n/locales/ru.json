@@ -506,7 +506,7 @@
       "data": "Данные",
       "info": "Информация",
       "account": "Учётная запись",
-      "other": "Прочее"
+      "system": "Системные"
     },
     "options": {
       "app": {
@@ -582,8 +582,11 @@
             "delete": "Удалить историю браузера"
           }
         },
-        "other": {
-          "clearCache": "Очистить кэш"
+        "system": {
+          "cache": {
+            "enable": "Включить кэш",
+            "clear": "Очистить кэш"
+          }
         }
       },
       "profile": {
@@ -784,7 +787,8 @@
     "videoPlaylist": "Список видео был удалён"
   },
   "messages": {
-    "welcome": "Приветствую, {profileNickname}"
+    "welcome": "Приветствую, {profileNickname}",
+    "restartToApply": "Настройка была сохранена и будет применена при следующем запуске приложения."
   },
   "profile": {
     "wasOnline": "Был(-а) в сети"

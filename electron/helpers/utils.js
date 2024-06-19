@@ -11,7 +11,7 @@ export {
   v4 as generateKey
 } from 'uuid'
 
-const platforms = {
+const systems = {
   windows: [
     'win32'
   ],
@@ -45,37 +45,40 @@ const harmfulSwitches = [
 
 export const appName = 'muffon'
 
-const {
-  env,
-  platform
-} = process
+function isMatchedPlatform (
+  platforms
+) {
+  return platforms.includes(
+    process.platform
+  )
+}
+
+const systemName =
+  Object.entries(
+    systems
+  ).find(
+    isMatchedPlatform
+  )[0]
+
+process.env.systemName = systemName
 
 export const isDevelopment = !app.isPackaged
 
 export const isShowDevTools = (
-  env.DEV_TOOLS === 'true'
+  process.env.DEV_TOOLS === 'true'
 )
 
-export const isMac =
-  platforms
-    .macos
-    .includes(
-      platform
-    )
+export const isWindows = (
+  systemName === 'windows'
+)
 
-export const isLinux =
-  platforms
-    .linux
-    .includes(
-      platform
-    )
+export const isMacos = (
+  systemName === 'macos'
+)
 
-export const isWindows =
-  platforms
-    .windows
-    .includes(
-      platform
-    )
+export const isLinux = (
+  systemName === 'linux'
+)
 
 export const isSingleInstance =
   app.requestSingleInstanceLock()

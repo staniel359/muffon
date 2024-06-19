@@ -1,7 +1,7 @@
 import {
   isWindows,
   isLinux,
-  isMac
+  isMacos
 } from '../helpers/utils.js'
 import openDeepLink from '../actions/app/openDeepLink.js'
 import findTab from '../actions/tab/find.js'
@@ -62,7 +62,7 @@ export function handleOpenUrl (
   _,
   link
 ) {
-  if (isMac) {
+  if (isMacos) {
     openDeepLink(
       {
         link

@@ -506,7 +506,7 @@
       "data": "Data",
       "info": "Info",
       "account": "Compte",
-      "other": "Autres"
+      "system": "Système"
     },
     "options": {
       "app": {
@@ -582,8 +582,11 @@
             "delete": "Supprimer l'historique de navigation"
           }
         },
-        "other": {
-          "clearCache": "Vider le cache"
+        "system": {
+          "cache": {
+            "enable": "Activer le cache",
+            "clear": "Vider le cache"
+          }
         }
       },
       "profile": {
@@ -784,7 +787,8 @@
     "videoPlaylist": "La playlist vidéo a été supprimé"
   },
   "messages": {
-    "welcome": "Bienvenue, {profileNickname}"
+    "welcome": "Bienvenue, {profileNickname}",
+    "restartToApply": "Les paramètres ont bien été sauvegardés et seront appliqués après un redémarrage de l'application."
   },
   "profile": {
     "wasOnline": "En ligne"

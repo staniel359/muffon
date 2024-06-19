@@ -7,7 +7,7 @@
           left-icon="delete"
           :class="{
             loading: isLoading,
-            disabled: isLoading
+            disabled: isDisabled
           }"
           :text="clearText"
           :is-invertable="false"
@@ -22,6 +22,10 @@
 import {
   ipcRenderer
 } from 'electron'
+import {
+  mapState
+} from 'pinia'
+import systemStore from '@/stores/system'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import notificationMixin from '@/mixins/notificationMixin'
 
@@ -39,14 +43,26 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      systemStore,
+      [
+        'isWithCache'
+      ]
+    ),
     clearText () {
       return this.$t(
-        'settings.options.app.other.clearCache'
+        'settings.options.app.system.cache.clear'
       )
     },
     notificationSuccessMessage () {
       return this.$t(
         'notifications.cleared.cache'
+      )
+    },
+    isDisabled () {
+      return (
+        !this.isWithCache ||
+          this.isLoading
       )
     }
   },

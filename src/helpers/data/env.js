@@ -3,3 +3,6 @@ export const anonymousToken =
 
 export const shareEncryptionKey =
   import.meta.env.VITE_APP_SHARE_ENCRYPTION_KEY
+
+export const systemName =
+  process.env.systemName

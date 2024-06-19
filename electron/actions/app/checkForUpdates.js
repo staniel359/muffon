@@ -6,7 +6,7 @@ import {
 } from 'electron'
 import electronUpdater from 'electron-updater'
 import {
-  isMac
+  isMacos
 } from '../../helpers/utils.js'
 import {
   releasesUrl
@@ -119,7 +119,7 @@ function checkWithUpdate () {
 }
 
 export default function checkForUpdates () {
-  if (isMac) {
+  if (isMacos) {
     checkWithoutUpdate()
   } else {
     checkWithUpdate()

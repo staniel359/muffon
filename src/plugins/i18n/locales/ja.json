@@ -506,7 +506,7 @@
       "data": "データ",
       "info": "情報",
       "account": "アカウント",
-      "other": "その他"
+      "system": "システム"
     },
     "options": {
       "app": {
@@ -582,8 +582,11 @@
             "delete": "ブラウザ履歴を削除"
           }
         },
-        "other": {
-          "clearCache": "キャッシュをクリア"
+        "system": {
+          "cache": {
+            "enable": "キャッシュを有効にする",
+            "clear": "キャッシュをクリア"
+          }
         }
       },
       "profile": {
@@ -784,7 +787,8 @@
     "videoPlaylist": "ビデオプレイリストが削除されました"
   },
   "messages": {
-    "welcome": "ようこそ、{profileNickname} さん"
+    "welcome": "ようこそ、{profileNickname} さん",
+    "restartToApply": "次回のアプリケーション起動時に設定が保存され、適用されます。"
   },
   "profile": {
     "wasOnline": "Was online"

@@ -1,3 +1,18 @@
+import {
+  systemName
+} from '@/helpers/data/env'
+
+const systemIcons = {
+  windows: 'windows',
+  macos: 'apple',
+  linux: 'linux'
+}
+
+const systemIcon =
+  systemIcons[
+    systemName
+  ]
+
 export default {
   account: 'user circle',
   add: 'plus',
@@ -114,6 +129,7 @@ export default {
   submit: 'check',
   subscriber: 'user',
   success: 'check',
+  system: systemIcon,
   tabs: 'ellipsis horizontal',
   tag: 'tag',
   tagger: 'user',

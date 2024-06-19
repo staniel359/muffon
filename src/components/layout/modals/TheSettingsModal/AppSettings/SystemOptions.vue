@@ -1,15 +1,19 @@
 <template>
   <div class="main-settings-options-block">
+    <CacheOption />
+
     <ClearCacheOption />
   </div>
 </template>
 
 <script>
-import ClearCacheOption from './OtherOptions/ClearCacheOption.vue'
+import CacheOption from './SystemOptions/CacheOption.vue'
+import ClearCacheOption from './SystemOptions/ClearCacheOption.vue'
 
 export default {
-  name: 'OtherOptions',
+  name: 'SystemOptions',
   components: {
+    CacheOption,
     ClearCacheOption
   }
 }

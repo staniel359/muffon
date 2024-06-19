@@ -468,6 +468,10 @@ export default {
     type: 'boolean',
     default: true
   },
+  'system.isWithCache': {
+    type: 'boolean',
+    default: true
+  },
   'top.country': {
     type: [
       'null',

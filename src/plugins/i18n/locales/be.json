@@ -506,7 +506,7 @@
       "data": "Дадзеныя",
       "info": "Інфармацыя",
       "account": "Уліковы запіс",
-      "other": "Іншае"
+      "system": "Сістэмныя"
     },
     "options": {
       "app": {
@@ -582,8 +582,11 @@
             "delete": "Выдаліць гісторыю браўзера"
           }
         },
-        "other": {
-          "clearCache": "Ачысціць кэш"
+        "system": {
+          "cache": {
+            "enable": "Уключыць кэш",
+            "clear": "Ачысціць кэш"
+          }
         }
       },
       "profile": {
@@ -784,7 +787,8 @@
     "videoPlaylist": "Спіс відэа быў выдалены"
   },
   "messages": {
-    "welcome": "Вітаю, {profileNickname}"
+    "welcome": "Вітаю, {profileNickname}",
+    "restartToApply": "Налада была захавана і будзе ўжыта пры наступным запуску пракладання."
   },
   "profile": {
     "wasOnline": "Быў(-ла) ў сеціве"

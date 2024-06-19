@@ -506,7 +506,7 @@
       "data": "Data",
       "info": "Info",
       "account": "Account",
-      "other": "Other"
+      "system": "System"
     },
     "options": {
       "app": {
@@ -582,8 +582,11 @@
             "delete": "Delete browser history"
           }
         },
-        "other": {
-          "clearCache": "Clear cache"
+        "system": {
+          "cache": {
+            "enable": "Enable cache",
+            "clear": "Clear cache"
+          }
         }
       },
       "profile": {
@@ -784,7 +787,8 @@
     "videoPlaylist": "Video playlist has been deleted"
   },
   "messages": {
-    "welcome": "Welcome, {profileNickname}"
+    "welcome": "Welcome, {profileNickname}",
+    "restartToApply": "The setting has been saved and will be applied on the next application start."
   },
   "profile": {
     "wasOnline": "Was online"

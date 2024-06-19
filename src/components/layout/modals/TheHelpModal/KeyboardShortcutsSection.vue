@@ -21,6 +21,9 @@ import BaseAccordionContainer
   from '@/components/containers/BaseAccordionContainer.vue'
 import KeyboardShortcutItem
   from './KeyboardShortcutsSection/KeyboardShortcutItem.vue'
+import {
+  systemName
+} from '@/helpers/data/env'
 
 export default {
   name: 'KeyboardShortcutsSection',
@@ -73,7 +76,7 @@ export default {
       ]
     },
     ctrlKey () {
-      if (this.isMac) {
+      if (this.isMacos) {
         return 'Cmd'
       } else if (this.isGermanLanguage) {
         return 'Strg'
@@ -81,9 +84,9 @@ export default {
         return 'Ctrl'
       }
     },
-    isMac () {
+    isMacos () {
       return (
-        process.platform === 'darwin'
+        systemName === 'macos'
       )
     },
     isGermanLanguage () {
