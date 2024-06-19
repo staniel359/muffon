@@ -8,7 +8,7 @@
       #default="slotProps"
     >
       <BaseSegmentContainer
-        class="raised nested main-segment-container d-flex medium-padded background-transparent"
+        class="raised nested main-segment-container d-flex medium-padded background-none"
         :class="{
           disabled: isDeleted
         }"

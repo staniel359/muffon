@@ -2,7 +2,7 @@
   <div
     v-if="isRender || isCalled"
     ref="modal"
-    class="ui page modal base-modal background-transparent"
+    class="ui page modal base-modal background-none"
     :class="size"
   >
     <slot

@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="info-segment background-transparent"
+    class="info-segment background-none"
     :is-change-transparency="false"
   >
     <InfoSection

@@ -13,7 +13,7 @@
       floating: (
         isButtonExtra || !isBordered
       ),
-      'background-transparent': !isButtonExtra
+      'background-none': !isButtonExtra
     }"
   >
     <SelectedSection

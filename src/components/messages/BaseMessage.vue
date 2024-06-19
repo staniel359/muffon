@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui message base-message no-margin background-transparent"
+    class="ui message base-message no-margin background-none"
     :class="[
       messageClass,
       {

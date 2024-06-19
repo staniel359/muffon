@@ -9,7 +9,7 @@
       #default="slotProps"
     >
       <BaseButtonContainer
-        class="basic main-simple-button play-button height-100 background-transparent"
+        class="basic main-simple-button play-button height-100 background-none"
       >
         <BaseTrackAudioIcon
           class="main-icon"

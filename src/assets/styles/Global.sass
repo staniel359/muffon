@@ -5,11 +5,11 @@ html
 
 body
   &.pushable
-    @extend .background-transparent
+    @extend .background-none
     .pusher
-      @extend .overflow-visible, .background-transparent
+      @extend .overflow-visible, .background-none
       &:after
-        @extend .background-transparent
+        @extend .background-none
   &.dimmable
     &.scrolling
       & > .dimmer
@@ -174,11 +174,11 @@ p
 .main-input
   & > input,
   & > textarea
-    @extend .background-transparent
+    @extend .background-none
   &.inverted
     & > input,
     & > textarea
-      @extend .background-transparent, .text-color-white, .border-inverted
+      @extend .background-none, .text-color-white, .border-inverted
       &:focus
         @extend .border-color-base-light
     & > .icon
@@ -192,13 +192,11 @@ p
   width: $navbarHeight
 
 .main-segment-container
-  @extend .no-border, .no-margin, .main-list-bottom-large-section
+  @extend .no-border, .no-margin, .main-list-bottom-large-section, .blurred-before
   &.inverted
     @extend .shadowed
     &.nested
       @extend .border-inverted, .no-shadow
-  &:not(.loading)
-    @extend .blurred
 
 .main-segment
   @extend .scroll-smooth
@@ -206,7 +204,7 @@ p
     min-height: 150px !important
     z-index: 1
     &:before
-      @extend .background-transparent, .blurred
+      @extend .background-none, .blurred
       border-radius: inherit !important
   &.inverted
     @extend .no-shadow
@@ -296,7 +294,7 @@ p
   @extend .main-left-extrasmall-section
 
 .main-popup
-  @extend .no-border, .no-padding, .background-transparent, .blurred
+  @extend .no-border, .no-padding, .background-none, .blurred
   max-width: unset !important
   z-index: 2000 !important
   &.inverted
