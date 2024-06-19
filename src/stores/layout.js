@@ -19,8 +19,6 @@ const data = {
       backgroundImageId: 0,
       backgroundImagePath: null,
       transparency: null,
-      isMaximizeOnStart: null,
-      isExitOnClose: null,
       isCloseTabsOnExit: null,
       isWithSystemTheme: null,
       isWithArtistPopup: null,
@@ -104,16 +102,6 @@ const data = {
       value
     ) {
       this.transparency = value
-    },
-    setIsMaximizeOnStart (
-      value
-    ) {
-      this.isMaximizeOnStart = value
-    },
-    setIsExitOnClose (
-      value
-    ) {
-      this.isExitOnClose = value
     },
     setIsCloseTabsOnExit (
       value

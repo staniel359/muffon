@@ -124,14 +124,6 @@ export default {
     type: 'boolean',
     default: false
   },
-  'layout.isExitOnClose': {
-    type: 'boolean',
-    default: false
-  },
-  'layout.isMaximizeOnStart': {
-    type: 'boolean',
-    default: false
-  },
   'layout.isShowDonateModal': {
     type: 'boolean',
     default: true
@@ -490,5 +482,17 @@ export default {
   'video.isOpenLinksInNewTab': {
     type: 'boolean',
     default: false
+  },
+  'window.isExitOnClose': {
+    type: 'boolean',
+    default: false
+  },
+  'window.isMaximizeOnStart': {
+    type: 'boolean',
+    default: false
+  },
+  'window.isWithTrayIcon': {
+    type: 'boolean',
+    default: true
   }
 }

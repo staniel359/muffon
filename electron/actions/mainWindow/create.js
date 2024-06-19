@@ -28,7 +28,7 @@ import changeViewBackgroundColor
 function handleReadyToShow () {
   const isMaximizeOnStart =
     getElectronStoreKey(
-      'layout.isMaximizeOnStart'
+      'window.isMaximizeOnStart'
     )
 
   if (isMaximizeOnStart) {
@@ -61,7 +61,7 @@ function handleClose (
 
   const isExitOnClose =
     getElectronStoreKey(
-      'layout.isExitOnClose'
+      'window.isExitOnClose'
     )
 
   if (isExitOnClose) {

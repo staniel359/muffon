@@ -7,13 +7,21 @@ import addSessionHeadersHandlers
   from '../../actions/session/headers/addHandlers.js'
 import addGlobalShortcuts
   from '../../actions/app/addGlobalShortcuts.js'
+import getElectronStoreKey from '../electronStore/getKey.js'
 
 export default function () {
   createMainWindow()
 
   createAboutWindow()
 
-  createTray()
+  const isWithTrayIcon =
+    getElectronStoreKey(
+      'window.isWithTrayIcon'
+    )
+
+  if (isWithTrayIcon) {
+    createTray()
+  }
 
   addSessionHeadersHandlers()
 

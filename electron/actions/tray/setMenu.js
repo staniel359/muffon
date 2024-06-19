@@ -12,6 +12,8 @@ import {
 } from '../../helpers/utils.js'
 
 export default function () {
+  if (!tray) { return }
+
   const isVisible =
     mainWindow.isVisible()
 

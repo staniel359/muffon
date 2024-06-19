@@ -8,7 +8,7 @@
       />
 
       <BaseToggle
-        store-key="layout.isMaximizeOnStart"
+        store-key="window.isMaximizeOnStart"
         :is-checked="isMaximizeOnStart"
       />
     </div>
@@ -19,7 +19,7 @@
 import {
   mapState
 } from 'pinia'
-import layoutStore from '@/stores/layout'
+import windowStore from '@/stores/window'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     ...mapState(
-      layoutStore,
+      windowStore,
       [
         'isMaximizeOnStart'
       ]

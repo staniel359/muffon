@@ -530,7 +530,8 @@
         },
         "window": {
           "maximize": "Maximize on start",
-          "exit": "Exit on close"
+          "exit": "Exit on close",
+          "showTrayIcon": "Show tray icon"
         },
         "tabs": {
           "newTabSwitch": "Switch to new tab",
