@@ -258,6 +258,7 @@
         "account": "Account löschen",
         "library": "Bibliothek löschen",
         "history": {
+          "search": "Suchverlauf löschen",
           "activity": "Aktivitätenverlauf löschen",
           "browser": "Browserverlauf löschen",
           "player": "Playerverlauf löschen"
@@ -277,6 +278,7 @@
         "account": "Sie sind dabei, Ihren Account löschen.",
         "library": "Sie sind dabei, Ihre Bibliothek zu löschen.",
         "history": {
+          "search": "Du wirst deinen Suchverlauf löschen.",
           "activity": "Du bist dabei, deinen Aktivitätenverlauf zu löschen.",
           "browser": "Du bist dabei, deinen Browserfenster zu löschen.",
           "player": "Du bist dabei, deinen Playerverlauf zu löschen."
@@ -404,6 +406,7 @@
       "account": "Ihr Account wurde gelöscht",
       "library": "Ihre Bibliothek wurde gelöscht",
       "history": {
+        "search": "Suchverlauf wurde gelöscht",
         "activity": "Aktivitätenverlauf wurde gelöscht",
         "browser": "Browserverlauf wurde gelöscht",
         "player": "Playerverlauf wurde gelöscht"
@@ -536,10 +539,7 @@
         "search": {
           "source": "Quelle",
           "scope": "Suchbereich",
-          "resultsFullSize": "Ergebnisse in voller Größe anzeigen",
-          "history": {
-            "clear": "Suchverlauf löschen"
-          }
+          "resultsFullSize": "Ergebnisse in voller Größe anzeigen"
         },
         "player": {
           "audioSources": "Audioquellen (nach Priorität)",
@@ -572,6 +572,9 @@
           "annotations": "Anmerkungen anzeigen"
         },
         "history": {
+          "search": {
+            "delete": "Suchverlauf löschen"
+          },
           "activity": {
             "delete": "Aktivitätenverlauf löschen"
           },

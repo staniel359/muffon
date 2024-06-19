@@ -258,6 +258,7 @@
         "account": "Delete account",
         "library": "Delete library",
         "history": {
+          "search": "Delete search history",
           "activity": "Delete activity history",
           "browser": "Delete browser history",
           "player": "Delete player history"
@@ -277,6 +278,7 @@
         "account": "You are going to delete your account.",
         "library": "You are going to delete your library.",
         "history": {
+          "search": "You are going to delete your search history.",
           "activity": "You are going to delete your activity history.",
           "browser": "You are going to delete your browser history.",
           "player": "You are going to delete your player history."
@@ -404,6 +406,7 @@
       "account": "Your account has been deleted",
       "library": "Your library has been deleted",
       "history": {
+        "search": "Search history has been deleted",
         "activity": "Activity history has been deleted",
         "browser": "Browser history has been deleted",
         "player": "Player history has been deleted"
@@ -536,10 +539,7 @@
         "search": {
           "source": "Source",
           "scope": "Scope",
-          "resultsFullSize": "Show results in full size",
-          "history": {
-            "clear": "Clear search history"
-          }
+          "resultsFullSize": "Show results in full size"
         },
         "player": {
           "audioSources": "Audio sources (by priority)",
@@ -572,6 +572,9 @@
           "annotations": "Show annotations"
         },
         "history": {
+          "search": {
+            "delete": "Delete search history"
+          },
           "activity": {
             "delete": "Delete activity history"
           },

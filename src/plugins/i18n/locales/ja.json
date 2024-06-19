@@ -258,6 +258,7 @@
         "account": "アカウントを削除",
         "library": "ライブラリを削除",
         "history": {
+          "search": "検索履歴を削除する",
           "activity": "アクティビティ履歴を削除",
           "browser": "ブラウザ履歴を削除",
           "player": "プレイヤー履歴を削除"
@@ -277,6 +278,7 @@
         "account": "アカウントを削除します。",
         "library": "ライブラリを削除します。",
         "history": {
+          "search": "検索履歴を削除しようとしています。",
           "activity": "アクティビティ履歴を削除します。",
           "browser": "ブラウザ履歴を削除します。",
           "player": "プレイヤー履歴を削除します。"
@@ -404,6 +406,7 @@
       "account": "アカウントが削除されました",
       "library": "ライブラリが削除されました",
       "history": {
+        "search": "検索履歴が削除されました",
         "activity": "アクティビティ履歴が削除されました",
         "browser": "ブラウザ履歴が削除されました",
         "player": "プレイヤー履歴が削除されました"
@@ -536,10 +539,7 @@
         "search": {
           "source": "ソース",
           "scope": "スコープ",
-          "resultsFullSize": "結果を全画面表示",
-          "history": {
-            "clear": "検索履歴をクリア"
-          }
+          "resultsFullSize": "結果を全画面表示"
         },
         "player": {
           "audioSources": "オーディオソース（優先度別）",
@@ -572,6 +572,9 @@
           "annotations": "注釈を表示"
         },
         "history": {
+          "search": {
+            "delete": "検索履歴を削除する"
+          },
           "activity": {
             "delete": "アクティビティ履歴を削除"
           },
