@@ -1,11 +1,10 @@
 <template>
   <BaseMessage
-    class="success"
-    icon="success"
     :header="headerText"
     :content="contentText"
     :link="conversationLink"
     is-content-link
+    is-success
     @link-click="handleLinkClick"
   />
 </template>

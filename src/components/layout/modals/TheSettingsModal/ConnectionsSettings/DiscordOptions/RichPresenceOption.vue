@@ -15,9 +15,8 @@
 
     <div class="main-bottom-section">
       <BaseMessage
-        icon="infoCircle"
         :content="messageText"
-        is-icon-small
+        is-info
       />
     </div>
   </div>

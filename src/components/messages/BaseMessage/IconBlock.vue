@@ -1,5 +1,5 @@
 <template>
-  <i class="icons">
+  <i class="large icons main-list-left-medium-section">
     <BaseIcon
       :icon="icon"
     />

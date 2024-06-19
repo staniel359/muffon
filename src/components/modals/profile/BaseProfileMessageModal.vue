@@ -150,7 +150,7 @@ export default {
     focusContent () {
       this.$refs
         .content
-        .focus()
+        ?.focus()
     },
     clickSubmit () {
       this.$refs

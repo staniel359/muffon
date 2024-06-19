@@ -2,9 +2,8 @@
   <BaseSegmentContainer>
     <div class="main-top-section">
       <BaseMessage
-        class="success"
-        icon="success"
         :header="codeSentText"
+        is-success
       />
     </div>
 

@@ -17,9 +17,8 @@
   <BaseMessage
     v-if="isShowRestartMessage"
     class="main-bottom-section"
-    icon="infoCircle"
     :content="restartText"
-    is-icon-small
+    is-info
   />
 </template>
 

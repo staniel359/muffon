@@ -425,6 +425,10 @@
   .main-left-medium-section
     margin-left: 1.25rem !important
 
+.main-list-left-medium-section
+  &:not(:last-child)
+    @extend .main-left-medium-section
+
 [dir="ltr"]
   .main-left-small-section
     margin-right: 1rem !important

@@ -3,6 +3,7 @@
     <BaseMessage
       class="main-top-section main-formatted-text-container"
       :content="noticeTextFormatted"
+      is-info
     />
 
     <BaseFormContainer

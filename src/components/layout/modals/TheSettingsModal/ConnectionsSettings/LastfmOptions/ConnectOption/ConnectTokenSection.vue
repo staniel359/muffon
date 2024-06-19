@@ -11,6 +11,7 @@
 
     <BaseMessage
       :content="confirmText"
+      is-info
     />
 
     <div class="main-settings-option main-bottom-section">

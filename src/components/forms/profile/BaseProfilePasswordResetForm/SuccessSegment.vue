@@ -1,10 +1,9 @@
 <template>
   <BaseSegmentContainer>
     <BaseMessage
-      class="success"
-      icon="success"
       :header="passwordUpdatedHeaderText"
       :content="passwordUpdatedContentText"
+      is-success
     />
   </BaseSegmentContainer>
 </template>
