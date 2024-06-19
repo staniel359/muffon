@@ -122,13 +122,16 @@ p
         @extend .object-fit-cover
     .content
       @extend .no-margin, .flex-full, .word-break-break-word, .main-list-right-small-section, .main-text-container
+      .title
+        line-height: 1.3rem
       .description
         .artist-name
           @extend .text-color-black
-          margin-top: 0.1rem
+          margin-top: 0.2rem
+          line-height: 1.3rem
         .album-title
           margin-top: 0.1rem
-          line-height: 0.8rem
+          line-height: 1.1rem
           font-size: 1rem
     &:only-child
       &:hover
@@ -269,15 +272,17 @@ p
     @extend .main-list-right-medium-section
   & > .content
     @extend .flex-full, .no-padding, .main-list-right-medium-section, .main-text-container
+    .header
+      line-height: 1.5rem !important
     .text
       font-size: 20px
   .extra
-    line-height: 1.1rem
-    margin-top: 0.25rem
+    line-height: 1.3rem
+    margin-top: 0.15rem
   .description
     &:not(.right, .left)
-      line-height: 1rem
-      margin-top: 0.25rem
+      line-height: 1.1rem
+      margin-top: 0.15rem
   & > .base-options-popup-container
     @extend .main-list-right-small-section
   .main-self-icons
