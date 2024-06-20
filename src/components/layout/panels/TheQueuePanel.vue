@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import hotkeys from 'hotkeys-js'
 import {
   mapState,
   mapActions
@@ -80,6 +81,11 @@ export default {
       this.$refs.queuePanel,
       this.queuePanelOptions
     )
+
+    hotkeys(
+      'esc',
+      this.handlePressEscape
+    )
   },
   methods: {
     ...mapActions(
@@ -106,6 +112,9 @@ export default {
       }
     },
     handleDimmerClick () {
+      hideQueuePanel()
+    },
+    handlePressEscape () {
       hideQueuePanel()
     },
     setVisible (
