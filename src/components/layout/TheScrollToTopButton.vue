@@ -15,7 +15,7 @@
       :scrollable="scrollable"
     >
       <BaseButton
-        class="basic circular compact inverted"
+        class="basic circular compact inverted big"
         icon="arrowUp"
         @click="handleClick"
       />
