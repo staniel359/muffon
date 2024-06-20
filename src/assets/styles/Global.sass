@@ -189,7 +189,7 @@ p
 
 .main-navbar-button
   @extend .main-simple-button, .height-navbar
-  width: $navbarHeight
+  width: $navbarPanelHeight
 
 .main-segment-container
   @extend .no-border, .no-margin, .main-list-bottom-large-section, .blurred-before
@@ -417,6 +417,7 @@ p
 
 .main-sidebar-item
   @extend .no-padding, .d-flex
+  font-size: 1.1rem
   &.top-item
     @extend .align-items-center, .border-bottom, .height-navbar
     &.inverted
@@ -434,7 +435,9 @@ p
           @extend .text-color-white
 
 .main-sidebar-item-icon-image-container
-  @extend .middle-center-aligned, .image-40
+  @extend .middle-center-aligned
+  width: $sidebarPanelWidth
+  height: $sidebarPanelWidth
   flex-shrink: 0
   .icon
     font-size: 16px

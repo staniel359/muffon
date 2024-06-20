@@ -17,7 +17,7 @@
         @extend .d-block
     &.full-size
       width: inherit
-      max-height: calc(100vh - $navbarHeight - 20px)
+      max-height: calc(100vh - $navbarPanelHeight - 20px)
   .results-segment
     @extend .border-top, .no-border-top-radius
     max-height: inherit
@@ -61,10 +61,10 @@
     @extend .d-none
 
 .the-visible-area-container
-  height: calc(100vh - #{$navbarHeight})
+  height: calc(100vh - #{$navbarPanelHeight})
   z-index: 10000 !important
   &.player-panel-height
-    height: calc(100vh - #{$navbarHeight} - #{$playerPanelHeight})
+    height: calc(100vh - #{$navbarPanelHeight} - #{$playerPanelHeight})
 
 .the-navbar-panel
   @extend .no-border
@@ -75,7 +75,7 @@
 .the-queue-panel
   width: 475px !important
   .header-segment
-    margin-top: $navbarHeight !important
+    margin-top: $navbarPanelHeight !important
     z-index: 1
   .section-segment
     @extend .no-border-radius
@@ -89,10 +89,10 @@
 .the-sidebar-panel
   @extend .no-border
   z-index: 300 !important
-  width: 40px !important
+  width: $sidebarPanelWidth !important
   transition: width 0.35s !important
   &:hover
-    width: 240px !important
+    width: 275px !important
     .top-section
       @extend .overflow-y-auto
       &::-webkit-scrollbar

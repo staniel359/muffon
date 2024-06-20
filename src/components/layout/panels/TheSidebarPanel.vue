@@ -2,6 +2,8 @@
   <BaseMenuContainer
     class="vertical left overlay visible blurred sidebar the-sidebar-panel overflow-x-hidden"
     :class="transparentClass"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
   >
     <div class="height-100 full-column">
       <ProfileItem
@@ -96,6 +98,11 @@
       </div>
     </div>
   </BaseMenuContainer>
+
+  <BaseDimmer
+    ref="dimmer"
+    class="sidebar-panel-dimmer"
+  />
 </template>
 
 <script>
@@ -127,6 +134,7 @@ import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import HelpItem from './TheSidebarPanel/HelpItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
 import LoginItem from './TheSidebarPanel/LoginItem.vue'
+import BaseDimmer from '@/components/BaseDimmer.vue'
 import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
@@ -153,7 +161,8 @@ export default {
     SettingsItem,
     HelpItem,
     LogoutItem,
-    LoginItem
+    LoginItem,
+    BaseDimmer
   },
   mixins: [
     transparencyMixin
@@ -242,8 +251,32 @@ export default {
           this.isSidebarWithBookmarksItem
       )
     }
+  },
+  methods: {
+    handleMouseEnter () {
+      this.toggleDimmer(
+        true
+      )
+    },
+    handleMouseLeave () {
+      this.toggleDimmer(
+        false
+      )
+    },
+    toggleDimmer (
+      value
+    ) {
+      this.$refs
+        .dimmer
+        .toggle(
+          value
+        )
+    }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.sidebar-panel-dimmer
+  z-index: 10
+</style>
