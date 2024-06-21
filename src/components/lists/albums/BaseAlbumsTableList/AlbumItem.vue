@@ -14,7 +14,7 @@
       <BaseAlbumLinkContainer
         class="card-link"
         :album-data="albumData"
-        :artist-name="artistName"
+        :artist-name="albumArtistName"
         :is-link-to-library="isLinkToLibrary"
         :profile-id="profileId"
         @link-click="handleLinkClick"
@@ -92,7 +92,7 @@
         >
           <BaseAlbumListenersCount
             :album-title="albumTitle"
-            :artist-name="artistName"
+            :artist-name="albumArtistName"
             :listeners-count="listenersCount"
             @load-end="handleListenersCountLoadEnd"
           />
@@ -173,6 +173,7 @@ export default {
     },
     isWithArtistName: Boolean,
     isWithMultipleArtistNames: Boolean,
+    artistName: String,
     isWithListenersCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
@@ -198,7 +199,7 @@ export default {
     modelData () {
       return this.albumData
     },
-    artistName () {
+    albumArtistName () {
       return this.albumData.artist.name
     },
     albumTitle () {
@@ -222,10 +223,19 @@ export default {
     },
     isRenderArtistName () {
       return (
-        this.isWithArtistName || (
-          this.isWithMultipleArtistNames &&
-            this.artists?.length > 1
-        )
+        this.isWithArtistName ||
+          this.isRenderMultipleArtistNames
+      )
+    },
+    isRenderMultipleArtistNames () {
+      return (
+        this.isWithMultipleArtistNames &&
+          this.artistsFiltered?.length
+      )
+    },
+    artistsFiltered () {
+      return this.artists?.filter(
+        this.isMatchedArtist
       )
     },
     artists () {
@@ -274,6 +284,14 @@ export default {
       this.$refs
         .deleteModal
         .show()
+    },
+    isMatchedArtist (
+      artistData
+    ) {
+      return (
+        artistData.name !==
+          this.artistName
+      )
     }
   }
 }
