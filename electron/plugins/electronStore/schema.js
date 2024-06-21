@@ -184,6 +184,10 @@ export default {
     type: 'array',
     default: []
   },
+  'history.savedTracksSearch': {
+    type: 'array',
+    default: []
+  },
   'history.search': {
     type: 'array',
     default: []

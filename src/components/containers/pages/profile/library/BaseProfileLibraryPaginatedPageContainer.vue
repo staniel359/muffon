@@ -38,13 +38,14 @@
         <template
           #topExtra
         >
-          <BaseProfileLibrarySearchInput
+          <BasePageSearchInput
             v-if="isWithSearch"
             v-show="isShowSearch"
             class="main-bottom-section"
+            scope="library"
             :is-show="isShowSearch"
             :query="query"
-            :is-with-clear-button="isWithClearButton"
+            :is-with-clear-button="isSearchWithClearButton"
             @submit="handleSearchSubmit"
             @clear-button-click="handleSearchClearButtonClick"
           />
@@ -69,21 +70,18 @@ import BaseProfileLibraryPageContainer
   from './BaseProfileLibraryPageContainer.vue'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
-import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
-import BaseProfileLibrarySearchInput
-  from '@/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
 import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import searchablePageMixin from '@/mixins/searchablePageMixin'
 
 export default {
   name: 'BaseProfileLibraryPaginatedPageContainer',
   components: {
     BaseProfileLibraryPageContainer,
-    BasePaginatedPageContainer,
-    BaseSearchButton,
-    BaseProfileLibrarySearchInput
+    BasePaginatedPageContainer
   },
   mixins: [
-    paginatedPageMixin
+    paginatedPageMixin,
+    searchablePageMixin
   ],
   props: {
     profileId: String,
@@ -92,44 +90,10 @@ export default {
     order: String,
     model: String,
     isWithTopSegment: Boolean,
-    isWithSearch: Boolean,
     isWithOrderChange: Boolean,
     isWithViewChange: Boolean,
     isWithReloadButton: Boolean,
     viewId: String
-  },
-  data () {
-    return {
-      isShowSearch: false,
-      query: ''
-    }
-  },
-  computed: {
-    isWithClearButton () {
-      return !!this.query.length
-    }
-  },
-  watch: {
-    query: 'handleQueryChange'
-  },
-  methods: {
-    handleSearchButtonClick () {
-      this.isShowSearch =
-        !this.isShowSearch
-    },
-    handleSearchSubmit (
-      value
-    ) {
-      this.query = value
-    },
-    handleSearchClearButtonClick () {
-      this.query = ''
-    },
-    async handleQueryChange () {
-      await this.$nextTick()
-
-      this.refresh()
-    }
   }
 }
 </script>

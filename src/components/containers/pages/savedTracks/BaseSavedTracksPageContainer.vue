@@ -32,7 +32,8 @@ export default {
     navigationMixin
   ],
   props: {
-    order: String
+    order: String,
+    query: String
   },
   data () {
     return {
@@ -50,7 +51,8 @@ export default {
     },
     savedTracksArgs () {
       return {
-        order: this.order
+        order: this.order,
+        query: this.query
       }
     },
     responsePageLimit () {

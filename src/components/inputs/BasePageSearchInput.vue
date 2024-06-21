@@ -4,8 +4,8 @@
       <BaseHistoryInput
         ref="input"
         class="main-search-input"
-        scope="librarySearch"
         :query="query"
+        :scope="scopeFormatted"
         @submit="handleSubmit"
       />
 
@@ -22,12 +22,16 @@ import BaseHistoryInput from '@/components/inputs/BaseHistoryInput.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
-  name: 'BaseProfileLibrarySearchInput',
+  name: 'BasePageSearchInput',
   components: {
     BaseHistoryInput,
     BaseClearButton
   },
   props: {
+    scope: {
+      type: String,
+      required: true
+    },
     isShow: Boolean,
     query: String,
     isWithClearButton: Boolean
@@ -36,6 +40,11 @@ export default {
     'clearButtonClick',
     'submit'
   ],
+  computed: {
+    scopeFormatted () {
+      return `${this.scope}Search`
+    }
+  },
   watch: {
     isShow: 'handleIsShowChange'
   },

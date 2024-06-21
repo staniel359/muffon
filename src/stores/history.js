@@ -6,6 +6,7 @@ const data = {
   state () {
     return {
       librarySearch: null,
+      savedTracksSearch: null,
       search: null
     }
   },
@@ -14,6 +15,11 @@ const data = {
       value
     ) {
       this.librarySearch = value
+    },
+    setSavedTracksSearch (
+      value
+    ) {
+      this.savedTracksSearch = value
     },
     setSearch (
       value
