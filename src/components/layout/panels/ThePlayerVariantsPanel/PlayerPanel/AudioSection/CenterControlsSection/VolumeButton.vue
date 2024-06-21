@@ -2,7 +2,7 @@
   <BaseButton
     ref="button"
     class="circular compact simple"
-    :class="isActive ? 'primary' : 'basic'"
+    :class="buttonClass"
     :icon="icon"
     :is-invertable="!isActive"
     @click="handleClick"
@@ -17,8 +17,7 @@
 
 <script>
 import {
-  mapState,
-  mapActions
+  mapState
 } from 'pinia'
 import audioStore from '@/stores/audio'
 import BaseButton from '@/components/buttons/BaseButton.vue'
@@ -26,6 +25,9 @@ import BaseVolumePopup from '@/components/popups/BaseVolumePopup.vue'
 import volumePopupOptions
   from '@/helpers/formatters/plugins/semantic/options/popup/volume'
 import popupMixin from '@/mixins/popupMixin'
+import {
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'VolumeButton',
@@ -41,8 +43,7 @@ export default {
       audioStore,
       {
         isAudioMuted: 'isMuted',
-        audioVolume: 'volume',
-        audioElement: 'element'
+        audioVolume: 'volume'
       }
     ),
     element () {
@@ -67,31 +68,34 @@ export default {
       }
     },
     isVolumeOff () {
-      return this.audioVolume === 0
+      return !this.audioVolume
     },
     isVolumeLow () {
-      return this.audioVolume <= 0.5
+      return (
+        this.audioVolume <= 0.5
+      )
     },
     isActive () {
       return this.isAudioMuted
+    },
+    buttonClass () {
+      if (this.isActive) {
+        return 'primary'
+      } else {
+        return 'basic'
+      }
     }
   },
   methods: {
-    ...mapActions(
-      audioStore,
-      {
-        setIsAudioMuted: 'setIsMuted'
-      }
-    ),
     handleClick () {
-      const value = !this.isAudioMuted
-
-      this.audioElement.muted = value
-      this.audioElement.volume =
-        this.audioVolume
-
-      this.setIsAudioMuted(
-        value
+      this.toggleAudioMuted()
+    },
+    toggleAudioMuted () {
+      updateGlobalStore(
+        {
+          'audio.isMuted':
+            !this.isAudioMuted
+        }
       )
     }
   }

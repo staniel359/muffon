@@ -7,6 +7,14 @@ export default {
     type: 'boolean',
     default: false
   },
+  'audio.isLoop': {
+    type: 'boolean',
+    default: false
+  },
+  'audio.isMuted': {
+    type: 'boolean',
+    default: false
+  },
   'audio.equalizers': {
     type: 'array',
     default: [
