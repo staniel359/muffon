@@ -1,5 +1,5 @@
 <template>
-  <div class="field main-field">
+  <div class="field main-clearable-field">
     <BaseCalendar
       ref="calendar"
       :key="key"

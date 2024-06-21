@@ -1,6 +1,6 @@
 <template>
   <BaseCountrySelectSection
-    class="field main-field"
+    class="field main-clearable-field"
     :country="country"
     is-form-field
   />

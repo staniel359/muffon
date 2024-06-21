@@ -1,5 +1,5 @@
 <template>
-  <div class="field main-field">
+  <div class="field main-clearable-field">
     <BaseDropdown
       ref="dropdown"
       input-type="hidden"

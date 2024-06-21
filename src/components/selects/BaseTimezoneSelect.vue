@@ -1,6 +1,6 @@
 <template>
   <BaseDropdown
-    class="search main-select"
+    class="search main-field"
     :options="timezonesFormatted"
     :selected="profileTimezone"
     @select="handleSelect"

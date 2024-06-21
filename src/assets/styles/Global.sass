@@ -408,12 +408,18 @@ p
   & > .content
     @extend .middle-aligned, .main-text-container
     .right-section
-      @extend .main-right-section, .main-select
+      @extend .main-right-section, .main-wide-field
     .bottom-section
-      @extend .main-bottom-section, .main-select
+      @extend .main-bottom-section, .main-wide-field
+
+.main-field
+  width: 200px
+
+.main-wide-field
+  width: 250px
 
 .main-source-select
-  @extend .main-select
+  @extend .main-wide-field
 
 .main-sidebar-item
   @extend .no-padding, .d-flex
@@ -561,7 +567,7 @@ p
   &:last-child
     @extend .no-border
 
-.main-field
+.main-clearable-field
   @extend .middle-aligned
 
 .main-counter-bar-container
@@ -669,13 +675,7 @@ p
   @extend .middle-aligned
 
 .main-search-input
-  width: 240px
-
-.main-select
-  width: 230px
-
-.main-small-select
-  width: 150px
+  @extend .main-wide-field
 
 .main-bottom-right-button
   bottom: 1.5rem
