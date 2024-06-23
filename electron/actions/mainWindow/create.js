@@ -17,9 +17,6 @@ import hideMainWindow from './hide.js'
 import checkForUpdates from '../app/checkForUpdates.js'
 import setViewScale from '../view/setScale.js'
 import callExit from '../app/callExit.js'
-import {
-  handleNewWindow
-} from '../../handlers/app.js'
 import setTrayMenu from '../tray/setMenu.js'
 import setTabsBounds from '../tabs/setBounds.js'
 import changeViewBackgroundColor

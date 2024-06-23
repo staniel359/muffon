@@ -1,7 +1,4 @@
 import {
-  app
-} from 'electron'
-import {
   isSingleInstance,
   handleHarmfulSwitches
 } from './helpers/utils.js'

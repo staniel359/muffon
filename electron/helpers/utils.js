@@ -46,7 +46,10 @@ const harmfulSwitches = [
 export const appName = 'muffon'
 
 function isMatchedPlatform (
-  platforms
+  [
+    _,
+    platforms
+  ]
 ) {
   return platforms.includes(
     process.platform
