@@ -151,7 +151,8 @@ export default {
       await updateGlobalStore(
         {
           'history.search': [],
-          'history.librarySearch': []
+          'history.librarySearch': [],
+          'history.savedTracksSearch': []
         }
       )
 

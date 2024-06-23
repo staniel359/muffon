@@ -28,24 +28,10 @@
         <template
           #top
         >
-          <BaseSearchButton
+          <BaseSearchSection
             v-if="isWithSearch"
-            :is-active="isShowSearch"
-            @click="handleSearchButtonClick"
-          />
-        </template>
-
-        <template
-          #topExtra
-        >
-          <BasePageSearchInput
-            v-if="isWithSearch"
-            v-show="isShowSearch"
-            class="main-bottom-section"
             scope="library"
-            :is-show="isShowSearch"
             :query="query"
-            :is-with-clear-button="isSearchWithClearButton"
             @submit="handleSearchSubmit"
             @clear-button-click="handleSearchClearButtonClick"
           />

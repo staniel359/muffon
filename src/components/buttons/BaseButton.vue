@@ -70,14 +70,23 @@ export default {
   ],
   computed: {
     buttonIconClass () {
-      if (
-        !!this.icon &&
-          !this.text
-      ) {
+      if (this.isOnlyIcon) {
         return 'icon'
       } else {
         return null
       }
+    },
+    isOnlyIcon () {
+      return (
+        this.iconComputed &&
+          !this.text
+      )
+    },
+    iconComputed () {
+      return (
+        this.icon ||
+          this.leftIcon
+      )
     },
     leftIconComputed () {
       if (this.isError) {

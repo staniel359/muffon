@@ -22,7 +22,7 @@ import BaseHistoryInput from '@/components/inputs/BaseHistoryInput.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
-  name: 'BasePageSearchInput',
+  name: 'SearchInput',
   components: {
     BaseHistoryInput,
     BaseClearButton

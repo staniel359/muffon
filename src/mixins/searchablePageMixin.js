@@ -1,34 +1,21 @@
-import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
-import BasePageSearchInput
-  from '@/components/inputs/BasePageSearchInput.vue'
+import BaseSearchSection from '@/components/sections/BaseSearchSection.vue'
 
 export default {
   components: {
-    BaseSearchButton,
-    BasePageSearchInput
+    BaseSearchSection
   },
   props: {
     isWithSearch: Boolean
   },
   data () {
     return {
-      isShowSearch: false,
       query: ''
-    }
-  },
-  computed: {
-    isSearchWithClearButton () {
-      return !!this.query.length
     }
   },
   watch: {
     query: 'handleQueryChange'
   },
   methods: {
-    handleSearchButtonClick () {
-      this.isShowSearch =
-        !this.isShowSearch
-    },
     handleSearchSubmit (
       value
     ) {
