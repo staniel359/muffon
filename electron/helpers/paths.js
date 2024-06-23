@@ -3,7 +3,7 @@ import {
 } from 'electron'
 import {
   join as joinPath
-} from 'path'
+} from 'node:path'
 import {
   isDevelopment
 } from './utils.js'

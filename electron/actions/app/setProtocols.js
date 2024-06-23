@@ -6,7 +6,7 @@ import {
 } from '../../helpers/utils.js'
 import {
   resolve as resolvePath
-} from 'path'
+} from 'node:path'
 
 export default function () {
   if (process.defaultApp) {

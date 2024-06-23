@@ -5,7 +5,7 @@ import {
 import {
   existsSync,
   mkdirSync
-} from 'fs'
+} from 'node:fs'
 
 export {
   v4 as generateKey

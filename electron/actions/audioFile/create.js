@@ -1,7 +1,7 @@
 import getAudioFilePath from './getPath.js'
 import {
   writeFileSync
-} from 'fs'
+} from 'node:fs'
 
 export default function (
   fileName,

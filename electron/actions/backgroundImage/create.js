@@ -4,7 +4,7 @@ import {
 import getBackgroundImagePath from './getPath.js'
 import {
   writeFile
-} from 'fs'
+} from 'node:fs'
 import findTab from '../tab/find.js'
 
 export default function (

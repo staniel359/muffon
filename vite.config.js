@@ -8,7 +8,7 @@ import eslint from 'vite-plugin-eslint'
 import electronRenderer from 'vite-plugin-electron-renderer'
 import {
   resolve as resolvePath
-} from 'path'
+} from 'node:path'
 
 export default defineConfig(
   {
