@@ -2,7 +2,8 @@ export function main (
   {
     isMultiple,
     onShow,
-    onVisible
+    onVisible,
+    onHidden
   }
 ) {
   return {
@@ -18,6 +19,7 @@ export function main (
       duration: 300
     },
     onShow,
-    onVisible
+    onVisible,
+    onHidden
   }
 }
