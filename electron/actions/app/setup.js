@@ -5,8 +5,8 @@ import createAboutWindow
 import createTray from '../../actions/tray/create.js'
 import addSessionHeadersHandlers
   from '../../actions/session/headers/addHandlers.js'
-import addGlobalShortcuts
-  from '../../actions/app/addGlobalShortcuts.js'
+import setupGlobalShortcuts
+  from '../../actions/app/setupGlobalShortcuts.js'
 import getElectronStoreKey from '../electronStore/getKey.js'
 
 export default function () {
@@ -25,5 +25,5 @@ export default function () {
 
   addSessionHeadersHandlers()
 
-  addGlobalShortcuts()
+  setupGlobalShortcuts()
 }
