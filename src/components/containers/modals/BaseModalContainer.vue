@@ -2,13 +2,16 @@
   <div
     v-if="isRender || isCalled"
     ref="modal"
-    class="ui page modal base-modal"
+    class="ui page modal base-modal background-none"
     :class="size"
   >
     <slot
-      :class="{
-        inverted: isDarkMode
-      }"
+      :class="[
+        transparentClass,
+        {
+          inverted: isDarkMode
+        }
+      ]"
     />
   </div>
 </template>
