@@ -227,7 +227,6 @@ export default {
     isWithIndex: Boolean,
     index: Number,
     isWithArtistName: Boolean,
-    albumArtistName: String,
     isWithAlbumTitle: Boolean,
     isWithListenersCount: Boolean,
     topTrackCount: Number,
@@ -284,17 +283,25 @@ export default {
     },
     isRenderArtistName () {
       return (
-        this.isWithArtistName && (
-          !this.albumArtistName ||
-            this.isDifferentNames
-        )
+        this.isWithArtistName ||
+          this.isDifferentNames
       )
     },
     isDifferentNames () {
-      return (
-        this.artistName.toLowerCase() !==
-          this.albumArtistName.toLowerCase()
-      )
+      if (this.albumArtistName) {
+        return (
+          this.artistName.toLowerCase() !==
+            this.albumArtistName.toLowerCase()
+        )
+      } else {
+        return false
+      }
+    },
+    albumArtistName () {
+      return this.albumData?.artist?.name
+    },
+    albumData () {
+      return this.trackData.album
     },
     artistName () {
       return this.artistData.name

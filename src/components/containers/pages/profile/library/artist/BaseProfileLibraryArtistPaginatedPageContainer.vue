@@ -29,7 +29,6 @@
         >
           <slot
             :[scope]="slotProps[scope]"
-            :artist-name="pageSlotProps.artistName"
             :top-tracks-count="pageSlotProps.topTracksCount"
           />
         </template>

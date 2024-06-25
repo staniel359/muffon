@@ -13,7 +13,6 @@
       :is-with-index="isWithIndex"
       :index="index"
       :is-with-artist-name="isWithArtistName"
-      :album-artist-name="albumArtistName"
       :is-with-album-title="isWithAlbumTitle"
       :is-with-listeners-count="isWithListenersCount"
       :top-track-count="topTrackCount"
@@ -84,13 +83,9 @@ export default {
     },
     isWithImage: Boolean,
     isWithArtistImage: Boolean,
-    imageData: Object,
     isWithIndex: Boolean,
     isWithArtistName: Boolean,
-    artistName: String,
-    albumArtistName: String,
     isWithAlbumTitle: Boolean,
-    albumData: Object,
     isWithDuration: Boolean,
     isWithSource: Boolean,
     isWithSavedIcon: Boolean,
@@ -190,12 +185,6 @@ export default {
       return formatPlayerTrack(
         {
           trackData,
-          artistName: this.artistName,
-          albumData: this.albumData && {
-            source: this.albumData.source,
-            title: this.albumData.title
-          },
-          imageData: this.imageData,
           isFromSource
         }
       )

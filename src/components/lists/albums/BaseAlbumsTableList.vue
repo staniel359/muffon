@@ -10,7 +10,6 @@
       <AlbumItem
         :album-data="albumData"
         :is-with-artist-name="isWithArtistName"
-        :is-with-multiple-artist-names="isWithMultipleArtistNames"
         :artist-name="artistName"
         :is-with-listeners-count="isWithListenersCount"
         :is-with-library="isWithLibrary"
@@ -65,7 +64,6 @@ export default {
     },
     artistName: String,
     isWithArtistName: Boolean,
-    isWithMultipleArtistNames: Boolean,
     isWithListenersCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,

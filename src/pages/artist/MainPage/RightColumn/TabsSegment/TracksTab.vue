@@ -11,7 +11,6 @@
     >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :artist-name="slotProps.artistName"
         :top-track-count="slotProps.topTrackCount"
         is-with-listeners-count
         is-with-source-option

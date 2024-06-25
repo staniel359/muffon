@@ -17,7 +17,6 @@
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         :profile-id="profileId"
-        :artist-name="slotProps.artistName"
         :is-with-library-option="!isSelf"
         :is-with-delete-option="isSelf"
         is-with-image

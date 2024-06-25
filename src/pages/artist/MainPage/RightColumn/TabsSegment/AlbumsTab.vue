@@ -11,7 +11,6 @@
     >
       <BaseAlbumsTableList
         :albums="slotProps[scope]"
-        :artist-name="artistName"
         :items-in-row="itemsInRow"
         is-with-listeners-count
         is-with-library-option

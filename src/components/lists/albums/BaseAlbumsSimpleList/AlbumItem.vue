@@ -178,7 +178,6 @@ export default {
       required: true
     },
     isWithArtistName: Boolean,
-    isWithMultipleArtistNames: Boolean,
     artistName: String,
     isWithListenersCount: Boolean,
     isLinkToLibrary: Boolean,
@@ -217,9 +216,6 @@ export default {
     },
     albumArtistName () {
       return this.albumData.artist.name
-    },
-    artists () {
-      return this.albumData.artists
     },
     albumTitle () {
       return this.albumData.title
@@ -270,19 +266,18 @@ export default {
     isRenderArtistName () {
       return (
         this.isWithArtistName ||
-          this.isRenderMultipleArtistNames
+          this.isDifferentNames
       )
     },
-    isRenderMultipleArtistNames () {
-      return (
-        this.isWithMultipleArtistNames &&
-          this.artistsFiltered?.length
-      )
-    },
-    artistsFiltered () {
-      return this.artists?.filter(
-        this.isMatchedArtist
-      )
+    isDifferentNames () {
+      if (this.artistName) {
+        return (
+          this.artistName.toLowerCase() !==
+            this.albumArtistName.toLowerCase()
+        )
+      } else {
+        return false
+      }
     }
   },
   methods: {
@@ -319,14 +314,6 @@ export default {
       value
     ) {
       this.isCounterLinkActive = value
-    },
-    isMatchedArtist (
-      artistData
-    ) {
-      return (
-        artistData.name !==
-          this.artistName
-      )
     }
   }
 }

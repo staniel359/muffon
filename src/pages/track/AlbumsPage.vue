@@ -16,7 +16,6 @@
         :albums="slotProps[scope]"
         :view-id="viewId"
         is-with-artist-name
-        is-with-multiple-artist-names
         is-with-listeners-count
         is-with-source
         is-with-library-option

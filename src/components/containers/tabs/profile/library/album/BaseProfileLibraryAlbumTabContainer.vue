@@ -15,7 +15,6 @@
     >
       <slot
         :[scope]="slotProps[scope]"
-        :artist-name="artistName"
       />
     </template>
   </BasePaginatedTabContainer>
@@ -62,9 +61,6 @@ export default {
     },
     albumData () {
       return this.profileData?.library?.album
-    },
-    artistName () {
-      return this.albumData?.artist?.name
     },
     moreLink () {
       switch (this.scope) {

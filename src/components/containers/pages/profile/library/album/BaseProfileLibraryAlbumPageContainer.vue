@@ -6,7 +6,6 @@
   >
     <slot
       :album-data="albumData"
-      :artist-name="artistName"
       :is-loading="isLoading"
       :error="error"
     />

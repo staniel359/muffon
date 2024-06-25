@@ -7,7 +7,6 @@
       :key="albumData.uuid"
       :album-data="albumData"
       :is-with-artist-name="isWithArtistName"
-      :is-with-multiple-artist-names="isWithMultipleArtistNames"
       :artist-name="artistName"
       :is-with-source="isWithSource"
       :is-with-self-icons="isWithSelfIcons"
@@ -68,7 +67,6 @@ export default {
       default: true
     },
     isWithArtistName: Boolean,
-    isWithMultipleArtistNames: Boolean,
     artistName: String,
     isWithSource: Boolean,
     isWithListenersCount: Boolean,

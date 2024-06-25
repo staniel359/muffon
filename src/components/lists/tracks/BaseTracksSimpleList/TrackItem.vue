@@ -24,7 +24,6 @@
         :is-with-index="isWithIndex"
         :index="index"
         :is-with-artist-name="isWithArtistName"
-        :album-artist-name="albumArtistName"
         :is-with-album-title="isWithAlbumTitle"
         :is-with-listeners-count="isWithListenersCount"
         :top-track-count="topTrackCount"
@@ -90,7 +89,6 @@ export default {
     isWithArtistImage: Boolean,
     isWithIndex: Boolean,
     index: Number,
-    albumArtistName: String,
     isWithArtistName: Boolean,
     isWithAlbumTitle: Boolean,
     isWithListenersCount: Boolean,

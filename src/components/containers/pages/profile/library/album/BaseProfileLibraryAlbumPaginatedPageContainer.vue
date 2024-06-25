@@ -27,7 +27,6 @@
         >
           <slot
             :[scope]="slotProps[scope]"
-            :artist-name="pageSlotProps.artistName"
           />
         </template>
       </BasePaginatedPageContainer>

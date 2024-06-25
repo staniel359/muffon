@@ -15,7 +15,6 @@
         :albums="slotProps[scope]"
         :items-in-row="itemsInRow"
         is-with-artist-name
-        is-with-multiple-artist-names
         is-with-listeners-count
         is-with-library-option
         is-with-favorite-option

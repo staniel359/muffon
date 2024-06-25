@@ -10,7 +10,6 @@
     >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :artist-name="slotProps.artistName"
         is-with-artist-name
         is-with-artist-image
         is-with-duration

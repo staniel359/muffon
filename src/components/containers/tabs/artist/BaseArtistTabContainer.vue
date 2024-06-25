@@ -16,7 +16,6 @@
     >
       <slot
         :[scope]="slotProps[scope]"
-        :artist-name="responseArtistName"
         :top-track-count="topTrackCount"
       />
     </template>
@@ -58,9 +57,6 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
-    },
-    responseArtistName () {
-      return this.artistData?.name
     },
     moreLink () {
       switch (this.scope) {

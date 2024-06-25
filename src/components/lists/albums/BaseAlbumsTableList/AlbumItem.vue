@@ -172,7 +172,6 @@ export default {
       required: true
     },
     isWithArtistName: Boolean,
-    isWithMultipleArtistNames: Boolean,
     artistName: String,
     isWithListenersCount: Boolean,
     isWithLibrary: Boolean,
@@ -224,22 +223,18 @@ export default {
     isRenderArtistName () {
       return (
         this.isWithArtistName ||
-          this.isRenderMultipleArtistNames
+          this.isDifferentNames
       )
     },
-    isRenderMultipleArtistNames () {
-      return (
-        this.isWithMultipleArtistNames &&
-          this.artistsFiltered?.length
-      )
-    },
-    artistsFiltered () {
-      return this.artists?.filter(
-        this.isMatchedArtist
-      )
-    },
-    artists () {
-      return this.albumData.artists
+    isDifferentNames () {
+      if (this.artistName) {
+        return (
+          this.artistName.toLowerCase() !==
+            this.albumArtistName.toLowerCase()
+        )
+      } else {
+        return false
+      }
     },
     isDeleted () {
       return !!this.albumData.isDeleted
@@ -284,14 +279,6 @@ export default {
       this.$refs
         .deleteModal
         .show()
-    },
-    isMatchedArtist (
-      artistData
-    ) {
-      return (
-        artistData.name !==
-          this.artistName
-      )
     }
   }
 }
