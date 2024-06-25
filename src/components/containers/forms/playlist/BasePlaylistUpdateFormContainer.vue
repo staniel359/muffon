@@ -120,7 +120,7 @@ export default {
         description
       } = fields
 
-      const image = this.image.data
+      const image = this.image?.data
 
       return {
         playlistId: this.playlistId,
