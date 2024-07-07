@@ -1,7 +1,7 @@
 <template>
   <BaseButton
-    class="circular compact simple"
-    icon="audioLoop"
+    class="circular simple"
+    icon="audioShuffle"
     :class="buttonClass"
     :is-invertable="!isActive"
     @click="handleClick"
@@ -17,9 +17,12 @@ import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
+import {
+  shuffleArray
+} from '@/helpers/utils'
 
 export default {
-  name: 'LoopButton',
+  name: 'ShuffleButton',
   components: {
     BaseButton
   },
@@ -27,11 +30,12 @@ export default {
     ...mapState(
       queueStore,
       {
-        isQueueLoop: 'isLoop'
+        isQueueShuffle: 'isShuffle',
+        queueTracks: 'tracks'
       }
     ),
     isActive () {
-      return this.isQueueLoop
+      return this.isQueueShuffle
     },
     buttonClass () {
       if (this.isActive) {
@@ -45,9 +49,16 @@ export default {
     handleClick () {
       updateGlobalStore(
         {
-          'queue.isLoop':
-            !this.isQueueLoop
+          'queue.isShuffle':
+            !this.isQueueShuffle,
+          'queue.tracksShuffled':
+            this.shuffleTracks()
         }
+      )
+    },
+    shuffleTracks () {
+      return shuffleArray(
+        this.queueTracks
       )
     }
   }

@@ -7,7 +7,6 @@
       :key="key"
       :tracks="queueTracksCollection"
       :profile-id="profileId"
-      :is-with-self-icons="false"
       :scrollable="scrollable"
       is-with-index
       is-with-image
@@ -16,7 +15,11 @@
       is-with-source
       is-with-saved-icon
       is-with-source-option
+      is-with-library-option
       is-with-playlist-option
+      is-with-favorite-option
+      is-with-bookmark-option
+      is-with-listened-option
       is-with-save-option
       is-with-share-option
       is-with-external-link-option
