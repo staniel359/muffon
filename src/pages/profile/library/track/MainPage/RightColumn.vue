@@ -1,10 +1,10 @@
 <template>
   <div class="main-right-column">
-    <PlayerSegment
+    <StatisticsSegment
       :track-data="trackData"
     />
 
-    <StatisticsSegment
+    <PlayerSegment
       :track-data="trackData"
     />
 

@@ -3,10 +3,9 @@
     class="middle-aligned-space-between"
   >
     <div>
-      <PlayButton
-        v-if="tracksCount"
+      <BaseProfileLibraryTracksPlayButton
+        v-if="isAnyTracks"
         :profile-id="profileId"
-        :library-data="libraryData"
       />
     </div>
 
@@ -25,14 +24,15 @@ import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLibraryOptionsPopup
   from '@/components/popups/library/BaseLibraryOptionsPopup.vue'
-import PlayButton from './ExtraSegment/PlayButton.vue'
+import BaseProfileLibraryTracksPlayButton
+  from '@/components/buttons/play/profile/library/BaseProfileLibraryTracksPlayButton.vue'
 
 export default {
   name: 'ExtraSegment',
   components: {
     BaseSegmentContainer,
     BaseLibraryOptionsPopup,
-    PlayButton
+    BaseProfileLibraryTracksPlayButton
   },
   props: {
     libraryData: {
@@ -43,8 +43,8 @@ export default {
     isSelf: Boolean
   },
   computed: {
-    tracksCount () {
-      return this.libraryData.tracks_count
+    isAnyTracks () {
+      return !!this.libraryData.tracks_count
     }
   }
 }

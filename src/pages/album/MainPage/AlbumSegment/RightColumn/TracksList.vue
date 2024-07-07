@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="tracks?.length"
+    v-if="isAnyTracks"
   >
     <BaseTracksSimpleList
       :tracks="tracks"
@@ -45,6 +45,9 @@ export default {
     }
   },
   computed: {
+    isAnyTracks () {
+      return !!this.tracks?.length
+    },
     tracks () {
       return this.albumData.tracks
     },

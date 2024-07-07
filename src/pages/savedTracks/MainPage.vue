@@ -6,10 +6,21 @@
     :limit="limit"
     :order="order"
     is-with-top-segment
+    is-with-top-second-segment
+    is-with-play-button
     is-with-order-change
     is-with-reload-button
     is-with-search
   >
+    <template
+      #topPlayButton="topPlayButtonSlotProps"
+    >
+      <BaseSavedTracksPlayButton
+        :order="order"
+        :query="topPlayButtonSlotProps.query"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -38,6 +49,8 @@ import BaseSavedTracksPaginatedPageContainer
   from '@/components/containers/pages/savedTracks/BaseSavedTracksPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseSavedTracksPlayButton
+  from '@/components/buttons/play/savedTracks/BaseSavedTracksPlayButton.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
 import pageMixin from '@/mixins/pageMixin'
 import {
@@ -48,7 +61,8 @@ export default {
   name: 'MainPage',
   components: {
     BaseSavedTracksPaginatedPageContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseSavedTracksPlayButton
   },
   mixins: [
     orderChangeMixin,

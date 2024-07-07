@@ -5,12 +5,21 @@
         isActive && isLoading
       ),
       inverted: isDarkMode,
-      'with-top-segment': isWithTopSegment
+      'with-top-section': isWithTopSection
     }"
   >
     <slot
       name="top"
     />
+
+    <div
+      v-if="isRenderTopPlayButtonSection"
+      class="main-top-section"
+    >
+      <slot
+        name="topPlayButton"
+      />
+    </div>
 
     <Component
       :is="listComponent"
@@ -78,7 +87,8 @@ export default {
     error: Error,
     moreLink: Object,
     isPaginationSimple: Boolean,
-    isWithTopSegment: Boolean
+    isWithTopSection: Boolean,
+    isWithPlayButton: Boolean
   },
   emits: [
     'activate',
@@ -102,6 +112,18 @@ export default {
       } else {
         return 'BasePaginatedListContainer'
       }
+    },
+    isRenderTopPlayButtonSection () {
+      return (
+        this.isWithTopSection &&
+          this.isWithPlayButton &&
+          this.isAnyCollectionItems
+      )
+    },
+    isAnyCollectionItems () {
+      return !!this.responseDataComputed?.[
+        this.scope
+      ]?.length
     }
   },
   watch: {

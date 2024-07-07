@@ -8,9 +8,19 @@
     :error="error"
     :is-active="isActive"
     :more-link="moreLink"
+    :is-with-top-section="isWithTopSection"
+    :is-with-play-button="isWithPlayButton"
     @focus="handleFocus"
     @activate="handleActivate"
   >
+    <template
+      #topPlayButton
+    >
+      <slot
+        name="topPlayButton"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >

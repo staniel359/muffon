@@ -4,8 +4,18 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    is-with-top-section
+    is-with-play-button
     @focus="handleFocus"
   >
+    <template
+      #topPlayButton
+    >
+      <BaseProfileFavoritesTracksPlayButton
+        :profile-id="profileId"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -39,6 +49,8 @@ import BaseProfileFavoritesTabContainer
   from '@/components/containers/tabs/profile/favorites/BaseProfileFavoritesTabContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseProfileFavoritesTracksPlayButton
+  from '@/components/buttons/play/profile/favorites/BaseProfileFavoritesTracksPlayButton.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -51,7 +63,8 @@ export default {
   name: 'TracksTab',
   components: {
     BaseProfileFavoritesTabContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseProfileFavoritesTracksPlayButton
   },
   mixins: [
     tabMixin

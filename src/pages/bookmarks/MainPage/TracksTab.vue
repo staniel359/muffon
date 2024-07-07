@@ -3,8 +3,16 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    is-with-top-section
+    is-with-play-button
     @focus="handleFocus"
   >
+    <template
+      #topPlayButton
+    >
+      <BaseBookmarksTracksPlayButton />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -36,6 +44,8 @@ import BaseBookmarksTabContainer
   from '@/components/containers/tabs/bookmarks/BaseBookmarksTabContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseBookmarksTracksPlayButton
+  from '@/components/buttons/play/bookmarks/BaseBookmarksTracksPlayButton.vue'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -45,7 +55,8 @@ export default {
   name: 'TracksTab',
   components: {
     BaseBookmarksTabContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseBookmarksTracksPlayButton
   },
   mixins: [
     tabMixin

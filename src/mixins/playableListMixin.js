@@ -1,3 +1,5 @@
+import BasePlayButton
+  from '@/components/buttons/play/BasePlayButton.vue'
 import getPlayerTrack from '@/helpers/actions/player/track/get'
 import {
   track as formatPlayerTrack
@@ -6,14 +8,24 @@ import {
   collection as formatCollection
 } from '@/helpers/formatters'
 import {
-  shuffleArray
+  shuffleArray,
+  getObjectKeysWithTrueValues
 } from '@/helpers/utils'
 
 export default {
+  components: {
+    BasePlayButton
+  },
   provide () {
     return {
       changeCheckableOption:
         this.changeCheckableOption
+    }
+  },
+  props: {
+    limitName: {
+      type: String,
+      default: 'default'
     }
   },
   data () {
@@ -24,13 +36,17 @@ export default {
       checkableOptions: {
         shuffle: false,
         loop: false
+      },
+      limits: {
+        default: 100,
+        medium: 250
       }
     }
   },
   computed: {
     playerTrackArgs () {
       return {
-        trackData: this.trackData,
+        trackData: this.firstTrackData,
         isQueue: true,
         isPlayableList: true,
         queueTracks:
@@ -41,7 +57,7 @@ export default {
         isQueueLoop: this.isQueueLoop
       }
     },
-    trackData () {
+    firstTrackData () {
       return this.queueTracksComputed[0]
     },
     queueTracksComputed () {
@@ -68,10 +84,28 @@ export default {
     },
     isQueueLoop () {
       return this.checkableOptions.loop
+    },
+    limitComputed () {
+      return this.limits[
+        this.limitName
+      ]
+    },
+    checkedOptions () {
+      return getObjectKeysWithTrueValues(
+        this.checkableOptions
+      )
+    },
+    queueTracks () {
+      return this.tracksData?.[
+        this.scope
+      ] || []
     }
   },
   methods: {
     getPlayerTrack,
+    handleClick () {
+      this.setupQueue()
+    },
     handleQueueTracksGet () {
       this.getPlayerTrack(
         this.playerTrackArgs
@@ -81,6 +115,11 @@ export default {
     },
     handleSuccess () {
       this.isLoading = false
+    },
+    setupQueue () {
+      this.getTracksData().then(
+        this.handleQueueTracksGet
+      )
     },
     formatTrack (
       trackData

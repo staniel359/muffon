@@ -7,7 +7,17 @@
       ref="segment"
       :scope="scope"
       :limit="limit"
+      is-with-top-section
+      is-with-play-button
     >
+      <template
+        #topPlayButton
+      >
+        <BaseRecommendationsTracksPlayButton
+          limit-name="default"
+        />
+      </template>
+
       <template
         #default="slotProps"
       >
@@ -40,6 +50,8 @@ import BaseRecommendationsPaginatedSegmentContainer
   from '@/components/containers/segments/recommendations/BaseRecommendationsPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseRecommendationsTracksPlayButton
+  from '@/components/buttons/play/recommendations/BaseRecommendationsTracksPlayButton.vue'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -53,7 +65,8 @@ export default {
   components: {
     BaseHeaderSegmentsContainer,
     BaseRecommendationsPaginatedSegmentContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseRecommendationsTracksPlayButton
   },
   mixins: [
     recommendationTracksMixin

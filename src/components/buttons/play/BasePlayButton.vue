@@ -30,10 +30,10 @@
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import CheckedOptionButton
-  from './BasePlayableListPlayButton/CheckedOptionButton.vue'
+  from './BasePlayButton/CheckedOptionButton.vue'
 
 export default {
-  name: 'BasePlayableListPlayButton',
+  name: 'BasePlayButton',
   components: {
     BaseButton,
     BaseDropdown,

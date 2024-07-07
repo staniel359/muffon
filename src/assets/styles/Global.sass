@@ -102,10 +102,14 @@ p
   &.simple
     & > .main-segment
       &:not(:first-child)
-        @extend .no-border
-        padding-top: 0.5rem !important
+        &:not(.bordered)
+          @extend .no-border
+          padding-top: 0.5rem !important
         &.not-top-padded
           padding-top: 0 !important
+        &.bordered
+          &.inverted
+            @extend .border-top-inverted
 
 .main-search
   .prompt
@@ -212,6 +216,8 @@ p
     @extend .text-color-black
     &.inverted
       @extend .text-color-white
+  &.with-top-section
+    @extend .flex-column
 
 .main-paginated-page-segment-container
   @extend .full-column

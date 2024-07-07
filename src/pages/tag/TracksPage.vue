@@ -4,7 +4,18 @@
     :tag-name="tagName"
     :scope="scope"
     :limit="limit"
+    is-with-top-second-segment
+    is-with-play-button
   >
+    <template
+      #topPlayButton
+    >
+      <BaseTagTracksPlayButton
+        limit-name="medium"
+        :tag-name="tagName"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -31,6 +42,8 @@ import BaseTagPaginatedPageContainer
   from '@/components/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTagTracksPlayButton
+  from '@/components/buttons/play/tag/BaseTagTracksPlayButton.vue'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -40,7 +53,8 @@ export default {
   name: 'TracksPage',
   components: {
     BaseTagPaginatedPageContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseTagTracksPlayButton
   },
   mixins: [
     pageMixin

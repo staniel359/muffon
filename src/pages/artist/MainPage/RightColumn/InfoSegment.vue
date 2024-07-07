@@ -3,10 +3,17 @@
     class="raised main-segment-container medium-padded"
   >
     <BaseHeader
-      class="main-artist-name"
+      class="main-top-big-section"
       tag="h1"
       :text="artistName"
     />
+
+    <div class="main-top-section">
+      <BaseArtistTracksPlayButton
+        limit-name="default"
+        :artist-name="artistName"
+      />
+    </div>
 
     <div>
       <BaseCounterLabelsSection
@@ -41,7 +48,8 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseArtistTags from '@/components/models/artist/BaseArtistTags.vue'
+import BaseArtistTags
+  from '@/components/models/artist/BaseArtistTags.vue'
 import BaseCounterLabelsSection
   from '@/components/sections/BaseCounterLabelsSection.vue'
 import BaseArtistInnerCounterLabelsSection
@@ -49,6 +57,8 @@ import BaseArtistInnerCounterLabelsSection
 import BaseDivider from '@/components/BaseDivider.vue'
 import BaseArtistDescription
   from '@/components/models/artist/BaseArtistDescription.vue'
+import BaseArtistTracksPlayButton
+  from '@/components/buttons/play/artist/BaseArtistTracksPlayButton.vue'
 
 export default {
   name: 'InfoSegment',
@@ -59,7 +69,8 @@ export default {
     BaseCounterLabelsSection,
     BaseArtistInnerCounterLabelsSection,
     BaseDivider,
-    BaseArtistDescription
+    BaseArtistDescription,
+    BaseArtistTracksPlayButton
   },
   props: {
     artistData: {

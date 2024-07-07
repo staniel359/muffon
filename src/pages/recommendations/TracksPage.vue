@@ -7,9 +7,20 @@
     :limit="limit"
     :order="order"
     is-with-top-segment
+    is-with-top-second-segment
+    is-with-play-button
     is-with-order-change
     is-with-reload-button
   >
+    <template
+      #topPlayButton
+    >
+      <BaseRecommendationsTracksPlayButton
+        limit-name="medium"
+        :order="order"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -39,6 +50,8 @@ import BaseRecommendationsPaginatedPageContainer
   from '@/components/containers/pages/recommendations/BaseRecommendationsPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseRecommendationsTracksPlayButton
+  from '@/components/buttons/play/recommendations/BaseRecommendationsTracksPlayButton.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
 import pageMixin from '@/mixins/pageMixin'
 import recommendationTracksMixin from '@/mixins/recommendationTracksMixin'
@@ -50,7 +63,8 @@ export default {
   name: 'TracksPage',
   components: {
     BaseRecommendationsPaginatedPageContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseRecommendationsTracksPlayButton
   },
   mixins: [
     orderChangeMixin,

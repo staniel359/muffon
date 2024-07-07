@@ -19,6 +19,8 @@
         :order="order"
         :model="model"
         :is-with-top-segment="isWithTopSegment"
+        :is-with-top-second-segment="isWithTopSecondSegment"
+        :is-with-play-button="isWithPlayButton"
         :is-with-order-change="isWithOrderChange"
         :is-with-view-change="isWithViewChange"
         :is-with-reload-button="isWithReloadButton"
@@ -37,6 +39,14 @@
         >
           <slot
             name="topExtra"
+          />
+        </template>
+
+        <template
+          #topPlayButton
+        >
+          <slot
+            name="topPlayButton"
           />
         </template>
 

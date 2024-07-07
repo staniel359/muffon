@@ -4,7 +4,19 @@
     :scope="scope"
     :limit="limit"
     :source-params="sourceParams"
+    is-with-top-second-segment
+    is-with-play-button
   >
+    <template
+      #topPlayButton
+    >
+      <BaseTrackSimilarPlayButton
+        limit-name="medium"
+        :artist-name="artistName"
+        :track-title="trackTitle"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -32,6 +44,8 @@ import BaseTrackPaginatedPageContainer
   from '@/components/containers/pages/track/BaseTrackPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTrackSimilarPlayButton
+  from '@/components/buttons/play/track/BaseTrackSimilarPlayButton.vue'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -41,7 +55,8 @@ export default {
   name: 'SimilarPage',
   components: {
     BaseTrackPaginatedPageContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseTrackSimilarPlayButton
   },
   mixins: [
     pageMixin

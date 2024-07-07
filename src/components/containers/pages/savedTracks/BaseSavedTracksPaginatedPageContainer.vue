@@ -18,6 +18,8 @@
         :order="order"
         :model="model"
         :is-with-top-segment="isWithTopSegment"
+        :is-with-top-second-segment="isWithTopSecondSegment"
+        :is-with-play-button="isWithPlayButton"
         :is-with-order-change="isWithOrderChange"
         :is-with-reload-button="isWithReloadButton"
       >
@@ -30,6 +32,15 @@
             :query="query"
             @submit="handleSearchSubmit"
             @clear-button-click="handleSearchClearButtonClick"
+          />
+        </template>
+
+        <template
+          #topPlayButton
+        >
+          <slot
+            name="topPlayButton"
+            :query="query"
           />
         </template>
 

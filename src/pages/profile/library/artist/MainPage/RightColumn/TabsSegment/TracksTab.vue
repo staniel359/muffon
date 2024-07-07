@@ -5,8 +5,19 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    is-with-top-section
+    is-with-play-button
     @focus="handleFocus"
   >
+    <template
+      #topPlayButton
+    >
+      <BaseProfileLibraryArtistTracksPlayButton
+        :profile-id="profileId"
+        :library-artist-id="libraryArtistId"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -40,6 +51,8 @@ import BaseProfileLibraryArtistTabContainer
   from '@/components/containers/tabs/profile/library/artist/BaseProfileLibraryArtistTabContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseProfileLibraryArtistTracksPlayButton
+  from '@/components/buttons/play/profile/library/artist/BaseProfileLibraryArtistTracksPlayButton.vue'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -49,7 +62,8 @@ export default {
   name: 'TracksTab',
   components: {
     BaseProfileLibraryArtistTabContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseProfileLibraryArtistTracksPlayButton
   },
   mixins: [
     tabMixin

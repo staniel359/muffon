@@ -4,9 +4,20 @@
     :scope="scope"
     :limit="limit"
     is-with-top-segment
+    is-with-top-second-segment
+    is-with-play-button
     is-with-country-select
     is-with-reload-button
   >
+    <template
+      #topPlayButton="topPlayButtonSlotProps"
+    >
+      <BaseTopTracksPlayButton
+        limit-name="medium"
+        :country="topPlayButtonSlotProps.country"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -33,6 +44,8 @@ import BaseTopPaginatedPageContainer
   from '@/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTopTracksPlayButton
+  from '@/components/buttons/play/top/BaseTopTracksPlayButton.vue'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -42,7 +55,8 @@ export default {
   name: 'TracksPage',
   components: {
     BaseTopPaginatedPageContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseTopTracksPlayButton
   },
   mixins: [
     pageMixin

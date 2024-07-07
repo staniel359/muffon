@@ -45,7 +45,6 @@ function removeReloadShortcuts () {
     )
 }
 
-
 function addAllowedShortcuts () {
   addExitShortcuts()
 }

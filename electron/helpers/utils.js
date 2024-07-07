@@ -92,7 +92,7 @@ export const shortcuts = {
   allowed: {
     exit: [
       'CommandOrControl+Q'
-    ]    
+    ]
   },
   forbidden: {
     reload: [

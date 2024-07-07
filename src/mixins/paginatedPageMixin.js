@@ -4,6 +4,10 @@ export default {
       getData: this.getData
     }
   },
+  props: {
+    isWithTopSecondSegment: Boolean,
+    isWithPlayButton: Boolean
+  },
   methods: {
     handleFocus () {
       this.focus()

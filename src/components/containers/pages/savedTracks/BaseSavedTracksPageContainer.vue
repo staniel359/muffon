@@ -22,6 +22,8 @@ import {
 } from '@/helpers/formatters/navigation'
 import formatSavedTracksPageTab from '@/helpers/formatters/tabs/savedTracks'
 import getSavedTracks from '@/helpers/actions/local/savedTracks/get'
+import getSavedTracksSearch
+  from '@/helpers/actions/local/savedTracks/search/get'
 
 export default {
   name: 'BaseSavedTracksPageContainer',
@@ -68,10 +70,17 @@ export default {
   },
   methods: {
     getSavedTracks,
+    getSavedTracksSearch,
     getData () {
-      this.getSavedTracks(
-        this.savedTracksArgs
-      )
+      if (this.query) {
+        this.getSavedTracksSearch(
+          this.savedTracksArgs
+        )
+      } else {
+        this.getSavedTracks(
+          this.savedTracksArgs
+        )
+      }
     }
   }
 }

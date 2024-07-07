@@ -1,25 +1,13 @@
 import getRequest from '@/helpers/actions/local/request/get'
-import getLocalTracksByQuery from '@/helpers/actions/local/query/tracks/get'
 
 export default function (
   {
-    order,
-    query
+    order
   }
 ) {
   const handleSuccess = (
     response
   ) => {
-    if (query) {
-      response.tracks =
-        getLocalTracksByQuery(
-          {
-            tracks: response.tracks,
-            query
-          }
-        )
-    }
-
     this.savedTracksData = response
   }
 

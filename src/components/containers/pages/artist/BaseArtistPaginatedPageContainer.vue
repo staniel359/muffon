@@ -16,6 +16,8 @@
         :error="pageSlotProps.error"
         :artist-name="pageSlotProps.artistName"
         :is-with-top-segment="isWithTopSegment"
+        :is-with-top-second-segment="isWithTopSecondSegment"
+        :is-with-play-button="isWithPlayButton"
         :is-with-view-change="isWithViewChange"
         :is-with-reload-button="isWithReloadButton"
         :view-id="viewId"
@@ -37,6 +39,14 @@
           <slot
             name="topExtra"
             :artist-name="pageSlotProps.artistName"
+          />
+        </template>
+
+        <template
+          #topPlayButton
+        >
+          <slot
+            name="topPlayButton"
           />
         </template>
 
