@@ -28,8 +28,6 @@
           </BaseAlbumLinkContainer>
         </small>
       </div>
-
-      <BaseDivider />
     </div>
   </BaseTransitionContainer>
 </template>
@@ -41,7 +39,6 @@ import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
 import BaseAlbumLinkContainer
   from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
-import BaseDivider from '@/components/BaseDivider.vue'
 
 export default {
   name: 'HeaderSection',
@@ -49,8 +46,7 @@ export default {
     BaseTransitionContainer,
     BaseHeader,
     BaseArtistLinks,
-    BaseAlbumLinkContainer,
-    BaseDivider
+    BaseAlbumLinkContainer
   },
   props: {
     trackData: {

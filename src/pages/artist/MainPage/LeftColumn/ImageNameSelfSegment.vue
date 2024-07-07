@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="image-segment no-margin"
+    class="image-name-self-segment"
   >
     <div class="main-image-container">
       <BaseArtistImage
@@ -23,33 +23,58 @@
         />
       </div>
     </BaseTransitionContainer>
+
+    <SelfSection
+      v-if="profileId"
+      :artist-data="artistData"
+    />
   </BaseSegmentContainer>
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import BaseTransitionContainer
   from '@/components/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import SelfSection from './ImageNameSelfSegment/SelfSection.vue'
 
 export default {
-  name: 'ImageNameSegment',
+  name: 'ImageNameSelfSegment',
   components: {
     BaseSegmentContainer,
     BaseArtistImage,
     BaseTransitionContainer,
-    BaseHeader
+    BaseHeader,
+    SelfSection
   },
   props: {
-    artistName: String,
+    artistData: {
+      type: Object,
+      required: true
+    },
     scrollable: HTMLDivElement
+  },
+  computed: {
+    ...mapState(
+      profileStore,
+      {
+        profileId: 'id'
+      }
+    ),
+    artistName () {
+      return this.artistData.name
+    }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.image-segment
+.image-name-self-segment
   padding: 1rem !important
 </style>

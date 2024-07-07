@@ -1,6 +1,6 @@
 <template>
   <BaseHeaderContainer
-    class="main-artist-name width-fit-content"
+    class="main-top-section width-fit-content"
     tag="h2"
   >
     <BaseArtistLinkContainer

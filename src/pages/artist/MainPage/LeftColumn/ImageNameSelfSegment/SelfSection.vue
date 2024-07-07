@@ -7,18 +7,16 @@
       :listened-id="listenedId"
     />
 
-    <BaseAlbumOptionsPopup
-      :album-data="albumData"
+    <BaseArtistOptionsPopup
+      :artist-data="artistData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
       :listened-id="listenedId"
       is-with-library-option
-      is-with-playlist-option
       is-with-favorite-option
       is-with-bookmark-option
       is-with-listened-option
-      is-with-queue-option
       is-with-share-option
       is-with-external-link-option
     />
@@ -27,21 +25,29 @@
 
 <script>
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
-import BaseAlbumOptionsPopup
-  from '@/components/popups/album/BaseAlbumOptionsPopup.vue'
+import BaseArtistOptionsPopup
+  from '@/components/popups/artist/BaseArtistOptionsPopup.vue'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'SelfSection',
   components: {
     BaseSelfIcons,
-    BaseAlbumOptionsPopup
+    BaseArtistOptionsPopup
   },
+  mixins: [
+    selfMixin
+  ],
   props: {
-    albumData: Object,
-    libraryId: String,
-    favoriteId: String,
-    bookmarkId: String,
-    listenedId: String
+    artistData: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    modelData () {
+      return this.artistData
+    }
   }
 }
 </script>

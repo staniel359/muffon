@@ -2,14 +2,9 @@
   <BaseSegmentsContainer
     class="main-sticky-container left-column width-25"
   >
-    <ImageNameSegment
-      :artist-name="artistName"
-      :scrollable="scrollable"
-    />
-
-    <SelfSegment
-      v-if="profileId"
+    <ImageNameSelfSegment
       :artist-data="artistData"
+      :scrollable="scrollable"
     />
 
     <RecommendedSegment
@@ -20,22 +15,16 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseSegmentsContainer
   from '@/components/containers/segments/BaseSegmentsContainer.vue'
-import ImageNameSegment from './LeftColumn/ImageNameSegment.vue'
-import SelfSegment from './LeftColumn/SelfSegment.vue'
+import ImageNameSelfSegment from './LeftColumn/ImageNameSelfSegment.vue'
 import RecommendedSegment from './LeftColumn/RecommendedSegment.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
     BaseSegmentsContainer,
-    ImageNameSegment,
-    SelfSegment,
+    ImageNameSelfSegment,
     RecommendedSegment
   },
   props: {
@@ -46,15 +35,6 @@ export default {
     scrollable: HTMLDivElement
   },
   computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    ),
-    artistName () {
-      return this.artistData.name
-    },
     recommendationData () {
       return this.artistData.recommendation
     }
