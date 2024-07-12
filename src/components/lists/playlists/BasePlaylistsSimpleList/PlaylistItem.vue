@@ -102,7 +102,7 @@
 
   <div
     v-if="isRenderTracksList"
-    v-show="isClicked"
+    v-show="isShowTracksList"
     class="tracks-section"
   >
     <BaseTracksSimpleList
@@ -200,7 +200,8 @@ export default {
   data () {
     return {
       isMainLinkActive: true,
-      isClicked: false
+      isTracksListCalled: false,
+      isShowTracksList: false
     }
   },
   computed: {
@@ -281,8 +282,12 @@ export default {
     isRenderTracksList () {
       return (
         this.isWithTracks &&
-          this.tracks.length
+          this.isAnyTracks &&
+          this.isTracksListCalled
       )
+    },
+    isAnyTracks () {
+      return this.tracks.length
     },
     tracks () {
       return this.playlistData.tracks
@@ -294,8 +299,8 @@ export default {
         this.$emit(
           'linkClick'
         )
-      } else {
-        this.toggleIsClicked()
+      } else if (this.isWithTracks) {
+        this.toggleTracksList()
       }
     },
     handleLinkClick () {
@@ -327,8 +332,11 @@ export default {
         value
       )
     },
-    toggleIsClicked () {
-      this.isClicked = !this.isClicked
+    toggleTracksList () {
+      this.isTracksListCalled = true
+
+      this.isShowTracksList =
+        !this.isShowTracksList
     }
   }
 }
