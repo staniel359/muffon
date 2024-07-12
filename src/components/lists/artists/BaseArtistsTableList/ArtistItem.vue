@@ -57,12 +57,6 @@
       </BaseArtistLinkContainer>
 
       <div class="center aligned content">
-        <RecommendationArtistsSection
-          v-if="isRecommendation"
-          class="description"
-          :recommendation-data="artistData"
-        />
-
         <BaseCreatedSection
           v-if="isWithCreated"
           class="description"
@@ -79,6 +73,12 @@
             @load-end="handleListenersCountLoadEnd"
           />
         </div>
+
+        <RecommendationArtistsSection
+          v-if="isRecommendation"
+          class="description"
+          :recommendation-data="artistData"
+        />
 
         <BaseLibraryArtistCountersSection
           v-if="isWithLibrary"

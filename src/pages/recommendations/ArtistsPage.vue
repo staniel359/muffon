@@ -38,6 +38,7 @@
       <BaseArtistsList
         :artists="slotProps[scope]"
         :view-id="viewId"
+        is-with-listeners-count
         is-with-library-option
         is-with-favorite-option
         is-with-bookmark-option
