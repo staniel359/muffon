@@ -530,12 +530,12 @@
         },
         "window": {
           "maximize": "הפעל במסך מלא בהפעלה",
-          "exit": "יציאה בסגירה",
+          "quit": "יציאה בסגירה",
           "showTrayIcon": "הצג אייקון מגש"
         },
         "tabs": {
           "newTabSwitch": "החלף לכרטיסייה חדשה",
-          "closeOnExit": "סגור כרטיסיות ביציאה"
+          "closeOnQuit": "סגור כרטיסיות ביציאה"
         },
         "search": {
           "source": "מקור",

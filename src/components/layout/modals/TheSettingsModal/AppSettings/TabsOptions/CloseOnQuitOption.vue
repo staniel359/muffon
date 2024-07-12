@@ -4,15 +4,12 @@
       <BaseHeader
         class="option-header"
         tag="h4"
-        :text="exitText"
+        :text="closeTabsText"
       />
 
       <BaseToggle
-        store-key="window.isExitOnClose"
-        :class="{
-          disabled: isDisabled
-        }"
-        :is-checked="isChecked"
+        store-key="layout.isCloseTabsOnQuit"
+        :is-checked="isCloseTabsOnQuit"
       />
     </div>
   </div>
@@ -22,36 +19,26 @@
 import {
   mapState
 } from 'pinia'
-import windowStore from '@/stores/window'
+import layoutStore from '@/stores/layout'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
-  name: 'ExitOption',
+  name: 'CloseOnQuitOption',
   components: {
     BaseHeader,
     BaseToggle
   },
   computed: {
     ...mapState(
-      windowStore,
+      layoutStore,
       [
-        'isExitOnClose',
-        'isWithTrayIcon'
+        'isCloseTabsOnQuit'
       ]
     ),
-    exitText () {
+    closeTabsText () {
       return this.$t(
-        'settings.options.app.window.exit'
-      )
-    },
-    isDisabled () {
-      return !this.isWithTrayIcon
-    },
-    isChecked () {
-      return (
-        this.isExitOnClose ||
-          !this.isWithTrayIcon
+        'settings.options.app.tabs.closeOnQuit'
       )
     }
   }

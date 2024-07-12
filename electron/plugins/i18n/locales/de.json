@@ -2,7 +2,7 @@
   "show": "Anzeigen",
   "hide": "Verstecken",
   "about": "Über",
-  "exit": "Beenden",
+  "quit": "Beenden",
   "update": {
     "message": "Eine neue Version ist verfügbar",
     "buttons": {

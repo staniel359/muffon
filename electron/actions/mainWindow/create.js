@@ -16,7 +16,7 @@ import showMainWindow from './show.js'
 import hideMainWindow from './hide.js'
 import checkForUpdates from '../app/checkForUpdates.js'
 import setViewScale from '../view/setScale.js'
-import callExit from '../app/callExit.js'
+import callQuit from '../app/callQuit.js'
 import setTrayMenu from '../tray/setMenu.js'
 import setTabsBounds from '../tabs/setBounds.js'
 import changeViewBackgroundColor
@@ -56,13 +56,13 @@ function handleClose (
 ) {
   event.preventDefault()
 
-  const isExitOnClose =
+  const isQuitOnClose =
     getElectronStoreKey(
-      'window.isExitOnClose'
+      'window.isQuitOnClose'
     )
 
-  if (isExitOnClose) {
-    callExit()
+  if (isQuitOnClose) {
+    callQuit()
   } else {
     hideMainWindow()
   }

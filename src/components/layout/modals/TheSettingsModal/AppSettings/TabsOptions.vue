@@ -2,19 +2,19 @@
   <div class="main-settings-options-block">
     <SwitchToNewTabOption />
 
-    <CloseOnExitOption />
+    <CloseOnQuitOption />
   </div>
 </template>
 
 <script>
 import SwitchToNewTabOption from './TabsOptions/SwitchToNewTabOption.vue'
-import CloseOnExitOption from './TabsOptions/CloseOnExitOption.vue'
+import CloseOnQuitOption from './TabsOptions/CloseOnQuitOption.vue'
 
 export default {
   name: 'TabsOptions',
   components: {
     SwitchToNewTabOption,
-    CloseOnExitOption
+    CloseOnQuitOption
   }
 }
 </script>

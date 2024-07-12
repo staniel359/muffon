@@ -124,7 +124,7 @@ export default {
     type: 'boolean',
     default: true
   },
-  'layout.isCloseTabsOnExit': {
+  'layout.isCloseTabsOnQuit': {
     type: 'boolean',
     default: false
   },
@@ -495,7 +495,7 @@ export default {
     type: 'boolean',
     default: false
   },
-  'window.isExitOnClose': {
+  'window.isQuitOnClose': {
     type: 'boolean',
     default: false
   },

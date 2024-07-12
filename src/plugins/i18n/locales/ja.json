@@ -530,12 +530,12 @@
         },
         "window": {
           "maximize": "起動時に最大化",
-          "exit": "閉じる時に終了",
+          "quit": "閉じる時に終了",
           "showTrayIcon": "トレイアイコンを表示する"
         },
         "tabs": {
           "newTabSwitch": "新しいタブに切り替え",
-          "closeOnExit": "終了時にタブを閉じる"
+          "closeOnQuit": "終了時にタブを閉じる"
         },
         "search": {
           "source": "ソース",

@@ -530,12 +530,12 @@
         },
         "window": {
           "maximize": "Maximize on start",
-          "exit": "Exit on close",
+          "quit": "Quit on close",
           "showTrayIcon": "Show tray icon"
         },
         "tabs": {
           "newTabSwitch": "Switch to new tab",
-          "closeOnExit": "Close tabs on exit"
+          "closeOnQuit": "Close tabs on quit"
         },
         "search": {
           "source": "Source",

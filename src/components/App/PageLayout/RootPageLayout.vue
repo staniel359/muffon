@@ -30,7 +30,7 @@
 
   <TheWindowObserver />
 
-  <TheExitObserver />
+  <TheQuitObserver />
 
   <TheRootBackground />
 
@@ -62,8 +62,8 @@ import TheDeepLinksObserver
   from '@/components/layout/observers/TheDeepLinksObserver.vue'
 import TheWindowObserver
   from '@/components/layout/observers/TheWindowObserver.vue'
-import TheExitObserver
-  from '@/components/layout/observers/TheExitObserver.vue'
+import TheQuitObserver
+  from '@/components/layout/observers/TheQuitObserver.vue'
 import TheRootBackground from '@/components/layout/TheRootBackground.vue'
 
 const TheOnlineObserver =
@@ -112,7 +112,7 @@ export default {
     TheDiscordObserver,
     TheDeepLinksObserver,
     TheWindowObserver,
-    TheExitObserver,
+    TheQuitObserver,
     TheRootBackground
   },
   computed: {

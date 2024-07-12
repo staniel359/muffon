@@ -1,30 +1,30 @@
 import {
   globalShortcut
 } from 'electron'
-import callExit from './callExit.js'
+import callQuit from './callQuit.js'
 import {
   shortcuts
 } from '../../helpers/utils.js'
 
-function handleExitKeysPress () {
-  callExit()
+function handleQuitKeysPress () {
+  callQuit()
 }
 
-function addExitShortcut (
+function addQuitShortcut (
   shortcut
 ) {
   globalShortcut.register(
     shortcut,
-    handleExitKeysPress
+    handleQuitKeysPress
   )
 }
 
-function addExitShortcuts () {
+function addQuitShortcuts () {
   shortcuts
     .allowed
-    .exit
+    .quit
     .forEach(
-      addExitShortcut
+      addQuitShortcut
     )
 }
 
@@ -46,7 +46,7 @@ function removeReloadShortcuts () {
 }
 
 function addAllowedShortcuts () {
-  addExitShortcuts()
+  addQuitShortcuts()
 }
 
 function removeForbiddenShortcuts () {

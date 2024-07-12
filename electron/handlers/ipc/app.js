@@ -7,7 +7,7 @@ import callLogout from '../../actions/app/callLogout.js'
 import callAccountDelete from '../../actions/app/callAccountDelete.js'
 import callNavigate from '../../actions/app/callNavigate.js'
 import callOpenDeepLink from '../../actions/app/callOpenDeepLink.js'
-import exit from '../../actions/app/exit.js'
+import quit from '../../actions/app/quit.js'
 
 export function handleSetTitle (
   _,
@@ -65,6 +65,6 @@ export function handleCallOpenDeepLink () {
   callOpenDeepLink()
 }
 
-export function handleExit () {
-  exit()
+export function handleQuit () {
+  quit()
 }

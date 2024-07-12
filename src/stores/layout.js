@@ -19,7 +19,7 @@ const data = {
       backgroundImageId: 0,
       backgroundImagePath: null,
       transparency: null,
-      isCloseTabsOnExit: null,
+      isCloseTabsOnQuit: null,
       isWithSystemTheme: null,
       isWithArtistPopup: null,
       isCachePages: null,
@@ -103,10 +103,10 @@ const data = {
     ) {
       this.transparency = value
     },
-    setIsCloseTabsOnExit (
+    setIsCloseTabsOnQuit (
       value
     ) {
-      this.isCloseTabsOnExit = value
+      this.isCloseTabsOnQuit = value
     },
     setIsWithSystemTheme (
       value

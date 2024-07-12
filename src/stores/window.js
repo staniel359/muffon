@@ -6,7 +6,7 @@ const data = {
   state () {
     return {
       isMaximizeOnStart: null,
-      isExitOnClose: null,
+      isQuitOnClose: null,
       isWithTrayIcon: null
     }
   },
@@ -16,10 +16,10 @@ const data = {
     ) {
       this.isMaximizeOnStart = value
     },
-    setIsExitOnClose (
+    setIsQuitOnClose (
       value
     ) {
-      this.isExitOnClose = value
+      this.isQuitOnClose = value
     },
     setIsWithTrayIcon (
       value

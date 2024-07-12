@@ -90,7 +90,7 @@ export const deepLinksProtocol = `${appName}://`
 
 export const shortcuts = {
   allowed: {
-    exit: [
+    quit: [
       'CommandOrControl+Q'
     ]
   },

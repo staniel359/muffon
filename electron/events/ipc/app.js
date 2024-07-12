@@ -11,7 +11,7 @@ import {
   handleAccountDelete,
   handleNavigate,
   handleCallOpenDeepLink,
-  handleExit
+  handleQuit
 } from '../../handlers/ipc/app.js'
 
 export default function () {
@@ -61,7 +61,7 @@ export default function () {
   )
 
   ipcMain.on(
-    'exit',
-    handleExit
+    'quit',
+    handleQuit
   )
 }

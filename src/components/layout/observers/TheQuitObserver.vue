@@ -1,6 +1,6 @@
 <template>
   <div
-    id="the-exit-observer"
+    id="the-quit-observer"
   />
 </template>
 
@@ -15,12 +15,12 @@ import {
 } from 'electron'
 
 export default {
-  name: 'TheExitObserver',
+  name: 'TheQuitObserver',
   computed: {
     ...mapState(
       layoutStore,
       [
-        'isCloseTabsOnExit',
+        'isCloseTabsOnQuit',
         'isShowDonateModalLater'
       ]
     ),
@@ -33,17 +33,17 @@ export default {
   },
   mounted () {
     ipcRenderer.on(
-      'exit',
-      this.handleExit
+      'quit',
+      this.handleQuit
     )
   },
   methods: {
-    async handleExit () {
+    async handleQuit () {
       if (!this.isRememberProfile) {
         await this.clearProfileData()
       }
 
-      if (this.isCloseTabsOnExit) {
+      if (this.isCloseTabsOnQuit) {
         await this.clearTabs()
       }
 
@@ -51,7 +51,7 @@ export default {
         await this.resetDonateModalData()
       }
 
-      this.exit()
+      this.quit()
     },
     clearProfileData () {
       return this.setElectronStoreData(
@@ -88,9 +88,9 @@ export default {
         }
       )
     },
-    exit () {
+    quit () {
       ipcRenderer.send(
-        'exit'
+        'quit'
       )
     }
   }

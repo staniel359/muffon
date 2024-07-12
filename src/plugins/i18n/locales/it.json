@@ -525,11 +525,11 @@
         },
         "window": {
           "maximize": "Massimizza all’avvio",
-          "exit": "Esci quando la finestra è chiusa"
+          "quit": "Esci quando la finestra è chiusa"
         },
         "tabs": {
           "newTabSwitch": "Vai a nuova scheda",
-          "closeOnExit": "Chiudi schede all’uscita"
+          "closeOnQuit": "Chiudi schede all’uscita"
         },
         "search": {
           "source": "Fonte",

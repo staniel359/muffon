@@ -4,7 +4,7 @@
       <BaseHeader
         class="option-header"
         tag="h4"
-        :text="exitText"
+        :text="showTrayIconText"
       />
 
       <BaseToggle
@@ -36,7 +36,7 @@ export default {
         'isWithTrayIcon'
       ]
     ),
-    exitText () {
+    showTrayIconText () {
       return this.$t(
         'settings.options.app.window.showTrayIcon'
       )

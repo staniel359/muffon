@@ -530,12 +530,12 @@
         },
         "window": {
           "maximize": "Beim Start maximieren",
-          "exit": "Beenden beim Schließen",
+          "quit": "Beenden beim Schließen",
           "showTrayIcon": "Tray-Icon anzeigen"
         },
         "tabs": {
           "newTabSwitch": "Zu einem neuen Tab wechseln",
-          "closeOnExit": "Tabs beim Beenden schließen"
+          "closeOnQuit": "Tabs beim Beenden schließen"
         },
         "search": {
           "source": "Quelle",

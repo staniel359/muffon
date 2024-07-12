@@ -5,7 +5,7 @@ import {
 import showMainWindow from '../mainWindow/show.js'
 import hideMainWindow from '../mainWindow/hide.js'
 import showAboutWindow from '../aboutWindow/show.js'
-import callExit from '../app/callExit.js'
+import callQuit from '../app/callQuit.js'
 import i18n from 'i18n'
 import {
   isMacos
@@ -33,8 +33,8 @@ export default function () {
     showAboutWindow()
   }
 
-  function handleExitActionClick () {
-    callExit()
+  function handleQuitActionClick () {
+    callQuit()
   }
 
   const toggleText =
@@ -47,9 +47,9 @@ export default function () {
       'about'
     )
 
-  const exitText =
+  const quitText =
     i18n.__(
-      'exit'
+      'quit'
     )
 
   const menuItems = [
@@ -65,8 +65,8 @@ export default function () {
     },
     {
       type: 'normal',
-      label: exitText,
-      click: handleExitActionClick
+      label: quitText,
+      click: handleQuitActionClick
     }
   ]
 

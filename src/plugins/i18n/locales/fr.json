@@ -530,12 +530,12 @@
         },
         "window": {
           "maximize": "Maximiser au démarrage",
-          "exit": "Fermer pour arrêter",
+          "quit": "Fermer pour arrêter",
           "showTrayIcon": "Afficher l'icône de la barre des tâches"
         },
         "tabs": {
           "newTabSwitch": "Basculer vers un nouvel onglet",
-          "closeOnExit": "Fermer les onglets à la sortie"
+          "closeOnQuit": "Fermer les onglets à la sortie"
         },
         "search": {
           "source": "Source",

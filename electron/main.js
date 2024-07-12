@@ -3,12 +3,12 @@ import {
   handleHarmfulSwitches
 } from './helpers/utils.js'
 import initialize from './actions/app/initialize.js'
-import exit from './actions/app/exit.js'
+import quit from './actions/app/quit.js'
 
 handleHarmfulSwitches()
 
 if (isSingleInstance) {
   initialize()
 } else {
-  exit()
+  quit()
 }
