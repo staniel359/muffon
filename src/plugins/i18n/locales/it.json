@@ -156,6 +156,8 @@
     "close": "Chiudi",
     "openLink": "Apri il link",
     "play": "Riproduci",
+    "shuffle": "Riproduzione casuale",
+    "loop": "Loop",
     "addFrom": {
       "search": "Da ricerca",
       "library": "Da libreria"
@@ -256,6 +258,7 @@
         "account": "Elimina account",
         "library": "Elimina libreria",
         "history": {
+          "search": "Elimina cronologia delle ricerche",
           "activity": "Elimina la cronologia delle attività",
           "browser": "Elimina la cronologia del browser",
           "player": "Elimina la cronologia di riproduzione"
@@ -275,6 +278,7 @@
         "account": "Stai per eliminare il tuo account.",
         "library": "Stai per eliminare la tua libreria.",
         "history": {
+          "search": "Stai per eliminare la tua cronologia delle ricerche.",
           "activity": "Stai per eliminare la cronologia delle tue attività.",
           "browser": "Stai per eliminare la cronologia del browser.",
           "player": "Stai per eliminare la cronologia di riproduzione."
@@ -402,6 +406,7 @@
       "account": "Il tuo account è stato eliminato",
       "library": "La tua libreria è stata eliminata",
       "history": {
+        "search": "La cronologia delle ricerche è stata eliminata",
         "activity": "La cronologia delle attività è stata eliminata",
         "browser": "La cronologia del browser è stata eliminata",
         "player": "La cronologia di riproduzione è stata eliminata"
@@ -504,7 +509,7 @@
       "data": "Dati",
       "info": "Info",
       "account": "Account",
-      "other": "Altre"
+      "system": "Sistema"
     },
     "options": {
       "app": {
@@ -525,7 +530,8 @@
         },
         "window": {
           "maximize": "Massimizza all’avvio",
-          "quit": "Esci quando la finestra è chiusa"
+          "quit": "Esci quando la finestra è chiusa",
+          "showTrayIcon": "Mostra la tray icon"
         },
         "tabs": {
           "newTabSwitch": "Vai a nuova scheda",
@@ -534,10 +540,7 @@
         "search": {
           "source": "Fonte",
           "scope": "Tipologia",
-          "resultsFullSize": "Mostra interamente i risultati",
-          "history": {
-            "clear": "Cancella cronologia ricerche"
-          }
+          "resultsFullSize": "Mostra interamente i risultati"
         },
         "player": {
           "audioSources": "Sorgente audio",
@@ -553,7 +556,8 @@
         },
         "video": {
           "autoplay": "Autoplay",
-          "pauseOnAudioPlay": "Pausa quando l'audio è in riproduzione"
+          "pauseOnAudioPlay": "Pausa quando l'audio è in riproduzione",
+          "openLinksInNewTab": "Apri i link in una nuova scheda"
         },
         "recommendations": {
           "hideLibraryArtists": "Nascondi artisti della libreria",
@@ -569,6 +573,9 @@
           "annotations": "Mostra annotazioni"
         },
         "history": {
+          "search": {
+            "delete": "Elimina cronologia delle ricerche"
+          },
           "activity": {
             "delete": "Elimina la cronologia delle attività"
           },
@@ -579,8 +586,11 @@
             "delete": "Elimina la cronologia del browser"
           }
         },
-        "other": {
-          "clearCache": "Svuota cache"
+        "system": {
+          "cache": {
+            "enable": "Abilita cache",
+            "clear": "Svuota cache"
+          }
         }
       },
       "profile": {
@@ -781,7 +791,8 @@
     "videoPlaylist": "La playlist video è stata eliminata"
   },
   "messages": {
-    "welcome": "Benvenuto, {profileNickname}"
+    "welcome": "Benvenuto, {profileNickname}",
+    "restartToApply": "L'impostazione è stata salvata e sarà applicata al prossimo avvio dell'applicazione."
   },
   "profile": {
     "wasOnline": "Era online"
