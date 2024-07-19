@@ -7,6 +7,8 @@ export default {
     return {
       addCollectionItem:
         this.addCollectionItem,
+      updateCollectionItem:
+        this.updateCollectionItem,
       deleteCollectionItem:
         this.deleteCollectionItem,
       resetCollection:
@@ -29,6 +31,31 @@ export default {
         ...this[collection],
         itemFormatted
       ]
+    },
+    updateCollectionItem (
+      {
+        collection,
+        uuid,
+        data
+      }
+    ) {
+      function isMatchedItem (
+        itemData
+      ) {
+        return itemData.uuid === uuid
+      }
+
+      const collectionItem =
+        this[collection].find(
+          isMatchedItem
+        )
+
+      if (!collectionItem) { return }
+
+      Object.assign(
+        collectionItem,
+        data
+      )
     },
     deleteCollectionItem (
       {

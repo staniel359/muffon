@@ -18,6 +18,7 @@
         is-with-external-link-option
         is-with-clear-button
         is-with-tracks
+        is-import
         @clear-button-click="handleClearButtonClick"
       />
     </template>

@@ -272,10 +272,14 @@ export default {
         image
       } = playlistData
 
+      const isPrivate =
+        playlistData.private
+
       return {
         title,
         description,
-        image: image?.original
+        image: image?.original,
+        isPrivate
       }
     },
     formatTrackData (

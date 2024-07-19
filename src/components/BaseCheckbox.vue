@@ -2,6 +2,7 @@
   <div
     ref="checkbox"
     class="ui checkbox"
+    @click="handleClick"
   >
     <input
       type="checkbox"
@@ -42,9 +43,18 @@ export default {
     text: String
   },
   emits: [
+    'click',
     'isCheckedChange'
   ],
   methods: {
+    handleClick (
+      event
+    ) {
+      this.$emit(
+        'click',
+        event
+      )
+    },
     change (
       value
     ) {
