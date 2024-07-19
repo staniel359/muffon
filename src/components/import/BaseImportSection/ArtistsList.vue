@@ -5,7 +5,6 @@
     :limit="limit"
     :response-page-limit="artistsCount"
     is-reset
-    is-with-pagination
     @focus="handleFocus"
   >
     <template

@@ -171,6 +171,12 @@ export default {
         this.clientPageCollectionLength >=
           this.clientCurrentPageLimit
       )
+    },
+    isGoToClientPreviousPage () {
+      return (
+        this.isReset &&
+          !this.clientPageCollectionLength
+      )
     }
   },
   methods: {
@@ -187,6 +193,10 @@ export default {
       }
 
       this.refreshContent()
+
+      if (this.isGoToClientPreviousPage) {
+        this.goToClientPreviousPage()
+      }
     },
     setClientPageCollection () {
       this.clientPageCollection =
@@ -205,6 +215,10 @@ export default {
       )
 
       this.clientPage = value
+    },
+    goToClientPreviousPage () {
+      this.clientPage =
+        this.clientPreviousPage
     }
   }
 }

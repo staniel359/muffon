@@ -6,7 +6,6 @@
     :limit="limit"
     :response-page-limit="totalCount"
     is-reset
-    is-with-pagination
     @focus="handleFocus"
   >
     <template
