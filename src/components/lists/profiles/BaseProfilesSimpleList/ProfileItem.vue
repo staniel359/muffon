@@ -27,6 +27,7 @@
         <BasePrivateIcon
           v-if="isPrivate"
           class="right small"
+          model="profile"
         />
 
         <BaseLabel

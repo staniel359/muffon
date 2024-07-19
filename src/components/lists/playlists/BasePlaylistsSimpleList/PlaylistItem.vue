@@ -41,6 +41,7 @@
           <BasePrivateIcon
             v-if="isPrivate"
             class="right small"
+            model="playlist"
           />
         </div>
 
@@ -83,6 +84,7 @@
 
         <BasePrivateIcon
           class="small"
+          model="playlist"
         />
       </div>
 

@@ -18,6 +18,7 @@
           <BasePrivateIcon
             v-if="isPrivate"
             class="right"
+            model="playlist"
           />
         </div>
 

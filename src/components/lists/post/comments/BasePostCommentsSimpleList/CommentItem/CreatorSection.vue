@@ -15,6 +15,7 @@
       <BasePrivateIcon
         v-if="isProfilePrivate"
         class="right small"
+        model="profile"
       />
     </div>
   </div>
