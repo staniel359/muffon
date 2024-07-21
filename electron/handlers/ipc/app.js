@@ -1,3 +1,6 @@
+import {
+  systemName
+} from '../../helpers/utils.js'
 import setTitle from '../../actions/app/setTitle.js'
 import clearCache from '../../actions/app/clearCache.js'
 import setLanguage from '../../actions/app/setLanguage.js'
@@ -63,6 +66,10 @@ export function handleNavigate (
 
 export function handleCallOpenDeepLink () {
   callOpenDeepLink()
+}
+
+export function handleGetSystemName () {
+  return systemName
 }
 
 export function handleQuit () {

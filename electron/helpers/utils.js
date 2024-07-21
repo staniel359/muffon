@@ -56,14 +56,12 @@ function isMatchedPlatform (
   )
 }
 
-const systemName =
+export const systemName =
   Object.entries(
     systems
   ).find(
     isMatchedPlatform
   )[0]
-
-process.env.systemName = systemName
 
 export const isDevelopment = !app.isPackaged
 
