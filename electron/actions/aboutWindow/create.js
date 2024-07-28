@@ -19,6 +19,12 @@ function handleClose (
   aboutWindow.hide()
 }
 
+function handleDomReady () {
+  setViewScale(
+    aboutWindow
+  )
+}
+
 export default function () {
   const aboutWindowWidth = 500
   const aboutWindowHeight = 275
@@ -42,6 +48,10 @@ export default function () {
       options
     )
 
+  changeViewBackgroundColor(
+    aboutWindow
+  )
+
   aboutWindow.setMinimumSize(
     aboutWindowWidth,
     aboutWindowHeight
@@ -49,17 +59,16 @@ export default function () {
 
   aboutWindow.removeMenu()
 
-  changeViewBackgroundColor(
-    aboutWindow
-  )
-
-  setViewScale(
-    aboutWindow
-  )
-
   aboutWindow.loadURL(
     `${baseUrl}#/about`
   )
+
+  aboutWindow
+    .webContents
+    .on(
+      'dom-ready',
+      handleDomReady
+    )
 
   aboutWindow.on(
     'close',
