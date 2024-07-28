@@ -10,7 +10,7 @@
       <AlbumItem
         :album-data="albumData"
         :is-with-artist-name="isWithArtistName"
-        :is-with-multiple-artist-names="isWithMultipleArtistNames"
+        :artist-name="artistName"
         :is-with-listeners-count="isWithListenersCount"
         :is-with-library="isWithLibrary"
         :is-link-to-library="isLinkToLibrary"
@@ -64,7 +64,6 @@ export default {
     },
     artistName: String,
     isWithArtistName: Boolean,
-    isWithMultipleArtistNames: Boolean,
     isWithListenersCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
@@ -95,25 +94,6 @@ export default {
       return formatCollection(
         this.albums
       )
-    }
-  },
-  beforeMount () {
-    this.formatAlbums()
-  },
-  methods: {
-    formatAlbums () {
-      this.albums.forEach(
-        this.formatAlbum
-      )
-    },
-    formatAlbum (
-      albumData
-    ) {
-      if (this.artistName) {
-        albumData.artist = {
-          name: this.artistName
-        }
-      }
     }
   }
 }

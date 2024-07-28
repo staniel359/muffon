@@ -16,15 +16,26 @@
       class="bottom"
       :source="source"
     />
+
+    <SelfSection
+      v-if="currentProfileId"
+      :album-data="albumData"
+      :profile-id="profileId"
+    />
   </BaseSegmentContainer>
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import AlbumSection from './InfoSegment/AlbumSection.vue'
 import ArtistSection from './InfoSegment/ArtistSection.vue'
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
+import SelfSection from './InfoSegment/SelfSection.vue'
 
 export default {
   name: 'InfoSegment',
@@ -32,13 +43,20 @@ export default {
     BaseSegmentContainer,
     AlbumSection,
     ArtistSection,
-    BaseSourceIcon
+    BaseSourceIcon,
+    SelfSection
   },
   props: {
     albumData: Object,
     profileId: String
   },
   computed: {
+    ...mapState(
+      profileStore,
+      {
+        currentProfileId: 'id'
+      }
+    ),
     isRenderSource () {
       return (
         this.source &&

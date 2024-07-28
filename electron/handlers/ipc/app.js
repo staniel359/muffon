@@ -1,3 +1,6 @@
+import {
+  systemName
+} from '../../helpers/utils.js'
 import setTitle from '../../actions/app/setTitle.js'
 import clearCache from '../../actions/app/clearCache.js'
 import setLanguage from '../../actions/app/setLanguage.js'
@@ -7,7 +10,7 @@ import callLogout from '../../actions/app/callLogout.js'
 import callAccountDelete from '../../actions/app/callAccountDelete.js'
 import callNavigate from '../../actions/app/callNavigate.js'
 import callOpenDeepLink from '../../actions/app/callOpenDeepLink.js'
-import exit from '../../actions/app/exit.js'
+import quit from '../../actions/app/quit.js'
 
 export function handleSetTitle (
   _,
@@ -65,6 +68,10 @@ export function handleCallOpenDeepLink () {
   callOpenDeepLink()
 }
 
-export function handleExit () {
-  exit()
+export function handleGetSystemName () {
+  return systemName
+}
+
+export function handleQuit () {
+  quit()
 }

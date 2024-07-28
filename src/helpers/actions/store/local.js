@@ -11,8 +11,10 @@ import recommendationArtistsStore from '@/stores/recommendationArtists'
 import recommendationTracksStore from '@/stores/recommendationTracks'
 import searchStore from '@/stores/search'
 import sidebarStore from '@/stores/sidebar'
+import systemStore from '@/stores/system'
 import topStore from '@/stores/top'
 import videoStore from '@/stores/video'
+import windowStore from '@/stores/window'
 import {
   snakeCase,
   camelCase
@@ -37,8 +39,10 @@ const stores = {
     recommendationTracksStore,
   search: searchStore,
   sidebar: sidebarStore,
+  system: systemStore,
   top: topStore,
-  video: videoStore
+  video: videoStore,
+  window: windowStore
 }
 
 function getAction (

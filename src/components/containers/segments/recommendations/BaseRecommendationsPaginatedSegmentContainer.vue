@@ -13,8 +13,18 @@
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
+        :is-with-top-section="isWithTopSection"
+        :is-with-play-button="isWithPlayButton"
         @focus="handleFocus"
       >
+        <template
+          #topPlayButton
+        >
+          <slot
+            name="topPlayButton"
+          />
+        </template>
+
         <template
           #default="slotProps"
         >

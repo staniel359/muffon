@@ -5,11 +5,11 @@ html
 
 body
   &.pushable
-    @extend .background-transparent
+    @extend .background-none
     .pusher
-      @extend .overflow-visible, .background-transparent
+      @extend .overflow-visible, .background-none
       &:after
-        @extend .background-transparent
+        @extend .background-none
   &.dimmable
     &.scrolling
       & > .dimmer
@@ -102,10 +102,14 @@ p
   &.simple
     & > .main-segment
       &:not(:first-child)
-        @extend .no-border
-        padding-top: 0.5rem !important
+        &:not(.bordered)
+          @extend .no-border
+          padding-top: 0.5rem !important
         &.not-top-padded
           padding-top: 0 !important
+        &.bordered
+          &.inverted
+            @extend .border-top-inverted
 
 .main-search
   .prompt
@@ -122,13 +126,16 @@ p
         @extend .object-fit-cover
     .content
       @extend .no-margin, .flex-full, .word-break-break-word, .main-list-right-small-section, .main-text-container
+      .title
+        line-height: 1.3rem
       .description
         .artist-name
           @extend .text-color-black
-          margin-top: 0.1rem
+          margin-top: 0.2rem
+          line-height: 1.3rem
         .album-title
           margin-top: 0.1rem
-          line-height: 0.8rem
+          line-height: 1.1rem
           font-size: 1rem
     &:only-child
       &:hover
@@ -171,11 +178,11 @@ p
 .main-input
   & > input,
   & > textarea
-    @extend .background-transparent
+    @extend .background-none
   &.inverted
     & > input,
     & > textarea
-      @extend .background-transparent, .text-color-white, .border-inverted
+      @extend .background-none, .text-color-white, .border-inverted
       &:focus
         @extend .border-color-base-light
     & > .icon
@@ -186,16 +193,14 @@ p
 
 .main-navbar-button
   @extend .main-simple-button, .height-navbar
-  width: $navbarHeight
+  width: $navbarPanelHeight
 
 .main-segment-container
-  @extend .no-border, .no-margin, .main-list-bottom-large-section
+  @extend .no-border, .no-margin, .main-list-bottom-large-section, .blurred-before
   &.inverted
     @extend .shadowed
     &.nested
       @extend .border-inverted, .no-shadow
-  &:not(.loading)
-    @extend .blurred
 
 .main-segment
   @extend .scroll-smooth
@@ -203,7 +208,7 @@ p
     min-height: 150px !important
     z-index: 1
     &:before
-      @extend .background-transparent, .blurred
+      @extend .background-none, .blurred
       border-radius: inherit !important
   &.inverted
     @extend .no-shadow
@@ -211,6 +216,8 @@ p
     @extend .text-color-black
     &.inverted
       @extend .text-color-white
+  &.with-top-section
+    @extend .flex-column
 
 .main-paginated-page-segment-container
   @extend .full-column
@@ -269,15 +276,17 @@ p
     @extend .main-list-right-medium-section
   & > .content
     @extend .flex-full, .no-padding, .main-list-right-medium-section, .main-text-container
+    .header
+      line-height: 1.5rem !important
     .text
       font-size: 20px
   .extra
-    line-height: 1.1rem
-    margin-top: 0.25rem
+    line-height: 1.3rem
+    margin-top: 0.15rem
   .description
     &:not(.right, .left)
-      line-height: 1rem
-      margin-top: 0.25rem
+      line-height: 1.1rem
+      margin-top: 0.15rem
   & > .base-options-popup-container
     @extend .main-list-right-small-section
   .main-self-icons
@@ -291,7 +300,7 @@ p
   @extend .main-left-extrasmall-section
 
 .main-popup
-  @extend .no-border, .no-padding, .background-transparent, .blurred
+  @extend .no-border, .no-padding, .background-none, .blurred
   max-width: unset !important
   z-index: 2000 !important
   &.inverted
@@ -346,7 +355,7 @@ p
   @extend .fixed
 
 .main-header
-  @extend .no-margin
+  @extend .no-margin, .word-break-break-word
   line-height: normal !important
   .header-icon
     &.small
@@ -357,9 +366,6 @@ p
       &.small
         @extend .main-left-medium-section
         font-size: 2rem !important
-
-.main-artist-name
-  @extend .main-top-small-section
 
 .main-dropdown-item
   @extend .middle-aligned, .word-break-break-word
@@ -387,6 +393,8 @@ p
 
 .main-settings-section-container
   @extend .main-list-bottom-large-section
+  .base-divider
+    margin-bottom: 3rem !important
 
 .main-settings-option-container
   @extend .main-list-bottom-large-section
@@ -403,15 +411,22 @@ p
   & > .content
     @extend .middle-aligned, .main-text-container
     .right-section
-      @extend .main-right-section, .main-select
+      @extend .main-right-section, .main-wide-field
     .bottom-section
-      @extend .main-bottom-section, .main-select
+      @extend .main-bottom-section, .main-wide-field
+
+.main-field
+  width: 200px
+
+.main-wide-field
+  width: 250px
 
 .main-source-select
-  @extend .main-select
+  @extend .main-wide-field
 
 .main-sidebar-item
   @extend .no-padding, .d-flex
+  font-size: 1.1rem
   &.top-item
     @extend .align-items-center, .border-bottom, .height-navbar
     &.inverted
@@ -429,7 +444,9 @@ p
           @extend .text-color-white
 
 .main-sidebar-item-icon-image-container
-  @extend .middle-center-aligned, .image-40
+  @extend .middle-center-aligned
+  width: $sidebarPanelWidth
+  height: $sidebarPanelWidth
   flex-shrink: 0
   .icon
     font-size: 16px
@@ -553,7 +570,7 @@ p
   &:last-child
     @extend .no-border
 
-.main-field
+.main-clearable-field
   @extend .middle-aligned
 
 .main-counter-bar-container
@@ -661,13 +678,7 @@ p
   @extend .middle-aligned
 
 .main-search-input
-  width: 240px
-
-.main-select
-  width: 230px
-
-.main-small-select
-  width: 150px
+  @extend .main-wide-field
 
 .main-bottom-right-button
   bottom: 1.5rem

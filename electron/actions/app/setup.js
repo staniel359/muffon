@@ -1,15 +1,29 @@
-import createMainWindow from '../../actions/mainWindow/create.js'
-import createAboutWindow from '../../actions/aboutWindow/create.js'
+import createMainWindow
+  from '../../actions/mainWindow/create.js'
+import createAboutWindow
+  from '../../actions/aboutWindow/create.js'
 import createTray from '../../actions/tray/create.js'
-import createSessionHeadersHandler
-  from '../../actions/session/createHeadersHandler.js'
+import addSessionHeadersHandlers
+  from '../../actions/session/headers/addHandlers.js'
+import setupGlobalShortcuts
+  from '../../actions/app/setupGlobalShortcuts.js'
+import getElectronStoreKey from '../electronStore/getKey.js'
 
 export default function () {
   createMainWindow()
 
   createAboutWindow()
 
-  createTray()
+  const isWithTrayIcon =
+    getElectronStoreKey(
+      'window.isWithTrayIcon'
+    )
 
-  createSessionHeadersHandler()
+  if (isWithTrayIcon) {
+    createTray()
+  }
+
+  addSessionHeadersHandlers()
+
+  setupGlobalShortcuts()
 }

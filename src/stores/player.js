@@ -17,7 +17,8 @@ const data = {
       isWithAlbum: null,
       audioSources: null,
       isWithEqualizer: null,
-      isWithPlayingFocus: null
+      isWithPlayingFocus: null,
+      isPauseOnVideoPlay: null
     }
   },
   getters: {
@@ -92,6 +93,11 @@ const data = {
       value
     ) {
       this.isWithPlayingFocus = value
+    },
+    setIsPauseOnVideoPlay (
+      value
+    ) {
+      this.isPauseOnVideoPlay = value
     }
   }
 }

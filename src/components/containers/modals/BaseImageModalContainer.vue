@@ -1,7 +1,7 @@
 <template>
   <BaseModalContainer
     ref="modal"
-    class="base-image-modal no-margin no-shadow no-border no-border-radius background-transparent"
+    class="base-image-modal no-margin no-shadow no-border no-border-radius"
     is-render
     @show="handleShow"
   >

@@ -1,5 +1,6 @@
 <template>
   <BaseSegmentContainer
+    ref="segment"
     class="track-segment"
     :is-loading="isLoading"
     :error="error"
@@ -35,7 +36,10 @@ export default {
     RightColumn
   },
   props: {
-    trackData: Object,
+    trackData: {
+      type: Object,
+      required: true
+    },
     requestTrackData: Object,
     isLoading: Boolean,
     error: Error
@@ -48,7 +52,13 @@ export default {
       scrollable: null
     }
   },
+  watch: {
+    trackData: 'handleTrackDataChange'
+  },
   methods: {
+    handleTrackDataChange () {
+      this.focus()
+    },
     handleInit (
       element
     ) {
@@ -58,6 +68,11 @@ export default {
       this.$emit(
         'refresh'
       )
+    },
+    focus () {
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

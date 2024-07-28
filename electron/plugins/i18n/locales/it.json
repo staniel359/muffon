@@ -2,7 +2,7 @@
   "show": "Mostra",
   "hide": "Nascondi",
   "about": "Informazioni",
-  "exit": "Esci",
+  "quit": "Esci",
   "update": {
     "message": "È disponibile la nuova versione",
     "buttons": {

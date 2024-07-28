@@ -156,6 +156,8 @@
     "close": "Schließen",
     "openLink": "Link öffnen",
     "play": "Abspielen",
+    "shuffle": "Zufallswiedergabe",
+    "loop": "Schleife",
     "addFrom": {
       "search": "Von der Suche",
       "library": "Von der Bibliothek"
@@ -256,6 +258,7 @@
         "account": "Account löschen",
         "library": "Bibliothek löschen",
         "history": {
+          "search": "Suchverlauf löschen",
           "activity": "Aktivitätenverlauf löschen",
           "browser": "Browserverlauf löschen",
           "player": "Playerverlauf löschen"
@@ -275,6 +278,7 @@
         "account": "Sie sind dabei, Ihren Account löschen.",
         "library": "Sie sind dabei, Ihre Bibliothek zu löschen.",
         "history": {
+          "search": "Du wirst deinen Suchverlauf löschen.",
           "activity": "Du bist dabei, deinen Aktivitätenverlauf zu löschen.",
           "browser": "Du bist dabei, deinen Browserfenster zu löschen.",
           "player": "Du bist dabei, deinen Playerverlauf zu löschen."
@@ -402,6 +406,7 @@
       "account": "Ihr Account wurde gelöscht",
       "library": "Ihre Bibliothek wurde gelöscht",
       "history": {
+        "search": "Suchverlauf wurde gelöscht",
         "activity": "Aktivitätenverlauf wurde gelöscht",
         "browser": "Browserverlauf wurde gelöscht",
         "player": "Playerverlauf wurde gelöscht"
@@ -504,7 +509,7 @@
       "data": "Daten",
       "info": "Info",
       "account": "Konto",
-      "other": "Andere"
+      "system": "System"
     },
     "options": {
       "app": {
@@ -525,33 +530,34 @@
         },
         "window": {
           "maximize": "Beim Start maximieren",
-          "exit": "Beenden beim Schließen"
+          "quit": "Beenden beim Schließen",
+          "showTrayIcon": "Tray-Icon anzeigen"
         },
         "tabs": {
           "newTabSwitch": "Zu einem neuen Tab wechseln",
-          "closeOnExit": "Tabs beim Beenden schließen"
+          "closeOnQuit": "Tabs beim Beenden schließen"
         },
         "search": {
           "source": "Quelle",
           "scope": "Suchbereich",
-          "resultsFullSize": "Ergebnisse in voller Größe anzeigen",
-          "history": {
-            "clear": "Suchverlauf löschen"
-          }
+          "resultsFullSize": "Ergebnisse in voller Größe anzeigen"
         },
         "player": {
           "audioSources": "Audioquellen (nach Priorität)",
           "bitrate": "Audiobitrate anzeigen",
           "album": "Album anzeigen",
           "equalizer": "Equalizer anzeigen",
-          "focusPlaying": "Fokus auf aktuellen Titel"
+          "focusPlaying": "Fokus auf aktuellen Titel",
+          "pauseOnVideoPlay": "Beim Abspielen von Video pausieren"
         },
         "queue": {
           "autoplay": "Autoplay",
           "clear": "Leeren, wenn Player geschlossen wird"
         },
         "video": {
-          "autoplay": "Autoplay"
+          "autoplay": "Autoplay",
+          "pauseOnAudioPlay": "Beim Abspielen von Audio pausieren",
+          "openLinksInNewTab": "Links in neuem Tab öffnen"
         },
         "recommendations": {
           "hideLibraryArtists": "Bibliothekskünstler ausblenden",
@@ -567,6 +573,9 @@
           "annotations": "Anmerkungen anzeigen"
         },
         "history": {
+          "search": {
+            "delete": "Suchverlauf löschen"
+          },
           "activity": {
             "delete": "Aktivitätenverlauf löschen"
           },
@@ -577,8 +586,11 @@
             "delete": "Browserverlauf löschen"
           }
         },
-        "other": {
-          "clearCache": "Zwischenspeicher leeren"
+        "system": {
+          "cache": {
+            "enable": "Cache aktivieren",
+            "clear": "Zwischenspeicher leeren"
+          }
         }
       },
       "profile": {
@@ -779,7 +791,8 @@
     "videoPlaylist": "Videoplaylist wurde gelöscht"
   },
   "messages": {
-    "welcome": "Willkommen, {profileNickname}"
+    "welcome": "Willkommen, {profileNickname}",
+    "restartToApply": "Die Einstellung wurde gespeichert und wird beim nächsten Start der Anwendung übernommen."
   },
   "profile": {
     "wasOnline": "War online"

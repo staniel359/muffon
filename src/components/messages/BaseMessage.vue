@@ -1,17 +1,19 @@
 <template>
   <div
-    class="ui message base-message no-margin background-transparent"
-    :class="{
-      inverted: isDarkMode,
-      icon: icon || icons
-    }"
+    class="ui message base-message no-margin background-none"
+    :class="[
+      messageClass,
+      {
+        inverted: isDarkMode,
+        icon: (
+          iconComputed || icons
+        )
+      }
+    ]"
   >
     <IconBlock
-      v-if="icon"
-      :class="{
-        large: isIconSmall
-      }"
-      :icon="icon"
+      v-if="iconComputed"
+      :icon="iconComputed"
     />
     <IconsBlock
       v-else-if="icons"
@@ -21,7 +23,7 @@
       :icons="icons"
     />
 
-    <div class="content main-list-right-small-section">
+    <div class="content">
       <div
         v-if="header"
         class="header"
@@ -80,7 +82,10 @@ export default {
     link: Object,
     listItems: Array,
     isWithRefreshButton: Boolean,
-    isIconSmall: Boolean
+    isIconSmall: Boolean,
+    isSuccess: Boolean,
+    isError: Boolean,
+    isInfo: Boolean
   },
   emits: [
     'refreshButtonClick',
@@ -92,7 +97,27 @@ export default {
       [
         'isDarkMode'
       ]
-    )
+    ),
+    iconComputed () {
+      if (this.isSuccess) {
+        return 'success'
+      } else if (this.isError) {
+        return 'error'
+      } else if (this.isInfo) {
+        return 'infoCircle'
+      } else {
+        return this.icon
+      }
+    },
+    messageClass () {
+      if (this.isSuccess) {
+        return 'success'
+      } else if (this.isError) {
+        return 'error'
+      } else {
+        return null
+      }
+    }
   },
   methods: {
     handleRefreshButtonClick () {

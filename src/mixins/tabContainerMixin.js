@@ -16,7 +16,9 @@ export default {
       required: true
     },
     limit: Number,
-    isActive: Boolean
+    isActive: Boolean,
+    isWithTopSection: Boolean,
+    isWithPlayButton: Boolean
   },
   emits: [
     'focus'

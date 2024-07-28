@@ -23,3 +23,13 @@ export function check (
     value
   )
 }
+
+export function toggle (
+  element
+) {
+  $(
+    element
+  ).checkbox(
+    'toggle'
+  )
+}

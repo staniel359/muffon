@@ -9,6 +9,7 @@ import {
 } from '../../helpers/urls.js'
 import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
+import setViewScale from '../view/setScale.js'
 
 function handleClose (
   event
@@ -16,6 +17,12 @@ function handleClose (
   event.preventDefault()
 
   aboutWindow.hide()
+}
+
+function handleDomReady () {
+  setViewScale(
+    aboutWindow
+  )
 }
 
 export default function () {
@@ -41,6 +48,10 @@ export default function () {
       options
     )
 
+  changeViewBackgroundColor(
+    aboutWindow
+  )
+
   aboutWindow.setMinimumSize(
     aboutWindowWidth,
     aboutWindowHeight
@@ -48,13 +59,16 @@ export default function () {
 
   aboutWindow.removeMenu()
 
-  changeViewBackgroundColor(
-    aboutWindow
-  )
-
   aboutWindow.loadURL(
     `${baseUrl}#/about`
   )
+
+  aboutWindow
+    .webContents
+    .on(
+      'dom-ready',
+      handleDomReady
+    )
 
   aboutWindow.on(
     'close',

@@ -19,15 +19,24 @@
         :order="order"
         :model="model"
         :is-with-top-segment="isWithTopSegment"
+        :is-with-top-second-segment="isWithTopSecondSegment"
+        :is-with-play-button="isWithPlayButton"
         :is-with-order-change="isWithOrderChange"
         :is-with-reload-button="isWithReloadButton"
       >
+        <template
+          #topPlayButton
+        >
+          <slot
+            name="topPlayButton"
+          />
+        </template>
+
         <template
           #default="slotProps"
         >
           <slot
             :[scope]="slotProps[scope]"
-            :artist-name="pageSlotProps.artistName"
           />
         </template>
       </BasePaginatedPageContainer>

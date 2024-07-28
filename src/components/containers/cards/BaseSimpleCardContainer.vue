@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui basic card base-simple-card height-100 background-transparent main-visibility-container"
+    class="ui basic card base-simple-card height-100 background-none main-visibility-container"
     :class="{
       inverted: isDarkMode
     }"

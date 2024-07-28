@@ -6,9 +6,11 @@ import {
 } from 'electron'
 import electronUpdater from 'electron-updater'
 import {
-  isMac,
-  releasesUrl
+  isMacos
 } from '../../helpers/utils.js'
+import {
+  releasesUrl
+} from '../../helpers/urls.js'
 import i18n from 'i18n'
 
 const {
@@ -117,7 +119,7 @@ function checkWithUpdate () {
 }
 
 export default function checkForUpdates () {
-  if (isMac) {
+  if (isMacos) {
     checkWithoutUpdate()
   } else {
     checkWithUpdate()

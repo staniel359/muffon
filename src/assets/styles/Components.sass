@@ -17,7 +17,7 @@
         @extend .d-block
     &.full-size
       width: inherit
-      max-height: calc(100vh - $navbarHeight - 20px)
+      max-height: calc(100vh - $navbarPanelHeight - 20px)
   .results-segment
     @extend .border-top, .no-border-top-radius
     max-height: inherit
@@ -61,10 +61,10 @@
     @extend .d-none
 
 .the-visible-area-container
-  height: calc(100vh - #{$navbarHeight})
+  height: calc(100vh - #{$navbarPanelHeight})
   z-index: 10000 !important
   &.player-panel-height
-    height: calc(100vh - #{$navbarHeight} - #{$playerPanelHeight})
+    height: calc(100vh - #{$navbarPanelHeight} - #{$playerPanelHeight})
 
 .the-navbar-panel
   @extend .no-border
@@ -73,22 +73,26 @@
     @extend .border-bottom-inverted
 
 .the-queue-panel
-  width: 400px !important
+  width: 500px !important
   .header-segment
-    margin-top: $navbarHeight !important
+    margin-top: $navbarPanelHeight !important
     z-index: 1
   .section-segment
     @extend .no-border-radius
     &.inverted
       @extend .border-left-inverted
+  .placeholder-segment
+    @extend .no-border, .no-padding
+    height: 0px
+    transition: height 0.5s
 
 .the-sidebar-panel
   @extend .no-border
   z-index: 300 !important
-  width: 40px !important
+  width: $sidebarPanelWidth !important
   transition: width 0.35s !important
   &:hover
-    width: 240px !important
+    width: 275px !important
     .top-section
       @extend .overflow-y-auto
       &::-webkit-scrollbar
@@ -364,7 +368,7 @@
 .base-form-container
   &.loading
     &:before
-      @extend .background-transparent, .blurred
+      @extend .background-none, .blurred
   .field
     @extend .no-margin, .main-list-bottom-section
 
@@ -445,10 +449,11 @@
     @extend .no-padding
   &:not(.active)
     @extend .d-none
-  &.with-top-segment
+  &.with-top-section
     @extend .flex-column
 
 .base-private-icon
+  @extend .main-popup-icon
   &.right
     @extend .main-right-small-section
     &.small
@@ -465,6 +470,7 @@
     @extend .main-right-small-icon
 
 .base-image
+  @extend .no-dragging
   &:not(.contained)
     @extend .object-fit-cover
     &.bordered
@@ -520,9 +526,9 @@
     &.inverted
       @extend .border-inverted
   .icons
+    margin: 0 0.5rem !important
     &:not(.large)
       font-size: 2.5rem !important
-    margin: 0 0.5rem !important
 
 .base-image-modal
   .base-image

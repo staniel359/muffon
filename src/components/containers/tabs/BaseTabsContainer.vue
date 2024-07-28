@@ -19,7 +19,7 @@
     <div class="base-tab-container full-column relative">
       <slot
         v-for="(tabData, index) in tabs"
-        class="ui segment base-tab main-segment no-shadow no-border no-margin height-100 width-100 plain-full background-transparent"
+        class="ui segment base-tab main-segment no-shadow no-border no-margin height-100 width-100 plain-full background-none"
         :name="index"
         :class="{
           active: isActive(index)

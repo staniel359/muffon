@@ -1,17 +1,14 @@
 <template>
   <div class="main-settings-options-block">
-    <BaseSettingsHistoryDeleteOption
+    <SearchSection />
+
+    <ActivitySection
       v-if="profileId"
-      scope="activity"
     />
 
-    <BaseSettingsHistoryDeleteOption
-      scope="player"
-    />
+    <PlayerSection />
 
-    <BaseSettingsHistoryDeleteOption
-      scope="browser"
-    />
+    <BrowserSection />
   </div>
 </template>
 
@@ -20,13 +17,18 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import BaseSettingsHistoryDeleteOption
-  from '@/components/settings/BaseSettingsHistoryDeleteOption.vue'
+import SearchSection from './HistoryOptions/SearchSection.vue'
+import ActivitySection from './HistoryOptions/ActivitySection.vue'
+import PlayerSection from './HistoryOptions/PlayerSection.vue'
+import BrowserSection from './HistoryOptions/BrowserSection.vue'
 
 export default {
   name: 'HistoryOptions',
   components: {
-    BaseSettingsHistoryDeleteOption
+    SearchSection,
+    ActivitySection,
+    PlayerSection,
+    BrowserSection
   },
   computed: {
     ...mapState(

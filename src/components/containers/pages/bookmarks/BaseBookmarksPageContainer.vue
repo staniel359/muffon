@@ -70,7 +70,8 @@ export default {
     }
   },
   watch: {
-    bookmarksData: 'handleNavigationDataChange'
+    bookmarksData:
+      'handleNavigationDataChange'
   },
   mounted () {
     if (this.isGetData) {

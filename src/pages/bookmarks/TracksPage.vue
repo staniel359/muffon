@@ -6,9 +6,19 @@
     :limit="limit"
     :order="order"
     is-with-top-segment
+    is-with-top-second-segment
+    is-with-play-button
     is-with-order-change
     is-with-reload-button
   >
+    <template
+      #topPlayButton
+    >
+      <BaseBookmarksTracksPlayButton
+        :order="order"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -40,6 +50,8 @@ import BaseBookmarksPaginatedPageContainer
   from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseBookmarksTracksPlayButton
+  from '@/components/buttons/play/bookmarks/BaseBookmarksTracksPlayButton.vue'
 import orderChangeMixin from '@/mixins/orderChangeMixin'
 import pageMixin from '@/mixins/pageMixin'
 import {
@@ -50,7 +62,8 @@ export default {
   name: 'TracksPage',
   components: {
     BaseBookmarksPaginatedPageContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseBookmarksTracksPlayButton
   },
   mixins: [
     orderChangeMixin,

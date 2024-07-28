@@ -181,3 +181,15 @@ export function sortByCreated (
     sortItems
   )
 }
+
+export function getObjectKeysWithTrueValues (
+  value
+) {
+  return Object.entries(
+    value
+  ).filter(
+    array => array[1]
+  ).map(
+    array => array[0]
+  )
+}

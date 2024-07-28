@@ -7,7 +7,7 @@
       :key="albumData.uuid"
       :album-data="albumData"
       :is-with-artist-name="isWithArtistName"
-      :is-with-multiple-artist-names="isWithMultipleArtistNames"
+      :artist-name="artistName"
       :is-with-source="isWithSource"
       :is-with-self-icons="isWithSelfIcons"
       :is-link-to-library="isLinkToLibrary"
@@ -67,7 +67,6 @@ export default {
       default: true
     },
     isWithArtistName: Boolean,
-    isWithMultipleArtistNames: Boolean,
     artistName: String,
     isWithSource: Boolean,
     isWithListenersCount: Boolean,
@@ -106,18 +105,6 @@ export default {
       } else {
         return this.groups
       }
-    },
-    artistData () {
-      return {
-        name: this.artistName
-      }
-    }
-  },
-  beforeMount () {
-    if (this.artistName) {
-      this.albumsOrGroups.forEach(
-        this.formatAlbum
-      )
     }
   },
   methods: {
@@ -137,11 +124,6 @@ export default {
           uuid
         }
       )
-    },
-    formatAlbum (
-      albumData
-    ) {
-      albumData.artist = this.artistData
     }
   }
 }

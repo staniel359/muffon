@@ -251,9 +251,9 @@ export default {
     },
     imageClass () {
       if (this.isImageSmall) {
-        return 'image-40'
+        return 'image-35'
       } else {
-        return 'image-60'
+        return 'image-50'
       }
     }
   },

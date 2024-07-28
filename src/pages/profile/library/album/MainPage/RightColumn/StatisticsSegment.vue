@@ -1,7 +1,5 @@
 <template>
-  <BaseSegmentContainer
-    class="raised main-segment-container"
-  >
+  <BaseSegmentContainer>
     <BaseStatistics
       class="two small"
       :statistics="statistics"

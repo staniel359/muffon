@@ -156,6 +156,8 @@
     "close": "Close",
     "openLink": "Open link",
     "play": "Play",
+    "shuffle": "Shuffle",
+    "loop": "Loop",
     "addFrom": {
       "search": "From search",
       "library": "From library"
@@ -256,6 +258,7 @@
         "account": "Delete account",
         "library": "Delete library",
         "history": {
+          "search": "Delete search history",
           "activity": "Delete activity history",
           "browser": "Delete browser history",
           "player": "Delete player history"
@@ -275,6 +278,7 @@
         "account": "You are going to delete your account.",
         "library": "You are going to delete your library.",
         "history": {
+          "search": "You are going to delete your search history.",
           "activity": "You are going to delete your activity history.",
           "browser": "You are going to delete your browser history.",
           "player": "You are going to delete your player history."
@@ -402,6 +406,7 @@
       "account": "Your account has been deleted",
       "library": "Your library has been deleted",
       "history": {
+        "search": "Search history has been deleted",
         "activity": "Activity history has been deleted",
         "browser": "Browser history has been deleted",
         "player": "Player history has been deleted"
@@ -504,7 +509,7 @@
       "data": "Data",
       "info": "Info",
       "account": "Account",
-      "other": "Other"
+      "system": "System"
     },
     "options": {
       "app": {
@@ -525,33 +530,34 @@
         },
         "window": {
           "maximize": "Maximize on start",
-          "exit": "Exit on close"
+          "quit": "Quit on close",
+          "showTrayIcon": "Show tray icon"
         },
         "tabs": {
           "newTabSwitch": "Switch to new tab",
-          "closeOnExit": "Close tabs on exit"
+          "closeOnQuit": "Close tabs on quit"
         },
         "search": {
           "source": "Source",
           "scope": "Scope",
-          "resultsFullSize": "Show results in full size",
-          "history": {
-            "clear": "Clear search history"
-          }
+          "resultsFullSize": "Show results in full size"
         },
         "player": {
           "audioSources": "Audio sources (by priority)",
           "bitrate": "Show audio bitrate",
           "album": "Show album",
           "equalizer": "Show equalizer",
-          "focusPlaying": "Focus on current track"
+          "focusPlaying": "Focus on current track",
+          "pauseOnVideoPlay": "Pause on video play"
         },
         "queue": {
           "autoplay": "Autoplay",
           "clear": "Clear on player close"
         },
         "video": {
-          "autoplay": "Autoplay"
+          "autoplay": "Autoplay",
+          "pauseOnAudioPlay": "Pause on audio play",
+          "openLinksInNewTab": "Open links in new tab"
         },
         "recommendations": {
           "hideLibraryArtists": "Hide library artists",
@@ -567,6 +573,9 @@
           "annotations": "Show annotations"
         },
         "history": {
+          "search": {
+            "delete": "Delete search history"
+          },
           "activity": {
             "delete": "Delete activity history"
           },
@@ -577,8 +586,11 @@
             "delete": "Delete browser history"
           }
         },
-        "other": {
-          "clearCache": "Clear cache"
+        "system": {
+          "cache": {
+            "enable": "Enable cache",
+            "clear": "Clear cache"
+          }
         }
       },
       "profile": {
@@ -779,7 +791,8 @@
     "videoPlaylist": "Video playlist has been deleted"
   },
   "messages": {
-    "welcome": "Welcome, {profileNickname}"
+    "welcome": "Welcome, {profileNickname}",
+    "restartToApply": "The setting has been saved and will be applied on the next application start."
   },
   "profile": {
     "wasOnline": "Was online"

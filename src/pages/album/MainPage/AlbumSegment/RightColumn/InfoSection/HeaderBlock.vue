@@ -1,5 +1,5 @@
 <template>
-  <div class="main-top-small-section flex-full">
+  <div class="flex-full">
     <BaseHeader
       tag="h2"
       :text="albumTitle"

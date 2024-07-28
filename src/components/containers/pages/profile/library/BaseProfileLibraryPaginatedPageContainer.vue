@@ -20,6 +20,8 @@
         :order="order"
         :model="model"
         :is-with-top-segment="isWithTopSegment"
+        :is-with-top-second-segment="isWithTopSecondSegment"
+        :is-with-play-button="isWithPlayButton"
         :is-with-order-change="isWithOrderChange"
         :is-with-view-change="isWithViewChange"
         :is-with-reload-button="isWithReloadButton"
@@ -28,25 +30,21 @@
         <template
           #top
         >
-          <BaseSearchButton
+          <BaseSearchSection
             v-if="isWithSearch"
-            :is-active="isShowSearch"
-            @click="handleSearchButtonClick"
+            scope="library"
+            :query="query"
+            @submit="handleSearchSubmit"
+            @clear-button-click="handleSearchClearButtonClick"
           />
         </template>
 
         <template
-          #topExtra
+          #topPlayButton
         >
-          <BaseProfileLibrarySearchInput
-            v-if="isWithSearch"
-            v-show="isShowSearch"
-            class="main-bottom-section"
-            :is-show="isShowSearch"
+          <slot
+            name="topPlayButton"
             :query="query"
-            :is-with-clear-button="isWithClearButton"
-            @submit="handleSearchSubmit"
-            @clear-button-click="handleSearchClearButtonClick"
           />
         </template>
 
@@ -69,21 +67,18 @@ import BaseProfileLibraryPageContainer
   from './BaseProfileLibraryPageContainer.vue'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
-import BaseSearchButton from '@/components/buttons/BaseSearchButton.vue'
-import BaseProfileLibrarySearchInput
-  from '@/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
 import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import searchablePageMixin from '@/mixins/searchablePageMixin'
 
 export default {
   name: 'BaseProfileLibraryPaginatedPageContainer',
   components: {
     BaseProfileLibraryPageContainer,
-    BasePaginatedPageContainer,
-    BaseSearchButton,
-    BaseProfileLibrarySearchInput
+    BasePaginatedPageContainer
   },
   mixins: [
-    paginatedPageMixin
+    paginatedPageMixin,
+    searchablePageMixin
   ],
   props: {
     profileId: String,
@@ -92,44 +87,10 @@ export default {
     order: String,
     model: String,
     isWithTopSegment: Boolean,
-    isWithSearch: Boolean,
     isWithOrderChange: Boolean,
     isWithViewChange: Boolean,
     isWithReloadButton: Boolean,
     viewId: String
-  },
-  data () {
-    return {
-      isShowSearch: false,
-      query: ''
-    }
-  },
-  computed: {
-    isWithClearButton () {
-      return !!this.query.length
-    }
-  },
-  watch: {
-    query: 'handleQueryChange'
-  },
-  methods: {
-    handleSearchButtonClick () {
-      this.isShowSearch =
-        !this.isShowSearch
-    },
-    handleSearchSubmit (
-      value
-    ) {
-      this.query = value
-    },
-    handleSearchClearButtonClick () {
-      this.query = ''
-    },
-    async handleQueryChange () {
-      await this.$nextTick()
-
-      this.refresh()
-    }
   }
 }
 </script>

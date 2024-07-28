@@ -2,7 +2,7 @@
   <div
     v-if="isRender || isCalled"
     ref="modal"
-    class="ui page modal base-modal background-transparent"
+    class="ui page modal base-modal background-none"
     :class="size"
   >
     <slot
@@ -68,7 +68,8 @@ export default {
         {
           isMultiple: this.isMultiple,
           onShow: this.handleShow,
-          onVisible: this.handleVisible
+          onVisible: this.handleVisible,
+          onHidden: this.handleHidden
         }
       )
     }
@@ -93,10 +94,15 @@ export default {
         'visible'
       )
     },
+    async handleHidden () {
+      await this.$nextTick()
+
+      this.toggleDarkMode()
+    },
     toggleDarkMode () {
       this.toggleModalDarkMode()
 
-      this.toggleDimmerDarkMode()
+      this.toggleDimmersDarkMode()
     },
     toggleModalDarkMode () {
       toggleClass(
@@ -105,10 +111,10 @@ export default {
         this.isDarkMode
       )
     },
-    toggleDimmerDarkMode () {
+    toggleDimmersDarkMode () {
       toggleClass(
         $(
-          '.ui.modals'
+          '.ui.dimmer.modals, .ui.dimmer.modals .ui.dimmer'
         ),
         'inverted',
         !this.isDarkMode

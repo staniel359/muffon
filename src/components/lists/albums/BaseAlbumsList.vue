@@ -7,7 +7,6 @@
     :is-with-listeners-count="isWithListenersCount"
     :top-tracks-count="topTracksCount"
     :is-with-artist-name="isWithArtistName"
-    :is-with-multiple-artist-names="isWithMultipleArtistNames"
     :is-with-library="isWithLibrary"
     :is-link-to-library="isLinkToLibrary"
     :profile-id="profileId"
@@ -46,7 +45,6 @@ export default {
     isWithListenersCount: Boolean,
     topTracksCount: Number,
     isWithArtistName: Boolean,
-    isWithMultipleArtistNames: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,

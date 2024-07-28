@@ -6,7 +6,17 @@
     <BaseTopPaginatedSegmentContainer
       :scope="scope"
       :limit="limit"
+      is-with-top-section
+      is-with-play-button
     >
+      <template
+        #topPlayButton
+      >
+        <BaseTopTracksPlayButton
+          limit-name="default"
+        />
+      </template>
+
       <template
         #default="slotProps"
       >
@@ -40,6 +50,8 @@ import BaseTopPaginatedSegmentContainer
   from '@/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTopTracksPlayButton
+  from '@/components/buttons/play/top/BaseTopTracksPlayButton.vue'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -52,7 +64,8 @@ export default {
   components: {
     BaseHeaderSegmentsContainer,
     BaseTopPaginatedSegmentContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseTopTracksPlayButton
   },
   data () {
     return {

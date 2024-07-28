@@ -7,10 +7,22 @@
     :limit="limit"
     :order="order"
     is-with-top-segment
+    is-with-top-second-segment
+    is-with-play-button
     is-with-search
     is-with-order-change
     is-with-reload-button
   >
+    <template
+      #topPlayButton="topPlayButtonSlotProps"
+    >
+      <BaseProfileLibraryTracksPlayButton
+        :profile-id="profileId"
+        :order="order"
+        :query="topPlayButtonSlotProps.query"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -45,6 +57,8 @@ import BaseProfileLibraryPaginatedPageContainer
   from '@/components/containers/pages/profile/library/BaseProfileLibraryPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseProfileLibraryTracksPlayButton
+  from '@/components/buttons/play/profile/library/BaseProfileLibraryTracksPlayButton.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -58,7 +72,8 @@ export default {
   name: 'TracksPage',
   components: {
     BaseProfileLibraryPaginatedPageContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseProfileLibraryTracksPlayButton
   },
   mixins: [
     orderChangeMixin,

@@ -156,6 +156,8 @@
     "close": "閉じる",
     "openLink": "リンクを開く",
     "play": "再生",
+    "shuffle": "シャッフル",
+    "loop": "ループ",
     "addFrom": {
       "search": "検索から追加",
       "library": "ライブラリから追加"
@@ -256,6 +258,7 @@
         "account": "アカウントを削除",
         "library": "ライブラリを削除",
         "history": {
+          "search": "検索履歴を削除する",
           "activity": "アクティビティ履歴を削除",
           "browser": "ブラウザ履歴を削除",
           "player": "プレイヤー履歴を削除"
@@ -275,6 +278,7 @@
         "account": "アカウントを削除します。",
         "library": "ライブラリを削除します。",
         "history": {
+          "search": "検索履歴を削除しようとしています。",
           "activity": "アクティビティ履歴を削除します。",
           "browser": "ブラウザ履歴を削除します。",
           "player": "プレイヤー履歴を削除します。"
@@ -402,6 +406,7 @@
       "account": "アカウントが削除されました",
       "library": "ライブラリが削除されました",
       "history": {
+        "search": "検索履歴が削除されました",
         "activity": "アクティビティ履歴が削除されました",
         "browser": "ブラウザ履歴が削除されました",
         "player": "プレイヤー履歴が削除されました"
@@ -504,7 +509,7 @@
       "data": "データ",
       "info": "情報",
       "account": "アカウント",
-      "other": "その他"
+      "system": "システム"
     },
     "options": {
       "app": {
@@ -525,33 +530,34 @@
         },
         "window": {
           "maximize": "起動時に最大化",
-          "exit": "閉じる時に終了"
+          "quit": "閉じる時に終了",
+          "showTrayIcon": "トレイアイコンを表示する"
         },
         "tabs": {
           "newTabSwitch": "新しいタブに切り替え",
-          "closeOnExit": "終了時にタブを閉じる"
+          "closeOnQuit": "終了時にタブを閉じる"
         },
         "search": {
           "source": "ソース",
           "scope": "スコープ",
-          "resultsFullSize": "結果を全画面表示",
-          "history": {
-            "clear": "検索履歴をクリア"
-          }
+          "resultsFullSize": "結果を全画面表示"
         },
         "player": {
           "audioSources": "オーディオソース（優先度別）",
           "bitrate": "オーディオビットレートを表示",
           "album": "アルバムを表示",
           "equalizer": "イコライザを表示",
-          "focusPlaying": "現在のトラックにフォーカス"
+          "focusPlaying": "現在のトラックにフォーカス",
+          "pauseOnVideoPlay": "ビデオ再生時に一時停止"
         },
         "queue": {
           "autoplay": "自動再生",
           "clear": "プレイヤーを閉じた際にクリア"
         },
         "video": {
-          "autoplay": "自動再生"
+          "autoplay": "自動再生",
+          "pauseOnAudioPlay": "オーディオ再生時に一時停止",
+          "openLinksInNewTab": "リンクを新しいタブで開く"
         },
         "recommendations": {
           "hideLibraryArtists": "ライブラリアーティストを非表示",
@@ -567,6 +573,9 @@
           "annotations": "注釈を表示"
         },
         "history": {
+          "search": {
+            "delete": "検索履歴を削除する"
+          },
           "activity": {
             "delete": "アクティビティ履歴を削除"
           },
@@ -577,8 +586,11 @@
             "delete": "ブラウザ履歴を削除"
           }
         },
-        "other": {
-          "clearCache": "キャッシュをクリア"
+        "system": {
+          "cache": {
+            "enable": "キャッシュを有効にする",
+            "clear": "キャッシュをクリア"
+          }
         }
       },
       "profile": {
@@ -779,7 +791,8 @@
     "videoPlaylist": "ビデオプレイリストが削除されました"
   },
   "messages": {
-    "welcome": "ようこそ、{profileNickname} さん"
+    "welcome": "ようこそ、{profileNickname} さん",
+    "restartToApply": "次回のアプリケーション起動時に設定が保存され、適用されます。"
   },
   "profile": {
     "wasOnline": "Was online"

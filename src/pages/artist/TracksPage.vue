@@ -4,13 +4,23 @@
     :artist-name="artistName"
     :scope="scope"
     :limit="limit"
+    is-with-top-second-segment
+    is-with-play-button
   >
+    <template
+      #topPlayButton
+    >
+      <BaseArtistTracksPlayButton
+        limit-name="medium"
+        :artist-name="artistName"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :artist-name="slotProps.artistName"
         :top-track-count="slotProps.topTrackCount"
         is-with-listeners-count
         is-with-source-option
@@ -32,6 +42,8 @@ import BaseArtistPaginatedPageContainer
   from '@/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseArtistTracksPlayButton
+  from '@/components/buttons/play/artist/BaseArtistTracksPlayButton.vue'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -41,7 +53,8 @@ export default {
   name: 'TracksPage',
   components: {
     BaseArtistPaginatedPageContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseArtistTracksPlayButton
   },
   mixins: [
     pageMixin

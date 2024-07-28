@@ -2,7 +2,7 @@
   <BaseButton
     class="circular compact simple"
     icon="audioLoop"
-    :class="isActive ? 'primary' : 'basic'"
+    :class="buttonClass"
     :is-invertable="!isActive"
     @click="handleClick"
   />
@@ -10,11 +10,13 @@
 
 <script>
 import {
-  mapState,
-  mapActions
+  mapState
 } from 'pinia'
 import audioStore from '@/stores/audio'
 import BaseButton from '@/components/buttons/BaseButton.vue'
+import {
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'LoopButton',
@@ -25,28 +27,30 @@ export default {
     ...mapState(
       audioStore,
       {
-        isAudioLoop: 'isLoop',
-        audioElement: 'element'
+        isAudioLoop: 'isLoop'
       }
     ),
     isActive () {
       return this.isAudioLoop
+    },
+    buttonClass () {
+      if (this.isActive) {
+        return 'primary'
+      } else {
+        return 'basic'
+      }
     }
   },
   methods: {
-    ...mapActions(
-      audioStore,
-      {
-        setIsAudioLoop: 'setIsLoop'
-      }
-    ),
     handleClick () {
-      const value = !this.isAudioLoop
-
-      this.audioElement.loop = value
-
-      this.setIsAudioLoop(
-        value
+      this.toggleAudioLoop()
+    },
+    toggleAudioLoop () {
+      updateGlobalStore(
+        {
+          'audio.isLoop':
+            !this.isAudioLoop
+        }
       )
     }
   }

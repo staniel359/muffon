@@ -12,9 +12,10 @@ function handleClick () {
 }
 
 export default function () {
-  tray = new Tray(
-    trayIcon
-  )
+  tray =
+    new Tray(
+      trayIcon
+    )
 
   setTrayMenu()
 

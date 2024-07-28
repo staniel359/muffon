@@ -7,7 +7,7 @@
     :error="error"
     :is-active="isActive"
     :more-link="moreLink"
-    :is-with-top-segment="isWithTopSegment"
+    :is-with-top-section="isWithTopSection"
     @focus="handleFocus"
     @activate="handleActivate"
   >
@@ -45,8 +45,7 @@ export default {
     communityId: {
       type: String,
       required: true
-    },
-    isWithTopSegment: Boolean
+    }
   },
   data () {
     return {

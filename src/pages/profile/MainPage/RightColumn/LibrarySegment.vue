@@ -4,11 +4,19 @@
     :header-link="headerLink"
   >
     <StatisticsSegment
+      :profile-data="profileData"
+    />
+
+    <PlayButtonSegment
+      v-if="isAnyTracks"
       :profile-id="profileId"
     />
 
     <LibraryTabsSegment
       :profile-id="profileId"
+      :class="{
+        bordered: isAnyTracks
+      }"
     />
   </BaseHeaderSegmentsContainer>
 </template>
@@ -17,6 +25,7 @@
 import BaseHeaderSegmentsContainer
   from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import StatisticsSegment from './LibrarySegment/StatisticsSegment.vue'
+import PlayButtonSegment from './LibrarySegment/PlayButtonSegment.vue'
 import LibraryTabsSegment from './LibrarySegment/LibraryTabsSegment.vue'
 import {
   main as formatProfileLibraryLink
@@ -27,11 +36,12 @@ export default {
   components: {
     BaseHeaderSegmentsContainer,
     StatisticsSegment,
+    PlayButtonSegment,
     LibraryTabsSegment
   },
   props: {
-    profileId: {
-      type: String,
+    profileData: {
+      type: Object,
       required: true
     }
   },
@@ -41,12 +51,20 @@ export default {
     }
   },
   computed: {
+    profileId () {
+      return this.profileData.id.toString()
+    },
     headerLink () {
       return formatProfileLibraryLink(
         {
           profileId: this.profileId
         }
       )
+    },
+    isAnyTracks () {
+      return !!this.profileData
+        .library
+        .tracks_count
     }
   }
 }

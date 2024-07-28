@@ -4,7 +4,7 @@
   >
     <div class="center-aligned main-bottom-large-section">
       <BaseMenuContainer
-        class="background-transparent secondary"
+        class="secondary"
       >
         <PreviousPageItem
           :is-disabled="isPreviousPageDisabled"

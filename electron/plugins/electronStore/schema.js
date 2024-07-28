@@ -7,6 +7,14 @@ export default {
     type: 'boolean',
     default: false
   },
+  'audio.isLoop': {
+    type: 'boolean',
+    default: false
+  },
+  'audio.isMuted': {
+    type: 'boolean',
+    default: false
+  },
   'audio.equalizers': {
     type: 'array',
     default: [
@@ -116,19 +124,11 @@ export default {
     type: 'boolean',
     default: true
   },
-  'layout.isCloseTabsOnExit': {
+  'layout.isCloseTabsOnQuit': {
     type: 'boolean',
     default: false
   },
   'layout.isDarkMode': {
-    type: 'boolean',
-    default: false
-  },
-  'layout.isExitOnClose': {
-    type: 'boolean',
-    default: false
-  },
-  'layout.isMaximizeOnStart': {
     type: 'boolean',
     default: false
   },
@@ -181,6 +181,10 @@ export default {
     default: true
   },
   'history.librarySearch': {
+    type: 'array',
+    default: []
+  },
+  'history.savedTracksSearch': {
     type: 'array',
     default: []
   },
@@ -286,6 +290,10 @@ export default {
   'player.variants': {
     type: 'array',
     default: []
+  },
+  'player.isPauseOnVideoPlay': {
+    type: 'boolean',
+    default: true
   },
   'profile.connections': {
     type: 'object',
@@ -464,6 +472,10 @@ export default {
     type: 'boolean',
     default: true
   },
+  'system.isWithCache': {
+    type: 'boolean',
+    default: true
+  },
   'top.country': {
     type: [
       'null',
@@ -474,5 +486,25 @@ export default {
   'video.isAutoplay': {
     type: 'boolean',
     default: false
+  },
+  'video.isPauseOnAudioPlay': {
+    type: 'boolean',
+    default: true
+  },
+  'video.isOpenLinksInNewTab': {
+    type: 'boolean',
+    default: false
+  },
+  'window.isQuitOnClose': {
+    type: 'boolean',
+    default: false
+  },
+  'window.isMaximizeOnStart': {
+    type: 'boolean',
+    default: false
+  },
+  'window.isWithTrayIcon': {
+    type: 'boolean',
+    default: true
   }
 }

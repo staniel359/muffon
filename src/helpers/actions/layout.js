@@ -79,12 +79,12 @@ export function focusOnPageElement (
     element
   ).offset().top
 
-  const navbarHeight = 50
+  const navbarPanelHeight = 50
   const marginTop = 20
 
   const offsetTop = (
     segmentTop -
-      navbarHeight -
+      navbarPanelHeight -
       marginTop
   )
 

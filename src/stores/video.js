@@ -5,7 +5,9 @@ import {
 const data = {
   state () {
     return {
-      isAutoplay: null
+      isAutoplay: null,
+      isPauseOnAudioPlay: null,
+      isOpenLinksInNewTab: null
     }
   },
   actions: {
@@ -13,6 +15,16 @@ const data = {
       value
     ) {
       this.isAutoplay = value
+    },
+    setIsPauseOnAudioPlay (
+      value
+    ) {
+      this.isPauseOnAudioPlay = value
+    },
+    setIsOpenLinksInNewTab (
+      value
+    ) {
+      this.isOpenLinksInNewTab = value
     }
   }
 }

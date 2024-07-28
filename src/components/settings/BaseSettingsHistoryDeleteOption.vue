@@ -99,7 +99,9 @@ export default {
       this.showModal()
     },
     handleDeleteButtonClick () {
-      if (this.profileId) {
+      if (this.scope === 'search') {
+        this.deleteSearchHistory()
+      } else if (this.profileId) {
         this.deleteProfileHistory()
       } else {
         this.deleteAnonymousHistory()
@@ -141,6 +143,21 @@ export default {
       this.$refs
         .modal
         .hide()
+    },
+    async deleteSearchHistory () {
+      this.isSuccess = false
+      this.isLoading = true
+
+      await updateGlobalStore(
+        {
+          'history.search': [],
+          'history.librarySearch': [],
+          'history.savedTracksSearch': []
+        }
+      )
+
+      this.isLoading = false
+      this.isSuccess = true
     }
   }
 }

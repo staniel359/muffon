@@ -10,7 +10,7 @@
 
       <div class="content flex-full main-right-small-section">
         <BaseHeader
-          tag="h5"
+          tag="h4"
           :text="headerText"
         />
 

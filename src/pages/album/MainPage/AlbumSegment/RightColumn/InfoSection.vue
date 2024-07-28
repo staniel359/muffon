@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex">
+  <div class="d-flex main-top-big-section">
     <HeaderBlock
       :album-data="albumData"
     />
@@ -8,6 +8,15 @@
       v-if="isRenderSource"
       class="right"
       :source="source"
+    />
+  </div>
+
+  <div
+    v-if="isAnyTracks"
+    class="main-top-section"
+  >
+    <BaseAlbumTracksPlayButton
+      :request-album-data="requestAlbumData"
     />
   </div>
 
@@ -21,13 +30,16 @@
 import HeaderBlock from './InfoSection/HeaderBlock.vue'
 import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import SecondarySection from './InfoSection/SecondarySection.vue'
+import BaseAlbumTracksPlayButton
+  from '@/components/buttons/play/album/BaseAlbumTracksPlayButton.vue'
 
 export default {
   name: 'InfoSection',
   components: {
     HeaderBlock,
     BaseSourceIcon,
-    SecondarySection
+    SecondarySection,
+    BaseAlbumTracksPlayButton
   },
   props: {
     albumData: {
@@ -50,6 +62,9 @@ export default {
     },
     sourceData () {
       return this.albumData.source
+    },
+    isAnyTracks () {
+      return !!this.albumData.tracks?.length
     }
   }
 }

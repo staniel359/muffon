@@ -2,19 +2,23 @@
   <div class="main-settings-options-block">
     <MaximizeOption />
 
-    <ExitOption />
+    <QuitOption />
+
+    <TrayOption />
   </div>
 </template>
 
 <script>
 import MaximizeOption from './WindowOptions/MaximizeOption.vue'
-import ExitOption from './WindowOptions/ExitOption.vue'
+import QuitOption from './WindowOptions/QuitOption.vue'
+import TrayOption from './WindowOptions/TrayOption.vue'
 
 export default {
   name: 'WindowOptions',
   components: {
     MaximizeOption,
-    ExitOption
+    QuitOption,
+    TrayOption
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="main-self-container main-bottom-small-section">
+  <div class="main-self-container main-bottom-medium-section">
     <BaseSelfIcons
       :library-id="libraryId"
       :favorite-id="favoriteId"

@@ -80,7 +80,8 @@ export default {
     }
   },
   watch: {
-    profileData: 'handleNavigationDataChange'
+    profileData:
+      'handleNavigationDataChange'
   },
   mounted () {
     this.getData()

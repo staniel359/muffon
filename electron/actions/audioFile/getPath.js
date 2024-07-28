@@ -1,6 +1,6 @@
 import {
   join as joinPath
-} from 'path'
+} from 'node:path'
 import {
   audioFolderPath
 } from '../../helpers/paths.js'

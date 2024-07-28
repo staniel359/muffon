@@ -51,7 +51,7 @@
           v-if="isWithListenersCount"
           class="description listeners-count"
           :album-title="albumTitle"
-          :artist-name="artistName"
+          :artist-name="albumArtistName"
           :listeners-count="listenersCount"
           @load-end="handleListenersCountLoadEnd"
         />
@@ -178,7 +178,7 @@ export default {
       required: true
     },
     isWithArtistName: Boolean,
-    isWithMultipleArtistNames: Boolean,
+    artistName: String,
     isWithListenersCount: Boolean,
     isLinkToLibrary: Boolean,
     isWithLibrary: Boolean,
@@ -214,11 +214,8 @@ export default {
     modelData () {
       return this.albumData
     },
-    artistName () {
+    albumArtistName () {
       return this.albumData.artist.name
-    },
-    artists () {
-      return this.albumData.artists
     },
     albumTitle () {
       return this.albumData.title
@@ -268,11 +265,19 @@ export default {
     },
     isRenderArtistName () {
       return (
-        this.isWithArtistName || (
-          this.isWithMultipleArtistNames &&
-            this.artists?.length > 1
-        )
+        this.isWithArtistName ||
+          this.isDifferentNames
       )
+    },
+    isDifferentNames () {
+      if (this.artistName) {
+        return (
+          this.artistName.toLowerCase() !==
+            this.albumArtistName.toLowerCase()
+        )
+      } else {
+        return false
+      }
     }
   },
   methods: {

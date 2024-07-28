@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="no-padding background-transparent"
+    class="no-padding background-none"
     :is-change-transparency="false"
   >
     <BaseTrackPlayerPanel

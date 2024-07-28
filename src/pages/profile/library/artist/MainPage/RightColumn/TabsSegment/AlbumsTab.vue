@@ -13,7 +13,6 @@
       <BaseAlbumsTableList
         :albums="slotProps[scope]"
         :profile-id="profileId"
-        :artist-name="slotProps.artistName"
         :items-in-row="itemsInRow"
         :is-with-library-option="!isSelf"
         :is-with-delete-option="isSelf"

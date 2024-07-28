@@ -41,6 +41,7 @@
           <BasePrivateIcon
             v-if="isPrivate"
             class="right small"
+            model="playlist"
           />
         </div>
 
@@ -68,6 +69,22 @@
           class="description"
           icon="track"
           :count="tracksCount"
+        />
+      </div>
+
+      <div
+        v-if="isImport"
+        class="middle-aligned main-right-small-section main-left-small-section"
+      >
+        <BaseCheckbox
+          :is-checked="isPrivate"
+          @click.stop
+          @is-checked-change="handleIsPrivateIsCheckedChange"
+        />
+
+        <BasePrivateIcon
+          class="small"
+          model="playlist"
         />
       </div>
 
@@ -102,7 +119,7 @@
 
   <div
     v-if="isRenderTracksList"
-    v-show="isClicked"
+    v-show="isShowTracksList"
     class="tracks-section"
   >
     <BaseTracksSimpleList
@@ -139,6 +156,7 @@ import BasePlaylistOptionsPopup
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseCheckbox from '@/components/BaseCheckbox.vue'
 import {
   main as formatProfileLink,
   playlist as formatProfilePlaylistLink
@@ -161,7 +179,8 @@ export default {
     BaseCreatedSection,
     BasePlaylistOptionsPopup,
     BaseClearButton,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseCheckbox
   },
   provide () {
     return {
@@ -170,6 +189,9 @@ export default {
   },
   inject: {
     findPaginationItem: {
+      default: () => false
+    },
+    updateCollectionItem: {
       default: () => false
     }
   },
@@ -191,7 +213,8 @@ export default {
     isWithClearButton: Boolean,
     isWithModelIcon: Boolean,
     isWithSource: Boolean,
-    isWithTracks: Boolean
+    isWithTracks: Boolean,
+    isImport: Boolean
   },
   emits: [
     'linkClick',
@@ -200,7 +223,8 @@ export default {
   data () {
     return {
       isMainLinkActive: true,
-      isClicked: false
+      isTracksListCalled: false,
+      isShowTracksList: false
     }
   },
   computed: {
@@ -281,8 +305,12 @@ export default {
     isRenderTracksList () {
       return (
         this.isWithTracks &&
-          this.tracks.length
+          this.isAnyTracks &&
+          this.isTracksListCalled
       )
+    },
+    isAnyTracks () {
+      return this.tracks.length
     },
     tracks () {
       return this.playlistData.tracks
@@ -294,8 +322,8 @@ export default {
         this.$emit(
           'linkClick'
         )
-      } else {
-        this.toggleIsClicked()
+      } else if (this.isWithTracks) {
+        this.toggleTracksList()
       }
     },
     handleLinkClick () {
@@ -319,6 +347,13 @@ export default {
     ) {
       this.isMainLinkActive = !value
     },
+    handleIsPrivateIsCheckedChange (
+      value
+    ) {
+      this.changePrivate(
+        value
+      )
+    },
     setPlaylistData (
       value
     ) {
@@ -327,8 +362,26 @@ export default {
         value
       )
     },
-    toggleIsClicked () {
-      this.isClicked = !this.isClicked
+    toggleTracksList () {
+      this.isTracksListCalled = true
+
+      this.isShowTracksList =
+        !this.isShowTracksList
+    },
+    changePrivate (
+      value
+    ) {
+      this.paginationItem.private = value
+
+      this.updateCollectionItem(
+        {
+          collection: 'successPlaylists',
+          uuid: this.uuid,
+          data: {
+            private: value
+          }
+        }
+      )
     }
   }
 }

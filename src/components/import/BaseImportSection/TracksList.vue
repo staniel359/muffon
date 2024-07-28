@@ -5,7 +5,6 @@
     :limit="limit"
     :response-page-limit="tracksCount"
     is-reset
-    is-with-pagination
     @focus="handleFocus"
   >
     <template

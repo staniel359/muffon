@@ -1,11 +1,11 @@
 import dayjs from 'dayjs'
 import {
   fileURLToPath
-} from 'url'
+} from 'node:url'
 import {
   dirname,
   join as joinPath
-} from 'path'
+} from 'node:path'
 
 export function currentTime () {
   return dayjs.utc().format()

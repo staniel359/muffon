@@ -5,7 +5,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
-    is-with-top-segment
+    is-with-top-section
     @focus="handleFocus"
   >
     <template

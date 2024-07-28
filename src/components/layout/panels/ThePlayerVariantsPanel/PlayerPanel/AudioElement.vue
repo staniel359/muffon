@@ -34,7 +34,9 @@ export default {
         audioContext: 'context',
         audioSource: 'source',
         isAudioAutoplay: 'isAutoplay',
-        isAudioEqualizerEnabled: 'isEqualizerEnabled'
+        isAudioEqualizerEnabled: 'isEqualizerEnabled',
+        isAudioLoop: 'isLoop',
+        isAudioMuted: 'isMuted'
       }
     ),
     ...mapState(
@@ -51,10 +53,16 @@ export default {
     }
   },
   watch: {
-    playerPlaying: {
+    isAudioLoop: {
       immediate: true,
-      handler: 'handlePlayerPlayingChange'
+      handler: 'handleIsAudioLoopChange'
     },
+    isAudioMuted: {
+      immediate: true,
+      handler: 'handleIsAudioMutedChange'
+    },
+    playerPlaying:
+      'handlePlayerPlayingChange',
     isAudioEqualizerEnabled:
       'handleIsAudioEqualizerEnabledChange'
   },
@@ -62,6 +70,10 @@ export default {
     this.setAudioElement(
       this.$refs.audio
     )
+
+    if (this.playerPlaying) {
+      this.loadAudio()
+    }
 
     this.setAudioContextData()
 
@@ -87,11 +99,9 @@ export default {
         setAudioVolume: 'setVolume'
       }
     ),
-    async handlePlayerPlayingChange (
+    handlePlayerPlayingChange (
       value
     ) {
-      await this.$nextTick()
-
       if (value) {
         this.loadAudio()
       } else {
@@ -187,6 +197,24 @@ export default {
       this.setIsAudioPlayable(
         false
       )
+    },
+    async handleIsAudioLoopChange (
+      value
+    ) {
+      await this.$nextTick()
+
+      this.$refs
+        .audio
+        .loop = value
+    },
+    async handleIsAudioMutedChange (
+      value
+    ) {
+      await this.$nextTick()
+
+      this.$refs
+        .audio
+        .muted = value
     },
     setAudioContextData () {
       if (!this.audioContext) {

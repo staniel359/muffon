@@ -2,7 +2,7 @@ import setAppEvents from '../../events/app.js'
 import setElectronStoreEvents from '../../events/electronStore.js'
 import setNativeThemeEvents from '../../events/nativeTheme.js'
 import setIpcAppEvents from '../../events/ipc/app.js'
-import setIpcTrayEvents from '../../events/ipc/tray.js'
+import setIpcWindowEvents from '../../events/ipc/window.js'
 import setIpcTabEvents from '../../events/ipc/tab.js'
 import setIpcTabsEvents from '../../events/ipc/tabs.js'
 import setIpcStoreEvents from '../../events/ipc/store.js'
@@ -21,7 +21,7 @@ export default function () {
 
   setIpcAppEvents()
 
-  setIpcTrayEvents()
+  setIpcWindowEvents()
 
   setIpcTabEvents()
 

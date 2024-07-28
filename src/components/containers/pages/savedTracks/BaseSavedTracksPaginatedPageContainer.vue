@@ -2,6 +2,7 @@
   <BaseSavedTracksPageContainer
     ref="page"
     :order="order"
+    :query="query"
   >
     <template
       #default="pageSlotProps"
@@ -17,9 +18,32 @@
         :order="order"
         :model="model"
         :is-with-top-segment="isWithTopSegment"
+        :is-with-top-second-segment="isWithTopSecondSegment"
+        :is-with-play-button="isWithPlayButton"
         :is-with-order-change="isWithOrderChange"
         :is-with-reload-button="isWithReloadButton"
       >
+        <template
+          #top
+        >
+          <BaseSearchSection
+            v-if="isWithSearch"
+            scope="savedTracks"
+            :query="query"
+            @submit="handleSearchSubmit"
+            @clear-button-click="handleSearchClearButtonClick"
+          />
+        </template>
+
+        <template
+          #topPlayButton
+        >
+          <slot
+            name="topPlayButton"
+            :query="query"
+          />
+        </template>
+
         <template
           #default="slotProps"
         >
@@ -37,6 +61,7 @@ import BaseSavedTracksPageContainer from './BaseSavedTracksPageContainer.vue'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import searchablePageMixin from '@/mixins/searchablePageMixin'
 
 export default {
   name: 'BaseSavedTracksPaginatedPageContainer',
@@ -45,7 +70,8 @@ export default {
     BasePaginatedPageContainer
   },
   mixins: [
-    paginatedPageMixin
+    paginatedPageMixin,
+    searchablePageMixin
   ],
   props: {
     scope: {

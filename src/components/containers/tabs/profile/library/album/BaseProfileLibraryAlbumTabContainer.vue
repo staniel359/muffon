@@ -7,15 +7,24 @@
     :error="error"
     :is-active="isActive"
     :more-link="moreLink"
+    :is-with-top-section="isWithTopSection"
+    :is-with-play-button="isWithPlayButton"
     @focus="handleFocus"
     @activate="handleActivate"
   >
+    <template
+      #topPlayButton
+    >
+      <slot
+        name="topPlayButton"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
       <slot
         :[scope]="slotProps[scope]"
-        :artist-name="artistName"
       />
     </template>
   </BasePaginatedTabContainer>
@@ -62,9 +71,6 @@ export default {
     },
     albumData () {
       return this.profileData?.library?.album
-    },
-    artistName () {
-      return this.albumData?.artist?.name
     },
     moreLink () {
       switch (this.scope) {

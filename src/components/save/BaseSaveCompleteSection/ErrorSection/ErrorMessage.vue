@@ -1,9 +1,8 @@
 <template>
   <div class="main-top-section">
     <BaseMessage
-      class="error"
-      icon="error"
       :header="errorText"
+      is-error
     />
   </div>
 </template>

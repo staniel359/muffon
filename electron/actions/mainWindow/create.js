@@ -15,11 +15,8 @@ import getElectronStoreKey from '../electronStore/getKey.js'
 import showMainWindow from './show.js'
 import hideMainWindow from './hide.js'
 import checkForUpdates from '../app/checkForUpdates.js'
-import setMainWindowScale from './setScale.js'
-import callExit from '../app/callExit.js'
-import {
-  handleNewWindow
-} from '../../handlers/app.js'
+import setViewScale from '../view/setScale.js'
+import callQuit from '../app/callQuit.js'
 import setTrayMenu from '../tray/setMenu.js'
 import setTabsBounds from '../tabs/setBounds.js'
 import changeViewBackgroundColor
@@ -28,7 +25,7 @@ import changeViewBackgroundColor
 function handleReadyToShow () {
   const isMaximizeOnStart =
     getElectronStoreKey(
-      'layout.isMaximizeOnStart'
+      'window.isMaximizeOnStart'
     )
 
   if (isMaximizeOnStart) {
@@ -41,13 +38,8 @@ function handleReadyToShow () {
     checkForUpdates()
   }
 
-  const scale =
-    getElectronStoreKey(
-      'layout.scale'
-    )
-
-  setMainWindowScale(
-    scale
+  setViewScale(
+    mainWindow
   )
 }
 
@@ -64,23 +56,19 @@ function handleClose (
 ) {
   event.preventDefault()
 
-  const isExitOnClose =
+  const isQuitOnClose =
     getElectronStoreKey(
-      'layout.isExitOnClose'
+      'window.isQuitOnClose'
     )
 
-  if (isExitOnClose) {
-    callExit()
+  if (isQuitOnClose) {
+    callQuit()
   } else {
     hideMainWindow()
   }
 }
 
-function handleEnterFullScreen () {
-  setTabsBounds()
-}
-
-function handleLeaveFullScreen () {
+function handleResize () {
   setTabsBounds()
 }
 
@@ -105,6 +93,10 @@ export default function () {
       options
     )
 
+  changeViewBackgroundColor(
+    mainWindow
+  )
+
   mainWindow.loadURL(
     baseUrl
   )
@@ -115,10 +107,6 @@ export default function () {
   )
 
   mainWindow.removeMenu()
-
-  changeViewBackgroundColor(
-    mainWindow
-  )
 
   if (isShowDevTools) {
     const devToolsData = {
@@ -152,19 +140,8 @@ export default function () {
     handleClose
   )
 
-  mainWindow
-    .webContents
-    .setWindowOpenHandler(
-      handleNewWindow
-    )
-
   mainWindow.on(
-    'enter-full-screen',
-    handleEnterFullScreen
-  )
-
-  mainWindow.on(
-    'leave-full-screen',
-    handleLeaveFullScreen
+    'resize',
+    handleResize
   )
 }

@@ -18,8 +18,17 @@
           <BasePrivateIcon
             v-if="isPrivate"
             class="right"
+            model="playlist"
           />
         </div>
+
+        <BaseProfilePlaylistTracksPlayButton
+          v-if="tracksCount"
+          class="main-bottom-medium-section main-top-small-section"
+          :profile-id="profileId"
+          :playlist-id="playlistId"
+          :order="order"
+        />
 
         <p
           v-if="description"
@@ -66,6 +75,8 @@ import BasePlaylistOptionsPopup
   from '@/components/popups/playlist/BasePlaylistOptionsPopup.vue'
 import BaseItemContainer
   from '@/components/containers/item/BaseItemContainer.vue'
+import BaseProfilePlaylistTracksPlayButton
+  from '@/components/buttons/play/profile/playlist/BaseProfilePlaylistTracksPlayButton.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -82,7 +93,8 @@ export default {
     BaseCounterSection,
     BaseTimestampSection,
     BasePlaylistOptionsPopup,
-    BaseItemContainer
+    BaseItemContainer,
+    BaseProfilePlaylistTracksPlayButton
   },
   props: {
     playlistData: {
@@ -92,7 +104,8 @@ export default {
     profileId: {
       type: String,
       required: true
-    }
+    },
+    order: String
   },
   computed: {
     imageData () {
@@ -125,6 +138,9 @@ export default {
           className: 'bold'
         }
       )
+    },
+    playlistId () {
+      return this.playlistData.id.toString()
     }
   }
 }

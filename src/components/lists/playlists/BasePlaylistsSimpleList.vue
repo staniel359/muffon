@@ -17,6 +17,7 @@
       :is-link="isLink"
       :is-with-source="isWithSource"
       :is-with-tracks="isWithTracks"
+      :is-import="isImport"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -57,7 +58,8 @@ export default {
     isWithClearButton: Boolean,
     isWithModelIcon: Boolean,
     isWithSource: Boolean,
-    isWithTracks: Boolean
+    isWithTracks: Boolean,
+    isImport: Boolean
   },
   emits: [
     'linkClick',

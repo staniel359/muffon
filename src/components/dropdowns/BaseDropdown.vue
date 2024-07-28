@@ -8,36 +8,24 @@
     :is-menu-left="isMenuLeft"
     :header="header"
     :is-icon-colored="isIconColored"
+    :is-button-extra="isButtonExtra"
+    :is-checkboxes="isCheckboxes"
     @select="handleSelect"
   >
-    <div
+    <OptionItem
       v-for="optionData in optionsCollection"
       :key="optionData.uuid"
-      class="item main-dropdown-item"
-      :class="{
-        disabled: optionData.isDisabled
-      }"
-      :data-value="optionData.id"
-    >
-      <BaseIcon
-        v-if="optionData.icon"
-        class="main-dropdown-icon"
-        :class="{
-          colored: isIconColored
-        }"
-        :icon="optionData.icon"
-        :is-flag="isFlagIcon"
-      />
-
-      {{ optionData.name }}
-    </div>
+      :option-data="optionData"
+      :is-icon-colored="isIconColored"
+      :is-flag-icon="isFlagIcon"
+    />
   </BaseDropdownContainer>
 </template>
 
 <script>
 import BaseDropdownContainer
   from '@/components/containers/dropdowns/BaseDropdownContainer.vue'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
+import OptionItem from './BaseDropdown/OptionItem.vue'
 import {
   collection as formatCollection
 } from '@/helpers/formatters'
@@ -46,7 +34,7 @@ export default {
   name: 'BaseDropdown',
   components: {
     BaseDropdownContainer,
-    BaseIcon
+    OptionItem
   },
   props: {
     options: {
@@ -62,7 +50,9 @@ export default {
     isMenuLeft: Boolean,
     header: String,
     isIconColored: Boolean,
-    isFlagIcon: Boolean
+    isFlagIcon: Boolean,
+    isButtonExtra: Boolean,
+    isCheckboxes: Boolean
   },
   emits: [
     'select'

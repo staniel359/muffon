@@ -8,15 +8,24 @@
     :error="error"
     :is-active="isActive"
     :more-link="moreLink"
+    :is-with-top-section="isWithTopSection"
+    :is-with-play-button="isWithPlayButton"
     @focus="handleFocus"
     @activate="handleActivate"
   >
+    <template
+      #topPlayButton
+    >
+      <slot
+        name="topPlayButton"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
       <slot
         :[scope]="slotProps[scope]"
-        :artist-name="responseArtistName"
         :top-track-count="topTrackCount"
       />
     </template>
@@ -58,9 +67,6 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
-    },
-    responseArtistName () {
-      return this.artistData?.name
     },
     moreLink () {
       switch (this.scope) {

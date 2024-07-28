@@ -2,10 +2,9 @@
   <div class="main-modal-import-section">
     <div>
       <BaseMessage
-        class="error"
-        icon="error"
         :header="errorText"
         :list-items="collection"
+        is-error
       />
     </div>
   </div>

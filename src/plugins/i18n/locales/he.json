@@ -156,6 +156,8 @@
     "close": "סגור",
     "openLink": "פתח קישור",
     "play": "האזן",
+    "shuffle": "ערבוב",
+    "loop": "לולאה",
     "addFrom": {
       "search": "מהחיפוש",
       "library": "מהספרייה"
@@ -256,6 +258,7 @@
         "account": "מחק משתמש",
         "library": "מחק ספרייה",
         "history": {
+          "search": "מחק היסטוריית חיפושים",
           "activity": "מחק היסטוריית פעילות",
           "browser": "מחק היסטוריית דפדוף",
           "player": "מחק היסטוריית נגן"
@@ -275,6 +278,7 @@
         "account": "אתה הולך למחוק את החשבון שלך.",
         "library": "אתה הולך למחוק את הספרייה שלך.",
         "history": {
+          "search": "אתה עומד למחוק את היסטוריית החיפושים שלך",
           "activity": "אתה הולך למחוק את ההיסטוריה של הפעילות שלך.",
           "browser": "אתה הולך למחוק את ההיסטוריה של הדפדפן שלך.",
           "player": "אתה הולך למחוק את ההיסטוריה של הנגן שלך."
@@ -402,6 +406,7 @@
       "account": "חשבונך נמחק",
       "library": "הספרייה שלך נמחקה",
       "history": {
+        "search": "היסטוריית החיפושים נמחקה",
         "activity": "ההיסטוריה של הפעילות נמחקה",
         "browser": "ההיסטוריה של הדפדפן נמחקה",
         "player": "ההיסטוריה של הנגן נמחקה"
@@ -504,7 +509,7 @@
       "data": "נתונים",
       "info": "מידע",
       "account": "משתמש",
-      "other": "אחר"
+      "system": "מערכת"
     },
     "options": {
       "app": {
@@ -525,33 +530,34 @@
         },
         "window": {
           "maximize": "הפעל במסך מלא בהפעלה",
-          "exit": "יציאה בסגירה"
+          "quit": "יציאה בסגירה",
+          "showTrayIcon": "הצג אייקון מגש"
         },
         "tabs": {
           "newTabSwitch": "החלף לכרטיסייה חדשה",
-          "closeOnExit": "סגור כרטיסיות ביציאה"
+          "closeOnQuit": "סגור כרטיסיות ביציאה"
         },
         "search": {
           "source": "מקור",
           "scope": "תחום",
-          "resultsFullSize": "הצג תוצאות בגודל מלא",
-          "history": {
-            "clear": "נקה היסטוריית חיפושים"
-          }
+          "resultsFullSize": "הצג תוצאות בגודל מלא"
         },
         "player": {
           "audioSources": "מקורות שמע (לפי עדיפות)",
           "bitrate": "הצג ביטרייט שמע",
           "album": "הצג אלבום",
           "equalizer": "הצג אקולייזר",
-          "focusPlaying": "התמקד בשיר הנוכחי"
+          "focusPlaying": "התמקד בשיר הנוכחי",
+          "pauseOnVideoPlay": "עצור בעת השמעת וידאו"
         },
         "queue": {
           "autoplay": "ניגון אוטומטי",
           "clear": "נקה נגן ביציאה"
         },
         "video": {
-          "autoplay": "ניגון אוטומטי"
+          "autoplay": "ניגון אוטומטי",
+          "pauseOnAudioPlay": "עצור בעת השמעת שמע",
+          "openLinksInNewTab": "פתח קישורים בכרטיסייה חדשה"
         },
         "recommendations": {
           "hideLibraryArtists": "הסתר אמנים בספרייה",
@@ -567,6 +573,9 @@
           "annotations": "הצג הערות"
         },
         "history": {
+          "search": {
+            "delete": "מחק היסטוריית חיפושים"
+          },
           "activity": {
             "delete": "מחק היסטוריית פעילות"
           },
@@ -577,8 +586,11 @@
             "delete": "מחק היסטוריית דפדוף"
           }
         },
-        "other": {
-          "clearCache": "נקה מטמון"
+        "system": {
+          "cache": {
+            "enable": "הפעל מטמון",
+            "clear": "נקה מטמון"
+          }
         }
       },
       "profile": {
@@ -779,7 +791,8 @@
     "videoPlaylist": "הפלייליסט של הסרטונים נמחק"
   },
   "messages": {
-    "welcome": "ברוך הבא, {profileNickname}"
+    "welcome": "ברוך הבא, {profileNickname}",
+    "restartToApply": "ההגדרה נשמרה ותופעל באתחול הבא של האפליקציה."
   },
   "profile": {
     "wasOnline": "היה מחובר"

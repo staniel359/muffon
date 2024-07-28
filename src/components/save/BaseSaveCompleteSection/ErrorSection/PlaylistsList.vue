@@ -5,7 +5,6 @@
     :limit="limit"
     :response-page-limit="playlistsCount"
     is-reset
-    is-with-pagination
     @focus="handleFocus"
   >
     <template

@@ -20,16 +20,27 @@
         :text="artistName"
       />
     </BaseArtistLinkContainer>
+
+    <SelfSection
+      v-if="currentProfileId"
+      :artist-data="artistData"
+      :profile-id="profileId"
+    />
   </BaseSegmentContainer>
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import BaseArtistLinkContainer
   from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import SelfSection from './InfoSegment/SelfSection.vue'
 
 export default {
   name: 'InfoSegment',
@@ -37,15 +48,23 @@ export default {
     BaseSegmentContainer,
     BaseArtistImage,
     BaseArtistLinkContainer,
-    BaseHeader
+    BaseHeader,
+    SelfSection
   },
   props: {
     artistData: {
       type: Object,
       required: true
-    }
+    },
+    profileId: String
   },
   computed: {
+    ...mapState(
+      profileStore,
+      {
+        currentProfileId: 'id'
+      }
+    ),
     imageData () {
       return this.artistData.image
     },

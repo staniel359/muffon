@@ -13,24 +13,15 @@
           :artists="artists"
         />
       </div>
-
-      <BaseDivider
-        v-if="profileId"
-      />
     </div>
   </BaseTransitionContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseTransitionContainer
   from '@/components/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
-import BaseDivider from '@/components/BaseDivider.vue'
 import {
   main as formatArtistLink
 } from '@/helpers/formatters/links/artist'
@@ -40,8 +31,7 @@ export default {
   components: {
     BaseTransitionContainer,
     BaseHeader,
-    BaseArtistLinks,
-    BaseDivider
+    BaseArtistLinks
   },
   props: {
     albumData: {
@@ -51,12 +41,6 @@ export default {
     scrollable: HTMLDivElement
   },
   computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    ),
     albumTitle () {
       return this.albumData.title
     },

@@ -2,7 +2,7 @@
   "show": "הצג",
   "hide": "הסתר",
   "about": "אודות",
-  "exit": "יציאה",
+  "quit": "יציאה",
   "update": {
     "message": "גרסה חדשה זמינה",
     "buttons": {

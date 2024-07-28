@@ -9,6 +9,8 @@
     <EqualizerOption />
 
     <PlayingFocusOption />
+
+    <PauseOnVideoPlayOption />
   </div>
 </template>
 
@@ -18,6 +20,7 @@ import BitrateOption from './PlayerOptions/BitrateOption.vue'
 import AlbumOption from './PlayerOptions/AlbumOption.vue'
 import EqualizerOption from './PlayerOptions/EqualizerOption.vue'
 import PlayingFocusOption from './PlayerOptions/PlayingFocusOption.vue'
+import PauseOnVideoPlayOption from './PlayerOptions/PauseOnVideoPlayOption.vue'
 
 export default {
   name: 'PlayerOptions',
@@ -26,7 +29,8 @@ export default {
     BitrateOption,
     AlbumOption,
     EqualizerOption,
-    PlayingFocusOption
+    PlayingFocusOption,
+    PauseOnVideoPlayOption
   }
 }
 </script>

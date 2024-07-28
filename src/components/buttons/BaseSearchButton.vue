@@ -28,9 +28,13 @@ export default {
   ],
   computed: {
     searchText () {
-      return this.$t(
-        `actions.${this.searchTextKey}`
-      )
+      if (this.searchTextKey) {
+        return this.$t(
+          `actions.${this.searchTextKey}`
+        )
+      } else {
+        return null
+      }
     },
     searchTextKey () {
       if (this.scope) {
@@ -38,7 +42,7 @@ export default {
       } else if (this.model) {
         return `searchFor.${this.model}`
       } else {
-        return 'search'
+        return null
       }
     }
   },

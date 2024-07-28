@@ -1,22 +1,20 @@
 <template>
-  <div>
+  <div class="middle-aligned">
     <span
+      :class="{
+        link: !isMainLinkActive
+      }"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
-    >
-      <span
-        :class="{
-          link: !isMainLinkActive
-        }"
-        @click="handleLinkClick"
-        v-text="profileNickname"
-      />
+      @click="handleLinkClick"
+      v-text="profileNickname"
+    />
 
-      <BasePrivateIcon
-        v-if="isProfilePrivate"
-        class="right small"
-      />
-    </span>
+    <BasePrivateIcon
+      v-if="isProfilePrivate"
+      class="right small"
+      model="profile"
+    />
   </div>
 </template>
 

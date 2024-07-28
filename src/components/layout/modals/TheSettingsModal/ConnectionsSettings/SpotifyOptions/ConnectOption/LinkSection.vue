@@ -3,6 +3,7 @@
     <BaseMessage
       class="main-top-section main-formatted-text-container"
       :content="noticeTextFormatted"
+      is-info
     />
 
     <BaseFormContainer
@@ -139,7 +140,7 @@ export default {
           text: this.noticeText,
           linksData: {
             guide:
-              spotifyConnectionGuideLink,
+              spotifyConnectionGuideLink
           },
           className:
             'active bold underlined'

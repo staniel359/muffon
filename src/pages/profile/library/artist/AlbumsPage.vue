@@ -19,7 +19,6 @@
       <BaseAlbumsList
         :albums="slotProps[scope]"
         :profile-id="profileId"
-        :artist-name="slotProps.artistName"
         :top-tracks-count="slotProps.topTracksCount"
         :view-id="viewId"
         :is-with-library-option="!isSelf"

@@ -11,6 +11,7 @@
 
     <BaseMessage
       :content="confirmText"
+      is-info
     />
 
     <BaseInput

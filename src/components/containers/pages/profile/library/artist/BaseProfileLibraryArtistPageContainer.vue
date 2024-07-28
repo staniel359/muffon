@@ -6,7 +6,6 @@
   >
     <slot
       :artist-data="artistData"
-      :artist-name="artistName"
       :top-tracks-count="topTracksCount"
       :is-loading="isLoading"
       :error="error"

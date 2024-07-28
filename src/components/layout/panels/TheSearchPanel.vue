@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui top segment sidebar the-search-panel no-padding blurred"
+    class="ui top segment sidebar the-search-panel no-padding"
     :class="[
       transparentClass,
       {

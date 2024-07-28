@@ -11,7 +11,8 @@ import {
   handleAccountDelete,
   handleNavigate,
   handleCallOpenDeepLink,
-  handleExit
+  handleGetSystemName,
+  handleQuit
 } from '../../handlers/ipc/app.js'
 
 export default function () {
@@ -60,8 +61,13 @@ export default function () {
     handleCallOpenDeepLink
   )
 
+  ipcMain.handle(
+    'get-system-name',
+    handleGetSystemName
+  )
+
   ipcMain.on(
-    'exit',
-    handleExit
+    'quit',
+    handleQuit
   )
 }

@@ -5,7 +5,7 @@ import getElectronStoreKey from '../electronStore/getKey.js'
 import getActiveTabId from './getActiveId.js'
 import setActiveTab from './setActive.js'
 import setTabBounds from './setBounds.js'
-import setTabScale from './setScale.js'
+import setViewScale from '../view/setScale.js'
 import {
   baseUrl
 } from '../../helpers/urls.js'
@@ -40,11 +40,11 @@ export default function (
 
   tab.uuid = uuid
 
-  mainWindow.addBrowserView(
+  changeViewBackgroundColor(
     tab
   )
 
-  changeViewBackgroundColor(
+  mainWindow.addBrowserView(
     tab
   )
 
@@ -63,16 +63,8 @@ export default function (
     tab
   )
 
-  const autoResizeOptions = {
-    width: true,
-    height: true
-  }
-
-  tab.setAutoResize(
-    autoResizeOptions
-  )
-
-  const url = `${baseUrl}#/${path}`
+  const url =
+    `${baseUrl}#/${path}`
 
   tab
     .webContents
@@ -113,21 +105,26 @@ export default function (
   }
 
   function handleDomReady () {
-    const scale =
-      getElectronStoreKey(
-        'layout.scale'
-      )
+    setViewScale(
+      tab
+    )
+  }
 
-    setTabScale(
-      tab,
-      scale
+  function addNewWindowHandler (
+    details
+  ) {
+    return handleNewWindow(
+      {
+        url: details.url,
+        tabId: tab.uuid
+      }
     )
   }
 
   tab
     .webContents
     .setWindowOpenHandler(
-      handleNewWindow
+      addNewWindowHandler
     )
 
   tab

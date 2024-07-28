@@ -13,11 +13,10 @@
         <InfoSegment
           :playlist-data="slotProps.playlistData"
           :profile-id="profileId"
+          :order="order"
         />
 
         <ExtraSegment
-          :profile-id="profileId"
-          :playlist-data="slotProps.playlistData"
           :order="order"
         />
 

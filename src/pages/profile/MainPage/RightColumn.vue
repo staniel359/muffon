@@ -13,7 +13,7 @@
     />
 
     <LibrarySegment
-      :profile-id="profileId"
+      :profile-data="profileData"
     />
 
     <FavoritesSegment

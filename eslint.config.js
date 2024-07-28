@@ -1,11 +1,26 @@
 import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
-// import standard from 'eslint-config-standard'
+import {
+  FlatCompat
+} from '@eslint/eslintrc'
+import {
+  fixupConfigRules
+} from '@eslint/compat'
 
 export default [
   js.configs.recommended,
-  ...pluginVue.configs['flat/recommended'],
-  // standard,
+  ...pluginVue.configs[
+    'flat/recommended'
+  ],
+  ...fixupConfigRules(
+    new FlatCompat().config(
+      {
+        extends: [
+          'standard'
+        ]
+      }
+    )
+  ),
   {
     ignores: [
       'build/',
@@ -27,20 +42,20 @@ export default [
       'array-bracket-newline': [
         'error',
         {
-          'minItems': 1
+          minItems: 1
         }
       ],
       'array-element-newline': [
         'error',
         {
-          'minItems': 1
+          minItems: 1
         }
       ],
       'function-call-argument-newline': 'error',
       'function-paren-newline': [
         'error',
         {
-          'minItems': 1
+          minItems: 1
         }
       ],
       'no-new': 'off',
@@ -48,23 +63,23 @@ export default [
       'object-curly-newline': [
         'error',
         {
-          'ObjectExpression': {
-            'minProperties': 1
+          ObjectExpression: {
+            minProperties: 1
           },
-          'ObjectPattern': 'always',
-          'ImportDeclaration': 'always'
+          ObjectPattern: 'always',
+          ImportDeclaration: 'always'
         }
       ],
       'object-property-newline': [
         'error',
         {
-          'allowAllPropertiesOnSameLine': false
+          allowAllPropertiesOnSameLine: false
         }
       ],
       'vue/array-bracket-newline': [
         'error',
         {
-          'minItems': 1
+          minItems: 1
         }
       ],
       'vue/custom-event-name-casing': [
@@ -75,33 +90,33 @@ export default [
       'vue/match-component-file-name': [
         'error',
         {
-          'extensions': [
+          extensions: [
             'vue'
           ],
-          'shouldMatchCase': true
+          shouldMatchCase: true
         }
       ],
       'vue/no-unused-properties': [
         'off',
         {
-          'groups': [
+          groups: [
             'props',
             'data'
           ],
-          'deepData': true
+          deepData: true
         }
       ],
       'vue/no-v-html': 'off',
       'vue/object-curly-newline': [
         'error',
         {
-          'minProperties': 1
+          minProperties: 1
         }
       ],
       'vue/object-property-newline': [
         'error',
         {
-          'allowAllPropertiesOnSameLine': false
+          allowAllPropertiesOnSameLine: false
         }
       ],
       'vue/require-default-prop': 'off',

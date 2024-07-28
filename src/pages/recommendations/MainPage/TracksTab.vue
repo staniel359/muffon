@@ -4,8 +4,18 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    is-with-top-section
+    is-with-play-button
     @focus="handleFocus"
   >
+    <template
+      #topPlayButton
+    >
+      <BaseRecommendationsTracksPlayButton
+        limit-name="default"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -35,6 +45,8 @@ import BaseRecommendationsTabContainer
   from '@/components/containers/tabs/recommendations/BaseRecommendationsTabContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseRecommendationsTracksPlayButton
+  from '@/components/buttons/play/recommendations/BaseRecommendationsTracksPlayButton.vue'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -45,7 +57,8 @@ export default {
   name: 'TracksTab',
   components: {
     BaseRecommendationsTabContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseRecommendationsTracksPlayButton
   },
   mixins: [
     tabMixin,

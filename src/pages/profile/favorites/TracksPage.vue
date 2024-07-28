@@ -7,9 +7,20 @@
     :limit="limit"
     :order="order"
     is-with-top-segment
+    is-with-top-second-segment
+    is-with-play-button
     is-with-order-change
     is-with-reload-button
   >
+    <template
+      #topPlayButton
+    >
+      <BaseProfileFavoritesTracksPlayButton
+        :profile-id="profileId"
+        :order="order"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -43,6 +54,8 @@ import BaseProfileFavoritesPaginatedPageContainer
   from '@/components/containers/pages/profile/favorites/BaseProfileFavoritesPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseProfileFavoritesTracksPlayButton
+  from '@/components/buttons/play/profile/favorites/BaseProfileFavoritesTracksPlayButton.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -56,7 +69,8 @@ export default {
   name: 'TracksPage',
   components: {
     BaseProfileFavoritesPaginatedPageContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseProfileFavoritesTracksPlayButton
   },
   mixins: [
     orderChangeMixin,

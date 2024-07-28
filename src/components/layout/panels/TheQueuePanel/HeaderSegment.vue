@@ -2,23 +2,23 @@
   <BaseSegmentContainer
     class="header-segment middle-aligned"
   >
-    <div
-      v-if="queueTracksCount"
-      class="main-buttons-container"
-    >
-      <ShuffleButton />
-
-      <LoopButton />
+    <div class="main-buttons-container queue-actions">
+      <ActionsBlock
+        v-if="queueTracksCount"
+      />
     </div>
 
-    <h4
-      class="ui header main-header flex-full text-align-center"
-      v-text="tracksCountText"
+    <BaseHeader
+      class="text-align-center queue-header"
+      tag="h4"
+      :text="tracksCountText"
     />
 
-    <BaseQueueOptionsPopup
-      v-if="queueTracksCount"
-    />
+    <div class="queue-options text-align-right">
+      <BaseQueueOptionsPopup
+        v-if="queueTracksCount"
+      />
+    </div>
   </BaseSegmentContainer>
 </template>
 
@@ -29,8 +29,8 @@ import {
 import queueStore from '@/stores/queue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import ShuffleButton from './HeaderSegment/ShuffleButton.vue'
-import LoopButton from './HeaderSegment/LoopButton.vue'
+import ActionsBlock from './HeaderSegment/ActionsBlock.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseQueueOptionsPopup
   from '@/components/popups/queue/BaseQueueOptionsPopup.vue'
 import {
@@ -41,8 +41,8 @@ export default {
   name: 'HeaderSegment',
   components: {
     BaseSegmentContainer,
-    ShuffleButton,
-    LoopButton,
+    ActionsBlock,
+    BaseHeader,
     BaseQueueOptionsPopup
   },
   computed: {
@@ -71,4 +71,11 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.queue-actions,
+.queue-options
+  flex: 0.25
+
+.queue-header
+  flex: 0.5
+</style>

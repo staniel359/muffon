@@ -2,6 +2,9 @@
   <BaseSegmentContainer
     ref="segment"
     class="main-paginated-segment-container"
+    :class="{
+      'with-top-section': isWithTopSection
+    }"
     :response-data="responseDataComputed"
     :is-loading="isSegmentLoading"
     :error="error"
@@ -10,6 +13,15 @@
     <slot
       name="top"
     />
+
+    <div
+      v-if="isRenderTopPlayButtonSection"
+      class="main-top-section"
+    >
+      <slot
+        name="topPlayButton"
+      />
+    </div>
 
     <Component
       :is="listComponent"
@@ -74,7 +86,9 @@ export default {
     responsePageLimit: Number,
     isPaginationSimple: Boolean,
     isWithInfiniteScroll: Boolean,
-    scrollable: HTMLDivElement
+    scrollable: HTMLDivElement,
+    isWithTopSection: Boolean,
+    isWithPlayButton: Boolean
   },
   emits: [
     'focus'
@@ -104,6 +118,18 @@ export default {
       } else {
         return this.isLoading
       }
+    },
+    isRenderTopPlayButtonSection () {
+      return (
+        this.isWithTopSection &&
+          this.isWithPlayButton &&
+          this.isAnyCollectionItems
+      )
+    },
+    isAnyCollectionItems () {
+      return !!this.responseDataComputed?.[
+        this.scope
+      ]?.length
     }
   },
   watch: {

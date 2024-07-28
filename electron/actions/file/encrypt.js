@@ -1,7 +1,7 @@
 import {
   randomBytes,
   createCipheriv
-} from 'crypto'
+} from 'node:crypto'
 
 export default function (
   file

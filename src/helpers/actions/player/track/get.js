@@ -9,8 +9,11 @@ export default function (
     source,
     trackData,
     isQueue,
+    isPlayableList,
     queueTracks,
-    isSkipOnError
+    queueTracksShuffled = [],
+    isQueueShuffle = false,
+    isQueueLoop = false
   }
 ) {
   this.error = null
@@ -22,11 +25,41 @@ export default function (
     isQueue
   }
 
-  const getQueueNextTrack = async () => {
+  async function setPlayableListData () {
     await updateGlobalStore(
       {
-        'queue.tracks': queueTracks,
-        'queue.isShuffle': false,
+        'queue.isShuffle': isQueueShuffle,
+        'queue.isLoop': isQueueLoop
+      }
+    )
+
+    if (isQueueShuffle) {
+      return updateGlobalStore(
+        {
+          'queue.tracksShuffled':
+            queueTracksShuffled
+        }
+      )
+    }
+  }
+
+  function setQueueTracks () {
+    return updateGlobalStore(
+      {
+        'queue.tracks': queueTracks
+      }
+    )
+  }
+
+  const getQueueNextTrack = async () => {
+    if (isPlayableList) {
+      await setPlayableListData()
+    }
+
+    await setQueueTracks()
+
+    await updateGlobalStore(
+      {
         'queue.currentTrackId': trackData.uuid,
         'queue.isGettingNext': false
       }
@@ -46,23 +79,22 @@ export default function (
   const handleError = (
     error
   ) => {
-    if (isSkipOnError) {
+    if (isPlayableList) {
       return getQueueNextTrack()
     } else {
       this.error = error
     }
   }
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
     this.isLoading = false
 
     if (queueTracks) {
-      updateGlobalStore(
-        {
-          'queue.tracks': queueTracks,
-          'queue.isShuffle': false
-        }
-      )
+      if (isPlayableList) {
+        await setPlayableListData()
+      }
+
+      return setQueueTracks()
     }
   }
 

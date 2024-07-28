@@ -19,9 +19,7 @@ const data = {
       backgroundImageId: 0,
       backgroundImagePath: null,
       transparency: null,
-      isMaximizeOnStart: null,
-      isExitOnClose: null,
-      isCloseTabsOnExit: null,
+      isCloseTabsOnQuit: null,
       isWithSystemTheme: null,
       isWithArtistPopup: null,
       isCachePages: null,
@@ -105,20 +103,10 @@ const data = {
     ) {
       this.transparency = value
     },
-    setIsMaximizeOnStart (
+    setIsCloseTabsOnQuit (
       value
     ) {
-      this.isMaximizeOnStart = value
-    },
-    setIsExitOnClose (
-      value
-    ) {
-      this.isExitOnClose = value
-    },
-    setIsCloseTabsOnExit (
-      value
-    ) {
-      this.isCloseTabsOnExit = value
+      this.isCloseTabsOnQuit = value
     },
     setIsWithSystemTheme (
       value

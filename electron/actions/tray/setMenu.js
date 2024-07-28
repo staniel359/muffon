@@ -5,13 +5,15 @@ import {
 import showMainWindow from '../mainWindow/show.js'
 import hideMainWindow from '../mainWindow/hide.js'
 import showAboutWindow from '../aboutWindow/show.js'
-import callExit from '../app/callExit.js'
+import callQuit from '../app/callQuit.js'
 import i18n from 'i18n'
 import {
-  isMac
+  isMacos
 } from '../../helpers/utils.js'
 
 export default function () {
+  if (!tray) { return }
+
   const isVisible =
     mainWindow.isVisible()
 
@@ -31,8 +33,8 @@ export default function () {
     showAboutWindow()
   }
 
-  function handleExitActionClick () {
-    callExit()
+  function handleQuitActionClick () {
+    callQuit()
   }
 
   const toggleText =
@@ -45,9 +47,9 @@ export default function () {
       'about'
     )
 
-  const exitText =
+  const quitText =
     i18n.__(
-      'exit'
+      'quit'
     )
 
   const menuItems = [
@@ -63,8 +65,8 @@ export default function () {
     },
     {
       type: 'normal',
-      label: exitText,
-      click: handleExitActionClick
+      label: quitText,
+      click: handleQuitActionClick
     }
   ]
 
@@ -77,7 +79,7 @@ export default function () {
     menu
   )
 
-  if (isMac) {
+  if (isMacos) {
     app.dock.setMenu(
       menu
     )

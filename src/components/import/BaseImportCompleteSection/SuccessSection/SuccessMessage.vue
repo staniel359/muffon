@@ -1,10 +1,9 @@
 <template>
   <div class="main-top-section">
     <BaseMessage
-      class="success"
-      icon="success"
       :header="successHeaderText"
       :content="successContentText"
+      is-success
     />
   </div>
 </template>

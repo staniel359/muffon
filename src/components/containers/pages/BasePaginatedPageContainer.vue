@@ -60,6 +60,18 @@
       </div>
     </BaseSegmentContainer>
 
+    <BaseSegmentContainer
+      v-if="isRenderTopSecondSegment"
+    >
+      <div class="main-page-top-section">
+        <div class="section">
+          <slot
+            name="topPlayButton"
+          />
+        </div>
+      </div>
+    </BaseSegmentContainer>
+
     <BasePaginatedSegmentContainer
       ref="pagination"
       :key="refreshKey"
@@ -141,6 +153,8 @@ export default {
     responsePageLimit: Number,
     isPaginationSimple: Boolean,
     isWithTopSegment: Boolean,
+    isWithTopSecondSegment: Boolean,
+    isWithPlayButton: Boolean,
     isWithOrderChange: Boolean,
     isWithViewChange: Boolean,
     viewId: String,
@@ -164,6 +178,18 @@ export default {
         this.listScope ||
           this.scope
       )
+    },
+    isRenderTopSecondSegment () {
+      return (
+        this.isWithTopSecondSegment &&
+          this.isWithPlayButton &&
+          this.isAnyCollectionItems
+      )
+    },
+    isAnyCollectionItems () {
+      return !!this.responseDataComputed?.[
+        this.scope
+      ]?.length
     }
   },
   watch: {

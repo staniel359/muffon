@@ -156,6 +156,8 @@
     "close": "Fermer",
     "openLink": "Ouvrir le lien",
     "play": "Lire",
+    "shuffle": "Aléatoire",
+    "loop": "Lire en boucle",
     "addFrom": {
       "search": "À partir de la recherche",
       "library": "À partir de la bibliothèque"
@@ -256,6 +258,7 @@
         "account": "Supprimer le compte",
         "library": "Supprimer la bibliothèque",
         "history": {
+          "search": "Supprimé l'historique de recherche",
           "activity": "Supprimer l'historique d'activité",
           "browser": "Supprimer l'historique de navigation",
           "player": "Supprimer l'historique du player"
@@ -275,6 +278,7 @@
         "account": "Vous allez supprimer votre compte.",
         "library": "Vous allez supprimer votre bibliothèque.",
         "history": {
+          "search": "Vous êtes sur le point de supprimer l'historique de recherche.",
           "activity": "Vous allez supprimer votre historique d'activité.",
           "browser": "Vous allez supprimer votre historique de navigation.",
           "player": "Vous allez supprimer l'historique du player."
@@ -402,6 +406,7 @@
       "account": "Votre compte a bien été supprimé",
       "library": "Votre bibliothèque a bien été supprimé",
       "history": {
+        "search": "L'historique de recherche a bien été supprimé.",
         "activity": "Votre historique d'activité a bien été supprimé",
         "browser": "Votre historique de navigation a bien été supprimé",
         "player": "L'historique du player a bien été supprimé"
@@ -504,7 +509,7 @@
       "data": "Data",
       "info": "Info",
       "account": "Compte",
-      "other": "Autres"
+      "system": "Système"
     },
     "options": {
       "app": {
@@ -525,33 +530,34 @@
         },
         "window": {
           "maximize": "Maximiser au démarrage",
-          "exit": "Fermer pour arrêter"
+          "quit": "Fermer pour arrêter",
+          "showTrayIcon": "Afficher l'icône de la barre des tâches"
         },
         "tabs": {
           "newTabSwitch": "Basculer vers un nouvel onglet",
-          "closeOnExit": "Fermer les onglets à la sortie"
+          "closeOnQuit": "Fermer les onglets à la sortie"
         },
         "search": {
           "source": "Source",
           "scope": "Portée",
-          "resultsFullSize": "Afficher les résultats en taille réelle",
-          "history": {
-            "clear": "Effacer l'historique des recherches"
-          }
+          "resultsFullSize": "Afficher les résultats en taille réelle"
         },
         "player": {
           "audioSources": "Sources audio (par priorité)",
           "bitrate": "Afficher le bitrate audio",
           "album": "Montrer l'album",
           "equalizer": "Montrer l'égaliseur",
-          "focusPlaying": "Focus sur la piste actuelle"
+          "focusPlaying": "Focus sur la piste actuelle",
+          "pauseOnVideoPlay": "Mettre en pause l'audio à la lecture de la vidéo"
         },
         "queue": {
           "autoplay": "Autoplay",
           "clear": "Nettoyer à la fermeture du player"
         },
         "video": {
-          "autoplay": "Autoplay"
+          "autoplay": "Autoplay",
+          "pauseOnAudioPlay": "Mettre en pause la vidéo à la lecture de l'audio",
+          "openLinksInNewTab": "Ouvrir le lien dans une nouvelle fenêtre"
         },
         "recommendations": {
           "hideLibraryArtists": "Masquer les artistes présents dans la bibliothèque",
@@ -567,6 +573,9 @@
           "annotations": "Montrer les annotations"
         },
         "history": {
+          "search": {
+            "delete": "Supprimé l'historique de recherche"
+          },
           "activity": {
             "delete": "Supprimer l'historique d'activité"
           },
@@ -577,8 +586,11 @@
             "delete": "Supprimer l'historique de navigation"
           }
         },
-        "other": {
-          "clearCache": "Vider le cache"
+        "system": {
+          "cache": {
+            "enable": "Activer le cache",
+            "clear": "Vider le cache"
+          }
         }
       },
       "profile": {
@@ -779,7 +791,8 @@
     "videoPlaylist": "La playlist vidéo a été supprimé"
   },
   "messages": {
-    "welcome": "Bienvenue, {profileNickname}"
+    "welcome": "Bienvenue, {profileNickname}",
+    "restartToApply": "Les nouveaux paramètres ont bien été sauvegardés et seront appliqués après un redémarrage."
   },
   "profile": {
     "wasOnline": "En ligne"

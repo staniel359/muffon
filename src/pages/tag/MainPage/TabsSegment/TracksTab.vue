@@ -4,8 +4,19 @@
     :limit="limit"
     :tag-name="tagName"
     :is-active="isActive"
+    is-with-top-section
+    is-with-play-button
     @focus="handleFocus"
   >
+    <template
+      #topPlayButton
+    >
+      <BaseTagTracksPlayButton
+        limit-name="default"
+        :tag-name="tagName"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
@@ -32,6 +43,8 @@ import BaseTagTabContainer
   from '@/components/containers/tabs/tag/BaseTagTabContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTagTracksPlayButton
+  from '@/components/buttons/play/tag/BaseTagTracksPlayButton.vue'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -41,7 +54,8 @@ export default {
   name: 'TracksTab',
   components: {
     BaseTagTabContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseTagTracksPlayButton
   },
   mixins: [
     tabMixin

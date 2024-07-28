@@ -4,14 +4,24 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    is-with-top-section
+    is-with-play-button
     @focus="handleFocus"
   >
+    <template
+      #topPlayButton
+    >
+      <BaseArtistTracksPlayButton
+        limit-name="medium"
+        :artist-name="artistName"
+      />
+    </template>
+
     <template
       #default="slotProps"
     >
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :artist-name="slotProps.artistName"
         :top-track-count="slotProps.topTrackCount"
         is-with-listeners-count
         is-with-source-option
@@ -33,6 +43,8 @@ import BaseArtistTabContainer
   from '@/components/containers/tabs/artist/BaseArtistTabContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseArtistTracksPlayButton
+  from '@/components/buttons/play/artist/BaseArtistTracksPlayButton.vue'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
@@ -42,7 +54,8 @@ export default {
   name: 'TracksTab',
   components: {
     BaseArtistTabContainer,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseArtistTracksPlayButton
   },
   mixins: [
     tabMixin

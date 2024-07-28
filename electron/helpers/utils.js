@@ -5,13 +5,13 @@ import {
 import {
   existsSync,
   mkdirSync
-} from 'fs'
+} from 'node:fs'
 
 export {
   v4 as generateKey
 } from 'uuid'
 
-const platforms = {
+const systems = {
   windows: [
     'win32'
   ],
@@ -43,72 +43,62 @@ const harmfulSwitches = [
   'host-rules'
 ]
 
-function isHarmfulSwitchesPresent () {
-  for (let harmfulSwitch of harmfulSwitches) {
-    if (
-      app.commandLine.hasSwitch(
-        harmfulSwitch
-      )
-    ) {
-      return true
-    }
-  }
-  return false
-}
-
 export const appName = 'muffon'
 
-export const handleHarmfulSwitches = () => {
-  if (isHarmfulSwitchesPresent()) {
-    dialog.showErrorBox(
-      'Error',
-      'Harmful switches detected'
-    )
-
-    // Do not call app.exit(), ask @xyloflake why
-    process.exit()
-  }
+function isMatchedPlatform (
+  [
+    _,
+    platforms
+  ]
+) {
+  return platforms.includes(
+    process.platform
+  )
 }
 
-const {
-  env,
-  platform
-} = process
+export const systemName =
+  Object.entries(
+    systems
+  ).find(
+    isMatchedPlatform
+  )[0]
 
 export const isDevelopment = !app.isPackaged
 
 export const isShowDevTools = (
-  env.DEV_TOOLS === 'true'
+  process.env.DEV_TOOLS === 'true'
 )
 
-export const isMac =
-  platforms
-  .macos
-  .includes(
-    platform
-  )
+export const isWindows = (
+  systemName === 'windows'
+)
 
-export const isLinux =
-  platforms
-  .linux
-  .includes(
-    platform
-  )
+export const isMacos = (
+  systemName === 'macos'
+)
 
-export const isWindows =
-  platforms
-  .windows
-  .includes(
-    platform
-  )
+export const isLinux = (
+  systemName === 'linux'
+)
 
 export const isSingleInstance =
   app.requestSingleInstanceLock()
 
 export const deepLinksProtocol = `${appName}://`
 
-export const releasesUrl =
-  'https://api.github.com/repos/staniel359/muffon/releases/latest'
+export const shortcuts = {
+  allowed: {
+    quit: [
+      'CommandOrControl+Q'
+    ]
+  },
+  forbidden: {
+    reload: [
+      'CommandOrControl+R',
+      'F5'
+    ]
+  }
+}
 
 export function createFolderIfNotExists (
   path
@@ -122,5 +112,32 @@ export function createFolderIfNotExists (
     mkdirSync(
       path
     )
+  }
+}
+
+function isHarmfulSwitchPresent (
+  harmfulSwitch
+) {
+  return app
+    .commandLine
+    .hasSwitch(
+      harmfulSwitch
+    )
+}
+
+export function handleHarmfulSwitches () {
+  const isAnyHarmfulSwitches =
+    !!harmfulSwitches.find(
+      isHarmfulSwitchPresent
+    )
+
+  if (isAnyHarmfulSwitches) {
+    dialog.showErrorBox(
+      'Error',
+      'Harmful switches detected'
+    )
+
+    // Do not call app.exit(), ask @xyloflake why
+    process.exit()
   }
 }

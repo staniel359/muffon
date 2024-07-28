@@ -1,15 +1,11 @@
 <template>
   <div
-    v-if="tracks?.length"
+    v-if="isAnyTracks"
   >
     <BaseTracksSimpleList
       :tracks="tracks"
-      :album-artist-name="artistName"
-      :album-data="albumData"
-      :image-data="imageData"
       :is-with-source="isWithSource"
       is-with-index
-      is-with-artist-name
       is-with-duration
       is-with-source-option
       is-with-library-option
@@ -49,14 +45,11 @@ export default {
     }
   },
   computed: {
+    isAnyTracks () {
+      return !!this.tracks?.length
+    },
     tracks () {
       return this.albumData.tracks
-    },
-    artistName () {
-      return this.albumData.artist.name
-    },
-    imageData () {
-      return this.albumData.image
     },
     isWithSource () {
       return !!this.sourceData?.isAudio

@@ -40,8 +40,7 @@ export default {
     isLoading: Boolean,
     error: Error,
     responseData: Object,
-    scrollable: HTMLDivElement,
-    isWithPagination: Boolean
+    scrollable: HTMLDivElement
   },
   emits: [
     'focus'
@@ -63,14 +62,9 @@ export default {
     },
     isRenderPagination () {
       return (
-        this.isWithPagination ||
-          this.isPageable
-      )
-    },
-    isPageable () {
-      return (
         this.isResponsePageable ||
-          this.isResponsePagePageable
+          this.isResponsePagePageable ||
+          !this.clientPageCollectionLength
       )
     },
     responseNextPage () {
