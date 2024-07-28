@@ -93,6 +93,10 @@ export default function () {
       options
     )
 
+  changeViewBackgroundColor(
+    mainWindow
+  )
+
   mainWindow.loadURL(
     baseUrl
   )
@@ -103,10 +107,6 @@ export default function () {
   )
 
   mainWindow.removeMenu()
-
-  changeViewBackgroundColor(
-    mainWindow
-  )
 
   if (isShowDevTools) {
     const devToolsData = {

@@ -23,4 +23,10 @@ export default function (
   view.setBackgroundColor(
     backgroundColor
   )
+
+  view
+    .webContents
+    .insertCSS(
+      `html, body { background-color: ${backgroundColor} !important; }`
+    )
 }

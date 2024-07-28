@@ -40,11 +40,11 @@ export default function (
 
   tab.uuid = uuid
 
-  mainWindow.addBrowserView(
+  changeViewBackgroundColor(
     tab
   )
 
-  changeViewBackgroundColor(
+  mainWindow.addBrowserView(
     tab
   )
 
@@ -63,7 +63,8 @@ export default function (
     tab
   )
 
-  const url = `${baseUrl}#/${path}`
+  const url =
+    `${baseUrl}#/${path}`
 
   tab
     .webContents
