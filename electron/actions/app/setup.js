@@ -1,4 +1,6 @@
-import { app } from 'electron'
+import {
+  app
+} from 'electron'
 import createMainWindow
   from '../../actions/mainWindow/create.js'
 import createAboutWindow
@@ -15,7 +17,9 @@ export default function () {
 
   createAboutWindow()
 
-  if (app.commandLine.hasSwitch('open-about-window')) {
+  if (app.commandLine.hasSwitch(
+    'open-about-window'
+  )) {
     aboutWindow.show()
   }
 

@@ -47,6 +47,12 @@ export function handleSecondInstance (
     mainWindow.show()
 
     mainWindow.focus()
+
+    if (args && args.includes(
+      '--open-about-window'
+    )) {
+      aboutWindow.show()
+    }
   }
 
   if (isWindows || isLinux) {
