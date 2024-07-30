@@ -18,7 +18,7 @@
     ]
   },
   "linux": {
-    "category": "Audio",
+    "category": "AudioVideo",
     "icon": "build/icons/icon.icns",
     "target": [
       "AppImage",
@@ -26,7 +26,14 @@
       "flatpak",
       "pacman",
       "rpm"
-    ]
+    ],
+    "desktop": {
+      "Actions": "about;",
+      "Categories": "AudioVideo",
+      "Comment": "Advanced multi-source music streaming + discovery client",
+      "MimeType": "x-scheme-handler/muffon;",
+      "\n\n[Desktop Action about]\nName=About\nExec": "/opt/muffon/muffon --open-about-window\n\n"
+    }
   },
   "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
   "compression": "ultra",
@@ -41,7 +48,7 @@
     "baseVersion": "23.08"
   },
   "portable": {
-    "artifactName": "${productName}-${version}-${os}-${arch}-portable.${ext}",
+    "artifactName": "${productName}-${version}-${os}-${arch}-portable.${ext}"
   },
   "directories": {
     "buildResources": "build",
