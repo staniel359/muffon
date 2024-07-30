@@ -44,14 +44,13 @@ export function handleSecondInstance (
   args
 ) {
   if (mainWindow) {
-    mainWindow.show()
-
-    mainWindow.focus()
-
     if (args && args.includes(
       '--open-about-window'
     )) {
       aboutWindow.show()
+    } else {
+      mainWindow.show()
+      mainWindow.focus()
     }
   }
 
