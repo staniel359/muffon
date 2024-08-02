@@ -1,0 +1,13 @@
+{
+  "show": "Pokaż",
+  "hide": "Ukryj",
+  "about": "O nas",
+  "quit": "Wyjdź",
+  "update": {
+    "message": "Dostępna jest nowa wersja",
+    "buttons": {
+      "download": "Pobierz",
+      "close": "Zamknij"
+    }
+  }
+}

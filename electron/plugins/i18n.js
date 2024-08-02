@@ -7,6 +7,7 @@ import fr from './i18n/locales/fr.json' with { type: 'json' }
 import he from './i18n/locales/he.json' with { type: 'json' }
 import it from './i18n/locales/it.json' with { type: 'json' }
 import ja from './i18n/locales/ja.json' with { type: 'json' }
+import pl from './i18n/locales/pl.json' with { type: 'json' }
 import ru from './i18n/locales/ru.json' with { type: 'json' }
 
 // i18n
@@ -24,6 +25,7 @@ const localesData = {
   he,
   it,
   ja,
+  pl,
   ru
 }
 

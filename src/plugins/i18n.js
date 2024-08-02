@@ -8,9 +8,10 @@ import fr from './i18n/locales/fr.json'
 import he from './i18n/locales/he.json'
 import it from './i18n/locales/it.json'
 import ja from './i18n/locales/ja.json'
+import pl from './i18n/locales/pl.json'
 import ru from './i18n/locales/ru.json'
-import belarusianRussianPluralizationRule
-  from './i18n/rules/pluralization/beRu.js'
+import slavicPluralizationRule
+  from './i18n/rules/pluralization/slavic.js'
 
 // i18n
 
@@ -22,12 +23,14 @@ const localesData = {
   he,
   it,
   ja,
+  pl,
   ru
 }
 
 const pluralizationRules = {
-  be: belarusianRussianPluralizationRule,
-  ru: belarusianRussianPluralizationRule
+  be: slavicPluralizationRule,
+  pl: slavicPluralizationRule,
+  ru: slavicPluralizationRule
 }
 
 const i18n =
@@ -105,6 +108,16 @@ if (import.meta.hot) {
     fileImport => {
       i18n.global.setLocaleMessage(
         'ja',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/pl.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'pl',
         fileImport.default
       )
     }
