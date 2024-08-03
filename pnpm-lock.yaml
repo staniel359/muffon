@@ -6,10 +6,10 @@ settings:
 
 patchedDependencies:
   app-builder-lib@24.13.3:
-    hash: qoxn2hbefxegarugn426duuifq
+    hash: rm7ofe2uww4jcfikpmtsv7faqy
     path: patches/app-builder-lib@24.13.3.patch
   electron-updater@6.2.1:
-    hash: y5hmkyp2xdcxktnmjfhehtfypq
+    hash: c3lnwh7hqjbe4ypuww3r2gagne
     path: patches/electron-updater@6.2.1.patch
 
 importers:
@@ -33,7 +33,7 @@ importers:
         version: 10.0.0
       electron-updater:
         specifier: ^6.2.1
-        version: 6.2.1(patch_hash=y5hmkyp2xdcxktnmjfhehtfypq)
+        version: 6.2.1(patch_hash=c3lnwh7hqjbe4ypuww3r2gagne)
       i18n:
         specifier: ^0.15.1
         version: 0.15.1
@@ -5407,7 +5407,7 @@ snapshots:
 
   app-builder-bin@5.0.0-alpha.4: {}
 
-  app-builder-lib@24.13.3(patch_hash=qoxn2hbefxegarugn426duuifq)(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.10))(electron-builder-squirrel-windows@25.0.0-alpha.10(dmg-builder@24.13.3)):
+  app-builder-lib@24.13.3(patch_hash=rm7ofe2uww4jcfikpmtsv7faqy)(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.10))(electron-builder-squirrel-windows@25.0.0-alpha.10(dmg-builder@24.13.3)):
     dependencies:
       '@develar/schema-utils': 2.6.5
       '@electron/notarize': 2.2.1
@@ -6331,7 +6331,7 @@ snapshots:
 
   dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.10):
     dependencies:
-      app-builder-lib: 24.13.3(patch_hash=qoxn2hbefxegarugn426duuifq)(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.10))(electron-builder-squirrel-windows@25.0.0-alpha.10(dmg-builder@24.13.3))
+      app-builder-lib: 24.13.3(patch_hash=rm7ofe2uww4jcfikpmtsv7faqy)(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.10))(electron-builder-squirrel-windows@25.0.0-alpha.10(dmg-builder@24.13.3))
       builder-util: 24.13.1
       builder-util-runtime: 9.2.4
       fs-extra: 10.1.0
@@ -6415,7 +6415,7 @@ snapshots:
 
   electron-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.10(dmg-builder@24.13.3)):
     dependencies:
-      app-builder-lib: 24.13.3(patch_hash=qoxn2hbefxegarugn426duuifq)(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.10))(electron-builder-squirrel-windows@25.0.0-alpha.10(dmg-builder@24.13.3))
+      app-builder-lib: 24.13.3(patch_hash=rm7ofe2uww4jcfikpmtsv7faqy)(dmg-builder@24.13.3(electron-builder-squirrel-windows@25.0.0-alpha.10))(electron-builder-squirrel-windows@25.0.0-alpha.10(dmg-builder@24.13.3))
       builder-util: 24.13.1
       builder-util-runtime: 9.2.4
       chalk: 4.1.2
@@ -6467,7 +6467,7 @@ snapshots:
 
   electron-to-chromium@1.4.818: {}
 
-  electron-updater@6.2.1(patch_hash=y5hmkyp2xdcxktnmjfhehtfypq):
+  electron-updater@6.2.1(patch_hash=c3lnwh7hqjbe4ypuww3r2gagne):
     dependencies:
       builder-util-runtime: 9.2.4
       fs-extra: 10.1.0

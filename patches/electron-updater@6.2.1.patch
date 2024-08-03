@@ -11,25 +11,6 @@ index 96048f90c30aebc10a3b92eed067f2608010ac24..1d89f4f196d0f094705fc90a5251f164
          return this.executeDownload({
              fileExtension: "AppImage",
              fileInfo,
-diff --git a/out/BaseUpdater.js b/out/BaseUpdater.js
-index 098baaac26e723146cab768178d27da4d9f8e64d..84ac10fd52866db8737b6a688211c7e40038f161 100644
---- a/out/BaseUpdater.js
-+++ b/out/BaseUpdater.js
-@@ -109,6 +109,14 @@ class BaseUpdater extends AppUpdater_1.AppUpdater {
-             encoding: "utf-8",
-             shell: true,
-         });
-+        console.log(response)
-+        if(response.status != 0) {
-+            console.error("Command execution failed: ", {
-+                status: response.status,
-+                output: response.output
-+            })
-+        }
-+        
-         return response.stdout.trim();
-     }
-     /**
 diff --git a/out/DebUpdater.js b/out/DebUpdater.js
 index 422f42fc0f026eb255cbfa79a5a75b6b3c1e7cf8..bd0c2e8cd67d030fc0efbb80f7d8127e0b9489c5 100644
 --- a/out/DebUpdater.js
@@ -104,15 +85,16 @@ index 32fb0ff7cdedd602c865e567e38c24846fe16a52..0154c307af13be29f5edcf40d9738982
              fileExtension: "rpm",
              fileInfo,
 diff --git a/out/main.js b/out/main.js
-index 7be5e04d12dedaa4e4c7c09b9f7c1f034d381231..59764141bcaf24e909b86596d181f2b4042dd4dd 100644
+index 7be5e04d12dedaa4e4c7c09b9f7c1f034d381231..2ac6c1ed6bb5a93753605a656ccdcadb04fea6f4 100644
 --- a/out/main.js
 +++ b/out/main.js
-@@ -49,7 +49,10 @@ function doLoadAutoUpdater() {
+@@ -49,7 +49,11 @@ function doLoadAutoUpdater() {
                  case "rpm":
                      _autoUpdater = new (require("./RpmUpdater").RpmUpdater)();
                      break;
 +                case "pacman":
 +                    _autoUpdater = new (require("./PacmanUpdater").PacmanUpdater)();
++                    break;
                  default:
 +                    console.log("Auto-updates are not supported on this package-type: ", fileType)
                      break;
