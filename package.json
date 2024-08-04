@@ -70,7 +70,8 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "app-builder-lib@24.13.3": "patches/app-builder-lib@24.13.3.patch"
+      "app-builder-lib@24.13.3": "patches/app-builder-lib@24.13.3.patch",
+      "electron-updater@6.2.1": "patches/electron-updater@6.2.1.patch"
     }
   }
 }
