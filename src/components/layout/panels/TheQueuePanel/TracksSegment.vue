@@ -3,30 +3,10 @@
     ref="segment"
     class="overflow-y-auto flex-full scroll-smooth"
   >
-    <BaseTracksSimpleList
+    <TracksList
+      v-if="scrollable"
       :key="key"
-      :tracks="queueTracksCollection"
-      :profile-id="profileId"
       :scrollable="scrollable"
-      is-with-index
-      is-with-image
-      is-with-artist-name
-      is-with-album-title
-      is-with-source
-      is-with-saved-icon
-      is-with-source-option
-      is-with-library-option
-      is-with-playlist-option
-      is-with-favorite-option
-      is-with-bookmark-option
-      is-with-listened-option
-      is-with-save-option
-      is-with-share-option
-      is-with-external-link-option
-      is-with-delete-option
-      is-clearable
-      is-segment
-      @delete-option-click="handleDeleteOptionClick"
     />
   </BaseSegmentContainer>
 </template>
@@ -35,15 +15,10 @@
 import {
   mapState
 } from 'pinia'
-import profileStore from '@/stores/profile'
 import queueStore from '@/stores/queue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseTracksSimpleList
-  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
-import {
-  update as updateGlobalStore
-} from '@/helpers/actions/store/global'
+import TracksList from './TracksSegment/TracksList.vue'
 import {
   generateKey,
   isObjectChanged
@@ -54,7 +29,7 @@ export default {
   name: 'TracksSegment',
   components: {
     BaseSegmentContainer,
-    BaseTracksSimpleList
+    TracksList
   },
   mixins: [
     scrollMixin
@@ -62,44 +37,30 @@ export default {
   data () {
     return {
       key: null,
-      scrollable: null,
-      queueTracksCollection: []
+      scrollable: null
     }
   },
   computed: {
     ...mapState(
-      profileStore,
-      {
-        profileId: 'id'
-      }
-    ),
-    ...mapState(
       queueStore,
       {
-        queueTracks: 'tracks',
-        queueTracksShuffled: 'tracksShuffled',
         queueTracksComputed: 'tracksComputed'
       }
     )
   },
   watch: {
-    queueTracksComputed: {
-      immediate: true,
-      handler:
-        'handleQueueTracksComputedChange'
-    }
+    queueTracksComputed:
+      'handleQueueTracksComputedChange'
   },
   mounted () {
     this.scrollable =
       this.$refs.segment.$el
   },
   methods: {
-    async handleQueueTracksComputedChange (
+    handleQueueTracksComputedChange (
       value,
       oldValue
     ) {
-      await this.$nextTick()
-
       const isChanged =
         isObjectChanged(
           value,
@@ -108,40 +69,9 @@ export default {
 
       if (isChanged) {
         this.key = generateKey()
-        this.queueTracksCollection = value
 
         this.scrollToTop()
       }
-    },
-    handleDeleteOptionClick (
-      {
-        uuid
-      }
-    ) {
-      const isMatchedTrack = (
-        trackData
-      ) => {
-        return trackData.uuid !== uuid
-      }
-
-      const tracks = [
-        ...this.queueTracks.filter(
-          isMatchedTrack
-        )
-      ]
-
-      const tracksShuffled = [
-        ...this.queueTracksShuffled.filter(
-          isMatchedTrack
-        )
-      ]
-
-      updateGlobalStore(
-        {
-          'queue.tracks': tracks,
-          'queue.tracksShuffled': tracksShuffled
-        }
-      )
     },
     scrollToTop () {
       this.$refs

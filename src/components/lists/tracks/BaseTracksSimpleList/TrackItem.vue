@@ -15,6 +15,7 @@
       #default="slotProps"
     >
       <BaseTrackContent
+        v-if="!isLazy || isOnScreen"
         :track-data="trackData"
         :is-loading="slotProps.isLoading"
         :is-error="slotProps.isError"
@@ -70,6 +71,12 @@
 import BaseTrackContainer
   from '@/components/containers/track/BaseTrackContainer.vue'
 import BaseTrackContent from '@/components/models/track/BaseTrackContent.vue'
+import {
+  set as setVisibility
+} from '@/helpers/actions/plugins/semantic/visibility'
+import {
+  queue as queueVisibilityOptions
+} from '@/helpers/formatters/plugins/semantic/options/visibility'
 
 export default {
   name: 'TrackItem',
@@ -123,13 +130,19 @@ export default {
     isFromRadio: Boolean,
     isSegment: Boolean,
     scrollable: HTMLDivElement,
-    isRecommendation: Boolean
+    isRecommendation: Boolean,
+    isLazy: Boolean
   },
   emits: [
     'linkClick',
     'clearButtonClick',
     'deleteOptionClick'
   ],
+  data () {
+    return {
+      isOnScreen: false
+    }
+  },
   computed: {
     isDeleted () {
       return !!this.trackData.isDeleted
@@ -143,6 +156,23 @@ export default {
     },
     uuid () {
       return this.trackData.uuid
+    },
+    visibilityOptions () {
+      return queueVisibilityOptions(
+        {
+          context: this.scrollable,
+          onOnScreen:
+            this.handleOnScreen
+        }
+      )
+    }
+  },
+  mounted () {
+    if (this.isLazy) {
+      setVisibility(
+        this.$refs.track.$el,
+        this.visibilityOptions
+      )
     }
   },
   methods: {
@@ -185,8 +215,10 @@ export default {
       )
     },
     handleDeleted () {
-      this.paginationItem
-        .isDeleted = true
+      this.paginationItem.isDeleted = true
+    },
+    handleOnScreen () {
+      this.isOnScreen = true
     },
     getAudio () {
       this.$refs

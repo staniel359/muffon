@@ -25,3 +25,19 @@ export function infiniteScrollObserver (
     onUpdate
   }
 }
+
+export function queue (
+  {
+    context,
+    onOnScreen
+  }
+) {
+  return {
+    once: false,
+    observeChanges: false,
+    context,
+    onOnScreen,
+    onTopPassed: onOnScreen,
+    onBottomPassed: onOnScreen
+  }
+}
