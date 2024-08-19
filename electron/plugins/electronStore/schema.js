@@ -476,6 +476,20 @@ export default {
     type: 'boolean',
     default: true
   },
+  'system.isAutoupdateAvailable': {
+    type: [
+      'null',
+      'boolean'
+    ],
+    default: null
+  },
+  'system.isWithAutoupdate': {
+    type: [
+      'null',
+      'boolean'
+    ],
+    default: null
+  },
   'top.country': {
     type: [
       'null',

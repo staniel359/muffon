@@ -34,7 +34,23 @@ function handleReadyToShow () {
 
   showMainWindow()
 
-  if (!isDevelopment) {
+  const isAutoupdateAvailable =
+    getElectronStoreKey(
+      'system.isAutoupdateAvailable'
+    )
+
+  const isWithAutoupdate =
+    getElectronStoreKey(
+      'system.isWithAutoupdate'
+    )
+
+  const isCheckForUpdates = (
+    !isDevelopment &&
+      isAutoupdateAvailable &&
+      isWithAutoupdate
+  )
+
+  if (isCheckForUpdates) {
     checkForUpdates()
   }
 

@@ -590,7 +590,8 @@
           "cache": {
             "enable": "Activer le cache",
             "clear": "Vider le cache"
-          }
+          },
+          "autoupdate": "Activer les mises à jour automatiques"
         }
       },
       "profile": {

@@ -590,7 +590,8 @@
           "cache": {
             "enable": "Enable cache",
             "clear": "Clear cache"
-          }
+          },
+          "autoupdate": "Enable autoupdate"
         }
       },
       "profile": {

@@ -590,7 +590,8 @@
           "cache": {
             "enable": "Włącz bufor",
             "clear": "Wyczyść bufor"
-          }
+          },
+          "autoupdate": "Włącz automatyczne aktualizacje"
         }
       },
       "profile": {
@@ -721,7 +722,7 @@
       },
       "playlist": {
         "artists": "{counter} zostało dodanych do playlisty | {counter} został dodany do playlisty | {counter} zostało dodanych do playlisty",
-	  "albums": "{counter} zostało dodanych do playlisty | {counter} zostało dodane do playlisty | {counter} zostały dodane do playlisty",
+        "albums": "{counter} zostało dodanych do playlisty | {counter} zostało dodane do playlisty | {counter} zostały dodane do playlisty",
         "tracks": "{counter} zostało dodanych do playlisty | {counter} został dodany do playlisty | {counter} zostały dodane do playlisty"
       },
       "playlists": {

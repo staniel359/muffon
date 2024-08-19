@@ -590,7 +590,8 @@
           "cache": {
             "enable": "Cache aktivieren",
             "clear": "Zwischenspeicher leeren"
-          }
+          },
+          "autoupdate": "Automatische Aktualisierung aktivieren"
         }
       },
       "profile": {

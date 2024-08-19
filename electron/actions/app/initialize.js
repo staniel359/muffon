@@ -7,6 +7,7 @@ import setupDayjs from '../../plugins/dayjs.js'
 import setAppFlags from './setFlags.js'
 import setAppGlobalVariables from './setGlobalVariables.js'
 import setAppEvents from './setEvents.js'
+import setAppAutoupdateSetting from './setAutoupdateSetting.js'
 import setupApp from './setup.js'
 import {
   appName,
@@ -37,6 +38,8 @@ export default function () {
   setAppProtocols()
 
   setAppEvents()
+
+  setAppAutoupdateSetting()
 
   app
     .whenReady()
