@@ -122,14 +122,12 @@ export default {
         ...this.collection,
         ...newCollection
       ]
-    },
-    handleCollectionChange (
-      value
-    ) {
-      this.setProgressValue(
-        value.length
-      )
 
+      this.setProgressValue(
+        this.page
+      )
+    },
+    handleCollectionChange () {
       if (this.isGetNextPageData) {
         this.page += 1
 
