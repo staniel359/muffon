@@ -14,7 +14,7 @@
 
       <BaseLabel
         v-if="isPremium"
-        class="primary tiny circular main-bottom-mini-section"
+        class="primary small circular main-bottom-extrasmall-section"
         :text="premiumText"
         :is-invertable="false"
       />
