@@ -1,12 +1,12 @@
 <template>
   <div class="main-settings-options-block">
-    <CacheOption />
-
-    <ClearCacheOption />
-
     <AutoupdateOption
       v-if="isAutoupdateAvailable"
     />
+
+    <CacheOption />
+
+    <ClearCacheOption />
   </div>
 </template>
 
