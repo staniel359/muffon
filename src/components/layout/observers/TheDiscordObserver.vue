@@ -87,8 +87,7 @@ export default {
         trackTitle: this.trackTitle,
         artistName: this.artistName,
         albumTitle: this.albumTitle,
-        image: this.image,
-        duration: this.duration
+        image: this.image
       }
     },
     trackTitle () {
@@ -105,9 +104,6 @@ export default {
         this.playerPlaying.image?.medium ||
           defaultImage
       )
-    },
-    duration () {
-      return this.playerPlaying.duration
     },
     buttonsFiltered () {
       return this.buttonsFormatted.filter(
