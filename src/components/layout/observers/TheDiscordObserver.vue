@@ -18,6 +18,9 @@ import profileStore from '@/stores/profile'
 import {
   homepage
 } from '@/../package.json'
+import {
+  track as defaultImage
+} from '@/helpers/data/defaultImages'
 
 export default {
   name: 'TheDiscordObserver',
@@ -98,7 +101,10 @@ export default {
       return this.playerPlaying.album?.title
     },
     image () {
-      return this.playerPlaying.image?.medium
+      return (
+        this.playerPlaying.image?.medium ||
+          defaultImage
+      )
     },
     duration () {
       return this.playerPlaying.duration
