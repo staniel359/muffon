@@ -6,8 +6,8 @@ const data = {
   state () {
     return {
       isWithCache: null,
-      isAutoupdateAvailable: null,
-      isWithAutoupdate: null
+      isAutoupdateSupported: null,
+      willAutoupdate: null
     }
   },
   actions: {
@@ -19,12 +19,12 @@ const data = {
     setIsAutoupdateAvailable (
       value
     ) {
-      this.isAutoupdateAvailable = value
+      this.isAutoupdateSupported = value
     },
     setIsWithAutoupdate (
       value
     ) {
-      this.isWithAutoupdate = value
+      this.willAutoupdate = value
     }
   }
 }

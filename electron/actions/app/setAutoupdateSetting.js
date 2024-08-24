@@ -7,31 +7,31 @@ import getElectronStoreKey from '../electronStore/getKey.js'
 import setElectronStoreData from '../electronStore/setData.js'
 
 export default function () {
-  let isAutoupdateAvailable
+  let isAutoupdateSupported
 
-  let isWithAutoupdate =
+  let willAutoupdate =
     getElectronStoreKey(
-      'system.isWithAutoupdate'
+      'system.willAutoupdate'
     )
 
   if (isWindows) {
-    isAutoupdateAvailable = true
+    isAutoupdateSupported = true
 
-    isWithAutoupdate ??= true
+    willAutoupdate ??= true
   } else if (isMacos) {
-    isAutoupdateAvailable = false
+    isAutoupdateSupported = false
 
-    isWithAutoupdate ??= false
+    willAutoupdate ??= false
   } else if (isLinux) {
-    isAutoupdateAvailable = true
+    isAutoupdateSupported = true
 
-    isWithAutoupdate ??= false
+    willAutoupdate ??= false
   }
 
   setElectronStoreData(
     {
-      'system.isAutoupdateAvailable': isAutoupdateAvailable,
-      'system.isWithAutoupdate': isWithAutoupdate
+      'system.isAutoupdateSupported': isAutoupdateSupported,
+      'system.willAutoupdate': willAutoupdate
     }
   )
 }

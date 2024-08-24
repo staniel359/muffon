@@ -16,8 +16,8 @@
       </div>
 
       <BaseToggle
-        store-key="system.isWithAutoupdate"
-        :is-checked="isWithAutoupdate"
+        store-key="system.willAutoupdate"
+        :is-checked="willAutoupdate"
       />
     </div>
   </div>
@@ -60,7 +60,7 @@ export default {
     ...mapState(
       systemStore,
       [
-        'isWithAutoupdate'
+        'willAutoupdate'
       ]
     ),
     autoupdateText () {
@@ -80,10 +80,10 @@ export default {
     }
   },
   watch: {
-    isWithAutoupdate: 'handleIsWithAutoupdateChange'
+    willAutoupdate: 'handleWillAutoupdateChange'
   },
   methods: {
-    handleIsWithAutoupdateChange () {
+    handleWillAutoupdateChange () {
       this.isShowRestartMessage = true
     }
   }

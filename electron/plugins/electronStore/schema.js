@@ -476,14 +476,14 @@ export default {
     type: 'boolean',
     default: true
   },
-  'system.isAutoupdateAvailable': {
+  'system.isAutoupdateSupported': {
     type: [
       'null',
       'boolean'
     ],
     default: null
   },
-  'system.isWithAutoupdate': {
+  'system.willAutoupdate': {
     type: [
       'null',
       'boolean'

@@ -6,9 +6,6 @@ import {
 } from 'electron'
 import electronUpdater from 'electron-updater'
 import {
-  isMacos
-} from '../../helpers/utils.js'
-import {
   releasesUrl
 } from '../../helpers/urls.js'
 import i18n from 'i18n'
@@ -119,7 +116,17 @@ function checkWithUpdate () {
 }
 
 export default function checkForUpdates () {
-  if (isMacos) {
+  const isAutoupdateSupported =
+    getElectronStoreKey(
+      'system.isAutoupdateSupported'
+    )
+
+  const willAutoupdate =
+    getElectronStoreKey(
+      'system.willAutoupdate'
+    )
+
+  if (!isAutoupdateSupported || !willAutoupdate) {
     checkWithoutUpdate()
   } else {
     checkWithUpdate()

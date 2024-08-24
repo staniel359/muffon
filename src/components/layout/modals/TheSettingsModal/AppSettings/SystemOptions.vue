@@ -1,7 +1,7 @@
 <template>
   <div class="main-settings-options-block">
     <AutoupdateOption
-      v-if="isAutoupdateAvailable"
+      v-if="isAutoupdateSupported"
     />
 
     <CacheOption />
@@ -30,7 +30,7 @@ export default {
     ...mapState(
       systemStore,
       [
-        'isAutoupdateAvailable'
+        'isAutoupdateSupported'
       ]
     )
   }
