@@ -8,6 +8,7 @@ import electronUpdater from 'electron-updater'
 import {
   releasesUrl
 } from '../../helpers/urls.js'
+import getElectronStoreKey from '../electronStore/getKey.js'
 import i18n from 'i18n'
 
 const {
