@@ -19,7 +19,7 @@ export default function () {
   if (isWindows) {
     isAutoupdateAvailable = true
 
-    isAutoupdateBeta = false
+    isAutoupdateBeta = true
 
     isAutoupdateEnabled ??= true
   } else if (isMacos) {
