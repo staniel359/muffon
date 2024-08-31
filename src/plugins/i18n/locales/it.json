@@ -416,7 +416,8 @@
     "cleared": {
       "cache": "Cache svuotata",
       "searchHistory": "Cronologia ricerche cancellata"
-    }
+    },
+    "restartToApply": "L'impostazione è stata salvata e sarà applicata al prossimo avvio dell'applicazione"
   },
   "counters": {
     "nominative": {
@@ -509,7 +510,8 @@
       "data": "Dati",
       "info": "Info",
       "account": "Account",
-      "system": "Sistema"
+      "system": "Sistema",
+      "updates": "Aggiornamenti"
     },
     "options": {
       "app": {
@@ -590,8 +592,12 @@
           "cache": {
             "enable": "Abilita cache",
             "clear": "Svuota cache"
-          },
-          "autoupdate": "Abilita aggiornamento automatico"
+          }
+        },
+        "updates": {
+          "check": "Controlla le nuove versioni",
+          "auto": "Abilita aggiornamento automatico",
+          "autoWarning": "Gli aggiornamenti automatici su Linux sono ancora in fase sperimentale e potrebbero contenere bug.\nDurante il processo di aggiornamento automatico, l'app si bloccherà temporaneamente.\nSi prega di non forzare la chiusura dell'applicazione; si chiuderà automaticamente una volta completato l'aggiornamento.\n\nPer dettagli e il monitoraggio di questo problema, visita [a link=issue]questo link[/a]."
         }
       },
       "profile": {
@@ -792,8 +798,7 @@
     "videoPlaylist": "La playlist video è stata eliminata"
   },
   "messages": {
-    "welcome": "Benvenuto, {profileNickname}",
-    "restartToApply": "L'impostazione è stata salvata e sarà applicata al prossimo avvio dell'applicazione."
+    "welcome": "Benvenuto, {profileNickname}"
   },
   "profile": {
     "wasOnline": "Era online"
@@ -941,5 +946,6 @@
   "online": "Online",
   "error": "Errore",
   "more": "Altro...",
-  "loading": "Caricamento..."
+  "loading": "Caricamento...",
+  "warning": "Avviso"
 }

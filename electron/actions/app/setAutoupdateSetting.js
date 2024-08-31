@@ -9,29 +9,38 @@ import setElectronStoreData from '../electronStore/setData.js'
 export default function () {
   let isAutoupdateAvailable
 
-  let isWithAutoupdate =
+  let isAutoupdateBeta
+
+  let isAutoupdateEnabled =
     getElectronStoreKey(
-      'system.isWithAutoupdate'
+      'updates.isAutoupdateEnabled'
     )
 
   if (isWindows) {
     isAutoupdateAvailable = true
 
-    isWithAutoupdate ??= true
+    isAutoupdateBeta = false
+
+    isAutoupdateEnabled ??= true
   } else if (isMacos) {
     isAutoupdateAvailable = false
 
-    isWithAutoupdate ??= false
+    isAutoupdateBeta = false
+
+    isAutoupdateEnabled ??= false
   } else if (isLinux) {
     isAutoupdateAvailable = true
 
-    isWithAutoupdate ??= false
+    isAutoupdateBeta = true
+
+    isAutoupdateEnabled ??= false
   }
 
   setElectronStoreData(
     {
-      'system.isAutoupdateAvailable': isAutoupdateAvailable,
-      'system.isWithAutoupdate': isWithAutoupdate
+      'updates.isAutoupdateAvailable': isAutoupdateAvailable,
+      'updates.isAutoupdateBeta': isAutoupdateBeta,
+      'updates.isAutoupdateEnabled': isAutoupdateEnabled
     }
   )
 }

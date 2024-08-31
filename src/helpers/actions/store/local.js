@@ -13,6 +13,7 @@ import searchStore from '@/stores/search'
 import sidebarStore from '@/stores/sidebar'
 import systemStore from '@/stores/system'
 import topStore from '@/stores/top'
+import updatesStore from '@/stores/updates'
 import videoStore from '@/stores/video'
 import windowStore from '@/stores/window'
 import {
@@ -41,6 +42,7 @@ const stores = {
   sidebar: sidebarStore,
   system: systemStore,
   top: topStore,
+  updates: updatesStore,
   video: videoStore,
   window: windowStore
 }

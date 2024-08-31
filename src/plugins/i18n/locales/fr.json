@@ -416,7 +416,8 @@
     "cleared": {
       "cache": "Le cache a bien été vider",
       "searchHistory": "L'historique de recherche a bien été nettoyer"
-    }
+    },
+    "restartToApply": "Les nouveaux paramètres ont bien été sauvegardés et seront appliqués après un redémarrage"
   },
   "counters": {
     "nominative": {
@@ -509,7 +510,8 @@
       "data": "Data",
       "info": "Info",
       "account": "Compte",
-      "system": "Système"
+      "system": "Système",
+      "updates": "Mise à jour"
     },
     "options": {
       "app": {
@@ -590,8 +592,12 @@
           "cache": {
             "enable": "Activer le cache",
             "clear": "Vider le cache"
-          },
-          "autoupdate": "Activer les mises à jour automatiques"
+          }
+        },
+        "updates": {
+          "check": "Recherché une nouvelle version",
+          "auto": "Activer les mises à jour automatiques",
+          "autoWarning": "Les mises à jour automatiques sous Linux sont en phase expérimentale et peuvent contenir des bugs.\nDurant la mise à jour automatique, l'application peut freezer temporairement.\nMerci d'éviter de fermer l'application de force. Elle se fermera automatiquement à la fin de la mise à jour.\n\nPour plus de détails et de nouvelles sur cette issue, visitez [a link=issue]ce lien[/a]."
         }
       },
       "profile": {
@@ -792,8 +798,7 @@
     "videoPlaylist": "La playlist vidéo a été supprimé"
   },
   "messages": {
-    "welcome": "Bienvenue, {profileNickname}",
-    "restartToApply": "Les nouveaux paramètres ont bien été sauvegardés et seront appliqués après un redémarrage."
+    "welcome": "Bienvenue, {profileNickname}"
   },
   "profile": {
     "wasOnline": "En ligne"
@@ -941,5 +946,6 @@
   "online": "En ligne",
   "error": "Erreur",
   "more": "Plus de...",
-  "loading": "Chargement..."
+  "loading": "Chargement...",
+  "warning": "Attention"
 }

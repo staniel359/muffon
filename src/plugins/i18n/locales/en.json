@@ -416,7 +416,8 @@
     "cleared": {
       "cache": "Cache has been cleared",
       "searchHistory": "Search history has been cleared"
-    }
+    },
+    "restartToApply": "The setting has been saved and will be applied on the next application start"
   },
   "counters": {
     "nominative": {
@@ -509,7 +510,8 @@
       "data": "Data",
       "info": "Info",
       "account": "Account",
-      "system": "System"
+      "system": "System",
+      "updates": "Updates"
     },
     "options": {
       "app": {
@@ -590,8 +592,12 @@
           "cache": {
             "enable": "Enable cache",
             "clear": "Clear cache"
-          },
-          "autoupdate": "Enable autoupdate"
+          }
+        },
+        "updates": {
+          "check": "Check for new versions",
+          "auto": "Enable autoupdate",
+          "autoWarning": "Autoupdates on Linux are still in the experimental phase and may contain bugs.\nDuring the autoupdate process, the app will freeze temporarily.\nPlease avoid force-quitting the application; it will close automatically once the update is complete.\n\nFor details and tracking of this issue, visit [a link=issue]this link[/a]."
         }
       },
       "profile": {
@@ -792,8 +798,7 @@
     "videoPlaylist": "Video playlist has been deleted"
   },
   "messages": {
-    "welcome": "Welcome, {profileNickname}",
-    "restartToApply": "The setting has been saved and will be applied on the next application start."
+    "welcome": "Welcome, {profileNickname}"
   },
   "profile": {
     "wasOnline": "Was online"
@@ -941,5 +946,6 @@
   "online": "Online",
   "error": "Error",
   "more": "More...",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "warning": "Warning"
 }

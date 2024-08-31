@@ -416,7 +416,8 @@
     "cleared": {
       "cache": "Bufor wyczyszczony",
       "searchHistory": "Historia wyszukiwania wyczyszczona"
-    }
+    },
+    "restartToApply": "Ustawienie zostało zapisane i zostanie zastosowane przy następnym uruchomieniu aplikacji"
   },
   "counters": {
     "nominative": {
@@ -509,7 +510,8 @@
       "data": "Dane",
       "info": "Informacje",
       "account": "Konto",
-      "system": "System"
+      "system": "System",
+      "updates": "Aktualizacje"
     },
     "options": {
       "app": {
@@ -590,8 +592,12 @@
           "cache": {
             "enable": "Włącz bufor",
             "clear": "Wyczyść bufor"
-          },
-          "autoupdate": "Włącz automatyczne aktualizacje"
+          }
+        },
+        "updates": {
+          "check": "Sprawdź czy są nowe wersje",
+          "auto": "Włącz automatyczne aktualizacje",
+          "autoWarning": "Automatyczne aktualizacje dla systemu Linux są ciągle w fazie eksperymentalnej i mogą zawierać błędy.\nW czasie automatycznej aktualizacji aplikacja chwilowo się zawiesi.\nPostaraj się nie zamykać aplikacji na siłę; zamknie się ona automatycznie po zakończeniu aktualizacji.\n\nAby uzyskać szczegółowe informacje i być na bieżąco odwiedź [a link=issue]ten link[/a]."
         }
       },
       "profile": {
@@ -792,8 +798,7 @@
     "videoPlaylist": "Playlista wideo usunięta"
   },
   "messages": {
-    "welcome": "Witaj, {profileNickname}",
-    "restartToApply": "Ustawienie zostało zapisane i zostanie zastosowane przy następnym uruchomieniu aplikacji."
+    "welcome": "Witaj, {profileNickname}"
   },
   "profile": {
     "wasOnline": "Był online"
@@ -941,5 +946,6 @@
   "online": "Online",
   "error": "Błąd",
   "more": "Więcej...",
-  "loading": "Ładowanie..."
+  "loading": "Ładowanie...",
+  "warning": "Uwaga"
 }
