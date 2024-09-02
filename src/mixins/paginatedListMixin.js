@@ -63,8 +63,7 @@ export default {
     isRenderPagination () {
       return (
         this.isResponsePageable ||
-          this.isResponsePagePageable ||
-          !this.clientPageCollectionLength
+          this.isResponsePagePageable
       )
     },
     responseNextPage () {
