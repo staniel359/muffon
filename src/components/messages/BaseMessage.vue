@@ -102,12 +102,12 @@ export default {
     iconComputed () {
       if (this.isSuccess) {
         return 'success'
-      } else if (this.isError) {
-        return 'error'
       } else if (this.isInfo) {
         return 'infoCircle'
       } else if (this.isWarning) {
         return 'warning'
+      } else if (this.isError) {
+        return 'error'
       } else {
         return this.icon
       }
@@ -115,6 +115,10 @@ export default {
     messageClassName () {
       if (this.isSuccess) {
         return 'success'
+      } else if (this.isInfo) {
+        return ''
+      } else if (this.isWarning) {
+        return 'warning'
       } else if (this.isError) {
         return 'error'
       } else if (this.isWarning) {
