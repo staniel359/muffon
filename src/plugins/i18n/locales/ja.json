@@ -633,13 +633,6 @@
               "select": {
                 "first": "最初の選択:",
                 "second": "二番目の選択:"
-              },
-              "options": {
-                "downloadApp": "muffonをダウンロード",
-                "listenTrack": "トラックを聴く",
-                "lastfmProfile": "My Last.FMページ",
-                "spotifyProfile": "My Spotifyページ",
-                "muffonProfile": "My muffonページ"
               }
             }
           }

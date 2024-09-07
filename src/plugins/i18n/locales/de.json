@@ -633,13 +633,6 @@
               "select": {
                 "first": "Ersten auswählen:",
                 "second": "Zweiten auswählen:"
-              },
-              "options": {
-                "downloadApp": "muffon herunterladen",
-                "listenTrack": "Titel anhören",
-                "lastfmProfile": "Meine Last.FM Seite",
-                "spotifyProfile": "Meine Spotify Seite",
-                "muffonProfile": "Meine muffon Seite"
               }
             }
           }

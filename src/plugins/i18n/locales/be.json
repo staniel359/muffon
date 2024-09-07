@@ -633,13 +633,6 @@
               "select": {
                 "first": "Выбраць першую:",
                 "second": "Выбраць другую:"
-              },
-              "options": {
-                "downloadApp": "Спампаваць muffon",
-                "listenTrack": "Праслухаць кампазіцыю",
-                "lastfmProfile": "Мая старонка на Last.FM",
-                "spotifyProfile": "Мая старонка на Spotify",
-                "muffonProfile": "Мая старонка на muffon"
               }
             }
           }

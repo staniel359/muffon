@@ -633,13 +633,6 @@
               "select": {
                 "first": "בחר ראשון:",
                 "second": "בחר שני:"
-              },
-              "options": {
-                "downloadApp": "הורד muffon",
-                "listenTrack": "האזן לשיר",
-                "lastfmProfile": "עמוד ה Last.FM שלי",
-                "spotifyProfile": "עמוד ה Spotify שלי",
-                "muffonProfile": "עמוד ה muffon שלי"
               }
             }
           }

@@ -11,7 +11,6 @@ import {
 import {
   mapState
 } from 'pinia'
-import i18n from '@/plugins/i18n'
 import discordStore from '@/stores/discord'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
@@ -21,25 +20,15 @@ import {
 import {
   track as defaultImage
 } from '@/helpers/data/defaultImages'
+import {
+  buttonsTexts
+} from '@/helpers/data/discord'
 
 export default {
   name: 'TheDiscordObserver',
   data () {
     return {
-      isConnected: false,
-      buttonsTextData: (
-        i18n
-          .global
-          .messages
-          .en
-          .settings
-          .options
-          .connections
-          .discord
-          .richPresence
-          .buttons
-          .options
-      )
+      isConnected: false
     }
   },
   computed: {
@@ -123,27 +112,23 @@ export default {
         },
         {
           id: 'listenTrack',
-          link:
-            this.playingExternalLink
+          link: this.playingExternalLink
         },
         {
           id: 'lastfmProfile',
           isDisabled:
             !this.lastfmConnection,
-          link:
-            this.lastfmProfileLink
+          link: this.lastfmProfileLink
         },
         {
           id: 'spotifyProfile',
           isDisabled:
             !this.spotifyConnection,
-          link:
-            this.spotifyProfileLink
+          link: this.spotifyProfileLink
         },
         {
           id: 'muffonProfile',
-          link:
-            this.muffonProfileLink
+          link: this.muffonProfileLink
         }
       ]
     },
@@ -303,8 +288,7 @@ export default {
         } = matchedButtonData
 
         if (!isDisabled) {
-          const label =
-            this.buttonsTextData[id]
+          const label = buttonsTexts[id]
 
           return {
             label,

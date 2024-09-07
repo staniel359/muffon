@@ -40,6 +40,9 @@ import ButtonSelectSection
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
+import {
+  buttonsTexts
+} from '@/helpers/data/discord'
 
 export default {
   name: 'RichPresenceButtonsOption',
@@ -124,10 +127,7 @@ export default {
         isDisabled
       } = optionData
 
-      const name =
-        this.$t(
-          `${this.buttonsTextKey}.options.${id}`
-        )
+      const name = buttonsTexts[id]
 
       return {
         id,
