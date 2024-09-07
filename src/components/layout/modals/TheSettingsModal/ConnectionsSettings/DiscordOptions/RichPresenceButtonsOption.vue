@@ -97,6 +97,9 @@ export default {
           id: 'listenTrack'
         },
         {
+          id: 'listenTrackMuffon'
+        },
+        {
           id: 'lastfmProfile',
           isDisabled:
             !this.lastfmConnection

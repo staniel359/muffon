@@ -23,6 +23,10 @@ import {
 import {
   buttonsTexts
 } from '@/helpers/data/discord'
+import {
+  main as formatTrackLink
+} from '@/helpers/formatters/links/track'
+import formatRequestTrackData from '@/helpers/formatters/request/track/data'
 
 export default {
   name: 'TheDiscordObserver',
@@ -115,6 +119,10 @@ export default {
           link: this.playingExternalLink
         },
         {
+          id: 'listenTrackMuffon',
+          link: this.muffonTrackLink
+        },
+        {
           id: 'lastfmProfile',
           isDisabled:
             !this.lastfmConnection,
@@ -142,7 +150,10 @@ export default {
       return this.playingSourceLinks.streaming
     },
     playingSourceLinks () {
-      return this.playerPlaying.source.links
+      return this.playingSourceData.links
+    },
+    playingSourceData () {
+      return this.playerPlaying.source
     },
     playingOriginalLink () {
       return this.playingSourceLinks.original
@@ -179,6 +190,26 @@ export default {
     },
     muffonProfileLink () {
       return `muffon://profiles/${this.profileId}`
+    },
+    muffonTrackLink () {
+      return `muffon://${this.playingPath}`
+    },
+    playingPath () {
+      return formatTrackLink(
+        {
+          trackTitle: this.trackTitle,
+          artistName: this.artistName,
+          sourceParams:
+            this.playingSourceParams
+        }
+      ).path
+    },
+    playingSourceParams () {
+      return formatRequestTrackData(
+        {
+          trackData: this.playerPlaying
+        }
+      )
     }
   },
   watch: {
