@@ -416,7 +416,8 @@
     "cleared": {
       "cache": "Zwischenspeicher wurde geleert",
       "searchHistory": "Suchverlauf wurde gelöscht"
-    }
+    },
+    "restartToApply": "Die Einstellung wurde gespeichert und wird beim nächsten Start der Anwendung übernommen"
   },
   "counters": {
     "nominative": {
@@ -509,7 +510,8 @@
       "data": "Daten",
       "info": "Info",
       "account": "Konto",
-      "system": "System"
+      "system": "System",
+      "updates": "Aktualisierungen"
     },
     "options": {
       "app": {
@@ -590,8 +592,12 @@
           "cache": {
             "enable": "Cache aktivieren",
             "clear": "Zwischenspeicher leeren"
-          },
-          "autoupdate": "Automatische Aktualisierung aktivieren"
+          }
+        },
+        "updates": {
+          "check": "Nach neuen Versionen suchen",
+          "auto": "Automatische Aktualisierung aktivieren",
+          "autoWarning": "Automatische Updates unter Linux befinden sich noch in der Experimentierphase und können Fehler enthalten.\nWährend des automatischen Aktualisierungsprozesses wird die Anwendung vorübergehend einfrieren.\nBitte vermeide es, die Anwendung zwangsweise zu beenden; sie wird automatisch geschlossen, sobald die Aktualisierung abgeschlossen ist.\n\nEinzelheiten und Status dieses Problems finden Sie unter [a link=issue]diesem Link[/a]."
         }
       },
       "profile": {
@@ -792,8 +798,7 @@
     "videoPlaylist": "Videoplaylist wurde gelöscht"
   },
   "messages": {
-    "welcome": "Willkommen, {profileNickname}",
-    "restartToApply": "Die Einstellung wurde gespeichert und wird beim nächsten Start der Anwendung übernommen."
+    "welcome": "Willkommen, {profileNickname}"
   },
   "profile": {
     "wasOnline": "War online"
@@ -941,5 +946,6 @@
   "online": "Online",
   "error": "Fehler",
   "more": "Mehr...",
-  "loading": "Lädt..."
+  "loading": "Lädt...",
+  "warning": "Warnung"
 }

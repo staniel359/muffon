@@ -40,6 +40,7 @@ import TopOptions from './AppSettings/TopOptions.vue'
 import LyricsOptions from './AppSettings/LyricsOptions.vue'
 import HistoryOptions from './AppSettings/HistoryOptions.vue'
 import SystemOptions from './AppSettings/SystemOptions.vue'
+import UpdatesOptions from './AppSettings/UpdatesOptions.vue'
 
 export default {
   name: 'AppSettings',
@@ -59,7 +60,8 @@ export default {
     TopOptions,
     LyricsOptions,
     HistoryOptions,
-    SystemOptions
+    SystemOptions,
+    UpdatesOptions
   },
   data () {
     return {
@@ -175,6 +177,14 @@ export default {
           icon: 'system',
           scope: 'system',
           component: 'SystemOptions',
+          isAnonymous: true
+        },
+        {
+          nameCode:
+            'settings.sections.updates',
+          icon: 'updates',
+          scope: 'updates',
+          component: 'UpdatesOptions',
           isAnonymous: true
         }
       ]

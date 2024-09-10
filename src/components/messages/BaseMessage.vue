@@ -1,8 +1,8 @@
 <template>
   <div
-    class="ui message base-message no-margin background-none"
+    class="ui message base-message no-margin"
     :class="[
-      messageClass,
+      messageClassName,
       {
         inverted: isDarkMode,
         icon: (
@@ -85,7 +85,8 @@ export default {
     isIconSmall: Boolean,
     isSuccess: Boolean,
     isError: Boolean,
-    isInfo: Boolean
+    isInfo: Boolean,
+    isWarning: Boolean
   },
   emits: [
     'refreshButtonClick',
@@ -105,15 +106,19 @@ export default {
         return 'error'
       } else if (this.isInfo) {
         return 'infoCircle'
+      } else if (this.isWarning) {
+        return 'warning'
       } else {
         return this.icon
       }
     },
-    messageClass () {
+    messageClassName () {
       if (this.isSuccess) {
         return 'success'
       } else if (this.isError) {
         return 'error'
+      } else if (this.isWarning) {
+        return 'warning'
       } else {
         return null
       }

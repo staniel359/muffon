@@ -5,9 +5,7 @@ import {
 const data = {
   state () {
     return {
-      isWithCache: null,
-      isAutoupdateAvailable: null,
-      isWithAutoupdate: null
+      isWithCache: null
     }
   },
   actions: {
@@ -15,16 +13,6 @@ const data = {
       value
     ) {
       this.isWithCache = value
-    },
-    setIsAutoupdateAvailable (
-      value
-    ) {
-      this.isAutoupdateAvailable = value
-    },
-    setIsWithAutoupdate (
-      value
-    ) {
-      this.isWithAutoupdate = value
     }
   }
 }

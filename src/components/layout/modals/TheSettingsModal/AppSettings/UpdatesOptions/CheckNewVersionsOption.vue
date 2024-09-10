@@ -4,12 +4,12 @@
       <BaseHeader
         class="option-header"
         tag="h4"
-        :text="cacheText"
+        :text="checkNewVersionsText"
       />
 
       <BaseToggle
-        store-key="system.isWithCache"
-        :is-checked="isWithCache"
+        store-key="updates.isCheckForNewVersions"
+        :is-checked="isCheckForNewVersions"
       />
     </div>
   </div>
@@ -19,13 +19,13 @@
 import {
   mapState
 } from 'pinia'
-import systemStore from '@/stores/system'
+import updatesStore from '@/stores/updates'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
-  name: 'CacheOption',
+  name: 'CheckNewVersionsOption',
   components: {
     BaseHeader,
     BaseToggle
@@ -35,14 +35,14 @@ export default {
   ],
   computed: {
     ...mapState(
-      systemStore,
+      updatesStore,
       [
-        'isWithCache'
+        'isCheckForNewVersions'
       ]
     ),
-    cacheText () {
+    checkNewVersionsText () {
       return this.$t(
-        'settings.options.app.system.cache.enable'
+        'settings.options.app.updates.check'
       )
     },
     notificationSuccessMessage () {
@@ -52,10 +52,11 @@ export default {
     }
   },
   watch: {
-    isWithCache: 'handleIsWithCacheChange'
+    isCheckForNewVersions:
+      'handleIsCheckForNewVersionsChange'
   },
   methods: {
-    handleIsWithCacheChange () {
+    handleIsCheckForNewVersionsChange () {
       this.notifySuccess()
     }
   }

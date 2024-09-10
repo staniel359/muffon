@@ -416,7 +416,8 @@
     "cleared": {
       "cache": "キャッシュがクリアされました",
       "searchHistory": "検索履歴がクリアされました"
-    }
+    },
+    "restartToApply": "次回のアプリケーション起動時に設定が保存され、適用されます"
   },
   "counters": {
     "nominative": {
@@ -509,7 +510,8 @@
       "data": "データ",
       "info": "情報",
       "account": "アカウント",
-      "system": "システム"
+      "system": "システム",
+      "updates": "アップデート"
     },
     "options": {
       "app": {
@@ -590,8 +592,12 @@
           "cache": {
             "enable": "キャッシュを有効にする",
             "clear": "キャッシュをクリア"
-          },
-          "autoupdate": "自動更新を有効にする"
+          }
+        },
+        "updates": {
+          "check": "新しいバージョンを確認",
+          "auto": "自動更新を有効にする",
+          "autoWarning": "Linuxでの自動更新はまだ実験的な段階であり、不具合が含まれる可能性があります。\n自動更新の過程で、アプリが一時的にフリーズすることがあります。\nアプリケーションを強制終了しないでください。更新が完了すると自動的に閉じます。\n\nこの問題の詳細と追跡については、[a link=issue]こちらのリンク[/a]をご覧ください。"
         }
       },
       "profile": {
@@ -792,8 +798,7 @@
     "videoPlaylist": "ビデオプレイリストが削除されました"
   },
   "messages": {
-    "welcome": "ようこそ、{profileNickname} さん",
-    "restartToApply": "次回のアプリケーション起動時に設定が保存され、適用されます。"
+    "welcome": "ようこそ、{profileNickname} さん"
   },
   "profile": {
     "wasOnline": "Was online"
@@ -941,5 +946,6 @@
   "online": "オンライン",
   "error": "エラー",
   "more": "詳細...",
-  "loading": "読み込み中..."
+  "loading": "読み込み中...",
+  "warning": "警告"
 }

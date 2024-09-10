@@ -476,24 +476,35 @@ export default {
     type: 'boolean',
     default: true
   },
-  'system.isAutoupdateAvailable': {
-    type: [
-      'null',
-      'boolean'
-    ],
-    default: null
-  },
-  'system.isWithAutoupdate': {
-    type: [
-      'null',
-      'boolean'
-    ],
-    default: null
-  },
   'top.country': {
     type: [
       'null',
       'string'
+    ],
+    default: null
+  },
+  'updates.isCheckForNewVersions': {
+    type: 'boolean',
+    default: true
+  },
+  'updates.isAutoupdateAvailable': {
+    type: [
+      'null',
+      'boolean'
+    ],
+    default: null
+  },
+  'updates.isAutoupdateBeta': {
+    type: [
+      'null',
+      'boolean'
+    ],
+    default: null
+  },
+  'updates.isAutoupdateEnabled': {
+    type: [
+      'null',
+      'boolean'
     ],
     default: null
   },
