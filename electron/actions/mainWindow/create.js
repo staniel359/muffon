@@ -19,6 +19,7 @@ import setViewScale from '../view/setScale.js'
 import callQuit from '../app/callQuit.js'
 import setTrayMenu from '../tray/setMenu.js'
 import setTabsBounds from '../tabs/setBounds.js'
+import getTopTab from '../tab/getTop.js'
 import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
 
@@ -80,6 +81,14 @@ function handleClose (
 
 function handleResize () {
   setTabsBounds()
+}
+
+function handleFocus () {
+  const topTab = getTopTab()
+
+  if (!topTab) { return }
+
+  topTab.webContents.focus()
 }
 
 export default function () {
@@ -153,5 +162,10 @@ export default function () {
   mainWindow.on(
     'resize',
     handleResize
+  )
+
+  mainWindow.on(
+    'focus',
+    handleFocus
   )
 }
