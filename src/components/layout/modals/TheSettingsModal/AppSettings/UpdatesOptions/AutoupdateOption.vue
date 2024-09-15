@@ -25,7 +25,9 @@
     </div>
   </div>
 
-  <AutoupdateWarningMessage />
+  <AutoupdateWarningMessage
+    v-if="isAutoupdateBeta"
+  />
 </template>
 
 <script>
