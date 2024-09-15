@@ -48,7 +48,7 @@ export default {
       return {
         trackData: this.firstTrackData,
         isQueue: true,
-        isPlayableList: true,
+        isContinuousList: true,
         queueTracks:
           this.queueTracksFormatted,
         queueTracksShuffled:

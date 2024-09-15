@@ -9,7 +9,7 @@ export default function (
     source,
     trackData,
     isQueue,
-    isPlayableList,
+    isContinuousList,
     queueTracks,
     queueTracksShuffled = [],
     isQueueShuffle = false,
@@ -52,9 +52,7 @@ export default function (
   }
 
   const getQueueNextTrack = async () => {
-    if (isPlayableList) {
-      await setPlayableListData()
-    }
+    await setPlayableListData()
 
     await setQueueTracks()
 
@@ -79,7 +77,7 @@ export default function (
   const handleError = (
     error
   ) => {
-    if (isPlayableList) {
+    if (isContinuousList) {
       return getQueueNextTrack()
     } else {
       this.error = error
@@ -90,9 +88,7 @@ export default function (
     this.isLoading = false
 
     if (queueTracks) {
-      if (isPlayableList) {
-        await setPlayableListData()
-      }
+      await setPlayableListData()
 
       return setQueueTracks()
     }

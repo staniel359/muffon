@@ -121,8 +121,6 @@ export default {
         return 'warning'
       } else if (this.isError) {
         return 'error'
-      } else if (this.isWarning) {
-        return 'warning'
       } else {
         return null
       }
