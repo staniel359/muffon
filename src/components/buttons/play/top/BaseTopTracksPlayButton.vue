@@ -39,7 +39,7 @@ export default {
   methods: {
     getTop,
     getTracksData () {
-      this.getTop(
+      return this.getTop(
         this.topArgs
       )
     }
