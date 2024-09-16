@@ -11,6 +11,7 @@ export default function (
     variation: 'basic',
     closable: false,
     hoverable: true,
+    observeChanges: false,
     className: {
       popup: className
     },

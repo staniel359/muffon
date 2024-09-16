@@ -3,7 +3,8 @@
     v-for="(optionData, index) in options"
     :key="index"
     :class="{
-      disabled: optionData.isDisabled,
+      disabled:
+        optionData.isDisabled,
       'middle-aligned':
         isOptionsMiddleAligned
     }"

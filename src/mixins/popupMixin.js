@@ -25,46 +25,36 @@ export default {
     }
   },
   watch: {
-    isDarkMode:
-      'handleIsDarkModeChange',
+    isDarkMode: 'handleIsDarkModeChange',
     isCalled: 'handleIsCalledChange'
   },
   mounted () {
-    this.isCalled = false
-
-    if (this.isLazy) { return }
-
-    this.initialize()
-  },
-  activated () {
-    this.isCalled = false
-
-    if (this.isLazy) { return }
-
-    this.initialize()
+    if (!this.isLazy) {
+      this.initialize()
+    }
   },
   methods: {
     handleIsDarkModeChange () {
       this.initialize()
     },
-    handleIsCalledChange (
+    async handleIsCalledChange (
       value
     ) {
-      if (!value) { return }
+      if (value) {
+        await this.$nextTick()
 
-      this.initializeAndShow()
+        this.initializeAndShow()
+      }
     },
     initialize () {
-      if (!this.popup) { return }
-
-      setPopup(
-        this.element,
-        this.popupOptions
-      )
+      if (this.popup) {
+        setPopup(
+          this.element,
+          this.popupOptions
+        )
+      }
     },
-    async initializeAndShow () {
-      await this.$nextTick()
-
+    initializeAndShow () {
       this.initialize()
 
       this.show()

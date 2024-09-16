@@ -22,6 +22,7 @@ export default function (
     variation: 'basic',
     exclusive: !isNested,
     lastResort: true,
+    observeChanges: false,
     className: {
       popup: className
     },

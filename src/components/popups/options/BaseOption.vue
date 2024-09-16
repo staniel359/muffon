@@ -114,8 +114,7 @@ export default {
     }
   },
   watch: {
-    isActivated:
-      'handleIsActivatedChange'
+    isActivated: 'handleIsActivatedChange'
   },
   methods: {
     handleClick () {

@@ -136,6 +136,9 @@ import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
 import LoginItem from './TheSidebarPanel/LoginItem.vue'
 import BaseDimmer from '@/components/BaseDimmer.vue'
 import transparencyMixin from '@/mixins/transparencyMixin'
+import {
+  hideAll as hideAllPopups
+} from '@/helpers/actions/plugins/semantic/popup'
 
 export default {
   name: 'TheSidebarPanel',
@@ -257,6 +260,8 @@ export default {
       this.toggleDimmer(
         true
       )
+
+      hideAllPopups()
     },
     handleMouseLeave () {
       this.toggleDimmer(
