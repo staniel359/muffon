@@ -536,7 +536,7 @@
           "showTrayIcon": "트레이 아이콘 표시"
         },
         "tabs": {
-          "newTabSwitch": 새 탭으로 전환",
+          "newTabSwitch": "새 탭으로 전환",
           "closeOnQuit": "나갈 시 탭 닫기"
         },
         "search": {
