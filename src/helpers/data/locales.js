@@ -31,6 +31,10 @@ export default [
     name: '日本語'
   },
   {
+    id: 'ko',
+    name: '한국어'
+  },
+  {
     id: 'pl',
     name: 'Polski'
   },

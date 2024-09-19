@@ -1,0 +1,944 @@
+{
+  "navigation": {
+    "home": "홈페이지",
+    "artists": "아티스트",
+    "artist": "아티스트",
+    "albums": "앨범",
+    "albumGroups": "앨범 그룹",
+    "tracks": "트랙",
+    "tags": "태그",
+    "tag": "태그",
+    "similar": "비슷한 것",
+    "images": "이미지",
+    "lyrics": "가사",
+    "videos": "동영상",
+    "videoChannels": "동영상 채널",
+    "videoMixes": "동영상 스위처",
+    "videoPlaylists": "동영상 재생목록",
+    "related": "연관",
+    "top": "인기",
+    "topCollection": {
+      "artists": "인기 아티스트",
+      "albums": "인기 앨범",
+      "tracks": "인기 트랙",
+      "tags": "인기 태그"
+    },
+    "releases": "릴리즈",
+    "releasesCollection": {
+      "new": "새 릴리즈",
+      "upcoming": "곧 출시할 릴리즈"
+    },
+    "new": "새로운",
+    "upcoming": "곧 출시",
+    "radio": "라디오",
+    "multitag": "멀티태그 검색",
+    "profiles": "프로파일",
+    "feed": "피드",
+    "posts": "게시글",
+    "conversations": "대화",
+    "library": "라이브러리",
+    "recommendations": "추천",
+    "recommendationsCollection": {
+      "artists": "추천 아티스트",
+      "tracks": "추천 트랙"
+    },
+    "savedTracks": "저장된 트랙",
+    "playlists": "재생목록",
+    "favorites": "즐겨찾기",
+    "bookmarks": "북마크",
+    "bookmarksCollection": {
+      "artists": "북마크된 아티스트",
+      "albums": "북마크된 앨범",
+      "tracks": "북마크된 트랙",
+      "videos": "북마크된 동영상",
+      "videoChannels": "북마크된 동영상 채널",
+      "videoPlaylists": "북마크된 동영상 재생목록"
+    },
+    "communities": "커뮤니티",
+    "history": "기록",
+    "historyCollection": {
+      "activity": "활동 기록",
+      "player": "플레이어 기록",
+      "browser": "탐색기 기록"
+    },
+    "activity": "활동",
+    "player": "플레이어",
+    "browser": "탐색기",
+    "settings": "설정",
+    "model": {
+      "artists": "{modelName} 아티스트",
+      "albums": "{modelName} 앨범",
+      "tracks": "{modelName} 트랙",
+      "tags": "{modelName} 태그",
+      "similar": "{modelName} 비슷한 것",
+      "images": "{modelName} 이미지",
+      "lyrics": "{modelName} 가사",
+      "videos": "{modelName} 동영상",
+      "related": "{modelName} 연관",
+      "posts": "{modelName} 게시글",
+      "library": "{modelName} 라이브러리",
+      "playlists": "{modelName} 재생목록",
+      "favorites": "{modelName} 즐겨찾기",
+      "favoritesCollection": {
+        "artists": "{modelName} 즐겨찾기 아티스트",
+        "albums": "{modelName} 즐겨찾기 앨범",
+        "tracks": "{modelName} 즐겨찾기 트랙",
+        "videos": "{modelName} 즐겨찾기 동영상"
+      },
+      "communities": "{modelName} 커뮤니티",
+      "shows": "{modelName} 쇼"
+    },
+    "search": "검색",
+    "queue": "대기열",
+    "whatsNew": "새로운 소식",
+    "listenedRecently": "최근에 들은 곡",
+    "shows": "쇼",
+    "listeningNow": "지금 듣는 곡",
+    "help": "도움말"
+  },
+  "errors": {
+    "badRequest": {
+      "header": "잘못된 요청",
+      "content": "유효한 데이터 요청"
+    },
+    "forbidden": {
+      "header": "금지됨",
+      "content": "이 작업을 수행할 권한 없음"
+    },
+    "notFound": {
+      "header": "아무것도 발견되지 않았음",
+      "content": "다른 것 찾아보기"
+    },
+    "internalServer": {
+      "header": "내부 서버 오류",
+      "content": "자세한 내용 문의"
+    },
+    "badGateway": {
+      "header": "원격 서버 오류",
+      "content": "잠시 후에 다시 시도"
+    },
+    "gatewayTimeout": {
+      "header": "원격 서버 시간 초과",
+      "content": "잠시 후에 다시 시도"
+    },
+    "connection": {
+      "header": "연결이 끊어짐",
+      "content": "잠시 후에 다시 시도"
+    },
+    "client": {
+      "header": "클라이언트 오류",
+      "content": "자세한 내용 문의"
+    }
+  },
+  "actions": {
+    "login": "로그인",
+    "logout": "로그아웃",
+    "signup": "가입",
+    "add": "추가",
+    "create": "만들기",
+    "edit": "편집",
+    "save": "저장",
+    "cancel": "취소",
+    "delete": "삭제",
+    "clear": "지우기",
+    "retry": "다시 시도",
+    "post": "게시글",
+    "send": "보내기",
+    "next": "다음",
+    "upload": "업로드",
+    "back": "뒤로 돌아가기",
+    "sendCode": "코드 보내기",
+    "share": "공유",
+    "search": "검색",
+    "filter": "필터",
+    "confirm": "확인",
+    "import": "가져오기",
+    "close": "닫기",
+    "openLink": "링크 열기",
+    "play": "재생",
+    "shuffle": "셔플",
+    "loop": "루프",
+    "addFrom": {
+      "search": "검색에서",
+      "library": "라이브러리에서"
+    },
+    "importFrom": {
+      "drive": "드라이브에서",
+      "account": "계정에서"
+    },
+    "searchIn": {
+      "source": "소스에서 검색",
+      "sources": "소스에서 검색"
+    },
+    "searchFor": {
+      "video": "동영상 검색",
+      "lyrics": "가사 검색"
+    },
+    "importFromAccount": {
+      "lastfm": "Last.FM에서 가져오기",
+      "spotify": "Spotify에서 가져오기"
+    },
+    "selectModel": {
+      "folder": "폴더 선택"
+    },
+    "createModel": {
+      "playlist": "재생목록 만들기",
+      "community": "커뮤니티 만들기",
+      "post": "게시글 만들기"
+    },
+    "addModel": {
+      "comment": "댓글 추가"
+    },
+    "addTo": {
+      "library": "라이브러리에 추가",
+      "playlist": "재생목록에 추가",
+      "favorites": "즐겨찾기에 추가",
+      "bookmarks": "북마크에 추가",
+      "listened": "청취목록에 추가",
+      "watched": "시청목록에 추가",
+      "queue": "대기열에 추가",
+      "savedTracks": "저장된 트랙에 추가"
+    },
+    "show": {
+      "library": "라이브러리에 표시",
+      "page": "페이지 표시"
+    },
+    "deleteFrom": {
+      "favorites": "즐겨찾기에서 삭제",
+      "bookmarks": "북마크에서 삭제",
+      "listened": "청취목록에서 삭제",
+      "watched": "시청목록에서 삭제"
+    },
+    "externalLink": {
+      "open": "외부 링크 열기",
+      "original": "원본",
+      "streaming": "스트리밍"
+    }
+  },
+  "links": {
+    "playlists": "모든 재생목록",
+    "communities": "모든 커뮤니티"
+  },
+  "inputs": {
+    "search": "검색...",
+    "content": "뭔가를 써 보세요..."
+  },
+  "modals": {
+    "delete": {
+      "header": {
+        "libraryModel": {
+          "artist": "라이브러리에서 아티스트 삭제",
+          "album": "라이브러리에서 앨범 삭제",
+          "track": "라이브러리에서 트랙 삭제"
+        },
+        "recommendationModel": {
+          "artist": "추천에서 아티스트 삭제",
+          "track": "추천에서 트랙 삭제"
+        },
+        "playlist": "재생목록 삭제",
+        "playlistTrack": "재생 목록에서 트랙 삭제",
+        "savedTrack": "저장된 트랙에서 트랙 삭제",
+        "favorite": {
+          "artist": "즐겨찾기에서 아티스트 삭제",
+          "album": "즐겨찾기에서 앨범 삭제",
+          "track": "즐겨찾기에서 트랙 삭제",
+          "video": "즐겨찾기에서 동영상 삭제"
+        },
+        "bookmark": {
+          "artist": "북마크에서 아티스트 삭제",
+          "album": "북마크에서 앨범 삭제",
+          "track": "북마크에서 트랙 삭제",
+          "video": "북마크에서 동영상 삭제",
+          "videoChannel": "북마크에서 동영상 채널 삭제",
+          "videoPlaylist": "북마크에서 동영상 재생목록 삭제"
+        },
+        "post": "게시글 삭제",
+        "comment": "댓글 삭제",
+        "community": "커뮤니티 삭제",
+        "account": "계정 삭제",
+        "library": "라이브러리 삭제",
+        "history": {
+          "search": "검색 기록 삭제",
+          "activity": "활동 기록 삭제",
+          "browser": "탐색기 기록 삭제",
+          "player": "플레이어 기록 삭제"
+        }
+      },
+      "going": {
+        "libraryModel": "{modelName}을(를) 라이브러리에서 삭제하려고 합니다.",
+        "recommendationModel": "{modelName}을(를) 추천에서 삭제하려고 합니다.",
+        "playlist": "{modelName}을(를) 플레이리스트에서 삭제하려고 합니다",
+        "playlistTrack": "{modelName}을(를) {parentModelName} 재생목록에서 삭제하려고 합니다.",
+        "savedTrack": "{modelName}을(를) 저장된 트랙에서 삭제합니다.",
+        "favorite": "{modelName}을(를) 즐겨찾기에서 삭제합니다.",
+        "bookmark": "{modelName}을(를) 북마크에서 삭제합니다.",
+        "post": "이 게시글을 삭제합니다.",
+        "comment": "이 댓글을 삭제합니다.",
+        "community": "이 커뮤니티를 삭제합니다.",
+        "account": "계정을 삭제합니다.",
+        "library": "라이브러리를 삭제합니다.",
+        "history": {
+          "search": "검색 기록을 삭제합니다.",
+          "activity": "활동 기록을 삭제합니다.",
+          "browser": "탐색기 기록을 삭제합니다.",
+          "player": "플레이어 기록을 삭제합니다."
+        }
+      },
+      "also": {
+        "libraryModel": {
+          "artist": "이렇게 하면 이 아티스트의 모든 앨범과 트랙도 삭제됩니다.",
+          "album": "이렇게 하면 이 앨범의 모든 트랙도 삭제됩니다."
+        },
+        "playlist": "이렇게 하면 이 재생목록의 모든 트랙도 삭제됩니다.",
+        "community": "이렇게 하면 이 커뮤니티의 모든 게시글도 삭제됩니다.",
+        "account": [
+          "이렇게 하면 다음 데이터도 삭제됩니다:",
+          "<strong>- 라이브러리\n- 추천\n- 재생목록\n- 즐겨찾기\n- 북마크\n- 청취목록\n- 페이지 게시글\n- 구독\n- 기록</strong>",
+          "이 데이터는 유지되지만 별명은 표시되지 않습니다:",
+          "<strong>- 생성된 게시글\n- 생성된 댓글\n- 나와의 대화\n- 생성된 커뮤니티</strong>",
+          "그리고 이 데이터는 변경되지 않습니다:",
+          "<strong>- 저장된 트랙\n- 배경 이미지\n- 설정</strong>"
+        ],
+        "library": [
+          "이렇게 하면 다음 데이터도 삭제됩니다:",
+          "<strong>- 아티스트\n- 앨범\n- 트랙\n- 추천</strong>"
+        ]
+      },
+      "undo": "이 작업은 취소할 수 없습니다!",
+      "sure": "정말로 할까요?"
+    }
+  },
+  "forms": {
+    "fields": {
+      "email": "이메일",
+      "password": "비밀번호",
+      "passwordConfirmation": "비밀번호 확인",
+      "passwordResetCode": "비밀번호 재설정 코드",
+      "nickname": "별명",
+      "title": "타이틀",
+      "description": "설명",
+      "gender": "성별",
+      "birthdate": "생일",
+      "country": "국가",
+      "city": "도시",
+      "status": "상태",
+      "clientId": "클라이언트 ID",
+      "clientSecret": "클라이언트 시크릿",
+      "genders": {
+        "male": "남",
+        "female": "여",
+        "other": "기타"
+      },
+      "legal": {
+        "header": "{privacyPolicy} 및 {termsAndConditions}에 동의합니다.",
+        "privacyPolicy": "개인정보 보호정책",
+        "termsAndConditions": "이용약관"
+      },
+      "remember": "기억해 주세요",
+      "asCommunity": "커모니티로서"
+    },
+    "extra": "추가 정보",
+    "errors": {
+      "notFound": "프로파일을 찾을 수 없음",
+      "empty": {
+        "email": "이메일이 비어 있음",
+        "password": "비밀번호가 비어 있음",
+        "passwordConfirmation": "비밀번호 확인이 비어 있음",
+        "passwordResetCode": "P비밀번호 재설정 코드가 비어 있음",
+        "nickname": "별명이 비어 있음",
+        "title": "타이틀이 비어 있음",
+        "clientId": "클라이언트 ID가 비어 있음",
+        "clientSecret": "클라이언트 시크릿이 비어 있음",
+        "legal": "개인정보 보호정책 및 이용약관에 동의해야 함"
+      },
+      "invalid": {
+        "email": "이메일이 잘못되었음"
+      },
+      "taken": {
+        "email": "이메일이 사용 중",
+        "nickname": "별명이 사용 중",
+        "title": "타이틀이 사용 중"
+      },
+      "tooShort": {
+        "password": "비밀번호가 너무 짧음"
+      },
+      "tooLong": {
+        "nickname": "별명이 너무 김"
+      },
+      "confirmation": {
+        "passwordConfirmation": "비밀번호와 확인이 일치하지 않음"
+      },
+      "wrong": {
+        "password": "잘못된 비밀번호",
+        "passwordResetCode": "잘못된 비밀번호 재설정 코드"
+      }
+    },
+    "confirm": {
+      "password": "비밀번호를 확인해 주세요:"
+    }
+  },
+  "notifications": {
+    "scrobbled": "트랙 {trackFullTitle}이(가) 스크로블되었음",
+    "added": {
+      "queue": {
+        "track": "트랙 {trackFullTitle}이(가) 대기열에 추가되었음",
+        "tracks": "{counter}이(가) 대기열에 추가되었음 | {counter}이(가) 대기열에 추가되었음"
+      },
+      "savedTracks": {
+        "track": "트랙 {trackFullTitle}이(가) 저장된 트랙에 추가되었음"
+      }
+    },
+    "updated": {
+      "profile": "프로파일이 업데이트되었음",
+      "post": "게시글이 업데이트되었음",
+      "comment": "댓글이 업데이트되었음",
+      "playlist": "재생목록 {playlistTitle}이(가) 업데이트되었음",
+      "community": "커뮤니티 {communityTitle}이(가) 업데이트되었음"
+    },
+    "deleted": {
+      "libraryModel": {
+        "artist": "아티스트 {modelName}이(가) 라이브러리에서 삭제되었음",
+        "album": "앨범 {modelName}이(가) 라이브러리에서 삭제되었음",
+        "track": "트랙 {modelName}이 라이브러리에서 삭제되었음"
+      },
+      "playlist": "재생목록 {playlistTitle}이(가) 삭제되었음",
+      "community": "커뮤니티 {communityTitle}이(가) 삭제되었음",
+      "account": "계정이 삭제되었음",
+      "library": "라이브러리가 삭제되었음",
+      "history": {
+        "search": "검색 기록이 삭제되었습음",
+        "activity": "활동 기록이 삭제되었음",
+        "browser": "탐색기 기록이 삭제되었음",
+        "player": "플레이어 기록이 삭제되었음"
+      }
+    },
+    "copied": "링크가 클립보드에 복사되었음",
+    "cleared": {
+      "cache": "캐시가 지워졌음",
+      "searchHistory": "검색 기록이 지워졌음"
+    },
+    "restartToApply": "설정이 저장되었으며 다음 애플리케이션 시작 시 적용됨"
+  },
+  "counters": {
+    "nominative": {
+      "artists": "{count} 아티스트 | {count} 아티스트",
+      "albums": "{count} 앨범 | {count} 앨범",
+      "tracks": "{count} 트랙 | {count} 트랙",
+      "videos": "{count} 동영상 | {count} 동영상",
+      "files": "{count} 파일 | {count} 파일",
+      "plays": "{count} play | {count} plays",
+      "followers": "{count} 팔로워 | {count} 팔로워",
+      "following": "{count} 팔로잉",
+      "members": "{count} 멤버 | {count} 멤버",
+      "playlists": "{count} 재생목록 | {count} 재생목록"
+    },
+    "genitive": {
+      "artists": "{count} 아티스트 | {count} 아티스트",
+      "albums": "{count} 앨범 | {count} 앨범",
+      "tracks": "{count} 트랙 | {count} 트랙",
+      "files": "{count} 파일 | {count} 파일",
+      "plays": "{count} 재생 | {count} 재생",
+      "playlists": "{count} 재생목록 | {count} 재생목록"
+    },
+    "accusative": {
+      "artists": "{count} 아티스트 | {count} 아티스트",
+      "albums": "{count} 앨범 | {count} 앨범",
+      "tracks": "{count} 트랙 | {count} 트랙",
+      "files": "{count} 파일 | {count} 파일",
+      "playlists": "{count} 재생목록 | {count} 재생목록"
+    }
+  },
+  "select": {
+    "source": "소스 선택:",
+    "type": "유형 선택:",
+    "album": "앨범 선택:",
+    "group": "앨범 그룹 선택:",
+    "artist": "아티스트 선택:",
+    "track": "트랙 선택:",
+    "country": "국가 선택:",
+    "video": "동영상 선택:",
+    "lyrics": "가사 선택:"
+  },
+  "sources": {
+    "audio": "오디오",
+    "other": "기타",
+    "albumTypes": {
+      "album": "앨범",
+      "group": "앨범 그룹",
+      "track": "트랙"
+    },
+    "albumsTypes": {
+      "album": "앨범",
+      "single": "싱글",
+      "ep": "미니",
+      "singleEp": "싱글 / 미니",
+      "compilation": "컴필레이션",
+      "video": "동영상",
+      "misc": "기타",
+      "appearance": "외형",
+      "live": "라이브"
+    },
+    "videoTypes": {
+      "video": "동영상",
+      "track": "트랙"
+    }
+  },
+  "player": {
+    "variants": "변형 ({count})",
+    "audio": {
+      "bitrate": "{value} kbit/s",
+      "equalizer": {
+        "decibel": "{value} dB",
+        "hertz": "{value} Hz",
+        "kilohertz": "{value} kHz"
+      }
+    }
+  },
+  "settings": {
+    "tabs": {
+      "app": "앱",
+      "profile": "프로파일",
+      "connections": "연결"
+    },
+    "sections": {
+      "interface": "인터페이스",
+      "theme": "테마",
+      "window": "창",
+      "tabs": "탭",
+      "sidebar": "사이드바",
+      "video": "동영상",
+      "data": "데이터",
+      "info": "정보",
+      "account": "계정",
+      "system": "시스템",
+      "updates": "업데이트"
+    },
+    "options": {
+      "app": {
+        "interface": {
+          "language": "언어",
+          "timezone": "시간대",
+          "infiniteScroll": "무한 스크롤",
+          "artistPopup": "링크 호버 시 아티스트 정보 표시",
+          "innerCounters": "muffon 청취자 카운터 표시",
+          "cachePages": "캐시 페이지",
+          "scale": "크기 조정"
+        },
+        "theme": {
+          "dark": "어두움 모드",
+          "system": "시스템 테마",
+          "background": "배경",
+          "transparency": "투명성"
+        },
+        "window": {
+          "maximize": "시작 시 최대화",
+          "quit": "닫을 시 나가기",
+          "showTrayIcon": "트레이 아이콘 표시"
+        },
+        "tabs": {
+          "newTabSwitch": "새 탭으로 전환",
+          "closeOnQuit": "나갈 시 탭 닫기"
+        },
+        "search": {
+          "source": "소스",
+          "scope": "범위",
+          "resultsFullSize": "전체 크기로 결과 표시"
+        },
+        "player": {
+          "audioSources": "(우선순위별) 오디오 소스",
+          "bitrate": "오디오 비트레이트 표시",
+          "album": "앨범 표시",
+          "equalizer": "이퀄라이저 표시",
+          "focusPlaying": "현재 트랙에 집중",
+          "pauseOnVideoPlay": "비디오 재생 일시 정지"
+        },
+        "queue": {
+          "autoplay": "자동 재생",
+          "clear": "플레이어를 닫을 때 지우기"
+        },
+        "video": {
+          "autoplay": "자동 재생",
+          "pauseOnAudioPlay": "오디오 재생 시 일시 정지",
+          "openLinksInNewTab": "새 탭에서 링크 열기"
+        },
+        "recommendations": {
+          "hideLibraryArtists": "라이브러리 아티스트 숨기기",
+          "tracksCount": "트랙 수 포함",
+          "hideListenedArtists": "청취한 아티스트 숨기기",
+          "hideLibraryTracks": "라이브러리 트랙 숨기기",
+          "hideListenedTracks": "청취한 트랙 숨기기"
+        },
+        "top": {
+          "country": "기본 국가"
+        },
+        "lyrics": {
+          "annotations": "주석 표시"
+        },
+        "history": {
+          "search": {
+            "delete": "검색 기록 삭제"
+          },
+          "activity": {
+            "delete": "활동 기록 삭제"
+          },
+          "player": {
+            "delete": "플레이어 기록 삭제"
+          },
+          "browser": {
+            "delete": "탐색기 기록 삭제"
+          }
+        },
+        "system": {
+          "cache": {
+            "enable": "캐시 활성화",
+            "clear": "캐시 지우기"
+          }
+        },
+        "updates": {
+          "check": "새 버전 확인",
+          "auto": "자동 업데이트 활성화",
+          "autoWarning": "리눅스의 자동 업데이트는 아직 실험 단계이며 버그가 있을 수 있습니다.\n자동 업데이트 프로세스 중, 앱이 일시적으로 정지됩니다.\n앱을 강제 종료하지 마세요; 업데이트가 완료되면 자동으로 닫힙니다.\n\n이 문제에 대한 자세한 내용과 추적은 [a link=issue]이 링크[/a]를 방문하세요."
+        }
+      },
+      "profile": {
+        "player": {
+          "playing": "페이지에 현재 트랙 표시"
+        },
+        "data": {
+          "account": {
+            "delete": "계정 삭제"
+          },
+          "library": {
+            "delete": "라이브러리 삭제"
+          }
+        }
+      },
+      "connections": {
+        "lastfm": {
+          "scrobbling": "스크로블링",
+          "scrobbleNotifications": "스크로블 알림",
+          "scrobblePercent": "다음을 스크로블"
+        },
+        "spotify": {
+          "link": {
+            "description": "Spotify 계정을 연결하려면 [a link=guide]이 가이드[/a]를 따르세요."
+          }
+        },
+        "discord": {
+          "richPresence": {
+            "header": "Rich Presence 활성화",
+            "client": "활성화하기 전에 디스코드 데스크톱 클라이언트가 실행 중인지 확인",
+            "buttons": {
+              "header": "버튼",
+              "select": {
+                "first": "첫 번째 선택:",
+                "second": "두 번째 선택:"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "track": {
+    "source": "{source} 통해"
+  },
+  "recommended": {
+    "header": "추천됨",
+    "based": "사용자 기준:"
+  },
+  "signup": {
+    "text": "계정이 없나요?",
+    "link": "가입"
+  },
+  "login": {
+    "text": "이미 가입했나요?",
+    "link": "로그인"
+  },
+  "passwordReset": {
+    "text": "비밀번호를 잊었나요?",
+    "link": "재설정",
+    "code": {
+      "sent": "비밀번호 재설정 코드가 이메일로 전송되었음"
+    },
+    "updated": {
+      "header": "비밀번호가 업데이트되었음",
+      "content": "이제 돌아가서 로그인할 수 있음"
+    }
+  },
+  "anonymous": {
+    "continue": "익명으로 계속하기",
+    "nickname": "익명"
+  },
+  "roles": {
+    "creator": "제작자"
+  },
+  "relationships": {
+    "followed": "팔로잉 수",
+    "following": "팔로잉",
+    "follow": "팔로우",
+    "unfollow": "팔로우 취소"
+  },
+  "memberships": {
+    "joined": "참가하였음",
+    "join": "참가",
+    "leave": "떠나기"
+  },
+  "message": {
+    "send": "메세지 보내기",
+    "sent": {
+      "header": "메시지가 전송되었음",
+      "content": "대화로 이동"
+    }
+  },
+  "compatibility": {
+    "header": "{profileNickname}와(과) 호환성 수준",
+    "common": "공통점:"
+  },
+  "recommendation": {
+    "similar": "{counter}와 비슷한 것:"
+  },
+  "import": {
+    "lastfm": {
+      "historyVisible": "가져오기 전에 Last.FM 청취 기록이 보이는지 확인하세요."
+    },
+    "active": "{counter}의 {count} 가져오는 중...",
+    "success": {
+      "header": "{counter}이(가) 가져왔음 | {counter}이(가) 가져왔음",
+      "content": "라이브러리에 저장하기 전에 데이터를 확인하는 것이 좋음"
+    },
+    "error": {
+      "files": "{counter}은(는) 가져올 수 없습니다. 메타데이터 형식이 유효한지 확인하세요:"
+    }
+  },
+  "save": {
+    "active": "{counter}의 {count} 저장 중...",
+    "success": {
+      "library": {
+        "artists": "{counter}이(가) 라이브러리에 추가되었음 | {counter}이(가) 라이브러리에 추가되었음",
+        "albums": "{counter}이(가) 라이브러리에 추가되었음 | {counter}이(가) 라이브러리에 추가되었음",
+        "tracks": "{counter}이(가) 라이브러리에 추가되었음 | {counter}이(가) 라이브러리에 추가되었음"
+      },
+      "playlist": {
+        "artists": "{counter}이(가) 재생목록에 추가되었음 | {counter}이(가) 재생목록에 추가되었음",
+        "albums": "{counter}이(가) 재생목록에 추가되었음 | {counter}이(가) 재생목록에 추가되었음",
+        "tracks": "{counter}이(가) 재생목록에 추가되었음 | {counter}이(가) 재생목록에 추가되었음"
+      },
+      "playlists": {
+        "playlists": "{counter}이(가) 재생목록에 추가되었음 | {counter}이(가) 재생목록에 추가되었음"
+      },
+      "favorites": {
+        "tracks": "{counter}이(가) 즐겨찾기에 추가되었음 | {counter}이(가) 즐겨찾기에 추가되었음"
+      }
+    },
+    "error": "{counter}은(는) 추가할 수 없습니다:"
+  },
+  "delete": {
+    "active": "{counter}의 {count} 삭제 중..."
+  },
+  "connections": {
+    "connect": "계정 연결",
+    "confirm": {
+      "token": "탐색기가 열립니다. 거기서 연결을 확인하고 이 버튼을 다시 클릭하세요.",
+      "code": "탐색기가 열립니다. 거기서 연결을 확인하고 받은 코드를 붙여넣고 이 버튼을 다시 클릭하세요."
+    },
+    "disconnect": "계정 연결 해제"
+  },
+  "accounts": {
+    "premium": "프리미엄"
+  },
+  "noCollection": {
+    "header": {
+      "artists": "아티스트 없음",
+      "albums": "앨범 없음",
+      "groups": "앨범 그룹 없음",
+      "tracks": "트랙 없음",
+      "similar": "비슷한 것 없음",
+      "tags": "태그 없음",
+      "posts": "게시글 없음",
+      "feed": "게시글 없음",
+      "conversations": "대화 없음",
+      "messages": "메세지 없음",
+      "followers": "팔로워 없음",
+      "following": "팔로잉 없음",
+      "recommendations": "추천 없음",
+      "playlists": "재생목록 없음",
+      "communities": "커뮤니티 없음",
+      "members": "멤버 없음",
+      "videos": "동영상 없음",
+      "videoChannels": "동영상 채널 없음",
+      "videoMixes": "동영상 스위처 없음",
+      "videoPlaylists": "동영상 재생목록 없음",
+      "related": "연관 없음",
+      "listeners": "청취자 없음",
+      "images": "이미지 없음",
+      "events": "이벤트 없음",
+      "profiles": "프로파일 없음",
+      "shows": "쇼 없음"
+    },
+    "content": "여기에는 아무것도 없는 것 같음"
+  },
+  "deleted": {
+    "artist": "아티스트가 삭제되었음",
+    "album": "앨범이 삭제되었음",
+    "track": "트랙이 삭제되었음",
+    "recommendation": "추천이 삭제되었음",
+    "playlist": "재생목록이 삭제되었음",
+    "post": "게시글이 삭제되었습음",
+    "comment": "댓글이 삭제되었음",
+    "video": "동영상이 삭제되었음",
+    "videoChannel": "동영상 채널이 삭제되었음",
+    "videoPlaylist": "동영상 재생목록이 삭제되었음"
+  },
+  "messages": {
+    "welcome": "환영합니다, {profileNickname}"
+  },
+  "profile": {
+    "wasOnline": "온라인 상태였음"
+  },
+  "feed": {
+    "global": "글로벌 피드"
+  },
+  "about": {
+    "license": "{license} 라이센스",
+    "homepage": "홈페이지",
+    "contact": "연락"
+  },
+  "private": {
+    "playlist": "비공개",
+    "profile": "비공개"
+  },
+  "donate": {
+    "header": "기부",
+    "content": [
+      "muffon은 광고도 없고, 유료 기능이나 콘텐츠도 없는 비영리 프로젝트입니다.",
+      "하지만, 물론 개발과 인프라에 필요한 자금 없이는 존재할 수 없습니다.",
+      "이 프로젝트를 만드는 데 많은 시간과 노력이 투자되었고, 투자한 모든 것이 보상되면 좋을 것입니다.",
+      "그래서 muffon 지원에 여러분의 도움을 요청합니다.",
+      "<strong>기부하시겠습니까?</strong>"
+    ],
+    "actions": {
+      "decline": "아니오, 감사합니다.",
+      "later": "나중에 하겠습니다.",
+      "accept": "네, 하겠습니다."
+    }
+  },
+  "lists": {
+    "simple": "간단한 목록",
+    "table": "표",
+    "extended": "상세한 목록"
+  },
+  "orders": {
+    "createdDesc": "가장 최신",
+    "createdAsc": "가장 오래된",
+    "updatedDesc": "최대 최근 업데이트됨",
+    "updatedAsc": "최소 최근 업데이트됨",
+    "artistsCountDesc": "최대 아티스트",
+    "artistsCountAsc": "최소 아티스트",
+    "albumsCountDesc": "최대 앨범",
+    "albumsCountAsc": "최소 앨범",
+    "tracksCountDesc": "최대 트랙",
+    "tracksCountAsc": "최소 트랙",
+    "followersCountDesc": "최대 팔로워",
+    "followersCountAsc": "최소 팔로워",
+    "joinedDesc": "최대 최근 참여함",
+    "joinedAsc": "최소 최근 참여함",
+    "membersCountDesc": "최대 멤버",
+    "membersCountAsc": "최소 멤버"
+  },
+  "deletedModel": {
+    "profile": "삭제된 프로파일"
+  },
+  "events": {
+    "created": {
+      "profile": "프로파일이 생성되었음",
+      "bookmarkAlbum": "앨범 {modelName}이(가) 북마크에 추가되었음",
+      "bookmarkArtist": "아티스트 {modelName}이(가) 북마크에 추가되었음",
+      "bookmarkTrack": "트랙 {modelName}이(가) 북마크에 추가되었음",
+      "bookmarkVideo": "동영상 {modelName}이(가) 북마크에 추가되었음",
+      "bookmarkVideoChannel": "동영생 채널 {modelName}이(가) 북마크에 추가되었음",
+      "bookmarkVideoPlaylist": "동영상 재생목록 {modelName}이(가) 북마크에 추가되었음",
+      "favoriteAlbum": "앨범 {modelName}이(가) 즐겨찾기에 추가되었음",
+      "favoriteArtist": "아티스트 {modelName}이(가) 즐겨찾기에 추가되었음",
+      "favoriteTrack": "트랙 {modelName}이(가) 즐겨찾기에 추가되었음",
+      "favoriteVideo": "동영상o {modelName}이(가) 즐겨찾기에 추가되었음",
+      "libraryAlbum": "앨범 {modelName}이(가) 라이브러리에 추가되었음",
+      "libraryArtist": "아티스트 {modelName}이(가) 라이브러리에 추가되었음",
+      "libraryTrack": "트랙 {modelName}이(가) 라이브러리에 추가되었음",
+      "listenedAlbum": "앨범 {modelName}이(가) 청취목록에 추가되었음",
+      "listenedArtist": "아티스트 {modelName}이(가) 청취목록에 추가되었음",
+      "listenedTrack": "트랙 {modelName}이(가) 청취목록에 추가되었음",
+      "watchedVideo": "동영상 {modelName}이(가) 시청목록에 추가되었음",
+      "playlistTrack": "트랙 {modelName}이(가) 재생목록 {playlistTitle}에 추가되었음",
+      "community": "커뮤니티 {modelName}이(가) 생성되었음",
+      "relationship": "{modelName}을(를) 팔로우하였음",
+      "post": "게시글 {modelName}이(가) 생성되었음",
+      "postComment": "댓글 {modelName}이(가) 생성되었음",
+      "playlist": "재생목록 {modelName}이(가) 생성되었음",
+      "conversation": "{modelName}와(과) 대화를 시작하였음",
+      "membership": "커뮤니티 {modelName}에 참여하였음"
+    },
+    "updated": {
+      "profile": "프로파일이 업데이트되었음",
+      "community": "커뮤니티 {modelName}이(가) 업데이트되었음",
+      "post": "게시글 {modelName}이(가) 업데이트되었음",
+      "postComment": "댓글 {modelName}이(가) 업데이트되었음",
+      "playlist": "재생목록 {modelName}이(가) 업데이트되었음"
+    },
+    "deleted": {
+      "bookmarkAlbum": "앨범 {modelName}이(가) 북마크에서 삭제되었음",
+      "bookmarkArtist": "아티스트 {modelName}이(가) 북마크에서 삭제되었음",
+      "bookmarkTrack": "트랙 {modelName}이(가) 북마크에서 삭제되었음",
+      "bookmarkVideo": "동영상 {modelName}이(가) 북마크에서 삭제되었음",
+      "bookmarkVideoChannel": "동영상 채널 {modelName}이(가) 북마크에서 삭제되었음",
+      "bookmarkVideoPlaylist": "동영상 재생목록 {modelName}이(가) 북마크에서 삭제되었음",
+      "favoriteAlbum": "앨범 {modelName}이(가) 즐겨찾기에서 삭제되었음",
+      "favoriteArtist": "아티스트 {modelName}이(가) 즐겨찾기에서 삭제되었음",
+      "favoriteTrack": "트랙 {modelName}이(가) 즐겨찾기에서 삭제되었음",
+      "favoriteVideo": "동영상 {modelName}이(가) 즐겨찾기에서 삭제되었음",
+      "libraryAlbum": "앨범 {modelName}이(가) 라이브러리에서 삭제되었음",
+      "libraryArtist": "아티스트 {modelName}이(가) 라이브러리에서 삭제되었음",
+      "libraryTrack": "트랙 {modelName}이(가) 라이브러리에서 삭제되었음",
+      "listenedAlbum": "앨범 {modelName}이(가) 청취목록에서 삭제되었음",
+      "listenedArtist": "아티스트 {modelName}이(가) 청취목록에서 삭제되었음",
+      "listenedTrack": "트랙 {modelName}이(가) 청취목록에서 삭제되었음",
+      "watchedVideo": "동영상 {modelName}이(가) 시청목록에서 삭제되었음",
+      "playlistTrack": "트랙 {modelName}이(가) 재생목록 {playlistTitle}에서 삭제되었음",
+      "community": "커뮤니티 {modelName}이(가) 삭제되었음",
+      "recommendationArtist": "아티스트 {modelName}이(가) 추천에서 삭제되었음",
+      "recommendationTrack": "트랙 {modelName}이(가) 추천에서 삭제되었음",
+      "relationship": "{modelName}을(를) 팔로우 취소하였음",
+      "post": "게시글 {modelName}이(가) 삭제되었음",
+      "postComment": "댓글 {modelName}이(가) 삭제되었음",
+      "playlist": "재생목록 {modelName}이(가) 삭제되었음",
+      "membership": "커뮤니티 {modelName}에서 나갔음"
+    }
+  },
+  "created": {
+    "profile": "그 이후 muffon",
+    "library": "그 이후 라이브러리",
+    "community": "생성됨"
+  },
+  "filter": {
+    "include": {
+      "artists": "아티스트 포함",
+      "tags": "태그 포함"
+    },
+    "exclude": {
+      "artists": "아티스트 미포함",
+      "tags": "태그 미포함"
+    }
+  },
+  "keyboardShortcuts": {
+    "header": "키보드 단축키",
+    "search": "검색 패널 표시",
+    "audioBackward": "오디오 뒤로 탐색",
+    "audioForward": "오디오 앞으로 탐색",
+    "radioNextTrack": "다음 라디오 트랙"
+  },
+  "online": "온라인",
+  "error": "오류",
+  "more": "자세히...",
+  "loading": "로딩 중...",
+  "warning": "경고"
+}
