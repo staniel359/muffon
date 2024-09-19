@@ -572,12 +572,25 @@
         @extend .border-left-inverted
 
 .base-tabs
+  &::-webkit-scrollbar-track
+    border-radius: 5px !important
   &.secondary
     &:not(.pointing)
       .item
         padding: 0.9rem 1.8rem
     &:not(.vertical)
       @extend .main-top-section
+  &:not(.vertical)
+    padding-bottom: 0.75rem
+
+[dir="ltr"]
+  .base-tabs
+    &.vertical
+      padding-right: 0.75rem
+[dir="rtl"]
+  .base-tabs
+    &.vertical
+      padding-left: 0.75rem
 
 .base-toggle
   input
