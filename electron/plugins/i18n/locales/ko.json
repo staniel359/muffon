@@ -1,0 +1,13 @@
+{
+  "show": "표시",
+  "hide": "숨기기",
+  "about": "정보",
+  "quit": "나가기",
+  "update": {
+    "message": "새 버전을 사용할 수 있음",
+    "buttons": {
+      "download": "다운로드",
+      "close": "닫기"
+    }
+  }
+}
