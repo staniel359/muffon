@@ -9,9 +9,7 @@ const systemIcons = {
 }
 
 const systemIcon =
-  systemIcons[
-    systemName
-  ]
+  systemIcons[systemName]
 
 export default {
   account: 'user circle',

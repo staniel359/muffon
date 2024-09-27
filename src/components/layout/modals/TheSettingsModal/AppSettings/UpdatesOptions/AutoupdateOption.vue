@@ -25,8 +25,8 @@
     </div>
   </div>
 
-  <AutoupdateWarningMessage
-    v-if="isAutoupdateBeta"
+  <AutoupdateBetaWarningMessage
+    v-if="isShowBetaWarningMessage"
   />
 </template>
 
@@ -38,9 +38,12 @@ import updatesStore from '@/stores/updates'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 import BaseLabel from '@/components/labels/BaseLabel.vue'
-import AutoupdateWarningMessage
-  from './AutoupdateOption/AutoupdateWarningMessage.vue'
+import AutoupdateBetaWarningMessage
+  from './AutoupdateOption/AutoupdateBetaWarningMessage.vue'
 import notificationMixin from '@/mixins/notificationMixin'
+import {
+  isLinux
+} from '@/helpers/utils'
 
 export default {
   name: 'AutoupdateOption',
@@ -48,7 +51,7 @@ export default {
     BaseHeader,
     BaseToggle,
     BaseLabel,
-    AutoupdateWarningMessage
+    AutoupdateBetaWarningMessage
   },
   mixins: [
     notificationMixin
@@ -74,6 +77,11 @@ export default {
     },
     isDisabled () {
       return !this.isCheckForNewVersions
+    },
+    isShowBetaWarningMessage () {
+      return (
+        this.isAutoupdateBeta && isLinux
+      )
     }
   },
   watch: {
