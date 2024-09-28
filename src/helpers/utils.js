@@ -7,7 +7,8 @@ import {
   date as formatDate
 } from '@/helpers/formatters/dateTime'
 import {
-  shareEncryptionKey
+  shareEncryptionKey,
+  systemName
 } from '@/helpers/data/env'
 
 export {
@@ -193,3 +194,15 @@ export function getObjectKeysWithTrueValues (
     array => array[0]
   )
 }
+
+export const isWindows = (
+  systemName === 'windows'
+)
+
+export const isMacos = (
+  systemName === 'macos'
+)
+
+export const isLinux = (
+  systemName === 'linux'
+)

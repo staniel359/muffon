@@ -18,7 +18,7 @@ import formatI18nTextWithExternalLink
   from '@/helpers/formatters/i18n/textWithExternalLink'
 
 export default {
-  name: 'AutoupdateWarningMessage',
+  name: 'AutoupdateBetaWarningMessage',
   components: {
     BaseMessage
   },
