@@ -71,6 +71,30 @@ export default [
     ]
   },
   {
+    id: 'spotify',
+    icon: 'spotify',
+    name: 'Spotify',
+    isAudio: true,
+    isWithArtists: true,
+    isWithAlbums: true,
+    isWithTracks: true,
+    maxBitrate: 160,
+    albumTypes: [
+      'album'
+    ],
+    albumsTypes: [
+      'album',
+      'single',
+      'compilation',
+      'appearance'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
+    ]
+  },
+  {
     id: 'bandcamp',
     icon: 'bandcamp',
     name: 'Bandcamp',
@@ -122,30 +146,6 @@ export default [
     maxBitrate: 128,
     albumTypes: [
       'album'
-    ],
-    searchScopes: [
-      'artists',
-      'albums',
-      'tracks'
-    ]
-  },
-  {
-    id: 'spotify',
-    icon: 'spotify',
-    name: 'Spotify',
-    isAudio: true,
-    isWithArtists: true,
-    isWithAlbums: true,
-    isWithTracks: true,
-    maxBitrate: 128,
-    albumTypes: [
-      'album'
-    ],
-    albumsTypes: [
-      'album',
-      'single',
-      'compilation',
-      'appearance'
     ],
     searchScopes: [
       'artists',
