@@ -77,7 +77,8 @@ jobs:
       - name: Install packages (Linux-only)
         if: matrix.os == 'ubuntu-latest'
         run: |
-          sudo apt install flatpak flatpak-builder libarchive-tools rpm -y
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder libarchive-tools rpm
           flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 
       - name: Release
