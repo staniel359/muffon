@@ -36,7 +36,7 @@
     "feed": "Feed",
     "posts": "Posts",
     "conversations": "Conversaciones",
-    "library": "Archivo",
+    "library": "Bibleoteca",
     "recommendations": "Recomendaciones",
     "recommendationsCollection": {
       "artists": "artistas recomnedados",
@@ -160,7 +160,7 @@
     "loop": "Repetir",
     "addFrom": {
       "search": "De la búsqueda",
-      "library": "Del archivo"
+      "library": "Del bibleoteca"
     },
     "importFrom": {
       "drive": "de la unidad del disco",
@@ -190,7 +190,7 @@
       "comment": "Añadir comentario"
     },
     "addTo": {
-      "library": "Añadir a archivo",
+      "library": "Añadir a bibleoteca",
       "playlist": "Añadir a playlist",
       "favorites": "Añadir a favoritos",
       "bookmarks": "Añadir a marcadores",
@@ -200,7 +200,7 @@
       "savedTracks": "Añadir a pistas guardadas"
     },
     "show": {
-      "library": "Mostar en archivo",
+      "library": "Mostar en bibleoteca",
       "page": "Mostrar página"
     },
     "deleteFrom": {
@@ -227,9 +227,9 @@
     "delete": {
       "header": {
         "libraryModel": {
-          "artist": "Borrar artista del archivo",
-          "album": "Borrar álbum del archivo",
-          "track": "Borrar pista del archivo"
+          "artist": "Borrar artista del bibleoteca",
+          "album": "Borrar álbum del bibleoteca",
+          "track": "Borrar pista del bibleoteca"
         },
         "recommendationModel": {
           "artist": "Borrar artista de recomendaciones",
@@ -256,16 +256,16 @@
         "comment": "Borrar comentario",
         "community": "Borrar comunidad",
         "account": "Borrar cuenta",
-        "library": "Borrar archivo",
+        "library": "Borrar bibleoteca",
         "history": {
-          "search": "Borrar historia de búsqueda",
-          "activity": "Borrar historia de actividad",
-          "browser": "Borrar historia de navegador",
-          "player": "Borrar historia de reproductor"
+          "search": "Borrar historial de búsqueda",
+          "activity": "Borrar historial de actividad",
+          "browser": "Borrar historial de navegador",
+          "player": "Borrar historial de reproductor"
         }
       },
       "going": {
-        "libraryModel": "Vas a borrar {modelName} de tu archivo.",
+        "libraryModel": "Vas a borrar {modelName} de tu bibleoteca.",
         "recommendationModel": "Vas a borrar {modelName} de tu recomendaciones.",
         "playlist": "Vas a borrar {modelName} de tus playlists.",
         "playlistTrack": "Vas a borrar {modelName} de {parentModelName} playlist.",
@@ -276,12 +276,12 @@
         "comment": "Vas a borrar este comentario.",
         "community": "Vas a borrar esta comunidad.",
         "account": "Vas a borrar tu cuenta.",
-        "library": "Vas a borrar tu archivo.",
+        "library": "Vas a borrar tu bibleoteca.",
         "history": {
-          "search": "Vas a borrar tu historia de búsqueda.",
-          "activity": "Vas a borrar tu historia de actividad.",
-          "browser": "Vas a borrar tu historia de navegador.",
-          "player": "Vas a borrar tu historia de reproductor."
+          "search": "Vas a borrar tu historial de búsqueda.",
+          "activity": "Vas a borrar tu historial de actividad.",
+          "browser": "Vas a borrar tu historial de navegador.",
+          "player": "Vas a borrar tu historial de reproductor."
         }
       },
       "also": {
@@ -293,7 +293,7 @@
         "community": "Esto también eliminará todo los posts de esta comunidad.",
         "account": [
           "Esto también eliminará tus siguientes datos:",
-          "<strong>- archivo\n- recomendaciones\n- playlists\n- favoritos\n- bookmarks\n- listened\n- posts de tu página\n- suscripciones\n- historia</strong>",
+          "<strong>- bibleoteca\n- recomendaciones\n- playlists\n- favoritos\n- bookmarks\n- listened\n- posts de tu página\n- suscripciones\n- historial</strong>",
           "Estos datos permanecerán, pero tu apodo no se mostrará:",
           "<strong>- posts creados\n- comentarios creados\n- conversaciones contigo\n- comunidades creadas</strong>",
           "Y estos datos no cambiarán:",
@@ -397,14 +397,14 @@
     },
     "deleted": {
       "libraryModel": {
-        "artist": "Artista {modelName} se ha eliminado de tu archivo",
-        "album": "Álbume {modelName} se ha eliminado de tu archivo",
-        "track": "Pista {modelName} se ha eliminado de tu archivo"
+        "artist": "Artista {modelName} se ha eliminado de tu bibleoteca",
+        "album": "Álbume {modelName} se ha eliminado de tu bibleoteca",
+        "track": "Pista {modelName} se ha eliminado de tu bibleoteca"
       },
       "playlist": "Playlist {playlistTitle} se ha eliminado",
       "community": "Comunidad {communityTitle} se ha eliminado",
       "account": "Tu cuenta se ha eliminado",
-      "library": "Tu archivo se ha eliminado",
+      "library": "Tu bibleoteca se ha eliminado",
       "history": {
         "search": "Historia de búsqueda se ha eliminado",
         "activity": "Historia de actividades se ha eliminado",
@@ -412,32 +412,32 @@
         "player": "Historia de reproductores se ha eliminado"
       }
     },
-    "copied": "Link is copied to clipboard",
+    "copied": "El enlace se copia en el portapapeles",
     "cleared": {
-      "cache": "Cache has been cleared",
-      "searchHistory": "Historia de búsqueda has been cleared"
+      "cache": "Se ha borrado la caché",
+      "searchHistory": "Se ha borrado la historial de búsqueda"
     },
-    "restartToApply": "The setting has been saved and will be applied on the next application start"
+    "restartToApply": " La configuracion se ha guardado y aplicará en el próximo inicio de la aplicación"
   },
   "counters": {
     "nominative": {
-      "artists": "{count} artist | {count} artists",
-      "albums": "{count} album | {count} albums",
-      "tracks": "{count} track | {count} tracks",
+      "artists": "{count} artista | {count} artistas",
+      "albums": "{count} álbum | {count} álbumes",
+      "tracks": "{count} pista | {count} pistas",
       "videos": "{count} video | {count} videos",
-      "files": "{count} file | {count} files",
-      "plays": "{count} play | {count} plays",
-      "followers": "{count} follower | {count} followers",
-      "following": "{count} following",
-      "members": "{count} member | {count} members",
+      "files": "{count} archivo | {count} archivos",
+      "plays": "{count} reproducción | {count} reproducciónes",
+      "followers": "{count} seguidor | {count} seguidores",
+      "following": "{count} siguiendo",
+      "members": "{count} miembro | {count} miembros",
       "playlists": "{count} playlist | {count} playlists"
     },
     "genitive": {
-      "artists": "{count} artist | {count} artists",
-      "albums": "{count} album | {count} albums",
-      "tracks": "{count} track | {count} tracks",
-      "files": "{count} file | {count} files",
-      "plays": "{count} play | {count} plays",
+      "artists": "{count} artista | {count} artistas",
+      "albums": "{count} álbum | {count} álbumes",
+      "tracks": "{count} pista | {count} pistas",
+      "files": "{count} pista | {count} pistas",
+      "plays": "{count} reproducción | {count} reproducciónes",
       "playlists": "{count} playlist | {count} playlists"
     },
     "accusative": {
