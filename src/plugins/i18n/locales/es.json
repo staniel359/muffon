@@ -378,7 +378,7 @@
     }
   },
   "notifications": {
-    "scrobbled": "Pista {trackFullTitle} ha sido scrobbled",
+    "scrobbled": "Pista {trackFullTitle} ha sido scrobbleado",
     "added": {
       "queue": {
         "track": "Pista {trackFullTitle} ha añadido a la cola",
