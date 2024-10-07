@@ -216,7 +216,7 @@
     }
   },
   "links": {
-    "playlists": "Todos los playlists",
+    "playlists": "Todos las playlists",
     "communities": "Todas las comunidades"
   },
   "inputs": {
@@ -227,41 +227,41 @@
     "delete": {
       "header": {
         "libraryModel": {
-          "artist": "Delete artist from library",
-          "album": "Delete album from library",
-          "track": "Delete track from library"
+          "artist": "Borrar artista del archivo",
+          "album": "Borrar álbum del archivo",
+          "track": "Borrar pista del archivo"
         },
         "recommendationModel": {
-          "artist": "Delete artist from recommendations",
-          "track": "Delete track from recommendations"
+          "artist": "Borrar artista de recomendaciones",
+          "track": "Borrar pista recomendaciones"
         },
-        "playlist": "Delete playlist",
-        "playlistTrack": "Delete track from playlist",
-        "savedTrack": "Delete track from saved tracks",
+        "playlist": "Borrar playlist",
+        "playlistTrack": "Borrar pista de playlist",
+        "savedTrack": "Borrar pista de las pistas guardadas",
         "favorite": {
-          "artist": "Delete artist from favorites",
-          "album": "Delete album from favorites",
-          "track": "Delete track from favorites",
-          "video": "Delete video from favorites"
+          "artist": "Borrar artista de favoritos",
+          "album": "Borrar álbum de favoritos",
+          "track": "Borrar pista de favoritos",
+          "video": "Borrar video de favoritos"
         },
         "bookmark": {
-          "artist": "Delete artist from bookmarks",
-          "album": "Delete album from bookmarks",
-          "track": "Delete track from bookmarks",
-          "video": "Delete video from bookmarks",
-          "videoChannel": "Delete video channel from bookmarks",
-          "videoPlaylist": "Delete video playlist from bookmarks"
+          "artist": "Borrar artista de marcadores",
+          "album": "Borrar álbum de marcadores",
+          "track": "Borrar pista de marcadores",
+          "video": "Borrar video de marcadores",
+          "videoChannel": "Borrar canál de videos de marcadores",
+          "videoPlaylist": "Borrar playlsit de videos de marcadores"
         },
-        "post": "Delete post",
-        "comment": "Delete comment",
-        "community": "Delete community",
-        "account": "Delete account",
-        "library": "Delete library",
+        "post": "Borrar post",
+        "comment": "Borrar comentario",
+        "community": "Borrar comunidad",
+        "account": "Borrar cuenta",
+        "library": "Borrar archivo",
         "history": {
-          "search": "Delete search history",
-          "activity": "Delete activity history",
-          "browser": "Delete browser history",
-          "player": "Delete player history"
+          "search": "Borrar historia de búsqueda",
+          "activity": "Borrar historia de actividad",
+          "browser": "Borrar historia de navegador",
+          "player": "Borrar historia de reproductor"
         }
       },
       "going": {
