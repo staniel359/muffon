@@ -265,32 +265,32 @@
         }
       },
       "going": {
-        "libraryModel": "You are going to delete {modelName} from your library.",
-        "recommendationModel": "You are going to delete {modelName} from your recommendations.",
-        "playlist": "You are going to delete {modelName} from your playlists.",
-        "playlistTrack": "You are going to delete {modelName} from {parentModelName} playlist.",
-        "savedTrack": "You are going to delete {modelName} from your saved tracks.",
-        "favorite": "You are going to delete {modelName} from your favorites.",
-        "bookmark": "You are going to delete {modelName} from your bookmarks.",
-        "post": "You are going to delete this post.",
-        "comment": "You are going to delete this comment.",
-        "community": "You are going to delete this community.",
-        "account": "You are going to delete your account.",
-        "library": "You are going to delete your library.",
+        "libraryModel": "Vas a borrar {modelName} de tu archivo.",
+        "recommendationModel": "Vas a borrar {modelName} de tu recomendaciones.",
+        "playlist": "Vas a borrar {modelName} de tus playlists.",
+        "playlistTrack": "Vas a borrar {modelName} de {parentModelName} playlist.",
+        "savedTrack": "Vas a borrar {modelName} de tus pistas guardadas.",
+        "favorite": "Vas a borrar {modelName} de tus favoritos.",
+        "bookmark": "Vas a borrar {modelName} de tus marcadores.",
+        "post": "Vas a borrar este post.",
+        "comment": "Vas a borrar este comentario.",
+        "community": "Vas a borrar esta comunidad.",
+        "account": "Vas a borrar tu cuenta.",
+        "library": "Vas a borrar tu archivo.",
         "history": {
-          "search": "You are going to delete your search history.",
-          "activity": "You are going to delete your activity history.",
-          "browser": "You are going to delete your browser history.",
-          "player": "You are going to delete your player history."
+          "search": "Vas a borrar tu historia de búsqueda.",
+          "activity": "Vas a borrar tu historia de actividad.",
+          "browser": "Vas a borrar tu historia de navegador.",
+          "player": "Vas a borrar tu historia de reproductor."
         }
       },
       "also": {
         "libraryModel": {
-          "artist": "This will also delete all this artist's albums and tracks.",
-          "album": "This will also delete all this album's tracks."
+          "artist": "Esto también borrará todo los álbumes y pistas de este artista.",
+          "album": "Esto también borrará todo las pistas de este álbum."
         },
-        "playlist": "This will also delete all this playlist's tracks.",
-        "community": "This will also delete all this community's posts.",
+        "playlist": "Esto también borrará todo las pistas de esta playlist.",
+        "community": "Esto también borrará todo los posts de esta comunidad.",
         "account": [
           "This will also delete your following data:",
           "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- your page posts\n- subscriptions\n- history</strong>",
@@ -397,9 +397,9 @@
     },
     "deleted": {
       "libraryModel": {
-        "artist": "Artist {modelName} has been deleted from your library",
-        "album": "Album {modelName} has been deleted from your library",
-        "track": "Track {modelName} has been deleted from your library"
+        "artist": "Artist {modelName} has been deleted de tu library",
+        "album": "Album {modelName} has been deleted de tu library",
+        "track": "Track {modelName} has been deleted de tu library"
       },
       "playlist": "Playlist {playlistTitle} has been deleted",
       "community": "Community {communityTitle} has been deleted",
