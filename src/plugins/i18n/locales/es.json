@@ -286,26 +286,26 @@
       },
       "also": {
         "libraryModel": {
-          "artist": "Esto también borrará todo los álbumes y pistas de este artista.",
-          "album": "Esto también borrará todo las pistas de este álbum."
+          "artist": "Esto también eliminará todo los álbumes y pistas de este artista.",
+          "album": "Esto también eliminará todo las pistas de este álbum."
         },
-        "playlist": "Esto también borrará todo las pistas de esta playlist.",
-        "community": "Esto también borrará todo los posts de esta comunidad.",
+        "playlist": "Esto también eliminará todo las pistas de esta playlist.",
+        "community": "Esto también eliminará todo los posts de esta comunidad.",
         "account": [
-          "This will also delete your following data:",
-          "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- your page posts\n- subscriptions\n- history</strong>",
-          "This data will remain, but your nickname won't be displayed:",
-          "<strong>- created posts\n- created comments\n- conversations with you\n- created communities</strong>",
-          "And this data will remain unchanged:",
-          "<strong>- saved tracks\n- background images\n- settings</strong>"
+          "Esto también eliminará tus siguientes datos:",
+          "<strong>- archivo\n- recomendaciones\n- playlists\n- favoritos\n- bookmarks\n- listened\n- posts de tu página\n- suscripciones\n- historia</strong>",
+          "Estos datos permanecerán, pero tu apodo no se mostrará:",
+          "<strong>- posts creados\n- comentarios creados\n- conversaciones contigo\n- comunidades creadas</strong>",
+          "Y estos datos no cambiarán:",
+          "<strong>- pistas guardadas\n- imágenes de fondo\n- configuraciones</strong>"
         ],
         "library": [
-          "This will delete your following data:",
-          "<strong>- artists\n- albums\n- tracks\n- recommendations</strong>"
+          "Esto elminará tus siguientes datos:",
+          "<strong>- artistas\n- álbumes\n- pistas\n- recomendaciones</strong>"
         ]
       },
-      "undo": "You can't undo this action!",
-      "sure": "Are you sure?"
+      "undo": "¡No puedes deshacer esta acción!",
+      "sure": "¿Estás seguro?"
     }
   },
   "forms": {
