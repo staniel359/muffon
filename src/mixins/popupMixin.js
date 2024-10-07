@@ -33,6 +33,11 @@ export default {
       this.initialize()
     }
   },
+  activated () {
+    if (!this.isLazy) {
+      this.initialize()
+    }
+  },
   methods: {
     handleIsDarkModeChange () {
       this.initialize()
