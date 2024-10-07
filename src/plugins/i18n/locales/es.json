@@ -131,97 +131,97 @@
     }
   },
   "actions": {
-    "login": "Log in",
-    "logout": "Log out",
-    "signup": "Sign up",
-    "add": "Add",
-    "create": "Create",
-    "edit": "Edit",
-    "save": "Save",
-    "cancel": "Cancel",
-    "delete": "Delete",
-    "clear": "Clear",
-    "retry": "Retry",
-    "post": "Post",
-    "send": "Send",
-    "next": "Next",
-    "upload": "Upload",
-    "back": "Go back",
-    "sendCode": "Send code",
-    "share": "Share",
-    "search": "Search",
-    "filter": "Filter",
-    "confirm": "Confirm",
-    "import": "Import",
-    "close": "Close",
-    "openLink": "Open link",
-    "play": "Play",
-    "shuffle": "Shuffle",
-    "loop": "Loop",
+    "login": "Incia sesión",
+    "logout": "Cerra sesión",
+    "signup": "Regítrate",
+    "add": "Añadir",
+    "create": "Crear",
+    "edit": "Editar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Borrar",
+    "clear": "Despejar",
+    "retry": "Reintentar",
+    "post": "Publicar",
+    "send": "Enviar",
+    "next": "Próximo",
+    "upload": "Subir",
+    "back": "Regressar",
+    "sendCode": "Enviar código",
+    "share": "Compartir",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "confirm": "Confirmar",
+    "import": "Importar",
+    "close": "Cerrar",
+    "openLink": "Abrir enlace",
+    "play": "Reproducir",
+    "shuffle": "Barajar",
+    "loop": "Repetir",
     "addFrom": {
-      "search": "From search",
-      "library": "From library"
+      "search": "De la búsqueda",
+      "library": "Del archivo"
     },
     "importFrom": {
-      "drive": "From drive",
-      "account": "From account"
+      "drive": "de la unidad del disco",
+      "account": "de la cuenta"
     },
     "searchIn": {
-      "source": "Search in source",
-      "sources": "Search in sources"
+      "source": "Buscar en la fuente",
+      "sources": "Buscar en las fuentes"
     },
     "searchFor": {
-      "video": "Search for video",
-      "lyrics": "Search for lyrics"
+      "video": "Buscar el video",
+      "lyrics": "Buscar las letras"
     },
     "importFromAccount": {
-      "lastfm": "Import from Last.FM",
-      "spotify": "Import from Spotify"
+      "lastfm": "Importir de Last.FM",
+      "spotify": "Importir de Spotify"
     },
     "selectModel": {
-      "folder": "Select folder"
+      "folder": "Seleccionar una carpeta"
     },
     "createModel": {
-      "playlist": "Create playlist",
-      "community": "Create community",
-      "post": "Create post"
+      "playlist": "Crear playlist",
+      "community": "Crear comunidad",
+      "post": "Crear post"
     },
     "addModel": {
-      "comment": "Add comment"
+      "comment": "Añadir comentario"
     },
     "addTo": {
-      "library": "Add to library",
-      "playlist": "Add to playlist",
-      "favorites": "Add to favorites",
-      "bookmarks": "Add to bookmarks",
-      "listened": "Add to listened",
-      "watched": "Add to watched",
-      "queue": "Add to queue",
-      "savedTracks": "Add to saved tracks"
+      "library": "Añadir a archivo",
+      "playlist": "Añadir a playlist",
+      "favorites": "Añadir a favoritos",
+      "bookmarks": "Añadir a marcadores",
+      "listened": "Añadir a escuchados",
+      "watched": "Añadir a vistos",
+      "queue": "Añadir a cola",
+      "savedTracks": "Añadir a pistas guardadas"
     },
     "show": {
-      "library": "Show in library",
-      "page": "Show page"
+      "library": "Mostar en archivo",
+      "page": "Mostrar página"
     },
     "deleteFrom": {
-      "favorites": "Delete from favorites",
-      "bookmarks": "Delete from bookmarks",
-      "listened": "Delete from listened",
-      "watched": "Delete from watched"
+      "favorites": "Borrar de favoritos",
+      "bookmarks": "Borrar de marcadores",
+      "listened": "Borrar de escuchados",
+      "watched": "Borrar de vistos"
     },
     "externalLink": {
-      "open": "Open external link",
+      "open": "Abrir enlace exterior",
       "original": "Original",
       "streaming": "Streaming"
     }
   },
   "links": {
-    "playlists": "All playlists",
-    "communities": "All communities"
+    "playlists": "Todos los playlists",
+    "communities": "Todas las comunidades"
   },
   "inputs": {
-    "search": "Search...",
-    "content": "Write something..."
+    "search": "Busca...",
+    "content": "Escribe algo..."
   },
   "modals": {
     "delete": {
