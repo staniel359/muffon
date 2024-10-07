@@ -441,50 +441,50 @@
       "playlists": "{count} playlist | {count} playlists"
     },
     "accusative": {
-      "artists": "{count} artist | {count} artists",
-      "albums": "{count} album | {count} albums",
-      "tracks": "{count} track | {count} tracks",
-      "files": "{count} file | {count} files",
+      "artists": "{count} artista | {count} artistas",
+      "albums": "{count} álbum | {count} álbumes",
+      "tracks": "{count} pista | {count} pistas",
+      "files": "{count} archivo | {count} archivos",
       "playlists": "{count} playlist | {count} playlists"
     }
   },
   "select": {
-    "source": "Select source:",
-    "type": "Select type:",
-    "album": "Select album:",
-    "group": "Select album group:",
-    "artist": "Select artist:",
-    "track": "Select track:",
-    "country": "Select country:",
-    "video": "Select video:",
-    "lyrics": "Select lyrics:"
+    "source": "Seleccionar origen:",
+    "type": "Seleccionar tipo:",
+    "album": "Seleccionar álbum:",
+    "group": "Seleccionar grupo de álbum:",
+    "artist": "Seleccionar artista:",
+    "track": "Seleccionar pista:",
+    "country": "Seleccionar país:",
+    "video": "Seleccionar video:",
+    "lyrics": "Seleccionar letras:"
   },
   "sources": {
     "audio": "Audio",
-    "other": "Other",
+    "other": "Otro",
     "albumTypes": {
-      "album": "Album",
-      "group": "Album group",
-      "track": "Track"
+      "album": "Álbum",
+      "group": "Grupo de álbum",
+      "track": "Pista"
     },
     "albumsTypes": {
-      "album": "Albums",
-      "single": "Singles",
+      "album": "Álbumes",
+      "single": "Sencillos",
       "ep": "EPs",
-      "singleEp": "Singles / EPs",
+      "singleEp": "Sencillos / EPs",
       "compilation": "Compilations",
       "video": "Videos",
-      "misc": "Miscellaneous",
-      "appearance": "Appearances",
-      "live": "Live"
+      "misc": "Misceláneo",
+      "appearance": "Apariciónes",
+      "live": "En vivo"
     },
     "videoTypes": {
       "video": "Video",
-      "track": "Track"
+      "track": "Pista"
     }
   },
   "player": {
-    "variants": "Variants ({count})",
+    "variants": "Variantes ({count})",
     "audio": {
       "bitrate": "{value} kbit/s",
       "equalizer": {
@@ -497,101 +497,101 @@
   "settings": {
     "tabs": {
       "app": "App",
-      "profile": "Profile",
-      "connections": "Connections"
+      "profile": "Perfil",
+      "connections": "Conexiónes"
     },
     "sections": {
-      "interface": "Interface",
-      "theme": "Theme",
-      "window": "Window",
-      "tabs": "Tabs",
-      "sidebar": "Sidebar",
+      "interface": "Interfaz",
+      "theme": "Tema",
+      "window": "Ventana",
+      "tabs": "Pestañas",
+      "sidebar": "Barra lateral",
       "video": "Video",
-      "data": "Data",
-      "info": "Info",
-      "account": "Account",
-      "system": "System",
-      "updates": "Updates"
+      "data": "Datos",
+      "info": "Información",
+      "account": "Cuenta",
+      "system": "Systema",
+      "updates": "Actualizaciones"
     },
     "options": {
       "app": {
         "interface": {
-          "language": "Language",
-          "timezone": "Time zone",
-          "infiniteScroll": "Infinite scroll",
-          "artistPopup": "Show artist info on link hover",
-          "innerCounters": "Show muffon listeners counters",
-          "cachePages": "Cache pages",
-          "scale": "Scale"
+          "language": "Idioma",
+          "timezone": "Zona de tiempo",
+          "infiniteScroll": "Desplazamiento inifinito",
+          "artistPopup": "Mostrar información de artisto al pasar el cursor por el enlace",
+          "innerCounters": "Mostrar el número de escuchadores de muffon",
+          "cachePages": "Páginas de caché",
+          "scale": "Escala"
         },
         "theme": {
-          "dark": "Dark mode",
-          "system": "System theme",
-          "background": "Background",
-          "transparency": "Transparency"
+          "dark": "Modo oscuro",
+          "system": "Tema de systema",
+          "background": "Fondo",
+          "transparency": "Transparencia"
         },
         "window": {
-          "maximize": "Maximize on start",
-          "quit": "Quit on close",
-          "showTrayIcon": "Show tray icon"
+          "maximize": "Maximizar al inicio",
+          "quit": "Salir al cerrar",
+          "showTrayIcon": "Mostrar icono de bandeja"
         },
         "tabs": {
-          "newTabSwitch": "Switch to new tab",
-          "closeOnQuit": "Close tabs on quit"
+          "newTabSwitch": "Cambiar a nueva pestaña",
+          "closeOnQuit": "Cerrar pestañas al salir"
         },
         "search": {
-          "source": "Source",
-          "scope": "Scope",
-          "resultsFullSize": "Show results in full size"
+          "source": "Origen",
+          "scope": "Alcance",
+          "resultsFullSize": "Mostrar resultas en tomaño completo"
         },
         "player": {
-          "audioSources": "Audio sources (by priority)",
-          "bitrate": "Show audio bitrate",
-          "album": "Show album",
-          "equalizer": "Show equalizer",
-          "focusPlaying": "Focus on current track",
-          "pauseOnVideoPlay": "Pause on video play"
+          "audioSources": "Origenes de audio (por prioridad)",
+          "bitrate": "Mostrar velocidad de bits de audio",
+          "album": "Mostrar álbum",
+          "equalizer": "Mostrar ecualizador",
+          "focusPlaying": "Enfocar en pista actual",
+          "pauseOnVideoPlay": "Pausa en la reproducción de video"
         },
         "queue": {
-          "autoplay": "Autoplay",
-          "clear": "Clear on player close"
+          "autoplay": "Reproducción automática",
+          "clear": "Borrar reproductor al cerrar"
         },
         "video": {
           "autoplay": "Autoplay",
-          "pauseOnAudioPlay": "Pause on audio play",
-          "openLinksInNewTab": "Open links in new tab"
+          "pauseOnAudioPlay": "Pausa en la reproducción de audio",
+          "openLinksInNewTab": "Abrir los enlaces en nueva pestaña"
         },
         "recommendations": {
-          "hideLibraryArtists": "Hide library artists",
-          "tracksCount": "with tracks count",
-          "hideListenedArtists": "Hide listened artists",
-          "hideLibraryTracks": "Hide library tracks",
-          "hideListenedTracks": "Hide listened tracks"
+          "hideLibraryArtists": "Esconder artistas de bibleoteca",
+          "tracksCount": "con conteo de pistas",
+          "hideListenedArtists": "Esconder artistas escuchados",
+          "hideLibraryTracks": "Esconder pistas de bibleoteca",
+          "hideListenedTracks": "Esconder pistas escuchadas"
         },
         "top": {
-          "country": "Default country"
+          "country": "País predeterminado"
         },
         "lyrics": {
-          "annotations": "Show annotations"
+          "annotations": "Mostrar anotaciónes"
         },
         "history": {
           "search": {
-            "delete": "Delete search history"
+            "delete": "Eliminar historial de búsqueda"
           },
           "activity": {
-            "delete": "Delete activity history"
+            "delete": "Eliminar historial de actividades"
           },
           "player": {
-            "delete": "Delete player history"
+            "delete": "Elminar historial de reproductor"
           },
           "browser": {
-            "delete": "Delete browser history"
+            "delete": "Elimnar historial de navegador"
           }
         },
         "system": {
           "cache": {
-            "enable": "Enable cache",
-            "clear": "Clear cache"
+            "enable": "Activar caché",
+            "clear": "Borrar caché"
           }
         },
         "updates": {
