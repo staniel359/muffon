@@ -98,36 +98,36 @@
   },
   "errors": {
     "badRequest": {
-      "header": "Bad request",
-      "content": "Please make a request with valid data"
+      "header": "Solicitud errónea",
+      "content": "Por favor, haga una solicitud con datos válidos."
     },
     "forbidden": {
-      "header": "Forbidden",
-      "content": "You don't have rights to perform this action"
+      "header": "Prohibido",
+      "content": "Usted no tiene los derechos para realizar esta acción."
     },
     "notFound": {
-      "header": "Nothing has been found",
-      "content": "Please try looking for something else"
+      "header": "No se ha encontrado nada",
+      "content": "Por favor, intenta buscar otra cosa."
     },
     "internalServer": {
-      "header": "Internal server error",
-      "content": "Please contact us for information"
+      "header": "Error interno del servidor",
+      "content": "Por favor, contáctanos para información."
     },
     "badGateway": {
-      "header": "Remote server error",
-      "content": "Please try again in a moment"
+      "header": "Error del servidor remoto",
+      "content": "Por favor, inténtelo de nuevo en un momento."
     },
     "gatewayTimeout": {
-      "header": "Remote server timeout",
-      "content": "Please try again in a moment"
+      "header": "Desconexión por tiempo del servidor remoto",
+      "content": "Por favor, inténtelo de nuevo en un momento."
     },
     "connection": {
-      "header": "Connection lost",
-      "content": "Please try again in a moment"
+      "header": "Conexión perdida",
+      "content": "Por favor, inténtelo de nuevo en un momento."
     },
     "client": {
-      "header": "Client error",
-      "content": "Please contact us for information"
+      "header": "Error del cliente",
+      "content": "Por favor, contáctanos para información."
     }
   },
   "actions": {
