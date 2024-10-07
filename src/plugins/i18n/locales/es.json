@@ -310,49 +310,49 @@
   },
   "forms": {
     "fields": {
-      "email": "Email",
-      "password": "Password",
-      "passwordConfirmation": "Password confirmation",
-      "passwordResetCode": "Password reset code",
-      "nickname": "Nickname",
-      "title": "Title",
-      "description": "Description",
-      "gender": "Gender",
-      "birthdate": "Birth date",
-      "country": "Country",
-      "city": "City",
-      "status": "Status",
-      "clientId": "Client ID",
-      "clientSecret": "Client secret",
+      "email": "Correo electrónico",
+      "password": "Constraseña",
+      "passwordConfirmation": "Confirmación de constraseña",
+      "passwordResetCode": "Código de restablecimiento de constraseña",
+      "nickname": "Apodo",
+      "title": "Título",
+      "description": "Descripción",
+      "gender": "Género",
+      "birthdate": "Cumpleaños",
+      "country": "País",
+      "city": "Ciudad",
+      "status": "Estado",
+      "clientId": "Identificación de cliente",
+      "clientSecret": "Secreto de cliente",
       "genders": {
-        "male": "Male",
-        "female": "Female",
-        "other": "Other"
+        "male": "Masculino",
+        "female": "Feminina",
+        "other": "Otra"
       },
       "legal": {
-        "header": "I agree to the {privacyPolicy} and the {termsAndConditions}",
-        "privacyPolicy": "Privacy Policy",
-        "termsAndConditions": "Terms And Conditions"
+        "header": "Estoy de acuerdo con la {privacyPolicy} y los {termsAndConditions}",
+        "privacyPolicy": "Política de Privacidad",
+        "termsAndConditions": "Términos y Condiciones"
       },
-      "remember": "Remember me",
-      "asCommunity": "As community"
+      "remember": "Recuérdame",
+      "asCommunity": "Como comunidad"
     },
-    "extra": "Additional info",
+    "extra": "Más información",
     "errors": {
-      "notFound": "Profile is not found",
+      "notFound": "Perfil no encontrado",
       "empty": {
-        "email": "Email is empty",
-        "password": "Password is empty",
-        "passwordConfirmation": "Password confirmation is empty",
-        "passwordResetCode": "Password reset code is empty",
-        "nickname": "Nickname is empty",
-        "title": "Title is empty",
-        "clientId": "Client ID is empty",
-        "clientSecret": "Client secret is empty",
-        "legal": "You must agree to the Privacy Policy and the Terms And Conditions"
+        "email": "Correo electrónico está vacío",
+        "password": "Constraseña está vacío",
+        "passwordConfirmation": "Confirmación de constraseña está vacío",
+        "passwordResetCode": "Password reset code está vacío",
+        "nickname": "Apodo está vacío",
+        "title": "Título está vacío",
+        "clientId": "Cliente ID está vacío",
+        "clientSecret": "Secreto de cliente está vacío",
+        "legal": "Debe aceptar la Política de Privacidad y los Términos y Condiciones"
       },
       "invalid": {
-        "email": "Email is invalid"
+        "email": "Correo electrónico no es válido"
       },
       "taken": {
         "email": "Email is taken",
