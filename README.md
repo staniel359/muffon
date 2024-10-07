@@ -78,6 +78,8 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - עברית ([@EthanPZ1](https://github.com/EthanPZ1))
 - Italiano ([@ZinRicky](https://github.com/ZinRicky), [@filipporomani](https://github.com/filipporomani))
 - 日本語 ([@xyloflake](https://github.com/xyloflake))
+- 한국어 ([@DDinghoya](https://github.com/DDinghoya))
+- Polski ([@Lukas-KK](https://github.com/Lukas-KK))
 - Русский ([@staniel359](https://github.com/staniel359))
 
 ### Technical stack
@@ -93,7 +95,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Download
 
-[Latest (v2.0.3)](https://github.com/staniel359/muffon/releases/latest)
+[Latest (v2.1.0)](https://github.com/staniel359/muffon/releases/latest)
 
 ## Star History
 
