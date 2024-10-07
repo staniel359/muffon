@@ -57,7 +57,7 @@
     "communities": "Comunidades",
     "history": "Historia",
     "historyCollection": {
-      "activity": "Historia de actividad",
+      "activity": "Historia de actividades",
       "player": "Historia de reproductor",
       "browser": "Historia de navegador"
     },
@@ -339,83 +339,83 @@
     },
     "extra": "Más información",
     "errors": {
-      "notFound": "Perfil no encontrado",
+      "notFound": "El perfil no encontrado",
       "empty": {
-        "email": "Correo electrónico está vacío",
-        "password": "Constraseña está vacío",
-        "passwordConfirmation": "Confirmación de constraseña está vacío",
-        "passwordResetCode": "Password reset code está vacío",
-        "nickname": "Apodo está vacío",
-        "title": "Título está vacío",
-        "clientId": "Cliente ID está vacío",
-        "clientSecret": "Secreto de cliente está vacío",
+        "email": "El correo electrónico está vacío",
+        "password": "La constraseña está vacío",
+        "passwordConfirmation": "La confirmación de constraseña está vacío",
+        "passwordResetCode": "El código de restablecimiento de constraseña está vacío",
+        "nickname": "El apodo está vacío",
+        "title": "El título está vacío",
+        "clientId": "El cliente ID está vacío",
+        "clientSecret": "El secreto de cliente está vacío",
         "legal": "Debe aceptar la Política de Privacidad y los Términos y Condiciones"
       },
       "invalid": {
-        "email": "Correo electrónico no es válido"
+        "email": "El correo electrónico no es válido"
       },
       "taken": {
-        "email": "Email is taken",
-        "nickname": "Nickname is taken",
-        "title": "Title is taken"
+        "email": "El correo electrónico está tomado",
+        "nickname": "El apado está tomado",
+        "title": "El título está tomado"
       },
       "tooShort": {
-        "password": "Password is too short"
+        "password": "La constraseña está desmasiada corta"
       },
       "tooLong": {
-        "nickname": "Nickname is too long"
+        "nickname": "El apado está demasiado largo"
       },
       "confirmation": {
-        "passwordConfirmation": "Password and its confirmation don't match"
+        "passwordConfirmation": "La constraseña y su confirmación no coinciden"
       },
       "wrong": {
-        "password": "Wrong password",
-        "passwordResetCode": "Wrong password reset code"
+        "password": "Constraseña incorrecta",
+        "passwordResetCode": "Código incorrecto de restablecimiento de constraseña"
       }
     },
     "confirm": {
-      "password": "Please confirm your password:"
+      "password": "Por favor, confirma tu constraseña:"
     }
   },
   "notifications": {
-    "scrobbled": "Track {trackFullTitle} has been scrobbled",
+    "scrobbled": "Pista {trackFullTitle} ha sido scrobbled",
     "added": {
       "queue": {
-        "track": "Track {trackFullTitle} has been added to queue",
-        "tracks": "{counter} has been added to queue | {counter} have been added to queue"
+        "track": "Pista {trackFullTitle} ha añadido a la cola",
+        "tracks": "{counter} ha añadido a la cola | {counter} han añadido a la cola"
       },
       "savedTracks": {
-        "track": "Track {trackFullTitle} has been added to saved tracks"
+        "track": "Pista {trackFullTitle} ha añadido a las pistas guardadas"
       }
     },
     "updated": {
-      "profile": "Profile has been updated",
-      "post": "Post has been updated",
-      "comment": "Comment has been updated",
-      "playlist": "Playlist {playlistTitle} has been updated",
-      "community": "Community {communityTitle} has been updated"
+      "profile": "Perfil se ha actualizado",
+      "post": "Post se ha actualizado",
+      "comment": "Comentario se ha actualizado",
+      "playlist": "Playlist {playlistTitle} se ha actualizado",
+      "community": "Comunidad {communityTitle} se ha actualizado"
     },
     "deleted": {
       "libraryModel": {
-        "artist": "Artist {modelName} has been deleted de tu library",
-        "album": "Album {modelName} has been deleted de tu library",
-        "track": "Track {modelName} has been deleted de tu library"
+        "artist": "Artista {modelName} se ha eliminado de tu archivo",
+        "album": "Álbume {modelName} se ha eliminado de tu archivo",
+        "track": "Pista {modelName} se ha eliminado de tu archivo"
       },
-      "playlist": "Playlist {playlistTitle} has been deleted",
-      "community": "Community {communityTitle} has been deleted",
-      "account": "Your account has been deleted",
-      "library": "Your library has been deleted",
+      "playlist": "Playlist {playlistTitle} se ha eliminado",
+      "community": "Comunidad {communityTitle} se ha eliminado",
+      "account": "Tu cuenta se ha eliminado",
+      "library": "Tu archivo se ha eliminado",
       "history": {
-        "search": "Search history has been deleted",
-        "activity": "Activity history has been deleted",
-        "browser": "Browser history has been deleted",
-        "player": "Player history has been deleted"
+        "search": "Historia de búsqueda se ha eliminado",
+        "activity": "Historia de actividades se ha eliminado",
+        "browser": "Historia de navegadores se ha eliminado",
+        "player": "Historia de reproductores se ha eliminado"
       }
     },
     "copied": "Link is copied to clipboard",
     "cleared": {
       "cache": "Cache has been cleared",
-      "searchHistory": "Search history has been cleared"
+      "searchHistory": "Historia de búsqueda has been cleared"
     },
     "restartToApply": "The setting has been saved and will be applied on the next application start"
   },
@@ -662,7 +662,7 @@
       "sent": "Password reset code has been sent to your email"
     },
     "updated": {
-      "header": "Your password has been updated",
+      "header": "Your password se ha actualizado",
       "content": "Now you may go back and login"
     }
   },
@@ -779,16 +779,16 @@
     "content": "Looks like there is nothing here"
   },
   "deleted": {
-    "artist": "Artist has been deleted",
-    "album": "Album has been deleted",
-    "track": "Track has been deleted",
-    "recommendation": "Recommendation has been deleted",
-    "playlist": "Playlist has been deleted",
-    "post": "Post has been deleted",
-    "comment": "Comment has been deleted",
-    "video": "Video has been deleted",
-    "videoChannel": "Video channel has been deleted",
-    "videoPlaylist": "Video playlist has been deleted"
+    "artist": "Artist se ha eliminado",
+    "album": "Album se ha eliminado",
+    "track": "Track se ha eliminado",
+    "recommendation": "Recommendation se ha eliminado",
+    "playlist": "Playlist se ha eliminado",
+    "post": "Post se ha eliminado",
+    "comment": "Comment se ha eliminado",
+    "video": "Video se ha eliminado",
+    "videoChannel": "Video channel se ha eliminado",
+    "videoPlaylist": "Video playlist se ha eliminado"
   },
   "messages": {
     "welcome": "Welcome, {profileNickname}"
