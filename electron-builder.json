@@ -42,8 +42,8 @@
     "deleteAppDataOnUninstall": true,
     "oneClick": false,
     "perMachine": true,
-    "installerSidebar": "build/installerSidebar.bmp",
-    "uninstallerSidebar": "build/installerSidebar.bmp"
+    "installerSidebar": "./build/installerSidebar.bmp",
+    "uninstallerSidebar": "./build/installerSidebar.bmp"
   },
   "flatpak": {
     "runtimeVersion": "23.08",
