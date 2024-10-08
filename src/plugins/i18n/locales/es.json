@@ -749,67 +749,67 @@
   },
   "noCollection": {
     "header": {
-      "artists": "No artists",
-      "albums": "No albums",
-      "groups": "No album groups",
-      "tracks": "No tracks",
-      "similar": "No similar",
-      "tags": "No tags",
-      "posts": "No posts",
-      "feed": "No posts",
-      "conversations": "No conversations",
-      "messages": "No messages",
-      "followers": "No followers",
-      "following": "No following",
-      "recommendations": "No recommendations",
-      "playlists": "No playlists",
-      "communities": "No communities",
-      "members": "No members",
-      "videos": "No videos",
-      "videoChannels": "No video channels",
-      "videoMixes": "No video mixes",
-      "videoPlaylists": "No video playlists",
-      "related": "No related",
-      "listeners": "No listeners",
-      "images": "No images",
-      "events": "No events",
-      "profiles": "No profiles",
-      "shows": "No shows"
+      "artists": "Ningún artista",
+      "albums": "Ningún álbum",
+      "groups": "Ningún grupo de álbumes",
+      "tracks": "Ningúna pista",
+      "similar": "Ningún similar",
+      "tags": "Ningúna etiqueta",
+      "posts": "Ningúna publicacion",
+      "feed": "Ningún feed",
+      "conversations": "Ningún conversación",
+      "messages": "Ningún mensaje",
+      "followers": "Ningún seguidor",
+      "following": "Ningún siguiendo",
+      "recommendations": "Ningún recomendación",
+      "playlists": "Ningúna playlist",
+      "communities": "Ningúna comunidad",
+      "members": "Ningún miembro",
+      "videos": "Ningún video",
+      "videoChannels": "Ningún canal de videos",
+      "videoMixes": "Ningún mezcla de videos",
+      "videoPlaylists": "Ningún playlist de video",
+      "related": "Ningún relacionado",
+      "listeners": "Ningún escuchador",
+      "images": "Ningún imagen",
+      "events": "Ningún evento",
+      "profiles": "Ningún perfil",
+      "shows": "Ningún concierto"
     },
-    "content": "Looks like there is nothing here"
+    "content": " Parace que no hay nada aquí"
   },
   "deleted": {
-    "artist": "Artist se ha eliminado",
-    "album": "Album se ha eliminado",
-    "track": "Track se ha eliminado",
-    "recommendation": "Recommendation se ha eliminado",
-    "playlist": "Playlist se ha eliminado",
-    "post": "Post se ha eliminado",
-    "comment": "Comment se ha eliminado",
-    "video": "Video se ha eliminado",
-    "videoChannel": "Video channel se ha eliminado",
-    "videoPlaylist": "Video playlist se ha eliminado"
+    "artist": "El artista se ha eliminado",
+    "album": "el álbum se ha eliminado",
+    "track": "La pista se ha eliminado",
+    "recommendation": "La recomendación se ha eliminado",
+    "playlist": "La playlist se ha eliminado",
+    "post": "La publicación se ha eliminado",
+    "comment": "El comentario se ha eliminado",
+    "video": "El video se ha eliminado",
+    "videoChannel": "El canal de videos se ha eliminado",
+    "videoPlaylist": "La playlist de videos se ha eliminado"
   },
   "messages": {
-    "welcome": "Welcome, {profileNickname}"
+    "welcome": "Bienvenidos, {profileNickname}"
   },
   "profile": {
-    "wasOnline": "Was online"
+    "wasOnline": "Estaba en línea"
   },
   "feed": {
-    "global": "Global feed"
+    "global": "Feed global"
   },
   "about": {
-    "license": "{license} license",
-    "homepage": "Home page",
-    "contact": "Contact"
+    "license": "{license} licencia",
+    "homepage": "Página principal",
+    "contact": "Contacto"
   },
   "private": {
-    "playlist": "Private",
-    "profile": "Private"
+    "playlist": "Privada",
+    "profile": "Privada"
   },
   "donate": {
-    "header": "Donate",
+    "header": "Donar",
     "content": [
       "muffon is a non-profit project that has nor ads, neither any paid features or content.",
       "But, of course, it cannot exist without funds, that are needed for its development and infrastructure.",
@@ -818,115 +818,115 @@
       "<strong>Would you like to make a donation?</strong>"
     ],
     "actions": {
-      "decline": "No, thanks",
-      "later": "Maybe later",
-      "accept": "Yeah, sure"
+      "decline": "No, no gracias",
+      "later": "Quizas luego",
+      "accept": "Sí, claro"
     }
   },
   "lists": {
-    "simple": "Simple list",
-    "table": "Table",
-    "extended": "Detailed list"
+    "simple": "Lista simple",
+    "table": "Tabla",
+    "extended": "Lista detallada"
   },
   "orders": {
-    "createdDesc": "Newest",
-    "createdAsc": "Oldest",
-    "updatedDesc": "Most recently updated",
-    "updatedAsc": "Least recently updated",
-    "artistsCountDesc": "Most artists",
-    "artistsCountAsc": "Least artists",
-    "albumsCountDesc": "Most albums",
-    "albumsCountAsc": "Least albums",
-    "tracksCountDesc": "Most tracks",
-    "tracksCountAsc": "Least tracks",
-    "followersCountDesc": "Most followers",
-    "followersCountAsc": "Least followers",
-    "joinedDesc": "Most recently joined",
-    "joinedAsc": "Least recently joined",
-    "membersCountDesc": "Most members",
-    "membersCountAsc": "Least members"
+    "createdDesc": "Más nuevo",
+    "createdAsc": "Más viejo",
+    "updatedDesc": "Actualizado más recientemente",
+    "updatedAsc": "Actualizado menos recientement",
+    "artistsCountDesc": "La mayoría de los artistas",
+    "artistsCountAsc": "Lo menos de los artistas",
+    "albumsCountDesc": "La mayoría de los álbumes",
+    "albumsCountAsc": "Lo menos de álbumes",
+    "tracksCountDesc": "La mayoría de las pistas",
+    "tracksCountAsc": "Lo menos de las pistas",
+    "followersCountDesc": "La mayoría de los seguidores",
+    "followersCountAsc": "Lo menos de los seguidores",
+    "joinedDesc": "Se unió más recimiente",
+    "joinedAsc": "Se unió menos recimiente",
+    "membersCountDesc": "La mayoría de los miembros",
+    "membersCountAsc": "Lo menos de los miembros"
   },
   "deletedModel": {
-    "profile": "Deleted profile"
+    "profile": "Perfil eliminado"
   },
   "events": {
     "created": {
-      "profile": "Profile is created",
-      "bookmarkAlbum": "Album {modelName} is added to bookmarks",
-      "bookmarkArtist": "Artist {modelName} is added to bookmarks",
-      "bookmarkTrack": "Track {modelName} is added to bookmarks",
-      "bookmarkVideo": "Video {modelName} is added to bookmarks",
-      "bookmarkVideoChannel": "Video channel {modelName} is added to bookmarks",
-      "bookmarkVideoPlaylist": "Video playlist {modelName} is added to bookmarks",
-      "favoriteAlbum": "Album {modelName} is added to favorites",
-      "favoriteArtist": "Artist {modelName} is added to favorites",
-      "favoriteTrack": "Track {modelName} is added to favorites",
-      "favoriteVideo": "Video {modelName} is added to favorites",
-      "libraryAlbum": "Album {modelName} is added to library",
-      "libraryArtist": "Artist {modelName} is added to library",
-      "libraryTrack": "Track {modelName} is added to library",
-      "listenedAlbum": "Album {modelName} is added to listened",
-      "listenedArtist": "Artist {modelName} is added to listened",
-      "listenedTrack": "Track {modelName} is added to listened",
-      "watchedVideo": "Video {modelName} is added to watched",
-      "playlistTrack": "Track {modelName} is added to playlist {playlistTitle}",
-      "community": "Community {modelName} is created",
-      "relationship": "You followed {modelName}",
-      "post": "Post {modelName} is created",
-      "postComment": "Comment {modelName} is created",
-      "playlist": "Playlist {modelName} is created",
-      "conversation": "You started conversation with {modelName}",
-      "membership": "You joined community {modelName}"
+      "profile": "Perfil está creado",
+      "bookmarkAlbum": "Álbum {modelName} se añade a los marcadores",
+      "bookmarkArtist": "Artista {modelName} se añade a los marcadores",
+      "bookmarkTrack": "Pista {modelName} se añade a los marcadores",
+      "bookmarkVideo": "Video {modelName} se añade a los marcadores",
+      "bookmarkVideoChannel": "Canal de videos {modelName} se añade a los marcadores",
+      "bookmarkVideoPlaylist": "Playlist de videos {modelName} se añade a los marcadores",
+      "favoriteAlbum": "Álbum {modelName} se añade a los favoritos",
+      "favoriteArtist": "Artista {modelName} se añade a los favoritos",
+      "favoriteTrack": "Pista {modelName} se añade a los favoritos",
+      "favoriteVideo": "Video {modelName} se añade a los favoritos",
+      "libraryAlbum": "Álbum {modelName} se añade a la bibleoteca",
+      "libraryArtist": "Artista {modelName} se añade a la bibleoteca",
+      "libraryTrack": "Pista {modelName} se añade a la bibleoteca",
+      "listenedAlbum": "Álbum {modelName} se añade al escuchado",
+      "listenedArtist": "Artista {modelName} se añade al escuchado",
+      "listenedTrack": "Pista {modelName} se añade al escuchado",
+      "watchedVideo": "Video {modelName} se añade al visto",
+      "playlistTrack": "Pista {modelName} se añade a  playlist {playlistTitle}",
+      "community": "Comunidad {modelName} está creado",
+      "relationship": "Seguiste {modelName}",
+      "post": "Publicación {modelName} está creado",
+      "postComment": "Comentario {modelName} está creado",
+      "playlist": "Playlist {modelName} está creado",
+      "conversation": "Iniciaste una conversación con {modelName}",
+      "membership": "Uniste comunidad {modelName}"
     },
     "updated": {
-      "profile": "Profile is updated",
-      "community": "Community {modelName} is updated",
-      "post": "Post {modelName} is updated",
-      "postComment": "Comment {modelName} is updated",
-      "playlist": "Playlist {modelName} is updated"
+      "profile": "Perfil actualizado",
+      "community": "Comunidad {modelName} está actualizado",
+      "post": "Publicación {modelName} está actualizado",
+      "postComment": "Comentario {modelName} está actualizado",
+      "playlist": "Playlist {modelName} está actualizado"
     },
     "deleted": {
-      "bookmarkAlbum": "Album {modelName} is deleted from bookmarks",
-      "bookmarkArtist": "Artist {modelName} is deleted from bookmarks",
-      "bookmarkTrack": "Track {modelName} is deleted from bookmarks",
-      "bookmarkVideo": "Video {modelName} is deleted from bookmarks",
-      "bookmarkVideoChannel": "Video channel {modelName} is deleted from bookmarks",
-      "bookmarkVideoPlaylist": "Video playlist {modelName} is deleted from bookmarks",
-      "favoriteAlbum": "Album {modelName} is deleted from favorites",
-      "favoriteArtist": "Artist {modelName} is deleted from favorites",
-      "favoriteTrack": "Track {modelName} is deleted from favorites",
-      "favoriteVideo": "Video {modelName} is deleted from favorites",
-      "libraryAlbum": "Album {modelName} is deleted from library",
-      "libraryArtist": "Artist {modelName} is deleted from library",
-      "libraryTrack": "Track {modelName} is deleted from library",
-      "listenedAlbum": "Album {modelName} is deleted from listened",
-      "listenedArtist": "Artist {modelName} is deleted from listened",
-      "listenedTrack": "Track {modelName} is deleted from listened",
-      "watchedVideo": "Video {modelName} is deleted from watched",
-      "playlistTrack": "Track {modelName} is deleted from playlist {playlistTitle}",
-      "community": "Community {modelName} is deleted",
-      "recommendationArtist": "Artist {modelName} is deleted from recommendations",
-      "recommendationTrack": "Track {modelName} is deleted from recommendations",
-      "relationship": "You unfollowed {modelName}",
-      "post": "Post {modelName} is deleted",
-      "postComment": "Comment {modelName} is deleted",
-      "playlist": "Playlist {modelName} is deleted",
-      "membership": "You left community {modelName}"
+      "bookmarkAlbum": "Álbum {modelName} está eliminado de los marcadores",
+      "bookmarkArtist": "Artista {modelName} está eliminado de los marcadores",
+      "bookmarkTrack": "Pista {modelName} está eliminado de los marcadores",
+      "bookmarkVideo": "Video {modelName} está eliminado de los marcadores",
+      "bookmarkVideoChannel": "Video channel {modelName} está eliminado de los marcadores",
+      "bookmarkVideoPlaylist": "Video playlist {modelName} está eliminado de los marcadores",
+      "favoriteAlbum": "Álbum {modelName} está eliminado de favorites",
+      "favoriteArtist": "Artista {modelName} está eliminado de favorites",
+      "favoriteTrack": "Pista {modelName} está eliminado de favorites",
+      "favoriteVideo": "Video {modelName} está eliminado de favorites",
+      "libraryAlbum": "Álbum {modelName} está eliminado de la bibleoteca",
+      "libraryArtist": "Artista {modelName} está eliminado de la bibleoteca",
+      "libraryTrack": "Pista {modelName} está eliminado de la bibleoteca",
+      "listenedAlbum": "Álbum {modelName} está eliminado de los escuchados",
+      "listenedArtist": "Artista {modelName} está eliminado de los escuchados",
+      "listenedTrack": "Pista {modelName} está eliminado de los escuchados",
+      "watchedVideo": "Video {modelName} está eliminado de visto",
+      "playlistTrack": "Pista {modelName} está eliminado de playlist {playlistTitle}",
+      "community": "Comunidad {modelName} está eliminado",
+      "recommendationArtist": "Artista {modelName} está eliminado de recomendaciones",
+      "recommendationTrack": "Pista {modelName} está eliminado de recomendaciones",
+      "relationship": "Dejaste de seguir {modelName}",
+      "post": "Publicación {modelName} está eliminado",
+      "postComment": "Comentario {modelName} está eliminado",
+      "playlist": "Playlist {modelName} está eliminado",
+      "membership": "Dejaste la comunidad {modelName}"
     }
   },
   "created": {
-    "profile": "On muffon since",
-    "library": "In library since",
-    "community": "Was created"
+    "profile": "En muffon desde",
+    "library": "En bibleoteca desde",
+    "community": "Creó"
   },
   "filter": {
     "include": {
-      "artists": "With artists",
-      "tags": "With tags"
+      "artists": "Con artistas",
+      "tags": "Con etiquetas"
     },
     "exclude": {
-      "artists": "Without artists",
-      "tags": "Without tags"
+      "artists": "sin artistas",
+      "tags": "Sin etiquetas"
     }
   },
   "keyboardShortcuts": {
@@ -936,9 +936,9 @@
     "audioForward": "Seek audio forward",
     "radioNextTrack": "Next radio track"
   },
-  "online": "Online",
+  "online": "En linea",
   "error": "Error",
-  "more": "More...",
-  "loading": "Loading...",
-  "warning": "Warning"
+  "more": "Más...",
+  "loading": "Cargando...",
+  "warning": "Advertencia"
 }
