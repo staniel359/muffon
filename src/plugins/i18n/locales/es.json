@@ -133,7 +133,7 @@
   "actions": {
     "login": "Incia sesión",
     "logout": "Cerra sesión",
-    "signup": "Regítrate",
+    "signup": "Regístrate",
     "add": "Añadir",
     "create": "Crear",
     "edit": "Editar",
@@ -310,7 +310,7 @@
   },
   "forms": {
     "fields": {
-      "email": "Correo electrónico",
+      "email": "Correo",
       "password": "Constraseña",
       "passwordConfirmation": "Confirmación de constraseña",
       "passwordResetCode": "Código de restablecimiento de constraseña",
@@ -341,7 +341,7 @@
     "errors": {
       "notFound": "El perfil no encontrado",
       "empty": {
-        "email": "El correo electrónico está vacío",
+        "email": "El correo está vacío",
         "password": "La constraseña está vacío",
         "passwordConfirmation": "La confirmación de constraseña está vacío",
         "passwordResetCode": "El código de restablecimiento de constraseña está vacío",
@@ -352,10 +352,10 @@
         "legal": "Debe aceptar la Política de Privacidad y los Términos y Condiciones"
       },
       "invalid": {
-        "email": "El correo electrónico no es válido"
+        "email": "El correo no es válido"
       },
       "taken": {
-        "email": "El correo electrónico está tomado",
+        "email": "El correo está tomado",
         "nickname": "El apado está tomado",
         "title": "El título está tomado"
       },
@@ -602,37 +602,37 @@
       },
       "profile": {
         "player": {
-          "playing": "Show current track on page"
+          "playing": "Mostrar pista actual en la página"
         },
         "data": {
           "account": {
-            "delete": "Delete account"
+            "delete": "Eliminar cuenta"
           },
           "library": {
-            "delete": "Delete library"
+            "delete": "Elimar bibleoteca"
           }
         }
       },
       "connections": {
         "lastfm": {
-          "scrobbling": "Scrobbling",
-          "scrobbleNotifications": "Scrobble notifications",
-          "scrobblePercent": "Scrobble after"
+          "scrobbling": "Scrobbleando",
+          "scrobbleNotifications": "Scrobble notificaciones",
+          "scrobblePercent": "Scrobble después"
         },
         "spotify": {
           "link": {
-            "description": "To connect your Spotify account please follow [a link=guide]this guide[/a]."
+            "description": "Para conectar a tu cuenta de Spotify, por favor [a link=guide]esta guía[/a]."
           }
         },
         "discord": {
           "richPresence": {
-            "header": "Enable Rich Presence",
-            "client": "Before enabling make sure your Discord desktop client is running",
+            "header": "Activar Rich Presence",
+            "client": "Antes de activar, asegurarse de que funciona tu cliente de escritorio de Discord",
             "buttons": {
-              "header": "Buttons",
+              "header": "Botones",
               "select": {
-                "first": "Select first:",
-                "second": "Select second:"
+                "first": "Seleccionar primero:",
+                "second": "Seleccionar segundo:"
               }
             }
           }
@@ -641,111 +641,111 @@
     }
   },
   "track": {
-    "source": "Via {source}"
+    "source": "vía {source}"
   },
   "recommended": {
-    "header": "Recommended to you",
-    "based": "Based on your:"
+    "header": "Recomendado a ti",
+    "based": "Basado en tu:"
   },
   "signup": {
-    "text": "Don't have an account?",
-    "link": "Sign up"
+    "text": "¿No tienes una cuenta?",
+    "link": "Registrate"
   },
   "login": {
-    "text": "Already signed up?",
-    "link": "Log in"
+    "text": "¿Ya tiene una cuenta?",
+    "link": "Inicar sesión"
   },
   "passwordReset": {
-    "text": "Forgot password?",
-    "link": "Reset",
+    "text": "¿Olvidaste constraseña?",
+    "link": "Restablecer",
     "code": {
-      "sent": "Password reset code has been sent to your email"
+      "sent": "Código de restablecimiento de constraseña ha enviado a tu correo"
     },
     "updated": {
-      "header": "Your password se ha actualizado",
-      "content": "Now you may go back and login"
+      "header": "Tu constraseña se ha actualizado",
+      "content": "Ahora puedes regresar y iniciar sesión"
     }
   },
   "anonymous": {
-    "continue": "Continue anonymously",
-    "nickname": "Anonymous"
+    "continue": "Continuar anónimamente",
+    "nickname": "Anónimo"
   },
   "roles": {
-    "creator": "Creator"
+    "creator": "Creador"
   },
   "relationships": {
-    "followed": "Following you",
-    "following": "You are following",
-    "follow": "Follow",
-    "unfollow": "Unfollow"
+    "followed": "Siguiendote",
+    "following": "Estás siguiendo",
+    "follow": "Seguir",
+    "unfollow": "Dejar de seguir"
   },
   "memberships": {
-    "joined": "You have joined",
-    "join": "Join",
-    "leave": "Leave"
+    "joined": "Has unido",
+    "join": "Unir",
+    "leave": "Salir"
   },
   "message": {
-    "send": "Send message",
+    "send": "Enviar mensaje",
     "sent": {
-      "header": "Message has been sent",
-      "content": "Go to conversation"
+      "header": "Mensaje ha enviado",
+      "content": "Ir a conversación"
     }
   },
   "compatibility": {
-    "header": "Your compatibility level with {profileNickname}",
-    "common": "You have in common:"
+    "header": "Tu nivel de compatibilidad con {profileNickname}",
+    "common": "Tienen en común:"
   },
   "recommendation": {
-    "similar": "Similar to {counter}:"
+    "similar": "Similar a {counter}:"
   },
   "import": {
     "lastfm": {
-      "historyVisible": "Before import make sure that your Last.FM listening history is visible."
+      "historyVisible": "Antes de importar, asegurase de que tu historial escuchado de Last.FM está visible."
     },
-    "active": "Importing {count} of {counter}...",
+    "active": "Importando {count} de {counter}...",
     "success": {
-      "header": "{counter} has been imported | {counter} have been imported",
-      "content": "You may want to check the data before saving to library"
+      "header": "{counter} ha importado | {counter} han importado",
+      "content": "Es posible que desees verificar los datos antes de guardar a la bibleoteca"
     },
     "error": {
-      "files": "{counter} could not be imported. Please make sure that metadata format is valid:"
+      "files": "{counter} no se pudo importar. Por favor, asegurase de que el formato de metadatos es válido:"
     }
   },
   "save": {
-    "active": "Saving {count} of {counter}...",
+    "active": "Guardando {count} de {counter}...",
     "success": {
       "library": {
-        "artists": "{counter} has been added to library | {counter} have been added to library",
-        "albums": "{counter} has been added to library | {counter} have been added to library",
-        "tracks": "{counter} has been added to library | {counter} have been added to library"
+        "artists": "{counter} ha añadido a biblioteca | {counter} han añadido a biblioteca",
+        "albums": "{counter} ha añadido a biblioteca | {counter} han añadido a biblioteca",
+        "tracks": "{counter} ha añadido a biblioteca | {counter} han añadido a biblioteca"
       },
       "playlist": {
-        "artists": "{counter} has been added to playlist | {counter} have been added to playlist",
-        "albums": "{counter} has been added to playlist | {counter} have been added to playlist",
-        "tracks": "{counter} has been added to playlist | {counter} have been added to playlist"
+        "artists": "{counter} ha añadido a playlist | {counter} han añadido a playlist",
+        "albums": "{counter} ha añadido a playlist | {counter} han añadido a playlist",
+        "tracks": "{counter} ha añadido a playlist | {counter} han añadido a playlist"
       },
       "playlists": {
-        "playlists": "{counter} has been added to playlists | {counter} have been added to playlists"
+        "playlists": "{counter} ha añadido a playlists | {counter} han añadido a playlists"
       },
       "favorites": {
-        "tracks": "{counter} has been added to favorites | {counter} have been added to favorites"
+        "tracks": "{counter} ha añadido a favoritos | {counter} han añadido a favoritos"
       }
     },
-    "error": "{counter} could not be added:"
+    "error": "{counter} no se pudo añadir:"
   },
   "delete": {
-    "active": "Deleting {count} of {counter}..."
+    "active": "Elimando {count} de {counter}..."
   },
   "connections": {
-    "connect": "Connect account",
+    "connect": "Connectar cuenta",
     "confirm": {
-      "token": "Your browser will now open. Confirm connection there and click this button again.",
-      "code": "Your browser will now open. Confirm connection there, paste the received code and click this button again."
+      "token": "Se abrirá el navegador. Confirma la conexión ahí y pulsa este botón de nueve.",
+      "code": "Se abrirá el navegador. Confirma la conexión ahí, pega el código recibido y pulsa este botón de nueve."
     },
-    "disconnect": "Disconnect account"
+    "disconnect": "Desconectar cuenta"
   },
   "accounts": {
-    "premium": "Premium"
+    "premium": "Prémium"
   },
   "noCollection": {
     "header": {
