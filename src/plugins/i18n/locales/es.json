@@ -811,11 +811,11 @@
   "donate": {
     "header": "Donar",
     "content": [
-      "muffon is a non-profit project that has nor ads, neither any paid features or content.",
-      "But, of course, it cannot exist without funds, that are needed for its development and infrastructure.",
-      "A lot of time and effort were put into creating this project, and it would be good if all of the invested would pay off.",
-      "So I ask for your help in muffon support.",
-      "<strong>Would you like to make a donation?</strong>"
+      "muffon es un proyecto sin fines de lucro que tiene ni anuncios ni ninguna función o contenido de pago.",
+      "Pero claro, no se puede existir sin fundos que son necesario par su desarrollo y infraestructura.",
+      "Se invirtió mucho tiempo y esfuerza en la creación de este proyecto, y sería buena si toda esa inversión daría frutos.",
+      "Así que te pido tu ayuda para apoyar muffon.",
+      "<strong>¿Te gustaría donar?</strong>"
     ],
     "actions": {
       "decline": "No, no gracias",
