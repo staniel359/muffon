@@ -595,9 +595,9 @@
           }
         },
         "updates": {
-          "check": "Check for new versions",
-          "auto": "Enable autoupdate",
-          "autoWarning": "Autoupdates on Linux are still in the experimental phase and may contain bugs.\nDuring the autoupdate process, the app will freeze temporarily.\nPlease avoid force-quitting the application; it will close automatically once the update is complete.\n\nFor details and tracking of this issue, visit [a link=issue]this link[/a]."
+          "check": "Comprobar si hay nuevas versiones",
+          "auto": "Activar actualizaciones",
+          "autoWarning": "Actualizaciones automáticas en Linux todavía están en fase experimental y puede contener errores. \nDurante la procesa de actualizacion automática, la applicación congelará temporalmente. \nPor favor, evite de forzar el cierre de la aplicación; saliré automáticamente cuando la actualizacion es completa. \n\nPor detalles y rastreo de este problema, visita [a link=issue]este enlace[/a]."
         }
       },
       "profile": {
