@@ -28,50 +28,50 @@
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "dayjs": "^1.11.11",
+    "dayjs": "^1.11.13",
     "discord-rpc": "^4.0.1",
     "dotenv": "^16.4.5",
     "electron-dl": "^4.0.0",
     "electron-store": "^10.0.0",
-    "electron-updater": "^6.2.1",
+    "electron-updater": "^6.3.9",
     "i18n": "^0.15.1",
     "music-metadata": "^8.3.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@emoji-mart/data": "^1.2.1",
-    "@eslint/compat": "^1.1.0",
+    "@eslint/compat": "^1.2.0",
     "@rollup/plugin-inject": "^5.0.5",
-    "@vitejs/plugin-vue": "^5.0.5",
-    "axios": "^1.7.2",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "axios": "^1.7.7",
     "change-case": "^5.4.4",
     "crypto-js": "^4.2.0",
     "deepmerge": "^4.3.1",
-    "electron": "^31.1.0",
+    "electron": "^31.7.0",
     "electron-builder": "^24.13.3",
     "emoji-mart": "^5.6.0",
-    "eslint": "^9.6.0",
+    "eslint": "^9.12.0",
     "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-vue": "^9.27.0",
+    "eslint-plugin-vue": "^9.28.0",
     "fomantic-ui": "^2.9.3",
     "hotkeys-js": "^3.13.7",
-    "i18n-iso-countries": "^7.11.2",
+    "i18n-iso-countries": "^7.12.0",
     "jquery": "^3.7.1",
-    "music-metadata-browser": "^2.5.10",
-    "pinia": "^2.1.7",
-    "sass": "^1.77.6",
+    "music-metadata-browser": "^2.5.11",
+    "pinia": "^2.2.4",
+    "sass": "^1.79.4",
     "slick-carousel": "^1.8.1",
-    "vite": "^5.3.3",
-    "vite-plugin-electron-renderer": "^0.14.5",
+    "vite": "^5.4.8",
+    "vite-plugin-electron-renderer": "^0.14.6",
     "vite-plugin-eslint": "^1.8.1",
-    "vue": "^3.4.31",
-    "vue-i18n": "^9.13.1",
-    "vue-router": "^4.4.0"
+    "vue": "^3.5.11",
+    "vue-i18n": "^9.14.1",
+    "vue-router": "^4.4.5"
   },
   "pnpm": {
     "patchedDependencies": {
       "app-builder-lib@24.13.3": "patches/app-builder-lib@24.13.3.patch",
-      "electron-updater@6.2.1": "patches/electron-updater@6.2.1.patch"
+      "electron-updater@6.3.9": "patches/electron-updater@6.3.9.patch"
     }
   }
 }
