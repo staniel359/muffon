@@ -14,6 +14,10 @@ export default [
     name: 'English'
   },
   {
+    id: 'es',
+    name: 'Español'
+  },
+  {
     id: 'fr',
     name: 'Français'
   },

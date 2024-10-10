@@ -1,0 +1,13 @@
+{
+  "show": "Mostar",
+  "hide": "Esconder",
+  "about": "Sobre",
+  "quit": "Dejar",
+  "update": {
+    "message": " Nueva versión está disponible",
+    "buttons": {
+      "download": "Descargar",
+      "close": "Cerrar"
+    }
+  }
+}
