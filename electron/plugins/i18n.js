@@ -11,6 +11,7 @@ import ja from './i18n/locales/ja.json' with { type: 'json' }
 import ko from './i18n/locales/ko.json' with { type: 'json' }
 import pl from './i18n/locales/pl.json' with { type: 'json' }
 import ru from './i18n/locales/ru.json' with { type: 'json' }
+import zhCn from './i18n/locales/zh-CN.json' with { type: 'json' }
 
 // i18n
 
@@ -30,7 +31,8 @@ const localesData = {
   ja,
   ko,
   pl,
-  ru
+  ru,
+  zhCn
 }
 
 const options = {
