@@ -1,4 +1,7 @@
 import newTabMixin from '@/mixins/newTabMixin'
+import {
+  isMiddleClick
+} from '@/helpers/utils'
 
 export default {
   mixins: [
@@ -47,11 +50,9 @@ export default {
     handleAuxClick (
       event
     ) {
-      const isMiddleClick = (
-        event.which === 2
-      )
-
-      if (isMiddleClick) {
+      if (isMiddleClick(
+        event
+      )) {
         this.openPathInNewTab()
       }
     },
