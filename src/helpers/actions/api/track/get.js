@@ -7,6 +7,7 @@ export default function (
     artistName,
     trackTitle,
     artistId,
+    albumId,
     trackId,
     scope = '',
     page,
@@ -20,6 +21,7 @@ export default function (
         artistName,
         trackTitle,
         artistId,
+        albumId,
         trackId,
         scope
       }

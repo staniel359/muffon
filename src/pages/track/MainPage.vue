@@ -79,7 +79,8 @@ export default {
       return {
         name: query.source,
         id: query.track_id,
-        artist_id: query.artist_id
+        artist_id: query.artist_id,
+        album_id: query.album_id
       }
     }
   },

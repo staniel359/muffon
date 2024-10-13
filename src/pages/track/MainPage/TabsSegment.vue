@@ -11,7 +11,10 @@
         :class="slotProps.class"
         :is-active="slotProps.isActive"
         :track-data="trackData"
-        :request-track-data="slotProps.tabData.requestTrackData || requestTrackData"
+        :request-track-data="(
+          slotProps.tabData.requestTrackData ||
+          requestTrackData
+        )"
         @focus="slotProps.handleFocus"
       />
     </template>
