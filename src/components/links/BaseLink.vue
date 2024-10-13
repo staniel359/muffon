@@ -7,7 +7,7 @@
     @mouseleave="handleMouseLeave"
     @click.exact.stop="handleClick"
     @click.ctrl.exact.prevent.stop="handleCtrlClick"
-    @auxclick.exact.stop="handleAuxClick"
+    @auxclick.exact.prevent.stop="handleAuxClick"
   >
     <span
       v-html="text"

@@ -7,7 +7,7 @@
     @mouseleave="handleMouseLeave"
     @click.exact.stop="handleClick"
     @click.ctrl.exact.prevent.stop="handleCtrlClick"
-    @auxclick.exact.stop="handleMiddleClick"
+    @auxclick.exact.prevent.stop="handleAuxClick"
   >
     <slot />
   </Component>
@@ -61,17 +61,17 @@ export default {
     handleCtrlClick () {
       this.openPathInNewTab()
     },
-    handleMiddleClick () {
+    handleAuxClick () {
       this.openPathInNewTab()
     },
     openPathInNewTab () {
-      if (this.path) {
-        this.openNewTab(
-          {
-            path: this.path
-          }
-        )
-      }
+      if (!this.path) { return }
+
+      this.openNewTab(
+        {
+          path: this.path
+        }
+      )
     }
   }
 }
