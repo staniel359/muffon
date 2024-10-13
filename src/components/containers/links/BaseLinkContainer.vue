@@ -6,82 +6,21 @@
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
     @click.exact.stop="handleClick"
-    @click.ctrl.exact.prevent.stop="handleCtrlClick"
-    @auxclick.exact.prevent.stop="handleAuxClick"
+    @click.ctrl.prevent.stop="handleCtrlClick"
+    @auxclick.prevent.stop="handleAuxClick"
   >
     <slot />
   </Component>
 </template>
 
 <script>
-import newTabMixin from '@/mixins/newTabMixin'
+import linkMixin from '@/mixins/linkMixin'
 
 export default {
   name: 'BaseLinkContainer',
   mixins: [
-    newTabMixin
-  ],
-  props: {
-    link: Object
-  },
-  emits: [
-    'click',
-    'activeChange'
-  ],
-  computed: {
-    component () {
-      if (this.link) {
-        return 'RouterLink'
-      } else {
-        return 'a'
-      }
-    },
-    path () {
-      return this.link?.path
-    }
-  },
-  methods: {
-    handleMouseEnter () {
-      this.$emit(
-        'activeChange',
-        true
-      )
-    },
-    handleMouseLeave () {
-      this.$emit(
-        'activeChange',
-        false
-      )
-    },
-    handleClick () {
-      this.$emit(
-        'click'
-      )
-    },
-    handleCtrlClick () {
-      this.openPathInNewTab()
-    },
-    handleAuxClick (
-      event
-    ) {
-      const isMiddleClick = (
-        event.which === 2
-      )
-
-      if (isMiddleClick) {
-        this.openPathInNewTab()
-      }
-    },
-    openPathInNewTab () {
-      if (!this.path) { return }
-
-      this.openNewTab(
-        {
-          path: this.path
-        }
-      )
-    }
-  }
+    linkMixin
+  ]
 }
 </script>
 

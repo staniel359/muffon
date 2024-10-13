@@ -6,8 +6,8 @@
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
     @click.exact.stop="handleClick"
-    @click.ctrl.exact.prevent.stop="handleCtrlClick"
-    @auxclick.exact.prevent.stop="handleAuxClick"
+    @click.ctrl.prevent.stop="handleCtrlClick"
+    @auxclick.prevent.stop="handleAuxClick"
   >
     <span
       v-html="text"
@@ -16,74 +16,17 @@
 </template>
 
 <script>
-import newTabMixin from '@/mixins/newTabMixin'
+import linkMixin from '@/mixins/linkMixin'
 
 export default {
   name: 'BaseLink',
   mixins: [
-    newTabMixin
+    linkMixin
   ],
   props: {
     text: {
       type: String,
       required: true
-    },
-    link: Object
-  },
-  emits: [
-    'click',
-    'activeChange'
-  ],
-  computed: {
-    component () {
-      if (this.link) {
-        return 'RouterLink'
-      } else {
-        return 'a'
-      }
-    },
-    path () {
-      return this.link.path
-    }
-  },
-  methods: {
-    handleMouseEnter () {
-      this.$emit(
-        'activeChange',
-        true
-      )
-    },
-    handleMouseLeave () {
-      this.$emit(
-        'activeChange',
-        false
-      )
-    },
-    handleClick () {
-      this.$emit(
-        'click'
-      )
-    },
-    handleCtrlClick () {
-      this.openPathInNewTab()
-    },
-    handleAuxClick (
-      event
-    ) {
-      const isMiddleClick = (
-        event.which === 2
-      )
-
-      if (isMiddleClick) {
-        this.openPathInNewTab()
-      }
-    },
-    openPathInNewTab () {
-      this.openNewTab(
-        {
-          path: this.path
-        }
-      )
     }
   }
 }
