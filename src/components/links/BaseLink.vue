@@ -67,8 +67,16 @@ export default {
     handleCtrlClick () {
       this.openPathInNewTab()
     },
-    handleAuxClick () {
-      this.openPathInNewTab()
+    handleAuxClick (
+      event
+    ) {
+      const isMiddleClick = (
+        event.which === 2
+      )
+
+      if (isMiddleClick) {
+        this.openPathInNewTab()
+      }
     },
     openPathInNewTab () {
       this.openNewTab(
