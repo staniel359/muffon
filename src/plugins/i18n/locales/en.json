@@ -292,7 +292,7 @@
         "playlist": "This will also delete all this playlist's tracks.",
         "community": "This will also delete all this community's posts.",
         "account": [
-          "This will also delete your following data:",
+          "This will also delete the following data:",
           "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- your page posts\n- subscriptions\n- history</strong>",
           "This data will remain, but your nickname won't be displayed:",
           "<strong>- created posts\n- created comments\n- conversations with you\n- created communities</strong>",
@@ -300,7 +300,7 @@
           "<strong>- saved tracks\n- background images\n- settings</strong>"
         ],
         "library": [
-          "This will delete your following data:",
+          "This will delete the following data:",
           "<strong>- artists\n- albums\n- tracks\n- recommendations</strong>"
         ]
       },
@@ -366,7 +366,7 @@
         "nickname": "Nickname is too long"
       },
       "confirmation": {
-        "passwordConfirmation": "Password and its confirmation don't match"
+        "passwordConfirmation": "Password and confirmation don't match"
       },
       "wrong": {
         "password": "Wrong password",
@@ -520,8 +520,8 @@
           "timezone": "Time zone",
           "infiniteScroll": "Infinite scroll",
           "artistPopup": "Show artist info on link hover",
-          "innerCounters": "Show muffon listeners counters",
-          "cachePages": "Cache pages",
+          "innerCounters": "Show muffon listeners counter",
+          "cachePages": "Cached pages",
           "scale": "Scale"
         },
         "theme": {
@@ -705,10 +705,10 @@
     "active": "Importing {count} of {counter}...",
     "success": {
       "header": "{counter} has been imported | {counter} have been imported",
-      "content": "You may want to check the data before saving to library"
+      "content": "You may want to check the data before saving it to the library"
     },
     "error": {
-      "files": "{counter} could not be imported. Please make sure that metadata format is valid:"
+      "files": "{counter} could not be imported. Please make sure the metadata format is valid:"
     }
   },
   "save": {
@@ -811,10 +811,10 @@
   "donate": {
     "header": "Donate",
     "content": [
-      "muffon is a non-profit project that has nor ads, neither any paid features or content.",
-      "But, of course, it cannot exist without funds, that are needed for its development and infrastructure.",
-      "A lot of time and effort were put into creating this project, and it would be good if all of the invested would pay off.",
-      "So I ask for your help in muffon support.",
+      "muffon is a non-profit project that has neither ads nor any paid features or content.",
+      "But of course, it cannot exist without funds that are needed for its development and infrastructure.",
+      "A lot of time and effort were put into creating this project. It would be great if all that investment paid off.",
+      "As such, I would like to ask for your help in supporting muffon.",
       "<strong>Would you like to make a donation?</strong>"
     ],
     "actions": {
