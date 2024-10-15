@@ -1,0 +1,944 @@
+{
+  "navigation": {
+    "home": "主页",
+    "artists": "艺人",
+    "artist": "艺人",
+    "albums": "专辑",
+    "albumGroups": "专辑组",
+    "tracks": "曲目",
+    "tags": "标签",
+    "tag": "标签",
+    "similar": "相似的",
+    "images": "图片",
+    "lyrics": "歌词",
+    "videos": "视频",
+    "videoChannels": "视频频道",
+    "videoMixes": "混剪视频",
+    "videoPlaylists": "视频播放列表",
+    "related": "相关的",
+    "top": "热门",
+    "topCollection": {
+      "artists": "热门艺人",
+      "albums": "热门专辑",
+      "tracks": "热门曲目",
+      "tags": "热门标签"
+    },
+    "releases": "Releases",
+    "releasesCollection": {
+      "new": "New releases",
+      "upcoming": "Upcoming releases"
+    },
+    "new": "New",
+    "upcoming": "即将发布",
+    "radio": "广播",
+    "multitag": "组合标签搜索",
+    "profiles": "个人资料",
+    "feed": "动态",
+    "posts": "帖子",
+    "conversations": "聊天",
+    "library": "音乐库",
+    "recommendations": "推荐",
+    "recommendationsCollection": {
+      "artists": "推荐艺人",
+      "tracks": "推荐曲目"
+    },
+    "savedTracks": "已保存曲目",
+    "playlists": "播放列表",
+    "favorites": "我的最爱",
+    "bookmarks": "收藏",
+    "bookmarksCollection": {
+      "artists": "收藏的艺人",
+      "albums": "收藏的专辑",
+      "tracks": "收藏的曲目",
+      "videos": "收藏的视频",
+      "videoChannels": "收藏的视频频道",
+      "videoPlaylists": "收藏的视频播放列表"
+    },
+    "communities": "社区",
+    "history": "历史",
+    "historyCollection": {
+      "activity": "活动历史",
+      "player": "播放历史",
+      "browser": "浏览器历史"
+    },
+    "activity": "活动",
+    "player": "播放器",
+    "browser": "浏览器",
+    "settings": "设置",
+    "model": {
+      "artists": "{modelName} 艺人",
+      "albums": "{modelName} 专辑",
+      "tracks": "{modelName} 曲目",
+      "tags": "{modelName} 标签",
+      "similar": "{modelName} 相似推荐",
+      "images": "{modelName} 图片",
+      "lyrics": "{modelName} 歌词",
+      "videos": "{modelName} 视频",
+      "related": "{modelName} 相关推荐",
+      "posts": "{modelName} 帖子",
+      "library": "{modelName} 音乐库",
+      "playlists": "{modelName} 播放列表",
+      "favorites": "{modelName} 我的最爱",
+      "favoritesCollection": {
+        "artists": "{modelName} 最喜欢的艺人",
+        "albums": "{modelName} 最喜欢的专辑",
+        "tracks": "{modelName} 最喜欢的曲目",
+        "videos": "{modelName} 最喜欢的视频"
+      },
+      "communities": "{modelName} 社区",
+      "shows": "{modelName} 演出"
+    },
+    "search": "搜索",
+    "queue": "待播列表",
+    "whatsNew": "最新发布",
+    "listenedRecently": "最近播放",
+    "shows": "演出",
+    "listeningNow": "正在播放",
+    "help": "帮助"
+  },
+  "errors": {
+    "badRequest": {
+      "header": "请求错误",
+      "content": "请使用有效的数据进行请求"
+    },
+    "forbidden": {
+      "header": "禁止访问",
+      "content": "您没有执行此操作的权限"
+    },
+    "notFound": {
+      "header": "没有找到相关内容",
+      "content": "请尝试搜索其他内容"
+    },
+    "internalServer": {
+      "header": "服务器内部发生错误",
+      "content": "请联系我们，以获取更多信息"
+    },
+    "badGateway": {
+      "header": "远程服务器错误",
+      "content": "请稍后重试"
+    },
+    "gatewayTimeout": {
+      "header": "远程服务器超时",
+      "content": "请稍后重试"
+    },
+    "connection": {
+      "header": "连接丢失",
+      "content": "请稍后重试"
+    },
+    "client": {
+      "header": "客户端错误",
+      "content": "请联系我们，以获取更多信息"
+    }
+  },
+  "actions": {
+    "login": "登录",
+    "logout": "注销",
+    "signup": "注册",
+    "add": "添加",
+    "create": "创建",
+    "edit": "编辑",
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "clear": "清除",
+    "retry": "重试",
+    "post": "发布",
+    "send": "发送",
+    "next": "下一个",
+    "upload": "上传",
+    "back": "返回",
+    "sendCode": "发送验证码",
+    "share": "分享",
+    "search": "搜索",
+    "filter": "过滤",
+    "confirm": "确认",
+    "import": "导入",
+    "close": "关闭",
+    "openLink": "打开链接",
+    "play": "播放",
+    "shuffle": "随机播放",
+    "loop": "循环播放",
+    "addFrom": {
+      "search": "From search",
+      "library": "From library"
+    },
+    "importFrom": {
+      "drive": "From drive",
+      "account": "From account"
+    },
+    "searchIn": {
+      "source": "Search in source",
+      "sources": "Search in sources"
+    },
+    "searchFor": {
+      "video": "搜索视频",
+      "lyrics": "搜索歌词"
+    },
+    "importFromAccount": {
+      "lastfm": "从Last.FM导入",
+      "spotify": "从Spotify导入"
+    },
+    "selectModel": {
+      "folder": "选择文件夹"
+    },
+    "createModel": {
+      "playlist": "创建播放列表",
+      "community": "创建社区",
+      "post": "创建帖子"
+    },
+    "addModel": {
+      "comment": "添加评论"
+    },
+    "addTo": {
+      "library": "添加到音乐库",
+      "playlist": "添加到播放列表",
+      "favorites": "添加到我的最爱",
+      "bookmarks": "添加到收藏",
+      "listened": "Add to listened",
+      "watched": "Add to watched",
+      "queue": "添加到待播列表",
+      "savedTracks": "添加到本地曲库"
+    },
+    "show": {
+      "library": "在音乐库中显示",
+      "page": "显示页面"
+    },
+    "deleteFrom": {
+      "favorites": "从我的最爱中删除",
+      "bookmarks": "从收藏中删除",
+      "listened": "Delete from listened",
+      "watched": "Delete from watched"
+    },
+    "externalLink": {
+      "open": "打开外部链接",
+      "original": "Original",
+      "streaming": "Streaming"
+    }
+  },
+  "links": {
+    "playlists": "所有播放列表",
+    "communities": "所有社区"
+  },
+  "inputs": {
+    "search": "搜索...",
+    "content": "写点什么..."
+  },
+  "modals": {
+    "delete": {
+      "header": {
+        "libraryModel": {
+          "artist": "从音乐库中删除艺人",
+          "album": "从音乐库中删除专辑",
+          "track": "从音乐库中删除曲目"
+        },
+        "recommendationModel": {
+          "artist": "Delete artist from recommendations",
+          "track": "Delete track from recommendations"
+        },
+        "playlist": "删除播放列表",
+        "playlistTrack": "从播放列表中删除曲目",
+        "savedTrack": "从本地曲库中删除曲目",
+        "favorite": {
+          "artist": "从我的最爱中删除艺人",
+          "album": "从我的最爱中删除专辑",
+          "track": "从我的最爱中删除曲目",
+          "video": "从我的最爱中删除视频"
+        },
+        "bookmark": {
+          "artist": "从收藏中删除艺人",
+          "album": "从收藏中删除专辑",
+          "track": "从收藏中删除曲目",
+          "video": "从收藏中删除视频",
+          "videoChannel": "从收藏中删除视频频道",
+          "videoPlaylist": "从收藏中删除视频播放列表"
+        },
+        "post": "删除帖子",
+        "comment": "删除评论",
+        "community": "删除社区",
+        "account": "删除账户",
+        "library": "删除音乐库",
+        "history": {
+          "search": "删除搜索历史",
+          "activity": "删除活动历史",
+          "browser": "删除浏览器历史",
+          "player": "删除播放器历史"
+        }
+      },
+      "going": {
+        "libraryModel": "您将要从音乐库中删除{modelName} 。",
+        "recommendationModel": "You are going to delete{modelName}from your recommendations.",
+        "playlist": "您将要从播放列表中删除{modelName} 。",
+        "playlistTrack": "您将要从{parentModelName}播放列表中删除{modelName}。",
+        "savedTrack": "您将要从本地曲库中删除{modelName}。",
+        "favorite": "您将要从我的最爱中删除{modelName}。",
+        "bookmark": "您将要从收藏删除{modelName}。",
+        "post": "您将要删除该帖子。",
+        "comment": "您将要删除该评论。",
+        "community": "您将要删除该社区。",
+        "account": "您将要删除您的账号。",
+        "library": "您将要删除您的音乐库。",
+        "history": {
+          "search": "您将要清空您的搜索历史。",
+          "activity": "您将要清空您的活动历史。",
+          "browser": "您将要清空您的浏览器历史。",
+          "player": "您将要清空您的播放器历史。"
+        }
+      },
+      "also": {
+        "libraryModel": {
+          "artist": "This will also delete all this artist's albums and tracks.",
+          "album": "This will also delete all this album's tracks."
+        },
+        "playlist": "This will also delete all this playlist's tracks.",
+        "community": "This will also delete all this community's posts.",
+        "account": [
+          "This will also delete your following data:",
+          "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- your page posts\n- subscriptions\n- history</strong>",
+          "This data will remain, but your nickname won't be displayed:",
+          "<strong>- created posts\n- created comments\n- conversations with you\n- created communities</strong>",
+          "And this data will remain unchanged:",
+          "<strong>- saved tracks\n- background images\n- settings</strong>"
+        ],
+        "library": [
+          "This will delete your following data:",
+          "<strong>- artists\n- albums\n- tracks\n- recommendations</strong>"
+        ]
+      },
+      "undo": "您无法撤销此操作！",
+      "sure": "您确定吗？"
+    }
+  },
+  "forms": {
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "passwordConfirmation": "Password confirmation",
+      "passwordResetCode": "Password reset code",
+      "nickname": "Nickname",
+      "title": "Title",
+      "description": "Description",
+      "gender": "Gender",
+      "birthdate": "Birth date",
+      "country": "Country",
+      "city": "City",
+      "status": "Status",
+      "clientId": "Client ID",
+      "clientSecret": "Client secret",
+      "genders": {
+        "male": "Male",
+        "female": "Female",
+        "other": "Other"
+      },
+      "legal": {
+        "header": "I agree to the {privacyPolicy} and the {termsAndConditions}",
+        "privacyPolicy": "Privacy Policy",
+        "termsAndConditions": "Terms And Conditions"
+      },
+      "remember": "Remember me",
+      "asCommunity": "As community"
+    },
+    "extra": "Additional info",
+    "errors": {
+      "notFound": "Profile is not found",
+      "empty": {
+        "email": "Email is empty",
+        "password": "Password is empty",
+        "passwordConfirmation": "Password confirmation is empty",
+        "passwordResetCode": "Password reset code is empty",
+        "nickname": "Nickname is empty",
+        "title": "Title is empty",
+        "clientId": "Client ID is empty",
+        "clientSecret": "Client secret is empty",
+        "legal": "You must agree to the Privacy Policy and the Terms And Conditions"
+      },
+      "invalid": {
+        "email": "Email is invalid"
+      },
+      "taken": {
+        "email": "Email is taken",
+        "nickname": "Nickname is taken",
+        "title": "Title is taken"
+      },
+      "tooShort": {
+        "password": "Password is too short"
+      },
+      "tooLong": {
+        "nickname": "Nickname is too long"
+      },
+      "confirmation": {
+        "passwordConfirmation": "Password and its confirmation don't match"
+      },
+      "wrong": {
+        "password": "Wrong password",
+        "passwordResetCode": "Wrong password reset code"
+      }
+    },
+    "confirm": {
+      "password": "Please confirm your password:"
+    }
+  },
+  "notifications": {
+    "scrobbled": "Track {trackFullTitle} has been scrobbled",
+    "added": {
+      "queue": {
+        "track": "Track {trackFullTitle} has been added to queue",
+        "tracks": "{counter} has been added to queue | {counter} have been added to queue"
+      },
+      "savedTracks": {
+        "track": "Track {trackFullTitle} has been added to saved tracks"
+      }
+    },
+    "updated": {
+      "profile": "Profile has been updated",
+      "post": "Post has been updated",
+      "comment": "Comment has been updated",
+      "playlist": "Playlist {playlistTitle} has been updated",
+      "community": "Community {communityTitle} has been updated"
+    },
+    "deleted": {
+      "libraryModel": {
+        "artist": "Artist {modelName} has been deleted from your library",
+        "album": "Album {modelName} has been deleted from your library",
+        "track": "Track {modelName} has been deleted from your library"
+      },
+      "playlist": "Playlist {playlistTitle} has been deleted",
+      "community": "Community {communityTitle} has been deleted",
+      "account": "Your account has been deleted",
+      "library": "Your library has been deleted",
+      "history": {
+        "search": "Search history has been deleted",
+        "activity": "Activity history has been deleted",
+        "browser": "Browser history has been deleted",
+        "player": "Player history has been deleted"
+      }
+    },
+    "copied": "Link is copied to clipboard",
+    "cleared": {
+      "cache": "Cache has been cleared",
+      "searchHistory": "Search history has been cleared"
+    },
+    "restartToApply": "The setting has been saved and will be applied on the next application start"
+  },
+  "counters": {
+    "nominative": {
+      "artists": "{count} artist | {count} artists",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} track | {count} tracks",
+      "videos": "{count} video | {count} videos",
+      "files": "{count} file | {count} files",
+      "plays": "{count} play | {count} plays",
+      "followers": "{count} follower | {count} followers",
+      "following": "{count} following",
+      "members": "{count} member | {count} members",
+      "playlists": "{count} playlist | {count} playlists"
+    },
+    "genitive": {
+      "artists": "{count} artist | {count} artists",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} track | {count} tracks",
+      "files": "{count} file | {count} files",
+      "plays": "{count} play | {count} plays",
+      "playlists": "{count} playlist | {count} playlists"
+    },
+    "accusative": {
+      "artists": "{count} artist | {count} artists",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} track | {count} tracks",
+      "files": "{count} file | {count} files",
+      "playlists": "{count} playlist | {count} playlists"
+    }
+  },
+  "select": {
+    "source": "Select source:",
+    "type": "Select type:",
+    "album": "Select album:",
+    "group": "Select album group:",
+    "artist": "Select artist:",
+    "track": "Select track:",
+    "country": "Select country:",
+    "video": "Select video:",
+    "lyrics": "Select lyrics:"
+  },
+  "sources": {
+    "audio": "Audio",
+    "other": "Other",
+    "albumTypes": {
+      "album": "Album",
+      "group": "Album group",
+      "track": "Track"
+    },
+    "albumsTypes": {
+      "album": "Albums",
+      "single": "Singles",
+      "ep": "EPs",
+      "singleEp": "Singles / EPs",
+      "compilation": "Compilations",
+      "video": "Videos",
+      "misc": "Miscellaneous",
+      "appearance": "Appearances",
+      "live": "Live"
+    },
+    "videoTypes": {
+      "video": "Video",
+      "track": "Track"
+    }
+  },
+  "player": {
+    "variants": "Variants ({count})",
+    "audio": {
+      "bitrate": "{value} kbit/s",
+      "equalizer": {
+        "decibel": "{value} dB",
+        "hertz": "{value} Hz",
+        "kilohertz": "{value} kHz"
+      }
+    }
+  },
+  "settings": {
+    "tabs": {
+      "app": "App",
+      "profile": "Profile",
+      "connections": "Connections"
+    },
+    "sections": {
+      "interface": "Interface",
+      "theme": "Theme",
+      "window": "Window",
+      "tabs": "Tabs",
+      "sidebar": "Sidebar",
+      "video": "Video",
+      "data": "Data",
+      "info": "Info",
+      "account": "Account",
+      "system": "System",
+      "updates": "Updates"
+    },
+    "options": {
+      "app": {
+        "interface": {
+          "language": "Language",
+          "timezone": "Time zone",
+          "infiniteScroll": "Infinite scroll",
+          "artistPopup": "Show artist info on link hover",
+          "innerCounters": "Show muffon listeners counters",
+          "cachePages": "Cache pages",
+          "scale": "Scale"
+        },
+        "theme": {
+          "dark": "Dark mode",
+          "system": "System theme",
+          "background": "Background",
+          "transparency": "Transparency"
+        },
+        "window": {
+          "maximize": "Maximize on start",
+          "quit": "Quit on close",
+          "showTrayIcon": "Show tray icon"
+        },
+        "tabs": {
+          "newTabSwitch": "Switch to new tab",
+          "closeOnQuit": "Close tabs on quit"
+        },
+        "search": {
+          "source": "Source",
+          "scope": "Scope",
+          "resultsFullSize": "Show results in full size"
+        },
+        "player": {
+          "audioSources": "Audio sources (by priority)",
+          "bitrate": "Show audio bitrate",
+          "album": "Show album",
+          "equalizer": "Show equalizer",
+          "focusPlaying": "Focus on current track",
+          "pauseOnVideoPlay": "Pause on video play"
+        },
+        "queue": {
+          "autoplay": "Autoplay",
+          "clear": "Clear on player close"
+        },
+        "video": {
+          "autoplay": "Autoplay",
+          "pauseOnAudioPlay": "Pause on audio play",
+          "openLinksInNewTab": "Open links in new tab"
+        },
+        "recommendations": {
+          "hideLibraryArtists": "Hide library artists",
+          "tracksCount": "with tracks count",
+          "hideListenedArtists": "Hide listened artists",
+          "hideLibraryTracks": "Hide library tracks",
+          "hideListenedTracks": "Hide listened tracks"
+        },
+        "top": {
+          "country": "Default country"
+        },
+        "lyrics": {
+          "annotations": "Show annotations"
+        },
+        "history": {
+          "search": {
+            "delete": "Delete search history"
+          },
+          "activity": {
+            "delete": "Delete activity history"
+          },
+          "player": {
+            "delete": "Delete player history"
+          },
+          "browser": {
+            "delete": "Delete browser history"
+          }
+        },
+        "system": {
+          "cache": {
+            "enable": "Enable cache",
+            "clear": "Clear cache"
+          }
+        },
+        "updates": {
+          "check": "Check for new versions",
+          "auto": "Enable autoupdate",
+          "autoWarning": "Autoupdates on Linux are still in the experimental phase and may contain bugs.\nDuring the autoupdate process, the app will freeze temporarily.\nPlease avoid force-quitting the application; it will close automatically once the update is complete.\n\nFor details and tracking of this issue, visit [a link=issue]this link[/a]."
+        }
+      },
+      "profile": {
+        "player": {
+          "playing": "Show current track on page"
+        },
+        "data": {
+          "account": {
+            "delete": "Delete account"
+          },
+          "library": {
+            "delete": "Delete library"
+          }
+        }
+      },
+      "connections": {
+        "lastfm": {
+          "scrobbling": "Scrobbling",
+          "scrobbleNotifications": "Scrobble notifications",
+          "scrobblePercent": "Scrobble after"
+        },
+        "spotify": {
+          "link": {
+            "description": "To connect your Spotify account please follow [a link=guide]this guide[/a]."
+          }
+        },
+        "discord": {
+          "richPresence": {
+            "header": "Enable Rich Presence",
+            "client": "Before enabling make sure your Discord desktop client is running",
+            "buttons": {
+              "header": "Buttons",
+              "select": {
+                "first": "Select first:",
+                "second": "Select second:"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "track": {
+    "source": "Via {source}"
+  },
+  "recommended": {
+    "header": "Recommended to you",
+    "based": "Based on your:"
+  },
+  "signup": {
+    "text": "Don't have an account?",
+    "link": "Sign up"
+  },
+  "login": {
+    "text": "Already signed up?",
+    "link": "Log in"
+  },
+  "passwordReset": {
+    "text": "Forgot password?",
+    "link": "Reset",
+    "code": {
+      "sent": "Password reset code has been sent to your email"
+    },
+    "updated": {
+      "header": "Your password has been updated",
+      "content": "Now you may go back and login"
+    }
+  },
+  "anonymous": {
+    "continue": "Continue anonymously",
+    "nickname": "匿名"
+  },
+  "roles": {
+    "creator": "Creator"
+  },
+  "relationships": {
+    "followed": "Following you",
+    "following": "You are following",
+    "follow": "Follow",
+    "unfollow": "Unfollow"
+  },
+  "memberships": {
+    "joined": "You have joined",
+    "join": "Join",
+    "leave": "Leave"
+  },
+  "message": {
+    "send": "Send message",
+    "sent": {
+      "header": "Message has been sent",
+      "content": "Go to conversation"
+    }
+  },
+  "compatibility": {
+    "header": "Your compatibility level with {profileNickname}",
+    "common": "You have in common:"
+  },
+  "recommendation": {
+    "similar": "Similar to {counter}:"
+  },
+  "import": {
+    "lastfm": {
+      "historyVisible": "Before import make sure that your Last.FM listening history is visible."
+    },
+    "active": "Importing {count} of {counter}...",
+    "success": {
+      "header": "{counter} has been imported | {counter} have been imported",
+      "content": "You may want to check the data before saving to library"
+    },
+    "error": {
+      "files": "{counter} could not be imported. Please make sure that metadata format is valid:"
+    }
+  },
+  "save": {
+    "active": "Saving {count} of {counter}...",
+    "success": {
+      "library": {
+        "artists": "{counter} has been added to library | {counter} have been added to library",
+        "albums": "{counter} has been added to library | {counter} have been added to library",
+        "tracks": "{counter} has been added to library | {counter} have been added to library"
+      },
+      "playlist": {
+        "artists": "{counter} has been added to playlist | {counter} have been added to playlist",
+        "albums": "{counter} has been added to playlist | {counter} have been added to playlist",
+        "tracks": "{counter} has been added to playlist | {counter} have been added to playlist"
+      },
+      "playlists": {
+        "playlists": "{counter} has been added to playlists | {counter} have been added to playlists"
+      },
+      "favorites": {
+        "tracks": "{counter} has been added to favorites | {counter} have been added to favorites"
+      }
+    },
+    "error": "{counter} could not be added:"
+  },
+  "delete": {
+    "active": "Deleting {count} of {counter}..."
+  },
+  "connections": {
+    "connect": "连接账户",
+    "confirm": {
+      "token": "Your browser will now open. Confirm connection there and click this button again.",
+      "code": "Your browser will now open. Confirm connection there, paste the received code and click this button again."
+    },
+    "disconnect": "断开账户连接"
+  },
+  "accounts": {
+    "premium": "Premium"
+  },
+  "noCollection": {
+    "header": {
+      "artists": "No artists",
+      "albums": "No albums",
+      "groups": "No album groups",
+      "tracks": "No tracks",
+      "similar": "No similar",
+      "tags": "No tags",
+      "posts": "No posts",
+      "feed": "No posts",
+      "conversations": "No conversations",
+      "messages": "No messages",
+      "followers": "No followers",
+      "following": "No following",
+      "recommendations": "No recommendations",
+      "playlists": "No playlists",
+      "communities": "No communities",
+      "members": "No members",
+      "videos": "No videos",
+      "videoChannels": "No video channels",
+      "videoMixes": "No video mixes",
+      "videoPlaylists": "No video playlists",
+      "related": "No related",
+      "listeners": "No listeners",
+      "images": "No images",
+      "events": "No events",
+      "profiles": "No profiles",
+      "shows": "No shows"
+    },
+    "content": "这里似乎什么都没有"
+  },
+  "deleted": {
+    "artist": "Artist has been deleted",
+    "album": "专辑已被删除",
+    "track": "Track has been deleted",
+    "recommendation": "推荐已被删除",
+    "playlist": "播放列表已被删除",
+    "post": "帖子已被删除",
+    "comment": "评论已被删除",
+    "video": "视频已被删除",
+    "videoChannel": "视频频道已被删除",
+    "videoPlaylist": "视频播放列表已被删除"
+  },
+  "messages": {
+    "welcome": "欢迎, {profileNickname}"
+  },
+  "profile": {
+    "wasOnline": "Was online"
+  },
+  "feed": {
+    "global": "Global feed"
+  },
+  "about": {
+    "license": "{license} license",
+    "homepage": "首页",
+    "contact": "联系"
+  },
+  "private": {
+    "playlist": "Private",
+    "profile": "Private"
+  },
+  "donate": {
+    "header": "捐款",
+    "content": [
+      "muffon 是一个非盈利项目，既没有广告，也没有任何付费功能或内容",
+      "But, of course, it cannot exist without funds, that are needed for its development and infrastructure.",
+      "A lot of time and effort were put into creating this project, and it would be good if all of the invested would pay off.",
+      "So I ask for your help in muffon support.",
+      "<strong>您愿意捐款吗？</strong>"
+    ],
+    "actions": {
+      "decline": "不, 谢谢",
+      "later": "Maybe later",
+      "accept": "是的, 当然"
+    }
+  },
+  "lists": {
+    "simple": "简单列表",
+    "table": "表格",
+    "extended": "详细列表"
+  },
+  "orders": {
+    "createdDesc": "最新",
+    "createdAsc": "最早",
+    "updatedDesc": "最近更新",
+    "updatedAsc": "最早更新",
+    "artistsCountDesc": "Most artists",
+    "artistsCountAsc": "Least artists",
+    "albumsCountDesc": "Most albums",
+    "albumsCountAsc": "Least albums",
+    "tracksCountDesc": "Most tracks",
+    "tracksCountAsc": "Least tracks",
+    "followersCountDesc": "最多粉丝",
+    "followersCountAsc": "最少粉丝",
+    "joinedDesc": "最近加入",
+    "joinedAsc": "最早加入",
+    "membersCountDesc": "最多成员",
+    "membersCountAsc": "最少成员"
+  },
+  "deletedModel": {
+    "profile": "已被删除的个人资料"
+  },
+  "events": {
+    "created": {
+      "profile": "个人资料已创建",
+      "bookmarkAlbum": "Album {modelName} is added to bookmarks",
+      "bookmarkArtist": "Artist {modelName} is added to bookmarks",
+      "bookmarkTrack": "Track {modelName} is added to bookmarks",
+      "bookmarkVideo": "Video {modelName} is added to bookmarks",
+      "bookmarkVideoChannel": "Video channel {modelName} is added to bookmarks",
+      "bookmarkVideoPlaylist": "Video playlist {modelName} is added to bookmarks",
+      "favoriteAlbum": "Album {modelName} is added to favorites",
+      "favoriteArtist": "Artist {modelName} is added to favorites",
+      "favoriteTrack": "Track {modelName} is added to favorites",
+      "favoriteVideo": "Video {modelName} is added to favorites",
+      "libraryAlbum": "Album {modelName} is added to library",
+      "libraryArtist": "Artist {modelName} is added to library",
+      "libraryTrack": "Track {modelName} is added to library",
+      "listenedAlbum": "Album {modelName} is added to listened",
+      "listenedArtist": "Artist {modelName} is added to listened",
+      "listenedTrack": "Track {modelName} is added to listened",
+      "watchedVideo": "Video {modelName} is added to watched",
+      "playlistTrack": "Track {modelName} is added to playlist {playlistTitle}",
+      "community": "Community {modelName} is created",
+      "relationship": "You followed {modelName}",
+      "post": "Post {modelName} is created",
+      "postComment": "Comment {modelName} is created",
+      "playlist": "Playlist {modelName} is created",
+      "conversation": "You started conversation with {modelName}",
+      "membership": "You joined community {modelName}"
+    },
+    "updated": {
+      "profile": "个人资料已更新",
+      "community": "社区 {modelName} 已更新",
+      "post": "帖子 {modelName} 已更新",
+      "postComment": "评论 {modelName} 已更新",
+      "playlist": "播放列表 {modelName} 已更新"
+    },
+    "deleted": {
+      "bookmarkAlbum": "Album {modelName} is deleted from bookmarks",
+      "bookmarkArtist": "Artist {modelName} is deleted from bookmarks",
+      "bookmarkTrack": "Track {modelName} is deleted from bookmarks",
+      "bookmarkVideo": "Video {modelName} is deleted from bookmarks",
+      "bookmarkVideoChannel": "Video channel {modelName} is deleted from bookmarks",
+      "bookmarkVideoPlaylist": "Video playlist {modelName} is deleted from bookmarks",
+      "favoriteAlbum": "Album {modelName} is deleted from favorites",
+      "favoriteArtist": "Artist {modelName} is deleted from favorites",
+      "favoriteTrack": "Track {modelName} is deleted from favorites",
+      "favoriteVideo": "Video {modelName} is deleted from favorites",
+      "libraryAlbum": "Album {modelName} is deleted from library",
+      "libraryArtist": "Artist {modelName} is deleted from library",
+      "libraryTrack": "Track {modelName} is deleted from library",
+      "listenedAlbum": "Album {modelName} is deleted from listened",
+      "listenedArtist": "Artist {modelName} is deleted from listened",
+      "listenedTrack": "Track {modelName} is deleted from listened",
+      "watchedVideo": "Video {modelName} is deleted from watched",
+      "playlistTrack": "Track {modelName} is deleted from playlist {playlistTitle}",
+      "community": "社区 {modelName} 已被删除",
+      "recommendationArtist": "Artist {modelName} is deleted from recommendations",
+      "recommendationTrack": "Track {modelName} is deleted from recommendations",
+      "relationship": "你取消了对 {modelName} 的关注",
+      "post": "帖子 {modelName} 已被删除",
+      "postComment": "评论 {modelName} 已被删除",
+      "playlist": "播放列表 {modelName} 已被删除",
+      "membership": "你离开了社区 {modelName}"
+    }
+  },
+  "created": {
+    "profile": "On muffon since",
+    "library": "In library since",
+    "community": "Was created"
+  },
+  "filter": {
+    "include": {
+      "artists": "With artists",
+      "tags": "包含标签"
+    },
+    "exclude": {
+      "artists": "Without artists",
+      "tags": "不包含标签"
+    }
+  },
+  "keyboardShortcuts": {
+    "header": "Keyboard shortcuts",
+    "search": "显示搜索面板",
+    "audioBackward": "Seek audio backward",
+    "audioForward": "Seek audio forward",
+    "radioNextTrack": "Next radio track"
+  },
+  "online": "在线",
+  "error": "Error",
+  "more": "更多...",
+  "loading": "加载中...",
+  "warning": "警告"
+}
