@@ -103,7 +103,7 @@
     },
     "forbidden": {
       "header": "Forbidden",
-      "content": "You don't have rights to perform this action"
+      "content": "You don't have right permissions to perform this action"
     },
     "notFound": {
       "header": "Nothing has been found",
@@ -286,14 +286,14 @@
       },
       "also": {
         "libraryModel": {
-          "artist": "This will also delete all this artist's albums and tracks.",
-          "album": "This will also delete all this album's tracks."
+          "artist": "This will also delete all of this artist's albums and tracks.",
+          "album": "This will also delete all of this album's tracks."
         },
-        "playlist": "This will also delete all this playlist's tracks.",
-        "community": "This will also delete all this community's posts.",
+        "playlist": "This will also delete all of this playlist's tracks.",
+        "community": "This will also delete all of this community's posts.",
         "account": [
           "This will also delete the following data:",
-          "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- your page posts\n- subscriptions\n- history</strong>",
+          "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- page posts\n- subscriptions\n- history</strong>",
           "This data will remain, but your nickname won't be displayed:",
           "<strong>- created posts\n- created comments\n- conversations with you\n- created communities</strong>",
           "And this data will remain unchanged:",
