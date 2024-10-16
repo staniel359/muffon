@@ -597,7 +597,7 @@
         "updates": {
           "check": "Check for new versions",
           "auto": "Enable autoupdate",
-          "autoWarning": "Autoupdates on Linux are still in the experimental phase and may contain bugs.\nDuring the autoupdate process, the app will freeze temporarily.\nPlease avoid force-quitting the application; it will close automatically once the update is complete.\n\nFor details and tracking of this issue, visit [a link=issue]this link[/a]."
+          "autoWarning": "Autoupdates on Linux are still in the experimental phase and may contain bugs.\nDuring the autoupdate process, the app will freeze temporarily.\nPlease avoid force-quitting the application; it will close automatically once the update is complete.\n\nFor details and tracking on this issue, please visit [a link=issue]this link[/a]."
         }
       },
       "profile": {
@@ -621,7 +621,7 @@
         },
         "spotify": {
           "link": {
-            "description": "To connect your Spotify account please follow [a link=guide]this guide[/a]."
+            "description": "To connect to your Spotify account please follow [a link=guide]this guide[/a]."
           }
         },
         "discord": {
@@ -739,8 +739,8 @@
   "connections": {
     "connect": "Connect account",
     "confirm": {
-      "token": "Your browser will now open. Confirm connection there and click this button again.",
-      "code": "Your browser will now open. Confirm connection there, paste the received code and click this button again."
+      "token": "Your browser will now open. Confirm the connection there and click this button again.",
+      "code": "Your browser will now open. Confirm the connection there, paste the received code and click this button again."
     },
     "disconnect": "Disconnect account"
   },
