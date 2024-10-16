@@ -103,7 +103,7 @@
     },
     "forbidden": {
       "header": "Forbidden",
-      "content": "You don't have right permissions to perform this action"
+      "content": "You don't have the rights to perform this action"
     },
     "notFound": {
       "header": "Nothing has been found",
