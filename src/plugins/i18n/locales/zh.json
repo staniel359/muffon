@@ -286,22 +286,22 @@
       },
       "also": {
         "libraryModel": {
-          "artist": "This will also delete all this artist's albums and tracks.",
-          "album": "This will also delete all this album's tracks."
+          "artist": "这同时也将删除该艺人的所有专辑和曲目。",
+          "album": "这同时也将删除该专辑的所有曲目。"
         },
-        "playlist": "This will also delete all this playlist's tracks.",
-        "community": "This will also delete all this community's posts.",
+        "playlist": "这同时也将删除该播放列表的所有曲目",
+        "community": "这同时也将删除该社区的所有帖子",
         "account": [
-          "This will also delete your following data:",
-          "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- your page posts\n- subscriptions\n- history</strong>",
-          "This data will remain, but your nickname won't be displayed:",
-          "<strong>- created posts\n- created comments\n- conversations with you\n- created communities</strong>",
-          "And this data will remain unchanged:",
-          "<strong>- saved tracks\n- background images\n- settings</strong>"
+          "这同时也将删除您的以下数据：",
+          "<strong>- 音乐库\n- recommendations\n- 播放列表\n- 我的最爱\n- 收藏\n- listened\n- your page posts\n- 订阅\n- 历史记录</strong>",
+          "这些数据将被保留，但不会显示您的昵称",
+          "<strong>- 创建的帖子\n- 创建的评论\n- conversations with you\n- 创建的社区</strong>",
+          "同时这些数据将被保留",
+          "<strong>- 保存的曲目\n- 背景图片\n- 设置</strong>"
         ],
         "library": [
-          "This will delete your following data:",
-          "<strong>- artists\n- albums\n- tracks\n- recommendations</strong>"
+          "这将删除您的以下数据：",
+          "<strong>- 艺人\n- 专辑\n- 曲目\n- recommendations</strong>"
         ]
       },
       "undo": "您无法撤销此操作！",
@@ -310,177 +310,177 @@
   },
   "forms": {
     "fields": {
-      "email": "Email",
-      "password": "Password",
-      "passwordConfirmation": "Password confirmation",
-      "passwordResetCode": "Password reset code",
-      "nickname": "Nickname",
-      "title": "Title",
-      "description": "Description",
-      "gender": "Gender",
-      "birthdate": "Birth date",
-      "country": "Country",
-      "city": "City",
-      "status": "Status",
-      "clientId": "Client ID",
-      "clientSecret": "Client secret",
+      "email": "邮箱",
+      "password": "密码",
+      "passwordConfirmation": "确认密码",
+      "passwordResetCode": "密码重置验证码",
+      "nickname": "呢称",
+      "title": "标题",
+      "description": "描述",
+      "gender": "性别",
+      "birthdate": "出生日期",
+      "country": "国家",
+      "city": "城市",
+      "status": "状态",
+      "clientId": "客户端ID",
+      "clientSecret": "客户端密钥",
       "genders": {
-        "male": "Male",
-        "female": "Female",
-        "other": "Other"
+        "male": "男",
+        "female": "女",
+        "other": "其他"
       },
       "legal": {
-        "header": "I agree to the {privacyPolicy} and the {termsAndConditions}",
-        "privacyPolicy": "Privacy Policy",
-        "termsAndConditions": "Terms And Conditions"
+        "header": "我已阅读并同意{privacyPolicy}和{termsAndConditions}",
+        "privacyPolicy": "隐私政策",
+        "termsAndConditions": "服务条款"
       },
-      "remember": "Remember me",
-      "asCommunity": "As community"
+      "remember": "记住我",
+      "asCommunity": "以社区身份"
     },
-    "extra": "Additional info",
+    "extra": "附加信息",
     "errors": {
-      "notFound": "Profile is not found",
+      "notFound": "未找到该用户",
       "empty": {
-        "email": "Email is empty",
-        "password": "Password is empty",
-        "passwordConfirmation": "Password confirmation is empty",
-        "passwordResetCode": "Password reset code is empty",
-        "nickname": "Nickname is empty",
-        "title": "Title is empty",
-        "clientId": "Client ID is empty",
-        "clientSecret": "Client secret is empty",
-        "legal": "You must agree to the Privacy Policy and the Terms And Conditions"
+        "email": "邮箱为空",
+        "password": "密码为空",
+        "passwordConfirmation": "密码确认为空",
+        "passwordResetCode": "密码重置验证码为空",
+        "nickname": "昵称为空",
+        "title": "标题为空",
+        "clientId": "客户端ID为空",
+        "clientSecret": "客户端密钥为空",
+        "legal": "您须同意隐私政策和服务条款"
       },
       "invalid": {
         "email": "Email is invalid"
       },
       "taken": {
-        "email": "Email is taken",
-        "nickname": "Nickname is taken",
-        "title": "Title is taken"
+        "email": "该邮箱已被注册",
+        "nickname": "该昵称已被注册",
+        "title": "该标题已被占用"
       },
       "tooShort": {
-        "password": "Password is too short"
+        "password": "密码太短"
       },
       "tooLong": {
-        "nickname": "Nickname is too long"
+        "nickname": "昵称太长"
       },
       "confirmation": {
-        "passwordConfirmation": "Password and its confirmation don't match"
+        "passwordConfirmation": "密码和确认密码不一致"
       },
       "wrong": {
-        "password": "Wrong password",
-        "passwordResetCode": "Wrong password reset code"
+        "password": "密码错误",
+        "passwordResetCode": "密码重置验证码错误"
       }
     },
     "confirm": {
-      "password": "Please confirm your password:"
+      "password": "请确认您的密码："
     }
   },
   "notifications": {
     "scrobbled": "Track {trackFullTitle} has been scrobbled",
     "added": {
       "queue": {
-        "track": "Track {trackFullTitle} has been added to queue",
-        "tracks": "{counter} has been added to queue | {counter} have been added to queue"
+        "track": "曲目{trackFullTitle}已加入待播列表",
+        "tracks": "{counter}首曲目已加入待播列表"
       },
       "savedTracks": {
-        "track": "Track {trackFullTitle} has been added to saved tracks"
+        "track": "曲目{trackFullTitle}已加入本地曲库"
       }
     },
     "updated": {
-      "profile": "Profile has been updated",
-      "post": "Post has been updated",
-      "comment": "Comment has been updated",
-      "playlist": "Playlist {playlistTitle} has been updated",
-      "community": "Community {communityTitle} has been updated"
+      "profile": "个人资料已更新",
+      "post": "帖子已更新",
+      "comment": "评论已更新",
+      "playlist": "播放列表{playlistTitle}已更新",
+      "community": "社区{communityTitle}已更新"
     },
     "deleted": {
       "libraryModel": {
-        "artist": "Artist {modelName} has been deleted from your library",
-        "album": "Album {modelName} has been deleted from your library",
-        "track": "Track {modelName} has been deleted from your library"
+        "artist": "艺人{modelName}已从你的音乐库中删除",
+        "album": "专辑{modelName}已从你的音乐库中删除",
+        "track": "曲目{modelName}已从你的音乐库中删除"
       },
-      "playlist": "Playlist {playlistTitle} has been deleted",
-      "community": "Community {communityTitle} has been deleted",
-      "account": "Your account has been deleted",
+      "playlist": "播放列表{playlistTitle}已被删除",
+      "community": "社区{communityTitle}已被删除",
+      "account": "您的账号已被注销",
       "library": "Your library has been deleted",
       "history": {
-        "search": "Search history has been deleted",
-        "activity": "Activity history has been deleted",
-        "browser": "Browser history has been deleted",
-        "player": "Player history has been deleted"
+        "search": "搜索历史已被清空",
+        "activity": "活动历史已被清空",
+        "browser": "浏览器历史已被清空",
+        "player": "播放器历史已被清空"
       }
     },
-    "copied": "Link is copied to clipboard",
+    "copied": "链接已被复制到剪切板",
     "cleared": {
-      "cache": "Cache has been cleared",
-      "searchHistory": "Search history has been cleared"
+      "cache": "缓存已被清除",
+      "searchHistory": "搜索历史已被清空"
     },
-    "restartToApply": "The setting has been saved and will be applied on the next application start"
+    "restartToApply": "设置已保存，将在下次应用启动时生效"
   },
   "counters": {
     "nominative": {
-      "artists": "{count} artist | {count} artists",
-      "albums": "{count} album | {count} albums",
-      "tracks": "{count} track | {count} tracks",
-      "videos": "{count} video | {count} videos",
-      "files": "{count} file | {count} files",
-      "plays": "{count} play | {count} plays",
+      "artists": "{count}位艺人 | {count}位艺人",
+      "albums": "{count}张专辑 | {count}张专辑",
+      "tracks": "{count}首曲目 | {count}首曲目",
+      "videos": "{count}个视频 | {count}个视频",
+      "files": "{count}个文件 | {count}个文件",
+      "plays": "{count}次播放 | {count}次播放",
       "followers": "{count} follower | {count} followers",
       "following": "{count} following",
-      "members": "{count} member | {count} members",
-      "playlists": "{count} playlist | {count} playlists"
+      "members": "{count}位成员 | {count}位成员",
+      "playlists": "{count}个播放列表 | {count}个播放列表"
     },
     "genitive": {
-      "artists": "{count} artist | {count} artists",
-      "albums": "{count} album | {count} albums",
-      "tracks": "{count} track | {count} tracks",
-      "files": "{count} file | {count} files",
-      "plays": "{count} play | {count} plays",
-      "playlists": "{count} playlist | {count} playlists"
+      "artists": "{count}位艺人 | {count}位艺人",
+      "albums": "{count}张专辑 | {count}张专辑",
+      "tracks": "{count}首曲目 | {count}首曲目",
+      "files": "{count}个文件 | {count}个文件",
+      "plays": "{count}次播放 | {count}次播放",
+      "playlists": "{count}个播放列表 | {count}个播放列表"
     },
     "accusative": {
-      "artists": "{count} artist | {count} artists",
-      "albums": "{count} album | {count} albums",
-      "tracks": "{count} track | {count} tracks",
-      "files": "{count} file | {count} files",
-      "playlists": "{count} playlist | {count} playlists"
+      "artists": "{count}位艺人 | {count}位艺人",
+      "albums": "{count}张专辑 | {count}张专辑",
+      "tracks": "{count}首曲目 | {count}首曲目",
+      "files": "{count}个文件 | {count}个文件",
+      "playlists": "{count}个播放列表 | {count}个播放列表"
     }
   },
   "select": {
     "source": "Select source:",
-    "type": "Select type:",
-    "album": "Select album:",
+    "type": "选择类型：",
+    "album": "选择专辑",
     "group": "Select album group:",
-    "artist": "Select artist:",
-    "track": "Select track:",
-    "country": "Select country:",
-    "video": "Select video:",
-    "lyrics": "Select lyrics:"
+    "artist": "选择艺人：",
+    "track": "选择曲目：",
+    "country": "选择国家：",
+    "video": "选择视频",
+    "lyrics": "选择歌词："
   },
   "sources": {
-    "audio": "Audio",
-    "other": "Other",
+    "audio": "音频",
+    "other": "其他",
     "albumTypes": {
-      "album": "Album",
+      "album": "专辑",
       "group": "Album group",
-      "track": "Track"
+      "track": "曲目"
     },
     "albumsTypes": {
-      "album": "Albums",
-      "single": "Singles",
+      "album": "专辑",
+      "single": "单曲",
       "ep": "EPs",
       "singleEp": "Singles / EPs",
       "compilation": "Compilations",
-      "video": "Videos",
+      "video": "视频",
       "misc": "Miscellaneous",
       "appearance": "Appearances",
       "live": "Live"
     },
     "videoTypes": {
-      "video": "Video",
-      "track": "Track"
+      "video": "视频",
+      "track": "曲目"
     }
   },
   "player": {
@@ -497,27 +497,27 @@
   "settings": {
     "tabs": {
       "app": "App",
-      "profile": "Profile",
-      "connections": "Connections"
+      "profile": "个人资料",
+      "connections": "连接"
     },
     "sections": {
-      "interface": "Interface",
-      "theme": "Theme",
-      "window": "Window",
+      "interface": "接口",
+      "theme": "主题",
+      "window": "窗口",
       "tabs": "Tabs",
       "sidebar": "Sidebar",
-      "video": "Video",
-      "data": "Data",
+      "video": "视频",
+      "data": "数据",
       "info": "Info",
-      "account": "Account",
-      "system": "System",
-      "updates": "Updates"
+      "account": "账户",
+      "system": "系统",
+      "updates": "更新"
     },
     "options": {
       "app": {
         "interface": {
-          "language": "Language",
-          "timezone": "Time zone",
+          "language": "语言",
+          "timezone": "时区",
           "infiniteScroll": "Infinite scroll",
           "artistPopup": "Show artist info on link hover",
           "innerCounters": "Show muffon listeners counters",
@@ -531,9 +531,9 @@
           "transparency": "Transparency"
         },
         "window": {
-          "maximize": "Maximize on start",
-          "quit": "Quit on close",
-          "showTrayIcon": "Show tray icon"
+          "maximize": "应用启动时最大化窗口",
+          "quit": "窗口关闭时退出应用",
+          "showTrayIcon": "显示系统托盘图标"
         },
         "tabs": {
           "newTabSwitch": "Switch to new tab",
@@ -550,16 +550,16 @@
           "album": "Show album",
           "equalizer": "Show equalizer",
           "focusPlaying": "Focus on current track",
-          "pauseOnVideoPlay": "Pause on video play"
+          "pauseOnVideoPlay": "视频播放时暂停音乐"
         },
         "queue": {
-          "autoplay": "Autoplay",
+          "autoplay": "自动播放",
           "clear": "Clear on player close"
         },
         "video": {
-          "autoplay": "Autoplay",
-          "pauseOnAudioPlay": "Pause on audio play",
-          "openLinksInNewTab": "Open links in new tab"
+          "autoplay": "自动播放",
+          "pauseOnAudioPlay": "在播放音频时暂停视频",
+          "openLinksInNewTab": "在新标签页中打开链接"
         },
         "recommendations": {
           "hideLibraryArtists": "Hide library artists",
@@ -569,47 +569,47 @@
           "hideListenedTracks": "Hide listened tracks"
         },
         "top": {
-          "country": "Default country"
+          "country": "默认国家"
         },
         "lyrics": {
           "annotations": "Show annotations"
         },
         "history": {
           "search": {
-            "delete": "Delete search history"
+            "delete": "清除搜索历史"
           },
           "activity": {
-            "delete": "Delete activity history"
+            "delete": "清除活动历史"
           },
           "player": {
-            "delete": "Delete player history"
+            "delete": "清除播放器历史"
           },
           "browser": {
-            "delete": "Delete browser history"
+            "delete": "清除浏览器历史"
           }
         },
         "system": {
           "cache": {
-            "enable": "Enable cache",
-            "clear": "Clear cache"
+            "enable": "启用缓存",
+            "clear": "清除缓存"
           }
         },
         "updates": {
-          "check": "Check for new versions",
-          "auto": "Enable autoupdate",
-          "autoWarning": "Autoupdates on Linux are still in the experimental phase and may contain bugs.\nDuring the autoupdate process, the app will freeze temporarily.\nPlease avoid force-quitting the application; it will close automatically once the update is complete.\n\nFor details and tracking of this issue, visit [a link=issue]this link[/a]."
+          "check": "检查新版本",
+          "auto": "启用自动更新",
+          "autoWarning": "Linux平台上的自动更新仍在试验阶段，可能存在bug。\nDuring the autoupdate process, the app will freeze temporarily.\nPlease avoid force-quitting the application; it will close automatically once the update is complete.\n\nFor details and tracking of this issue, visit [a link=issue]this link[/a]."
         }
       },
       "profile": {
         "player": {
-          "playing": "Show current track on page"
+          "playing": "在页面上显示当前播放的曲目"
         },
         "data": {
           "account": {
-            "delete": "Delete account"
+            "delete": "删除账户"
           },
           "library": {
-            "delete": "Delete library"
+            "delete": "删除音乐库"
           }
         }
       },
@@ -644,25 +644,25 @@
     "source": "Via {source}"
   },
   "recommended": {
-    "header": "Recommended to you",
-    "based": "Based on your:"
+    "header": "为你推荐",
+    "based": "基于您的："
   },
   "signup": {
     "text": "Don't have an account?",
-    "link": "Sign up"
+    "link": "注册"
   },
   "login": {
     "text": "Already signed up?",
-    "link": "Log in"
+    "link": "登录"
   },
   "passwordReset": {
-    "text": "Forgot password?",
-    "link": "Reset",
+    "text": "忘记密码？",
+    "link": "重置密码",
     "code": {
-      "sent": "Password reset code has been sent to your email"
+      "sent": "密码的重置验证码已发送到您的邮箱"
     },
     "updated": {
-      "header": "Your password has been updated",
+      "header": "您的密码已更新",
       "content": "Now you may go back and login"
     }
   },
@@ -674,26 +674,26 @@
     "creator": "Creator"
   },
   "relationships": {
-    "followed": "Following you",
-    "following": "You are following",
-    "follow": "Follow",
-    "unfollow": "Unfollow"
+    "followed": "关注了你",
+    "following": "你正在关注",
+    "follow": "关注",
+    "unfollow": "取消关注"
   },
   "memberships": {
-    "joined": "You have joined",
-    "join": "Join",
-    "leave": "Leave"
+    "joined": "您已加入",
+    "join": "加入",
+    "leave": "退出"
   },
   "message": {
-    "send": "Send message",
+    "send": "发送消息",
     "sent": {
-      "header": "Message has been sent",
-      "content": "Go to conversation"
+      "header": "消息已发送",
+      "content": "进入对话"
     }
   },
   "compatibility": {
     "header": "Your compatibility level with {profileNickname}",
-    "common": "You have in common:"
+    "common": "你们有以下共同点："
   },
   "recommendation": {
     "similar": "Similar to {counter}:"
