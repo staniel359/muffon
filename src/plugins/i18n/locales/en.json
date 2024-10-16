@@ -103,7 +103,7 @@
     },
     "forbidden": {
       "header": "Forbidden",
-      "content": "You don't have the rights to perform this action"
+      "content": "You do not have permission to perform this action"
     },
     "notFound": {
       "header": "Nothing has been found",
@@ -812,7 +812,7 @@
     "header": "Donate",
     "content": [
       "muffon is a non-profit project that has neither ads nor any paid features or content.",
-      "But of course, it cannot exist without funds that are needed for its development and infrastructure.",
+      "But of course, muffon cannot exist without the funds needed for its development and infrastructure.",
       "A lot of time and effort were put into creating this project. It would be great if all that investment paid off.",
       "As such, I would like to ask for your help in supporting muffon.",
       "<strong>Would you like to make a donation?</strong>"
