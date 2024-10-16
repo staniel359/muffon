@@ -700,7 +700,7 @@
   },
   "import": {
     "lastfm": {
-      "historyVisible": "Before import make sure that your Last.FM listening history is visible."
+      "historyVisible": "Before importing, make sure your Last.FM listening history is visible."
     },
     "active": "Importing {count} of {counter}...",
     "success": {
@@ -812,8 +812,8 @@
     "header": "Donate",
     "content": [
       "muffon is a non-profit project that has neither ads nor any paid features or content.",
-      "But of course, muffon cannot exist without the funds needed for its development and infrastructure.",
-      "A lot of time and effort were put into creating this project. It would be great if all that investment paid off.",
+      "However, muffon cannot exist without the funds needed for its development and infrastructure.",
+      "As lot of time and effort were put into creating this project, it would be great to see that investment pay off.",
       "As such, I would like to ask for your help in supporting muffon.",
       "<strong>Would you like to make a donation?</strong>"
     ],
