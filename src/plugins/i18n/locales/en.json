@@ -521,7 +521,7 @@
           "infiniteScroll": "Infinite scroll",
           "artistPopup": "Show artist info on link hover",
           "innerCounters": "Show muffon listeners counter",
-          "cachePages": "Cached pages",
+          "cachePages": "Cache pages",
           "scale": "Scale"
         },
         "theme": {
@@ -597,7 +597,7 @@
         "updates": {
           "check": "Check for new versions",
           "auto": "Enable autoupdate",
-          "autoWarning": "Autoupdates on Linux are still in the experimental phase and may contain bugs.\nDuring the autoupdate process, the app will freeze temporarily.\nPlease avoid force-quitting the application; it will close automatically once the update is complete.\n\nFor details and tracking on this issue, please visit [a link=issue]this link[/a]."
+          "autoWarning": "Autoupdates on Linux are still in the experimental phase and may contain bugs.\nDuring the autoupdate process, the app will freeze temporarily.\nPlease avoid force-quitting the application; it will close automatically once the update is complete.\n\nFor details and tracking of this issue, please visit [a link=issue]this link[/a]."
         }
       },
       "profile": {
@@ -621,7 +621,7 @@
         },
         "spotify": {
           "link": {
-            "description": "To connect to your Spotify account please follow [a link=guide]this guide[/a]."
+            "description": "To connect your Spotify account please follow [a link=guide]this guide[/a]."
           }
         },
         "discord": {
@@ -814,7 +814,7 @@
       "muffon is a non-profit project that has neither ads nor any paid features or content.",
       "However, muffon cannot exist without the funds needed for its development and infrastructure.",
       "As lot of time and effort were put into creating this project, it would be great to see that investment pay off.",
-      "As such, I would like to ask for your help in supporting muffon.",
+      "As such, we would like to ask for your help in supporting muffon.",
       "<strong>Would you like to make a donation?</strong>"
     ],
     "actions": {
