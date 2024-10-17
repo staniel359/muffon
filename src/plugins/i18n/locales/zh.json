@@ -23,15 +23,15 @@
       "tracks": "热门曲目",
       "tags": "热门标签"
     },
-    "releases": "Releases",
+    "releases": "发行",
     "releasesCollection": {
-      "new": "New releases",
-      "upcoming": "Upcoming releases"
+      "new": "最新发行",
+      "upcoming": "即将发行"
     },
-    "new": "New",
+    "new": "最新发布",
     "upcoming": "即将发布",
     "radio": "广播",
-    "multitag": "组合标签搜索",
+    "multitag": "标签搜索",
     "profiles": "个人资料",
     "feed": "动态",
     "posts": "帖子",
@@ -42,7 +42,7 @@
       "artists": "推荐艺人",
       "tracks": "推荐曲目"
     },
-    "savedTracks": "已保存曲目",
+    "savedTracks": "本地曲库",
     "playlists": "播放列表",
     "favorites": "我的最爱",
     "bookmarks": "收藏",
@@ -352,7 +352,7 @@
         "legal": "您须同意隐私政策和服务条款"
       },
       "invalid": {
-        "email": "Email is invalid"
+        "email": "该邮箱格式不符合要求"
       },
       "taken": {
         "email": "该邮箱已被注册",
@@ -496,19 +496,19 @@
   },
   "settings": {
     "tabs": {
-      "app": "App",
+      "app": "应用",
       "profile": "个人资料",
       "connections": "连接"
     },
     "sections": {
-      "interface": "接口",
+      "interface": "界面",
       "theme": "主题",
       "window": "窗口",
-      "tabs": "Tabs",
-      "sidebar": "Sidebar",
+      "tabs": "标签页",
+      "sidebar": "侧边栏",
       "video": "视频",
       "data": "数据",
-      "info": "Info",
+      "info": "信息",
       "account": "账户",
       "system": "系统",
       "updates": "更新"
@@ -518,17 +518,17 @@
         "interface": {
           "language": "语言",
           "timezone": "时区",
-          "infiniteScroll": "Infinite scroll",
+          "infiniteScroll": "无线滚动",
           "artistPopup": "Show artist info on link hover",
           "innerCounters": "Show muffon listeners counters",
-          "cachePages": "Cache pages",
-          "scale": "Scale"
+          "cachePages": "缓存页面",
+          "scale": "缩放"
         },
         "theme": {
-          "dark": "Dark mode",
-          "system": "System theme",
-          "background": "Background",
-          "transparency": "Transparency"
+          "dark": "暗夜模式",
+          "system": "跟随系统",
+          "background": "背景图片",
+          "transparency": "透明度"
         },
         "window": {
           "maximize": "应用启动时最大化窗口",
@@ -536,25 +536,25 @@
           "showTrayIcon": "显示系统托盘图标"
         },
         "tabs": {
-          "newTabSwitch": "Switch to new tab",
-          "closeOnQuit": "Close tabs on quit"
+          "newTabSwitch": "切换到新标签页",
+          "closeOnQuit": "退出时关闭标签页"
         },
         "search": {
-          "source": "Source",
-          "scope": "Scope",
-          "resultsFullSize": "Show results in full size"
+          "source": "来源",
+          "scope": "范围",
+          "resultsFullSize": "全尺寸显示结果"
         },
         "player": {
-          "audioSources": "Audio sources (by priority)",
-          "bitrate": "Show audio bitrate",
-          "album": "Show album",
-          "equalizer": "Show equalizer",
+          "audioSources": "音频源（按优先级）",
+          "bitrate": "显示音频比特率",
+          "album": "显示专辑",
+          "equalizer": "显示均衡器",
           "focusPlaying": "Focus on current track",
           "pauseOnVideoPlay": "视频播放时暂停音乐"
         },
         "queue": {
           "autoplay": "自动播放",
-          "clear": "Clear on player close"
+          "clear": "播放器关闭时清空待播列表"
         },
         "video": {
           "autoplay": "自动播放",
@@ -562,10 +562,10 @@
           "openLinksInNewTab": "在新标签页中打开链接"
         },
         "recommendations": {
-          "hideLibraryArtists": "Hide library artists",
-          "tracksCount": "with tracks count",
+          "hideLibraryArtists": "隐藏音乐库中的艺人",
+          "tracksCount": "显示曲目数量",
           "hideListenedArtists": "Hide listened artists",
-          "hideLibraryTracks": "Hide library tracks",
+          "hideLibraryTracks": "隐藏音乐库中的曲目",
           "hideListenedTracks": "Hide listened tracks"
         },
         "top": {
@@ -629,10 +629,10 @@
             "header": "Enable Rich Presence",
             "client": "Before enabling make sure your Discord desktop client is running",
             "buttons": {
-              "header": "Buttons",
+              "header": "按钮",
               "select": {
-                "first": "Select first:",
-                "second": "Select second:"
+                "first": "选择第一个：",
+                "second": "选择第二个："
               }
             }
           }
@@ -648,11 +648,11 @@
     "based": "基于您的："
   },
   "signup": {
-    "text": "Don't have an account?",
+    "text": "还没有账号？",
     "link": "注册"
   },
   "login": {
-    "text": "Already signed up?",
+    "text": "已有账号？",
     "link": "登录"
   },
   "passwordReset": {
@@ -663,12 +663,12 @@
     },
     "updated": {
       "header": "您的密码已更新",
-      "content": "Now you may go back and login"
+      "content": "现在您可以返回并登录了"
     }
   },
   "anonymous": {
-    "continue": "Continue anonymously",
-    "nickname": "匿名"
+    "continue": "继续匿名使用",
+    "nickname": "昵称"
   },
   "roles": {
     "creator": "Creator"
@@ -715,23 +715,23 @@
     "active": "Saving {count} of {counter}...",
     "success": {
       "library": {
-        "artists": "{counter} has been added to library | {counter} have been added to library",
-        "albums": "{counter} has been added to library | {counter} have been added to library",
-        "tracks": "{counter} has been added to library | {counter} have been added to library"
+        "artists": "{counter}位艺人已添加到音乐库 | {counter}位艺人已添加到音乐库",
+        "albums": "{counter}张专辑已添加到音乐库 | {counter}张专辑已添加到音乐库",
+        "tracks": "{counter}首曲目已添加到音乐库 | {counter}首曲目已添加到音乐库"
       },
       "playlist": {
-        "artists": "{counter} has been added to playlist | {counter} have been added to playlist",
-        "albums": "{counter} has been added to playlist | {counter} have been added to playlist",
-        "tracks": "{counter} has been added to playlist | {counter} have been added to playlist"
+        "artists": "{counter}位艺人已添加到播放列表 | {counter}位艺人已添加到播放列表",
+        "albums": "{counter}张专辑已添加到播放列表 | {counter}张专辑已添加到播放列表",
+        "tracks": "{counter}首曲目已添加到播放列表 | {counter}首曲目已添加到播放列表"
       },
       "playlists": {
         "playlists": "{counter} has been added to playlists | {counter} have been added to playlists"
       },
       "favorites": {
-        "tracks": "{counter} has been added to favorites | {counter} have been added to favorites"
+        "tracks": "{counter}首曲目已添加到我的最爱 | {counter}首曲目已添加到我的最爱"
       }
     },
-    "error": "{counter} could not be added:"
+    "error": "{counter}项无法被添加："
   },
   "delete": {
     "active": "Deleting {count} of {counter}..."
@@ -749,39 +749,39 @@
   },
   "noCollection": {
     "header": {
-      "artists": "No artists",
-      "albums": "No albums",
+      "artists": "暂无艺人",
+      "albums": "暂无专辑",
       "groups": "No album groups",
-      "tracks": "No tracks",
-      "similar": "No similar",
-      "tags": "No tags",
-      "posts": "No posts",
-      "feed": "No posts",
+      "tracks": "暂无曲目",
+      "similar": "暂无相似内容",
+      "tags": "暂无标签",
+      "posts": "暂无帖子",
+      "feed": "暂无动态",
       "conversations": "No conversations",
       "messages": "No messages",
       "followers": "No followers",
       "following": "No following",
       "recommendations": "No recommendations",
-      "playlists": "No playlists",
-      "communities": "No communities",
+      "playlists": "暂无播放列表",
+      "communities": "暂无社区",
       "members": "No members",
-      "videos": "No videos",
-      "videoChannels": "No video channels",
-      "videoMixes": "No video mixes",
-      "videoPlaylists": "No video playlists",
-      "related": "No related",
+      "videos": "暂无视频",
+      "videoChannels": "暂无视频频道",
+      "videoMixes": "暂无混剪视频",
+      "videoPlaylists": "暂无你视频播放列表",
+      "related": "暂无相关内容",
       "listeners": "No listeners",
-      "images": "No images",
+      "images": "暂无图片",
       "events": "No events",
-      "profiles": "No profiles",
+      "profiles": "暂无个人资料",
       "shows": "No shows"
     },
     "content": "这里似乎什么都没有"
   },
   "deleted": {
-    "artist": "Artist has been deleted",
+    "artist": "艺人已被删除",
     "album": "专辑已被删除",
-    "track": "Track has been deleted",
+    "track": "曲目已被删除",
     "recommendation": "推荐已被删除",
     "playlist": "播放列表已被删除",
     "post": "帖子已被删除",
@@ -794,19 +794,19 @@
     "welcome": "欢迎, {profileNickname}"
   },
   "profile": {
-    "wasOnline": "Was online"
+    "wasOnline": "上次在线"
   },
   "feed": {
     "global": "Global feed"
   },
   "about": {
-    "license": "{license} license",
+    "license": "{license} 许可证",
     "homepage": "首页",
     "contact": "联系"
   },
   "private": {
-    "playlist": "Private",
-    "profile": "Private"
+    "playlist": "私密的播放列表",
+    "profile": "私密的个人资料"
   },
   "donate": {
     "header": "捐款",
@@ -819,7 +819,7 @@
     ],
     "actions": {
       "decline": "不, 谢谢",
-      "later": "Maybe later",
+      "later": "以后再说",
       "accept": "是的, 当然"
     }
   },
@@ -829,22 +829,22 @@
     "extended": "详细列表"
   },
   "orders": {
-    "createdDesc": "最新",
-    "createdAsc": "最早",
-    "updatedDesc": "最近更新",
-    "updatedAsc": "最早更新",
-    "artistsCountDesc": "Most artists",
-    "artistsCountAsc": "Least artists",
-    "albumsCountDesc": "Most albums",
-    "albumsCountAsc": "Least albums",
-    "tracksCountDesc": "Most tracks",
-    "tracksCountAsc": "Least tracks",
-    "followersCountDesc": "最多粉丝",
-    "followersCountAsc": "最少粉丝",
-    "joinedDesc": "最近加入",
-    "joinedAsc": "最早加入",
-    "membersCountDesc": "最多成员",
-    "membersCountAsc": "最少成员"
+    "createdDesc": "按创建时间倒序",
+    "createdAsc": "按创建时间正序",
+    "updatedDesc": "按更新时间倒序",
+    "updatedAsc": "按更新时间正序",
+    "artistsCountDesc": "艺人数量最多",
+    "artistsCountAsc": "艺人数量最少",
+    "albumsCountDesc": "专辑数量最多",
+    "albumsCountAsc": "专辑数量最少",
+    "tracksCountDesc": "曲目数量最多",
+    "tracksCountAsc": "曲目数量最少",
+    "followersCountDesc": "粉丝数最多",
+    "followersCountAsc": "粉丝数最少",
+    "joinedDesc": "按加入时间倒序",
+    "joinedAsc": "按加入时间正序",
+    "membersCountDesc": "成员数最多",
+    "membersCountAsc": "成员数最少"
   },
   "deletedModel": {
     "profile": "已被删除的个人资料"
@@ -852,31 +852,31 @@
   "events": {
     "created": {
       "profile": "个人资料已创建",
-      "bookmarkAlbum": "Album {modelName} is added to bookmarks",
-      "bookmarkArtist": "Artist {modelName} is added to bookmarks",
-      "bookmarkTrack": "Track {modelName} is added to bookmarks",
-      "bookmarkVideo": "Video {modelName} is added to bookmarks",
-      "bookmarkVideoChannel": "Video channel {modelName} is added to bookmarks",
-      "bookmarkVideoPlaylist": "Video playlist {modelName} is added to bookmarks",
-      "favoriteAlbum": "Album {modelName} is added to favorites",
-      "favoriteArtist": "Artist {modelName} is added to favorites",
-      "favoriteTrack": "Track {modelName} is added to favorites",
-      "favoriteVideo": "Video {modelName} is added to favorites",
-      "libraryAlbum": "Album {modelName} is added to library",
-      "libraryArtist": "Artist {modelName} is added to library",
-      "libraryTrack": "Track {modelName} is added to library",
+      "bookmarkAlbum": "专辑{modelName}已添加到收藏",
+      "bookmarkArtist": "艺人{modelName}已添加到收藏",
+      "bookmarkTrack": "曲目{modelName}已添加到收藏",
+      "bookmarkVideo": "视频{modelName}已添加到收藏",
+      "bookmarkVideoChannel": "视频频道{modelName}已添加到收藏",
+      "bookmarkVideoPlaylist": "视频播放列表{modelName}已添加到收藏",
+      "favoriteAlbum": "专辑{modelName}已添加到我的最爱",
+      "favoriteArtist": "艺人{modelName}已添加到我的最爱",
+      "favoriteTrack": "曲目{modelName}已添加到我的最爱",
+      "favoriteVideo": "视频{modelName}已添加到我的最爱",
+      "libraryAlbum": "专辑{modelName}已添加到音乐库",
+      "libraryArtist": "艺人{modelName}已添加到音乐库",
+      "libraryTrack": "曲目 {modelName}已添加到音乐库",
       "listenedAlbum": "Album {modelName} is added to listened",
       "listenedArtist": "Artist {modelName} is added to listened",
       "listenedTrack": "Track {modelName} is added to listened",
       "watchedVideo": "Video {modelName} is added to watched",
-      "playlistTrack": "Track {modelName} is added to playlist {playlistTitle}",
-      "community": "Community {modelName} is created",
-      "relationship": "You followed {modelName}",
-      "post": "Post {modelName} is created",
-      "postComment": "Comment {modelName} is created",
-      "playlist": "Playlist {modelName} is created",
+      "playlistTrack": "曲目{modelName}已添加到{playlistTitle}播放列表",
+      "community": "社区{modelName}已创建",
+      "relationship": "您关注了{modelName}",
+      "post": "帖子{modelName}已创建",
+      "postComment": "评论{modelName}已创建",
+      "playlist": "播放列表{modelName}已创建",
       "conversation": "You started conversation with {modelName}",
-      "membership": "You joined community {modelName}"
+      "membership": "您加入了{modelName}社区"
     },
     "updated": {
       "profile": "个人资料已更新",
@@ -886,24 +886,24 @@
       "playlist": "播放列表 {modelName} 已更新"
     },
     "deleted": {
-      "bookmarkAlbum": "Album {modelName} is deleted from bookmarks",
-      "bookmarkArtist": "Artist {modelName} is deleted from bookmarks",
-      "bookmarkTrack": "Track {modelName} is deleted from bookmarks",
-      "bookmarkVideo": "Video {modelName} is deleted from bookmarks",
-      "bookmarkVideoChannel": "Video channel {modelName} is deleted from bookmarks",
-      "bookmarkVideoPlaylist": "Video playlist {modelName} is deleted from bookmarks",
-      "favoriteAlbum": "Album {modelName} is deleted from favorites",
-      "favoriteArtist": "Artist {modelName} is deleted from favorites",
-      "favoriteTrack": "Track {modelName} is deleted from favorites",
-      "favoriteVideo": "Video {modelName} is deleted from favorites",
-      "libraryAlbum": "Album {modelName} is deleted from library",
-      "libraryArtist": "Artist {modelName} is deleted from library",
-      "libraryTrack": "Track {modelName} is deleted from library",
+      "bookmarkAlbum": "专辑{modelName}已从收藏中删除",
+      "bookmarkArtist": "艺人{modelName}已从收藏中删除",
+      "bookmarkTrack": "曲目{modelName}已从收藏中删除",
+      "bookmarkVideo": "视频{modelName}已从收藏中删除",
+      "bookmarkVideoChannel": "视频频道{modelName}已从收藏中删除",
+      "bookmarkVideoPlaylist": "视频播放列表{modelName}已从收藏中删除",
+      "favoriteAlbum": "专辑{modelName}已从我的最爱中删除",
+      "favoriteArtist": "艺人{modelName}已从我的最爱中删除",
+      "favoriteTrack": "曲目{modelName}已从我的最爱中删除",
+      "favoriteVideo": "视频{modelName}已从我的最爱中删除",
+      "libraryAlbum": "专辑 {modelName}已从音乐库中删除",
+      "libraryArtist": "艺人 {modelName}已从音乐库中删除",
+      "libraryTrack": "曲目 {modelName}已从音乐库中删除",
       "listenedAlbum": "Album {modelName} is deleted from listened",
       "listenedArtist": "Artist {modelName} is deleted from listened",
       "listenedTrack": "Track {modelName} is deleted from listened",
       "watchedVideo": "Video {modelName} is deleted from watched",
-      "playlistTrack": "Track {modelName} is deleted from playlist {playlistTitle}",
+      "playlistTrack": "曲目{modelName}已从{playlistTitle}播放列表中删除",
       "community": "社区 {modelName} 已被删除",
       "recommendationArtist": "Artist {modelName} is deleted from recommendations",
       "recommendationTrack": "Track {modelName} is deleted from recommendations",
@@ -921,23 +921,23 @@
   },
   "filter": {
     "include": {
-      "artists": "With artists",
+      "artists": "包含艺人",
       "tags": "包含标签"
     },
     "exclude": {
-      "artists": "Without artists",
+      "artists": "不包含艺人",
       "tags": "不包含标签"
     }
   },
   "keyboardShortcuts": {
-    "header": "Keyboard shortcuts",
-    "search": "显示搜索面板",
-    "audioBackward": "Seek audio backward",
-    "audioForward": "Seek audio forward",
-    "radioNextTrack": "Next radio track"
+    "header": "快捷键",
+    "search": "打开搜索框",
+    "audioBackward": "快退音频",
+    "audioForward": "快进音频",
+    "radioNextTrack": "下一首广播曲目"
   },
   "online": "在线",
-  "error": "Error",
+  "error": "错误",
   "more": "更多...",
   "loading": "加载中...",
   "warning": "警告"
