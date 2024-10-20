@@ -59,38 +59,38 @@
     "historyCollection": {
       "activity": "活动历史",
       "player": "播放历史",
-      "browser": "浏览器历史"
+      "browser": "浏览历史"
     },
     "activity": "活动",
-    "player": "播放器",
-    "browser": "浏览器",
+    "player": "播放",
+    "browser": "浏览",
     "settings": "设置",
     "model": {
-      "artists": "{modelName} 艺人",
-      "albums": "{modelName} 专辑",
-      "tracks": "{modelName} 曲目",
-      "tags": "{modelName} 标签",
-      "similar": "{modelName} 相似推荐",
-      "images": "{modelName} 图片",
-      "lyrics": "{modelName} 歌词",
-      "videos": "{modelName} 视频",
-      "related": "{modelName} 相关推荐",
-      "posts": "{modelName} 帖子",
-      "library": "{modelName} 音乐库",
-      "playlists": "{modelName} 播放列表",
-      "favorites": "{modelName} 我的最爱",
+      "artists": "{modelName}艺人",
+      "albums": "{modelName}专辑",
+      "tracks": "{modelName}曲目",
+      "tags": "{modelName}标签",
+      "similar": "{modelName}相似",
+      "images": "{modelName}图片",
+      "lyrics": "{modelName}歌词",
+      "videos": "{modelName}视频",
+      "related": "{modelName}相关",
+      "posts": "{modelName}帖子",
+      "library": "{modelName}音乐库",
+      "playlists": "{modelName}播放列表",
+      "favorites": "{modelName}我的最爱",
       "favoritesCollection": {
-        "artists": "{modelName} 最喜欢的艺人",
-        "albums": "{modelName} 最喜欢的专辑",
-        "tracks": "{modelName} 最喜欢的曲目",
-        "videos": "{modelName} 最喜欢的视频"
+        "artists": "{modelName}最喜欢的艺人",
+        "albums": "{modelName}最喜欢的专辑",
+        "tracks": "{modelName}最喜欢的曲目",
+        "videos": "{modelName}最喜欢的视频"
       },
-      "communities": "{modelName} 社区",
-      "shows": "{modelName} 演出"
+      "communities": "{modelName}社区",
+      "shows": "{modelName}演出"
     },
     "search": "搜索",
-    "queue": "待播列表",
-    "whatsNew": "最新发布",
+    "queue": "待播队列",
+    "whatsNew": "最新动态",
     "listenedRecently": "最近播放",
     "shows": "演出",
     "listeningNow": "正在播放",
@@ -132,7 +132,7 @@
   },
   "actions": {
     "login": "登录",
-    "logout": "注销",
+    "logout": "登出",
     "signup": "注册",
     "add": "添加",
     "create": "创建",
@@ -163,7 +163,7 @@
       "library": "从音乐库中添加"
     },
     "importFrom": {
-      "drive": "从驱动器中导入",
+      "drive": "从硬盘中导入",
       "account": "从账户中导入"
     },
     "searchIn": {
@@ -196,7 +196,7 @@
       "bookmarks": "添加到收藏",
       "listened": "添加到音乐播放历史",
       "watched": "添加到视频观看历史",
-      "queue": "添加到待播列表",
+      "queue": "添加到待播队列",
       "savedTracks": "添加到本地曲库"
     },
     "show": {
@@ -260,18 +260,18 @@
         "history": {
           "search": "删除搜索历史",
           "activity": "删除活动历史",
-          "browser": "删除浏览器历史",
-          "player": "删除播放器历史"
+          "browser": "删除浏览历史",
+          "player": "删除播放历史"
         }
       },
       "going": {
-        "libraryModel": "您将要从音乐库中删除{modelName} 。",
-        "recommendationModel": "You are going to delete{modelName}from your recommendations.",
-        "playlist": "您将要从播放列表中删除{modelName} 。",
+        "libraryModel": "您将要从音乐库中删除{modelName}。",
+        "recommendationModel": "您将要从推荐列表中删除{modelName}。",
+        "playlist": "您将要从播放列表中删除{modelName}。",
         "playlistTrack": "您将要从{parentModelName}播放列表中删除{modelName}。",
         "savedTrack": "您将要从本地曲库中删除{modelName}。",
         "favorite": "您将要从我的最爱中删除{modelName}。",
-        "bookmark": "您将要从收藏删除{modelName}。",
+        "bookmark": "您将要从收藏中删除{modelName}。",
         "post": "您将要删除该帖子。",
         "comment": "您将要删除该评论。",
         "community": "您将要删除该社区。",
@@ -280,8 +280,8 @@
         "history": {
           "search": "您将要清空您的搜索历史。",
           "activity": "您将要清空您的活动历史。",
-          "browser": "您将要清空您的浏览器历史。",
-          "player": "您将要清空您的播放器历史。"
+          "browser": "您将要清空您的浏览历史。",
+          "player": "您将要清空您的播放历史。"
         }
       },
       "also": {
@@ -289,19 +289,19 @@
           "artist": "这同时也将删除该艺人的所有专辑和曲目。",
           "album": "这同时也将删除该专辑的所有曲目。"
         },
-        "playlist": "这同时也将删除该播放列表的所有曲目",
-        "community": "这同时也将删除该社区的所有帖子",
+        "playlist": "这同时也将删除该播放列表的所有曲目。",
+        "community": "这同时也将删除该社区的所有帖子。",
         "account": [
           "这同时也将删除您的以下数据：",
           "<strong>- 音乐库\n- 推荐列表\n- 播放列表\n- 我的最爱\n- 收藏\n- 音乐播放历史\n- 您的页面帖子\n- 订阅\n- 历史记录</strong>",
-          "这些数据将被保留，但不会显示您的昵称",
-          "<strong>- 创建的帖子\n- 创建的评论\n- conversations with you\n- 创建的社区</strong>",
+          "这些数据将被保留，但不会显示您的昵称：",
+          "<strong>- 创建的帖子\n- 创建的评论\n- 与您的对话\n- 创建的社区</strong>",
           "同时这些数据将被保留",
           "<strong>- 保存的曲目\n- 背景图片\n- 设置</strong>"
         ],
         "library": [
           "这将删除您的以下数据：",
-          "<strong>- 艺人\n- 专辑\n- 曲目\n- recommendations</strong>"
+          "<strong>- 艺人\n- 专辑\n- 曲目\n- 推荐列表</strong>"
         ]
       },
       "undo": "您无法撤销此操作！",
@@ -312,7 +312,7 @@
     "fields": {
       "email": "邮箱",
       "password": "密码",
-      "passwordConfirmation": "确认密码",
+      "passwordConfirmation": "密码确认",
       "passwordResetCode": "密码重置验证码",
       "nickname": "呢称",
       "title": "标题",
@@ -349,14 +349,14 @@
         "title": "标题为空",
         "clientId": "客户端ID为空",
         "clientSecret": "客户端密钥为空",
-        "legal": "您须同意隐私政策和服务条款"
+        "legal": "您须同意该隐私政策和服务条款"
       },
       "invalid": {
-        "email": "该邮箱格式不符合要求"
+        "email": "无效的邮箱地址"
       },
       "taken": {
         "email": "该邮箱已被注册",
-        "nickname": "该昵称已被注册",
+        "nickname": "该昵称已被占用",
         "title": "该标题已被占用"
       },
       "tooShort": {
@@ -366,7 +366,7 @@
         "nickname": "昵称太长"
       },
       "confirmation": {
-        "passwordConfirmation": "密码和确认密码不一致"
+        "passwordConfirmation": "密码和密码确认不一致"
       },
       "wrong": {
         "password": "密码错误",
@@ -378,11 +378,11 @@
     }
   },
   "notifications": {
-    "scrobbled": "曲目{trackFullTitle}已被记录",
+    "scrobbled": "曲目{trackFullTitle}的收听已被记录",
     "added": {
       "queue": {
-        "track": "曲目{trackFullTitle}已加入待播列表",
-        "tracks": "{counter}首曲目已加入待播列表"
+        "track": "曲目{trackFullTitle}已加入待播队列",
+        "tracks": "{counter}首曲目已加入待播队列 | {counter}首曲目已加入待播队列"
       },
       "savedTracks": {
         "track": "曲目{trackFullTitle}已加入本地曲库"
@@ -397,9 +397,9 @@
     },
     "deleted": {
       "libraryModel": {
-        "artist": "艺人{modelName}已从你的音乐库中删除",
-        "album": "专辑{modelName}已从你的音乐库中删除",
-        "track": "曲目{modelName}已从你的音乐库中删除"
+        "artist": "艺人{modelName}已从您的音乐库中删除",
+        "album": "专辑{modelName}已从您的音乐库中删除",
+        "track": "曲目{modelName}已从您的音乐库中删除"
       },
       "playlist": "播放列表{playlistTitle}已被删除",
       "community": "社区{communityTitle}已被删除",
@@ -427,8 +427,8 @@
       "videos": "{count}个视频 | {count}个视频",
       "files": "{count}个文件 | {count}个文件",
       "plays": "{count}次播放 | {count}次播放",
-      "followers": "{count} follower | {count} followers",
-      "following": "{count} following",
+      "followers": "{count}位关注者 | {count}位关注者",
+      "following": "{count}位关注对象",
       "members": "{count}位成员 | {count}位成员",
       "playlists": "{count}个播放列表 | {count}个播放列表"
     },
@@ -484,13 +484,13 @@
     }
   },
   "player": {
-    "variants": "可选版本 ({count})",
+    "variants": "可选版本（{count}）",
     "audio": {
-      "bitrate": "{value} 千比特/秒",
+      "bitrate": "{value}千比特/秒",
       "equalizer": {
-        "decibel": "{value} 分贝",
-        "hertz": "{value} 赫兹",
-        "kilohertz": "{value} 千赫兹"
+        "decibel": "{value}分贝",
+        "hertz": "{value}赫兹",
+        "kilohertz": "{value}千赫兹"
       }
     }
   },
@@ -520,7 +520,7 @@
           "timezone": "时区",
           "infiniteScroll": "无线滚动",
           "artistPopup": "鼠标悬停时显示艺人信息",
-          "innerCounters": "显示 muffon 的听众数量",
+          "innerCounters": "显示muffon的听众数量",
           "cachePages": "缓存页面",
           "scale": "缩放"
         },
@@ -537,12 +537,12 @@
         },
         "tabs": {
           "newTabSwitch": "切换到新标签页",
-          "closeOnQuit": "退出时关闭标签页"
+          "closeOnQuit": "退出时关闭所有标签页"
         },
         "search": {
-          "source": "来源",
+          "source": "来源平台",
           "scope": "范围",
-          "resultsFullSize": "全尺寸显示结果"
+          "resultsFullSize": "以全尺寸显示结果"
         },
         "player": {
           "audioSources": "音频源（按优先级）",
@@ -550,15 +550,15 @@
           "album": "显示专辑",
           "equalizer": "显示均衡器",
           "focusPlaying": "聚焦当前曲目",
-          "pauseOnVideoPlay": "视频播放时暂停音乐"
+          "pauseOnVideoPlay": "视频播放时暂停"
         },
         "queue": {
           "autoplay": "自动播放",
-          "clear": "播放器关闭时清空待播列表"
+          "clear": "播放器关闭时清空待播队列"
         },
         "video": {
           "autoplay": "自动播放",
-          "pauseOnAudioPlay": "在播放音频时暂停视频",
+          "pauseOnAudioPlay": "音频播放时暂停",
           "openLinksInNewTab": "在新标签页中打开链接"
         },
         "recommendations": {
@@ -572,20 +572,20 @@
           "country": "默认国家"
         },
         "lyrics": {
-          "annotations": "显示歌词注释"
+          "annotations": "显示注释"
         },
         "history": {
           "search": {
-            "delete": "清除搜索历史"
+            "delete": "清空搜索历史"
           },
           "activity": {
-            "delete": "清除活动历史"
+            "delete": "清空活动历史"
           },
           "player": {
-            "delete": "清除播放器历史"
+            "delete": "清空播放历史"
           },
           "browser": {
-            "delete": "清除浏览器历史"
+            "delete": "清空浏览历史"
           }
         },
         "system": {
@@ -597,7 +597,7 @@
         "updates": {
           "check": "检查新版本",
           "auto": "启用自动更新",
-          "autoWarning": "Linux平台上的自动更新仍在试验阶段，可能存在bug。\n在自动更新时，应用程序可能暂时会无响应\n请不要强制关闭应用程序；更新完成后，应用程序将自动关闭。\n\n有关此问题的详细信息和后续更新，请访问[a link=issue]此链接[/a]。"
+          "autoWarning": "Linux平台上的自动更新仍在试验阶段，可能存在bug。\n在自动更新时，应用程序可能暂时会无响应。\n请不要强制关闭应用程序；更新完成后，应用程序将自动关闭。\n\n有关此问题的详细信息和后续更新，请访问[a link=issue]此链接[/a]。"
         }
       },
       "profile": {
@@ -615,9 +615,9 @@
       },
       "connections": {
         "lastfm": {
-          "scrobbling": "同步听歌记录",
-          "scrobbleNotifications": "听歌记录同步通知",
-          "scrobblePercent": "播放达到百分比后同步"
+          "scrobbling": "追踪听歌记录",
+          "scrobbleNotifications": "听歌记录追踪通知",
+          "scrobblePercent": "达到该百分比后追踪听歌记录"
         },
         "spotify": {
           "link": {
@@ -644,7 +644,7 @@
     "source": "由{source}提供"
   },
   "recommended": {
-    "header": "为你推荐",
+    "header": "为您推荐",
     "based": "基于您的："
   },
   "signup": {
@@ -674,8 +674,8 @@
     "creator": "创建者"
   },
   "relationships": {
-    "followed": "关注了你",
-    "following": "你正在关注",
+    "followed": "关注了您",
+    "following": "您正在关注",
     "follow": "关注",
     "unfollow": "取消关注"
   },
@@ -688,7 +688,7 @@
     "send": "发送消息",
     "sent": {
       "header": "消息已发送",
-      "content": "进入对话"
+      "content": "前往对话"
     }
   },
   "compatibility": {
@@ -759,7 +759,7 @@
       "feed": "暂无动态",
       "conversations": "暂无对话",
       "messages": "暂无消息",
-      "followers": "暂无粉丝",
+      "followers": "暂无关注者",
       "following": "暂无关注对象",
       "recommendations": "暂无推荐",
       "playlists": "暂无播放列表",
@@ -768,7 +768,7 @@
       "videos": "暂无视频",
       "videoChannels": "暂无视频频道",
       "videoMixes": "暂无混剪视频",
-      "videoPlaylists": "暂无你视频播放列表",
+      "videoPlaylists": "暂无视频播放列表",
       "related": "暂无相关内容",
       "listeners": "暂无听众",
       "images": "暂无图片",
@@ -805,8 +805,8 @@
     "contact": "联系"
   },
   "private": {
-    "playlist": "私密的播放列表",
-    "profile": "私密的个人资料"
+    "playlist": "私密",
+    "profile": "私密"
   },
   "donate": {
     "header": "捐款",
@@ -839,8 +839,8 @@
     "albumsCountAsc": "专辑数量最少",
     "tracksCountDesc": "曲目数量最多",
     "tracksCountAsc": "曲目数量最少",
-    "followersCountDesc": "粉丝数最多",
-    "followersCountAsc": "粉丝数最少",
+    "followersCountDesc": "关注者最多",
+    "followersCountAsc": "关注者最少",
     "joinedDesc": "按加入时间倒序",
     "joinedAsc": "按加入时间正序",
     "membersCountDesc": "成员数最多",
@@ -875,7 +875,7 @@
       "post": "帖子{modelName}已创建",
       "postComment": "评论{modelName}已创建",
       "playlist": "播放列表{modelName}已创建",
-      "conversation": "您开始了与{modelName}的对话",
+      "conversation": "您开始了与{modelName}的聊天",
       "membership": "您加入了{modelName}社区"
     },
     "updated": {
@@ -907,11 +907,11 @@
       "community": "社区{modelName}已被删除",
       "recommendationArtist": "艺人{modelName}已从推荐列表中删除",
       "recommendationTrack": "曲目{modelName}已从推荐列表中删除",
-      "relationship": "你取消了对{modelName}的关注",
+      "relationship": "您取消了对{modelName}的关注",
       "post": "帖子{modelName}已被删除",
       "postComment": "评论{modelName}已被删除",
       "playlist": "播放列表{modelName}已被删除",
-      "membership": "你离开了社区{modelName}"
+      "membership": "您离开了社区{modelName}"
     }
   },
   "created": {
@@ -931,7 +931,7 @@
   },
   "keyboardShortcuts": {
     "header": "快捷键",
-    "search": "打开搜索框",
+    "search": "显示搜索框",
     "audioBackward": "快退音频",
     "audioForward": "快进音频",
     "radioNextTrack": "下一首广播曲目"
