@@ -195,6 +195,14 @@ export function getObjectKeysWithTrueValues (
   )
 }
 
+export function isMiddleClick (
+  event
+) {
+  return (
+    event.which === 2
+  )
+}
+
 export const isWindows = (
   systemName === 'windows'
 )

@@ -12,6 +12,18 @@ export default function (
 
   function formatTrackData () {
     switch (source) {
+      case 'amazonmusic':
+        return {
+          trackId: trackData.source.id,
+          albumId:
+            trackData.source.album_id
+        }
+      case 'bandcamp':
+        return {
+          trackId: trackData.source.id,
+          artistId:
+            trackData.source.artist_id
+        }
       case 'lastfm':
         return {
           artistName: (
@@ -23,12 +35,6 @@ export default function (
             trackData.title ||
               trackData.trackTitle
           )
-        }
-      case 'bandcamp':
-        return {
-          trackId: trackData.source.id,
-          artistId:
-            trackData.source.artist_id
         }
       default:
         return {

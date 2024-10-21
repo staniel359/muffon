@@ -7,6 +7,7 @@
     }"
     :is-invertable="!isActive"
     @click="handleClick"
+    @auxclick.stop="handleAuxClick"
   >
     <BaseIcon
       class="main-right-extrasmall-icon main-left-small-icon"
@@ -47,7 +48,8 @@ import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseTickerContainer
   from '@/components/containers/BaseTickerContainer.vue'
 import {
-  generateKey
+  generateKey,
+  isMiddleClick
 } from '@/helpers/utils'
 
 export default {
@@ -140,6 +142,18 @@ export default {
       )
     },
     handleCloseButtonClick () {
+      this.callTabClose()
+    },
+    handleAuxClick (
+      event
+    ) {
+      if (isMiddleClick(
+        event
+      )) {
+        this.callTabClose()
+      }
+    },
+    callTabClose () {
       ipcRenderer.send(
         'delete-tab',
         this.tabId

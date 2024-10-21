@@ -4,6 +4,7 @@ export default function (
     artistName,
     trackTitle,
     artistId,
+    albumId,
     trackId,
     scope = ''
   }
@@ -18,13 +19,15 @@ export default function (
     )
 
   switch (source) {
+    case 'amazonmusic':
+      return `/${source}/tracks/${trackId}/${scope}?album_id=${albumId}`
+    case 'bandcamp':
+      return `/${source}/artists/${artistId}/tracks/${trackId}/${scope}`
     case 'lastfm':
       return (
         `/${source}/artists/${artistNameEncoded}` +
         `/tracks/${trackTitleEncoded}/${scope}`
       )
-    case 'bandcamp':
-      return `/${source}/artists/${artistId}/tracks/${trackId}/${scope}`
     default:
       return `/${source}/tracks/${trackId}/${scope}`
   }

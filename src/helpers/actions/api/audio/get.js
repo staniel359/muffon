@@ -17,7 +17,8 @@ export default function (
       {
         source: sourceData.name,
         trackId: sourceData.id,
-        artistId: sourceData.artist_id
+        artistId: sourceData.artist_id,
+        albumId: sourceData.album_id
       }
     )
 
