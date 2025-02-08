@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     successHeaderText () {
-      return this.$tc(
+      return this.$t(
         'import.success.header',
         this.count,
         {
@@ -40,7 +40,7 @@ export default {
       )
     },
     counterText () {
-      return this.$tc(
+      return this.$t(
         `counters.nominative.${this.scope}`,
         this.count,
         {

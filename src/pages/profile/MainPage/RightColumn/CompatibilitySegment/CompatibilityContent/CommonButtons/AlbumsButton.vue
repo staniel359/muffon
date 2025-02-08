@@ -44,7 +44,7 @@ export default {
       return this.compatibilityData.albums_count
     },
     albumsText () {
-      return this.$tc(
+      return this.$t(
         'counters.nominative.albums',
         this.albumsCount,
         {

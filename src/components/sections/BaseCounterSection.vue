@@ -29,7 +29,7 @@ export default {
   ],
   computed: {
     countText () {
-      return this.$tc(
+      return this.$t(
         `counters.nominative.${this.scope}`,
         this.count,
         {

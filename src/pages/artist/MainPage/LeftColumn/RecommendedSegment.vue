@@ -74,7 +74,7 @@ export default {
       )
     },
     artistsText () {
-      return this.$tc(
+      return this.$t(
         'counters.genitive.artists',
         this.artistsCount,
         {

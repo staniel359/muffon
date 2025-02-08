@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     followingText () {
-      return this.$tc(
+      return this.$t(
         'counters.nominative.following',
         this.followingCount,
         {

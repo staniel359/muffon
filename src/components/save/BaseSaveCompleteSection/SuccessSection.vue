@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     successText () {
-      return this.$tc(
+      return this.$t(
         `save.success.${this.model}.${this.scope}`,
         this.successCollectionCount,
         {
@@ -43,7 +43,7 @@ export default {
       )
     },
     counterText () {
-      return this.$tc(
+      return this.$t(
         `counters.nominative.${this.scope}`,
         this.successCollectionCount,
         {
