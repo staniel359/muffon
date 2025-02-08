@@ -35,7 +35,7 @@
     "electron-store": "^10.0.0",
     "electron-updater": "^6.3.9",
     "i18n": "^0.15.1",
-    "music-metadata": "^8.3.0",
+    "music-metadata": "^10.8.3",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
