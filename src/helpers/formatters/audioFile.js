@@ -1,9 +1,6 @@
 import {
   ipcRenderer
 } from 'electron'
-import {
-  selectCover
-} from 'music-metadata-browser'
 
 function formatCover (
   cover
@@ -40,8 +37,11 @@ export async function metatags (
   }
 
   const cover =
-    selectCover(
-      metatags.picture
+    await ipcRenderer.invoke(
+      'read-audio-file-cover',
+      {
+        imageData: metatags.picture
+      }
     )
 
   const image =
@@ -54,17 +54,13 @@ export async function metatags (
     large: image
   }
 
-  function getFileDetails () {
-    return ipcRenderer.invoke(
+  const details =
+    await ipcRenderer.invoke(
       'read-file-details',
       {
         filePath
       }
     )
-  }
-
-  const details =
-    await getFileDetails()
 
   const created =
     details.birthtime

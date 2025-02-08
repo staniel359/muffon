@@ -7,6 +7,7 @@ import setIpcTabEvents from '../../events/ipc/tab.js'
 import setIpcTabsEvents from '../../events/ipc/tabs.js'
 import setIpcStoreEvents from '../../events/ipc/store.js'
 import setIpcAudioFileEvents from '../../events/ipc/audioFile.js'
+import setIpcRemoteAudioFileEvents from '../../events/ipc/remoteAudioFile.js'
 import setIpcBackgroundImageEvents from '../../events/ipc/backgroundImage.js'
 import setIpcFileEvents from '../../events/ipc/file.js'
 import setIpcElectronStoreEvents from '../../events/ipc/electronStore.js'
@@ -30,6 +31,8 @@ export default function () {
   setIpcStoreEvents()
 
   setIpcAudioFileEvents()
+
+  setIpcRemoteAudioFileEvents()
 
   setIpcBackgroundImageEvents()
 

@@ -21,8 +21,8 @@
 
 <script>
 import {
-  fetchFromUrl
-} from 'music-metadata-browser'
+  ipcRenderer
+} from 'electron'
 import {
   mapState
 } from 'pinia'
@@ -93,9 +93,12 @@ export default {
       this.isLoading = false
     },
     getAudioBitrate () {
-      fetchFromUrl(
-        this.audioLink,
-        this.audioOptions
+      ipcRenderer.invoke(
+        'read-remote-audio-file-metadata',
+        {
+          fileUrl: this.audioLink,
+          options: this.audioOptions
+        }
       ).then(
         this.handleAudioSuccess
       ).catch(
