@@ -27,6 +27,9 @@ import changeViewBackgroundColor
 import {
   handleNewWindow
 } from '../../handlers/app.js'
+import {
+  preloadScriptFilePath
+} from '../../helpers/paths.js'
 
 function handleShow () {
   setTrayMenu()
@@ -77,12 +80,7 @@ export default function () {
     minWidth: mainWindowWidth,
     minHeight: mainWindowHeight,
     icon: windowIcon,
-    show: false,
-    webPreferences: {
-      contextIsolation: false,
-      devTools: isDevelopment,
-      nodeIntegration: true
-    }
+    show: false
   }
 
   mainWindow =
@@ -95,8 +93,9 @@ export default function () {
   const mainViewOptions = {
     webPreferences: {
       contextIsolation: false,
+      nodeIntegration: true,
       devTools: isDevelopment,
-      nodeIntegration: true
+      preload: preloadScriptFilePath
     }
   }
 

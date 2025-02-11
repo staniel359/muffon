@@ -64,3 +64,8 @@ export const envFilePath =
   formatFileRootPath(
     '.env'
   )
+
+export const preloadScriptFilePath =
+  formatFileRootPath(
+    'electron/preload.mjs'
+  )

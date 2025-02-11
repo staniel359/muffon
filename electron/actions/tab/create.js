@@ -17,6 +17,9 @@ import {
 } from '../../handlers/app.js'
 import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
+import {
+  preloadScriptFilePath
+} from '../../helpers/paths.js'
 
 export default function (
   data
@@ -29,7 +32,9 @@ export default function (
   const options = {
     webPreferences: {
       contextIsolation: false,
-      nodeIntegration: true
+      nodeIntegration: true,
+      devTools: isDevelopment,
+      preload: preloadScriptFilePath
     }
   }
 
