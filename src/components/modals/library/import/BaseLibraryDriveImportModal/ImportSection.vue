@@ -90,7 +90,13 @@ export default {
     async formatFile (
       file
     ) {
-      const filePath = file.path
+      const filePath =
+        window
+          .mainProcess
+          .webUtils
+          .getPathForFile(
+            file
+          )
 
       const handleSuccess = async (
         metadata
