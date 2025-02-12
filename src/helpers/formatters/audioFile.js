@@ -1,21 +1,23 @@
-function formatCover (
+import {
+  uint8ArrayToBase64
+} from 'uint8array-extras'
+
+function formatImageBase64String (
   cover
 ) {
-  if (cover) {
-    const {
-      format,
-      data: imageBytes
-    } = cover
+  if (!cover) { return }
 
-    const base64 =
-      Buffer.from(
-        imageBytes
-      ).toString(
-        'base64'
-      )
+  const {
+    format,
+    data: bytes
+  } = cover
 
-    return `data:${format};base64,${base64}`
-  }
+  const bytesBase64String =
+    uint8ArrayToBase64(
+      bytes
+    )
+
+  return `data:${format};base64,${bytesBase64String}`
 }
 
 export async function metatags (
@@ -42,14 +44,14 @@ export async function metatags (
         }
       )
 
-  const image =
-    formatCover(
+  const imageBase64String =
+    formatImageBase64String(
       cover
     )
 
   const imageData = {
-    extrasmall: image,
-    large: image
+    extrasmall: imageBase64String,
+    large: imageBase64String
   }
 
   const details =
@@ -73,7 +75,7 @@ export async function metatags (
     ],
     album: albumData,
     image: (
-      image && imageData
+      imageBase64String && imageData
     ),
     created
   }

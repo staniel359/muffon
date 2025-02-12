@@ -32,6 +32,9 @@ importers:
       music-metadata:
         specifier: ^10.9.0
         version: 10.9.0
+      uint8array-extras:
+        specifier: ^1.4.0
+        version: 1.4.0
       uuid:
         specifier: ^11.0.5
         version: 11.0.5

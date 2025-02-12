@@ -148,17 +148,17 @@ export default function () {
     checkForUpdates()
   }
 
-  if (isDevelopment) {
-    const devToolsData = {
-      mode: 'detach'
-    }
+  // if (isDevelopment) {
+  //   const devToolsData = {
+  //     mode: 'detach'
+  //   }
 
-    mainView
-      .webContents
-      .openDevTools(
-        devToolsData
-      )
-  }
+  //   mainView
+  //     .webContents
+  //     .openDevTools(
+  //       devToolsData
+  //     )
+  // }
 
   mainWindow.on(
     'show',
