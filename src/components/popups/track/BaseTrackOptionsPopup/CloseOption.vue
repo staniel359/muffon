@@ -22,6 +22,9 @@ export default {
   components: {
     BaseOption
   },
+  inject: [
+    'hidePopup'
+  ],
   computed: {
     ...mapState(
       queueStore,
@@ -43,6 +46,8 @@ export default {
       if (this.isClearQueueOnPlayerClose) {
         this.clearQueue()
       }
+
+      this.hidePopup()
     },
     clearPlaying () {
       updateGlobalStore(

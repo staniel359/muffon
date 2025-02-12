@@ -33,7 +33,8 @@
 
 <script>
 import BaseButton from '@/components/buttons/BaseButton.vue'
-import BaseOptionsPopupMenuContainer from './BaseOptionsPopupMenuContainer.vue'
+import BaseOptionsPopupMenuContainer
+  from './BaseOptionsPopupMenuContainer.vue'
 import optionsPopupOptions
   from '@/helpers/formatters/plugins/semantic/options/popup/options'
 import popupMixin from '@/mixins/popupMixin'
