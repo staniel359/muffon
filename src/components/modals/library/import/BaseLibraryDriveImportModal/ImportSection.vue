@@ -23,6 +23,9 @@ import {
   metatags as formatAudioFileMetatags
 } from '@/helpers/formatters/audioFile'
 import collectionMixin from '@/mixins/collectionMixin'
+import {
+  sortByCreated
+} from '@/helpers/utils'
 
 export default {
   name: 'ImportSection',
@@ -72,6 +75,14 @@ export default {
       this.setProgressTotalCount()
 
       await this.formatFiles()
+
+      this.successTracks =
+        sortByCreated(
+          {
+            collection: this.successTracks,
+            order: 'createdDesc'
+          }
+        )
 
       this.isComplete = true
     },
