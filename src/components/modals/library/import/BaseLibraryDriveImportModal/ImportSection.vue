@@ -93,8 +93,7 @@ export default {
       const filePath =
         window
           .mainProcess
-          .webUtils
-          .getPathForFile(
+          .getFilePath(
             file
           )
 

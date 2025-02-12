@@ -67,9 +67,6 @@
 </template>
 
 <script>
-import {
-  shell
-} from 'electron'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLogoImage from '@/components/images/BaseLogoImage.vue'
@@ -153,9 +150,11 @@ export default {
     openLink (
       value
     ) {
-      shell.openExternal(
-        value
-      )
+      window
+        .mainProcess
+        .openExternalLink(
+          value
+        )
     }
   }
 }

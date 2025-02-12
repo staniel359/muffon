@@ -1,5 +1,21 @@
-const { webUtils } = require('electron')
+import {
+  webUtils,
+  shell
+} from 'electron'
 
 window.mainProcess = {
-  webUtils
+  getFilePath: function (
+    file
+  ) {
+    return webUtils.getPathForFile(
+      file
+    )
+  },
+  openExternalLink: function (
+    url
+  ) {
+    shell.openExternal(
+      url
+    )
+  }
 }

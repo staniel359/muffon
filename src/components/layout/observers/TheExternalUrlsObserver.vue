@@ -9,8 +9,7 @@ import {
   mapState
 } from 'pinia'
 import {
-  ipcRenderer,
-  shell
+  ipcRenderer
 } from 'electron'
 import videoStore from '@/stores/video'
 import newTabMixin from '@/mixins/newTabMixin'
@@ -69,9 +68,11 @@ export default {
           }
         )
       } else {
-        shell.openExternal(
-          link
-        )
+        window
+          .mainProcess
+          .openExternalLink(
+            link
+          )
       }
     },
     openInternalPage (
