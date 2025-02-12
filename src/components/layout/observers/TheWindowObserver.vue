@@ -6,9 +6,6 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState
 } from 'pinia'
 import windowStore from '@/stores/window'
@@ -31,10 +28,12 @@ export default {
     handleIsWithTrayIconChange (
       value
     ) {
-      ipcRenderer.send(
-        'toggle-tray',
-        value
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'toggle-tray',
+          value
+        )
     }
   }
 }

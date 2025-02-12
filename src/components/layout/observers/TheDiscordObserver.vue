@@ -6,9 +6,6 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState
 } from 'pinia'
 import discordStore from '@/stores/discord'
@@ -223,15 +220,19 @@ export default {
       'handleActivityDataChange'
   },
   mounted () {
-    ipcRenderer.on(
-      'discord-connected',
-      this.handleDiscordConnected
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'discord-connected',
+        this.handleDiscordConnected
+      )
 
-    ipcRenderer.on(
-      'discord-disconnected',
-      this.handleDiscordDisconnected
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'discord-disconnected',
+        this.handleDiscordDisconnected
+      )
   },
   methods: {
     handleDiscordConnected () {
@@ -263,18 +264,22 @@ export default {
     },
     connect () {
       if (!this.isConnected) {
-        ipcRenderer.send(
-          'connect-discord'
-        )
+        window
+          .mainProcess
+          .sendCommand(
+            'connect-discord'
+          )
       }
     },
     disconnect () {
       if (this.isConnected) {
         this.resetActivity()
 
-        ipcRenderer.send(
-          'disconnect-discord'
-        )
+        window
+          .mainProcess
+          .sendCommand(
+            'disconnect-discord'
+          )
       }
     },
     updateActivity () {
@@ -285,15 +290,19 @@ export default {
       }
     },
     setActivity () {
-      ipcRenderer.send(
-        'set-discord-activity',
-        this.activityDataFormatted
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'set-discord-activity',
+          this.activityDataFormatted
+        )
     },
     resetActivity () {
-      ipcRenderer.send(
-        'reset-discord-activity'
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'reset-discord-activity'
+        )
     },
     formatButton (
       id

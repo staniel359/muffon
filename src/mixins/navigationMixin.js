@@ -1,7 +1,4 @@
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState,
   mapActions
 } from 'pinia'
@@ -96,13 +93,15 @@ export default {
       this.updateTab()
     },
     updateTab () {
-      ipcRenderer.send(
-        'update-tab',
-        {
-          tabId: this.tabId,
-          data: this.tabData
-        }
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'update-tab',
+          {
+            tabId: this.tabId,
+            data: this.tabData
+          }
+        )
     },
     addRouteToHistory () {
       if (this.isAddRouteToHistory) {
@@ -111,10 +110,12 @@ export default {
             this.routeDataFormatted
           )
 
-        ipcRenderer.send(
-          'navigate',
-          routeData
-        )
+        window
+          .mainProcess
+          .sendCommand(
+            'navigate',
+            routeData
+          )
       }
     }
   }

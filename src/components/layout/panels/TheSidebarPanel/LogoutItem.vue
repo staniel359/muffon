@@ -7,9 +7,6 @@
 </template>
 
 <script>
-import {
-  ipcRenderer
-} from 'electron'
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 
 export default {
@@ -29,9 +26,11 @@ export default {
       this.logout()
     },
     logout () {
-      ipcRenderer.send(
-        'logout'
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'logout'
+        )
     }
   }
 }

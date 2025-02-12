@@ -6,8 +6,7 @@ import {
   windowIcon
 } from '../../helpers/icons.js'
 import {
-  isDevelopment,
-  isShowDevTools
+  isDevelopment
 } from '../../helpers/utils.js'
 import {
   baseUrl
@@ -92,8 +91,6 @@ export default function () {
 
   const mainViewOptions = {
     webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true,
       devTools: isDevelopment,
       preload: preloadScriptFilePath
     }
@@ -151,7 +148,7 @@ export default function () {
     checkForUpdates()
   }
 
-  if (isShowDevTools) {
+  if (isDevelopment) {
     const devToolsData = {
       mode: 'detach'
     }

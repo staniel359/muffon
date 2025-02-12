@@ -16,9 +16,6 @@
 </template>
 
 <script>
-import {
-  ipcRenderer
-} from 'electron'
 import BaseProgress from '@/components/BaseProgress.vue'
 import BaseImportCompleteSection
   from '@/components/import/BaseImportCompleteSection.vue'
@@ -134,18 +131,20 @@ export default {
         this.incrementProgress()
       }
 
-      await ipcRenderer.invoke(
-        'read-audio-file-metadata',
-        {
-          filePath
-        }
-      ).then(
-        handleSuccess
-      ).catch(
-        handleError
-      ).finally(
-        handleFinish
-      )
+      await window
+        .mainProcess
+        .sendAsyncCommand(
+          'read-audio-file-metadata',
+          {
+            filePath
+          }
+        ).then(
+          handleSuccess
+        ).catch(
+          handleError
+        ).finally(
+          handleFinish
+        )
     },
     setProgressTotalCount () {
       this.$refs

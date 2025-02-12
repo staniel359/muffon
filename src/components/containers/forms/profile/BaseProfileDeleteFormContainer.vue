@@ -10,9 +10,6 @@
 </template>
 
 <script>
-import {
-  ipcRenderer
-} from 'electron'
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import profileDeleteFormOptions
@@ -67,13 +64,17 @@ export default {
       value
     ) {
       if (value) {
-        ipcRenderer.send(
-          'logout'
-        )
+        window
+          .mainProcess
+          .sendCommand(
+            'logout'
+          )
 
-        ipcRenderer.send(
-          'account-delete'
-        )
+        window
+          .mainProcess
+          .sendCommand(
+            'account-delete'
+          )
       }
     },
     formatDeleteArgs (

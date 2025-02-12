@@ -9,9 +9,6 @@
 </template>
 
 <script>
-import {
-  ipcRenderer
-} from 'electron'
 import BaseOption from '@/components/popups/options/BaseOption.vue'
 import notificationMixin from '@/mixins/notificationMixin'
 import getAudio from '@/helpers/actions/api/audio/get'
@@ -95,17 +92,19 @@ export default {
             trackData
           )
 
-        ipcRenderer.invoke(
-          'save-audio-file',
-          {
-            trackData:
-              trackDataFormatted
-          }
-        ).then(
-          this.handleSaveAudioComplete
-        ).catch(
-          this.handleSaveAudioError
-        )
+        window
+          .mainProcess
+          .sendAsyncCommand(
+            'save-audio-file',
+            {
+              trackData:
+                trackDataFormatted
+            }
+          ).then(
+            this.handleSaveAudioComplete
+          ).catch(
+            this.handleSaveAudioError
+          )
       }
     },
     handleSaveAudioComplete (
@@ -152,11 +151,13 @@ export default {
           this.savedTrackData
         )
 
-      return ipcRenderer.invoke(
-        'add-electron-store-value',
-        'profile.savedTracks',
-        savedTrackDataFormatted
-      )
+      return window
+        .mainProcess
+        .sendAsyncCommand(
+          'add-electron-store-value',
+          'profile.savedTracks',
+          savedTrackDataFormatted
+        )
     }
   }
 }

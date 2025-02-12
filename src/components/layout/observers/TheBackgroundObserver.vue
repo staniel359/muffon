@@ -8,9 +8,6 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import {
-  ipcRenderer
-} from 'electron'
-import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
 
@@ -26,20 +23,26 @@ export default {
     )
   },
   mounted () {
-    ipcRenderer.on(
-      'change-background-image',
-      this.handleChangeBackgroundImage
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'change-background-image',
+        this.handleChangeBackgroundImage
+      )
 
-    ipcRenderer.on(
-      'reset-background-image',
-      this.handleResetBackgroundImage
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'reset-background-image',
+        this.handleResetBackgroundImage
+      )
 
-    ipcRenderer.on(
-      'delete-background-image',
-      this.handleDeleteBackgroundImage
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'delete-background-image',
+        this.handleDeleteBackgroundImage
+      )
   },
   methods: {
     handleChangeBackgroundImage (

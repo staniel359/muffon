@@ -31,8 +31,6 @@ export default function (
 
   const options = {
     webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true,
       devTools: isDevelopment,
       preload: preloadScriptFilePath
     }

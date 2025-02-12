@@ -20,9 +20,6 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState
 } from 'pinia'
 import systemStore from '@/stores/system'
@@ -73,9 +70,11 @@ export default {
     async clearCache () {
       this.isLoading = true
 
-      await ipcRenderer.invoke(
-        'clear-cache'
-      )
+      await window
+        .mainProcess
+        .sendAsyncCommand(
+          'clear-cache'
+        )
 
       this.isLoading = false
 

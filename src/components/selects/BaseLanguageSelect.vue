@@ -12,9 +12,6 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import {
-  ipcRenderer
-} from 'electron'
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import {
   update as updateGlobalStore
@@ -41,10 +38,12 @@ export default {
     handleSelect (
       value
     ) {
-      ipcRenderer.send(
-        'set-language',
-        value
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'set-language',
+          value
+        )
 
       updateGlobalStore(
         {

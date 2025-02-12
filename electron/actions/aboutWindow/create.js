@@ -12,6 +12,12 @@ import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
 import setViewScale from '../view/setScale.js'
 import setAboutViewBounds from '../aboutView/setBounds.js'
+import {
+  isDevelopment
+} from '../../helpers/utils.js'
+import {
+  preloadScriptFilePath
+} from '../../helpers/paths.js'
 
 function handleClose (
   event
@@ -40,11 +46,7 @@ export default function () {
     show: false,
     resizable: false,
     maximizable: false,
-    fullscreenable: false,
-    webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true
-    }
+    fullscreenable: false
   }
 
   aboutWindow =
@@ -56,8 +58,8 @@ export default function () {
 
   const aboutViewOptions = {
     webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true
+      devTools: isDevelopment,
+      preload: preloadScriptFilePath
     }
   }
 
@@ -75,6 +77,18 @@ export default function () {
   changeViewBackgroundColor(
     aboutView
   )
+
+  // if (isDevelopment) {
+  //   const devToolsData = {
+  //     mode: 'detach'
+  //   }
+
+  //   aboutView
+  //     .webContents
+  //     .openDevTools(
+  //       devToolsData
+  //     )
+  // }
 
   aboutWindow
     .contentView

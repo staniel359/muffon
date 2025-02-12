@@ -1,17 +1,15 @@
-import {
-  ipcRenderer
-} from 'electron'
-
 export async function getLink (
   filePath
 ) {
   function getFile () {
-    return ipcRenderer.invoke(
-      'read-file',
-      {
-        filePath
-      }
-    )
+    return window
+      .mainProcess
+      .sendAsyncCommand(
+        'read-file',
+        {
+          filePath
+        }
+      )
   }
 
   const data = await getFile()

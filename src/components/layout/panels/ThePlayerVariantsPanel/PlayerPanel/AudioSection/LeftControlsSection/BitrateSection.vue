@@ -21,9 +21,6 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
@@ -93,19 +90,21 @@ export default {
       this.isLoading = false
     },
     getAudioBitrate () {
-      ipcRenderer.invoke(
-        'read-remote-audio-file-metadata',
-        {
-          fileUrl: this.audioLink,
-          options: this.audioOptions
-        }
-      ).then(
-        this.handleAudioSuccess
-      ).catch(
-        this.handleAudioError
-      ).finally(
-        this.handleAudioFinish
-      )
+      window
+        .mainProcess
+        .sendAsyncCommand(
+          'read-remote-audio-file-metadata',
+          {
+            fileUrl: this.audioLink,
+            options: this.audioOptions
+          }
+        ).then(
+          this.handleAudioSuccess
+        ).catch(
+          this.handleAudioError
+        ).finally(
+          this.handleAudioFinish
+        )
     }
   }
 }

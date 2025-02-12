@@ -1,7 +1,3 @@
-import {
-  ipcRenderer
-} from 'electron'
-
 function formatCover (
   cover
 ) {
@@ -37,12 +33,14 @@ export async function metatags (
   }
 
   const cover =
-    await ipcRenderer.invoke(
-      'read-audio-file-cover',
-      {
-        imageData: metatags.picture
-      }
-    )
+    await window
+      .mainProcess
+      .sendAsyncCommand(
+        'read-audio-file-cover',
+        {
+          imageData: metatags.picture
+        }
+      )
 
   const image =
     formatCover(
@@ -55,12 +53,14 @@ export async function metatags (
   }
 
   const details =
-    await ipcRenderer.invoke(
-      'read-file-details',
-      {
-        filePath
-      }
-    )
+    await window
+      .mainProcess
+      .sendAsyncCommand(
+        'read-file-details',
+        {
+          filePath
+        }
+      )
 
   const created =
     details.birthtime
