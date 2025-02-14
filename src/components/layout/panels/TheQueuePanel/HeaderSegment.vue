@@ -57,8 +57,7 @@ export default {
         'counters.nominative.tracks',
         this.queueTracksCount,
         {
-          count:
-            this.queueTracksCountFormatted
+          count: this.queueTracksCountFormatted
         }
       )
     },

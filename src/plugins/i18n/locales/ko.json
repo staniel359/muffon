@@ -704,7 +704,10 @@
     },
     "active": "{counter}의 {count} 가져오는 중...",
     "success": {
-      "header": "{counter}이(가) 가져왔음 | {counter}이(가) 가져왔음",
+      "header": {
+        "files": "{counter}이(가) 가져왔음 | {counter}이(가) 가져왔음",
+        "tracks": "{counter}이(가) 가져왔음 | {counter}이(가) 가져왔음"
+      },
       "content": "라이브러리에 저장하기 전에 데이터를 확인하는 것이 좋음"
     },
     "error": {

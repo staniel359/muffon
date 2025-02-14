@@ -47,8 +47,7 @@ export default {
         `counters.nominative.${this.scope}`,
         this.collectionCount,
         {
-          count:
-            this.collectionCountFormatted
+          count: this.collectionCountFormatted
         }
       )
     },

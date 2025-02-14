@@ -704,7 +704,10 @@
     },
     "active": "Importowanie {count} z {counter}...",
     "success": {
-      "header": "{counter} został zaimportowany | {counter} zostały zaimportowane",
+      "header": {
+        "files": "{counter} został zaimportowany | {counter} zostały zaimportowane",
+        "tracks": "{counter} został zaimportowany | {counter} zostały zaimportowane"
+      },
       "content": "Warto sprawdzić dane przed zapisaniem ich w bibliotece"
     },
     "error": {

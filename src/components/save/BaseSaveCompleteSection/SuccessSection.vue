@@ -38,7 +38,9 @@ export default {
         `save.success.${this.model}.${this.scope}`,
         this.successCollectionCount,
         {
-          counter: this.counterText
+          named: {
+            counter: this.counterText
+          }
         }
       )
     },
@@ -47,8 +49,7 @@ export default {
         `counters.nominative.${this.scope}`,
         this.successCollectionCount,
         {
-          count:
-            this.successCollectionCountFormatted
+          count: this.successCollectionCountFormatted
         }
       )
     },

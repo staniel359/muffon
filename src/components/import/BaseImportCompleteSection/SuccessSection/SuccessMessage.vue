@@ -32,10 +32,12 @@ export default {
   computed: {
     successHeaderText () {
       return this.$t(
-        'import.success.header',
+        `import.success.header.${this.scope}`,
         this.count,
         {
-          counter: this.counterText
+          named: {
+            counter: this.counterText
+          }
         }
       )
     },

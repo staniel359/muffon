@@ -72,7 +72,9 @@ export default {
         'notifications.added.queue.tracks',
         this.tracksCount,
         {
-          counter: this.counterText
+          named: {
+            counter: this.counterText
+          }
         }
       )
     },

@@ -3,7 +3,9 @@ const {
   webUtils,
   shell,
   ipcRenderer
-} = require('electron')
+} = require(
+  'electron'
+)
 
 contextBridge.exposeInMainWorld(
   'mainProcess',
