@@ -39,7 +39,7 @@ import optionsPopupOptions
   from '@/helpers/formatters/plugins/semantic/options/popup/options'
 import popupMixin from '@/mixins/popupMixin'
 import {
-  hide as hidePopup,
+  hideAll as hideAllPopups,
   reposition as repositionPopup
 } from '@/helpers/actions/plugins/semantic/popup'
 
@@ -54,7 +54,7 @@ export default {
   ],
   provide () {
     return {
-      hidePopup: this.hide
+      hidePopup: hideAllPopups
     }
   },
   props: {
@@ -122,11 +122,6 @@ export default {
       this.$emit(
         'activeChange',
         value
-      )
-    },
-    hide () {
-      hidePopup(
-        this.element
       )
     }
   }
