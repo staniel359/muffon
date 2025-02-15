@@ -6,9 +6,6 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import {
   update as updateLocalStore
 } from '@/helpers/actions/store/local'
 
@@ -18,16 +15,20 @@ export default {
     'init'
   ],
   mounted () {
-    ipcRenderer.on(
-      'update-store',
-      this.handleUpdateStore
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'update-store',
+        this.handleUpdateStore
+      )
 
-    ipcRenderer.invoke(
-      'get-electron-store-data'
-    ).then(
-      this.handleGetData
-    )
+    window
+      .mainProcess
+      .sendAsyncCommand(
+        'get-electron-store-data'
+      ).then(
+        this.handleGetData
+      )
   },
   methods: {
     handleUpdateStore (

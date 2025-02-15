@@ -10,9 +10,6 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import {
-  ipcRenderer
-} from 'electron'
-import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
 
@@ -31,10 +28,12 @@ export default {
       'handleIsWithSystemThemeChange'
   },
   mounted () {
-    ipcRenderer.on(
-      'native-theme-updated',
-      this.handleNativeThemeUpdated
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'native-theme-updated',
+        this.handleNativeThemeUpdated
+      )
   },
   methods: {
     async handleIsWithSystemThemeChange (
@@ -64,9 +63,11 @@ export default {
       )
     },
     checkNativeTheme () {
-      return ipcRenderer.invoke(
-        'check-native-theme'
-      )
+      return window
+        .mainProcess
+        .sendAsyncCommand(
+          'check-native-theme'
+        )
     },
     updateIsDarkMode (
       value

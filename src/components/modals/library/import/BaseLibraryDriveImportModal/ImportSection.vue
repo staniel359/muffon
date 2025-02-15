@@ -16,9 +16,6 @@
 </template>
 
 <script>
-import {
-  ipcRenderer
-} from 'electron'
 import BaseProgress from '@/components/BaseProgress.vue'
 import BaseImportCompleteSection
   from '@/components/import/BaseImportCompleteSection.vue'
@@ -26,6 +23,9 @@ import {
   metatags as formatAudioFileMetatags
 } from '@/helpers/formatters/audioFile'
 import collectionMixin from '@/mixins/collectionMixin'
+import {
+  sortByCreated
+} from '@/helpers/utils'
 
 export default {
   name: 'ImportSection',
@@ -76,6 +76,14 @@ export default {
 
       await this.formatFiles()
 
+      this.successTracks =
+        sortByCreated(
+          {
+            collection: this.successTracks,
+            order: 'createdDesc'
+          }
+        )
+
       this.isComplete = true
     },
     async formatFiles () {
@@ -90,7 +98,12 @@ export default {
     async formatFile (
       file
     ) {
-      const filePath = file.path
+      const filePath =
+        window
+          .mainProcess
+          .getFilePath(
+            file
+          )
 
       const handleSuccess = async (
         metadata
@@ -129,18 +142,20 @@ export default {
         this.incrementProgress()
       }
 
-      await ipcRenderer.invoke(
-        'read-audio-file-metadata',
-        {
-          filePath
-        }
-      ).then(
-        handleSuccess
-      ).catch(
-        handleError
-      ).finally(
-        handleFinish
-      )
+      await window
+        .mainProcess
+        .sendAsyncCommand(
+          'read-audio-file-metadata',
+          {
+            filePath
+          }
+        ).then(
+          handleSuccess
+        ).catch(
+          handleError
+        ).finally(
+          handleFinish
+        )
     },
     setProgressTotalCount () {
       this.$refs

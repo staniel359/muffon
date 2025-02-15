@@ -52,9 +52,6 @@
 <script>
 import axios from 'axios'
 import {
-  shell
-} from 'electron'
-import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
@@ -173,9 +170,11 @@ export default {
       )
     },
     handleSuccess () {
-      shell.openExternal(
-        this.codeLink
-      )
+      window
+        .mainProcess
+        .openExternalLink(
+          this.codeLink
+        )
 
       this.$emit(
         'openLinkButtonClick',

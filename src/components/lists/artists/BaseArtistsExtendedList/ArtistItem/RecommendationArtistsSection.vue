@@ -86,7 +86,7 @@ export default {
       )
     },
     counterText () {
-      return this.$tc(
+      return this.$t(
         'counters.genitive.artists',
         this.artistsCount,
         {

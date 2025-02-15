@@ -16,9 +16,6 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState,
   mapActions
 } from 'pinia'
@@ -126,23 +123,27 @@ export default {
       this.updateTabError()
     },
     updateTabLoading () {
-      ipcRenderer.send(
-        'update-tab',
-        {
-          tabId: this.tabId,
-          isLoading:
-            this.isPageLoading
-        }
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'update-tab',
+          {
+            tabId: this.tabId,
+            isLoading:
+              this.isPageLoading
+          }
+        )
     },
     updateTabError () {
-      ipcRenderer.send(
-        'update-tab',
-        {
-          tabId: this.tabId,
-          isError: this.isPageError
-        }
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'update-tab',
+          {
+            tabId: this.tabId,
+            isError: this.isPageError
+          }
+        )
     }
   }
 }

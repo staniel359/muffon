@@ -9,9 +9,6 @@
 </template>
 
 <script>
-import {
-  shell
-} from 'electron'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
   donate as donateLink
@@ -31,9 +28,11 @@ export default {
   },
   methods: {
     handleClick () {
-      shell.openExternal(
-        donateLink
-      )
+      window
+        .mainProcess
+        .openExternalLink(
+          donateLink
+        )
     }
   }
 }

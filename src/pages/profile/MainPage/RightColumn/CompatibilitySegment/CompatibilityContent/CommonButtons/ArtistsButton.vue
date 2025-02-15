@@ -44,7 +44,7 @@ export default {
       return this.compatibilityData.artists_count
     },
     artistsText () {
-      return this.$tc(
+      return this.$t(
         'counters.nominative.artists',
         this.artistsCount,
         {

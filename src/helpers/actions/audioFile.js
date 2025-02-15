@@ -1,7 +1,3 @@
-import {
-  ipcRenderer
-} from 'electron'
-
 export async function decrypt (
   {
     filePath,
@@ -16,10 +12,12 @@ export async function decrypt (
       iv
     }
 
-    return ipcRenderer.invoke(
-      'decrypt-file',
-      decryptArgs
-    )
+    return window
+      .mainProcess
+      .sendAsyncCommand(
+        'decrypt-file',
+        decryptArgs
+      )
   }
 
   const result =

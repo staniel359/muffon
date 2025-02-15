@@ -1,7 +1,7 @@
 export default function (
   data
 ) {
-  mainWindow
+  mainView
     .webContents
     .send(
       'navigate',

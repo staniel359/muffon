@@ -6,9 +6,6 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
@@ -46,15 +43,19 @@ export default {
     }
   },
   mounted () {
-    ipcRenderer.on(
-      'set-active-tab',
-      this.handleSetActiveTab
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'set-active-tab',
+        this.handleSetActiveTab
+      )
 
-    ipcRenderer.on(
-      'open-deep-link',
-      this.handleOpenDeepLink
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'open-deep-link',
+        this.handleOpenDeepLink
+      )
   },
   methods: {
     handleSetActiveTab () {
@@ -82,9 +83,11 @@ export default {
       }
     },
     callOpenDeepLink () {
-      ipcRenderer.send(
-        'call-open-deep-link'
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'call-open-deep-link'
+        )
     }
   }
 }

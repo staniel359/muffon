@@ -9,9 +9,6 @@
 </template>
 
 <script>
-import {
-  ipcRenderer
-} from 'electron'
 import BaseDeleteModal from '@/components/modals/BaseDeleteModal.vue'
 
 export default {
@@ -65,16 +62,20 @@ export default {
           deleteData
         )
 
-      await ipcRenderer.invoke(
-        'delete-audio-file',
-        deleteDataFormatted
-      )
+      await window
+        .mainProcess
+        .sendAsyncCommand(
+          'delete-audio-file',
+          deleteDataFormatted
+        )
 
-      await ipcRenderer.invoke(
-        'delete-electron-store-value',
-        'profile.savedTracks',
-        this.uuid
-      )
+      await window
+        .mainProcess
+        .sendAsyncCommand(
+          'delete-electron-store-value',
+          'profile.savedTracks',
+          this.uuid
+        )
 
       this.isLoading = false
 

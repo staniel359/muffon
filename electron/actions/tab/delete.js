@@ -7,7 +7,7 @@ export default function (
     tabId
   )
 
-  mainWindow
+  mainView
     .webContents
     .send(
       'delete-tab',

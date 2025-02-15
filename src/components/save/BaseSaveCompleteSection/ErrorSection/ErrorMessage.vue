@@ -43,7 +43,7 @@ export default {
       )
     },
     counterText () {
-      return this.$tc(
+      return this.$t(
         `counters.accusative.${this.scope}`,
         this.count,
         {

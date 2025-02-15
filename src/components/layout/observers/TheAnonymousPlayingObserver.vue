@@ -6,9 +6,6 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
@@ -52,11 +49,13 @@ export default {
           this.playerPlayingFormatted
         )
 
-      ipcRenderer.invoke(
-        'add-electron-store-value',
-        'history.player',
-        playingFormatted
-      )
+      window
+        .mainProcess
+        .sendAsyncCommand(
+          'add-electron-store-value',
+          'history.player',
+          playingFormatted
+        )
     }
   }
 }

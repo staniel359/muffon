@@ -1,5 +1,5 @@
 export default function () {
-  mainWindow
+  mainView
     .webContents
     .send(
       'account-delete'

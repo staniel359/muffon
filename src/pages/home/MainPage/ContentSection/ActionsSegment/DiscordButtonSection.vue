@@ -9,9 +9,6 @@
 </template>
 
 <script>
-import {
-  shell
-} from 'electron'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
   discord as discordLink
@@ -24,9 +21,11 @@ export default {
   },
   methods: {
     handleClick () {
-      shell.openExternal(
-        discordLink
-      )
+      window
+        .mainProcess
+        .openExternalLink(
+          discordLink
+        )
     }
   }
 }

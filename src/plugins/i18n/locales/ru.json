@@ -704,7 +704,10 @@
     },
     "active": "Загрузка {count} из {counter}...",
     "success": {
-      "header": "{counter} было загружено | {counter} была загружена | {counter} было загружено",
+      "header": {
+        "files": "{counter} было загружено | {counter} был загружен | {counter} было загружено",
+        "tracks": "{counter} было загружено | {counter} была загружена | {counter} было загружено"
+      },
       "content": "Возможно, Вы захотите проверить данные перед сохранением в библиотеку"
     },
     "error": {

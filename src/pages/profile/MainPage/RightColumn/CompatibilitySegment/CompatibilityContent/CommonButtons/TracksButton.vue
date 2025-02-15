@@ -44,7 +44,7 @@ export default {
       return this.compatibilityData.tracks_count
     },
     tracksText () {
-      return this.$tc(
+      return this.$t(
         'counters.nominative.tracks',
         this.tracksCount,
         {

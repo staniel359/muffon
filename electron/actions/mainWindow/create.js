@@ -1,12 +1,12 @@
 import {
-  BrowserWindow
+  BaseWindow,
+  WebContentsView
 } from 'electron'
 import {
   windowIcon
 } from '../../helpers/icons.js'
 import {
-  isDevelopment,
-  isShowDevTools
+  isDevelopment
 } from '../../helpers/utils.js'
 import {
   baseUrl
@@ -20,39 +20,15 @@ import callQuit from '../app/callQuit.js'
 import setTrayMenu from '../tray/setMenu.js'
 import setTabsBounds from '../tabs/setBounds.js'
 import getTopTab from '../tab/getTop.js'
+import setMainViewBounds from '../mainView/setBounds.js'
 import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
-
-function handleReadyToShow () {
-  const isMaximizeOnStart =
-    getElectronStoreKey(
-      'window.isMaximizeOnStart'
-    )
-
-  if (isMaximizeOnStart) {
-    mainWindow.maximize()
-  }
-
-  showMainWindow()
-
-  const isCheckForNewVersions =
-    getElectronStoreKey(
-      'updates.isCheckForNewVersions'
-    )
-
-  const isCheckForUpdates = (
-    !isDevelopment &&
-      isCheckForNewVersions
-  )
-
-  if (isCheckForUpdates) {
-    checkForUpdates()
-  }
-
-  setViewScale(
-    mainWindow
-  )
-}
+import {
+  handleNewWindow
+} from '../../handlers/app.js'
+import {
+  preloadScriptFilePath
+} from '../../helpers/paths.js'
 
 function handleShow () {
   setTrayMenu()
@@ -80,6 +56,8 @@ function handleClose (
 }
 
 function handleResize () {
+  setMainViewBounds()
+
   setTabsBounds()
 }
 
@@ -95,54 +73,92 @@ export default function () {
   const mainWindowWidth = 900
   const mainWindowHeight = 600
 
-  const options = {
+  const mainWindowOptions = {
     width: mainWindowWidth,
     height: mainWindowHeight,
+    minWidth: mainWindowWidth,
+    minHeight: mainWindowHeight,
     icon: windowIcon,
-    show: false,
-    webPreferences: {
-      contextIsolation: false,
-      devTools: isDevelopment,
-      nodeIntegration: true
-    }
+    show: false
   }
 
   mainWindow =
-    new BrowserWindow(
-      options
+    new BaseWindow(
+      mainWindowOptions
     )
-
-  changeViewBackgroundColor(
-    mainWindow
-  )
-
-  mainWindow.loadURL(
-    baseUrl
-  )
-
-  mainWindow.setMinimumSize(
-    mainWindowWidth,
-    mainWindowHeight
-  )
 
   mainWindow.removeMenu()
 
-  if (isShowDevTools) {
-    const devToolsData = {
-      mode: 'detach'
+  const mainViewOptions = {
+    webPreferences: {
+      devTools: isDevelopment,
+      preload: preloadScriptFilePath
     }
-
-    mainWindow
-      .webContents
-      .openDevTools(
-        devToolsData
-      )
   }
 
-  mainWindow.once(
-    'ready-to-show',
-    handleReadyToShow
+  mainView =
+    new WebContentsView(
+      mainViewOptions
+    )
+
+  setMainViewBounds()
+
+  setViewScale(
+    mainView
   )
+
+  changeViewBackgroundColor(
+    mainView
+  )
+
+  mainWindow
+    .contentView
+    .addChildView(
+      mainView
+    )
+
+  mainView
+    .webContents
+    .loadURL(
+      baseUrl
+    )
+
+  const isMaximizeOnStart =
+    getElectronStoreKey(
+      'window.isMaximizeOnStart'
+    )
+
+  if (isMaximizeOnStart) {
+    mainWindow.maximize()
+  }
+
+  showMainWindow()
+
+  const isCheckForNewVersions =
+    getElectronStoreKey(
+      'updates.isCheckForNewVersions'
+    )
+
+  const isCheckForUpdates = (
+    !isDevelopment &&
+      isCheckForNewVersions
+  )
+
+  if (isCheckForUpdates) {
+    checkForUpdates()
+  }
+
+  // if (isDevelopment) {
+  //   const devToolsData = {
+  //     mode: 'detach'
+  //   }
+
+  //   mainView
+  //     .webContents
+  //     .openDevTools(
+  //       devToolsData
+  //     )
+  // }
 
   mainWindow.on(
     'show',
@@ -168,4 +184,10 @@ export default function () {
     'focus',
     handleFocus
   )
+
+  mainView
+    .webContents
+    .setWindowOpenHandler(
+      handleNewWindow
+    )
 }

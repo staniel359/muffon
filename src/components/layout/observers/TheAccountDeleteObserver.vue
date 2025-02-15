@@ -5,9 +5,6 @@
 </template>
 
 <script>
-import {
-  ipcRenderer
-} from 'electron'
 import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
@@ -23,10 +20,12 @@ export default {
     }
   },
   mounted () {
-    ipcRenderer.on(
-      'account-delete',
-      this.handleAccountDelete
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'account-delete',
+        this.handleAccountDelete
+      )
   },
   methods: {
     handleAccountDelete () {

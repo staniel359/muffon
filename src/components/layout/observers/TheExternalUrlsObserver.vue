@@ -8,10 +8,6 @@
 import {
   mapState
 } from 'pinia'
-import {
-  ipcRenderer,
-  shell
-} from 'electron'
 import videoStore from '@/stores/video'
 import newTabMixin from '@/mixins/newTabMixin'
 import formatPathFromExternalLink
@@ -32,10 +28,12 @@ export default {
     )
   },
   mounted () {
-    ipcRenderer.on(
-      'open-external-url',
-      this.handleOpenExternalUrl
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'open-external-url',
+        this.handleOpenExternalUrl
+      )
   },
   methods: {
     handleOpenExternalUrl (
@@ -69,9 +67,11 @@ export default {
           }
         )
       } else {
-        shell.openExternal(
-          link
-        )
+        window
+          .mainProcess
+          .openExternalLink(
+            link
+          )
       }
     },
     openInternalPage (

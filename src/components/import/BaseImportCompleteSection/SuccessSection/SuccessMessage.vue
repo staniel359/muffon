@@ -31,16 +31,18 @@ export default {
   },
   computed: {
     successHeaderText () {
-      return this.$tc(
-        'import.success.header',
+      return this.$t(
+        `import.success.header.${this.scope}`,
         this.count,
         {
-          counter: this.counterText
+          named: {
+            counter: this.counterText
+          }
         }
       )
     },
     counterText () {
-      return this.$tc(
+      return this.$t(
         `counters.nominative.${this.scope}`,
         this.count,
         {

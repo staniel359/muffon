@@ -6,9 +6,6 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
@@ -29,10 +26,12 @@ export default {
     )
   },
   mounted () {
-    ipcRenderer.on(
-      'navigate',
-      this.handleNavigate
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'navigate',
+        this.handleNavigate
+      )
   },
   methods: {
     handleNavigate (
@@ -67,11 +66,13 @@ export default {
           value
         )
 
-      ipcRenderer.invoke(
-        'add-electron-store-value',
-        'history.browser',
-        valueFormatted
-      )
+      window
+        .mainProcess
+        .sendAsyncCommand(
+          'add-electron-store-value',
+          'history.browser',
+          valueFormatted
+        )
     },
     addRouteToProfileHistory (
       value

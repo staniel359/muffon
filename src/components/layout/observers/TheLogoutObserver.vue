@@ -6,19 +6,18 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
 
 export default {
   name: 'TheLogoutObserver',
   mounted () {
-    ipcRenderer.on(
-      'logout',
-      this.handleLogout
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'logout',
+        this.handleLogout
+      )
   },
   methods: {
     handleLogout () {
@@ -36,10 +35,12 @@ export default {
       )
     },
     resetTitle () {
-      ipcRenderer.send(
-        'set-title',
-        null
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'set-title',
+          null
+        )
     }
   }
 }

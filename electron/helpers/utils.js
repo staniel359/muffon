@@ -65,10 +65,6 @@ export const systemName =
 
 export const isDevelopment = !app.isPackaged
 
-export const isShowDevTools = (
-  process.env.DEV_TOOLS === 'true'
-)
-
 export const isWindows = (
   systemName === 'windows'
 )

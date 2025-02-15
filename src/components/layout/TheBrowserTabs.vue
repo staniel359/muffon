@@ -18,9 +18,6 @@
 
 <script>
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
@@ -203,31 +200,41 @@ export default {
       this.addNewTab()
     },
     setupHandlers () {
-      ipcRenderer.on(
-        'add-tab',
-        this.handleAddTab
-      )
+      window
+        .mainProcess
+        .addCommandHandler(
+          'add-tab',
+          this.handleAddTab
+        )
 
-      ipcRenderer.on(
-        'set-active-tab',
-        this.handleSetActiveTab
-      )
+      window
+        .mainProcess
+        .addCommandHandler(
+          'set-active-tab',
+          this.handleSetActiveTab
+        )
 
-      ipcRenderer.on(
-        'update-tab',
-        this.handleUpdateTab
-      )
+      window
+        .mainProcess
+        .addCommandHandler(
+          'update-tab',
+          this.handleUpdateTab
+        )
 
-      ipcRenderer.on(
-        'delete-tab',
-        this.handleDeleteTab
-      )
+      window
+        .mainProcess
+        .addCommandHandler(
+          'delete-tab',
+          this.handleDeleteTab
+        )
     },
     getElectronStoreTabs () {
-      return ipcRenderer.invoke(
-        'get-electron-store-key',
-        'layout.tabs'
-      )
+      return window
+        .mainProcess
+        .sendAsyncCommand(
+          'get-electron-store-key',
+          'layout.tabs'
+        )
     },
     setupTabs () {
       this.tabs.forEach(
@@ -256,9 +263,11 @@ export default {
       )
     },
     clearTabs () {
-      ipcRenderer.send(
-        'clear-tabs'
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'clear-tabs'
+        )
     },
     setTabs (
       value

@@ -6,7 +6,9 @@ export default function (
   function isMatchedTab (
     tabData
   ) {
-    return tabData.uuid === tabId
+    return (
+      tabData.uuid === tabId
+    )
   }
 
   return getTabs().find(

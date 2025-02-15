@@ -704,7 +704,10 @@
     },
     "active": "Загрузка {count} з {counter}...",
     "success": {
-      "header": "{counter} было загружана | {counter} была загружана | {counter} было загружана",
+      "header": {
+        "files": "{counter} было загружана | {counter} быў загружаны | {counter} было загружана",
+        "tracks": "{counter} было загружана | {counter} была загружана | {counter} было загружана"
+      },
       "content": "Магчыма, Вы захочаце праверыць дадзеныя перад захаваннем у бібліятэку"
     },
     "error": {

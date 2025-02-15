@@ -17,7 +17,7 @@ export default function () {
       isDarkMode
     }
 
-    mainWindow
+    mainView
       .webContents
       .send(
         'native-theme-updated',

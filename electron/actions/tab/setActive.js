@@ -1,4 +1,5 @@
 import findTab from './find.js'
+import hideInactiveTabs from '../tabs/hideInactive.js'
 
 export default function (
   tabId
@@ -10,11 +11,17 @@ export default function (
 
   if (!tab) { return }
 
-  mainWindow.setTopBrowserView(
-    tab
+  tab.setVisible(
+    true
   )
 
-  mainWindow
+  hideInactiveTabs(
+    {
+      tabId
+    }
+  )
+
+  mainView
     .webContents
     .send(
       'set-active-tab',

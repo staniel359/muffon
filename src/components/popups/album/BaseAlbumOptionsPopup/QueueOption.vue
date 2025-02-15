@@ -68,11 +68,13 @@ export default {
       )
     },
     notificationSuccessMessage () {
-      return this.$tc(
+      return this.$t(
         'notifications.added.queue.tracks',
         this.tracksCount,
         {
-          counter: this.counterText
+          named: {
+            counter: this.counterText
+          }
         }
       )
     },
@@ -80,7 +82,7 @@ export default {
       return this.tracks.length
     },
     counterText () {
-      return this.$tc(
+      return this.$t(
         'counters.nominative.tracks',
         this.tracksCount,
         {

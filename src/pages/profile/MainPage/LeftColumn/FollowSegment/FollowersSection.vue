@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     followersText () {
-      return this.$tc(
+      return this.$t(
         'counters.nominative.followers',
         this.followersCount,
         {

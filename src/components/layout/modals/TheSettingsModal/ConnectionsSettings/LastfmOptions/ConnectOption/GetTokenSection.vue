@@ -28,9 +28,6 @@
 </template>
 
 <script>
-import {
-  shell
-} from 'electron'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import getToken from '@/helpers/actions/api/connection/token/get'
@@ -81,9 +78,11 @@ export default {
         token
       } = value
 
-      shell.openExternal(
-        link
-      )
+      window
+        .mainProcess
+        .openExternalLink(
+          link
+        )
 
       this.$emit(
         'tokenGet',

@@ -1,7 +1,3 @@
-import {
-  ipcRenderer
-} from 'electron'
-
 export function update (
   data,
   {
@@ -13,11 +9,13 @@ export function update (
       data
     )
 
-  return ipcRenderer.invoke(
-    'update-store',
-    dataFormatted,
-    {
-      isSave
-    }
-  )
+  return window
+    .mainProcess
+    .sendAsyncCommand(
+      'update-store',
+      dataFormatted,
+      {
+        isSave
+      }
+    )
 }

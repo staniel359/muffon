@@ -9,7 +9,7 @@ export default function (
     imagePath
   }
 
-  mainWindow
+  mainView
     .webContents
     .send(
       'change-background-image',

@@ -6,9 +6,6 @@
 </template>
 
 <script>
-import {
-  ipcRenderer
-} from 'electron'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
@@ -31,10 +28,12 @@ export default {
   },
   methods: {
     handleClick () {
-      ipcRenderer.send(
-        'delete-background-image',
-        this.deleteArgs
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'delete-background-image',
+          this.deleteArgs
+        )
     }
   }
 }
