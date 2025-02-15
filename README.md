@@ -31,6 +31,9 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch**
 - <img src="https://musicbrainz.org/static/images/favicons/favicon-16x16.png" height="16"> **MusicBrainz**
 
+>[!CAUTION]
+>As of February 2025, Spotify is currently NOT working as a playback source.
+
 ### Features
 
 - **absolutely free**
