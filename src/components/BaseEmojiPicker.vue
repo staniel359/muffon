@@ -1,7 +1,11 @@
 <template>
-  <div
+  <emoji-picker
     ref="picker"
     class="base-emoji-picker"
+    :class="{
+      dark: isDarkMode
+    }"
+    :i18n="localeData"
   />
 </template>
 
@@ -11,16 +15,40 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
-import {
-  Picker
-} from 'emoji-mart'
-import pickerData from '@emoji-mart/data'
+import 'emoji-picker-element'
+import de from 'emoji-picker-element/i18n/de'
+import en from 'emoji-picker-element/i18n/en'
+import es from 'emoji-picker-element/i18n/es'
+import fr from 'emoji-picker-element/i18n/fr'
+import it from 'emoji-picker-element/i18n/it'
+import ja from 'emoji-picker-element/i18n/ja'
+import pl from 'emoji-picker-element/i18n/pl'
+import ru from 'emoji-picker-element/i18n/ru_RU'
+
+// I18n
 
 export default {
   name: 'BaseEmojiPicker',
   emits: [
     'select'
   ],
+  data () {
+    return {
+      locales: {
+        be: en,
+        de,
+        en,
+        es,
+        fr,
+        he: en,
+        it,
+        ja,
+        ko: en,
+        pl,
+        ru
+      }
+    }
+  },
   computed: {
     ...mapState(
       layoutStore,
@@ -34,61 +62,32 @@ export default {
         profileLanguage: 'language'
       }
     ),
-    pickerOptions () {
-      return {
-        data: pickerData,
-        locale:
-          this.profileLanguage,
-        parent: this.$refs.picker,
-        previewPosition: 'none',
-        set: 'native',
-        theme: this.theme,
-        onEmojiSelect:
-          this.handleEmojiSelect
-      }
-    },
-    theme () {
-      if (this.isDarkMode) {
-        return 'dark'
-      } else {
-        return 'light'
-      }
+    localeData () {
+      return this.locales[
+        this.profileLanguage
+      ]
     }
   },
   mounted () {
-    const picker =
-      new Picker(
-        this.pickerOptions
+    this
+      .$refs
+      .picker
+      .addEventListener(
+        'emoji-click',
+        this.handleEmojiSelect
       )
-
-    this.addStyle(
-      picker
-    )
   },
   methods: {
     handleEmojiSelect (
-      value
+      event
     ) {
+      const emoji =
+        event.detail.unicode
+
       this.$emit(
         'select',
-        value
+        emoji
       )
-    },
-    addStyle (
-      picker
-    ) {
-      const style = new CSSStyleSheet()
-
-      style.replaceSync(
-        '#root { --sidebar-width: 10px }'
-      )
-
-      picker
-        .shadowRoot
-        .adoptedStyleSheets
-        .push(
-          style
-        )
     }
   }
 }

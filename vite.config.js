@@ -13,7 +13,17 @@ import {
 export default defineConfig(
   {
     plugins: [
-      vue(),
+      vue(
+        {
+          template: {
+            compilerOptions: {
+              isCustomElement: tag => {
+                return ['emoji-picker'].includes(tag)
+              }
+            }
+          }
+        }
+      ),
       inject(
         {
           $: 'jquery',

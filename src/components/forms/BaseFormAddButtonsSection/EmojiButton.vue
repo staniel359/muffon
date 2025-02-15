@@ -8,7 +8,6 @@
   <div class="main-popup-container">
     <BaseEmojiPopup
       ref="popup"
-      :is-called="isCalled"
       @select="handleSelect"
     />
   </div>
@@ -20,9 +19,6 @@ import BaseEmojiPopup from '@/components/popups/BaseEmojiPopup.vue'
 import emojiPopupOptions
   from '@/helpers/formatters/plugins/semantic/options/popup/emoji'
 import popupMixin from '@/mixins/popupMixin'
-import {
-  reposition as repositionPopup
-} from '@/helpers/actions/plugins/semantic/popup'
 
 export default {
   name: 'EmojiButton',
@@ -36,11 +32,6 @@ export default {
   inject: [
     'addEmoji'
   ],
-  data () {
-    return {
-      isCalled: false
-    }
-  },
   computed: {
     element () {
       return this.$refs.button.$el
@@ -48,8 +39,7 @@ export default {
     popupOptions () {
       return emojiPopupOptions(
         {
-          html: this.popup,
-          onShow: this.handleShow
+          html: this.popup
         }
       )
     }
@@ -59,16 +49,7 @@ export default {
       value
     ) {
       this.addEmoji(
-        value.native
-      )
-    },
-    async handleShow () {
-      this.isCalled = true
-
-      await this.$nextTick()
-
-      repositionPopup(
-        this.element
+        value
       )
     }
   }

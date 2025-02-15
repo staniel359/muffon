@@ -26,6 +26,12 @@ importers:
       electron-updater:
         specifier: ^6.3.9
         version: 6.3.9
+      emoji-picker-element:
+        specifier: ^1.26.1
+        version: 1.26.1
+      emoji-picker-element-data:
+        specifier: ^1
+        version: 1.7.1
       i18n:
         specifier: ^0.15.1
         version: 0.15.1
@@ -39,9 +45,6 @@ importers:
         specifier: ^11.0.5
         version: 11.0.5
     devDependencies:
-      '@emoji-mart/data':
-        specifier: ^1.2.1
-        version: 1.2.1
       '@eslint/compat':
         specifier: ^1.2.6
         version: 1.2.6(eslint@9.20.1)
@@ -69,9 +72,6 @@ importers:
       electron-builder:
         specifier: ^26.0.6
         version: 26.0.6(electron-builder-squirrel-windows@25.1.7)
-      emoji-mart:
-        specifier: ^5.6.0
-        version: 5.6.0
       eslint:
         specifier: ^9.20.1
         version: 9.20.1
@@ -200,9 +200,6 @@ packages:
   '@electron/universal@2.0.1':
     resolution: {integrity: sha512-fKpv9kg4SPmt+hY7SVBnIYULE9QJl8L3sCfcBsnqbJwwBwAeTLokJ9TRt9y7bK0JAzIW2y78TVVjvnQEms/yyA==}
     engines: {node: '>=16.4'}
-
-  '@emoji-mart/data@1.2.1':
-    resolution: {integrity: sha512-no2pQMWiBy6gpBEiqGeU77/bFejDqUTRY7KX+0+iur13op3bqUsXdnwoZs6Xb1zbv0gAj5VvS1PWoUUckSr5Dw==}
 
   '@esbuild/aix-ppc64@0.24.2':
     resolution: {integrity: sha512-thpVCb/rhxE/BnMLQ7GReQLLN8q9qbHmI55F4489/ByVg2aQaQ6kbcLb6FHkocZzQhxc4gx0sCk0tJkKBFzDhA==}
@@ -1809,8 +1806,11 @@ packages:
     engines: {node: '>= 12.20.55'}
     hasBin: true
 
-  emoji-mart@5.6.0:
-    resolution: {integrity: sha512-eJp3QRe79pjwa+duv+n7+5YsNhRcMl812EcFVwrnRvYKoNPoQb5qxU8DG6Bgwji0akHdp6D4Ln6tYLG58MFSow==}
+  emoji-picker-element-data@1.7.1:
+    resolution: {integrity: sha512-lDJm7VDYyvg5Qpu++GDU88Mkfmftch3PBD09q+SJhS+MW5QjHZshpsxDgJDdRzcHu/gPM3wKGphk2LnNwRC0tQ==}
+
+  emoji-picker-element@1.26.1:
+    resolution: {integrity: sha512-XgQ9s2JdmworiqLfJC7eGbzQHGv8yb8U9XofjeRAnOMYaeLh0MfwVAz9oG1YE2U2WnzU0Pys1axMjYtPKJ7YSg==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -5095,8 +5095,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@emoji-mart/data@1.2.1': {}
-
   '@esbuild/aix-ppc64@0.24.2':
     optional: true
 
@@ -6897,7 +6895,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  emoji-mart@5.6.0: {}
+  emoji-picker-element-data@1.7.1: {}
+
+  emoji-picker-element@1.26.1: {}
 
   emoji-regex@8.0.0: {}
 

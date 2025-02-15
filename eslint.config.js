@@ -53,7 +53,7 @@ export default [
       ],
       'function-call-argument-newline': 'error',
       'function-paren-newline': [
-        'warn',
+        'error',
         {
           minItems: 1
         }

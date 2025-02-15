@@ -175,13 +175,21 @@
     @extend .background-grey-inverted
 
 .base-emoji-picker
-  em-emoji-picker
-    @extend .border-radius
-    max-height: 300px
-    --font-family: inherit
-    --rgb-background: transparent
-    --rgb-input: transparent
-    --rgb-accent: 128, 79, 179
+  height: 350px
+  --num-columns: 7
+  --background: transparent
+  --border-color: none
+  --emoji-size: 1.5rem
+  --indicator-color: #{$colorBase}
+  --input-border-radius: 1rem
+  --input-padding: 0.5rem 1em
+  --outline-color: #{$colorBaseLight}
+  --outline-size: 1px
+  --input-border-color: #{$colorGrey}
+  --category-emoji-size: 1.2rem
+  --category-emoji-padding: 0.65rem
+  &.dark
+    --input-border-color: #{$colorGreyInverted}
 
 .base-percent-circle
   & > path
