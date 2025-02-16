@@ -59,7 +59,8 @@ export default function () {
   const aboutViewOptions = {
     webPreferences: {
       devTools: isDevelopment,
-      preload: preloadScriptFilePath
+      preload: preloadScriptFilePath,
+      nodeIntegration: true
     }
   }
 

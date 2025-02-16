@@ -92,7 +92,8 @@ export default function () {
   const mainViewOptions = {
     webPreferences: {
       devTools: isDevelopment,
-      preload: preloadScriptFilePath
+      preload: preloadScriptFilePath,
+      nodeIntegration: true
     }
   }
 
