@@ -3,7 +3,7 @@
     <p
       v-for="(textItem, index) in donateText"
       :key="index"
-      class="main-text-section main-text-container"
+      class="main-text-section"
       v-html="textItem"
     />
   </div>

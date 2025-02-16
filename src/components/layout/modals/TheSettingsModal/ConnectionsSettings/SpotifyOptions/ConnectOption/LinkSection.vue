@@ -1,7 +1,7 @@
 <template>
   <div class="main-settings-option-container">
     <BaseMessage
-      class="main-top-section main-formatted-text-container"
+      class="main-top-section"
       :content="noticeTextFormatted"
       is-info
     />

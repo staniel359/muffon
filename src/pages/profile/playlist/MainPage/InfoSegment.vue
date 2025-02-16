@@ -32,7 +32,7 @@
 
         <p
           v-if="description"
-          class="description main-formatted-text-container"
+          class="description main-text-container"
           v-html="descriptionFormatted"
         />
 

@@ -9,7 +9,7 @@
   >
     <p
       v-if="annotationData"
-      class="main-formatted-text-container"
+      class="main-text-container"
       v-html="annotationTextFormatted"
     />
   </BaseSegmentContainer>

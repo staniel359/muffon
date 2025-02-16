@@ -1,5 +1,5 @@
 <template>
-  <p class="main-formatted-text-container main-text-section">
+  <p class="main-text-container main-list-bottom-extrasmall-section">
     <BaseLink
       v-if="isContentLink"
       :link="link"

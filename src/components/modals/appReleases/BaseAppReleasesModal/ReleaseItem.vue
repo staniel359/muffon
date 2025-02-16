@@ -14,7 +14,7 @@
     <BaseDivider />
 
     <p
-      class="main-formatted-text-container"
+      class="main-text-container"
       v-text="description"
     />
   </div>

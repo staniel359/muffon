@@ -758,7 +758,7 @@
     text-decoration: underline
 
 .main-text-section
-  @extend .main-list-bottom-mini-section
+  @extend .main-list-bottom-mini-section, .main-text-container
 
 .main-small-text-container
   @extend .word-break-break-word
@@ -766,13 +766,10 @@
 .main-text-container
   @extend .word-break-break-word
   line-height: 1.6em !important
-
-.main-formatted-text-container
-  @extend .main-text-container
   white-space: pre-wrap
 
 .main-lyrics-container
-  @extend .main-formatted-text-container
+  @extend .main-text-container
   padding: 1.5rem 2.5rem
   & > .lyrics
     font-size: 16px

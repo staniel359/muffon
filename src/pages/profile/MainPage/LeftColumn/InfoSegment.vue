@@ -40,7 +40,7 @@
 
     <i
       v-if="status"
-      class="main-bottom-small-section main-formatted-text-container"
+      class="main-bottom-small-section main-text-container"
       v-html="status"
     />
   </BaseSegmentContainer>
