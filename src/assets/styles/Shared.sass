@@ -285,6 +285,9 @@
 .video-image-120
   width: 120px !important
   height: calc(120px / 16 * 9) !important
+.video-image-60
+  width: 60px !important
+  height: calc(60px / 16 * 9) !important
 
 .rounded
   @extend .border-radius
@@ -874,7 +877,11 @@
   & > .image-container
     @extend .main-left-small-section
     .image
-      @extend .object-fit-cover, .image-35
+      @extend .object-fit-cover
+      &:not(.video-image)
+        @extend .image-35
+      &.video-image
+        @extend .video-image-60
   & > .content
     @extend .flex-full, .word-break-break-word, .main-text-container
     white-space: normal
