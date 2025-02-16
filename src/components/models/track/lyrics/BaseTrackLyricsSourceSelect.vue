@@ -9,7 +9,7 @@
 
         <div
           v-if="isRenderTrackSelect"
-          class="bottom-section"
+          class="main-bottom-section main-large-section"
         >
           <TrackSelect
             :key="key"

@@ -1,6 +1,6 @@
 <template>
   <BaseDropdown
-    class="main-field"
+    class="main-section"
     :options="locales"
     :selected="profileLanguage"
     @select="handleSelect"

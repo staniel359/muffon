@@ -9,7 +9,7 @@
 
         <div
           v-if="isRenderTypeSelect"
-          class="bottom-section"
+          class="main-bottom-section"
         >
           <TypeSelect
             :key="typeSelectKey"
@@ -21,7 +21,7 @@
 
       <div
         v-if="isRenderAlbumSelect"
-        class="right-section"
+        class="main-right-section main-large-section"
       >
         <AlbumSelect
           :key="albumSelectKey"

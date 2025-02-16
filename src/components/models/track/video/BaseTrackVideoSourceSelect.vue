@@ -9,7 +9,7 @@
 
         <div
           v-if="isRenderTypeSelect"
-          class="bottom-section"
+          class="main-bottom-section main-big-section"
         >
           <TypeSelect
             :key="typeSelectKey"
@@ -20,7 +20,7 @@
 
         <div
           v-if="isRenderVideoSelect"
-          class="bottom-section"
+          class="main-bottom-section main-large-section"
         >
           <VideoSelect
             :key="videoSelectKey"

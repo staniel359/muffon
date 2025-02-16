@@ -10,7 +10,7 @@
 
       <div
         v-if="selectedSourceData"
-        class="right-section"
+        class="main-right-section main-large-section"
       >
         <ArtistSelect
           :key="artistSelectKey"
@@ -19,7 +19,7 @@
 
         <div
           v-if="selectedSourceData.types"
-          class="bottom-section"
+          class="main-bottom-section"
         >
           <TypeSelect
             :key="typeSelectKey"

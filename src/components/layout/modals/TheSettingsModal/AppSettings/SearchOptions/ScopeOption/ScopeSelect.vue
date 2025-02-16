@@ -1,6 +1,6 @@
 <template>
   <BaseScopeSelect
-    class="main-field"
+    class="main-section"
     :scopes="scopes"
     :selected="searchScope"
     @select="handleSelect"

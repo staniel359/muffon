@@ -11,7 +11,7 @@
 
         <div
           v-if="selectedSourceData"
-          class="right-section"
+          class="main-right-section main-large-section"
         >
           <TrackSelect
             :key="trackSelectKey"

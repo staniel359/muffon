@@ -361,6 +361,17 @@
 
 //
 
+.main-section
+  width: 200px
+
+.main-big-section
+  width: 250px
+
+.main-large-section
+  width: 300px
+
+//
+
 .main-top-large-section
   margin-bottom: 2rem !important
 
@@ -885,6 +896,11 @@
   & > .content
     @extend .flex-full, .word-break-break-word, .main-text-container
     white-space: normal
+    & > .subheader
+      @extend .word-break-break-word
+      margin-top: 0.25rem
+      font-size: 80%
+      line-height: 1.2rem
   & > .extra
     @extend .main-right-small-section
     font-size: 0.8rem
@@ -913,19 +929,9 @@
   @extend .middle-aligned
   & > .content
     @extend .middle-aligned, .main-text-container
-    .right-section
-      @extend .main-right-section, .main-wide-field
-    .bottom-section
-      @extend .main-bottom-section, .main-wide-field
-
-.main-field
-  width: 200px
-
-.main-wide-field
-  width: 250px
 
 .main-source-select
-  @extend .main-wide-field
+  @extend .main-big-section
 
 .main-sidebar-item
   @extend .no-padding, .d-flex
@@ -1181,7 +1187,7 @@
   @extend .middle-aligned
 
 .main-search-input
-  @extend .main-wide-field
+  @extend .main-big-section
 
 .main-bottom-right-button
   bottom: 1.5rem
