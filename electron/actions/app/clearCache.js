@@ -1,5 +1,5 @@
 export default function () {
-  return mainWindow
+  return mainView
     .webContents
     .session
     .clearCache()

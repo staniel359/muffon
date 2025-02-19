@@ -66,7 +66,9 @@ function handleFocus () {
 
   if (!topTab) { return }
 
-  topTab.webContents.focus()
+  topTab
+    .webContents
+    .focus()
 }
 
 export default function () {
