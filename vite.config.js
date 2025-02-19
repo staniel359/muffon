@@ -18,7 +18,11 @@ export default defineConfig(
           template: {
             compilerOptions: {
               isCustomElement: tag => {
-                return ['emoji-picker'].includes(tag)
+                return [
+                  'emoji-picker'
+                ].includes(
+                  tag
+                )
               }
             }
           }
