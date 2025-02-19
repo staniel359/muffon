@@ -1,13 +1,11 @@
 <template>
-  <BasePaginatedSegmentModalContainer
+  <BaseCommunityModalContainer
     ref="modal"
-    :response-data="communityData"
-    :is-loading="isLoading"
-    :error="error"
+    :community-id="communityId"
     :scope="scope"
     :limit="limit"
     is-multiple
-    @call="handleCall"
+    is-paginated
   >
     <template
       #default="slotProps"
@@ -18,15 +16,14 @@
         @link-click="handleLinkClick"
       />
     </template>
-  </BasePaginatedSegmentModalContainer>
+  </BaseCommunityModalContainer>
 </template>
 
 <script>
-import BasePaginatedSegmentModalContainer
-  from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
+import BaseCommunityModalContainer
+  from '@/components/containers/modals/community/BaseCommunityModalContainer.vue'
 import BaseProfilesSimpleList
   from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
-import getCommunityMembers from '@/helpers/actions/api/community/get'
 import modalMixin from '@/mixins/modalMixin'
 import {
   profiles as profilesLimits
@@ -35,50 +32,20 @@ import {
 export default {
   name: 'BaseCommunityMembersModal',
   components: {
-    BasePaginatedSegmentModalContainer,
+    BaseCommunityModalContainer,
     BaseProfilesSimpleList
   },
   mixins: [
     modalMixin
   ],
   props: {
-    communityId: {
-      type: String,
-      required: true
-    }
+    communityId: String
   },
   data () {
     return {
-      communityData: null,
-      error: null,
-      isLoading: false,
       limit:
         profilesLimits.simple.large,
       scope: 'members'
-    }
-  },
-  computed: {
-    communityArgs () {
-      return {
-        communityId: this.communityId,
-        scope: this.scope,
-        limit: this.limit
-      }
-    }
-  },
-  methods: {
-    getCommunityMembers,
-    getData (
-      {
-        page
-      } = {}
-    ) {
-      this.getCommunityMembers(
-        {
-          ...this.communityArgs,
-          page
-        }
-      )
     }
   }
 }
