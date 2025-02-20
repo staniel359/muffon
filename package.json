@@ -33,7 +33,7 @@
     "dotenv": "^16.4.7",
     "electron-dl": "^4.0.0",
     "electron-store": "^10.0.1",
-    "electron-updater": "^6.3.9",
+    "electron-updater": "^6.6.0",
     "emoji-picker-element": "^1.26.1",
     "emoji-picker-element-data": "^1",
     "i18n": "^0.15.1",
@@ -50,7 +50,7 @@
     "crypto-js": "^4.2.0",
     "deepmerge": "^4.3.1",
     "electron": "^34.2.0",
-    "electron-builder": "^26.0.6",
+    "electron-builder": "^26.0.7",
     "eslint": "^9.20.1",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-vue": "^9.32.0",
@@ -68,5 +68,10 @@
     "vue-i18n": "^11.1.1",
     "vue-router": "^4.5.0"
   },
-  "packageManager": "pnpm@10.4.0+sha1.896bdea7e92d0a37e53829d6ec47871e5c750419"
+  "packageManager": "pnpm@10.4.0+sha1.896bdea7e92d0a37e53829d6ec47871e5c750419",
+  "pnpm": {
+    "patchedDependencies": {
+      "app-builder-lib@26.0.7": "patches/app-builder-lib@26.0.7.patch"
+    }
+  }
 }

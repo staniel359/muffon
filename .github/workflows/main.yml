@@ -19,25 +19,25 @@ jobs:
         with:
           version: latest
 
-      - name: Fix pnpm bug # https://github.com/electron-userland/electron-builder/issues/6933#issuecomment-1213438889
-        if: matrix.os == 'windows-latest'
-        run: |
+      # - name: Fix pnpm bug # https://github.com/electron-userland/electron-builder/issues/6933#issuecomment-1213438889
+        # if: matrix.os == 'windows-latest'
+        # run: |
           # Get the version of pnpm
-          $pnpmVersion = pnpm -v
+          # $pnpmVersion = pnpm -v
           
           # Construct the file path with the pnpm version
-          $file = "C:\Users\runneradmin\setup-pnpm\node_modules\.pnpm\pnpm@$pnpmVersion\node_modules\pnpm\bin\pnpm.cjs"
+          # $file = "C:\Users\runneradmin\setup-pnpm\node_modules\.pnpm\pnpm@$pnpmVersion\node_modules\pnpm\bin\pnpm.cjs"
 
           # Read the content of the file
-          $content = Get-Content $file
+          # $content = Get-Content $file
 
           # Replace the target string
-          $content = $content -replace "#!/usr/bin/env node", "#!node"
+          # $content = $content -replace "#!/usr/bin/env node", "#!node"
 
           # Write the modified content back to the file
-          $content | Set-Content $file
+          # $content | Set-Content $file
 
-          Write-Host "Replacement complete."
+          # Write-Host "Replacement complete."
 
       - name: Set up Electron cache
         uses: actions/cache@v4
