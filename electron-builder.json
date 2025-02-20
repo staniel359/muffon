@@ -21,41 +21,11 @@
     "category": "AudioVideo",
     "icon": "build/icons/icon.icns",
     "target": [
-      {
-        "arch": [
-          "x64",
-          "arm64"
-        ],
-        "target": "AppImage"
-      },
-      {
-        "arch": [
-          "x64",
-          "arm64"
-        ],
-        "target": "deb"
-      },
-      {
-        "arch": [
-          "x64",
-          "arm64"
-        ],
-        "target": "flatpak"
-      },
-      {
-        "arch": [
-          "x64",
-          "arm64"
-        ],
-        "target": "pacman"
-      },
-      {
-        "arch": [
-          "x64",
-          "arm64"
-        ],
-        "target": "rpm"
-      }
+      "AppImage",
+      "deb",
+      "flatpak",
+      "pacman",
+      "rpm"
     ],
     "desktop": {
       "Actions": "about;",
