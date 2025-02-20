@@ -72,6 +72,16 @@
   "pnpm": {
     "patchedDependencies": {
       "app-builder-lib@26.0.7": "patches/app-builder-lib@26.0.7.patch"
-    }
+    },
+    "ignoredBuiltDependencies": [
+      "@parcel/watcher",
+      "electron",
+      "esbuild"
+    ],
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "electron",
+      "esbuild"
+    ]
   }
 }
