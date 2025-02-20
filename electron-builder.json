@@ -54,7 +54,19 @@
   },
   "flatpak": {
     "runtimeVersion": "23.08",
-    "baseVersion": "23.08"
+    "baseVersion": "23.08",
+    "finishArgs": [
+      "--share=network",
+      "--socket=x11",
+      "--socket=wayland",
+      "--socket=pulseaudio",
+      "--socket=pipewire",
+      "--socket=ipc",
+      "--socket=system-bus",
+      "--socket=session-bus",
+      "--socket=avahi",
+      "--socket=xdg-portal"
+    ]
   },
   "portable": {
     "artifactName": "${productName}-${version}-${os}-${arch}-portable.${ext}"
