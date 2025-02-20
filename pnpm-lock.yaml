@@ -53,6 +53,9 @@ importers:
       '@eslint/compat':
         specifier: ^1.2.6
         version: 1.2.6(eslint@9.20.1)
+      '@eslint/js':
+        specifier: ^9.20.0
+        version: 9.20.0
       '@rollup/plugin-inject':
         specifier: ^5.0.5
         version: 5.0.5(rollup@4.34.6)
@@ -89,6 +92,9 @@ importers:
       fomantic-ui:
         specifier: ^2.9.3
         version: 2.9.3(encoding@0.1.13)
+      globals:
+        specifier: ^16.0.0
+        version: 16.0.0
       hotkeys-js:
         specifier: ^3.13.9
         version: 3.13.9
@@ -2401,6 +2407,10 @@ packages:
 
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
+    engines: {node: '>=18'}
+
+  globals@16.0.0:
+    resolution: {integrity: sha512-iInW14XItCXET01CQFqudPOWP2jYMl7T+QRQT+UNcR/iQncN/F0UNpgd76iFkBPgNQb4+X3LV9tLJYzwh+Gl3A==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -7773,6 +7783,8 @@ snapshots:
       type-fest: 0.20.2
 
   globals@14.0.0: {}
+
+  globals@16.0.0: {}
 
   globalthis@1.0.4:
     dependencies:
