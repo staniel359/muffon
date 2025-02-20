@@ -81,7 +81,9 @@
     "onlyBuiltDependencies": [
       "@parcel/watcher",
       "electron",
-      "esbuild"
+      "es5-ext",
+      "esbuild",
+      "register-scheme"
     ]
   }
 }

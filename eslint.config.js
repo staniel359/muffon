@@ -35,7 +35,6 @@ export default [
       sourceType: 'module'
     },
     files: [
-      '*.js',
       '**/*.js',
       '**/*.vue'
     ],
