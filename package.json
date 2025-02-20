@@ -33,7 +33,7 @@
     "dotenv": "^16.4.7",
     "electron-dl": "^4.0.0",
     "electron-store": "^10.0.1",
-    "electron-updater": "^6.3.9",
+    "electron-updater": "^6.6.0",
     "emoji-picker-element": "^1.26.1",
     "emoji-picker-element-data": "^1",
     "i18n": "^0.15.1",

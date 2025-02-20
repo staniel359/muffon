@@ -29,8 +29,8 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1
       electron-updater:
-        specifier: ^6.3.9
-        version: 6.3.9
+        specifier: ^6.6.0
+        version: 6.6.0
       emoji-picker-element:
         specifier: ^1.26.1
         version: 1.26.1
@@ -1803,8 +1803,8 @@ packages:
   electron-to-chromium@1.5.96:
     resolution: {integrity: sha512-8AJUW6dh75Fm/ny8+kZKJzI1pgoE8bKLZlzDU2W1ENd+DXKJrx7I7l9hb8UWR4ojlnb5OlixMt00QWiYJoVw1w==}
 
-  electron-updater@6.3.9:
-    resolution: {integrity: sha512-2PJNONi+iBidkoC5D1nzT9XqsE8Q1X28Fn6xRQhO3YX8qRRyJ3mkV4F1aQsuRnYPqq6Hw+E51y27W75WgDoofw==}
+  electron-updater@6.6.0:
+    resolution: {integrity: sha512-+aa4P73EU94yYetJOmf2+22ZCrQ3MA4C5HWqFbV1XdSSv2B82lzEg/IZyQw+H5ziUn8V7jrU+AP4zJPdxD74fg==}
 
   electron@34.2.0:
     resolution: {integrity: sha512-SYwBJNeXBTm1q/ErybQMUBZAYqEreBUqBwTrNkw1rV4YatDZk5Aittpcus3PPeC4UoI/tqmJ946uG8AKHTd6CA==}
@@ -6879,9 +6879,9 @@ snapshots:
 
   electron-to-chromium@1.5.96: {}
 
-  electron-updater@6.3.9:
+  electron-updater@6.6.0:
     dependencies:
-      builder-util-runtime: 9.2.10
+      builder-util-runtime: 9.3.1
       fs-extra: 10.1.0
       js-yaml: 4.1.0
       lazy-val: 1.0.5
