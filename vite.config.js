@@ -2,9 +2,9 @@ import {
   defineConfig,
   splitVendorChunkPlugin
 } from 'vite'
+import biome from 'vite-plugin-biome'
 import vue from '@vitejs/plugin-vue'
 import inject from '@rollup/plugin-inject'
-import eslint from 'vite-plugin-eslint'
 import electronRenderer from 'vite-plugin-electron-renderer'
 import {
   resolve as resolvePath
@@ -34,7 +34,7 @@ export default defineConfig(
           jQuery: 'jquery'
         }
       ),
-      eslint(),
+      biome(),
       electronRenderer(),
       splitVendorChunkPlugin()
     ],

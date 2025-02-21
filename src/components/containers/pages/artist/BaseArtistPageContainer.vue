@@ -136,7 +136,7 @@ export default {
       )
     },
     handleRequestArtistDataChange (
-      value,
+      _,
       oldValue
     ) {
       if (oldValue) {

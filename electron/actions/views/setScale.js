@@ -1,9 +1,7 @@
 import setViewScale from '../view/setScale.js'
 import setTabsScale from '../tabs/setScale.js'
 
-export default function (
-  value
-) {
+export default function () {
   setViewScale(
     mainWindow
   )
