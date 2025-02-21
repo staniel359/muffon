@@ -1,3 +1,4 @@
+import pluginJs from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
 import {
   FlatCompat
@@ -8,6 +9,7 @@ import {
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
+  pluginJs.configs.recommended,
   ...pluginVue.configs[
     'flat/recommended'
   ],
