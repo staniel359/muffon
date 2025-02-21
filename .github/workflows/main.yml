@@ -94,12 +94,12 @@ jobs:
           ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
           ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: pnpm release --x64
+        run: pnpm release:electron --x64
       - name: Release linux arm64 # to prevent unnecessary build locally
         if: matrix.os == 'ubuntu-latest'
         env:
           ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
           ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: pnpm release --arm64
+        run: pnpm release:electron --arm64
         

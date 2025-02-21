@@ -1,4 +1,4 @@
-import js from '@eslint/js'
+import pluginJs from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
 import {
   FlatCompat
@@ -7,8 +7,10 @@ import {
   fixupConfigRules
 } from '@eslint/compat'
 
+// adding types for better IntelliSense in supported IDEs
+/** @type {import('eslint').Linter.Config[]} */
 export default [
-  js.configs.recommended,
+  pluginJs.configs.recommended,
   ...pluginVue.configs[
     'flat/recommended'
   ],

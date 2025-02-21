@@ -28,11 +28,18 @@
       "rpm"
     ],
     "desktop": {
-      "Actions": "about;",
-      "Categories": "AudioVideo",
-      "Comment": "Advanced multi-source music streaming + discovery client",
-      "MimeType": "x-scheme-handler/muffon;",
-      "\n\n[Desktop Action about]\nName=About\nExec": "/opt/muffon/muffon --open-about-window\n\n"
+      "entry": {
+        "Actions": "about;",
+        "Categories": "AudioVideo",
+        "Comment": "Advanced multi-source music streaming + discovery client",
+        "MimeType": "x-scheme-handler/muffon;"
+      },
+      "desktopActions": {
+        "about": {
+          "Name": "About",
+          "Exec": "/opt/muffon/muffon --open-about-window"
+        }
+      }
     }
   },
   "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
