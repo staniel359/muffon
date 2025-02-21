@@ -21,13 +21,14 @@
     "build:all": "pnpm build && pnpm build:electron",
     "package:electron": "cross-env USE_HARD_LINKS=false electron-builder",
     "package:all": "pnpm build && pnpm package:electron",
-    "release:electron": "electron-builder --publish always",
+    "release:electron": "cross-env USE_HARD_LINKS=false electron-builder --publish always",
     "release": "pnpm build && pnpm release:electron",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "dayjs": "^1.11.13",
     "discord-rpc": "^4.0.1",
     "dotenv": "^16.4.7",
