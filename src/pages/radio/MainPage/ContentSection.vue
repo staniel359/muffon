@@ -48,7 +48,6 @@ export default {
       )
     }
   },
-  mounted () {},
   methods: {
     handleScopeChange (
       value
