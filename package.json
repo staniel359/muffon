@@ -19,7 +19,7 @@
     "build": "vite build",
     "build:electron": "electron-builder --dir",
     "build:all": "pnpm build && pnpm build:electron",
-    "package:electron": "electron-builder",
+    "package:electron": "cross-env USE_HARD_LINKS=false electron-builder",
     "package:all": "pnpm build && pnpm package:electron",
     "release:electron": "electron-builder --publish always",
     "release": "pnpm build && pnpm release:electron",
