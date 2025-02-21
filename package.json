@@ -15,7 +15,7 @@
   "scripts": {
     "start": "vite",
     "start:electron": "electron .",
-    "lint": "eslint",
+    "lint": "biome lint",
     "build": "vite build",
     "build:electron": "electron-builder --dir",
     "build:all": "pnpm build && pnpm build:electron",
