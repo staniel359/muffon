@@ -7,6 +7,7 @@ import {
   fixupConfigRules
 } from '@eslint/compat'
 
+// adding types for better IntelliSense in supported IDEs
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   pluginJs.configs.recommended,

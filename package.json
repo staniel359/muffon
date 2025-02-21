@@ -28,7 +28,6 @@
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "cross-env": "^7.0.3",
     "dayjs": "^1.11.13",
     "discord-rpc": "^4.0.1",
     "dotenv": "^16.4.7",
@@ -49,6 +48,7 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "axios": "^1.7.9",
     "change-case": "^5.4.4",
+    "cross-env": "^7.0.3",
     "crypto-js": "^4.2.0",
     "deepmerge": "^4.3.1",
     "electron": "^34.2.0",
