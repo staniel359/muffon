@@ -518,7 +518,7 @@
         "interface": {
           "language": "语言",
           "timezone": "时区",
-          "infiniteScroll": "无线滚动",
+          "infiniteScroll": "无限滚动",
           "artistPopup": "鼠标悬停时显示艺人信息",
           "innerCounters": "显示muffon的听众数量",
           "cachePages": "缓存页面",
