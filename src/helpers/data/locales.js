@@ -45,5 +45,9 @@ export default [
   {
     id: 'ru',
     name: 'Русский'
+  },
+  {
+    id: 'zh',
+    name: '中文'
   }
 ]
