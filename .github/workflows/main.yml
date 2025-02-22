@@ -16,8 +16,6 @@ jobs:
       - name: Set up checkout
         uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
-        with:
-          version: latest
 
       # - name: Fix pnpm bug # https://github.com/electron-userland/electron-builder/issues/6933#issuecomment-1213438889
         # if: matrix.os == 'windows-latest'
