@@ -86,7 +86,9 @@ export default {
         'counters.nominative.tracks',
         this.tracksCount,
         {
-          count: this.tracksCountStrong
+          named: {
+            count: this.tracksCountStrong
+          }
         }
       )
     },

@@ -33,7 +33,9 @@ export default {
         `counters.nominative.${this.scope}`,
         this.count,
         {
-          count: this.countStrong
+          named: {
+            count: this.countStrong
+          }
         }
       )
     },

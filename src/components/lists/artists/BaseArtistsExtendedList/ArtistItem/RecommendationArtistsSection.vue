@@ -90,7 +90,9 @@ export default {
         'counters.genitive.artists',
         this.artistsCount,
         {
-          count: this.artistsCountFormatted
+          named: {
+            count: this.artistsCountFormatted
+          }
         }
       )
     },

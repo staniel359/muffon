@@ -47,7 +47,9 @@ export default {
         `counters.accusative.${this.scope}`,
         this.count,
         {
-          count: this.countFormatted
+          named: {
+            count: this.countFormatted
+          }
         }
       )
     },

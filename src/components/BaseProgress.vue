@@ -98,7 +98,9 @@ export default {
         `counters.genitive.${this.scope}`,
         this.totalCount,
         {
-          count: this.totalCountFormatted
+          named: {
+            count: this.totalCountFormatted
+          }
         }
       )
     },
