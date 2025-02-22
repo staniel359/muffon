@@ -41,8 +41,8 @@ importers:
         specifier: ^0.15.1
         version: 0.15.1
       music-metadata:
-        specifier: ^10.9.1
-        version: 10.9.1
+        specifier: ^11.0.0
+        version: 11.0.0
       uint8array-extras:
         specifier: ^1.4.0
         version: 1.4.0
@@ -3019,8 +3019,8 @@ packages:
   multipipe@0.1.2:
     resolution: {integrity: sha512-7ZxrUybYv9NonoXgwoOqtStIu18D1c3eFZj27hqgf5kBrBF8Q+tE8V0MW8dKM5QLkQPh1JhhbKgHLY9kifov4Q==}
 
-  music-metadata@10.9.1:
-    resolution: {integrity: sha512-9JcxgIlMPD1Mgzc2fTCaRtBR7GMQJ226gmh2iECzHwLRSrms1yPUxTivBbEiyUrshpmFnBv9baDkpkk9uxbfHw==}
+  music-metadata@11.0.0:
+    resolution: {integrity: sha512-ZxppS3UuaV1xdWPDmXf4VX3M5+LdVng3xu1rXbZrZWlvtppdOfYrMCeMGDuOt31URTbkmbwuYaRYddkhY5DZMA==}
     engines: {node: '>=18'}
 
   mustache@4.2.0:
@@ -7772,7 +7772,7 @@ snapshots:
     dependencies:
       duplexer2: 0.0.2
 
-  music-metadata@10.9.1:
+  music-metadata@11.0.0:
     dependencies:
       '@tokenizer/token': 0.3.0
       content-type: 1.0.5

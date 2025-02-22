@@ -37,7 +37,7 @@
     "emoji-picker-element": "^1.26.1",
     "emoji-picker-element-data": "^1.7.1",
     "i18n": "^0.15.1",
-    "music-metadata": "^10.9.1",
+    "music-metadata": "^11.0.0",
     "uint8array-extras": "^1.4.0",
     "uuid": "^11.1.0"
   },
