@@ -57,15 +57,14 @@
     "baseVersion": "23.08",
     "finishArgs": [
       "--share=network",
-      "--socket=x11",
       "--socket=wayland",
+      "--socket=x11",
       "--socket=pulseaudio",
-      "--socket=pipewire",
-      "--socket=ipc",
+      "--device=dri",
+      "--filesystem=xdg-run/pipewire-0:ro",
       "--socket=system-bus",
       "--socket=session-bus",
-      "--socket=avahi",
-      "--socket=xdg-portal"
+      "--share=ipc"
     ]
   },
   "portable": {
