@@ -2,10 +2,9 @@ import {
   defineConfig,
   splitVendorChunkPlugin
 } from 'vite'
-import biome from 'vite-plugin-biome'
-import vue from '@vitejs/plugin-vue'
-import inject from '@rollup/plugin-inject'
-import electronRenderer from 'vite-plugin-electron-renderer'
+import vuePlugin from '@vitejs/plugin-vue'
+import injectPlugin from '@rollup/plugin-inject'
+import electronRendererPlugin from 'vite-plugin-electron-renderer'
 import {
   resolve as resolvePath
 } from 'node:path'
@@ -13,7 +12,7 @@ import {
 export default defineConfig(
   {
     plugins: [
-      vue(
+      vuePlugin(
         {
           template: {
             compilerOptions: {
@@ -28,14 +27,13 @@ export default defineConfig(
           }
         }
       ),
-      inject(
+      injectPlugin(
         {
           $: 'jquery',
           jQuery: 'jquery'
         }
       ),
-      biome(),
-      electronRenderer(),
+      electronRendererPlugin(),
       splitVendorChunkPlugin()
     ],
     resolve: {
