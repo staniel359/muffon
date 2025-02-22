@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   app-builder-lib@26.0.8:
-    hash: dce63f50427af50924b0ef8bf526cb4b476866c16b4d6724ea520156851df123
+    hash: e2f02e0ef47b814ffdda437c3e5ccfdd045e2fc2a7376b8b347932e67d44e02d
     path: patches/app-builder-lib@26.0.8.patch
 
 importers:
@@ -5169,7 +5169,7 @@ snapshots:
       - bluebird
       - supports-color
 
-  app-builder-lib@26.0.8(patch_hash=dce63f50427af50924b0ef8bf526cb4b476866c16b4d6724ea520156851df123)(dmg-builder@26.0.8)(electron-builder-squirrel-windows@25.1.7):
+  app-builder-lib@26.0.8(patch_hash=e2f02e0ef47b814ffdda437c3e5ccfdd045e2fc2a7376b8b347932e67d44e02d)(dmg-builder@26.0.8)(electron-builder-squirrel-windows@25.1.7):
     dependencies:
       '@develar/schema-utils': 2.6.5
       '@electron/asar': 3.2.18
@@ -5975,7 +5975,7 @@ snapshots:
 
   dmg-builder@26.0.8(electron-builder-squirrel-windows@25.1.7):
     dependencies:
-      app-builder-lib: 26.0.8(patch_hash=dce63f50427af50924b0ef8bf526cb4b476866c16b4d6724ea520156851df123)(dmg-builder@26.0.8)(electron-builder-squirrel-windows@25.1.7)
+      app-builder-lib: 26.0.8(patch_hash=e2f02e0ef47b814ffdda437c3e5ccfdd045e2fc2a7376b8b347932e67d44e02d)(dmg-builder@26.0.8)(electron-builder-squirrel-windows@25.1.7)
       builder-util: 26.0.7
       builder-util-runtime: 9.3.1
       fs-extra: 10.1.0
@@ -6058,7 +6058,7 @@ snapshots:
 
   electron-builder@26.0.8(electron-builder-squirrel-windows@25.1.7):
     dependencies:
-      app-builder-lib: 26.0.8(patch_hash=dce63f50427af50924b0ef8bf526cb4b476866c16b4d6724ea520156851df123)(dmg-builder@26.0.8)(electron-builder-squirrel-windows@25.1.7)
+      app-builder-lib: 26.0.8(patch_hash=e2f02e0ef47b814ffdda437c3e5ccfdd045e2fc2a7376b8b347932e67d44e02d)(dmg-builder@26.0.8)(electron-builder-squirrel-windows@25.1.7)
       builder-util: 26.0.7
       builder-util-runtime: 9.3.1
       chalk: 4.1.2
