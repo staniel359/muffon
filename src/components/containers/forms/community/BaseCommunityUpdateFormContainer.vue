@@ -67,11 +67,7 @@ export default {
       )
     },
     communityTitleStrong () {
-      return `
-        <strong>
-          ${this.communityTitle}
-        </strong>
-      `
+      return `<strong>${this.communityTitle}</strong>`
     },
     communityTitle () {
       return this.communityData.title

@@ -11,6 +11,7 @@
     :text-scope="textScope"
   />
   <BaseNoCollectionMessage
+    v-else
     :scope="textScope"
   />
 </template>

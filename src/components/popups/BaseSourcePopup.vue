@@ -34,11 +34,7 @@ export default {
       )
     },
     sourceNameStrong () {
-      return `
-        <strong>
-          ${this.sourceName}
-        </strong>
-      `
+      return `<strong>${this.sourceName}</strong>`
     },
     sourceName () {
       return this.sourceData?.name

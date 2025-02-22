@@ -40,11 +40,7 @@ export default {
       )
     },
     countStrong () {
-      return `
-        <strong>
-          ${this.countFormatted}
-        </strong>
-      `
+      return `<strong>${this.countFormatted}</strong>`
     },
     countFormatted () {
       return formatNumber(

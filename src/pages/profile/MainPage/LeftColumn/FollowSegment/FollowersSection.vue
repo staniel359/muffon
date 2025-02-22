@@ -44,11 +44,7 @@ export default {
       return this.profileData.followers_count
     },
     followersCountStrong () {
-      return `
-        <strong>
-          ${this.followersCountFormatted}
-        </strong>
-      `
+      return `<strong>${this.followersCountFormatted}</strong>`
     },
     followersCountFormatted () {
       return formatNumber(
