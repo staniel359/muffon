@@ -50,7 +50,7 @@
     "crypto-js": "^4.2.0",
     "deepmerge": "^4.3.1",
     "electron": "^34.2.0",
-    "electron-builder": "^26.0.8",
+    "electron-builder": "26.0.8",
     "fomantic-ui": "^2.9.3",
     "hotkeys-js": "^3.13.9",
     "i18n-iso-countries": "^7.14.0",
