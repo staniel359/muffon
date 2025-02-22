@@ -75,7 +75,7 @@ importers:
         specifier: ^34.2.0
         version: 34.2.0
       electron-builder:
-        specifier: ^26.0.8
+        specifier: 26.0.8
         version: 26.0.8(electron-builder-squirrel-windows@25.1.7)
       fomantic-ui:
         specifier: ^2.9.3

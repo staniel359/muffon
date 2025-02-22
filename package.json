@@ -64,7 +64,6 @@
     "vue-i18n": "^11.1.1",
     "vue-router": "^4.5.0"
   },
-  "packageManager": "pnpm@10.4.1",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
