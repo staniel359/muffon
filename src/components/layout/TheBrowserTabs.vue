@@ -179,11 +179,9 @@ export default {
         )
       }
 
-      const tabs = [
-        ...this.tabs.filter(
-          isMatchedTab
-        )
-      ]
+      const tabs = this.tabs.filter(
+        isMatchedTab
+      )
 
       this.setTabs(
         tabs

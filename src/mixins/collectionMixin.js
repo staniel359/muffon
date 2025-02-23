@@ -69,11 +69,9 @@ export default {
         return itemData.uuid !== uuid
       }
 
-      this[collection] = [
-        ...this[collection].filter(
-          isMatchedItem
-        )
-      ]
+      this[collection] = this[collection].filter(
+        isMatchedItem
+      )
     },
     resetCollection (
       collection

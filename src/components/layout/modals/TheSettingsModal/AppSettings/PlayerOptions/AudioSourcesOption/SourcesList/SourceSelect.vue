@@ -78,11 +78,9 @@ export default {
       )
     },
     handleClearButtonClick () {
-      const sources = [
-        ...this.playerAudioSources.filter(
-          this.isMatchedSource
-        )
-      ]
+      const sources = this.playerAudioSources.filter(
+        this.isMatchedSource
+      )
 
       updateGlobalStore(
         {

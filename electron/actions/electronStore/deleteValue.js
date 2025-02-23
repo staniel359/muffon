@@ -18,11 +18,9 @@ export default function (
     )
   }
 
-  const newValue = [
-    ...oldValue.filter(
-      isMatchedItem
-    )
-  ]
+  const newValue = oldValue.filter(
+    isMatchedItem
+  )
 
   return setElectronStoreData(
     {

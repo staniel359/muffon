@@ -107,11 +107,9 @@ export default {
         )
       }
 
-      const images = [
-        ...this.backgroundImages.filter(
-          isMatchedImage
-        )
-      ]
+      const images = this.backgroundImages.filter(
+        isMatchedImage
+      )
 
       updateGlobalStore(
         {

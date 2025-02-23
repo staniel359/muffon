@@ -83,17 +83,13 @@ export default {
         return trackData.uuid !== uuid
       }
 
-      const tracks = [
-        ...this.queueTracks.filter(
-          isMatchedTrack
-        )
-      ]
+      const tracks = this.queueTracks.filter(
+        isMatchedTrack
+      )
 
-      const tracksShuffled = [
-        ...this.queueTracksShuffled.filter(
-          isMatchedTrack
-        )
-      ]
+      const tracksShuffled = this.queueTracksShuffled.filter(
+        isMatchedTrack
+      )
 
       updateGlobalStore(
         {
