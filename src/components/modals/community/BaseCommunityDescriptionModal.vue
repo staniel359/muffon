@@ -1,38 +1,32 @@
 <template>
-  <BaseCommunityModalContainer
+  <BaseSegmentModalContainer
     ref="modal"
-    :community-id="communityId"
-    :scope="scope"
+    :is-get-data="false"
   >
     <template
-      #default="slotProps"
+      #default
     >
       <BaseDescriptionSection
-        :description="slotProps[scope]"
+        :description="description"
       />
     </template>
-  </BaseCommunityModalContainer>
+  </BaseSegmentModalContainer>
 </template>
 
 <script>
-import BaseCommunityModalContainer
-  from '@/components/containers/modals/community/BaseCommunityModalContainer.vue'
+import BaseSegmentModalContainer
+  from '@/components/containers/modals/BaseSegmentModalContainer.vue'
 import BaseDescriptionSection
   from '@/components/sections/BaseDescriptionSection.vue'
 
 export default {
   name: 'BaseCommunityDescriptionModal',
   components: {
-    BaseCommunityModalContainer,
+    BaseSegmentModalContainer,
     BaseDescriptionSection
   },
   props: {
-    communityId: String
-  },
-  data () {
-    return {
-      scope: 'description'
-    }
+    description: String
   },
   methods: {
     show () {

@@ -1,6 +1,6 @@
 <template>
   <BaseDescriptionSection
-    :description="description"
+    :description="descriptionTruncated"
     :is-more="isMore"
     @more-click="handleMoreClick"
   />
@@ -8,7 +8,7 @@
   <BaseCommunityDescriptionModal
     v-if="isMore"
     ref="modal"
-    :community-id="communityId"
+    :description="description"
   />
 </template>
 
@@ -31,14 +31,14 @@ export default {
     }
   },
   computed: {
-    description () {
-      return this.communityData.description
+    descriptionTruncated () {
+      return this.communityData.description_truncated
     },
     isMore () {
       return !!this.communityData.with_more?.description
     },
-    communityId () {
-      return this.communityData.id.toString()
+    description () {
+      return this.communityData.description
     }
   },
   methods: {
