@@ -18,7 +18,7 @@
         inverted: isDarkMode,
         contained: isContained,
         [borderedRaisedClass]: !isPlain,
-        default: !isImagePresent
+        default: isDefault
       }
     ]"
     :[attribute]="imageConditional"
@@ -57,6 +57,11 @@ export default {
   emits: [
     'click'
   ],
+  data () {
+    return {
+      isError: false
+    }
+  },
   computed: {
     ...mapState(
       layoutStore,
@@ -106,6 +111,12 @@ export default {
         this.isInvertable &&
           this.isDarkMode
       ) || this.isBordered
+    },
+    isDefault () {
+      return (
+        this.isError ||
+          !this.isImagePresent
+      )
     }
   },
   methods: {
@@ -115,6 +126,8 @@ export default {
       )
     },
     handleError () {
+      this.isError = true
+
       this.setDefaultImage()
     },
     setDefaultImage () {
