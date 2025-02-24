@@ -4,6 +4,7 @@ import {
 } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
 import injectPlugin from '@rollup/plugin-inject'
+import eslintPlugin from 'vite-plugin-eslint'
 import electronRendererPlugin from 'vite-plugin-electron-renderer'
 import {
   resolve as resolvePath
@@ -33,6 +34,7 @@ export default defineConfig(
           jQuery: 'jquery'
         }
       ),
+      eslintPlugin(),
       electronRendererPlugin(),
       splitVendorChunkPlugin()
     ],
