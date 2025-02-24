@@ -7,6 +7,7 @@
     :autoplay="isAudioAutoplay"
     @loadstart="handleLoadStart"
     @durationchange="handleDurationChange"
+    @loadeddata="handleLoadedData"
     @progress="handleProgress"
     @canplay="handleCanPlay"
     @play="handlePlay"
@@ -96,12 +97,17 @@ export default {
         setIsAudioPlayable: 'setIsPlayable',
         setAudioStatus: 'setStatus',
         setAudioCurrentTime: 'setCurrentTime',
-        setAudioVolume: 'setVolume'
+        setAudioVolume: 'setVolume',
+        setIsAudioStartedLoading: 'setIsStartedLoading'
       }
     ),
     handlePlayerPlayingChange (
       value
     ) {
+      this.setIsAudioStartedLoading(
+        false
+      )
+
       if (value) {
         this.loadAudio()
       } else {
@@ -147,6 +153,11 @@ export default {
 
       this.setProgress(
         event
+      )
+    },
+    handleLoadedData () {
+      this.setIsAudioStartedLoading(
+        true
       )
     },
     handleProgress (

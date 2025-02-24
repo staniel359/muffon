@@ -5,6 +5,10 @@
         v-if="isLoading"
         is-loading
       />
+      <BaseIcon
+        v-else-if="isError"
+        icon="error"
+      />
       <div
         v-else-if="bitrate"
         class="meta"
@@ -24,6 +28,7 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
+import audioStore from '@/stores/audio'
 import BaseItemContainer
   from '@/components/containers/item/BaseItemContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
@@ -37,7 +42,8 @@ export default {
   data () {
     return {
       bitrate: null,
-      isLoading: true
+      isLoading: true,
+      isError: false
     }
   },
   computed: {
@@ -45,6 +51,12 @@ export default {
       playerStore,
       {
         playerPlaying: 'playing'
+      }
+    ),
+    ...mapState(
+      audioStore,
+      {
+        isAudioStartedLoading: 'isStartedLoading'
       }
     ),
     bitrateText () {
@@ -65,10 +77,22 @@ export default {
       }
     }
   },
-  mounted () {
-    this.getAudioBitrate()
+  watch: {
+    isAudioStartedLoading: {
+      immediate: true,
+      handler: 'handleIsAudioStartedLoading'
+    }
   },
   methods: {
+    async handleIsAudioStartedLoading (
+      value
+    ) {
+      await this.$nextTick()
+
+      if (value) {
+        this.getAudioBitrate()
+      }
+    },
     handleAudioSuccess (
       response
     ) {
@@ -84,7 +108,7 @@ export default {
       this.bitrate = bitrateFormatted
     },
     handleAudioError () {
-      return null
+      this.isError = true
     },
     handleAudioFinish () {
       this.isLoading = false

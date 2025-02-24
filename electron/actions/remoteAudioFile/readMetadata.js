@@ -1,7 +1,4 @@
 import {
-  net
-} from 'electron'
-import {
   parseWebStream
 } from 'music-metadata'
 
@@ -12,7 +9,7 @@ export default async function (
   }
 ) {
   const response =
-    await net.fetch(
+    await fetch(
       fileUrl
     )
 
