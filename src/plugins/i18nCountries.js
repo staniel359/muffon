@@ -13,6 +13,8 @@ import ko from 'i18n-iso-countries/langs/ko.json'
 import pl from 'i18n-iso-countries/langs/pl.json'
 import ru from 'i18n-iso-countries/langs/ru.json'
 import zh from 'i18n-iso-countries/langs/zh.json'
+import genz from 'i18n-iso-countries/langs/en.json'
+genz.locale = 'genz'
 
 // i18n
 
@@ -28,7 +30,8 @@ const locales = [
   ko,
   pl,
   ru,
-  zh
+  zh,
+  genz
 ]
 
 function addLocale (
