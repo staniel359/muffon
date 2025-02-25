@@ -1,4 +1,4 @@
-import getMainWindowSize from '../mainWindow/getSize'
+import getMainWindowSize from '../mainWindow/getSize.js'
 
 export default function () {
   const [

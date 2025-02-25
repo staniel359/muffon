@@ -1,4 +1,4 @@
-import getAboutWindowSize from '../aboutWindow/getSize'
+import getAboutWindowSize from '../aboutWindow/getSize.js'
 
 export default function () {
   const [
