@@ -1,5 +1,4 @@
 import getElectronStoreKey from '../electronStore/getKey.js'
-import getMainWindowSize from '../mainWindow/getSize.js'
 
 export default function (
   tab
@@ -24,7 +23,7 @@ export default function (
   const [
     width,
     height
-  ] = getMainWindowSize()
+  ] = mainWindow.getSize()
 
   const heightScaled = (
     height - topOffsetComputed
