@@ -82,20 +82,6 @@ export const isSingleInstance =
 
 export const deepLinksProtocol = `${appName}://`
 
-export const shortcuts = {
-  allowed: {
-    quit: [
-      'CommandOrControl+Q'
-    ]
-  },
-  forbidden: {
-    reload: [
-      'CommandOrControl+R',
-      'F5'
-    ]
-  }
-}
-
 export function createFolderIfNotExists (
   path
 ) {

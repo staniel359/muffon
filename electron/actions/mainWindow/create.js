@@ -64,11 +64,11 @@ function handleResize () {
 function handleFocus () {
   const topTab = getTopTab()
 
-  if (!topTab) { return }
-
-  topTab
-    .webContents
-    .focus()
+  if (topTab) {
+    topTab
+      .webContents
+      .focus()
+  }
 }
 
 export default function () {
