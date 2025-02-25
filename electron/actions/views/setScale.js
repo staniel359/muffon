@@ -3,11 +3,11 @@ import setTabsScale from '../tabs/setScale.js'
 
 export default function () {
   setViewScale(
-    mainWindow
+    mainView
   )
 
   setViewScale(
-    aboutWindow
+    aboutView
   )
 
   setTabsScale()
