@@ -13,6 +13,9 @@ importers:
 
   .:
     dependencies:
+      '@eslint/eslintrc':
+        specifier: ^3.3.0
+        version: 3.3.0
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
