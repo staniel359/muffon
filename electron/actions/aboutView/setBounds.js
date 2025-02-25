@@ -1,8 +1,10 @@
+import getAboutWindowSize from '../aboutWindow/getSize'
+
 export default function () {
   const [
     width,
     height
-  ] = aboutWindow.getSize()
+  ] = getAboutWindowSize()
 
   const boundsOptions = {
     x: 0,

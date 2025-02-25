@@ -1,7 +1,5 @@
 import getElectronStoreKey from '../electronStore/getKey.js'
-import {
-  isLinux
-} from '../../helpers/utils.js'
+import getMainWindowSize from '../mainWindow/getSize'
 
 export default function (
   tab
@@ -23,18 +21,10 @@ export default function (
     isFullScreen ? 0 : topOffsetScaled
   )
 
-  function getWindowSize () {
-    if (isLinux) {
-      return mainWindow.getSize()
-    } else {
-      return mainWindow.getContentSize()
-    }
-  }
-
   const [
     width,
     height
-  ] = getWindowSize()
+  ] = getMainWindowSize()
 
   const heightScaled = (
     height - topOffsetComputed
