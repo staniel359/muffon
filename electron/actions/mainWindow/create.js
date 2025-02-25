@@ -104,8 +104,6 @@ export default function () {
       mainViewOptions
     )
 
-  setMainViewBounds()
-
   setViewScale(
     mainView
   )
@@ -134,6 +132,10 @@ export default function () {
   if (isMaximizeOnStart) {
     mainWindow.maximize()
   }
+
+  setMainViewBounds()
+
+  setTabsBounds()
 
   showMainWindow()
 
