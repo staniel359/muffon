@@ -1,23 +1,19 @@
 import {
   Client as DiscordClient
-} from 'discord-rpc'
+} from '@xhayper/discord-rpc'
 import {
   discordClientId
 } from '../../helpers/env.js'
 
 export default function () {
   const options = {
-    transport: 'ipc'
+    clientId: discordClientId
   }
 
   discordClient =
     new DiscordClient(
       options
     )
-
-  const loginOptions = {
-    clientId: discordClientId
-  }
 
   function handleSuccess () {
     mainView
@@ -42,11 +38,11 @@ export default function () {
     }
   }
 
-  discordClient.login(
-    loginOptions
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  )
+  discordClient
+    .login()
+    .then(
+      handleSuccess
+    ).catch(
+      handleError
+    )
 }
