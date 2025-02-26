@@ -6,7 +6,9 @@ import {
   windowIcon
 } from '../../helpers/icons.js'
 import {
-  isDevelopment
+  isDevelopment,
+  isLinux,
+  wait
 } from '../../helpers/utils.js'
 import {
   baseUrl
@@ -23,6 +25,7 @@ import getTopTab from '../tab/getTop.js'
 import setMainViewBounds from '../mainView/setBounds.js'
 import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
+// import showViewDevTools from '../view/showDevTools.js'
 import {
   handleNewWindow
 } from '../../handlers/app.js'
@@ -55,10 +58,14 @@ function handleClose (
   }
 }
 
-function handleResize () {
+function resizeViews () {
   setMainViewBounds()
 
   setTabsBounds()
+}
+
+function handleResize () {
+  resizeViews()
 }
 
 function handleFocus () {
@@ -68,6 +75,41 @@ function handleFocus () {
     topTab
       .webContents
       .focus()
+  }
+}
+
+async function handleDidFinishLoad () {
+  const isMaximizeOnStart =
+    getElectronStoreKey(
+      'window.isMaximizeOnStart'
+    )
+
+  if (isMaximizeOnStart) {
+    if (isLinux) {
+      showMainWindow()
+
+      await wait(
+        100
+      )
+    }
+
+    mainWindow.maximize()
+  } else {
+    showMainWindow()
+  }
+
+  const isCheckForNewVersions =
+    getElectronStoreKey(
+      'updates.isCheckForNewVersions'
+    )
+
+  const isCheckForUpdates = (
+    !isDevelopment &&
+      isCheckForNewVersions
+  )
+
+  if (isCheckForUpdates) {
+    checkForUpdates()
   }
 }
 
@@ -104,11 +146,17 @@ export default function () {
       mainViewOptions
     )
 
-  setViewScale(
+  resizeViews()
+
+  // showViewDevTools(
+  //   mainView
+  // )
+
+  changeViewBackgroundColor(
     mainView
   )
 
-  changeViewBackgroundColor(
+  setViewScale(
     mainView
   )
 
@@ -123,47 +171,6 @@ export default function () {
     .loadURL(
       baseUrl
     )
-
-  const isMaximizeOnStart =
-    getElectronStoreKey(
-      'window.isMaximizeOnStart'
-    )
-
-  if (isMaximizeOnStart) {
-    mainWindow.maximize()
-  }
-
-  setMainViewBounds()
-
-  setTabsBounds()
-
-  showMainWindow()
-
-  const isCheckForNewVersions =
-    getElectronStoreKey(
-      'updates.isCheckForNewVersions'
-    )
-
-  const isCheckForUpdates = (
-    !isDevelopment &&
-      isCheckForNewVersions
-  )
-
-  if (isCheckForUpdates) {
-    checkForUpdates()
-  }
-
-  // if (isDevelopment) {
-  //   const devToolsData = {
-  //     mode: 'detach'
-  //   }
-
-  //   mainView
-  //     .webContents
-  //     .openDevTools(
-  //       devToolsData
-  //     )
-  // }
 
   mainWindow.on(
     'show',
@@ -194,5 +201,12 @@ export default function () {
     .webContents
     .setWindowOpenHandler(
       handleNewWindow
+    )
+
+  mainView
+    .webContents
+    .once(
+      'did-finish-load',
+      handleDidFinishLoad
     )
 }

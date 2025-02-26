@@ -12,6 +12,7 @@ import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
 import setViewScale from '../view/setScale.js'
 import setAboutViewBounds from '../aboutView/setBounds.js'
+// import showViewDevTools from '../view/showDevTools.js'
 import {
   isDevelopment
 } from '../../helpers/utils.js'
@@ -25,12 +26,6 @@ function handleClose (
   event.preventDefault()
 
   aboutWindow.hide()
-}
-
-function handleDomReady () {
-  setViewScale(
-    aboutView
-  )
 }
 
 export default function () {
@@ -71,6 +66,10 @@ export default function () {
 
   setAboutViewBounds()
 
+  // showViewDevTools(
+  //   aboutView
+  // )
+
   setViewScale(
     aboutView
   )
@@ -79,35 +78,18 @@ export default function () {
     aboutView
   )
 
-  // if (isDevelopment) {
-  //   const devToolsData = {
-  //     mode: 'detach'
-  //   }
-
-  //   aboutView
-  //     .webContents
-  //     .openDevTools(
-  //       devToolsData
-  //     )
-  // }
-
   aboutWindow
     .contentView
     .addChildView(
       aboutView
     )
 
-  aboutView
-    .webContents
-    .loadURL(
-      `${baseUrl}#/about`
-    )
+  const url = `${baseUrl}#/about`
 
   aboutView
     .webContents
-    .on(
-      'dom-ready',
-      handleDomReady
+    .loadURL(
+      url
     )
 
   aboutWindow.on(

@@ -123,3 +123,16 @@ export function handleHarmfulSwitches () {
     process.exit()
   }
 }
+
+export function wait (
+  milliseconds
+) {
+  return new Promise(
+    resolve => {
+      return setTimeout(
+        resolve,
+        milliseconds
+      )
+    }
+  )
+}
