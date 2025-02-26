@@ -25,6 +25,9 @@ import {
 } from 'pinia'
 import audioStore from '@/stores/audio'
 import playerStore from '@/stores/player'
+import {
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
 
 export default {
   name: 'AudioElement',
@@ -173,7 +176,7 @@ export default {
       )
     },
     handlePlay () {
-      this.setAudioStatus(
+      this.setAudioStatusWithGlobal(
         'play'
       )
     },
@@ -189,7 +192,7 @@ export default {
       )
     },
     handlePause () {
-      this.setAudioStatus(
+      this.setAudioStatusWithGlobal(
         'pause'
       )
     },
@@ -269,7 +272,7 @@ export default {
         .load()
     },
     stopAudio () {
-      this.setAudioStatus(
+      this.setAudioStatusWithGlobal(
         'stop'
       )
 
@@ -294,6 +297,22 @@ export default {
           progress
         )
       }
+    },
+    setAudioStatusWithGlobal (
+      value
+    ) {
+      this.setAudioStatus(
+        value
+      )
+
+      updateGlobalStore(
+        {
+          'audio.status': value
+        },
+        {
+          isSave: false
+        }
+      )
     }
   }
 }
