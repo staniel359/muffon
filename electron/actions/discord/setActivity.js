@@ -5,15 +5,27 @@ import {
 export default function (
   {
     playingData,
-    buttons
+    buttons,
+    startTime,
+    isPlaying
   }
 ) {
   const {
     trackTitle,
     artistName,
     albumTitle,
-    image
+    image,
+    duration
   } = playingData
+
+  const durationComputed = (
+    isPlaying ? duration : 0
+  )
+
+  const endTime = (
+    startTime +
+      durationComputed * 1000
+  )
 
   const activity = {
     type: 2,
@@ -27,7 +39,9 @@ export default function (
     smallImageText: appName,
     ...(buttons.length && {
       buttons
-    })
+    }),
+    startTimestamp: startTime,
+    endTimestamp: endTime
   }
 
   discordClient
