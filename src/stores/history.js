@@ -7,7 +7,8 @@ const data = {
     return {
       librarySearch: null,
       savedTracksSearch: null,
-      search: null
+      search: null,
+      isSaveBrowser: null
     }
   },
   actions: {
@@ -25,6 +26,11 @@ const data = {
       value
     ) {
       this.search = value
+    },
+    setIsSaveBrowser (
+      value
+    ) {
+      this.isSaveBrowser = value
     }
   }
 }

@@ -15,6 +15,7 @@
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
         :scope="listScope"
+        :text-scope="textScope"
         :limit="limit"
         :order="order"
         :model="model"
@@ -53,6 +54,7 @@ export default {
   props: {
     scope: String,
     listScope: String,
+    textScope: String,
     limit: Number,
     order: String,
     model: String,

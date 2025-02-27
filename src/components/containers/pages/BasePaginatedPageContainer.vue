@@ -80,6 +80,7 @@
       :is-loading="isLoading"
       :error="error"
       :scope="scope"
+      :text-scope="textScope"
       :limit="limit"
       :response-page-limit="responsePageLimit"
       :is-pagination-simple="isPaginationSimple"
@@ -144,6 +145,7 @@ export default {
       default: true
     },
     listScope: String,
+    textScope: String,
     responseData: Object,
     isLoading: Boolean,
     error: Error,
