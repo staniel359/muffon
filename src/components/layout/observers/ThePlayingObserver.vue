@@ -10,6 +10,7 @@ import {
 } from 'pinia'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
+import historyStore from '@/stores/history'
 import {
   playing as formatPlaying
 } from '@/helpers/formatters'
@@ -29,6 +30,12 @@ export default {
       profileStore,
       {
         isShowProfilePlaying: 'isShowPlaying'
+      }
+    ),
+    ...mapState(
+      historyStore,
+      {
+        isSavePlayerHistory: 'isSavePlayer'
       }
     ),
     playingFormatted () {
@@ -65,6 +72,12 @@ export default {
         playing:
           this.publicPlayingFormatted
       }
+    },
+    isSaveHistory () {
+      return (
+        this.playerPlaying &&
+          this.isSavePlayerHistory
+      )
     }
   },
   watch: {
@@ -79,10 +92,8 @@ export default {
     }
   },
   methods: {
-    handlePlayerPlayingChange (
-      value
-    ) {
-      if (value) {
+    handlePlayerPlayingChange () {
+      if (this.isSaveHistory) {
         this.updatePlayerHistory()
       }
 

@@ -583,6 +583,7 @@
             "delete": "Delete activity history"
           },
           "player": {
+            "save": "Save player history",
             "delete": "Delete player history"
           },
           "browser": {
