@@ -9,6 +9,7 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
+import historyStore from '@/stores/history'
 import {
   currentTime as formatCurrentTime
 } from '@/helpers/formatters/dateTimeString'
@@ -22,6 +23,12 @@ export default {
       {
         profileId: 'id',
         isProfileAnonymous: 'isAnonymous'
+      }
+    ),
+    ...mapState(
+      historyStore,
+      {
+        isSaveBrowserHistory: 'isSaveBrowser'
       }
     )
   },
@@ -38,9 +45,11 @@ export default {
       _,
       routeData
     ) {
-      this.addRouteToHistory(
-        routeData
-      )
+      if (this.isSaveBrowserHistory) {
+        this.addRouteToHistory(
+          routeData
+        )
+      }
     },
     addRouteToHistory (
       value

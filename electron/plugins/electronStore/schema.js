@@ -200,6 +200,10 @@ export default {
     type: 'array',
     default: []
   },
+  'history.isSaveBrowser': {
+    type: 'boolean',
+    default: true
+  },
   'homePage.isWithRecentTracksSegment': {
     type: 'boolean',
     default: true
