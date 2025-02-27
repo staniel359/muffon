@@ -9,6 +9,7 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
+import historyStore from '@/stores/history'
 import {
   playing as formatPlaying
 } from '@/helpers/formatters'
@@ -22,12 +23,24 @@ export default {
         playerPlaying: 'playing'
       }
     ),
-    playerPlayingFormatted () {
+    ...mapState(
+      historyStore,
+      {
+        isSavePlayerHistory: 'isSavePlayer'
+      }
+    ),
+    playingFormatted () {
       return formatPlaying(
         this.playerPlaying,
         {
           isWithCreated: true
         }
+      )
+    },
+    isSaveHistory () {
+      return (
+        this.playerPlaying &&
+          this.isSavePlayerHistory
       )
     }
   },
@@ -36,17 +49,15 @@ export default {
       'handlePlayerPlayingChange'
   },
   methods: {
-    handlePlayerPlayingChange (
-      value
-    ) {
-      if (value) {
+    handlePlayerPlayingChange () {
+      if (this.isSaveHistory) {
         this.updatePlaying()
       }
     },
     updatePlaying () {
       const playingFormatted =
         JSON.stringify(
-          this.playerPlayingFormatted
+          this.playingFormatted
         )
 
       window

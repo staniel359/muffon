@@ -204,6 +204,10 @@ export default {
     type: 'boolean',
     default: true
   },
+  'history.isSavePlayer': {
+    type: 'boolean',
+    default: true
+  },
   'homePage.isWithRecentTracksSegment': {
     type: 'boolean',
     default: true
