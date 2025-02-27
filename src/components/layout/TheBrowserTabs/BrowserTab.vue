@@ -8,6 +8,8 @@
     :is-invertable="!isActive"
     @click="handleClick"
     @auxclick.stop="handleAuxClick"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
   >
     <BaseIcon
       class="main-right-extrasmall-icon main-left-small-icon"
@@ -17,11 +19,13 @@
     />
 
     <BaseTickerContainer
+      ref="ticker"
       :key="key"
       class="tab-name text-overflow-hidden"
       :class="{
         active: isActive
       }"
+      :is-enabled="false"
     >
       {{ tabTitle }}
     </BaseTickerContainer>
@@ -153,6 +157,16 @@ export default {
       )) {
         this.callTabClose()
       }
+    },
+    handleMouseEnter () {
+      this.$refs
+        .ticker
+        .activate()
+    },
+    handleMouseLeave () {
+      this.$refs
+        .ticker
+        .deactivate()
     },
     callTabClose () {
       window

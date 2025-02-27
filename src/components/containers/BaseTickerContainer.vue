@@ -1,6 +1,6 @@
 <template>
   <div
-    class="white-space-no-wrap"
+    class="white-space-no-wrap base-ticker-container"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
@@ -18,6 +18,12 @@
 <script>
 export default {
   name: 'BaseTickerContainer',
+  props: {
+    isEnabled: {
+      type: Boolean,
+      default: true
+    }
+  },
   data () {
     return {
       content: null,
@@ -65,6 +71,7 @@ export default {
     } = this.$refs
 
     this.ticker = ticker
+
     this.content = content
 
     this.setContentPaddingRight(
@@ -72,9 +79,10 @@ export default {
     )
 
     if (this.isTickable) {
-      this.ticker.appendChild(
-        this.contentClone
-      )
+      this.ticker
+        .appendChild(
+          this.contentClone
+        )
     } else {
       this.setContentPaddingRight(
         0
@@ -83,26 +91,37 @@ export default {
   },
   methods: {
     handleMouseEnter () {
-      if (this.isTickable) {
-        this.speed = (
-          this.speedPixels / 60
-        )
+      if (!this.isEnabled) { return }
 
-        this.animate()
-      }
+      this.activate()
     },
     handleMouseLeave () {
+      if (!this.isEnabled) { return }
+
+      this.deactivate()
+    },
+    handleRequestAnimationFrame () {
+      this.animate()
+    },
+    activate () {
+      if (!this.isTickable) { return }
+
+      this.speed = (
+        this.speedPixels / 60
+      )
+
+      this.animate()
+    },
+    deactivate () {
       cancelAnimationFrame(
         this.animationFrame
       )
 
       this.progress = 0
+
       this.speed = 0
 
       this.transformTicker()
-    },
-    handleRequestAnimationFrame () {
-      this.animate()
     },
     animate () {
       this.progress -= this.speed
@@ -135,7 +154,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.ticker
-  will-change: transform
-</style>
+<style lang="sass" scoped></style>
