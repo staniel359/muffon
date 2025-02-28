@@ -33,7 +33,7 @@
       </BaseFormInputContainer>
 
       <div class="main-settings-option main-bottom-section">
-        <div class="option-header">
+        <div class="main-settings-option-header">
           <BaseSubmitButton
             action-key="openLink"
             is-basic

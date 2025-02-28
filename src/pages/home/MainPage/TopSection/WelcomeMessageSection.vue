@@ -11,7 +11,7 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 
 export default {
   name: 'WelcomeMessageSection',

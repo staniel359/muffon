@@ -36,8 +36,7 @@ export default function (
     if (isQueueShuffle) {
       return updateGlobalStore(
         {
-          'queue.tracksShuffled':
-            queueTracksShuffled
+          'queue.tracksShuffled': queueTracksShuffled
         }
       )
     }

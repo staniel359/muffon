@@ -103,7 +103,7 @@ import BaseLinkContainer
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseVideoChannelLinkSection
   from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
 import BaseListCounterSection

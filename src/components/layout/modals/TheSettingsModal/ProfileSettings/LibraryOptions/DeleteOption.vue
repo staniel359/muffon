@@ -1,15 +1,11 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <div class="option-header">
-        <BaseButton
-          class="red circular option-button"
-          left-icon="delete"
-          :text="deleteLibraryText"
-          :is-invertable="false"
-          @click="handleDeleteButtonClick"
-        />
-      </div>
+      <BaseSettingsOptionButton
+        :text="buttonText"
+        is-delete
+        @click="handleDeleteButtonClick"
+      />
 
       <DeleteModal
         ref="modal"
@@ -19,17 +15,18 @@
 </template>
 
 <script>
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseSettingsOptionButton
+  from '@/components/buttons/settings/BaseSettingsOptionButton.vue'
 import DeleteModal from './DeleteOption/DeleteModal.vue'
 
 export default {
   name: 'DeleteOption',
   components: {
-    BaseButton,
+    BaseSettingsOptionButton,
     DeleteModal
   },
   computed: {
-    deleteLibraryText () {
+    buttonText () {
       return this.$t(
         'settings.options.profile.data.library.delete'
       )

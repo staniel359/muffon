@@ -47,7 +47,7 @@
 <script>
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseArtistTags
   from '@/components/models/artist/BaseArtistTags.vue'
 import BaseCounterLabelsSection

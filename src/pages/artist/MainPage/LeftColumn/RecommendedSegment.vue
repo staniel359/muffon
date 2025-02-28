@@ -39,7 +39,7 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseRecommendationArtistArtistsModal
   from '@/components/modals/recommendation/artist/BaseRecommendationArtistArtistsModal.vue'

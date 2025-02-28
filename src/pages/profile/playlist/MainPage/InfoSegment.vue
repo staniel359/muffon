@@ -69,7 +69,7 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import BaseCounterSection from '@/components/sections/BaseCounterSection.vue'
 import BaseTimestampSection

@@ -18,7 +18,8 @@ const data = {
       audioSources: null,
       isWithEqualizer: null,
       isWithPlayingFocus: null,
-      isPauseOnVideoPlay: null
+      isPauseOnVideoPlay: null,
+      isWithAutomatch: null
     }
   },
   getters: {
@@ -98,6 +99,11 @@ const data = {
       value
     ) {
       this.isPauseOnVideoPlay = value
+    },
+    setIsWithAutomatch (
+      value
+    ) {
+      this.isWithAutomatch = value
     }
   }
 }

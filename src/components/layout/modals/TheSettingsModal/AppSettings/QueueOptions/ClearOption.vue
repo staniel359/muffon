@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="clearText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseToggle
@@ -20,13 +18,14 @@ import {
   mapState
 } from 'pinia'
 import queueStore from '@/stores/queue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
   name: 'ClearOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseToggle
   },
   computed: {
@@ -37,7 +36,7 @@ export default {
           'isClearOnPlayerClose'
       }
     ),
-    clearText () {
+    optionText () {
       return this.$t(
         'settings.options.app.queue.clear'
       )

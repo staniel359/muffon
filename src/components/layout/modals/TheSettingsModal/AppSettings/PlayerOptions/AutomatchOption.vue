@@ -3,11 +3,12 @@
     <div class="main-settings-option">
       <BaseSettingsOptionHeader
         :text="optionText"
+        is-beta
       />
 
       <BaseToggle
-        store-key="layout.isWithSystemTheme"
-        :is-checked="isWithSystemTheme"
+        store-key="player.isWithAutomatch"
+        :is-checked="isPlayerWithAutomatch"
       />
     </div>
   </div>
@@ -17,27 +18,27 @@
 import {
   mapState
 } from 'pinia'
-import layoutStore from '@/stores/layout'
+import playerStore from '@/stores/player'
 import BaseSettingsOptionHeader
   from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
-  name: 'SystemThemeOption',
+  name: 'AutomatchOption',
   components: {
     BaseSettingsOptionHeader,
     BaseToggle
   },
   computed: {
     ...mapState(
-      layoutStore,
-      [
-        'isWithSystemTheme'
-      ]
+      playerStore,
+      {
+        isPlayerWithAutomatch: 'isWithAutomatch'
+      }
     ),
     optionText () {
       return this.$t(
-        'settings.options.app.theme.system'
+        'settings.options.app.player.automatch'
       )
     }
   }

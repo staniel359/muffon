@@ -85,8 +85,7 @@ export default {
       {
         playerCurrentTrackId: 'currentTrackId',
         playerPlaying: 'playing',
-        isPlayerWithPlayingFocus:
-          'isWithPlayingFocus'
+        isPlayerWithPlayingFocus: 'isWithPlayingFocus'
       }
     ),
     isActive () {

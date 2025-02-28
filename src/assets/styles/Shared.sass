@@ -917,10 +917,13 @@
 
 .main-settings-option
   @extend .middle-aligned
-  .option-header
-    @extend .flex-full, .main-list-left-large-section
   .option-text
     @extend .flex-full, .text-align-center
+
+.main-settings-option-header
+  @extend .flex-full, .main-list-left-large-section
+  .beta-label
+    flex: none
 
 .main-model-source-select-container
   @extend .middle-aligned

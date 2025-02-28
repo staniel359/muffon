@@ -70,7 +70,7 @@
     "vue-i18n": "^11.1.1",
     "vue-router": "^4.5.0"
   },
-  "packageManager": "pnpm@10.4.1+sha256.4b702887986995933d4300836b04d6d02a43bc72b52e4f7e93a4ca608b959197",
+  "packageManager": "pnpm@10.5.2+sha256.79a98daa90248b50815e31460790f118c56fe099113370826caa0153be6daba5",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",

@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "Audioquellen (nach Priorität)",
+          "automatch": "Audio an Titel anpassen",
           "bitrate": "Audiobitrate anzeigen",
           "album": "Album anzeigen",
           "equalizer": "Equalizer anzeigen",

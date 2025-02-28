@@ -23,7 +23,7 @@
 import BaseTrackLinkContainer
   from '@/components/containers/links/track/BaseTrackLinkContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 
 export default {
   name: 'TrackSection',

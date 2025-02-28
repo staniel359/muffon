@@ -25,7 +25,7 @@ import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import {
   main as formatTagLink
 } from '@/helpers/formatters/links/tag'

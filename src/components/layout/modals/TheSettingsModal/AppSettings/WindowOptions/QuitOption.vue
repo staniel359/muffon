@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="quitText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseToggle
@@ -23,13 +21,14 @@ import {
   mapState
 } from 'pinia'
 import windowStore from '@/stores/window'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
   name: 'QuitOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseToggle
   },
   computed: {
@@ -40,7 +39,7 @@ export default {
         'isWithTrayIcon'
       ]
     ),
-    quitText () {
+    optionText () {
       return this.$t(
         'settings.options.app.window.quit'
       )

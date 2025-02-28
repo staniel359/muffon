@@ -58,7 +58,7 @@
 
 <script>
 import BaseImage from '@/components/images/BaseImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import BaseListCounterSection
   from '@/components/sections/BaseListCounterSection.vue'
