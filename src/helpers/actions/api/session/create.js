@@ -17,17 +17,13 @@ export default function (
     password
   }
 
-  const handleSuccess = (
+  function handleSuccess (
     response
-  ) => {
-    const {
-      token,
-      id
-    } = response.data.profile
-
-    this.token = token
-    this.profileId = id
-    this.isRemember = isRemember
+  ) {
+    return {
+      ...response.data,
+      isRemember
+    }
   }
 
   const handleError = (
@@ -40,6 +36,8 @@ export default function (
         error
       }
     )
+
+    throw error
   }
 
   return postRequest.bind(

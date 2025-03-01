@@ -8,6 +8,9 @@
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
+import {
+  reset as resetProfileInfo
+} from '@/helpers/actions/profile/info'
 
 export default {
   name: 'TheLogoutObserver',
@@ -26,9 +29,10 @@ export default {
       this.resetTitle()
     },
     setLogoutData () {
+      resetProfileInfo()
+
       updateGlobalStore(
         {
-          'profile.info': null,
           'profile.token': null,
           'profile.isRemember': false
         }

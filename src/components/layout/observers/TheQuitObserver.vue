@@ -10,6 +10,12 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
+import {
+  update as updateGlobalStore
+} from '@/helpers/actions/store/global'
+import {
+  reset as resetProfileInfo
+} from '@/helpers/actions/profile/info'
 
 export default {
   name: 'TheQuitObserver',
@@ -39,7 +45,7 @@ export default {
   methods: {
     async handleQuitCalled () {
       if (!this.isRememberProfile) {
-        await this.clearProfileData()
+        await resetProfileInfo()
       }
 
       if (this.isCloseTabsOnQuit) {
@@ -52,38 +58,15 @@ export default {
 
       this.quit()
     },
-    clearProfileData () {
-      return this.setElectronStoreData(
-        {
-          'profile.info': null,
-          'profile.token': null
-        }
-      )
-    },
-    setElectronStoreData (
-      value
-    ) {
-      const dataFormatted =
-        JSON.stringify(
-          value
-        )
-
-      return window
-        .mainProcess
-        .sendAsyncCommand(
-          'set-electron-store-data',
-          dataFormatted
-        )
-    },
     clearTabs () {
-      return this.setElectronStoreData(
+      return updateGlobalStore(
         {
           'layout.tabs': []
         }
       )
     },
     resetDonateModalData () {
-      return this.setElectronStoreData(
+      return updateGlobalStore(
         {
           'layout.isShowDonateModal': true
         }

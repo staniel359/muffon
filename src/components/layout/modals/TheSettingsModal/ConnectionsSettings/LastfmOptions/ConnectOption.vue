@@ -43,7 +43,7 @@ export default {
       }
     ),
     lastfmAccountData () {
-      return this.profileConnections.lastfm
+      return this.profileConnections?.lastfm
     }
   },
   watch: {

@@ -12,11 +12,17 @@ export function handleError (
     error
   }
 ) {
-  const isForbidden =
-    error.response?.status === 403
+  const isForbidden = (
+    error
+      .response
+      ?.status === 403
+  )
 
-  const isNotFound =
-    error.response?.status === 404
+  const isNotFound = (
+    error
+      .response
+      ?.status === 404
+  )
 
   const form = this.$refs.form.$el
 

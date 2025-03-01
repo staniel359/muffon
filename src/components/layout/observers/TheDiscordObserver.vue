@@ -169,7 +169,7 @@ export default {
       return this.playingSourceLinks.original
     },
     lastfmConnection () {
-      return this.profileConnections.lastfm
+      return this.profileConnections?.lastfm
     },
     lastfmProfileLink () {
       if (this.lastfmConnection) {
@@ -184,7 +184,7 @@ export default {
       return this.lastfmConnection.nickname
     },
     spotifyConnection () {
-      return this.profileConnections.spotify
+      return this.profileConnections?.spotify
     },
     spotifyProfileLink () {
       if (this.spotifyConnection) {

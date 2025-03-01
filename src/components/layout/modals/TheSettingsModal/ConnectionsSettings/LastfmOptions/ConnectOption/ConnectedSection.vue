@@ -65,7 +65,7 @@ export default {
       }
     ),
     lastfmAccountData () {
-      return this.profileConnections.lastfm
+      return this.profileConnections?.lastfm
     },
     disconnectText () {
       return this.$t(

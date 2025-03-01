@@ -307,9 +307,19 @@ export default {
     type: 'boolean',
     default: false
   },
+  'profile.id': {
+    type: [
+      'null',
+      'number'
+    ],
+    default: null
+  },
   'profile.connections': {
-    type: 'object',
-    default: {}
+    type: [
+      'null',
+      'object'
+    ],
+    default: null
   },
   'profile.info': {
     type: [

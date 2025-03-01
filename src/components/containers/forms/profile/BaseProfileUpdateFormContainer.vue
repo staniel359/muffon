@@ -18,10 +18,10 @@ import {
   birthdate as formatBirthdate
 } from '@/helpers/formatters/dateTimeString'
 import updateProfile from '@/helpers/actions/api/profile/update'
-import {
-  update as updateGlobalStore
-} from '@/helpers/actions/store/global'
 import notificationMixin from '@/mixins/notificationMixin'
+import {
+  set as setProfileInfo
+} from '@/helpers/actions/profile/info'
 
 export default {
   name: 'BaseProfileUpdateFormContainer',
@@ -36,10 +36,8 @@ export default {
   },
   data () {
     return {
-      profileData: null,
       error: null,
       isLoading: false,
-      isSuccess: false,
       fields: [
         'email',
         'password',
@@ -52,7 +50,8 @@ export default {
     options () {
       return profileUpdateFormOptions(
         {
-          onSuccess: this.handleSuccess
+          onSuccess:
+            this.handleSubmitSuccess
         }
       )
     },
@@ -62,12 +61,9 @@ export default {
       )
     }
   },
-  watch: {
-    profileData: 'handleProfileDataChange'
-  },
   methods: {
     updateProfile,
-    handleSuccess (
+    handleSubmitSuccess (
       event,
       fields
     ) {
@@ -80,20 +76,18 @@ export default {
 
       this.updateProfile(
         updateArgs
+      ).then(
+        this.handleProfileUpdateSuccess
       )
     },
-    handleProfileDataChange (
-      value
+    async handleProfileUpdateSuccess (
+      responseData
     ) {
-      if (value) {
-        updateGlobalStore(
-          {
-            'profile.info': value
-          }
-        )
+      await setProfileInfo(
+        responseData.profile
+      )
 
-        this.notifySuccess()
-      }
+      this.notifySuccess()
     },
     formatUpdateArgs (
       fields

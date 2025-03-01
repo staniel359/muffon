@@ -71,7 +71,7 @@ export default {
       )
     },
     lastfmConnection () {
-      return this.profileConnections.lastfm
+      return this.profileConnections?.lastfm
     }
   },
   methods: {

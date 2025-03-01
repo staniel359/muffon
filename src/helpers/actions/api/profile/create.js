@@ -38,19 +38,13 @@ export default function (
     )
   }
 
-  const handleSuccess = (
+  function handleSuccess (
     response
-  ) => {
-    const {
-      token
-    } = response.data.profile
-
-    const profileId =
-      response.data.profile.id
-
-    this.token = token
-    this.profileId = profileId
-    this.isRemember = isRemember
+  ) {
+    return {
+      ...response.data,
+      isRemember
+    }
   }
 
   const handleError = (
@@ -63,6 +57,8 @@ export default function (
         error
       }
     )
+
+    throw error
   }
 
   return postRequest.bind(

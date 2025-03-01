@@ -15,9 +15,14 @@ export default function () {
 
   createAboutWindow()
 
-  if (app.commandLine.hasSwitch(
-    'open-about-window'
-  )) {
+  const isOpenAboutWindow =
+    app
+      .commandLine
+      .hasSwitch(
+        'open-about-window'
+      )
+
+  if (isOpenAboutWindow) {
     aboutWindow.show()
   }
 
