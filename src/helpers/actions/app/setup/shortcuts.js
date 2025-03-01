@@ -16,7 +16,7 @@ function callQuit () {
   window
     .mainProcess
     .sendCommand(
-      'quit'
+      'call-quit'
     )
 }
 
