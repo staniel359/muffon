@@ -6,8 +6,6 @@ import addElectronStoreValue
   from '../../actions/electronStore/addValue.js'
 import deleteElectronStoreValue
   from '../../actions/electronStore/deleteValue.js'
-import setElectronStoreData
-  from '../../actions/electronStore/setData.js'
 
 export function handleGetElectronStoreData () {
   return getElectronStoreData()
@@ -46,19 +44,5 @@ export function handleDeleteElectronStoreValue (
   return deleteElectronStoreValue(
     key,
     uuid
-  )
-}
-
-export function handleSetElectronStoreData (
-  _,
-  data
-) {
-  const dataFormatted =
-    JSON.parse(
-      data
-    )
-
-  return setElectronStoreData(
-    dataFormatted
   )
 }

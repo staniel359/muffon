@@ -19,8 +19,6 @@ export default function (
     isPrivate
   }
 ) {
-  this.profileData = null
-
   const profileId = profileStore().id
 
   const url = `/profiles/${profileId}`
@@ -46,11 +44,10 @@ export default function (
     )
   }
 
-  const handleSuccess = (
+  function handleSuccess (
     response
-  ) => {
-    this.profileData =
-      response.data.profile
+  ) {
+    return response.data
   }
 
   const handleError = (
@@ -63,6 +60,8 @@ export default function (
         error
       }
     )
+
+    throw error
   }
 
   return patchRequest.bind(

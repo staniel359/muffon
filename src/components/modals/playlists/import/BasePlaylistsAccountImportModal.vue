@@ -122,7 +122,7 @@ export default {
       )
     },
     lastfmConnection () {
-      return this.profileConnections.lastfm
+      return this.profileConnections?.lastfm
     },
     isLastfmSource () {
       return (
@@ -138,7 +138,7 @@ export default {
       )
     },
     spotifyConnection () {
-      return this.profileConnections.spotify
+      return this.profileConnections?.spotify
     },
     isSpotifySource () {
       return (

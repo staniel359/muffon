@@ -18,8 +18,10 @@ export default function (
   const playlistsModelDataParams =
     playlistsModelData && {
       model: playlistsModelData.model,
-      track_title: playlistsModelData.title,
-      artist_name: playlistsModelData.artistName
+      track_title:
+        playlistsModelData.title,
+      artist_name:
+        playlistsModelData.artistName
     }
 
   const params = {
@@ -32,8 +34,13 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.profileData =
-      response.data.profile
+    const responseData = response.data
+
+    if (this) {
+      this.profileData = responseData.profile
+    }
+
+    return responseData
   }
 
   return getRequest.bind(

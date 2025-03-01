@@ -53,7 +53,7 @@ export default {
       }
     ),
     spotifyAccountData () {
-      return this.profileConnections.spotify
+      return this.profileConnections?.spotify
     }
   },
   watch: {
