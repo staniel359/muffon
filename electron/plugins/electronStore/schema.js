@@ -208,6 +208,10 @@ export default {
     type: 'boolean',
     default: true
   },
+  'history.isSaveActivity': {
+    type: 'boolean',
+    default: true
+  },
   'homePage.isWithRecentTracksSegment': {
     type: 'boolean',
     default: true

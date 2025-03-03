@@ -1,5 +1,6 @@
 import {
-  set as setCheckbox
+  set as setCheckbox,
+  toggle as toggleCheckbox
 } from '@/helpers/actions/plugins/semantic/checkbox'
 import {
   main as mainCheckboxOptions
@@ -9,6 +10,9 @@ export default {
   props: {
     isChecked: Boolean
   },
+  emits: [
+    'click'
+  ],
   computed: {
     checkboxOptions () {
       return mainCheckboxOptions(
@@ -28,6 +32,14 @@ export default {
     )
   },
   methods: {
+    handleClick (
+      event
+    ) {
+      this.$emit(
+        'click',
+        event
+      )
+    },
     handleChecked () {
       this.change(
         true
@@ -36,6 +48,11 @@ export default {
     handleUnchecked () {
       this.change(
         false
+      )
+    },
+    toggle () {
+      toggleCheckbox(
+        this.$refs.checkbox
       )
     }
   }

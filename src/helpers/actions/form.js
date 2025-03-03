@@ -12,6 +12,10 @@ export function handleError (
     error
   }
 ) {
+  const form = this?.$refs?.form?.$el
+
+  if (!form) { return }
+
   const isForbidden = (
     error
       .response
@@ -23,8 +27,6 @@ export function handleError (
       .response
       ?.status === 404
   )
-
-  const form = this.$refs.form.$el
 
   if (isForbidden) {
     addErrors(

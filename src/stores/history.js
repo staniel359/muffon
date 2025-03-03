@@ -9,7 +9,8 @@ const data = {
       savedTracksSearch: null,
       search: null,
       isSaveBrowser: null,
-      isSavePlayer: null
+      isSavePlayer: null,
+      isSaveActivity: null
     }
   },
   actions: {
@@ -37,6 +38,11 @@ const data = {
       value
     ) {
       this.isSavePlayer = value
+    },
+    setIsSaveActivity (
+      value
+    ) {
+      this.isSaveActivity = value
     }
   }
 }

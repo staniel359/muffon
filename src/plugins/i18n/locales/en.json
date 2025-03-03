@@ -580,6 +580,7 @@
             "delete": "Delete search history"
           },
           "activity": {
+            "save": "Save activity history",
             "delete": "Delete activity history"
           },
           "player": {
