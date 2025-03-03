@@ -1,7 +1,7 @@
 <template>
   <div
     ref="checkbox"
-    class="ui checkbox"
+    class="ui checkbox base-checkbox"
     @click="handleClick"
   >
     <input
