@@ -624,6 +624,14 @@
     label
       padding-right: 3rem !important
 
+.base-checkbox
+  input
+    &:checked,
+    &:focus
+      & ~ label
+        &:before
+          border-color: $colorBaseLight !important
+
 .base-logo-image
   @extend .image-100, .no-dragging
 
