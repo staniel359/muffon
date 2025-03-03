@@ -16,7 +16,8 @@ export default function (
     country,
     city,
     status,
-    isPrivate
+    isPrivate,
+    isSaveActivityHistory
   }
 ) {
   const profileId = profileStore().id
@@ -41,6 +42,9 @@ export default function (
     status,
     private: (
       isPrivate ? 1 : 0
+    ),
+    save_activity_history: (
+      isSaveActivityHistory ? 1 : 0
     )
   }
 
