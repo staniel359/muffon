@@ -47,7 +47,7 @@ export default {
     topAlbumsCount: Number,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
-    profileId: String,
+    profileId: Number,
     isWithCreated: Boolean,
     isWithPageOption: Boolean,
     isWithLibraryOption: Boolean,

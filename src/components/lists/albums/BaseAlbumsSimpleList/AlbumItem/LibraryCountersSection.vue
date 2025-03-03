@@ -18,7 +18,7 @@ export default {
   },
   props: {
     albumData: Object,
-    profileId: String,
+    profileId: Number,
     topTracksCount: Number
   },
   emits: [

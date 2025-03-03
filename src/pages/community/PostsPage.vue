@@ -42,7 +42,7 @@ export default {
     pageMixin
   ],
   props: {
-    communityId: String
+    communityId: Number
   },
   data () {
     return {

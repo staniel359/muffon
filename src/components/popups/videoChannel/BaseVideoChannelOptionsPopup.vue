@@ -74,7 +74,7 @@ export default {
   },
   props: {
     channelData: Object,
-    bookmarkId: String,
+    bookmarkId: Number,
     isBookmark: Boolean,
     isWithBookmarkOption: Boolean,
     isWithShareOption: Boolean,

@@ -59,29 +59,29 @@ export default {
   methods: {
     setSelfData () {
       const libraryId =
-        this.modelData
+        this
+          .modelData
           .library_id
-          ?.toString()
 
       const favoriteId =
-        this.modelData
+        this
+          .modelData
           .favorite_id
-          ?.toString()
 
       const bookmarkId =
-        this.modelData
+        this
+          .modelData
           .bookmark_id
-          ?.toString()
 
       const listenedId =
-        this.modelData
+        this
+          .modelData
           .listened_id
-          ?.toString()
 
       const watchedId =
-        this.modelData
+        this
+          .modelData
           .watched_id
-          ?.toString()
 
       this.setLibraryId(
         libraryId

@@ -71,7 +71,7 @@ export default {
       type: String,
       required: true
     },
-    profileId: String,
+    profileId: Number,
     limit: Number,
     order: String,
     model: String,

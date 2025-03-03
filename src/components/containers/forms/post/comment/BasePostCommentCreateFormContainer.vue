@@ -33,7 +33,7 @@ export default {
       required: true
     },
     postId: {
-      type: String,
+      type: Number,
       required: true
     },
     images: {
@@ -60,8 +60,8 @@ export default {
         return []
       }
     },
-    profileId: String,
-    communityId: String
+    profileId: Number,
+    communityId: Number
   },
   emits: [
     'success'

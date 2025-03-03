@@ -34,7 +34,7 @@ export default {
       default: 'large'
     },
     isLinkToLibrary: Boolean,
-    profileId: String,
+    profileId: Number,
     isWithArtistsCount: Boolean
   },
   computed: {

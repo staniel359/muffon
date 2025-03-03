@@ -28,9 +28,9 @@ export default {
     TabsSegment
   },
   props: {
-    profileId: String,
+    profileId: Number,
     trackData: Object,
-    libraryTrackId: String
+    libraryTrackId: Number
   }
 }
 </script>

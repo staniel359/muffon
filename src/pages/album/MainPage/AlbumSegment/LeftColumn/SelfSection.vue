@@ -38,10 +38,10 @@ export default {
   },
   props: {
     albumData: Object,
-    libraryId: String,
-    favoriteId: String,
-    bookmarkId: String,
-    listenedId: String
+    libraryId: Number,
+    favoriteId: Number,
+    bookmarkId: Number,
+    listenedId: Number
   }
 }
 </script>

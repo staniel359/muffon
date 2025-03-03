@@ -39,7 +39,10 @@ export default function (
     response
   ) => {
     this.libraryId =
-      response.data.library_track.id.toString()
+      response
+        .data
+        .library_track
+        .id
   }
 
   return postRequest.bind(

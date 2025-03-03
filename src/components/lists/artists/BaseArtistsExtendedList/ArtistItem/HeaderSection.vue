@@ -32,7 +32,7 @@ export default {
       type: Object,
       required: true
     },
-    profileId: String,
+    profileId: Number,
     isLinkToLibrary: Boolean
   },
   computed: {

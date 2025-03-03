@@ -54,7 +54,7 @@ export default {
     },
     isSmall: Boolean,
     scope: String,
-    pageProfileId: String
+    pageProfileId: Number
   },
   computed: {
     component () {

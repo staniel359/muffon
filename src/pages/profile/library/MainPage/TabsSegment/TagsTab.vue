@@ -38,7 +38,7 @@ export default {
     tabMixin
   ],
   props: {
-    profileId: String
+    profileId: Number
   },
   data () {
     return {

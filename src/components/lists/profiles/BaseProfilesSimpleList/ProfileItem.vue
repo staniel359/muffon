@@ -157,7 +157,7 @@ export default {
     },
     isWithCreated: Boolean,
     scope: String,
-    pageProfileId: String
+    pageProfileId: Number
   },
   emits: [
     'linkClick'
@@ -171,7 +171,7 @@ export default {
       )
     },
     profileId () {
-      return this.profileData.id.toString()
+      return this.profileData.id
     },
     imageData () {
       return this.profileData.image

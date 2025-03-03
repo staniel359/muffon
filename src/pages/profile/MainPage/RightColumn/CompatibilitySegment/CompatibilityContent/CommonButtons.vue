@@ -31,7 +31,7 @@ export default {
   },
   props: {
     compatibilityData: Object,
-    profileId: String
+    profileId: Number
   }
 }
 </script>

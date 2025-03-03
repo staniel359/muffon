@@ -40,14 +40,14 @@ export default {
     CheckedOptionButton
   },
   props: {
-    isLoading: Boolean,
-    error: Error,
     checkedOptions: {
       type: Array,
       default () {
         return []
       }
-    }
+    },
+    isLoading: Boolean,
+    error: Error
   },
   emits: [
     'click'

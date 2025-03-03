@@ -22,9 +22,9 @@ export default {
     TabsSegment
   },
   props: {
-    profileId: String,
+    profileId: Number,
     tagData: Object,
-    libraryTagId: String
+    libraryTagId: Number
   }
 }
 </script>

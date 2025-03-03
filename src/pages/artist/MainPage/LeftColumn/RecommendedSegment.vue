@@ -91,7 +91,7 @@ export default {
       return this.recommendationData.artists_count
     },
     recommendationId () {
-      return this.recommendationData.id.toString()
+      return this.recommendationData.id
     }
   },
   methods: {

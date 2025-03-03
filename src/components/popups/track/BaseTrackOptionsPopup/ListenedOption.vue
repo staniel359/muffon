@@ -22,7 +22,7 @@ export default {
     AddOption
   },
   props: {
-    listenedId: String,
+    listenedId: Number,
     trackData: Object
   }
 }

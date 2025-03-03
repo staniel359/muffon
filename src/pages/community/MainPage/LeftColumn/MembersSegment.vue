@@ -41,7 +41,7 @@ export default {
       return this.communityData.members_count
     },
     communityId () {
-      return this.communityData.id.toString()
+      return this.communityData.id
     }
   },
   methods: {

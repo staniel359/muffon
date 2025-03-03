@@ -25,7 +25,6 @@ export default function (
         .data
         .bookmark_video_playlist
         .id
-        .toString()
   }
 
   return postRequest.bind(

@@ -27,7 +27,7 @@ export default {
   },
   props: {
     annotationId: {
-      type: String,
+      type: Number,
       required: true
     },
     isCalled: Boolean

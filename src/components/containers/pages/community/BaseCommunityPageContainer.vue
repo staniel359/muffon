@@ -47,7 +47,7 @@ export default {
   },
   props: {
     communityId: {
-      type: String,
+      type: Number,
       required: true
     },
     scope: String,
@@ -109,7 +109,6 @@ export default {
       return this.communityData
         ?.creator
         ?.id
-        ?.toString()
     }
   },
   watch: {

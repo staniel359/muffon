@@ -26,14 +26,18 @@ export default {
       type: Object,
       required: true
     },
-    profileId: String
+    profileId: Number
   },
   computed: {
     artistData () {
       return this.albumData.artist
     },
     libraryArtistId () {
-      return this.albumData.library.artist.id.toString()
+      return this
+        .albumData
+        .library
+        .artist
+        .id
     },
     artistName () {
       return this.artistData.name

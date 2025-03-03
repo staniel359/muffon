@@ -25,7 +25,7 @@ export default {
       required: true
     },
     playlistId: {
-      type: String,
+      type: Number,
       required: true
     },
     playlistTitle: {

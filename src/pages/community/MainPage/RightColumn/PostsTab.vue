@@ -57,7 +57,7 @@ export default {
     postsTabMixin
   ],
   props: {
-    communityId: String,
+    communityId: Number,
     isCommunityCreator: Boolean
   }
 }

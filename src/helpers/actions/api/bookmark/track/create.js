@@ -33,7 +33,10 @@ export default function (
     response
   ) => {
     this.bookmarkId =
-      response.data.bookmark_track.id.toString()
+      response
+        .data
+        .bookmark_track
+        .id
   }
 
   return postRequest.bind(

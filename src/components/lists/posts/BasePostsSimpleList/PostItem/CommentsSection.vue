@@ -72,17 +72,13 @@ export default {
       return this.postData.other_profile
     },
     otherProfileId () {
-      return this.otherProfileData
-        ?.id
-        ?.toString()
+      return this.otherProfileData?.id
     },
     communityId () {
-      return this.communityData
-        ?.id
-        ?.toString()
+      return this.communityData?.id
     },
     postId () {
-      return this.postData.id.toString()
+      return this.postData.id
     }
   },
   methods: {

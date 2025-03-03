@@ -47,7 +47,7 @@ export default {
     BaseAlbumsSimpleList
   },
   props: {
-    profileId: String
+    profileId: Number
   },
   data () {
     return {

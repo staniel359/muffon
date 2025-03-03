@@ -38,7 +38,7 @@ export default {
       }
     },
     playlistId: {
-      type: String,
+      type: Number,
       required: true
     }
   },

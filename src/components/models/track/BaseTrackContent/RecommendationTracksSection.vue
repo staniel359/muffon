@@ -50,7 +50,7 @@ export default {
       return this.recommendationData.tracks_count
     },
     recommendationId () {
-      return this.recommendationData.id.toString()
+      return this.recommendationData.id
     }
   },
   methods: {

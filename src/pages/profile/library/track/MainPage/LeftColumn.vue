@@ -30,7 +30,7 @@ export default {
   },
   props: {
     trackData: Object,
-    profileId: String
+    profileId: Number
   }
 }
 </script>

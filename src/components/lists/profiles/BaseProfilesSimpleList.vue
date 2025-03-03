@@ -42,7 +42,7 @@ export default {
     isMinimal: Boolean,
     isWithCreated: Boolean,
     scope: String,
-    profileId: String
+    profileId: Number
   },
   emits: [
     'linkClick'

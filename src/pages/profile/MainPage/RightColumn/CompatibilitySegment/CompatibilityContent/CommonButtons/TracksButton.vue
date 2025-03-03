@@ -34,7 +34,7 @@ export default {
       type: Object,
       required: true
     },
-    profileId: String
+    profileId: Number
   },
   computed: {
     isDisabled () {

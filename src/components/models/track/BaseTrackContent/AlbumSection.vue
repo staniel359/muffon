@@ -31,7 +31,7 @@ export default {
       required: true
     },
     isLinkToLibrary: Boolean,
-    profileId: String
+    profileId: Number
   },
   emits: [
     'linkClick'
@@ -41,10 +41,17 @@ export default {
       return this.trackData.album
     },
     artistName () {
-      return this.trackData.artist.name
+      return this
+        .trackData
+        .artist
+        .name
     },
     libraryAlbumId () {
-      return this.trackData.library?.album?.id?.toString()
+      return this
+        .trackData
+        .library
+        ?.album
+        ?.id
     },
     albumTitle () {
       return this.albumData.title

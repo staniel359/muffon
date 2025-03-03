@@ -39,8 +39,8 @@ export default {
       type: Object,
       required: true
     },
-    profileId: String,
-    libraryArtistId: String
+    profileId: Number,
+    libraryArtistId: Number
   },
   computed: {
     isAnyTracks () {

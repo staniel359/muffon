@@ -38,10 +38,10 @@ export default {
   },
   props: {
     profileId: {
-      type: String,
+      type: Number,
       required: true
     },
-    libraryArtistId: String
+    libraryArtistId: Number
   },
   data () {
     return {

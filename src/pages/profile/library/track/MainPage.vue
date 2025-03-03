@@ -41,8 +41,8 @@ export default {
     pageMixin
   ],
   props: {
-    profileId: String,
-    libraryTrackId: String
+    profileId: Number,
+    libraryTrackId: Number
   }
 }
 </script>

@@ -91,7 +91,7 @@ export default {
   },
   computed: {
     playlistId () {
-      return this.playlistData.id.toString()
+      return this.playlistData.id
     },
     playlistTitle () {
       return this.playlistData.title

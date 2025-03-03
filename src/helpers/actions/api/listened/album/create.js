@@ -23,7 +23,10 @@ export default function (
     response
   ) => {
     this.listenedId =
-      response.data.listened_album.id.toString()
+      response
+        .data
+        .listened_album
+        .id
   }
 
   return postRequest.bind(

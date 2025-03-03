@@ -34,7 +34,7 @@ export default {
     BaseTagsSimpleList
   },
   props: {
-    profileId: String,
+    profileId: Number,
     isActive: Boolean
   },
   emits: [

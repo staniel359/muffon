@@ -36,7 +36,10 @@ export default function (
     response
   ) => {
     this.favoriteId =
-      response.data.favorite_track.id.toString()
+      response
+        .data
+        .favorite_track
+        .id
   }
 
   return postRequest.bind(

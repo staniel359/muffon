@@ -71,9 +71,9 @@ export default {
   ],
   props: {
     model: String,
-    profileId: String,
-    communityId: String,
-    postId: String,
+    profileId: Number,
+    communityId: Number,
+    postId: Number,
     isWithAsCommunityOption: Boolean,
     isShow: Boolean
   },

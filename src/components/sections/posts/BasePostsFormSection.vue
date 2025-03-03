@@ -40,8 +40,8 @@ export default {
   },
   props: {
     postType: String,
-    profileId: String,
-    communityId: String,
+    profileId: Number,
+    communityId: Number,
     isCommunityCreator: Boolean
   },
   emits: [

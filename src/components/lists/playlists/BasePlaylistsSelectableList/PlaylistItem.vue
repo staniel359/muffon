@@ -82,7 +82,7 @@ export default {
       )
     },
     playlistId () {
-      return this.playlistData.id.toString()
+      return this.playlistData.id
     },
     paginationItem () {
       return this.findPaginationItem(
