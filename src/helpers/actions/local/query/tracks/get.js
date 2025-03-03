@@ -7,6 +7,10 @@ export default function (
   function isMatchedString (
     value
   ) {
+    if (!value) {
+      return false
+    }
+
     const valueFormatted =
       value.toLowerCase()
 
@@ -28,7 +32,7 @@ export default function (
       trackData.artist.name
 
     const albumTitle =
-      trackData.album.title
+      trackData.album?.title
 
     return (
       isMatchedString(
