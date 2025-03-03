@@ -15,11 +15,8 @@ export function format (
   const artistName =
     albumData.artist.name
 
-  const artistNameFormatted = (
-    `<div class="artist-name">
-      ${artistName}
-    </div>`
-  )
+  const artistNameFormatted =
+    `<div class="artist-name">${artistName}</div>`
 
   const imageExtrasmall = (
     albumData.image?.extrasmall ||

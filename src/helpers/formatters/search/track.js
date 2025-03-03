@@ -16,22 +16,15 @@ export function format (
   const artistName =
     trackData.artist.name
 
-  const artistNameFormatted = (
-    `<div class="artist-name">
-      ${artistName}
-    </div>`
-  )
+  const artistNameFormatted =
+    `<div class="artist-name">${artistName}</div>`
 
   const albumTitle =
     trackData.album?.title
 
   const albumTitleFormatted = (
     albumTitle &&
-      `<div class="album-title">
-        <small>
-          ${albumTitle}
-        </small>
-      </div>`
+      `<div class="album-title"><small>${albumTitle}</small></div>`
   )
 
   const artistNameWithAlbumTitle = [
