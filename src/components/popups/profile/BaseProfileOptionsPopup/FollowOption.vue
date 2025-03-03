@@ -68,7 +68,7 @@ export default {
       }
     },
     otherProfileId () {
-      return this.profileData.id.toString()
+      return this.profileData.id
     }
   },
   watch: {

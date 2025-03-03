@@ -38,7 +38,7 @@ export default {
       required: true
     },
     isLinkToLibrary: Boolean,
-    profileId: String
+    profileId: Number
   },
   emits: [
     'linkActiveChange',
@@ -49,7 +49,11 @@ export default {
       return this.albumData.artist
     },
     libraryArtistId () {
-      return this.albumData.library.artist.id.toString()
+      return this
+        .albumData
+        .library
+        .artist
+        .id
     },
     artistName () {
       return this.artistData.name

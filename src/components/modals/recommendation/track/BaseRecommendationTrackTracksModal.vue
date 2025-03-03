@@ -65,7 +65,7 @@ export default {
   ],
   props: {
     recommendationId: {
-      type: String,
+      type: Number,
       required: true
     }
   },

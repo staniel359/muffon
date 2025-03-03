@@ -136,7 +136,7 @@ export default {
     },
     isWithChannelTitle: Boolean,
     isWithCreated: Boolean,
-    profileId: String,
+    profileId: Number,
     isFavorite: Boolean,
     isBookmark: Boolean,
     isWithFavoriteOption: Boolean,

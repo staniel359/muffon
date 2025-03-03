@@ -35,7 +35,7 @@ export default {
     VideosTab
   },
   props: {
-    profileId: String
+    profileId: Number
   },
   data () {
     return {

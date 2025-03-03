@@ -31,7 +31,7 @@ export default {
       type: String,
       required: true
     },
-    profileId: String,
+    profileId: Number,
     videos: Array,
     isWithChannelTitle: Boolean,
     isWithFavoriteOption: Boolean,

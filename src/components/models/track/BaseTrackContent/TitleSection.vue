@@ -32,7 +32,7 @@ export default {
       required: true
     },
     isLinkToLibrary: Boolean,
-    profileId: String
+    profileId: Number
   },
   emits: [
     'linkClick'

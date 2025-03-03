@@ -65,7 +65,7 @@ export default {
       }
     },
     communityId () {
-      return this.communityData.id.toString()
+      return this.communityData.id
     }
   },
   watch: {

@@ -64,7 +64,7 @@ export default {
     sendableFormMixin
   ],
   props: {
-    profileId: String
+    profileId: Number
   },
   emits: [
     'success'

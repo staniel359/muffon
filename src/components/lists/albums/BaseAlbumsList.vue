@@ -47,7 +47,7 @@ export default {
     isWithArtistName: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
-    profileId: String,
+    profileId: Number,
     isWithPageOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithListenedOption: Boolean,

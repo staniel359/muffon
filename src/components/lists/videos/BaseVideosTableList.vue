@@ -42,7 +42,7 @@ export default {
         return []
       }
     },
-    profileId: String,
+    profileId: Number,
     isWithChannelTitle: Boolean,
     isWithCreated: Boolean,
     isWithFavoriteOption: Boolean,

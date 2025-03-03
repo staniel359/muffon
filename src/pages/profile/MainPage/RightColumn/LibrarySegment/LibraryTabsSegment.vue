@@ -35,7 +35,7 @@ export default {
     TagsTab
   },
   props: {
-    profileId: String
+    profileId: Number
   },
   data () {
     return {

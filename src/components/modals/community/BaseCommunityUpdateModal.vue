@@ -83,7 +83,7 @@ export default {
   },
   computed: {
     communityId () {
-      return this.communityData.id.toString()
+      return this.communityData.id
     },
     communityTitle () {
       return this.communityData.title

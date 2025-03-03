@@ -176,7 +176,7 @@ export default {
     isWithListenersCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
-    profileId: String,
+    profileId: Number,
     isWithSelfIcons: Boolean,
     isWithPageOption: Boolean,
     isWithLibraryOption: Boolean,

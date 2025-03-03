@@ -32,7 +32,7 @@ export default {
       type: String,
       required: true
     },
-    profileId: String,
+    profileId: Number,
     compatibilityData: Object
   },
   computed: {

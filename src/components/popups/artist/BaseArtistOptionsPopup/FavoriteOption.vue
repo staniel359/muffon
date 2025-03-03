@@ -22,7 +22,7 @@ export default {
     AddOption
   },
   props: {
-    favoriteId: String,
+    favoriteId: Number,
     artistData: Object
   }
 }

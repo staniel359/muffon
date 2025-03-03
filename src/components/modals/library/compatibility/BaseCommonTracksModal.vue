@@ -51,7 +51,7 @@ export default {
     BaseTracksSimpleList
   },
   props: {
-    profileId: String
+    profileId: Number
   },
   data () {
     return {

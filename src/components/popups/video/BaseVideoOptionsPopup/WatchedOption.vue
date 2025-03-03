@@ -21,7 +21,7 @@ export default {
     AddOption
   },
   props: {
-    watchedId: String,
+    watchedId: Number,
     videoData: Object
   }
 }

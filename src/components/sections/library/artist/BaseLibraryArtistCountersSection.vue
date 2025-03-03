@@ -28,7 +28,7 @@ export default {
   },
   props: {
     artistData: Object,
-    profileId: String,
+    profileId: Number,
     isSmall: Boolean
   }
 }

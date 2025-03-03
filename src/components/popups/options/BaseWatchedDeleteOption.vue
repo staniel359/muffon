@@ -21,7 +21,7 @@ export default {
   ],
   props: {
     watchedId: {
-      type: String,
+      type: Number,
       required: true
     }
   },

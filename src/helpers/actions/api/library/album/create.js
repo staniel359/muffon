@@ -27,7 +27,10 @@ export default function (
     response
   ) => {
     this.libraryId =
-      response.data.library_album.id.toString()
+      response
+        .data
+        .library_album
+        .id
   }
 
   return postRequest.bind(

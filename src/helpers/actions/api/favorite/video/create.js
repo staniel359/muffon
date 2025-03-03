@@ -25,7 +25,6 @@ export default function (
         .data
         .favorite_video
         .id
-        .toString()
   }
 
   return postRequest.bind(

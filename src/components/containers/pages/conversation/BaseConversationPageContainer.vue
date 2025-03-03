@@ -31,7 +31,7 @@ export default {
   ],
   props: {
     conversationId: {
-      type: String,
+      type: Number,
       required: true
     }
   },
@@ -55,10 +55,13 @@ export default {
       }
     },
     profileNickname () {
-      return this.conversationData?.profile?.nickname
+      return this.profileData?.nickname
+    },
+    profileData () {
+      return this.conversationData?.profile
     },
     profileId () {
-      return this.conversationData?.profile?.id?.toString()
+      return this.profileData?.id
     },
     tabData () {
       return formatConversationPageTab(

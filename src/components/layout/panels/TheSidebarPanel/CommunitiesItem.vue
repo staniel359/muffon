@@ -25,7 +25,7 @@ export default {
     BaseSidebarItem
   },
   props: {
-    profileId: String
+    profileId: Number
   },
   computed: {
     ...mapState(

@@ -31,14 +31,18 @@ export default {
       type: Object,
       required: true
     },
-    profileId: String
+    profileId: Number
   },
   computed: {
     albumData () {
       return this.trackData.album
     },
     libraryAlbumId () {
-      return this.trackData.library.album.id.toString()
+      return this
+        .trackData
+        .library
+        .album
+        .id
     },
     albumTitle () {
       return this.albumData.title

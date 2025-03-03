@@ -19,11 +19,11 @@ export default {
   ],
   props: {
     profileId: {
-      type: String,
+      type: Number,
       required: true
     },
     libraryAlbumId: {
-      type: String,
+      type: Number,
       required: true
     },
     order: String

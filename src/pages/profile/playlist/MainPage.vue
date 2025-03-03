@@ -60,8 +60,8 @@ export default {
     pageMixin
   ],
   props: {
-    profileId: String,
-    playlistId: String
+    profileId: Number,
+    playlistId: Number
   },
   data () {
     return {

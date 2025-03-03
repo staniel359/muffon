@@ -116,7 +116,7 @@ export default {
   },
   computed: {
     profileId () {
-      return this.profileData.id.toString()
+      return this.profileData.id
     }
   },
   methods: {
@@ -128,8 +128,7 @@ export default {
     handleSuccess (
       conversationId
     ) {
-      this.conversationId =
-        conversationId.toString()
+      this.conversationId = conversationId
     },
     handleLinkClick () {
       this.hide()

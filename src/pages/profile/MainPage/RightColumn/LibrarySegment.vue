@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     profileId () {
-      return this.profileData.id.toString()
+      return this.profileData.id
     },
     headerLink () {
       return formatProfileLibraryLink(

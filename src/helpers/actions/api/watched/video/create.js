@@ -25,7 +25,6 @@ export default function (
         .data
         .watched_video
         .id
-        .toString()
   }
 
   return postRequest.bind(

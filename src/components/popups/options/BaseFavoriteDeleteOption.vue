@@ -25,7 +25,7 @@ export default {
       required: true
     },
     favoriteId: {
-      type: String,
+      type: Number,
       required: true
     }
   },

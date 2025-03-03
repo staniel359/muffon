@@ -22,7 +22,7 @@ export default {
     AddOption
   },
   props: {
-    bookmarkId: String,
+    bookmarkId: Number,
     playlistData: Object
   }
 }

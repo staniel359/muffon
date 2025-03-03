@@ -195,7 +195,7 @@ export default {
     },
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
-    profileId: String,
+    profileId: Number,
     isWithSelfIcons: Boolean,
     isWithPageOption: Boolean,
     isWithLibraryOption: Boolean,

@@ -24,7 +24,7 @@ export default {
   },
   props: {
     libraryId: {
-      type: String,
+      type: Number,
       required: true
     }
   },

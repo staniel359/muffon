@@ -55,7 +55,7 @@ export default {
     pageMixin
   ],
   props: {
-    conversationId: String
+    conversationId: Number
   },
   data () {
     return {

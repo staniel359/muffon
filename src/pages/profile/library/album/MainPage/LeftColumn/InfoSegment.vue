@@ -48,7 +48,7 @@ export default {
   },
   props: {
     albumData: Object,
-    profileId: String
+    profileId: Number
   },
   computed: {
     ...mapState(

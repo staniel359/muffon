@@ -25,7 +25,7 @@ export default {
       required: true
     },
     bookmarkId: {
-      type: String,
+      type: Number,
       required: true
     }
   },

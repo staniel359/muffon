@@ -62,7 +62,7 @@ export default {
       type: String,
       required: true
     },
-    communityId: String,
+    communityId: Number,
     limit: Number,
     order: String,
     model: String,

@@ -248,13 +248,13 @@ export default {
       )
     },
     profileId () {
-      return this.profileData.id.toString()
+      return this.profileData.id
     },
     profileData () {
       return this.playlistData.profile
     },
     playlistId () {
-      return this.playlistData.id.toString()
+      return this.playlistData.id
     },
     profileLink () {
       return formatProfileLink(

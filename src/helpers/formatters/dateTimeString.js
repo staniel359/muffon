@@ -21,7 +21,9 @@ function dateTimeLocalized (
   scope
 ) {
   const isOnlyYear = (
-    value.toString().length === 4
+    value
+      .toString()
+      .length === 4
   )
 
   if (isOnlyYear) {

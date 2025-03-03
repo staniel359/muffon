@@ -44,7 +44,7 @@ export default {
   ],
   props: {
     communityId: {
-      type: String,
+      type: Number,
       required: true
     },
     scope: {

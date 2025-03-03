@@ -70,8 +70,8 @@ export default {
   ],
   props: {
     postType: String,
-    profileId: String,
-    communityId: String,
+    profileId: Number,
+    communityId: Number,
     isWithAsCommunityOption: Boolean,
     isShow: Boolean
   },

@@ -106,7 +106,7 @@ export default {
       required: true
     },
     profileId: {
-      type: String,
+      type: Number,
       required: true
     },
     order: String
@@ -136,7 +136,7 @@ export default {
       return this.playlistData.description
     },
     playlistId () {
-      return this.playlistData.id.toString()
+      return this.playlistData.id
     }
   }
 }

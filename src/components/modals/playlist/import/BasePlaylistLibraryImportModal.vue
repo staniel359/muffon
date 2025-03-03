@@ -76,7 +76,7 @@ export default {
     }
   },
   props: {
-    playlistId: String
+    playlistId: Number
   },
   data () {
     return {
