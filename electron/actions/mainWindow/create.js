@@ -99,6 +99,8 @@ async function handleDidFinishLoad () {
     showMainWindow()
   }
 
+  resizeViews()
+
   const isCheckForNewVersions =
     getElectronStoreKey(
       'updates.isCheckForNewVersions'
@@ -146,8 +148,6 @@ export default function () {
     new WebContentsView(
       mainViewOptions
     )
-
-  resizeViews()
 
   if (isDevelopment && isShowDevTools) {
     showViewDevTools(
