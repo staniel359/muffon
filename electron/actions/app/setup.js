@@ -8,7 +8,7 @@ import createAboutWindow
 import createTray from '../../actions/tray/create.js'
 import addSessionHeadersHandlers
   from '../../actions/session/headers/addHandlers.js'
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 
 export default function () {
   createMainWindow()
@@ -27,7 +27,7 @@ export default function () {
   }
 
   const isWithTrayIcon =
-    getElectronStoreKey(
+    getSettingsKey(
       'window.isWithTrayIcon'
     )
 

@@ -3,8 +3,8 @@ import {
   isMacos,
   isLinux
 } from '../../helpers/utils.js'
-import getElectronStoreKey from '../electronStore/getKey.js'
-import setElectronStoreData from '../electronStore/setData.js'
+import getSettingsKey from '../settings/getKey.js'
+import setSettings from '../settings/set.js'
 
 export default function () {
   let isAutoupdateAvailable
@@ -12,7 +12,7 @@ export default function () {
   let isAutoupdateBeta
 
   let isAutoupdateEnabled =
-    getElectronStoreKey(
+    getSettingsKey(
       'updates.isAutoupdateEnabled'
     )
 
@@ -36,7 +36,7 @@ export default function () {
     isAutoupdateEnabled ??= false
   }
 
-  setElectronStoreData(
+  setSettings(
     {
       'updates.isAutoupdateAvailable': isAutoupdateAvailable,
       'updates.isAutoupdateBeta': isAutoupdateBeta,

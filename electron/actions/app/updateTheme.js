@@ -1,11 +1,11 @@
 import {
   nativeTheme
 } from 'electron'
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 
 export default function () {
   const isWithSystemTheme =
-    getElectronStoreKey(
+    getSettingsKey(
       'layout.isWithSystemTheme'
     )
 

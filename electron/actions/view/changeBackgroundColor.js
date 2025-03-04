@@ -1,4 +1,4 @@
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 import {
   colors
 } from '../../helpers/utils.js'
@@ -7,7 +7,7 @@ export default function (
   view
 ) {
   const isDarkMode =
-    getElectronStoreKey(
+    getSettingsKey(
       'layout.isDarkMode'
     )
 

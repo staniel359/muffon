@@ -48,7 +48,7 @@ export default function (
   return window
     .mainProcess
     .sendAsyncCommand(
-      'get-electron-store-key',
+      'get-settings-key',
       key
     ).finally(
       handleComplete

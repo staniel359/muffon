@@ -1,7 +1,7 @@
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 
 export default function () {
-  return getElectronStoreKey(
+  return getSettingsKey(
     'layout.activeTabId'
   )
 }

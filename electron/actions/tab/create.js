@@ -1,7 +1,7 @@
 import {
   WebContentsView
 } from 'electron'
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 import getActiveTabId from './getActiveId.js'
 import setActiveTab from './setActive.js'
 import setTabBounds from './setBounds.js'
@@ -57,7 +57,7 @@ export default function (
     )
 
   const isSwitchToNewTab =
-    getElectronStoreKey(
+    getSettingsKey(
       'layout.isSwitchToNewTab'
     )
 
@@ -100,15 +100,13 @@ export default function (
     )
 
   function handleDidStartNavigation () {
-    const data = {
-      'layout.tabId': uuid
-    }
-
     tab
       .webContents
       .send(
         'update-store',
-        data
+        {
+          'layout.tabId': uuid
+        }
       )
   }
 

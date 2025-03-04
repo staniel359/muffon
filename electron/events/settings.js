@@ -2,7 +2,7 @@ import electronStore from '../plugins/electronStore.js'
 import {
   handleIsDarkModeChange,
   handleScaleChange
-} from '../handlers/electronStore.js'
+} from '../handlers/settings.js'
 
 export default function () {
   electronStore.onDidChange(

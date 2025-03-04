@@ -78,9 +78,11 @@ export default {
       window
         .mainProcess
         .sendAsyncCommand(
-          'add-electron-store-value',
-          'history.browser',
-          valueFormatted
+          'add-settings-key-value',
+          {
+            key: 'history.browser',
+            value: valueFormatted
+          }
         )
     },
     addRouteToProfileHistory (

@@ -1,11 +1,11 @@
 import {
   app
 } from 'electron'
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 
 export default function () {
   const isWithCache =
-    getElectronStoreKey(
+    getSettingsKey(
       'system.isWithCache'
     )
 
