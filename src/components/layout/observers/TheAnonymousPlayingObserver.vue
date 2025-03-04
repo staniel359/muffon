@@ -63,9 +63,11 @@ export default {
       window
         .mainProcess
         .sendAsyncCommand(
-          'add-electron-store-value',
-          'history.player',
-          playingFormatted
+          'add-settings-key-value',
+          {
+            key: 'history.player',
+            value: playingFormatted
+          }
         )
     }
   }

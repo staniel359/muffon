@@ -96,8 +96,7 @@ export function isObjectChanged (
     )
 
   return (
-    newString !==
-      oldString
+    newString !== oldString
   )
 }
 
@@ -106,14 +105,17 @@ export function isStringChanged (
   oldValue
 ) {
   const newString =
-    newValue.trim().toLowerCase()
+    newValue
+      .trim()
+      .toLowerCase()
 
   const oldString =
-    oldValue.trim().toLowerCase()
+    oldValue
+      .trim()
+      .toLowerCase()
 
   return (
-    newString !==
-      oldString
+    newString !== oldString
   )
 }
 

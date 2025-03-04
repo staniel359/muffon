@@ -1,11 +1,11 @@
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 import getMainWindowSize from '../mainWindow/getSize.js'
 
 export default function (
   tab
 ) {
   const scale =
-    getElectronStoreKey(
+    getSettingsKey(
       'layout.scale'
     )
 

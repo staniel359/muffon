@@ -25,7 +25,7 @@ export default {
     window
       .mainProcess
       .sendAsyncCommand(
-        'get-electron-store-data'
+        'get-settings'
       ).then(
         this.handleGetData
       )

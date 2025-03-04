@@ -50,33 +50,21 @@ export default {
     }
   },
   methods: {
-    async handleDeleteButtonClick () {
+    handleDeleteButtonClick () {
       this.isLoading = true
 
-      const deleteData = {
-        fileName: this.uuid
-      }
-
-      const deleteDataFormatted =
-        JSON.stringify(
-          deleteData
+      this.deleteAudioFile()
+        .then(
+          this.handleDeleteAudioFile
         )
-
-      await window
-        .mainProcess
-        .sendAsyncCommand(
-          'delete-audio-file',
-          deleteDataFormatted
+    },
+    handleDeleteAudioFile () {
+      this.deleteAudioFromSettings()
+        .then(
+          this.handleDeleteAudioFromSettings
         )
-
-      await window
-        .mainProcess
-        .sendAsyncCommand(
-          'delete-electron-store-value',
-          'profile.savedTracks',
-          this.uuid
-        )
-
+    },
+    handleDeleteAudioFromSettings () {
       this.isLoading = false
 
       this.$emit(
@@ -84,6 +72,27 @@ export default {
       )
 
       this.hide()
+    },
+    deleteAudioFile () {
+      return window
+        .mainProcess
+        .sendAsyncCommand(
+          'delete-audio-file',
+          {
+            fileName: this.uuid
+          }
+        )
+    },
+    deleteAudioFromSettings () {
+      return window
+        .mainProcess
+        .sendAsyncCommand(
+          'delete-settings-key-value',
+          {
+            key: 'profile.savedTracks',
+            valueId: this.uuid
+          }
+        )
     },
     show () {
       this.$refs

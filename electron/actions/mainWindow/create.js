@@ -13,7 +13,7 @@ import {
 import {
   baseUrl
 } from '../../helpers/urls.js'
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 import showMainWindow from './show.js'
 import hideMainWindow from './hide.js'
 import checkForUpdates from '../app/checkForUpdates.js'
@@ -47,7 +47,7 @@ function handleClose (
   event.preventDefault()
 
   const isQuitOnClose =
-    getElectronStoreKey(
+    getSettingsKey(
       'window.isQuitOnClose'
     )
 
@@ -90,7 +90,7 @@ async function handleFirstShow () {
   )
 
   const isMaximizeOnStart =
-    getElectronStoreKey(
+    getSettingsKey(
       'window.isMaximizeOnStart'
     )
 
@@ -103,7 +103,7 @@ async function handleFirstShow () {
   }
 
   const isCheckForNewVersions =
-    getElectronStoreKey(
+    getSettingsKey(
       'updates.isCheckForNewVersions'
     )
 

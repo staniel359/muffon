@@ -1,6 +1,6 @@
 import updateStore from '../../actions/store/update.js'
 
-export function handleUpdateStore (
+export function handleCallUpdateStore (
   _,
   data,
   {

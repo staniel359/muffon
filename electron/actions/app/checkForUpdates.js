@@ -8,7 +8,7 @@ import {
   releasesUrl
 } from '../../helpers/urls.js'
 import i18n from 'i18n'
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 
 const {
   autoUpdater
@@ -117,12 +117,12 @@ function checkWithUpdate () {
 
 export default function checkForUpdates () {
   const isAutoupdateAvailable =
-    getElectronStoreKey(
+    getSettingsKey(
       'updates.isAutoupdateAvailable'
     )
 
   const isAutoupdateEnabled =
-    getElectronStoreKey(
+    getSettingsKey(
       'updates.isAutoupdateEnabled'
     )
 
