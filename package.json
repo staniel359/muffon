@@ -56,7 +56,7 @@
     "eslint": "^9.21.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-vue": "^9.32.0",
-    "fomantic-ui": "^2.9.3",
+    "fomantic-ui": "^2.9.4",
     "hotkeys-js": "^3.13.9",
     "i18n-iso-countries": "^7.14.0",
     "jquery": "^3.7.1",
