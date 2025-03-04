@@ -82,6 +82,13 @@ export const isSingleInstance =
 
 export const deepLinksProtocol = `${appName}://`
 
+export const isShowDevTools =
+  app
+    .commandLine
+    .hasSwitch(
+      'dev-tools'
+    )
+
 export function createFolderIfNotExists (
   path
 ) {

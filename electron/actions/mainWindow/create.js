@@ -8,7 +8,8 @@ import {
 import {
   isDevelopment,
   isLinux,
-  wait
+  wait,
+  isShowDevTools
 } from '../../helpers/utils.js'
 import {
   baseUrl
@@ -25,7 +26,7 @@ import getTopTab from '../tab/getTop.js'
 import setMainViewBounds from '../mainView/setBounds.js'
 import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
-// import showViewDevTools from '../view/showDevTools.js'
+import showViewDevTools from '../view/showDevTools.js'
 import {
   handleNewWindow
 } from '../../handlers/app.js'
@@ -148,9 +149,11 @@ export default function () {
 
   resizeViews()
 
-  // showViewDevTools(
-  //   mainView
-  // )
+  if (isDevelopment && isShowDevTools) {
+    showViewDevTools(
+      mainView
+    )
+  }
 
   changeViewBackgroundColor(
     mainView
