@@ -13,7 +13,7 @@
   "main": "electron/main.js",
   "type": "module",
   "scripts": {
-    "start": "vite",
+    "start:vue": "vite",
     "start:electron": "electron .",
     "lint": "eslint",
     "build:vue": "vite build",
