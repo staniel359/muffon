@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "Źródła dźwięku (według priorytetu)",
+          "automatch": "Dopasuj dźwięk do utworu",
           "bitrate": "Pokaż jakość dźwięku",
           "album": "Pokaż wydawnictwo",
           "equalizer": "Pokaż korektor",
@@ -565,7 +566,7 @@
           "hideLibraryArtists": "Ukryj wykonawców z biblioteki",
           "tracksCount": "Z liczbą utworów",
           "hideListenedArtists": "Ukryj odsłuchanych wykonawców",
-          "hideLibraryTracks": "Ukryj artysty z biblioteki",
+          "hideLibraryTracks": "Ukryj artystów z biblioteki",
           "hideListenedTracks": "Ukryj odsłuchane utwory"
         },
         "top": {
@@ -705,8 +706,8 @@
     "active": "Importowanie {count} z {counter}...",
     "success": {
       "header": {
-        "files": "{counter} został zaimportowany | {counter} zostały zaimportowane",
-        "tracks": "{counter} został zaimportowany | {counter} zostały zaimportowane"
+        "files": "{counter} został zaimportowany | {counter} zostały zaimportowane | {counter} zostało zaimportowanych",
+        "tracks": "{counter} został zaimportowany | {counter} zostały zaimportowane | {counter} zostało zaimportowanych"
       },
       "content": "Warto sprawdzić dane przed zapisaniem ich w bibliotece"
     },
