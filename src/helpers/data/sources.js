@@ -135,7 +135,6 @@ export default [
     id: 'deezer',
     icon: 'deezer',
     name: 'Deezer',
-    isAudio: true,
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
