@@ -49,5 +49,9 @@ export default [
   {
     id: 'zh',
     name: '中文'
+  },
+  {
+    id: 'genz',
+    name: 'Gen Z'
   }
 ]
