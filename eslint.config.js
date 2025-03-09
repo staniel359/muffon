@@ -6,6 +6,7 @@ import {
 import {
   fixupConfigRules
 } from '@eslint/compat'
+import globals from 'globals'
 
 export default [
   pluginJs.configs.recommended,
@@ -33,6 +34,7 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
+        ...globals.browser,
         mainWindow: 'writable',
         mainView: 'writable',
         aboutWindow: 'writable',
