@@ -12,7 +12,6 @@ import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
 import setViewScale from '../view/setScale.js'
 import setAboutViewBounds from '../aboutView/setBounds.js'
-// import showViewDevTools from '../view/showDevTools.js'
 import {
   isDevelopment
 } from '../../helpers/utils.js'
@@ -66,15 +65,11 @@ export default function () {
 
   setAboutViewBounds()
 
-  // showViewDevTools(
-  //   aboutView
-  // )
-
-  setViewScale(
+  changeViewBackgroundColor(
     aboutView
   )
 
-  changeViewBackgroundColor(
+  setViewScale(
     aboutView
   )
 
