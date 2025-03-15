@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "Sorgente audio",
+          "automatch": "Abbina audio al brano",
           "bitrate": "Mostra bitrate audio",
           "album": "Mostra album",
           "equalizer": "Mostra l'equalizzatore",

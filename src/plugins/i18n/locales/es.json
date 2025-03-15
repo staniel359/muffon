@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "Las fuentes del audio (por prioridad)",
+          "automatch": "Coincidir audio con pista",
           "bitrate": "Mostrar la velocidad de bits del audio",
           "album": "Mostrar el álbum",
           "equalizer": "Mostrar el ecualizador",

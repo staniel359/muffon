@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "(우선순위별) 오디오 소스",
+          "automatch": "오디오를 트랙과 맞추기",
           "bitrate": "오디오 비트레이트 표시",
           "album": "앨범 표시",
           "equalizer": "이퀄라이저 표시",
