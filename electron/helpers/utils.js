@@ -89,6 +89,17 @@ export const isShowDevTools =
       'dev-tools'
     )
 
+export const windowsDefaultSizes = {
+  main: {
+    width: 900,
+    height: 600
+  },
+  about: {
+    width: 500,
+    height: 275
+  }
+}
+
 export function createFolderIfNotExists (
   path
 ) {

@@ -13,11 +13,17 @@ import changeViewBackgroundColor
 import setViewScale from '../view/setScale.js'
 import setAboutViewBounds from '../aboutView/setBounds.js'
 import {
-  isDevelopment
+  isDevelopment,
+  windowsDefaultSizes
 } from '../../helpers/utils.js'
 import {
   preloadScriptFilePath
 } from '../../helpers/paths.js'
+import setAboutWindowScale from './setScale.js'
+
+function handleResize () {
+  setAboutViewBounds()
+}
 
 function handleClose (
   event
@@ -30,14 +36,23 @@ function handleClose (
 function handleFirstShow () {
   setAboutViewBounds()
 
+  setAboutWindowScale()
+
   setViewScale(
     aboutView
   )
 }
 
 export default function () {
-  const aboutWindowWidth = 500
-  const aboutWindowHeight = 275
+  const aboutWindowWidth =
+    windowsDefaultSizes
+      .about
+      .width
+
+  const aboutWindowHeight =
+    windowsDefaultSizes
+      .about
+      .height
 
   const aboutWindowOptions = {
     width: aboutWindowWidth,
@@ -92,6 +107,11 @@ export default function () {
   aboutWindow.once(
     'show',
     handleFirstShow
+  )
+
+  aboutWindow.on(
+    'resize',
+    handleResize
   )
 
   aboutWindow.on(
