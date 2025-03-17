@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="tracksCountTextFormatted"
+      <BaseSettingsOptionHeader
+        :text="optionTextFormatted"
       />
 
       <BaseNumberInput
@@ -24,7 +22,8 @@ import {
   mapState
 } from 'pinia'
 import recommendationTracksStore from '@/stores/recommendationTracks'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseNumberInput from '@/components/inputs/BaseNumberInput.vue'
 import {
   update as updateGlobalStore
@@ -33,7 +32,7 @@ import {
 export default {
   name: 'HideLibraryArtistsTracksCountOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseNumberInput
   },
   computed: {
@@ -46,10 +45,10 @@ export default {
           'hideLibraryArtistsTracksCount'
       }
     ),
-    tracksCountTextFormatted () {
-      return `${this.tracksCountText} >=`
+    optionTextFormatted () {
+      return `${this.optionText} >=`
     },
-    tracksCountText () {
+    optionText () {
       return this.$t(
         'settings.options.app.recommendations.tracksCount'
       )

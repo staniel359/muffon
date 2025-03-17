@@ -70,7 +70,7 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLogoImage from '@/components/images/BaseLogoImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import {
   name,

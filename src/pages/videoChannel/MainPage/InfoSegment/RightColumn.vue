@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import CountersSection from './RightColumn/CountersSection.vue'
 import BaseDateLabelSection
   from '@/components/sections/BaseDateLabelSection.vue'

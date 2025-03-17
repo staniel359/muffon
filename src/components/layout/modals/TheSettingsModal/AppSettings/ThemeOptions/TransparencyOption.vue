@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="transparencyText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
     </div>
 
@@ -24,7 +22,8 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   transparency as transparencySeekerOptions
@@ -36,7 +35,7 @@ import {
 export default {
   name: 'TransparencyOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseSeeker
   },
   computed: {
@@ -53,7 +52,7 @@ export default {
         }
       )
     },
-    transparencyText () {
+    optionText () {
       return this.$t(
         'settings.options.app.theme.transparency'
       )

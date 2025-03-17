@@ -43,7 +43,7 @@ import {
 } from 'pinia'
 import audioStore from '@/stores/audio'
 import layoutStore from '@/stores/layout'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   audioEqualizer as audioEqualizerSeekerOptions

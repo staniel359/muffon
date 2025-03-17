@@ -10,19 +10,13 @@
     </div>
 
     <div class="main-settings-option">
-      <div class="option-header">
-        <BaseButton
-          class="green basic circular option-button"
-          left-icon="spotify"
-          :class="{
-            loading: isLoading,
-            disabled: isLoading
-          }"
-          :text="disconnectText"
-          :is-invertable="false"
-          @click="handleClick"
-        />
-      </div>
+      <BaseSettingsOptionButton
+        :text="disconnectText"
+        :is-loading="isLoading"
+        is-spotify
+        is-basic
+        @click="handleClick"
+      />
 
       <BaseAccountSection
         :account-data="spotifyAccountData"
@@ -33,7 +27,8 @@
 
 <script>
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseSettingsOptionButton
+  from '@/components/buttons/settings/BaseSettingsOptionButton.vue'
 import BaseAccountSection from '@/components/sections/BaseAccountSection.vue'
 import deleteConnection from '@/helpers/actions/api/connection/delete'
 import {
@@ -44,7 +39,7 @@ export default {
   name: 'ConnectedSection',
   components: {
     BaseErrorMessage,
-    BaseButton,
+    BaseSettingsOptionButton,
     BaseAccountSection
   },
   props: {

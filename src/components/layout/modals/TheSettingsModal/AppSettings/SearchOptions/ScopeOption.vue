@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="scopeText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <ScopeSelect />
@@ -13,17 +11,18 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import ScopeSelect from './ScopeOption/ScopeSelect.vue'
 
 export default {
   name: 'ScopeOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     ScopeSelect
   },
   computed: {
-    scopeText () {
+    optionText () {
       return this.$t(
         'settings.options.app.search.scope'
       )

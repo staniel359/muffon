@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import CommonButtons from './CompatibilityContent/CommonButtons.vue'
 
 export default {

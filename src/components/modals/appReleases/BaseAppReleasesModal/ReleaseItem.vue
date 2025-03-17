@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseTimestampSection
   from '@/components/sections/BaseTimestampSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'

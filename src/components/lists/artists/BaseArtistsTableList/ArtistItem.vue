@@ -112,7 +112,7 @@ import BaseArtistLinkContainer
 import BaseArtistOptionsPopup
   from '@/components/popups/artist/BaseArtistOptionsPopup.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import RecommendationArtistsSection
   from './ArtistItem/RecommendationArtistsSection.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'

@@ -1,19 +1,13 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <div class="option-header">
-        <BaseButton
-          class="red circular option-button"
-          left-icon="delete"
-          :class="{
-            loading: isLoading,
-            disabled: isDisabled
-          }"
-          :text="clearText"
-          :is-invertable="false"
-          @click="handleClick"
-        />
-      </div>
+      <BaseSettingsOptionButton
+        :text="buttonText"
+        :is-loading="isLoading"
+        :is-disabled="isDisabled"
+        is-delete
+        @click="handleClick"
+      />
     </div>
   </div>
 </template>
@@ -23,13 +17,14 @@ import {
   mapState
 } from 'pinia'
 import systemStore from '@/stores/system'
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseSettingsOptionButton
+  from '@/components/buttons/settings/BaseSettingsOptionButton.vue'
 import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'ClearCacheOption',
   components: {
-    BaseButton
+    BaseSettingsOptionButton
   },
   mixins: [
     notificationMixin
@@ -46,7 +41,7 @@ export default {
         'isWithCache'
       ]
     ),
-    clearText () {
+    buttonText () {
       return this.$t(
         'settings.options.app.system.cache.clear'
       )

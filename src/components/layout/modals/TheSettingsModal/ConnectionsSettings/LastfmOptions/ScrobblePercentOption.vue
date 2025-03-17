@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="percentText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <div class="seeker-container">
@@ -25,7 +23,8 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   scrobblePercent as scrobblePercentSeekerOptions
@@ -37,7 +36,7 @@ import {
 export default {
   name: 'ScrobblePercentOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseSeeker
   },
   computed: {
@@ -48,7 +47,7 @@ export default {
         isPlayerWithScrobbling: 'isWithScrobbling'
       }
     ),
-    percentText () {
+    optionText () {
       return this.$t(
         'settings.options.connections.lastfm.scrobblePercent'
       )

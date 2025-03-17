@@ -39,7 +39,7 @@ import BaseSegmentContainer
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import BaseArtistLinkContainer
   from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import SelfSection from './InfoSegment/SelfSection.vue'
 
 export default {

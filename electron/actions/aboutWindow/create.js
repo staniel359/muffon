@@ -27,12 +27,6 @@ function handleClose (
   aboutWindow.hide()
 }
 
-function handleDomReady () {
-  setViewScale(
-    aboutView
-  )
-}
-
 export default function () {
   const aboutWindowWidth = 500
   const aboutWindowHeight = 275
@@ -71,25 +65,13 @@ export default function () {
 
   setAboutViewBounds()
 
-  setViewScale(
-    aboutView
-  )
-
   changeViewBackgroundColor(
     aboutView
   )
 
-  // if (isDevelopment) {
-  //   const devToolsData = {
-  //     mode: 'detach'
-  //   }
-
-  //   aboutView
-  //     .webContents
-  //     .openDevTools(
-  //       devToolsData
-  //     )
-  // }
+  setViewScale(
+    aboutView
+  )
 
   aboutWindow
     .contentView
@@ -97,17 +79,12 @@ export default function () {
       aboutView
     )
 
-  aboutView
-    .webContents
-    .loadURL(
-      `${baseUrl}#/about`
-    )
+  const url = `${baseUrl}#/about`
 
   aboutView
     .webContents
-    .on(
-      'dom-ready',
-      handleDomReady
+    .loadURL(
+      url
     )
 
   aboutWindow.on(

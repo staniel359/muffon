@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="cacheText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseToggle
@@ -20,14 +18,15 @@ import {
   mapState
 } from 'pinia'
 import systemStore from '@/stores/system'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'CacheOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseToggle
   },
   mixins: [
@@ -40,7 +39,7 @@ export default {
         'isWithCache'
       ]
     ),
-    cacheText () {
+    optionText () {
       return this.$t(
         'settings.options.app.system.cache.enable'
       )

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseMessage from '@/components/messages/BaseMessage.vue'
 import errorsData from '@/helpers/data/errors'
 

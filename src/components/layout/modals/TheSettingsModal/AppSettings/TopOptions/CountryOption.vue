@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="countryText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseCountrySelectSection
@@ -20,7 +18,8 @@ import {
   mapState
 } from 'pinia'
 import topStore from '@/stores/top'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseCountrySelectSection
   from '@/components/sections/BaseCountrySelectSection.vue'
 import {
@@ -30,7 +29,7 @@ import {
 export default {
   name: 'CountryOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseCountrySelectSection
   },
   computed: {
@@ -40,7 +39,7 @@ export default {
         topCountry: 'country'
       }
     ),
-    countryText () {
+    optionText () {
       return this.$t(
         'settings.options.app.top.country'
       )

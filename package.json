@@ -13,21 +13,22 @@
   "main": "electron/main.js",
   "type": "module",
   "scripts": {
-    "start": "vite",
+    "start:vue": "vite",
     "start:electron": "electron .",
     "lint": "eslint",
-    "build": "vite build",
+    "build:vue": "vite build",
     "build:electron": "electron-builder --dir",
-    "build:all": "pnpm build && pnpm build:electron",
+    "build": "pnpm build:vue && pnpm build:electron",
     "package:electron": "electron-builder",
-    "package:all": "pnpm build && pnpm package:electron",
+    "package": "pnpm build:vue && pnpm package:electron",
     "release:electron": "pnpm package:electron --publish always",
-    "release": "pnpm build && pnpm release:electron",
+    "release": "pnpm build:vue && pnpm release:electron",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "@eslint/eslintrc": "^3.3.0",
     "dayjs": "^1.11.13",
     "discord-rpc": "^4.0.1",
     "dotenv": "^16.4.7",
@@ -69,7 +70,7 @@
     "vue-i18n": "^11.1.1",
     "vue-router": "^4.5.0"
   },
-  "packageManager": "pnpm@10.4.1+sha256.4b702887986995933d4300836b04d6d02a43bc72b52e4f7e93a4ca608b959197",
+  "packageManager": "pnpm@10.5.2+sha256.79a98daa90248b50815e31460790f118c56fe099113370826caa0153be6daba5",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",

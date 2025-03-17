@@ -295,6 +295,10 @@ export default {
     type: 'boolean',
     default: true
   },
+  'player.isWithAutomatch': {
+    type: 'boolean',
+    default: false
+  },
   'profile.connections': {
     type: 'object',
     default: {}

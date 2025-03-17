@@ -53,7 +53,7 @@ import BaseProfileOnlineLabel
   from '@/components/models/profile/BaseProfileOnlineLabel.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import InfoSection from './InfoSegment/InfoSection.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import BaseLabel from '@/components/labels/BaseLabel.vue'
 

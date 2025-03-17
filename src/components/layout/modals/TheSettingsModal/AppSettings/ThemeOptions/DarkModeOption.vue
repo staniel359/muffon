@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="darkModeText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseDarkModeToggle />
@@ -13,17 +11,18 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseDarkModeToggle from '@/components/toggles/BaseDarkModeToggle.vue'
 
 export default {
   name: 'DarkModeOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseDarkModeToggle
   },
   computed: {
-    darkModeText () {
+    optionText () {
       return this.$t(
         'settings.options.app.theme.dark'
       )

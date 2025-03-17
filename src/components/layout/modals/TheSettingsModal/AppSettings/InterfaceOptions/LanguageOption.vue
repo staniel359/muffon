@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="languageText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseLanguageSelect />
@@ -13,17 +11,18 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseLanguageSelect from '@/components/selects/BaseLanguageSelect.vue'
 
 export default {
   name: 'LanguageOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseLanguageSelect
   },
   computed: {
-    languageText () {
+    optionText () {
       return this.$t(
         'settings.options.app.interface.language'
       )

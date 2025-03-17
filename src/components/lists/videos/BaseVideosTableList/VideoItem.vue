@@ -89,7 +89,7 @@ import BaseLinkContainer
 import BaseVideoOptionsPopup
   from '@/components/popups/video/BaseVideoOptionsPopup.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseVideoChannelLinkSection
   from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
 import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'

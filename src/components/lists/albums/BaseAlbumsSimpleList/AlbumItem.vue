@@ -130,7 +130,7 @@ import BaseAlbumLinkContainer
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseAlbumArtistsSection
   from '@/components/models/album/BaseAlbumArtistsSection.vue'
 import BaseAlbumReleaseDateSection

@@ -17,7 +17,7 @@
 
 <script>
 import BaseImage from '@/components/images/BaseImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 
 export default {
   name: 'OtherProfileSection',

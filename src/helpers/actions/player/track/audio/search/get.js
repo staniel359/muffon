@@ -14,21 +14,9 @@ export default function (
 ) {
   let variantIndex = 0
 
-  const artistName =
-    trackData.artist.name
-
-  const trackTitle = trackData.title
-
-  const query = [
-    artistName,
-    trackTitle
-  ].join(
-    ' - '
-  )
-
   const searchArgs = {
     source,
-    query
+    trackData
   }
 
   function getVariantId () {

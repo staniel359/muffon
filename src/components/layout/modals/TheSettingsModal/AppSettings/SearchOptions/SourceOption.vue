@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="sourceText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <SourceSelect />
@@ -13,17 +11,18 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import SourceSelect from './SourceOption/SourceSelect.vue'
 
 export default {
   name: 'SourceOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     SourceSelect
   },
   computed: {
-    sourceText () {
+    optionText () {
       return this.$t(
         'settings.options.app.search.source'
       )

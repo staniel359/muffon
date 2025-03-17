@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="annotationsText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseToggle
@@ -20,13 +18,14 @@ import {
   mapState
 } from 'pinia'
 import lyricsStore from '@/stores/lyrics'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
   name: 'AnnotationsOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseToggle
   },
   computed: {
@@ -36,7 +35,7 @@ export default {
         isLyricsWithAnnotations: 'isWithAnnotations'
       }
     ),
-    annotationsText () {
+    optionText () {
       return this.$t(
         'settings.options.app.lyrics.annotations'
       )

@@ -34,7 +34,7 @@
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
 import {
   lyrics as formatTrackLyricsLink

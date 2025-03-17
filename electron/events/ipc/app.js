@@ -12,6 +12,7 @@ import {
   handleNavigate,
   handleCallOpenDeepLink,
   handleGetSystemName,
+  handleCallQuit,
   handleQuit
 } from '../../handlers/ipc/app.js'
 
@@ -64,6 +65,11 @@ export default function () {
   ipcMain.handle(
     'get-system-name',
     handleGetSystemName
+  )
+
+  ipcMain.on(
+    'call-quit',
+    handleCallQuit
   )
 
   ipcMain.on(

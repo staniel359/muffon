@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseHeaderContainer
   from '@/components/containers/BaseHeaderContainer.vue'
 import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'

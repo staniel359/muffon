@@ -1,26 +1,23 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <div class="option-header">
-        <BaseButton
-          class="green circular option-button"
-          left-icon="spotify"
-          :text="connectText"
-          :is-invertable="false"
-          @click="handleClick"
-        />
-      </div>
+      <BaseSettingsOptionButton
+        :text="connectText"
+        is-spotify
+        @click="handleClick"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseSettingsOptionButton
+  from '@/components/buttons/settings/BaseSettingsOptionButton.vue'
 
 export default {
   name: 'ConnectSection',
   components: {
-    BaseButton
+    BaseSettingsOptionButton
   },
   emits: [
     'connectButtonClick'

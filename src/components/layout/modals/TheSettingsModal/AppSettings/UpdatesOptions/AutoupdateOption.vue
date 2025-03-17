@@ -1,19 +1,10 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <div class="middle-aligned option-header">
-        <BaseHeader
-          tag="h4"
-          :text="autoupdateText"
-        />
-
-        <BaseLabel
-          v-if="isAutoupdateBeta"
-          class="primary small circular main-right-small-section"
-          text="Beta"
-          :is-invertable="false"
-        />
-      </div>
+      <BaseSettingsOptionHeader
+        :text="optionText"
+        :is-beta="isAutoupdateBeta"
+      />
 
       <BaseToggle
         store-key="updates.isAutoupdateEnabled"
@@ -35,9 +26,9 @@ import {
   mapState
 } from 'pinia'
 import updatesStore from '@/stores/updates'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
-import BaseLabel from '@/components/labels/BaseLabel.vue'
 import AutoupdateBetaWarningMessage
   from './AutoupdateOption/AutoupdateBetaWarningMessage.vue'
 import notificationMixin from '@/mixins/notificationMixin'
@@ -48,9 +39,8 @@ import {
 export default {
   name: 'AutoupdateOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseToggle,
-    BaseLabel,
     AutoupdateBetaWarningMessage
   },
   mixins: [
@@ -65,7 +55,7 @@ export default {
         'isAutoupdateBeta'
       ]
     ),
-    autoupdateText () {
+    optionText () {
       return this.$t(
         'settings.options.app.updates.auto'
       )

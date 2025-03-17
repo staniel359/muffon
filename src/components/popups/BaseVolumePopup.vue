@@ -26,7 +26,7 @@ import {
 import audioStore from '@/stores/audio'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   volume as volumeSeekerOptions

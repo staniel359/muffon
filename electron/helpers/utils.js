@@ -82,6 +82,13 @@ export const isSingleInstance =
 
 export const deepLinksProtocol = `${appName}://`
 
+export const isShowDevTools =
+  app
+    .commandLine
+    .hasSwitch(
+      'dev-tools'
+    )
+
 export function createFolderIfNotExists (
   path
 ) {
@@ -122,4 +129,17 @@ export function handleHarmfulSwitches () {
     // Do not call app.exit(), ask @xyloflake why
     process.exit()
   }
+}
+
+export function wait (
+  milliseconds
+) {
+  return new Promise(
+    resolve => {
+      return setTimeout(
+        resolve,
+        milliseconds
+      )
+    }
+  )
 }

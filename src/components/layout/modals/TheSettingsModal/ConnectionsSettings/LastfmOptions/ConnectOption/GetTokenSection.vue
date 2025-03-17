@@ -10,33 +10,27 @@
     </div>
 
     <div class="main-settings-option">
-      <div class="option-header">
-        <BaseButton
-          class="red circular option-button"
-          left-icon="lastfm"
-          :class="{
-            loading: isLoading,
-            disabled: isLoading
-          }"
-          :text="connectText"
-          :is-invertable="false"
-          @click="handleClick"
-        />
-      </div>
+      <BaseSettingsOptionButton
+        :text="connectText"
+        :is-loading="isLoading"
+        is-lastfm
+        @click="handleClick"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseSettingsOptionButton
+  from '@/components/buttons/settings/BaseSettingsOptionButton.vue'
 import getToken from '@/helpers/actions/api/connection/token/get'
 
 export default {
   name: 'GetTokenSection',
   components: {
     BaseErrorMessage,
-    BaseButton
+    BaseSettingsOptionButton
   },
   emits: [
     'tokenGet'

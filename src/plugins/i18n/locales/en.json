@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "Audio sources (by priority)",
+          "automatch": "Match audio to track",
           "bitrate": "Show audio bitrate",
           "album": "Show album",
           "equalizer": "Show equalizer",

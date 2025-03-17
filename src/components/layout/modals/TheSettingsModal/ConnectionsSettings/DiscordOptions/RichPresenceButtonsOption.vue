@@ -1,9 +1,7 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
+      <BaseSettingsOptionHeader
         :text="buttonsText"
       />
 
@@ -34,7 +32,8 @@ import {
 } from 'pinia'
 import discordStore from '@/stores/discord'
 import profileStore from '@/stores/profile'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import ButtonSelectSection
   from './RichPresenceButtonsOption/ButtonSelectSection.vue'
 import {
@@ -47,7 +46,7 @@ import {
 export default {
   name: 'RichPresenceButtonsOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     ButtonSelectSection
   },
   provide () {
@@ -58,10 +57,8 @@ export default {
   },
   data () {
     return {
-      buttonsTextKey: (
-        'settings.options.connections' +
-        '.discord.richPresence.buttons'
-      )
+      buttonsTextKey:
+        'settings.options.connections.discord.richPresence.buttons'
     }
   },
   computed: {

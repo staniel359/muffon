@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="audioSourcesText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <div>
@@ -17,19 +15,20 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import SourcesList from './AudioSourcesOption/SourcesList.vue'
 import AddButton from './AudioSourcesOption/AddButton.vue'
 
 export default {
   name: 'AudioSourcesOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     SourcesList,
     AddButton
   },
   computed: {
-    audioSourcesText () {
+    optionText () {
       return this.$t(
         'settings.options.app.player.audioSources'
       )

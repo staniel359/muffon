@@ -122,7 +122,7 @@ import BaseArtistLinkContainer
 import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseArtistListenersCount
   from '@/components/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'

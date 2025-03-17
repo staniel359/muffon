@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="hideLibraryArtistsText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseToggle
@@ -20,13 +18,14 @@ import {
   mapState
 } from 'pinia'
 import recommendationTracksStore from '@/stores/recommendationTracks'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
   name: 'HideLibraryArtistsOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseToggle
   },
   computed: {
@@ -37,7 +36,7 @@ export default {
           'isHideLibraryArtists'
       }
     ),
-    hideLibraryArtistsText () {
+    optionText () {
       return this.$t(
         'settings.options.app.recommendations.hideLibraryArtists'
       )

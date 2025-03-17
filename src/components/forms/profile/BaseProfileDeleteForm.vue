@@ -22,7 +22,7 @@
 <script>
 import BaseProfileDeleteFormContainer
   from '@/components/containers/forms/profile/BaseProfileDeleteFormContainer.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseProfilePasswordField
   from '@/components/fields/profile/BaseProfilePasswordField.vue'
 import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'

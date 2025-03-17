@@ -32,12 +32,12 @@ export default {
     window
       .mainProcess
       .addCommandHandler(
-        'quit',
-        this.handleQuit
+        'quit-called',
+        this.handleQuitCalled
       )
   },
   methods: {
-    async handleQuit () {
+    async handleQuitCalled () {
       if (!this.isRememberProfile) {
         await this.clearProfileData()
       }

@@ -1,27 +1,20 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <div class="option-header">
-        <BaseButton
-          class="red circular option-button"
-          left-icon="delete"
-          :class="{
-            loading: isLoading,
-            disabled: isLoading
-          }"
-          :text="deleteText"
-          :is-invertable="false"
-          @click="handleClick"
-        />
+      <BaseSettingsOptionButton
+        :text="buttonText"
+        :is-loading="isLoading"
+        is-delete
+        @click="handleClick"
+      />
 
-        <BaseDeleteModal
-          ref="modal"
-          :model-type="modelType"
-          :is-loading="isLoading"
-          :error="error"
-          @delete-button-click="handleDeleteButtonClick"
-        />
-      </div>
+      <BaseDeleteModal
+        ref="modal"
+        :model-type="modelType"
+        :is-loading="isLoading"
+        :error="error"
+        @delete-button-click="handleDeleteButtonClick"
+      />
     </div>
   </div>
 </template>
@@ -31,7 +24,8 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseSettingsOptionButton
+  from '@/components/buttons/settings/BaseSettingsOptionButton.vue'
 import BaseDeleteModal from '@/components/modals/BaseDeleteModal.vue'
 import notificationMixin from '@/mixins/notificationMixin'
 import deleteHistory from '@/helpers/actions/api/history/delete'
@@ -42,7 +36,7 @@ import {
 export default {
   name: 'BaseSettingsHistoryDeleteOption',
   components: {
-    BaseButton,
+    BaseSettingsOptionButton,
     BaseDeleteModal
   },
   mixins: [
@@ -68,7 +62,7 @@ export default {
         profileId: 'id'
       }
     ),
-    deleteText () {
+    buttonText () {
       return this.$t(
         `settings.options.app.${this.modelType}.delete`
       )

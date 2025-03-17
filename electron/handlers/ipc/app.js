@@ -10,6 +10,7 @@ import callLogout from '../../actions/app/callLogout.js'
 import callAccountDelete from '../../actions/app/callAccountDelete.js'
 import callNavigate from '../../actions/app/callNavigate.js'
 import callOpenDeepLink from '../../actions/app/callOpenDeepLink.js'
+import callQuit from '../../actions/app/callQuit.js'
 import quit from '../../actions/app/quit.js'
 
 export function handleSetTitle (
@@ -70,6 +71,10 @@ export function handleCallOpenDeepLink () {
 
 export function handleGetSystemName () {
   return systemName
+}
+
+export function handleCallQuit () {
+  callQuit()
 }
 
 export function handleQuit () {

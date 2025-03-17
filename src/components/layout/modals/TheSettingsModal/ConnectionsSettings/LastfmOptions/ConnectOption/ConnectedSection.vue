@@ -10,19 +10,13 @@
     </div>
 
     <div class="main-settings-option">
-      <div class="option-header">
-        <BaseButton
-          class="red basic circular option-button"
-          left-icon="lastfm"
-          :class="{
-            loading: isLoading,
-            disabled: isLoading
-          }"
-          :text="disconnectText"
-          :is-invertable="false"
-          @click="handleClick"
-        />
-      </div>
+      <BaseSettingsOptionButton
+        :text="disconnectText"
+        :is-loading="isLoading"
+        is-lastfm
+        is-basic
+        @click="handleClick"
+      />
 
       <BaseAccountSection
         :account-data="lastfmAccountData"
@@ -37,7 +31,8 @@ import {
 } from 'pinia'
 import profileStore from '@/stores/profile'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseSettingsOptionButton
+  from '@/components/buttons/settings/BaseSettingsOptionButton.vue'
 import BaseAccountSection from '@/components/sections/BaseAccountSection.vue'
 import deleteConnection from '@/helpers/actions/api/connection/delete'
 import {
@@ -48,7 +43,7 @@ export default {
   name: 'ConnectedSection',
   components: {
     BaseErrorMessage,
-    BaseButton,
+    BaseSettingsOptionButton,
     BaseAccountSection
   },
   emits: [
