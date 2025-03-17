@@ -8,7 +8,8 @@ import {
 import {
   isDevelopment,
   wait,
-  isShowDevTools
+  isShowDevTools,
+  windowsDefaultSizes
 } from '../../helpers/utils.js'
 import {
   baseUrl
@@ -32,6 +33,7 @@ import {
 import {
   preloadScriptFilePath
 } from '../../helpers/paths.js'
+import setMainWindowScale from './setScale.js'
 
 function handleShow () {
   setTrayMenu()
@@ -85,6 +87,8 @@ function handleDidFinishLoad () {
 async function handleFirstShow () {
   resizeViews()
 
+  setMainWindowScale()
+
   setViewScale(
     mainView
   )
@@ -118,8 +122,15 @@ async function handleFirstShow () {
 }
 
 export default function () {
-  const mainWindowWidth = 900
-  const mainWindowHeight = 600
+  const mainWindowWidth =
+    windowsDefaultSizes
+      .main
+      .width
+
+  const mainWindowHeight =
+    windowsDefaultSizes
+      .main
+      .height
 
   const mainWindowOptions = {
     width: mainWindowWidth,
