@@ -7,7 +7,6 @@ import {
 } from '../../helpers/icons.js'
 import {
   isDevelopment,
-  isLinux,
   wait,
   isShowDevTools
 } from '../../helpers/utils.js'
@@ -79,27 +78,29 @@ function handleFocus () {
   }
 }
 
-async function handleDidFinishLoad () {
+function handleDidFinishLoad () {
+  showMainWindow()
+}
+
+async function handleFirstShow () {
+  resizeViews()
+
+  setViewScale(
+    mainView
+  )
+
   const isMaximizeOnStart =
     getElectronStoreKey(
       'window.isMaximizeOnStart'
     )
 
   if (isMaximizeOnStart) {
-    if (isLinux) {
-      showMainWindow()
-
-      await wait(
-        100
-      )
-    }
+    await wait(
+      50
+    )
 
     mainWindow.maximize()
-  } else {
-    showMainWindow()
   }
-
-  resizeViews()
 
   const isCheckForNewVersions =
     getElectronStoreKey(
@@ -159,10 +160,6 @@ export default function () {
     mainView
   )
 
-  setViewScale(
-    mainView
-  )
-
   mainWindow
     .contentView
     .addChildView(
@@ -174,6 +171,11 @@ export default function () {
     .loadURL(
       baseUrl
     )
+
+  mainWindow.once(
+    'show',
+    handleFirstShow
+  )
 
   mainWindow.on(
     'show',

@@ -27,6 +27,14 @@ function handleClose (
   aboutWindow.hide()
 }
 
+function handleFirstShow () {
+  setAboutViewBounds()
+
+  setViewScale(
+    aboutView
+  )
+}
+
 export default function () {
   const aboutWindowWidth = 500
   const aboutWindowHeight = 275
@@ -63,13 +71,7 @@ export default function () {
       aboutViewOptions
     )
 
-  setAboutViewBounds()
-
   changeViewBackgroundColor(
-    aboutView
-  )
-
-  setViewScale(
     aboutView
   )
 
@@ -86,6 +88,11 @@ export default function () {
     .loadURL(
       url
     )
+
+  aboutWindow.once(
+    'show',
+    handleFirstShow
+  )
 
   aboutWindow.on(
     'close',
