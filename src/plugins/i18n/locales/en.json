@@ -103,7 +103,7 @@
     },
     "forbidden": {
       "header": "Forbidden",
-      "content": "You don't have rights to perform this action"
+      "content": "You do not have permission to perform this action"
     },
     "notFound": {
       "header": "Nothing has been found",
@@ -286,21 +286,21 @@
       },
       "also": {
         "libraryModel": {
-          "artist": "This will also delete all this artist's albums and tracks.",
-          "album": "This will also delete all this album's tracks."
+          "artist": "This will also delete all of this artist's albums and tracks.",
+          "album": "This will also delete all of this album's tracks."
         },
-        "playlist": "This will also delete all this playlist's tracks.",
-        "community": "This will also delete all this community's posts.",
+        "playlist": "This will also delete all of this playlist's tracks.",
+        "community": "This will also delete all of this community's posts.",
         "account": [
-          "This will also delete your following data:",
-          "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- your page posts\n- subscriptions\n- history</strong>",
+          "This will also delete the following data:",
+          "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- page posts\n- subscriptions\n- history</strong>",
           "This data will remain, but your nickname won't be displayed:",
           "<strong>- created posts\n- created comments\n- conversations with you\n- created communities</strong>",
           "And this data will remain unchanged:",
           "<strong>- saved tracks\n- background images\n- settings</strong>"
         ],
         "library": [
-          "This will delete your following data:",
+          "This will delete the following data:",
           "<strong>- artists\n- albums\n- tracks\n- recommendations</strong>"
         ]
       },
@@ -366,7 +366,7 @@
         "nickname": "Nickname is too long"
       },
       "confirmation": {
-        "passwordConfirmation": "Password and its confirmation don't match"
+        "passwordConfirmation": "Password and confirmation don't match"
       },
       "wrong": {
         "password": "Wrong password",
@@ -520,7 +520,7 @@
           "timezone": "Time zone",
           "infiniteScroll": "Infinite scroll",
           "artistPopup": "Show artist info on link hover",
-          "innerCounters": "Show muffon listeners counters",
+          "innerCounters": "Show muffon listeners counter",
           "cachePages": "Cache pages",
           "scale": "Scale"
         },
@@ -598,7 +598,7 @@
         "updates": {
           "check": "Check for new versions",
           "auto": "Enable autoupdate",
-          "autoWarning": "Autoupdates on Linux are still in the experimental phase and may contain bugs.\nDuring the autoupdate process, the app will freeze temporarily.\nPlease avoid force-quitting the application; it will close automatically once the update is complete.\n\nFor details and tracking of this issue, visit [a link=issue]this link[/a]."
+          "autoWarning": "Autoupdates on Linux are still in the experimental phase and may contain bugs.\nDuring the autoupdate process, the app will freeze temporarily.\nPlease avoid force-quitting the application; it will close automatically once the update is complete.\n\nFor details and tracking of this issue, please visit [a link=issue]this link[/a]."
         }
       },
       "profile": {
@@ -701,7 +701,7 @@
   },
   "import": {
     "lastfm": {
-      "historyVisible": "Before import make sure that your Last.FM listening history is visible."
+      "historyVisible": "Before importing, make sure your Last.FM listening history is visible."
     },
     "active": "Importing {count} of {counter}...",
     "success": {
@@ -712,7 +712,7 @@
       "content": "You may want to check the data before saving to library"
     },
     "error": {
-      "files": "{counter} could not be imported. Please make sure that metadata format is valid:"
+      "files": "{counter} could not be imported. Please make sure the metadata format is valid:"
     }
   },
   "save": {
@@ -743,8 +743,8 @@
   "connections": {
     "connect": "Connect account",
     "confirm": {
-      "token": "Your browser will now open. Confirm connection there and click this button again.",
-      "code": "Your browser will now open. Confirm connection there, paste the received code and click this button again."
+      "token": "Your browser will now open. Confirm the connection there and click this button again.",
+      "code": "Your browser will now open. Confirm the connection there, paste the received code and click this button again."
     },
     "disconnect": "Disconnect account"
   },
@@ -815,10 +815,10 @@
   "donate": {
     "header": "Donate",
     "content": [
-      "muffon is a non-profit project that has nor ads, neither any paid features or content.",
-      "But, of course, it cannot exist without funds, that are needed for its development and infrastructure.",
-      "A lot of time and effort were put into creating this project, and it would be good if all of the invested would pay off.",
-      "So I ask for your help in muffon support.",
+      "muffon is a non-profit project that has neither ads nor any paid features or content.",
+      "However, muffon cannot exist without the funds needed for its development and infrastructure.",
+      "As a lot of time and effort were put into creating this project, it would be great to see that investment pay off.",
+      "As such, we would like to ask for your help in supporting muffon.",
       "<strong>Would you like to make a donation?</strong>"
     ],
     "actions": {
