@@ -15,7 +15,8 @@ export default function () {
     )
   }
 
-  getTabs().forEach(
-    setTabBoundsAndScale
-  )
+  getTabs()
+    .forEach(
+      setTabBoundsAndScale
+    )
 }

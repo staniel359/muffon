@@ -10,17 +10,24 @@
     :scope="scope"
     :text-scope="textScope"
   />
+  <BaseNoCollectionMessage
+    v-else
+    :scope="textScope"
+  />
 </template>
 
 <script>
 import ErrorSection from './BaseImportCompleteSection/ErrorSection.vue'
 import SuccessSection from './BaseImportCompleteSection/SuccessSection.vue'
+import BaseNoCollectionMessage
+  from '@/components/messages/BaseNoCollectionMessage.vue'
 
 export default {
   name: 'BaseImportCompleteSection',
   components: {
     ErrorSection,
-    SuccessSection
+    SuccessSection,
+    BaseNoCollectionMessage
   },
   props: {
     errorCollection: {

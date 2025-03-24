@@ -11,7 +11,7 @@
       @refresh="handleRefresh"
     >
       <slot
-        v-if="responseData"
+        v-if="!isGetData || responseData"
       />
     </BaseSegmentContainer>
   </BaseModalContainer>
@@ -29,10 +29,16 @@ export default {
     BaseModalContainer,
     BaseSegmentContainer
   },
-  inject: [
-    'getData'
-  ],
+  inject: {
+    getData: {
+      default: () => false
+    }
+  },
   props: {
+    isGetData: {
+      type: Boolean,
+      default: true
+    },
     isLoading: Boolean,
     error: Error,
     responseData: Object
@@ -47,7 +53,9 @@ export default {
       )
     },
     handleRefresh () {
-      this.getData()
+      if (this.isGetData) {
+        this.getData()
+      }
     },
     show () {
       this.$refs

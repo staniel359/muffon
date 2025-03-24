@@ -9,7 +9,6 @@
     >
       <BaseDescriptionSection
         :description="slotProps[scope]"
-        is-modal
       />
     </template>
   </BaseVideoPlaylistModalContainer>

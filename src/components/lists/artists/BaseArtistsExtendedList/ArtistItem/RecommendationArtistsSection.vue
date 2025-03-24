@@ -35,7 +35,7 @@ import {
 } from 'pinia'
 import profileStore from '@/stores/profile'
 import BaseDivider from '@/components/BaseDivider.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseArtistsSimpleList
   from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import BaseMoreButton from '@/components/buttons/BaseMoreButton.vue'
@@ -86,11 +86,13 @@ export default {
       )
     },
     counterText () {
-      return this.$tc(
+      return this.$t(
         'counters.genitive.artists',
         this.artistsCount,
         {
-          count: this.artistsCountFormatted
+          named: {
+            count: this.artistsCountFormatted
+          }
         }
       )
     },

@@ -41,7 +41,7 @@ import BaseSegmentContainer
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import BaseTransitionContainer
   from '@/components/containers/BaseTransitionContainer.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import SelfSection from './ImageNameSelfSegment/SelfSection.vue'
 
 export default {

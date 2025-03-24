@@ -20,19 +20,12 @@
     />
 
     <div class="main-settings-option main-bottom-section">
-      <div class="option-header">
-        <BaseButton
-          class="green circular option-button"
-          left-icon="spotify"
-          :class="{
-            loading: isLoading,
-            disabled: isLoading
-          }"
-          :text="connectText"
-          :is-invertable="false"
-          @click="handleClick"
-        />
-      </div>
+      <BaseSettingsOptionButton
+        :text="connectText"
+        :is-loading="isLoading"
+        is-spotify
+        @click="handleClick"
+      />
 
       <BaseClearButton
         @click="handleClearButtonClick"
@@ -43,7 +36,8 @@
 
 <script>
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseSettingsOptionButton
+  from '@/components/buttons/settings/BaseSettingsOptionButton.vue'
 import BaseInput from '@/components/inputs/BaseInput.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import BaseMessage from '@/components/messages/BaseMessage.vue'
@@ -56,7 +50,7 @@ export default {
   name: 'CodeSection',
   components: {
     BaseErrorMessage,
-    BaseButton,
+    BaseSettingsOptionButton,
     BaseInput,
     BaseClearButton,
     BaseMessage

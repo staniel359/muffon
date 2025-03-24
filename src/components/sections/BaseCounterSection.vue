@@ -29,20 +29,18 @@ export default {
   ],
   computed: {
     countText () {
-      return this.$tc(
+      return this.$t(
         `counters.nominative.${this.scope}`,
         this.count,
         {
-          count: this.countStrong
+          named: {
+            count: this.countStrong
+          }
         }
       )
     },
     countStrong () {
-      return `
-        <strong>
-          ${this.countFormatted}
-        </strong>
-      `
+      return `<strong>${this.countFormatted}</strong>`
     },
     countFormatted () {
       return formatNumber(

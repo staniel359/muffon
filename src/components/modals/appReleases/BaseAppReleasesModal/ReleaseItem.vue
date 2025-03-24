@@ -14,7 +14,7 @@
     <BaseDivider />
 
     <p
-      class="main-formatted-text-container"
+      class="main-text-container"
       v-text="description"
     />
   </div>
@@ -26,10 +26,7 @@
 </template>
 
 <script>
-import {
-  shell
-} from 'electron'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseTimestampSection
   from '@/components/sections/BaseTimestampSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
@@ -82,9 +79,11 @@ export default {
   },
   methods: {
     handleVersionClick () {
-      shell.openExternal(
-        this.link
-      )
+      window
+        .mainProcess
+        .openExternalLink(
+          this.link
+        )
     }
   }
 }

@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     followersText () {
-      return this.$tc(
+      return this.$t(
         'counters.nominative.followers',
         this.followersCount,
         {
@@ -44,11 +44,7 @@ export default {
       return this.profileData.followers_count
     },
     followersCountStrong () {
-      return `
-        <strong>
-          ${this.followersCountFormatted}
-        </strong>
-      `
+      return `<strong>${this.followersCountFormatted}</strong>`
     },
     followersCountFormatted () {
       return formatNumber(

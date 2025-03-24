@@ -6,11 +6,14 @@ import {
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
+import {
+  isStringsIncludeEachOther
+} from '@/helpers/utils'
 
 export default function getPlayerSearch (
   {
     source,
-    query,
+    trackData,
     limit,
     audioSourceIndex = 0
   }
@@ -30,21 +33,61 @@ export default function getPlayerSearch (
 
   const url = `/${sourceComputed}/search/tracks`
 
+  const artistName =
+    trackData.artist.name
+
+  const trackTitle = trackData.title
+
+  const query = [
+    artistName,
+    trackTitle
+  ].join(
+    ' - '
+  )
+
   const params = {
     query
   }
 
-  async function setVariants (
-    tracks
+  function isMatchedVariant (
+    variantData
   ) {
-    const variants =
-      formatCollection(
-        tracks
+    const variantArtistName =
+      variantData
+        .artist
+        .name
+
+    const isArtistNamesMatch =
+      isStringsIncludeEachOther(
+        variantArtistName,
+        artistName
       )
 
-    await updateGlobalStore(
+    const variantTrackTitle = variantData.title
+
+    const isTitlesMatch =
+      isStringsIncludeEachOther(
+        variantTrackTitle,
+        trackTitle
+      )
+
+    return (
+      isArtistNamesMatch &&
+        isTitlesMatch
+    )
+  }
+
+  async function setVariants (
+    variants
+  ) {
+    const variantsFormatted =
+      formatCollection(
+        variants
+      )
+
+    return updateGlobalStore(
       {
-        'player.variants': variants
+        'player.variants': variantsFormatted
       }
     )
   }
@@ -61,7 +104,7 @@ export default function getPlayerSearch (
     if (nextAudioSource) {
       return getPlayerSearch(
         {
-          query,
+          trackData,
           limit,
           audioSourceIndex:
             nextAudioSourceIndex
@@ -73,16 +116,29 @@ export default function getPlayerSearch (
   async function handleSuccess (
     response
   ) {
+    let variants =
+      response
+        .data
+        .search
+        .tracks
+
     const {
-      tracks
-    } = response.data.search
+      isWithAutomatch
+    } = playerStore()
+
+    if (isWithAutomatch) {
+      variants =
+        variants.filter(
+          isMatchedVariant
+        )
+    }
 
     await setVariants(
-      tracks
+      variants
     )
 
     const isSearchInNextAudioSource = (
-      !tracks.length && !source
+      !variants.length && !source
     )
 
     if (isSearchInNextAudioSource) {

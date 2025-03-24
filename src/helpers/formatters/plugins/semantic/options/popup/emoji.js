@@ -6,8 +6,7 @@ import {
 
 export default function (
   {
-    html,
-    onShow
+    html
   }
 ) {
   const className = 'ui popup main-popup'
@@ -28,8 +27,6 @@ export default function (
     },
     html,
     onShow () {
-      onShow()
-
       handleFadeShow(
         this,
         'right'

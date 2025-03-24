@@ -1,7 +1,7 @@
 <template>
   <div class="middle-end-aligned main-list-bottom-section">
     <BaseDropdown
-      class="main-field"
+      class="main-section"
       :header="header"
       :options="optionsFiltered"
       :selected="selected"

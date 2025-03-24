@@ -22,7 +22,7 @@ export default function (
     imageId
   }
 
-  mainWindow
+  mainView
     .webContents
     .send(
       'delete-background-image',

@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <p
-      class="main-text-section main-text-container"
+      class="main-text-section"
       v-html="goingText"
     />
 
@@ -14,19 +14,19 @@
         <p
           v-for="(alsoTextItem, index) in alsoText"
           :key="index"
-          class="main-text-section main-formatted-text-container"
+          class="main-text-section"
           v-html="alsoTextItem"
         />
       </template>
       <p
         v-else
-        class="main-text-section main-text-container"
+        class="main-text-section"
         v-text="alsoText"
       />
     </template>
 
     <p
-      class="main-text-section main-text-container"
+      class="main-text-section"
     >
       <strong
         v-text="undoText"
@@ -34,7 +34,7 @@
     </p>
 
     <p
-      class="main-text-section main-text-container"
+      class="main-text-section"
       v-text="sureText"
     />
   </div>
@@ -64,18 +64,10 @@ export default {
       )
     },
     modelNameStrong () {
-      return `
-        <strong>
-          ${this.modelName}
-        </strong>
-      `
+      return `<strong>${this.modelName}</strong>`
     },
     parentModelNameStrong () {
-      return `
-        <strong>
-          ${this.parentModelName}
-        </strong>
-      `
+      return `<strong>${this.parentModelName}</strong>`
     },
     isAlsoTextArray () {
       return this.alsoText instanceof Array

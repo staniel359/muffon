@@ -6,7 +6,7 @@
     />
 
     <p
-      class="main-text-section main-text-container"
+      class="main-text-section"
       v-text="commonText"
     />
 
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import CommonButtons from './CompatibilityContent/CommonButtons.vue'
 
 export default {

@@ -2,7 +2,7 @@
   <div class="main-toggle-container">
     <div
       class="text-section"
-      v-text="darkModeText"
+      v-text="optionText"
     />
 
     <BaseDarkModeToggle />
@@ -18,7 +18,7 @@ export default {
     BaseDarkModeToggle
   },
   computed: {
-    darkModeText () {
+    optionText () {
       return this.$t(
         'settings.options.app.theme.dark'
       )

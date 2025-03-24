@@ -1,6 +1,6 @@
 <template>
   <BaseDropdownContainer
-    class="main-field"
+    class="main-section"
     :selected="searchSource"
     @select="handleSelect"
   >

@@ -34,21 +34,24 @@ export default {
   },
   computed: {
     successText () {
-      return this.$tc(
+      return this.$t(
         `save.success.${this.model}.${this.scope}`,
         this.successCollectionCount,
         {
-          counter: this.counterText
+          named: {
+            counter: this.counterText
+          }
         }
       )
     },
     counterText () {
-      return this.$tc(
+      return this.$t(
         `counters.nominative.${this.scope}`,
         this.successCollectionCount,
         {
-          count:
-            this.successCollectionCountFormatted
+          named: {
+            count: this.successCollectionCountFormatted
+          }
         }
       )
     },

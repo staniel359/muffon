@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="cachePagesText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseToggle
@@ -20,13 +18,14 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
   name: 'CachePagesOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseToggle
   },
   computed: {
@@ -36,7 +35,7 @@ export default {
         'isCachePages'
       ]
     ),
-    cachePagesText () {
+    optionText () {
       return this.$t(
         'settings.options.app.interface.cachePages'
       )

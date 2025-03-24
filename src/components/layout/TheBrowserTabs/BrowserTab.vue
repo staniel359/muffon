@@ -39,9 +39,6 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import {
-  ipcRenderer
-} from 'electron'
 import BaseButtonContainer
   from '@/components/containers/buttons/BaseButtonContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
@@ -109,10 +106,12 @@ export default {
     tabTitle: 'handleTabTitleChange'
   },
   mounted () {
-    ipcRenderer.on(
-      'update-tab',
-      this.handleUpdateTab
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'update-tab',
+        this.handleUpdateTab
+      )
   },
   methods: {
     handleTabTitleChange () {
@@ -136,10 +135,12 @@ export default {
       }
     },
     handleClick () {
-      ipcRenderer.send(
-        'set-active-tab',
-        this.tabId
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'set-active-tab',
+          this.tabId
+        )
     },
     handleCloseButtonClick () {
       this.callTabClose()
@@ -154,10 +155,12 @@ export default {
       }
     },
     callTabClose () {
-      ipcRenderer.send(
-        'delete-tab',
-        this.tabId
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'delete-tab',
+          this.tabId
+        )
     }
   }
 }

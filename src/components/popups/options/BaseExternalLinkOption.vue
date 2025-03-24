@@ -11,9 +11,6 @@
 </template>
 
 <script>
-import {
-  shell
-} from 'electron'
 import axios from 'axios'
 import BaseOption from './BaseOption.vue'
 import getAlbum from '@/helpers/actions/api/album/get'
@@ -237,9 +234,11 @@ export default {
     openExternalLink (
       value
     ) {
-      shell.openExternal(
-        value
-      )
+      window
+        .mainProcess
+        .openExternalLink(
+          value
+        )
     }
   }
 }

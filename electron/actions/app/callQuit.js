@@ -1,7 +1,7 @@
 export default function () {
-  mainWindow
+  mainView
     .webContents
     .send(
-      'quit'
+      'quit-called'
     )
 }

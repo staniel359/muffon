@@ -41,6 +41,12 @@ export default function (
     setCurrentTrackIds()
   }
 
+  function handleError () {
+    return getPlayerTrackAudioSearch(
+      playerTrackAudioArgs
+    )
+  }
+
   const playerTrackAudioArgs = {
     source,
     trackData,
@@ -69,6 +75,8 @@ export default function (
   if (isGetAudio) {
     return getAudio().then(
       handleSuccess
+    ).catch(
+      handleError
     )
   } else {
     return getPlayerTrackAudioSearch(

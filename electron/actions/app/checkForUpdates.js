@@ -1,8 +1,7 @@
 import {
   app,
   dialog,
-  shell,
-  net
+  shell
 } from 'electron'
 import electronUpdater from 'electron-updater'
 import {
@@ -102,7 +101,7 @@ function handleError () {
 }
 
 function checkWithoutUpdate () {
-  net.fetch(
+  fetch(
     releasesUrl
   ).then(
     handleSuccess

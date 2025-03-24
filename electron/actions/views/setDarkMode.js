@@ -3,7 +3,8 @@ import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
 
 export default function () {
-  getViews().forEach(
-    changeViewBackgroundColor
-  )
+  getViews()
+    .forEach(
+      changeViewBackgroundColor
+    )
 }

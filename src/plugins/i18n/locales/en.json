@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "Audio sources (by priority)",
+          "automatch": "Match audio to track",
           "bitrate": "Show audio bitrate",
           "album": "Show album",
           "equalizer": "Show equalizer",
@@ -704,8 +705,11 @@
     },
     "active": "Importing {count} of {counter}...",
     "success": {
-      "header": "{counter} has been imported | {counter} have been imported",
-      "content": "You may want to check the data before saving it to the library"
+      "header": {
+        "files": "{counter} has been imported | {counter} have been imported",
+        "tracks": "{counter} has been imported | {counter} have been imported"
+      },
+      "content": "You may want to check the data before saving to library"
     },
     "error": {
       "files": "{counter} could not be imported. Please make sure the metadata format is valid:"

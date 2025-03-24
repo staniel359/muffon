@@ -10,9 +10,6 @@ import {
 } from 'pinia'
 import layoutStore from '@/stores/layout'
 import profileStore from '@/stores/profile'
-import {
-  ipcRenderer
-} from 'electron'
 
 export default {
   name: 'TheQuitObserver',
@@ -32,13 +29,15 @@ export default {
     )
   },
   mounted () {
-    ipcRenderer.on(
-      'quit',
-      this.handleQuit
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'quit-called',
+        this.handleQuitCalled
+      )
   },
   methods: {
-    async handleQuit () {
+    async handleQuitCalled () {
       if (!this.isRememberProfile) {
         await this.clearProfileData()
       }
@@ -69,10 +68,12 @@ export default {
           value
         )
 
-      return ipcRenderer.invoke(
-        'set-electron-store-data',
-        dataFormatted
-      )
+      return window
+        .mainProcess
+        .sendAsyncCommand(
+          'set-electron-store-data',
+          dataFormatted
+        )
     },
     clearTabs () {
       return this.setElectronStoreData(
@@ -89,9 +90,11 @@ export default {
       )
     },
     quit () {
-      ipcRenderer.send(
-        'quit'
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'quit'
+        )
     }
   }
 }

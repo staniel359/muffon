@@ -24,11 +24,12 @@
       <BaseImage
         size="extrasmall"
         class="dropdown-image"
-        :class="{
-          circular: isImageCircular,
-          'rounded-medium': !isImageCircular,
-          wide: isImageWide
-        }"
+        :class="[
+          isImageCircular ? 'circular' : 'rounded-medium',
+          {
+            'video-image': isVideo
+          }
+        ]"
         :model="model"
         :image="image"
         :is-contained="isImageContained"
@@ -73,13 +74,9 @@ export default {
     extra: String,
     value: String,
     isImageContained: Boolean,
-    isImageWide: Boolean
+    isVideo: Boolean
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.dropdown-image
-  &.wide
-    width: 40px !important
-</style>
+<style lang="sass" scoped></style>

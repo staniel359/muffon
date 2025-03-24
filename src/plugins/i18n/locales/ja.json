@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "オーディオソース（優先度別）",
+          "automatch": "オーディオをトラックに合わせる",
           "bitrate": "オーディオビットレートを表示",
           "album": "アルバムを表示",
           "equalizer": "イコライザを表示",
@@ -704,7 +705,10 @@
     },
     "active": "{count} / {counter} をインポート中...",
     "success": {
-      "header": "{counter} がインポートされました | {counter} がインポートされました",
+      "header": {
+        "files": "{counter} がインポートされました | {counter} がインポートされました",
+        "tracks": "{counter} がインポートされました | {counter} がインポートされました"
+      },
       "content": "ライブラリに保存する前にデータを確認することをお勧めします。"
     },
     "error": {

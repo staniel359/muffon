@@ -1,7 +1,4 @@
 import {
-  ipcRenderer
-} from 'electron'
-import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
@@ -47,18 +44,22 @@ export default {
           value
         )
 
-      ipcRenderer.send(
-        'add-tab',
-        tabDataFormatted
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'add-tab',
+          tabDataFormatted
+        )
     },
     setActiveTab (
       tabId
     ) {
-      ipcRenderer.send(
-        'set-active-tab',
-        tabId
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'set-active-tab',
+          tabId
+        )
     }
   }
 }

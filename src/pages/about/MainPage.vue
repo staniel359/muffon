@@ -67,13 +67,10 @@
 </template>
 
 <script>
-import {
-  shell
-} from 'electron'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLogoImage from '@/components/images/BaseLogoImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import {
   name,
@@ -102,7 +99,7 @@ export default {
       return version
     },
     copyrightText () {
-      return `Copyright (c) 2020-2024 ${this.authorName}`
+      return `Copyright © 2020-2025 ${this.authorName}`
     },
     authorName () {
       return author.name
@@ -153,9 +150,11 @@ export default {
     openLink (
       value
     ) {
-      shell.openExternal(
-        value
-      )
+      window
+        .mainProcess
+        .openExternalLink(
+          value
+        )
     }
   }
 }

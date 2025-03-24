@@ -1,5 +1,5 @@
 import {
-  BrowserView
+  WebContentsView
 } from 'electron'
 import getElectronStoreKey from '../electronStore/getKey.js'
 import getActiveTabId from './getActiveId.js'
@@ -17,6 +17,9 @@ import {
 } from '../../handlers/app.js'
 import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
+import {
+  preloadScriptFilePath
+} from '../../helpers/paths.js'
 
 export default function (
   data
@@ -28,25 +31,30 @@ export default function (
 
   const options = {
     webPreferences: {
-      contextIsolation: false,
+      devTools: isDevelopment,
+      preload: preloadScriptFilePath,
       nodeIntegration: true
     }
   }
 
   const tab =
-    new BrowserView(
+    new WebContentsView(
       options
     )
 
   tab.uuid = uuid
 
+  tab.isTab = true
+
   changeViewBackgroundColor(
     tab
   )
 
-  mainWindow.addBrowserView(
-    tab
-  )
+  mainWindow
+    .contentView
+    .addChildView(
+      tab
+    )
 
   const isSwitchToNewTab =
     getElectronStoreKey(
@@ -84,7 +92,7 @@ export default function (
       )
   }
 
-  mainWindow
+  mainView
     .webContents
     .send(
       'add-tab',

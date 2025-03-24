@@ -7,7 +7,7 @@
     :image="imageData?.extrasmall"
     :is-image-contained="isImageContained"
     is-with-image
-    is-image-wide
+    is-video
   />
 </template>
 

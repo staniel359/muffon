@@ -25,7 +25,6 @@ export default {
       type: String,
       required: true
     },
-    isModal: Boolean,
     isMore: Boolean,
     isSmall: Boolean
   },
@@ -43,8 +42,6 @@ export default {
     textClass () {
       if (this.isSmall) {
         return 'main-small-text-container'
-      } else if (this.isModal) {
-        return 'main-formatted-text-container'
       } else {
         return 'main-text-container'
       }

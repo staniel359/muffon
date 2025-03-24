@@ -8,11 +8,21 @@
       #modelName
     >
       <strong>
-        <BaseLink
+        <template
           v-if="modelLink"
-          :text="modelName"
-          :link="modelLink"
-        />
+        >
+          <BaseArtistLinks
+            v-if="isArtist"
+            :artists="[
+              modelName
+            ]"
+          />
+          <BaseLink
+            v-else
+            :text="modelName"
+            :link="modelLink"
+          />
+        </template>
         <template
           v-else
         >
@@ -39,6 +49,7 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
+import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
 import BaseLink from '@/components/links/BaseLink.vue'
 import {
   main as formatAlbumLink
@@ -69,6 +80,7 @@ import {
 export default {
   name: 'TextSection',
   components: {
+    BaseArtistLinks,
     BaseLink
   },
   props: {
@@ -401,6 +413,11 @@ export default {
     },
     playlistId () {
       return this.modelData?.playlist?.id
+    },
+    isArtist () {
+      return (
+        this.model === 'artist'
+      )
     }
   }
 }

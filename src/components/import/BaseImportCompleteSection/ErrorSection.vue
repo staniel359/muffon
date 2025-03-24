@@ -43,12 +43,13 @@ export default {
       )
     },
     counterText () {
-      return this.$tc(
+      return this.$t(
         `counters.nominative.${this.scope}`,
         this.collectionCount,
         {
-          count:
-            this.collectionCountFormatted
+          named: {
+            count: this.collectionCountFormatted
+          }
         }
       )
     },

@@ -1,0 +1,13 @@
+{
+  "show": "显示",
+  "hide": "隐藏",
+  "about": "关于",
+  "quit": "退出",
+  "update": {
+    "message": "新版本已发布",
+    "buttons": {
+      "download": "下载",
+      "close": "关闭"
+    }
+  }
+}

@@ -94,11 +94,13 @@ export default {
       )
     },
     counterText () {
-      return this.$tc(
+      return this.$t(
         `counters.genitive.${this.scope}`,
         this.totalCount,
         {
-          count: this.totalCountFormatted
+          named: {
+            count: this.totalCountFormatted
+          }
         }
       )
     },

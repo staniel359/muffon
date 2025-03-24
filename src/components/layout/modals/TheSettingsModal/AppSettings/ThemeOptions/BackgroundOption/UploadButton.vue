@@ -10,9 +10,6 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import {
-  ipcRenderer
-} from 'electron'
 import BaseImageUploadButton
   from '@/components/buttons/BaseImageUploadButton.vue'
 import {
@@ -34,10 +31,12 @@ export default {
     )
   },
   mounted () {
-    ipcRenderer.on(
-      'create-background-image',
-      this.handleCreateBackgroundImage
-    )
+    window
+      .mainProcess
+      .addCommandHandler(
+        'create-background-image',
+        this.handleCreateBackgroundImage
+      )
   },
   methods: {
     handleUploadChange (
@@ -50,10 +49,12 @@ export default {
         imageData: data
       }
 
-      ipcRenderer.send(
-        'create-background-image',
-        createArgs
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'create-background-image',
+          createArgs
+        )
     },
     handleCreateBackgroundImage (
       _,
@@ -84,13 +85,15 @@ export default {
     setCurrentBackgroundImage (
       imageData
     ) {
-      ipcRenderer.send(
-        'change-background-image',
-        {
-          imageId: imageData.id,
-          imagePath: imageData.path
-        }
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'change-background-image',
+          {
+            imageId: imageData.id,
+            imagePath: imageData.path
+          }
+        )
     }
   }
 }

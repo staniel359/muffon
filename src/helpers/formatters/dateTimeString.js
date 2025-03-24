@@ -20,6 +20,14 @@ function dateTimeLocalized (
   value,
   scope
 ) {
+  const isOnlyYear = (
+    value.toString().length === 4
+  )
+
+  if (isOnlyYear) {
+    return value
+  }
+
   const {
     timezone,
     language

@@ -30,7 +30,7 @@ import queueStore from '@/stores/queue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import ActionsBlock from './HeaderSegment/ActionsBlock.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseQueueOptionsPopup
   from '@/components/popups/queue/BaseQueueOptionsPopup.vue'
 import {
@@ -53,12 +53,13 @@ export default {
       }
     ),
     tracksCountText () {
-      return this.$tc(
+      return this.$t(
         'counters.nominative.tracks',
         this.queueTracksCount,
         {
-          count:
-            this.queueTracksCountFormatted
+          named: {
+            count: this.queueTracksCountFormatted
+          }
         }
       )
     },

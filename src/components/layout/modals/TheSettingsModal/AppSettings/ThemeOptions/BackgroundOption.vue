@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="backgroundText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <UploadButton />
@@ -17,7 +15,8 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import UploadButton from './BackgroundOption/UploadButton.vue'
 import BaseBackgroundImagesTableList
   from '@/components/lists/backgroundImages/BaseBackgroundImagesTableList.vue'
@@ -25,12 +24,12 @@ import BaseBackgroundImagesTableList
 export default {
   name: 'BackgroundOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     UploadButton,
     BaseBackgroundImagesTableList
   },
   computed: {
-    backgroundText () {
+    optionText () {
       return this.$t(
         'settings.options.app.theme.background'
       )

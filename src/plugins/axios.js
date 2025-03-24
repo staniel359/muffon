@@ -1,12 +1,11 @@
 import axios from 'axios'
-import {
-  ipcRenderer
-} from 'electron'
 
 const isDevelopment =
-  await ipcRenderer.invoke(
-    'check-if-is-development'
-  )
+  await window
+    .mainProcess
+    .sendAsyncCommand(
+      'check-if-is-development'
+    )
 
 const developmentBaseUrl =
   'http://localhost:4000'

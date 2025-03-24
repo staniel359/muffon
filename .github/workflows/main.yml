@@ -15,29 +15,27 @@ jobs:
     steps:
       - name: Set up checkout
         uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
-        with:
-          version: latest
+      - uses: pnpm/action-setup@v4
 
-      - name: Fix pnpm bug # https://github.com/electron-userland/electron-builder/issues/6933#issuecomment-1213438889
-        if: matrix.os == 'windows-latest'
-        run: |
+      # - name: Fix pnpm bug # https://github.com/electron-userland/electron-builder/issues/6933#issuecomment-1213438889
+        # if: matrix.os == 'windows-latest'
+        # run: |
           # Get the version of pnpm
-          $pnpmVersion = pnpm -v
+          # $pnpmVersion = pnpm -v
           
           # Construct the file path with the pnpm version
-          $file = "C:\Users\runneradmin\setup-pnpm\node_modules\.pnpm\pnpm@$pnpmVersion\node_modules\pnpm\bin\pnpm.cjs"
+          # $file = "C:\Users\runneradmin\setup-pnpm\node_modules\.pnpm\pnpm@$pnpmVersion\node_modules\pnpm\bin\pnpm.cjs"
 
           # Read the content of the file
-          $content = Get-Content $file
+          # $content = Get-Content $file
 
           # Replace the target string
-          $content = $content -replace "#!/usr/bin/env node", "#!node"
+          # $content = $content -replace "#!/usr/bin/env node", "#!node"
 
           # Write the modified content back to the file
-          $content | Set-Content $file
+          # $content | Set-Content $file
 
-          Write-Host "Replacement complete."
+          # Write-Host "Replacement complete."
 
       - name: Set up Electron cache
         uses: actions/cache@v4
@@ -56,7 +54,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 23
           cache: pnpm
 
       - name: Set up dependencies
@@ -94,5 +92,13 @@ jobs:
           ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
           ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: pnpm release --x64
+        run: pnpm release:electron --x64
+
+      - name: Release linux arm64 # to prevent unnecessary build locally
+        if: matrix.os == 'ubuntu-latest'
+        env:
+          ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
+          ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: pnpm release:electron --arm64
         

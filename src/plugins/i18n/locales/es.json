@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "Las fuentes del audio (por prioridad)",
+          "automatch": "Coincidir audio con pista",
           "bitrate": "Mostrar la velocidad de bits del audio",
           "album": "Mostrar el álbum",
           "equalizer": "Mostrar el ecualizador",
@@ -704,7 +705,10 @@
     },
     "active": "Importando {count} de {counter}...",
     "success": {
-      "header": "{counter} se ha importado | {counter} han importado",
+      "header": {
+        "files": "{counter} se ha importado | {counter} han importado",
+        "tracks": "{counter} se ha importado | {counter} han importado"
+      },
       "content": "Es posible que desees verificar los datos antes de guardar a la bibleoteca"
     },
     "error": {

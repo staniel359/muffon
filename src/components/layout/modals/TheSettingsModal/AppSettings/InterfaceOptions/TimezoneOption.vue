@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="timezoneText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseTimezoneSelect />
@@ -13,17 +11,18 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseTimezoneSelect from '@/components/selects/BaseTimezoneSelect.vue'
 
 export default {
   name: 'TimezoneOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseTimezoneSelect
   },
   computed: {
-    timezoneText () {
+    optionText () {
       return this.$t(
         'settings.options.app.interface.timezone'
       )

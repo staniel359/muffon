@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "(우선순위별) 오디오 소스",
+          "automatch": "오디오를 트랙과 맞추기",
           "bitrate": "오디오 비트레이트 표시",
           "album": "앨범 표시",
           "equalizer": "이퀄라이저 표시",
@@ -704,7 +705,10 @@
     },
     "active": "{counter}의 {count} 가져오는 중...",
     "success": {
-      "header": "{counter}이(가) 가져왔음 | {counter}이(가) 가져왔음",
+      "header": {
+        "files": "{counter}이(가) 가져왔음 | {counter}이(가) 가져왔음",
+        "tracks": "{counter}이(가) 가져왔음 | {counter}이(가) 가져왔음"
+      },
       "content": "라이브러리에 저장하기 전에 데이터를 확인하는 것이 좋음"
     },
     "error": {

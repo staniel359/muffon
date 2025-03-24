@@ -23,9 +23,6 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
-import {
-  ipcRenderer
-} from 'electron'
 import BaseImage from '@/components/images/BaseImage.vue'
 import ClearButton from './ImageItem/ClearButton.vue'
 import {
@@ -99,15 +96,19 @@ export default {
       }
     },
     setBackgroundImage () {
-      ipcRenderer.send(
-        'change-background-image',
-        this.changeArgs
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'change-background-image',
+          this.changeArgs
+        )
     },
     setDefaultBackgroundImage () {
-      ipcRenderer.send(
-        'reset-background-image'
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'reset-background-image'
+        )
     }
   }
 }

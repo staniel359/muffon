@@ -1,4 +1,4 @@
-import js from '@eslint/js'
+import pluginJs from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
 import {
   FlatCompat
@@ -8,7 +8,7 @@ import {
 } from '@eslint/compat'
 
 export default [
-  js.configs.recommended,
+  pluginJs.configs.recommended,
   ...pluginVue.configs[
     'flat/recommended'
   ],
@@ -25,17 +25,28 @@ export default [
     ignores: [
       'build/',
       'build_electron/',
-      'electron/plugins/i18n.js',
       'semantic/'
     ]
   },
   {
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'module'
+      sourceType: 'module',
+      globals: {
+        mainWindow: 'writable',
+        mainView: 'writable',
+        aboutWindow: 'writable',
+        aboutView: 'writable',
+        tray: 'writable',
+        discordClient: 'writable',
+        tabsPanelHeight: 'readonly',
+        YT: 'readonly',
+        $: 'readonly'
+      }
     },
     files: [
       '**/*.js',
+      '**/*.mjs',
       '**/*.vue'
     ],
     rules: {
@@ -59,7 +70,6 @@ export default [
         }
       ],
       'no-new': 'off',
-      'no-undef': 'off',
       'object-curly-newline': [
         'error',
         {
@@ -124,15 +134,6 @@ export default [
         'error',
         'always'
       ]
-    }
-  },
-  {
-    files: [
-      'electron/**/*',
-      'vite.config.mjs'
-    ],
-    rules: {
-      'no-undef': 'off'
     }
   }
 ]

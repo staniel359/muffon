@@ -15,19 +15,12 @@
     />
 
     <div class="main-settings-option main-bottom-section">
-      <div class="option-header">
-        <BaseButton
-          class="red circular option-button"
-          left-icon="lastfm"
-          :class="{
-            loading: isLoading,
-            disabled: isLoading
-          }"
-          :text="connectText"
-          :is-invertable="false"
-          @click="handleClick"
-        />
-      </div>
+      <BaseSettingsOptionButton
+        :text="connectText"
+        :is-loading="isLoading"
+        is-lastfm
+        @click="handleClick"
+      />
 
       <BaseClearButton
         @click="handleClearButtonClick"
@@ -38,7 +31,8 @@
 
 <script>
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
-import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseSettingsOptionButton
+  from '@/components/buttons/settings/BaseSettingsOptionButton.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import BaseMessage from '@/components/messages/BaseMessage.vue'
 import createConnection from '@/helpers/actions/api/connection/create'
@@ -50,7 +44,7 @@ export default {
   name: 'ConnectTokenSection',
   components: {
     BaseErrorMessage,
-    BaseButton,
+    BaseSettingsOptionButton,
     BaseClearButton,
     BaseMessage
   },

@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="checkNewVersionsText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseToggle
@@ -20,14 +18,15 @@ import {
   mapState
 } from 'pinia'
 import updatesStore from '@/stores/updates'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 import notificationMixin from '@/mixins/notificationMixin'
 
 export default {
   name: 'CheckNewVersionsOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseToggle
   },
   mixins: [
@@ -40,7 +39,7 @@ export default {
         'isCheckForNewVersions'
       ]
     ),
-    checkNewVersionsText () {
+    optionText () {
       return this.$t(
         'settings.options.app.updates.check'
       )

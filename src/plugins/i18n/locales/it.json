@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "Sorgente audio",
+          "automatch": "Abbina audio al brano",
           "bitrate": "Mostra bitrate audio",
           "album": "Mostra album",
           "equalizer": "Mostra l'equalizzatore",
@@ -704,7 +705,10 @@
     },
     "active": "Importazione {count} di {counter}...",
     "success": {
-      "header": "{counter} importato | {counter} importati",
+      "header": {
+        "files": "{counter} importato | {counter} importati",
+        "tracks": "{counter} importato | {counter} importati"
+      },
       "content": "Potresti voler controllare i dati prima di salvare in libreria"
     },
     "error": {

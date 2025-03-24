@@ -1,10 +1,8 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
-        :text="scrobbleNotificationsText"
+      <BaseSettingsOptionHeader
+        :text="optionText"
       />
 
       <BaseToggle
@@ -23,13 +21,14 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
   name: 'ScrobbleNotificationsOption',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseToggle
   },
   computed: {
@@ -41,7 +40,7 @@ export default {
         isPlayerWithScrobbling: 'isWithScrobbling'
       }
     ),
-    scrobbleNotificationsText () {
+    optionText () {
       return this.$t(
         'settings.options.connections.lastfm.scrobbleNotifications'
       )

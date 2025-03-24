@@ -31,6 +31,9 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch**
 - <img src="https://musicbrainz.org/static/images/favicons/favicon-16x16.png" height="16"> **MusicBrainz**
 
+>[!CAUTION]
+>As of February 2025, Spotify is currently NOT working as a playback source.
+
 ### Features
 
 - **absolutely free**
@@ -123,7 +126,7 @@ That's because Windows blocks unsigned apps.
 #### Have a question / suggestion / bug report?
 [Create an issue](https://github.com/staniel359/muffon/issues/new) or [Join Discord chat](https://discord.gg/kpWsA5NBmJ)
 
-- If you have a suggestion: Please check [planned features](https://emphasized-friend-e32.notion.site/Planned-35e985a3524e48f6a69732cce0d0b5e6) and [coming soon in next release](https://emphasized-friend-e32.notion.site/New-version-0aebcf9fcbd8474aa514feffa8b42703) to make sure you don't make a duplicate suggestion!
+If you have a suggestion, please check [our to do list](https://github.com/users/staniel359/projects/2/views/4) to make sure you don't make a duplicate suggestion.
   
 ## Contribute
 

@@ -9,9 +9,6 @@ import {
   mapState
 } from 'pinia'
 import playerStore from '@/stores/player'
-import {
-  ipcRenderer
-} from 'electron'
 import imagesSizes from '@/helpers/data/imagesSizes'
 
 export default {
@@ -99,15 +96,19 @@ export default {
     setTitle (
       value
     ) {
-      ipcRenderer.send(
-        'set-title',
-        value
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'set-title',
+          value
+        )
 
-      ipcRenderer.send(
-        'set-tray-tooltip',
-        value
-      )
+      window
+        .mainProcess
+        .sendCommand(
+          'set-tray-tooltip',
+          value
+        )
     },
     formatImage (
       {

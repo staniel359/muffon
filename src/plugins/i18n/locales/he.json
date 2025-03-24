@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "מקורות שמע (לפי עדיפות)",
+          "automatch": "התאם אודיו לשיר",
           "bitrate": "הצג ביטרייט שמע",
           "album": "הצג אלבום",
           "equalizer": "הצג אקולייזר",
@@ -704,7 +705,10 @@
     },
     "active": "מייבא {count} מתוך {counter}...",
     "success": {
-      "header": "יובאו {counter} | יובאו {counter}",
+      "header": {
+        "files": "יובאו {counter} | יובאו {counter}",
+        "tracks": "יובאו {counter} | יובאו {counter}"
+      },
       "content": "יתכן שתרצה לבדוק את הנתונים לפני השמירה בספרייה"
     },
     "error": {

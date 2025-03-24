@@ -62,11 +62,7 @@ export default {
       )
     },
     modelNameStrong () {
-      return `
-        <strong>
-          ${this.modelName}
-        </strong>
-      `
+      return `<strong>${this.modelName}</strong>`
     },
     modelName () {
       switch (this.model) {

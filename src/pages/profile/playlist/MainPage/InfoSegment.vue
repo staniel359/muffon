@@ -30,11 +30,14 @@
           :order="order"
         />
 
-        <p
+        <div
           v-if="description"
-          class="description main-formatted-text-container"
-          v-html="descriptionFormatted"
-        />
+          class="description"
+        >
+          <BasePlaylistDescription
+            :playlist-data="playlistData"
+          />
+        </div>
 
         <BaseCounterSection
           class="description"
@@ -66,7 +69,7 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import BaseCounterSection from '@/components/sections/BaseCounterSection.vue'
 import BaseTimestampSection
@@ -77,11 +80,11 @@ import BaseItemContainer
   from '@/components/containers/item/BaseItemContainer.vue'
 import BaseProfilePlaylistTracksPlayButton
   from '@/components/buttons/play/profile/playlist/BaseProfilePlaylistTracksPlayButton.vue'
+import BasePlaylistDescription
+  from '@/components/models/playlist/BasePlaylistDescription.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
-import formatTextWithExternalLink
-  from '@/helpers/formatters/textWithExternalLink'
 
 export default {
   name: 'InfoSegment',
@@ -94,7 +97,8 @@ export default {
     BaseTimestampSection,
     BasePlaylistOptionsPopup,
     BaseItemContainer,
-    BaseProfilePlaylistTracksPlayButton
+    BaseProfilePlaylistTracksPlayButton,
+    BasePlaylistDescription
   },
   props: {
     playlistData: {
@@ -130,14 +134,6 @@ export default {
     },
     description () {
       return this.playlistData.description
-    },
-    descriptionFormatted () {
-      return formatTextWithExternalLink(
-        {
-          text: this.description,
-          className: 'bold'
-        }
-      )
     },
     playlistId () {
       return this.playlistData.id.toString()

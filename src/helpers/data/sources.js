@@ -181,12 +181,12 @@ export default [
       'group',
       'album'
     ],
-    albumsTypes: [
-      'album',
-      'singleEp',
-      'compilation',
-      'misc'
-    ],
+    // albumsTypes: [
+    //   'album',
+    //   'singleEp',
+    //   'compilation',
+    //   'misc'
+    // ],
     searchScopes: [
       'artists',
       'albums',

@@ -20,7 +20,7 @@
 
       <div
         v-if="text"
-        class="text main-sendable-content-section main-formatted-text-container"
+        class="text main-sendable-content-section main-text-container"
         v-text="text"
       />
 

@@ -1,6 +1,6 @@
 {
   "appId": "com.electron.muffon",
-  "copyright": "Copyright © 2020-2024 Aleksey Shpakovsky",
+  "copyright": "Copyright © 2020-2025 Aleksey Shpakovsky",
   "win": {
     "icon": "build/icons/icon.ico",
     "target": [
@@ -28,11 +28,18 @@
       "rpm"
     ],
     "desktop": {
-      "Actions": "about;",
-      "Categories": "AudioVideo",
-      "Comment": "Advanced multi-source music streaming + discovery client",
-      "MimeType": "x-scheme-handler/muffon;",
-      "\n\n[Desktop Action about]\nName=About\nExec": "/opt/muffon/muffon --open-about-window\n\n"
+      "entry": {
+        "Actions": "about;",
+        "Categories": "AudioVideo",
+        "Comment": "Advanced multi-source music streaming + discovery client",
+        "MimeType": "x-scheme-handler/muffon;"
+      },
+      "desktopActions": {
+        "about": {
+          "Name": "About",
+          "Exec": "/opt/muffon/muffon --open-about-window"
+        }
+      }
     }
   },
   "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
@@ -47,7 +54,18 @@
   },
   "flatpak": {
     "runtimeVersion": "23.08",
-    "baseVersion": "23.08"
+    "baseVersion": "23.08",
+    "finishArgs": [
+      "--share=network",
+      "--socket=wayland",
+      "--socket=x11",
+      "--socket=pulseaudio",
+      "--device=dri",
+      "--filesystem=xdg-run/pipewire-0:ro",
+      "--socket=system-bus",
+      "--socket=session-bus",
+      "--share=ipc"
+    ]
   },
   "portable": {
     "artifactName": "${productName}-${version}-${os}-${arch}-portable.${ext}"
@@ -59,7 +77,6 @@
   "files": [
     "./.env",
     "./electron/**/*",
-    "./index.html",
     {
       "from": "./build",
       "to": "./"

@@ -26,7 +26,9 @@
       :icons="icons"
     />
 
-    {{ text }}
+    <div
+      v-text="text"
+    />
 
     <div
       v-if="isPage"

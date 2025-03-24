@@ -1,6 +1,7 @@
 import saveAudioFile from '../../actions/audioFile/save.js'
 import deleteAudioFile from '../../actions/audioFile/delete.js'
 import readAudioFileMetadata from '../../actions/audioFile/readMetadata.js'
+import readAudioFileCover from '../../actions/audioFile/readCover.js'
 
 export function handleSaveAudioFile (
   _,
@@ -48,6 +49,19 @@ export function handleReadAudioFileMetadata (
   return readAudioFileMetadata(
     {
       filePath
+    }
+  )
+}
+
+export function handleReadAudioFileCover (
+  _,
+  {
+    imageData
+  }
+) {
+  return readAudioFileCover(
+    {
+      imageData
     }
   )
 }

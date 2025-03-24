@@ -1,9 +1,7 @@
 <template>
   <div class="main-settings-option-container">
     <div class="main-settings-option">
-      <BaseHeader
-        class="option-header"
-        tag="h4"
+      <BaseSettingsOptionHeader
         :text="optionText"
       />
 
@@ -16,13 +14,14 @@
 </template>
 
 <script>
-import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSettingsOptionHeader
+  from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
   name: 'OptionItem',
   components: {
-    BaseHeader,
+    BaseSettingsOptionHeader,
     BaseToggle
   },
   props: {

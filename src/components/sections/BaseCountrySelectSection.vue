@@ -2,7 +2,7 @@
   <div class="middle-aligned">
     <BaseCountrySelect
       :key="key"
-      class="main-wide-field"
+      class="main-big-section"
       :selected="selected"
       :is-form-field="isFormField"
       @select="handleCountrySelect"

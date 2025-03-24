@@ -1,11 +1,13 @@
 import {
-  BrowserWindow
+  BaseWindow,
+  WebContentsView
 } from 'electron'
 import {
   windowIcon
 } from '../../helpers/icons.js'
 import {
   isDevelopment,
+  wait,
   isShowDevTools
 } from '../../helpers/utils.js'
 import {
@@ -20,39 +22,16 @@ import callQuit from '../app/callQuit.js'
 import setTrayMenu from '../tray/setMenu.js'
 import setTabsBounds from '../tabs/setBounds.js'
 import getTopTab from '../tab/getTop.js'
+import setMainViewBounds from '../mainView/setBounds.js'
 import changeViewBackgroundColor
   from '../view/changeBackgroundColor.js'
-
-function handleReadyToShow () {
-  const isMaximizeOnStart =
-    getElectronStoreKey(
-      'window.isMaximizeOnStart'
-    )
-
-  if (isMaximizeOnStart) {
-    mainWindow.maximize()
-  }
-
-  showMainWindow()
-
-  const isCheckForNewVersions =
-    getElectronStoreKey(
-      'updates.isCheckForNewVersions'
-    )
-
-  const isCheckForUpdates = (
-    !isDevelopment &&
-      isCheckForNewVersions
-  )
-
-  if (isCheckForUpdates) {
-    checkForUpdates()
-  }
-
-  setViewScale(
-    mainWindow
-  )
-}
+import showViewDevTools from '../view/showDevTools.js'
+import {
+  handleNewWindow
+} from '../../handlers/app.js'
+import {
+  preloadScriptFilePath
+} from '../../helpers/paths.js'
 
 function handleShow () {
   setTrayMenu()
@@ -79,69 +58,123 @@ function handleClose (
   }
 }
 
-function handleResize () {
+function resizeViews () {
+  setMainViewBounds()
+
   setTabsBounds()
+}
+
+function handleResize () {
+  resizeViews()
 }
 
 function handleFocus () {
   const topTab = getTopTab()
 
-  if (!topTab) { return }
+  if (topTab) {
+    topTab
+      .webContents
+      .focus()
+  }
+}
 
-  topTab.webContents.focus()
+function handleDidFinishLoad () {
+  showMainWindow()
+}
+
+async function handleFirstShow () {
+  resizeViews()
+
+  setViewScale(
+    mainView
+  )
+
+  const isMaximizeOnStart =
+    getElectronStoreKey(
+      'window.isMaximizeOnStart'
+    )
+
+  if (isMaximizeOnStart) {
+    await wait(
+      50
+    )
+
+    mainWindow.maximize()
+  }
+
+  const isCheckForNewVersions =
+    getElectronStoreKey(
+      'updates.isCheckForNewVersions'
+    )
+
+  const isCheckForUpdates = (
+    !isDevelopment &&
+      isCheckForNewVersions
+  )
+
+  if (isCheckForUpdates) {
+    checkForUpdates()
+  }
 }
 
 export default function () {
   const mainWindowWidth = 900
   const mainWindowHeight = 600
 
-  const options = {
+  const mainWindowOptions = {
     width: mainWindowWidth,
     height: mainWindowHeight,
+    minWidth: mainWindowWidth,
+    minHeight: mainWindowHeight,
     icon: windowIcon,
-    show: false,
+    show: false
+  }
+
+  mainWindow =
+    new BaseWindow(
+      mainWindowOptions
+    )
+
+  mainWindow.removeMenu()
+
+  const mainViewOptions = {
     webPreferences: {
-      contextIsolation: false,
       devTools: isDevelopment,
+      preload: preloadScriptFilePath,
       nodeIntegration: true
     }
   }
 
-  mainWindow =
-    new BrowserWindow(
-      options
+  mainView =
+    new WebContentsView(
+      mainViewOptions
     )
 
-  changeViewBackgroundColor(
-    mainWindow
-  )
-
-  mainWindow.loadURL(
-    baseUrl
-  )
-
-  mainWindow.setMinimumSize(
-    mainWindowWidth,
-    mainWindowHeight
-  )
-
-  mainWindow.removeMenu()
-
-  if (isShowDevTools) {
-    const devToolsData = {
-      mode: 'detach'
-    }
-
-    mainWindow
-      .webContents
-      .openDevTools(
-        devToolsData
-      )
+  if (isDevelopment && isShowDevTools) {
+    showViewDevTools(
+      mainView
+    )
   }
 
+  changeViewBackgroundColor(
+    mainView
+  )
+
+  mainWindow
+    .contentView
+    .addChildView(
+      mainView
+    )
+
+  mainView
+    .webContents
+    .loadURL(
+      baseUrl
+    )
+
   mainWindow.once(
-    'ready-to-show',
-    handleReadyToShow
+    'show',
+    handleFirstShow
   )
 
   mainWindow.on(
@@ -168,4 +201,17 @@ export default function () {
     'focus',
     handleFocus
   )
+
+  mainView
+    .webContents
+    .setWindowOpenHandler(
+      handleNewWindow
+    )
+
+  mainView
+    .webContents
+    .once(
+      'did-finish-load',
+      handleDidFinishLoad
+    )
 }

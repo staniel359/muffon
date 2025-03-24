@@ -16,11 +16,14 @@
           v-text="communityTitle"
         />
 
-        <p
+        <div
           v-if="description"
-          class="description main-formatted-text-container"
-          v-text="description"
-        />
+          class="description"
+        >
+          <BaseCommunityDescription
+            :community-data="communityData"
+          />
+        </div>
 
         <InfoSection
           :community-data="communityData"
@@ -42,6 +45,8 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
+import BaseCommunityDescription
+  from '@/components/models/community/BaseCommunityDescription.vue'
 import InfoSection from './InfoSegment/InfoSection.vue'
 import BaseCommunityOptionsPopup
   from '@/components/popups/community/BaseCommunityOptionsPopup.vue'
@@ -53,6 +58,7 @@ export default {
   components: {
     BaseSegmentContainer,
     BaseZoomableImage,
+    BaseCommunityDescription,
     InfoSection,
     BaseCommunityOptionsPopup,
     BaseItemContainer

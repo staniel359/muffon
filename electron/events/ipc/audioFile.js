@@ -4,7 +4,8 @@ import {
 import {
   handleSaveAudioFile,
   handleDeleteAudioFile,
-  handleReadAudioFileMetadata
+  handleReadAudioFileMetadata,
+  handleReadAudioFileCover
 } from '../../handlers/ipc/audioFile.js'
 
 export default function () {
@@ -21,5 +22,10 @@ export default function () {
   ipcMain.handle(
     'read-audio-file-metadata',
     handleReadAudioFileMetadata
+  )
+
+  ipcMain.handle(
+    'read-audio-file-cover',
+    handleReadAudioFileCover
   )
 }

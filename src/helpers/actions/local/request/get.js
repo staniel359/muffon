@@ -1,7 +1,4 @@
 import {
-  ipcRenderer
-} from 'electron'
-import {
   sortByCreated
 } from '@/helpers/utils'
 
@@ -48,14 +45,16 @@ export default function (
     this.error = error
   }
 
-  return ipcRenderer.invoke(
-    'get-electron-store-key',
-    key
-  ).finally(
-    handleComplete
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  )
+  return window
+    .mainProcess
+    .sendAsyncCommand(
+      'get-electron-store-key',
+      key
+    ).finally(
+      handleComplete
+    ).then(
+      handleSuccess
+    ).catch(
+      handleError
+    )
 }

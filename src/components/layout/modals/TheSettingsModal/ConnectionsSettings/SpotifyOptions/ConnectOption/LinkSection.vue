@@ -1,7 +1,7 @@
 <template>
   <div class="main-settings-option-container">
     <BaseMessage
-      class="main-top-section main-formatted-text-container"
+      class="main-top-section"
       :content="noticeTextFormatted"
       is-info
     />
@@ -33,7 +33,7 @@
       </BaseFormInputContainer>
 
       <div class="main-settings-option main-bottom-section">
-        <div class="option-header">
+        <div class="main-settings-option-header">
           <BaseSubmitButton
             action-key="openLink"
             is-basic
@@ -51,9 +51,6 @@
 
 <script>
 import axios from 'axios'
-import {
-  shell
-} from 'electron'
 import {
   mapState
 } from 'pinia'
@@ -173,9 +170,11 @@ export default {
       )
     },
     handleSuccess () {
-      shell.openExternal(
-        this.codeLink
-      )
+      window
+        .mainProcess
+        .openExternalLink(
+          this.codeLink
+        )
 
       this.$emit(
         'openLinkButtonClick',
