@@ -52,7 +52,7 @@
     "change-case": "^5.4.4",
     "crypto-js": "^4.2.0",
     "deepmerge": "^4.3.1",
-    "electron": "^35.0.3",
+    "electron": "^35.1.2",
     "electron-builder": "26.0.8",
     "eslint": "^9.23.0",
     "eslint-config-standard": "^17.1.0",
@@ -65,14 +65,14 @@
     "pinia": "^3.0.1",
     "sass": "^1.86.0",
     "slick-carousel": "^1.8.1",
-    "vite": "^6.2.2",
+    "vite": "^6.2.3",
     "vite-plugin-electron-renderer": "^0.14.6",
     "vite-plugin-eslint": "^1.8.1",
     "vue": "^3.5.13",
     "vue-i18n": "^11.1.2",
     "vue-router": "^4.5.0"
   },
-  "packageManager": "pnpm@10.6.4+sha256.0a3574244b6d2bea5b5d530c0901fbc5dafa593c2e9962a421d57b839f97063f",
+  "packageManager": "pnpm@10.7.0+sha256.35cab26953bf90847e798839db58c9a2a82d526b7af179fd2a103c18242cadc6",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
