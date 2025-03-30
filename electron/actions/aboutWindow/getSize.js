@@ -3,9 +3,27 @@ import {
 } from '../../helpers/utils.js'
 
 export default function () {
+  let width
+
+  let height
+
   if (isLinux) {
-    return aboutWindow.getSize()
+    const size = aboutWindow.getSize()
+
+    width = size[0]
+
+    height = size[1]
   } else {
-    return aboutWindow.getContentSize()
+    const size =
+      aboutWindow.getContentBounds()
+
+    width = size.width
+
+    height = size.height
   }
+
+  return [
+    width,
+    height
+  ]
 }
