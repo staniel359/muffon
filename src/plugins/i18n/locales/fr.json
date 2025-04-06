@@ -546,6 +546,7 @@
         },
         "player": {
           "audioSources": "Sources audio (par priorité)",
+          "automatch": "Associer l'audio à la titre",
           "bitrate": "Afficher le bitrate audio",
           "album": "Montrer l'album",
           "equalizer": "Montrer l'égaliseur",
