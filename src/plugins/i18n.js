@@ -13,6 +13,7 @@ import ko from './i18n/locales/ko.json'
 import pl from './i18n/locales/pl.json'
 import ru from './i18n/locales/ru.json'
 import zh from './i18n/locales/zh.json'
+import genz from './i18n/locales/genz.json'
 import slavicPluralizationRule
   from './i18n/rules/pluralization/slavic.js'
 
@@ -30,7 +31,8 @@ const localesData = {
   ko,
   pl,
   ru,
-  zh
+  zh,
+  genz
 }
 
 const pluralizationRules = {
@@ -164,6 +166,16 @@ if (import.meta.hot) {
     fileImport => {
       i18n.global.setLocaleMessage(
         'zh',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/genz.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'genz',
         fileImport.default
       )
     }

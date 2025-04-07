@@ -84,6 +84,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - 한국어 ([@DDinghoya](https://github.com/DDinghoya))
 - Polski ([@Lukas-KK](https://github.com/Lukas-KK))
 - Русский ([@staniel359](https://github.com/staniel359))
+- Gen Z ([@xyloflake](https://github.com/xyloflake), [@gamersi](https://github.com/gamersi))
 
 ### Technical stack
 

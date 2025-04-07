@@ -1,0 +1,13 @@
+{
+    "show": "Spill the tea",
+    "hide": "Yeet it",
+    "about": "Abt",
+    "exit": "Dip",
+    "update": {
+        "message": "New update droppin', no cap",
+        "buttons": {
+            "download": "Sounds rad, i'm down",
+            "close": "nah, i'm good"
+        }
+    }
+}
