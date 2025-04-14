@@ -31,9 +31,6 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch**
 - <img src="https://musicbrainz.org/static/images/favicons/favicon-16x16.png" height="16"> **MusicBrainz**
 
->[!CAUTION]
->As of February 2025, Spotify is currently NOT working as a playback source.
-
 ### Features
 
 - **absolutely free**
@@ -74,16 +71,18 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ### Languages
 
-- Беларуская ([@staniel359](https://github.com/staniel359))
-- Deutsch ([@gamersi](https://github.com/gamersi))
 - English ([@staniel359](https://github.com/staniel359))
+- Deutsch ([@gamersi](https://github.com/gamersi))
+- Español ([@Lolabird](https://github.com/Lolabird))
 - Français ([@TheFlomax](https://github.com/TheFlomax))
-- עברית ([@EthanPZ1](https://github.com/EthanPZ1))
 - Italiano ([@ZinRicky](https://github.com/ZinRicky), [@filipporomani](https://github.com/filipporomani))
+- Polski ([@Lukas-KK](https://github.com/Lukas-KK))
+- Беларуская ([@staniel359](https://github.com/staniel359))
+- Русский ([@staniel359](https://github.com/staniel359))
+- 中文 ([@PoorShawn](https://github.com/PoorShawn))
 - 日本語 ([@xyloflake](https://github.com/xyloflake))
 - 한국어 ([@DDinghoya](https://github.com/DDinghoya))
-- Polski ([@Lukas-KK](https://github.com/Lukas-KK))
-- Русский ([@staniel359](https://github.com/staniel359))
+- עברית ([@EthanPZ1](https://github.com/EthanPZ1))
 
 ### Technical stack
 
@@ -92,13 +91,13 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ### Available platforms
 
-- Windows (10, 11)
-- MacOS
-- Linux
+- Windows (10, 11) (x64)
+- MacOS (x64, arm64)
+- Linux (x64, arm64)
 
 ## Download
 
-[Latest (v2.1.0)](https://github.com/staniel359/muffon/releases/latest)
+[Latest (v2.2.0)](https://github.com/staniel359/muffon/releases/latest)
 
 ## Star History
 
