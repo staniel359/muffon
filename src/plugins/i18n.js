@@ -10,7 +10,11 @@ import ja from './i18n/locales/ja.json';
 import ko from './i18n/locales/ko.json';
 import pl from './i18n/locales/pl.json';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import pt from './i18n/locales/pt_br.json';
+=======
+import pt_br from './i18n/locales/pt_br.json';
+>>>>>>> 92cc902c0815ce5e669af5be50eac08148555a6c
 =======
 import pt_br from './i18n/locales/pt_br.json';
 >>>>>>> 92cc902c0815ce5e669af5be50eac08148555a6c
@@ -32,7 +36,11 @@ const localesData = {
   ko,
   pl,
 <<<<<<< HEAD
+<<<<<<< HEAD
   pt,
+=======
+  pt_br,
+>>>>>>> 92cc902c0815ce5e669af5be50eac08148555a6c
 =======
   pt_br,
 >>>>>>> 92cc902c0815ce5e669af5be50eac08148555a6c
@@ -95,7 +103,11 @@ if (import.meta.hot) {
 
   import.meta.hot.accept('./i18n/locales/pt_br.json', (fileImport) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     i18n.global.setLocaleMessage('pt', fileImport.default);
+=======
+    i18n.global.setLocaleMessage('pt-BR', fileImport.default);
+>>>>>>> 92cc902c0815ce5e669af5be50eac08148555a6c
 =======
     i18n.global.setLocaleMessage('pt-BR', fileImport.default);
 >>>>>>> 92cc902c0815ce5e669af5be50eac08148555a6c
