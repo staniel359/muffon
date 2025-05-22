@@ -12,10 +12,26 @@ import pl from 'i18n-iso-countries/langs/pl.json';
 import pt from 'i18n-iso-countries/langs/pt.json';
 import ru from 'i18n-iso-countries/langs/ru.json';
 import zh from 'i18n-iso-countries/langs/zh.json';
+genz.locale = 'genz'
 
-// i18n
 
-const locales = [be, de, en, es, fr, he, it, ja, ko, pl, pt, ru, zh];
+const locales = [
+  be,
+  de,
+  en,
+  es,
+  fr,
+  he,
+  it,
+  ja,
+  ko,
+  pl,
+  pt,
+  ru,
+  zh,
+  genz
+]
+
 
 function addLocale(locale) {
   registerLocale(locale);

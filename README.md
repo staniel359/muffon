@@ -84,6 +84,8 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - 日本語 ([@xyloflake](https://github.com/xyloflake))
 - 한국어 ([@DDinghoya](https://github.com/DDinghoya))
 - עברית ([@EthanPZ1](https://github.com/EthanPZ1))
+- Gen Z ([@xyloflake](https://github.com/xyloflake), [@gamersi](https://github.com/gamersi))
+ genz-translation
 
 ### Technical stack
 

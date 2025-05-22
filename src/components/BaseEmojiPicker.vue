@@ -47,7 +47,8 @@ export default {
         ko: en,
         pl,
         ru,
-        zh
+        zh,
+        genz: en
       }
     }
   },
