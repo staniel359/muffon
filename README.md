@@ -77,6 +77,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - Français ([@TheFlomax](https://github.com/TheFlomax))
 - Italiano ([@ZinRicky](https://github.com/ZinRicky), [@filipporomani](https://github.com/filipporomani))
 - Polski ([@Lukas-KK](https://github.com/Lukas-KK))
+- Português do Brasil ([@ivangomes](https://github.com/ivangomes))
 - Беларуская ([@staniel359](https://github.com/staniel359))
 - Русский ([@staniel359](https://github.com/staniel359))
 - 中文 ([@PoorShawn](https://github.com/PoorShawn))
@@ -123,10 +124,11 @@ That's because Windows blocks unsigned apps.
 ## Support
 
 #### Have a question / suggestion / bug report?
+
 [Create an issue](https://github.com/staniel359/muffon/issues/new) or [Join Discord chat](https://discord.gg/kpWsA5NBmJ)
 
 If you have a suggestion, please check [our to do list](https://github.com/users/staniel359/projects/2/views/4) to make sure you don't make a duplicate suggestion.
-  
+
 ## Contribute
 
 - **Translators** wanted for localization
