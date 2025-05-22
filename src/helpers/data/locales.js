@@ -3,51 +3,57 @@
 export default [
   {
     id: 'be',
-    name: 'Беларуская'
+    name: 'Беларуская',
   },
   {
     id: 'de',
-    name: 'Deutsch'
+    name: 'Deutsch',
   },
   {
     id: 'en',
-    name: 'English'
+    name: 'English',
   },
   {
     id: 'es',
-    name: 'Español'
+    name: 'Español',
   },
   {
     id: 'fr',
-    name: 'Français'
+    name: 'Français',
   },
   {
     id: 'he',
     name: 'עברית',
-    rtl: true
+    rtl: true,
   },
   {
     id: 'it',
-    name: 'Italiano'
+    name: 'Italiano',
   },
   {
     id: 'ja',
-    name: '日本語'
+    name: '日本語',
   },
   {
     id: 'ko',
-    name: '한국어'
+    name: '한국어',
   },
   {
     id: 'pl',
-    name: 'Polski'
+    name: 'Polski',
   },
+
+  {
+    id: 'pt',
+    name: 'Portugues',
+  },
+
   {
     id: 'ru',
-    name: 'Русский'
+    name: 'Русский',
   },
   {
     id: 'zh',
-    name: '中文'
-  }
-]
+    name: '中文',
+  },
+];
