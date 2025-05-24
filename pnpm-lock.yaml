@@ -44,8 +44,8 @@ importers:
         specifier: ^0.15.1
         version: 0.15.1
       music-metadata:
-        specifier: ^11.2.2
-        version: 11.2.2
+        specifier: ^11.2.3
+        version: 11.8.2
       sanitize-html:
         specifier: ^2.17.0
         version: 2.17.0
@@ -81,8 +81,8 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
       electron:
-        specifier: ^36.2.1
-        version: 36.2.1
+        specifier: ^36.3.1
+        version: 36.7.4
       electron-builder:
         specifier: 26.0.8
         version: 26.0.8(electron-builder-squirrel-windows@25.1.7)
@@ -174,6 +174,9 @@ packages:
   '@babel/types@7.27.1':
     resolution: {integrity: sha512-+EzkxvLNfiUeKMgy/3luqfsCWFRXLb7U6wNQTk60tovuckwB15B191tJWvpp4HjiQWdJkCxO3Wbvc6jlk3Xb2Q==}
     engines: {node: '>=6.9.0'}
+
+  '@borewit/text-codec@0.1.1':
+    resolution: {integrity: sha512-5L/uBxmjaCIX5h8Z+uu+kA9BQLkc/Wl06UGR5ajNRxu+/XjonB5i8JpgFMrPj3LXTCPA0pv8yxUvbUi+QthGGA==}
 
   '@develar/schema-utils@2.6.5':
     resolution: {integrity: sha512-0cp4PsWQ/9avqTVMCtZ+GirikIA36ikvjtHweU4/j8yLtgObI0+JUPhYFScgwlteveGB1rt3Cm8UhN04XayDig==}
@@ -1763,8 +1766,8 @@ packages:
   electron-updater@6.6.2:
     resolution: {integrity: sha512-Cr4GDOkbAUqRHP5/oeOmH/L2Bn6+FQPxVLZtPbcmKZC63a1F3uu5EefYOssgZXG3u/zBlubbJ5PJdITdMVggbw==}
 
-  electron@36.2.1:
-    resolution: {integrity: sha512-mm1Y+Ms46xcOTA69h8hpqfX392HfV4lga9aEkYkd/Syx1JBStvcACOIouCgGrnZpxNZPVS1jM8NTcMkNjuK6BQ==}
+  electron@36.7.4:
+    resolution: {integrity: sha512-IOZCD2dLQHsjqqlvMA1VC3qo7Udm6syGYwJe/l5LqX31QksosMdHbhFzgSCbm1s50ZU4/hbO/gJDFoi9AtGaqw==}
     engines: {node: '>= 12.20.55'}
     hasBin: true
 
@@ -2090,9 +2093,9 @@ packages:
     resolution: {integrity: sha512-XXTUwCvisa5oacNGRP9SfNtYBNAMi+RPwBFmblZEF7N7swHYQS6/Zfk7SRwx4D5j3CH211YNRco1DEMNVfZCnQ==}
     engines: {node: '>=16.0.0'}
 
-  file-type@20.5.0:
-    resolution: {integrity: sha512-BfHZtG/l9iMm4Ecianu7P8HRD2tBHLtjXinm4X62XBOYzi7CYA7jyqfJzOvXHqzVrVPYqBo2/GvbARMaaJkKVg==}
-    engines: {node: '>=18'}
+  file-type@21.0.0:
+    resolution: {integrity: sha512-ek5xNX2YBYlXhiUXui3D/BXa3LdqPmoLJ7rqEx2bKJ7EAUEfmXgW0Das7Dc6Nr9MvqaOnIqiPV0mZk/r/UpNAg==}
+    engines: {node: '>=20'}
 
   filelist@1.0.4:
     resolution: {integrity: sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q==}
@@ -3083,8 +3086,8 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  music-metadata@11.2.2:
-    resolution: {integrity: sha512-jCm36KMvUxi6YWxsc2y0kzBLvFI5auLllSidur4kCbdBmEZAVV/Gy9mqSZvUiLIQAhWCGDMXQK2DmEHLE78kVw==}
+  music-metadata@11.8.2:
+    resolution: {integrity: sha512-k7fxn9GCl27b+P+suLwMuEuS1Kft32P1jBZ/MXLh5iRTll60qbWWc/hh+Xvv70khyykcGwsVzddURzLdKymZ0g==}
     engines: {node: '>=18'}
 
   mustache@4.2.0:
@@ -3329,10 +3332,6 @@ packages:
   pe-library@0.4.1:
     resolution: {integrity: sha512-eRWB5LBz7PpDu4PUlwT0PhnQfTQJlDDdPa35urV4Osrm0t0AqQFGn+UIkU3klZvwJ8KPO3VbBFsXquA6p6kqZw==}
     engines: {node: '>=12', npm: '>=6'}
-
-  peek-readable@7.0.0:
-    resolution: {integrity: sha512-nri2TO5JE3/mRryik9LlHFT53cgHfRK0Lt0BAZQXku/AW3E6XLt2GaY8siWi7dvW/m1z0ecn+J+bpDa9ZN3IsQ==}
-    engines: {node: '>=18'}
 
   pend@1.2.0:
     resolution: {integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==}
@@ -3855,8 +3854,8 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  strtok3@10.2.2:
-    resolution: {integrity: sha512-Xt18+h4s7Z8xyZ0tmBoRmzxcop97R4BAh+dXouUDCYn+Em+1P3qpkUfI5ueWLT8ynC5hZ+q4iPEmGG1urvQGBg==}
+  strtok3@10.3.4:
+    resolution: {integrity: sha512-KIy5nylvC5le1OdaaoCJ07L+8iQzJHGH6pWDuzS+d07Cu7n1MZ2x26P8ZKIWfbK02+XIL8Mp4RkWeqdUCrDMfg==}
     engines: {node: '>=18'}
 
   stubborn-fs@1.2.5:
@@ -3953,8 +3952,8 @@ packages:
     resolution: {integrity: sha512-y8MN937s/HVhEoBU1SxfHC+wxCHkV1a9gW8eAdTadYh/bGyesZIVcbjI+mSpFbSVwQici/XjBjuUyri1dnXwBw==}
     engines: {node: '>=10.13.0'}
 
-  token-types@6.0.0:
-    resolution: {integrity: sha512-lbDrTLVsHhOMljPscd0yitpozq7Ga2M5Cvez5AjGg8GASBjtt6iERCAJ93yommPmz62fb45oFIXHEZ3u9bfJEA==}
+  token-types@6.1.1:
+    resolution: {integrity: sha512-kh9LVIWH5CnL63Ipf0jhlBIy0UsrMj/NJDfpsy1SqOXlLKEVyXXYrnFxFT1yOOYVGBSApeVnjPw/sBz5BfEjAQ==}
     engines: {node: '>=14.16'}
 
   tr46@0.0.3:
@@ -4364,6 +4363,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
+
+  '@borewit/text-codec@0.1.1': {}
 
   '@develar/schema-utils@2.6.5':
     dependencies:
@@ -5028,7 +5029,7 @@ snapshots:
     dependencies:
       debug: 4.4.1
       fflate: 0.8.2
-      token-types: 6.0.0
+      token-types: 6.1.1
     transitivePeerDependencies:
       - supports-color
 
@@ -6209,7 +6210,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  electron@36.2.1:
+  electron@36.7.4:
     dependencies:
       '@electron/get': 2.0.3
       '@types/node': 22.15.18
@@ -6644,11 +6645,11 @@ snapshots:
     dependencies:
       flat-cache: 4.0.1
 
-  file-type@20.5.0:
+  file-type@21.0.0:
     dependencies:
       '@tokenizer/inflate': 0.2.7
-      strtok3: 10.2.2
-      token-types: 6.0.0
+      strtok3: 10.3.4
+      token-types: 6.1.1
       uint8array-extras: 1.4.0
     transitivePeerDependencies:
       - supports-color
@@ -7789,16 +7790,16 @@ snapshots:
 
   ms@2.1.3: {}
 
-  music-metadata@11.2.2:
+  music-metadata@11.8.2:
     dependencies:
+      '@borewit/text-codec': 0.1.1
       '@tokenizer/token': 0.3.0
       content-type: 1.0.5
       debug: 4.4.1
-      file-type: 20.5.0
+      file-type: 21.0.0
       media-typer: 1.1.0
-      strtok3: 10.2.2
-      token-types: 6.0.0
-      uint8array-extras: 1.4.0
+      strtok3: 10.3.4
+      token-types: 6.1.1
     transitivePeerDependencies:
       - supports-color
 
@@ -7822,7 +7823,7 @@ snapshots:
 
   node-abi@3.74.0:
     dependencies:
-      semver: 7.7.1
+      semver: 7.7.2
 
   node-abi@3.75.0:
     dependencies:
@@ -7836,7 +7837,7 @@ snapshots:
 
   node-api-version@0.2.1:
     dependencies:
-      semver: 7.7.1
+      semver: 7.7.2
 
   node-fetch@2.7.0(encoding@0.1.13):
     dependencies:
@@ -8043,8 +8044,6 @@ snapshots:
   path-type@4.0.0: {}
 
   pe-library@0.4.1: {}
-
-  peek-readable@7.0.0: {}
 
   pend@1.2.0: {}
 
@@ -8610,10 +8609,9 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  strtok3@10.2.2:
+  strtok3@10.3.4:
     dependencies:
       '@tokenizer/token': 0.3.0
-      peek-readable: 7.0.0
 
   stubborn-fs@1.2.5: {}
 
@@ -8727,8 +8725,9 @@ snapshots:
     dependencies:
       streamx: 2.22.0
 
-  token-types@6.0.0:
+  token-types@6.1.1:
     dependencies:
+      '@borewit/text-codec': 0.1.1
       '@tokenizer/token': 0.3.0
       ieee754: 1.2.1
 
