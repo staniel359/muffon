@@ -11,6 +11,7 @@ import it from 'i18n-iso-countries/langs/it.json'
 import ja from 'i18n-iso-countries/langs/ja.json'
 import ko from 'i18n-iso-countries/langs/ko.json'
 import pl from 'i18n-iso-countries/langs/pl.json'
+import br from 'i18n-iso-countries/langs/br.json'
 import ru from 'i18n-iso-countries/langs/ru.json'
 import zh from 'i18n-iso-countries/langs/zh.json'
 
@@ -27,6 +28,7 @@ const locales = [
   ja,
   ko,
   pl,
+  br,
   ru,
   zh
 ]
