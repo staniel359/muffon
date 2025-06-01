@@ -11,7 +11,7 @@ import it from './i18n/locales/it.json'
 import ja from './i18n/locales/ja.json'
 import ko from './i18n/locales/ko.json'
 import pl from './i18n/locales/pl.json'
-import br from './i18n/locales/br.json'
+import pt from './i18n/locales/pt.json'
 import ru from './i18n/locales/ru.json'
 import zh from './i18n/locales/zh.json'
 import slavicPluralizationRule
@@ -30,7 +30,7 @@ const localesData = {
   ja,
   ko,
   pl,
-  br,
+  pt,
   ru,
   zh
 }
@@ -152,10 +152,10 @@ if (import.meta.hot) {
   )
 
   import.meta.hot.accept(
-    './i18n/locales/br.json',
+    './i18n/locales/pt.json',
     fileImport => {
       i18n.global.setLocaleMessage(
-        'br',
+        'pt',
         fileImport.default
       )
     }
