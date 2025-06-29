@@ -64,7 +64,7 @@
     "pinia": "^3.0.3",
     "sass": "^1.89.1",
     "slick-carousel": "^1.8.1",
-    "vite": "^6.3.5",
+    "vite": "^7.0.0",
     "vite-plugin-electron-renderer": "^0.14.6",
     "vite-plugin-eslint": "^1.8.1",
     "vue": "^3.5.16",
