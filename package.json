@@ -31,7 +31,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@xhayper/discord-rpc": "^1.2.2",
     "dayjs": "^1.11.13",
-    "dotenv": "^16.5.0",
+    "dotenv": "^17.0.0",
     "electron-dl": "^4.0.0",
     "electron-store": "^10.0.1",
     "electron-updater": "^6.6.2",
