@@ -10,8 +10,7 @@ import it from './i18n/locales/it.json' with { type: 'json' }
 import ja from './i18n/locales/ja.json' with { type: 'json' }
 import ko from './i18n/locales/ko.json' with { type: 'json' }
 import pl from './i18n/locales/pl.json' with { type: 'json' }
-// eslint-disable-next-line camelcase
-import pt_BR from './i18n/locales/pt_BR.json' with { type: 'json' }
+import ptBr from './i18n/locales/pt_BR.json' with { type: 'json' }
 import ru from './i18n/locales/ru.json' with { type: 'json' }
 import zh from './i18n/locales/zh.json' with { type: 'json' }
 
@@ -33,8 +32,7 @@ const localesData = {
   ja,
   ko,
   pl,
-  // eslint-disable-next-line camelcase
-  pt_BR,
+  ptBr,
   ru,
   zh
 }
