@@ -23,7 +23,8 @@ import fr from 'emoji-picker-element/i18n/fr'
 import it from 'emoji-picker-element/i18n/it'
 import ja from 'emoji-picker-element/i18n/ja'
 import pl from 'emoji-picker-element/i18n/pl'
-import pt from 'emoji-picker-element/i18n/pt_BR'
+// eslint-disable-next-line camelcase
+import pt_BR from 'emoji-picker-element/i18n/pt_BR'
 import ru from 'emoji-picker-element/i18n/ru_RU'
 import zh from 'emoji-picker-element/i18n/zh_CN'
 
@@ -47,7 +48,8 @@ export default {
         ja,
         ko: en,
         pl,
-        pt,
+        // eslint-disable-next-line camelcase
+        pt_BR,
         ru,
         zh
       }
