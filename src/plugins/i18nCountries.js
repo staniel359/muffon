@@ -11,8 +11,7 @@ import it from 'i18n-iso-countries/langs/it.json'
 import ja from 'i18n-iso-countries/langs/ja.json'
 import ko from 'i18n-iso-countries/langs/ko.json'
 import pl from 'i18n-iso-countries/langs/pl.json'
-// eslint-disable-next-line camelcase
-import pt_BR from './i18nCountries/locales/pt_BR.json'
+import ptBr from './i18nCountries/locales/pt_BR.json'
 import ru from 'i18n-iso-countries/langs/ru.json'
 import zh from 'i18n-iso-countries/langs/zh.json'
 
@@ -29,8 +28,7 @@ const locales = [
   ja,
   ko,
   pl,
-  // eslint-disable-next-line camelcase
-  pt_BR,
+  ptBr,
   ru,
   zh
 ]
