@@ -47,7 +47,7 @@ export default {
         ja,
         ko: en,
         pl,
-        ptBr,
+        pt_BR: ptBr,
         ru,
         zh
       }
