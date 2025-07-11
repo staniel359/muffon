@@ -43,6 +43,10 @@ export default [
     name: 'Polski'
   },
   {
+    id: 'pt_BR',
+    name: 'Português (Brasil)'
+  },
+  {
     id: 'ru',
     name: 'Русский'
   },
