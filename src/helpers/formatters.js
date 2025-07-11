@@ -8,6 +8,9 @@ import timezonesList from '@/helpers/data/timezones'
 import {
   currentTime as formatCurrentTime
 } from '@/helpers/formatters/dateTimeString'
+import {
+  kebabCase
+} from 'change-case'
 
 export function collection (
   value
@@ -55,8 +58,13 @@ export function number (
     language
   } = profileStore()
 
+  const languageFormatted =
+    kebabCase(
+      language
+    )
+
   return value.toLocaleString(
-    language
+    languageFormatted
   )
 }
 

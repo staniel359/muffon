@@ -32,7 +32,7 @@ const localesData = {
   ja,
   ko,
   pl,
-  ptBr,
+  pt_BR: ptBr,
   ru,
   zh
 }

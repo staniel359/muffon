@@ -4,6 +4,9 @@ import locales from '@/helpers/data/locales'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
+import {
+  kebabCase
+} from 'change-case'
 
 export function change (
   value
@@ -28,6 +31,7 @@ export function change (
   )
 
   document.lang = value
+
   document.dir = direction
 
   updateGlobalStore(
@@ -36,7 +40,12 @@ export function change (
     }
   )
 
+  const valueFormatted =
+    kebabCase(
+      value
+    )
+
   dayjs.locale(
-    value
+    valueFormatted
   )
 }
