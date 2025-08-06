@@ -36,7 +36,9 @@ export default {
         'counters.nominative.followers',
         this.followersCount,
         {
-          count: this.followersCountStrong
+          named: {
+            count: this.followersCountStrong
+          }
         }
       )
     },
