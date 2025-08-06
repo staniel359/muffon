@@ -10,7 +10,7 @@
     />
     <span
       v-else
-      v-html="channelTitle"
+      v-html="channelTitleSanitized"
     />
   </div>
 </template>
@@ -20,6 +20,9 @@ import BaseLink from '@/components/links/BaseLink.vue'
 import {
   main as formatVideoChannelLink
 } from '@/helpers/formatters/links/videoChannel'
+import {
+  sanitizeString
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseVideoChannelLinkSection',
@@ -49,6 +52,11 @@ export default {
     },
     channelData () {
       return this.modelData.channel
+    },
+    channelTitleSanitized () {
+      return sanitizeString(
+        this.channelTitle
+      )
     },
     channelTitle () {
       return this.channelData.title

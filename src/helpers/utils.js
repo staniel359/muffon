@@ -224,6 +224,16 @@ export function isStringsIncludeEachOther (
   )
 }
 
+export function sanitizeString (
+  string
+) {
+  return window
+    .mainProcess
+    .sanitizeString(
+      string
+    )
+}
+
 export const isWindows = (
   systemName === 'windows'
 )
