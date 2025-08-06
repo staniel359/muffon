@@ -48,7 +48,7 @@
           class="description"
         >
           <small
-            v-html="description"
+            v-html="descriptionSanitized"
           />
         </div>
 
@@ -119,6 +119,9 @@ import {
   main as formatVideoPlaylistLink
 } from '@/helpers/formatters/links/videoPlaylist'
 import selfMixin from '@/mixins/selfMixin'
+import {
+  sanitizeString
+} from '@/helpers/utils'
 
 export default {
   name: 'VideoPlaylistItem',
@@ -188,6 +191,11 @@ export default {
     },
     playlistTitle () {
       return this.playlistData.title
+    },
+    descriptionSanitized () {
+      return sanitizeString(
+        this.description
+      )
     },
     description () {
       return this.playlistData.description

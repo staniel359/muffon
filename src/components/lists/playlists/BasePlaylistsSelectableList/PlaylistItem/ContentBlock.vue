@@ -67,6 +67,9 @@ import BasePlaylistOptionsPopup
   from '@/components/popups/playlist/BasePlaylistOptionsPopup.vue'
 import formatTextWithExternalLink
   from '@/helpers/formatters/textWithExternalLink'
+import {
+  sanitizeString
+} from '@/helpers/utils'
 
 export default {
   name: 'ContentBlock',
@@ -145,9 +148,14 @@ export default {
     descriptionFormatted () {
       return formatTextWithExternalLink(
         {
-          text: this.description,
+          text: this.descriptionSanitized,
           className: 'bold'
         }
+      )
+    },
+    descriptionSanitized () {
+      return sanitizeString(
+        this.description
       )
     }
   },

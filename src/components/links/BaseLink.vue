@@ -10,13 +10,16 @@
     @auxclick.prevent.stop="handleAuxClick"
   >
     <span
-      v-html="text"
+      v-html="textSanitized"
     />
   </Component>
 </template>
 
 <script>
 import linkMixin from '@/mixins/linkMixin'
+import {
+  sanitizeString
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseLink',
@@ -27,6 +30,13 @@ export default {
     text: {
       type: String,
       required: true
+    }
+  },
+  computed: {
+    textSanitized () {
+      return sanitizeString(
+        this.text
+      )
     }
   }
 }

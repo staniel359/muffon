@@ -41,7 +41,7 @@
     <i
       v-if="status"
       class="main-bottom-small-section main-text-container"
-      v-html="status"
+      v-text="status"
     />
   </BaseSegmentContainer>
 </template>

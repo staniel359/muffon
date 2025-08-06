@@ -27,7 +27,7 @@
     />
 
     <span
-      v-html="name"
+      v-html="nameSanitized"
     />
   </div>
 </template>
@@ -35,6 +35,9 @@
 <script>
 import BaseCheckbox from '@/components/BaseCheckbox.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
+import {
+  sanitizeString
+} from '@/helpers/utils'
 
 export default {
   name: 'OptionItem',
@@ -67,6 +70,11 @@ export default {
     },
     icon () {
       return this.optionData.icon
+    },
+    nameSanitized () {
+      return sanitizeString(
+        this.name
+      )
     },
     name () {
       return this.optionData.name
