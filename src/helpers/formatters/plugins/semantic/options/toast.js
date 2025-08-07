@@ -43,6 +43,7 @@ export function main (
     context: visibleContext,
     class: classNameFormatted,
     newestOnTop: true,
+    preserveHTML: false,
     message
   }
 }
