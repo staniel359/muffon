@@ -28,6 +28,7 @@ export function main (
       show: 0,
       hide: 150
     },
+    preserveHTML: false,
     context,
     message,
     onChange
