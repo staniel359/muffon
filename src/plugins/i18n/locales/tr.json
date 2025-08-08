@@ -882,9 +882,9 @@
       "relationship": "{modelName} takip edildi",
       "post": "{modelName} gönderisi oluşturuldu",
       "postComment": "{modelName} yorumu oluşturuldu",
-      "çalma listesi": "{modelName} çalma listesi oluşturuldu",
-      "konuşma": "{modelName} ile bir konuşma başlatıldı",
-      "üyelik": "{modelName} topluluğuna katıldı"
+      "playlist": "{modelName} çalma listesi oluşturuldu",
+      "conversation": "{modelName} ile bir konuşma başlatıldı",
+      "membership": "{modelName} topluluğuna katıldı"
     },
     "updated": {
       "profile": "Profil güncellendi",
