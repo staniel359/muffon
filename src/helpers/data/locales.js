@@ -47,6 +47,10 @@ export default [
     name: 'Русский'
   },
   {
+    id: 'tr',
+    name: 'Türkçe'
+  },
+  {
     id: 'zh',
     name: '中文'
   }
