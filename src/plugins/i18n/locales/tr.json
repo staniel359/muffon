@@ -23,7 +23,7 @@
       "tracks": "Popüler parçalar",
       "tags": "Popüler etiketler"
     },
-    "releases": "Yayınlananlar",
+    "releases": "Yayınlanmalar",
     "releasesCollection": {
       "new": "Yeni yayınlananlar",
       "upcoming": "Yakında yayınlanacaklar"
@@ -66,18 +66,18 @@
     "browser": "Tarayıcı",
     "settings": "Ayarlar",
     "model": {
-      "artists": "{modelName} sanatçılardan",
-      "albums": "{modelName} albümlerden",
-      "tracks": "{modelName} parçalardan",
-      "tags": "{modelName} etiketleriden",
-      "similar": "{modelName} benzerlerden",
-      "images": "{modelName} resimlerden",
-      "lyrics": "{modelName} sözlerden",
-      "videos": "{modelName} videolardan",
+      "artists": "sanatçılardan {modelName}",
+      "albums": "{modelName} albümü",
+      "tracks": "{modelName} parçası",
+      "tags": "{modelName} etiketleri",
+      "similar": "{modelName} benzerleri",
+      "images": "{modelName} resimleri",
+      "lyrics": "{modelName} sözleri",
+      "videos": "{modelName} videoları",
       "related": "{modelName} ile ilgili",
       "posts": "{modelName} gönderileri",
-      "library": "{modelName} kütüphanesinden",
-      "playlists": "{modelName} çalma listeleri",
+      "library": "{modelName} kütüphanesi",
+      "playlists": "{modelName} çalma listesi",
       "favorites": "{modelName} favorileri",
       "favoritesCollection": {
         "artists": "{modelName} favori sanatçıları",
@@ -89,11 +89,11 @@
       "shows": "{modelName} gösterileri"
     },
     "search": "Arama",
-    "queue": "Sırada",
+    "queue": "Oynatma sırası",
     "whatsNew": "Neler yeni",
-    "listenedRecently": "Yakında dinlendi",
+    "listenedRecently": "Yakında dinlenenler",
     "shows": "Gösteriler",
-    "listeningNow": "Şu an dinleniyor",
+    "listeningNow": "Şu an dinliyor",
     "help": "Yardım"
   },
   "errors": {
@@ -149,7 +149,7 @@
     "back": "Geri git",
     "sendCode": "Kod gönder",
     "share": "Paylaş",
-    "search": "Arat",
+    "search": "Ara",
     "filter": "Filtre",
     "confirm": "Onayla",
     "import": "İçe aktar",
@@ -167,8 +167,8 @@
       "account": "Hesaptan"
     },
     "searchIn": {
-      "source": "Kaynakta ara",
-      "sources": "Kaynaklarda ara"
+      "source": "Şu kaynakta ara",
+      "sources": "Şu kaynaklarda ara"
     },
     "searchFor": {
       "video": "Video ara",
@@ -210,9 +210,9 @@
       "watched": "İzlenenlerden sil"
     },
     "externalLink": {
-      "open": "Harici linki aç",
+      "open": "Şarkıya göz at",
       "original": "Orijinal",
-      "streaming": "Akış"
+      "streaming": "Yayınla"
     }
   },
   "links": {
@@ -484,7 +484,7 @@
     }
   },
   "player": {
-    "variants": "Varyasyonlar  ({count})",
+    "variants": "({count}) Varyasyon",
     "audio": {
       "bitrate": "{value} kbit/sn",
       "equalizer": {
@@ -541,7 +541,7 @@
         },
         "search": {
           "source": "Kaynak",
-          "scope": "Kapsam",
+          "scope": "Arama türü",
           "resultsFullSize": "Sonuçları tam ekran göster"
         },
         "player": {
@@ -555,7 +555,7 @@
         },
         "queue": {
           "autoplay": "Otomatik oynatma",
-          "clear": "Oynatıcı kapatıldığında temizle"
+          "clear": "Oynatıcı kapatıldığında sırayı temizle"
         },
         "video": {
           "autoplay": "Otomatik oynatma",
@@ -784,7 +784,7 @@
       "shows": "Gösteri yok",
       "pages": "Sayfa yok"
     },
-    "content": "Burası bomboş gibi"
+    "content": "Burası henüz boş gibi"
   },
   "deleted": {
     "artist": "Sanatçı silindi",
@@ -817,7 +817,7 @@
     "profile": "Gizli"
   },
   "donate": {
-    "header": "Bağış",
+    "header": "Bağış Yap",
     "content": [
       "muffon, reklamsız, ücretli özellik veya içerik içermeyen, kâr amacı gütmeyen bir projedir.",
       "Ancak, geliştirme ve altyapı için gerekli fonlama olmadan varlığını sürdüremez.",
@@ -940,8 +940,8 @@
   "keyboardShortcuts": {
     "header": "Klavye kısayolları",
     "search": "Arama panelini göster",
-    "audioBackward": "Sesi geri sar",
-    "audioForward": "Sesi ileri sar",
+    "audioBackward": "Parçayı geri sar",
+    "audioForward": "Parçayı ileri sar",
     "radioNextTrack": "Sonraki radyo parçası"
   },
   "online": "Aktif",
