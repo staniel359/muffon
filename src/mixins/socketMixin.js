@@ -64,9 +64,13 @@ export default {
       'handleIsSocketOpenChange'
   },
   mounted () {
+    if (!this.profileToken) { return }
+
     this.initialize()
   },
   beforeUnmount () {
+    if (!this.profileToken) { return }
+
     if (this.isSocketOpen) {
       this.unsubscribe()
     }
