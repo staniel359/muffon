@@ -200,6 +200,18 @@ export default {
     type: 'array',
     default: []
   },
+  'history.isSaveBrowser': {
+    type: 'boolean',
+    default: true
+  },
+  'history.isSavePlayer': {
+    type: 'boolean',
+    default: true
+  },
+  'history.isSaveActivity': {
+    type: 'boolean',
+    default: true
+  },
   'homePage.isWithRecentTracksSegment': {
     type: 'boolean',
     default: true
@@ -299,9 +311,19 @@ export default {
     type: 'boolean',
     default: false
   },
+  'profile.id': {
+    type: [
+      'null',
+      'number'
+    ],
+    default: null
+  },
   'profile.connections': {
-    type: 'object',
-    default: {}
+    type: [
+      'null',
+      'object'
+    ],
+    default: null
   },
   'profile.info': {
     type: [

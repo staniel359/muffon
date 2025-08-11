@@ -1,10 +1,10 @@
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 
 export default function (
   view
 ) {
   const scale =
-    getElectronStoreKey(
+    getSettingsKey(
       'layout.scale'
     )
 

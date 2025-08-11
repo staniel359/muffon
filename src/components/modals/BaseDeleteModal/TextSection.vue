@@ -2,7 +2,7 @@
   <div class="content">
     <p
       class="main-text-section"
-      v-html="goingText"
+      v-html="goingTextSanitized"
     />
 
     <template
@@ -41,6 +41,10 @@
 </template>
 
 <script>
+import {
+  sanitizeString
+} from '@/helpers/utils'
+
 export default {
   name: 'TextSection',
   props: {
@@ -54,6 +58,11 @@ export default {
     isWithAlsoText: Boolean
   },
   computed: {
+    goingTextSanitized () {
+      return sanitizeString(
+        this.goingText
+      )
+    },
     goingText () {
       return this.$t(
         `modals.delete.going.${this.modelType}`,

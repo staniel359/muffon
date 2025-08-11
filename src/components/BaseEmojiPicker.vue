@@ -23,6 +23,7 @@ import fr from 'emoji-picker-element/i18n/fr'
 import it from 'emoji-picker-element/i18n/it'
 import ja from 'emoji-picker-element/i18n/ja'
 import pl from 'emoji-picker-element/i18n/pl'
+import ptBr from 'emoji-picker-element/i18n/pt_BR'
 import ru from 'emoji-picker-element/i18n/ru_RU'
 import tr from 'emoji-picker-element/i18n/tr'
 import zh from 'emoji-picker-element/i18n/zh_CN'
@@ -47,6 +48,7 @@ export default {
         ja,
         ko: en,
         pl,
+        pt_BR: ptBr,
         ru,
         tr,
         zh

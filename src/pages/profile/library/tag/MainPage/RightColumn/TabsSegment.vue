@@ -34,10 +34,10 @@ export default {
   },
   props: {
     profileId: {
-      type: String,
+      type: Number,
       required: true
     },
-    libraryTagId: String
+    libraryTagId: Number
   },
   data () {
     return {

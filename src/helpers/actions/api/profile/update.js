@@ -16,11 +16,10 @@ export default function (
     country,
     city,
     status,
-    isPrivate
+    isPrivate,
+    isSaveActivityHistory
   }
 ) {
-  this.profileData = null
-
   const profileId = profileStore().id
 
   const url = `/profiles/${profileId}`
@@ -43,14 +42,16 @@ export default function (
     status,
     private: (
       isPrivate ? 1 : 0
+    ),
+    save_activity_history: (
+      isSaveActivityHistory ? 1 : 0
     )
   }
 
-  const handleSuccess = (
+  function handleSuccess (
     response
-  ) => {
-    this.profileData =
-      response.data.profile
+  ) {
+    return response.data
   }
 
   const handleError = (
@@ -63,6 +64,8 @@ export default function (
         error
       }
     )
+
+    throw error
   }
 
   return patchRequest.bind(

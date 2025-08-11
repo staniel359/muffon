@@ -11,6 +11,7 @@ import it from './i18n/locales/it.json'
 import ja from './i18n/locales/ja.json'
 import ko from './i18n/locales/ko.json'
 import pl from './i18n/locales/pl.json'
+import ptBr from './i18n/locales/pt_BR.json'
 import ru from './i18n/locales/ru.json'
 import tr from './i18n/locales/tr.json'
 import zh from './i18n/locales/zh.json'
@@ -30,6 +31,7 @@ const localesData = {
   ja,
   ko,
   pl,
+  pt_BR: ptBr,
   ru,
   tr,
   zh
@@ -146,6 +148,16 @@ if (import.meta.hot) {
     fileImport => {
       i18n.global.setLocaleMessage(
         'pl',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/pt_BR.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'pt_BR',
         fileImport.default
       )
     }

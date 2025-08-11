@@ -37,7 +37,7 @@ export default {
       required: true
     },
     profileId: {
-      type: String,
+      type: Number,
       required: true
     },
     isSmall: Boolean

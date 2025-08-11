@@ -60,11 +60,11 @@ export default {
       type: Boolean,
       default: true
     },
-    libraryId: String,
-    favoriteId: String,
-    bookmarkId: String,
-    listenedId: String,
-    watchedId: String
+    libraryId: Number,
+    favoriteId: Number,
+    bookmarkId: Number,
+    listenedId: Number,
+    watchedId: Number
   },
   computed: {
     ...mapState(

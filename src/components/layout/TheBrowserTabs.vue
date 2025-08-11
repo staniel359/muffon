@@ -71,7 +71,7 @@ export default {
     this.setupHandlers()
 
     this.tabs =
-      await this.getElectronStoreTabs()
+      await this.getTabsFromSettings()
 
     if (this.tabsCount) {
       this.setupTabs()
@@ -228,11 +228,11 @@ export default {
           this.handleDeleteTab
         )
     },
-    getElectronStoreTabs () {
+    getTabsFromSettings () {
       return window
         .mainProcess
         .sendAsyncCommand(
-          'get-electron-store-key',
+          'get-settings-key',
           'layout.tabs'
         )
     },

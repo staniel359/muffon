@@ -44,7 +44,7 @@ export default {
       return !!this.lastfmAccountData
     },
     lastfmAccountData () {
-      return this.profileConnections.lastfm
+      return this.profileConnections?.lastfm
     }
   }
 }

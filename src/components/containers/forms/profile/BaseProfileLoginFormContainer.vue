@@ -10,16 +10,11 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseFormContainer
   from '@/components/containers/forms/BaseFormContainer.vue'
 import profileLoginFormOptions
   from '@/helpers/formatters/plugins/semantic/options/form/profile/login'
 import createSession from '@/helpers/actions/api/session/create'
-import getProfile from '@/helpers/actions/api/profile/get'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
@@ -31,12 +26,8 @@ export default {
   },
   data () {
     return {
-      token: null,
-      profileId: null,
-      profileData: null,
       error: null,
       isLoading: false,
-      isRemember: false,
       fields: [
         'email',
         'password'
@@ -44,34 +35,18 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileToken: 'token'
-      }
-    ),
     options () {
       return profileLoginFormOptions(
         {
-          onSuccess: this.handleSuccess
+          onSuccess:
+            this.handleSubmitSuccess
         }
       )
-    },
-    profileArgs () {
-      return {
-        profileId: this.profileId
-      }
     }
-  },
-  watch: {
-    profileId: 'handleProfileIdChange',
-    profileToken: 'handleProfileTokenChange',
-    profileData: 'handleProfileDataChange'
   },
   methods: {
     createSession,
-    getProfile,
-    handleSuccess (
+    handleSubmitSuccess (
       event,
       fields
     ) {
@@ -84,30 +59,27 @@ export default {
 
       this.createSession(
         sessionArgs
+      ).then(
+        this.handleSessionCreateSuccess
       )
     },
-    handleProfileIdChange (
-      value
+    async handleSessionCreateSuccess (
+      responseData
     ) {
-      if (value) {
-        this.setSessionData()
-      }
-    },
-    handleProfileTokenChange (
-      value
-    ) {
-      if (value) {
-        this.getProfile(
-          this.profileArgs
-        )
-      }
-    },
-    handleProfileDataChange (
-      value
-    ) {
+      const profileId =
+        responseData.profile.id
+
+      const profileToken =
+        responseData.profile.token
+
+      const isRememberProfile =
+        responseData.isRemember
+
       updateGlobalStore(
         {
-          'profile.info': value
+          'profile.id': profileId,
+          'profile.token': profileToken,
+          'profile.isRemember': isRememberProfile
         }
       )
     },
@@ -125,14 +97,6 @@ export default {
         password,
         isRemember: !!remember
       }
-    },
-    setSessionData () {
-      updateGlobalStore(
-        {
-          'profile.token': this.token,
-          'profile.isRemember': this.isRemember
-        }
-      )
     }
   }
 }

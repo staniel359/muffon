@@ -67,7 +67,7 @@ export default {
     BaseProfileLibraryTracksPlayButton
   },
   props: {
-    profileId: String,
+    profileId: Number,
     isActive: Boolean
   },
   emits: [

@@ -2,12 +2,12 @@ import {
   ipcMain
 } from 'electron'
 import {
-  handleUpdateStore
+  handleCallUpdateStore
 } from '../../handlers/ipc/store.js'
 
 export default function () {
   ipcMain.handle(
-    'update-store',
-    handleUpdateStore
+    'call-update-store',
+    handleCallUpdateStore
   )
 }

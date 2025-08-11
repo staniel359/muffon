@@ -1,6 +1,5 @@
 import {
-  defineConfig,
-  splitVendorChunkPlugin
+  defineConfig
 } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
 import injectPlugin from '@rollup/plugin-inject'
@@ -35,8 +34,7 @@ export default defineConfig(
         }
       ),
       eslintPlugin(),
-      electronRendererPlugin(),
-      splitVendorChunkPlugin()
+      electronRendererPlugin()
     ],
     resolve: {
       alias: {

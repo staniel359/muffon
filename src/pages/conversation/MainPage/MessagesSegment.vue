@@ -41,7 +41,7 @@ export default {
   ],
   props: {
     conversationId: {
-      type: String,
+      type: Number,
       required: true
     }
   },

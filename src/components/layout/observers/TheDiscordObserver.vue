@@ -11,6 +11,7 @@ import {
 import discordStore from '@/stores/discord'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
+import audioStore from '@/stores/audio'
 import {
   homepage
 } from '@/../package.json'
@@ -29,6 +30,7 @@ export default {
   name: 'TheDiscordObserver',
   data () {
     return {
+      playerPlayingStartTime: null,
       isConnected: false
     }
   },
@@ -55,6 +57,12 @@ export default {
         profileId: 'id'
       }
     ),
+    ...mapState(
+      audioStore,
+      {
+        audioStatus: 'status'
+      }
+    ),
     activityDataFormatted () {
       return JSON.stringify(
         this.activityData
@@ -63,10 +71,11 @@ export default {
     activityData () {
       if (this.playerPlaying) {
         return {
-          playingData:
-            this.playingData,
-          buttons:
-            this.buttonsFiltered
+          playingData: this.playingData,
+          buttons: this.buttonsFiltered,
+          startTime:
+            this.playerPlayingStartTime,
+          isPlaying: this.isPlaying
         }
       } else {
         return null
@@ -77,7 +86,8 @@ export default {
         trackTitle: this.trackTitle,
         artistName: this.artistName,
         albumTitle: this.albumTitle,
-        image: this.image
+        image: this.image,
+        duration: this.duration
       }
     },
     trackTitle () {
@@ -94,6 +104,9 @@ export default {
         this.playerPlaying.image?.medium ||
           defaultImage
       )
+    },
+    duration () {
+      return this.playerPlaying.duration
     },
     buttonsFiltered () {
       return this.buttonsFormatted.filter(
@@ -156,7 +169,7 @@ export default {
       return this.playingSourceLinks.original
     },
     lastfmConnection () {
-      return this.profileConnections.lastfm
+      return this.profileConnections?.lastfm
     },
     lastfmProfileLink () {
       if (this.lastfmConnection) {
@@ -171,7 +184,7 @@ export default {
       return this.lastfmConnection.nickname
     },
     spotifyConnection () {
-      return this.profileConnections.spotify
+      return this.profileConnections?.spotify
     },
     spotifyProfileLink () {
       if (this.spotifyConnection) {
@@ -207,6 +220,11 @@ export default {
           trackData: this.playerPlaying
         }
       )
+    },
+    isPlaying () {
+      return (
+        this.audioStatus === 'play'
+      )
     }
   },
   watch: {
@@ -215,9 +233,12 @@ export default {
       handler:
         'handleIsPlayerWithDiscordRichPresenceChange'
     },
+    playerPlaying: {
+      immediate: true,
+      handler: 'handlePlayerPlayingChange'
+    },
     isConnected: 'handleIsConnectedChange',
-    activityData:
-      'handleActivityDataChange'
+    activityData: 'handleActivityDataChange'
   },
   mounted () {
     window
@@ -261,6 +282,13 @@ export default {
       if (this.isConnected) {
         this.updateActivity()
       }
+    },
+    handlePlayerPlayingChange (
+      value
+    ) {
+      this.playerPlayingStartTime = (
+        value ? Date.now() : null
+      )
     },
     connect () {
       if (!this.isConnected) {

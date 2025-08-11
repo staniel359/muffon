@@ -4,6 +4,7 @@
     model="event"
     :scope="scope"
     :list-scope="listScope"
+    :text-scope="textScope"
     :limit="limit"
     :order="order"
     is-with-top-segment
@@ -47,6 +48,7 @@ export default {
         routesLimits.simple.large,
       scope: 'browser',
       listScope: 'routes',
+      textScope: 'pages',
       order: 'createdDesc'
     }
   }

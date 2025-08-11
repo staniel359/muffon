@@ -62,8 +62,8 @@ export default {
     pageMixin
   ],
   props: {
-    profileId: String,
-    libraryTagId: String
+    profileId: Number,
+    libraryTagId: Number
   },
   data () {
     return {

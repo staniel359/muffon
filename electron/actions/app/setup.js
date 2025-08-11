@@ -8,21 +8,26 @@ import createAboutWindow
 import createTray from '../../actions/tray/create.js'
 import addSessionHeadersHandlers
   from '../../actions/session/headers/addHandlers.js'
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 
 export default function () {
   createMainWindow()
 
   createAboutWindow()
 
-  if (app.commandLine.hasSwitch(
-    'open-about-window'
-  )) {
+  const isOpenAboutWindow =
+    app
+      .commandLine
+      .hasSwitch(
+        'open-about-window'
+      )
+
+  if (isOpenAboutWindow) {
     aboutWindow.show()
   }
 
   const isWithTrayIcon =
-    getElectronStoreKey(
+    getSettingsKey(
       'window.isWithTrayIcon'
     )
 

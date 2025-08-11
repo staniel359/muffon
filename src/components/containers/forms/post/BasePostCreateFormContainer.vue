@@ -54,8 +54,8 @@ export default {
         return []
       }
     },
-    profileId: String,
-    communityId: String
+    profileId: Number,
+    communityId: Number
   },
   emits: [
     'success'

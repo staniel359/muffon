@@ -32,7 +32,7 @@ export default {
     CommunitiesTab
   },
   props: {
-    profileId: String
+    profileId: Number
   },
   data () {
     return {

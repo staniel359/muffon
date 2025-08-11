@@ -64,8 +64,8 @@ export default {
     paginatedPageMixin
   ],
   props: {
-    profileId: String,
-    libraryArtistId: String,
+    profileId: Number,
+    libraryArtistId: Number,
     scope: String,
     limit: Number,
     order: String,

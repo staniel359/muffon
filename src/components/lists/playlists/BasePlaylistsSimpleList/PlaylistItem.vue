@@ -163,6 +163,9 @@ import {
 } from '@/helpers/formatters/links/profile'
 import formatTextWithExternalLink
   from '@/helpers/formatters/textWithExternalLink'
+import {
+  sanitizeString
+} from '@/helpers/utils'
 
 export default {
   name: 'PlaylistItem',
@@ -248,13 +251,13 @@ export default {
       )
     },
     profileId () {
-      return this.profileData.id.toString()
+      return this.profileData.id
     },
     profileData () {
       return this.playlistData.profile
     },
     playlistId () {
-      return this.playlistData.id.toString()
+      return this.playlistData.id
     },
     profileLink () {
       return formatProfileLink(
@@ -294,9 +297,14 @@ export default {
     descriptionFormatted () {
       return formatTextWithExternalLink(
         {
-          text: this.description,
+          text: this.descriptionSanitized,
           className: 'bold'
         }
+      )
+    },
+    descriptionSanitized () {
+      return sanitizeString(
+        this.description
       )
     },
     source () {

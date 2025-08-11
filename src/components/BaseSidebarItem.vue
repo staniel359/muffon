@@ -45,6 +45,9 @@ import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
+import {
+  params as formatRouterParams
+} from '@/helpers/formatters/plugins/router'
 
 export default {
   name: 'BaseSidebarItem',
@@ -88,27 +91,44 @@ export default {
       )
     },
     isPathsMatch () {
-      return this.$route
-        .path
-        .includes(
-          this.link?.path
-        )
+      return this.routePath.includes(
+        this.linkPath
+      )
+    },
+    routePath () {
+      return this.$route.path
+    },
+    linkPath () {
+      return this.link?.path
     },
     isParamsMatch () {
       return (
-        this.routeParamsString ===
+        this.routeParamsFormattedString ===
           this.linkParamsString
       )
     },
-    routeParamsString () {
+    routeParamsFormattedString () {
       return JSON.stringify(
-        this.$route.params
+        this.routeParamsFormatted
       )
+    },
+    routeParamsFormatted () {
+      return formatRouterParams(
+        {
+          params: this.routeParams
+        }
+      )
+    },
+    routeParams () {
+      return this.$route.params
     },
     linkParamsString () {
       return JSON.stringify(
-        this.link?.params
+        this.linkParams
       )
+    },
+    linkParams () {
+      return this.link?.params
     }
   },
   methods: {

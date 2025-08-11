@@ -61,7 +61,7 @@ export default {
     isWithIcon: Boolean,
     isMore: Boolean,
     isLinkToLibrary: Boolean,
-    profileId: String,
+    profileId: Number,
     isWithArtistsCount: Boolean
   },
   emits: [

@@ -1,7 +1,7 @@
 <template>
   <div
     ref="checkbox"
-    class="ui checkbox"
+    class="ui checkbox base-checkbox"
     @click="handleClick"
   >
     <input
@@ -28,9 +28,6 @@
 </template>
 
 <script>
-import {
-  toggle as toggleCheckbox
-} from '@/helpers/actions/plugins/semantic/checkbox'
 import checkboxMixin from '@/mixins/checkboxMixin'
 
 export default {
@@ -43,29 +40,15 @@ export default {
     text: String
   },
   emits: [
-    'click',
     'isCheckedChange'
   ],
   methods: {
-    handleClick (
-      event
-    ) {
-      this.$emit(
-        'click',
-        event
-      )
-    },
     change (
       value
     ) {
       this.$emit(
         'isCheckedChange',
         value
-      )
-    },
-    toggle () {
-      toggleCheckbox(
-        this.$refs.checkbox
       )
     }
   }

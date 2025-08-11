@@ -85,10 +85,10 @@ export default {
       )
     },
     lastfmConnection () {
-      return this.profileConnections.lastfm
+      return this.profileConnections?.lastfm
     },
     spotifyConnection () {
-      return this.profileConnections.spotify
+      return this.profileConnections?.spotify
     }
   },
   methods: {

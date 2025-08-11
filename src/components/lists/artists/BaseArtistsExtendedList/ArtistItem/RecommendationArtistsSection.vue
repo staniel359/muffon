@@ -108,7 +108,7 @@ export default {
       return this.recommendationData.artists
     },
     recommendationId () {
-      return this.recommendationData.id.toString()
+      return this.recommendationData.id
     }
   },
   methods: {

@@ -580,12 +580,15 @@
             "delete": "Delete search history"
           },
           "activity": {
+            "save": "Save activity history",
             "delete": "Delete activity history"
           },
           "player": {
+            "save": "Save player history",
             "delete": "Delete player history"
           },
           "browser": {
+            "save": "Save browser history",
             "delete": "Delete browser history"
           }
         },
@@ -778,7 +781,8 @@
       "images": "No images",
       "events": "No events",
       "profiles": "No profiles",
-      "shows": "No shows"
+      "shows": "No shows",
+      "pages": "No pages"
     },
     "content": "Looks like there is nothing here"
   },

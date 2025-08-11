@@ -10,7 +10,7 @@
       v-else
     >
       <div
-        v-html="content"
+        v-html="contentSanitized"
       />
     </template>
   </p>
@@ -18,6 +18,9 @@
 
 <script>
 import BaseLink from '@/components/links/BaseLink.vue'
+import {
+  sanitizeString
+} from '@/helpers/utils'
 
 export default {
   name: 'ContentBlock',
@@ -35,6 +38,13 @@ export default {
   emits: [
     'linkClick'
   ],
+  computed: {
+    contentSanitized () {
+      return sanitizeString(
+        this.content
+      )
+    }
+  },
   methods: {
     handleLinkClick () {
       this.$emit(

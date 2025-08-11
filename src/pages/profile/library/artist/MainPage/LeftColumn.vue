@@ -30,7 +30,7 @@ export default {
   },
   props: {
     artistData: Object,
-    profileId: String
+    profileId: Number
   }
 }
 </script>

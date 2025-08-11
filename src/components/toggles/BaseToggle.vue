@@ -5,6 +5,7 @@
     :class="{
       inverted: isDarkMode
     }"
+    @click="handleClick"
   >
     <input type="checkbox">
   </div>

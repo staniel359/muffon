@@ -81,7 +81,7 @@ export default {
     searchablePageMixin
   ],
   props: {
-    profileId: String,
+    profileId: Number,
     scope: String,
     limit: Number,
     order: String,

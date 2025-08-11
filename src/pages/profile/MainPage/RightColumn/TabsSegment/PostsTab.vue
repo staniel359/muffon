@@ -56,7 +56,7 @@ export default {
     postsTabMixin
   ],
   props: {
-    profileId: String
+    profileId: Number
   }
 }
 </script>

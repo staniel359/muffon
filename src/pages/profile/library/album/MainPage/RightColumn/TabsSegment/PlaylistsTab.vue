@@ -40,8 +40,8 @@ export default {
     tabMixin
   ],
   props: {
-    profileId: String,
-    libraryAlbumId: String,
+    profileId: Number,
+    libraryAlbumId: Number,
     isSelf: Boolean
   },
   data () {

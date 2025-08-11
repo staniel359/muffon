@@ -182,7 +182,7 @@ export default {
       )
     },
     playlistId () {
-      return this.playlistData.id.toString()
+      return this.playlistData.id
     }
   },
   methods: {

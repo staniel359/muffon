@@ -46,7 +46,7 @@ export default {
     BaseArtistsSimpleList
   },
   props: {
-    profileId: String
+    profileId: Number
   },
   data () {
     return {

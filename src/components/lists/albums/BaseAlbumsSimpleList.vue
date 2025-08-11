@@ -85,7 +85,7 @@ export default {
     isWithClearButton: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
-    profileId: String,
+    profileId: Number,
     isWithCreated: Boolean,
     isWithModelIcon: Boolean
   },

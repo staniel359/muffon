@@ -165,9 +165,7 @@ export default {
       )
     },
     commentProfileId () {
-      return this.profileData
-        .id
-        .toString()
+      return this.profileData.id
     },
     isPostCreator () {
       return (
@@ -176,9 +174,7 @@ export default {
       )
     },
     postProfileId () {
-      return this.postProfileData
-        ?.id
-        ?.toString()
+      return this.postProfileData?.id
     },
     postProfileData () {
       return this.postData.profile
@@ -193,9 +189,7 @@ export default {
       )
     },
     pageProfileId () {
-      return this.otherProfileData
-        ?.id
-        ?.toString()
+      return this.otherProfileData?.id
     },
     otherProfileData () {
       return this.postData.other_profile

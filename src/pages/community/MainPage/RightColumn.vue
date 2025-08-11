@@ -31,7 +31,7 @@ export default {
     PostsTab
   },
   props: {
-    communityId: String,
+    communityId: Number,
     isCommunityCreator: Boolean
   },
   data () {

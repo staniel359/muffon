@@ -36,11 +36,11 @@ export default {
   },
   props: {
     profileId: {
-      type: String,
+      type: Number,
       required: true
     },
     playlistId: {
-      type: String,
+      type: Number,
       required: true
     }
   },

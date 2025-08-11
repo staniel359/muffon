@@ -38,7 +38,7 @@ export default {
     pageMixin
   ],
   props: {
-    profileId: String
+    profileId: Number
   }
 }
 </script>

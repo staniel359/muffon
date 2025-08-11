@@ -104,9 +104,9 @@ export default {
       default: true
     },
     videoData: Object,
-    favoriteId: String,
-    bookmarkId: String,
-    watchedId: String,
+    favoriteId: Number,
+    bookmarkId: Number,
+    watchedId: Number,
     isFavorite: Boolean,
     isBookmark: Boolean,
     isWithFavoriteOption: Boolean,

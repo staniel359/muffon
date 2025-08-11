@@ -42,7 +42,7 @@ export default {
     pageMixin
   ],
   props: {
-    profileId: String
+    profileId: Number
   },
   data () {
     return {

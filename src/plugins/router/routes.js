@@ -1,3 +1,6 @@
+import {
+  params as formatParams
+} from '@/helpers/formatters/plugins/router'
 import formatHomePageLinkData from '@/helpers/formatters/tabs/home'
 import formatFeedPageLinkData from '@/helpers/formatters/tabs/feed'
 import formatConversationsPageLinkData
@@ -343,7 +346,7 @@ export default [
     exact: true,
     name: 'ConversationPage',
     component: ConversationPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatConversationPageLinkData
@@ -596,7 +599,7 @@ export default [
     exact: true,
     name: 'ProfilePage',
     component: ProfilePage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfilePageLinkData
@@ -607,7 +610,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryPage',
     component: ProfileLibraryPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryPageLinkData
@@ -618,7 +621,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryArtistsPage',
     component: ProfileLibraryArtistsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryPageLinkData
@@ -629,7 +632,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryArtistPage',
     component: ProfileLibraryArtistPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryArtistPageLinkData
@@ -640,7 +643,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryArtistAlbumsPage',
     component: ProfileLibraryArtistAlbumsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryArtistPageLinkData
@@ -651,7 +654,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryArtistTracksPage',
     component: ProfileLibraryArtistTracksPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryArtistPageLinkData
@@ -662,7 +665,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryArtistPlaylistsPage',
     component: ProfileLibraryArtistPlaylistsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryArtistPageLinkData
@@ -673,7 +676,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryAlbumsPage',
     component: ProfileLibraryAlbumsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryPageLinkData
@@ -684,7 +687,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryAlbumPage',
     component: ProfileLibraryAlbumPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryAlbumPageLinkData
@@ -695,7 +698,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryAlbumTracksPage',
     component: ProfileLibraryAlbumTracksPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryAlbumPageLinkData
@@ -706,7 +709,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryAlbumPlaylistsPage',
     component: ProfileLibraryAlbumPlaylistsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryAlbumPageLinkData
@@ -717,7 +720,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryTracksPage',
     component: ProfileLibraryTracksPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryPageLinkData
@@ -728,7 +731,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryTrackPage',
     component: ProfileLibraryTrackPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryTrackPageLinkData
@@ -739,7 +742,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryTrackAlbumsPage',
     component: ProfileLibraryTrackAlbumsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryTrackPageLinkData
@@ -750,7 +753,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryTrackPlaylistsPage',
     component: ProfileLibraryTrackPlaylistsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryTrackPageLinkData
@@ -761,7 +764,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryTagsPage',
     component: ProfileLibraryTagsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryPageLinkData
@@ -772,7 +775,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryTagPage',
     component: ProfileLibraryTagPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryTagPageLinkData
@@ -783,7 +786,7 @@ export default [
     exact: true,
     name: 'ProfileLibraryTagArtistsPage',
     component: ProfileLibraryTagArtistsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileLibraryTagPageLinkData
@@ -904,7 +907,7 @@ export default [
     exact: true,
     name: 'ProfileFavoritesPage',
     component: ProfileFavoritesPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileFavoritesPageLinkData
@@ -915,7 +918,7 @@ export default [
     exact: true,
     name: 'ProfileFavoritesArtistsPage',
     component: ProfileFavoritesArtistsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileFavoritesPageLinkData
@@ -926,7 +929,7 @@ export default [
     exact: true,
     name: 'ProfileFavoritesAlbumsPage',
     component: ProfileFavoritesAlbumsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileFavoritesPageLinkData
@@ -937,7 +940,7 @@ export default [
     exact: true,
     name: 'ProfileFavoritesTracksPage',
     component: ProfileFavoritesTracksPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileFavoritesPageLinkData
@@ -948,7 +951,7 @@ export default [
     exact: true,
     name: 'ProfileFavoritesVideosPage',
     component: ProfileFavoritesVideosPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfileFavoritesPageLinkData
@@ -1014,7 +1017,7 @@ export default [
     exact: true,
     name: 'ProfilePlaylistsPage',
     component: ProfilePlaylistsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfilePageLinkData
@@ -1025,7 +1028,7 @@ export default [
     exact: true,
     name: 'ProfilePlaylistPage',
     component: ProfilePlaylistPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfilePlaylistPageLinkData
@@ -1047,7 +1050,7 @@ export default [
     exact: true,
     name: 'ProfilePostsPage',
     component: ProfilePostsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfilePageLinkData
@@ -1069,7 +1072,7 @@ export default [
     exact: true,
     name: 'ProfileCommunitiesPage',
     component: ProfileCommunitiesPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatProfilePageLinkData
@@ -1091,7 +1094,7 @@ export default [
     exact: true,
     name: 'CommunityPage',
     component: CommunityPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatCommunityPageLinkData
@@ -1102,7 +1105,7 @@ export default [
     exact: true,
     name: 'CommunityPostsPage',
     component: CommunityPostsPage,
-    props: true,
+    props: formatParams,
     meta: {
       formatter:
         formatCommunityPageLinkData

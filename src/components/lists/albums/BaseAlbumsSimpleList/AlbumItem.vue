@@ -196,7 +196,7 @@ export default {
     isBookmark: Boolean,
     isFavorite: Boolean,
     isWithSource: Boolean,
-    profileId: String,
+    profileId: Number,
     isWithCreated: Boolean,
     isWithModelIcon: Boolean
   },

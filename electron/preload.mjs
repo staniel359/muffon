@@ -6,6 +6,9 @@ const {
 } = require(
   'electron'
 )
+const sanitizeHTML = require(
+  'sanitize-html'
+)
 
 contextBridge.exposeInMainWorld(
   'mainProcess',
@@ -51,6 +54,13 @@ contextBridge.exposeInMainWorld(
       ipcRenderer.on(
         command,
         callback
+      )
+    },
+    sanitizeString: function (
+      string
+    ) {
+      return sanitizeHTML(
+        string
       )
     }
   }

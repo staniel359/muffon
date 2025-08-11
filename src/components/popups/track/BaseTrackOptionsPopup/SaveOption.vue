@@ -61,13 +61,19 @@ export default {
       )
     },
     artistName () {
-      return this.savedTrackData.artist.name
+      return this
+        .savedTrackData
+        .artist
+        .name
     },
     trackTitle () {
       return this.savedTrackData.title
     },
     isAudioLinkPresent () {
-      return this.trackData.audio?.link
+      return this
+        .trackData
+        .audio
+        ?.link
     }
   },
   watch: {
@@ -77,6 +83,7 @@ export default {
   methods: {
     async handleClick () {
       this.isLoading = true
+
       this.isError = false
 
       const trackData =
@@ -110,10 +117,12 @@ export default {
     },
     handleSaveAudioError () {
       this.isLoading = false
+
       this.isError = true
     },
     handleTrackAudioDataError () {
       this.isLoading = false
+
       this.isError = true
     },
     async handleSavedTrackDataChange (
@@ -150,9 +159,11 @@ export default {
       return window
         .mainProcess
         .sendAsyncCommand(
-          'add-electron-store-value',
-          'profile.savedTracks',
-          savedTrackDataFormatted
+          'add-settings-key-value',
+          {
+            key: 'profile.savedTracks',
+            value: savedTrackDataFormatted
+          }
         )
     }
   }

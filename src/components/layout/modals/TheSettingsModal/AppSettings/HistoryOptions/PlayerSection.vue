@@ -5,6 +5,8 @@
     />
 
     <div>
+      <SaveOption />
+
       <BaseSettingsHistoryDeleteOption
         :scope="scope"
       />
@@ -16,12 +18,14 @@
 import BaseDivider from '@/components/BaseDivider.vue'
 import BaseSettingsHistoryDeleteOption
   from '@/components/settings/BaseSettingsHistoryDeleteOption.vue'
+import SaveOption from './PlayerSection/SaveOption.vue'
 
 export default {
   name: 'PlayerSection',
   components: {
     BaseDivider,
-    BaseSettingsHistoryDeleteOption
+    BaseSettingsHistoryDeleteOption,
+    SaveOption
   },
   data () {
     return {

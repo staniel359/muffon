@@ -21,7 +21,10 @@ export default function (
     response
   ) => {
     this.favoriteId =
-      response.data.favorite_artist.id.toString()
+      response
+        .data
+        .favorite_artist
+        .id
   }
 
   return postRequest.bind(

@@ -8,12 +8,13 @@ import {
 import {
   isDevelopment,
   wait,
-  isShowDevTools
+  isShowDevTools,
+  windowsDefaultSizes
 } from '../../helpers/utils.js'
 import {
   baseUrl
 } from '../../helpers/urls.js'
-import getElectronStoreKey from '../electronStore/getKey.js'
+import getSettingsKey from '../settings/getKey.js'
 import showMainWindow from './show.js'
 import hideMainWindow from './hide.js'
 import checkForUpdates from '../app/checkForUpdates.js'
@@ -32,6 +33,7 @@ import {
 import {
   preloadScriptFilePath
 } from '../../helpers/paths.js'
+import setMainWindowScale from './setScale.js'
 
 function handleShow () {
   setTrayMenu()
@@ -47,7 +49,7 @@ function handleClose (
   event.preventDefault()
 
   const isQuitOnClose =
-    getElectronStoreKey(
+    getSettingsKey(
       'window.isQuitOnClose'
     )
 
@@ -85,12 +87,14 @@ function handleDidFinishLoad () {
 async function handleFirstShow () {
   resizeViews()
 
+  setMainWindowScale()
+
   setViewScale(
     mainView
   )
 
   const isMaximizeOnStart =
-    getElectronStoreKey(
+    getSettingsKey(
       'window.isMaximizeOnStart'
     )
 
@@ -103,7 +107,7 @@ async function handleFirstShow () {
   }
 
   const isCheckForNewVersions =
-    getElectronStoreKey(
+    getSettingsKey(
       'updates.isCheckForNewVersions'
     )
 
@@ -118,8 +122,15 @@ async function handleFirstShow () {
 }
 
 export default function () {
-  const mainWindowWidth = 900
-  const mainWindowHeight = 600
+  const mainWindowWidth =
+    windowsDefaultSizes
+      .main
+      .width
+
+  const mainWindowHeight =
+    windowsDefaultSizes
+      .main
+      .height
 
   const mainWindowOptions = {
     width: mainWindowWidth,

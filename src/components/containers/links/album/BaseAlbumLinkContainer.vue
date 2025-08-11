@@ -30,8 +30,8 @@ export default {
     },
     artistName: String,
     isLinkToLibrary: Boolean,
-    profileId: String,
-    libraryAlbumId: String
+    profileId: Number,
+    libraryAlbumId: Number
   },
   emits: [
     'linkClick'

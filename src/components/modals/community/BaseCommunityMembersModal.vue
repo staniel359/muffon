@@ -39,7 +39,7 @@ export default {
     modalMixin
   ],
   props: {
-    communityId: String
+    communityId: Number
   },
   data () {
     return {

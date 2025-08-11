@@ -14,6 +14,7 @@ export function history (
     searchDelay: 0,
     cache: false,
     showNoResults: false,
+    preserveHTML: false,
     source,
     onSelect
   }

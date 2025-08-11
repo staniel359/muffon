@@ -21,7 +21,7 @@ export default {
     AddOption
   },
   props: {
-    libraryId: String,
+    libraryId: Number,
     artistData: Object
   },
   emits: [

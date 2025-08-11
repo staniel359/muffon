@@ -71,7 +71,7 @@ export default {
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     isCompatibility: Boolean,
-    profileId: String,
+    profileId: Number,
     isWithPageOption: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,

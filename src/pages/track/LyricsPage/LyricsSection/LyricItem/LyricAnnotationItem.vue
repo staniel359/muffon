@@ -73,7 +73,7 @@ export default {
       return this.lyricData.text
     },
     annotationId () {
-      return this.lyricData.annotation_id.toString()
+      return this.lyricData.annotation_id
     },
     element () {
       return this.$refs.annotation

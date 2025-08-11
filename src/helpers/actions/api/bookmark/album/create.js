@@ -27,7 +27,10 @@ export default function (
     response
   ) => {
     this.bookmarkId =
-      response.data.bookmark_album.id.toString()
+      response
+        .data
+        .bookmark_album
+        .id
   }
 
   return postRequest.bind(

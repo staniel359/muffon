@@ -43,7 +43,7 @@ export default {
   },
   props: {
     playlistId: {
-      type: String,
+      type: Number,
       required: true
     },
     playlistTrackIds: {

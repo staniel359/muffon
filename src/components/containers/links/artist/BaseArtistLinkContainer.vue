@@ -49,8 +49,8 @@ export default {
       required: true
     },
     isLinkToLibrary: Boolean,
-    profileId: String,
-    libraryArtistId: String
+    profileId: Number,
+    libraryArtistId: Number
   },
   emits: [
     'linkActiveChange',

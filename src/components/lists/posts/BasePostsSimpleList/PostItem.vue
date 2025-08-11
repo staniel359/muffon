@@ -137,9 +137,7 @@ export default {
       )
     },
     postProfileId () {
-      return this.profileData
-        .id
-        ?.toString()
+      return this.profileData.id
     },
     isPageOwner () {
       return (
@@ -148,9 +146,7 @@ export default {
       )
     },
     pageProfileId () {
-      return this.otherProfileData
-        ?.id
-        ?.toString()
+      return this.otherProfileData?.id
     },
     otherProfileData () {
       return this.postData.other_profile
@@ -162,9 +158,7 @@ export default {
       )
     },
     communityCreatorId () {
-      return this.communityCreatorData
-        ?.id
-        ?.toString()
+      return this.communityCreatorData?.id
     },
     communityCreatorData () {
       return this.communityData?.creator

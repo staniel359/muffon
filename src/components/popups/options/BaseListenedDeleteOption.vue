@@ -25,7 +25,7 @@ export default {
       required: true
     },
     listenedId: {
-      type: String,
+      type: Number,
       required: true
     }
   },

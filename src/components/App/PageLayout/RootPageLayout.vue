@@ -3,6 +3,8 @@
     v-if="profileId"
   />
 
+  <TheLoginObserver />
+
   <TheLogoutObserver />
 
   <TheAccountDeleteObserver />
@@ -48,6 +50,8 @@ import {
 } from 'pinia'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
+import TheLoginObserver
+  from '@/components/layout/observers/TheLoginObserver.vue'
 import TheLogoutObserver
   from '@/components/layout/observers/TheLogoutObserver.vue'
 import TheAccountDeleteObserver
@@ -101,6 +105,7 @@ export default {
   name: 'RootPageLayout',
   components: {
     TheOnlineObserver,
+    TheLoginObserver,
     TheLogoutObserver,
     TheAccountDeleteObserver,
     TheNativeThemeObserver,

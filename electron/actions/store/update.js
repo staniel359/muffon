@@ -1,5 +1,5 @@
 import getViews from '../views/get.js'
-import setElectronStoreData from '../electronStore/setData.js'
+import setSettings from '../settings/set.js'
 
 export default function (
   data,
@@ -23,7 +23,7 @@ export default function (
   )
 
   if (isSave) {
-    setElectronStoreData(
+    setSettings(
       data
     )
   }

@@ -19,7 +19,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - <img src="https://www.last.fm/static/images/favicon.702b239b6194.ico" height="16"> **Last.FM**
 - <img src="https://vk.com/images/icons/favicons/fav_logo.ico" height="16"> **VK**
 - <img src="https://ok.ru/favicon.ico" height="16"> **Odnoklassniki**
-- <img src="https://music.yandex.ru/favicon16.png" height="16"> **Yandex Music**
+- <img src="https://music.yandex.ru/favicon-48x48.png" height="16"> **Yandex Music**
 - <img src="https://open.spotifycdn.com/cdn/images/favicon16.c498a969.png" height="16"> **Spotify**
 - <img src="https://s4.bcbits.com/img/favicon/favicon-16x16.png" height="16"> **Bandcamp**
 - <img src="https://e-cdn-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.1e6ae1b5b7794f3e00c0.png" height="16"> **Deezer**
@@ -30,9 +30,6 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - <img src="https://assets.genius.com/images/apple-touch-icon.png" height="16"> **Genius**
 - <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch**
 - <img src="https://musicbrainz.org/static/images/favicons/favicon-16x16.png" height="16"> **MusicBrainz**
-
->[!CAUTION]
->As of February 2025, Spotify is currently NOT working as a playback source.
 
 ### Features
 
@@ -74,16 +71,18 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ### Languages
 
-- Беларуская ([@staniel359](https://github.com/staniel359))
-- Deutsch ([@gamersi](https://github.com/gamersi))
 - English ([@staniel359](https://github.com/staniel359))
+- Deutsch ([@gamersi](https://github.com/gamersi))
+- Español ([@Lolabird](https://github.com/Lolabird))
 - Français ([@TheFlomax](https://github.com/TheFlomax))
-- עברית ([@EthanPZ1](https://github.com/EthanPZ1))
 - Italiano ([@ZinRicky](https://github.com/ZinRicky), [@filipporomani](https://github.com/filipporomani))
+- Polski ([@Lukas-KK](https://github.com/Lukas-KK))
+- Беларуская ([@staniel359](https://github.com/staniel359))
+- Русский ([@staniel359](https://github.com/staniel359))
+- 中文 ([@PoorShawn](https://github.com/PoorShawn))
 - 日本語 ([@xyloflake](https://github.com/xyloflake))
 - 한국어 ([@DDinghoya](https://github.com/DDinghoya))
-- Polski ([@Lukas-KK](https://github.com/Lukas-KK))
-- Русский ([@staniel359](https://github.com/staniel359))
+- עברית ([@EthanPZ1](https://github.com/EthanPZ1))
 
 ### Technical stack
 
@@ -92,13 +91,13 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ### Available platforms
 
-- Windows (10, 11)
-- MacOS
-- Linux
+- Windows (10, 11) (x64)
+- MacOS (x64, arm64)
+- Linux (x64, arm64)
 
 ## Download
 
-[Latest (v2.1.0)](https://github.com/staniel359/muffon/releases/latest)
+[Latest (v2.2.0)](https://github.com/staniel359/muffon/releases/latest)
 
 ## Star History
 
@@ -130,7 +129,9 @@ If you have a suggestion, please check [our to do list](https://github.com/users
   
 ## Contribute
 
-- **Translators** wanted for localization
+- **Translators** wanted for localization. 
+>[!CAUTION]
+>Any Pull Request(s) directly made **without prior discussions** related to translations **will NOT be merged**. If you intend to contribute by translating, please consider joining the [Discord Server](https://discord.gg/kpWsA5NBmJ) and discuss it with us before you start working on it.
 
 ## Donate
 

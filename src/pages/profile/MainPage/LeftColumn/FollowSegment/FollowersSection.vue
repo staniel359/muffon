@@ -36,7 +36,9 @@ export default {
         'counters.nominative.followers',
         this.followersCount,
         {
-          count: this.followersCountStrong
+          named: {
+            count: this.followersCountStrong
+          }
         }
       )
     },
@@ -52,7 +54,7 @@ export default {
       )
     },
     profileId () {
-      return this.profileData.id.toString()
+      return this.profileData.id
     }
   },
   methods: {

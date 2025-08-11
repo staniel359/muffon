@@ -5,36 +5,48 @@ import {
 export default function (
   {
     playingData,
-    buttons
+    buttons,
+    startTime,
+    isPlaying
   }
 ) {
   const {
     trackTitle,
     artistName,
     albumTitle,
-    image
+    image,
+    duration
   } = playingData
+
+  const durationComputed = (
+    isPlaying ? duration : 0
+  )
+
+  const endTime = (
+    startTime +
+      durationComputed * 1000
+  )
 
   const activity = {
     type: 2,
     details: trackTitle,
     state: artistName,
-    assets: {
-      large_image: image,
-      large_text: albumTitle,
-      small_image: 'logo',
-      small_text: appName
-    },
+    largeImageKey: image,
+    ...(albumTitle && {
+      largeImageText: albumTitle
+    }),
+    smallImageKey: 'logo',
+    smallImageText: appName,
     ...(buttons.length && {
       buttons
-    })
+    }),
+    startTimestamp: startTime,
+    endTimestamp: endTime
   }
 
-  discordClient.request(
-    'SET_ACTIVITY',
-    {
-      pid: process.pid,
+  discordClient
+    .user
+    .setActivity(
       activity
-    }
-  )
+    )
 }

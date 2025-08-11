@@ -12,7 +12,7 @@ export function update (
   return window
     .mainProcess
     .sendAsyncCommand(
-      'update-store',
+      'call-update-store',
       dataFormatted,
       {
         isSave

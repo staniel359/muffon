@@ -5,8 +5,9 @@ import {
 const data = {
   state () {
     return {
-      info: null,
+      id: null,
       token: null,
+      info: null,
       isRemember: null,
       language: null,
       isShowPlaying: null,
@@ -15,23 +16,21 @@ const data = {
       connections: null
     }
   },
-  getters: {
-    id (
-      state
-    ) {
-      return state.info?.id?.toString()
-    }
-  },
   actions: {
-    setInfo (
+    setId (
       value
     ) {
-      this.info = value
+      this.id = value
     },
     setToken (
       value
     ) {
       this.token = value
+    },
+    setInfo (
+      value
+    ) {
+      this.info = value
     },
     setIsRemember (
       value
