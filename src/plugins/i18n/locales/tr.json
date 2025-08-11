@@ -1,0 +1,952 @@
+{
+  "navigation": {
+    "home": "Ana sayfa",
+    "artists": "Sanatçılar",
+    "artist": "Sanatçı",
+    "albums": "Albümler",
+    "albumGroups": "Albüm grupları",
+    "tracks": "Parçalar",
+    "tags": "Etiketler",
+    "tag": "Etiket",
+    "similar": "Benzer",
+    "images": "Resimler",
+    "lyrics": "Sözler",
+    "videos": "Videolar",
+    "videoChannels": "Video kanalları",
+    "videoMixes": "Video mixleri",
+    "videoPlaylists": "Video çalma listeleri",
+    "related": "Alakalı",
+    "top": "Popüler",
+    "topCollection": {
+      "artists": "Popüler sanatçılar",
+      "albums": "Popüler albümler",
+      "tracks": "Popüler parçalar",
+      "tags": "Popüler etiketler"
+    },
+    "releases": "Yayınlanmalar",
+    "releasesCollection": {
+      "new": "Yeni yayınlananlar",
+      "upcoming": "Yakında yayınlanacaklar"
+    },
+    "new": "Yeni",
+    "upcoming": "Yakında",
+    "radio": "Radyo",
+    "multitag": "Etiketle ara",
+    "profiles": "Profiller",
+    "feed": "Akış",
+    "posts": "Gönderiler",
+    "conversations": "Konuşmalar",
+    "library": "Kütüphane",
+    "recommendations": "Önerilenler",
+    "recommendationsCollection": {
+      "artists": "Önerilen sanatçılar",
+      "tracks": "Önerilen parçalar"
+    },
+    "savedTracks": "Kaydedilen parçalar",
+    "playlists": "Çalma listeleri",
+    "favorites": "Favoriler",
+    "bookmarks": "Yer imleri",
+    "bookmarksCollection": {
+      "artists": "Yer imli sanatçılar",
+      "albums": "Yer imli albümler",
+      "tracks": "Yer imli parçalar",
+      "videos": "Yer imli videolar",
+      "videoChannels": "Yer imli video kanalları",
+      "videoPlaylists": "Yer imli video çalma listeleri"
+    },
+    "communities": "Topluluklar",
+    "history": "Geçmiş",
+    "historyCollection": {
+      "activity": "Aktivite geçmişi",
+      "player": "Oynatma geçmişi",
+      "browser": "Tarayıcı geçmişi"
+    },
+    "activity": "Aktivite",
+    "player": "Oynatıcı",
+    "browser": "Tarayıcı",
+    "settings": "Ayarlar",
+    "model": {
+      "artists": "sanatçılardan {modelName}",
+      "albums": "{modelName} albümü",
+      "tracks": "{modelName} parçası",
+      "tags": "{modelName} etiketleri",
+      "similar": "{modelName} benzerleri",
+      "images": "{modelName} resimleri",
+      "lyrics": "{modelName} sözleri",
+      "videos": "{modelName} videoları",
+      "related": "{modelName} ile ilgili",
+      "posts": "{modelName} gönderileri",
+      "library": "{modelName} kütüphanesi",
+      "playlists": "{modelName} çalma listesi",
+      "favorites": "{modelName} favorileri",
+      "favoritesCollection": {
+        "artists": "{modelName} favori sanatçıları",
+        "albums": "{modelName} favori albümleri",
+        "tracks": "{modelName} favori parçaları",
+        "videos": "{modelName} favori videoları"
+      },
+      "communities": "{modelName} toplulukları",
+      "shows": "{modelName} gösterileri"
+    },
+    "search": "Arama",
+    "queue": "Oynatma sırası",
+    "whatsNew": "Neler yeni",
+    "listenedRecently": "Yakında dinlenenler",
+    "shows": "Gösteriler",
+    "listeningNow": "Şu an dinliyor",
+    "help": "Yardım"
+  },
+  "errors": {
+    "badRequest": {
+      "header": "Geçersiz istek",
+      "content": "Lütfen geçerli bir talepte bulunun"
+    },
+    "forbidden": {
+      "header": "Yasaklı eylem",
+      "content": "Bunu yapmak için yetkiniz yok"
+    },
+    "notFound": {
+      "header": "Bir şey bulunamadı",
+      "content": "Lütfen başka bir şeye göz at"
+    },
+    "internalServer": {
+      "header": "İç sunucu hatası",
+      "content": "Lütfen bizimle iletişime geçin"
+    },
+    "badGateway": {
+      "header": "Uzak sunucu hatası",
+      "content": "Lütfen birazdan tekrar deneyin"
+    },
+    "gatewayTimeout": {
+      "header": "Uzak sunucu zaman aşımı",
+      "content": "Lütfen birazdan tekrar deneyin"
+    },
+    "connection": {
+      "header": "Bağlantı kayıp",
+      "content": "Lütfen birazdan tekrar deneyin"
+    },
+    "client": {
+      "header": "Uygulama hatası",
+      "content": "Lütfen bizimle iletişime geçin"
+    }
+  },
+  "actions": {
+    "login": "Giriş yap",
+    "logout": "Çıkış yap",
+    "signup": "Kayıt ol",
+    "add": "Ekle",
+    "create": "Oluştur",
+    "edit": "Düzenle",
+    "save": "Kaydet",
+    "cancel": "İptal et",
+    "delete": "Sil",
+    "clear": "Temizle",
+    "retry": "Tekrar dene",
+    "post": "Gönderi",
+    "send": "Gönder",
+    "next": "Sonraki",
+    "upload": "Yükle",
+    "back": "Geri git",
+    "sendCode": "Kod gönder",
+    "share": "Paylaş",
+    "search": "Ara",
+    "filter": "Filtre",
+    "confirm": "Onayla",
+    "import": "İçe aktar",
+    "close": "Kapat",
+    "openLink": "Linki aç",
+    "play": "Oynat",
+    "shuffle": "Karıştır",
+    "loop": "Döngü",
+    "addFrom": {
+      "search": "Aratmadan",
+      "library": "Kütüphaneden"
+    },
+    "importFrom": {
+      "drive": "Diskten",
+      "account": "Hesaptan"
+    },
+    "searchIn": {
+      "source": "Şu kaynakta ara",
+      "sources": "Şu kaynaklarda ara"
+    },
+    "searchFor": {
+      "video": "Video ara",
+      "lyrics": "Sözleri ara"
+    },
+    "importFromAccount": {
+      "lastfm": "Last.FM'den İçe aktar",
+      "spotify": "Spotify'dan İçe aktar"
+    },
+    "selectModel": {
+      "folder": "Klasör seç"
+    },
+    "createModel": {
+      "playlist": "Çalma listesi oluştur",
+      "community": "Topluluk oluştur",
+      "post": "Gönderi oluştur"
+    },
+    "addModel": {
+      "comment": "Yorum yaz"
+    },
+    "addTo": {
+      "library": "Kütüphaneye ekle",
+      "playlist": "Çalma listesine ekle",
+      "favorites": "Favorilere ekle",
+      "bookmarks": "Yer imine ekle",
+      "listened": "Dinlenmişlere ekle",
+      "watched": "İzlenenlere ekle",
+      "queue": "Sıraya ekle",
+      "savedTracks": "Kaydedilen parçalara ekle"
+    },
+    "show": {
+      "library": "Kütüphanede göster",
+      "page": "Sayfayı göster"
+    },
+    "deleteFrom": {
+      "favorites": "Favorilerden sil",
+      "bookmarks": "Yer imlerinden sil",
+      "listened": "Dinlenmişlerden sil",
+      "watched": "İzlenenlerden sil"
+    },
+    "externalLink": {
+      "open": "Şarkıya göz at",
+      "original": "Orijinal",
+      "streaming": "Yayınla"
+    }
+  },
+  "links": {
+    "playlists": "Tüm çalma listeleri",
+    "communities": "Tüm topluluklar"
+  },
+  "inputs": {
+    "search": "Arama yap...",
+    "content": "Bir şey yaz..."
+  },
+  "modals": {
+    "delete": {
+      "header": {
+        "libraryModel": {
+          "artist": "Sanatçıyı kütüphaneden sil",
+          "album": "Albümü kütüphaneden sil",
+          "track": "Parçayı kütüphaneden sil"
+        },
+        "recommendationModel": {
+          "artist": "Sanatçıyı önerilenlerden sil",
+          "track": "Parçayı önerilenlerden sil"
+        },
+        "playlist": "Çalma listesini sil",
+        "playlistTrack": "Parçayı çalma listesinden sil",
+        "savedTrack": "Kaydedilen parçalardan sil",
+        "favorite": {
+          "artist": "Sanatçıyı favorilerden sil",
+          "album": "Albümü favorilerden sil",
+          "track": "Parçayı favorilerden sil",
+          "video": "Videoyu favorilerden sil"
+        },
+        "bookmark": {
+          "artist": "Sanatçıyı yer imlerinden sil",
+          "album": "Albümü yer imlerinden sil",
+          "track": "Parçayı yer imlerinden sil",
+          "video": "Videoyu yer imlerinden sil",
+          "videoChannel": "Video kanalını yer imlerinden sil",
+          "videoPlaylist": "Video çalma listesini yer imlerinden sil"
+        },
+        "post": "Gönderiyi sil",
+        "comment": "Yorumu sil",
+        "community": "Topluluğu sil",
+        "account": "Hesabı sil",
+        "library": "Kütüphaneyi sil",
+        "history": {
+          "search": "Arama geçmişini sil",
+          "activity": "Aktivite geçmişini sil",
+          "browser": "Tarayıcı geçmişini sil",
+          "player": "Oynatıcı geçmişini sil"
+        }
+      },
+      "going": {
+        "libraryModel": "{modelName} kütüphanenizden kaldırmak üzeresiniz.",
+        "recommendationModel": "{modelName} önerilenlerden kaldırmak üzeresiniz.",
+        "playlist": "{modelName} çalma listelerinizden kaldırmak üzeresiniz.",
+        "playlistTrack": "{parentModelName} adlı çalma listenizden {modelName} kaldırmak üzeresiniz.",
+        "savedTrack": "{modelName} kaydedilen parçalardan kaldırmak üzeresiniz.",
+        "favorite": "{modelName} favorilerinizden kaldırmak üzeresiniz.",
+        "bookmark": "{modelName} yer imlerinizden kaldırmak üzeresiniz.",
+        "post": "Gönderiyi silmek üzeresiniz.",
+        "comment": "Bu yorumu silmek üzeresiniz.",
+        "community": "Bu topluluğu silmek üzeresiniz.",
+        "account": "Hesabınızı silmek üzeresiniz.",
+        "library": "Kütüphaneyi silmek üzeresiniz.",
+        "history": {
+          "search": "Arama geçmişini silmek üzeresiniz.",
+          "activity": "Aktivite geçmişini silmek üzeresiniz.",
+          "browser": "Tarayıcı geçmişini silmek üzeresiniz.",
+          "player": "Oynatıcı geçmişini silmek üzeresiniz."
+        }
+      },
+      "also": {
+        "libraryModel": {
+          "artist": "Bu işlem, sanatçının tüm albümlerini ve parçalarını da silecektir.",
+          "album": "Bu işlem, albümdeki tüm parçaları da silecektir."
+        },
+        "playlist": "Bu işlem, çalma listesindeki tüm parçaları da silecektir.",
+        "community": "Bu işlem, topluluktaki tüm gönderileri de silecektir.",
+        "account": [
+          "Bu işlem ayrıca aşağıdaki verileri de silecektir:",
+          "<strong>- Kitaplık\n- Öneriler\n- Çalma Listeleri\n- Favoriler\n- Yer İşaretleri\n- Dinlenmişler\n- Sayfanızdaki Gönderiler\n- Abonelikler\n- Geçmiş</strong>",
+          "Bu veriler silinecek, ancak takma adınız görüntülenmeyecek:",
+          "<strong>- Oluşturduğunuz Gönderiler\n- Yaptığınız Yorumlar\n- Sizinle Yapılan Sohbetler\n- Oluşturduğunuz Topluluklar</strong>",
+          "Ve bu veriler değişmeden kalacak:",
+          "<strong>- Kaydedilen Parçalar\n- Arka Plan Resmi\n- Ayarlar</strong>"
+        ],
+        "library": [
+          "Bu işlem ayrıca aşağıdaki verileri de silecektir:",
+          "<strong>- Sanatçılar\n- Albümler\n- Parçalar\n- Öneriler</strong>"
+        ]
+      },
+      "undo": "Bu işlem geri alınamaz!",
+      "sure": "Silmek istediğinize emin misiniz?"
+    }
+  },
+  "forms": {
+    "fields": {
+      "email": "E-posta",
+      "password": "Şifre",
+      "passwordConfirmation": "Şifre doğrulaması",
+      "passwordResetCode": "Şifre sıfırlama kodu",
+      "nickname": "Takma ad",
+      "title": "Başlık",
+      "description": "Açıklama",
+      "gender": "Cinsiyet",
+      "birthdate": "Doğum tarihi",
+      "country": "Ülke",
+      "city": "Şehir",
+      "status": "Durum",
+      "clientId": "Client ID",
+      "clientSecret": "Client secret",
+      "genders": {
+        "male": "Erkek",
+        "female": "Kadın",
+        "other": "Diğer"
+      },
+      "legal": {
+        "header": "{privacyPolicy} ve {termsAndConditions}'ı kabul ediyorum",
+        "privacyPolicy": "Gizlilik Politikası",
+        "termsAndConditions": "Kullanım Koşulları"
+      },
+      "remember": "Beni hatırla",
+      "asCommunity": "Bir topluluk olarak"
+    },
+    "extra": "Ek bilgi",
+    "errors": {
+      "notFound": "Profil bulunamadı",
+      "empty": {
+        "email": "E-posta adresi boş",
+        "password": "Şifre boş",
+        "passwordConfirmation": "Şifre onayı boş",
+        "passwordResetCode": "Şifre sıfırlama kodu boş",
+        "nickname": "Takma ad boş",
+        "title": "Başlık boş",
+        "clientId": "Client ID boş",
+        "clientSecret": "Client secret boş",
+        "legal": "Gizlilik Politikası ve Kullanım Koşullarını kabul etmelisiniz"    
+      },
+      "invalid": {
+        "email": "E-posta adresi geçersiz"
+      },
+      "taken": {
+        "email": "E-posta zaten alınmış",
+        "nickname": "Takma ad zaten alınmış",
+        "title": "Başlık zaten alınmış"
+      },
+      "tooShort": {
+        "password": "Şifre çok kısa"
+      },
+      "tooLong": {
+        "nickname": "Takma ad çok uzun"
+      },
+      "confirmation": {
+        "passwordConfirmation": "Şifre ve onay şifresi eşleşmiyor"
+      },
+      "wrong": {
+        "password": "Yanlış şifre",
+        "passwordResetCode": "Yanlış şifre sıfırlama kodu"
+      }
+    },
+    "confirm": {
+      "password": "Lütfen şifrenizi onaylayın:"
+    }
+  },
+  "notifications": {
+    "scrobbled": "{trackFullTitle} adlı parça kaydırıldı",
+    "added": {
+      "queue": {
+        "track": "{trackFullTitle} adlı parça sıraya eklendi",
+        "tracks": "{counter} kuyruğa eklendi"
+      },
+      "savedTracks": {
+        "track": "{trackFullTitle} adlı parça kaydedilen parçalarınıza eklendi"
+      }
+    },
+    "updated": {
+      "profile": "Profil güncellendi",
+      "post": "Gönderi güncellendi",
+      "comment": "Yorum güncellendi",
+      "playlist": "{playlistTitle} adlı çalma listesi güncellendi",
+      "community": "{communityTitle} adlı topluluk güncellendi"
+    },
+    "deleted": {
+      "libraryModel": {
+        "artist": "{modelName} adlı sanatçı kütüphanenizden silindi",
+        "album": "{modelName} adlı albüm kütüphanenizden silindi",
+        "track": "{modelName} adlı parça kütüphanenizden silindi"
+      },
+      "playlist": "{playlistTitle} adlı çalma listesi silindi",
+      "community": "{communityTitle} adlı topluluk silindi",
+      "account": "Hesabınız silindi",
+      "library": "Kütüphaneniz silindi",
+      "history": {
+        "search": "Arama geçmişi silindi",
+        "activity": "Etkinlik geçmişi silindi",
+        "browser": "Tarayıcı geçmişi silindi",
+        "player": "Oynatma geçmişi silindi"
+      }
+    },
+    "copied": "Bağlantı panoya kopyalandı",
+    "cleared": {
+      "cache": "Önbellek temizlendi",
+      "searchHistory": "Arama geçmişi temizlendi"
+    },
+    "restartToApply": "Ayarlar kaydedilecek ve uygulama bir sonraki başlatılışında uygulanacak"
+  },
+  "counters": {
+    "nominative": {
+      "artists": "{count} sanatçı | {count} sanatçı",
+      "albums": "{count} albüm | {count} albüm",
+      "tracks": "{count} parça | {count} parça",
+      "videos": "{count} video | {count} video",
+      "files": "{count} dosya | {count} dosya",
+      "plays": "{count} oynatma | {count} oynatma",
+      "followers": "{count} takipçi | {count} takipçi",
+      "following": "{count} takip edilen",
+      "members": "{count} üye | {count} üye",
+      "playlists": "{count} çalma listesi | {count} çalma listesi"
+    },
+    "genitive": {
+      "artists": "{count} sanatçı | {count} sanatçı",
+      "albums": "{count} albüm | {count} albüm",
+      "tracks": "{count} parça | {count} parça",
+      "files": "{count} dosya | {count} dosya",
+      "plays": "{count} oynatma | {count} oynatma",
+      "playlists": "{count} çalma listesi | {count} çalma listesi"
+    },
+    "accusative": {
+      "artists": "{count} sanatçı | {count} sanatçı",
+      "albums": "{count} albüm | {count} albüm",
+      "tracks": "{count} parça | {count} parça",
+      "files": "{count} dosya | {count} dosya",
+      "playlists": "{count} çalma listesi | {count} çalma listesi"
+    }
+  },
+  "select": {
+    "source": "Kaynak seçiniz:",
+    "type": "Tür seçiniz:",
+    "album": "Albüm seçiniz:",
+    "group": "Albüm grubu seçiniz:",
+    "artist": "Sanatçı seçiniz:",
+    "track": "Parça seçiniz:",
+    "country": "Ülke seçiniz:",
+    "video": "Video seçiniz:",
+    "lyrics": "Şarkı sözü seçiniz:"
+  },
+  "sources": {
+    "audio": "Ses",
+    "other": "Diğer",
+    "albumTypes": {
+      "album": "Albüm",
+      "group": "Albüm grubu",
+      "track": "Parça"
+    },
+    "albumsTypes": {
+      "album": "Albümler",
+      "single": "Single'lar",
+      "ep": "EP'ler",
+      "singleEp": "Single'lar / EP'ler",
+      "compilation": "Derlemeler",
+      "video": "Videolar",
+      "misc": "Çeşitli",
+      "appearance": "Görünüm",
+      "live": "Canlı"
+    },
+    "videoTypes": {
+      "video": "Video",
+      "track": "Parça"
+    }
+  },
+  "player": {
+    "variants": "({count}) Varyasyon",
+    "audio": {
+      "bitrate": "{value} kbit/sn",
+      "equalizer": {
+        "decibel": "{value} dB",
+        "hertz": "{value} Hz",
+        "kilohertz": "{value} kHz"
+      }
+    }
+  },
+  "settings": {
+    "tabs": {
+      "app": "Uygulama",
+      "profile": "Profil",
+      "connections": "Bağlantılar"
+    },
+    "sections": {
+      "interface": "Arayüz",
+      "theme": "Tema",
+      "window": "Pencere",
+      "tabs": "Sekmeler",
+      "sidebar": "Kenar çubuğu",
+      "video": "Video",
+      "data": "Veri",
+      "info": "Bilgi",
+      "account": "Hesap",
+      "system": "Sistem",
+      "updates": "Güncellemeler"
+    },
+    "options": {
+      "app": {
+        "interface": {
+          "language": "Dil",
+          "timezone": "Saat Dilimi",
+          "infiniteScroll": "Sonsuz Kaydırma",
+          "artistPopup": "Bir bağlantının üzerine gelindiğinde sanatçı bilgilerini göster",
+          "innerCounters": "Muffon dinleyici sayacını göster",
+          "cachePages": "Sayfaları önbellekle",
+          "scale": "Ölçek"
+        },
+        "theme": {
+          "dark": "Karanlık mod",
+          "system": "Sistem teması",
+          "background": "Arkaplan",
+          "transparency": "Şeffaflık"
+        },
+        "window": {
+          "maximize": "Başlatıldığında ekranı kapla",
+          "quit": "Uygulama kapatıldığında tamamiyle kapat",
+          "showTrayIcon": "Tepsi simgesini göster"
+        },
+        "tabs": {
+          "newTabSwitch": "Yeni sekmeye geç",
+          "closeOnQuit": "Çıkarken sekmeyi kapat"
+        },
+        "search": {
+          "source": "Kaynak",
+          "scope": "Arama türü",
+          "resultsFullSize": "Sonuçları tam ekran göster"
+        },
+        "player": {
+          "audioSources": "Ses kaynakları (önceliğe göre)",
+          "automatch": "Sesi parçayla eşleştir",
+          "bitrate": "Ses bit hızını göster",
+          "album": "Albümü göster",
+          "equalizer": "Equalizer'ı göster",
+          "focusPlaying": "Geçerli parçaya odaklan",
+          "pauseOnVideoPlay": "Video oynatımında duraklat"
+        },
+        "queue": {
+          "autoplay": "Otomatik oynatma",
+          "clear": "Oynatıcı kapatıldığında sırayı temizle"
+        },
+        "video": {
+          "autoplay": "Otomatik oynatma",
+          "pauseOnAudioPlay": "Ses oynatımında duraklat",
+          "openLinksInNewTab": "Bağlantıları yeni sekmelerde aç"
+        },
+        "recommendations": {
+          "hideLibraryArtists": "Kütüphane sanatçılarını gizle",
+          "tracksCount": "Parça sayısına göre >=",
+          "hideListenedArtists": "Dinlenmiş sanatçıları gizle",
+          "hideLibraryTracks": "Kütüphane parçalarını gizle",
+          "hideListenedTracks": "Dinlenmiş parçaları gizle"
+        },
+        "top": {
+          "country": "Varsayılan ülke"
+        },
+        "lyrics": {
+          "annotations": "Açıklamaları göster"
+        },
+        "history": {
+          "search": {
+            "delete": "Arama geçmişini sil"
+          },
+          "activity": {
+            "save": "Aktivite geçmişini kaydet",
+            "delete": "Aktivite geçmişini sil"
+          },
+          "player": {
+            "save": "Oynatıcı geçmişini kaydet",
+            "delete": "Oynatıcı geçmişini sil"
+          },
+          "browser": {
+            "save": "Tarayıcı geçmişini kaydet",
+            "delete": "Tarayıcı geçmişini sil"
+          }
+        },
+        "system": {
+          "cache": {
+            "enable": "Önbelleği etkinleştir",
+            "clear": "Önbelleği temizle"
+          }
+        },
+        "updates": {
+          "check": "Yeni sürümleri kontrol et",
+          "auto": "Otomatik güncellemeleri etkinleştir",
+          "autoWarning": "Linux'taki otomatik güncellemeler hala deneyseldir ve hatalar içerebilir.\nOtomatik güncelleme işlemi sırasında uygulama geçici olarak donabilir.\nLütfen uygulamayı zorla kapatmayın; güncelleme tamamlandığında otomatik olarak kapanacaktır.\n\nBu sorun hakkında daha fazla bilgi ve takip için [a link=issue]bu bağlantıya[/a] bakın."
+        }
+      },
+      "profile": {
+        "player": {
+          "playing": "Profilinde dinlediğin parçayı göster"
+        },
+        "data": {
+          "account": {
+            "delete": "Hesabını sil"
+          },
+          "library": {
+            "delete": "Kütüphaneni sil"
+          }
+        }
+      },
+      "connections": {
+        "lastfm": {
+          "scrobbling": "Scrobble'ı aç",
+          "scrobbleNotifications": "Scrobble bildirimleri",
+          "scrobblePercent": "Şu kadar dinledikten sonra Scrobble say"
+        },
+        "spotify": {
+          "link": {
+            "description": "Spotify hesabınızı bağlamak için [a link=guide]bu kılavuza[/a] göz atın."
+          }
+        },
+        "discord": {
+          "richPresence": {
+            "header": "Discord'da Dinliyor olarak göster",
+            "client": "Etkinleştirmeden önce Discord uygulamasının çalıştığından emin olun",
+            "buttons": {
+              "header": "Düğmeler",
+              "select": {
+                "first": "İlk seçim:",
+                "second": "İkinci seçim:"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "track": {
+    "source": "{source} üzerinden"
+  },
+  "recommended": {
+    "header": "Size öneriliyor",
+    "based": "Dinlediklerinize benzer:"
+  },
+  "signup": {
+    "text": "Hesabınız yok mu?",
+    "link": "Kayıt ol"
+  },
+  "login": {
+    "text": "Zaten hesabınız var mı?",
+    "link": "Giriş yap"
+  },
+  "passwordReset": {
+    "text": "Şifrenizi mi unuttunuz?",
+    "link": "Sıfırla",
+    "code": {
+      "sent": "E-postanıza bir şifre sıfırlama kodu gönderildi"
+    },
+    "updated": {
+      "header": "Şifreniz güncellendi",
+      "content": "Artık geri dönüp giriş yapabilirsiniz"
+    }
+  },
+  "anonymous": {
+    "continue": "Anonim olarak devam et",
+    "nickname": "Anonim"
+  },
+  "roles": {
+    "creator": "Kurucu"
+  },
+  "relationships": {
+    "followed": "Sizi takip ediyor",
+    "following": "Takiptesin",
+    "follow": "Takip et",
+    "unfollow": "Takibi bırak"
+  },
+  "memberships": {
+    "joined": "Katıldınız",
+    "join": "Katıl",
+    "leave": "Çık"
+  },
+  "message": {
+    "send": "Mesaj gönder",
+    "sent": {
+      "header": "Mesaj gönderildi",
+      "content": "Sohbete git"
+    }
+  },
+  "compatibility": {
+    "header": "{profileNickname} ile uyumluluk düzeyiniz",
+    "common": "Ortaklaştığınız:"
+  },
+  "recommendation": {
+    "similar": "{counter} ile benzer:"
+  },
+  "import": {
+    "lastfm": {
+      "historyVisible": "Lütfen içe aktarmadan önce Last.FM dinleme geçmişinizin görüntülendiğinden emin olun."
+    },
+    "active": "{counter} / {counter} içe aktarılıyor...",
+    "success": {
+      "header": {
+        "files": "{counter} içe aktarıldı | {counter} içe aktarıldı",
+        "tracks": "{counter} içe aktarıldı | {counter} içe aktarıldı"
+      },
+      "content": "Kütüphanenize kaydetmeden önce verilerinizi incelemek isteyebilirsiniz"
+    },
+    "error": {
+      "files": "{counter} içe aktarılamadı. Lütfen metadata doğru biçimlendirildiğinden emin olun:"
+    }
+  },
+  "save": {
+    "active": "{counter} / {counter} kaydediliyor...",
+    "success": {
+      "library": {
+        "artists": "{counter} kütüphanenize eklendi | {counter} kütüphanenize eklendi",
+        "albums": "{counter} kütüphanenize eklendi | {counter} kütüphanenize eklendi",
+        "tracks": "{counter} kütüphanenize eklendi | {counter} kütüphanenize eklendi"
+      },
+      "playlist": {
+        "artists": "{counter} bir çalma listesine eklendi | {counter} bir çalma listesine eklendi",
+        "albums": "{counter} bir çalma listesine eklendi | {counter} bir çalma listesine eklendi",
+        "tracks": "{counter} bir çalma listesine eklendi | {counter} bir çalma listesine eklendi"
+      },
+      "playlists": {
+        "playlists": "{counter} bir çalma listesine eklendi | {counter} bir çalma listesine eklendi"
+      },
+      "favorites": {
+        "tracks": "{counter} bir favoriye eklendi | {counter} favorilerinize eklendi."
+      }
+    },
+    "error": "{counter} eklenemedi:"
+  },
+  "delete": {
+    "active": "{counter} tanesinden {count} tanesi siliniyor..."
+  },
+  "connections": {
+    "connect": "Hesabınızı bağlayın",
+    "confirm": {
+      "token": "Şimdi bir tarayıcı açılacak. Bağlantınızı onaylayın ve bu butona tekrar tıklayın.",
+      "code": "Şimdi bir tarayıcı açılacak. Bağlantınızı onaylayın, aldığınız kodu yapıştırın ve bu butona tekrar tıklayın."
+    },
+    "disconnect": "Hesabının bağlantısını kes"
+  },
+  "accounts": {
+    "premium": "Premium"
+  },
+  "noCollection": {
+    "header": {
+      "artists": "Sanatçı yok",
+      "albums": "Albüm yok",
+      "groups": "Albüm grubu yok",
+      "tracks": "Parça yok",
+      "similar": "Benzer yok",
+      "tags": "Etiketler yok",
+      "posts": "Gönderi yok",
+      "feed": "Gönderi yok",
+      "conversations": "Konuşma yok",
+      "messages": "Mesaj yok",
+      "followers": "Takipçi yok",
+      "following": "Takip edilen kullanıcı yok",
+      "recommendations": "Öneri yok",
+      "playlists": "Çalma listesi yok",
+      "communities": "Topluluk yok",
+      "members": "Üye yok",
+      "videos": "Video yok",
+      "videoChannels": "Video kanalları yok",
+      "videoMixes": "Video mixleri yok",
+      "videoPlaylists": "Video çalma listeleri yok",
+      "related": "Alakalı yok",
+      "listeners": "Dinleyici yok",
+      "images": "Görsel yok",
+      "events": "Etkinlik yok",
+      "profiles": "Profil yok",
+      "shows": "Gösteri yok",
+      "pages": "Sayfa yok"
+    },
+    "content": "Burası henüz boş gibi"
+  },
+  "deleted": {
+    "artist": "Sanatçı silindi",
+    "album": "Albüm silindi",
+    "track": "Parça silindi",
+    "recommendation": "Öneri silindi",
+    "playlist": "Çalma listesi silindi",
+    "post": "Gönderi silindi",
+    "comment": "Yorum silindi",
+    "video": "Video silindi",
+    "videoChannel": "Video kanalı silindi",
+    "videoPlaylist": "Video çalma listesi silindi"
+  },
+  "messages": {
+    "welcome": "Hoş geldin, {profileNickname}"
+  },
+  "profile": {
+    "wasOnline": "Biraz önce aktifti"
+  },
+  "feed": {
+    "global": "Global Akış"
+  },
+  "about": {
+    "license": "{license} lisans",
+    "homepage": "Ana Sayfa",
+    "contact": "İletişim"
+  },
+  "private": {
+    "playlist": "Gizli",
+    "profile": "Gizli"
+  },
+  "donate": {
+    "header": "Bağış Yap",
+    "content": [
+      "muffon, reklamsız, ücretli özellik veya içerik içermeyen, kâr amacı gütmeyen bir projedir.",
+      "Ancak, geliştirme ve altyapı için gerekli fonlama olmadan varlığını sürdüremez.",
+      "Bu projeyi oluşturmak için çok zaman ve emek harcandı ve umarız ki yapılan her yatırım karşılığını verir.",
+      "Bu nedenle, muffon'u desteklemeniz için yardımınızı rica ediyoruz.",
+      "<strong>Bağış yapmayı düşünüyor musunuz?</strong>"
+    ],
+    "actions": {
+      "decline": "Hayır, teşekkürler",
+      "later": "Belki sonra",
+      "accept": "Evet, elbette"
+    }
+  },
+  "lists": {
+    "simple": "Basit liste",
+    "table": "Tablo",
+    "extended": "Genişletilmiş liste"
+  },
+  "orders": {
+    "createdDesc": "En Yeni",
+    "createdAsc": "En Eski",
+    "updatedDesc": "Son Güncellenen",
+    "updatedAsc": "En Eski Güncellenen",
+    "artistsCountDesc": "En Çok Sanatçı",
+    "artistsCountAsc": "En Az Sanatçı",
+    "albumsCountDesc": "En Çok Albüm",
+    "albumsCountAsc": "En Az Albüm",
+    "tracksCountDesc": "En Çok Parça",
+    "tracksCountAsc": "En Az Parça",
+    "followersCountDesc": "En Çok Takipçi",
+    "followersCountAsc": "En Az Takipçi",
+    "joinedDesc": "En Son Katılan",
+    "joinedAsc": "En Eski Katılan",
+    "membersCountDesc": "En Fazla Üye",
+    "membersCountAsc": "En Az Üye"
+  },
+  "deletedModel": {
+    "profile": "Silinen profil"
+  },
+  "events": {
+    "created": {
+      "profile": "Profil oluşturuldu",
+      "bookmarkAlbum": "{modelName} albümü yer imlerine eklendi",
+      "bookmarkArtist": "{modelName} adlı sanatçı yer imlerine eklendi",
+      "bookmarkTrack": "{modelName} parçası yer imlerine eklendi",
+      "bookmarkVideo": "{modelName} videosu yer imlerine eklendi",
+      "bookmarkVideoChannel": "video kanalı {modelName} yer imlerine eklendi",
+      "bookmarkVideoPlaylist": "video oynatma listesi {modelName} yer imlerine eklendi",
+      "favoriteAlbum": "{modelName} albümü favorilere eklendi",
+      "favoriteArtist": "{modelName} adlı sanatçı favorilere eklendi",
+      "favoriteTrack": "{modelName} parçası favorilere eklendi",
+      "favoriteVideo": "{modelName} videosu favorilere eklendi",
+      "libraryAlbum": "{modelName} albümü kütüphaneye eklendi",
+      "libraryArtist": "{modelName} adlı sanatçı kütüphaneye eklendi",
+      "libraryTrack": "{modelName} parçası kütüphaneye eklendi",
+      "listenedAlbum": "{modelName} albümü dinlenme listesine eklendi",
+      "listenedArtist": "{modelName} adlı sanatçı dinlenme listesine eklendi",
+      "listenedTrack": "{modelName} parçası dinlenme listesine eklendi",
+      "watchedVideo": "{modelName} videosu izlenmiş video listesine eklendi",
+      "playlistTrack": "{modelName} parçası {playlistTitle} çalma listesine eklendi",
+      "community": "{modelName} topluluğu oluşturuldu",
+      "relationship": "{modelName} takip edildi",
+      "post": "{modelName} gönderisi oluşturuldu",
+      "postComment": "{modelName} yorumu oluşturuldu",
+      "playlist": "{modelName} çalma listesi oluşturuldu",
+      "conversation": "{modelName} ile bir konuşma başlatıldı",
+      "membership": "{modelName} topluluğuna katıldı"
+    },
+    "updated": {
+      "profile": "Profil güncellendi",
+      "community": "{modelName} Topluluğu güncellendi",
+      "post": "{modelName} Gönderisi güncellendi",
+      "postComment": "{modelName} Yorumu güncellendi",
+      "playlist": "{modelName} Oynatma Listesi güncellendi"
+    },
+    "deleted": {
+      "bookmarkAlbum": "{modelName} adlı albüm yer imlerinden silindi",
+      "bookmarkArtist": "{modelName} adlı sanatçı yer imlerinden silindi",
+      "bookmarkTrack": "{modelName} adlı parça yer imlerinden silindi",
+      "bookmarkVideo": "{modelName} adlı video yer imlerinden silindi",
+      "bookmarkVideoChannel": "{modelName} adlı video kanalı yer imlerinden silindi",
+      "bookmarkVideoPlaylist": "{modelName} adlı video çalma listesi yer imlerinden silindi",
+      "favoriteAlbum": "{modelName} adlı albüm favorilerden silindi",
+      "favoriteArtist": "{modelName} adlı sanatçı favorilerden silindi",
+      "favoriteTrack": "{modelName} adlı parça favorilerden silindi",
+      "favoriteVideo": "{modelName} adlı video favorilerden silindi",
+      "libraryAlbum": "{modelName} adlı albüm kütüphaneden silindi",
+      "libraryArtist": "{modelName} adlı sanatçı kütüphaneden silindi",
+      "libraryTrack": "{modelName} adlı parça kütüphaneden silindi",
+      "listenedAlbum": "{modelName} adlı albüm Dinlenmişlerden silindi",
+      "listenedArtist": "{modelName} adlı sanatçı Dinlenmişlerden silindi",
+      "listenedTrack": "{modelName} adlı parça Dinlenmişlerden silindi",
+      "watchedVideo": "{modelName} adlı video izlenenlerden silindi",
+      "playlistTrack": "{modelName} adlı parça {playlistTitle} adlı çalma listesinden silindi",
+      "community": "{modelName} adlı topluluk silindi",
+      "recommendationArtist": "{modelName} adlı sanatçı önerilenlerden çıkartıldı",
+      "recommendationTrack": "{modelName} adlı parça önerilenlerden çıkartıldı",
+      "relationship": "{modelName} adlı kişiyi takibi bıraktın",
+      "post": "{modelName} gönderi silindi",
+      "postComment": "{modelName} yorum silindi",
+      "playlist": "{modelName} adlı playlist silindi",
+      "membership": "{modelName} topluluğundan çıktın"
+    }
+  },
+  "created": {
+    "profile": "Muffon'a katılım tarihi",
+    "library": "Kütüphaneye eklenme tarihi",
+    "community": "Oluşturulma tarihi"
+  },
+  "filter": {
+    "include": {
+      "artists": "Sanatçıya göre filtrele",
+      "tags": "Etikete göre filtrele"
+    },
+    "exclude": {
+      "artists": "Sanatçıları hariç tut",
+      "tags": "Etiketleri hariç tut"
+    }
+  },
+  "keyboardShortcuts": {
+    "header": "Klavye kısayolları",
+    "search": "Arama panelini göster",
+    "audioBackward": "Parçayı geri sar",
+    "audioForward": "Parçayı ileri sar",
+    "radioNextTrack": "Sonraki radyo parçası"
+  },
+  "online": "Aktif",
+  "error": "Hata",
+  "more": "En fazla...",
+  "loading": "Yükleniyor...",
+  "warning": "Uyarı"
+}
