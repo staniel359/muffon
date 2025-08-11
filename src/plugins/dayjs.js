@@ -15,6 +15,7 @@ import 'dayjs/locale/ko'
 import 'dayjs/locale/pl'
 import 'dayjs/locale/pt-br'
 import 'dayjs/locale/ru'
+import 'dayjs/locale/tr'
 import 'dayjs/locale/zh'
 
 // i18n

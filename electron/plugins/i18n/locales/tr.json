@@ -1,0 +1,13 @@
+{
+  "show": "Göster",
+  "hide": "Gizle",
+  "about": "Hakkında",
+  "quit": "Çık",
+  "update": {
+    "message": "Yeni sürüm mevcut",
+    "buttons": {
+      "download": "İndir",
+      "close": "Kapat"
+    }
+  }
+}
