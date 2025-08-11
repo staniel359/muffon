@@ -710,7 +710,8 @@
     "success": {
       "header": {
         "files": "{counter} has been imported | {counter} have been imported",
-        "tracks": "{counter} has been imported | {counter} have been imported"
+        "tracks": "{counter} has been imported | {counter} have been imported",
+        "playlists": "{counter} has been imported | {counter} have been imported"
       },
       "content": "You may want to check the data before saving to library"
     },
@@ -782,7 +783,8 @@
       "events": "No events",
       "profiles": "No profiles",
       "shows": "No shows",
-      "pages": "No pages"
+      "pages": "No pages",
+      "lyrics": "No lyrics"
     },
     "content": "Looks like there is nothing here"
   },
