@@ -31,11 +31,9 @@
       model="profile"
     />
 
-    <BaseLabel
-      v-if="isCreator"
-      class="primary circular main-bottom-small-section"
-      :text="roleText"
-      :is-invertable="false"
+    <BaseProfileRoleLabel
+      class="main-bottom-small-section"
+      :profile-data="profileData"
     />
 
     <i
@@ -55,7 +53,8 @@ import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import InfoSection from './InfoSegment/InfoSection.vue'
 import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
-import BaseLabel from '@/components/labels/BaseLabel.vue'
+import BaseProfileRoleLabel
+  from '@/components/labels/profile/BaseProfileRoleLabel.vue'
 
 export default {
   name: 'InfoSegment',
@@ -66,7 +65,7 @@ export default {
     InfoSection,
     BaseHeader,
     BasePrivateIcon,
-    BaseLabel
+    BaseProfileRoleLabel
   },
   props: {
     profileData: {
@@ -80,19 +79,6 @@ export default {
     },
     nickname () {
       return this.profileData.nickname
-    },
-    isCreator () {
-      return (
-        this.role === 'creator'
-      )
-    },
-    role () {
-      return this.profileData.role
-    },
-    roleText () {
-      return this.$t(
-        `roles.${this.role}`
-      )
     },
     isPrivate () {
       return this.profileData.private

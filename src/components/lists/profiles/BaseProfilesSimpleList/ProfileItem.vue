@@ -30,11 +30,10 @@
           model="profile"
         />
 
-        <BaseLabel
-          v-if="isCreator"
-          class="primary circular small main-right-small-section"
-          :text="roleText"
-          :is-invertable="false"
+        <BaseProfileRoleLabel
+          :profile-data="profileData"
+          is-right
+          is-small
         />
       </div>
 
@@ -100,7 +99,8 @@ import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import BaseProfileOnlineLabel
   from '@/components/models/profile/BaseProfileOnlineLabel.vue'
-import BaseLabel from '@/components/labels/BaseLabel.vue'
+import BaseProfileRoleLabel
+  from '@/components/labels/profile/BaseProfileRoleLabel.vue'
 import BaseProfileGenderAge
   from '@/components/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry
@@ -128,7 +128,7 @@ export default {
     BaseHeader,
     BasePrivateIcon,
     BaseProfileOnlineLabel,
-    BaseLabel,
+    BaseProfileRoleLabel,
     BaseProfileGenderAge,
     BaseProfileCityCountry,
     BaseListCounterSection,
@@ -178,19 +178,6 @@ export default {
     },
     nickname () {
       return this.profileData.nickname
-    },
-    isCreator () {
-      return (
-        this.role === 'creator'
-      )
-    },
-    role () {
-      return this.profileData.role
-    },
-    roleText () {
-      return this.$t(
-        `roles.${this.role}`
-      )
     },
     isSelf () {
       return isCurrentProfile(

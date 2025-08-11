@@ -12,6 +12,12 @@
         :profile-data="profileData"
       />
 
+      <BaseProfileRoleLabel
+        :profile-data="profileData"
+        is-right
+        is-small
+      />
+
       <BasePrivateIcon
         v-if="isProfilePrivate"
         class="right small"
@@ -27,13 +33,16 @@ import BaseCommunityTitle
 import BaseProfileNickname
   from '@/components/models/profile/BaseProfileNickname.vue'
 import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
+import BaseProfileRoleLabel
+  from '@/components/labels/profile/BaseProfileRoleLabel.vue'
 
 export default {
   name: 'CreatorSection',
   components: {
     BaseCommunityTitle,
     BaseProfileNickname,
-    BasePrivateIcon
+    BasePrivateIcon,
+    BaseProfileRoleLabel
   },
   props: {
     commentData: {
