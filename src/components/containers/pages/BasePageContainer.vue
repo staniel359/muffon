@@ -77,6 +77,10 @@ export default {
     )
   },
   activated () {
+    toggleLoaderDimmer(
+      this.isPageLoading
+    )
+
     if (this.isPageError) {
       this.setPageError()
     }
