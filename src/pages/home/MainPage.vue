@@ -3,6 +3,7 @@
     :key="refreshKey"
     class="home-page-container"
     :response-data="responseData"
+    :is-loading="isLoading"
   >
     <TopSection />
 
@@ -36,7 +37,8 @@ export default {
   data () {
     return {
       isPageLoaded: true,
-      responseData: {}
+      responseData: {},
+      isLoading: false
     }
   },
   computed: {
