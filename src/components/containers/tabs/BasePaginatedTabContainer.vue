@@ -27,6 +27,7 @@
       :key="refreshKey"
       :response-data="responseDataComputed"
       :scope="scope"
+      :text-scope="textScope"
       :limit="limit"
       :response-page-limit="responsePageLimit"
       :is-loading="isLoading"
@@ -88,7 +89,8 @@ export default {
     moreLink: Object,
     isPaginationSimple: Boolean,
     isWithTopSection: Boolean,
-    isWithPlayButton: Boolean
+    isWithPlayButton: Boolean,
+    textScope: String
   },
   emits: [
     'activate',
