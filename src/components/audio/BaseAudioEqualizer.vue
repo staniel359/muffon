@@ -8,9 +8,15 @@
         />
       </div>
 
-      <div class="middle-aligned">
+      <div
+        :class="[
+          'middle-aligned',
+          {
+            'visibility-hidden': !isAudioEqualizerEnabled
+          }
+        ]"
+      >
         <BaseClearButton
-          v-if="isAudioEqualizerEnabled"
           @click="handleClearButtonClick"
         />
       </div>
@@ -18,10 +24,9 @@
 
     <div class="d-flex main-bottom-section">
       <EqualizerItem
-        v-for="(equalizerData, index) in audioEqualizers"
+        v-for="equalizerData in audioEqualizers"
         :ref="equalizerData.key"
         :key="equalizerData.key"
-        :index="index"
         :equalizer-data="equalizerData"
         @change="handleEqualizerChange"
       />

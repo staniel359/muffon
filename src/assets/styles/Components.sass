@@ -259,18 +259,24 @@
 
 .base-audio-equalizer
   .equalizer-item
-    padding: 0 10px
-    &.disabled
-      .gain-text
-        @extend .text-color-grey
-      &.inverted
-        .gain-text
-          @extend .text-color-grey-inverted
-  .gain-text
-    height: 20px
+    padding: 0 1rem
+  .labels
+    .label
+      font-size: 0.85rem
   .audio-equalizer-seeker
-    height: 200px !important
+    height: 300px !important
     width: 0 !important
+
+[dir="ltr"]
+  .base-audio-equalizer
+    .labels
+      .label
+        padding-right: 0.5rem !important
+[dir="rtl"]
+  .base-audio-equalizer
+    .labels
+      .label
+        padding-left: 0.5rem !important
 
 .base-info-item
   & > .content

@@ -1,3 +1,5 @@
+import i18n from '@/plugins/i18n'
+
 export function main (
   {
     onMove,
@@ -110,8 +112,21 @@ export function audioEqualizer (
   function interpretLabel (
     value
   ) {
-    if (value === 12) {
-      return 0
+    const valueNormalized = value - 12
+
+    if (valueNormalized === 0) {
+      return i18n.global.t(
+        'player.audio.equalizer.decibel',
+        {
+          value: '0'
+        }
+      )
+    } else if (value % 4 === 0) {
+      if (valueNormalized > 0) {
+        return `+${valueNormalized}`
+      } else {
+        return valueNormalized
+      }
     } else {
       return ' '
     }
