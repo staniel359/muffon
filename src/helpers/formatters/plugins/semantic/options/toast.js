@@ -1,5 +1,8 @@
 import layoutStore from '@/stores/layout'
 import icons from '@/helpers/data/icons'
+import {
+  sanitizeString
+} from '@/helpers/utils'
 
 export function main (
   {
@@ -38,12 +41,16 @@ export function main (
     ' '
   )
 
+  const messageSanitized =
+    sanitizeString(
+      message
+    )
+
   return {
     showIcon: icon,
     context: visibleContext,
     class: classNameFormatted,
     newestOnTop: true,
-    preserveHTML: false,
-    message
+    message: messageSanitized
   }
 }
