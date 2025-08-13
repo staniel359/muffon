@@ -60,7 +60,10 @@ contextBridge.exposeInMainWorld(
       string
     ) {
       return sanitizeHTML(
-        string
+        string,
+        {
+          disallowedTagsMode: 'recursiveEscape'
+        }
       )
     }
   }

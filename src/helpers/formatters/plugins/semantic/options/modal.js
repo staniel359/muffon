@@ -18,7 +18,6 @@ export function main (
     dimmerSettings: {
       duration: 300
     },
-    preserveHTML: false,
     onShow,
     onVisible,
     onHidden
