@@ -6,26 +6,16 @@
       disabled: isDisabled
     }"
   >
-    <small
-      class="gain-text main-top-extrasmall-section pointer-events-none"
-      v-text="gainTopTextFormatted"
-    />
-
     <BaseSeeker
       ref="seeker"
-      class="vertical reversed labeled audio-equalizer-seeker"
+      class="vertical reversed labeled ticked audio-equalizer-seeker main-bottom-extrasmall-section"
       :options="seekerOptions"
       :is-disabled="isDisabled"
       @move="handleMove"
       @mouse-up="handleMouseUp"
     />
 
-    <small
-      class="gain-text main-bottom-extrasmall-section pointer-events-none"
-      v-text="gainBottomTextFormatted"
-    />
-
-    <div class="main-bottom-extrasmall-section pointer-events-none">
+    <div class="main-bottom-large-section pointer-events-none">
       <BaseHeader
         tag="h5"
         :text="frequencyTextFormatted"
@@ -58,10 +48,6 @@ export default {
   props: {
     equalizerData: {
       type: Object,
-      required: true
-    },
-    index: {
-      type: Number,
       required: true
     }
   },
@@ -132,41 +118,6 @@ export default {
     },
     isDisabled () {
       return !this.isAudioEqualizerEnabled
-    },
-    gainTopTextFormatted () {
-      if (this.isShowGain) {
-        return this.gainTopText
-      } else {
-        return null
-      }
-    },
-    isShowGain () {
-      return (
-        this.index % 3 === 0
-      )
-    },
-    gainTopText () {
-      return this.$t(
-        'player.audio.equalizer.decibel',
-        {
-          value: '+12'
-        }
-      )
-    },
-    gainBottomTextFormatted () {
-      if (this.isShowGain) {
-        return this.gainBottomText
-      } else {
-        return null
-      }
-    },
-    gainBottomText () {
-      return this.$t(
-        'player.audio.equalizer.decibel',
-        {
-          value: '-12'
-        }
-      )
     }
   },
   watch: {
