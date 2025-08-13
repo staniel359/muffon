@@ -2,6 +2,7 @@
   <BaseHistoryTabContainer
     :scope="scope"
     :list-scope="listScope"
+    :text-scope="textScope"
     :limit="limit"
     :is-active="isActive"
     @focus="handleFocus"
@@ -40,7 +41,8 @@ export default {
       limit:
         routesLimits.simple.small,
       scope: 'browser',
-      listScope: 'routes'
+      listScope: 'routes',
+      textScope: 'pages'
     }
   }
 }

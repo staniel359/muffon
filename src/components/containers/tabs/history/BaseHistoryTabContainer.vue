@@ -2,6 +2,7 @@
   <BasePaginatedTabContainer
     :response-data="historyData"
     :scope="listScope"
+    :text-scope="textScope"
     :limit="limit"
     :response-page-limit="responsePageLimit"
     :is-loading="isLoading"
@@ -44,7 +45,8 @@ export default {
     listScope: {
       type: String,
       required: true
-    }
+    },
+    textScope: String
   },
   data () {
     return {
