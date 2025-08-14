@@ -349,7 +349,7 @@
         "title": "Başlık boş",
         "clientId": "Client ID boş",
         "clientSecret": "Client secret boş",
-        "legal": "Gizlilik Politikası ve Kullanım Koşullarını kabul etmelisiniz"    
+        "legal": "Gizlilik Politikası ve Kullanım Koşullarını kabul etmelisiniz"
       },
       "invalid": {
         "email": "E-posta adresi geçersiz"
@@ -710,7 +710,8 @@
     "success": {
       "header": {
         "files": "{counter} içe aktarıldı | {counter} içe aktarıldı",
-        "tracks": "{counter} içe aktarıldı | {counter} içe aktarıldı"
+        "tracks": "{counter} içe aktarıldı | {counter} içe aktarıldı",
+        "playlists": "{counter} içe aktarıldı | {counter} içe aktarıldı"
       },
       "content": "Kütüphanenize kaydetmeden önce verilerinizi incelemek isteyebilirsiniz"
     },
@@ -782,7 +783,8 @@
       "events": "Etkinlik yok",
       "profiles": "Profil yok",
       "shows": "Gösteri yok",
-      "pages": "Sayfa yok"
+      "pages": "Sayfa yok",
+      "lyrics": "Sözler yok"
     },
     "content": "Burası henüz boş gibi"
   },

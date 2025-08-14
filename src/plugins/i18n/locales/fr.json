@@ -580,12 +580,15 @@
             "delete": "Supprimé l'historique de recherche"
           },
           "activity": {
+            "save": "Enregistrer l'historique des activités",
             "delete": "Supprimer l'historique d'activité"
           },
           "player": {
-            "delete": "Supprimer l'historique d'activité"
+            "save": "Enregistrer l'historique des lecteur",
+            "delete": "Supprimer l'historique du player"
           },
           "browser": {
+            "save": "Enregistrer l'historique du navigateur",
             "delete": "Supprimer l'historique de navigation"
           }
         },
@@ -707,7 +710,8 @@
     "success": {
       "header": {
         "files": "{counter} on bien était importé | {counter} on bien était importé",
-        "tracks": "{counter} on bien était importé | {counter} on bien était importé"
+        "tracks": "{counter} on bien était importé | {counter} on bien était importé",
+        "playlists": "{counter} a été importée | {counter} ont été importées"
       },
       "content": "Vous pouvez vérifier les données avant de les enregistrer dans la bibliothèque."
     },
@@ -778,7 +782,9 @@
       "images": "Aucune images",
       "events": "Aucun événements",
       "profiles": "Aucun profils",
-      "shows": "Ne pas regarder"
+      "shows": "Ne pas regarder",
+      "pages": "Aucune page",
+      "lyrics": "Pas de paroles"
     },
     "content": "Il semble qu'il n'y ait rien ici"
   },

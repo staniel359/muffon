@@ -580,12 +580,15 @@
             "delete": "Suchverlauf löschen"
           },
           "activity": {
+            "save": "Aktivitätenverlauf speichern",
             "delete": "Aktivitätenverlauf löschen"
           },
           "player": {
+            "save": "Hörverlauf speichern",
             "delete": "Playerverlauf löschen"
           },
           "browser": {
+            "save": "Browserverlauf speichern",
             "delete": "Browserverlauf löschen"
           }
         },
@@ -707,7 +710,8 @@
     "success": {
       "header": {
         "files": "{counter} wurde importiert | {counter} wurden importiert",
-        "tracks": "{counter} wurde importiert | {counter} wurden importiert"
+        "tracks": "{counter} wurde importiert | {counter} wurden importiert",
+        "playlists": "{counter} wurde importiert | {counter} wurden importiert"
       },
       "content": "Möglicherweise möchten Sie die Daten vor dem Speichern in der Bibliothek überprüfen"
     },
@@ -778,7 +782,9 @@
       "images": "Keine Bilder",
       "events": "Keine Events",
       "profiles": "Keine Profile",
-      "shows": "Keine Aufführungen"
+      "shows": "Keine Aufführungen",
+      "pages": "Keine Seiten",
+      "lyrics": "Keine Lyrics"
     },
     "content": "Hier scheint nichts zu sein."
   },
