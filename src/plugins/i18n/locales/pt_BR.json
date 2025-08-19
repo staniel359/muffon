@@ -730,7 +730,7 @@
       "playlist": {
         "artists": "{counter} artista foi adicionado à playlist | {counter} artistas foram adicionados à playlist",
         "albums": "{counter} álbum foi adicionado à playlist | {counter} álbuns foram adicionados à playlist",
-        "tracks": "{counter} faixa foi adicionada à playlist | {counter} faixasaS foram adicionadas à playlist"
+        "tracks": "{counter} faixa foi adicionada à playlist | {counter} faixas foram adicionadas à playlist"
       },
       "playlists": {
         "playlists": "{counter} foi adicionada às playlists | {counter} foram adicionadas às playlists"
