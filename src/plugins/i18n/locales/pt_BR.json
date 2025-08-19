@@ -709,10 +709,9 @@
     "active": "Importando {count} de {counter}...",
     "success": {
       "header": {
-        "files": "{counter} foi importado | {counter} foram importados",
-        "tracks": "{counter} foi importado | {counter} foram importados",
-        "playlists": "{counter} foi importado | {counter} foram importados"
-
+        "files": "{counter} arquivo foi importado | {counter} arquivos foram importados",
+        "tracks": "{counter} faixa foi importada | {counter} faixas tracks foram importadas",
+        "playlists": "{counter} playlist foi importado | {counter} playlists foram importadas"
       },
       "content": "Você pode querer verificar os dados antes de salvar na biblioteca"
     },
@@ -724,14 +723,14 @@
     "active": "Salvando {count} de {counter}...",
     "success": {
       "library": {
-        "artists": "{counter} foi adicionado à biblioteca | {counter} foram adicionados à biblioteca",
-        "albums": "{counter} foi adicionado à biblioteca | {counter} foram adicionados à biblioteca",
-        "tracks": "{counter} foi adicionada à biblioteca | {counter} foram adicionadas à biblioteca"
+        "artists": "{counter} artista foi adicionado à biblioteca | {counter} artistas foram adicionados à biblioteca",
+        "albums": "{counter} álbum foi adicionado à biblioteca | {counter} álbuns foram adicionados à biblioteca",
+        "tracks": "{counter} faixa foi adicionada à biblioteca | {counter} faixas foram adicionadas à biblioteca"
       },
       "playlist": {
-        "artists": "{counter} foi adicionado à playlist | {counter} foram adicionados à playlist",
-        "albums": "{counter} foi adicionado à playlist | {counter} foram adicionados à playlist",
-        "tracks": "{counter} foi adicionada à playlist | {counter} foram adicionadas à playlist"
+        "artists": "{counter} artista foi adicionado à playlist | {counter} artistas foram adicionados à playlist",
+        "albums": "{counter} álbum foi adicionado à playlist | {counter} álbuns foram adicionados à playlist",
+        "tracks": "{counter} faixa foi adicionada à playlist | {counter} faixasaS foram adicionadas à playlist"
       },
       "playlists": {
         "playlists": "{counter} foi adicionada às playlists | {counter} foram adicionadas às playlists"
