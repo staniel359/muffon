@@ -1,52 +1,95 @@
 import {
-  appName
+  appName,
+  appHomepage
 } from '../../helpers/utils.js'
+
+const activitiesTypes = {
+  playing: 0,
+  streaming: 1,
+  listening: 2,
+  watching: 3,
+  custom: 4,
+  competing: 5
+}
+
+const headersTypes = {
+  appName: 0,
+  artistName: 1,
+  trackTitle: 2
+}
 
 export default function (
   {
-    playingData,
-    buttons,
+    activityType = 'listening',
+    headerType = 'artistName',
+    trackTitle,
+    trackLink,
+    artistName,
+    artistLink,
+    albumTitle,
+    albumLink,
+    image,
     startTime,
+    currentTime,
+    duration,
+    buttons,
     isPlaying
   }
 ) {
-  const {
-    trackTitle,
-    artistName,
-    albumTitle,
-    image,
-    duration
-  } = playingData
-
-  const durationComputed = (
-    isPlaying ? duration : 0
+  const pausedDuration = (
+    Date.now() -
+      startTime -
+      currentTime * 1000
   )
+
+  let startTimeComputed
+
+  if (isPlaying) {
+    startTimeComputed = (
+      startTime + pausedDuration
+    )
+  } else {
+    startTimeComputed = 1
+  }
 
   const endTime = (
     startTime +
-      durationComputed * 1000
+      duration * 1000
   )
 
-  const activity = {
-    type: 2,
+  let endTimeComputed
+
+  if (isPlaying) {
+    endTimeComputed = (
+      endTime + pausedDuration
+    )
+  } else {
+    endTimeComputed = 1
+  }
+
+  const activityData = {
+    type:
+      activitiesTypes[activityType],
+    statusDisplayType:
+      headersTypes[headerType],
     details: trackTitle,
+    detailsUrl: trackLink,
     state: artistName,
+    stateUrl: artistLink,
     largeImageKey: image,
-    ...(albumTitle && {
-      largeImageText: albumTitle
-    }),
+    largeImageText: albumTitle,
+    largeImageUrl: albumLink,
     smallImageKey: 'logo',
     smallImageText: appName,
-    ...(buttons.length && {
-      buttons
-    }),
-    startTimestamp: startTime,
-    endTimestamp: endTime
+    buttons,
+    smallImageUrl: appHomepage,
+    startTimestamp: startTimeComputed,
+    endTimestamp: endTimeComputed
   }
 
   discordClient
     .user
     .setActivity(
-      activity
+      activityData
     )
 }

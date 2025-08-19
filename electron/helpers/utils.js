@@ -45,6 +45,9 @@ const harmfulSwitches = [
 
 export const appName = 'muffon'
 
+export const appHomepage =
+  'https://muffon.netlify.app'
+
 function isMatchedPlatform (
   [
     _,
@@ -57,11 +60,13 @@ function isMatchedPlatform (
 }
 
 export const systemName =
-  Object.entries(
-    systems
-  ).find(
-    isMatchedPlatform
-  )[0]
+  Object
+    .entries(
+      systems
+    )
+    .find(
+      isMatchedPlatform
+    )[0]
 
 export const isDevelopment = !app.isPackaged
 
