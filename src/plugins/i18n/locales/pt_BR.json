@@ -710,7 +710,9 @@
     "success": {
       "header": {
         "files": "{counter} foi importado | {counter} foram importados",
-        "tracks": "{counter} foi importado | {counter} foram importados"
+        "tracks": "{counter} foi importado | {counter} foram importados",
+        "playlists": "{counter} foi importado | {counter} foram importados"
+
       },
       "content": "Você pode querer verificar os dados antes de salvar na biblioteca"
     },
@@ -782,7 +784,8 @@
       "events": "Nenhum evento",
       "profiles": "Nenhum perfil",
       "shows": "Nenhum show",
-      "pages": "Nenhuma página"
+      "pages": "Nenhuma página",
+      "lyrics": "Nenhuma letra"
     },
     "content": "Parece que não há nada aqui"
   },
