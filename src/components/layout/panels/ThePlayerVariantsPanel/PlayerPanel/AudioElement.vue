@@ -190,6 +190,15 @@ export default {
       this.setAudioCurrentTime(
         currentTime
       )
+
+      updateGlobalStore(
+        {
+          'audio.currentTime': currentTime
+        },
+        {
+          isSave: false
+        }
+      )
     },
     handlePause () {
       this.setAudioStatusWithGlobal(

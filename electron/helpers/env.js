@@ -5,7 +5,8 @@ import {
 
 dotenv.config(
   {
-    path: envFilePath
+    path: envFilePath,
+    quiet: true
   }
 )
 

@@ -60,34 +60,27 @@ export default {
     ...mapState(
       audioStore,
       {
-        audioStatus: 'status'
+        audioStatus: 'status',
+        audioCurrentTime: 'currentTime'
       }
     ),
-    activityDataFormatted () {
+    activityDataString () {
       return JSON.stringify(
         this.activityData
       )
     },
     activityData () {
-      if (this.playerPlaying) {
-        return {
-          playingData: this.playingData,
-          buttons: this.buttonsFiltered,
-          startTime:
-            this.playerPlayingStartTime,
-          isPlaying: this.isPlaying
-        }
-      } else {
-        return null
-      }
-    },
-    playingData () {
       return {
         trackTitle: this.trackTitle,
         artistName: this.artistName,
         albumTitle: this.albumTitle,
         image: this.image,
-        duration: this.duration
+        startTime:
+          this.playerPlayingStartTime,
+        currentTime: this.audioCurrentTime,
+        duration: this.duration,
+        buttons: this.buttonsFiltered,
+        isPlaying: this.isPlaying
       }
     },
     trackTitle () {
@@ -119,36 +112,40 @@ export default {
       )
     },
     buttons () {
-      return [
-        {
-          id: 'downloadApp',
-          link: homepage
-        },
-        {
-          id: 'listenTrack',
-          link: this.playingExternalLink
-        },
-        {
-          id: 'listenTrackMuffon',
-          link: this.muffonTrackLink
-        },
-        {
-          id: 'lastfmProfile',
-          isDisabled:
-            !this.lastfmConnection,
-          link: this.lastfmProfileLink
-        },
-        {
-          id: 'spotifyProfile',
-          isDisabled:
-            !this.spotifyConnection,
-          link: this.spotifyProfileLink
-        },
-        {
-          id: 'muffonProfile',
-          link: this.muffonProfileLink
-        }
-      ]
+      if (this.playerPlaying) {
+        return [
+          {
+            id: 'downloadApp',
+            link: homepage
+          },
+          {
+            id: 'listenTrack',
+            link: this.playingExternalLink
+          },
+          {
+            id: 'listenTrackMuffon',
+            link: this.muffonTrackLink
+          },
+          {
+            id: 'lastfmProfile',
+            isDisabled:
+              !this.lastfmConnection,
+            link: this.lastfmProfileLink
+          },
+          {
+            id: 'spotifyProfile',
+            isDisabled:
+              !this.spotifyConnection,
+            link: this.spotifyProfileLink
+          },
+          {
+            id: 'muffonProfile',
+            link: this.muffonProfileLink
+          }
+        ]
+      } else {
+        return []
+      }
     },
     playingExternalLink () {
       return (
@@ -238,7 +235,8 @@ export default {
       handler: 'handlePlayerPlayingChange'
     },
     isConnected: 'handleIsConnectedChange',
-    activityData: 'handleActivityDataChange'
+    buttonsFiltered: 'handleButtonsFilteredChange',
+    isPlaying: 'handleIsPlayingChange'
   },
   mounted () {
     window
@@ -271,23 +269,30 @@ export default {
         this.disconnect()
       }
     },
-    handleIsConnectedChange (
-      value
-    ) {
-      if (value) {
-        this.updateActivity()
-      }
-    },
-    handleActivityDataChange () {
-      if (this.isConnected) {
-        this.updateActivity()
-      }
-    },
     handlePlayerPlayingChange (
       value
     ) {
-      this.playerPlayingStartTime = (
-        value ? Date.now() : null
+      if (value) {
+        this.playerPlayingStartTime = Date.now()
+      } else {
+        this.playerPlayingStartTime = null
+      }
+
+      this.updateActivity()
+    },
+    handleIsConnectedChange () {
+      this.updateActivity()
+    },
+    handleButtonsFilteredChange () {
+      this.updateActivity()
+    },
+    handleIsPlayingChange () {
+      // To wait for audioCurrentTime update
+      setTimeout(
+        () => {
+          this.updateActivity()
+        },
+        150
       )
     },
     connect () {
@@ -311,6 +316,8 @@ export default {
       }
     },
     updateActivity () {
+      if (!this.isConnected) { return }
+
       if (this.playerPlaying) {
         this.setActivity()
       } else {
@@ -322,7 +329,7 @@ export default {
         .mainProcess
         .sendCommand(
           'set-discord-activity',
-          this.activityDataFormatted
+          this.activityDataString
         )
     },
     resetActivity () {

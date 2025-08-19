@@ -90,8 +90,8 @@
     },
     "search": "Arama",
     "queue": "Oynatma sırası",
-    "whatsNew": "Neler yeni",
-    "listenedRecently": "Yakında dinlenenler",
+    "whatsNew": "Yenilikler",
+    "listenedRecently": "Yakında dinledikleriniz",
     "shows": "Gösteriler",
     "listeningNow": "Şu an dinliyor",
     "help": "Yardım"
@@ -261,17 +261,17 @@
           "search": "Arama geçmişini sil",
           "activity": "Aktivite geçmişini sil",
           "browser": "Tarayıcı geçmişini sil",
-          "player": "Oynatıcı geçmişini sil"
+          "player": "Oynatma geçmişini sil"
         }
       },
       "going": {
-        "libraryModel": "{modelName} kütüphanenizden kaldırmak üzeresiniz.",
-        "recommendationModel": "{modelName} önerilenlerden kaldırmak üzeresiniz.",
-        "playlist": "{modelName} çalma listelerinizden kaldırmak üzeresiniz.",
-        "playlistTrack": "{parentModelName} adlı çalma listenizden {modelName} kaldırmak üzeresiniz.",
-        "savedTrack": "{modelName} kaydedilen parçalardan kaldırmak üzeresiniz.",
-        "favorite": "{modelName} favorilerinizden kaldırmak üzeresiniz.",
-        "bookmark": "{modelName} yer imlerinizden kaldırmak üzeresiniz.",
+        "libraryModel": "Kütüphanenizden {modelName} öğesini silmek üzeresiniz.",
+        "recommendationModel": "Önerilenlerden {modelName} öğesini silmek üzeresiniz",
+        "playlist": "Çalma listesinden {modelName} öğesini silmek üzersiniz.",
+        "playlistTrack": "{parentModelName} çalma listesinden {modelName} öğesini silmek üzeresiniz.",
+        "savedTrack": "Kaydedilen parçalardan {modelName} öğesini silmek üzeresiniz.",
+        "favorite": "Favorilerinizden {modelName} öğesini silmek üzeresiniz.",
+        "bookmark": "Yer imlerinizden {modelName} öğesini silmek üzeresiniz.",
         "post": "Gönderiyi silmek üzeresiniz.",
         "comment": "Bu yorumu silmek üzeresiniz.",
         "community": "Bu topluluğu silmek üzeresiniz.",
@@ -281,7 +281,7 @@
           "search": "Arama geçmişini silmek üzeresiniz.",
           "activity": "Aktivite geçmişini silmek üzeresiniz.",
           "browser": "Tarayıcı geçmişini silmek üzeresiniz.",
-          "player": "Oynatıcı geçmişini silmek üzeresiniz."
+          "player": "Oynatma geçmişini silmek üzeresiniz."
         }
       },
       "also": {
@@ -378,11 +378,11 @@
     }
   },
   "notifications": {
-    "scrobbled": "{trackFullTitle} adlı parça kaydırıldı",
+    "scrobbled": "{trackFullTitle} adlı parça Skroplandı",
     "added": {
       "queue": {
         "track": "{trackFullTitle} adlı parça sıraya eklendi",
-        "tracks": "{counter} kuyruğa eklendi"
+        "tracks": "{counter} parça kuyruğa eklendi"
       },
       "savedTracks": {
         "track": "{trackFullTitle} adlı parça kaydedilen parçalarınıza eklendi"
@@ -584,8 +584,8 @@
             "delete": "Aktivite geçmişini sil"
           },
           "player": {
-            "save": "Oynatıcı geçmişini kaydet",
-            "delete": "Oynatıcı geçmişini sil"
+            "save": "Oynatma geçmişini kaydet",
+            "delete": "Oynatma geçmişini sil"
           },
           "browser": {
             "save": "Tarayıcı geçmişini kaydet",
@@ -619,9 +619,9 @@
       },
       "connections": {
         "lastfm": {
-          "scrobbling": "Scrobble'ı aç",
-          "scrobbleNotifications": "Scrobble bildirimleri",
-          "scrobblePercent": "Şu kadar dinledikten sonra Scrobble say"
+          "scrobbling": "Skroplamayı aç",
+          "scrobbleNotifications": "Skrop bildirimleri",
+          "scrobblePercent": "Şu kadar dinledikten sonra Skropla"
         },
         "spotify": {
           "link": {
@@ -630,7 +630,7 @@
         },
         "discord": {
           "richPresence": {
-            "header": "Discord'da Dinliyor olarak göster",
+            "header": "Discord'da dinliyor olarak göster",
             "client": "Etkinleştirmeden önce Discord uygulamasının çalıştığından emin olun",
             "buttons": {
               "header": "Düğmeler",
@@ -696,7 +696,7 @@
     }
   },
   "compatibility": {
-    "header": "{profileNickname} ile uyumluluk düzeyiniz",
+    "header": "{profileNickname} ile uyumluluk düzeyi",
     "common": "Ortaklaştığınız:"
   },
   "recommendation": {
@@ -786,7 +786,7 @@
       "pages": "Sayfa yok",
       "lyrics": "Sözler yok"
     },
-    "content": "Burası henüz boş gibi"
+    "content": "Burada bir şey yok gibi görünüyor"
   },
   "deleted": {
     "artist": "Sanatçı silindi",
@@ -804,10 +804,10 @@
     "welcome": "Hoş geldin, {profileNickname}"
   },
   "profile": {
-    "wasOnline": "Biraz önce aktifti"
+    "wasOnline": "En son aktiflik"
   },
   "feed": {
-    "global": "Global Akış"
+    "global": "Genel Akış"
   },
   "about": {
     "license": "{license} lisans",
@@ -819,7 +819,7 @@
     "profile": "Gizli"
   },
   "donate": {
-    "header": "Bağış Yap",
+    "header": "Bağış",
     "content": [
       "muffon, reklamsız, ücretli özellik veya içerik içermeyen, kâr amacı gütmeyen bir projedir.",
       "Ancak, geliştirme ve altyapı için gerekli fonlama olmadan varlığını sürdüremez.",
@@ -857,7 +857,7 @@
     "membersCountAsc": "En Az Üye"
   },
   "deletedModel": {
-    "profile": "Silinen profil"
+    "profile": "Profil silinmiş"
   },
   "events": {
     "created": {
@@ -867,7 +867,7 @@
       "bookmarkTrack": "{modelName} parçası yer imlerine eklendi",
       "bookmarkVideo": "{modelName} videosu yer imlerine eklendi",
       "bookmarkVideoChannel": "video kanalı {modelName} yer imlerine eklendi",
-      "bookmarkVideoPlaylist": "video oynatma listesi {modelName} yer imlerine eklendi",
+      "bookmarkVideoPlaylist": "video çalma listesi {modelName} yer imlerine eklendi",
       "favoriteAlbum": "{modelName} albümü favorilere eklendi",
       "favoriteArtist": "{modelName} adlı sanatçı favorilere eklendi",
       "favoriteTrack": "{modelName} parçası favorilere eklendi",
@@ -890,10 +890,10 @@
     },
     "updated": {
       "profile": "Profil güncellendi",
-      "community": "{modelName} Topluluğu güncellendi",
-      "post": "{modelName} Gönderisi güncellendi",
-      "postComment": "{modelName} Yorumu güncellendi",
-      "playlist": "{modelName} Oynatma Listesi güncellendi"
+      "community": "{modelName} topluluğu güncellendi",
+      "post": "{modelName} gönderisi güncellendi",
+      "postComment": "{modelName} yorumu güncellendi",
+      "playlist": "{modelName} çalma listesi güncellendi"
     },
     "deleted": {
       "bookmarkAlbum": "{modelName} adlı albüm yer imlerinden silindi",
@@ -925,7 +925,7 @@
     }
   },
   "created": {
-    "profile": "Muffon'a katılım tarihi",
+    "profile": "Muffon'a katılma tarihi",
     "library": "Kütüphaneye eklenme tarihi",
     "community": "Oluşturulma tarihi"
   },

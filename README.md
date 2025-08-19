@@ -71,18 +71,20 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ### Languages
 
-- English ([@staniel359](https://github.com/staniel359))
+- Беларуская ([@staniel359](https://github.com/staniel359))
 - Deutsch ([@gamersi](https://github.com/gamersi))
+- English ([@staniel359](https://github.com/staniel359))
 - Español ([@Lolabird](https://github.com/Lolabird))
 - Français ([@TheFlomax](https://github.com/TheFlomax))
+- עברית ([@EthanPZ1](https://github.com/EthanPZ1))
 - Italiano ([@ZinRicky](https://github.com/ZinRicky), [@filipporomani](https://github.com/filipporomani))
-- Polski ([@Lukas-KK](https://github.com/Lukas-KK))
-- Беларуская ([@staniel359](https://github.com/staniel359))
-- Русский ([@staniel359](https://github.com/staniel359))
-- 中文 ([@PoorShawn](https://github.com/PoorShawn))
 - 日本語 ([@xyloflake](https://github.com/xyloflake))
 - 한국어 ([@DDinghoya](https://github.com/DDinghoya))
-- עברית ([@EthanPZ1](https://github.com/EthanPZ1))
+- Polski ([@Lukas-KK](https://github.com/Lukas-KK))
+- Português (Brasil)([@ivangomes](https://github.com/ivangomes))
+- Русский ([@staniel359](https://github.com/staniel359))
+- Türkçe ([@chunsal](https://github.com/chunsal), [@Kadayif35](https://github.com/Kadayif35))
+- 中文 ([@PoorShawn](https://github.com/PoorShawn))
 
 ### Technical stack
 
@@ -97,7 +99,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Download
 
-[Latest (v2.2.0)](https://github.com/staniel359/muffon/releases/latest)
+[Latest (v2.3.0)](https://github.com/staniel359/muffon/releases/latest)
 
 ## Star History
 
