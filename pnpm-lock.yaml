@@ -20,8 +20,8 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0
       dayjs:
-        specifier: ^1.11.13
-        version: 1.11.13
+        specifier: ^1.11.18
+        version: 1.11.18
       dotenv:
         specifier: ^17.2.1
         version: 17.2.1
@@ -67,7 +67,7 @@ importers:
         version: 5.0.5(rollup@4.48.1)
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.90.0))(vue@3.5.20(typescript@5.8.2))
+        version: 6.0.1(vite@7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.91.0))(vue@3.5.20(typescript@5.8.2))
       axios:
         specifier: ^1.11.0
         version: 1.11.0
@@ -81,8 +81,8 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
       electron:
-        specifier: ^37.3.1
-        version: 37.3.1
+        specifier: ^37.4.0
+        version: 37.4.0
       electron-builder:
         specifier: 26.0.8
         version: 26.0.8(electron-builder-squirrel-windows@25.1.7)
@@ -114,20 +114,20 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3(typescript@5.8.2)(vue@3.5.20(typescript@5.8.2))
       sass:
-        specifier: ^1.90.0
-        version: 1.90.0
+        specifier: ^1.91.0
+        version: 1.91.0
       slick-carousel:
         specifier: ^1.8.1
         version: 1.8.1(jquery@3.7.1)
       vite:
         specifier: ^7.1.3
-        version: 7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.90.0)
+        version: 7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.91.0)
       vite-plugin-electron-renderer:
         specifier: ^0.14.6
         version: 0.14.6
       vite-plugin-eslint:
         specifier: ^1.8.1
-        version: 1.8.1(eslint@9.34.0)(vite@7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.90.0))
+        version: 1.8.1(eslint@9.34.0)(vite@7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.91.0))
       vue:
         specifier: ^3.5.20
         version: 3.5.20(typescript@5.8.2)
@@ -1590,8 +1590,8 @@ packages:
     resolution: {integrity: sha512-BS8PfmtDGnrgYdOonGZQdLZslWIeCGFP9tpan0hi1Co2Zr2NKADsvGYA8XxuG/4UWgJ6Cjtv+YJnB6MM69QGlQ==}
     engines: {node: '>= 0.4'}
 
-  dayjs@1.11.13:
-    resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
+  dayjs@1.11.18:
+    resolution: {integrity: sha512-zFBQ7WFRvVRhKcWoUh+ZA1g2HVgUbsZm9sbddh8EC5iv93sui8DVVz1Npvz+r6meo9VKfa8NyLWBsQK1VvIKPA==}
 
   debounce-fn@6.0.0:
     resolution: {integrity: sha512-rBMW+F2TXryBwB54Q0d8drNEI+TfoS9JpNTAoVpukbWEhjXQq4rySFYLaqXMFXwdv61Zb2OHtj5bviSoimqxRQ==}
@@ -1798,8 +1798,8 @@ packages:
   electron-updater@6.6.2:
     resolution: {integrity: sha512-Cr4GDOkbAUqRHP5/oeOmH/L2Bn6+FQPxVLZtPbcmKZC63a1F3uu5EefYOssgZXG3u/zBlubbJ5PJdITdMVggbw==}
 
-  electron@37.3.1:
-    resolution: {integrity: sha512-7DhktRLqhe6OJh/Bo75bTI0puUYEmIwSzMinocgO63mx3MVjtIn2tYMzLmAleNIlud2htkjpsMG2zT4PiTCloA==}
+  electron@37.4.0:
+    resolution: {integrity: sha512-HhsSdWowE5ODOeWNc/323Ug2C52mq/TqNBG+4uMeOA3G2dMXNc/nfyi0RYu1rJEgiaJLEjtHveeZZaYRYFsFCQ==}
     engines: {node: '>= 12.20.55'}
     hasBin: true
 
@@ -2811,6 +2811,10 @@ packages:
     resolution: {integrity: sha512-YKBKVkKhty7s8rxddb40oOkuP0NbaeXrQvLin6QMHL7Ypiy2RW9LwOVrVgZRyOrhQlayMd9t+D8yDy8MKFTSDQ==}
     engines: {node: '>= 18.0.0'}
 
+  isbinaryfile@5.0.6:
+    resolution: {integrity: sha512-I+NmIfBHUl+r2wcDd6JwE9yWje/PIVY/R5/CmV8dXLZd5K+L9X2klAOwfAHNnondLXkbHyTAleQAWonpTJBTtw==}
+    engines: {node: '>= 18.0.0'}
+
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
@@ -3687,8 +3691,8 @@ packages:
   sanitize-html@2.17.0:
     resolution: {integrity: sha512-dLAADUSS8rBwhaevT12yCezvioCA+bmUTPH/u57xKPT8d++voeYE6HeluA/bPbQ15TwDBG2ii+QZIEmYx8VdxA==}
 
-  sass@1.90.0:
-    resolution: {integrity: sha512-9GUyuksjw70uNpb1MTYWsH9MQHOHY6kwfnkafC24+7aOMZn9+rVMBxRbLvw756mrBFbIsFg6Xw9IkR2Fnn3k+Q==}
+  sass@1.91.0:
+    resolution: {integrity: sha512-aFOZHGf+ur+bp1bCHZ+u8otKGh77ZtmFyXDo4tlYvT7PWql41Kwd8wdkPqhhT+h2879IVblcHFglIMofsFd1EA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -5182,10 +5186,10 @@ snapshots:
       '@types/node': 22.18.0
     optional: true
 
-  '@vitejs/plugin-vue@6.0.1(vite@7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.90.0))(vue@3.5.20(typescript@5.8.2))':
+  '@vitejs/plugin-vue@6.0.1(vite@7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.91.0))(vue@3.5.20(typescript@5.8.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-beta.29
-      vite: 7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.90.0)
+      vite: 7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.91.0)
       vue: 3.5.20(typescript@5.8.2)
 
   '@vladfrangu/async_event_emitter@2.4.6': {}
@@ -5402,7 +5406,7 @@ snapshots:
       fs-extra: 10.1.0
       hosted-git-info: 4.1.0
       is-ci: 3.0.1
-      isbinaryfile: 5.0.4
+      isbinaryfile: 5.0.6
       js-yaml: 4.1.0
       json5: 2.2.3
       lazy-val: 1.0.5
@@ -6040,7 +6044,7 @@ snapshots:
       es-errors: 1.3.0
       is-data-view: 1.0.2
 
-  dayjs@1.11.13: {}
+  dayjs@1.11.18: {}
 
   debounce-fn@6.0.0:
     dependencies:
@@ -6301,7 +6305,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  electron@37.3.1:
+  electron@37.4.0:
     dependencies:
       '@electron/get': 2.0.3
       '@types/node': 22.18.0
@@ -7590,6 +7594,8 @@ snapshots:
 
   isbinaryfile@5.0.4: {}
 
+  isbinaryfile@5.0.6: {}
+
   isexe@2.0.0: {}
 
   isobject@3.0.1: {}
@@ -8485,7 +8491,7 @@ snapshots:
       parse-srcset: 1.0.2
       postcss: 8.5.6
 
-  sass@1.90.0:
+  sass@1.91.0:
     dependencies:
       chokidar: 4.0.3
       immutable: 5.1.3
@@ -9052,15 +9058,15 @@ snapshots:
 
   vite-plugin-electron-renderer@0.14.6: {}
 
-  vite-plugin-eslint@1.8.1(eslint@9.34.0)(vite@7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.90.0)):
+  vite-plugin-eslint@1.8.1(eslint@9.34.0)(vite@7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.91.0)):
     dependencies:
       '@rollup/pluginutils': 4.2.1
       '@types/eslint': 8.56.12
       eslint: 9.34.0
       rollup: 2.79.2
-      vite: 7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.90.0)
+      vite: 7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.91.0)
 
-  vite@7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.90.0):
+  vite@7.1.3(@types/node@24.3.0)(less@4.2.2)(sass@1.91.0):
     dependencies:
       esbuild: 0.25.9
       fdir: 6.5.0(picomatch@4.0.3)
@@ -9072,7 +9078,7 @@ snapshots:
       '@types/node': 24.3.0
       fsevents: 2.3.3
       less: 4.2.2
-      sass: 1.90.0
+      sass: 1.91.0
 
   vue-eslint-parser@9.4.3(eslint@9.34.0):
     dependencies:
