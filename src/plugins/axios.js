@@ -10,8 +10,7 @@ const isDevelopment =
 const developmentBaseUrl =
   'http://localhost:4000'
 
-const productionBaseUrl =
-  'https://178-79-138-81.ip.linodeusercontent.com'
+const productionBaseUrl = 'https://muffon.app'
 
 const serverBaseUrl = isDevelopment
   ? developmentBaseUrl
