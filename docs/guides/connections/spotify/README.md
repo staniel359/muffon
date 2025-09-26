@@ -35,6 +35,7 @@ This section describes how to generate them.
     In the Redirect URI field, paste the following:
     ```
     https://178-79-138-81.ip.linodeusercontent.com/code
+    https://muffon.app/code
     ```
 
     ![alt text](https://raw.githubusercontent.com/staniel359/muffon/main/docs/guides/images/connecting_spotify-04.png)
