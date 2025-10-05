@@ -33,7 +33,7 @@
     "dayjs": "^1.11.18",
     "dotenv": "^17.2.2",
     "electron-dl": "^4.0.0",
-    "electron-store": "^10.1.0",
+    "electron-store": "^11.0.0",
     "electron-updater": "^6.6.2",
     "emoji-picker-element": "^1.27.0",
     "emoji-picker-element-data": "^1.7.2",
