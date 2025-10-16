@@ -21,6 +21,7 @@
       :is-with-clear-button="isWithClearButton"
       :is-with-duration="isWithDuration"
       :is-with-views-count="isWithViewsCount"
+      :is-with-description="isWithDescription"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -65,7 +66,8 @@ export default {
     isWithDeleteOption: Boolean,
     isWithClearButton: Boolean,
     isWithDuration: Boolean,
-    isWithViewsCount: Boolean
+    isWithViewsCount: Boolean,
+    isWithDescription: Boolean
   },
   emits: [
     'linkClick',

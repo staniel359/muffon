@@ -15,6 +15,7 @@
     :is-favorite="isFavorite"
     :is-with-duration="isWithDuration"
     :is-with-views-count="isWithViewsCount"
+    :is-with-description="isWithDescription"
   />
 </template>
 
@@ -46,7 +47,8 @@ export default {
     isBookmark: Boolean,
     isFavorite: Boolean,
     isWithDuration: Boolean,
-    isWithViewsCount: Boolean
+    isWithViewsCount: Boolean,
+    isWithDescription: Boolean
   },
   data () {
     return {

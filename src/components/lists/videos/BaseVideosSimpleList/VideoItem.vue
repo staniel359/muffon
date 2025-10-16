@@ -44,6 +44,13 @@
           icon="watch"
           :count="viewsCount"
         />
+
+        <BaseDescriptionSection
+          v-if="isRenderDescription"
+          class="description"
+          :description="description"
+          is-small
+        />
       </div>
 
       <BaseSelfIcons
@@ -115,6 +122,8 @@ import BaseDurationSection
   from '@/components/sections/BaseDurationSection.vue'
 import BaseListCounterSection
   from '@/components/sections/BaseListCounterSection.vue'
+import BaseDescriptionSection
+  from '@/components/sections/BaseDescriptionSection.vue'
 import {
   main as formatVideoLink
 } from '@/helpers/formatters/links/video'
@@ -134,7 +143,8 @@ export default {
     BaseVideoOptionsPopup,
     BaseClearButton,
     BaseDurationSection,
-    BaseListCounterSection
+    BaseListCounterSection,
+    BaseDescriptionSection
   },
   mixins: [
     selfMixin
@@ -166,7 +176,8 @@ export default {
     isWithDeleteOption: Boolean,
     isWithClearButton: Boolean,
     isWithDuration: Boolean,
-    isWithViewsCount: Boolean
+    isWithViewsCount: Boolean,
+    isWithDescription: Boolean
   },
   emits: [
     'linkClick',
@@ -236,6 +247,15 @@ export default {
       return (
         this.videoData.views_count
       )
+    },
+    isRenderDescription () {
+      return (
+        this.isWithDescription &&
+          this.description
+      )
+    },
+    description () {
+      return this.videoData.description
     }
   },
   methods: {
