@@ -4,14 +4,12 @@ import readRemoteAudioFileMetadata
 export function handleReadRemoteAudioFileMetadata (
   _,
   {
-    fileUrl,
-    options = {}
+    fileUrl
   }
 ) {
   return readRemoteAudioFileMetadata(
     {
-      fileUrl,
-      options
+      fileUrl
     }
   )
 }

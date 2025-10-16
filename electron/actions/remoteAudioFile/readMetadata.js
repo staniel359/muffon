@@ -4,8 +4,7 @@ import {
 
 export default async function (
   {
-    fileUrl,
-    options = {}
+    fileUrl
   }
 ) {
   const response =
@@ -15,8 +14,29 @@ export default async function (
 
   const webStream = response.body
 
+  const contentLength =
+    response
+      .headers
+      .get(
+        'Content-Length'
+      )
+
+  const contentType =
+    response
+      .headers
+      .get(
+        'Content-Type'
+      )
+
   return parseWebStream(
     webStream,
-    options
+    {
+      mimeType: contentType,
+      size: contentLength
+    },
+    {
+      duration: true,
+      skipCovers: true
+    }
   )
 }

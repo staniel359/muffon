@@ -69,12 +69,6 @@ export default {
     },
     audioLink () {
       return this.playerPlaying.audio.link
-    },
-    audioOptions () {
-      return {
-        skipCovers: true,
-        skipPostHeaders: true
-      }
     }
   },
   watch: {
@@ -119,8 +113,7 @@ export default {
         .sendAsyncCommand(
           'read-remote-audio-file-metadata',
           {
-            fileUrl: this.audioLink,
-            options: this.audioOptions
+            fileUrl: this.audioLink
           }
         ).then(
           this.handleAudioSuccess
