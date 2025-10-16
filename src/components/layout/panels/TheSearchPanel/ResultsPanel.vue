@@ -243,36 +243,12 @@ export default {
     tracksData () {
       return {
         component:
-          this.tracksComponent,
-        listScope:
-          this.tracksListScope,
-        limit: this.tracksLimit,
+          'BaseTracksSimpleList',
+        listScope: 'tracks',
+        limit:
+          tracksLimits.simple.medium,
         responsePageLimit:
           this.tracksResponsePageLimit
-      }
-    },
-    tracksComponent () {
-      switch (this.source) {
-        case 'youtubemusic':
-          return 'BaseVideosSimpleList'
-        default:
-          return 'BaseTracksSimpleList'
-      }
-    },
-    tracksListScope () {
-      switch (this.source) {
-        case 'youtubemusic':
-          return 'videos'
-        default:
-          return 'tracks'
-      }
-    },
-    tracksLimit () {
-      switch (this.source) {
-        case 'youtubemusic':
-          return videosLimits.simple.medium
-        default:
-          return tracksLimits.simple.medium
       }
     },
     tracksResponsePageLimit () {

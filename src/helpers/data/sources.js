@@ -113,6 +113,25 @@ export default [
     ]
   },
   {
+    id: 'bandcamp',
+    icon: 'bandcamp',
+    name: 'Bandcamp',
+    isAudio: true,
+    isWithArtists: true,
+    isWithAlbums: true,
+    isWithTracks: true,
+    maxBitrate: 128,
+    albumTypes: [
+      'album',
+      'track'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
+    ]
+  },
+  {
     id: 'deezer',
     icon: 'deezer',
     name: 'Deezer',
@@ -127,25 +146,6 @@ export default [
     albumsTypes: [
       'album',
       'single'
-    ],
-    searchScopes: [
-      'artists',
-      'albums',
-      'tracks'
-    ]
-  },
-  {
-    id: 'bandcamp',
-    icon: 'bandcamp',
-    name: 'Bandcamp',
-    isAudio: true,
-    isWithArtists: true,
-    isWithAlbums: true,
-    isWithTracks: true,
-    maxBitrate: 128,
-    albumTypes: [
-      'album',
-      'track'
     ],
     searchScopes: [
       'artists',
@@ -172,6 +172,30 @@ export default [
     ]
   },
   {
+    id: 'youtubemusic',
+    icon: 'youtubemusic',
+    name: 'YouTube Music',
+    isAudio: true,
+    isVideo: true,
+    isWithTracks: true,
+    isWithAlbums: true,
+    maxBitrate: 128,
+    albumTypes: [
+      'album'
+    ],
+    videoTypes: [
+      'track',
+      'video'
+    ],
+    searchScopes: [
+      'tracks',
+      'albums',
+      'videos',
+      'videoMixes',
+      'videoPlaylists'
+    ]
+  },
+  {
     id: 'discogs',
     icon: 'discogs',
     name: 'Discogs',
@@ -181,12 +205,6 @@ export default [
       'group',
       'album'
     ],
-    // albumsTypes: [
-    //   'album',
-    //   'singleEp',
-    //   'compilation',
-    //   'misc'
-    // ],
     searchScopes: [
       'artists',
       'albums',
@@ -251,22 +269,6 @@ export default [
       'albums',
       'albumGroups',
       'tracks'
-    ]
-  },
-  {
-    id: 'youtubemusic',
-    icon: 'youtubemusic',
-    name: 'YouTube Music',
-    isVideo: true,
-    videoTypes: [
-      'track',
-      'video'
-    ],
-    searchScopes: [
-      'tracks',
-      'videos',
-      'videoMixes',
-      'videoPlaylists'
     ]
   },
   {
