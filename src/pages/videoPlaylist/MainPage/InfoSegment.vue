@@ -14,6 +14,11 @@
           v-text="playlistTitle"
         />
 
+        <BaseVideoChannelLinkSection
+          class="description"
+          :model-data="playlistData"
+        />
+
         <DescriptionSection
           class="description"
           :playlist-data="playlistData"
@@ -63,6 +68,8 @@ import BaseVideoPlaylistOptionsPopup
   from '@/components/popups/videoPlaylist/BaseVideoPlaylistOptionsPopup.vue'
 import BaseItemContainer
   from '@/components/containers/item/BaseItemContainer.vue'
+import BaseVideoChannelLinkSection
+  from '@/components/sections/videoChannel/BaseVideoChannelLinkSection.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -75,7 +82,8 @@ export default {
     BasePublishDateSection,
     BaseSelfIcons,
     BaseVideoPlaylistOptionsPopup,
-    BaseItemContainer
+    BaseItemContainer,
+    BaseVideoChannelLinkSection
   },
   mixins: [
     selfMixin
