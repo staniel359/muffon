@@ -20,6 +20,15 @@ export default {
     icon: 'errorNotFound',
     isRefreshable: false
   },
+  unprocessableEntity: {
+    id: 'internalServer',
+    code: 422,
+    icons: [
+      'errorInternalServer',
+      redCloseCornerIcon
+    ],
+    isRefreshable: false
+  },
   internalServer: {
     id: 'internalServer',
     code: 500,
