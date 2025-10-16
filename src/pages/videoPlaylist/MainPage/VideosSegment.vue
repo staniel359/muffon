@@ -17,6 +17,7 @@
       <BaseVideosList
         :videos="slotProps[scope]"
         :view-id="viewId"
+        is-with-channel-title
         is-with-favorite-option
         is-with-bookmark-option
         is-with-watched-option
