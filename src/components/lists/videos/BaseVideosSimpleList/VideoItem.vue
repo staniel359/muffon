@@ -37,6 +37,13 @@
           @link-click="handleLinkClick"
           @active-change="handleChannelLinkActiveChange"
         />
+
+        <BaseListCounterSection
+          v-if="isRenderViewsCount"
+          class="description"
+          icon="watch"
+          :count="viewsCount"
+        />
       </div>
 
       <BaseSelfIcons
@@ -45,6 +52,12 @@
         :watched-id="watchedId"
         :is-with-favorite-icon="isWithFavoriteIcon"
         :is-with-bookmark-icon="isWithBookmarkIcon"
+      />
+
+      <BaseDurationSection
+        v-if="isRenderDuration"
+        class="description right main-right-small-section"
+        :duration="duration"
       />
 
       <BaseCreatedSection
@@ -98,6 +111,10 @@ import BasePublishDateSection
 import BaseVideoOptionsPopup
   from '@/components/popups/video/BaseVideoOptionsPopup.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import BaseDurationSection
+  from '@/components/sections/BaseDurationSection.vue'
+import BaseListCounterSection
+  from '@/components/sections/BaseListCounterSection.vue'
 import {
   main as formatVideoLink
 } from '@/helpers/formatters/links/video'
@@ -115,7 +132,9 @@ export default {
     BaseCreatedSection,
     BasePublishDateSection,
     BaseVideoOptionsPopup,
-    BaseClearButton
+    BaseClearButton,
+    BaseDurationSection,
+    BaseListCounterSection
   },
   mixins: [
     selfMixin
@@ -145,7 +164,9 @@ export default {
     isWithShareOption: Boolean,
     isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isWithDuration: Boolean,
+    isWithViewsCount: Boolean
   },
   emits: [
     'linkClick',
@@ -192,6 +213,28 @@ export default {
     isTracksScope () {
       return (
         this.scope === 'tracks'
+      )
+    },
+    isRenderDuration () {
+      return (
+        this.isWithDuration &&
+          this.duration
+      )
+    },
+    duration () {
+      return (
+        this.videoData.duration
+      )
+    },
+    isRenderViewsCount () {
+      return (
+        this.isWithViewsCount &&
+          this.viewsCount
+      )
+    },
+    viewsCount () {
+      return (
+        this.videoData.views_count
       )
     }
   },

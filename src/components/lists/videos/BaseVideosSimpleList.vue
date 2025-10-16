@@ -19,6 +19,8 @@
       :is-with-external-link-option="isWithExternalLinkOption"
       :is-with-delete-option="isWithDeleteOption"
       :is-with-clear-button="isWithClearButton"
+      :is-with-duration="isWithDuration"
+      :is-with-views-count="isWithViewsCount"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -61,7 +63,9 @@ export default {
     isWithShareOption: Boolean,
     isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isWithDuration: Boolean,
+    isWithViewsCount: Boolean
   },
   emits: [
     'linkClick',
