@@ -16,6 +16,7 @@
       :is-with-self-icons="isWithSelfIcons"
       :is-bookmark="isBookmark"
       :is-with-created="isWithCreated"
+      :is-with-views-count="isWithViewsCount"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -56,7 +57,8 @@ export default {
     isWithClearButton: Boolean,
     isWithModelIcon: Boolean,
     isBookmark: Boolean,
-    isWithCreated: Boolean
+    isWithCreated: Boolean,
+    isWithViewsCount: Boolean
   },
   emits: [
     'linkClick',

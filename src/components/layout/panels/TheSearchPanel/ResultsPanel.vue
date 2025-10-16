@@ -37,6 +37,7 @@
             is-with-album-title
             is-with-channel-title
             is-with-duration
+            is-with-views-count
             is-with-library-option
             is-with-playlist-option
             is-with-favorite-option

@@ -58,6 +58,13 @@
           icon="video"
           :count="videosCount"
         />
+
+        <BaseListCounterSection
+          v-if="isRenderViewsCount"
+          class="description"
+          icon="watch"
+          :count="viewsCount"
+        />
       </div>
 
       <BaseSelfIcons
@@ -161,7 +168,8 @@ export default {
     isWithModelIcon: Boolean,
     isWithSelfIcons: Boolean,
     isBookmark: Boolean,
-    isWithCreated: Boolean
+    isWithCreated: Boolean,
+    isWithViewsCount: Boolean
   },
   emits: [
     'linkClick',
@@ -215,6 +223,15 @@ export default {
     },
     videosCount () {
       return this.playlistData.videos_count
+    },
+    isRenderViewsCount () {
+      return (
+        this.isWithViewsCount &&
+          this.viewsCount
+      )
+    },
+    viewsCount () {
+      return this.playlistData.views_count
     }
   },
   methods: {
