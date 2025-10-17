@@ -1,7 +1,7 @@
 import i18n from '@/plugins/i18n'
 import {
   main as formatVideoLink,
-  related as formatVideoRelatedLink
+  similar as formatVideoSimilarLink
 } from '@/helpers/formatters/links/video'
 
 export default function (
@@ -42,8 +42,8 @@ export default function (
 
   function formatLink () {
     switch (scope) {
-      case 'related':
-        return formatVideoRelatedLink(
+      case 'similar':
+        return formatVideoSimilarLink(
           {
             videoId
           }

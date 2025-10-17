@@ -15,7 +15,6 @@
     "videoChannels": "视频频道",
     "videoMixes": "混剪视频",
     "videoPlaylists": "视频播放列表",
-    "related": "相关的",
     "top": "热门",
     "topCollection": {
       "artists": "热门艺人",
@@ -74,7 +73,6 @@
       "images": "{modelName}图片",
       "lyrics": "{modelName}歌词",
       "videos": "{modelName}视频",
-      "related": "{modelName}相关",
       "posts": "{modelName}帖子",
       "library": "{modelName}音乐库",
       "playlists": "{modelName}播放列表",
@@ -704,7 +702,9 @@
     },
     "active": "正在导入{count}首曲目，共{counter}首...",
     "success": {
-      "header": "{counter}首曲目已成功导入 | {counter}首曲目已成功导入",
+      "header": {
+        "files": "{counter}首曲目已成功导入 | {counter}首曲目已成功导入"
+      },
       "content": "在添加到音乐库之前，请先预览数据"
     },
     "error": {
@@ -769,7 +769,6 @@
       "videoChannels": "暂无视频频道",
       "videoMixes": "暂无混剪视频",
       "videoPlaylists": "暂无视频播放列表",
-      "related": "暂无相关内容",
       "listeners": "暂无听众",
       "images": "暂无图片",
       "events": "暂无活动",

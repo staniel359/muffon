@@ -49,7 +49,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **radio** (tags / artists / top)
 - **scrobbling** (Last.FM)
 - **Discord Rich Presence** (+ buttons customization)
-- **videos** (+ related / channels / playlists) (YouTube, YouTube Music)
+- **videos** (+ similar / channels / playlists) (YouTube, YouTube Music)
 - **lyrics** (+ annotations) (Genius, MusixMatch)
 - **top** (artists / albums / tracks / tags) (+ country select)
 - **new / upcoming releases**

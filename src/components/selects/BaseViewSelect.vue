@@ -52,20 +52,11 @@ export default {
           'table',
           'extended'
         ],
-        similar: [
-          'simple',
-          'table',
-          'extended'
-        ],
         albums: [
           'simple',
           'table'
         ],
         videos: [
-          'simple',
-          'table'
-        ],
-        related: [
           'simple',
           'table'
         ]

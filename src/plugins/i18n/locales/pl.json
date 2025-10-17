@@ -15,7 +15,6 @@
     "videoChannels": "Kanały wideo",
     "videoMixes": "Kompilacje wideo",
     "videoPlaylists": "Playlisty wideo",
-    "related": "Podobne",
     "top": "Top",
     "topCollection": {
       "artists": "Top wykonawcy",
@@ -74,7 +73,6 @@
       "images": "{modelName} Obrazy",
       "lyrics": "{modelName} Teksty",
       "videos": "{modelName} Filmy",
-      "related": "{modelName} Powiązane",
       "posts": "{modelName} Posty",
       "library": "{modelName} Biblioteka",
       "playlists": "{modelName} Playlisty",
@@ -773,7 +771,6 @@
       "videoChannels": "Brak kanałów wideo",
       "videoMixes": "Brak kompilacji wideo",
       "videoPlaylists": "Brak playlist wideo",
-      "related": "Brak powiązanych",
       "listeners": "Brak słuchaczy",
       "images": "Brak obrazów",
       "events": "Brak wydarzeń",

@@ -119,8 +119,8 @@ const VideoChannelPlaylistsPage = () => import(
 const VideoPage = () => import(
   '@/pages/video/MainPage.vue'
 )
-const VideoRelatedPage = () => import(
-  '@/pages/video/RelatedPage.vue'
+const VideoSimilarPage = () => import(
+  '@/pages/video/SimilarPage.vue'
 )
 const VideoPlaylistPage = () => import(
   '@/pages/videoPlaylist/MainPage.vue'
@@ -562,10 +562,10 @@ export default [
     }
   },
   {
-    path: '/video/videos/:videoId/related',
+    path: '/video/videos/:videoId/similar',
     exact: true,
-    name: 'VideoRelatedPage',
-    component: VideoRelatedPage,
+    name: 'VideoSimilarPage',
+    component: VideoSimilarPage,
     props: true,
     meta: {
       formatter:

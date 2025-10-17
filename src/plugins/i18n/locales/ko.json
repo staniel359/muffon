@@ -15,7 +15,6 @@
     "videoChannels": "동영상 채널",
     "videoMixes": "동영상 스위처",
     "videoPlaylists": "동영상 재생목록",
-    "related": "연관",
     "top": "인기",
     "topCollection": {
       "artists": "인기 아티스트",
@@ -74,7 +73,6 @@
       "images": "{modelName} 이미지",
       "lyrics": "{modelName} 가사",
       "videos": "{modelName} 동영상",
-      "related": "{modelName} 연관",
       "posts": "{modelName} 게시글",
       "library": "{modelName} 라이브러리",
       "playlists": "{modelName} 재생목록",
@@ -773,7 +771,6 @@
       "videoChannels": "동영상 채널 없음",
       "videoMixes": "동영상 스위처 없음",
       "videoPlaylists": "동영상 재생목록 없음",
-      "related": "연관 없음",
       "listeners": "청취자 없음",
       "images": "이미지 없음",
       "events": "이벤트 없음",

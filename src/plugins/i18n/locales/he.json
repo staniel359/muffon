@@ -15,7 +15,6 @@
     "videoChannels": "ערוצי וידאו",
     "videoMixes": "מיקס סרטונים",
     "videoPlaylists": "פלייליסט סרטונים",
-    "related": "דומה",
     "top": "מובילים",
     "topCollection": {
       "artists": "אמנים מובילים",
@@ -74,7 +73,6 @@
       "images": "{modelName} תמונות",
       "lyrics": "{modelName} מילים",
       "videos": "{modelName} סרטונים",
-      "related": "{modelName} דומה",
       "posts": "{modelName} פוסטים",
       "library": "{modelName} ספרייה",
       "playlists": "{modelName} פלייליסטים",
@@ -777,7 +775,6 @@
       "videoChannels": "אין ערוצי סרטונים",
       "videoMixes": "אין מיקסים של סרטונים",
       "videoPlaylists": "אין פלייליסטים של סרטונים",
-      "related": "אין דומים",
       "listeners": "אין מאזינים",
       "images": "אין תמונות",
       "events": "אין אירועים",

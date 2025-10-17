@@ -15,7 +15,6 @@
     "videoChannels": "Video kanalları",
     "videoMixes": "Video mixleri",
     "videoPlaylists": "Video çalma listeleri",
-    "related": "Alakalı",
     "top": "Popüler",
     "topCollection": {
       "artists": "Popüler sanatçılar",
@@ -74,7 +73,6 @@
       "images": "{modelName} resimleri",
       "lyrics": "{modelName} sözleri",
       "videos": "{modelName} videoları",
-      "related": "{modelName} ile ilgili",
       "posts": "{modelName} gönderileri",
       "library": "{modelName} kütüphanesi",
       "playlists": "{modelName} çalma listesi",
@@ -777,7 +775,6 @@
       "videoChannels": "Video kanalları yok",
       "videoMixes": "Video mixleri yok",
       "videoPlaylists": "Video çalma listeleri yok",
-      "related": "Alakalı yok",
       "listeners": "Dinleyici yok",
       "images": "Görsel yok",
       "events": "Etkinlik yok",

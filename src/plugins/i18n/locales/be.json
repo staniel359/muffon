@@ -15,7 +15,6 @@
     "videoChannels": "Каналы відэа",
     "videoMixes": "Складанкі відэа",
     "videoPlaylists": "Спісы відэа",
-    "related": "Звязаныя",
     "top": "Папулярнае",
     "topCollection": {
       "artists": "Папулярныя выканаўцы",
@@ -74,7 +73,6 @@
       "images": "Выявы {modelName}",
       "lyrics": "Тэкст {modelName}",
       "videos": "Відэа {modelName}",
-      "related": "Звязаныя з {modelName}",
       "posts": "Публікацыі {modelName}",
       "library": "Бібліятэка {modelName}",
       "playlists": "Спісы {modelName}",
@@ -777,7 +775,6 @@
       "videoChannels": "Няма каналаў відэа",
       "videoMixes": "Няма складанак відэа",
       "videoPlaylists": "Няма спісаў відэа",
-      "related": "Няма звязаных",
       "listeners": "Няма слухачоў",
       "images": "Няма выяваў",
       "events": "Няма падзей",

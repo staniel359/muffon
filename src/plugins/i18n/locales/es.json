@@ -15,7 +15,6 @@
     "videoChannels": "Canales de video",
     "videoMixes": "Mezclas de video",
     "videoPlaylists": "Playlists de video",
-    "related": "Relacionada",
     "top": "Mejores",
     "topCollection": {
       "artists": "Mejores artistas",
@@ -74,7 +73,6 @@
       "images": "{modelName} imágenes",
       "lyrics": "{modelName} letras",
       "videos": "{modelName} videos",
-      "related": "{modelName} relacionados",
       "posts": "{modelName} publicaciones",
       "library": "{modelName} bibleoteca",
       "playlists": "{modelName} playlists",
@@ -773,7 +771,6 @@
       "videoChannels": "Ningún canal de videos",
       "videoMixes": "Ningúna mezcla de videos",
       "videoPlaylists": "Ningúna playlist de videos",
-      "related": "Ningún relacionado",
       "listeners": "Ningún escuchador",
       "images": "Ningún imagen",
       "events": "Ningún evento",

@@ -15,7 +15,6 @@
     "videoChannels": "Video channels",
     "videoMixes": "Video mixes",
     "videoPlaylists": "Video playlists",
-    "related": "Related",
     "top": "Top",
     "topCollection": {
       "artists": "Top artists",
@@ -74,7 +73,6 @@
       "images": "{modelName} images",
       "lyrics": "{modelName} lyrics",
       "videos": "{modelName} videos",
-      "related": "{modelName} related",
       "posts": "{modelName} posts",
       "library": "{modelName} library",
       "playlists": "{modelName} playlists",
@@ -777,7 +775,6 @@
       "videoChannels": "No video channels",
       "videoMixes": "No video mixes",
       "videoPlaylists": "No video playlists",
-      "related": "No related",
       "listeners": "No listeners",
       "images": "No images",
       "events": "No events",

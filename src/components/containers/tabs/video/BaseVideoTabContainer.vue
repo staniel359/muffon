@@ -25,7 +25,7 @@
 import tabContainerMixin from '@/mixins/tabContainerMixin'
 import getVideo from '@/helpers/actions/api/video/get'
 import {
-  related as formatVideoRelatedLink
+  similar as formatVideoSimilarLink
 } from '@/helpers/formatters/links/video'
 
 export default {
@@ -55,8 +55,8 @@ export default {
     },
     moreLink () {
       switch (this.scope) {
-        case 'related':
-          return formatVideoRelatedLink(
+        case 'similar':
+          return formatVideoSimilarLink(
             {
               videoId: this.videoId
             }

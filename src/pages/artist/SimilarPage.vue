@@ -3,6 +3,7 @@
     :key="refreshKey"
     :artist-name="artistName"
     :scope="scope"
+    :list-scope="listScope"
     :limit="limit"
     :view-id="viewId"
     is-with-top-segment

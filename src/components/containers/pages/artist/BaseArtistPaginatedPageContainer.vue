@@ -22,6 +22,7 @@
         :is-with-reload-button="isWithReloadButton"
         :view-id="viewId"
         :scope="scope"
+        :list-scope="listScope"
         :limit="limit"
         :response-page-limit="pageSlotProps.responsePageLimit"
       >
@@ -82,6 +83,7 @@ export default {
   props: {
     artistName: String,
     scope: String,
+    listScope: String,
     limit: Number,
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,

@@ -13,6 +13,7 @@
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
         :scope="scope"
+        :list-scope="listScope"
         :limit="limit"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
@@ -50,6 +51,7 @@ export default {
   props: {
     videoId: String,
     scope: String,
+    listScope: String,
     limit: Number,
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,

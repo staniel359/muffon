@@ -15,7 +15,6 @@
     "videoChannels": "Каналы видео",
     "videoMixes": "Сборники видео",
     "videoPlaylists": "Списки видео",
-    "related": "Связанные",
     "top": "Популярное",
     "topCollection": {
       "artists": "Популярные исполнители",
@@ -74,7 +73,6 @@
       "images": "Изображения {modelName}",
       "lyrics": "Текст {modelName}",
       "videos": "Видео {modelName}",
-      "related": "Связанные с {modelName}",
       "posts": "Публикации {modelName}",
       "library": "Библиотека {modelName}",
       "playlists": "Списки {modelName}",
@@ -777,7 +775,6 @@
       "videoChannels": "Нет каналов видео",
       "videoMixes": "Нет сборников видео",
       "videoPlaylists": "Нет списков видео",
-      "related": "Нет связанных",
       "listeners": "Нет слушателей",
       "images": "Нет изображений",
       "events": "Нет событий",

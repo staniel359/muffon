@@ -4,6 +4,7 @@
     :key="refreshKey"
     :video-id="videoId"
     :scope="scope"
+    :list-scope="listScope"
     :limit="limit"
     :view-id="viewId"
     is-with-top-segment
@@ -36,7 +37,7 @@ import viewChangeMixin from '@/mixins/viewChangeMixin'
 import pageMixin from '@/mixins/pageMixin'
 
 export default {
-  name: 'RelatedPage',
+  name: 'SimilarPage',
   components: {
     BaseVideoPaginatedPageContainer,
     BaseVideosList
@@ -50,7 +51,7 @@ export default {
   },
   data () {
     return {
-      scope: 'related',
+      scope: 'similar',
       listScope: 'videos'
     }
   }

@@ -19,13 +19,13 @@
 <script>
 import BaseTabsSegmentContainer
   from '@/components/containers/segments/tabs/BaseTabsSegmentContainer.vue'
-import RelatedTab from './TabsSegment/RelatedTab.vue'
+import SimilarTab from './TabsSegment/SimilarTab.vue'
 
 export default {
   name: 'TabsSegment',
   components: {
     BaseTabsSegmentContainer,
-    RelatedTab
+    SimilarTab
   },
   props: {
     videoId: String
@@ -34,8 +34,8 @@ export default {
     return {
       tabs: [
         {
-          nameCode: 'navigation.related',
-          component: 'RelatedTab'
+          nameCode: 'navigation.similar',
+          component: 'SimilarTab'
         }
       ]
     }

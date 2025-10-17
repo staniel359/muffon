@@ -34,7 +34,7 @@ import {
 import tabMixin from '@/mixins/tabMixin'
 
 export default {
-  name: 'RelatedTab',
+  name: 'SimilarTab',
   components: {
     BaseVideoTabContainer,
     BaseVideosTableList
@@ -49,7 +49,7 @@ export default {
     return {
       limit:
         videosLimits.table.small,
-      scope: 'related'
+      scope: 'similar'
     }
   }
 }

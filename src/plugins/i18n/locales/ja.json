@@ -15,7 +15,6 @@
     "videoChannels": "ビデオチャンネル",
     "videoMixes": "ビデオミックス",
     "videoPlaylists": "ビデオプレイリスト",
-    "related": "関連",
     "top": "トップ",
     "topCollection": {
       "artists": "トップアーティスト",
@@ -74,7 +73,6 @@
       "images": "{modelName}画像",
       "lyrics": "{modelName}歌詞",
       "videos": "{modelName}ビデオ",
-      "related": "{modelName}関連",
       "posts": "{modelName}投稿",
       "library": "{modelName}ライブラリ",
       "playlists": "{modelName}プレイリスト",
@@ -777,7 +775,6 @@
       "videoChannels": "ビデオチャンネルがありません",
       "videoMixes": "ビデオミックスがありません",
       "videoPlaylists": "ビデオプレイリストがありません",
-      "related": "関連項目がありません",
       "listeners": "リスナーがありません",
       "images": "画像がありません",
       "events": "イベントがありません",

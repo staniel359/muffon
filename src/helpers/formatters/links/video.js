@@ -12,16 +12,16 @@ export function main (
   }
 }
 
-export function related (
+export function similar (
   {
     videoId
   }
 ) {
   return {
-    name: 'VideoRelatedPage',
+    name: 'VideoSimilarPage',
     params: {
       videoId
     },
-    path: `video/videos/${videoId}/related`
+    path: `video/videos/${videoId}/similar`
   }
 }
