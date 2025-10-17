@@ -1,7 +1,6 @@
 <template>
   <BaseTrackVideoSourceItemContainer
     :source="source"
-    :types="types"
     :query="query"
   >
     <template
@@ -11,7 +10,7 @@
         :source-data="sourceData"
         :is-loading="slotProps.isLoading"
         :is-error="slotProps.isError"
-        :videos-data="slotProps.videosData"
+        :videos="slotProps.videos"
       />
     </template>
   </BaseTrackVideoSourceItemContainer>
@@ -38,9 +37,6 @@ export default {
   computed: {
     source () {
       return this.sourceData.id
-    },
-    types () {
-      return this.sourceData.videoTypes
     }
   }
 }

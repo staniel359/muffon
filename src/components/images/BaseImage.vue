@@ -16,7 +16,6 @@
     :class="[
       {
         inverted: isDarkMode,
-        contained: isContained,
         [borderedRaisedClass]: !isPlain,
         default: isDefault
       }
@@ -49,7 +48,6 @@ export default {
     },
     image: String,
     isLazy: Boolean,
-    isContained: Boolean,
     isLoading: Boolean,
     isBordered: Boolean,
     isPlain: Boolean

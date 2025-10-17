@@ -475,10 +475,6 @@
       "misc": "Sonstige",
       "appearance": "Auftritte",
       "live": "Live"
-    },
-    "videoTypes": {
-      "video": "Video",
-      "track": "Titel"
     }
   },
   "player": {

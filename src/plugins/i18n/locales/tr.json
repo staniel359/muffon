@@ -475,10 +475,6 @@
       "misc": "Çeşitli",
       "appearance": "Görünüm",
       "live": "Canlı"
-    },
-    "videoTypes": {
-      "video": "Video",
-      "track": "Parça"
     }
   },
   "player": {

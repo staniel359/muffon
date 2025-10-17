@@ -475,10 +475,6 @@
       "misc": "其他",
       "appearance": "合作曲目",
       "live": "现场版"
-    },
-    "videoTypes": {
-      "video": "视频",
-      "track": "曲目"
     }
   },
   "player": {

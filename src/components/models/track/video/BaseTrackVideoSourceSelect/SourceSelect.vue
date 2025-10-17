@@ -1,6 +1,5 @@
 <template>
   <BaseDropdownContainer
-    ref="dropdown"
     class="main-source-select"
     :header="headerText"
   >
@@ -29,13 +28,6 @@ export default {
       return this.$t(
         'select.source'
       )
-    }
-  },
-  methods: {
-    reset () {
-      this.$refs
-        .dropdown
-        .reset()
     }
   }
 }

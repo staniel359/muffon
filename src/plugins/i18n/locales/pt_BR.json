@@ -475,10 +475,6 @@
       "misc": "Diversos",
       "appearance": "Participações",
       "live": "Ao vivo"
-    },
-    "videoTypes": {
-      "video": "Vídeo",
-      "track": "Faixa"
     }
   },
   "player": {

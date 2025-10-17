@@ -475,10 +475,6 @@
       "misc": "Miscellanei",
       "appearance": "Apparizioni",
       "live": "Live"
-    },
-    "videoTypes": {
-      "video": "Video",
-      "track": "Brano"
     }
   },
   "player": {

@@ -4,16 +4,14 @@
   >
     <BaseSearchButton
       model="video"
-      :is-active="isShowVideoSelect"
+      :is-active="isActive"
       @click="handleSearchButtonClick"
     />
 
     <BaseTrackVideoSelect
-      v-if="isVideoSelectCalled"
-      v-show="isShowVideoSelect"
+      v-if="isActive"
       class="main-bottom-section"
       :track-data="trackData"
-      :is-show="isShowVideoSelect"
     />
   </div>
 </template>
@@ -37,16 +35,19 @@ export default {
   },
   data () {
     return {
-      isVideoSelectCalled: false,
-      isShowVideoSelect: false
+      isActive: false
+    }
+  },
+  computed: {
+    isRenderVideoSelect () {
+      return this.isActive
     }
   },
   watch: {
-    isShowVideoSelect:
-      'handleIsShowVideoSelectChange'
+    isActive: 'handleIsActiveChange'
   },
   methods: {
-    handleIsShowVideoSelectChange (
+    handleIsActiveChange (
       value
     ) {
       if (value) {
@@ -54,10 +55,7 @@ export default {
       }
     },
     handleSearchButtonClick () {
-      this.isVideoSelectCalled = true
-
-      this.isShowVideoSelect =
-        !this.isShowVideoSelect
+      this.isActive = !this.isActive
     },
     focus () {
       focusOnPageElement(

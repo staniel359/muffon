@@ -475,10 +475,6 @@
       "misc": "기타",
       "appearance": "외형",
       "live": "라이브"
-    },
-    "videoTypes": {
-      "video": "동영상",
-      "track": "트랙"
     }
   },
   "player": {

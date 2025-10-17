@@ -26,7 +26,12 @@ export default {
       type: Object,
       required: true
     },
-    videosData: Object,
+    videos: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
     isLoading: Boolean,
     isError: Boolean
   },
@@ -35,7 +40,7 @@ export default {
       return (
         this.isLoading ||
           this.isError ||
-          !this.videosData
+          !this.videos
       )
     },
     icon () {
@@ -43,17 +48,13 @@ export default {
     },
     sourceName () {
       return this.sourceData.name
-    },
-    types () {
-      return this.sourceData.videoTypes
     }
   },
   methods: {
     handleClick () {
       this.setSelectedSourceData(
         {
-          types: this.types,
-          videosData: this.videosData
+          videos: this.videos
         }
       )
     }

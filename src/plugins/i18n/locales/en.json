@@ -475,10 +475,6 @@
       "misc": "Miscellaneous",
       "appearance": "Appearances",
       "live": "Live"
-    },
-    "videoTypes": {
-      "video": "Video",
-      "track": "Track"
     }
   },
   "player": {

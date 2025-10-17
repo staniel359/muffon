@@ -18,7 +18,6 @@
         class="rounded-medium video-image-100"
         model="video"
         :image="imageData?.small"
-        :is-contained="isTracksScope"
       />
 
       <div class="content">
@@ -159,10 +158,6 @@ export default {
       type: Object,
       required: true
     },
-    scope: {
-      type: String,
-      default: 'videos'
-    },
     isWithChannelTitle: Boolean,
     isWithCreated: Boolean,
     profileId: Number,
@@ -220,11 +215,6 @@ export default {
     },
     isDeleted () {
       return !!this.videoData.isDeleted
-    },
-    isTracksScope () {
-      return (
-        this.scope === 'tracks'
-      )
     },
     isRenderDuration () {
       return (

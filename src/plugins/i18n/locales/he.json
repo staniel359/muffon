@@ -475,10 +475,6 @@
       "misc": "שונות",
       "appearance": "הופעות",
       "live": "הופעות חיות"
-    },
-    "videoTypes": {
-      "video": "סרטון",
-      "track": "שיר"
     }
   },
   "player": {

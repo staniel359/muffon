@@ -32,7 +32,6 @@
         ]"
         :model="model"
         :image="image"
-        :is-contained="isImageContained"
       />
     </div>
 
@@ -73,7 +72,6 @@ export default {
     content: String,
     extra: String,
     value: String,
-    isImageContained: Boolean,
     isVideo: Boolean
   }
 }

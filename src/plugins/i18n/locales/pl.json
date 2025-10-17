@@ -475,10 +475,6 @@
       "misc": "Różne",
       "appearance": "Pojawia się ",
       "live": "Na żywo"
-    },
-    "videoTypes": {
-      "video": "Film",
-      "track": "Utwór"
     }
   },
   "player": {

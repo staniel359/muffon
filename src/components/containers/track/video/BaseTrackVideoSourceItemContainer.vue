@@ -1,8 +1,8 @@
 <template>
   <slot
-    :is-loading="!isAllLoaded"
-    :is-error="isAllErrors"
-    :videos-data="videosData"
+    :is-loading="isLoading"
+    :is-error="isError"
+    :videos="videos"
   />
 </template>
 
@@ -19,125 +19,51 @@ export default {
     query: {
       type: String,
       required: true
-    },
-    types: {
-      type: Array,
-      default () {
-        return []
-      }
     }
   },
   data () {
     return {
       searchData: null,
-      error: null,
-      videosData: null,
-      successCount: 0,
-      emptyCount: 0,
-      errorCount: 0
+      isLoading: false,
+      isError: false,
+      scope: 'videos'
     }
   },
   computed: {
-    isAllLoaded () {
-      return (
-        this.collectionsCount ===
-          this.scopesCount
-      )
-    },
-    collectionsCount () {
-      return (
-        this.successCount +
-          this.emptyCount +
-          this.errorCount
-      )
-    },
-    scopesCount () {
-      return this.scopes.length
-    },
-    scopes () {
-      return this.types.map(
-        this.formatType
-      )
-    },
-    isAllErrors () {
-      return (
-        this.errorCount ===
-          this.scopesCount
-      )
-    },
     searchArgs () {
       return {
+        scope: this.scope,
         source: this.source,
         query: this.query
       }
+    },
+    videos () {
+      return this.searchData?.[
+        this.scope
+      ]
     }
   },
-  watch: {
-    searchData: 'handleSearchDataChange',
-    error: 'handleError'
-  },
   mounted () {
-    this.getScopesData()
+    this.getVideos()
   },
   methods: {
     getSearch,
-    handleSearchDataChange (
-      value
-    ) {
-      if (value) {
-        this.formatScopesData()
-      }
-    },
-    handleError (
-      value
-    ) {
-      if (value) {
-        this.errorCount++
-      }
-    },
-    formatType (
-      type
-    ) {
-      return `${type}s`
-    },
-    getScopesData () {
-      this.scopes.forEach(
-        this.getScopeData
-      )
-    },
-    getScopeData (
-      scope
-    ) {
+    getVideos () {
+      this.isLoading = true
+
       this.getSearch(
-        {
-          ...this.searchArgs,
-          scope
-        }
+        this.searchArgs
+      ).catch(
+        this.handleError
+      ).finally(
+        this.handleFinish
       )
     },
-    formatScopesData () {
-      this.scopes.forEach(
-        this.formatScopeData
-      )
+    handleError () {
+      this.isError = true
     },
-    formatScopeData (
-      scope
-    ) {
-      const collection =
-        this.searchData[scope]
-
-      if (collection) {
-        if (collection.length) {
-          this.videosData = {
-            ...this.videosData,
-            [scope]: collection
-          }
-
-          this.successCount++
-        } else {
-          this.emptyCount++
-        }
-      }
+    handleFinish () {
+      this.isLoading = false
     }
   }
 }

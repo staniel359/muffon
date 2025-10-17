@@ -475,10 +475,6 @@
       "misc": "Misceláneo",
       "appearance": "Apariciónes",
       "live": "En vivo"
-    },
-    "videoTypes": {
-      "video": "Video",
-      "track": "Pista"
     }
   },
   "player": {

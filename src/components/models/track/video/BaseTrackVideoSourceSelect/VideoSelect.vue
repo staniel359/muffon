@@ -7,7 +7,6 @@
       v-for="videoData in videosCollection"
       :key="videoData.uuid"
       :video-data="videoData"
-      :is-image-contained="isImageContained"
     />
   </BaseDropdownContainer>
 </template>
@@ -30,10 +29,6 @@ export default {
     'setSelectedVideoData'
   ],
   props: {
-    typeId: {
-      type: String,
-      required: true
-    },
     videos: {
       type: Array,
       default () {
@@ -44,17 +39,12 @@ export default {
   computed: {
     headerText () {
       return this.$t(
-        `select.${this.typeId}`
+        'select.video'
       )
     },
     videosCollection () {
       return formatCollection(
         this.videos
-      )
-    },
-    isImageContained () {
-      return (
-        this.typeId === 'track'
       )
     }
   },

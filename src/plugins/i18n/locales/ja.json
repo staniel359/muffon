@@ -475,10 +475,6 @@
       "misc": "その他",
       "appearance": "出演",
       "live": "ライブ"
-    },
-    "videoTypes": {
-      "video": "ビデオ",
-      "track": "トラック"
     }
   },
   "player": {

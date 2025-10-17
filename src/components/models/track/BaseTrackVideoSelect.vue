@@ -2,13 +2,12 @@
   <div>
     <BaseTrackVideoSourceSelect
       :track-data="trackData"
-      @reset="handleReset"
     />
 
     <VideoSection
       v-if="selectedVideoData"
       ref="video"
-      :key="key"
+      :key="videoSectionKey"
       :video-data="selectedVideoData"
     />
   </div>
@@ -38,41 +37,25 @@ export default {
     }
   },
   props: {
-    trackData: Object,
-    isShow: Boolean
+    trackData: Object
   },
   data () {
     return {
-      key: null,
+      videoSectionKey: null,
       selectedVideoData: null
     }
   },
   watch: {
     selectedVideoData:
-      'handleSelectedVideoDataChange',
-    isShow: 'handleIsShowChange'
+      'handleSelectedVideoDataChange'
   },
   methods: {
-    async handleSelectedVideoDataChange (
-      value
-    ) {
-      if (value) {
-        this.key = generateKey()
+    async handleSelectedVideoDataChange () {
+      this.videoSectionKey = generateKey()
 
-        await this.$nextTick()
+      await this.$nextTick()
 
-        this.focus()
-      }
-    },
-    handleIsShowChange (
-      value
-    ) {
-      if (!value) {
-        this.key = generateKey()
-      }
-    },
-    handleReset () {
-      this.selectedVideoData = null
+      this.focus()
     },
     setSelectedVideoData (
       value

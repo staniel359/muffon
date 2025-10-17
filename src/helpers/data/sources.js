@@ -183,10 +183,6 @@ export default [
     albumTypes: [
       'album'
     ],
-    videoTypes: [
-      'track',
-      'video'
-    ],
     searchScopes: [
       'tracks',
       'albums',
@@ -276,9 +272,6 @@ export default [
     icon: 'youtube',
     name: 'YouTube',
     isVideo: true,
-    videoTypes: [
-      'video'
-    ],
     searchScopes: [
       'videos',
       'videoChannels',

@@ -487,18 +487,12 @@
     @extend .main-right-small-icon
 
 .base-image
-  @extend .no-dragging
-  &:not(.contained)
-    @extend .object-fit-cover
-    &.bordered
-      @extend .border
-      &.inverted
-        &:not(.default, .thumb)
-          @extend .border-inverted
-  &.contained
-    @extend .object-fit-contain, .no-border, .border-inner, .background-plain-black
+  @extend .no-dragging, .object-fit-cover
+  &.bordered
+    @extend .border
     &.inverted
-      @extend .border-inner-inverted
+      &:not(.default, .thumb)
+        @extend .border-inverted
   &.raised
     &:not(.main-logo-image)
       @extend .shadowed
