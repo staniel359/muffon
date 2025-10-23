@@ -45,7 +45,7 @@ export default {
     },
     buttonText () {
       return this.$t(
-        'actions.show.videoPage'
+        'actions.goTo.video'
       )
     }
   }

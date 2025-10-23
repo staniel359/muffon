@@ -197,9 +197,10 @@
       "queue": "Adicionar à fila",
       "savedTracks": "Adicionar às faixas salvas"
     },
-    "show": {
-      "library": "Mostrar na biblioteca",
-      "page": "Mostrar página"
+    "goTo": {
+      "video": null,
+      "library": null,
+      "page": null
     },
     "deleteFrom": {
       "favorites": "Remover dos favoritos",

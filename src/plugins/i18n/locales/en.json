@@ -197,10 +197,10 @@
       "queue": "Add to queue",
       "savedTracks": "Add to saved tracks"
     },
-    "show": {
-      "library": "Show in library",
-      "page": "Show page",
-      "videoPage": "Show video page"
+    "goTo": {
+      "video": "Go to video page",
+      "library": "Go to library page",
+      "page": "Go to page"
     },
     "deleteFrom": {
       "favorites": "Delete from favorites",

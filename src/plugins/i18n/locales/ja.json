@@ -197,9 +197,10 @@
       "queue": "キューに追加",
       "savedTracks": "保存済みトラックに追加"
     },
-    "show": {
-      "library": "ライブラリで表示",
-      "page": "ページを表示"
+    "goTo": {
+      "video": null,
+      "library": null,
+      "page": null
     },
     "deleteFrom": {
       "favorites": "お気に入りから削除",

@@ -34,7 +34,7 @@ export default {
     return {
       actionTextKeys: {
         add: 'addTo',
-        show: 'show'
+        show: 'goTo'
       }
     }
   },

@@ -197,9 +197,10 @@
       "queue": "Sıraya ekle",
       "savedTracks": "Kaydedilen parçalara ekle"
     },
-    "show": {
-      "library": "Kütüphanede göster",
-      "page": "Sayfayı göster"
+    "goTo": {
+      "video": null,
+      "library": null,
+      "page": null
     },
     "deleteFrom": {
       "favorites": "Favorilerden sil",

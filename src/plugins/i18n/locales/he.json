@@ -197,9 +197,10 @@
       "queue": "הוסף לתור",
       "savedTracks": "הוסף לשירים שמורים"
     },
-    "show": {
-      "library": "הצג בספרייה",
-      "page": "הצג עמוד"
+    "goTo": {
+      "video": null,
+      "library": null,
+      "page": null
     },
     "deleteFrom": {
       "favorites": "מחק מהאהובים",

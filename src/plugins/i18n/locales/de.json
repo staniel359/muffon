@@ -197,9 +197,10 @@
       "queue": "Zur Queue hinzufügen",
       "savedTracks": "Zu gespeicherte Titel hinzufügen"
     },
-    "show": {
-      "library": "In Bibliothek anzeigen",
-      "page": "Seite anzeigen"
+    "goTo": {
+      "video": null,
+      "library": null,
+      "page": null
     },
     "deleteFrom": {
       "favorites": "Von Favoriten löschen",

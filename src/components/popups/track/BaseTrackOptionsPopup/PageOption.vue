@@ -46,7 +46,7 @@ export default {
     },
     pageText () {
       return this.$t(
-        'actions.show.page'
+        'actions.goTo.page'
       )
     },
     sourceParams () {
