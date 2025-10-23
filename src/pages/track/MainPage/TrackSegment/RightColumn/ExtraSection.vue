@@ -7,6 +7,16 @@
 
     <BaseDivider />
 
+    <template
+      v-if="isRenderVideoLink"
+    >
+      <VideoLinkSection
+        :source-data="sourceData"
+      />
+
+      <BaseDivider />
+    </template>
+
     <VideoSection
       :track-data="trackData"
     />
@@ -24,6 +34,7 @@ import InfoSection from './ExtraSection/InfoSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import VideoSection from './ExtraSection/VideoSection.vue'
 import LyricsSection from './ExtraSection/LyricsSection.vue'
+import VideoLinkSection from './ExtraSection/VideoLinkSection.vue'
 
 export default {
   name: 'ExtraSection',
@@ -31,11 +42,25 @@ export default {
     InfoSection,
     BaseDivider,
     VideoSection,
-    LyricsSection
+    LyricsSection,
+    VideoLinkSection
   },
   props: {
-    trackData: Object,
+    trackData: {
+      type: Object,
+      required: true
+    },
     requestTrackData: Object
+  },
+  computed: {
+    isRenderVideoLink () {
+      return (
+        this.sourceData.name === 'youtubemusic'
+      )
+    },
+    sourceData () {
+      return this.trackData.source
+    }
   }
 }
 </script>

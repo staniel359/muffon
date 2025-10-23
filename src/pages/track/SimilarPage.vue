@@ -4,6 +4,8 @@
     :scope="scope"
     :limit="limit"
     :source-params="sourceParams"
+    is-with-top-segment
+    is-with-reload-button
     is-with-top-second-segment
     is-with-play-button
   >

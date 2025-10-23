@@ -199,7 +199,8 @@
     },
     "show": {
       "library": "Show in library",
-      "page": "Show page"
+      "page": "Show page",
+      "videoPage": "Show video page"
     },
     "deleteFrom": {
       "favorites": "Delete from favorites",

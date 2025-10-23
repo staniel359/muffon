@@ -55,11 +55,8 @@ export default {
         {
           nameCode: 'navigation.similar',
           component: 'SimilarTab',
-          requestTrackData: {
-            source: 'lastfm',
-            artistName: this.artistName,
-            trackTitle: this.trackTitle
-          }
+          requestTrackData:
+            this.similarTabRequestTrackData
         },
         {
           nameCode: 'navigation.albums',
@@ -72,6 +69,13 @@ export default {
     },
     trackTitle () {
       return this.trackData.title
+    },
+    similarTabRequestTrackData () {
+      return {
+        source: 'lastfm',
+        artistName: this.artistName,
+        trackTitle: this.trackTitle
+      }
     }
   },
   watch: {
