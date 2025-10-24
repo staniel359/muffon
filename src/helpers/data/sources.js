@@ -1,75 +1,4 @@
 export default [
-  {
-    id: 'lastfm',
-    icon: 'lastfm',
-    name: 'Last.FM',
-    isWithArtists: true,
-    isWithAlbums: true,
-    isWithTracks: true,
-    albumTypes: [
-      'album'
-    ],
-    searchScopes: [
-      'artists',
-      'albums',
-      'tracks',
-      'tags'
-    ]
-  },
-  {
-    id: 'vk',
-    icon: 'vk',
-    name: 'VK',
-    isAudio: true,
-    isWithArtists: true,
-    isWithAlbums: true,
-    isWithTracks: true,
-    maxBitrate: 320,
-    albumTypes: [
-      'album'
-    ],
-    searchScopes: [
-      'artists',
-      'albums',
-      'tracks'
-    ]
-  },
-  {
-    id: 'odnoklassniki',
-    icon: 'odnoklassniki',
-    name: 'Odnoklassniki',
-    isAudio: true,
-    isWithArtists: true,
-    isWithAlbums: true,
-    isWithTracks: true,
-    maxBitrate: 320,
-    albumTypes: [
-      'album'
-    ],
-    searchScopes: [
-      'artists',
-      'albums',
-      'tracks'
-    ]
-  },
-  {
-    id: 'yandexmusic',
-    icon: 'yandexmusic',
-    name: 'Yandex Music',
-    isAudio: true,
-    isWithArtists: true,
-    isWithAlbums: true,
-    isWithTracks: true,
-    maxBitrate: 192,
-    albumTypes: [
-      'album'
-    ],
-    searchScopes: [
-      'artists',
-      'albums',
-      'tracks'
-    ]
-  },
   // {
   //   id: 'amazonmusic',
   //   icon: 'amazonmusic',
@@ -89,30 +18,6 @@ export default [
   //   ]
   // },
   {
-    id: 'spotify',
-    icon: 'spotify',
-    name: 'Spotify',
-    isAudio: true,
-    isWithArtists: true,
-    isWithAlbums: true,
-    isWithTracks: true,
-    maxBitrate: 160,
-    albumTypes: [
-      'album'
-    ],
-    albumsTypes: [
-      'album',
-      'single',
-      'compilation',
-      'appearance'
-    ],
-    searchScopes: [
-      'artists',
-      'albums',
-      'tracks'
-    ]
-  },
-  {
     id: 'bandcamp',
     icon: 'bandcamp',
     name: 'Bandcamp',
@@ -129,44 +34,6 @@ export default [
       'artists',
       'albums',
       'tracks'
-    ]
-  },
-  {
-    id: 'soundcloud',
-    icon: 'soundcloud',
-    name: 'SoundCloud',
-    isAudio: true,
-    isWithArtists: true,
-    isWithAlbums: true,
-    isWithTracks: true,
-    maxBitrate: 128,
-    albumTypes: [
-      'album'
-    ],
-    searchScopes: [
-      'artists',
-      'albums',
-      'tracks'
-    ]
-  },
-  {
-    id: 'youtubemusic',
-    icon: 'youtubemusic',
-    name: 'YouTube Music',
-    isAudio: true,
-    isVideo: true,
-    isWithTracks: true,
-    isWithAlbums: true,
-    maxBitrate: 128,
-    albumTypes: [
-      'album'
-    ],
-    searchScopes: [
-      'tracks',
-      'albums',
-      'videos',
-      'videoMixes',
-      'videoPlaylists'
     ]
   },
   {
@@ -204,19 +71,20 @@ export default [
     ]
   },
   {
-    id: 'musixmatch',
-    icon: 'musixmatch',
-    name: 'MusixMatch',
+    id: 'lastfm',
+    icon: 'lastfm',
+    name: 'Last.FM',
     isWithArtists: true,
+    isWithAlbums: true,
     isWithTracks: true,
-    isWithLyrics: true,
     albumTypes: [
       'album'
     ],
     searchScopes: [
       'artists',
+      'albums',
       'tracks',
-      'lyrics'
+      'tags'
     ]
   },
   {
@@ -246,6 +114,118 @@ export default [
     ]
   },
   {
+    id: 'musixmatch',
+    icon: 'musixmatch',
+    name: 'MusixMatch',
+    isWithArtists: true,
+    isWithTracks: true,
+    isWithLyrics: true,
+    albumTypes: [
+      'album'
+    ],
+    searchScopes: [
+      'artists',
+      'tracks',
+      'lyrics'
+    ]
+  },
+  {
+    id: 'odnoklassniki',
+    icon: 'odnoklassniki',
+    name: 'Odnoklassniki',
+    isAudio: true,
+    isWithArtists: true,
+    isWithAlbums: true,
+    isWithTracks: true,
+    maxBitrate: 320,
+    albumTypes: [
+      'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
+    ]
+  },
+  {
+    id: 'soundcloud',
+    icon: 'soundcloud',
+    name: 'SoundCloud',
+    isAudio: true,
+    isWithArtists: true,
+    isWithAlbums: true,
+    isWithTracks: true,
+    maxBitrate: 128,
+    albumTypes: [
+      'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
+    ]
+  },
+  {
+    id: 'spotify',
+    icon: 'spotify',
+    name: 'Spotify',
+    isAudio: true,
+    isWithArtists: true,
+    isWithAlbums: true,
+    isWithTracks: true,
+    maxBitrate: 160,
+    albumTypes: [
+      'album'
+    ],
+    albumsTypes: [
+      'album',
+      'single',
+      'compilation',
+      'appearance'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
+    ]
+  },
+  {
+    id: 'vk',
+    icon: 'vk',
+    name: 'VK',
+    isAudio: true,
+    isWithArtists: true,
+    isWithAlbums: true,
+    isWithTracks: true,
+    maxBitrate: 320,
+    albumTypes: [
+      'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
+    ]
+  },
+  {
+    id: 'yandexmusic',
+    icon: 'yandexmusic',
+    name: 'Yandex Music',
+    isAudio: true,
+    isWithArtists: true,
+    isWithAlbums: true,
+    isWithTracks: true,
+    maxBitrate: 192,
+    albumTypes: [
+      'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
+    ]
+  },
+  {
     id: 'youtube',
     icon: 'youtube',
     name: 'YouTube',
@@ -253,6 +233,26 @@ export default [
     searchScopes: [
       'videos',
       'videoChannels',
+      'videoPlaylists'
+    ]
+  },
+  {
+    id: 'youtubemusic',
+    icon: 'youtubemusic',
+    name: 'YouTube Music',
+    isAudio: true,
+    isVideo: true,
+    isWithTracks: true,
+    isWithAlbums: true,
+    maxBitrate: 128,
+    albumTypes: [
+      'album'
+    ],
+    searchScopes: [
+      'tracks',
+      'albums',
+      'videos',
+      'videoMixes',
       'videoPlaylists'
     ]
   }

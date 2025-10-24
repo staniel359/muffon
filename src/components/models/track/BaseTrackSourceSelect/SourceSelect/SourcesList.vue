@@ -30,7 +30,7 @@
 <script>
 import SourceItem from './SourcesList/SourceItem.vue'
 import {
-  trackAudio as trackAudioSources,
+  trackAudioMaxBitrateSorted as trackAudioMaxBitrateSortedSources,
   trackNonAudio as trackNonAudioSources
 } from '@/helpers/formatters/sources'
 
@@ -49,7 +49,7 @@ export default {
       )
     },
     audioSources () {
-      return trackAudioSources
+      return trackAudioMaxBitrateSortedSources
     },
     otherText () {
       return this.$t(

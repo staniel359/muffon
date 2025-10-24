@@ -30,7 +30,7 @@
 <script>
 import SourceItem from './SourcesList/SourceItem.vue'
 import {
-  albumAudio as albumAudioSources,
+  albumAudioMaxBitrateSorted as albumAudioMaxBitrateSortedSources,
   albumNonAudio as albumNonAudioSources
 } from '@/helpers/formatters/sources'
 
@@ -49,7 +49,7 @@ export default {
       )
     },
     audioSources () {
-      return albumAudioSources
+      return albumAudioMaxBitrateSortedSources
     },
     otherText () {
       return this.$t(

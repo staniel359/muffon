@@ -5,9 +5,9 @@ export const audio =
     isAudioSource
   )
 
-const nonAudio =
-  sources.filter(
-    isNonAudioSource
+export const audioMaxBitrateSorted =
+  sortSourcesByMaxBitrate(
+    audio
   )
 
 export const withArtists =
@@ -30,9 +30,19 @@ export const withLyrics =
     isSourceWithLyrics
   )
 
-export const albumAudio =
+const albumAudio =
   audio.filter(
     isSourceWithAlbums
+  )
+
+export const albumAudioMaxBitrateSorted =
+  sortSourcesByMaxBitrate(
+    albumAudio
+  )
+
+const nonAudio =
+  sources.filter(
+    isNonAudioSource
   )
 
 export const albumNonAudio =
@@ -40,9 +50,14 @@ export const albumNonAudio =
     isSourceWithAlbums
   )
 
-export const trackAudio =
+const trackAudio =
   audio.filter(
     isSourceWithTracks
+  )
+
+export const trackAudioMaxBitrateSorted =
+  sortSourcesByMaxBitrate(
+    trackAudio
   )
 
 export const trackNonAudio =
@@ -95,4 +110,29 @@ function isVideoSource (
   sourceData
 ) {
   return sourceData.isVideo
+}
+
+function sortSourcesByMaxBitrate (
+  sources
+) {
+  return [
+    ...sources
+  ].sort(
+    (
+      firstItemData,
+      secondItemData
+    ) => {
+      if (firstItemData.maxBitrate < secondItemData.maxBitrate) {
+        return 1
+      } else if (firstItemData.maxBitrate > secondItemData.maxBitrate) {
+        return -1
+      } else {
+        if (firstItemData.name < secondItemData.name) {
+          return -1
+        } else {
+          return 1
+        }
+      }
+    }
+  )
 }

@@ -10,7 +10,7 @@
 <script>
 import BaseOption from '@/components/popups/options/BaseOption.vue'
 import {
-  audio as audioSources
+  audioMaxBitrateSorted as audioMaxBitrateSortedSources
 } from '@/helpers/formatters/sources'
 
 export default {
@@ -33,7 +33,7 @@ export default {
       )
     },
     sources () {
-      return audioSources
+      return audioMaxBitrateSortedSources
     }
   },
   methods: {

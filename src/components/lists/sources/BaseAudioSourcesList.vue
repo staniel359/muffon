@@ -9,7 +9,7 @@
 <script>
 import SourceItem from './BaseAudioSourcesList/SourceItem.vue'
 import {
-  audio as audioSources
+  audioMaxBitrateSorted as audioMaxBitrateSortedSources
 } from '@/helpers/formatters/sources'
 
 export default {
@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     sources () {
-      return audioSources
+      return audioMaxBitrateSortedSources
     }
   }
 }
