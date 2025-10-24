@@ -10,6 +10,9 @@
 
 <script>
 import BaseDropdownItem from '@/components/dropdowns/BaseDropdownItem.vue'
+import {
+  maxBitrate as formatMaxBitrate
+} from '@/helpers/formatters'
 
 export default {
   name: 'SourceItem',
@@ -33,7 +36,9 @@ export default {
       return this.sourceData.name
     },
     bitrateText () {
-      return `≤ ${this.maxBitrate}`
+      return formatMaxBitrate(
+        this.maxBitrate
+      )
     },
     maxBitrate () {
       return this.sourceData.maxBitrate

@@ -24,7 +24,21 @@
       :is-error="isError"
     />
 
+    <template
+      v-if="extraText"
+    >
+      <div
+        class="flex-full"
+        v-text="text"
+      />
+
+      <small
+        class="main-right-section description"
+        v-text="extraText"
+      />
+    </template>
     <span
+      v-else
       v-text="text"
     />
 
@@ -83,6 +97,7 @@ export default {
       type: String,
       required: true
     },
+    extraText: String,
     icon: String,
     isLoading: Boolean,
     isError: Boolean,

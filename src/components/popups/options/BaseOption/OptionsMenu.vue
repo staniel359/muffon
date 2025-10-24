@@ -10,6 +10,7 @@
     }"
     :icon="optionData.icon"
     :text="optionData.text"
+    :extra-text="optionData.extraText"
     :is-icon-colored="optionData.isIconColored"
     @click="optionData.onClick"
   />

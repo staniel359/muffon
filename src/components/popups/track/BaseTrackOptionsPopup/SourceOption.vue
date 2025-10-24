@@ -12,6 +12,9 @@ import BaseOption from '@/components/popups/options/BaseOption.vue'
 import {
   audioMaxBitrateSorted as audioMaxBitrateSortedSources
 } from '@/helpers/formatters/sources'
+import {
+  maxBitrate as formatMaxBitrate
+} from '@/helpers/formatters'
 
 export default {
   name: 'SourceOption',
@@ -47,10 +50,16 @@ export default {
         )
       }
 
+      const maxBitrateString =
+        formatMaxBitrate(
+          sourceData.maxBitrate
+        )
+
       return {
         icon: sourceData.icon,
         isIconColored: true,
         text: sourceData.name,
+        extraText: maxBitrateString,
         onClick: handleClick
       }
     }

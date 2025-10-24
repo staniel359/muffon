@@ -207,3 +207,9 @@ export function calendarData (
     initialDate
   }
 }
+
+export function maxBitrate (
+  value
+) {
+  return `≤ ${value}`
+}
