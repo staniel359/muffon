@@ -132,28 +132,6 @@ export default [
     ]
   },
   {
-    id: 'deezer',
-    icon: 'deezer',
-    name: 'Deezer',
-    isAudio: true,
-    isWithArtists: true,
-    isWithAlbums: true,
-    isWithTracks: true,
-    maxBitrate: 128,
-    albumTypes: [
-      'album'
-    ],
-    albumsTypes: [
-      'album',
-      'single'
-    ],
-    searchScopes: [
-      'artists',
-      'albums',
-      'tracks'
-    ]
-  },
-  {
     id: 'soundcloud',
     icon: 'soundcloud',
     name: 'SoundCloud',
