@@ -67,10 +67,10 @@ importers:
         version: 5.0.5(rollup@4.52.5)
       '@vitejs/plugin-vue':
         specifier: ^6.0.1
-        version: 6.0.1(vite@7.1.10(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2))(vue@3.5.22(typescript@5.8.2))
+        version: 6.0.1(vite@7.1.12(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2))(vue@3.5.22(typescript@5.8.2))
       axios:
-        specifier: ^1.12.2
-        version: 1.12.2
+        specifier: ^1.13.1
+        version: 1.13.1
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
@@ -120,14 +120,14 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1(jquery@3.7.1)
       vite:
-        specifier: ^7.1.10
-        version: 7.1.10(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2)
+        specifier: ^7.1.12
+        version: 7.1.12(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2)
       vite-plugin-electron-renderer:
         specifier: ^0.14.6
         version: 0.14.6
       vite-plugin-eslint:
         specifier: ^1.8.1
-        version: 1.8.1(eslint@9.38.0)(vite@7.1.10(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2))
+        version: 1.8.1(eslint@9.38.0)(vite@7.1.12(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2))
       vue:
         specifier: ^3.5.22
         version: 3.5.22(typescript@5.8.2)
@@ -1263,8 +1263,8 @@ packages:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
 
-  axios@1.12.2:
-    resolution: {integrity: sha512-vMJzPewAlRyOgxV2dU0Cuz2O8zzzx9VYtbJOaBgXFeLc4IV/Eg50n4LowmehOOR61S8ZMpc2K5Sa7g6A4jfkUw==}
+  axios@1.13.1:
+    resolution: {integrity: sha512-hU4EGxxt+j7TQijx1oYdAjw4xuIp1wRQSsbMFwSthCWeBQur1eF+qJ5iQ5sN3Tw8YRzQNKb8jszgBdMDVqwJcw==}
 
   b4a@1.6.7:
     resolution: {integrity: sha512-OnAYlL5b7LEkALw87fUVafQw5rVR9RjwGd4KUwNQ6DrrNmaVaUCgLipfVlzrPQ4tWOR9P0IXGNOx50jYCCdSJg==}
@@ -4228,8 +4228,8 @@ packages:
       eslint: '>=7'
       vite: '>=2'
 
-  vite@7.1.10:
-    resolution: {integrity: sha512-CmuvUBzVJ/e3HGxhg6cYk88NGgTnBoOo7ogtfJJ0fefUWAxN/WDSUa50o+oVBxuIhO8FoEZW0j2eW7sfjs5EtA==}
+  vite@7.1.12:
+    resolution: {integrity: sha512-ZWyE8YXEXqJrrSLvYgrRP7p62OziLW7xI5HYGWFzOvupfAlrLvURSzv/FyGyy0eidogEM3ujU+kUG1zuHgb6Ug==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -5218,10 +5218,10 @@ snapshots:
       '@types/node': 22.18.13
     optional: true
 
-  '@vitejs/plugin-vue@6.0.1(vite@7.1.10(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2))(vue@3.5.22(typescript@5.8.2))':
+  '@vitejs/plugin-vue@6.0.1(vite@7.1.12(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2))(vue@3.5.22(typescript@5.8.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-beta.29
-      vite: 7.1.10(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2)
+      vite: 7.1.12(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2)
       vue: 3.5.22(typescript@5.8.2)
 
   '@vladfrangu/async_event_emitter@2.4.6': {}
@@ -5661,7 +5661,7 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.1.0
 
-  axios@1.12.2:
+  axios@1.13.1:
     dependencies:
       follow-redirects: 1.15.11
       form-data: 4.0.4
@@ -9100,15 +9100,15 @@ snapshots:
 
   vite-plugin-electron-renderer@0.14.6: {}
 
-  vite-plugin-eslint@1.8.1(eslint@9.38.0)(vite@7.1.10(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2)):
+  vite-plugin-eslint@1.8.1(eslint@9.38.0)(vite@7.1.12(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2)):
     dependencies:
       '@rollup/pluginutils': 4.2.1
       '@types/eslint': 8.56.12
       eslint: 9.38.0
       rollup: 2.79.2
-      vite: 7.1.10(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2)
+      vite: 7.1.12(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2)
 
-  vite@7.1.10(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2):
+  vite@7.1.12(@types/node@24.9.2)(less@4.2.2)(sass@1.93.2):
     dependencies:
       esbuild: 0.25.11
       fdir: 6.5.0(picomatch@4.0.3)
