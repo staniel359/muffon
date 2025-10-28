@@ -197,11 +197,6 @@
       "queue": "Ajouter à la liste de lecture",
       "savedTracks": "Ajouter aux titres sauvgarder"
     },
-    "goTo": {
-      "video": null,
-      "library": null,
-      "page": null
-    },
     "deleteFrom": {
       "favorites": "Supprimer des favoris",
       "bookmarks": "Supprimer des signets",

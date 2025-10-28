@@ -197,11 +197,6 @@
       "queue": "대기열에 추가",
       "savedTracks": "저장된 트랙에 추가"
     },
-    "goTo": {
-      "video": null,
-      "library": null,
-      "page": null
-    },
     "deleteFrom": {
       "favorites": "즐겨찾기에서 삭제",
       "bookmarks": "북마크에서 삭제",
@@ -575,15 +570,12 @@
             "delete": "검색 기록 삭제"
           },
           "activity": {
-            "save": null,
             "delete": "활동 기록 삭제"
           },
           "player": {
-            "save": null,
             "delete": "플레이어 기록 삭제"
           },
           "browser": {
-            "save": null,
             "delete": "탐색기 기록 삭제"
           }
         },
@@ -705,8 +697,7 @@
     "success": {
       "header": {
         "files": "{counter}이(가) 가져왔음 | {counter}이(가) 가져왔음",
-        "tracks": "{counter}이(가) 가져왔음 | {counter}이(가) 가져왔음",
-        "playlists": null
+        "tracks": "{counter}이(가) 가져왔음 | {counter}이(가) 가져왔음"
       },
       "content": "라이브러리에 저장하기 전에 데이터를 확인하는 것이 좋음"
     },
@@ -776,9 +767,7 @@
       "images": "이미지 없음",
       "events": "이벤트 없음",
       "profiles": "프로파일 없음",
-      "shows": "쇼 없음",
-      "pages": null,
-      "lyrics": null
+      "shows": "쇼 없음"
     },
     "content": "여기에는 아무것도 없는 것 같음"
   },

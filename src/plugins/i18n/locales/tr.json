@@ -198,9 +198,9 @@
       "savedTracks": "Kaydedilen parçalara ekle"
     },
     "goTo": {
-      "video": null,
-      "library": null,
-      "page": null
+      "video": "Video sayfasına git",
+      "library": "Kütüphane sayfasına git",
+      "page": "Sayfaya git"
     },
     "deleteFrom": {
       "favorites": "Favorilerden sil",

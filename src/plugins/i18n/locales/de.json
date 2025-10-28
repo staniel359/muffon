@@ -198,9 +198,9 @@
       "savedTracks": "Zu gespeicherte Titel hinzufügen"
     },
     "goTo": {
-      "video": null,
-      "library": null,
-      "page": null
+      "video": "Zur Videoseite gehen",
+      "library": "Zur Bibliotheksseite gehen",
+      "page": "Zur Seite gehen"
     },
     "deleteFrom": {
       "favorites": "Von Favoriten löschen",

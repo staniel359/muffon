@@ -197,11 +197,6 @@
       "queue": "Aggiungi in coda",
       "savedTracks": "Aggiungi ai brani salvati"
     },
-    "goTo": {
-      "video": null,
-      "library": null,
-      "page": null
-    },
     "deleteFrom": {
       "favorites": "Rimuovi dai preferiti",
       "bookmarks": "Rimuovi dai segnalibri",
@@ -575,15 +570,12 @@
             "delete": "Elimina cronologia delle ricerche"
           },
           "activity": {
-            "save": null,
             "delete": "Elimina la cronologia delle attività"
           },
           "player": {
-            "save": null,
             "delete": "Elimina la cronologia di riproduzione"
           },
           "browser": {
-            "save": null,
             "delete": "Elimina la cronologia del browser"
           }
         },
@@ -705,8 +697,7 @@
     "success": {
       "header": {
         "files": "{counter} importato | {counter} importati",
-        "tracks": "{counter} importato | {counter} importati",
-        "playlists": null
+        "tracks": "{counter} importato | {counter} importati"
       },
       "content": "Potresti voler controllare i dati prima di salvare in libreria"
     },
@@ -776,9 +767,7 @@
       "images": "Nessuna immagine",
       "events": "Nessun evento",
       "profiles": "Nessun profili",
-      "shows": "Nessuno show",
-      "pages": null,
-      "lyrics": null
+      "shows": "Nessuno show"
     },
     "content": "Sembra che qui non ci sia alcunché"
   },
