@@ -51,10 +51,6 @@
 
 <script>
 import axios from 'axios'
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseMessage from '@/components/messages/BaseMessage.vue'
 import BaseFormContainer from '@/components/containers/forms/BaseFormContainer.vue'
 import BaseFormInputContainer
@@ -94,12 +90,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileLanguage: 'language'
-      }
-    ),
     formOptions () {
       return spotifyLinkFormOptions(
         {
@@ -109,8 +99,7 @@ export default {
     },
     codeLink () {
       return (
-        'https://accounts.spotify.com' +
-          `/${this.profileLanguage}/authorize` +
+        'https://accounts.spotify.com/authorize' +
           `?client_id=${this.clientId}` +
           `&redirect_uri=${this.redirectLink}` +
           '&response_type=code' +
