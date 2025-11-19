@@ -1,14 +1,10 @@
-const {
+import {
   contextBridge,
   webUtils,
   shell,
   ipcRenderer
-} = require(
-  'electron'
-)
-const sanitizeHTML = require(
-  'sanitize-html'
-)
+} from 'electron'
+import sanitizeHTML from 'sanitize-html'
 
 contextBridge.exposeInMainWorld(
   'mainProcess',

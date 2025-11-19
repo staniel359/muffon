@@ -67,5 +67,5 @@ export const envFilePath =
 
 export const preloadScriptFilePath =
   formatFileRootPath(
-    'electron/preload.mjs'
+    'electron/preload.js'
   )
