@@ -6,9 +6,6 @@ import {
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
-import {
-  isStringsIncludeEachOther
-} from '@/helpers/utils'
 
 export default function getPlayerSearch (
   {
@@ -45,36 +42,17 @@ export default function getPlayerSearch (
     ' - '
   )
 
+  const {
+    isWithAutomatch
+  } = playerStore()
+
   const params = {
-    query
-  }
-
-  function isMatchedVariant (
-    variantData
-  ) {
-    const variantArtistName =
-      variantData
-        .artist
-        .name
-
-    const isArtistNamesMatch =
-      isStringsIncludeEachOther(
-        variantArtistName,
-        artistName
-      )
-
-    const variantTrackTitle = variantData.title
-
-    const isTitlesMatch =
-      isStringsIncludeEachOther(
-        variantTrackTitle,
-        trackTitle
-      )
-
-    return (
-      isArtistNamesMatch &&
-        isTitlesMatch
-    )
+    query,
+    ...(isWithAutomatch && {
+      with_automatch: true,
+      artist_name: artistName,
+      track_title: trackTitle
+    })
   }
 
   async function setVariants (
@@ -116,22 +94,11 @@ export default function getPlayerSearch (
   async function handleSuccess (
     response
   ) {
-    let variants =
+    const variants =
       response
         .data
         .search
         .tracks
-
-    const {
-      isWithAutomatch
-    } = playerStore()
-
-    if (isWithAutomatch) {
-      variants =
-        variants.filter(
-          isMatchedVariant
-        )
-    }
 
     await setVariants(
       variants

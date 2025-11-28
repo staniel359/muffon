@@ -205,25 +205,6 @@ export function isMiddleClick (
   )
 }
 
-export function isStringsIncludeEachOther (
-  firstString,
-  secondString
-) {
-  const firstStringFormatted =
-    firstString.toLowerCase()
-
-  const secondStringFormatted =
-    secondString.toLowerCase()
-
-  return (
-    firstStringFormatted.includes(
-      secondStringFormatted
-    ) || secondStringFormatted.includes(
-      firstStringFormatted
-    )
-  )
-}
-
 export function sanitizeString (
   string
 ) {
