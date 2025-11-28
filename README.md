@@ -80,7 +80,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - 日本語 ([@xyloflake](https://github.com/xyloflake))
 - 한국어 ([@DDinghoya](https://github.com/DDinghoya))
 - Polski ([@Lukas-KK](https://github.com/Lukas-KK))
-- Português (Brasil)([@ivangomes](https://github.com/ivangomes))
+- Português (Brasil) ([@ivangomes](https://github.com/ivangomes))
 - Русский ([@staniel359](https://github.com/staniel359))
 - Türkçe ([@chunsal](https://github.com/chunsal), [@Kadayif35](https://github.com/Kadayif35))
 - 中文 ([@PoorShawn](https://github.com/PoorShawn))
