@@ -32,7 +32,6 @@
       :response-page-limit="responsePageLimit"
       :is-loading="isLoading"
       :error="error"
-      :is-pagination-simple="isPaginationSimple"
       @focus="handleFocus"
     >
       <template
@@ -87,7 +86,6 @@ export default {
     isLoading: Boolean,
     error: Error,
     moreLink: Object,
-    isPaginationSimple: Boolean,
     isWithTopSection: Boolean,
     isWithPlayButton: Boolean,
     textScope: String
@@ -114,6 +112,12 @@ export default {
       } else {
         return 'BasePaginatedListContainer'
       }
+    },
+    isPaginationSimple () {
+      return !this.totalPages
+    },
+    totalPages () {
+      return this.responseData?.total_pages || 0
     },
     isRenderTopPlayButtonSection () {
       return (

@@ -7,7 +7,6 @@
     :error="error"
     :is-active="isActive"
     :more-link="moreLink"
-    :is-pagination-simple="isPaginationSimple"
     @focus="handleFocus"
     @activate="handleActivate"
   >
@@ -38,8 +37,7 @@ export default {
     channelId: {
       type: String,
       required: true
-    },
-    isPaginationSimple: Boolean
+    }
   },
   data () {
     return {

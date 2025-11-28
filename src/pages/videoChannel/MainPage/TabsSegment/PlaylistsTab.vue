@@ -4,7 +4,6 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
-    is-pagination-simple
     @focus="handleFocus"
   >
     <template

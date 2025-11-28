@@ -84,7 +84,6 @@ export default {
     error: Error,
     limit: Number,
     responsePageLimit: Number,
-    isPaginationSimple: Boolean,
     isWithInfiniteScroll: Boolean,
     scrollable: HTMLDivElement,
     isWithTopSection: Boolean,
@@ -108,6 +107,12 @@ export default {
           return 'BasePaginatedListContainer'
         }
       }
+    },
+    isPaginationSimple () {
+      return !this.totalPages
+    },
+    totalPages () {
+      return this.responseData?.total_pages || 0
     },
     isSegmentLoading () {
       if (this.isWithInfiniteScroll) {

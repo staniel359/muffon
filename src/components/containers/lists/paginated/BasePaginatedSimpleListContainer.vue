@@ -26,7 +26,7 @@
       :total-pages="clientTotalPages"
       :is-first-page="isFirstClientPage"
       :is-last-page="isLastResponsePage"
-      is-pagination-simple
+      is-simple
       @page-click="handlePageClick"
       @page-select="handlePageSelect"
       @previous-page-click="handlePreviousPageClick"

@@ -12,7 +12,7 @@
         />
 
         <template
-          v-if="!isPaginationSimple"
+          v-if="!isSimple"
         >
           <PageItem
             v-for="page in totalPages"
@@ -54,7 +54,7 @@ export default {
     isError: Boolean,
     clientPage: Number,
     totalPages: Number,
-    isPaginationSimple: Boolean,
+    isSimple: Boolean,
     isFirstPage: Boolean,
     isLastPage: Boolean
   },

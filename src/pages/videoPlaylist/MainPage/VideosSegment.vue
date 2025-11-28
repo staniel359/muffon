@@ -8,7 +8,6 @@
     :scope="scope"
     :limit="limit"
     :is-with-infinite-scroll="isWithInfiniteScroll"
-    is-pagination-simple
     @focus="handleFocus"
   >
     <template

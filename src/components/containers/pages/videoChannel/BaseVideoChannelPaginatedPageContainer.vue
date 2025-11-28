@@ -18,7 +18,6 @@
         :is-with-view-change="isWithViewChange"
         :is-with-reload-button="isWithReloadButton"
         :view-id="viewId"
-        is-pagination-simple
       >
         <template
           #default="slotProps"

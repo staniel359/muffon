@@ -19,7 +19,6 @@
         :is-with-view-change="isWithViewChange"
         :is-with-reload-button="isWithReloadButton"
         :view-id="viewId"
-        :is-pagination-simple="isPaginationSimple"
       >
         <template
           #default="slotProps"
@@ -56,8 +55,7 @@ export default {
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
     isWithReloadButton: Boolean,
-    viewId: String,
-    isPaginationSimple: Boolean
+    viewId: String
   }
 }
 </script>

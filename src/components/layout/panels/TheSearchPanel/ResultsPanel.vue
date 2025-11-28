@@ -16,7 +16,6 @@
         :text-scope="scope"
         :limit="limit"
         :response-page-limit="responsePageLimit"
-        :is-pagination-simple="isPaginationSimple"
         :is-with-infinite-scroll="isWithInfiniteScroll"
         :scrollable="scrollable"
         @focus="handleFocus"
@@ -326,22 +325,6 @@ export default {
     },
     responsePageLimit () {
       return this.scopeData.responsePageLimit
-    },
-    isPaginationSimple () {
-      return (
-        this.isYouTubeSource ||
-          this.isYouTubeMusicSource
-      )
-    },
-    isYouTubeSource () {
-      return (
-        this.source === 'youtube'
-      )
-    },
-    isYouTubeMusicSource () {
-      return (
-        this.source === 'youtubemusic'
-      )
     },
     component () {
       return this.scopeData.component

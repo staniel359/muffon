@@ -83,7 +83,6 @@
       :text-scope="textScope"
       :limit="limit"
       :response-page-limit="responsePageLimit"
-      :is-pagination-simple="isPaginationSimple"
       :is-with-infinite-scroll="isWithInfiniteScroll"
       @focus="handleFocus"
     >
@@ -153,7 +152,6 @@ export default {
     order: String,
     model: String,
     responsePageLimit: Number,
-    isPaginationSimple: Boolean,
     isWithTopSegment: Boolean,
     isWithTopSecondSegment: Boolean,
     isWithPlayButton: Boolean,

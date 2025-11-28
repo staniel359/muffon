@@ -10,7 +10,6 @@
     is-with-top-segment
     is-with-view-change
     is-with-reload-button
-    is-pagination-simple
   >
     <template
       #default="slotProps"
