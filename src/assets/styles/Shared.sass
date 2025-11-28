@@ -564,6 +564,17 @@
   &:not(:first-child)
     @extend .main-right-extrasmall-section
 
+[dir="ltr"]
+  .main-right-tiny-section
+    margin-left: 0.25rem !important
+[dir="rtl"]
+  .main-right-tiny-section
+    margin-right: 0.25rem !important
+
+.main-list-right-tiny-section
+  &:not(:first-child)
+    @extend .main-right-tiny-section
+
 //
 
 .main-icon

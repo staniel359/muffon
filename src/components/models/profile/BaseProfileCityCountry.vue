@@ -10,7 +10,7 @@
     />
 
     <span
-      class="main-header"
+      class="main-list-right-tiny-section"
       v-text="cityWithCountryFormatted"
     />
   </div>
