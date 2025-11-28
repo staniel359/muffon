@@ -433,6 +433,9 @@
   &:not(:first-child)
     @extend .main-bottom-extrasmall-section
 
+.main-bottom-tiny-section
+  margin-top: 0.25rem !important
+
 //
 
 [dir="ltr"]
@@ -873,6 +876,10 @@
       &.small
         @extend .main-left-medium-section
         font-size: 2rem !important
+  &.multiline
+    @extend .plain-column, .align-items-center
+    .header-text
+      @extend .main-bottom-tiny-section
 
 .main-dropdown-item
   @extend .middle-aligned, .word-break-break-word

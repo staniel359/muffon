@@ -12,6 +12,7 @@
           icon="tag"
           :text="tagName"
           is-icon-small
+          is-multiline
         />
       </BaseLinkContainer>
     </BaseSegmentContainer>

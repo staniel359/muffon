@@ -4,7 +4,8 @@
     class="ui header main-header"
     :class="{
       inverted: isDarkMode,
-      'middle-aligned-column': isPage
+      'middle-aligned-column': isPage,
+      multiline: isMultiline
     }"
     @click="handleClick"
   >
@@ -27,6 +28,7 @@
     />
 
     <div
+      class="header-text"
       v-text="text"
     />
 
@@ -65,7 +67,8 @@ export default {
     icons: Array,
     isPage: Boolean,
     subheader: String,
-    isIconSmall: Boolean
+    isIconSmall: Boolean,
+    isMultiline: Boolean
   },
   emits: [
     'click'
