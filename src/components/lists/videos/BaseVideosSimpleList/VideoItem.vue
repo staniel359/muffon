@@ -15,7 +15,7 @@
       v-else
     >
       <BaseImage
-        class="rounded-medium video-image-100"
+        class="rounded-medium video-image-120"
         model="video"
         :image="imageData?.small"
       />
