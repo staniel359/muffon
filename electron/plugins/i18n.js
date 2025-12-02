@@ -13,6 +13,7 @@ import pl from './i18n/locales/pl.json' with { type: 'json' }
 import ptBr from './i18n/locales/pt_BR.json' with { type: 'json' }
 import ru from './i18n/locales/ru.json' with { type: 'json' }
 import tr from './i18n/locales/tr.json' with { type: 'json' }
+import vi from './i18n/locales/vi.json' with { type: 'json' }
 import zh from './i18n/locales/zh.json' with { type: 'json' }
 
 // i18n
@@ -36,6 +37,7 @@ const localesData = {
   pt_BR: ptBr,
   ru,
   tr,
+  vi,
   zh
 }
 

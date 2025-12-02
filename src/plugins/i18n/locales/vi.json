@@ -1,0 +1,948 @@
+{
+  "navigation": {
+    "home": "Trang chủ",
+    "artists": "Nghệ sĩ",
+    "artist": "Nghệ sĩ",
+    "albums": "Album",
+    "albumGroups": "Nhóm album",
+    "tracks": "Bài hát",
+    "tags": "Thẻ",
+    "tag": "Thẻ",
+    "similar": "Tương tự",
+    "images": "Hình ảnh",
+    "lyrics": "Lời bài hát",
+    "videos": "Video",
+    "videoChannels": "Kênh video",
+    "videoMixes": "Video mix",
+    "videoPlaylists": "Danh sách phát video",
+    "top": "Hàng đầu",
+    "topCollection": {
+      "artists": "Nghệ sĩ hàng đầu",
+      "albums": "Album hàng đầu",
+      "tracks": "Bài hát hàng đầu",
+      "tags": "Thẻ hàng đầu"
+    },
+    "releases": "Phát hành",
+    "releasesCollection": {
+      "new": "Phát hành mới",
+      "upcoming": "Sắp phát hành"
+    },
+    "new": "Mới",
+    "upcoming": "Sắp ra mắt",
+    "radio": "Radio",
+    "multitag": "Tìm kiếm đa thẻ",
+    "profiles": "Hồ sơ",
+    "feed": "Bảng tin",
+    "posts": "Bài viết",
+    "conversations": "Cuộc trò chuyện",
+    "library": "Thư viện",
+    "recommendations": "Đề xuất",
+    "recommendationsCollection": {
+      "artists": "Nghệ sĩ được đề xuất",
+      "tracks": "Bài hát được đề xuất"
+    },
+    "savedTracks": "Bài hát đã lưu",
+    "playlists": "Danh sách phát",
+    "favorites": "Yêu thích",
+    "bookmarks": "Đánh dấu",
+    "bookmarksCollection": {
+      "artists": "Nghệ sĩ đã đánh dấu",
+      "albums": "Album đã đánh dấu",
+      "tracks": "Bài hát đã đánh dấu",
+      "videos": "Video đã đánh dấu",
+      "videoChannels": "Kênh video đã đánh dấu",
+      "videoPlaylists": "Danh sách phát video đã đánh dấu"
+    },
+    "communities": "Cộng đồng",
+    "history": "Lịch sử",
+    "historyCollection": {
+      "activity": "Lịch sử hoạt động",
+      "player": "Lịch sử phát",
+      "browser": "Lịch sử trình duyệt"
+    },
+    "activity": "Hoạt động",
+    "player": "Trình phát",
+    "browser": "Trình duyệt",
+    "settings": "Cài đặt",
+    "model": {
+      "artists": "Nghệ sĩ {modelName}",
+      "albums": "Album {modelName}",
+      "tracks": "Bài hát {modelName}",
+      "tags": "Thẻ {modelName}",
+      "similar": "Tương tự {modelName}",
+      "images": "Hình ảnh {modelName}",
+      "lyrics": "Lời bài hát {modelName}",
+      "videos": "Video {modelName}",
+      "posts": "Bài viết {modelName}",
+      "library": "Thư viện {modelName}",
+      "playlists": "Danh sách phát {modelName}",
+      "favorites": "Yêu thích {modelName}",
+      "favoritesCollection": {
+        "artists": "Nghệ sĩ yêu thích {modelName}",
+        "albums": "Album yêu thích {modelName}",
+        "tracks": "Bài hát yêu thích {modelName}",
+        "videos": "Video yêu thích {modelName}"
+      },
+      "communities": "Cộng đồng {modelName}",
+      "shows": "Chương trình {modelName}"
+    },
+    "search": "Tìm kiếm",
+    "queue": "Hàng đợi",
+    "whatsNew": "Có gì mới",
+    "listenedRecently": "Nghe gần đây",
+    "shows": "Chương trình",
+    "listeningNow": "Đang nghe",
+    "help": "Trợ giúp"
+  },
+  "errors": {
+    "badRequest": {
+      "header": "Yêu cầu không hợp lệ",
+      "content": "Vui lòng gửi yêu cầu với dữ liệu hợp lệ"
+    },
+    "forbidden": {
+      "header": "Bị cấm",
+      "content": "Bạn không có quyền thực hiện hành động này"
+    },
+    "notFound": {
+      "header": "Không tìm thấy gì",
+      "content": "Vui lòng thử tìm kiếm thứ khác"
+    },
+    "internalServer": {
+      "header": "Lỗi máy chủ nội bộ",
+      "content": "Vui lòng liên hệ với chúng tôi để biết thông tin"
+    },
+    "badGateway": {
+      "header": "Lỗi máy chủ từ xa",
+      "content": "Vui lòng thử lại sau"
+    },
+    "gatewayTimeout": {
+      "header": "Hết thời gian chờ máy chủ từ xa",
+      "content": "Vui lòng thử lại sau"
+    },
+    "connection": {
+      "header": "Mất kết nối",
+      "content": "Vui lòng thử lại sau"
+    },
+    "client": {
+      "header": "Lỗi máy khách",
+      "content": "Vui lòng liên hệ với chúng tôi để biết thông tin"
+    }
+  },
+  "actions": {
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "signup": "Đăng ký",
+    "add": "Thêm",
+    "create": "Tạo",
+    "edit": "Chỉnh sửa",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "clear": "Xóa sạch",
+    "retry": "Thử lại",
+    "post": "Đăng",
+    "send": "Gửi",
+    "next": "Tiếp theo",
+    "upload": "Tải lên",
+    "back": "Quay lại",
+    "sendCode": "Gửi mã",
+    "share": "Chia sẻ",
+    "search": "Tìm kiếm",
+    "filter": "Lọc",
+    "confirm": "Xác nhận",
+    "import": "Nhập",
+    "close": "Đóng",
+    "openLink": "Mở liên kết",
+    "play": "Phát",
+    "shuffle": "Phát ngẫu nhiên",
+    "loop": "Lặp lại",
+    "addFrom": {
+      "search": "Từ tìm kiếm",
+      "library": "Từ thư viện"
+    },
+    "importFrom": {
+      "drive": "Từ ổ đĩa",
+      "account": "Từ tài khoản"
+    },
+    "searchIn": {
+      "source": "Tìm trong nguồn",
+      "sources": "Tìm trong các nguồn"
+    },
+    "searchFor": {
+      "video": "Tìm video",
+      "lyrics": "Tìm lời bài hát"
+    },
+    "importFromAccount": {
+      "lastfm": "Nhập từ Last.FM",
+      "spotify": "Nhập từ Spotify"
+    },
+    "selectModel": {
+      "folder": "Chọn thư mục"
+    },
+    "createModel": {
+      "playlist": "Tạo danh sách phát",
+      "community": "Tạo cộng đồng",
+      "post": "Tạo bài viết"
+    },
+    "addModel": {
+      "comment": "Thêm bình luận"
+    },
+    "addTo": {
+      "library": "Thêm vào thư viện",
+      "playlist": "Thêm vào danh sách phát",
+      "favorites": "Thêm vào yêu thích",
+      "bookmarks": "Thêm vào đánh dấu",
+      "listened": "Thêm vào đã nghe",
+      "watched": "Thêm vào đã xem",
+      "queue": "Thêm vào hàng đợi",
+      "savedTracks": "Thêm vào bài hát đã lưu"
+    },
+    "goTo": {
+      "video": "Đi đến trang video",
+      "library": "Đi đến trang thư viện",
+      "page": "Đi đến trang"
+    },
+    "deleteFrom": {
+      "favorites": "Xóa khỏi yêu thích",
+      "bookmarks": "Xóa khỏi đánh dấu",
+      "listened": "Xóa khỏi đã nghe",
+      "watched": "Xóa khỏi đã xem"
+    },
+    "externalLink": {
+      "open": "Mở liên kết bên ngoài",
+      "original": "Gốc",
+      "streaming": "Phát trực tuyến"
+    }
+  },
+  "links": {
+    "playlists": "Tất cả danh sách phát",
+    "communities": "Tất cả cộng đồng"
+  },
+  "inputs": {
+    "search": "Tìm kiếm...",
+    "content": "Viết gì đó..."
+  },
+  "modals": {
+    "delete": {
+      "header": {
+        "libraryModel": {
+          "artist": "Xóa nghệ sĩ khỏi thư viện",
+          "album": "Xóa album khỏi thư viện",
+          "track": "Xóa bài hát khỏi thư viện"
+        },
+        "recommendationModel": {
+          "artist": "Xóa nghệ sĩ khỏi đề xuất",
+          "track": "Xóa bài hát khỏi đề xuất"
+        },
+        "playlist": "Xóa danh sách phát",
+        "playlistTrack": "Xóa bài hát khỏi danh sách phát",
+        "savedTrack": "Xóa bài hát khỏi bài hát đã lưu",
+        "favorite": {
+          "artist": "Xóa nghệ sĩ khỏi yêu thích",
+          "album": "Xóa album khỏi yêu thích",
+          "track": "Xóa bài hát khỏi yêu thích",
+          "video": "Xóa video khỏi yêu thích"
+        },
+        "bookmark": {
+          "artist": "Xóa nghệ sĩ khỏi đánh dấu",
+          "album": "Xóa album khỏi đánh dấu",
+          "track": "Xóa bài hát khỏi đánh dấu",
+          "video": "Xóa video khỏi đánh dấu",
+          "videoChannel": "Xóa kênh video khỏi đánh dấu",
+          "videoPlaylist": "Xóa danh sách phát video khỏi đánh dấu"
+        },
+        "post": "Xóa bài viết",
+        "comment": "Xóa bình luận",
+        "community": "Xóa cộng đồng",
+        "account": "Xóa tài khoản",
+        "library": "Xóa thư viện",
+        "history": {
+          "search": "Xóa lịch sử tìm kiếm",
+          "activity": "Xóa lịch sử hoạt động",
+          "browser": "Xóa lịch sử trình duyệt",
+          "player": "Xóa lịch sử phát"
+        }
+      },
+      "going": {
+        "libraryModel": "Bạn sắp xóa {modelName} khỏi thư viện của bạn.",
+        "recommendationModel": "Bạn sắp xóa {modelName} khỏi đề xuất của bạn.",
+        "playlist": "Bạn sắp xóa {modelName} khỏi danh sách phát của bạn.",
+        "playlistTrack": "Bạn sắp xóa {modelName} khỏi danh sách phát {parentModelName}.",
+        "savedTrack": "Bạn sắp xóa {modelName} khỏi bài hát đã lưu của bạn.",
+        "favorite": "Bạn sắp xóa {modelName} khỏi yêu thích của bạn.",
+        "bookmark": "Bạn sắp xóa {modelName} khỏi đánh dấu của bạn.",
+        "post": "Bạn sắp xóa bài viết này.",
+        "comment": "Bạn sắp xóa bình luận này.",
+        "community": "Bạn sắp xóa cộng đồng này.",
+        "account": "Bạn sắp xóa tài khoản của bạn.",
+        "library": "Bạn sắp xóa thư viện của bạn.",
+        "history": {
+          "search": "Bạn sắp xóa lịch sử tìm kiếm của bạn.",
+          "activity": "Bạn sắp xóa lịch sử hoạt động của bạn.",
+          "browser": "Bạn sắp xóa lịch sử trình duyệt của bạn.",
+          "player": "Bạn sắp xóa lịch sử phát của bạn."
+        }
+      },
+      "also": {
+        "libraryModel": {
+          "artist": "Điều này cũng sẽ xóa tất cả album và bài hát của nghệ sĩ này.",
+          "album": "Điều này cũng sẽ xóa tất cả bài hát của album này."
+        },
+        "playlist": "Điều này cũng sẽ xóa tất cả bài hát của danh sách phát này.",
+        "community": "Điều này cũng sẽ xóa tất cả bài viết của cộng đồng này.",
+        "account": [
+          "Điều này cũng sẽ xóa dữ liệu sau:",
+          "<strong>- thư viện\n- đề xuất\n- danh sách phát\n- yêu thích\n- đánh dấu\n- đã nghe\n- bài viết trang\n- đăng ký\n- lịch sử</strong>",
+          "Dữ liệu này sẽ được giữ lại, nhưng biệt danh của bạn sẽ không được hiển thị:",
+          "<strong>- bài viết đã tạo\n- bình luận đã tạo\n- cuộc trò chuyện với bạn\n- cộng đồng đã tạo</strong>",
+          "Và dữ liệu này sẽ không thay đổi:",
+          "<strong>- bài hát đã lưu\n- hình nền\n- cài đặt</strong>"
+        ],
+        "library": [
+          "Điều này sẽ xóa dữ liệu sau:",
+          "<strong>- nghệ sĩ\n- album\n- bài hát\n- đề xuất</strong>"
+        ]
+      },
+      "undo": "Bạn không thể hoàn tác hành động này!",
+      "sure": "Bạn có chắc chắn không?"
+    }
+  },
+  "forms": {
+    "fields": {
+      "email": "Email",
+      "password": "Mật khẩu",
+      "passwordConfirmation": "Xác nhận mật khẩu",
+      "passwordResetCode": "Mã đặt lại mật khẩu",
+      "nickname": "Biệt danh",
+      "title": "Tiêu đề",
+      "description": "Mô tả",
+      "gender": "Giới tính",
+      "birthdate": "Ngày sinh",
+      "country": "Quốc gia",
+      "city": "Thành phố",
+      "status": "Trạng thái",
+      "clientId": "ID máy khách",
+      "clientSecret": "Mã bí mật máy khách",
+      "genders": {
+        "male": "Nam",
+        "female": "Nữ",
+        "other": "Khác"
+      },
+      "legal": {
+        "header": "Tôi đồng ý với {privacyPolicy} và {termsAndConditions}",
+        "privacyPolicy": "Chính sách bảo mật",
+        "termsAndConditions": "Điều khoản và điều kiện"
+      },
+      "remember": "Ghi nhớ đăng nhập",
+      "asCommunity": "Với tư cách cộng đồng"
+    },
+    "extra": "Thông tin bổ sung",
+    "errors": {
+      "notFound": "Không tìm thấy hồ sơ",
+      "empty": {
+        "email": "Email trống",
+        "password": "Mật khẩu trống",
+        "passwordConfirmation": "Xác nhận mật khẩu trống",
+        "passwordResetCode": "Mã đặt lại mật khẩu trống",
+        "nickname": "Biệt danh trống",
+        "title": "Tiêu đề trống",
+        "clientId": "ID máy khách trống",
+        "clientSecret": "Mã bí mật máy khách trống",
+        "legal": "Bạn phải đồng ý với Chính sách bảo mật và Điều khoản và điều kiện"
+      },
+      "invalid": {
+        "email": "Email không hợp lệ"
+      },
+      "taken": {
+        "email": "Email đã được sử dụng",
+        "nickname": "Biệt danh đã được sử dụng",
+        "title": "Tiêu đề đã được sử dụng"
+      },
+      "tooShort": {
+        "password": "Mật khẩu quá ngắn"
+      },
+      "tooLong": {
+        "nickname": "Biệt danh quá dài"
+      },
+      "confirmation": {
+        "passwordConfirmation": "Mật khẩu và xác nhận không khớp"
+      },
+      "wrong": {
+        "password": "Mật khẩu sai",
+        "passwordResetCode": "Mã đặt lại mật khẩu sai"
+      }
+    },
+    "confirm": {
+      "password": "Vui lòng xác nhận mật khẩu của bạn:"
+    }
+  },
+  "notifications": {
+    "scrobbled": "Bài hát {trackFullTitle} đã được scrobble",
+    "added": {
+      "queue": {
+        "track": "Bài hát {trackFullTitle} đã được thêm vào hàng đợi",
+        "tracks": "{counter} đã được thêm vào hàng đợi | {counter} đã được thêm vào hàng đợi"
+      },
+      "savedTracks": {
+        "track": "Bài hát {trackFullTitle} đã được thêm vào bài hát đã lưu"
+      }
+    },
+    "updated": {
+      "profile": "Hồ sơ đã được cập nhật",
+      "post": "Bài viết đã được cập nhật",
+      "comment": "Bình luận đã được cập nhật",
+      "playlist": "Danh sách phát {playlistTitle} đã được cập nhật",
+      "community": "Cộng đồng {communityTitle} đã được cập nhật"
+    },
+    "deleted": {
+      "libraryModel": {
+        "artist": "Nghệ sĩ {modelName} đã được xóa khỏi thư viện của bạn",
+        "album": "Album {modelName} đã được xóa khỏi thư viện của bạn",
+        "track": "Bài hát {modelName} đã được xóa khỏi thư viện của bạn"
+      },
+      "playlist": "Danh sách phát {playlistTitle} đã được xóa",
+      "community": "Cộng đồng {communityTitle} đã được xóa",
+      "account": "Tài khoản của bạn đã được xóa",
+      "library": "Thư viện của bạn đã được xóa",
+      "history": {
+        "search": "Lịch sử tìm kiếm đã được xóa",
+        "activity": "Lịch sử hoạt động đã được xóa",
+        "browser": "Lịch sử trình duyệt đã được xóa",
+        "player": "Lịch sử phát đã được xóa"
+      }
+    },
+    "copied": "Liên kết đã được sao chép vào clipboard",
+    "cleared": {
+      "cache": "Bộ nhớ cache đã được xóa",
+      "searchHistory": "Lịch sử tìm kiếm đã được xóa"
+    },
+    "restartToApply": "Cài đặt đã được lưu và sẽ được áp dụng khi khởi động lại ứng dụng"
+  },
+  "counters": {
+    "nominative": {
+      "artists": "{count} nghệ sĩ | {count} nghệ sĩ",
+      "albums": "{count} album | {count} album",
+      "tracks": "{count} bài hát | {count} bài hát",
+      "videos": "{count} video | {count} video",
+      "files": "{count} tệp | {count} tệp",
+      "plays": "{count} lượt phát | {count} lượt phát",
+      "followers": "{count} người theo dõi | {count} người theo dõi",
+      "following": "{count} đang theo dõi",
+      "members": "{count} thành viên | {count} thành viên",
+      "playlists": "{count} danh sách phát | {count} danh sách phát"
+    },
+    "genitive": {
+      "artists": "{count} nghệ sĩ | {count} nghệ sĩ",
+      "albums": "{count} album | {count} album",
+      "tracks": "{count} bài hát | {count} bài hát",
+      "files": "{count} tệp | {count} tệp",
+      "plays": "{count} lượt phát | {count} lượt phát",
+      "playlists": "{count} danh sách phát | {count} danh sách phát"
+    },
+    "accusative": {
+      "artists": "{count} nghệ sĩ | {count} nghệ sĩ",
+      "albums": "{count} album | {count} album",
+      "tracks": "{count} bài hát | {count} bài hát",
+      "files": "{count} tệp | {count} tệp",
+      "playlists": "{count} danh sách phát | {count} danh sách phát"
+    }
+  },
+  "select": {
+    "source": "Chọn nguồn:",
+    "type": "Chọn loại:",
+    "album": "Chọn album:",
+    "group": "Chọn nhóm album:",
+    "artist": "Chọn nghệ sĩ:",
+    "track": "Chọn bài hát:",
+    "country": "Chọn quốc gia:",
+    "video": "Chọn video:",
+    "lyrics": "Chọn lời bài hát:"
+  },
+  "sources": {
+    "audio": "Âm thanh",
+    "other": "Khác",
+    "albumTypes": {
+      "album": "Album",
+      "group": "Nhóm album",
+      "track": "Bài hát"
+    },
+    "albumsTypes": {
+      "album": "Album",
+      "single": "Đĩa đơn",
+      "ep": "EP",
+      "singleEp": "Đĩa đơn / EP",
+      "compilation": "Tuyển tập",
+      "video": "Video",
+      "misc": "Linh tinh",
+      "appearance": "Xuất hiện",
+      "live": "Trực tiếp"
+    }
+  },
+  "player": {
+    "variants": "Biến thể ({count})",
+    "audio": {
+      "bitrate": "{value} kbit/s",
+      "equalizer": {
+        "decibel": "{value} dB",
+        "hertz": "{value} Hz",
+        "kilohertz": "{value} kHz"
+      }
+    }
+  },
+  "settings": {
+    "tabs": {
+      "app": "Ứng dụng",
+      "profile": "Hồ sơ",
+      "connections": "Kết nối"
+    },
+    "sections": {
+      "interface": "Giao diện",
+      "theme": "Chủ đề",
+      "window": "Cửa sổ",
+      "tabs": "Tab",
+      "sidebar": "Thanh bên",
+      "video": "Video",
+      "data": "Dữ liệu",
+      "info": "Thông tin",
+      "account": "Tài khoản",
+      "system": "Hệ thống",
+      "updates": "Cập nhật"
+    },
+    "options": {
+      "app": {
+        "interface": {
+          "language": "Ngôn ngữ",
+          "timezone": "Múi giờ",
+          "infiniteScroll": "Cuộn vô hạn",
+          "artistPopup": "Hiển thị thông tin nghệ sĩ khi di chuột qua liên kết",
+          "innerCounters": "Hiển thị bộ đếm người nghe muffon",
+          "cachePages": "Lưu cache trang",
+          "scale": "Tỷ lệ"
+        },
+        "theme": {
+          "dark": "Chế độ tối",
+          "system": "Chủ đề hệ thống",
+          "background": "Hình nền",
+          "transparency": "Độ trong suốt"
+        },
+        "window": {
+          "maximize": "Phóng to khi khởi động",
+          "quit": "Thoát khi đóng",
+          "showTrayIcon": "Hiển thị biểu tượng khay"
+        },
+        "tabs": {
+          "newTabSwitch": "Chuyển sang tab mới",
+          "closeOnQuit": "Đóng tab khi thoát"
+        },
+        "search": {
+          "source": "Nguồn",
+          "scope": "Phạm vi",
+          "resultsFullSize": "Hiển thị kết quả ở kích thước đầy đủ"
+        },
+        "player": {
+          "audioSources": "Nguồn âm thanh (theo thứ tự ưu tiên)",
+          "automatch": "Khớp âm thanh với bài hát",
+          "bitrate": "Hiển thị bitrate âm thanh",
+          "album": "Hiển thị album",
+          "equalizer": "Hiển thị bộ cân bằng",
+          "focusPlaying": "Tập trung vào bài hát hiện tại",
+          "pauseOnVideoPlay": "Tạm dừng khi phát video"
+        },
+        "queue": {
+          "autoplay": "Tự động phát",
+          "clear": "Xóa khi đóng trình phát"
+        },
+        "video": {
+          "autoplay": "Tự động phát",
+          "pauseOnAudioPlay": "Tạm dừng khi phát âm thanh",
+          "openLinksInNewTab": "Mở liên kết trong tab mới"
+        },
+        "recommendations": {
+          "hideLibraryArtists": "Ẩn nghệ sĩ trong thư viện",
+          "tracksCount": "với số lượng bài hát",
+          "hideListenedArtists": "Ẩn nghệ sĩ đã nghe",
+          "hideLibraryTracks": "Ẩn bài hát trong thư viện",
+          "hideListenedTracks": "Ẩn bài hát đã nghe"
+        },
+        "top": {
+          "country": "Quốc gia mặc định"
+        },
+        "lyrics": {
+          "annotations": "Hiển thị chú thích"
+        },
+        "history": {
+          "search": {
+            "delete": "Xóa lịch sử tìm kiếm"
+          },
+          "activity": {
+            "save": "Lưu lịch sử hoạt động",
+            "delete": "Xóa lịch sử hoạt động"
+          },
+          "player": {
+            "save": "Lưu lịch sử phát",
+            "delete": "Xóa lịch sử phát"
+          },
+          "browser": {
+            "save": "Lưu lịch sử trình duyệt",
+            "delete": "Xóa lịch sử trình duyệt"
+          }
+        },
+        "system": {
+          "cache": {
+            "enable": "Bật cache",
+            "clear": "Xóa cache"
+          }
+        },
+        "updates": {
+          "check": "Kiểm tra phiên bản mới",
+          "auto": "Bật tự động cập nhật",
+          "autoWarning": "Tự động cập nhật trên Linux vẫn đang trong giai đoạn thử nghiệm và có thể chứa lỗi.\nTrong quá trình tự động cập nhật, ứng dụng sẽ tạm thời bị đóng băng.\nVui lòng tránh buộc thoát ứng dụng; nó sẽ tự động đóng khi hoàn tất cập nhật.\n\nĐể biết chi tiết và theo dõi vấn đề này, vui lòng truy cập [a link=issue]liên kết này[/a]."
+        }
+      },
+      "profile": {
+        "player": {
+          "playing": "Hiển thị bài hát hiện tại trên trang"
+        },
+        "data": {
+          "account": {
+            "delete": "Xóa tài khoản"
+          },
+          "library": {
+            "delete": "Xóa thư viện"
+          }
+        }
+      },
+      "connections": {
+        "lastfm": {
+          "scrobbling": "Scrobbling",
+          "scrobbleNotifications": "Thông báo scrobble",
+          "scrobblePercent": "Scrobble sau"
+        },
+        "spotify": {
+          "link": {
+            "description": "Để kết nối tài khoản Spotify của bạn, vui lòng làm theo [a link=guide]hướng dẫn này[/a]."
+          }
+        },
+        "discord": {
+          "richPresence": {
+            "header": "Bật Rich Presence",
+            "client": "Trước khi bật, hãy đảm bảo ứng dụng Discord desktop của bạn đang chạy",
+            "buttons": {
+              "header": "Nút",
+              "select": {
+                "first": "Chọn nút đầu tiên:",
+                "second": "Chọn nút thứ hai:"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "track": {
+    "source": "Qua {source}"
+  },
+  "recommended": {
+    "header": "Được đề xuất cho bạn",
+    "based": "Dựa trên:"
+  },
+  "signup": {
+    "text": "Chưa có tài khoản?",
+    "link": "Đăng ký"
+  },
+  "login": {
+    "text": "Đã đăng ký?",
+    "link": "Đăng nhập"
+  },
+  "passwordReset": {
+    "text": "Quên mật khẩu?",
+    "link": "Đặt lại",
+    "code": {
+      "sent": "Mã đặt lại mật khẩu đã được gửi đến email của bạn"
+    },
+    "updated": {
+      "header": "Mật khẩu của bạn đã được cập nhật",
+      "content": "Bây giờ bạn có thể quay lại và đăng nhập"
+    }
+  },
+  "anonymous": {
+    "continue": "Tiếp tục ẩn danh",
+    "nickname": "Ẩn danh"
+  },
+  "roles": {
+    "creator": "Người tạo"
+  },
+  "relationships": {
+    "followed": "Đang theo dõi bạn",
+    "following": "Bạn đang theo dõi",
+    "follow": "Theo dõi",
+    "unfollow": "Bỏ theo dõi"
+  },
+  "memberships": {
+    "joined": "Bạn đã tham gia",
+    "join": "Tham gia",
+    "leave": "Rời khỏi"
+  },
+  "message": {
+    "send": "Gửi tin nhắn",
+    "sent": {
+      "header": "Tin nhắn đã được gửi",
+      "content": "Đi đến cuộc trò chuyện"
+    }
+  },
+  "compatibility": {
+    "header": "Mức độ tương thích của bạn với {profileNickname}",
+    "common": "Bạn có điểm chung:"
+  },
+  "recommendation": {
+    "similar": "Tương tự với {counter}:"
+  },
+  "import": {
+    "lastfm": {
+      "historyVisible": "Trước khi nhập, hãy đảm bảo lịch sử nghe nhạc Last.FM của bạn hiển thị."
+    },
+    "active": "Đang nhập {count} trong số {counter}...",
+    "success": {
+      "header": {
+        "files": "{counter} đã được nhập | {counter} đã được nhập",
+        "tracks": "{counter} đã được nhập | {counter} đã được nhập",
+        "playlists": "{counter} đã được nhập | {counter} đã được nhập"
+      },
+      "content": "Bạn có thể muốn kiểm tra dữ liệu trước khi lưu vào thư viện"
+    },
+    "error": {
+      "files": "{counter} không thể nhập. Vui lòng đảm bảo định dạng metadata hợp lệ:"
+    }
+  },
+  "save": {
+    "active": "Đang lưu {count} trong số {counter}...",
+    "success": {
+      "library": {
+        "artists": "{counter} đã được thêm vào thư viện | {counter} đã được thêm vào thư viện",
+        "albums": "{counter} đã được thêm vào thư viện | {counter} đã được thêm vào thư viện",
+        "tracks": "{counter} đã được thêm vào thư viện | {counter} đã được thêm vào thư viện"
+      },
+      "playlist": {
+        "artists": "{counter} đã được thêm vào danh sách phát | {counter} đã được thêm vào danh sách phát",
+        "albums": "{counter} đã được thêm vào danh sách phát | {counter} đã được thêm vào danh sách phát",
+        "tracks": "{counter} đã được thêm vào danh sách phát | {counter} đã được thêm vào danh sách phát"
+      },
+      "playlists": {
+        "playlists": "{counter} đã được thêm vào danh sách phát | {counter} đã được thêm vào danh sách phát"
+      },
+      "favorites": {
+        "tracks": "{counter} đã được thêm vào yêu thích | {counter} đã được thêm vào yêu thích"
+      }
+    },
+    "error": "{counter} không thể thêm:"
+  },
+  "delete": {
+    "active": "Đang xóa {count} trong số {counter}..."
+  },
+  "connections": {
+    "connect": "Kết nối tài khoản",
+    "confirm": {
+      "token": "Trình duyệt của bạn sẽ mở. Xác nhận kết nối ở đó và nhấp lại nút này.",
+      "code": "Trình duyệt của bạn sẽ mở. Xác nhận kết nối ở đó, dán mã nhận được và nhấp lại nút này."
+    },
+    "disconnect": "Ngắt kết nối tài khoản"
+  },
+  "accounts": {
+    "premium": "Cao cấp"
+  },
+  "noCollection": {
+    "header": {
+      "artists": "Không có nghệ sĩ",
+      "albums": "Không có album",
+      "groups": "Không có nhóm album",
+      "tracks": "Không có bài hát",
+      "similar": "Không có tương tự",
+      "tags": "Không có thẻ",
+      "posts": "Không có bài viết",
+      "feed": "Không có bài viết",
+      "conversations": "Không có cuộc trò chuyện",
+      "messages": "Không có tin nhắn",
+      "followers": "Không có người theo dõi",
+      "following": "Không theo dõi ai",
+      "recommendations": "Không có đề xuất",
+      "playlists": "Không có danh sách phát",
+      "communities": "Không có cộng đồng",
+      "members": "Không có thành viên",
+      "videos": "Không có video",
+      "videoChannels": "Không có kênh video",
+      "videoMixes": "Không có video mix",
+      "videoPlaylists": "Không có danh sách phát video",
+      "listeners": "Không có người nghe",
+      "images": "Không có hình ảnh",
+      "events": "Không có sự kiện",
+      "profiles": "Không có hồ sơ",
+      "shows": "Không có chương trình",
+      "pages": "Không có trang",
+      "lyrics": "Không có lời bài hát"
+    },
+    "content": "Có vẻ như không có gì ở đây"
+  },
+  "deleted": {
+    "artist": "Nghệ sĩ đã bị xóa",
+    "album": "Album đã bị xóa",
+    "track": "Bài hát đã bị xóa",
+    "recommendation": "Đề xuất đã bị xóa",
+    "playlist": "Danh sách phát đã bị xóa",
+    "post": "Bài viết đã bị xóa",
+    "comment": "Bình luận đã bị xóa",
+    "video": "Video đã bị xóa",
+    "videoChannel": "Kênh video đã bị xóa",
+    "videoPlaylist": "Danh sách phát video đã bị xóa"
+  },
+  "messages": {
+    "welcome": "Chào mừng, {profileNickname}"
+  },
+  "profile": {
+    "wasOnline": "Đã online"
+  },
+  "feed": {
+    "global": "Bảng tin toàn cầu"
+  },
+  "about": {
+    "license": "Giấy phép {license}",
+    "homepage": "Trang chủ",
+    "contact": "Liên hệ"
+  },
+  "private": {
+    "playlist": "Riêng tư",
+    "profile": "Riêng tư"
+  },
+  "donate": {
+    "header": "Quyên góp",
+    "content": [
+      "muffon là một dự án phi lợi nhuận không có quảng cáo cũng như bất kỳ tính năng hoặc nội dung trả phí nào.",
+      "Tuy nhiên, muffon không thể tồn tại nếu không có kinh phí cần thiết cho việc phát triển và cơ sở hạ tầng.",
+      "Rất nhiều thời gian và công sức đã được bỏ ra để tạo ra dự án này, sẽ thật tuyệt vời nếu thấy khoản đầu tư đó được đền đáp.",
+      "Vì vậy, chúng tôi muốn nhờ sự giúp đỡ của bạn trong việc hỗ trợ muffon.",
+      "<strong>Bạn có muốn quyên góp không?</strong>"
+    ],
+    "actions": {
+      "decline": "Không, cảm ơn",
+      "later": "Có thể sau",
+      "accept": "Được, chắc chắn rồi"
+    }
+  },
+  "lists": {
+    "simple": "Danh sách đơn giản",
+    "table": "Bảng",
+    "extended": "Danh sách chi tiết"
+  },
+  "orders": {
+    "createdDesc": "Mới nhất",
+    "createdAsc": "Cũ nhất",
+    "updatedDesc": "Cập nhật gần đây nhất",
+    "updatedAsc": "Cập nhật lâu nhất",
+    "artistsCountDesc": "Nhiều nghệ sĩ nhất",
+    "artistsCountAsc": "Ít nghệ sĩ nhất",
+    "albumsCountDesc": "Nhiều album nhất",
+    "albumsCountAsc": "Ít album nhất",
+    "tracksCountDesc": "Nhiều bài hát nhất",
+    "tracksCountAsc": "Ít bài hát nhất",
+    "followersCountDesc": "Nhiều người theo dõi nhất",
+    "followersCountAsc": "Ít người theo dõi nhất",
+    "joinedDesc": "Tham gia gần đây nhất",
+    "joinedAsc": "Tham gia lâu nhất",
+    "membersCountDesc": "Nhiều thành viên nhất",
+    "membersCountAsc": "Ít thành viên nhất"
+  },
+  "deletedModel": {
+    "profile": "Hồ sơ đã xóa"
+  },
+  "events": {
+    "created": {
+      "profile": "Hồ sơ được tạo",
+      "bookmarkAlbum": "Album {modelName} được thêm vào đánh dấu",
+      "bookmarkArtist": "Nghệ sĩ {modelName} được thêm vào đánh dấu",
+      "bookmarkTrack": "Bài hát {modelName} được thêm vào đánh dấu",
+      "bookmarkVideo": "Video {modelName} được thêm vào đánh dấu",
+      "bookmarkVideoChannel": "Kênh video {modelName} được thêm vào đánh dấu",
+      "bookmarkVideoPlaylist": "Danh sách phát video {modelName} được thêm vào đánh dấu",
+      "favoriteAlbum": "Album {modelName} được thêm vào yêu thích",
+      "favoriteArtist": "Nghệ sĩ {modelName} được thêm vào yêu thích",
+      "favoriteTrack": "Bài hát {modelName} được thêm vào yêu thích",
+      "favoriteVideo": "Video {modelName} được thêm vào yêu thích",
+      "libraryAlbum": "Album {modelName} được thêm vào thư viện",
+      "libraryArtist": "Nghệ sĩ {modelName} được thêm vào thư viện",
+      "libraryTrack": "Bài hát {modelName} được thêm vào thư viện",
+      "listenedAlbum": "Album {modelName} được thêm vào đã nghe",
+      "listenedArtist": "Nghệ sĩ {modelName} được thêm vào đã nghe",
+      "listenedTrack": "Bài hát {modelName} được thêm vào đã nghe",
+      "watchedVideo": "Video {modelName} được thêm vào đã xem",
+      "playlistTrack": "Bài hát {modelName} được thêm vào danh sách phát {playlistTitle}",
+      "community": "Cộng đồng {modelName} được tạo",
+      "relationship": "Bạn đã theo dõi {modelName}",
+      "post": "Bài viết {modelName} được tạo",
+      "postComment": "Bình luận {modelName} được tạo",
+      "playlist": "Danh sách phát {modelName} được tạo",
+      "conversation": "Bạn đã bắt đầu cuộc trò chuyện với {modelName}",
+      "membership": "Bạn đã tham gia cộng đồng {modelName}"
+    },
+    "updated": {
+      "profile": "Hồ sơ {modelName} được cập nhật",
+      "community": "Cộng đồng {modelName} được cập nhật",
+      "post": "Bài viết {modelName} được cập nhật",
+      "postComment": "Bình luận {modelName} được cập nhật",
+      "playlist": "Danh sách phát {modelName} được cập nhật"
+    },
+    "deleted": {
+      "bookmarkAlbum": "Album {modelName} được xóa khỏi đánh dấu",
+      "bookmarkArtist": "Nghệ sĩ {modelName} được xóa khỏi đánh dấu",
+      "bookmarkTrack": "Bài hát {modelName} được xóa khỏi đánh dấu",
+      "bookmarkVideo": "Video {modelName} được xóa khỏi đánh dấu",
+      "bookmarkVideoChannel": "Kênh video {modelName} được xóa khỏi đánh dấu",
+      "bookmarkVideoPlaylist": "Danh sách phát video {modelName} được xóa khỏi đánh dấu",
+      "favoriteAlbum": "Album {modelName} được xóa khỏi yêu thích",
+      "favoriteArtist": "Nghệ sĩ {modelName} được xóa khỏi yêu thích",
+      "favoriteTrack": "Bài hát {modelName} được xóa khỏi yêu thích",
+      "favoriteVideo": "Video {modelName} được xóa khỏi yêu thích",
+      "libraryAlbum": "Album {modelName} được xóa khỏi thư viện",
+      "libraryArtist": "Nghệ sĩ {modelName} được xóa khỏi thư viện",
+      "libraryTrack": "Bài hát {modelName} được xóa khỏi thư viện",
+      "listenedAlbum": "Album {modelName} được xóa khỏi đã nghe",
+      "listenedArtist": "Nghệ sĩ {modelName} được xóa khỏi đã nghe",
+      "listenedTrack": "Bài hát {modelName} được xóa khỏi đã nghe",
+      "watchedVideo": "Video {modelName} được xóa khỏi đã xem",
+      "playlistTrack": "Bài hát {modelName} được xóa khỏi danh sách phát {playlistTitle}",
+      "community": "Cộng đồng {modelName} được xóa",
+      "recommendationArtist": "Nghệ sĩ {modelName} được xóa khỏi đề xuất",
+      "recommendationTrack": "Bài hát {modelName} được xóa khỏi đề xuất",
+      "relationship": "Bạn đã bỏ theo dõi {modelName}",
+      "post": "Bài viết {modelName} được xóa",
+      "postComment": "Bình luận {modelName} được xóa",
+      "playlist": "Danh sách phát {modelName} được xóa",
+      "membership": "Bạn đã rời khỏi cộng đồng {modelName}"
+    }
+  },
+  "created": {
+    "profile": "Trên muffon từ",
+    "library": "Trong thư viện từ",
+    "community": "Được tạo"
+  },
+  "filter": {
+    "include": {
+      "artists": "Với nghệ sĩ",
+      "tags": "Với thẻ"
+    },
+    "exclude": {
+      "artists": "Không có nghệ sĩ",
+      "tags": "Không có thẻ"
+    }
+  },
+  "keyboardShortcuts": {
+    "header": "Phím tắt",
+    "search": "Hiển thị bảng tìm kiếm",
+    "audioBackward": "Tua lùi âm thanh",
+    "audioForward": "Tua tới âm thanh",
+    "radioNextTrack": "Bài hát radio tiếp theo"
+  },
+  "online": "Trực tuyến",
+  "error": "Lỗi",
+  "more": "Thêm...",
+  "loading": "Đang tải...",
+  "warning": "Cảnh báo"
+}
