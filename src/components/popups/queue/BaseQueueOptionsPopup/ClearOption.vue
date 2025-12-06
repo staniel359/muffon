@@ -18,6 +18,9 @@ export default {
   components: {
     BaseOption
   },
+  inject: [
+    'hidePopup'
+  ],
   computed: {
     clearText () {
       return this.$t(
@@ -35,6 +38,8 @@ export default {
           'queue.isShuffle': false
         }
       )
+
+      this.hidePopup()
     }
   }
 }
