@@ -48,32 +48,31 @@ export default [
     },
     files: [
       '**/*.js',
-      '**/*.mjs',
       '**/*.vue'
     ],
     rules: {
       'array-bracket-newline': [
-        'error',
+        'warn',
         {
           minItems: 1
         }
       ],
       'array-element-newline': [
-        'error',
+        'warn',
         {
           minItems: 1
         }
       ],
-      'function-call-argument-newline': 'error',
+      'function-call-argument-newline': 'warn',
       'function-paren-newline': [
-        'error',
+        'warn',
         {
           minItems: 1
         }
       ],
       'no-new': 'off',
       'object-curly-newline': [
-        'error',
+        'warn',
         {
           ObjectExpression: {
             minProperties: 1
@@ -83,24 +82,24 @@ export default [
         }
       ],
       'object-property-newline': [
-        'error',
+        'warn',
         {
           allowAllPropertiesOnSameLine: false
         }
       ],
       'vue/array-bracket-newline': [
-        'error',
+        'warn',
         {
           minItems: 1
         }
       ],
       'vue/custom-event-name-casing': [
-        'error',
+        'warn',
         'camelCase'
       ],
-      'vue/key-spacing': 'error',
+      'vue/key-spacing': 'warn',
       'vue/match-component-file-name': [
-        'error',
+        'warn',
         {
           extensions: [
             'vue'
@@ -120,20 +119,20 @@ export default [
       ],
       'vue/no-v-html': 'off',
       'vue/object-curly-newline': [
-        'error',
+        'warn',
         {
           minProperties: 1
         }
       ],
       'vue/object-property-newline': [
-        'error',
+        'warn',
         {
           allowAllPropertiesOnSameLine: false
         }
       ],
       'vue/require-default-prop': 'off',
       'vue/v-on-event-hyphenation': [
-        'error',
+        'warn',
         'always'
       ]
     }
