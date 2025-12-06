@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="history"
-    :text="historyText"
-    :link="historyLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatHistoryLink
+  main as formatHistoryLinkData
 } from '@/helpers/formatters/links/history'
 
 export default {
@@ -18,13 +18,13 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    historyText () {
+    text () {
       return this.$t(
         'navigation.history'
       )
     },
-    historyLink () {
-      return formatHistoryLink()
+    linkData () {
+      return formatHistoryLinkData()
     }
   }
 }

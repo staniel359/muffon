@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="radio"
-    :text="radioText"
-    :link="radioLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  radio as formatRadioLink
+  radio as formatRadioLinkData
 } from '@/helpers/formatters/links'
 
 export default {
@@ -18,13 +18,13 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    radioText () {
+    text () {
       return this.$t(
         'navigation.radio'
       )
     },
-    radioLink () {
-      return formatRadioLink()
+    linkData () {
+      return formatRadioLinkData()
     }
   }
 }

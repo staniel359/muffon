@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="release"
-    :text="releasesText"
-    :link="releasesLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatReleasesLink
+  main as formatReleasesLinkData
 } from '@/helpers/formatters/links/releases'
 
 export default {
@@ -18,13 +18,13 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    releasesText () {
+    text () {
       return this.$t(
         'navigation.releases'
       )
     },
-    releasesLink () {
-      return formatReleasesLink()
+    linkData () {
+      return formatReleasesLinkData()
     }
   }
 }

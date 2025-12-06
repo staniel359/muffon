@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="conversation"
-    :text="conversationsText"
-    :link="conversationsLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatConversationsLink
+  main as formatConversationsLinkData
 } from '@/helpers/formatters/links/conversations'
 
 export default {
@@ -18,13 +18,13 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    conversationsText () {
+    text () {
       return this.$t(
         'navigation.conversations'
       )
     },
-    conversationsLink () {
-      return formatConversationsLink()
+    linkData () {
+      return formatConversationsLinkData()
     }
   }
 }

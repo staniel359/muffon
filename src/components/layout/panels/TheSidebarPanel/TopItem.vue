@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="top"
-    :text="topText"
-    :link="topLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatTopLink
+  main as formatTopLinkData
 } from '@/helpers/formatters/links/top'
 
 export default {
@@ -18,13 +18,13 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    topText () {
+    text () {
       return this.$t(
         'navigation.top'
       )
     },
-    topLink () {
-      return formatTopLink()
+    linkData () {
+      return formatTopLinkData()
     }
   }
 }

@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="library"
-    :text="profileLibraryText"
-    :link="profileLibraryLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatProfileLibraryLink
+  main as formatProfileLibraryLinkData
 } from '@/helpers/formatters/links/profile/library'
 
 export default {
@@ -24,13 +24,13 @@ export default {
     }
   },
   computed: {
-    profileLibraryText () {
+    text () {
       return this.$t(
         'navigation.library'
       )
     },
-    profileLibraryLink () {
-      return formatProfileLibraryLink(
+    linkData () {
+      return formatProfileLibraryLinkData(
         {
           profileId: this.profileId
         }

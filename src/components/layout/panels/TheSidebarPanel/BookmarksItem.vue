@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="bookmark"
-    :text="bookmarksText"
-    :link="bookmarksLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatBookmarksLink
+  main as formatBookmarksLinkData
 } from '@/helpers/formatters/links/bookmarks'
 
 export default {
@@ -18,13 +18,13 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    bookmarksText () {
+    text () {
       return this.$t(
         'navigation.bookmarks'
       )
     },
-    bookmarksLink () {
-      return formatBookmarksLink()
+    linkData () {
+      return formatBookmarksLinkData()
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <BaseSidebarItem
     icon="logIn"
-    :text="loginText"
+    :text="text"
     @click="handleClick"
   />
 </template>
@@ -18,7 +18,7 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    loginText () {
+    text () {
       return this.$t(
         'actions.login'
       )

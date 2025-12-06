@@ -1,7 +1,7 @@
 <template>
   <BaseSidebarItem
     icon="settings"
-    :text="settingsText"
+    :text="text"
     @click="handleClick"
   />
 
@@ -21,7 +21,7 @@ export default {
     TheSettingsModal
   },
   computed: {
-    settingsText () {
+    text () {
       return this.$t(
         'navigation.settings'
       )

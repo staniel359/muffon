@@ -6,7 +6,7 @@
       inverted: isDarkMode,
       'primary active': isActive
     }"
-    :link="link"
+    :link="linkData"
     @click="handleClick"
   >
     <div class="main-sidebar-item-icon-image-container">
@@ -45,9 +45,6 @@ import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
-import {
-  params as formatRouterParams
-} from '@/helpers/formatters/plugins/router'
 
 export default {
   name: 'BaseSidebarItem',
@@ -61,11 +58,12 @@ export default {
       type: String,
       required: true
     },
-    link: Object,
+    linkData: Object,
     icon: String,
     image: String,
     imageModel: String,
-    isTextStrong: Boolean
+    isTextStrong: Boolean,
+    isPathStrict: Boolean
   },
   emits: [
     'click'
@@ -78,57 +76,38 @@ export default {
       ]
     ),
     component () {
-      if (this.link) {
+      if (this.linkData) {
         return 'BaseLinkContainer'
       } else {
         return 'a'
       }
     },
     isActive () {
-      return (
-        this.isPathsMatch &&
-          this.isParamsMatch
-      )
+      return this.isMatchedPath
     },
-    isPathsMatch () {
-      return this.routePath.includes(
-        this.linkPath
-      )
+    isMatchedPath () {
+      if (this.isPathStrict) {
+        return (
+          this.routePath === this.linkPathFormatted
+        )
+      } else {
+        return this.routePath.startsWith(
+          this.linkPathFormatted
+        )
+      }
     },
     routePath () {
       return this.$route.path
     },
+    linkPathFormatted () {
+      if (this.linkPath) {
+        return `/${this.linkPath}`
+      } else {
+        return null
+      }
+    },
     linkPath () {
-      return this.link?.path
-    },
-    isParamsMatch () {
-      return (
-        this.routeParamsFormattedString ===
-          this.linkParamsString
-      )
-    },
-    routeParamsFormattedString () {
-      return JSON.stringify(
-        this.routeParamsFormatted
-      )
-    },
-    routeParamsFormatted () {
-      return formatRouterParams(
-        {
-          params: this.routeParams
-        }
-      )
-    },
-    routeParams () {
-      return this.$route.params
-    },
-    linkParamsString () {
-      return JSON.stringify(
-        this.linkParams
-      )
-    },
-    linkParams () {
-      return this.link?.params
+      return this.linkData?.path
     }
   },
   methods: {

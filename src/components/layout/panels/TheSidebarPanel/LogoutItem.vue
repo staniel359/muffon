@@ -1,7 +1,7 @@
 <template>
   <BaseSidebarItem
     icon="logOut"
-    :text="logoutText"
+    :text="text"
     @click="handleClick"
   />
 </template>
@@ -15,7 +15,7 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    logoutText () {
+    text () {
       return this.$t(
         'actions.logout'
       )

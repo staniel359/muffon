@@ -1,8 +1,8 @@
 <template>
   <BaseSidebarItem
     icon="playlist"
-    :text="playlistsText"
-    :link="playlistsLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
@@ -13,10 +13,10 @@ import {
 import profileStore from '@/stores/profile'
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  playlists as formatProfilePlaylistsLink
+  playlists as formatProfilePlaylistsLinkData
 } from '@/helpers/formatters/links/profile'
 import {
-  playlists as formatPlaylistsLink
+  playlists as formatPlaylistsLinkData
 } from '@/helpers/formatters/links'
 
 export default {
@@ -34,20 +34,20 @@ export default {
         currentProfileId: 'id'
       }
     ),
-    playlistsText () {
+    text () {
       return this.$t(
         'navigation.playlists'
       )
     },
-    playlistsLink () {
+    linkData () {
       if (this.currentProfileId) {
-        return formatProfilePlaylistsLink(
+        return formatProfilePlaylistsLinkData(
           {
             profileId: this.profileId
           }
         )
       } else {
-        return formatPlaylistsLink()
+        return formatPlaylistsLinkData()
       }
     }
   }

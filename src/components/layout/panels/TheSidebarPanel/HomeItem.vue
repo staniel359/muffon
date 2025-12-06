@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="home"
-    :text="homeText"
-    :link="homeLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  home as formatHomeLink
+  home as formatHomeLinkData
 } from '@/helpers/formatters/links'
 
 export default {
@@ -18,13 +18,13 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    homeText () {
+    text () {
       return this.$t(
         'navigation.home'
       )
     },
-    homeLink () {
-      return formatHomeLink()
+    linkData () {
+      return formatHomeLinkData()
     }
   }
 }

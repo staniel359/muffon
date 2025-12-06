@@ -1,7 +1,7 @@
 <template>
   <BaseSidebarItem
     icon="help"
-    :text="helpText"
+    :text="text"
     @click="handleClick"
   />
 
@@ -21,7 +21,7 @@ export default {
     TheHelpModal
   },
   computed: {
-    helpText () {
+    text () {
       return this.$t(
         'navigation.help'
       )

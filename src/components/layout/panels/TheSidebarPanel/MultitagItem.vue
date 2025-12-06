@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="multitag"
-    :text="multitagText"
-    :link="multitagLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  multitag as formatMultitagLink
+  multitag as formatMultitagLinkData
 } from '@/helpers/formatters/links'
 
 export default {
@@ -18,13 +18,13 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    multitagText () {
+    text () {
       return this.$t(
         'navigation.multitag'
       )
     },
-    multitagLink () {
-      return formatMultitagLink()
+    linkData () {
+      return formatMultitagLinkData()
     }
   }
 }

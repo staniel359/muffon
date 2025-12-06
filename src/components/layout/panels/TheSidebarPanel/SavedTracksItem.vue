@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="savedTrack"
-    :text="savedTracksText"
-    :link="savedTracksLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  savedTracks as formatSavedTracksLink
+  savedTracks as formatSavedTracksLinkData
 } from '@/helpers/formatters/links'
 
 export default {
@@ -18,13 +18,13 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    savedTracksText () {
+    text () {
       return this.$t(
         'navigation.savedTracks'
       )
     },
-    savedTracksLink () {
-      return formatSavedTracksLink()
+    linkData () {
+      return formatSavedTracksLinkData()
     }
   }
 }

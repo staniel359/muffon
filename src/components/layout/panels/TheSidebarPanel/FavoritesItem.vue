@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="favorite"
-    :text="favoritesText"
-    :link="favoritesLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatProfileFavoritesLink
+  main as formatProfileFavoritesLinkData
 } from '@/helpers/formatters/links/profile/favorites'
 
 export default {
@@ -24,13 +24,13 @@ export default {
     }
   },
   computed: {
-    favoritesText () {
+    text () {
       return this.$t(
         'navigation.favorites'
       )
     },
-    favoritesLink () {
-      return formatProfileFavoritesLink(
+    linkData () {
+      return formatProfileFavoritesLinkData(
         {
           profileId: this.profileId
         }

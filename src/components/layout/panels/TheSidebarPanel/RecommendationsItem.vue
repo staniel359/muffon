@@ -1,15 +1,15 @@
 <template>
   <BaseSidebarItem
     icon="recommendation"
-    :text="recommendationsText"
-    :link="recommendationsLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  main as formatRecommendationsLink
+  main as formatRecommendationsLinkData
 } from '@/helpers/formatters/links/recommendations'
 
 export default {
@@ -18,13 +18,13 @@ export default {
     BaseSidebarItem
   },
   computed: {
-    recommendationsText () {
+    text () {
       return this.$t(
         'navigation.recommendations'
       )
     },
-    recommendationsLink () {
-      return formatRecommendationsLink()
+    linkData () {
+      return formatRecommendationsLinkData()
     }
   }
 }

@@ -1,8 +1,8 @@
 <template>
   <BaseSidebarItem
     icon="community"
-    :text="communitiesText"
-    :link="communitiesLink"
+    :text="text"
+    :link-data="linkData"
   />
 </template>
 
@@ -13,10 +13,10 @@ import {
 import profileStore from '@/stores/profile'
 import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
-  communities as formatProfileCommunitiesLink
+  communities as formatProfileCommunitiesLinkData
 } from '@/helpers/formatters/links/profile'
 import {
-  communities as formatCommunitiesLink
+  communities as formatCommunitiesLinkData
 } from '@/helpers/formatters/links'
 
 export default {
@@ -34,20 +34,20 @@ export default {
         currentProfileId: 'id'
       }
     ),
-    communitiesText () {
+    text () {
       return this.$t(
         'navigation.communities'
       )
     },
-    communitiesLink () {
+    linkData () {
       if (this.currentProfileId) {
-        return formatProfileCommunitiesLink(
+        return formatProfileCommunitiesLinkData(
           {
             profileId: this.profileId
           }
         )
       } else {
-        return formatCommunitiesLink()
+        return formatCommunitiesLinkData()
       }
     }
   }
