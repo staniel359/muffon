@@ -144,14 +144,11 @@ export default {
 
       return {
         profileId: this.profileId,
-        communityId:
-          this.communityId,
+        communityId: this.communityId,
         postId: this.postId,
-        byCommunity:
-          !!fields.community,
+        byCommunity: !!fields.community,
         text,
-        images:
-          this.imagesFormatted,
+        images: this.imagesFormatted,
         artists: this.artists,
         albums: this.albums,
         tracks: this.tracks

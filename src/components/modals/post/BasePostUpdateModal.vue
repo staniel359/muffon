@@ -245,29 +245,21 @@ export default {
       this.processImage
     )
 
-    this.artists =
-      this.postArtistsFormatted
+    this.artists = this.postArtistsFormatted
 
-    this.albums =
-      this.postAlbumsFormatted
+    this.albums = this.postAlbumsFormatted
 
-    this.tracks =
-      this.postTracksFormatted
+    this.tracks = this.postTracksFormatted
 
-    this.videos =
-      this.postVideosFormatted
+    this.videos = this.postVideosFormatted
 
-    this.videoChannels =
-      this.postVideoChannelsFormatted
+    this.videoChannels = this.postVideoChannelsFormatted
 
-    this.videoPlaylists =
-      this.postVideoPlaylistsFormatted
+    this.videoPlaylists = this.postVideoPlaylistsFormatted
 
-    this.playlists =
-      this.postPlaylistsFormatted
+    this.playlists = this.postPlaylistsFormatted
 
-    this.communities =
-      this.postCommunitiesFormatted
+    this.communities = this.postCommunitiesFormatted
   },
   methods: {
     handleVisible () {

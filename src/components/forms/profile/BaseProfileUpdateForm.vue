@@ -1,6 +1,7 @@
 <template>
   <BaseProfileUpdateFormContainer
     :image="image"
+    @success="handleSuccess"
   >
     <MainSection />
 
@@ -50,6 +51,9 @@ export default {
     },
     handleSubmit () {
       this.clickSubmit()
+    },
+    handleSuccess () {
+      this.image = {}
     },
     clickSubmit () {
       this.$refs

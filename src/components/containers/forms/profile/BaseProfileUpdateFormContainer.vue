@@ -34,6 +34,9 @@ export default {
   props: {
     image: Object
   },
+  emits: [
+    'success'
+  ],
   data () {
     return {
       error: null,
@@ -88,6 +91,10 @@ export default {
       )
 
       this.notifySuccess()
+
+      this.$emit(
+        'success'
+      )
     },
     formatUpdateArgs (
       fields
