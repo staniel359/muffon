@@ -143,7 +143,12 @@ export default {
       scrollable: null,
       searchData: null,
       error: null,
-      isLoading: false
+      isLoading: false,
+      sourceIconScopes: [
+        'albums',
+        'albumGroups',
+        'tracks'
+      ]
     }
   },
   computed: {
@@ -339,19 +344,8 @@ export default {
       return !!this.scopeData.isWithListenersCount
     },
     isWithSource () {
-      return (
-        this.isTracks ||
-          this.isAlbums
-      )
-    },
-    isTracks () {
-      return (
-        this.scope === 'tracks'
-      )
-    },
-    isAlbums () {
-      return (
-        this.scope === 'albums'
+      return this.sourceIconScopes.includes(
+        this.scope
       )
     },
     isLastfmSource () {
