@@ -67,7 +67,7 @@ importers:
         version: 5.0.5(rollup@4.53.3)
       '@vitejs/plugin-vue':
         specifier: ^6.0.2
-        version: 6.0.2(vite@7.2.4(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2))(vue@3.5.25(typescript@5.8.2))
+        version: 6.0.2(vite@7.2.6(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2))(vue@3.5.25(typescript@5.8.2))
       axios:
         specifier: ^1.13.2
         version: 1.13.2
@@ -81,8 +81,8 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
       electron:
-        specifier: ^39.2.4
-        version: 39.2.4
+        specifier: ^39.2.6
+        version: 39.2.6
       electron-builder:
         specifier: 26.0.8
         version: 26.0.8(electron-builder-squirrel-windows@25.1.7)
@@ -120,14 +120,14 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1(jquery@3.7.1)
       vite:
-        specifier: ^7.2.4
-        version: 7.2.4(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2)
+        specifier: ^7.2.6
+        version: 7.2.6(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2)
       vite-plugin-electron-renderer:
         specifier: ^0.14.6
         version: 0.14.6
       vite-plugin-eslint:
         specifier: ^1.8.1
-        version: 1.8.1(eslint@9.39.1)(vite@7.2.4(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2))
+        version: 1.8.1(eslint@9.39.1)(vite@7.2.6(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2))
       vue:
         specifier: ^3.5.25
         version: 3.5.25(typescript@5.8.2)
@@ -1794,8 +1794,8 @@ packages:
   electron-updater@6.6.2:
     resolution: {integrity: sha512-Cr4GDOkbAUqRHP5/oeOmH/L2Bn6+FQPxVLZtPbcmKZC63a1F3uu5EefYOssgZXG3u/zBlubbJ5PJdITdMVggbw==}
 
-  electron@39.2.4:
-    resolution: {integrity: sha512-KxPtwpFceQKSxRtUY39piHLYhJMMyHfOhc70e6zRnKGrbRdK6hzEqssth8IGjlKOdkeT4KCvIEngnNraYk39+g==}
+  electron@39.2.6:
+    resolution: {integrity: sha512-dHBgTodWBZd+tL1Dt0PSh/CFLHeDkFCTKCTXu1dgPhlE9Z3k2zzlBQ9B2oW55CFsKanBDHiUomHJNw0XaSdQpA==}
     engines: {node: '>= 12.20.55'}
     hasBin: true
 
@@ -4218,8 +4218,8 @@ packages:
       eslint: '>=7'
       vite: '>=2'
 
-  vite@7.2.4:
-    resolution: {integrity: sha512-NL8jTlbo0Tn4dUEXEsUg8KeyG/Lkmc4Fnzb8JXN/Ykm9G4HNImjtABMJgkQoVjOBN/j2WAwDTRytdqJbZsah7w==}
+  vite@7.2.6:
+    resolution: {integrity: sha512-tI2l/nFHC5rLh7+5+o7QjKjSR04ivXDF4jcgV0f/bTQ+OJiITy5S6gaynVsEM+7RqzufMnVbIon6Sr5x1SDYaQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -5209,10 +5209,10 @@ snapshots:
       '@types/node': 22.19.1
     optional: true
 
-  '@vitejs/plugin-vue@6.0.2(vite@7.2.4(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2))(vue@3.5.25(typescript@5.8.2))':
+  '@vitejs/plugin-vue@6.0.2(vite@7.2.6(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2))(vue@3.5.25(typescript@5.8.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-beta.50
-      vite: 7.2.4(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2)
+      vite: 7.2.6(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2)
       vue: 3.5.25(typescript@5.8.2)
 
   '@vladfrangu/async_event_emitter@2.4.6': {}
@@ -6318,7 +6318,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  electron@39.2.4:
+  electron@39.2.6:
     dependencies:
       '@electron/get': 2.0.3
       '@types/node': 22.19.1
@@ -9089,15 +9089,15 @@ snapshots:
 
   vite-plugin-electron-renderer@0.14.6: {}
 
-  vite-plugin-eslint@1.8.1(eslint@9.39.1)(vite@7.2.4(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2)):
+  vite-plugin-eslint@1.8.1(eslint@9.39.1)(vite@7.2.6(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2)):
     dependencies:
       '@rollup/pluginutils': 4.2.1
       '@types/eslint': 8.56.12
       eslint: 9.39.1
       rollup: 2.79.2
-      vite: 7.2.4(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2)
+      vite: 7.2.6(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2)
 
-  vite@7.2.4(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2):
+  vite@7.2.6(@types/node@24.10.1)(less@4.2.2)(sass@1.94.2):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)
