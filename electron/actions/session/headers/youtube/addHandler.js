@@ -2,9 +2,6 @@ import {
   session
 } from 'electron'
 
-const baseUrl =
-  'https://www.youtube.com'
-
 const filter = {
   urls: [
     'https://*.youtube.com/*'
@@ -16,8 +13,7 @@ function handleBeforeSendHeaders (
   callback
 ) {
   const requestHeaders = {
-    ...details.requestHeaders,
-    Referer: baseUrl
+    ...details.requestHeaders
   }
 
   callback(
