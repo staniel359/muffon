@@ -58,16 +58,20 @@ export function scale (
   } = {}
 ) {
   const min = 1
-  const step = 0.2
+  const step = 0.1
 
   function interpretLabel (
     value
   ) {
-    const percent = (
-      min + value * step
-    ) * 100
+    if (value % 2 === 0) {
+      const percent = (
+        min + value * step
+      ) * 100
 
-    return `${percent}%`
+      return `${percent}%`
+    } else {
+      return ' '
+    }
   }
 
   return {
