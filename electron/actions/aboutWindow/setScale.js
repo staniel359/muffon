@@ -42,13 +42,21 @@ export default function () {
       )
 
     aboutWindow.setMinimumSize(
-      minimumWidthScaled,
-      minimumHeightScaled
+      Math.round(
+        minimumWidthScaled
+      ),
+      Math.round(
+        minimumHeightScaled
+      )
     )
 
     aboutWindow.setSize(
-      widthScaled,
-      heightScaled
+      Math.round(
+        widthScaled
+      ),
+      Math.round(
+        heightScaled
+      )
     )
 
     aboutWindow.center()
