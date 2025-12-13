@@ -273,8 +273,7 @@ export default {
         component:
           'BaseTagsSimpleList',
         limit:
-          tagsLimits.simple.small,
-        responsePageLimit: 10
+          tagsLimits.simple.small
       }
     },
     lyricsData () {
