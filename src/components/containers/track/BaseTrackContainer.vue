@@ -96,21 +96,29 @@ export default {
       )
     },
     isCurrent () {
-      if (!this.trackId) { return false }
-
-      if (this.isExactTrack) {
-        return (
-          this.playerPlayingId ===
-            this.trackId
-        )
+      if (this.trackId) {
+        if (this.isExactTrack) {
+          if (this.playerPlayingId) {
+            return (
+              this.trackId === this.playerPlayingId
+            )
+          } else {
+            return false
+          }
+        } else if (this.playerCurrentTrackId) {
+          return (
+            this.trackId.includes(
+              this.playerCurrentTrackId
+            ) ||
+              this.playerCurrentTrackId.includes(
+                this.trackId
+              )
+          )
+        } else {
+          return false
+        }
       } else {
-        return (
-          this.playerCurrentTrackId ===
-            this.trackId
-        ) || (
-          this.playerPlayingId ===
-            this.trackId
-        )
+        return false
       }
     },
     playerPlayingId () {
