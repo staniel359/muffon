@@ -12,29 +12,19 @@
           slotProps.class
         ]"
       >
-        <BaseImportConnectSection
-          v-if="isRenderLastfmConnectSection"
-          source="lastfm"
-          :scope="scope"
-        />
-
-        <BaseImportConnectSection
-          v-if="isRenderSpotifyConnectSection"
-          source="spotify"
-          :scope="scope"
+        <ImportButtonsSection
+          :source="source"
         />
 
         <BaseDivider />
 
         <ImportSection
-          v-if="isImport"
+          v-if="status === 'import'"
           :source="source"
-          :scope="scope"
-          :limit="limit"
-          :total-count="totalCount"
+          :playlists-count="playlistsCount"
         />
         <SaveSection
-          v-if="isSave"
+          v-else-if="status === 'save'"
           :key="saveSectionKey"
           :playlists="playlists"
         />
@@ -44,19 +34,16 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import profileStore from '@/stores/profile'
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
-import BaseImportConnectSection
-  from '@/components/sections/import/BaseImportConnectSection.vue'
+import ImportButtonsSection
+  from './BasePlaylistsAccountImportModal/ImportButtonsSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import ImportSection
   from './BasePlaylistsAccountImportModal/ImportSection.vue'
 import SaveSection
   from './BasePlaylistsAccountImportModal/SaveSection.vue'
+
 import {
   generateKey
 } from '@/helpers/utils'
@@ -65,7 +52,7 @@ export default {
   name: 'BasePlaylistsAccountImportModal',
   components: {
     BaseModalContainer,
-    BaseImportConnectSection,
+    ImportButtonsSection,
     BaseDivider,
     ImportSection,
     SaveSection
@@ -86,64 +73,12 @@ export default {
       source: null,
       userData: null,
       isShow: false,
-      playlists: [],
-      scope: 'playlists',
-      limit: 1
+      playlists: []
     }
   },
   computed: {
-    ...mapState(
-      profileStore,
-      {
-        profileConnections: 'connections'
-      }
-    ),
-    isImport () {
-      return (
-        this.status === 'import'
-      )
-    },
-    isSave () {
-      return (
-        this.status === 'save'
-      )
-    },
-    totalCount () {
-      return this.userData?.[
-        `${this.scope}_count`
-      ]
-    },
-    isRenderLastfmConnectSection () {
-      return (
-        !!this.lastfmConnection && (
-          !this.source ||
-            this.isLastfmSource
-        )
-      )
-    },
-    lastfmConnection () {
-      return this.profileConnections?.lastfm
-    },
-    isLastfmSource () {
-      return (
-        this.source === 'lastfm'
-      )
-    },
-    isRenderSpotifyConnectSection () {
-      return (
-        !!this.spotifyConnection && (
-          !this.source ||
-            this.isSpotifySource
-        )
-      )
-    },
-    spotifyConnection () {
-      return this.profileConnections?.spotify
-    },
-    isSpotifySource () {
-      return (
-        this.source === 'spotify'
-      )
+    playlistsCount () {
+      return this.userData?.playlists_count
     }
   },
   methods: {
@@ -160,25 +95,26 @@ export default {
         this.status = 'import'
 
         this.userData = userData
+
         this.source = source
       }
     },
     save (
-      value
+      playlists
     ) {
       this.status = 'save'
 
       this.playlists = [
-        ...value
+        ...playlists
       ]
     },
     retry (
-      value
+      playlists
     ) {
       this.resetSaveSection()
 
       this.playlists = [
-        ...value
+        ...playlists
       ]
     },
     resetSaveSection () {
@@ -186,6 +122,7 @@ export default {
     },
     reset () {
       this.status = null
+
       this.source = null
     },
     show () {

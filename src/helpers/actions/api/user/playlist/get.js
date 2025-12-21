@@ -3,9 +3,9 @@ import getRequest from '@/helpers/actions/api/request/get'
 
 export default function (
   {
+    playlistId,
     source,
     scope = '',
-    counters,
     page,
     limit
   }
@@ -13,13 +13,7 @@ export default function (
   const profileId = profileStore().id
 
   const url =
-    `/${source}/users/${profileId}/${scope}`
-
-  const params = {
-    ...(counters && {
-      counters
-    })
-  }
+    `/${source}/users/${profileId}/playlists/${playlistId}/${scope}`
 
   const handleSuccess = (
     response
@@ -32,7 +26,6 @@ export default function (
   )(
     {
       url,
-      params,
       page,
       limit,
       isWithSelfToken: true,

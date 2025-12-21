@@ -1,177 +1,62 @@
 <template>
-  <div
-    v-if="error"
-    class="main-top-section"
-  >
-    <BaseErrorMessage
-      :error="error"
-      is-with-refresh-button
-      @refresh="handleRefresh"
-    />
-  </div>
-
-  <BaseProgress
-    v-if="isShowProgress"
-    ref="progress"
-    status="import"
-    :scope="scope"
-    @complete="handleProgressComplete"
+  <ProcessingSection
+    v-if="status === 'processing'"
+    :source="source"
+    :playlists-count="playlistsCount"
+    @complete="handleProcessingComplete"
   />
   <BaseImportCompleteSection
-    v-else
-    scope="playlists"
+    v-else-if="status === 'complete'"
     text-scope="playlists"
+    scope="playlists"
     :success-collection="successPlaylists"
   />
 </template>
 
 <script>
-import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
-import BaseProgress from '@/components/BaseProgress.vue'
+import ProcessingSection from './ImportSection/ProcessingSection.vue'
 import BaseImportCompleteSection
   from '@/components/import/BaseImportCompleteSection.vue'
-import getUser from '@/helpers/actions/api/user/get'
+
+import collectionMixin from '@/mixins/collectionMixin'
 import {
   collection as formatCollection
 } from '@/helpers/formatters'
-import collectionMixin from '@/mixins/collectionMixin'
 
 export default {
   name: 'ImportSection',
   components: {
-    BaseErrorMessage,
-    BaseProgress,
+    ProcessingSection,
     BaseImportCompleteSection
   },
   mixins: [
     collectionMixin
   ],
   props: {
-    source: {
-      type: String,
-      required: true
-    },
-    scope: {
-      type: String,
-      required: true
-    },
-    totalCount: {
-      type: Number,
-      required: true
-    },
-    limit: {
-      type: Number,
-      required: true
-    }
+    source: String,
+    playlistsCount: Number
   },
   data () {
     return {
-      userData: null,
-      error: null,
-      page: 1,
-      isProgress: true,
-      isComplete: false,
-      collection: [],
+      status: null,
       successPlaylists: []
     }
   },
-  computed: {
-    isShowProgress () {
-      return (
-        this.isProgress ||
-          !this.isComplete
-      )
-    },
-    userArgs () {
-      return {
-        source: this.source,
-        scope: this.scope,
-        page: this.page,
-        limit: this.limit,
-        isWithTracks: true
-      }
-    },
-    isGetNextPageData () {
-      return (
-        this.page <
-          this.totalPagesCount
-      )
-    },
-    totalPagesCount () {
-      return this.userData?.total_pages
-    }
-  },
-  watch: {
-    userData: 'handleUserDataChange',
-    collection: 'handleCollectionChange'
-  },
   mounted () {
-    this.processCollection()
+    this.status = 'processing'
   },
   methods: {
-    getUser,
-    handleUserDataChange (
-      value
-    ) {
-      const newCollection =
-        value[
-          this.scope
-        ]
-
-      this.collection = [
-        ...this.collection,
-        ...newCollection
-      ]
-
-      this.setProgressValue(
-        this.page
-      )
-    },
-    handleCollectionChange () {
-      if (this.isGetNextPageData) {
-        this.page += 1
-
-        this.getData()
-      } else {
-        this.successPlaylists =
-          formatCollection(
-            this.collection
-          )
-
-        this.isComplete = true
+    handleProcessingComplete (
+      {
+        successPlaylists
       }
-    },
-    handleRefresh () {
-      this.getData()
-    },
-    handleProgressComplete () {
-      this.isProgress = false
-    },
-    processCollection () {
-      this.setProgressTotalCount()
-
-      this.getData()
-    },
-    getData () {
-      this.getUser(
-        this.userArgs
-      )
-    },
-    setProgressTotalCount () {
-      this.$refs
-        .progress
-        .setTotalCount(
-          this.totalCount
-        )
-    },
-    setProgressValue (
-      value
     ) {
-      this.$refs
-        .progress
-        .setValue(
-          value
+      this.successPlaylists =
+        formatCollection(
+          successPlaylists
         )
+
+      this.status = 'complete'
     }
   }
 }
