@@ -59,7 +59,7 @@
     "eslint-plugin-vue": "^10.6.2",
     "fomantic-ui": "^2.9.4",
     "globals": "^16.5.0",
-    "hotkeys-js": "^3.13.15",
+    "hotkeys-js": "^4.0.0",
     "i18n-iso-countries": "^7.14.0",
     "jquery": "^3.7.1",
     "pinia": "^3.0.4",
