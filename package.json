@@ -69,7 +69,7 @@
     "vite-plugin-electron-renderer": "^0.14.6",
     "vite-plugin-eslint": "^1.8.1",
     "vue": "^3.5.26",
-    "vue-i18n": "^11.2.2",
+    "vue-i18n": "^11.2.7",
     "vue-router": "^4.6.4"
   },
   "packageManager": "pnpm@10.17.1",
