@@ -1,13 +1,11 @@
 <template>
   <BaseDivider />
 
-  <div class="main-top-small-section main-bottom-extrasmall-section">
-    <BaseProgress
-      ref="progress"
-      status="import"
-      :scope="scope"
-    />
-  </div>
+  <BaseProgress
+    ref="progress"
+    status="import"
+    :scope="scope"
+  />
 
   <TracksImportSection
     :key="tracksImportKey"

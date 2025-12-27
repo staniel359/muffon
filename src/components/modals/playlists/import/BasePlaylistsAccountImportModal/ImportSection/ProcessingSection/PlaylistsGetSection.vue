@@ -10,17 +10,13 @@
     />
   </div>
 
-  <div class="main-top-small-section main-bottom-extrasmall-section">
-    <BaseProgress
-      ref="progress"
-      status="get"
-      :class="{
-        disabled: isComplete
-      }"
-      :scope="scope"
-      @complete.once="handleProgressComplete"
-    />
-  </div>
+  <BaseProgress
+    ref="progress"
+    status="get"
+    :scope="scope"
+    :is-disabled="isProgressDisabled"
+    @complete.once="handleProgressComplete"
+  />
 </template>
 
 <script>
@@ -75,6 +71,9 @@ export default {
     },
     totalPagesCount () {
       return this.userData?.total_pages
+    },
+    isProgressDisabled () {
+      return this.isComplete
     }
   },
   watch: {

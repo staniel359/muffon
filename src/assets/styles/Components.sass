@@ -206,7 +206,11 @@
     &.inverted
       fill: $colorWhite
 
+.base-progress-container
+  min-height: 4rem
+
 .base-progress
+  @extend .no-margin, .main-bottom-extrasmall-section
   &:not(.success, .error)
     .progress-bar
       @extend .background-base

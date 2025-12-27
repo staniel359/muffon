@@ -7,7 +7,7 @@
       #default="slotProps"
     >
       <div
-        class="content full-height large-padded"
+        class="content full-height large-padded scrolling"
         :class="[
           slotProps.class
         ]"

@@ -1,16 +1,16 @@
 <template>
-  <div
-    v-if="error"
-    class="main-top-section"
-  >
-    <BaseErrorMessage
-      :error="error"
-      is-with-refresh-button
-      @refresh="handleRefresh"
-    />
-  </div>
+  <div class="main-bottom-section">
+    <div
+      v-if="error"
+      class="main-top-section"
+    >
+      <BaseErrorMessage
+        :error="error"
+        is-with-refresh-button
+        @refresh="handleRefresh"
+      />
+    </div>
 
-  <div class="main-top-small-section main-bottom-extrasmall-section">
     <BaseProgress
       ref="progress"
       status="import"

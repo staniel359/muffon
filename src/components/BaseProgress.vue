@@ -1,19 +1,22 @@
 <template>
-  <div
-    ref="progress"
-    class="ui small progress base-progress"
-    :class="{
-      inverted: isDarkMode
-    }"
-  >
-    <div class="bar progress-bar">
-      <div class="progress" />
-    </div>
-
+  <div class="base-progress-container">
     <div
-      class="label main-bottom-small-section"
-      v-text="activeTextConditional"
-    />
+      ref="progress"
+      class="ui small progress base-progress"
+      :class="{
+        inverted: isDarkMode,
+        disabled: isDisabled
+      }"
+    >
+      <div class="bar progress-bar">
+        <div class="progress" />
+      </div>
+
+      <div
+        class="label main-bottom-small-section"
+        v-text="activeTextConditional"
+      />
+    </div>
   </div>
 </template>
 
@@ -46,7 +49,8 @@ export default {
     scope: {
       type: String,
       required: true
-    }
+    },
+    isDisabled: Boolean
   },
   emits: [
     'complete'
