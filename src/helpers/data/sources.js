@@ -173,7 +173,7 @@ export default [
     isWithArtists: true,
     isWithAlbums: true,
     isWithTracks: true,
-    maxBitrate: 160,
+    maxBitrate: 128,
     albumTypes: [
       'album'
     ],
