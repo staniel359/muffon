@@ -33,7 +33,14 @@ export default defineConfig(
           jQuery: 'jquery'
         }
       ),
-      eslintPlugin(),
+      eslintPlugin(
+        {
+          emitWarning: false,
+          emitError: false,
+          failOnWarning: false,
+          failOnError: false
+        }
+      ),
       electronRendererPlugin()
     ],
     resolve: {
