@@ -2,13 +2,13 @@
   <BaseLinkContainer
     class="item main-simple-list-item middle-aligned main-visibility-container"
     :class="{
-      disabled: isDeleted
+      disabled: isDisabled
     }"
     :link="link"
     @click="handleItemClick"
   >
     <BaseDeletedSection
-      v-if="isDeleted"
+      v-if="isCollectionItemDeleted"
       model="playlist"
     />
     <template
@@ -56,7 +56,7 @@
         </div>
 
         <ProfileNicknameSection
-          v-if="isWithProfileNickname"
+          v-if="isRenderProfileNickname"
           class="extra"
           :profile-data="profileData"
           :is-main-link-active="isMainLinkActive"
@@ -232,7 +232,9 @@ export default {
   },
   computed: {
     link () {
-      if (this.isLink) {
+      if (this.isCollectionItemDeleted || this.isDeleted) {
+        return null
+      } else if (this.isLink) {
         if (this.isMainLinkActive) {
           return this.profilePlaylistLink
         } else {
@@ -270,12 +272,18 @@ export default {
       return this.playlistData.image
     },
     playlistTitle () {
-      return this.playlistData.title
+      if (this.isDeleted) {
+        return this.$t(
+          'deletedModel.playlist'
+        )
+      } else {
+        return this.playlistData.title
+      }
     },
     tracksCount () {
       return this.playlistData.tracks_count
     },
-    isDeleted () {
+    isCollectionItemDeleted () {
       return !!this.playlistData.isDeleted
     },
     paginationItem () {
@@ -322,6 +330,21 @@ export default {
     },
     tracks () {
       return this.playlistData.tracks
+    },
+    isDeleted () {
+      return this.playlistData.deleted
+    },
+    isRenderProfileNickname () {
+      return !!(
+        this.isWithProfileNickname &&
+          this.profileData
+      )
+    },
+    isDisabled () {
+      return (
+        this.isDeleted ||
+          this.isCollectionItemDeleted
+      )
     }
   },
   methods: {

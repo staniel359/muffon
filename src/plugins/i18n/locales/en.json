@@ -854,7 +854,9 @@
     "membersCountAsc": "Least members"
   },
   "deletedModel": {
-    "profile": "Deleted profile"
+    "profile": "Deleted profile",
+    "playlist": "Deleted playlist",
+    "community": "Deleted community"
   },
   "events": {
     "created": {

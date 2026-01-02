@@ -1,7 +1,10 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item middle-aligned main-visibility-container"
-    :link="communityLink"
+    :class="{
+      disabled: isDisabled
+    }"
+    :link="link"
     @click="handleLinkClick"
   >
     <BaseIcon
@@ -125,12 +128,19 @@ export default {
     'clearButtonClick'
   ],
   computed: {
-    communityLink () {
-      return formatCommunityLink(
-        {
-          communityId: this.communityId
-        }
-      )
+    link () {
+      if (this.isDeleted) {
+        return null
+      } else {
+        return formatCommunityLink(
+          {
+            communityId: this.communityId
+          }
+        )
+      }
+    },
+    isDeleted () {
+      return this.communityData.deleted
     },
     communityId () {
       return this.communityData.id
@@ -139,7 +149,13 @@ export default {
       return this.communityData.image
     },
     communityTitle () {
-      return this.communityData.title
+      if (this.isDeleted) {
+        return this.$t(
+          'deletedModel.community'
+        )
+      } else {
+        return this.communityData.title
+      }
     },
     membersCount () {
       return this.communityData.members_count
@@ -156,6 +172,9 @@ export default {
     },
     description () {
       return this.communityData.description
+    },
+    isDisabled () {
+      return this.isDeleted
     }
   },
   methods: {
