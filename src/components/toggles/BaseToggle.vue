@@ -23,6 +23,9 @@ import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
 import checkboxMixin from '@/mixins/checkboxMixin'
+import {
+  wait
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseToggle',
@@ -39,6 +42,11 @@ export default {
   emits: [
     'isCheckedChange'
   ],
+  data () {
+    return {
+      checkLatency: 250
+    }
+  },
   computed: {
     ...mapState(
       layoutStore,
@@ -64,9 +72,13 @@ export default {
         value
       )
     },
-    change (
+    async change (
       value
     ) {
+      await wait(
+        this.checkLatency
+      )
+
       if (this.isUpdateGlobalStore) {
         updateGlobalStore(
           {

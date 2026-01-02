@@ -226,3 +226,16 @@ export const isMacos = (
 export const isLinux = (
   systemName === 'linux'
 )
+
+export function wait (
+  milliseconds
+) {
+  return new Promise(
+    resolve => {
+      return setTimeout(
+        resolve,
+        milliseconds
+      )
+    }
+  )
+}

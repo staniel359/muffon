@@ -17,10 +17,8 @@ export default {
     checkboxOptions () {
       return mainCheckboxOptions(
         {
-          onChecked:
-            this.handleChecked,
-          onUnchecked:
-            this.handleUnchecked
+          onChecked: this.handleChecked,
+          onUnchecked: this.handleUnchecked
         }
       )
     }
