@@ -1,10 +1,10 @@
 import getAboutWindowSize from '../aboutWindow/getSize.js'
 
-export default function () {
+export default async function () {
   const [
     width,
     height
-  ] = getAboutWindowSize()
+  ] = await getAboutWindowSize()
 
   const boundsOptions = {
     x: 0,

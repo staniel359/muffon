@@ -1,7 +1,7 @@
 import getSettingsKey from '../settings/getKey.js'
 import getMainWindowSize from '../mainWindow/getSize.js'
 
-export default function (
+export default async function (
   tab
 ) {
   const scale =
@@ -24,7 +24,7 @@ export default function (
   const [
     width,
     height
-  ] = getMainWindowSize()
+  ] = await getMainWindowSize()
 
   const heightScaled = (
     height - topOffsetComputed

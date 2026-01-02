@@ -1,10 +1,10 @@
 import getMainWindowSize from '../mainWindow/getSize.js'
 
-export default function () {
+export default async function () {
   const [
     width,
     height
-  ] = getMainWindowSize()
+  ] = await getMainWindowSize()
 
   const boundsOptions = {
     x: 0,
