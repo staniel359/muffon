@@ -7,7 +7,6 @@ import {
 } from '../../helpers/icons.js'
 import {
   isDevelopment,
-  wait,
   isShowDevTools,
   windowsDefaultSizes
 } from '../../helpers/utils.js'
@@ -84,7 +83,7 @@ function handleDidFinishLoad () {
   showMainWindow()
 }
 
-async function handleFirstShow () {
+function handleFirstShow () {
   resizeViews()
 
   setMainWindowScale()
@@ -99,10 +98,6 @@ async function handleFirstShow () {
     )
 
   if (isMaximizeOnStart) {
-    await wait(
-      50
-    )
-
     mainWindow.maximize()
   }
 
