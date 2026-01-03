@@ -10,7 +10,8 @@
         ),
         'horizontally flipped': (
           isWithRtl && isRtl
-        )
+        ),
+        link: isClickable
       },
       iconConditional
     ]"
@@ -40,7 +41,8 @@ export default {
     isError: Boolean,
     icon: String,
     isIconRed: Boolean,
-    isWithRtl: Boolean
+    isWithRtl: Boolean,
+    isClickable: Boolean
   },
   emits: [
     'activeChange',

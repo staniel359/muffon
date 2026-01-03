@@ -99,6 +99,8 @@ export default {
   navigationRight: 'right chevron divider',
   noCollection: 'question',
   other: 'hamburger',
+  passwordShow: 'eye',
+  passwordHide: 'eye slash',
   place: 'map marker alternate',
   play: 'play',
   player: 'play',

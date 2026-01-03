@@ -1,8 +1,16 @@
 <template>
-  <BaseFormInputContainer>
+  <BaseFormInputContainer
+    class="ui icon input width-100"
+  >
+    <BaseIcon
+      :icon="passwordToggleIcon"
+      is-clickable
+      @click="handlePasswordToggleIconClick"
+    />
+
     <input
       ref="input"
-      type="password"
+      :type="fieldType"
       name="password"
       :placeholder="passwordText"
     >
@@ -13,11 +21,16 @@
 import BaseFormInputContainer
   from '@/components/containers/inputs/form/BaseFormInputContainer.vue'
 
+import passwordFieldMixin from '@/mixins/passwordFieldMixin'
+
 export default {
   name: 'BaseProfilePasswordField',
   components: {
     BaseFormInputContainer
   },
+  mixins: [
+    passwordFieldMixin
+  ],
   computed: {
     passwordText () {
       return this.$t(
