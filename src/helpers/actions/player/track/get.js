@@ -90,7 +90,7 @@ export default function getPlayerTrack (
     {
       error
     }
-  )  => {
+  ) => {
     const nextAudioSourceIndex = audioSourceIndex + 1
 
     const nextAudioSource =
