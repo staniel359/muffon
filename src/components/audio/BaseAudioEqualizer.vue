@@ -1,34 +1,27 @@
 <template>
   <div class="base-audio-equalizer">
-    <div class="middle-aligned-space-between">
-      <div class="middle-aligned">
-        <BaseToggle
-          :is-checked="isAudioEqualizerEnabled"
-          store-key="audio.isEqualizerEnabled"
-        />
-      </div>
+    <div
+      v-if="isRenderResetButton"
+      class="middle-aligned-space-between main-top-mini-section"
+    >
+      <div />
 
-      <div
-        :class="[
-          'middle-aligned',
-          {
-            'visibility-hidden': !isAudioEqualizerEnabled
-          }
-        ]"
-      >
-        <BaseClearButton
-          @click="handleClearButtonClick"
-        />
-      </div>
+      <BaseClearButton
+        action="reset"
+        :is-with-icon="false"
+        @click="handleClearButtonClick"
+      />
     </div>
 
-    <div class="d-flex main-bottom-section">
-      <EqualizerItem
-        v-for="equalizerData in audioEqualizers"
-        :ref="equalizerData.key"
-        :key="equalizerData.key"
-        :equalizer-data="equalizerData"
-        @change="handleEqualizerChange"
+    <div class="d-flex">
+      <FilterItem
+        v-for="(filterData, index) in filters"
+        :key="filterData.key"
+        :filter-data="filterData"
+        :index="index"
+        @init="handleFilterInit"
+        @move="handleFilterMove"
+        @change="handleFilterChange"
       />
     </div>
   </div>
@@ -39,19 +32,98 @@ import {
   mapState
 } from 'pinia'
 import audioStore from '@/stores/audio'
-import BaseToggle from '@/components/toggles/BaseToggle.vue'
+
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import EqualizerItem from './BaseAudioEqualizer/EqualizerItem.vue'
+import FilterItem from './BaseAudioEqualizer/FilterItem.vue'
+
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseAudioEqualizer',
   components: {
-    BaseToggle,
     BaseClearButton,
-    EqualizerItem
+    FilterItem
+  },
+  data () {
+    return {
+      filters: [
+        {
+          key: null,
+          type: 'peaking',
+          frequency: 30,
+          gain: 0,
+          filterElement: null
+        },
+        {
+          key: null,
+          type: 'peaking',
+          frequency: 60,
+          gain: 0,
+          filterElement: null
+        },
+        {
+          key: null,
+          type: 'peaking',
+          frequency: 125,
+          gain: 0,
+          filterElement: null
+        },
+        {
+          key: null,
+          type: 'peaking',
+          frequency: 250,
+          gain: 0,
+          filterElement: null
+        },
+        {
+          key: null,
+          type: 'peaking',
+          frequency: 500,
+          gain: 0,
+          filterElement: null
+        },
+        {
+          key: null,
+          type: 'peaking',
+          frequency: 1000,
+          gain: 0,
+          filterElement: null
+        },
+        {
+          key: null,
+          type: 'peaking',
+          frequency: 2000,
+          gain: 0,
+          filterElement: null
+        },
+        {
+          key: null,
+          type: 'peaking',
+          frequency: 4000,
+          gain: 0,
+          filterElement: null
+        },
+        {
+          key: null,
+          type: 'peaking',
+          frequency: 8000,
+          gain: 0,
+          filterElement: null
+        },
+        {
+          key: null,
+          type: 'peaking',
+          frequency: 16000,
+          gain: 0,
+          filterElement: null
+        }
+      ]
+    }
   },
   computed: {
     ...mapState(
@@ -59,9 +131,8 @@ export default {
       {
         audioContext: 'context',
         audioSource: 'source',
-        isAudioEqualizerEnabled:
-          'isEqualizerEnabled',
-        audioEqualizers: 'equalizers'
+        isAudioEqualizerEnabled: 'isEqualizerEnabled',
+        audioEqualizerGains: 'equalizerGains'
       }
     ),
     audioOutput () {
@@ -70,146 +141,209 @@ export default {
     audioItems () {
       return [
         this.audioSource,
-        ...this.equalizersFormatted,
+        ...this.filtersElements,
         this.audioOutput
       ]
     },
-    equalizersFormatted () {
-      return this.audioEqualizers.map(
-        this.formatEqualizerData
+    filtersElements () {
+      return this.filters.map(
+        filterData => {
+          return filterData.filterElement
+        }
+      )
+    },
+    filtersGains () {
+      return this.filters.map(
+        filterData => {
+          return filterData.gain
+        }
+      )
+    },
+    isRenderResetButton () {
+      return (
+        this.isAudioEqualizerEnabled &&
+          this.isGainsChanged
+      )
+    },
+    isGainsChanged () {
+      return this.filters.some(
+        filterData => {
+          return filterData.gain !== 0
+        }
       )
     }
   },
   watch: {
+    filtersGains: 'handleFiltersGainsChange',
     isAudioEqualizerEnabled:
       'handleIsAudioEqualizerEnabledChange'
   },
+  beforeMount () {
+    this.filters.forEach(
+      filterData => {
+        filterData.key = generateKey()
+      }
+    )
+
+    this.audioEqualizerGains.forEach(
+      (
+        value,
+        index
+      ) => {
+        this.setFilterGain(
+          {
+            index,
+            value
+          }
+        )
+      }
+    )
+  },
   mounted () {
     if (this.isAudioEqualizerEnabled) {
-      this.setAudioConnections()
+      this.toggleAudioConnections(
+        true
+      )
     }
   },
   beforeUnmount () {
     if (this.isAudioEqualizerEnabled) {
-      this.resetAudioConnections()
+      this.toggleAudioConnections(
+        false
+      )
     }
   },
   methods: {
+    handleFiltersGainsChange (
+      value
+    ) {
+      updateGlobalStore(
+        {
+          'audio.equalizerGains': value
+        }
+      )
+    },
     handleIsAudioEqualizerEnabledChange (
       value
     ) {
-      if (value) {
-        this.setAudioConnections()
-      } else {
-        this.resetAudioConnections()
+      this.toggleAudioConnections(
+        value
+      )
+    },
+    handleFilterInit (
+      {
+        index,
+        filterElement
       }
+    ) {
+      this.setFilterElement(
+        {
+          index,
+          value: filterElement
+        }
+      )
+    },
+    handleFilterMove (
+      {
+        index,
+        value
+      }
+    ) {
+      this.setFilterElementGain(
+        {
+          index,
+          value
+        }
+      )
     },
     handleClearButtonClick () {
-      const equalizers = [
-        ...this.audioEqualizers
-      ]
-
-      function resetEqualizer (
-        equalizerData
-      ) {
-        equalizerData.gain = 0
-      }
-
-      equalizers.forEach(
-        resetEqualizer
-      )
-
-      updateGlobalStore(
-        {
-          'audio.equalizers': equalizers
+      this.filters.forEach(
+        (
+          _,
+          index
+        ) => {
+          this.resetFilterGain(
+            {
+              index
+            }
+          )
         }
       )
     },
-    handleEqualizerChange (
-      data
-    ) {
-      function isMatchedEqualizer (
-        equalizerData
-      ) {
-        return (
-          equalizerData.key === data.key
-        )
-      }
-
-      const equalizers = [
-        ...this.audioEqualizers
-      ]
-
-      const equalizer =
-        equalizers.find(
-          isMatchedEqualizer
-        )
-
-      Object.assign(
-        equalizer,
-        data
-      )
-
-      updateGlobalStore(
-        {
-          'audio.equalizers': equalizers
-        }
-      )
-    },
-    formatEqualizerData (
+    handleFilterChange (
       {
-        key
+        index,
+        value
       }
     ) {
-      return this.$refs[
-        key
-      ][0].equalizer
-    },
-    setAudioConnections () {
-      this.toggleAudioConnections(
-        true
+      this.setFilterGain(
+        {
+          index,
+          value
+        }
       )
+    },
+    setFilterElement (
+      {
+        index,
+        value
+      }
+    ) {
+      this.filters[index].filterElement = value
+    },
+    setFilterGain (
+      {
+        index,
+        value
+      }
+    ) {
+      this.filters[index].gain = value
+    },
+    resetFilterGain (
+      {
+        index
+      }
+    ) {
+      this.setFilterGain(
+        {
+          index,
+          value: 0
+        }
+      )
+    },
+    setFilterElementGain (
+      {
+        index,
+        value
+      }
+    ) {
+      this.filters[index].filterElement.gain.value = value
     },
     toggleAudioConnections (
       boolean
     ) {
-      const maxCount = (
-        this.audioItems.length - 1
-      )
-
-      function toggleConnection (
-        first,
-        second
+      function toggleAudioConnection (
+        audioItem,
+        index,
+        audioItems
       ) {
-        const action = (
-          boolean ? 'connect' : 'disconnect'
-        )
+        const nextAudioItem = audioItems[index + 1]
 
-        try {
-          first[
-            action
-          ](
-            second
+        if (!nextAudioItem) { return }
+
+        if (boolean) {
+          audioItem.connect(
+            nextAudioItem
           )
-        } catch {
-          return null
+        } else {
+          audioItem.disconnect(
+            nextAudioItem
+          )
         }
       }
 
-      for (
-        let i = 0;
-        i < maxCount;
-        i++
-      ) {
-        toggleConnection(
-          this.audioItems[i],
-          this.audioItems[i + 1]
-        )
-      }
-    },
-    resetAudioConnections () {
-      this.toggleAudioConnections(
-        false
+      this.audioItems.forEach(
+        toggleAudioConnection
       )
     }
   }

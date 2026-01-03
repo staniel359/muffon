@@ -252,10 +252,9 @@ export default {
     setAudioSourceData () {
       if (!this.audioSource) {
         const source =
-          this.audioContext
-            .createMediaElementSource(
-              this.$refs.audio
-            )
+          this.audioContext.createMediaElementSource(
+            this.$refs.audio
+          )
 
         this.setAudioSource(
           source

@@ -1,11 +1,12 @@
 <template>
   <BaseButton
     class="basic mini compact circular main-right-small-section"
-    icon="clear"
     :class="{
       red: isRed
     }"
     :is-invertable="isInvertable"
+    :icon="icon"
+    :text="text"
     @click.prevent.stop="handleClick"
     @active-change="handleActiveChange"
   />
@@ -24,12 +25,35 @@ export default {
       type: Boolean,
       default: true
     },
-    isInvertable: Boolean
+    isWithIcon: {
+      type: Boolean,
+      default: true
+    },
+    isInvertable: Boolean,
+    action: String
   },
   emits: [
     'click',
     'activeChange'
   ],
+  computed: {
+    icon () {
+      if (this.isWithIcon) {
+        return 'clear'
+      } else {
+        return null
+      }
+    },
+    text () {
+      if (this.action) {
+        return this.$t(
+          `actions.${this.action}`
+        )
+      } else {
+        return null
+      }
+    }
+  },
   methods: {
     handleClick (
       event

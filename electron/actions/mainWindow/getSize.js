@@ -3,7 +3,9 @@ import {
 } from '../../helpers/utils.js'
 
 export default async function () {
-  await wait(1)
+  await wait(
+    1
+  )
 
   const [
     width,

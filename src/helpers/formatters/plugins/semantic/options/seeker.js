@@ -108,7 +108,7 @@ export function scrobblePercent (
   }
 }
 
-export function audioEqualizer (
+export function audioEqualizerFilter (
   {
     start
   }

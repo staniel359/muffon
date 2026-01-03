@@ -1,6 +1,6 @@
 <template>
   <div
-    class="equalizer-item middle-aligned-column"
+    class="filter-item middle-aligned-column"
     :class="{
       inverted: isDarkMode,
       disabled: isDisabled
@@ -8,7 +8,7 @@
   >
     <BaseSeeker
       ref="seeker"
-      class="vertical reversed labeled ticked audio-equalizer-seeker main-bottom-extrasmall-section"
+      class="vertical reversed labeled ticked filter-seeker main-bottom-extrasmall-section"
       :options="seekerOptions"
       :is-disabled="isDisabled"
       @move="handleMove"
@@ -36,36 +36,36 @@ import layoutStore from '@/stores/layout'
 import BaseHeader from '@/components/headers/BaseHeader.vue'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
-  audioEqualizer as audioEqualizerSeekerOptions
+  audioEqualizerFilter as audioEqualizerFilterSeekerOptions
 } from '@/helpers/formatters/plugins/semantic/options/seeker'
 
 export default {
-  name: 'EqualizerItem',
+  name: 'FilterItem',
   components: {
     BaseHeader,
     BaseSeeker
   },
   props: {
-    equalizerData: {
+    filterData: {
       type: Object,
+      required: true
+    },
+    index: {
+      type: Number,
       required: true
     }
   },
   emits: [
+    'init',
+    'move',
     'change'
   ],
-  data () {
-    return {
-      equalizer: null
-    }
-  },
   computed: {
     ...mapState(
       audioStore,
       {
         audioContext: 'context',
-        isAudioEqualizerEnabled:
-          'isEqualizerEnabled'
+        isAudioEqualizerEnabled: 'isEqualizerEnabled'
       }
     ),
     ...mapState(
@@ -75,33 +75,30 @@ export default {
       ]
     ),
     seekerOptions () {
-      return audioEqualizerSeekerOptions(
+      return audioEqualizerFilterSeekerOptions(
         {
-          start: this.equalizerGain
+          start: this.gain
         }
       )
     },
-    equalizerType () {
-      return this.equalizerData.type
-    },
-    equalizerFrequency () {
-      return this.equalizerData.frequency
-    },
-    equalizerGain () {
-      return this.equalizerData.gain
+    gain () {
+      return this.filterData.gain
     },
     frequencyTextFormatted () {
-      if (this.equalizerFrequency >= 1000) {
+      if (this.frequency >= 1000) {
         return this.frequencyKilohertzText
       } else {
         return this.frequencyHertzText
       }
     },
+    frequency () {
+      return this.filterData.frequency
+    },
     frequencyKilohertzText () {
       return this.$t(
         'player.audio.equalizer.kilohertz',
         {
-          value: this.equalizerFrequency / 1000
+          value: this.frequency / 1000
         }
       )
     },
@@ -109,67 +106,74 @@ export default {
       return this.$t(
         'player.audio.equalizer.hertz',
         {
-          value: this.equalizerFrequency
+          value: this.frequency
         }
       )
     },
-    equalizerKey () {
-      return this.equalizerData.key
-    },
     isDisabled () {
       return !this.isAudioEqualizerEnabled
+    },
+    type () {
+      return this.filterData.type
     }
   },
   watch: {
-    equalizerData: {
-      immediate: true,
-      handler: 'handleEqualizerDataChange'
-    }
+    gain: 'handleGainChange'
   },
   mounted () {
-    this.equalizer =
-      this.audioContext
-        .createBiquadFilter()
-
-    this.equalizer.type =
-      this.equalizerType
-
-    this.equalizer.frequency.value =
-      this.equalizerFrequency
+    this.initFilterElement()
   },
   methods: {
-    async handleEqualizerDataChange (
-      {
-        gain
-      }
+    handleGainChange (
+      value
     ) {
-      await this.$nextTick()
-
-      this.setSeekerGain(
-        gain
+      this.setSeekerValue(
+        value
       )
     },
     handleMove (
       value
     ) {
-      this.setGain(
-        value
+      this.$emit(
+        'move',
+        {
+          index: this.index,
+          value
+        }
       )
     },
     handleMouseUp (
       value
     ) {
-      const data = {
-        key: this.equalizerKey,
-        gain: value
-      }
-
       this.$emit(
         'change',
-        data
+        {
+          index: this.index,
+          value
+        }
       )
     },
-    setSeekerGain (
+    initFilterElement () {
+      const filterElement =
+        this.audioContext.createBiquadFilter()
+
+      filterElement.type = this.type
+
+      filterElement.frequency.value = this.frequency
+
+      filterElement.Q.value = 1
+
+      filterElement.gain.value = this.gain
+
+      this.$emit(
+        'init',
+        {
+          index: this.index,
+          filterElement
+        }
+      )
+    },
+    setSeekerValue (
       value
     ) {
       this.$refs
@@ -177,13 +181,6 @@ export default {
         .setValue(
           value
         )
-    },
-    setGain (
-      value
-    ) {
-      this.equalizer
-        .gain
-        .value = value
     }
   }
 }

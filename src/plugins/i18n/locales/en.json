@@ -156,6 +156,7 @@
     "play": "Play",
     "shuffle": "Shuffle",
     "loop": "Loop",
+    "reset": "Reset",
     "addFrom": {
       "search": "From search",
       "library": "From library"

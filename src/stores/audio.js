@@ -18,7 +18,7 @@ const data = {
       volume: null,
       status: 'stop',
       isEqualizerEnabled: null,
-      equalizers: null,
+      equalizerGains: null,
       isStartedLoading: false
     }
   },
@@ -103,10 +103,10 @@ const data = {
     ) {
       this.isEqualizerEnabled = value
     },
-    setEqualizers (
+    setEqualizerGains (
       value
     ) {
-      this.equalizers = value
+      this.equalizerGains = value
     },
     setIsStartedLoading (
       value

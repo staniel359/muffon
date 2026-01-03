@@ -14,7 +14,7 @@ function handleBeforeSendHeaders (
 ) {
   const requestHeaders = {
     ...details.requestHeaders,
-    'Referer': 'https://music.youtube.com/'
+    Referer: 'https://music.youtube.com/'
   }
 
   callback(
