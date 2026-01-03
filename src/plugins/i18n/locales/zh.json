@@ -696,8 +696,7 @@
     "success": {
       "header": {
         "files": "{counter}首曲目已成功导入 | {counter}首曲目已成功导入"
-      },
-      "content": "在添加到音乐库之前，请先预览数据"
+      }
     },
     "error": {
       "files": "{counter}首曲目未能导入。请检查元数据格式是否正确："

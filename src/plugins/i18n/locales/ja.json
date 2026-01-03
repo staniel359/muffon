@@ -156,6 +156,7 @@
     "play": "再生",
     "shuffle": "シャッフル",
     "loop": "ループ",
+    "reset": "リセット",
     "addFrom": {
       "search": "検索から追加",
       "library": "ライブラリから追加"
@@ -196,6 +197,11 @@
       "watched": "視聴済みに追加",
       "queue": "キューに追加",
       "savedTracks": "保存済みトラックに追加"
+    },
+    "goTo": {
+      "video": "動画ページへ",
+      "library": "ライブラリーページへ",
+      "page": "ページへ"
     },
     "deleteFrom": {
       "favorites": "お気に入りから削除",
@@ -692,6 +698,9 @@
   "recommendation": {
     "similar": "{counter} に類似:"
   },
+  "get": {
+    "active": "{counter} 件中 {count} 件を取得中…"
+  },
   "import": {
     "lastfm": {
       "historyVisible": "インポートする前に、Last.FMの聴取履歴が表示されていることを確認してください。"
@@ -701,9 +710,9 @@
       "header": {
         "files": "{counter} がインポートされました | {counter} がインポートされました",
         "tracks": "{counter} がインポートされました | {counter} がインポートされました",
-        "playlists": "{counter}がインポートされました | {counter}がインポートされました"
+        "playlists": "{counter} がインポートされました | {counter} がインポートされました"
       },
-      "content": "ライブラリに保存する前にデータを確認することをお勧めします。"
+      "content": "保存前にデータを確認したほうがよさそうです"
     },
     "error": {
       "files": "{counter} はインポートできませんでした。メタデータの形式が正しいことを確認してください:"
@@ -846,7 +855,9 @@
     "membersCountAsc": "最少メンバー"
   },
   "deletedModel": {
-    "profile": "削除されたプロフィール"
+    "profile": "削除されたプロフィール",
+    "playlist": "削除済みのプレイリスト",
+    "community": "削除済みのコミュニティ"
   },
   "events": {
     "created": {

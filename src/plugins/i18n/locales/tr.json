@@ -707,8 +707,7 @@
         "files": "{counter} içe aktarıldı | {counter} içe aktarıldı",
         "tracks": "{counter} içe aktarıldı | {counter} içe aktarıldı",
         "playlists": "{counter} içe aktarıldı | {counter} içe aktarıldı"
-      },
-      "content": "Kütüphanenize kaydetmeden önce verilerinizi incelemek isteyebilirsiniz"
+      }
     },
     "error": {
       "files": "{counter} içe aktarılamadı. Lütfen metadata doğru biçimlendirildiğinden emin olun:"

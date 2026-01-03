@@ -698,8 +698,7 @@
       "header": {
         "files": "{counter} został zaimportowany | {counter} zostały zaimportowane | {counter} zostało zaimportowanych",
         "tracks": "{counter} został zaimportowany | {counter} zostały zaimportowane | {counter} zostało zaimportowanych"
-      },
-      "content": "Warto sprawdzić dane przed zapisaniem ich w bibliotece"
+      }
     },
     "error": {
       "files": "{counter} nie udało się zaimportować. Proszę upewnić się że metadata format jest poprawny:"

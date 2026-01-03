@@ -698,8 +698,7 @@
       "header": {
         "files": "{counter} se ha importado | {counter} han importado",
         "tracks": "{counter} se ha importado | {counter} han importado"
-      },
-      "content": "Es posible que desees verificar los datos antes de guardar a la bibleoteca"
+      }
     },
     "error": {
       "files": "{counter} no se pudo importar. Por favor, asegurase de que el formato de metadatos es válido:"

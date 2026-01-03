@@ -702,8 +702,7 @@
         "files": "{counter} arquivo foi importado | {counter} arquivos foram importados",
         "tracks": "{counter} faixa foi importada | {counter} faixas tracks foram importadas",
         "playlists": "{counter} playlist foi importado | {counter} playlists foram importadas"
-      },
-      "content": "Você pode querer verificar os dados antes de salvar na biblioteca"
+      }
     },
     "error": {
       "files": "{counter} não pôde ser importado. Verifique se o formato dos metadados está correto:"

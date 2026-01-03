@@ -702,8 +702,7 @@
         "files": "יובאו {counter} | יובאו {counter}",
         "tracks": "יובאו {counter} | יובאו {counter}",
         "playlists": "יובא {counter} | יובאו {counter}"
-      },
-      "content": "יתכן שתרצה לבדוק את הנתונים לפני השמירה בספרייה"
+      }
     },
     "error": {
       "files": "{counter} לא ניתן לייבוא. אנא וודא שפורמט המטאדאטה תקין:"

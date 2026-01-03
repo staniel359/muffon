@@ -156,6 +156,7 @@
     "play": "Abspielen",
     "shuffle": "Zufallswiedergabe",
     "loop": "Schleife",
+    "reset": "Zurücksetzen",
     "addFrom": {
       "search": "Von der Suche",
       "library": "Von der Bibliothek"
@@ -697,6 +698,9 @@
   "recommendation": {
     "similar": "Ähnlich zu {counter}:"
   },
+  "get": {
+    "active": "Abrufen von {count} von {count}..."
+  },
   "import": {
     "lastfm": {
       "historyVisible": "Stellen Sie vor dem Import sicher, dass Ihr Last.FM-Hörverlauf sichtbar ist."
@@ -707,8 +711,7 @@
         "files": "{counter} wurde importiert | {counter} wurden importiert",
         "tracks": "{counter} wurde importiert | {counter} wurden importiert",
         "playlists": "{counter} wurde importiert | {counter} wurden importiert"
-      },
-      "content": "Möglicherweise möchten Sie die Daten vor dem Speichern in der Bibliothek überprüfen"
+      }
     },
     "error": {
       "files": "{counter} konnte nicht importiert werden. Bitte stellen Sie sicher, dass das Metadatenformat korrekt ist:"
@@ -851,7 +854,9 @@
     "membersCountAsc": "Wengiste Mitglieder"
   },
   "deletedModel": {
-    "profile": "Deleted profile"
+    "profile": "Deleted profile",
+    "playlist": "Gelöschte playlist",
+    "community": "Gelöschte community"
   },
   "events": {
     "created": {

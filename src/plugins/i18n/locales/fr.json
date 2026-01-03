@@ -702,8 +702,7 @@
         "files": "{counter} on bien était importé | {counter} on bien était importé",
         "tracks": "{counter} on bien était importé | {counter} on bien était importé",
         "playlists": "{counter} a été importée | {counter} ont été importées"
-      },
-      "content": "Vous pouvez vérifier les données avant de les enregistrer dans la bibliothèque."
+      }
     },
     "error": {
       "files": "{counter} n'a pas pu être importé. Veuillez vous assurer que le format des métadonnées est valide :"

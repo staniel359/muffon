@@ -698,8 +698,7 @@
       "header": {
         "files": "{counter} importato | {counter} importati",
         "tracks": "{counter} importato | {counter} importati"
-      },
-      "content": "Potresti voler controllare i dati prima di salvare in libreria"
+      }
     },
     "error": {
       "files": "{counter} non importato. Assicurati che il formato dei metadata sia valido:"
