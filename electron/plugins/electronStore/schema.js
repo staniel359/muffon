@@ -271,10 +271,6 @@ export default {
     ],
     default: null
   },
-  'profile.isAnonymous': {
-    type: 'boolean',
-    default: false
-  },
   'profile.isRemember': {
     type: 'boolean',
     default: false
@@ -374,6 +370,10 @@ export default {
     default: 'artists'
   },
   'search.isResultsFullSize': {
+    type: 'boolean',
+    default: false
+  },
+  'session.isGuest': {
     type: 'boolean',
     default: false
   },

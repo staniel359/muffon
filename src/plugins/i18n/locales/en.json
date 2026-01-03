@@ -666,9 +666,9 @@
       "content": "Now you may go back and login"
     }
   },
-  "anonymous": {
-    "continue": "Continue anonymously",
-    "nickname": "Anonymous"
+  "guest": {
+    "continue": "Continue as a guest",
+    "nickname": "Guest"
   },
   "roles": {
     "creator": "Creator"

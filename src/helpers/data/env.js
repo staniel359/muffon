@@ -1,5 +1,5 @@
-export const anonymousToken =
-  import.meta.env.VITE_APP_ANONYMOUS_TOKEN
+export const guestToken =
+  import.meta.env.VITE_APP_GUEST_TOKEN
 
 export const shareEncryptionKey =
   import.meta.env.VITE_APP_SHARE_ENCRYPTION_KEY

@@ -46,7 +46,7 @@ import {
   search as searchInputOptions
 } from '@/helpers/formatters/plugins/semantic/options/input'
 import {
-  anonymousToken
+  guestToken
 } from '@/helpers/data/env'
 import transparencyMixin from '@/mixins/transparencyMixin'
 import {
@@ -112,8 +112,7 @@ export default {
     },
     token () {
       return (
-        this.profileToken ||
-          anonymousToken
+        this.profileToken || guestToken
       )
     },
     scopeClass () {

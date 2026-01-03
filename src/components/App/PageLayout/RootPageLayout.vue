@@ -13,8 +13,8 @@
 
   <TheBackgroundObserver />
 
-  <TheAnonymousPlayingObserver
-    v-if="isProfileAnonymous"
+  <TheGuestPlayingObserver
+    v-if="isGuest"
   />
   <ThePlayingObserver
     v-else-if="profileId"
@@ -50,6 +50,8 @@ import {
 } from 'pinia'
 import playerStore from '@/stores/player'
 import profileStore from '@/stores/profile'
+import sessionStore from '@/stores/session'
+
 import TheLoginObserver
   from '@/components/layout/observers/TheLoginObserver.vue'
 import TheLogoutObserver
@@ -76,10 +78,10 @@ const TheOnlineObserver =
       '@/components/layout/observers/TheOnlineObserver.vue'
     )
   )
-const TheAnonymousPlayingObserver =
+const TheGuestPlayingObserver =
   defineAsyncComponent(
     () => import(
-      '@/components/layout/observers/TheAnonymousPlayingObserver.vue'
+      '@/components/layout/observers/TheGuestPlayingObserver.vue'
     )
   )
 const ThePlayingObserver =
@@ -110,7 +112,7 @@ export default {
     TheAccountDeleteObserver,
     TheNativeThemeObserver,
     TheBackgroundObserver,
-    TheAnonymousPlayingObserver,
+    TheGuestPlayingObserver,
     ThePlayingObserver,
     TheScrobbleObserver,
     TheBrowserObserver,
@@ -132,9 +134,14 @@ export default {
     ...mapState(
       profileStore,
       {
-        profileId: 'id',
-        isProfileAnonymous: 'isAnonymous'
+        profileId: 'id'
       }
+    ),
+    ...mapState(
+      sessionStore,
+      [
+        'isGuest'
+      ]
     ),
     isRenderScrobbleObserver () {
       return (

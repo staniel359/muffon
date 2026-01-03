@@ -7,7 +7,7 @@
       @click="handleLinkClick"
     >
       <strong
-        v-text="anonymousText"
+        v-text="text"
       />
 
       <BaseIcon
@@ -28,15 +28,15 @@ import {
 } from '@/helpers/actions/store/global'
 
 export default {
-  name: 'AnonymousSegment',
+  name: 'GuestSegment',
   components: {
     BaseSegmentContainer,
     BaseIcon
   },
   computed: {
-    anonymousText () {
+    text () {
       return this.$t(
-        'anonymous.continue'
+        'guest.continue'
       )
     }
   },
@@ -44,7 +44,7 @@ export default {
     handleLinkClick () {
       updateGlobalStore(
         {
-          'profile.isAnonymous': true
+          'session.isGuest': true
         }
       )
     }

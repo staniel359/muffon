@@ -68,7 +68,7 @@ jobs:
           touch .env
           echo VITE_APP_ELECTRON_STORE_KEY=${{ secrets.ELECTRON_STORE_KEY }} >> .env
           echo VITE_APP_SHARE_ENCRYPTION_KEY=${{ secrets.SHARE_ENCRYPTION_KEY }} >> .env
-          echo VITE_APP_ANONYMOUS_TOKEN=${{ secrets.ANONYMOUS_TOKEN }} >> .env
+          echo VITE_APP_GUEST_TOKEN=${{ secrets.GUEST_TOKEN }} >> .env
           echo VITE_APP_DISCORD_CLIENT_ID=${{ secrets.DISCORD_CLIENT_ID }} >> .env
           cat .env
 

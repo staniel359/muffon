@@ -64,21 +64,21 @@ export default {
           icon: 'app',
           scope: 'app',
           component: 'AppSettings',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode: 'settings.tabs.profile',
           icon: 'profile',
           scope: 'profile',
           component: 'ProfileSettings',
-          isAnonymous: false
+          isGuest: false
         },
         {
           nameCode: 'settings.tabs.connections',
           icon: 'connection',
           scope: 'connections',
           component: 'ConnectionsSettings',
-          isAnonymous: false
+          isGuest: false
         }
       ]
     }
@@ -94,12 +94,12 @@ export default {
       if (this.profileId) {
         return this.tabs
       } else {
-        return this.anonymousTabs
+        return this.guestTabs
       }
     },
-    anonymousTabs () {
+    guestTabs () {
       return this.tabs.filter(
-        this.isAnonymousTab
+        this.isGuestTab
       )
     }
   },
@@ -109,10 +109,10 @@ export default {
         .modal
         .show()
     },
-    isAnonymousTab (
+    isGuestTab (
       tabData
     ) {
-      return tabData.isAnonymous
+      return tabData.isGuest
     }
   }
 }

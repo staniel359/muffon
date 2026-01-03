@@ -37,15 +37,15 @@ export default {
     profileNicknameConditional () {
       return (
         this.profileNickname ||
-          this.anonymousNickname
+          this.guestNickname
       )
     },
     profileNickname () {
       return this.profileInfo?.nickname
     },
-    anonymousNickname () {
+    guestNickname () {
       return this.$t(
-        'anonymous.nickname'
+        'guest.nickname'
       )
     }
   }

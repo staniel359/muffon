@@ -10,6 +10,7 @@ import queueStore from '@/stores/queue'
 import recommendationArtistsStore from '@/stores/recommendationArtists'
 import recommendationTracksStore from '@/stores/recommendationTracks'
 import searchStore from '@/stores/search'
+import sessionStore from '@/stores/session'
 import sidebarStore from '@/stores/sidebar'
 import systemStore from '@/stores/system'
 import topStore from '@/stores/top'
@@ -39,6 +40,7 @@ const stores = {
   recommendationTracks:
     recommendationTracksStore,
   search: searchStore,
+  session: sessionStore,
   sidebar: sidebarStore,
   system: systemStore,
   top: topStore,

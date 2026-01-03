@@ -45,6 +45,8 @@ import {
 } from 'pinia'
 import profileStore from '@/stores/profile'
 import playerStore from '@/stores/player'
+import sessionStore from '@/stores/session'
+
 import TheMediaKeysObserver
   from '@/components/layout/observers/TheMediaKeysObserver.vue'
 import TheExternalUrlsObserver
@@ -61,6 +63,7 @@ import TheScrollToTopButton from '@/components/layout/TheScrollToTopButton.vue'
 import TheDonateModal from '@/components/layout/modals/TheDonateModal.vue'
 import TheLoaderDimmer from '@/components/layout/TheLoaderDimmer.vue'
 import TheView from '@/components/layout/TheView.vue'
+
 import {
   generateKey
 } from '@/helpers/utils'
@@ -104,8 +107,7 @@ export default {
     ...mapState(
       profileStore,
       {
-        profileId: 'id',
-        isProfileAnonymous: 'isAnonymous'
+        profileId: 'id'
       }
     ),
     ...mapState(
@@ -113,6 +115,12 @@ export default {
       {
         playerPlaying: 'playing'
       }
+    ),
+    ...mapState(
+      sessionStore,
+      [
+        'isGuest'
+      ]
     ),
     isRenderPlayerObserver () {
       return (
@@ -122,8 +130,7 @@ export default {
     },
     isLoggedIn () {
       return (
-        this.profileId ||
-          this.isProfileAnonymous
+        this.profileId || this.isGuest
       )
     }
   },

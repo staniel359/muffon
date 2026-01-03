@@ -52,17 +52,17 @@ export default {
         {
           nameCode: 'navigation.activity',
           component: 'ActivityTab',
-          isAnonymous: false
+          isGuest: false
         },
         {
           nameCode: 'navigation.player',
           component: 'PlayerTab',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode: 'navigation.browser',
           component: 'BrowserTab',
-          isAnonymous: true
+          isGuest: true
         }
       ]
     }
@@ -78,20 +78,20 @@ export default {
       if (this.profileId) {
         return this.tabs
       } else {
-        return this.anonymousTabs
+        return this.guestTabs
       }
     },
-    anonymousTabs () {
+    guestTabs () {
       return this.tabs.filter(
-        this.isAnonymousTab
+        this.isGuestTab
       )
     }
   },
   methods: {
-    isAnonymousTab (
+    isGuestTab (
       tabData
     ) {
-      return tabData.isAnonymous
+      return tabData.isGuest
     }
   }
 }

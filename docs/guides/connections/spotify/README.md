@@ -3,7 +3,7 @@ This document is made to serve as a guide for setting up Spotify Integration ins
 Connecting your Spotify account to muffon is a fairly complicated task for the non tech-savvy and this document is aimed to make it simpler for them.
 
 # Prerequisites
-- **Ensure you are logged in to muffon.** muffon allows you to do certain activities while being anonymous, and this feature is **NOT** one of them.
+- **Ensure you are logged in to muffon.** muffon allows you to do certain activities while being a guest, and this feature is **NOT** one of them.
 - **Have Spotify account.**
 
 That's it, that's what you initially need.

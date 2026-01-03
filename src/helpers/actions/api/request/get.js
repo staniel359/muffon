@@ -4,7 +4,7 @@ import {
   snakeCase
 } from 'change-case'
 import {
-  anonymousToken
+  guestToken
 } from '@/helpers/data/env'
 import {
   version
@@ -44,7 +44,7 @@ export default function (
     }),
     ...(isWithSelfToken && {
       token: (
-        token || anonymousToken
+        token || guestToken
       )
     }),
     ...(isWithSelfLanguage && {

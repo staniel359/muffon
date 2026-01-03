@@ -98,7 +98,7 @@ export default {
       } else if (this.profileId) {
         this.deleteProfileHistory()
       } else {
-        this.deleteAnonymousHistory()
+        this.deleteGuestHistory()
       }
     },
     handleIsSuccessChange (
@@ -115,7 +115,7 @@ export default {
         this.historyArgs
       )
     },
-    async deleteAnonymousHistory () {
+    async deleteGuestHistory () {
       this.isSuccess = false
       this.isLoading = true
 

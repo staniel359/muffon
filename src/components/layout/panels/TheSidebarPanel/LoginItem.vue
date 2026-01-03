@@ -28,7 +28,7 @@ export default {
     handleClick () {
       updateGlobalStore(
         {
-          'profile.isAnonymous': false
+          'session.isGuest': false
         }
       )
     }

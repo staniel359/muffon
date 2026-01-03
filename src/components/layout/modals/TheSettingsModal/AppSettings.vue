@@ -72,7 +72,7 @@ export default {
           icon: 'interface',
           scope: 'interface',
           component: 'InterfaceOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode:
@@ -80,7 +80,7 @@ export default {
           icon: 'theme',
           scope: 'theme',
           component: 'ThemeOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode:
@@ -88,7 +88,7 @@ export default {
           icon: 'window',
           scope: 'window',
           component: 'WindowOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode:
@@ -96,7 +96,7 @@ export default {
           icon: 'tabs',
           scope: 'tabs',
           component: 'TabsOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode:
@@ -104,42 +104,42 @@ export default {
           icon: 'sidebar',
           scope: 'sidebar',
           component: 'SidebarOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode: 'navigation.home',
           icon: 'home',
           scope: 'home',
           component: 'HomePageOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode: 'navigation.search',
           icon: 'search',
           scope: 'search',
           component: 'SearchOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode: 'navigation.player',
           icon: 'player',
           scope: 'player',
           component: 'PlayerOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode: 'navigation.queue',
           icon: 'queue',
           scope: 'queue',
           component: 'QueueOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode: 'navigation.videos',
           icon: 'video',
           scope: 'video',
           component: 'VideoOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode:
@@ -148,28 +148,28 @@ export default {
           scope: 'recommendations',
           component:
             'RecommendationsOptions',
-          isAnonymous: false
+          isGuest: false
         },
         {
           nameCode: 'navigation.top',
           icon: 'top',
           scope: 'top',
           component: 'TopOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode: 'navigation.lyrics',
           icon: 'lyrics',
           scope: 'lyrics',
           component: 'LyricsOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode: 'navigation.history',
           icon: 'history',
           scope: 'history',
           component: 'HistoryOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode:
@@ -177,7 +177,7 @@ export default {
           icon: 'system',
           scope: 'system',
           component: 'SystemOptions',
-          isAnonymous: true
+          isGuest: true
         },
         {
           nameCode:
@@ -185,7 +185,7 @@ export default {
           icon: 'updates',
           scope: 'updates',
           component: 'UpdatesOptions',
-          isAnonymous: true
+          isGuest: true
         }
       ]
     }
@@ -201,20 +201,20 @@ export default {
       if (this.profileId) {
         return this.tabs
       } else {
-        return this.anonymousTabs
+        return this.guestTabs
       }
     },
-    anonymousTabs () {
+    guestTabs () {
       return this.tabs.filter(
-        this.isAnonymousTab
+        this.isGuestTab
       )
     }
   },
   methods: {
-    isAnonymousTab (
+    isGuestTab (
       tabData
     ) {
-      return tabData.isAnonymous
+      return tabData.isGuest
     }
   }
 }

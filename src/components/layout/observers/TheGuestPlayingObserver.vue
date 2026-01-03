@@ -1,6 +1,6 @@
 <template>
   <div
-    id="the-anonymous-playing-observer"
+    id="the-guest-playing-observer"
   />
 </template>
 
@@ -10,12 +10,13 @@ import {
 } from 'pinia'
 import playerStore from '@/stores/player'
 import historyStore from '@/stores/history'
+
 import {
   playing as formatPlaying
 } from '@/helpers/formatters'
 
 export default {
-  name: 'TheAnonymousPlayingObserver',
+  name: 'TheGuestPlayingObserver',
   computed: {
     ...mapState(
       playerStore,
@@ -45,8 +46,7 @@ export default {
     }
   },
   watch: {
-    playerPlaying:
-      'handlePlayerPlayingChange'
+    playerPlaying: 'handlePlayerPlayingChange'
   },
   methods: {
     handlePlayerPlayingChange () {

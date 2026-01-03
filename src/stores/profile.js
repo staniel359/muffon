@@ -12,7 +12,6 @@ const data = {
       language: null,
       isShowPlaying: null,
       timezone: null,
-      isAnonymous: null,
       connections: null
     }
   },
@@ -51,11 +50,6 @@ const data = {
       value
     ) {
       this.timezone = value
-    },
-    setIsAnonymous (
-      value
-    ) {
-      this.isAnonymous = value
     },
     setConnections (
       value

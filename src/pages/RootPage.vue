@@ -15,6 +15,7 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
+import sessionStore from '@/stores/session'
 
 const TheBrowserTabs =
   defineAsyncComponent(
@@ -39,14 +40,18 @@ export default {
     ...mapState(
       profileStore,
       {
-        profileId: 'id',
-        isProfileAnonymous: 'isAnonymous'
+        profileId: 'id'
       }
+    ),
+    ...mapState(
+      sessionStore,
+      [
+        'isGuest'
+      ]
     ),
     isRenderBrowserTabs () {
       return (
-        this.isProfileAnonymous ||
-          this.profileId
+        this.isGuest || this.profileId
       )
     }
   }

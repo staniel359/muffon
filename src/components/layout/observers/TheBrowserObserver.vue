@@ -10,6 +10,8 @@ import {
 } from 'pinia'
 import profileStore from '@/stores/profile'
 import historyStore from '@/stores/history'
+import sessionStore from '@/stores/session'
+
 import {
   currentTime as formatCurrentTime
 } from '@/helpers/formatters/dateTimeString'
@@ -21,8 +23,7 @@ export default {
     ...mapState(
       profileStore,
       {
-        profileId: 'id',
-        isProfileAnonymous: 'isAnonymous'
+        profileId: 'id'
       }
     ),
     ...mapState(
@@ -30,6 +31,12 @@ export default {
       {
         isSaveBrowserHistory: 'isSaveBrowser'
       }
+    ),
+    ...mapState(
+      sessionStore,
+      [
+        'isGuest'
+      ]
     )
   },
   mounted () {
@@ -54,8 +61,8 @@ export default {
     addRouteToHistory (
       value
     ) {
-      if (this.isProfileAnonymous) {
-        this.addRouteToAnonymousHistory(
+      if (this.isGuest) {
+        this.addRouteToGuestHistory(
           value
         )
       } else if (this.profileId) {
@@ -64,7 +71,7 @@ export default {
         )
       }
     },
-    addRouteToAnonymousHistory (
+    addRouteToGuestHistory (
       value
     ) {
       value.created =

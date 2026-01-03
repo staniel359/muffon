@@ -1,7 +1,7 @@
 import profileStore from '@/stores/profile'
 import axios from 'axios'
 import {
-  anonymousToken
+  guestToken
 } from '@/helpers/data/env'
 import {
   version
@@ -38,7 +38,7 @@ export default function (
     }),
     ...(isWithSelfToken && {
       token: (
-        token || anonymousToken
+        token || guestToken
       )
     }),
     version

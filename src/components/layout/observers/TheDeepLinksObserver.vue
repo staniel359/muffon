@@ -9,6 +9,8 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
+import sessionStore from '@/stores/session'
+
 import newTabMixin from '@/mixins/newTabMixin'
 import {
   sanitizeString
@@ -28,14 +30,18 @@ export default {
     ...mapState(
       profileStore,
       {
-        profileId: 'id',
-        isProfileAnonymous: 'isAnonymous'
+        profileId: 'id'
       }
+    ),
+    ...mapState(
+      sessionStore,
+      [
+        'isGuest'
+      ]
     ),
     isLoggedIn () {
       return (
-        this.profileId ||
-          this.isProfileAnonymous
+        this.profileId || this.isGuest
       )
     }
   },

@@ -2,7 +2,7 @@
   <BaseSegmentsContainer>
     <FormSegment />
 
-    <AnonymousSegment />
+    <GuestSegment />
 
     <PasswordResetSegment
       @password-reset-link-click="handlePasswordResetLinkClick"
@@ -24,7 +24,7 @@ import PasswordResetSegment
   from './BaseProfileLoginForm/PasswordResetSegment.vue'
 import SignupSegment from './BaseProfileLoginForm/SignupSegment.vue'
 import SettingsSegment from './BaseProfileLoginForm/SettingsSegment.vue'
-import AnonymousSegment from './BaseProfileLoginForm/AnonymousSegment.vue'
+import GuestSegment from './BaseProfileLoginForm/GuestSegment.vue'
 
 export default {
   name: 'BaseProfileLoginForm',
@@ -34,7 +34,7 @@ export default {
     PasswordResetSegment,
     SignupSegment,
     SettingsSegment,
-    AnonymousSegment
+    GuestSegment
   },
   emits: [
     'signupLinkClick',
