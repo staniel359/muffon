@@ -3,8 +3,9 @@ import getQueueTrack from '@/helpers/actions/queue/track/get'
 import {
   update as updateGlobalStore
 } from '@/helpers/actions/store/global'
+import playerStore from '@/stores/player'
 
-export default function (
+export default function getPlayerTrack (
   {
     source,
     trackData,
@@ -13,14 +14,26 @@ export default function (
     queueTracks,
     queueTracksShuffled = [],
     isQueueShuffle = false,
-    isQueueLoop = false
+    isQueueLoop = false,
+    audioSourceIndex = 0
   }
 ) {
   this.error = null
   this.isLoading = true
 
+  const {
+    audioSources
+  } = playerStore()
+
+  const audioSource =
+    audioSources[audioSourceIndex]
+
+  const sourceComputed = (
+    source || audioSource
+  )
+
   const playerTrackAudioArgs = {
-    source,
+    source: sourceComputed,
     trackData,
     isQueue
   }
@@ -73,13 +86,53 @@ export default function (
     )
   }
 
+  const searchInNextAudioSource = (
+    {
+      error
+    }
+  )  => {
+    const nextAudioSourceIndex = audioSourceIndex + 1
+
+    const nextAudioSource =
+      audioSources[nextAudioSourceIndex]
+
+    if (nextAudioSource) {
+      return getPlayerTrack.bind(
+        this
+      )(
+        {
+          trackData,
+          isQueue,
+          isContinuousList,
+          queueTracks,
+          queueTracksShuffled,
+          isQueueShuffle,
+          isQueueLoop,
+          audioSourceIndex: nextAudioSourceIndex
+        }
+      )
+    } else {
+      this.error = error
+    }
+  }
+
   const handleError = (
     error
   ) => {
     if (isContinuousList) {
       return getQueueNextTrack()
     } else {
-      this.error = error
+      const isSearchInNextAudioSource = !source
+
+      if (isSearchInNextAudioSource) {
+        return searchInNextAudioSource(
+          {
+            error
+          }
+        )
+      } else {
+        this.error = error
+      }
     }
   }
 
