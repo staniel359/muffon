@@ -885,15 +885,23 @@
   line-height: normal !important
   .header-icon
     &.small
-      @extend .main-left-extrasmall-section
       font-size: 1.2rem !important
   &.massive
     .header-icon
       &.small
-        @extend .main-left-medium-section
         font-size: 2rem !important
+  &:not(.multiline)
+    .header-icon
+      &.small
+        @extend .main-left-extrasmall-section
+    &.massive
+      .header-icon
+        &.small
+          @extend .main-left-medium-section
   &.multiline
     @extend .plain-column, .align-items-center
+    .header-icon
+      @extend .no-margin
     .header-text
       @extend .main-bottom-tiny-section
 
