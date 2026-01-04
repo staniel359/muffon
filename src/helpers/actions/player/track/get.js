@@ -15,7 +15,7 @@ export default function getPlayerTrack (
     queueTracksShuffled = [],
     isQueueShuffle = false,
     isQueueLoop = false,
-    audioSourceIndex = 0
+    audioSourceIndex
   }
 ) {
   this.error = null
@@ -28,9 +28,13 @@ export default function getPlayerTrack (
   const audioSource =
     audioSources[audioSourceIndex]
 
-  const sourceComputed = (
-    source || audioSource
-  )
+  let sourceComputed
+
+  if (audioSourceIndex == undefined) {
+    sourceComputed = source
+  } else {
+    sourceComputed = audioSource
+  }
 
   const playerTrackAudioArgs = {
     source: sourceComputed,
@@ -91,7 +95,13 @@ export default function getPlayerTrack (
       error
     }
   ) => {
-    const nextAudioSourceIndex = audioSourceIndex + 1
+    let nextAudioSourceIndex
+
+    if (audioSourceIndex == undefined) {
+      nextAudioSourceIndex = 0
+    } else {
+      nextAudioSourceIndex = audioSourceIndex + 1
+    }
 
     const nextAudioSource =
       audioSources[nextAudioSourceIndex]
