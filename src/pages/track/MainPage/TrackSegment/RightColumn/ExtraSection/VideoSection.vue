@@ -9,9 +9,10 @@
     />
 
     <BaseTrackVideoSelect
-      v-if="isActive"
+      v-show="isActive"
       class="main-bottom-section"
       :track-data="trackData"
+      @reset="handleReset"
     />
   </div>
 </template>
@@ -56,6 +57,9 @@ export default {
     },
     handleSearchButtonClick () {
       this.isActive = !this.isActive
+    },
+    handleReset () {
+      this.focus()
     },
     focus () {
       focusOnPageElement(

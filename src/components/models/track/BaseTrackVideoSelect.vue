@@ -1,7 +1,10 @@
 <template>
-  <div>
+  <div
+    :key="sectionKey"
+  >
     <BaseTrackVideoSourceSelect
       :track-data="trackData"
+      @reset="handleReset"
     />
 
     <VideoSection
@@ -39,8 +42,12 @@ export default {
   props: {
     trackData: Object
   },
+  emits: [
+    'reset'
+  ],
   data () {
     return {
+      sectionKey: null,
       videoSectionKey: null,
       selectedVideoData: null
     }
@@ -50,12 +57,25 @@ export default {
       'handleSelectedVideoDataChange'
   },
   methods: {
-    async handleSelectedVideoDataChange () {
-      this.videoSectionKey = generateKey()
+    async handleSelectedVideoDataChange (
+      value
+    ) {
+      if (value) {
+        this.videoSectionKey = generateKey()
 
-      await this.$nextTick()
+        await this.$nextTick()
 
-      this.focus()
+        this.focus()
+      }
+    },
+    handleReset () {
+      this.selectedVideoData = null
+
+      this.sectionKey = generateKey()
+
+      this.$emit(
+        'reset'
+      )
     },
     setSelectedVideoData (
       value

@@ -17,12 +17,19 @@
         </div>
       </div>
     </div>
+
+    <BaseClearButton
+      v-if="selectedSourceData"
+      @click="handleClearButtonClick"
+    />
   </div>
 </template>
 
 <script>
 import SourceSelect from './BaseTrackVideoSourceSelect/SourceSelect.vue'
 import VideoSelect from './BaseTrackVideoSourceSelect/VideoSelect.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+
 import {
   generateKey
 } from '@/helpers/utils'
@@ -31,7 +38,8 @@ export default {
   name: 'BaseTrackVideoSourceSelect',
   components: {
     SourceSelect,
-    VideoSelect
+    VideoSelect,
+    BaseClearButton
   },
   provide () {
     return {
@@ -45,6 +53,9 @@ export default {
       required: true
     }
   },
+  emits: [
+    'reset'
+  ],
   data () {
     return {
       videoSelectKey: null,
@@ -80,6 +91,11 @@ export default {
   methods: {
     handleSelectedSourceDataChange () {
       this.videoSelectKey = generateKey()
+    },
+    handleClearButtonClick () {
+      this.$emit(
+        'reset'
+      )
     },
     setSelectedSourceData (
       value
