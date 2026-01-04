@@ -30,7 +30,7 @@ export default function getPlayerTrack (
 
   let sourceComputed
 
-  if (audioSourceIndex == undefined) {
+  if (audioSourceIndex === undefined) {
     sourceComputed = source
   } else {
     sourceComputed = audioSource
@@ -97,7 +97,7 @@ export default function getPlayerTrack (
   ) => {
     let nextAudioSourceIndex
 
-    if (audioSourceIndex == undefined) {
+    if (audioSourceIndex === undefined) {
       nextAudioSourceIndex = 0
     } else {
       nextAudioSourceIndex = audioSourceIndex + 1
