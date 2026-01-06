@@ -156,6 +156,7 @@
     "play": "Reproduzir",
     "shuffle": "Aleatório",
     "loop": "Repetir",
+    "reset": "Redefinir",
     "addFrom": {
       "search": "A partir da busca",
       "library": "A partir da biblioteca"
@@ -196,6 +197,11 @@
       "watched": "Adicionar como assistido",
       "queue": "Adicionar à fila",
       "savedTracks": "Adicionar às faixas salvas"
+    },
+    "goTo": {
+      "video": "Ir para página do vídeo",
+      "library": "Ir para página da biblioteca",
+      "page": "Ir para página"
     },
     "deleteFrom": {
       "favorites": "Remover dos favoritos",
@@ -660,9 +666,9 @@
       "content": "Agora você pode voltar e fazer login"
     }
   },
-  "anonymous": {
-    "continue": "Continuar como anônimo",
-    "nickname": "Anônimo"
+  "guest": {
+    "continue": "Continuar como convidado",
+    "nickname": "Convidado"
   },
   "roles": {
     "creator": "Criador"
@@ -692,6 +698,9 @@
   "recommendation": {
     "similar": "Semelhante a {counter}:"
   },
+  "get": {
+    "active": "Obtendo {count} de {counter}..."
+  },
   "import": {
     "lastfm": {
       "historyVisible": "Antes de importar, certifique-se de que seu histórico de audições no Last.FM esteja visível."
@@ -700,9 +709,10 @@
     "success": {
       "header": {
         "files": "{counter} arquivo foi importado | {counter} arquivos foram importados",
-        "tracks": "{counter} faixa foi importada | {counter} faixas tracks foram importadas",
-        "playlists": "{counter} playlist foi importado | {counter} playlists foram importadas"
-      }
+        "tracks": "{counter} faixa foi importada | {counter} faixas foram importadas",
+        "playlists": "{counter} playlist foi importada | {counter} playlists foram importadas"
+      },
+      "content": "Você pode verificar os dados antes de salvar"
     },
     "error": {
       "files": "{counter} não pôde ser importado. Verifique se o formato dos metadados está correto:"
@@ -845,7 +855,9 @@
     "membersCountAsc": "Menos membros"
   },
   "deletedModel": {
-    "profile": "Perfil excluído"
+    "profile": "Perfil excluído",
+    "playlist": "Playlist excluída",
+    "community": "Comunidade excluída"
   },
   "events": {
     "created": {

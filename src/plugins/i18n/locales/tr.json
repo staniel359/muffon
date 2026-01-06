@@ -156,6 +156,7 @@
     "play": "Oynat",
     "shuffle": "Karıştır",
     "loop": "Döngü",
+    "reset": "Sıfırla",
     "addFrom": {
       "search": "Aratmadan",
       "library": "Kütüphaneden"
@@ -665,9 +666,9 @@
       "content": "Artık geri dönüp giriş yapabilirsiniz"
     }
   },
-  "anonymous": {
-    "continue": "Anonim olarak devam et",
-    "nickname": "Anonim"
+  "guest": {
+    "continue": "Misafir olarak devam et",
+    "nickname": "Misafir"
   },
   "roles": {
     "creator": "Kurucu"
@@ -697,6 +698,9 @@
   "recommendation": {
     "similar": "{counter} ile benzer:"
   },
+  "get": {
+    "active": "{counter} öğeden {count} öğe aktarılıyor..."
+  },
   "import": {
     "lastfm": {
       "historyVisible": "Lütfen içe aktarmadan önce Last.FM dinleme geçmişinizin görüntülendiğinden emin olun."
@@ -707,7 +711,8 @@
         "files": "{counter} içe aktarıldı | {counter} içe aktarıldı",
         "tracks": "{counter} içe aktarıldı | {counter} içe aktarıldı",
         "playlists": "{counter} içe aktarıldı | {counter} içe aktarıldı"
-      }
+      },
+      "content": "Kaydetmeden önce kontrol etmek isteyebilirsiniz"
     },
     "error": {
       "files": "{counter} içe aktarılamadı. Lütfen metadata doğru biçimlendirildiğinden emin olun:"
@@ -850,7 +855,9 @@
     "membersCountAsc": "En Az Üye"
   },
   "deletedModel": {
-    "profile": "Profil silinmiş"
+    "profile": "Profil silinmiş",
+    "playlist": "Silinmiş çalma listesi",
+    "community": "Silinmiş topluluk"
   },
   "events": {
     "created": {

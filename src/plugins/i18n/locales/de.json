@@ -666,9 +666,9 @@
       "content": "Du kannst dich nun wieder einloggen"
     }
   },
-  "anonymous": {
-    "continue": "Anonym fortfahren",
-    "nickname": "Anonym"
+  "guest": {
+    "continue": "Als Gast fortfahren",
+    "nickname": "Gast"
   },
   "roles": {
     "creator": "Creator"

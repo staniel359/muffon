@@ -666,10 +666,6 @@
       "content": "今、戻ってログインできます"
     }
   },
-  "anonymous": {
-    "continue": "匿名で続ける",
-    "nickname": "匿名"
-  },
   "roles": {
     "creator": "クリエーター"
   },

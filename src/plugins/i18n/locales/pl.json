@@ -657,10 +657,6 @@
       "content": "Możesz teraz wrócić i zalogować się"
     }
   },
-  "anonymous": {
-    "continue": "Kontynuuj anonimowo",
-    "nickname": "Anonimowy"
-  },
   "roles": {
     "creator": "Twórca"
   },

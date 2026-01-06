@@ -656,10 +656,6 @@
       "content": "现在您可以返回并登录了"
     }
   },
-  "anonymous": {
-    "continue": "匿名使用",
-    "nickname": "游客"
-  },
   "roles": {
     "creator": "创建者"
   },

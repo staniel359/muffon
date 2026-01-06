@@ -660,10 +660,6 @@
       "content": "Vous pouvez maintenant revenir en arrière et vous connecter"
     }
   },
-  "anonymous": {
-    "continue": "Continuer sans compte",
-    "nickname": "Anonymous"
-  },
   "roles": {
     "creator": "Créateur"
   },

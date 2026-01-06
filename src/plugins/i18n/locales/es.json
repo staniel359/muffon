@@ -657,10 +657,6 @@
       "content": "Ahora puedes regresar y iniciar sesión"
     }
   },
-  "anonymous": {
-    "continue": "Continuar anónimamente",
-    "nickname": "Anónimo"
-  },
   "roles": {
     "creator": "Creador"
   },

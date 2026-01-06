@@ -657,10 +657,6 @@
       "content": "이제 돌아가서 로그인할 수 있음"
     }
   },
-  "anonymous": {
-    "continue": "익명으로 계속하기",
-    "nickname": "익명"
-  },
   "roles": {
     "creator": "제작자"
   },
