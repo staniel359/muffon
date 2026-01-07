@@ -50,7 +50,7 @@ export default {
       userData: {},
       error: null,
       page: 1,
-      limit: 10,
+      limit: 20,
       playlists: [],
       isComplete: false
     }
