@@ -54,7 +54,7 @@ export default {
       filters: [
         {
           key: null,
-          type: 'peaking',
+          type: 'lowshelf',
           frequency: 30,
           gain: 0,
           filterElement: null
@@ -117,7 +117,7 @@ export default {
         },
         {
           key: null,
-          type: 'peaking',
+          type: 'highshelf',
           frequency: 16000,
           gain: 0,
           filterElement: null
