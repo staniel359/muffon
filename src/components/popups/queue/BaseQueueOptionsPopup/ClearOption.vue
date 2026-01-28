@@ -30,6 +30,8 @@ export default {
   },
   methods: {
     handleClick () {
+      this.hidePopup()
+
       updateGlobalStore(
         {
           'queue.currentTrackId': null,
@@ -38,8 +40,6 @@ export default {
           'queue.isShuffle': false
         }
       )
-
-      this.hidePopup()
     }
   }
 }

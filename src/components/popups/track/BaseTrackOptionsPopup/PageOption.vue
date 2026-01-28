@@ -19,6 +19,9 @@ export default {
   components: {
     BaseLinkOption
   },
+  inject: [
+    'hidePopup'
+  ],
   props: {
     trackData: {
       type: Object,
@@ -60,6 +63,8 @@ export default {
   },
   methods: {
     handleClick () {
+      this.hidePopup()
+
       this.$emit(
         'click'
       )

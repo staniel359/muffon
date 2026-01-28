@@ -22,6 +22,9 @@ export default {
   components: {
     BaseLibraryOption
   },
+  inject: [
+    'hidePopup'
+  ],
   props: {
     libraryId: {
       type: Number,
@@ -49,6 +52,8 @@ export default {
   },
   methods: {
     handleClick () {
+      this.hidePopup()
+
       this.$emit(
         'click'
       )
