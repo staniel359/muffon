@@ -64,8 +64,16 @@ export async function metatags (
         }
       )
 
-  const created =
-    details.birthtime
+  let created
+
+  const rawCreated = details.birthtimeMs
+
+  if (rawCreated) {
+    created =
+      new Date(
+        rawCreated
+      )
+  }
 
   return {
     title: metatags.title,
