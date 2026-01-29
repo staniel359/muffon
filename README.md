@@ -17,17 +17,29 @@
 It retrieves audio, video and metadata from various Internet sources, such as:
 
 - <img src="https://www.last.fm/static/images/favicon.702b239b6194.ico" height="16"> **Last.FM**
-- <img src="https://vk.com/images/icons/favicons/fav_logo.ico" height="16"> **VK**
-- <img src="https://ok.ru/favicon.ico" height="16"> **Odnoklassniki**
-- <img src="https://music.yandex.ru/favicon-48x48.png" height="16"> **Yandex Music**
-- <img src="https://open.spotifycdn.com/cdn/images/favicon16.c498a969.png" height="16"> **Spotify**
+
+Audio:
+
 - <img src="https://s4.bcbits.com/img/favicon/favicon-16x16.png" height="16"> **Bandcamp**
+- <img src="https://ok.ru/favicon.ico" height="16"> **Odnoklassniki**
 - <img src="https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico" height="16"> **SoundCloud**
+- <img src="https://open.spotifycdn.com/cdn/images/favicon16.c498a969.png" height="16"> **Spotify** (currently not working)
+- <img src="https://vk.com/images/icons/favicons/fav_logo.ico" height="16"> **VK**
+- <img src="https://music.yandex.ru/favicon-48x48.png" height="16"> **Yandex Music**
 - <img src="https://music.youtube.com/favicon.ico" height="16"> **YouTube Music**
+
+Video:
+
 - <img src="https://www.youtube.com/s/desktop/271dfaff/img/favicon.ico" height="16"> **YouTube**
-- <img src="https://st.discogs.com/94414fa553c3f284a04c3da67024dd6574b8ab6f/images/favicon.ico" height="16"> **Discogs**
+
+Lyrics:
+
 - <img src="https://assets.genius.com/images/apple-touch-icon.png" height="16"> **Genius**
-- <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch**
+- <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch** (currently not working)
+
+Discography:
+
+- <img src="https://st.discogs.com/94414fa553c3f284a04c3da67024dd6574b8ab6f/images/favicon.ico" height="16"> **Discogs**
 - <img src="https://musicbrainz.org/static/images/favicons/favicon-16x16.png" height="16"> **MusicBrainz**
 
 ### Features
@@ -35,7 +47,7 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 - **absolutely free**
 - **no ads**
 - **no login** (but required for certain features)
-- **listening** (artists / albums / tracks) (+ offline) (+ equalizer)
+- **listening** (artists / albums / tracks) (+ offline) (+ equalizer) (+ track/audio automatch)
 - **artists** (tracks / albums / similar / shows)
 - **albums**
 - **tracks** (similar / albums)
@@ -98,15 +110,24 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 ## Download
 
-[Latest (v2.3.0)](https://github.com/staniel359/muffon/releases/latest)
+[Latest (v2.4.0)](https://github.com/staniel359/muffon/releases/latest)
 
 ## Star History
 
 <a href="https://star-history.com/#staniel359/muffon&Date">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date" />
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date&theme=dark"
+    />
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date"
+    />
+    <img
+      alt="Star History Chart"
+      src="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date"
+    />
   </picture>
 </a>
 
