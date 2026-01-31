@@ -52,7 +52,7 @@
     "change-case": "^5.4.4",
     "crypto-js": "^4.2.0",
     "deepmerge": "^4.3.1",
-    "electron": "^39.2.7",
+    "electron": "^40.1.0",
     "electron-builder": "26.0.8",
     "eslint": "^9.39.2",
     "eslint-config-standard": "^17.1.0",
