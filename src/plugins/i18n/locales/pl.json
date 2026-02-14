@@ -197,6 +197,11 @@
       "queue": "Dodaj do kolejki",
       "savedTracks": "Dodaj do zapisanych utworów"
     },
+    "goTo": {
+      "video": "Przejdź do strony wideo",
+      "library": "Przejdź do strony biblioteki",
+      "page": "Przejdź do strony"
+    },
     "deleteFrom": {
       "favorites": "Usuń z ulubionych",
       "bookmarks": "Usuń z zakładek",
