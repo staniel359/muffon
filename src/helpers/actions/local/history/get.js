@@ -1,16 +1,28 @@
 import getRequest from '@/helpers/actions/local/request/get'
+import {
+  paginatedCollectionData
+} from '@/helpers/utils'
 
 export default function (
   {
+    page,
+    limit,
     scope,
     listScope,
     order
   }
 ) {
   const handleSuccess = (
-    response
+    collection
   ) => {
-    this.historyData = response
+    this.historyData = paginatedCollectionData(
+      collection,
+      {
+        collectionName: listScope,
+        page,
+        limit
+      }
+    )
   }
 
   return getRequest.bind(
@@ -18,7 +30,6 @@ export default function (
   )(
     {
       key: `history.${scope}`,
-      listScope,
       order,
       onSuccess: handleSuccess
     }

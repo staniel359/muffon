@@ -1,24 +1,36 @@
 import getRequest from '@/helpers/actions/local/request/get'
-import getLocalTracksByQuery from '@/helpers/actions/local/query/tracks/get'
+import {
+  filterLocalTracksByQuery,
+  paginatedCollectionData
+} from '@/helpers/utils'
 
 export default function (
   {
-    order,
-    query
+    query,
+    page,
+    limit,
+    order
   }
 ) {
   const handleSuccess = (
-    response
+    collection
   ) => {
-    response.tracks =
-      getLocalTracksByQuery(
+    const collectionFiltered =
+      filterLocalTracksByQuery(
+        collection,
         {
-          tracks: response.tracks,
           query
         }
       )
 
-    this.savedTracksData = response
+    this.savedTracksData = paginatedCollectionData(
+      collectionFiltered,
+      {
+        collectionName: 'tracks',
+        page,
+        limit
+      }
+    )
   }
 
   return getRequest.bind(
@@ -26,7 +38,6 @@ export default function (
   )(
     {
       key: 'profile.savedTracks',
-      listScope: 'tracks',
       order,
       onSuccess: handleSuccess
     }

@@ -1,6 +1,7 @@
 <template>
   <BaseSavedTracksPageContainer
     ref="page"
+    :limit="limit"
     :order="order"
     :query="query"
   >
@@ -14,7 +15,6 @@
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
-        :response-page-limit="pageSlotProps.responsePageLimit"
         :order="order"
         :model="model"
         :is-with-top-segment="isWithTopSegment"

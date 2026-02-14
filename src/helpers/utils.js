@@ -239,3 +239,80 @@ export function wait (
     }
   )
 }
+
+export function paginatedCollectionData (
+  collection,
+  {
+    collectionName,
+    page = 1,
+    limit
+  }
+) {
+  const offset = (page - 1) * limit
+
+  const pagesCount =
+    Math.ceil(
+      collection.length / limit
+    )
+
+  const collectionPaginated =
+    collection.splice(
+      offset,
+      limit
+    )
+
+  return {
+    page,
+    total_pages: pagesCount,
+    [collectionName]: collectionPaginated
+  }
+}
+
+export function filterLocalTracksByQuery (
+  tracks,
+  {
+    query
+  }
+) {
+  function isMatchedString (
+    value
+  ) {
+    if (!value) {
+      return false
+    }
+
+    const valueFormatted = value.toLowerCase()
+
+    const queryFormatted = query.toLowerCase()
+
+    return valueFormatted.includes(
+      queryFormatted
+    )
+  }
+
+  function isMatchedTrack (
+    trackData
+  ) {
+    const trackTitle = trackData.title
+
+    const artistName = trackData.artist.name
+
+    const albumTitle = trackData.album?.title
+
+    return (
+      isMatchedString(
+        trackTitle
+      ) || isMatchedString(
+        artistName
+      ) || isMatchedString(
+        albumTitle
+      )
+    )
+  }
+
+  return [
+    ...tracks
+  ].filter(
+    isMatchedTrack
+  )
+}

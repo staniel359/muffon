@@ -6,7 +6,6 @@
   >
     <slot
       :saved-tracks-data="savedTracksData"
-      :response-page-limit="responsePageLimit"
       :is-loading="isLoading"
       :error="error"
     />
@@ -34,6 +33,10 @@ export default {
     navigationMixin
   ],
   props: {
+    limit: {
+      type: Number,
+      required: true
+    },
     order: String,
     query: String
   },
@@ -54,16 +57,13 @@ export default {
     savedTracksArgs () {
       return {
         order: this.order,
-        query: this.query
+        query: this.query,
+        limit: this.limit
       }
-    },
-    responsePageLimit () {
-      return this.savedTracksData?.tracks?.length
     }
   },
   watch: {
-    savedTracksData:
-      'handleNavigationDataChange'
+    savedTracksData: 'handleNavigationDataChange'
   },
   mounted () {
     this.getData()
@@ -71,14 +71,24 @@ export default {
   methods: {
     getSavedTracks,
     getSavedTracksSearch,
-    getData () {
+    getData (
+      {
+        page
+      } = {}
+    ) {
       if (this.query) {
         this.getSavedTracksSearch(
-          this.savedTracksArgs
+          {
+            ...this.savedTracksArgs,
+            page
+          }
         )
       } else {
         this.getSavedTracks(
-          this.savedTracksArgs
+          {
+            ...this.savedTracksArgs,
+            page
+          }
         )
       }
     }

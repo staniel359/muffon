@@ -5,7 +5,6 @@ import {
 export default function (
   {
     key,
-    listScope,
     order,
     onSuccess
   }
@@ -28,14 +27,8 @@ export default function (
         }
       )
 
-    const response = {
-      page: 1,
-      total_pages: 1,
-      [listScope]: collection
-    }
-
     return onSuccess(
-      response
+      collection
     )
   }
 

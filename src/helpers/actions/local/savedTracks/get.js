@@ -1,14 +1,26 @@
 import getRequest from '@/helpers/actions/local/request/get'
+import {
+  paginatedCollectionData
+} from '@/helpers/utils'
 
 export default function (
   {
+    page,
+    limit,
     order
   }
 ) {
   const handleSuccess = (
-    response
+    collection
   ) => {
-    this.savedTracksData = response
+    this.savedTracksData = paginatedCollectionData(
+      collection,
+      {
+        collectionName: 'tracks',
+        page,
+        limit
+      }
+    )
   }
 
   return getRequest.bind(
@@ -16,7 +28,6 @@ export default function (
   )(
     {
       key: 'profile.savedTracks',
-      listScope: 'tracks',
       order,
       onSuccess: handleSuccess
     }
