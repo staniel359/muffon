@@ -10,6 +10,14 @@
 
 <img src="https://i.ibb.co/jg3vZv8/preview-dark.png" alt="screenshot">
 
+## Disclaimer
+
+> [!WARNING]
+> muffon was made only for **educational** purposes (audio listening) and not for audio downloading. Our team doesn't encourage piracy, so we don't take any responsibility for unintended usage of the application, e.g. reverse engineering, using the code of muffon-api repository to retrieve audio files, etc.
+
+> [!NOTE]
+> muffon is a music discovery app and not a **hacking** app. It only uses audio retrieving mechanisms that common browsers use when you sign in with your **free** account. So we don't provide audios from paid accounts.
+
 ## Description
 
 [**muffon**](https://www.howtopronounce.com/muffon) is a cross-platform music streaming client for desktop, which helps you listen to, discover and organize music in an advanced way.
