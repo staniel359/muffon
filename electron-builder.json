@@ -43,7 +43,7 @@
     }
   },
   "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
-  "compression": "ultra",
+  "compression": "maximum",
   "nsis": {
     "allowToChangeInstallationDirectory": true,
     "deleteAppDataOnUninstall": true,

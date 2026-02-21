@@ -53,7 +53,7 @@
     "crypto-js": "^4.2.0",
     "deepmerge": "^4.3.1",
     "electron": "^40.6.0",
-    "electron-builder": "26.0.8",
+    "electron-builder": "26.8.1",
     "eslint": "^10.0.1",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-vue": "^10.8.0",
@@ -80,9 +80,6 @@
       "es5-ext",
       "esbuild",
       "register-scheme"
-    ],
-    "patchedDependencies": {
-      "app-builder-lib@26.0.8": "patches/app-builder-lib@26.0.8.patch"
-    }
+    ]
   }
 }
