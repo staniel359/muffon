@@ -9,6 +9,7 @@
       <LyricsTextSection
         :lyrics="slotProps.lyrics"
         :track-id="slotProps.trackId"
+        :track-slug="slotProps.trackSlug"
         :source="slotProps.source"
         :track-data="trackData"
       />

@@ -66,6 +66,7 @@ export default {
       return {
         name: query.source,
         id: query.album_id,
+        slug: query.album_slug,
         artist_id: query.artist_id,
         album_type: query.album_type,
         model: query.model,

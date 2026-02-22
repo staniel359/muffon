@@ -8,6 +8,7 @@ export default function (
     albumTitle,
     artistId,
     albumId,
+    albumSlug,
     albumType = 'album',
     model,
     ownerId,
@@ -25,6 +26,7 @@ export default function (
         albumTitle,
         artistId,
         albumId,
+        albumSlug,
         albumType,
         scope
       }

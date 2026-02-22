@@ -9,6 +9,7 @@ export default function (
     artistId,
     albumId,
     trackId,
+    trackSlug,
     scope = '',
     page,
     limit
@@ -23,6 +24,7 @@ export default function (
         artistId,
         albumId,
         trackId,
+        trackSlug,
         scope
       }
     )

@@ -6,6 +6,7 @@ export default function (
     artistId,
     albumId,
     trackId,
+    trackSlug,
     scope = ''
   }
 ) {
@@ -28,6 +29,8 @@ export default function (
         `/${source}/artists/${artistNameEncoded}` +
         `/tracks/${trackTitleEncoded}/${scope}`
       )
+    case 'musixmatch':
+      return `/${source}/tracks/${trackSlug}/${scope}`
     default:
       return `/${source}/tracks/${trackId}/${scope}`
   }

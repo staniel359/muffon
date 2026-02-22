@@ -27,10 +27,6 @@ export default {
       type: String,
       required: true
     },
-    trackId: {
-      type: Number,
-      required: true
-    },
     trackData: {
       type: Object,
       required: true
@@ -38,7 +34,9 @@ export default {
     source: {
       type: String,
       required: true
-    }
+    },
+    trackId: Number,
+    trackSlug: String
   },
   computed: {
     link () {
@@ -59,7 +57,8 @@ export default {
     sourceParams () {
       return {
         source: this.source,
-        trackId: this.trackId
+        trackId: this.trackId,
+        trackSlug: this.trackSlug
       }
     }
   }

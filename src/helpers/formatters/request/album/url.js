@@ -5,6 +5,7 @@ export default function (
     albumTitle,
     artistId,
     albumId,
+    albumSlug,
     albumType = 'album',
     scope
   }
@@ -22,15 +23,17 @@ export default function (
 
   function formatUrlData () {
     switch (source) {
+      case 'bandcamp':
+        return (
+          `artists/${artistId}/${albumScope}/${albumId}/${scope}`
+        )
       case 'lastfm':
         return (
           `artists/${artistNameEncoded}` +
           `/${albumScope}/${albumTitleEncoded}/${scope}`
         )
-      case 'bandcamp':
-        return (
-          `artists/${artistId}/${albumScope}/${albumId}/${scope}`
-        )
+      case 'musixmatch':
+        return `${albumScope}/${albumSlug}/${scope}`
       default:
         return `${albumScope}/${albumId}/${scope}`
     }

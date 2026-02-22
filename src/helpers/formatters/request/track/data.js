@@ -15,14 +15,12 @@ export default function (
       case 'amazonmusic':
         return {
           trackId: trackData.source.id,
-          albumId:
-            trackData.source.album_id
+          albumId: trackData.source.album_id
         }
       case 'bandcamp':
         return {
           trackId: trackData.source.id,
-          artistId:
-            trackData.source.artist_id
+          artistId: trackData.source.artist_id
         }
       case 'lastfm':
         return {
@@ -35,6 +33,10 @@ export default function (
             trackData.title ||
               trackData.trackTitle
           )
+        }
+      case 'musixmatch':
+        return {
+          trackSlug: trackData.source.slug
         }
       default:
         return {

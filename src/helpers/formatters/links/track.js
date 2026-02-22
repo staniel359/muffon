@@ -18,15 +18,14 @@ export function main (
     )
 
   const params = {
-    artistName:
-      artistNameEncoded,
-    trackTitle:
-      trackTitleEncoded
+    artistName: artistNameEncoded,
+    trackTitle: trackTitleEncoded
   }
 
   const {
     source,
     trackId,
+    trackSlug,
     artistId,
     albumId
   } = sourceParams
@@ -34,6 +33,7 @@ export function main (
   const query = {
     source,
     track_id: trackId,
+    track_slug: trackSlug,
     artist_id: artistId,
     album_id: albumId
   }
@@ -54,8 +54,7 @@ export function main (
     name: 'TrackPage',
     params,
     path,
-    query:
-      queryFormatted.data
+    query: queryFormatted.data
   }
 }
 
@@ -76,10 +75,8 @@ export function similar (
     )
 
   const params = {
-    artistName:
-      artistNameEncoded,
-    trackTitle:
-      trackTitleEncoded
+    artistName: artistNameEncoded,
+    trackTitle: trackTitleEncoded
   }
 
   const path =
@@ -112,15 +109,14 @@ export function albums (
     )
 
   const params = {
-    artistName:
-      artistNameEncoded,
-    trackTitle:
-      trackTitleEncoded
+    artistName: artistNameEncoded,
+    trackTitle: trackTitleEncoded
   }
 
   const {
     source,
     trackId,
+    trackSlug,
     artistId,
     albumId
   } = sourceParams
@@ -128,6 +124,7 @@ export function albums (
   const query = {
     source,
     track_id: trackId,
+    track_slug: trackSlug,
     artist_id: artistId,
     album_id: albumId
   }
@@ -148,8 +145,7 @@ export function albums (
     name: 'TrackAlbumsPage',
     params,
     path,
-    query:
-      queryFormatted.data
+    query: queryFormatted.data
   }
 }
 
@@ -171,20 +167,20 @@ export function lyrics (
     )
 
   const params = {
-    artistName:
-      artistNameEncoded,
-    trackTitle:
-      trackTitleEncoded
+    artistName: artistNameEncoded,
+    trackTitle: trackTitleEncoded
   }
 
   const {
     source,
-    trackId
+    trackId,
+    trackSlug
   } = sourceParams
 
   const query = {
     source,
-    track_id: trackId
+    track_id: trackId,
+    track_slug: trackSlug
   }
 
   const queryFormatted =
@@ -203,7 +199,6 @@ export function lyrics (
     name: 'TrackLyricsPage',
     params,
     path,
-    query:
-      queryFormatted.data
+    query: queryFormatted.data
   }
 }

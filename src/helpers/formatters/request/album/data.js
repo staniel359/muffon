@@ -12,6 +12,20 @@ export default function (
 
   function formatAlbumData () {
     switch (source) {
+      case 'bandcamp':
+        return {
+          albumId: albumData.source.id,
+          artistId: albumData.source.artist_id,
+          model: albumData.source.model
+        }
+      case 'discogs':
+        return {
+          albumId: albumData.source.id,
+          albumType: (
+            albumData.source.model ||
+              albumData.source.album_type
+          )
+        }
       case 'lastfm':
         return {
           artistName: (
@@ -24,29 +38,6 @@ export default function (
               albumData.albumTitle
           )
         }
-      case 'vk':
-        return {
-          albumId: albumData.source.id,
-          ownerId:
-            albumData.source.owner_id,
-          accessKey:
-            albumData.source.access_key
-        }
-      case 'bandcamp':
-        return {
-          albumId: albumData.source.id,
-          artistId:
-            albumData.source.artist_id,
-          model: albumData.source.model
-        }
-      case 'discogs':
-        return {
-          albumId: albumData.source.id,
-          albumType: (
-            albumData.source.model ||
-              albumData.source.album_type
-          )
-        }
       case 'musicbrainz':
         return {
           albumId: albumData.source.id,
@@ -54,6 +45,16 @@ export default function (
             albumData.source.model ||
               albumData.source.album_type
           )
+        }
+      case 'musixmatch':
+        return {
+          albumSlug: albumData.source.slug
+        }
+      case 'vk':
+        return {
+          albumId: albumData.source.id,
+          ownerId: albumData.source.owner_id,
+          accessKey: albumData.source.access_key
         }
       default:
         return {

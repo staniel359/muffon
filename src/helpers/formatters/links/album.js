@@ -18,15 +18,14 @@ export function main (
     )
 
   const params = {
-    artistName:
-      artistNameEncoded,
-    albumTitle:
-      albumTitleEncoded
+    artistName: artistNameEncoded,
+    albumTitle: albumTitleEncoded
   }
 
   const {
     source,
     albumId,
+    albumSlug,
     artistId,
     albumType,
     model,
@@ -37,6 +36,7 @@ export function main (
   const query = {
     source,
     album_id: albumId,
+    album_slug: albumSlug,
     artist_id: artistId,
     album_type: albumType,
     model,
@@ -60,7 +60,6 @@ export function main (
     name: 'AlbumPage',
     params,
     path,
-    query:
-      queryFormatted.data
+    query: queryFormatted.data
   }
 }

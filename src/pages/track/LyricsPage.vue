@@ -66,7 +66,8 @@ export default {
 
       return {
         name: query.source,
-        id: query.track_id
+        id: query.track_id,
+        slug: query.track_slug
       }
     }
   }
