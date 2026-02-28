@@ -18,6 +18,24 @@ export default [
   //   ]
   // },
   {
+    id: 'audius',
+    icon: 'audius',
+    name: 'Audius',
+    isAudio: true,
+    isWithArtists: true,
+    isWithAlbums: true,
+    isWithTracks: true,
+    maxBitrate: 320,
+    albumTypes: [
+      'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
+    ]
+  },
+  {
     id: 'bandcamp',
     icon: 'bandcamp',
     name: 'Bandcamp',
