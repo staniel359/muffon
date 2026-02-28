@@ -118,7 +118,7 @@ export default {
       if (this.selectedArtistData) {
         this.selectedArtistData = {
           ...this.selectedArtistData,
-          albumType: value.id
+          albumsType: value.id
         }
       }
     },
@@ -137,12 +137,12 @@ export default {
     setSelectedArtistData (
       value
     ) {
-      const albumType =
+      const albumsType =
         this.selectedTypeData?.id
 
       this.selectedArtistData = {
         ...value,
-        albumType
+        albumsType
       }
     },
     setSelectedTypeData (

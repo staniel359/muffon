@@ -26,7 +26,6 @@ export default function (
     source,
     scope,
     ...formatArtistData(),
-    albumType:
-      artistData.albumType
+    albumsType: artistData.albumsType
   }
 }
