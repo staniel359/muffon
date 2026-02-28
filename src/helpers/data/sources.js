@@ -260,15 +260,21 @@ export default [
     name: 'YouTube Music',
     isAudio: true,
     isVideo: true,
-    isWithTracks: true,
+    isWithArtists: true,
     isWithAlbums: true,
+    isWithTracks: true,
     maxBitrate: 128,
     albumTypes: [
       'album'
     ],
+    albumsTypes: [
+      'album',
+      'singleEp'
+    ],
     searchScopes: [
-      'tracks',
+      'artists',
       'albums',
+      'tracks',
       'videos',
       'videoMixes',
       'videoPlaylists'
