@@ -9,6 +9,11 @@ import setupI18nCountries from '@/plugins/i18nCountries'
 import setupDayjs from '@/plugins/dayjs'
 
 export default function () {
+  // For Slick
+  $.type = function (value) {
+    return typeof(value)
+  }
+
   setupShortcuts()
 
   setupAxios()
