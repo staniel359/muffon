@@ -133,6 +133,8 @@ Discography:
 
 ## Troubleshooting
 
+### Windows
+
 If you're using Windows 10 and during the installation you see this window:
 
 ![Windows SmartScreen](https://i.ibb.co/ZL9Q5p9/img-59127adff18fb.png)
@@ -141,6 +143,20 @@ If you're using Windows 10 and during the installation you see this window:
 2. Click **"Run anyway"**
 
 That's because Windows blocks unsigned apps.
+
+### MacOS
+
+If you're using MacOS and during the installation you see this window:
+
+![MacOS quarantine](https://i.ibb.co/yB65vfdQ/Screenshot-from-2026-03-11-00-03-45.png)
+
+1. Open your terminal
+2. Enter this command:
+```
+xattr -d com.apple.quarantine /Applications/muffon.app
+```
+
+That's because MacOS blocks unsigned apps.
 
 ## Support
 
