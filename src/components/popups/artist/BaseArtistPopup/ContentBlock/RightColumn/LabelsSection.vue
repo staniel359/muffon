@@ -2,13 +2,13 @@
   <div>
     <BaseCounterLabelsSection
       class="main-labels-section"
-      size=""
+      size="small"
       :counters="counters"
     />
 
     <BaseArtistTags
       class="main-labels-section"
-      size=""
+      size="small"
       :artist-data="artistData"
       :is-with-more="false"
       @link-click="handleLinkClick"

@@ -5,16 +5,11 @@ import {
 export default {
   provide () {
     return {
-      setLibraryId:
-        this.setLibraryId,
-      setFavoriteId:
-        this.setFavoriteId,
-      setBookmarkId:
-        this.setBookmarkId,
-      setListenedId:
-        this.setListenedId,
-      setWatchedId:
-        this.setWatchedId
+      setLibraryId: this.setLibraryId,
+      setFavoriteId: this.setFavoriteId,
+      setBookmarkId: this.setBookmarkId,
+      setListenedId: this.setListenedId,
+      setWatchedId: this.setWatchedId
     }
   },
   props: {
@@ -58,30 +53,15 @@ export default {
   },
   methods: {
     setSelfData () {
-      const libraryId =
-        this
-          .modelData
-          .library_id
+      const libraryId = this.modelData.library_id
 
-      const favoriteId =
-        this
-          .modelData
-          .favorite_id
+      const favoriteId = this.modelData.favorite_id
 
-      const bookmarkId =
-        this
-          .modelData
-          .bookmark_id
+      const bookmarkId = this.modelData.bookmark_id
 
-      const listenedId =
-        this
-          .modelData
-          .listened_id
+      const listenedId = this.modelData.listened_id
 
-      const watchedId =
-        this
-          .modelData
-          .watched_id
+      const watchedId = this.modelData.watched_id
 
       this.setLibraryId(
         libraryId

@@ -858,7 +858,19 @@
       background: #0000000d !important
 
 .main-artist-popup
-  width: 460px
+  width: 420px
+  .base-options-popup-container
+    @extend .invisible-item, .absolute
+    bottom: 0
+    z-index: 10
+[dir="ltr"]
+  .main-artist-popup
+    .base-options-popup-container
+      right: 0
+[dir="rtl"]
+  .main-artist-popup
+    .base-options-popup-container
+      left: 0
 
 .main-annotation-popup
   width: 375px
