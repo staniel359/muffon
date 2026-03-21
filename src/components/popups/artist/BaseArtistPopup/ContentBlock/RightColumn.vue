@@ -9,24 +9,18 @@
       :artist-data="artistData"
       @link-click="handleLinkClick"
     />
-
-    <DescriptionSection
-      :artist-data="artistData"
-    />
   </div>
 </template>
 
 <script>
 import HeaderSection from './RightColumn/HeaderSection.vue'
 import LabelsSection from './RightColumn/LabelsSection.vue'
-import DescriptionSection from './RightColumn/DescriptionSection.vue'
 
 export default {
   name: 'RightColumn',
   components: {
     HeaderSection,
-    LabelsSection,
-    DescriptionSection
+    LabelsSection
   },
   props: {
     artistData: Object

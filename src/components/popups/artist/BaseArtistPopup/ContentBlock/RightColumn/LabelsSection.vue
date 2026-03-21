@@ -6,13 +6,6 @@
       :counters="counters"
     />
 
-    <BaseArtistInnerCounterLabelsSection
-      class="main-labels-section"
-      size=""
-      :artist-data="artistData"
-      :is-clickable="false"
-    />
-
     <BaseArtistTags
       class="main-labels-section"
       size=""
@@ -26,15 +19,12 @@
 <script>
 import BaseCounterLabelsSection
   from '@/components/sections/BaseCounterLabelsSection.vue'
-import BaseArtistInnerCounterLabelsSection
-  from '@/components/sections/artist/BaseArtistInnerCounterLabelsSection.vue'
 import BaseArtistTags from '@/components/models/artist/BaseArtistTags.vue'
 
 export default {
   name: 'LabelsSection',
   components: {
     BaseCounterLabelsSection,
-    BaseArtistInnerCounterLabelsSection,
     BaseArtistTags
   },
   props: {

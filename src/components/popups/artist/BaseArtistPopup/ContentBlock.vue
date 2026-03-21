@@ -10,17 +10,23 @@
       @link-click="handleLinkClick"
     />
   </div>
+
+  <DescriptionSection
+    :artist-data="artistData"
+  />
 </template>
 
 <script>
 import LeftColumn from './ContentBlock/LeftColumn.vue'
 import RightColumn from './ContentBlock/RightColumn.vue'
+import DescriptionSection from './ContentBlock/DescriptionSection.vue'
 
 export default {
   name: 'ContentBlock',
   components: {
     LeftColumn,
-    RightColumn
+    RightColumn,
+    DescriptionSection
   },
   props: {
     artistData: Object,
