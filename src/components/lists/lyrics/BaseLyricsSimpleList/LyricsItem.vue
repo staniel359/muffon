@@ -81,7 +81,8 @@ export default {
     sourceParams () {
       return {
         source: this.source,
-        trackId: this.trackId
+        trackId: this.trackId,
+        trackSlug: this.trackSlug
       }
     },
     source () {
@@ -89,6 +90,9 @@ export default {
     },
     trackId () {
       return this.lyricsData.source.id
+    },
+    trackSlug () {
+      return this.lyricsData.source.slug
     },
     imageData () {
       return this.lyricsData.image
