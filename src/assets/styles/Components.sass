@@ -113,17 +113,16 @@
   z-index: 200
   .variants-content-container
     width: 400px
-    height: 400px !important
-    padding-top: 30px
-    top: 370px
+    height: calc($playerPanelHeight + $variantsPanelHeight + $variantsPanelLabelHeight) !important
+    padding-top: $variantsPanelLabelHeight
+    top: calc($playerPanelHeight + $variantsPanelHeight)
     transition: top 0.35s
     &.visible
-      top: 10px
+      top: 0
   .variants-label
     @extend .no-border, .shadowed
     padding: 0 1.5rem !important
-    height: 35px
-    top: -5px !important
+    height: $variantsPanelLabelHeight
     &.inverted
       @extend .no-shadow, .border-inverted-no-bottom
   .variants-list
