@@ -9,6 +9,7 @@ export default function (
     source = 'lastfm',
     artistName,
     artistId,
+    artistSlug,
     albumsType = '',
     scope = '',
     page,
@@ -22,6 +23,7 @@ export default function (
         source,
         artistName,
         artistId,
+        artistSlug,
         scope
       }
     )

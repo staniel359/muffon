@@ -118,8 +118,8 @@ export default [
     ],
     albumsTypes: [
       'album',
-      'single',
       'ep',
+      'single',
       'compilation',
       'live',
       'misc'
@@ -136,10 +136,16 @@ export default [
     icon: 'musixmatch',
     name: 'MusixMatch',
     isWithArtists: true,
+    isWithAlbums: true,
     isWithTracks: true,
     isWithLyrics: true,
     albumTypes: [
       'album'
+    ],
+    albumsTypes: [
+      'album',
+      'ep',
+      'single'
     ],
     searchScopes: [
       'artists',

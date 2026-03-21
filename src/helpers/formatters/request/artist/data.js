@@ -15,6 +15,10 @@ export default function (
         return {
           artistName: artistData.name
         }
+      case 'musixmatch':
+        return {
+          artistSlug: artistData.source.slug
+        }
       default:
         return {
           artistId: artistData.source.id
