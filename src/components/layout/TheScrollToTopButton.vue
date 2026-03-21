@@ -5,7 +5,7 @@
   />
 
   <div
-    class="the-scroll-to-top-button fixed main-bottom-right-small-button"
+    class="the-scroll-to-top-button fixed main-bottom-right-button"
     :class="{
       'player-panel-bottom': playerPlaying
     }"
@@ -15,7 +15,7 @@
       :scrollable="scrollable"
     >
       <BaseButton
-        class="basic circular compact inverted big"
+        class="basic circular compact inverted large"
         icon="arrowUp"
         @click="handleClick"
       />
