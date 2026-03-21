@@ -1,22 +1,22 @@
 export default [
-  // {
-  //   id: 'amazonmusic',
-  //   icon: 'amazonmusic',
-  //   name: 'Amazon Music',
-  //   isAudio: true,
-  //   isWithArtists: true,
-  //   isWithAlbums: true,
-  //   isWithTracks: true,
-  //   maxBitrate: 160,
-  //   albumTypes: [
-  //     'album'
-  //   ],
-  //   searchScopes: [
-  //     'artists',
-  //     'albums',
-  //     'tracks'
-  //   ]
-  // },
+  {
+    id: 'amazonmusic',
+    icon: 'amazonmusic',
+    name: 'Amazon Music',
+    isAudio: true,
+    isWithArtists: true,
+    isWithAlbums: true,
+    isWithTracks: true,
+    maxBitrate: 160,
+    albumTypes: [
+      'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
+    ]
+  },
   {
     id: 'audius',
     icon: 'audius',
