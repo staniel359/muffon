@@ -5,7 +5,7 @@
       'primary circular',
       {
         'small': isSmall,
-        'main-right-mini-section': isRight
+        'main-right-small-section': isRight
       }
     ]"
     :text="roleText"

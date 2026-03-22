@@ -1,6 +1,6 @@
 <template>
   <div
-    class="item main-simple-list-item"
+    class="event main-simple-list-item"
     :class="{
       disabled: isDeleted
     }"
@@ -20,28 +20,32 @@
       />
 
       <div class="content">
-        <div class="middle-aligned main-visibility-container">
+        <div class="summary middle-aligned main-visibility-container">
           <div class="flex-full">
             <CreatorSection
               :post-data="postData"
             />
 
             <BaseTimestampSection
-              class="description"
+              class="date no-margin"
               :created="created"
             />
           </div>
 
-          <BasePostOptionsPopup
+          <div
             v-if="isWithOptions"
-            class="invisible-item"
-            :post-data="postData"
-            :is-with-edit-option="isWithEditOption"
-            :is-community-creator="isCommunityCreator"
-            is-with-delete-option
-            @updated="handleUpdated"
-            @deleted="handleDeleted"
-          />
+            class="main-right-section"
+          >
+            <BasePostOptionsPopup    
+              class="invisible-item"
+              :post-data="postData"
+              :is-with-edit-option="isWithEditOption"
+              :is-community-creator="isCommunityCreator"
+              is-with-delete-option
+              @updated="handleUpdated"
+              @deleted="handleDeleted"
+            />
+          </div>
         </div>
 
         <BaseSendableContentSection

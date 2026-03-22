@@ -20,32 +20,36 @@
       />
 
       <div class="content">
-        <div class="middle-aligned main-visibility-container">
+        <div class="author middle-aligned main-visibility-container">
           <div class="flex-full">
             <CreatorSection
               :comment-data="commentData"
             />
 
             <BaseTimestampSection
-              class="description"
+              class="date no-margin"
               :created="created"
             />
           </div>
 
-          <BasePostCommentOptionsPopup
+          <div
             v-if="isWithOptions"
-            class="invisible-item"
-            :comment-data="commentData"
-            :is-with-edit-option="isWithEditOption"
-            :is-community-creator="isCommunityCreator"
-            is-with-delete-option
-            @updated="handleUpdated"
-            @deleted="handleDeleted"
-          />
+            class="main-right-section"
+          >
+            <BasePostCommentOptionsPopup
+              class="invisible-item"
+              :comment-data="commentData"
+              :is-with-edit-option="isWithEditOption"
+              :is-community-creator="isCommunityCreator"
+              is-with-delete-option
+              @updated="handleUpdated"
+              @deleted="handleDeleted"
+            />
+          </div>
         </div>
 
         <BaseSendableContentSection
-          class="sendable-content-section main-bottom-small-section"
+          class="sendable-content-section main-bottom-mini-section"
           :model-data="commentData"
         />
       </div>

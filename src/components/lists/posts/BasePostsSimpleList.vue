@@ -1,5 +1,5 @@
 <template>
-  <BaseListContainer
+  <BaseFeedContainer
     class="divided"
   >
     <PostItem
@@ -7,18 +7,18 @@
       :key="postData.uuid"
       :post-data="postData"
     />
-  </BaseListContainer>
+  </BaseFeedContainer>
 </template>
 
 <script>
-import BaseListContainer
-  from '@/components/containers/lists/BaseListContainer.vue'
+import BaseFeedContainer
+  from '@/components/containers/feed/BaseFeedContainer.vue'
 import PostItem from './BasePostsSimpleList/PostItem.vue'
 
 export default {
   name: 'BasePostsSimpleList',
   components: {
-    BaseListContainer,
+    BaseFeedContainer,
     PostItem
   },
   inject: [

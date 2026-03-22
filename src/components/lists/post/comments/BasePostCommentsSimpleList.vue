@@ -4,11 +4,8 @@
     class="large"
   />
 
-  <div
-    class="ui comments no-margin"
-    :class="{
-      inverted: isDarkMode
-    }"
+  <BaseCommentsContainer
+    class="no-margin"
   >
     <CommentItem
       v-for="commentData in commentsCollection"
@@ -17,16 +14,15 @@
       :is-community-creator="isCommunityCreator"
       :is-paginated="isPaginated"
     />
-  </div>
+  </BaseCommentsContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'pinia'
-import layoutStore from '@/stores/layout'
 import BaseDivider from '@/components/BaseDivider.vue'
 import CommentItem from './BasePostCommentsSimpleList/CommentItem.vue'
+import BaseCommentsContainer
+  from '@/components/containers/comments/BaseCommentsContainer.vue'
+
 import {
   collection as formatCollection
 } from '@/helpers/formatters'
@@ -38,14 +34,13 @@ export default {
   name: 'BasePostCommentsSimpleList',
   components: {
     BaseDivider,
-    CommentItem
+    CommentItem,
+    BaseCommentsContainer
   },
   provide () {
     return {
-      updateListItem:
-        this.updateListItem,
-      findListItem:
-        this.findListItem
+      updateListItem: this.updateListItem,
+      findListItem: this.findListItem
     }
   },
   props: {
@@ -68,12 +63,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      layoutStore,
-      [
-        'isDarkMode'
-      ]
-    ),
     isRenderTopDivider () {
       return (
         this.isWithTopDivider &&

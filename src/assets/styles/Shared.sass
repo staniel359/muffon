@@ -803,7 +803,8 @@
       font-size: 20px
   .extra
     line-height: 1.3rem
-    margin-top: 0.15rem
+    margin-top: 0.15rem !important
+    color: unset !important
   .description
     &:not(.right, .left)
       line-height: 1.1rem
@@ -1034,7 +1035,7 @@
     @extend .absolute, .no-right
 
 .main-button
-  @extend .no-margin
+  @extend .no-margin, .min-width-unset
   &.simple
     @extend .no-shadow
 
