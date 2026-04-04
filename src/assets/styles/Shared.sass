@@ -1135,6 +1135,8 @@
 .main-page-container
   @extend .plain-column
   min-height: calc(100vh - #{$mainContainerTopPadding} - #{$mainContainerBottomPadding}) !important
+  &.with-player
+    min-height: calc(100vh - #{$mainContainerTopPadding} - #{$mainContainerBottomPlayerPadding}) !important
 
 .main-page-segment-container
   @extend .plain-full
@@ -1160,6 +1162,8 @@
 .main-view
   padding-top: $mainContainerTopPadding
   padding-bottom: $mainContainerBottomPadding
+  &.with-player
+    padding-bottom: $mainContainerBottomPlayerPadding
 
 .main-popup-icon
   @extend .main-icon, .cursor-pointer

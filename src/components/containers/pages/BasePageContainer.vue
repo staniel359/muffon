@@ -2,6 +2,9 @@
   <div
     ref="page"
     class="main-page-container"
+    :class="{
+      'with-player': playerPlaying
+    }"
   >
     <BaseErrorMessage
       v-if="isPageError"
@@ -20,7 +23,10 @@ import {
   mapActions
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+import playerStore from '@/stores/player'
+
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
+
 import {
   toggleLoaderDimmer
 } from '@/helpers/actions/layout'
@@ -48,6 +54,11 @@ export default {
       [
         'tabId'
       ]
+    ),...mapState(
+      playerStore,
+      {
+        playerPlaying: 'playing'
+      }
     ),
     isPageLoading () {
       return (

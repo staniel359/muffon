@@ -2,15 +2,24 @@
   <BaseSegmentsContainer
     :key="refreshKey"
     class="main-page-container"
+    :class="{
+      'with-player': playerPlaying
+    }"
   >
     <ContentSection />
   </BaseSegmentsContainer>
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import playerStore from '@/stores/player'
+
 import BaseSegmentsContainer
   from '@/components/containers/segments/BaseSegmentsContainer.vue'
 import ContentSection from './MainPage/ContentSection.vue'
+
 import navigationMixin from '@/mixins/navigationMixin'
 import pageMixin from '@/mixins/pageMixin'
 import {
@@ -34,6 +43,12 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      playerStore,
+      {
+        playerPlaying: 'playing'
+      }
+    ),
     navigationSections () {
       return formatRadioPageNavigation()
     },

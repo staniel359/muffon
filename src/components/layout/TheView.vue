@@ -1,5 +1,10 @@
 <template>
-  <div class="ui container main-container main-view">
+  <div
+    class="ui container main-container main-view"
+    :class="{
+      'with-player': playerPlaying
+    }"
+  >
     <RouterView
       v-slot="{
         Component
@@ -29,6 +34,7 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+import playerStore from '@/stores/player'
 
 export default {
   name: 'TheView',
@@ -43,6 +49,12 @@ export default {
       [
         'isCachePages'
       ]
+    ),
+    ...mapState(
+      playerStore,
+      {
+        playerPlaying: 'playing'
+      }
     ),
     fullPathDecoded () {
       return decodeURI(
