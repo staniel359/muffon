@@ -10,8 +10,12 @@
     @click="handleClick"
   >
     <div class="main-sidebar-item-icon-image-container">
+      <BaseLogoImage
+        v-if="isImageLogo"
+        size="extrasmall"
+      />
       <BaseIcon
-        v-if="icon"
+        v-else-if="icon"
         class="grey main-icon"
         :icon="icon"
       />
@@ -41,29 +45,37 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
+import BaseLogoImage from '@/components/images/BaseLogoImage.vue'
 
 export default {
   name: 'BaseSidebarItem',
   components: {
     BaseLinkContainer,
     BaseIcon,
-    BaseImage
+    BaseImage,
+    BaseLogoImage
   },
   props: {
     text: {
       type: String,
       required: true
     },
+    isClickable: {
+      type: Boolean,
+      default: true
+    },
     linkData: Object,
     icon: String,
     image: String,
     imageModel: String,
     isTextStrong: Boolean,
-    isPathStrict: Boolean
+    isPathStrict: Boolean,
+    isImageLogo: Boolean
   },
   emits: [
     'click'
@@ -76,10 +88,14 @@ export default {
       ]
     ),
     component () {
-      if (this.linkData) {
-        return 'BaseLinkContainer'
+      if (this.isClickable) {
+        if (this.linkData) {
+          return 'BaseLinkContainer'
+        } else {
+          return 'a'
+        }
       } else {
-        return 'a'
+        return 'div'
       }
     },
     isActive () {

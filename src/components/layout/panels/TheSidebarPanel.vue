@@ -9,7 +9,7 @@
       <ProfileItem
         v-if="profileId"
       />
-      <RootItem
+      <GuestItem
         v-else
       />
 
@@ -114,7 +114,7 @@ import profileStore from '@/stores/profile'
 import sidebarStore from '@/stores/sidebar'
 import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
-import RootItem from './TheSidebarPanel/RootItem.vue'
+import GuestItem from './TheSidebarPanel/GuestItem.vue'
 import HomeItem from './TheSidebarPanel/HomeItem.vue'
 import FeedItem from './TheSidebarPanel/FeedItem.vue'
 import ConversationsItem from './TheSidebarPanel/ConversationsItem.vue'
@@ -145,7 +145,7 @@ export default {
   components: {
     BaseMenuContainer,
     ProfileItem,
-    RootItem,
+    GuestItem,
     HomeItem,
     FeedItem,
     ConversationsItem,
