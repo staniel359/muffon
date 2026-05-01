@@ -11,6 +11,7 @@
         v-for="imageData in imagesCollection"
         :key="imageData.uuid"
         class="column no-padding"
+        model="artist"
         :image="imageData.name"
         :is-invertable="false"
       />
