@@ -15,13 +15,13 @@
 
         <FormSegment
           v-if="slotProps.profileId"
-          :key="key"
+          :key="formSegmentKey"
           :profile-id="slotProps.profileId"
           @success="handleSuccess"
         />
 
         <MessagesSegment
-          :key="key"
+          :key="messagesSegmentKey"
           :conversation-id="conversationId"
         />
       </BaseSegmentsContainer>
@@ -37,9 +37,11 @@ import BaseSegmentsContainer
 import ProfileSegment from './MainPage/ProfileSegment.vue'
 import FormSegment from './MainPage/FormSegment.vue'
 import MessagesSegment from './MainPage/MessagesSegment.vue'
+
 import {
   generateKey
 } from '@/helpers/utils'
+
 import pageMixin from '@/mixins/pageMixin'
 
 export default {
@@ -59,12 +61,15 @@ export default {
   },
   data () {
     return {
-      key: null
+      formSegmentKey: null,
+      messagesSegmentKey: null
     }
   },
   methods: {
     handleSuccess () {
-      this.key = generateKey()
+      this.formSegmentKey = generateKey()
+
+      this.messagesSegmentKey = generateKey()
     }
   }
 }
