@@ -203,9 +203,7 @@ export default [
     ],
     albumsTypes: [
       'album',
-      'single',
-      'compilation',
-      'appearance'
+      'singleEp'
     ],
     searchScopes: [
       'artists',
