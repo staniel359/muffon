@@ -7,6 +7,9 @@
     :scope="scope"
     :limit="limit"
     :view-id="viewId"
+    :order="order"
+    :model="model"
+    :is-with-order-change="isWithOrderChange"
     :is-with-view-change="isWithViewChange"
     :is-with-reload-button="isAnyTags"
     is-with-top-segment
@@ -36,6 +39,7 @@
         :is="listComponent"
         :[scope]="slotProps[scope]"
         :view-id="viewId"
+        is-with-artist-image
         is-with-artist-name
         is-with-listeners-count
         is-with-library-option
@@ -56,9 +60,14 @@ import FilterSection from './ContentSection/FilterSection.vue'
 import FilterTagsSection from './ContentSection/FilterTagsSection.vue'
 import BaseArtistsList from '@/components/lists/artists/BaseArtistsList.vue'
 import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
+import BaseTracksSimpleList
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+
 import viewChangeMixin from '@/mixins/viewChangeMixin'
 import collectionMixin from '@/mixins/collectionMixin'
 import paginatedPageMixin from '@/mixins/paginatedPageMixin'
+import orderChangeMixin from '@/mixins/orderChangeMixin'
+
 import getMultitag from '@/helpers/actions/api/multitag/get'
 
 export default {
@@ -68,12 +77,14 @@ export default {
     FilterSection,
     FilterTagsSection,
     BaseArtistsList,
-    BaseAlbumsList
+    BaseAlbumsList,
+    BaseTracksSimpleList
   },
   mixins: [
     viewChangeMixin,
     collectionMixin,
-    paginatedPageMixin
+    paginatedPageMixin,
+    orderChangeMixin
   ],
   provide () {
     return {
@@ -91,7 +102,23 @@ export default {
       tags: [],
       listComponentsData: {
         artists: 'BaseArtistsList',
-        albums: 'BaseAlbumsList'
+        albums: 'BaseAlbumsList',
+        tracks: 'BaseTracksSimpleList',
+      },
+      order: 'listenersCountDesc',
+      scopesModelsData: {
+        artists: 'artist',
+        albums: 'album',
+        tracks: 'track'
+      },
+      viewChangeScopes: [
+        'artists',
+        'albums'
+      ],
+      scopesViewsData: {
+        artists: 'table',
+        albums: 'table',
+        tracks: 'simple'
       }
     }
   },
@@ -100,7 +127,8 @@ export default {
       return {
         tags: this.tagsFormatted,
         scope: this.scope,
-        limit: this.limit
+        limit: this.limit,
+        order: this.order
       }
     },
     tagsFormatted () {
@@ -108,16 +136,25 @@ export default {
         this.formatTag
       )
     },
-    isWithViewChange () {
+    isWithOrderChange () {
       return !!this.multitagData
     },
-    listComponent () {
-      return this.listComponentsData[
+    isWithViewChange () {
+      return !!this.multitagData && this.canChangeView
+    },
+    canChangeView () {
+      return this.viewChangeScopes.includes(
         this.scope
-      ]
+      )
+    },
+    listComponent () {
+      return this.listComponentsData[this.scope]
     },
     isAnyTags () {
       return !!this.tags.length
+    },
+    model () {
+      return this.scopesModelsData[this.scope]
     }
   },
   watch: {
@@ -137,7 +174,17 @@ export default {
         this.reset()
       }
     },
-    handleScopeChange () {
+    handleScopeChange (
+      value
+    ) {
+      const viewId = this.scopesViewsData[value]
+
+      this.setViewId(
+        viewId
+      )
+
+      this.defaultViewId = viewId
+
       if (this.isAnyTags) {
         this.multitagData = null
 
@@ -151,6 +198,8 @@ export default {
         page
       } = {}
     ) {
+      if (!this.isAnyTags) { return }
+
       this.getMultitag(
         {
           ...this.multitagArgs,

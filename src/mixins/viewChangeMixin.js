@@ -15,20 +15,13 @@ export default {
   },
   computed: {
     limit () {
-      return this.scopeViewLimitsData[
-        this.viewId
-      ].large
+      return this.scopeViewLimitsData[this.viewId].large
     },
     scopeViewLimitsData () {
-      return viewLimitsData[
-        this.viewScope
-      ]
+      return viewLimitsData[this.viewScope]
     },
     viewScope () {
-      return (
-        this.listScope ||
-          this.scope
-      )
+      return this.listScope || this.scope
     }
   },
   methods: {
@@ -38,8 +31,7 @@ export default {
       this.viewId = value
     },
     resetViewId () {
-      this.viewId =
-        this.defaultViewId
+      this.viewId = this.defaultViewId
     }
   }
 }

@@ -5,6 +5,18 @@ export default {
     'followersCountDesc',
     'followersCountAsc'
   ],
+  artist: [
+    'listenersCountDesc',
+    'listenersCountAsc'
+  ],
+  album: [
+    'listenersCountDesc',
+    'listenersCountAsc'
+  ],
+  track: [
+    'listenersCountDesc',
+    'listenersCountAsc'
+  ],
   libraryArtist: [
     'libraryTracksCountDesc',
     'libraryTracksCountAsc',

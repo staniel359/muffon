@@ -10,6 +10,7 @@
 
 <script>
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
+
 import orders from '@/helpers/data/orders'
 
 export default {
@@ -37,9 +38,7 @@ export default {
       )
     },
     modelOrders () {
-      return orders[
-        this.model
-      ]
+      return orders[this.model]
     },
     options () {
       return [
@@ -168,6 +167,20 @@ export default {
             'orders.membersCountAsc'
           ),
           icon: 'member'
+        },
+        {
+          id: 'listenersCountDesc',
+          name: this.$t(
+            'orders.listenersCountDesc'
+          ),
+          icon: 'profile'
+        },
+        {
+          id: 'listenersCountAsc',
+          name: this.$t(
+            'orders.listenersCountAsc'
+          ),
+          icon: 'profile'
         }
       ]
     }
@@ -187,9 +200,7 @@ export default {
       function isMatchedOption (
         optionData
       ) {
-        return (
-          optionData.id === order
-        )
+        return optionData.id === order
       }
 
       return this.options.find(

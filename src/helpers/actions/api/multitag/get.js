@@ -5,7 +5,8 @@ export default function (
     tags,
     scope,
     page,
-    limit
+    limit,
+    order
   }
 ) {
   const url = `/lastfm/multitag/${scope}`
@@ -31,6 +32,7 @@ export default function (
       isWithSelfToken: true,
       page,
       limit,
+      order,
       onSuccess: handleSuccess
     }
   )

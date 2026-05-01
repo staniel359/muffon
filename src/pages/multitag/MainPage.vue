@@ -20,6 +20,7 @@ import ContentSection from './MainPage/ContentSection.vue'
 
 import navigationMixin from '@/mixins/navigationMixin'
 import pageMixin from '@/mixins/pageMixin'
+
 import {
   multitag as formatMultitagPageNavigation
 } from '@/helpers/formatters/navigation'

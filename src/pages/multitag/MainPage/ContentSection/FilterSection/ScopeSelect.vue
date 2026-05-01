@@ -35,6 +35,10 @@ export default {
         {
           id: 'albums',
           icon: 'album'
+        },
+        {
+          id: 'tracks',
+          icon: 'track'
         }
       ]
     }
