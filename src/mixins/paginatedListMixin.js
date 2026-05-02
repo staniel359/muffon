@@ -62,8 +62,10 @@ export default {
     },
     isRenderPagination () {
       return (
-        this.isResponsePageable ||
-          this.isResponsePagePageable
+        this.clientTotalPages > 1 && (
+          this.isResponsePageable ||
+            this.isResponsePagePageable
+        )
       )
     },
     responseNextPage () {
