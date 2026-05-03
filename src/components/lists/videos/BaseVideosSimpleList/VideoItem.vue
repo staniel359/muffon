@@ -37,12 +37,16 @@
           @active-change="handleChannelLinkActiveChange"
         />
 
-        <BaseListCounterSection
-          v-if="isRenderViewsCount"
+        <div
+          v-if="isWithViewsCount"
           class="description"
-          icon="watch"
-          :count="viewsCount"
-        />
+        >
+          <BaseVideoViewsCount
+            :video-id="videoId"
+            :views-count="viewsCount"
+            @load-end="handleViewsCountLoadEnd"
+          />
+        </div>
 
         <BaseDescriptionSection
           v-if="isRenderDescription"
@@ -119,13 +123,15 @@ import BaseVideoOptionsPopup
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import BaseDurationSection
   from '@/components/sections/BaseDurationSection.vue'
-import BaseListCounterSection
-  from '@/components/sections/BaseListCounterSection.vue'
 import BaseDescriptionSection
   from '@/components/sections/BaseDescriptionSection.vue'
+import BaseVideoViewsCount
+  from '@/components/models/video/BaseVideoViewsCount.vue'
+
 import {
   main as formatVideoLink
 } from '@/helpers/formatters/links/video'
+
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -142,8 +148,8 @@ export default {
     BaseVideoOptionsPopup,
     BaseClearButton,
     BaseDurationSection,
-    BaseListCounterSection,
-    BaseDescriptionSection
+    BaseDescriptionSection,
+    BaseVideoViewsCount
   },
   mixins: [
     selfMixin
@@ -227,12 +233,6 @@ export default {
         this.videoData.duration
       )
     },
-    isRenderViewsCount () {
-      return (
-        this.isWithViewsCount &&
-          this.viewsCount
-      )
-    },
     viewsCount () {
       return (
         this.videoData.views_count
@@ -269,6 +269,11 @@ export default {
     },
     handleDeleted () {
       this.paginationItem.isDeleted = true
+    },
+    handleViewsCountLoadEnd (
+      value
+    ) {
+      this.paginationItem.views_count = value
     }
   }
 }

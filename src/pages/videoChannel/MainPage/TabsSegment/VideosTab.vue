@@ -16,6 +16,7 @@
         is-with-watched-option
         is-with-share-option
         is-with-external-link-option
+        is-with-views-count
       />
     </template>
   </BaseVideoChannelTabContainer>

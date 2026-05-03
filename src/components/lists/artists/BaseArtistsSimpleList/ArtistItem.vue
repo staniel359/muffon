@@ -40,13 +40,16 @@
           :text="artistName"
         />
 
-        <BaseArtistListenersCount
+        <div
           v-if="isWithListenersCount"
           class="description"
-          :artist-name="artistName"
-          :listeners-count="listenersCount"
-          @load-end="handleListenersCountLoadEnd"
-        />
+        >
+          <BaseArtistListenersCount
+            :artist-name="artistName"
+            :listeners-count="listenersCount"
+            @load-end="handleListenersCountLoadEnd"
+          />
+        </div>
 
         <LibraryCountersSection
           v-if="isWithLibrary"

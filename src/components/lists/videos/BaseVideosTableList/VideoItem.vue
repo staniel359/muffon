@@ -57,6 +57,17 @@
           @link-click="handleLinkClick"
         />
 
+        <div
+          v-if="isWithViewsCount"
+          class="description align-self-center"
+        >
+          <BaseVideoViewsCount
+            :video-id="videoId"
+            :views-count="viewsCount"
+            @load-end="handleViewsCountLoadEnd"
+          />
+        </div>
+
         <BaseCreatedSection
           v-if="isWithCreated"
           class="description"
@@ -96,9 +107,13 @@ import BaseCreatedSection from '@/components/sections/BaseCreatedSection.vue'
 import BasePublishDateSection
   from '@/components/sections/BasePublishDateSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
+import BaseVideoViewsCount
+  from '@/components/models/video/BaseVideoViewsCount.vue'
+
 import {
   main as formatVideoLink
 } from '@/helpers/formatters/links/video'
+
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -113,7 +128,8 @@ export default {
     BaseVideoChannelLinkSection,
     BaseCreatedSection,
     BasePublishDateSection,
-    BaseSelfIcons
+    BaseSelfIcons,
+    BaseVideoViewsCount
   },
   mixins: [
     selfMixin
@@ -138,7 +154,8 @@ export default {
     isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
     isBookmark: Boolean,
-    isFavorite: Boolean
+    isFavorite: Boolean,
+    isWithViewsCount: Boolean
   },
   emits: [
     'linkClick'
@@ -175,6 +192,9 @@ export default {
     },
     uuid () {
       return this.videoData.uuid
+    },
+    viewsCount () {
+      return this.videoData.views_count
     }
   },
   methods: {
@@ -185,6 +205,11 @@ export default {
     },
     handleDeleted () {
       this.paginationItem.isDeleted = true
+    },
+    handleViewsCountLoadEnd (
+      value
+    ) {
+      this.paginationItem.views_count = value
     }
   }
 }

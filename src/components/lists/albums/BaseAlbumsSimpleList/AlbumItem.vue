@@ -47,14 +47,17 @@
           @link-click="handleLinkClick"
         />
 
-        <BaseAlbumListenersCount
+        <div
           v-if="isWithListenersCount"
           class="description listeners-count"
-          :album-title="albumTitle"
-          :artist-name="albumArtistName"
-          :listeners-count="listenersCount"
-          @load-end="handleListenersCountLoadEnd"
-        />
+        >
+          <BaseAlbumListenersCount
+            :album-title="albumTitle"
+            :artist-name="albumArtistName"
+            :listeners-count="listenersCount"
+            @load-end="handleListenersCountLoadEnd"
+          />
+        </div>
 
         <LibraryCountersSection
           v-if="isWithLibrary"

@@ -18,6 +18,7 @@
         :is-with-delete-option="isWithDeleteOption"
         :is-bookmark="isBookmark"
         :is-favorite="isFavorite"
+        :is-with-views-count="isWithViewsCount"
         @link-click="handleLinkClick"
       />
     </div>
@@ -52,7 +53,8 @@ export default {
     isWithExternalLinkOption: Boolean,
     isWithDeleteOption: Boolean,
     isBookmark: Boolean,
-    isFavorite: Boolean
+    isFavorite: Boolean,
+    isWithViewsCount: Boolean
   },
   emits: [
     'linkClick'
