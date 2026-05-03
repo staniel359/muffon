@@ -54,7 +54,8 @@ export default {
       [
         'tabId'
       ]
-    ),...mapState(
+    ),
+    ...mapState(
       playerStore,
       {
         playerPlaying: 'playing'

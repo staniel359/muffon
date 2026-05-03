@@ -10,8 +10,10 @@ import setupDayjs from '@/plugins/dayjs'
 
 export default function () {
   // For Slick
-  $.type = function (value) {
-    return typeof(value)
+  $.type = function (
+    value
+  ) {
+    return typeof value
   }
 
   setupShortcuts()

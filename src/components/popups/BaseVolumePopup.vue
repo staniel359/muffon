@@ -103,10 +103,14 @@ export default {
       )
     },
     handleMouseWheelScrollUp () {
-      this.increaseSeekerValue(0.01)
+      this.increaseSeekerValue(
+        0.01
+      )
     },
     handleMouseWheelScrollDown () {
-      this.decreaseSeekerValue(0.01)
+      this.decreaseSeekerValue(
+        0.01
+      )
     },
     handleMouseWheelStop (
       value

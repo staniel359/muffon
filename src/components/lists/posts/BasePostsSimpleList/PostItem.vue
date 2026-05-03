@@ -36,7 +36,7 @@
             v-if="isWithOptions"
             class="main-right-section"
           >
-            <BasePostOptionsPopup    
+            <BasePostOptionsPopup
               class="invisible-item"
               :post-data="postData"
               :is-with-edit-option="isWithEditOption"

@@ -103,7 +103,7 @@ export default {
       listComponentsData: {
         artists: 'BaseArtistsList',
         albums: 'BaseAlbumsList',
-        tracks: 'BaseTracksSimpleList',
+        tracks: 'BaseTracksSimpleList'
       },
       order: 'listenersCountDesc',
       scopesModelsData: {
