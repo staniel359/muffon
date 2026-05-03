@@ -56,7 +56,7 @@
     "electron-builder": "26.8.1",
     "eslint": "^10.3.0",
     "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-vue": "^10.9.0",
+    "eslint-plugin-vue": "10.8.0",
     "fomantic-ui": "^2.9.4",
     "globals": "^17.6.0",
     "hotkeys-js": "^4.0.4",
@@ -72,7 +72,7 @@
     "vue-i18n": "^11.4.0",
     "vue-router": "^5.0.6"
   },
-  "packageManager": "pnpm@10.30.3",
+  "packageManager": "pnpm@10.33.2",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
