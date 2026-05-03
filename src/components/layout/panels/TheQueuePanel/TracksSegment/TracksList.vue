@@ -9,6 +9,7 @@
     is-with-album-title
     is-with-source
     is-with-saved-icon
+    is-with-duration
     is-with-source-option
     is-with-library-option
     is-with-playlist-option
