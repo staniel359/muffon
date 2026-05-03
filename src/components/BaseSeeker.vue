@@ -7,6 +7,7 @@
       inverted: isDarkMode
     }"
     @mousedown.capture="handleMouseDown"
+    @wheel="handleMouseWheelScroll"
   />
 </template>
 
@@ -15,10 +16,16 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+
 import {
   set as setSeeker,
-  setValue as setSeekerValue
+  setValue as setSeekerValue,
+  getValue as getSeekerValue
 } from '@/helpers/actions/plugins/semantic/seeker'
+import {
+  sumFloats,
+  subtractFloats
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseSeeker',
@@ -35,11 +42,16 @@ export default {
     'mouseDown',
     'mouseUp',
     'move',
-    'change'
+    'change',
+    'mouseWheelScrollUp',
+    'mouseWheelScrollDown',
+    'mouseWheelStop'
   ],
   data () {
     return {
-      isMouseUp: true
+      isMouseUp: true,
+      wheelScrollTimer: null,
+      wheelScrollTimeout: 1000
     }
   },
   computed: {
@@ -123,6 +135,47 @@ export default {
         )
       }
     },
+    handleMouseWheelScroll (
+      event
+    ) {
+      event.preventDefault()
+
+      clearTimeout(
+        this.wheelScrollTimer
+      )
+
+      this.isMouseUp = false
+
+      const isScrollingUp = event.deltaY < 0
+
+      const isScrollingDown = event.deltaY > 0
+
+      if (isScrollingUp) {
+        this.$emit(
+          'mouseWheelScrollUp',
+          event
+        )
+      } else if (isScrollingDown) {
+        this.$emit(
+          'mouseWheelScrollDown',
+          event
+        )
+      }
+
+      this.wheelScrollTimer =
+        setTimeout(
+          () => {
+            this.handleMouseWheelStop()
+          },
+          this.wheelScrollTimeout
+        )
+    },
+    handleMouseWheelStop () {
+      this.$emit(
+        'mouseWheelStop',
+        this.getValue()
+      )
+    },
     initialize () {
       setSeeker(
         this.$refs.seeker,
@@ -135,6 +188,45 @@ export default {
       setSeekerValue(
         this.$refs.seeker,
         value
+      )
+    },
+    increaseValue (
+      value
+    ) {
+      const currentValue = this.getValue()
+
+      if (currentValue >= 100) { return }
+
+      const newValue =
+        sumFloats(
+          currentValue,
+          value
+        )
+
+      this.setValue(
+        newValue
+      )
+    },
+    getValue () {
+      return getSeekerValue(
+        this.$refs.seeker
+      )
+    },
+    decreaseValue (
+      value
+    ) {
+      const currentValue = this.getValue()
+
+      if (currentValue <= 0) { return }
+
+      const newValue =
+        subtractFloats(
+          currentValue,
+          value
+        )
+
+      this.setValue(
+        newValue
       )
     }
   }

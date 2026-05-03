@@ -20,3 +20,13 @@ export function setValue (
     value
   )
 }
+
+export function getValue (
+  element
+) {
+  return $(
+    element
+  ).slider(
+    'get value'
+  )
+}

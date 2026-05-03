@@ -316,3 +316,15 @@ export function filterLocalTracksByQuery (
     isMatchedTrack
   )
 }
+
+export function sumFloats (valueA, valueB) {
+  return parseFloat(
+    (valueA + valueB).toFixed(2)
+  )
+}
+
+export function subtractFloats (valueA, valueB) {
+  return parseFloat(
+    (valueA - valueB).toFixed(2)
+  )
+}

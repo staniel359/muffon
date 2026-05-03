@@ -15,6 +15,9 @@
       :options="seekerOptions"
       @move="handleMove"
       @mouse-up="handleMouseUp"
+      @mouse-wheel-scroll-up="handleMouseWheelScrollUp"
+      @mouse-wheel-scroll-down="handleMouseWheelScrollDown"
+      @mouse-wheel-stop="handleMouseWheelStop"
     />
   </BaseSegmentContainer>
 </template>
@@ -99,6 +102,21 @@ export default {
         value
       )
     },
+    handleMouseWheelScrollUp () {
+      this.increaseSeekerValue(0.01)
+    },
+    handleMouseWheelScrollDown () {
+      this.decreaseSeekerValue(0.01)
+    },
+    handleMouseWheelStop (
+      value
+    ) {
+      updateGlobalStore(
+        {
+          'audio.volume': value
+        }
+      )
+    },
     setAudioVolume (
       value
     ) {
@@ -110,6 +128,24 @@ export default {
       this.$refs
         .seeker
         .setValue(
+          value
+        )
+    },
+    increaseSeekerValue (
+      value
+    ) {
+      this.$refs
+        .seeker
+        .increaseValue(
+          value
+        )
+    },
+    decreaseSeekerValue (
+      value
+    ) {
+      this.$refs
+        .seeker
+        .decreaseValue(
           value
         )
     }
