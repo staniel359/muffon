@@ -1,13 +1,29 @@
 <template>
   <BaseSimpleCardContainer
     :class="{
-      disabled: isDeleted
+      disabled: isDisabled
     }"
   >
     <BaseDeletedSection
       v-if="isDeleted"
       model="video"
     />
+    <template
+      v-else-if="isPrivate"
+    >
+      <div class="main-image-container video">
+        <BaseImage
+          class="rounded-medium"
+          model="video"
+        />
+      </div>
+
+      <BaseHeader
+        class="center aligned link"
+        tag="h4"
+        :text="videoTitle"
+      />
+    </template>
     <template
       v-else
     >
@@ -49,7 +65,7 @@
         />
       </BaseLinkContainer>
 
-      <div class="center aligned content">
+      <div class="center aligned content d-flex flex-column">
         <BaseVideoChannelLinkSection
           v-if="isWithChannelTitle"
           class="extra"
@@ -178,7 +194,16 @@ export default {
       return this.videoData.source.id
     },
     videoTitle () {
-      return this.videoData.title
+      if (this.isPrivate) {
+        return this.$t(
+          'privateModel.video'
+        )
+      } else {
+        return this.videoData.title
+      }
+    },
+    isPrivate () {
+      return this.videoData.private
     },
     isDeleted () {
       return !!this.videoData.isDeleted
@@ -195,6 +220,9 @@ export default {
     },
     viewsCount () {
       return this.videoData.views_count
+    },
+    isDisabled () {
+      return this.isDeleted || this.isPrivate
     }
   },
   methods: {

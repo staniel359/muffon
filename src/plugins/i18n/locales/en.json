@@ -816,6 +816,9 @@
     "playlist": "Private",
     "profile": "Private"
   },
+  "privateModel": {
+    "video": "Private video"
+  },
   "donate": {
     "header": "Donate",
     "content": [

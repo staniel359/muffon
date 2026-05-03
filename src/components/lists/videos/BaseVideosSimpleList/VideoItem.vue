@@ -2,7 +2,7 @@
   <BaseLinkContainer
     class="item main-simple-list-item middle-aligned main-visibility-container"
     :class="{
-      disabled: isDeleted
+      disabled: isDisabled
     }"
     :link="link"
     @click="handleLinkClick"
@@ -11,6 +11,21 @@
       v-if="isDeleted"
       model="video"
     />
+    <template
+      v-else-if="isPrivate"
+    >
+      <BaseImage
+        class="rounded-medium video-image-120"
+        model="video"
+      />
+
+      <div class="content">
+        <BaseHeader
+          tag="h4"
+          :text="videoTitle"
+        />
+      </div>
+    </template>
     <template
       v-else
     >
@@ -194,11 +209,18 @@ export default {
       return this.videoData
     },
     link () {
-      return formatVideoLink(
-        {
-          videoId: this.videoId
-        }
-      )
+      if (this.isPrivate) {
+        return null
+      } else {
+        return formatVideoLink(
+          {
+            videoId: this.videoId
+          }
+        )
+      }
+    },
+    isPrivate () {
+      return this.videoData.private
     },
     videoId () {
       return this.videoData.source.id
@@ -207,7 +229,13 @@ export default {
       return this.videoData.image
     },
     videoTitle () {
-      return this.videoData.title
+      if (this.isPrivate) {
+        return this.$t(
+          'privateModel.video'
+        )
+      } else {
+        return this.videoData.title
+      }
     },
     uuid () {
       return this.videoData.uuid
@@ -246,6 +274,9 @@ export default {
     },
     description () {
       return this.videoData.description
+    },
+    isDisabled () {
+      return this.isDeleted || this.isPrivate
     }
   },
   methods: {
