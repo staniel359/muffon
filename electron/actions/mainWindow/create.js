@@ -76,6 +76,10 @@ function handleFocus () {
     topTab
       .webContents
       .focus()
+
+    setViewScale(
+      topTab
+    )
   }
 }
 

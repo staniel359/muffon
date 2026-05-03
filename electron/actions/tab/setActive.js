@@ -1,5 +1,6 @@
 import findTab from './find.js'
 import hideInactiveTabs from '../tabs/hideInactive.js'
+import setViewScale from '../view/setScale.js'
 
 export default function (
   tabId
@@ -13,6 +14,10 @@ export default function (
 
   tab.setVisible(
     true
+  )
+
+  setViewScale(
+    tab
   )
 
   hideInactiveTabs(
