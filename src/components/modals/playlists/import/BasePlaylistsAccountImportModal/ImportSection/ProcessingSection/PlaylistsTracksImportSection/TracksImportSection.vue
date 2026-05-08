@@ -47,7 +47,8 @@ export default {
       userData: {},
       error: null,
       tracks: [],
-      page: 1
+      page: 1,
+      limit: 100
     }
   },
   computed: {
@@ -59,7 +60,8 @@ export default {
         source: this.source,
         playlistId: this.playlistId,
         scope: this.scope,
-        page: this.page
+        page: this.page,
+        limit: this.limit
       }
     },
     source () {
