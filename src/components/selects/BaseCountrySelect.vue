@@ -47,6 +47,8 @@ export default {
         this.countriesList
       ).map(
         this.formatCountry
+      ).sort(
+        this.sortCountries
       )
     },
     countriesList () {
@@ -97,6 +99,16 @@ export default {
         name,
         icon: id.toLowerCase()
       }
+    },
+    sortCountries (
+      firstCountryData,
+      secondCountryData
+    ) {
+      return firstCountryData
+        .name
+        .localeCompare(
+          secondCountryData.name
+        )
     },
     reset () {
       this.$refs
