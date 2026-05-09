@@ -16,6 +16,10 @@ export default function (
     true
   )
 
+  tab
+    .webContents
+    .focus()
+
   setViewScale(
     tab
   )
