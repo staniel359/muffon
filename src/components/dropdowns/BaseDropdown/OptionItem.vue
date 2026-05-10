@@ -27,6 +27,7 @@
     />
 
     <span
+      class="main-dropdown-text"
       v-html="nameSanitized"
     />
   </div>
