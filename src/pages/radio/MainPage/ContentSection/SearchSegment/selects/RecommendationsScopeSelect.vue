@@ -1,7 +1,7 @@
 <template>
   <BaseScopeSelect
+    header="..."
     :scopes="scopes"
-    :selected="scope"
     @select="handleSelect"
   />
 </template>
@@ -10,12 +10,9 @@
 import BaseScopeSelect from '@/components/selects/BaseScopeSelect.vue'
 
 export default {
-  name: 'ScopeSelect',
+  name: 'RecommendationsScopeSelect',
   components: {
     BaseScopeSelect
-  },
-  props: {
-    scope: String
   },
   emits: [
     'select'
@@ -24,20 +21,12 @@ export default {
     return {
       scopes: [
         {
-          id: 'top',
-          icon: 'top'
-        },
-        {
-          id: 'tag',
-          icon: 'tag'
-        },
-        {
-          id: 'artist',
+          id: 'artists',
           icon: 'artist'
         },
         {
-          id: 'recommendations',
-          icon: 'recommendation'
+          id: 'tracks',
+          icon: 'track'
         }
       ]
     }

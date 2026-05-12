@@ -76,5 +76,5 @@ export default {
 <style lang="sass" scoped>
 .scope-select
   &.selection
-    min-width: 140px !important
+    min-width: 180px !important
 </style>

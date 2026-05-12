@@ -4,14 +4,15 @@ export default function (
   {
     scope,
     modelName,
-    modelScope
+    modelScope,
+    isScopeWithModel
   }
 ) {
   function formatUrl () {
-    if (scope === 'top') {
-      return `/radio/${scope}/${modelScope}`
-    } else {
+    if (isScopeWithModel) {
       return `/radio/${scope}/${modelName}/${modelScope}`
+    } else {
+      return `/radio/${scope}/${modelScope}`
     }
   }
 
@@ -29,6 +30,7 @@ export default function (
   )(
     {
       url,
+      isWithSelfId: true,
       isWithSelfToken: true,
       onSuccess: handleSuccess
     }

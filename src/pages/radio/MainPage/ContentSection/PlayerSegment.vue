@@ -28,11 +28,13 @@
 
 <script>
 import hotkeys from 'hotkeys-js'
+
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import TrackSection from './PlayerSegment/TrackSection.vue'
 import NextButton from './PlayerSegment/NextButton.vue'
+
 import getRadio from '@/helpers/actions/api/radio/get'
 import {
   generateKey
@@ -52,7 +54,8 @@ export default {
       required: true
     },
     modelScope: String,
-    modelName: String
+    modelName: String,
+    isScopeWithModel: Boolean
   },
   data () {
     return {
@@ -71,23 +74,19 @@ export default {
       return {
         scope: this.scope,
         modelName: this.modelName,
-        modelScope: this.modelScope
+        modelScope: this.modelScope,
+        isScopeWithModel: this.isScopeWithModel
       }
     },
     isGetData () {
-      if (this.isTopScope) {
-        return !!this.modelScope
-      } else {
+      if (this.isScopeWithModel) {
         return !!(
           this.modelName &&
             this.modelScope
         )
+      } else {
+        return !!this.modelScope
       }
-    },
-    isTopScope () {
-      return (
-        this.scope === 'top'
-      )
     },
     isTrackDataPresent () {
       return !!this.trackData

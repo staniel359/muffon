@@ -10,7 +10,7 @@
         v-if="scope"
       >
         <div
-          v-if="!isTopScope"
+          v-if="isScopeWithModel"
           class="main-right-section"
         >
           <Component
@@ -46,6 +46,8 @@ import ArtistScopeSelect from './SearchSegment/selects/ArtistScopeSelect.vue'
 import TagsSearchInput from './SearchSegment/inputs/TagsSearchInput.vue'
 import ArtistsSearchInput from './SearchSegment/inputs/ArtistsSearchInput.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import RecommendationsScopeSelect
+  from './SearchSegment/selects/RecommendationsScopeSelect.vue'
 
 export default {
   name: 'SearchSegment',
@@ -57,11 +59,13 @@ export default {
     ArtistScopeSelect,
     TagsSearchInput,
     ArtistsSearchInput,
-    BaseClearButton
+    BaseClearButton,
+    RecommendationsScopeSelect
   },
   props: {
     scope: String,
-    modelName: String
+    modelName: String,
+    isScopeWithModel: Boolean
   },
   emits: [
     'scopeChange',
@@ -77,25 +81,17 @@ export default {
       modelScopeSelectComponents: {
         top: 'TopScopeSelect',
         tag: 'TagScopeSelect',
-        artist: 'ArtistScopeSelect'
+        artist: 'ArtistScopeSelect',
+        recommendations: 'RecommendationsScopeSelect',
       }
     }
   },
   computed: {
     searchComponent () {
-      return this.searchComponents[
-        this.scope
-      ]
+      return this.searchComponents[this.scope]
     },
     modelScopeSelectComponent () {
-      return this.modelScopeSelectComponents[
-        this.scope
-      ]
-    },
-    isTopScope () {
-      return (
-        this.scope === 'top'
-      )
+      return this.modelScopeSelectComponents[this.scope]
     }
   },
   methods: {
@@ -114,7 +110,9 @@ export default {
 
       await this.$nextTick()
 
-      this.focusInput()
+      if (this.isScopeWithModel) {
+        this.focusInput()
+      }
     },
     handleSearchSelect (
       value
@@ -141,6 +139,10 @@ export default {
         'modelScopeChange',
         value
       )
+
+      if (this.isScopeWithModel) {
+        this.focusInput()
+      }
     },
     clearInput () {
       this.$refs
@@ -150,7 +152,7 @@ export default {
     focusInput () {
       this.$refs
         .input
-        ?.focus()
+        .focus()
     }
   }
 }

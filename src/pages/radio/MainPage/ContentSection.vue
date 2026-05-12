@@ -2,6 +2,7 @@
   <SearchSegment
     :scope="scope"
     :model-name="modelName"
+    :is-scope-with-model="isScopeWithModel"
     @scope-change="handleScopeChange"
     @model-name-change="handleModelNameChange"
     @model-scope-change="handleModelScopeChange"
@@ -14,6 +15,7 @@
     :scope="scope"
     :model-name="modelName"
     :model-scope="modelScope"
+    :is-scope-with-model="isScopeWithModel"
   />
 </template>
 
@@ -38,13 +40,24 @@ export default {
       key: null,
       modelName: null,
       modelScope: null,
-      scope: 'top'
+      scope: 'top',
+      scopesWithModel: [
+        'tag',
+        'artist'
+      ]
     }
   },
   computed: {
-    isTopScope () {
-      return (
-        this.scope === 'top'
+    isRefresh () {
+      if (this.isScopeWithModel) {
+        return !!this.modelName
+      } else {
+        return true
+      }
+    },
+    isScopeWithModel () {
+      return this.scopesWithModel.includes(
+        this.scope
       )
     }
   },
@@ -54,7 +67,7 @@ export default {
     ) {
       this.scope = value
 
-      if (this.isTopScope) {
+      if (!this.isScopeWithModel) {
         this.modelScope = null
       }
     },
@@ -72,12 +85,7 @@ export default {
     ) {
       this.modelScope = value
 
-      const isRefresh = (
-        this.isTopScope ||
-          this.modelName
-      )
-
-      if (isRefresh) {
+      if (this.isRefresh) {
         this.key = generateKey()
       }
     }

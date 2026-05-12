@@ -11,6 +11,10 @@
 <script>
 import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
 
+import {
+  fields as tagFields
+} from '@/helpers/formatters/search/tag'
+
 export default {
   name: 'TagsSearchInput',
   components: {
@@ -19,19 +23,20 @@ export default {
   emits: [
     'select'
   ],
+  data () {
+    return {
+      scope: 'tags',
+      limit: 5
+    }
+  },
   computed: {
     url () {
       return (
-        'lastfm/search/tags' +
-        '?query={query}&limit=5'
+        `lastfm/search/${this.scope}?query={query}&limit=${this.limit}`
       )
     },
     fields () {
-      return {
-        results: 'tags',
-        title: 'name',
-        image: null
-      }
+      return tagFields
     }
   },
   methods: {

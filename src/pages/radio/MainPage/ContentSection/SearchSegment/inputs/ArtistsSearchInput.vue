@@ -26,14 +26,14 @@ export default {
   ],
   data () {
     return {
-      scope: 'artists'
+      scope: 'artists',
+      limit: 5
     }
   },
   computed: {
     url () {
       return (
-        `lastfm/search/${this.scope}` +
-        '?query={query}&limit=5'
+        `lastfm/search/${this.scope}?query={query}&limit=${this.limit}`
       )
     },
     fields () {
