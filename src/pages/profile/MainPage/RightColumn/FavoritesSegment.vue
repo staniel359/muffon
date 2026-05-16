@@ -5,6 +5,7 @@
   >
     <FavoritesTabsSegment
       :profile-id="profileId"
+      :profile-data="profileData"
     />
   </BaseHeaderSegmentsContainer>
 </template>
@@ -27,7 +28,8 @@ export default {
     profileId: {
       type: Number,
       required: true
-    }
+    },
+    profileData: Object
   },
   data () {
     return {

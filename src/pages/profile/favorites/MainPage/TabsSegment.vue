@@ -35,26 +35,34 @@ export default {
     VideosTab
   },
   props: {
+    favoritesData: {
+      type: Object,
+      required: true
+    },
     profileId: Number
   },
-  data () {
-    return {
-      tabs: [
+  computed: {
+    tabs () {
+      return [
         {
           nameCode: 'navigation.artists',
-          component: 'ArtistsTab'
+          component: 'ArtistsTab',
+          counter: this.favoritesData.artists_count
         },
         {
           nameCode: 'navigation.albums',
-          component: 'AlbumsTab'
+          component: 'AlbumsTab',
+          counter: this.favoritesData.albums_count
         },
         {
           nameCode: 'navigation.tracks',
-          component: 'TracksTab'
+          component: 'TracksTab',
+          counter: this.favoritesData.tracks_count
         },
         {
           nameCode: 'navigation.videos',
-          component: 'VideosTab'
+          component: 'VideosTab',
+          counter: this.favoritesData.videos_count
         }
       ]
     }

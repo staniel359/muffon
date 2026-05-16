@@ -18,10 +18,12 @@
 
     <FavoritesSegment
       :profile-id="profileId"
+      :profile-data="profileData"
     />
 
     <TabsSegment
       :profile-id="profileId"
+      :profile-data="profileData"
     />
   </div>
 </template>

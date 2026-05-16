@@ -31,6 +31,10 @@ export default {
     PostsTab
   },
   props: {
+    communityData: {
+      type: Object,
+      required: true
+    },
     communityId: Number,
     isCommunityCreator: Boolean
   },
@@ -39,7 +43,8 @@ export default {
       tabs: [
         {
           nameCode: 'navigation.posts',
-          component: 'PostsTab'
+          component: 'PostsTab',
+          counter: this.communityData.posts_count
         }
       ]
     }

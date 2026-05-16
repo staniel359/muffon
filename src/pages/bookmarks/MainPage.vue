@@ -1,82 +1,46 @@
 <template>
   <BaseBookmarksPageContainer
     :key="refreshKey"
-    :is-get-data="false"
+    :profile-id="profileId"
   >
-    <BaseTabsSegmentContainer
-      :tabs="tabs"
+    <template
+      #default="slotProps"
     >
-      <template
-        #default="slotProps"
-      >
-        <Component
-          :is="slotProps.component"
-          :class="slotProps.class"
-          :is-active="slotProps.isActive"
-          @focus="slotProps.handleFocus"
-        />
-      </template>
-    </BaseTabsSegmentContainer>
+      <TabsSegment
+        :bookmarks-data="slotProps.bookmarksData"
+      />
+    </template>
   </BaseBookmarksPageContainer>
 </template>
 
 <script>
+import {
+  mapState
+} from 'pinia'
+import profileStore from '@/stores/profile'
+
 import BaseBookmarksPageContainer
   from '@/components/containers/pages/bookmarks/BaseBookmarksPageContainer.vue'
-import BaseTabsSegmentContainer
-  from '@/components/containers/segments/tabs/BaseTabsSegmentContainer.vue'
-import ArtistsTab from './MainPage/ArtistsTab.vue'
-import AlbumsTab from './MainPage/AlbumsTab.vue'
-import TracksTab from './MainPage/TracksTab.vue'
-import VideosTab from './MainPage/VideosTab.vue'
-import VideoChannelsTab from './MainPage/VideoChannelsTab.vue'
-import VideoPlaylistsTab from './MainPage/VideoPlaylistsTab.vue'
+import TabsSegment from './MainPage/TabsSegment.vue'
+
 import pageMixin from '@/mixins/pageMixin'
 
 export default {
   name: 'MainPage',
   components: {
     BaseBookmarksPageContainer,
-    BaseTabsSegmentContainer,
-    ArtistsTab,
-    AlbumsTab,
-    TracksTab,
-    VideosTab,
-    VideoChannelsTab,
-    VideoPlaylistsTab
+    TabsSegment
   },
   mixins: [
     pageMixin
   ],
-  data () {
-    return {
-      tabs: [
-        {
-          nameCode: 'navigation.artists',
-          component: 'ArtistsTab'
-        },
-        {
-          nameCode: 'navigation.albums',
-          component: 'AlbumsTab'
-        },
-        {
-          nameCode: 'navigation.tracks',
-          component: 'TracksTab'
-        },
-        {
-          nameCode: 'navigation.videos',
-          component: 'VideosTab'
-        },
-        {
-          nameCode: 'navigation.videoChannels',
-          component: 'VideoChannelsTab'
-        },
-        {
-          nameCode: 'navigation.videoPlaylists',
-          component: 'VideoPlaylistsTab'
-        }
-      ]
-    }
+  computed: {
+    ...mapState(
+      profileStore,
+      {
+        profileId: 'id'
+      }
+    )
   }
 }
 </script>

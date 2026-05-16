@@ -20,6 +20,7 @@
 
         <RightColumn
           :community-id="communityId"
+          :community-data="slotProps.communityData"
           :is-community-creator="slotProps.isCommunityCreator"
         />
       </div>

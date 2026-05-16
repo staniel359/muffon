@@ -14,6 +14,12 @@
     <span
       v-text="tabName"
     />
+
+    <span
+      v-if="counter"
+      class="main-right-extrasmall-section"
+      v-text="counterText"
+    />
   </a>
 </template>
 
@@ -65,6 +71,12 @@ export default {
     },
     icon () {
       return this.tabData.icon
+    },
+    counter () {
+      return this.tabData.counter
+    },
+    counterText () {
+      return `(${this.counter})`
     }
   },
   methods: {

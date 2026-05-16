@@ -32,22 +32,29 @@ export default {
     CommunitiesTab
   },
   props: {
+    profileData: {
+      type: Object,
+      required: true
+    },
     profileId: Number
   },
-  data () {
-    return {
-      tabs: [
+  computed: {
+    tabs () {
+      return [
         {
           nameCode: 'navigation.posts',
-          component: 'PostsTab'
+          component: 'PostsTab',
+          counter: this.profileData.posts_count
         },
         {
           nameCode: 'navigation.playlists',
-          component: 'PlaylistsTab'
+          component: 'PlaylistsTab',
+          counter: this.profileData.playlists_count
         },
         {
           nameCode: 'navigation.communities',
-          component: 'CommunitiesTab'
+          component: 'CommunitiesTab',
+          counter: this.profileData.communities_count
         }
       ]
     }

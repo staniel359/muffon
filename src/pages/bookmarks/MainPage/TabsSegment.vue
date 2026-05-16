@@ -1,7 +1,6 @@
 <template>
   <BaseTabsSegmentContainer
     :tabs="tabs"
-    is-attached
   >
     <template
       #default="slotProps"
@@ -10,7 +9,6 @@
         :is="slotProps.component"
         :class="slotProps.class"
         :is-active="slotProps.isActive"
-        :profile-id="profileId"
         @focus="slotProps.handleFocus"
       />
     </template>
@@ -20,26 +18,30 @@
 <script>
 import BaseTabsSegmentContainer
   from '@/components/containers/segments/tabs/BaseTabsSegmentContainer.vue'
-import ArtistsTab from './FavoritesTabsSegment/ArtistsTab.vue'
-import AlbumsTab from './FavoritesTabsSegment/AlbumsTab.vue'
-import TracksTab from './FavoritesTabsSegment/TracksTab.vue'
-import VideosTab from './FavoritesTabsSegment/VideosTab.vue'
+import ArtistsTab from './TabsSegment/ArtistsTab.vue'
+import AlbumsTab from './TabsSegment/AlbumsTab.vue'
+import TracksTab from './TabsSegment/TracksTab.vue'
+import VideosTab from './TabsSegment/VideosTab.vue'
+import VideoChannelsTab from './TabsSegment/VideoChannelsTab.vue'
+import VideoPlaylistsTab from './TabsSegment/VideoPlaylistsTab.vue'
 
 export default {
-  name: 'FavoritesTabsSegment',
+  name: 'TabsSegment',
   components: {
+    BaseTabsSegmentContainer,
     BaseTabsSegmentContainer,
     ArtistsTab,
     AlbumsTab,
     TracksTab,
-    VideosTab
+    VideosTab,
+    VideoChannelsTab,
+    VideoPlaylistsTab
   },
   props: {
-    profileData: {
+    bookmarksData: {
       type: Object,
       required: true
-    },
-    profileId: Number
+    }
   },
   computed: {
     tabs () {
@@ -47,40 +49,34 @@ export default {
         {
           nameCode: 'navigation.artists',
           component: 'ArtistsTab',
-          counter: this.favoritesData.artists_count
+          counter: this.bookmarksData.artists_count
         },
         {
           nameCode: 'navigation.albums',
           component: 'AlbumsTab',
-          counter: this.favoritesData.albums_count
+          counter: this.bookmarksData.albums_count
         },
         {
           nameCode: 'navigation.tracks',
           component: 'TracksTab',
-          counter: this.favoritesData.tracks_count
+          counter: this.bookmarksData.tracks_count
         },
         {
           nameCode: 'navigation.videos',
           component: 'VideosTab',
-          counter: this.favoritesData.videos_count
+          counter: this.bookmarksData.videos_count
+        },
+        {
+          nameCode: 'navigation.videoChannels',
+          component: 'VideoChannelsTab',
+          counter: this.bookmarksData.video_channels_count
+        },
+        {
+          nameCode: 'navigation.videoPlaylists',
+          component: 'VideoPlaylistsTab',
+          counter: this.bookmarksData.video_playlists_count
         }
       ]
-    },
-    favoritesData () {
-      return this.profileData.favorites
-    }
-  },
-  methods: {
-    handleTabClick () {
-      this.focus()
-    },
-    handleFocus () {
-      this.focus()
-    },
-    focus () {
-      this.$refs
-        .segment
-        .focus()
     }
   }
 }

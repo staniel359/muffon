@@ -3,17 +3,22 @@
     :key="refreshKey"
     :profile-id="profileId"
   >
-    <BaseSegmentsContainer
-      class="main-page-segment-container"
+    <template
+      #default="slotProps"
     >
-      <TopSegment
-        v-if="isSelf"
-      />
+      <BaseSegmentsContainer
+        class="main-page-segment-container"
+      >
+        <TopSegment
+          v-if="isSelf"
+        />
 
-      <TabsSegment
-        :profile-id="profileId"
-      />
-    </BaseSegmentsContainer>
+        <TabsSegment
+          :profile-id="profileId"
+          :favorites-data="slotProps.favoritesData"
+        />
+      </BaseSegmentsContainer>
+    </template>
   </BaseProfileFavoritesPageContainer>
 </template>
 
