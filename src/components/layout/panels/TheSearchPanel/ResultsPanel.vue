@@ -174,92 +174,56 @@ export default {
       )
     },
     scopeData () {
-      return this.scopesData[
-        this.scope
-      ]
+      return this.scopesData[this.scope]
     },
     scopesData () {
       return {
         artists: this.artistsData,
         albums: this.albumsData,
-        albumGroups:
-          this.albumGroupsData,
+        albumGroups: this.albumGroupsData,
         tracks: this.tracksData,
         tags: this.tagsData,
         lyrics: this.lyricsData,
         videos: this.videosData,
-        videoChannels:
-          this.videoChannelsData,
-        videoMixes:
-          this.videoMixesData,
-        videoPlaylists:
-          this.videoPlaylistsData
+        videoChannels: this.videoChannelsData,
+        videoMixes: this.videoMixesData,
+        videoPlaylists: this.videoPlaylistsData
       }
     },
     artistsData () {
       return {
-        component:
-          'BaseArtistsSimpleList',
-        limit:
-          artistsLimits.simple.medium,
-        responsePageLimit:
-          this.artistsResponsePageLimit,
+        component: 'BaseArtistsSimpleList',
+        limit: artistsLimits.simple.medium,
         isWithListenersCount: true
-      }
-    },
-    artistsResponsePageLimit () {
-      switch (this.source) {
-        case 'yandexmusic':
-          return 10
-        default:
-          return null
       }
     },
     albumsData () {
       return {
-        component:
-          'BaseAlbumsSimpleList',
-        limit:
-          albumsLimits.simple.medium,
-        responsePageLimit:
-          this.albumsResponsePageLimit,
+        component: 'BaseAlbumsSimpleList',
+        limit: albumsLimits.simple.medium,
         isWithListenersCount: true
-      }
-    },
-    albumsResponsePageLimit () {
-      switch (this.source) {
-        case 'yandexmusic':
-          return 10
-        default:
-          return null
       }
     },
     albumGroupsData () {
       return {
-        component:
-          'BaseAlbumsSimpleList',
+        component: 'BaseAlbumsSimpleList',
         searchScope: 'groups',
         listScope: 'albums',
-        limit:
-          albumsLimits.simple.medium,
+        limit: albumsLimits.simple.medium,
         isWithListenersCount: true
       }
     },
     tracksData () {
       return {
-        component:
-          'BaseTracksSimpleList',
+        component: 'BaseTracksSimpleList',
         listScope: 'tracks',
-        limit:
-          tracksLimits.simple.medium,
+        limit: tracksLimits.simple.medium,
         responsePageLimit:
           this.tracksResponsePageLimit
       }
     },
     tracksResponsePageLimit () {
       switch (this.source) {
-        case 'yandexmusic':
-          return 20
         case 'genius':
           return 20
         case 'youtubemusic':
@@ -270,58 +234,46 @@ export default {
     },
     tagsData () {
       return {
-        component:
-          'BaseTagsSimpleList',
-        limit:
-          tagsLimits.simple.small
+        component: 'BaseTagsSimpleList',
+        limit: tagsLimits.simple.small
       }
     },
     lyricsData () {
       return {
-        component:
-          'BaseLyricsSimpleList',
+        component: 'BaseLyricsSimpleList',
         searchScope: 'tracks',
-        limit:
-          lyricsLimits.simple.medium,
+        limit: lyricsLimits.simple.medium,
         responsePageLimit: 20
       }
     },
     videosData () {
       return {
-        component:
-          'BaseVideosSimpleList',
-        limit:
-          videosLimits.simple.medium
+        component: 'BaseVideosSimpleList',
+        limit: videosLimits.simple.medium
       }
     },
     videoChannelsData () {
       return {
-        component:
-          'BaseVideoChannelsSimpleList',
+        component: 'BaseVideoChannelsSimpleList',
         searchScope: 'channels',
         listScope: 'channels',
-        limit:
-          videoChannelsLimits.simple.medium
+        limit: videoChannelsLimits.simple.medium
       }
     },
     videoMixesData () {
       return {
-        component:
-          'BaseVideoPlaylistsSimpleList',
+        component: 'BaseVideoPlaylistsSimpleList',
         searchScope: 'mixes',
         listScope: 'playlists',
-        limit:
-          videoPlaylistsLimits.simple.medium
+        limit: videoPlaylistsLimits.simple.medium
       }
     },
     videoPlaylistsData () {
       return {
-        component:
-          'BaseVideoPlaylistsSimpleList',
+        component: 'BaseVideoPlaylistsSimpleList',
         searchScope: 'playlists',
         listScope: 'playlists',
-        limit:
-          videoPlaylistsLimits.simple.medium
+        limit: videoPlaylistsLimits.simple.medium
       }
     },
     limit () {
@@ -334,10 +286,7 @@ export default {
       return this.scopeData.component
     },
     listScope () {
-      return (
-        this.scopeData.listScope ||
-          this.scope
-      )
+      return this.scopeData.listScope || this.scope
     },
     isWithListenersCount () {
       return !!this.scopeData.isWithListenersCount
@@ -348,16 +297,13 @@ export default {
       )
     },
     isLastfmSource () {
-      return (
-        this.source === 'lastfm'
-      )
+      return this.source === 'lastfm'
     }
   },
   mounted () {
     this.getData()
 
-    this.scrollable =
-      this.$refs.segment.$el
+    this.scrollable = this.$refs.segment.$el
   },
   methods: {
     ...mapActions(
