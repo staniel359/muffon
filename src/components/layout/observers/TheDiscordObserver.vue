@@ -75,10 +75,9 @@ export default {
         artistName: this.artistName,
         albumTitle: this.albumTitle,
         image: this.image,
-        startTime:
-          this.playerPlayingStartTime,
-        currentTime: this.audioCurrentTime,
-        duration: this.duration,
+        startTime: this.playerPlayingStartTime,
+        currentTime: this.audioCurrentTime * 1000,
+        duration: this.duration * 1000,
         buttons: this.buttonsFiltered,
         isPlaying: this.isPlaying
       }

@@ -3,25 +3,22 @@ import {
   appHomepage
 } from '../../helpers/utils.js'
 
-const activitiesTypes = {
-  playing: 0,
-  streaming: 1,
-  listening: 2,
-  watching: 3,
-  custom: 4,
-  competing: 5
+const activitiesTypesData = {
+  listening: 2
 }
 
-const headersTypes = {
+const activityType = activitiesTypesData.listening
+
+const headersTypesData = {
   appName: 0,
   artistName: 1,
   trackTitle: 2
 }
 
+const headerType = headersTypesData.artistName
+
 export default function (
   {
-    activityType = 'listening',
-    headerType = 'artistName',
     trackTitle,
     trackLink,
     artistName,
@@ -36,43 +33,35 @@ export default function (
     isPlaying
   }
 ) {
-  const pausedDuration = (
-    Date.now() -
-      startTime -
-      currentTime * 1000
-  )
+  const audioStatusEmoji = isPlaying ? `▶️` : `⏸️`
+
+  const trackTitleFormatted = `${audioStatusEmoji} ${trackTitle}`
+
+  // All values are in milliseconds
+  const elapsedDuration = startTime + currentTime
+
+  const pausedDuration = Date.now() - elapsedDuration
 
   let startTimeComputed
 
   if (isPlaying) {
-    startTimeComputed = (
-      startTime + pausedDuration
-    )
+    startTimeComputed = startTime + pausedDuration
   } else {
-    startTimeComputed = 1
+    startTimeComputed = null
   }
-
-  const endTime = (
-    startTime +
-      duration * 1000
-  )
 
   let endTimeComputed
 
   if (isPlaying) {
-    endTimeComputed = (
-      endTime + pausedDuration
-    )
+    endTimeComputed = startTime + duration + pausedDuration
   } else {
-    endTimeComputed = 1
+    endTimeComputed = null
   }
 
   const activityData = {
-    type:
-      activitiesTypes[activityType],
-    statusDisplayType:
-      headersTypes[headerType],
-    details: trackTitle,
+    type: activityType,
+    statusDisplayType: headerType,
+    details: trackTitleFormatted,
     detailsUrl: trackLink,
     state: artistName,
     stateUrl: artistLink,
