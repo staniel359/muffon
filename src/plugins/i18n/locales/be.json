@@ -816,6 +816,9 @@
     "playlist": "Прыватны",
     "profile": "Прыватны"
   },
+  "privateModel": {
+    "video": "Прыватнае відэа"
+  },
   "donate": {
     "header": "Ахвяраваць",
     "content": [
@@ -852,7 +855,9 @@
     "joinedDesc": "Нядаўна ўступілі",
     "joinedAsc": "Даўно ўступілі",
     "membersCountDesc": "Больш удзельнікаў",
-    "membersCountAsc": "Менш удзельнікаў"
+    "membersCountAsc": "Менш удзельнікаў",
+    "listenersCountDesc": "Больш слухачоў",
+    "listenersCountAsc": "Менш слухачоў"
   },
   "deletedModel": {
     "profile": "Выдалены профіль",

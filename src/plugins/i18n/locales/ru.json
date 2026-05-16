@@ -816,6 +816,9 @@
     "playlist": "Приватный",
     "profile": "Приватный"
   },
+  "privateModel": {
+    "video": "Приватное видео"
+  },
   "donate": {
     "header": "Пожертвовать",
     "content": [
@@ -852,7 +855,9 @@
     "joinedDesc": "Недавно вступили",
     "joinedAsc": "Давно вступили",
     "membersCountDesc": "Больше участников",
-    "membersCountAsc": "Меньше участников"
+    "membersCountAsc": "Меньше участников",
+    "listenersCountDesc": "Больше слушателей",
+    "listenersCountAsc": "Меньше слушателей"
   },
   "deletedModel": {
     "profile": "Удалённый профиль",
