@@ -50,16 +50,19 @@ export default {
     return {
       tabs: [
         {
+          icon: 'activity',
           nameCode: 'navigation.activity',
           component: 'ActivityTab',
           isGuest: false
         },
         {
+          icon: 'player',
           nameCode: 'navigation.player',
           component: 'PlayerTab',
           isGuest: true
         },
         {
+          icon: 'browser',
           nameCode: 'navigation.browser',
           component: 'BrowserTab',
           isGuest: true

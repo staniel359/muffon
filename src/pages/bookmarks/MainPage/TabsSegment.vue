@@ -47,31 +47,37 @@ export default {
     tabs () {
       return [
         {
+          icon: 'artist',
           nameCode: 'navigation.artists',
           component: 'ArtistsTab',
           counter: this.bookmarksData.artists_count
         },
         {
+          icon: 'album',
           nameCode: 'navigation.albums',
           component: 'AlbumsTab',
           counter: this.bookmarksData.albums_count
         },
         {
+          icon: 'track',
           nameCode: 'navigation.tracks',
           component: 'TracksTab',
           counter: this.bookmarksData.tracks_count
         },
         {
+          icon: 'video',
           nameCode: 'navigation.videos',
           component: 'VideosTab',
           counter: this.bookmarksData.videos_count
         },
         {
+          icon: 'videoChannel',
           nameCode: 'navigation.videoChannels',
           component: 'VideoChannelsTab',
           counter: this.bookmarksData.video_channels_count
         },
         {
+          icon: 'videoPlaylist',
           nameCode: 'navigation.videoPlaylists',
           component: 'VideoPlaylistsTab',
           counter: this.bookmarksData.video_playlists_count

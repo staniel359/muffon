@@ -42,6 +42,7 @@ export default {
     return {
       tabs: [
         {
+          icon: 'post',
           nameCode: 'navigation.posts',
           component: 'PostsTab',
           counter: this.communityData.posts_count

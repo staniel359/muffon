@@ -8,11 +8,11 @@ const systemIcons = {
   linux: 'linux'
 }
 
-const systemIcon =
-  systemIcons[systemName]
+const systemIcon = systemIcons[systemName]
 
 export default {
   account: 'user circle',
+  activity: 'calendar check outline',
   add: 'plus',
   album: 'compact disc',
   albumGroup: 'compact disc',
@@ -21,6 +21,7 @@ export default {
   arrowRight: 'right arrow',
   arrowUp: 'up arrow',
   artist: 'microphone alternate',
+  artistEvent: 'calendar alternate outline',
   audio: 'music',
   audioLoop: 'redo alternate',
   audioNext: 'forward',
@@ -29,6 +30,7 @@ export default {
   audioPrevious: 'backward',
   audioShuffle: 'random',
   bookmark: 'bookmark',
+  browser: 'compass',
   clear: 'close',
   close: 'close',
   comment: 'comment',
@@ -117,6 +119,8 @@ export default {
   recommendation: 'bullhorn',
   refresh: 'redo alternate',
   release: 'compact disc',
+  releaseNew: 'bell',
+  releaseUpcoming: 'calendar alternate outline',
   reload: 'redo alternate',
   retry: 'redo alternate',
   queue: 'ul list',
@@ -126,6 +130,7 @@ export default {
   settings: 'cog',
   share: 'share alternate',
   sidebar: 'ellipsis vertical',
+  similar: 'bullhorn',
   submit: 'check',
   subscriber: 'user',
   success: 'check',

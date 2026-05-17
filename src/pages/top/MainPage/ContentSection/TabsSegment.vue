@@ -41,18 +41,22 @@ export default {
     return {
       tabs: [
         {
+          icon: 'artist',
           nameCode: 'navigation.artists',
           component: 'ArtistsTab'
         },
         {
+          icon: 'album',
           nameCode: 'navigation.albums',
           component: 'AlbumsTab'
         },
         {
+          icon: 'track',
           nameCode: 'navigation.tracks',
           component: 'TracksTab'
         },
         {
+          icon: 'tag',
           nameCode: 'navigation.tags',
           component: 'TagsTab'
         }

@@ -44,10 +44,12 @@ export default {
     return {
       tabs: [
         {
+          icon: 'releaseNew',
           nameCode: 'navigation.new',
           component: 'NewTab'
         },
         {
+          icon: 'releaseUpcoming',
           nameCode: 'navigation.upcoming',
           component: 'UpcomingTab'
         }

@@ -42,16 +42,19 @@ export default {
     tabs () {
       return [
         {
+          icon: 'post',
           nameCode: 'navigation.posts',
           component: 'PostsTab',
           counter: this.profileData.posts_count
         },
         {
+          icon: 'playlist',
           nameCode: 'navigation.playlists',
           component: 'PlaylistsTab',
           counter: this.profileData.playlists_count
         },
         {
+          icon: 'community',
           nameCode: 'navigation.communities',
           component: 'CommunitiesTab',
           counter: this.profileData.communities_count

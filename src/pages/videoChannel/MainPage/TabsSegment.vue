@@ -36,10 +36,12 @@ export default {
     return {
       tabs: [
         {
+          icon: 'video',
           nameCode: 'navigation.videos',
           component: 'VideosTab'
         },
         {
+          icon: 'playlist',
           nameCode: 'navigation.playlists',
           component: 'PlaylistsTab'
         }

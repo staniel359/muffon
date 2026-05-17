@@ -45,21 +45,25 @@ export default {
     tabs () {
       return [
         {
+          icon: 'artist',
           nameCode: 'navigation.artists',
           component: 'ArtistsTab',
           counter: this.favoritesData.artists_count
         },
         {
+          icon: 'album',
           nameCode: 'navigation.albums',
           component: 'AlbumsTab',
           counter: this.favoritesData.albums_count
         },
         {
+          icon: 'track',
           nameCode: 'navigation.tracks',
           component: 'TracksTab',
           counter: this.favoritesData.tracks_count
         },
         {
+          icon: 'video',
           nameCode: 'navigation.videos',
           component: 'VideosTab',
           counter: this.favoritesData.videos_count

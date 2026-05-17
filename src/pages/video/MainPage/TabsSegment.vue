@@ -34,6 +34,7 @@ export default {
     return {
       tabs: [
         {
+          icon: 'similar',
           nameCode: 'navigation.similar',
           component: 'SimilarTab'
         }

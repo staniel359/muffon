@@ -45,10 +45,12 @@ export default {
     return {
       tabs: [
         {
+          icon: 'track',
           nameCode: 'navigation.tracks',
           component: 'TracksTab'
         },
         {
+          icon: 'playlist',
           nameCode: 'navigation.playlists',
           component: 'PlaylistsTab'
         }

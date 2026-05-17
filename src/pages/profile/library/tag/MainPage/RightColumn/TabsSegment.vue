@@ -43,6 +43,7 @@ export default {
     return {
       tabs: [
         {
+          icon: 'artist',
           nameCode: 'navigation.artists',
           component: 'ArtistsTab'
         }

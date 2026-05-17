@@ -53,12 +53,14 @@ export default {
     tabs () {
       return [
         {
+          icon: 'similar',
           nameCode: 'navigation.similar',
           component: 'SimilarTab',
           requestTrackData:
             this.similarTabRequestTrackData
         },
         {
+          icon: 'album',
           nameCode: 'navigation.albums',
           component: 'AlbumsTab'
         }
