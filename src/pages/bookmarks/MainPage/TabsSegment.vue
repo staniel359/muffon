@@ -29,7 +29,6 @@ export default {
   name: 'TabsSegment',
   components: {
     BaseTabsSegmentContainer,
-    BaseTabsSegmentContainer,
     ArtistsTab,
     AlbumsTab,
     TracksTab,

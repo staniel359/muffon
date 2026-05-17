@@ -33,7 +33,7 @@ export default function (
     isPlaying
   }
 ) {
-  const audioStatusEmoji = isPlaying ? `▶️` : `⏸️`
+  const audioStatusEmoji = isPlaying ? '▶️' : '⏸️'
 
   const trackTitleFormatted = `${audioStatusEmoji} ${trackTitle}`
 

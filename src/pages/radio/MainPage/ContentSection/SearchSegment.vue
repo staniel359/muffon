@@ -82,7 +82,7 @@ export default {
         top: 'TopScopeSelect',
         tag: 'TagScopeSelect',
         artist: 'ArtistScopeSelect',
-        recommendations: 'RecommendationsScopeSelect',
+        recommendations: 'RecommendationsScopeSelect'
       }
     }
   },
