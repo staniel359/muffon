@@ -93,3 +93,5 @@ p
         min-width: calc(100% + 2px) !important
     &:focus
       @extend .border-color-base-light
+    &:has(> input:focus)
+      @extend .border-color-base-light
