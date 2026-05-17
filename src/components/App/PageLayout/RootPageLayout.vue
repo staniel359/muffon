@@ -62,6 +62,8 @@ import TheNativeThemeObserver
   from '@/components/layout/observers/TheNativeThemeObserver.vue'
 import TheBackgroundObserver
   from '@/components/layout/observers/TheBackgroundObserver.vue'
+import TheBrowserObserver
+  from '@/components/layout/observers/TheBrowserObserver.vue'
 import TheDiscordObserver
   from '@/components/layout/observers/TheDiscordObserver.vue'
 import TheDeepLinksObserver
@@ -94,12 +96,6 @@ const TheScrobbleObserver =
   defineAsyncComponent(
     () => import(
       '@/components/layout/observers/TheScrobbleObserver.vue'
-    )
-  )
-const TheBrowserObserver =
-  defineAsyncComponent(
-    () => import(
-      '@/components/layout/observers/TheBrowserObserver.vue'
     )
   )
 

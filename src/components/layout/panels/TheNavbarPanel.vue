@@ -30,12 +30,14 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+
 import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import NavbarSearchButton from './TheNavbarPanel/NavbarSearchButton.vue'
 import NavbarHistoryButton from './TheNavbarPanel/NavbarHistoryButton.vue'
 import NavbarNavigation from './TheNavbarPanel/NavbarNavigation.vue'
 import NavbarRefreshButton from './TheNavbarPanel/NavbarRefreshButton.vue'
 import NavbarQueueButton from './TheNavbarPanel/NavbarQueueButton.vue'
+
 import transparencyMixin from '@/mixins/transparencyMixin'
 
 export default {
@@ -59,14 +61,18 @@ export default {
       ]
     ),
     leftButtonDirection () {
-      return (
-        this.isRtl ? 'forward' : 'back'
-      )
+      if (this.isRtl) {
+        return 'forward'
+      } else {
+        return 'back'
+      }
     },
     rightButtonDirection () {
-      return (
-        this.isRtl ? 'back' : 'forward'
-      )
+      if (this.isRtl) {
+        return 'back'
+      } else {
+        return 'forward'
+      }
     }
   }
 }
