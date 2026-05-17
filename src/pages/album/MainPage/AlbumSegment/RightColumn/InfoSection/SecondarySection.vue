@@ -1,24 +1,28 @@
 <template>
   <div>
-    <BaseCounterLabelsSection
-      class="main-labels-section"
-      :counters="counters"
-    />
+    <div class="main-labels-section">
+      <BaseCounterLabelsSection
+        :counters="counters"
+      />
 
-    <BaseAlbumInnerCounterLabelsSection
-      class="main-labels-section"
-      :album-data="albumData"
-    />
+      <div class="main-right-mini-section">
+        <BaseAlbumInnerCounterLabelsSection
+          :album-data="albumData"
+        />
+      </div>
+    </div>
 
-    <BaseDateLabelSection
-      class="main-labels-section"
-      :date="releaseDate"
-    />
+    <div class="main-labels-section">
+      <BaseDateLabelSection
+        :date="releaseDate"
+      />
 
-    <BaseAlbumLabels
-      class="main-labels-section"
-      :album-data="albumData"
-    />
+      <div class="main-right-mini-section">
+        <BaseAlbumLabels
+          :album-data="albumData"
+        />
+      </div>
+    </div>
 
     <BaseAlbumTags
       class="main-labels-section"

@@ -16,15 +16,17 @@
     </div>
 
     <div>
-      <BaseCounterLabelsSection
-        class="main-labels-section"
-        :counters="counters"
-      />
+      <div class="main-labels-section">
+        <BaseCounterLabelsSection
+          :counters="counters"
+        />
 
-      <BaseArtistInnerCounterLabelsSection
-        class="main-labels-section"
-        :artist-data="artistData"
-      />
+        <div class="main-right-mini-section">
+          <BaseArtistInnerCounterLabelsSection
+            :artist-data="artistData"
+          />
+        </div>
+      </div>
 
       <BaseArtistTags
         class="main-labels-section"
