@@ -862,7 +862,8 @@
   "deletedModel": {
     "profile": "Deleted profile",
     "playlist": "Deleted playlist",
-    "community": "Deleted community"
+    "community": "Deleted community",
+    "video": "Deleted video"
   },
   "events": {
     "created": {

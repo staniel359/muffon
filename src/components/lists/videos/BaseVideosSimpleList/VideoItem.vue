@@ -8,11 +8,11 @@
     @click="handleLinkClick"
   >
     <BaseDeletedSection
-      v-if="isDeleted"
+      v-if="isDeletedFromList"
       model="video"
     />
     <template
-      v-else-if="isPrivate"
+      v-else-if="isPrivate || isDeleted"
     >
       <BaseImage
         class="rounded-medium video-image-120"
@@ -110,7 +110,7 @@
         :is-with-share-option="isWithShareOption"
         :is-with-external-link-option="isWithExternalLinkOption"
         :is-with-delete-option="isWithDeleteOption"
-        @deleted="handleDeleted"
+        @deleted="handleDeletedFromList"
       />
 
       <BaseClearButton
@@ -209,7 +209,7 @@ export default {
       return this.videoData
     },
     link () {
-      if (this.isPrivate) {
+      if (this.isPrivate || this.isDeleted) {
         return null
       } else {
         return formatVideoLink(
@@ -220,7 +220,7 @@ export default {
       }
     },
     isPrivate () {
-      return this.videoData.private
+      return !!this.videoData.private
     },
     videoId () {
       return this.videoData.source.id
@@ -232,6 +232,10 @@ export default {
       if (this.isPrivate) {
         return this.$t(
           'privateModel.video'
+        )
+      } else if (this.isDeleted) {
+        return this.$t(
+          'deletedModel.video'
         )
       } else {
         return this.videoData.title
@@ -247,8 +251,8 @@ export default {
         }
       )
     },
-    isDeleted () {
-      return !!this.videoData.isDeleted
+    isDeletedFromList () {
+      return !!this.videoData.isDeletedFromList
     },
     isRenderDuration () {
       return (
@@ -276,7 +280,14 @@ export default {
       return this.videoData.description
     },
     isDisabled () {
-      return this.isDeleted || this.isPrivate
+      return (
+        this.isDeletedFromList ||
+          this.isDeleted ||
+          this.isPrivate
+      )
+    },
+    isDeleted () {
+      return !!this.videoData.deleted
     }
   },
   methods: {
@@ -298,8 +309,8 @@ export default {
     ) {
       this.isMainLinkActive = !value
     },
-    handleDeleted () {
-      this.paginationItem.isDeleted = true
+    handleDeletedFromList () {
+      this.paginationItem.isDeletedFromList = true
     },
     handleViewsCountLoadEnd (
       value
