@@ -2,11 +2,12 @@ import {
   app,
   Menu
 } from 'electron'
+import i18n from 'i18n'
+
 import showMainWindow from '../mainWindow/show.js'
 import hideMainWindow from '../mainWindow/hide.js'
 import showAboutWindow from '../aboutWindow/show.js'
 import callQuit from '../app/callQuit.js'
-import i18n from 'i18n'
 import {
   isMacos
 } from '../../helpers/utils.js'

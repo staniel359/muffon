@@ -1,6 +1,7 @@
 import {
   nativeImage
 } from 'electron'
+
 import {
   iconPath
 } from './paths.js'

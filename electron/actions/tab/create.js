@@ -1,6 +1,7 @@
 import {
   WebContentsView
 } from 'electron'
+
 import getSettingsKey from '../settings/getKey.js'
 import getActiveTabId from './getActiveId.js'
 import setActiveTab from './setActive.js'

@@ -4,10 +4,11 @@ import {
   shell
 } from 'electron'
 import electronUpdater from 'electron-updater'
+import i18n from 'i18n'
+
 import {
   releasesUrl
 } from '../../helpers/urls.js'
-import i18n from 'i18n'
 import getSettingsKey from '../settings/getKey.js'
 
 const {

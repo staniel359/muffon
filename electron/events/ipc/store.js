@@ -1,6 +1,7 @@
 import {
   ipcMain
 } from 'electron'
+
 import {
   handleCallUpdateStore
 } from '../../handlers/ipc/store.js'

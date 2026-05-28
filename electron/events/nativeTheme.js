@@ -1,6 +1,7 @@
 import {
   nativeTheme
 } from 'electron'
+
 import {
   handleNativeThemeUpdated
 } from '../handlers/nativeTheme.js'

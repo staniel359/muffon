@@ -2,6 +2,7 @@ import {
   BaseWindow,
   WebContentsView
 } from 'electron'
+
 import {
   windowIcon
 } from '../../helpers/icons.js'

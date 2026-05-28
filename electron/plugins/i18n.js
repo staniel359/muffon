@@ -1,4 +1,5 @@
 import i18n from 'i18n'
+
 import getSettingsKey from '../actions/settings/getKey.js'
 import be from './i18n/locales/be.json' with { type: 'json' }
 import de from './i18n/locales/de.json' with { type: 'json' }

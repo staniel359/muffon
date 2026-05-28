@@ -5,11 +5,9 @@ import {
   productionPath
 } from './paths.js'
 
-const developmentUrl =
-  'http://localhost:3000/'
+const developmentUrl = 'http://localhost:3000/'
 
-const productionUrl =
-  `file://${productionPath}`
+const productionUrl = `file://${productionPath}`
 
 export const baseUrl = (
   isDevelopment

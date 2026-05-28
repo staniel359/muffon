@@ -1,6 +1,7 @@
 import {
   ipcMain
 } from 'electron'
+
 import {
   handleCreateBackgroundImage,
   handleChangeBackgroundImage,

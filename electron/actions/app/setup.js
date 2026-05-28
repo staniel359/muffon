@@ -1,6 +1,7 @@
 import {
   app
 } from 'electron'
+
 import createMainWindow
   from '../../actions/mainWindow/create.js'
 import createAboutWindow

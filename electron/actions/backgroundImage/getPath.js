@@ -1,6 +1,7 @@
 import {
   join as joinPath
 } from 'node:path'
+
 import {
   backgroundImagesFolderPath
 } from '../../helpers/paths.js'

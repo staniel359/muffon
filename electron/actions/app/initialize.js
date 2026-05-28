@@ -1,6 +1,7 @@
 import {
   app
 } from 'electron'
+
 import setAppProtocols from './setProtocols.js'
 import setupI18n from '../../plugins/i18n.js'
 import setupDayjs from '../../plugins/dayjs.js'

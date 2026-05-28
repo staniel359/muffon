@@ -1,4 +1,5 @@
 import dotenv from 'dotenv'
+
 import {
   envFilePath
 } from './paths.js'

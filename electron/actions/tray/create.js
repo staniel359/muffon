@@ -1,6 +1,7 @@
 import {
   Tray
 } from 'electron'
+
 import {
   trayIcon
 } from '../../helpers/icons.js'

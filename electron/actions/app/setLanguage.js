@@ -1,4 +1,5 @@
 import i18n from 'i18n'
+
 import setTrayMenu from '../tray/setMenu.js'
 import setAboutWindowTitle from '../aboutWindow/setTitle.js'
 

@@ -1,6 +1,7 @@
 import {
   nativeTheme
 } from 'electron'
+
 import getSettingsKey from '../settings/getKey.js'
 
 export default function () {

@@ -1,12 +1,13 @@
 import {
+  download
+} from 'electron-dl'
+
+import {
   generateKey
 } from '../../helpers/utils.js'
 import {
   audioFolderPath
 } from '../../helpers/paths.js'
-import {
-  download
-} from 'electron-dl'
 import encryptAudioFile from './encrypt.js'
 import getAudioFilePath from './getPath.js'
 import {

@@ -1,4 +1,5 @@
 import ElectronStore from 'electron-store'
+
 import schema from './electronStore/schema.js'
 import {
   isDevelopment

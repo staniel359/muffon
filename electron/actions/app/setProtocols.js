@@ -1,6 +1,7 @@
 import {
   app
 } from 'electron'
+
 import {
   appName
 } from '../../helpers/utils.js'

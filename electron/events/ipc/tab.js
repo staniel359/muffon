@@ -1,6 +1,7 @@
 import {
   ipcMain
 } from 'electron'
+
 import {
   handleAddTab,
   handleSetActiveTab,

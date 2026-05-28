@@ -1,6 +1,7 @@
 import {
   Client as DiscordClient
 } from '@xhayper/discord-rpc'
+
 import {
   discordClientId
 } from '../../helpers/env.js'
