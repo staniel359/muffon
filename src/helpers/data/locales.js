@@ -57,5 +57,9 @@ export default [
   {
     id: 'zh',
     name: '中文'
+  },
+  {
+    id: 'id',
+    name: 'Indonesia'
   }
 ]

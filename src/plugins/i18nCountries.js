@@ -15,6 +15,7 @@ import ptBr from './i18nCountries/locales/pt_BR.json'
 import ru from 'i18n-iso-countries/langs/ru.json'
 import tr from 'i18n-iso-countries/langs/tr.json'
 import zh from 'i18n-iso-countries/langs/zh.json'
+import id from 'i18n-iso-countries/langs/id.json'
 
 // i18n
 
@@ -32,10 +33,11 @@ const locales = [
   ptBr,
   ru,
   tr,
-  zh
+  zh,
+  id
 ]
 
-function addLocale (
+function addLocale(
   locale
 ) {
   registerLocale(
