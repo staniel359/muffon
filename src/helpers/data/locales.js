@@ -60,6 +60,6 @@ export default [
   },
   {
     id: 'id',
-    name: 'Indonesia'
+    name: 'Bahasa Indonesia'
   }
 ]
