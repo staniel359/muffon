@@ -167,9 +167,13 @@ If you have a suggestion, please check [our to do list](https://github.com/users
   
 ## Contribute
 
-- **Translators** wanted for localization. 
 >[!CAUTION]
->Any Pull Request(s) directly made **without prior discussions** related to translations **will NOT be merged**. If you intend to contribute by translating, please consider joining the [Discord Server](https://discord.gg/kpWsA5NBmJ) and discuss it with us before you start working on it.
+> Our team has a strict policy against using AI for software development, so any pull requests made by or with the use of AI will be closed.
+
+- **Translators** wanted for localization.
+
+>[!CAUTION]
+> Any Pull Request(s) directly made **without prior discussions** related to translations **will NOT be merged**. If you intend to contribute by translating, please consider joining the [Discord Server](https://discord.gg/kpWsA5NBmJ) and discuss it with us before you start working on it.
 
 ## Donate
 
