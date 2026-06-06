@@ -24,8 +24,8 @@ Audio:
 - <img src="https://ok.ru/favicon.ico" height="16"> **Odnoklassniki**
 - <img src="https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico" height="16"> **SoundCloud**
 - <img src="https://open.spotifycdn.com/cdn/images/favicon16.c498a969.png" height="16"> **Spotify** (currently not working)
-- <img src="https://vk.com/images/icons/favicons/fav_logo.ico" height="16"> **VK**
-- <img src="https://music.yandex.ru/favicon-48x48.png" height="16"> **Yandex Music**
+- <img src="https://vk.com/images/icons/favicons/fav_logo.ico" height="16"> **VK** (currently not working)
+- <img src="https://music.yandex.ru/favicon-48x48.png" height="16"> **Yandex Music** (currently not working)
 - <img src="https://music.youtube.com/favicon.ico" height="16"> **YouTube Music**
 
 Video:
@@ -110,7 +110,7 @@ Discography:
 
 ## Download
 
-[Latest (v2.4.0)](https://github.com/staniel359/muffon/releases/latest)
+[Latest](https://github.com/staniel359/muffon/releases/latest)
 
 ## Star History
 
