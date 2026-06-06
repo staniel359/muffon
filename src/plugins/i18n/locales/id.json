@@ -31,11 +31,11 @@
     "upcoming": "Mendatang",
     "radio": "Radio",
     "multitag": "Pencarian multi-tag",
-    "profiles": "Profile",
+    "profiles": "Profil",
     "feed": "Feed",
     "posts": "Post",
     "conversations": "Percakapan",
-    "library": "Library",
+    "library": "Perpustakaan",
     "recommendations": "Rekomendasi",
     "recommendationsCollection": {
       "artists": "Rekomendasi artis",
@@ -65,26 +65,26 @@
     "browser": "Browser",
     "settings": "Settings",
     "model": {
-      "artists": "{modelName} artis",
-      "albums": "{modelName} album",
-      "tracks": "{modelName} track",
-      "tags": "{modelName} tag",
-      "similar": "{modelName} mirip",
-      "images": "{modelName} gambar",
-      "lyrics": "{modelName} lirik",
-      "videos": "{modelName} video",
-      "posts": "{modelName} post",
-      "library": "{modelName} library",
-      "playlists": "{modelName} playlist",
-      "favorites": "{modelName} favorites",
+      "artists": "Artis {modelName}",
+      "albums": "Album {modelName}",
+      "tracks": "Track {modelName}",
+      "tags": "Tag {modelName}",
+      "similar": "Mirip {modelName}",
+      "images": "Gambar {modelName}",
+      "lyrics": "Lirik {modelName}",
+      "videos": "Video {modelName}",
+      "posts": "Post {modelName}",
+      "library": "Perpustakaan {modelName}",
+      "playlists": "Playlist {modelName}",
+      "favorites": "Favorites {modelName}",
       "favoritesCollection": {
-        "artists": "{modelName} favorite artis",
-        "albums": "{modelName} favorite album",
-        "tracks": "{modelName} favorite track",
-        "videos": "{modelName} favorite video"
+        "artists": "Favorites artis {modelName}",
+        "albums": "Favorites album {modelName}",
+        "tracks": "Favorites track {modelName}",
+        "videos": "Favorites video {modelName}"
       },
-      "communities": "{modelName} komunitas",
-      "shows": "{modelName} acara"
+      "communities": "Komunitas {modelName}",
+      "shows": "Acara {modelName}"
     },
     "search": "Cari",
     "queue": "Antrian",
@@ -159,7 +159,7 @@
     "reset": "Reset",
     "addFrom": {
       "search": "Dari pencarian",
-      "library": "Dari library"
+      "library": "Dari perpustakaan"
     },
     "importFrom": {
       "drive": "Dari drive",
@@ -189,7 +189,7 @@
       "comment": "Tambah komentar"
     },
     "addTo": {
-      "library": "Tambah ke library",
+      "library": "Tambah ke perpustakaan",
       "playlist": "Tambah ke playlist",
       "favorites": "Tambah ke favorites",
       "bookmarks": "Tambah ke bookmarks",
@@ -200,7 +200,7 @@
     },
     "goTo": {
       "video": "Ke halaman video",
-      "library": "Ke halaman library",
+      "library": "Ke halaman perpustakaan",
       "page": "Ke halaman"
     },
     "deleteFrom": {
@@ -227,9 +227,9 @@
     "delete": {
       "header": {
         "libraryModel": {
-          "artist": "Hapus artis dari library",
-          "album": "Hapus album dari library",
-          "track": "Hapus track dari library"
+          "artist": "Hapus artis dari perpustakaan",
+          "album": "Hapus album dari perpustakaan",
+          "track": "Hapus track dari perpustakaan"
         },
         "recommendationModel": {
           "artist": "Hapus artis dari rekomendasi",
@@ -256,7 +256,7 @@
         "comment": "Hapus komentar",
         "community": "Hapus komunitas",
         "account": "Hapus akun",
-        "library": "Hapus library",
+        "library": "Hapus perpustakaan",
         "history": {
           "search": "Hapus riwayat pencarian",
           "activity": "Hapus riwayat aktivitas",
@@ -265,7 +265,7 @@
         }
       },
       "going": {
-        "libraryModel": "Anda akan menghapus {modelName} dari library Anda.",
+        "libraryModel": "Anda akan menghapus {modelName} dari perpustakaan Anda.",
         "recommendationModel": "Anda akan menghapus {modelName} dari rekomendasi Anda.",
         "playlist": "Anda akan menghapus {modelName} dari playlist Anda.",
         "playlistTrack": "Anda akan menghapus {modelName} dari playlist {parentModelName}.",
@@ -276,7 +276,7 @@
         "comment": "Anda akan menghapus komentar ini.",
         "community": "Anda akan menghapus komunitas ini.",
         "account": "Anda akan menghapus akun ini.",
-        "library": "Anda akan menghapus library ini.",
+        "library": "Anda akan menghapus perpustakaan ini.",
         "history": {
           "search": "Anda akan menghapus riwayat pencarian Anda.",
           "activity": "Anda akan menghapus riwayat aktivitas Anda.",
@@ -293,7 +293,7 @@
         "community": "Ini juga akan menghapus semua post dari komunitas ini.",
         "account": [
           "Ini juga akan menghapus data berikut:",
-          "<strong>- library\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- page posts\n- subscriptions\n- history</strong>",
+          "<strong>- perpustakaan\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- page posts\n- subscriptions\n- history</strong>",
           "Data ini akan tetap ada, tetapi nama Anda tidak akan ditampilkan:",
           "<strong>- created posts\n- created comments\n- conversations with you\n- created communities</strong>",
           "Dan data ini akan tetap tidak berubah:",
@@ -397,14 +397,14 @@
     },
     "deleted": {
       "libraryModel": {
-        "artist": "Artist {modelName} berhasil dihapus dari library Anda",
-        "album": "Album {modelName} berhasil dihapus dari library Anda",
-        "track": "Track {modelName} berhasil dihapus dari library Anda"
+        "artist": "Artist {modelName} berhasil dihapus dari perpustakaan Anda",
+        "album": "Album {modelName} berhasil dihapus dari perpustakaan Anda",
+        "track": "Track {modelName} berhasil dihapus dari perpustakaan Anda"
       },
       "playlist": "Playlist {playlistTitle} berhasil dihapus",
       "community": "Community {communityTitle} berhasil dihapus",
       "account": "Akun berhasil dihapus",
-      "library": "Library berhasil dihapus",
+      "library": "Perpustakaan berhasil dihapus",
       "history": {
         "search": "Riwayat pencarian berhasil dihapus",
         "activity": "Riwayat aktivitas berhasil dihapus",
@@ -559,10 +559,10 @@
           "openLinksInNewTab": "Buka link di tab baru"
         },
         "recommendations": {
-          "hideLibraryArtists": "Sembunyikan artis library",
+          "hideLibraryArtists": "Sembunyikan artis perpustakaan",
           "tracksCount": "dengan jumlah track",
           "hideListenedArtists": "Sembunyikan artis yang didengarkan",
-          "hideLibraryTracks": "Sembunyikan track library",
+          "hideLibraryTracks": "Sembunyikan track perpustakaan",
           "hideListenedTracks": "Sembunyikan track yang didengarkan"
         },
         "top": {
@@ -609,7 +609,7 @@
             "delete": "Hapus akun"
           },
           "library": {
-            "delete": "Hapus library"
+            "delete": "Hapus perpustakaan"
           }
         }
       },
@@ -722,9 +722,9 @@
     "active": "Menyimpan {count} dari {counter}...",
     "success": {
       "library": {
-        "artists": "{counter} telah ditambahkan ke library | {counter} telah ditambahkan ke library",
-        "albums": "{counter} telah ditambahkan ke library | {counter} telah ditambahkan ke library",
-        "tracks": "{counter} telah ditambahkan ke library | {counter} telah ditambahkan ke library"
+        "artists": "{counter} telah ditambahkan ke perpustakaan | {counter} telah ditambahkan ke perpustakaan",
+        "albums": "{counter} telah ditambahkan ke perpustakaan | {counter} telah ditambahkan ke perpustakaan",
+        "tracks": "{counter} telah ditambahkan ke perpustakaan | {counter} telah ditambahkan ke perpustakaan"
       },
       "playlist": {
         "artists": "{counter} telah ditambahkan ke playlist | {counter} telah ditambahkan ke playlist",
@@ -878,9 +878,9 @@
       "favoriteArtist": "Artist {modelName} ditambahkan ke favorit",
       "favoriteTrack": "Track {modelName} ditambahkan ke favorit",
       "favoriteVideo": "Video {modelName} ditambahkan ke favorit",
-      "libraryAlbum": "Album {modelName} ditambahkan ke library",
-      "libraryArtist": "Artist {modelName} ditambahkan ke library",
-      "libraryTrack": "Track {modelName} ditambahkan ke library",
+      "libraryAlbum": "Album {modelName} ditambahkan ke perpustakaan",
+      "libraryArtist": "Artist {modelName} ditambahkan ke perpustakaan",
+      "libraryTrack": "Track {modelName} ditambahkan ke perpustakaan",
       "listenedAlbum": "Album {modelName} ditambahkan ke listened",
       "listenedArtist": "Artist {modelName} ditambahkan ke listened",
       "listenedTrack": "Track {modelName} ditambahkan ke listened",
@@ -912,9 +912,9 @@
       "favoriteArtist": "Artist {modelName} dihapus dari favorit",
       "favoriteTrack": "Track {modelName} dihapus dari favorit",
       "favoriteVideo": "Video {modelName} dihapus dari favorit",
-      "libraryAlbum": "Album {modelName} dihapus dari library",
-      "libraryArtist": "Artist {modelName} dihapus dari library",
-      "libraryTrack": "Track {modelName} dihapus dari library",
+      "libraryAlbum": "Album {modelName} dihapus dari perpustakaan",
+      "libraryArtist": "Artist {modelName} dihapus dari perpustakaan",
+      "libraryTrack": "Track {modelName} dihapus dari perpustakaan",
       "listenedAlbum": "Album {modelName} dihapus dari listened",
       "listenedArtist": "Artist {modelName} dihapus dari listened",
       "listenedTrack": "Track {modelName} dihapus dari listened",
@@ -932,7 +932,7 @@
   },
   "created": {
     "profile": "Dalam muffon sejak",
-    "library": "Di dalam library sejak",
+    "library": "Di dalam perpustakaan sejak",
     "community": "Dibuat"
   },
   "filter": {
