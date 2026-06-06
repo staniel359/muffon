@@ -30,7 +30,7 @@
     "new": "Baru",
     "upcoming": "Mendatang",
     "radio": "Radio",
-    "multitag": "Pencarian multi tag",
+    "multitag": "Pencarian multi-tag",
     "profiles": "Profile",
     "feed": "Feed",
     "posts": "Post",
@@ -142,7 +142,7 @@
     "retry": "Ulangi",
     "post": "Kirim",
     "send": "Kirim",
-    "next": "Selanjutnya",
+    "next": "Lanjut",
     "upload": "Upload",
     "back": "Kembali",
     "sendCode": "Kirim kode",
@@ -153,7 +153,7 @@
     "import": "Import",
     "close": "Tutup",
     "openLink": "Buka link",
-    "play": "Mainkan",
+    "play": "Putar",
     "shuffle": "Acak",
     "loop": "Ulangi",
     "reset": "Reset",
@@ -378,14 +378,14 @@
     }
   },
   "notifications": {
-    "scrobbled": "Track {trackFullTitle} telah di-scrobbled",
+    "scrobbled": "Track {trackFullTitle} berhasil di-scrobbled",
     "added": {
       "queue": {
-        "track": "Track {trackFullTitle} telah ditambahkan ke queue",
-        "tracks": "{counter} telah ditambahkan ke queue | {counter} have been added to queue"
+        "track": "Track {trackFullTitle} berhasil ditambahkan ke queue",
+        "tracks": "{counter} berhasil ditambahkan ke queue"
       },
       "savedTracks": {
-        "track": "Track {trackFullTitle} telah ditambahkan ke saved tracks"
+        "track": "Track {trackFullTitle} berhasil ditambahkan ke saved tracks"
       }
     },
     "updated": {
@@ -799,7 +799,7 @@
     "videoPlaylist": "Playlist video telah dihapus"
   },
   "messages": {
-    "welcome": "Selamat datang, {profileNickname}"
+    "welcome": "Selamat datang, {profileNickname}!"
   },
   "profile": {
     "wasOnline": "Online"
@@ -837,7 +837,7 @@
   "lists": {
     "simple": "Daftar sederhana",
     "table": "Tabel",
-    "extended": "Daftar detail"
+    "extended": "Detail daftar"
   },
   "orders": {
     "createdDesc": "Terbaru",
