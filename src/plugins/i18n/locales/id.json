@@ -293,15 +293,15 @@
         "community": "Ini juga akan menghapus semua post dari komunitas ini.",
         "account": [
           "Ini juga akan menghapus data berikut:",
-          "<strong>- perpustakaan\n- recommendations\n- playlists\n- favorites\n- bookmarks\n- listened\n- page posts\n- subscriptions\n- history</strong>",
+          "<strong>- perpustakaan\n- rekomendasi\n- playlist\n- favorit\n- bookmarks\n- listened\n- page posts\n- berlangganan\n- histori</strong>",
           "Data ini akan tetap ada, tetapi nama Anda tidak akan ditampilkan:",
-          "<strong>- created posts\n- created comments\n- conversations with you\n- created communities</strong>",
+          "<strong>- post yang dibuat\n- komentar yang dibuat\n- percakapan dengan kamu\n- komunitas yang dibuat</strong>",
           "Dan data ini akan tetap tidak berubah:",
-          "<strong>- saved tracks\n- background images\n- settings</strong>"
+          "<strong>- track yang disimpan\n- foto background\n- pengaturan</strong>"
         ],
         "library": [
           "Ini juga akan menghapus data berikut:",
-          "<strong>- artists\n- albums\n- tracks\n- recommendations</strong>"
+          "<strong>- artis\n- album\n- track\n- rekomendasi</strong>"
         ]
       },
       "undo": "Tindakan ini tidak dapat dibatalkan!",
