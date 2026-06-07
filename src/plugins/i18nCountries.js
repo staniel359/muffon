@@ -37,7 +37,7 @@ const locales = [
   zh
 ]
 
-function addLocale(
+function addLocale (
   locale
 ) {
   registerLocale(
