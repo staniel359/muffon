@@ -1,0 +1,960 @@
+{
+  "navigation": {
+    "home": "Halaman utama",
+    "artists": "Artis",
+    "artist": "Artis",
+    "albums": "Album",
+    "albumGroups": "Grup album",
+    "tracks": "Track",
+    "tags": "Tag",
+    "tag": "Tag",
+    "similar": "Mirip",
+    "images": "Gambar",
+    "lyrics": "Lirik",
+    "videos": "Video",
+    "videoChannels": "Saluran video",
+    "videoMixes": "Video mix",
+    "videoPlaylists": "Video playlist",
+    "top": "Top",
+    "topCollection": {
+      "artists": "Top artis",
+      "albums": "Top album",
+      "tracks": "Top track",
+      "tags": "Top tag"
+    },
+    "releases": "Rilis",
+    "releasesCollection": {
+      "new": "Rilis baru",
+      "upcoming": "Rilis mendatang"
+    },
+    "new": "Baru",
+    "upcoming": "Mendatang",
+    "radio": "Radio",
+    "multitag": "Pencarian multi-tag",
+    "profiles": "Profil",
+    "feed": "Feed",
+    "posts": "Post",
+    "conversations": "Percakapan",
+    "library": "Perpustakaan",
+    "recommendations": "Rekomendasi",
+    "recommendationsCollection": {
+      "artists": "Rekomendasi artis",
+      "tracks": "Rekomendasi track"
+    },
+    "savedTracks": "Track tersimpan",
+    "playlists": "Playlist",
+    "favorites": "Favorit",
+    "bookmarks": "Bookmark",
+    "bookmarksCollection": {
+      "artists": "Bookmark artis",
+      "albums": "Bookmark album",
+      "tracks": "Bookmark track",
+      "videos": "Bookmark video",
+      "videoChannels": "Bookmark saluran video",
+      "videoPlaylists": "Bookmark video playlist"
+    },
+    "communities": "Komunitas",
+    "history": "Riwayat",
+    "historyCollection": {
+      "activity": "Riwayat aktivitas",
+      "player": "Riwayat player",
+      "browser": "Riwayat browser"
+    },
+    "activity": "Aktivitas",
+    "player": "Player",
+    "browser": "Browser",
+    "settings": "Settings",
+    "model": {
+      "artists": "Artis {modelName}",
+      "albums": "Album {modelName}",
+      "tracks": "Track {modelName}",
+      "tags": "Tag {modelName}",
+      "similar": "Mirip {modelName}",
+      "images": "Gambar {modelName}",
+      "lyrics": "Lirik {modelName}",
+      "videos": "Video {modelName}",
+      "posts": "Postingan {modelName}",
+      "library": "Perpustakaan {modelName}",
+      "playlists": "Playlist {modelName}",
+      "favorites": "Favorit {modelName}",
+      "favoritesCollection": {
+        "artists": "Artis favorit {modelName}",
+        "albums": "Album favorit {modelName}",
+        "tracks": "Track favorit {modelName}",
+        "videos": "Video favorit {modelName}"
+      },
+      "communities": "Komunitas {modelName}",
+      "shows": "Acara {modelName}"
+    },
+    "search": "Cari",
+    "queue": "Antrian",
+    "whatsNew": "Apa yang baru",
+    "listenedRecently": "Yang terbaru",
+    "shows": "Acara",
+    "listeningNow": "Sedang mendengarkan",
+    "help": "Bantuan"
+  },
+  "errors": {
+    "badRequest": {
+      "header": "Permintaan buruk",
+      "content": "Silakan buat permintaan dengan data yang valid"
+    },
+    "forbidden": {
+      "header": "Terlarang",
+      "content": "Anda tidak memiliki izin untuk melakukan tindakan ini"
+    },
+    "notFound": {
+      "header": "Tidak menemukan apa pun",
+      "content": "Silakan coba mencari sesuatu yang lain"
+    },
+    "internalServer": {
+      "header": "Kesalahan server internal",
+      "content": "Silakan hubungi kami untuk informasi"
+    },
+    "badGateway": {
+      "header": "Kesalahan server remote",
+      "content": "Silakan coba lagi dalam beberapa saat"
+    },
+    "gatewayTimeout": {
+      "header": "Timeout server remote",
+      "content": "Silakan coba lagi dalam beberapa saat"
+    },
+    "connection": {
+      "header": "Koneksi terputus",
+      "content": "Silakan coba lagi dalam beberapa saat"
+    },
+    "client": {
+      "header": "Kesalahan client",
+      "content": "Silakan hubungi kami untuk informasi"
+    }
+  },
+  "actions": {
+    "login": "Masuk",
+    "logout": "Keluar",
+    "signup": "Daftar",
+    "add": "Tambah",
+    "create": "Buat",
+    "edit": "Edit",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "clear": "Hapus",
+    "retry": "Ulangi",
+    "post": "Kirim",
+    "send": "Kirim",
+    "next": "Lanjut",
+    "upload": "Upload",
+    "back": "Kembali",
+    "sendCode": "Kirim kode",
+    "share": "Bagikan",
+    "search": "Cari",
+    "filter": "Filter",
+    "confirm": "Konfirmasi",
+    "import": "Import",
+    "close": "Tutup",
+    "openLink": "Buka link",
+    "play": "Putar",
+    "shuffle": "Acak",
+    "loop": "Ulangi",
+    "reset": "Reset",
+    "addFrom": {
+      "search": "Dari pencarian",
+      "library": "Dari perpustakaan"
+    },
+    "importFrom": {
+      "drive": "Dari drive",
+      "account": "Dari akun"
+    },
+    "searchIn": {
+      "source": "Cari di source",
+      "sources": "Cari di sources"
+    },
+    "searchFor": {
+      "video": "Cari video",
+      "lyrics": "Cari lirik"
+    },
+    "importFromAccount": {
+      "lastfm": "Import dari Last.FM",
+      "spotify": "Import dari Spotify"
+    },
+    "selectModel": {
+      "folder": "Pilih folder"
+    },
+    "createModel": {
+      "playlist": "Buat playlist",
+      "community": "Buat komunitas",
+      "post": "Buat post"
+    },
+    "addModel": {
+      "comment": "Tambah komentar"
+    },
+    "addTo": {
+      "library": "Tambah ke perpustakaan",
+      "playlist": "Tambah ke playlist",
+      "favorites": "Tambah ke favorit",
+      "bookmarks": "Tambah ke bookmark",
+      "listened": "Tambah ke listened",
+      "watched": "Tambah ke watched",
+      "queue": "Tambah ke antrian",
+      "savedTracks": "Tambah ke track tersimpan"
+    },
+    "goTo": {
+      "video": "Ke halaman video",
+      "library": "Ke halaman perpustakaan",
+      "page": "Ke halaman"
+    },
+    "deleteFrom": {
+      "favorites": "Hapus dari favorit",
+      "bookmarks": "Hapus dari bookmark",
+      "listened": "Hapus dari listened",
+      "watched": "Hapus dari watched"
+    },
+    "externalLink": {
+      "open": "Buka link eksternal",
+      "original": "Original",
+      "streaming": "Streaming"
+    }
+  },
+  "links": {
+    "playlists": "Semua playlist",
+    "communities": "Semua komunitas"
+  },
+  "inputs": {
+    "search": "Cari...",
+    "content": "Tulis sesuatu..."
+  },
+  "modals": {
+    "delete": {
+      "header": {
+        "libraryModel": {
+          "artist": "Hapus artis dari perpustakaan",
+          "album": "Hapus album dari perpustakaan",
+          "track": "Hapus track dari perpustakaan"
+        },
+        "recommendationModel": {
+          "artist": "Hapus artis dari rekomendasi",
+          "track": "Hapus track dari rekomendasi"
+        },
+        "playlist": "Hapus playlist",
+        "playlistTrack": "Hapus track dari playlist",
+        "savedTrack": "Hapus track dari track tersimpan",
+        "favorite": {
+          "artist": "Hapus artis dari favorit",
+          "album": "Hapus album dari favorit",
+          "track": "Hapus track dari favorit",
+          "video": "Hapus video dari favorit"
+        },
+        "bookmark": {
+          "artist": "Hapus artis dari bookmark",
+          "album": "Hapus album dari bookmark",
+          "track": "Hapus track dari bookmark",
+          "video": "Hapus video dari bookmark",
+          "videoChannel": "Hapus channel video dari bookmark",
+          "videoPlaylist": "Hapus playlist video dari bookmark"
+        },
+        "post": "Hapus postingan",
+        "comment": "Hapus komentar",
+        "community": "Hapus komunitas",
+        "account": "Hapus akun",
+        "library": "Hapus perpustakaan",
+        "history": {
+          "search": "Hapus riwayat pencarian",
+          "activity": "Hapus riwayat aktivitas",
+          "browser": "Hapus riwayat browser",
+          "player": "Hapus riwayat player"
+        }
+      },
+      "going": {
+        "libraryModel": "Anda akan menghapus {modelName} dari perpustakaan Anda.",
+        "recommendationModel": "Anda akan menghapus {modelName} dari rekomendasi Anda.",
+        "playlist": "Anda akan menghapus {modelName} dari playlist Anda.",
+        "playlistTrack": "Anda akan menghapus {modelName} dari playlist {parentModelName}.",
+        "savedTrack": "Anda akan menghapus {modelName} dari saved tracks Anda.",
+        "favorite": "Anda akan menghapus {modelName} dari favorit Anda.",
+        "bookmark": "Anda akan menghapus {modelName} dari bookmark Anda.",
+        "post": "Anda akan menghapus postingan ini.",
+        "comment": "Anda akan menghapus komentar ini.",
+        "community": "Anda akan menghapus komunitas ini.",
+        "account": "Anda akan menghapus akun ini.",
+        "library": "Anda akan menghapus perpustakaan ini.",
+        "history": {
+          "search": "Anda akan menghapus riwayat pencarian Anda.",
+          "activity": "Anda akan menghapus riwayat aktivitas Anda.",
+          "browser": "Anda akan menghapus riwayat browser Anda.",
+          "player": "Anda akan menghapus riwayat player Anda."
+        }
+      },
+      "also": {
+        "libraryModel": {
+          "artist": "Ini juga akan menghapus semua album dan track dari artis ini.",
+          "album": "Ini juga akan menghapus semua track dari album ini."
+        },
+        "playlist": "Ini juga akan menghapus semua track dari playlist ini.",
+        "community": "Ini juga akan menghapus semua post dari komunitas ini.",
+        "account": [
+          "Ini juga akan menghapus data berikut:",
+          "<strong>- perpustakaan\n- rekomendasi\n- playlist\n- favorit\n- bookmarks\n- listened\n- page posts\n- berlangganan\n- histori</strong>",
+          "Data ini akan tetap ada, tetapi nama Anda tidak akan ditampilkan:",
+          "<strong>- post yang dibuat\n- komentar yang dibuat\n- percakapan dengan kamu\n- komunitas yang dibuat</strong>",
+          "Dan data ini akan tetap tidak berubah:",
+          "<strong>- track yang disimpan\n- foto background\n- pengaturan</strong>"
+        ],
+        "library": [
+          "Ini juga akan menghapus data berikut:",
+          "<strong>- artis\n- album\n- track\n- rekomendasi</strong>"
+        ]
+      },
+      "undo": "Tindakan ini tidak dapat dibatalkan!",
+      "sure": "Apakah Anda yakin?"
+    }
+  },
+  "forms": {
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "passwordConfirmation": "Konfirmasi password",
+      "passwordResetCode": "Kode reset password",
+      "nickname": "Nickname",
+      "title": "Judul",
+      "description": "Deskripsi",
+      "gender": "Jenis kelamin",
+      "birthdate": "Tanggal lahir",
+      "country": "Negara",
+      "city": "Kota",
+      "status": "Status",
+      "clientId": "Client ID",
+      "clientSecret": "Client Secret",
+      "genders": {
+        "male": "Laki-laki",
+        "female": "Perempuan",
+        "other": "Lainnya"
+      },
+      "legal": {
+        "header": "Saya menyetujui {privacyPolicy} dan {termsAndConditions}",
+        "privacyPolicy": "Kebijakan Privasi",
+        "termsAndConditions": "Ketentuan Layanan"
+      },
+      "remember": "Ingat saya",
+      "asCommunity": "Sebagai komunitas"
+    },
+    "extra": "Info tambahan",
+    "errors": {
+      "notFound": "Profil tidak ditemukan",
+      "empty": {
+        "email": "Email kosong",
+        "password": "Password kosong",
+        "passwordConfirmation": "Konfirmasi password kosong",
+        "passwordResetCode": "Kode reset password kosong",
+        "nickname": "Nickname kosong",
+        "title": "Judul kosong",
+        "clientId": "Client ID kosong",
+        "clientSecret": "Client secret kosong",
+        "legal": "Anda harus menyetujui Kebijakan Privasi dan Ketentuan Layanan"
+      },
+      "invalid": {
+        "email": "Email tidak valid"
+      },
+      "taken": {
+        "email": "Email sudah terdaftar",
+        "nickname": "Nickname sudah terdaftar",
+        "title": "Judul sudah terdaftar"
+      },
+      "tooShort": {
+        "password": "Password terlalu pendek"
+      },
+      "tooLong": {
+        "nickname": "Nickname terlalu panjang"
+      },
+      "confirmation": {
+        "passwordConfirmation": "Password dan konfirmasi tidak cocok"
+      },
+      "wrong": {
+        "password": "Password salah",
+        "passwordResetCode": "Kode reset password salah"
+      }
+    },
+    "confirm": {
+      "password": "Silahkan konfirmasi password Anda:"
+    }
+  },
+  "notifications": {
+    "scrobbled": "Track {trackFullTitle} berhasil di-scrobbled",
+    "added": {
+      "queue": {
+        "track": "Track {trackFullTitle} berhasil ditambahkan ke queue",
+        "tracks": "{counter} berhasil ditambahkan ke queue"
+      },
+      "savedTracks": {
+        "track": "Track {trackFullTitle} berhasil ditambahkan ke saved tracks"
+      }
+    },
+    "updated": {
+      "profile": "Profil berhasil diperbarui",
+      "post": "Post berhasil diperbarui",
+      "comment": "Komentar berhasil diperbarui",
+      "playlist": "Playlist {playlistTitle} berhasil diperbarui",
+      "community": "Community {communityTitle} berhasil diperbarui"
+    },
+    "deleted": {
+      "libraryModel": {
+        "artist": "Artist {modelName} berhasil dihapus dari perpustakaan Anda",
+        "album": "Album {modelName} berhasil dihapus dari perpustakaan Anda",
+        "track": "Track {modelName} berhasil dihapus dari perpustakaan Anda"
+      },
+      "playlist": "Playlist {playlistTitle} berhasil dihapus",
+      "community": "Community {communityTitle} berhasil dihapus",
+      "account": "Akun berhasil dihapus",
+      "library": "Perpustakaan berhasil dihapus",
+      "history": {
+        "search": "Riwayat pencarian berhasil dihapus",
+        "activity": "Riwayat aktivitas berhasil dihapus",
+        "browser": "Riwayat browser berhasil dihapus",
+        "player": "Riwayat player berhasil dihapus"
+      }
+    },
+    "copied": "Link berhasil disalin ke clipboard",
+    "cleared": {
+      "cache": "Cache berhasil dihapus",
+      "searchHistory": "Riwayat pencarian berhasil dihapus"
+    },
+    "restartToApply": "Pengaturan berhasil disimpan dan akan diterapkan saat aplikasi dijalankan kembali"
+  },
+  "counters": {
+    "nominative": {
+      "artists": "{count} artis | {count} artis",
+      "albums": "{count} album | {count} album",
+      "tracks": "{count} track | {count} track",
+      "videos": "{count} video | {count} video",
+      "files": "{count} file | {count} file",
+      "plays": "{count} putar | {count} putar",
+      "followers": "{count} follower | {count} followers",
+      "following": "{count} following",
+      "members": "{count} member | {count} members",
+      "playlists": "{count} playlist | {count} playlists"
+    },
+    "genitive": {
+      "artists": "{count} artis | {count} artis",
+      "albums": "{count} album | {count} album",
+      "tracks": "{count} track | {count} track",
+      "files": "{count} file | {count} file",
+      "plays": "{count} putar | {count} putar",
+      "playlists": "{count} playlist | {count} playlist"
+    },
+    "accusative": {
+      "artists": "{count} artis | {count} artis",
+      "albums": "{count} album | {count} album",
+      "tracks": "{count} track | {count} track",
+      "files": "{count} file | {count} file",
+      "playlists": "{count} playlist | {count} playlist"
+    }
+  },
+  "select": {
+    "source": "Pilih sumber:",
+    "type": "Pilih tipe:",
+    "album": "Pilih album:",
+    "group": "Pilih grup album:",
+    "artist": "Pilih artis:",
+    "track": "Pilih track:",
+    "country": "Pilih negara:",
+    "video": "Pilih video:",
+    "lyrics": "Pilih lirik:"
+  },
+  "sources": {
+    "audio": "Audio",
+    "other": "Lainnya",
+    "albumTypes": {
+      "album": "Album",
+      "group": "Grup album",
+      "track": "Track"
+    },
+    "albumsTypes": {
+      "album": "Album",
+      "single": "Single",
+      "ep": "EP",
+      "singleEp": "Single / EP",
+      "compilation": "Kompilasi",
+      "video": "Video",
+      "misc": "Lainnya",
+      "appearance": "Penampilan",
+      "live": "Live"
+    }
+  },
+  "player": {
+    "variants": "Varian ({count})",
+    "audio": {
+      "bitrate": "{value} kbit/s",
+      "equalizer": {
+        "decibel": "{value} dB",
+        "hertz": "{value} Hz",
+        "kilohertz": "{value} kHz"
+      }
+    }
+  },
+  "settings": {
+    "tabs": {
+      "app": "App",
+      "profile": "Profil",
+      "connections": "Koneksi"
+    },
+    "sections": {
+      "interface": "Tampilan",
+      "theme": "Tema",
+      "window": "Jendela",
+      "tabs": "Tab",
+      "sidebar": "Sidebar",
+      "video": "Video",
+      "data": "Data",
+      "info": "Info",
+      "account": "Akun",
+      "system": "Sistem",
+      "updates": "Update"
+    },
+    "options": {
+      "app": {
+        "interface": {
+          "language": "Bahasa",
+          "timezone": "Zona waktu",
+          "infiniteScroll": "Scroll tak terbatas",
+          "artistPopup": "Tampilkan info artis saat hover",
+          "innerCounters": "Tampilkan jumlah pendengar muffon",
+          "cachePages": "Cache halaman",
+          "scale": "Skala"
+        },
+        "theme": {
+          "dark": "Mode gelap",
+          "system": "Tema sistem",
+          "background": "Background",
+          "transparency": "Transparansi"
+        },
+        "window": {
+          "maximize": "Maksimalkan saat start",
+          "quit": "Keluar saat tutup",
+          "showTrayIcon": "Tampilkan ikon tray"
+        },
+        "tabs": {
+          "newTabSwitch": "Gunakan tab baru",
+          "closeOnQuit": "Tutup tab saat keluar"
+        },
+        "search": {
+          "source": "Sumber",
+          "scope": "Scope",
+          "resultsFullSize": "Tampilkan hasil dalam ukuran penuh"
+        },
+        "player": {
+          "audioSources": "Sumber audio (berdasarkan prioritas)",
+          "automatch": "Cocokkan audio ke track",
+          "bitrate": "Tampilkan bitrate audio",
+          "album": "Tampilkan album",
+          "equalizer": "Tampilkan equalizer",
+          "focusPlaying": "Fokus pada track saat ini",
+          "pauseOnVideoPlay": "Jeda saat video diputar"
+        },
+        "queue": {
+          "autoplay": "Putar otomatis",
+          "clear": "Hapus saat tutup"
+        },
+        "video": {
+          "autoplay": "Putar otomatis",
+          "pauseOnAudioPlay": "Jeda saat audio diputar",
+          "openLinksInNewTab": "Buka link di tab baru"
+        },
+        "recommendations": {
+          "hideLibraryArtists": "Sembunyikan artis perpustakaan",
+          "tracksCount": "dengan jumlah track",
+          "hideListenedArtists": "Sembunyikan artis yang didengarkan",
+          "hideLibraryTracks": "Sembunyikan track perpustakaan",
+          "hideListenedTracks": "Sembunyikan track yang didengarkan"
+        },
+        "top": {
+          "country": "Negara default"
+        },
+        "lyrics": {
+          "annotations": "Tampilkan anotasi lirik"
+        },
+        "history": {
+          "search": {
+            "delete": "Hapus riwayat pencarian"
+          },
+          "activity": {
+            "save": "Simpan riwayat aktivitas",
+            "delete": "Hapus riwayat aktivitas"
+          },
+          "player": {
+            "save": "Simpan riwayat player",
+            "delete": "Hapus riwayat player"
+          },
+          "browser": {
+            "save": "Simpan riwayat browser",
+            "delete": "Hapus riwayat browser"
+          }
+        },
+        "system": {
+          "cache": {
+            "enable": "Aktifkan cache",
+            "clear": "Hapus cache"
+          }
+        },
+        "updates": {
+          "check": "Periksa versi baru",
+          "auto": "Aktifkan update otomatis",
+          "autoWarning": "Update otomatis di Linux masih dalam tahap eksperimental dan mungkin mengandung bug.\nSelama proses update otomatis, aplikasi akan berhenti sementara.\nHindari menutup paksa aplikasi; aplikasi akan ditutup secara otomatis setelah update selesai.\n\nUntuk detail dan pelacakan masalah ini, silakan kunjungi [a link=issue]link ini[/a]."
+        }
+      },
+      "profile": {
+        "player": {
+          "playing": "Tampilkan track saat ini di halaman"
+        },
+        "data": {
+          "account": {
+            "delete": "Hapus akun"
+          },
+          "library": {
+            "delete": "Hapus perpustakaan"
+          }
+        }
+      },
+      "connections": {
+        "lastfm": {
+          "scrobbling": "Scrobbling",
+          "scrobbleNotifications": "Notifikasi scrobble",
+          "scrobblePercent": "Scrobble setelah"
+        },
+        "spotify": {
+          "link": {
+            "description": "Untuk menghubungkan akun Spotify Anda, silakan ikuti [a link=guide]panduan ini[/a]."
+          }
+        },
+        "discord": {
+          "richPresence": {
+            "header": "Aktifkan Discord Rich Presence",
+            "client": "Sebelum mengaktifkan, pastikan aplikasi desktop Discord Anda berjalan",
+            "buttons": {
+              "header": "Tombol",
+              "select": {
+                "first": "Pilih bagian pertama:",
+                "second": "Pilih bagian kedua:"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "track": {
+    "source": "Via {source}"
+  },
+  "recommended": {
+    "header": "Rekomendasi untuk Anda",
+    "based": "Berdasarkan:"
+  },
+  "signup": {
+    "text": "Tidak punya akun?",
+    "link": "Daftar"
+  },
+  "login": {
+    "text": "Sudah punya akun?",
+    "link": "Masuk"
+  },
+  "passwordReset": {
+    "text": "Lupa password?",
+    "link": "Reset",
+    "code": {
+      "sent": "Kode reset password telah dikirim ke email Anda"
+    },
+    "updated": {
+      "header": "Password Anda telah berhasil diubah",
+      "content": "Sekarang Anda dapat login kembali"
+    }
+  },
+  "guest": {
+    "continue": "Lanjutkan sebagai tamu",
+    "nickname": "Tamu"
+  },
+  "roles": {
+    "creator": "Pembuat"
+  },
+  "relationships": {
+    "followed": "Mengikuti Anda",
+    "following": "Mengikuti Anda",
+    "follow": "Ikuti",
+    "unfollow": "Berhenti mengikuti"
+  },
+  "memberships": {
+    "joined": "Anda telah bergabung",
+    "join": "Bergabung",
+    "leave": "Keluar"
+  },
+  "message": {
+    "send": "Kirim pesan",
+    "sent": {
+      "header": "Pesan telah berhasil dikirim",
+      "content": "Pergi ke percakapan"
+    }
+  },
+  "compatibility": {
+    "header": "Tingkat kompatibilitas Anda dengan {profileNickname}",
+    "common": "Yang kita punya:"
+  },
+  "recommendation": {
+    "similar": "Mirip dengan {counter}:"
+  },
+  "get": {
+    "active": "Mengambil {count} dari {counter}..."
+  },
+  "import": {
+    "lastfm": {
+      "historyVisible": "Sebelum mengimpor, pastikan riwayat pendengaran Last.FM Anda terlihat."
+    },
+    "active": "Mengimpor {count} dari {counter}...",
+    "success": {
+      "header": {
+        "files": "{counter} telah diimpor | {counter} telah diimpor",
+        "tracks": "{counter} telah diimpor | {counter} telah diimpor",
+        "playlists": "{counter} telah diimpor | {counter} telah diimpor"
+      },
+      "content": "Anda mungkin ingin memeriksa data sebelum menyimpannya"
+    },
+    "error": {
+      "files": "{counter} tidak dapat diimpor. Pastikan format metadata valid:"
+    }
+  },
+  "save": {
+    "active": "Menyimpan {count} dari {counter}...",
+    "success": {
+      "library": {
+        "artists": "{counter} telah ditambahkan ke perpustakaan | {counter} telah ditambahkan ke perpustakaan",
+        "albums": "{counter} telah ditambahkan ke perpustakaan | {counter} telah ditambahkan ke perpustakaan",
+        "tracks": "{counter} telah ditambahkan ke perpustakaan | {counter} telah ditambahkan ke perpustakaan"
+      },
+      "playlist": {
+        "artists": "{counter} telah ditambahkan ke playlist | {counter} telah ditambahkan ke playlist",
+        "albums": "{counter} telah ditambahkan ke playlist | {counter} telah ditambahkan ke playlist",
+        "tracks": "{counter} telah ditambahkan ke playlist | {counter} telah ditambahkan ke playlist"
+      },
+      "playlists": {
+        "playlists": "{counter} telah ditambahkan ke playlist | {counter} telah ditambahkan ke playlist"
+      },
+      "favorites": {
+        "tracks": "{counter} telah ditambahkan ke favorit | {counter} telah ditambahkan ke favorit"
+      }
+    },
+    "error": "{counter} tidak dapat ditambahkan:"
+  },
+  "delete": {
+    "active": "Menghapus {count} dari {counter}..."
+  },
+  "connections": {
+    "connect": "Hubungkan akun",
+    "confirm": {
+      "token": "Browser Anda akan terbuka sekarang. Konfirmasikan koneksi di sana dan klik tombol ini lagi.",
+      "code": "Browser Anda akan terbuka sekarang. Konfirmasikan koneksi di sana, tempel kode yang diterima, dan klik tombol ini lagi."
+    },
+    "disconnect": "Putuskan koneksi akun"
+  },
+  "accounts": {
+    "premium": "Premium"
+  },
+  "noCollection": {
+    "header": {
+      "artists": "Tidak ada artis",
+      "albums": "Tidak ada album",
+      "groups": "Tidak ada grup album",
+      "tracks": "Tidak ada track",
+      "similar": "Tidak ada yang mirip",
+      "tags": "Tidak ada tagar",
+      "posts": "Tidak ada postingan",
+      "feed": "Tidak ada postingan",
+      "conversations": "Tidak ada percakapan",
+      "messages": "Tidak ada pesan",
+      "followers": "Tidak ada pengikut",
+      "following": "Tidak ada yang diikuti",
+      "recommendations": "Tidak ada rekomendasi",
+      "playlists": "Tidak ada playlist",
+      "communities": "Tidak ada komunitas",
+      "members": "Tidak ada anggota",
+      "videos": "Tidak ada video",
+      "videoChannels": "Tidak ada channel video",
+      "videoMixes": "Tidak ada mix video",
+      "videoPlaylists": "Tidak ada playlist video",
+      "listeners": "Tidak ada pendengar",
+      "images": "Tidak ada gambar",
+      "events": "Tidak ada acara",
+      "profiles": "Tidak ada profil",
+      "shows": "Tidak ada acara",
+      "pages": "Tidak ada halaman",
+      "lyrics": "Tidak ada lirik"
+    },
+    "content": "Sepertinya tidak ada yang bisa dilihat disini"
+  },
+  "deleted": {
+    "artist": "Artis telah dihapus",
+    "album": "Album telah dihapus",
+    "track": "Track telah dihapus",
+    "recommendation": "Rekomendasi telah dihapus",
+    "playlist": "Playlist telah dihapus",
+    "post": "Postingan telah dihapus",
+    "comment": "Komentar telah dihapus",
+    "video": "Video telah dihapus",
+    "videoChannel": "Channel video telah dihapus",
+    "videoPlaylist": "Playlist video telah dihapus"
+  },
+  "messages": {
+    "welcome": "Selamat datang, {profileNickname}!"
+  },
+  "profile": {
+    "wasOnline": "Online"
+  },
+  "feed": {
+    "global": "Feed Global"
+  },
+  "about": {
+    "license": "{license} lisensi",
+    "homepage": "Halaman Utama",
+    "contact": "Kontak"
+  },
+  "private": {
+    "playlist": "Privat",
+    "profile": "Privat"
+  },
+  "privateModel": {
+    "video": "Video Privat"
+  },
+  "donate": {
+    "header": "Donasi",
+    "content": [
+      "muffon adalah proyek nirlaba yang tidak memiliki iklan atau fitur atau konten berbayar.",
+      "Namun, muffon tidak dapat eksis tanpa dana yang dibutuhkan untuk pengembangan dan infrastrukturnya.",
+      "Karena banyak waktu dan upaya yang telah diinvestasikan dalam pembuatan proyek ini, akan sangat bagus untuk melihat investasi tersebut terbayar.",
+      "Oleh karena itu, kami ingin meminta bantuan Anda untuk mendukung muffon.",
+      "<strong>Apakah Anda ingin memberikan donasi?</strong>"
+    ],
+    "actions": {
+      "decline": "Tidak, terima kasii",
+      "later": "Mungkin lain kali",
+      "accept": "Ya, tentu saja"
+    }
+  },
+  "lists": {
+    "simple": "Daftar sederhana",
+    "table": "Tabel",
+    "extended": "Detail daftar"
+  },
+  "orders": {
+    "createdDesc": "Terbaru",
+    "createdAsc": "Terlama",
+    "updatedDesc": "Paling baru diperbarui",
+    "updatedAsc": "Paling lama diperbarui",
+    "artistsCountDesc": "Paling banyak artis",
+    "artistsCountAsc": "Paling sedikit artis",
+    "albumsCountDesc": "Paling banyak album",
+    "albumsCountAsc": "Paling sedikit album",
+    "tracksCountDesc": "Paling banyak track",
+    "tracksCountAsc": "Paling sedikit track",
+    "followersCountDesc": "Paling banyak pengikut",
+    "followersCountAsc": "Paling sedikit pengikut",
+    "joinedDesc": "Paling baru bergabung",
+    "joinedAsc": "Paling lama bergabung",
+    "membersCountDesc": "Paling banyak anggota",
+    "membersCountAsc": "Paling sedikit anggota",
+    "listenersCountDesc": "Paling banyak pendengar",
+    "listenersCountAsc": "Paling sedikit pendengar"
+  },
+  "deletedModel": {
+    "profile": "Profil terhapus",
+    "playlist": "Playlist terhapus",
+    "community": "Komunitas terhapus",
+    "video": "Video terhapus"
+  },
+  "events": {
+    "created": {
+      "profile": "Profil terbuat",
+      "bookmarkAlbum": "Album {modelName} ditambahkan ke bookmark",
+      "bookmarkArtist": "Artist {modelName} ditambahkan ke bookmark",
+      "bookmarkTrack": "Track {modelName} ditambahkan ke bookmark",
+      "bookmarkVideo": "Video {modelName} ditambahkan ke bookmark",
+      "bookmarkVideoChannel": "Video channel {modelName} ditambahkan ke bookmark",
+      "bookmarkVideoPlaylist": "Video playlist {modelName} ditambahkan ke bookmark",
+      "favoriteAlbum": "Album {modelName} ditambahkan ke favorit",
+      "favoriteArtist": "Artist {modelName} ditambahkan ke favorit",
+      "favoriteTrack": "Track {modelName} ditambahkan ke favorit",
+      "favoriteVideo": "Video {modelName} ditambahkan ke favorit",
+      "libraryAlbum": "Album {modelName} ditambahkan ke perpustakaan",
+      "libraryArtist": "Artist {modelName} ditambahkan ke perpustakaan",
+      "libraryTrack": "Track {modelName} ditambahkan ke perpustakaan",
+      "listenedAlbum": "Album {modelName} ditambahkan ke listened",
+      "listenedArtist": "Artist {modelName} ditambahkan ke listened",
+      "listenedTrack": "Track {modelName} ditambahkan ke listened",
+      "watchedVideo": "Video {modelName} ditambahkan ke watched",
+      "playlistTrack": "Track {modelName} ditambahkan ke playlist {playlistTitle}",
+      "community": "Komunitas {modelName} dibuat",
+      "relationship": "Anda mengikuti {modelName}",
+      "post": "Postingan {modelName} dibuat",
+      "postComment": "Komentar {modelName} dibuat",
+      "playlist": "Playlist {modelName} dibuat",
+      "conversation": "Anda memulai percakapan dengan {modelName}",
+      "membership": "Anda bergabung dengan komunitas {modelName}"
+    },
+    "updated": {
+      "profile": "Profil diupdate",
+      "community": "Komunitas {modelName} diupdate",
+      "post": "Postingan {modelName} diupdate",
+      "postComment": "Komentar {modelName} diupdate",
+      "playlist": "Playlist {modelName} diupdate"
+    },
+    "deleted": {
+      "bookmarkAlbum": "Album {modelName} dihapus dari bookmark",
+      "bookmarkArtist": "Artist {modelName} dihapus dari bookmark",
+      "bookmarkTrack": "Track {modelName} dihapus dari bookmark",
+      "bookmarkVideo": "Video {modelName} dihapus dari bookmark",
+      "bookmarkVideoChannel": "Video channel {modelName} dihapus dari bookmark",
+      "bookmarkVideoPlaylist": "Video playlist {modelName} dihapus dari bookmark",
+      "favoriteAlbum": "Album {modelName} dihapus dari favorit",
+      "favoriteArtist": "Artist {modelName} dihapus dari favorit",
+      "favoriteTrack": "Track {modelName} dihapus dari favorit",
+      "favoriteVideo": "Video {modelName} dihapus dari favorit",
+      "libraryAlbum": "Album {modelName} dihapus dari perpustakaan",
+      "libraryArtist": "Artist {modelName} dihapus dari perpustakaan",
+      "libraryTrack": "Track {modelName} dihapus dari perpustakaan",
+      "listenedAlbum": "Album {modelName} dihapus dari listened",
+      "listenedArtist": "Artist {modelName} dihapus dari listened",
+      "listenedTrack": "Track {modelName} dihapus dari listened",
+      "watchedVideo": "Video {modelName} dihapus dari watched",
+      "playlistTrack": "Track {modelName} dihapus dari playlist {playlistTitle}",
+      "community": "Komunitas {modelName} dihapus",
+      "recommendationArtist": "Artist {modelName} dihapus dari rekomendasi",
+      "recommendationTrack": "Track {modelName} dihapus dari rekomendasi",
+      "relationship": "Anda berhenti mengikuti {modelName}",
+      "post": "Post {modelName} dihapus",
+      "postComment": "Comment {modelName} dihapus",
+      "playlist": "Playlist {modelName} dihapus",
+      "membership": "Anda meninggalkan komunitas {modelName}"
+    }
+  },
+  "created": {
+    "profile": "Dalam muffon sejak",
+    "library": "Di dalam perpustakaan sejak",
+    "community": "Dibuat"
+  },
+  "filter": {
+    "include": {
+      "artists": "Dengan artis",
+      "tags": "Dengan tagar"
+    },
+    "exclude": {
+      "artists": "Tanpa artis",
+      "tags": "Tanpa tagar"
+    }
+  },
+  "keyboardShortcuts": {
+    "header": "Pintasan keyboard",
+    "search": "Tampilkan panel pencarian",
+    "audioBackward": "Putar mundur audio",
+    "audioForward": "Putar maju audio",
+    "radioNextTrack": "Track radio berikutnya"
+  },
+  "online": "Online",
+  "error": "Terjadi kesalahan",
+  "more": "Lainnya...",
+  "loading": "Memuat...",
+  "warning": "Perhatian"
+}

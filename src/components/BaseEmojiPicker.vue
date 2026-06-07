@@ -20,6 +20,7 @@ import de from 'emoji-picker-element/i18n/de'
 import en from 'emoji-picker-element/i18n/en'
 import es from 'emoji-picker-element/i18n/es'
 import fr from 'emoji-picker-element/i18n/fr'
+import id from 'emoji-picker-element/i18n/id'
 import it from 'emoji-picker-element/i18n/it'
 import ja from 'emoji-picker-element/i18n/ja'
 import pl from 'emoji-picker-element/i18n/pl'
@@ -44,6 +45,7 @@ export default {
         es,
         fr,
         he: en,
+        id,
         it,
         ja,
         ko: en,

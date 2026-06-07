@@ -7,6 +7,7 @@ import en from 'i18n-iso-countries/langs/en.json'
 import es from 'i18n-iso-countries/langs/es.json'
 import fr from 'i18n-iso-countries/langs/fr.json'
 import he from 'i18n-iso-countries/langs/he.json'
+import id from 'i18n-iso-countries/langs/id.json'
 import it from 'i18n-iso-countries/langs/it.json'
 import ja from 'i18n-iso-countries/langs/ja.json'
 import ko from 'i18n-iso-countries/langs/ko.json'
@@ -25,6 +26,7 @@ const locales = [
   es,
   fr,
   he,
+  id,
   it,
   ja,
   ko,

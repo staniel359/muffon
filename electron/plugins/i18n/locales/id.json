@@ -1,0 +1,13 @@
+{
+  "show": "Tampilkan",
+  "hide": "Sembunyikan",
+  "about": "Tentang",
+  "quit": "Keluar",
+  "update": {
+    "message": "Versi baru sudah tersedia",
+    "buttons": {
+      "download": "Unduh",
+      "close": "Tutup"
+    }
+  }
+}

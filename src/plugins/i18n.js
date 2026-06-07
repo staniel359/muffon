@@ -7,6 +7,7 @@ import en from './i18n/locales/en.json'
 import es from './i18n/locales/es.json'
 import fr from './i18n/locales/fr.json'
 import he from './i18n/locales/he.json'
+import id from './i18n/locales/id.json'
 import it from './i18n/locales/it.json'
 import ja from './i18n/locales/ja.json'
 import ko from './i18n/locales/ko.json'
@@ -27,6 +28,7 @@ const localesData = {
   es,
   fr,
   he,
+  id,
   it,
   ja,
   ko,
@@ -108,6 +110,16 @@ if (import.meta.hot) {
     fileImport => {
       i18n.global.setLocaleMessage(
         'he',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/id.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'id',
         fileImport.default
       )
     }
