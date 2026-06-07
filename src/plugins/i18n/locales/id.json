@@ -73,15 +73,15 @@
       "images": "Gambar {modelName}",
       "lyrics": "Lirik {modelName}",
       "videos": "Video {modelName}",
-      "posts": "Post {modelName}",
+      "posts": "Postingan {modelName}",
       "library": "Perpustakaan {modelName}",
       "playlists": "Playlist {modelName}",
-      "favorites": "Favorites {modelName}",
+      "favorites": "Favorit {modelName}",
       "favoritesCollection": {
-        "artists": "Favorites artis {modelName}",
-        "albums": "Favorites album {modelName}",
-        "tracks": "Favorites track {modelName}",
-        "videos": "Favorites video {modelName}"
+        "artists": "Artis favorit {modelName}",
+        "albums": "Album favorit {modelName}",
+        "tracks": "Track favorit {modelName}",
+        "videos": "Video favorit {modelName}"
       },
       "communities": "Komunitas {modelName}",
       "shows": "Acara {modelName}"
@@ -191,12 +191,12 @@
     "addTo": {
       "library": "Tambah ke perpustakaan",
       "playlist": "Tambah ke playlist",
-      "favorites": "Tambah ke favorites",
-      "bookmarks": "Tambah ke bookmarks",
+      "favorites": "Tambah ke favorit",
+      "bookmarks": "Tambah ke bookmark",
       "listened": "Tambah ke listened",
       "watched": "Tambah ke watched",
-      "queue": "Tambah ke queue",
-      "savedTracks": "Tambah ke saved tracks"
+      "queue": "Tambah ke antrian",
+      "savedTracks": "Tambah ke track tersimpan"
     },
     "goTo": {
       "video": "Ke halaman video",
@@ -204,8 +204,8 @@
       "page": "Ke halaman"
     },
     "deleteFrom": {
-      "favorites": "Hapus dari favorites",
-      "bookmarks": "Hapus dari bookmarks",
+      "favorites": "Hapus dari favorit",
+      "bookmarks": "Hapus dari bookmark",
       "listened": "Hapus dari listened",
       "watched": "Hapus dari watched"
     },
@@ -237,22 +237,22 @@
         },
         "playlist": "Hapus playlist",
         "playlistTrack": "Hapus track dari playlist",
-        "savedTrack": "Hapus track dari saved tracks",
+        "savedTrack": "Hapus track dari track tersimpan",
         "favorite": {
-          "artist": "Hapus artis dari favorites",
-          "album": "Hapus album dari favorites",
-          "track": "Hapus track dari favorites",
-          "video": "Hapus video dari favorites"
+          "artist": "Hapus artis dari favorit",
+          "album": "Hapus album dari favorit",
+          "track": "Hapus track dari favorit",
+          "video": "Hapus video dari favorit"
         },
         "bookmark": {
-          "artist": "Hapus artis dari bookmarks",
-          "album": "Hapus album dari bookmarks",
-          "track": "Hapus track dari bookmarks",
-          "video": "Hapus video dari bookmarks",
-          "videoChannel": "Hapus saluran video dari bookmarks",
-          "videoPlaylist": "Hapus video playlist dari bookmarks"
+          "artist": "Hapus artis dari bookmark",
+          "album": "Hapus album dari bookmark",
+          "track": "Hapus track dari bookmark",
+          "video": "Hapus video dari bookmark",
+          "videoChannel": "Hapus channel video dari bookmark",
+          "videoPlaylist": "Hapus playlist video dari bookmark"
         },
-        "post": "Hapus post",
+        "post": "Hapus postingan",
         "comment": "Hapus komentar",
         "community": "Hapus komunitas",
         "account": "Hapus akun",
@@ -270,9 +270,9 @@
         "playlist": "Anda akan menghapus {modelName} dari playlist Anda.",
         "playlistTrack": "Anda akan menghapus {modelName} dari playlist {parentModelName}.",
         "savedTrack": "Anda akan menghapus {modelName} dari saved tracks Anda.",
-        "favorite": "Anda akan menghapus {modelName} dari favorites Anda.",
-        "bookmark": "Anda akan menghapus {modelName} dari bookmarks Anda.",
-        "post": "Anda akan menghapus post ini.",
+        "favorite": "Anda akan menghapus {modelName} dari favorit Anda.",
+        "bookmark": "Anda akan menghapus {modelName} dari bookmark Anda.",
+        "post": "Anda akan menghapus postingan ini.",
         "comment": "Anda akan menghapus komentar ini.",
         "community": "Anda akan menghapus komunitas ini.",
         "account": "Anda akan menghapus akun ini.",
@@ -452,7 +452,7 @@
     "source": "Pilih sumber:",
     "type": "Pilih tipe:",
     "album": "Pilih album:",
-    "group": "Pilih album group:",
+    "group": "Pilih grup album:",
     "artist": "Pilih artis:",
     "track": "Pilih track:",
     "country": "Pilih negara:",
@@ -464,7 +464,7 @@
     "other": "Lainnya",
     "albumTypes": {
       "album": "Album",
-      "group": "Album group",
+      "group": "Grup album",
       "track": "Track"
     },
     "albumsTypes": {
@@ -497,7 +497,7 @@
       "connections": "Koneksi"
     },
     "sections": {
-      "interface": "Interface",
+      "interface": "Tampilan",
       "theme": "Tema",
       "window": "Jendela",
       "tabs": "Tab",
@@ -547,15 +547,15 @@
           "album": "Tampilkan album",
           "equalizer": "Tampilkan equalizer",
           "focusPlaying": "Fokus pada track saat ini",
-          "pauseOnVideoPlay": "Pause saat video diputar"
+          "pauseOnVideoPlay": "Jeda saat video diputar"
         },
         "queue": {
-          "autoplay": "Autoplay",
+          "autoplay": "Putar otomatis",
           "clear": "Hapus saat tutup"
         },
         "video": {
-          "autoplay": "Autoplay",
-          "pauseOnAudioPlay": "Pause saat audio diputar",
+          "autoplay": "Putar otomatis",
+          "pauseOnAudioPlay": "Jeda saat audio diputar",
           "openLinksInNewTab": "Buka link di tab baru"
         },
         "recommendations": {
@@ -569,7 +569,7 @@
           "country": "Negara default"
         },
         "lyrics": {
-          "annotations": "Tampilkan anotasi"
+          "annotations": "Tampilkan anotasi lirik"
         },
         "history": {
           "search": {
@@ -626,13 +626,13 @@
         },
         "discord": {
           "richPresence": {
-            "header": "Aktifkan Rich Presence",
+            "header": "Aktifkan Discord Rich Presence",
             "client": "Sebelum mengaktifkan, pastikan aplikasi desktop Discord Anda berjalan",
             "buttons": {
               "header": "Tombol",
               "select": {
-                "first": "Pilih pertama:",
-                "second": "Pilih kedua:"
+                "first": "Pilih bagian pertama:",
+                "second": "Pilih bagian kedua:"
               }
             }
           }
@@ -761,9 +761,9 @@
       "groups": "Tidak ada grup album",
       "tracks": "Tidak ada track",
       "similar": "Tidak ada yang mirip",
-      "tags": "Tidak ada tag",
-      "posts": "Tidak ada post",
-      "feed": "Tidak ada post",
+      "tags": "Tidak ada tagar",
+      "posts": "Tidak ada postingan",
+      "feed": "Tidak ada postingan",
       "conversations": "Tidak ada percakapan",
       "messages": "Tidak ada pesan",
       "followers": "Tidak ada pengikut",
@@ -773,7 +773,7 @@
       "communities": "Tidak ada komunitas",
       "members": "Tidak ada anggota",
       "videos": "Tidak ada video",
-      "videoChannels": "Tidak ada kanal video",
+      "videoChannels": "Tidak ada channel video",
       "videoMixes": "Tidak ada mix video",
       "videoPlaylists": "Tidak ada playlist video",
       "listeners": "Tidak ada pendengar",
@@ -792,10 +792,10 @@
     "track": "Track telah dihapus",
     "recommendation": "Rekomendasi telah dihapus",
     "playlist": "Playlist telah dihapus",
-    "post": "Post telah dihapus",
+    "post": "Postingan telah dihapus",
     "comment": "Komentar telah dihapus",
     "video": "Video telah dihapus",
-    "videoChannel": "Kanal video telah dihapus",
+    "videoChannel": "Channel video telah dihapus",
     "videoPlaylist": "Playlist video telah dihapus"
   },
   "messages": {
@@ -820,7 +820,7 @@
     "video": "Video Privat"
   },
   "donate": {
-    "header": "Donate",
+    "header": "Donasi",
     "content": [
       "muffon adalah proyek nirlaba yang tidak memiliki iklan atau fitur atau konten berbayar.",
       "Namun, muffon tidak dapat eksis tanpa dana yang dibutuhkan untuk pengembangan dan infrastrukturnya.",
@@ -829,7 +829,7 @@
       "<strong>Apakah Anda ingin memberikan donasi?</strong>"
     ],
     "actions": {
-      "decline": "Tidak, terima kasih",
+      "decline": "Tidak, terima kasii",
       "later": "Mungkin lain kali",
       "accept": "Ya, tentu saja"
     }
@@ -888,8 +888,8 @@
       "playlistTrack": "Track {modelName} ditambahkan ke playlist {playlistTitle}",
       "community": "Komunitas {modelName} dibuat",
       "relationship": "Anda mengikuti {modelName}",
-      "post": "Post {modelName} dibuat",
-      "postComment": "Comment {modelName} dibuat",
+      "post": "Postingan {modelName} dibuat",
+      "postComment": "Komentar {modelName} dibuat",
       "playlist": "Playlist {modelName} dibuat",
       "conversation": "Anda memulai percakapan dengan {modelName}",
       "membership": "Anda bergabung dengan komunitas {modelName}"
@@ -897,8 +897,8 @@
     "updated": {
       "profile": "Profil diupdate",
       "community": "Komunitas {modelName} diupdate",
-      "post": "Post {modelName} diupdate",
-      "postComment": "Comment {modelName} diupdate",
+      "post": "Postingan {modelName} diupdate",
+      "postComment": "Komentar {modelName} diupdate",
       "playlist": "Playlist {modelName} diupdate"
     },
     "deleted": {
@@ -938,11 +938,11 @@
   "filter": {
     "include": {
       "artists": "Dengan artis",
-      "tags": "Dengan tags"
+      "tags": "Dengan tagar"
     },
     "exclude": {
       "artists": "Tanpa artis",
-      "tags": "Tanpa tags"
+      "tags": "Tanpa tagar"
     }
   },
   "keyboardShortcuts": {

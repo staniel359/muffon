@@ -9,6 +9,7 @@ import 'dayjs/locale/de'
 import 'dayjs/locale/es'
 import 'dayjs/locale/fr'
 import 'dayjs/locale/he'
+import 'dayjs/locale/id'
 import 'dayjs/locale/it'
 import 'dayjs/locale/ja'
 import 'dayjs/locale/ko'
@@ -17,7 +18,6 @@ import 'dayjs/locale/pt-br'
 import 'dayjs/locale/ru'
 import 'dayjs/locale/tr'
 import 'dayjs/locale/zh'
-import 'dayjs/locale/id'
 
 // i18n
 

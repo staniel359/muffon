@@ -27,6 +27,10 @@ export default [
     rtl: true
   },
   {
+    id: 'id',
+    name: 'Bahasa Indonesia'
+  },
+  {
     id: 'it',
     name: 'Italiano'
   },
@@ -57,9 +61,5 @@ export default [
   {
     id: 'zh',
     name: '中文'
-  },
-  {
-    id: 'id',
-    name: 'Bahasa Indonesia'
   }
 ]

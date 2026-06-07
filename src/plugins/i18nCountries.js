@@ -7,6 +7,7 @@ import en from 'i18n-iso-countries/langs/en.json'
 import es from 'i18n-iso-countries/langs/es.json'
 import fr from 'i18n-iso-countries/langs/fr.json'
 import he from 'i18n-iso-countries/langs/he.json'
+import id from 'i18n-iso-countries/langs/id.json'
 import it from 'i18n-iso-countries/langs/it.json'
 import ja from 'i18n-iso-countries/langs/ja.json'
 import ko from 'i18n-iso-countries/langs/ko.json'
@@ -15,7 +16,6 @@ import ptBr from './i18nCountries/locales/pt_BR.json'
 import ru from 'i18n-iso-countries/langs/ru.json'
 import tr from 'i18n-iso-countries/langs/tr.json'
 import zh from 'i18n-iso-countries/langs/zh.json'
-import id from 'i18n-iso-countries/langs/id.json'
 
 // i18n
 
@@ -26,6 +26,7 @@ const locales = [
   es,
   fr,
   he,
+  id,
   it,
   ja,
   ko,
@@ -33,8 +34,7 @@ const locales = [
   ptBr,
   ru,
   tr,
-  zh,
-  id
+  zh
 ]
 
 function addLocale(
