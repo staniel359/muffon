@@ -7,14 +7,13 @@ const isDevelopment =
       'check-if-is-development'
     )
 
-const developmentBaseUrl =
-  'http://localhost:4000'
+let serverBaseUrl
 
-const productionBaseUrl = 'https://muffon.app'
-
-const serverBaseUrl = isDevelopment
-  ? developmentBaseUrl
-  : productionBaseUrl
+if (isDevelopment) {
+  serverBaseUrl = 'http://localhost:4000'
+} else {
+  serverBaseUrl = 'https://muffon.app'
+}
 
 const serverUrl = `${serverBaseUrl}/api/`
 

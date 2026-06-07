@@ -10,6 +10,11 @@
 
 <img src="https://i.ibb.co/jg3vZv8/preview-dark.png" alt="screenshot">
 
+## Disclaimer
+
+>[!IMPORTANT]
+> muffon was created only for music discovery purposes. Although it uses music streaming services as audio sources, we don't encourage piracy of any kind. That's why muffon doesn't use streaming services' premium accounts and doesn't have a download feature, providing a functionality of a basic account, such as low quality streaming. So if you found the music that you like, please buy a paid account of your preferred streaming service if it provides one. Or preferrably, please support the artists by buying their records, merchandise or tickets to their live shows.
+
 ## Description
 
 [**muffon**](https://www.howtopronounce.com/muffon) is a cross-platform music streaming client for desktop, which helps you listen to, discover and organize music in an advanced way.
@@ -24,8 +29,8 @@ Audio:
 - <img src="https://ok.ru/favicon.ico" height="16"> **Odnoklassniki**
 - <img src="https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico" height="16"> **SoundCloud**
 - <img src="https://open.spotifycdn.com/cdn/images/favicon16.c498a969.png" height="16"> **Spotify** (currently not working)
-- <img src="https://vk.com/images/icons/favicons/fav_logo.ico" height="16"> **VK**
-- <img src="https://music.yandex.ru/favicon-48x48.png" height="16"> **Yandex Music**
+- <img src="https://vk.com/images/icons/favicons/fav_logo.ico" height="16"> **VK** (currently not working)
+- <img src="https://music.yandex.ru/favicon-48x48.png" height="16"> **Yandex Music** (currently not working)
 - <img src="https://music.youtube.com/favicon.ico" height="16"> **YouTube Music**
 
 Video:
@@ -35,7 +40,7 @@ Video:
 Lyrics:
 
 - <img src="https://assets.genius.com/images/apple-touch-icon.png" height="16"> **Genius**
-- <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch** (currently not working)
+- <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch**
 
 Discography:
 
@@ -110,7 +115,7 @@ Discography:
 
 ## Download
 
-[Latest (v2.4.0)](https://github.com/staniel359/muffon/releases/latest)
+[Latest](https://github.com/staniel359/muffon/releases/latest)
 
 ## Star History
 
@@ -167,9 +172,13 @@ If you have a suggestion, please check [our to do list](https://github.com/users
   
 ## Contribute
 
-- **Translators** wanted for localization. 
 >[!CAUTION]
->Any Pull Request(s) directly made **without prior discussions** related to translations **will NOT be merged**. If you intend to contribute by translating, please consider joining the [Discord Server](https://discord.gg/kpWsA5NBmJ) and discuss it with us before you start working on it.
+> Our team has a strict policy against using AI for software development, so any pull requests made by or with the use of AI will be closed.
+
+- **Translators** wanted for localization.
+
+>[!CAUTION]
+> Any Pull Request(s) directly made **without prior discussions** related to translations **will NOT be merged**. If you intend to contribute by translating, please consider joining the [Discord Server](https://discord.gg/kpWsA5NBmJ) and discuss it with us before you start working on it.
 
 ## Donate
 
