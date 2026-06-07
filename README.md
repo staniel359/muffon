@@ -13,7 +13,7 @@
 ## Disclaimer
 
 >[!IMPORTANT]
-> muffon was created only for music discovery purposes. Although it uses music streaming services as audio sources, we don't encourage piracy of any kind. That's why muffon doesn't use streaming services' premium accounts and doesn't have a download feature, providing a functionality of a basic account, such as low quality streaming. So if you found the music that you like, please buy a paid account of your preferred streaming service if it provides one. Or preferrably, please support the artists by buying their records, merchandise or tickets to their live shows.
+> muffon was created only for music discovery purposes. Although it uses music streaming services as audio sources, we don't encourage piracy of any kind. That's why muffon doesn't use streaming services' premium accounts and doesn't have a download feature, providing a functionality of a basic account, such as low quality streaming. So if you've found the music that you like, please buy a paid account of your preferred streaming service if it provides one. Or preferrably, please support the artists by buying their records, merchandise or tickets to their live shows.
 
 ## Description
 
@@ -40,7 +40,7 @@ Video:
 Lyrics:
 
 - <img src="https://assets.genius.com/images/apple-touch-icon.png" height="16"> **Genius**
-- <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch**
+- <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch** (currently not working)
 
 Discography:
 
