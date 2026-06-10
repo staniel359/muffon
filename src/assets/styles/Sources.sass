@@ -15,6 +15,11 @@
   &.bandcamp
     &.colored
       color: $colorBandcamp !important
+  &.deezer
+    &:before
+      content: $deezerIconUrl !important
+    &:not(.colored):before
+      @extend .colorless
   &.discogs
     &:before
       content: $discogsIconUrl
