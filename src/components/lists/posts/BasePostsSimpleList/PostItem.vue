@@ -1,6 +1,6 @@
 <template>
   <div
-    class="event main-simple-list-item"
+    class="event main-simple-list-item background-none"
     :class="{
       disabled: isDeleted
     }"
