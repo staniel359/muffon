@@ -10,6 +10,7 @@
           :is="slotProps.component"
           :class="slotProps.class"
           :is-active="slotProps.isActive"
+          :is-activated="slotProps.isActivated"
           :community-id="communityId"
           :is-community-creator="isCommunityCreator"
           @focus="slotProps.handleFocus"

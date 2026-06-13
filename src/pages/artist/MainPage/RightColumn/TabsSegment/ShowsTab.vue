@@ -5,6 +5,7 @@
     :limit="limit"
     :response-page-limit="responsePageLimit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -22,10 +23,12 @@ import BaseArtistTabContainer
   from '@/components/containers/tabs/artist/BaseArtistTabContainer.vue'
 import BaseArtistShowsSimpleList
   from '@/components/lists/artist/shows/BaseArtistShowsSimpleList.vue'
-import tabMixin from '@/mixins/tabMixin'
+
 import {
   shows as showsLimits
 } from '@/helpers/data/limits'
+
+import tabMixin from '@/mixins/tabMixin'
 
 export default {
   name: 'ShowsTab',

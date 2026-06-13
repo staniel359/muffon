@@ -1,6 +1,7 @@
 export default {
   props: {
-    isActive: Boolean
+    isActive: Boolean,
+    isActivated: Boolean
   },
   emits: [
     'focus'

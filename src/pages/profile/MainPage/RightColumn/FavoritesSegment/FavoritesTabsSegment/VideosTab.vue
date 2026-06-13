@@ -4,6 +4,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -30,6 +31,7 @@ import BaseProfileFavoritesTabContainer
   from '@/components/containers/tabs/profile/favorites/BaseProfileFavoritesTabContainer.vue'
 import BaseVideosSimpleList
   from '@/components/lists/videos/BaseVideosSimpleList.vue'
+
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -37,18 +39,22 @@ import {
   videos as videosLimits
 } from '@/helpers/data/limits'
 
+import tabMixin from '@/mixins/tabMixin'
+
 export default {
   name: 'VideosTab',
   components: {
     BaseProfileFavoritesTabContainer,
     BaseVideosSimpleList
   },
+  mixins: [
+    tabMixin
+  ],
   props: {
     profileId: {
       type: Number,
       required: true
-    },
-    isActive: Boolean
+    }
   },
   emits: [
     'focus'

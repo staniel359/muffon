@@ -5,6 +5,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -25,9 +26,11 @@ import BaseProfileLibraryArtistTabContainer
   from '@/components/containers/tabs/profile/library/artist/BaseProfileLibraryArtistTabContainer.vue'
 import BasePlaylistsSimpleList
   from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
+
 import {
   playlists as playlistsLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

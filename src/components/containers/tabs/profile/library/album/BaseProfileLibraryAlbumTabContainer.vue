@@ -6,11 +6,12 @@
     :is-loading="isLoading"
     :error="error"
     :is-active="isActive"
+    :is-activated="isActivated"
     :more-link="moreLink"
     :is-with-top-section="isWithTopSection"
     :is-with-play-button="isWithPlayButton"
     @focus="handleFocus"
-    @activate="handleActivate"
+    @call="handleCall"
   >
     <template
       #topPlayButton

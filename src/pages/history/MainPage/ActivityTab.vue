@@ -4,6 +4,7 @@
     :list-scope="listScope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -21,9 +22,11 @@ import BaseHistoryTabContainer
   from '@/components/containers/tabs/history/BaseHistoryTabContainer.vue'
 import BaseHistoryEventsSimpleList
   from '@/components/lists/history/events/BaseHistoryEventsSimpleList.vue'
+
 import {
   events as eventsLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

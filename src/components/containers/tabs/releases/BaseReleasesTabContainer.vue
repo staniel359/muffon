@@ -7,9 +7,10 @@
     :is-loading="isLoading"
     :error="error"
     :is-active="isActive"
+    :is-activated="isActivated"
     :more-link="moreLink"
     @focus="handleFocus"
-    @activate="handleActivate"
+    @call="handleCall"
   >
     <template
       #default="slotProps"

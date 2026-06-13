@@ -34,9 +34,11 @@ import BaseProfileLibraryTabContainer
   from '@/components/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
 import BaseArtistsTableList
   from '@/components/lists/artists/BaseArtistsTableList.vue'
+
 import {
   artists as artistsLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

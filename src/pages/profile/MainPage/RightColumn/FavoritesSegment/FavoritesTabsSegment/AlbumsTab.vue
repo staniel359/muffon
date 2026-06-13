@@ -4,6 +4,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -33,6 +34,7 @@ import BaseProfileFavoritesTabContainer
   from '@/components/containers/tabs/profile/favorites/BaseProfileFavoritesTabContainer.vue'
 import BaseAlbumsSimpleList
   from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
+
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -40,18 +42,22 @@ import {
   albums as albumsLimits
 } from '@/helpers/data/limits'
 
+import tabMixin from '@/mixins/tabMixin'
+
 export default {
   name: 'AlbumsTab',
   components: {
     BaseProfileFavoritesTabContainer,
     BaseAlbumsSimpleList
   },
+  mixins: [
+    tabMixin
+  ],
   props: {
     profileId: {
       type: Number,
       required: true
-    },
-    isActive: Boolean
+    }
   },
   emits: [
     'focus'

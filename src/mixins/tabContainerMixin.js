@@ -17,6 +17,7 @@ export default {
     },
     limit: Number,
     isActive: Boolean,
+    isActivated: Boolean,
     isWithTopSection: Boolean,
     isWithPlayButton: Boolean
   },
@@ -30,7 +31,7 @@ export default {
     }
   },
   methods: {
-    handleActivate () {
+    handleCall () {
       this.getData()
     },
     handleFocus () {

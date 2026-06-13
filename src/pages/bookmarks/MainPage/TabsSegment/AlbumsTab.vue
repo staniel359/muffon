@@ -3,6 +3,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -30,9 +31,11 @@ import BaseBookmarksTabContainer
   from '@/components/containers/tabs/bookmarks/BaseBookmarksTabContainer.vue'
 import BaseAlbumsSimpleList
   from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
+
 import {
   albums as albumsLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

@@ -5,6 +5,7 @@
     :limit="limit"
     :response-page-limit="responsePageLimit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -31,9 +32,11 @@ import BaseReleasesTabContainer
   from '@/components/containers/tabs/releases/BaseReleasesTabContainer.vue'
 import BaseAlbumsTableList
   from '@/components/lists/albums/BaseAlbumsTableList.vue'
+
 import {
   albums as albumsLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

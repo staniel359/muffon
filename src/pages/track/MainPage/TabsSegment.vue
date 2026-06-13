@@ -10,6 +10,7 @@
         :is="slotProps.component"
         :class="slotProps.class"
         :is-active="slotProps.isActive"
+        :is-activated="slotProps.isActivated"
         :track-data="trackData"
         :request-track-data="(
           slotProps.tabData.requestTrackData ||

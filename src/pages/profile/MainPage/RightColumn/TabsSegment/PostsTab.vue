@@ -5,6 +5,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     is-with-top-section
     @focus="handleFocus"
   >
@@ -40,6 +41,7 @@ import BasePostsFormSection
 import BaseDivider from '@/components/BaseDivider.vue'
 import BasePostsSimpleList
   from '@/components/lists/posts/BasePostsSimpleList.vue'
+
 import tabMixin from '@/mixins/tabMixin'
 import postsTabMixin from '@/mixins/postsTabMixin'
 

@@ -5,6 +5,7 @@
     :text-scope="textScope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -22,9 +23,11 @@ import BaseHistoryTabContainer
   from '@/components/containers/tabs/history/BaseHistoryTabContainer.vue'
 import BaseRoutesSimpleList
   from '@/components/lists/routes/BaseRoutesSimpleList.vue'
+
 import {
   routes as routesLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

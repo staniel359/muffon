@@ -5,6 +5,7 @@
     :artist-name="artistName"
     :track-title="trackTitle"
     :is-active="isActive"
+    :is-activated="isActivated"
     :request-track-data="requestTrackData"
     @focus="handleFocus"
   >
@@ -32,9 +33,11 @@ import BaseTrackTabContainer
   from '@/components/containers/tabs/track/BaseTrackTabContainer.vue'
 import BaseAlbumsTableList
   from '@/components/lists/albums/BaseAlbumsTableList.vue'
+
 import {
   albums as albumsLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

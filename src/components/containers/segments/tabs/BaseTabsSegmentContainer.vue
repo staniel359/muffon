@@ -21,6 +21,7 @@
           :class="slotProps.class"
           :component="tabData.component"
           :is-active="slotProps.isActive"
+          :is-activated="slotProps.isActivated"
           :tab-data="tabData"
           :handle-focus="handleFocus"
         />

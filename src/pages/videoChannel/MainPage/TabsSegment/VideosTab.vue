@@ -4,6 +4,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -27,9 +28,11 @@ import BaseVideoChannelTabContainer
   from '@/components/containers/tabs/videoChannel/BaseVideoChannelTabContainer.vue'
 import BaseVideosTableList
   from '@/components/lists/videos/BaseVideosTableList.vue'
+
 import {
   videos as videosLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

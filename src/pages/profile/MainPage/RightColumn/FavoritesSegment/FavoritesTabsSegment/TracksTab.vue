@@ -4,6 +4,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     is-with-top-section
     is-with-play-button
     @focus="handleFocus"
@@ -51,12 +52,15 @@ import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseProfileFavoritesTracksPlayButton
   from '@/components/buttons/play/profile/favorites/BaseProfileFavoritesTracksPlayButton.vue'
+
 import {
   isCurrentProfile
 } from '@/helpers/utils'
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
+
+import tabMixin from '@/mixins/tabMixin'
 
 export default {
   name: 'TracksTab',
@@ -65,12 +69,14 @@ export default {
     BaseTracksSimpleList,
     BaseProfileFavoritesTracksPlayButton
   },
+  mixins: [
+    tabMixin
+  ],
   props: {
     profileId: {
       type: Number,
       required: true
-    },
-    isActive: Boolean
+    }
   },
   emits: [
     'focus'

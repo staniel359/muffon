@@ -4,6 +4,7 @@
     :list-scope="listScope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -37,9 +38,11 @@ import BaseHistoryTabContainer
   from '@/components/containers/tabs/history/BaseHistoryTabContainer.vue'
 import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

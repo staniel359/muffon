@@ -4,6 +4,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     is-with-top-section
     is-with-play-button
     @focus="handleFocus"
@@ -47,9 +48,11 @@ import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseRecommendationsTracksPlayButton
   from '@/components/buttons/play/recommendations/BaseRecommendationsTracksPlayButton.vue'
+
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 import recommendationTracksMixin from '@/mixins/recommendationTracksMixin'
 

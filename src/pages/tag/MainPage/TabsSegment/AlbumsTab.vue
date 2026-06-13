@@ -4,6 +4,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -30,9 +31,11 @@ import BaseTagTabContainer
   from '@/components/containers/tabs/tag/BaseTagTabContainer.vue'
 import BaseAlbumsTableList
   from '@/components/lists/albums/BaseAlbumsTableList.vue'
+
 import {
   albums as albumsLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

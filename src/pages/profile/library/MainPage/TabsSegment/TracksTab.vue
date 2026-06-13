@@ -52,9 +52,11 @@ import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseProfileLibraryTracksPlayButton
   from '@/components/buttons/play/profile/library/BaseProfileLibraryTracksPlayButton.vue'
+
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

@@ -23,9 +23,11 @@
 import BaseProfileLibraryTabContainer
   from '@/components/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
 import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
+
 import {
   tags as tagsLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

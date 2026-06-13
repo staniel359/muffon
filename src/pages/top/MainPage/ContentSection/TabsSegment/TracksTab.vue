@@ -4,6 +4,7 @@
     :limit="limit"
     :country="country"
     :is-active="isActive"
+    :is-activated="isActivated"
     is-with-top-section
     is-with-play-button
     @focus="handleFocus"
@@ -45,9 +46,11 @@ import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseTopTracksPlayButton
   from '@/components/buttons/play/top/BaseTopTracksPlayButton.vue'
+
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

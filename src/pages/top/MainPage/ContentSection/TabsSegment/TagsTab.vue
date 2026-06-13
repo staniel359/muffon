@@ -4,6 +4,7 @@
     :limit="limit"
     :country="country"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -20,9 +21,11 @@
 import BaseTopTabContainer
   from '@/components/containers/tabs/top/BaseTopTabContainer.vue'
 import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
+
 import {
   tags as tagsLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

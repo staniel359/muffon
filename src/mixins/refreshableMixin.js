@@ -21,10 +21,16 @@ export default {
     }
   },
   methods: {
-    handleResponseDataChange (
+    async handleResponseDataChange (
       value
     ) {
+      await this.$nextTick()
+
       this.responseDataComputed = value
+
+      if (this.isActivated) {
+        this.setFocusable()
+      }
     },
     async refresh () {
       this.reset()

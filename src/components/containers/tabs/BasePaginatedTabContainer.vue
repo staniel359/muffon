@@ -83,6 +83,7 @@ export default {
     limit: Number,
     responsePageLimit: Number,
     isActive: Boolean,
+    isActivated: Boolean,
     isLoading: Boolean,
     error: Error,
     moreLink: Object,
@@ -91,12 +92,12 @@ export default {
     textScope: String
   },
   emits: [
-    'activate',
+    'call',
     'focus'
   ],
   data () {
     return {
-      isActivated: false
+      isCalled: false
     }
   },
   computed: {
@@ -127,18 +128,17 @@ export default {
       )
     },
     isAnyCollectionItems () {
-      return !!this.responseDataComputed?.[
-        this.scope
-      ]?.length
+      return !!this.responseDataComputed?.[this.scope]?.length
     }
   },
   watch: {
-    isActive: 'handleIsActiveChange',
-    isActivated: 'handleIsActivatedChange'
-  },
-  mounted () {
-    if (this.isActive) {
-      this.isActivated = true
+    isActive: {
+      immediate: true,
+      handler: 'handleIsActiveChange'
+    },
+    isCalled: {
+      immediate: true,
+      handler: 'handleIsCalledChange'
     }
   },
   methods: {
@@ -146,17 +146,15 @@ export default {
       value
     ) {
       if (value) {
-        this.isActivated = true
-
-        this.setFocusable()
+        this.isCalled = true
       }
     },
-    handleIsActivatedChange (
+    handleIsCalledChange (
       value
     ) {
       if (value) {
         this.$emit(
-          'activate'
+          'call'
         )
       }
     },

@@ -9,6 +9,7 @@
         :is="slotProps.component"
         :class="slotProps.class"
         :is-active="slotProps.isActive"
+        :is-activated="slotProps.isActivated"
         :profile-id="profileId"
         :is-self="isSelf"
         @focus="slotProps.handleFocus"

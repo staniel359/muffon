@@ -4,6 +4,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -23,9 +24,12 @@
 import BaseProfileLibraryTabContainer
   from '@/components/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
 import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
+
 import {
   tags as tagsLimits
 } from '@/helpers/data/limits'
+
+import tabMixin from '@/mixins/tabMixin'
 
 export default {
   name: 'TagsTab',
@@ -33,9 +37,11 @@ export default {
     BaseProfileLibraryTabContainer,
     BaseTagsSimpleList
   },
+  mixins: [
+    tabMixin
+  ],
   props: {
-    profileId: Number,
-    isActive: Boolean
+    profileId: Number
   },
   emits: [
     'focus'

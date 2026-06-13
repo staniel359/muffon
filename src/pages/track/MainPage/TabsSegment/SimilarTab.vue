@@ -6,6 +6,7 @@
     :track-title="trackTitle"
     :request-track-data="requestTrackData"
     :is-active="isActive"
+    :is-activated="isActivated"
     is-with-top-section
     is-with-play-button
     @focus="handleFocus"
@@ -49,9 +50,11 @@ import BaseTracksSimpleList
   from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseTrackSimilarPlayButton
   from '@/components/buttons/play/track/BaseTrackSimilarPlayButton.vue'
+
 import {
   tracks as tracksLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

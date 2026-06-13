@@ -4,6 +4,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -24,9 +25,11 @@ import BaseProfilePaginatedTabContainer
   from '@/components/containers/tabs/profile/BaseProfilePaginatedTabContainer.vue'
 import BaseCommunitiesSimpleList
   from '@/components/lists/communities/BaseCommunitiesSimpleList.vue'
+
 import {
   communities as communitiesLimits
 } from '@/helpers/data/limits'
+
 import tabMixin from '@/mixins/tabMixin'
 
 export default {

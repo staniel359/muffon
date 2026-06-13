@@ -10,6 +10,7 @@
         :is="slotProps.component"
         :class="slotProps.class"
         :is-active="slotProps.isActive"
+        :is-activated="slotProps.isActivated"
         :country="country"
         @focus="slotProps.handleFocus"
       />

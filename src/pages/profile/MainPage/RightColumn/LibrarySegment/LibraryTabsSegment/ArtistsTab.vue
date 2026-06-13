@@ -4,6 +4,7 @@
     :scope="scope"
     :limit="limit"
     :is-active="isActive"
+    :is-activated="isActivated"
     @focus="handleFocus"
   >
     <template
@@ -35,6 +36,7 @@ import BaseProfileLibraryTabContainer
   from '@/components/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
 import BaseArtistsTableList
   from '@/components/lists/artists/BaseArtistsTableList.vue'
+
 import {
   isCurrentProfile
 } from '@/helpers/utils'
@@ -42,18 +44,22 @@ import {
   artists as artistsLimits
 } from '@/helpers/data/limits'
 
+import tabMixin from '@/mixins/tabMixin'
+
 export default {
   name: 'ArtistsTab',
   components: {
     BaseProfileLibraryTabContainer,
     BaseArtistsTableList
   },
+  mixins: [
+    tabMixin
+  ],
   props: {
     profileId: {
       type: Number,
       required: true
-    },
-    isActive: Boolean
+    }
   },
   emits: [
     'focus'

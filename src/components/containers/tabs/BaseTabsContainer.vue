@@ -25,6 +25,7 @@
           active: isActive(index)
         }"
         :is-active="isActive(index)"
+        :is-activated="isActivated(index)"
       />
     </div>
   </div>
@@ -58,7 +59,8 @@ export default {
   ],
   data () {
     return {
-      activeTabIndex: 0
+      activeTabIndex: 0,
+      activatedTabs: []
     }
   },
   computed: {
@@ -88,6 +90,10 @@ export default {
         index
       )
 
+      this.setActivatedTab(
+        index
+      )
+
       this.$emit(
         'tabClick'
       )
@@ -100,10 +106,24 @@ export default {
           this.activeTabIndex
       )
     },
+    isActivated (
+      index
+    ) {
+      return this.activatedTabs.includes(
+        index
+      )
+    },
     setActiveTab (
       index
     ) {
       this.activeTabIndex = index
+    },
+    setActivatedTab (
+      index
+    ) {
+      this.activatedTabs.push(
+        index
+      )
     }
   }
 }
