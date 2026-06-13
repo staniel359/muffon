@@ -1,0 +1,73 @@
+appId: com.electron.muffon
+artifactName: ${productName}-${version}-${os}-${arch}.${ext}
+compression: maximum
+copyright: Copyright © 2020-2026 Aleksey Shpakovsky
+directories:
+  buildResources: build
+  output: build_electron
+files:
+  - ./.env
+  - ./electron/**/*
+  - from: ./build
+    to: ./
+protocols:
+  - name: muffon
+    schemes:
+      - muffon
+    role: Viewer
+linux:
+  category: AudioVideo
+  desktop:
+    entry:
+      Actions: about;
+      Categories: AudioVideo
+      Comment: Advanced multi-source music streaming + discovery client
+      MimeType: x-scheme-handler/muffon;
+    desktopActions:
+      about:
+        Name: About
+        Exec: /opt/muffon/muffon --open-about-window
+  icon: build/icons/icon.png
+  target:
+    - AppImage
+    - deb
+    - flatpak
+    - pacman
+    - rpm
+  syncDesktopName: true
+mac:
+  category: public.app-category.music
+  icon: build/icons/icon.icns
+  target:
+    - dmg
+    - pkg
+win:
+  icon: build/icons/icon.ico
+  target:
+    - nsis
+    - portable
+flatpak:
+  baseVersion: 25.08
+  finishArgs:
+    - "--device=dri"
+    - "--filesystem=xdg-run/pipewire-0:ro"
+    - "--share=ipc"
+    - "--share=network"
+    - "--socket=pulseaudio"
+    - "--socket=session-bus"
+    - "--socket=system-bus"
+    - "--socket=wayland"
+    - "--socket=x11"
+    - "--talk-name=org.freedesktop.Notifications"
+  runtimeVersion: 25.08
+nsis:
+  allowToChangeInstallationDirectory: true
+  installerSidebar: ./build/installerSidebar.bmp
+  menuCategory: true
+  oneClick: false
+  perMachine: true
+  runAfterFinish: true
+  selectPerMachineByDefault: true
+  uninstallerSidebar: ./build/installerSidebar.bmp
+portable:
+  artifactName: ${productName}-${version}-${os}-${arch}-portable.${ext}
