@@ -35,8 +35,8 @@
     "electron-store": "^11.0.2",
     "electron-updater": "^6.8.9",
     "i18n": "^0.15.3",
-    "music-metadata": "^11.12.3",
-    "sanitize-html": "^2.17.4",
+    "music-metadata": "^11.13.0",
+    "sanitize-html": "^2.17.5",
     "uuid": "^14.0.0"
   },
   "devDependencies": {
@@ -49,11 +49,11 @@
     "change-case": "^5.4.4",
     "crypto-js": "^4.2.0",
     "deepmerge": "^4.3.1",
-    "electron": "^42.3.3",
-    "electron-builder": "26.12.0",
+    "electron": "^42.4.0",
+    "electron-builder": "^26.15.3",
     "emoji-picker-element": "^1.29.1",
     "emoji-picker-element-data": "^1.8.0",
-    "esbuild": "^0.28.0",
+    "esbuild": "^0.28.1",
     "eslint": "^10.4.1",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-vue": "^10.9.2",
@@ -63,15 +63,15 @@
     "i18n-iso-countries": "^7.14.0",
     "jquery": "^4.0.0",
     "pinia": "^3.0.4",
-    "sass": "^1.100.0",
+    "sass": "^1.101.0",
     "slick-carousel": "^1.8.1",
     "uint8array-extras": "^1.5.0",
     "vite": "^8.0.16",
     "vite-plugin-electron-renderer": "^1.0.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vue": "^3.5.35",
-    "vue-i18n": "^11.4.4",
+    "vue": "^3.5.38",
+    "vue-i18n": "^11.4.5",
     "vue-router": "^5.1.0"
   },
-  "packageManager": "pnpm@11.5.2+sha512.71c631e382066efc25625d5cf029075de07b61b37f6e27350fbd84b1bda5864c8c1967adc280776b45c30a715c0359a3be08fef42d5bb09e2b99029979692916"
+  "packageManager": "pnpm@11.6.0+sha512.9a36518224080c6fe5165afdcfe79bfa118c29be703f3f462b1e32efe1e98e47e8750b148e08286250aad4113cc7993ca413c4e2cd447752708c2ee5751bc95f"
 }
