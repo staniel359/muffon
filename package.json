@@ -15,7 +15,7 @@
   "scripts": {
     "start:vue": "vite",
     "start:electron": "electron . --disable-gpu",
-    "lint": "eslint",
+    "lint": "eslint ./src ./electron",
     "build:vue": "vite build",
     "build:electron": "electron-builder --dir",
     "build": "pnpm build:vue && pnpm build:electron",
