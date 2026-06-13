@@ -2,9 +2,7 @@ import {
   defineConfig
 } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
-import injectPlugin from '@rollup/plugin-inject'
 import eslintPlugin from 'vite-plugin-eslint'
-import electronRendererPlugin from 'vite-plugin-electron-renderer'
 import {
   resolve as resolvePath
 } from 'node:path'
@@ -27,12 +25,6 @@ export default defineConfig(
           }
         }
       ),
-      injectPlugin(
-        {
-          $: 'jquery',
-          jQuery: 'jquery'
-        }
-      ),
       eslintPlugin(
         {
           emitWarning: false,
@@ -40,8 +32,7 @@ export default defineConfig(
           failOnWarning: false,
           failOnError: false
         }
-      ),
-      electronRendererPlugin()
+      )
     ],
     resolve: {
       alias: {
@@ -56,7 +47,15 @@ export default defineConfig(
     },
     build: {
       outDir: 'build',
-      target: 'esnext'
+      target: 'esnext',
+      rolldownOptions: {
+        transform: {
+          inject: {
+            $: 'jquery',
+            jQuery: 'jquery'
+          }
+        }
+      }
     }
   }
 )
