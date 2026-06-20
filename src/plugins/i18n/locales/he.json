@@ -334,7 +334,7 @@
     "extra": "מידע נוסף",
     "errors": {
       "notFound": "הפרופיל לא נמצא",
-      "empty": {
+      "notEmpty": {
         "email": "האימייל ריק",
         "password": "הסיסמה ריקה",
         "passwordConfirmation": "אימות הסיסמה ריק",

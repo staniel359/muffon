@@ -334,7 +334,7 @@
     "extra": "Informations complémentaires",
     "errors": {
       "notFound": "Le profil est introuvable",
-      "empty": {
+      "notEmpty": {
         "email": "L'email n'est pas renseigné",
         "password": "Le mot de passe n'est pas renseigné",
         "passwordConfirmation": "La confirmation du mot de passe n'est pas renseigné",

@@ -340,7 +340,7 @@
     "extra": "追加情報",
     "errors": {
       "notFound": "プロフィールが見つかりません",
-      "empty": {
+      "notEmpty": {
         "email": "メールアドレスが未入力です",
         "password": "パスワードが未入力です",
         "passwordConfirmation": "パスワード確認が未入力です",

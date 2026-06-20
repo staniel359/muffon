@@ -340,7 +340,7 @@
     "extra": "Info tambahan",
     "errors": {
       "notFound": "Profil tidak ditemukan",
-      "empty": {
+      "notEmpty": {
         "email": "Email kosong",
         "password": "Password kosong",
         "passwordConfirmation": "Konfirmasi password kosong",

@@ -334,7 +334,7 @@
     "extra": "附加信息",
     "errors": {
       "notFound": "未找到该用户",
-      "empty": {
+      "notEmpty": {
         "email": "邮箱为空",
         "password": "密码为空",
         "passwordConfirmation": "密码确认为空",

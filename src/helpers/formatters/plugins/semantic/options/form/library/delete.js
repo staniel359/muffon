@@ -12,7 +12,7 @@ export default function (
       {
         id: 'password',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )

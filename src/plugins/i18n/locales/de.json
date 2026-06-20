@@ -340,7 +340,7 @@
     "extra": "Zusätzliche Infos",
     "errors": {
       "notFound": "Profil wurde nicht gefunden",
-      "empty": {
+      "notEmpty": {
         "email": "Email ist leer",
         "password": "Passwort ist leer",
         "passwordConfirmation": "Passwort bestätigen ist leer",

@@ -12,7 +12,7 @@ export default function (
       {
         id: 'client-id',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )
@@ -22,7 +22,7 @@ export default function (
       {
         id: 'client-secret',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )

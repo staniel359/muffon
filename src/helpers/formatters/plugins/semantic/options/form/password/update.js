@@ -12,7 +12,7 @@ export default function (
       {
         id: 'password-reset-code',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )
@@ -22,7 +22,7 @@ export default function (
       {
         id: 'password',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )
@@ -32,7 +32,7 @@ export default function (
       {
         id: 'password-confirmation',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )

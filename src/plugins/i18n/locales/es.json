@@ -334,7 +334,7 @@
     "extra": "Más información",
     "errors": {
       "notFound": "No se encuentra el perfil",
-      "empty": {
+      "notEmpty": {
         "email": "El correo está vacío",
         "password": "La constraseña está vacío",
         "passwordConfirmation": "La confirmación de constraseña está vacío",

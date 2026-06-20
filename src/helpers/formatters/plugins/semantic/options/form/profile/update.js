@@ -12,7 +12,7 @@ export default function (
       {
         id: 'email',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )
@@ -28,7 +28,7 @@ export default function (
         id: 'password-confirmation',
         dependentId: 'password',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )
@@ -38,7 +38,7 @@ export default function (
       {
         id: 'nickname',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )

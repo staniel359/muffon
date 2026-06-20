@@ -340,7 +340,7 @@
     "extra": "Ek bilgi",
     "errors": {
       "notFound": "Profil bulunamadı",
-      "empty": {
+      "notEmpty": {
         "email": "E-posta adresi boş",
         "password": "Şifre boş",
         "passwordConfirmation": "Şifre onayı boş",

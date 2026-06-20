@@ -12,7 +12,7 @@ export default function (
       {
         id: 'email',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )
@@ -22,7 +22,7 @@ export default function (
       {
         id: 'password',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )
@@ -32,7 +32,7 @@ export default function (
       {
         id: 'password-confirmation',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )
@@ -42,7 +42,7 @@ export default function (
       {
         id: 'nickname',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )
@@ -52,7 +52,7 @@ export default function (
       {
         id: 'legal',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )

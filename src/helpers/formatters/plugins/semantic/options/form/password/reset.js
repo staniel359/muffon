@@ -12,7 +12,7 @@ export default function (
       {
         id: 'email',
         rules: [
-          'empty'
+          'notEmpty'
         ]
       }
     )

@@ -339,7 +339,7 @@
     "extra": "Dodatkowe informacje",
     "errors": {
       "notFound": "Nie znaleziono profilu",
-      "empty": {
+      "notEmpty": {
         "email": "Email jest pusty",
         "password": "Hasło jest puste",
         "passwordConfirmation": "Potwierdzenie hasła jest puste",
