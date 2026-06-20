@@ -1,8 +1,9 @@
 <template>
   <BaseFormInputContainer
-    class="ui icon input width-100"
+    class="ui icon input width-100 base-password-field"
   >
     <BaseIcon
+      class="password-toggle-icon"
       :icon="passwordToggleIcon"
       is-clickable
       @click="handlePasswordToggleIconClick"
