@@ -9,6 +9,16 @@ export function set (
   )
 }
 
+export function reset (
+  element
+) {
+  $(
+    element
+  ).form(
+    'reset'
+  )
+}
+
 export function addFieldError (
   element,
   field,

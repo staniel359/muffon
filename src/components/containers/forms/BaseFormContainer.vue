@@ -25,9 +25,12 @@ import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+import profileStore from '@/stores/profile'
+
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import {
   set as setForm,
+  reset as resetForm,
   validateField as validateFormField
 } from '@/helpers/actions/plugins/semantic/form'
 
@@ -55,15 +58,34 @@ export default {
       [
         'isDarkMode'
       ]
+    ),
+    ...mapState(
+      profileStore,
+      {
+        profileLanguage: 'language'
+      }
     )
+  },
+  watch: {
+    profileLanguage: 'handleProfileLanguageChange'
   },
   mounted () {
-    setForm(
-      this.$refs.form,
-      this.options
-    )
+    this.initialize()
   },
   methods: {
+    handleProfileLanguageChange () {
+      this.initialize()
+
+      resetForm(
+        this.$refs.form
+      )
+    },
+    initialize () {
+      setForm(
+        this.$refs.form,
+        this.options
+      )
+    },
     validateField (
       value
     ) {
