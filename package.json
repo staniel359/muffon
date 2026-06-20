@@ -44,6 +44,7 @@
     "@eslint/compat": "^2.1.0",
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
+    "@rollup/plugin-inject": "^5.0.5",
     "@vitejs/plugin-vue": "^6.0.7",
     "axios": "^1.18.0",
     "change-case": "^5.4.4",

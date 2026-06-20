@@ -2,6 +2,7 @@ import {
   defineConfig
 } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
+import injectPlugin from '@rollup/plugin-inject'
 import eslintPlugin from 'vite-plugin-eslint'
 import {
   resolve as resolvePath
@@ -23,6 +24,12 @@ export default defineConfig(
               }
             }
           }
+        }
+      ),
+      injectPlugin(
+        {
+          $: 'jquery',
+          jQuery: 'jquery'
         }
       ),
       eslintPlugin(
