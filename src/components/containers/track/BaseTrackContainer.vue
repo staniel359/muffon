@@ -96,30 +96,33 @@ export default {
       )
     },
     isCurrent () {
-      if (this.trackId) {
-        if (this.isExactTrack) {
-          if (this.playerPlayingId) {
-            return (
-              this.trackId === this.playerPlayingId
-            )
-          } else {
-            return false
-          }
-        } else if (this.playerCurrentTrackId) {
-          return (
-            this.trackId.includes(
-              this.playerCurrentTrackId
-            ) ||
-              this.playerCurrentTrackId.includes(
-                this.trackId
-              )
-          )
-        } else {
-          return false
-        }
+      if (!this.isCheckIfCurrent) { return false }
+
+      if (this.isExactTrack) {
+        return (
+          this.trackId === this.playerPlayingId
+        )
       } else {
-        return false
+        return (
+          this.trackId.includes(
+            this.playerCurrentTrackId
+          ) ||
+            this.playerCurrentTrackId.includes(
+              this.trackId
+            ) ||
+            this.trackId.includes(
+              this.playerPlayingId
+            ) ||
+            this.playerPlayingId.includes(
+              this.trackId
+            )
+        )
       }
+    },
+    isCheckIfCurrent () {
+      return (
+        this.trackId && this.playerPlaying
+      )
     },
     playerPlayingId () {
       return this.playerPlaying?.player_id
