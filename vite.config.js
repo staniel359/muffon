@@ -55,15 +55,7 @@ export default defineConfig(
     },
     build: {
       outDir: 'build',
-      target: 'esnext',
-      rolldownOptions: {
-        transform: {
-          inject: {
-            $: 'jquery',
-            jQuery: 'jquery'
-          }
-        }
-      }
+      target: 'esnext'
     }
   }
 )
