@@ -8,6 +8,7 @@ import {
 } from '../../helpers/icons.js'
 import {
   isDevelopment,
+  isDevToolsAvailable,
   isShowDevTools,
   windowsDefaultSizes
 } from '../../helpers/utils.js'
@@ -143,7 +144,7 @@ export default function () {
 
   const mainViewOptions = {
     webPreferences: {
-      devTools: isDevelopment,
+      devTools: isDevToolsAvailable,
       preload: preloadScriptFilePath,
       nodeIntegration: true
     }
@@ -154,9 +155,12 @@ export default function () {
       mainViewOptions
     )
 
-  if (isDevelopment && isShowDevTools) {
+  if (isDevToolsAvailable && isShowDevTools) {
     showViewDevTools(
-      mainView
+      mainView,
+      {
+        mode: 'detach'
+      }
     )
   }
 

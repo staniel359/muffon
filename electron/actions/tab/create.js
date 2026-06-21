@@ -11,7 +11,8 @@ import {
   baseUrl
 } from '../../helpers/urls.js'
 import {
-  isDevelopment
+  isDevToolsAvailable,
+  isShowDevTools
 } from '../../helpers/utils.js'
 import {
   handleNewWindow
@@ -21,6 +22,7 @@ import changeViewBackgroundColor
 import {
   preloadScriptFilePath
 } from '../../helpers/paths.js'
+import showViewDevTools from '../view/showDevTools.js'
 
 export default function (
   data
@@ -32,7 +34,7 @@ export default function (
 
   const options = {
     webPreferences: {
-      devTools: isDevelopment,
+      devTools: isDevToolsAvailable,
       preload: preloadScriptFilePath,
       nodeIntegration: true
     }
@@ -81,16 +83,13 @@ export default function (
       url
     )
 
-  if (isDevelopment) {
-    const devToolsData = {
-      mode: 'right'
-    }
-
-    tab
-      .webContents
-      .openDevTools(
-        devToolsData
-      )
+  if (isDevToolsAvailable && isShowDevTools) {
+    showViewDevTools(
+      tab,
+      {
+        mode: 'right'
+      }
+    )
   }
 
   mainView

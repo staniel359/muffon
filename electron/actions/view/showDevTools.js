@@ -1,14 +1,11 @@
-import {
-  isDevelopment
-} from '../../helpers/utils.js'
-
 export default function (
-  view
+  view,
+  {
+    mode
+  }
 ) {
-  if (!isDevelopment) { return }
-
   const options = {
-    mode: 'detach'
+    mode
   }
 
   view

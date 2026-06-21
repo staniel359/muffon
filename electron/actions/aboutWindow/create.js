@@ -14,7 +14,7 @@ import changeViewBackgroundColor
 import setViewScale from '../view/setScale.js'
 import setAboutViewBounds from '../aboutView/setBounds.js'
 import {
-  isDevelopment,
+  isDevToolsAvailable,
   windowsDefaultSizes
 } from '../../helpers/utils.js'
 import {
@@ -76,7 +76,7 @@ export default function () {
 
   const aboutViewOptions = {
     webPreferences: {
-      devTools: isDevelopment,
+      devTools: isDevToolsAvailable,
       preload: preloadScriptFilePath,
       nodeIntegration: true
     }

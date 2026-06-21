@@ -87,6 +87,8 @@ export const isSingleInstance =
 
 export const deepLinksProtocol = `${appName}://`
 
+export const isDevToolsAvailable = isDevelopment
+
 export const isShowDevTools =
   app
     .commandLine
