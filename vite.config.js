@@ -10,6 +10,7 @@ import {
 
 export default defineConfig(
   {
+    base: './',
     plugins: [
       vuePlugin(
         {
