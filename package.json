@@ -38,7 +38,7 @@
     "i18n": "^0.15.3",
     "music-metadata": "^11.13.0",
     "sanitize-html": "^2.17.5",
-    "uuid": "^14.0.0"
+    "uuid": "^14.0.1"
   },
   "devDependencies": {
     "@eslint/compat": "^2.1.0",
@@ -46,11 +46,11 @@
     "@eslint/js": "^10.0.1",
     "@rollup/plugin-inject": "^5.0.5",
     "@vitejs/plugin-vue": "^6.0.7",
-    "axios": "^1.18.0",
+    "axios": "^1.18.1",
     "change-case": "^5.4.4",
     "crypto-js": "^4.2.0",
     "deepmerge": "^4.3.1",
-    "electron": "^42.4.1",
+    "electron": "^42.5.0",
     "electron-builder": "^26.15.3",
     "emoji-picker-element": "^1.29.1",
     "emoji-picker-element-data": "^1.8.0",
@@ -59,7 +59,7 @@
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-vue": "^10.9.2",
     "fomantic-ui": "^2.9.4",
-    "globals": "^17.6.0",
+    "globals": "^17.7.0",
     "hotkeys-js": "^4.0.4",
     "i18n-iso-countries": "^7.14.0",
     "jquery": "^4.0.0",
@@ -67,9 +67,9 @@
     "sass": "^1.101.0",
     "slick-carousel": "^1.8.1",
     "uint8array-extras": "^1.5.0",
-    "vite": "^8.0.16",
+    "vite": "^8.1.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vue": "^3.5.38",
+    "vue": "^3.5.39",
     "vue-i18n": "^11.4.6",
     "vue-router": "^5.1.0"
   },
