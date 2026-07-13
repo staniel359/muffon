@@ -11,10 +11,12 @@
     &:before
       content: $audiusIconUrl
     &:not(.colored):before
-      @extend .colorless
+      filter: opacity(0.65)
   &.bandcamp
-    &.colored
-      color: $colorBandcamp !important
+    &:before
+      content: $bandcampIconUrl !important
+    &:not(.colored):before
+      @extend .colorless
   &.deezer
     &:before
       content: $deezerIconUrl !important
@@ -24,18 +26,22 @@
     &:before
       content: $discogsIconUrl
     &:not(.colored):before
-      filter: opacity(0.85)
+      filter: opacity(0.65)
   &.discord
-    &.colored
-      color: $colorDiscord !important
+    &:before
+      content: $discordIconUrl !important
+    &:not(.colored):before
+      @extend .colorless
   &.genius
     &:before
       content: $geniusIconUrl
     &:not(.colored)
       @extend .colorless
   &.lastfm
-    &.colored
-      color: $colorLastfm !important
+    &:before
+      content: $lastfmIconUrl !important
+    &:not(.colored)
+      @extend .colorless
   &.muffon
     &:before
       content: $muffonIconUrl
@@ -52,27 +58,37 @@
     &:not(.colored):before
       @extend .colorless
   &.odnoklassniki
-    &.colored
-      color: $colorOdnoklassniki !important
+    &:before
+      content: $odnoklassnikiIconUrl !important
+    &:not(.colored):before
+      @extend .colorless
   &.soundcloud
-    &.colored
-      color: $colorSoundCloud !important
+    &:before
+      content: $soundCloudIconUrl !important
+    &:not(.colored):before
+      @extend .colorless
   &.spotify
-    &.colored
-      color: $colorSpotify !important
+    &:before
+      content: $spotifyIconUrl !important
+    &:not(.colored):before
+      @extend .colorless
+  &.vk
+    &:before
+      content: $vkIconUrl !important
+    &:not(.colored):before
+      @extend .colorless
   &.yandexmusic
     &:before
       content: $yandexMusicIconUrl
     &:not(.colored):before
       @extend .colorless
   &.youtube
-    &.colored
-      color: $colorYouTube !important
+    &:before
+      content: $youTubeIconUrl !important
+    &:not(.colored):before
+      @extend .colorless
   &.youtubemusic
     &:before
       content: $youTubeMusicIconUrl
     &:not(.colored):before
       @extend .colorless
-  &.vk
-    &.colored
-      color: $colorVk !important
