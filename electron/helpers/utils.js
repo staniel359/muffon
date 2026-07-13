@@ -90,11 +90,12 @@ export const deepLinksProtocol = `${appName}://`
 export const isDevToolsAvailable = isDevelopment
 
 export const isShowDevTools =
-  app
-    .commandLine
-    .hasSwitch(
-      'dev-tools'
-    )
+  isDevToolsAvailable ||
+    app
+      .commandLine
+      .hasSwitch(
+        'dev-tools'
+      )
 
 export const windowsDefaultSizes = {
   main: {
