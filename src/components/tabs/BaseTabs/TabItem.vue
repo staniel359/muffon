@@ -8,6 +8,9 @@
   >
     <BaseIcon
       v-if="icon"
+      :class="{
+        colored: isIconColored && isActive
+      }"
       :icon="icon"
     />
 
@@ -77,6 +80,9 @@ export default {
     },
     counterText () {
       return `(${this.counter})`
+    },
+    isIconColored () {
+      return this.tabData.isIconColored
     }
   },
   methods: {

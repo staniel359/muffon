@@ -40,19 +40,22 @@ export default {
           name: 'Last.FM',
           icon: 'lastfm',
           scope: 'lastfm',
-          component: 'LastfmOptions'
+          component: 'LastfmOptions',
+          isIconColored: true
         },
         {
           name: 'Spotify',
           icon: 'spotify',
           scope: 'spotify',
-          component: 'SpotifyOptions'
+          component: 'SpotifyOptions',
+          isIconColored: true
         },
         {
           name: 'Discord',
           icon: 'discord',
           scope: 'discord',
-          component: 'DiscordOptions'
+          component: 'DiscordOptions',
+          isIconColored: true
         }
       ]
     }
