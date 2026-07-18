@@ -20,21 +20,14 @@
 
 <script>
 import {
-  defineAsyncComponent
-} from 'vue'
-import {
   mapState
 } from 'pinia'
 import layoutStore from '@/stores/layout'
+
 import BaseInnerCounterLabelsSection
   from '@/components/sections/BaseInnerCounterLabelsSection.vue'
-
-const BaseTrackListenersModal =
-  defineAsyncComponent(
-    () => import(
-      '@/components/modals/track/BaseTrackListenersModal.vue'
-    )
-  )
+import BaseTrackListenersModal
+  from '@/components/modals/track/BaseTrackListenersModal.vue'
 
 export default {
   name: 'BaseTrackInnerCounterLabelsSection',

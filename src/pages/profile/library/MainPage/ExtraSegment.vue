@@ -21,28 +21,12 @@
 </template>
 
 <script>
-import {
-  defineAsyncComponent
-} from 'vue'
-
-const BaseSegmentContainer =
-  defineAsyncComponent(
-    () => import(
-      '@/components/containers/segments/BaseSegmentContainer.vue'
-    )
-  )
-const BaseLibraryOptionsPopup =
-  defineAsyncComponent(
-    () => import(
-      '@/components/popups/library/BaseLibraryOptionsPopup.vue'
-    )
-  )
-const BaseProfileLibraryTracksPlayButton =
-  defineAsyncComponent(
-    () => import(
-      '@/components/buttons/play/profile/library/BaseProfileLibraryTracksPlayButton.vue'
-    )
-  )
+import BaseSegmentContainer
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseLibraryOptionsPopup
+  from '@/components/popups/library/BaseLibraryOptionsPopup.vue'
+import BaseProfileLibraryTracksPlayButton
+  from '@/components/buttons/play/profile/library/BaseProfileLibraryTracksPlayButton.vue'
 
 export default {
   name: 'ExtraSegment',
