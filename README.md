@@ -119,19 +119,19 @@ Discography:
 
 ## Star History
 
-<a href="https://star-history.com/#staniel359/muffon&Date">
+<a href="https://star-history.dera.page/#staniel359/muffon&type=Date">
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
-      srcset="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date&theme=dark"
+      srcset="https://star-history.dera.page/svg?repos=staniel359/muffon&type=Date&theme=dark"
     />
     <source
       media="(prefers-color-scheme: light)"
-      srcset="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date"
+      srcset="https://star-history.dera.page/svg?repos=staniel359/muffon&type=Date"
     />
     <img
       alt="Star History Chart"
-      src="https://api.star-history.com/svg?repos=staniel359/muffon&type=Date"
+      src="https://star-history.dera.page/svg?repos=staniel359/muffon&type=Date"
     />
   </picture>
 </a>
