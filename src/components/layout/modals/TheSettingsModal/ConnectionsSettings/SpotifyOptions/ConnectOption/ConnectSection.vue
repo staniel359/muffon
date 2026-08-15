@@ -2,8 +2,9 @@
   <div class="main-settings-option-container">
     <div class="main-settings-option">
       <BaseSettingsOptionButton
+        icon="spotify"
         :text="connectText"
-        is-spotify
+        is-primary
         @click="handleClick"
       />
     </div>

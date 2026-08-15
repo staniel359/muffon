@@ -1,8 +1,7 @@
 <template>
   <BaseButton
-    class="circular"
+    class="circular primary"
     :class="[
-      color,
       {
         loading: isLoading,
         disabled: isDisabled
@@ -11,6 +10,7 @@
     :left-icon="source"
     :text="importText"
     :is-invertable="false"
+    is-left-icon-colored
     @click="handleClick"
   />
 </template>

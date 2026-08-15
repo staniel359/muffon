@@ -10,19 +10,22 @@
     </div>
 
     <div class="main-settings-option">
+      <div class="main-settings-option-header">
+        <BaseAccountSection
+          :account-data="lastfmAccountData"
+        />
+      </div>
+
       <BaseSettingsOptionButton
         :text="disconnectText"
         :is-loading="isLoading"
-        is-lastfm
-        is-basic
+        is-disconnect
         @click="handleClick"
-      />
-
-      <BaseAccountSection
-        :account-data="lastfmAccountData"
       />
     </div>
   </div>
+
+  <BaseDivider />
 </template>
 
 <script>
@@ -30,10 +33,13 @@ import {
   mapState
 } from 'pinia'
 import profileStore from '@/stores/profile'
+
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseSettingsOptionButton
   from '@/components/buttons/settings/BaseSettingsOptionButton.vue'
 import BaseAccountSection from '@/components/sections/BaseAccountSection.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
+
 import deleteConnection from '@/helpers/actions/api/connection/delete'
 import {
   update as updateGlobalStore
@@ -44,7 +50,8 @@ export default {
   components: {
     BaseErrorMessage,
     BaseSettingsOptionButton,
-    BaseAccountSection
+    BaseAccountSection,
+    BaseDivider
   },
   emits: [
     'success'

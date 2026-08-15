@@ -2,15 +2,16 @@
   <div class="main-settings-options-block">
     <ConnectOption />
 
-    <template
+    <div
       v-if="isConnected"
+      class="main-bottom-extrasmall-section"
     >
       <ScrobbleOption />
 
       <ScrobbleNotificationsOption />
 
       <ScrobblePercentOption />
-    </template>
+    </div>
   </div>
 </template>
 

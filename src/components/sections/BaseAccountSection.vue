@@ -6,7 +6,7 @@
       :image="image"
     />
 
-    <div class="content">
+    <div class="content d-flex align-items-center">
       <BaseHeader
         tag="h4"
         :text="nickname"
@@ -14,7 +14,7 @@
 
       <BaseLabel
         v-if="isPremium"
-        class="primary small circular main-bottom-extrasmall-section"
+        class="primary small circular main-right-medium-section"
         :text="premiumText"
         :is-invertable="false"
       />

@@ -10,16 +10,17 @@
     </div>
 
     <div class="main-settings-option">
+      <div class="main-settings-option-header">
+        <BaseAccountSection
+          :account-data="spotifyAccountData"
+        />
+      </div>
+
       <BaseSettingsOptionButton
         :text="disconnectText"
         :is-loading="isLoading"
-        is-spotify
-        is-basic
+        is-disconnect
         @click="handleClick"
-      />
-
-      <BaseAccountSection
-        :account-data="spotifyAccountData"
       />
     </div>
   </div>

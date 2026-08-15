@@ -1,24 +1,19 @@
 <template>
-  <div class="main-settings-option-header">
-    <BaseButton
-      class="circular option-button"
-      :class="{
-        basic: isBasic,
-        red: (
-          isLastfm || isDelete
-        ),
-        green: isSpotify,
-        loading: isLoading,
-        disabled: (
-          isDisabled || isLoading
-        )
-      }"
-      :left-icon="icon"
-      :text="text"
-      :is-invertable="false"
-      @click="handleClick"
-    />
-  </div>
+  <BaseButton
+    class="circular option-button"
+    :class="{
+      primary: isPrimary,
+      basic: isBasic,
+      red: isRed,
+      loading: isLoading,
+      disabled: isDisabledComputed
+    }"
+    :left-icon="iconComputed"
+    :text="text"
+    :is-invertable="isInvertable"
+    is-left-icon-colored
+    @click="handleClick"
+  />
 </template>
 
 <script>
@@ -34,27 +29,45 @@ export default {
       type: String,
       required: true
     },
-    isBasic: Boolean,
+    isPrimary: Boolean,
     isDelete: Boolean,
-    isLastfm: Boolean,
-    isSpotify: Boolean,
+    isDisconnect: Boolean,
     isDisabled: Boolean,
-    isLoading: Boolean
+    isLoading: Boolean,
+    icon: String
   },
   emits: [
     'click'
   ],
   computed: {
-    icon () {
+    iconComputed () {
       if (this.isDelete) {
         return 'delete'
-      } else if (this.isLastfm) {
-        return 'lastfm'
-      } else if (this.isSpotify) {
-        return 'spotify'
       } else {
-        return null
+        return this.icon
       }
+    },
+    isBasic () {
+      return this.isDisconnect
+    },
+    isRed () {
+      return (
+        this.isDelete ||
+          this.isDisconnect
+      )
+    },
+    isDisabledComputed () {
+      return (
+        this.isDisabled ||
+          this.isLoading
+      )
+    },
+    isInvertable () {
+      return !(
+        this.isPrimary ||
+          this.isDelete ||
+          this.isDisconnect
+      )
     }
   },
   methods: {

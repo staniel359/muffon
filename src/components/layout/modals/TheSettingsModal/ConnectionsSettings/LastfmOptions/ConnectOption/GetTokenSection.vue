@@ -11,9 +11,10 @@
 
     <div class="main-settings-option">
       <BaseSettingsOptionButton
+        icon="lastfm"
         :text="connectText"
         :is-loading="isLoading"
-        is-lastfm
+        is-primary
         @click="handleClick"
       />
     </div>

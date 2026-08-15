@@ -14,7 +14,7 @@
     <div class="main-bottom-section">
       <BaseMessage
         :content="messageText"
-        is-info
+        is-warning
       />
     </div>
   </div>

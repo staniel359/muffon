@@ -20,12 +20,15 @@
     />
 
     <div class="main-settings-option main-bottom-section">
-      <BaseSettingsOptionButton
-        :text="connectText"
-        :is-loading="isLoading"
-        is-spotify
-        @click="handleClick"
-      />
+      <div class="flex-full">
+        <BaseSettingsOptionButton
+          icon="spotify"
+          :text="connectText"
+          :is-loading="isLoading"
+          is-primary
+          @click="handleClick"
+        />
+      </div>
 
       <BaseClearButton
         @click="handleClearButtonClick"

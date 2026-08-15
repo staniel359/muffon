@@ -516,7 +516,7 @@
           "timezone": "Time zone",
           "infiniteScroll": "Infinite scroll",
           "artistPopup": "Show artist info on link hover",
-          "innerCounters": "Show muffon listeners counter",
+          "innerCounters": "Show muffon listeners counters",
           "cachePages": "Cache pages",
           "scale": "Scale"
         },
