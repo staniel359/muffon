@@ -178,7 +178,7 @@ export default [
   {
     id: 'odnoklassniki',
     icon: 'odnoklassniki',
-    name: 'Odnoklassniki',
+    name: 'OK.ru',
     isAudio: true,
     isWithArtists: true,
     isWithAlbums: true,
