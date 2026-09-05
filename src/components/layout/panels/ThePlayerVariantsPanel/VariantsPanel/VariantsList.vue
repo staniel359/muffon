@@ -29,6 +29,7 @@
             is-with-artist-name
             is-with-album-title
             is-with-duration
+            is-with-source
           />
         </template>
       </BaseTrackVariantContainer>
