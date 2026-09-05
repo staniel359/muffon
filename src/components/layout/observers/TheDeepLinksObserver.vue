@@ -12,9 +12,6 @@ import profileStore from '@/stores/profile'
 import sessionStore from '@/stores/session'
 
 import newTabMixin from '@/mixins/newTabMixin'
-import {
-  sanitizeString
-} from '@/helpers/utils'
 
 export default {
   name: 'TheDeepLinksObserver',
@@ -84,14 +81,9 @@ export default {
       }
     ) {
       if (this.isLoggedIn) {
-        const pathSanitized =
-          sanitizeString(
-            path
-          )
-
         this.openNewTab(
           {
-            path: pathSanitized
+            path
           }
         )
       }
