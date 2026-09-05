@@ -55,7 +55,7 @@ export default {
       return getCountriesNames(
         this.profileLanguage,
         {
-          select: 'all'
+          select: 'official'
         }
       )
     },
@@ -86,13 +86,8 @@ export default {
     ) {
       const [
         id,
-        names
+        name
       ] = countryData
-
-      const name =
-        names.at(
-          -1
-        )
 
       return {
         id: id.toLowerCase(),
