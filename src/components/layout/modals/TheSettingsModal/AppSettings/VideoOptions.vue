@@ -5,6 +5,8 @@
     <PauseOnAudioPlayOption />
 
     <OpenLinksInNewTabOption />
+
+    <PlayingFocusOption />
   </div>
 </template>
 
@@ -14,13 +16,15 @@ import PauseOnAudioPlayOption
   from './VideoOptions/PauseOnAudioPlayOption.vue'
 import OpenLinksInNewTabOption
   from './VideoOptions/OpenLinksInNewTabOption.vue'
+import PlayingFocusOption from './VideoOptions/PlayingFocusOption.vue'
 
 export default {
   name: 'VideoOptions',
   components: {
     AutoplayOption,
     PauseOnAudioPlayOption,
-    OpenLinksInNewTabOption
+    OpenLinksInNewTabOption,
+    PlayingFocusOption
   }
 }
 </script>

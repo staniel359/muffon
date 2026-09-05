@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="video"
     class="base-video overflow-hidden border-radius border-inner"
     :class="{
       inverted: isDarkMode
@@ -18,17 +19,23 @@
 
 <script>
 import 'https://www.youtube.com/iframe_api'
+
 import {
   mapState
 } from 'pinia'
+
 import layoutStore from '@/stores/layout'
 import videoStore from '@/stores/video'
 import audioStore from '@/stores/audio'
 import profileStore from '@/stores/profile'
 import playerStore from '@/stores/player'
+
 import {
   generateKey
 } from '@/helpers/utils'
+import {
+  focusOnPageElement
+} from '@/helpers/actions/layout'
 
 export default {
   name: 'BaseVideo',
@@ -62,7 +69,8 @@ export default {
       videoStore,
       {
         isVideoAutoplay: 'isAutoplay',
-        isPauseVideoOnAudioPlay: 'isPauseOnAudioPlay'
+        isPauseVideoOnAudioPlay: 'isPauseOnAudioPlay',
+        isVideoWithPlayingFocus: 'isWithPlayingFocus'
       }
     ),
     ...mapState(
@@ -150,12 +158,9 @@ export default {
     }
   },
   watch: {
-    isPlaying:
-      'handleIsPlayingChange',
-    audioStatus:
-      'handleAudioStatusChange',
-    playerArgs:
-      'handlePlayerArgsChange',
+    isPlaying: 'handleIsPlayingChange',
+    audioStatus: 'handleAudioStatusChange',
+    playerArgs: 'handlePlayerArgsChange',
     isPauseOnAudioPlay:
       'handleIsPauseOnAudioPlayChange',
     isPauseAudioOnPlay:
@@ -166,6 +171,10 @@ export default {
   },
   methods: {
     handleIsPlayingChange () {
+      if (this.isVideoWithPlayingFocus) {
+        this.focus()
+      }
+
       this.pauseAudioIfPlaying()
     },
     handleAudioStatusChange () {
@@ -220,6 +229,11 @@ export default {
       await this.$nextTick()
 
       this.initialize()
+    },
+    focus () {
+      focusOnPageElement(
+        this.$refs.video
+      )
     }
   }
 }

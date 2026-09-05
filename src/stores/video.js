@@ -7,7 +7,8 @@ const data = {
     return {
       isAutoplay: null,
       isPauseOnAudioPlay: null,
-      isOpenLinksInNewTab: null
+      isOpenLinksInNewTab: null,
+      isWithPlayingFocus: null
     }
   },
   actions: {
@@ -25,6 +26,11 @@ const data = {
       value
     ) {
       this.isOpenLinksInNewTab = value
+    },
+    setIsWithPlayingFocus (
+      value
+    ) {
+      this.isWithPlayingFocus = value
     }
   }
 }

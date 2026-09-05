@@ -6,8 +6,8 @@
       />
 
       <BaseToggle
-        store-key="player.isWithPlayingFocus"
-        :is-checked="isPlayerWithPlayingFocus"
+        store-key="video.isWithPlayingFocus"
+        :is-checked="isVideoWithPlayingFocus"
       />
     </div>
   </div>
@@ -17,7 +17,9 @@
 import {
   mapState
 } from 'pinia'
-import playerStore from '@/stores/player'
+
+import videoStore from '@/stores/video'
+
 import BaseSettingsOptionHeader
   from '@/components/headers/settings/BaseSettingsOptionHeader.vue'
 import BaseToggle from '@/components/toggles/BaseToggle.vue'
@@ -30,14 +32,14 @@ export default {
   },
   computed: {
     ...mapState(
-      playerStore,
+      videoStore,
       {
-        isPlayerWithPlayingFocus: 'isWithPlayingFocus'
+        isVideoWithPlayingFocus: 'isWithPlayingFocus'
       }
     ),
     optionText () {
       return this.$t(
-        'settings.options.app.player.focusPlaying'
+        'settings.options.app.video.focusPlaying'
       )
     }
   }

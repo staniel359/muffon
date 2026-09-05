@@ -485,6 +485,10 @@ export default {
     type: 'boolean',
     default: false
   },
+  'video.isWithPlayingFocus': {
+    type: 'boolean',
+    default: true
+  },
   'window.isQuitOnClose': {
     type: 'boolean',
     default: false

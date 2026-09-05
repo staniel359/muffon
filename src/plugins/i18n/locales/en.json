@@ -556,7 +556,8 @@
         "video": {
           "autoplay": "Autoplay",
           "pauseOnAudioPlay": "Pause on audio play",
-          "openLinksInNewTab": "Open links in new tab"
+          "openLinksInNewTab": "Open links in new tab",
+          "focusPlaying": "Focus on current video"
         },
         "recommendations": {
           "hideLibraryArtists": "Hide library artists",
