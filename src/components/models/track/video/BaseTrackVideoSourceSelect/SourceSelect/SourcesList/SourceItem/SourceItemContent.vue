@@ -40,7 +40,7 @@ export default {
       return (
         this.isLoading ||
           this.isError ||
-          !this.videos
+          !this.videos?.length
       )
     },
     icon () {
