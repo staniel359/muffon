@@ -1,5 +1,5 @@
 export const donate =
-  'https://ko-fi.com/staniel359'
+  'https://github.com/staniel359/muffon#donate'
 
 export const discord =
   'https://discord.gg/kpWsA5NBmJ'
