@@ -25,6 +25,12 @@ function handleBeforeSendHeaders (
     'youtube.com'
   )) {
     headers.Referer = 'https://www.example.com'
+
+    if (url.includes(
+      '/youtubei/v1/'
+    )) {
+      headers['Content-Encoding'] = 'gzip'
+    }
   } else if (url.includes(
     'lh3.googleusercontent.com'
   )) {
