@@ -182,7 +182,19 @@ If you have a suggestion, please check [our to do list](https://github.com/users
 
 ## Donate
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/staniel359)
+If you want to support the project, we accept cryptocurrency.
+All of the collected funds will be spent on the project's infrastructure.
+
+- Currency: <img src="https://www.pionex.com/res/coin/usdt_3x.png" height="16"> **USDT (Tether)**
+- Network: **BNB Smart Chain (BEP20)**
+- Address: **0xC6E66B25700F9080EDDC00033eD3b1333D046Acf**
+
+<img src="https://i.ibb.co/zHHzjhBv/crypto.png">
+
+>[!CAUTION]
+> Please be very careful with this data. Otherwise your money will be lost.
+
+Thanks for your support!
 
 ## Related projects
 
