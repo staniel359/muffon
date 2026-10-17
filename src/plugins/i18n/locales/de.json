@@ -556,7 +556,8 @@
         "video": {
           "autoplay": "Autoplay",
           "pauseOnAudioPlay": "Beim Abspielen von Audio pausieren",
-          "openLinksInNewTab": "Links in neuem Tab öffnen"
+          "openLinksInNewTab": "Links in neuem Tab öffnen",
+          "focusPlaying": "Aktuelles Video fokussieren"
         },
         "recommendations": {
           "hideLibraryArtists": "Bibliothekskünstler ausblenden",
@@ -711,7 +712,8 @@
         "files": "{counter} wurde importiert | {counter} wurden importiert",
         "tracks": "{counter} wurde importiert | {counter} wurden importiert",
         "playlists": "{counter} wurde importiert | {counter} wurden importiert"
-      }
+      },
+      "content": "Bitte überprüfe die Daten vor dem Speichern"
     },
     "error": {
       "files": "{counter} konnte nicht importiert werden. Bitte stellen Sie sicher, dass das Metadatenformat korrekt ist:"
@@ -815,6 +817,9 @@
     "playlist": "Privat",
     "profile": "Privat"
   },
+  "privateModel": {
+    "video": "Privates Video"
+  },
   "donate": {
     "header": "Spenden",
     "content": [
@@ -851,12 +856,15 @@
     "joinedDesc": "Am neuesten",
     "joinedAsc": "Am ältesten",
     "membersCountDesc": "Meiste Mitglieder",
-    "membersCountAsc": "Wengiste Mitglieder"
+    "membersCountAsc": "Wengiste Mitglieder",
+    "listenersCountDesc": "Meiste Hörer",
+    "listenersCountAsc": "Wenigste Hörer"
   },
   "deletedModel": {
     "profile": "Deleted profile",
     "playlist": "Gelöschte playlist",
-    "community": "Gelöschte community"
+    "community": "Gelöschte community",
+    "video": "Gelöschtes Video"
   },
   "events": {
     "created": {

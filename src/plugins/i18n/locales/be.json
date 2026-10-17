@@ -556,7 +556,8 @@
         "video": {
           "autoplay": "Аўтапрайграванне",
           "pauseOnAudioPlay": "Прыпыняць пры прайграванні аудыё",
-          "openLinksInNewTab": "Адкрываць спасылкі у новай укладцы"
+          "openLinksInNewTab": "Адкрываць спасылкі у новай укладцы",
+          "focusPlaying": "Фокус на бягучым відэа"
         },
         "recommendations": {
           "hideLibraryArtists": "Схоўваць выканаўцаў з бібліятэкі",
@@ -862,7 +863,8 @@
   "deletedModel": {
     "profile": "Выдалены профіль",
     "playlist": "Выдалены спіс",
-    "community": "Выдаленая суполка"
+    "community": "Выдаленая суполка",
+    "video": "Выдаленае відэа"
   },
   "events": {
     "created": {

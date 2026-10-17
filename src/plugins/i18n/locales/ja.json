@@ -556,7 +556,8 @@
         "video": {
           "autoplay": "自動再生",
           "pauseOnAudioPlay": "オーディオ再生時に一時停止",
-          "openLinksInNewTab": "リンクを新しいタブで開く"
+          "openLinksInNewTab": "リンクを新しいタブで開く",
+          "focusPlaying": "再生中の動画にフォーカス"
         },
         "recommendations": {
           "hideLibraryArtists": "ライブラリアーティストを非表示",
@@ -708,7 +709,7 @@
         "tracks": "{counter} がインポートされました | {counter} がインポートされました",
         "playlists": "{counter} がインポートされました | {counter} がインポートされました"
       },
-      "content": "保存前にデータを確認したほうがよさそうです"
+      "content": "保存する前にデータを確認することをおすすめします"
     },
     "error": {
       "files": "{counter} はインポートできませんでした。メタデータの形式が正しいことを確認してください:"
@@ -812,6 +813,9 @@
     "playlist": "プライベート",
     "profile": "プライベート"
   },
+  "privateModel": {
+    "video": "非公開動画"
+  },
   "donate": {
     "header": "寄付",
     "content": [
@@ -848,12 +852,15 @@
     "joinedDesc": "最新参加",
     "joinedAsc": "最も古い参加",
     "membersCountDesc": "最多メンバー",
-    "membersCountAsc": "最少メンバー"
+    "membersCountAsc": "最少メンバー",
+    "listenersCountDesc": "リスナーが多い順",
+    "listenersCountAsc": "リスナーが少ない順"
   },
   "deletedModel": {
     "profile": "削除されたプロフィール",
     "playlist": "削除済みのプレイリスト",
-    "community": "削除済みのコミュニティ"
+    "community": "削除済みのコミュニティ",
+    "video": "削除された動画"
   },
   "events": {
     "created": {

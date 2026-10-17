@@ -556,7 +556,8 @@
         "video": {
           "autoplay": "Putar otomatis",
           "pauseOnAudioPlay": "Jeda saat audio diputar",
-          "openLinksInNewTab": "Buka link di tab baru"
+          "openLinksInNewTab": "Buka link di tab baru",
+          "focusPlaying": "Fokus pada video saat ini"
         },
         "recommendations": {
           "hideLibraryArtists": "Sembunyikan artis perpustakaan",

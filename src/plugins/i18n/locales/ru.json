@@ -556,7 +556,8 @@
         "video": {
           "autoplay": "Автовоспроизведение",
           "pauseOnAudioPlay": "Приостанавливать при воспроизведении аудио",
-          "openLinksInNewTab": "Открывать ссылки в новой вкладке"
+          "openLinksInNewTab": "Открывать ссылки в новой вкладке",
+          "focusPlaying": "Фокус на текущем видео"
         },
         "recommendations": {
           "hideLibraryArtists": "Скрывать исполнителей из библиотеки",
@@ -862,7 +863,8 @@
   "deletedModel": {
     "profile": "Удалённый профиль",
     "playlist": "Удалённый список",
-    "community": "Удалённое сообщество"
+    "community": "Удалённое сообщество",
+    "video": "Удалённое видео"
   },
   "events": {
     "created": {

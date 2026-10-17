@@ -156,6 +156,7 @@
     "play": "האזן",
     "shuffle": "ערבוב",
     "loop": "לולאה",
+    "reset": "איפוס",
     "addFrom": {
       "search": "מהחיפוש",
       "library": "מהספרייה"
@@ -196,6 +197,11 @@
       "watched": "צפיתי כבר",
       "queue": "הוסף לתור",
       "savedTracks": "הוסף לשירים שמורים"
+    },
+    "goTo": {
+      "video": "מעבר לעמוד הסרטון",
+      "library": "מעבר לעמוד הספרייה",
+      "page": "מעבר לעמוד"
     },
     "deleteFrom": {
       "favorites": "מחק מהאהובים",
@@ -550,7 +556,8 @@
         "video": {
           "autoplay": "ניגון אוטומטי",
           "pauseOnAudioPlay": "עצור בעת השמעת שמע",
-          "openLinksInNewTab": "פתח קישורים בכרטיסייה חדשה"
+          "openLinksInNewTab": "פתח קישורים בכרטיסייה חדשה",
+          "focusPlaying": "התמקדות בסרטון הנוכחי"
         },
         "recommendations": {
           "hideLibraryArtists": "הסתר אמנים בספרייה",
@@ -660,6 +667,10 @@
       "content": "כעת, תוכל לחזור ולהתחבר"
     }
   },
+  "guest": {
+    "continue": "המשך כאורח",
+    "nickname": "אורח"
+  },
   "roles": {
     "creator": "יוצר"
   },
@@ -688,6 +699,9 @@
   "recommendation": {
     "similar": "דומה ל {counter}:"
   },
+  "get": {
+    "active": "מקבל {count} מתוך {counter}..."
+  },
   "import": {
     "lastfm": {
       "historyVisible": "לפני הייבוא, וודא שהיסטוריית ההאזנה שלך ב-Last.FM גלויה."
@@ -698,7 +712,8 @@
         "files": "יובאו {counter} | יובאו {counter}",
         "tracks": "יובאו {counter} | יובאו {counter}",
         "playlists": "יובא {counter} | יובאו {counter}"
-      }
+      },
+      "content": "מומלץ לבדוק את הנתונים לפני השמירה"
     },
     "error": {
       "files": "{counter} לא ניתן לייבוא. אנא וודא שפורמט המטאדאטה תקין:"
@@ -802,6 +817,9 @@
     "playlist": "פרטי",
     "profile": "פרטי"
   },
+  "privateModel": {
+    "video": "סרטון פרטי"
+  },
   "donate": {
     "header": "תרומה",
     "content": [
@@ -838,10 +856,15 @@
     "joinedDesc": "ההצטרפות ההכי אחרונה",
     "joinedAsc": "ההצטרפות ההכי פחות אחרונה",
     "membersCountDesc": "הכי הרבה מצורפים",
-    "membersCountAsc": "פחות מצורפים"
+    "membersCountAsc": "פחות מצורפים",
+    "listenersCountDesc": "הכי הרבה מאזינים",
+    "listenersCountAsc": "הכי מעט מאזינים"
   },
   "deletedModel": {
-    "profile": "פרופיל נמחק"
+    "profile": "פרופיל נמחק",
+    "playlist": "פלייליסט שנמחק",
+    "community": "קהילה שנמחקה",
+    "video": "סרטון שנמחק"
   },
   "events": {
     "created": {
