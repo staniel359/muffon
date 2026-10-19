@@ -15,6 +15,7 @@ import pl from './i18n/locales/pl.json'
 import ptBr from './i18n/locales/pt_BR.json'
 import ru from './i18n/locales/ru.json'
 import tr from './i18n/locales/tr.json'
+import vi from './i18n/locales/vi.json'
 import zh from './i18n/locales/zh.json'
 import slavicPluralizationRule
   from './i18n/rules/pluralization/slavic.js'
@@ -36,6 +37,7 @@ const localesData = {
   pt_BR: ptBr,
   ru,
   tr,
+  vi,
   zh
 }
 
@@ -190,6 +192,16 @@ if (import.meta.hot) {
     fileImport => {
       i18n.global.setLocaleMessage(
         'tr',
+        fileImport.default
+      )
+    }
+  )
+
+  import.meta.hot.accept(
+    './i18n/locales/vi.json',
+    fileImport => {
+      i18n.global.setLocaleMessage(
+        'vi',
         fileImport.default
       )
     }

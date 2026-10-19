@@ -59,6 +59,10 @@ export default [
     name: 'Türkçe'
   },
   {
+    id: 'vi',
+    name: 'Tiếng Việt'
+  },
+  {
     id: 'zh',
     name: '中文'
   }

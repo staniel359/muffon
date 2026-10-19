@@ -27,6 +27,7 @@ import pl from 'emoji-picker-element/i18n/pl'
 import ptBr from 'emoji-picker-element/i18n/pt_BR'
 import ru from 'emoji-picker-element/i18n/ru_RU'
 import tr from 'emoji-picker-element/i18n/tr'
+import vi from 'emoji-picker-element/i18n/vi'
 import zh from 'emoji-picker-element/i18n/zh_CN'
 
 // I18n
@@ -53,6 +54,7 @@ export default {
         pt_BR: ptBr,
         ru,
         tr,
+        vi,
         zh
       }
     }

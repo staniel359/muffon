@@ -1,0 +1,13 @@
+{
+  "show": "Hiển thị",
+  "hide": "Ẩn",
+  "about": "Giới thiệu",
+  "quit": "Thoát",
+  "update": {
+    "message": "Phiên bản mới đã có sẵn",
+    "buttons": {
+      "download": "Tải xuống",
+      "close": "Đóng"
+    }
+  }
+}
