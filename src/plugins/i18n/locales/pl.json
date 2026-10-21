@@ -442,7 +442,7 @@
     "accusative": {
       "artists": "{count} wykonawców | {count} wykonawce | {count} wykonawców",
       "albums": "{count} wydawnictw | {count} wydawnictwo | {count} wydawnictwa",
-      "tracks": "{count} utworów} | {count} utwór | {count} utwory",
+      "tracks": "{count} utworów | {count} utwór | {count} utwory",
       "files": "{count} plików | {count} plik | {count} pliki",
       "playlists": "{count} playlist | {count} playlistę | {count} playlisty"
     }
@@ -481,7 +481,7 @@
   "player": {
     "variants": "Wersje ({count})",
     "audio": {
-      "bitrate": "{Value} kbit/s",
+      "bitrate": "{value} kbit/s",
       "equalizer": {
         "decibel": "{value} dB",
         "hertz": "{value} Hz",
