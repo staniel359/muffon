@@ -1,7 +1,7 @@
 {
   "name": "muffon",
   "desktopName": "com.electron.muffon",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "Advanced multi-source music streaming + discovery client",
   "homepage": "https://muffon.netlify.app",
   "repository": "https://github.com/staniel359/muffon",
