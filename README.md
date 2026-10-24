@@ -25,8 +25,11 @@ It retrieves audio, video and metadata from various Internet sources, such as:
 
 Audio:
 
+- <img src="https://m.media-amazon.com/images/G/01/music/logo/1.0/smile_256x256.png" height="16"> **Amazon Music**
+- <img src="https://audius.co/favicons/favicon-16x16.png" height="16"> **Audius**
 - <img src="https://s4.bcbits.com/img/favicon/favicon-16x16.png" height="16"> **Bandcamp**
-- <img src="https://ok.ru/favicon.ico" height="16"> **Odnoklassniki**
+- <img src="https://e-cdn-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.1e6ae1b5b7794f3e00c0.png" height="16"> **Deezer**
+- <img src="https://ok.ru/favicon.ico" height="16"> **OK.ru**
 - <img src="https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico" height="16"> **SoundCloud**
 - <img src="https://open.spotifycdn.com/cdn/images/favicon16.c498a969.png" height="16"> **Spotify** (currently not working)
 - <img src="https://vk.com/images/icons/favicons/fav_logo.ico" height="16"> **VK**
@@ -40,7 +43,7 @@ Video:
 Lyrics:
 
 - <img src="https://assets.genius.com/images/apple-touch-icon.png" height="16"> **Genius**
-- <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch** (currently not working)
+- <img src="https://s.mxmcdn.net/site/images/favicon-32.png" height="16"> **MusixMatch**
 
 Discography:
 
@@ -62,14 +65,14 @@ Discography:
 - **music services integration** (Last.FM, Spotify)
 - **recommendations** (artists / tracks) (based on your library) (+ filters)
 - **search** (artists / albums / album groups / tracks / lyrics / tags / videos / video channels / video playlists) (through all of the sources above)
-- **radio** (tags / artists / top)
+- **radio** (tags / artists / top / recommendations)
 - **scrobbling** (Last.FM)
 - **Discord Rich Presence** (+ buttons customization)
 - **videos** (+ similar / channels / playlists) (YouTube, YouTube Music)
 - **lyrics** (+ annotations) (Genius, MusixMatch)
 - **top** (artists / albums / tracks / tags) (+ country select)
 - **new / upcoming releases**
-- **multitag search** (artists / albums)
+- **multitag search** (artists / albums / tracks)
 - **external links** (artists / albums / tracks / videos / video channels / video playlists)
 - **playlists** (+ import from account) (+ album / queue adding)
 - **favorites** (artists / albums / tracks / videos) (+ import from account)
@@ -93,6 +96,7 @@ Discography:
 - Español ([@Lolabird](https://github.com/Lolabird))
 - Français ([@TheFlomax](https://github.com/TheFlomax))
 - עברית ([@EthanPZ1](https://github.com/EthanPZ1))
+- Bahasa Indonesia ([@flessan](https://github.com/flessan))
 - Italiano ([@ZinRicky](https://github.com/ZinRicky), [@filipporomani](https://github.com/filipporomani))
 - 日本語 ([@xyloflake](https://github.com/xyloflake))
 - 한국어 ([@DDinghoya](https://github.com/DDinghoya))
@@ -100,6 +104,7 @@ Discography:
 - Português (Brasil) ([@ivangomes](https://github.com/ivangomes))
 - Русский ([@staniel359](https://github.com/staniel359))
 - Türkçe ([@chunsal](https://github.com/chunsal), [@Kadayif35](https://github.com/Kadayif35))
+- Tiếng Việt ([@hoang0109](https://github.com/hoang0109))
 - 中文 ([@PoorShawn](https://github.com/PoorShawn))
 
 ### Technical stack
@@ -115,7 +120,7 @@ Discography:
 
 ## Download
 
-[Latest](https://github.com/staniel359/muffon/releases/latest)
+[Latest (2.5.0)](https://github.com/staniel359/muffon/releases/latest)
 
 ## Star History
 
@@ -198,6 +203,6 @@ Thanks for your support!
 
 ## Related projects
 
-[muffon-api](https://github.com/staniel359/muffon-api) - REST API for client
+[muffon-api](https://github.com/staniel359/muffon-api) - REST API for the client
 
 [muffon-website](https://github.com/staniel359/muffon-website) - Website
